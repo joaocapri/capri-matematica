@@ -49,3 +49,9 @@ html{scroll-padding-top:88px}
 .materials-tab-emoji{font-size:50px;color:#4a27b7;font-weight:900}
 .practice-inline{padding-top:17px;margin-top:18px;border-top:1px solid #e5deed}
 @media(max-width:700px){.library-hub{padding:20px;margin-bottom:40px;box-shadow:4px 4px 0 #211946}.library-hub h2{font-size:37px}.library-icon{font-size:44px}.library-results{grid-template-columns:1fr}.library-search-label input{font-size:13px}.material-spotlight{flex-wrap:wrap;gap:8px;padding:12px}.material-spotlight-button{flex:1;min-width:100%}.hero-actions{gap:12px}.hero-files-link{font-size:12px;padding:10px 13px}.tab-featured{font-size:12px!important}}
+
+/* Matemática legível também no celular */
+.formula,mjx-container[display="true"]{max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+.quiz-question h3,.quiz-option span:last-child,.theory-example p{overflow-wrap:break-word}
+.video-search-more{display:block;border:2px solid #211946;border-radius:12px;background:#d3fc61;color:#211946;text-align:center;font-weight:900;margin-top:18px;padding:14px}
+@media(max-width:650px){mjx-container{font-size:92%!important}.formula{padding:12px 8px}.theory-example{padding:15px}}

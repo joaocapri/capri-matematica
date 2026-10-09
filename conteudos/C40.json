@@ -43,7 +43,7 @@
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "senx+s en(−x) sempre seria:",
+      "enunciado": "sen x + sen(−x) é sempre igual a:",
       "opcoes": [
         "0",
         "1",

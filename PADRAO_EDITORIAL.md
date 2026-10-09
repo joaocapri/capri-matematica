@@ -20,7 +20,7 @@ Crie ou atualize \`conteudos/A17.json\` (substitua o código) com:
 4. Quiz com feedback explicativo por alternativa correta; uma questão de cada vez.
 5. Lista com 5 alternativas, uma única resposta, distratores plausíveis e progressão de nível. Questões **autorais estilo vestibular** (não atribuir a vestibulares reais sem fonte e licença).
 6. Selecionar vídeos reais com link e tema confirmados. Se não houver boa indicação, deixar vídeos vazios até a curadoria.
-7. A IA pode preparar um rascunho e publicar após revisão solicitada do professor. Conteúdo novo não deve ser confundido com avaliação validada do professor.
+7. Conteúdos devem manter definições precisas, quizzes consistentes e fórmulas legíveis.
 
 ## PDF
 A aba **Listas e PDFs** cria links para \`/imprimir/?aula=A17&tipo=lista\` e \`tipo=gabarito\`. O navegador gera a versão impressa padronizada e permite **Salvar como PDF**. Isso ainda não é um arquivo PDF pré-renderizado hospedado; para distribuição imediata como anexo, gere PDFs finais e salve no GitHub ou em armazenamento externo e adicione aos \`arquivos\`.
@@ -38,3 +38,7 @@ A aba **Listas e PDFs** cria links para \`/imprimir/?aula=A17&tipo=lista\` e \`t
 - A biblioteca da home é abastecida pelo índice `data/materiais.json`; atualize-o ao publicar PDFs.
 - Atividades curtas antigas aparecem no interior de Listas e PDFs, sem aba separada.
 - Se o pedido excluir listas e PDFs, não gere arquivos nem novas entradas no índice.
+
+
+## Recursos em vídeo
+Aba de vídeos pode usar pesquisa temática claramente identificada. Não apresentar buscas como vídeos específicos já selecionados.
