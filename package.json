@@ -1,0 +1,12 @@
+{
+  "name": "capri-matematica",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Portal de matemática do Prof. João Capri",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
