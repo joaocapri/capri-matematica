@@ -1,0 +1,76 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender relações métricas na circunferência",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "Em uma circunferência, relações de produtos surgem da semelhança de triângulos. Para duas cordas cruzando num ponto interno, o produto dos segmentos de uma é igual ao da outra."
+      ],
+      "formulas": [
+        "PA\\cdot PB=PC\\cdot PD"
+      ],
+      "dica": "Tangente ao quadrado equivale ao produto da secante inteira pela parte externa.",
+      "erroComum": "Em secantes, use segmento externo × secante inteira, não apenas partes internas."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Cordas se cruzam no ponto P: uma fica dividida em 2 e 6; a outra em 3 e x. Ache x.",
+        "passos": [
+          "Aplique o produto dos segmentos.",
+          "2·6=3x ⇒ x=4."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Para segmentos 4 e 5 de uma corda, e 2 e x da outra, x é:",
+      "opcoes": [
+        "5",
+        "8",
+        "10",
+        "20"
+      ],
+      "correta": 2,
+      "explicacao": "4·5=2x ⇒ x=10."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma tangente de comprimento 6 tem potência de ponto:",
+      "opcoes": [
+        "3",
+        "6",
+        "12",
+        "36"
+      ],
+      "correta": 3,
+      "explicacao": "Potência por tangente é 6²=36."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender razão entre áreas",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "Quando figuras são semelhantes, seus comprimentos escalam por k, áreas por k² e volumes por k³. Isso explica por que ampliar uma figura é mais impactante do que parece."
+      ],
+      "formulas": [
+        "\\frac{A_2}{A_1}=k^2"
+      ],
+      "dica": "Compare grandezas da mesma dimensão antes de elevar a razão.",
+      "erroComum": "Triplicar lado não triplica área: multiplica por 9."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Dois quadrados semelhantes têm lados 3 e 9. Qual razão entre áreas (maior/menor)?",
+        "passos": [
+          "Razão linear k=9/3=3.",
+          "Razão de áreas k²=9."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Lados na razão 2:1 produzem áreas na razão:",
+      "opcoes": [
+        "2:1",
+        "3:1",
+        "4:1",
+        "8:1"
+      ],
+      "correta": 2,
+      "explicacao": "2²=4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se área dobra, a razão linear é:",
+      "opcoes": [
+        "2",
+        "√2",
+        "4",
+        "1/2"
+      ],
+      "correta": 1,
+      "explicacao": "k²=2 ⇒ k=√2."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

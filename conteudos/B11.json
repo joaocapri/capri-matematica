@@ -1,0 +1,76 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender comprimento da circunferência",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "O comprimento de uma circunferência depende linearmente do raio: dobrar o raio dobra o comprimento. O número π é a razão constante entre circunferência e diâmetro."
+      ],
+      "formulas": [
+        "C=2\\pi r=\\pi d"
+      ],
+      "dica": "Se o enunciado falar em diâmetro, use diretamente C=πd.",
+      "erroComum": "Não confunda comprimento (unidade linear) com área (unidade quadrada)."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Uma roda tem raio 0,5 m. Qual distância percorre em 10 voltas sem deslizar?",
+        "passos": [
+          "Cada volta percorre C=2π·0,5=π m.",
+          "Em 10 voltas: 10π m."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Um círculo de raio 3 tem comprimento:",
+      "opcoes": [
+        "3π",
+        "6π",
+        "9π",
+        "12π"
+      ],
+      "correta": 1,
+      "explicacao": "2π·3=6π."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se o diâmetro é 10, o comprimento é:",
+      "opcoes": [
+        "5π",
+        "10π",
+        "20π",
+        "100π"
+      ],
+      "correta": 1,
+      "explicacao": "C=πd=10π."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

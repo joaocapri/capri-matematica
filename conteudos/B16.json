@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender geometria de posição espacial i",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "No espaço, duas retas podem ser concorrentes, paralelas ou reversas. Reversas não estão no mesmo plano e não se encontram; a ideia exige imaginar três dimensões."
+      ],
+      "formulas": [
+        "\\text{retas reversas}\\Rightarrow\\text{n\\~ao coplanares}"
+      ],
+      "dica": "A ausência de cruzamento no desenho não prova, sozinha, que as retas são reversas.",
+      "erroComum": "Retas paralelas, por definição espacial, são coplanares."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Pense nas arestas de um cubo: duas arestas em direções diferentes, sem vértice comum e fora de um mesmo plano.",
+        "passos": [
+          "Elas não têm ponto comum.",
+          "Não são paralelas coplanares.",
+          "Portanto, são reversas."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Duas retas reversas:",
+      "opcoes": [
+        "Sempre se cruzam",
+        "São coplanares",
+        "Não são coplanares",
+        "São necessariamente perpendiculares"
+      ],
+      "correta": 2,
+      "explicacao": "A propriedade fundamental é não pertencer a um mesmo plano."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Duas retas distintas que se cruzam são:",
+      "opcoes": [
+        "Reversas",
+        "Concorrentes",
+        "Paralelas",
+        "Coincidentes"
+      ],
+      "correta": 1,
+      "explicacao": "Compartilham um ponto."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

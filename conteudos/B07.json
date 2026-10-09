@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender quadriláteros notáveis",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "Paralelogramos têm lados opostos paralelos e diagonais que se cortam ao meio. Retângulo tem ângulos retos; losango, quatro lados iguais; quadrado possui as duas características."
+      ],
+      "formulas": [
+        "A_{\\text{trap\\acute ezio}}=\\frac{(B+b)h}2"
+      ],
+      "dica": "Use diagonais para reconhecer retângulo ou losango.",
+      "erroComum": "Diagonais iguais não bastam, sozinhas, para caracterizar todo quadrado."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Um trapézio tem bases 12 e 8, altura 5. Qual a área?",
+        "passos": [
+          "Some as bases: 20.",
+          "Multiplique pela altura e divida por 2.",
+          "A=50 unidades²."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Um quadrado é necessariamente:",
+      "opcoes": [
+        "Retângulo e losango",
+        "Trapézio sem lados paralelos",
+        "Triângulo",
+        "Romboide sem ângulos retos"
+      ],
+      "correta": 0,
+      "explicacao": "Tem quatro lados iguais e quatro ângulos retos."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Área do paralelogramo com base 7 e altura 4:",
+      "opcoes": [
+        "11",
+        "14",
+        "28",
+        "49"
+      ],
+      "correta": 2,
+      "explicacao": "A=b·h=28."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: retas, ângulos e triângulos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

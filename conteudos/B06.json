@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender polígonos convexos",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "A soma dos ângulos internos de um polígono convexo de n lados vem da decomposição em n−2 triângulos. Diagonal une vértices não consecutivos."
+      ],
+      "formulas": [
+        "S_i=(n-2)180^{\\circ},\\quad d=\\frac{n(n-3)}2"
+      ],
+      "dica": "Para polígono regular, divida a soma dos ângulos internos por n.",
+      "erroComum": "A soma dos externos, um por vértice e no mesmo sentido, é sempre 360°, não n·180°."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule o número de diagonais de um octógono.",
+        "passos": [
+          "n=8.",
+          "d=8·(8−3)/2.",
+          "d=20."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "A soma dos ângulos internos de um hexágono é:",
+      "opcoes": [
+        "540°",
+        "720°",
+        "900°",
+        "1080°"
+      ],
+      "correta": 1,
+      "explicacao": "(6−2)·180=720°."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O número de diagonais de um pentágono é:",
+      "opcoes": [
+        "3",
+        "5",
+        "7",
+        "10"
+      ],
+      "correta": 1,
+      "explicacao": "5(5−3)/2=5."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: retas, ângulos e triângulos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender áreas de figuras planas i - quadriláteros",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "Área mede superfície em unidades quadradas. Para quadriláteros, vale organizar a figura em triângulos ou retângulos e reconhecer as fórmulas com base e altura perpendicular."
+      ],
+      "formulas": [
+        "A_{\\text{paralelogramo}}=bh,\\quad A_{\\text{trap\\acute ezio}}=\\frac{(B+b)h}2"
+      ],
+      "dica": "Se a figura é composta, divida-a em áreas simples e depois some ou subtraia.",
+      "erroComum": "O lado inclinado de um paralelogramo nem sempre é sua altura."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Um trapézio tem bases 10 e 6, altura 4. Calcule a área.",
+        "passos": [
+          "A=(10+6)·4/2.",
+          "A=32 unidades²."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Trapézio com B=8,b=4,h=3 tem área:",
+      "opcoes": [
+        "12",
+        "18",
+        "24",
+        "36"
+      ],
+      "correta": 1,
+      "explicacao": "(8+4)·3/2=18."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um losango tem diagonais 6 e 10. Área:",
+      "opcoes": [
+        "16",
+        "30",
+        "60",
+        "120"
+      ],
+      "correta": 1,
+      "explicacao": "A=D·d/2=30."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

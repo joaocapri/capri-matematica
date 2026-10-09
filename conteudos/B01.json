@@ -1,0 +1,76 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender conceitos primitivos e ângulos",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "Ponto marca posição, reta se prolonga indefinidamente e plano é uma superfície ideal sem espessura. Paralelas cortadas por uma transversal formam ângulos relacionados: alternos internos e correspondentes são congruentes; colaterais internos são suplementares."
+      ],
+      "formulas": [
+        "\\alpha+\\beta=180^{\\circ}\\quad\\text{(colaterais internos)}"
+      ],
+      "dica": "Desenhe F, Z e U para lembrar das posições dos ângulos.",
+      "erroComum": "Não confunda alternos internos com colaterais internos."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Duas paralelas são cortadas por uma transversal e um ângulo mede 65°. Quanto mede seu colateral interno?",
+        "passos": [
+          "Colaterais internos somam 180°.",
+          "180°−65°=115°."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Dois ângulos suplementares somam:",
+      "opcoes": [
+        "90°",
+        "120°",
+        "180°",
+        "360°"
+      ],
+      "correta": 2,
+      "explicacao": "Suplementares somam 180°."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um colateral interno de 70° mede:",
+      "opcoes": [
+        "70°",
+        "90°",
+        "110°",
+        "180°"
+      ],
+      "correta": 2,
+      "explicacao": "Em paralelas, colaterais internos são suplementares: 180−70=110."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: retas, ângulos e triângulos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

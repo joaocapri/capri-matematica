@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender polígonos regulares e apótema",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "Polígono regular tem todos os lados e ângulos iguais. O apótema liga o centro perpendicularmente a um lado e funciona como altura dos triângulos que dividem o polígono."
+      ],
+      "formulas": [
+        "A=\\frac{P\\cdot ap}2"
+      ],
+      "dica": "No hexágono regular, lado e raio da circunferência circunscrita são iguais.",
+      "erroComum": "Apótema não é igual ao raio circunscrito, salvo casos degenerados."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Um hexágono regular tem perímetro 24 e apótema 2√3. Ache a área.",
+        "passos": [
+          "Área=P·ap/2.",
+          "A=24·2√3/2.",
+          "A=24√3."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Um hexágono regular com lado 5 tem perímetro:",
+      "opcoes": [
+        "20",
+        "25",
+        "30",
+        "36"
+      ],
+      "correta": 2,
+      "explicacao": "Seis lados de 5 ⇒ 30."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Área de polígono regular com P=20 e apótema 3:",
+      "opcoes": [
+        "20",
+        "30",
+        "40",
+        "60"
+      ],
+      "correta": 1,
+      "explicacao": "A=20·3/2=30."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: retas, ângulos e triângulos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

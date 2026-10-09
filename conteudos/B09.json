@@ -1,0 +1,76 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender circunferência - ângulos",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "Ângulo central mede o mesmo que o arco correspondente, enquanto o inscrito, com vértice na circunferência, mede metade do arco que intercepta."
+      ],
+      "formulas": [
+        "\\alpha_{\\text{inscrito}}=\\frac{\\alpha_{\\text{central}}}2"
+      ],
+      "dica": "Se dois ângulos inscritos interceptam o mesmo arco, são congruentes.",
+      "erroComum": "Não compare ângulos inscritos de arcos diferentes como se fossem iguais."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Um arco mede 100°. Qual é o ângulo inscrito que o intercepta?",
+        "passos": [
+          "Inscrito mede metade do arco.",
+          "100°/2=50°."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Um arco de 80° determina inscrito de:",
+      "opcoes": [
+        "20°",
+        "40°",
+        "80°",
+        "160°"
+      ],
+      "correta": 1,
+      "explicacao": "80/2=40."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O ângulo inscrito que intercepta uma semicircunferência mede:",
+      "opcoes": [
+        "45°",
+        "60°",
+        "90°",
+        "180°"
+      ],
+      "correta": 2,
+      "explicacao": "Metade de 180° é 90°."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

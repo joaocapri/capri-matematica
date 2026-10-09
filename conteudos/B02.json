@@ -1,0 +1,76 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender triângulos - definições e soma angular",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "Em qualquer triângulo plano, a soma dos ângulos internos é 180°. O ângulo externo em um vértice, adjacente ao interno, mede a soma dos dois internos não adjacentes."
+      ],
+      "formulas": [
+        "A+B+C=180^{\\circ}"
+      ],
+      "dica": "Use o ângulo externo quando ele aparece no desenho: economiza uma etapa.",
+      "erroComum": "Triângulo pode ter no máximo um ângulo interno obtuso."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Um triângulo tem dois ângulos internos de 50° e 60°. Ache o terceiro.",
+        "passos": [
+          "Some os conhecidos: 50+60=110°.",
+          "Subtraia de 180°: 70°."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Dois ângulos medem 45° e 65°. O terceiro mede:",
+      "opcoes": [
+        "65°",
+        "70°",
+        "80°",
+        "90°"
+      ],
+      "correta": 1,
+      "explicacao": "180−45−65=70."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se os dois ângulos internos não adjacentes são 30° e 80°, o externo vale:",
+      "opcoes": [
+        "50°",
+        "80°",
+        "100°",
+        "110°"
+      ],
+      "correta": 3,
+      "explicacao": "30+80=110."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: retas, ângulos e triângulos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

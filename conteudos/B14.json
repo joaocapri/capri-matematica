@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender áreas de figuras planas iii - círculo",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "Setor circular é uma fatia proporcional ao ângulo central. A coroa circular é a diferença entre duas áreas de círculos concêntricos."
+      ],
+      "formulas": [
+        "A_{\\text{setor}}=\\frac{\\theta}{360^{\\circ}}\\pi r^2"
+      ],
+      "dica": "Se o ângulo vier em radianos, a área do setor é r²θ/2.",
+      "erroComum": "Para coroa circular, subtraia quadrados dos raios, não quadrados dos diâmetros sem ajuste."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule a área de setor de 90° em círculo de raio 4.",
+        "passos": [
+          "Círculo inteiro: 16π.",
+          "O setor corresponde a 1/4 da volta.",
+          "Área=4π."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Área de círculo de raio 5:",
+      "opcoes": [
+        "5π",
+        "10π",
+        "25π",
+        "50π"
+      ],
+      "correta": 2,
+      "explicacao": "π·5²=25π."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Setor de 180° de raio 3 tem área:",
+      "opcoes": [
+        "3π",
+        "9π/2",
+        "9π",
+        "18π"
+      ],
+      "correta": 1,
+      "explicacao": "Metade de 9π é 9π/2."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

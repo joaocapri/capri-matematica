@@ -1,0 +1,76 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender congruência e semelhança de triângulos",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "Congruência significa mesma forma e tamanho; semelhança preserva ângulos, mas permite alterar o tamanho por uma razão k. Os lados correspondentes ficam proporcionais."
+      ],
+      "formulas": [
+        "\\frac{a'}a=\\frac{b'}b=k"
+      ],
+      "dica": "AA é suficiente para semelhança de triângulos.",
+      "erroComum": "Ter somente um ângulo igual não garante semelhança."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Dois triângulos semelhantes têm lados correspondentes 3 e 9. Um outro lado do menor mede 5. Quanto mede no maior?",
+        "passos": [
+          "Razão maior/menor: 9/3=3.",
+          "Multiplique o correspondente: 5·3=15."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se razão linear de semelhança é 2, um lado 7 torna-se:",
+      "opcoes": [
+        "3,5",
+        "7",
+        "9",
+        "14"
+      ],
+      "correta": 3,
+      "explicacao": "7·2=14."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Dois triângulos com os três ângulos correspondentes iguais são:",
+      "opcoes": [
+        "Congruentes sempre",
+        "Semelhantes",
+        "Retângulos sempre",
+        "Isósceles sempre"
+      ],
+      "correta": 1,
+      "explicacao": "Critério AA de semelhança."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: retas, ângulos e triângulos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}
