@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de o vértice da parábola",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "O vértice é o ponto de virada da parábola: mínimo quando a>0 e máximo quando a<0. O x do vértice é o ponto médio das raízes, quando elas existem."
+      ],
+      "formulas": [
+        "x_v=-\\frac{b}{2a},\\qquad y_v=f(x_v)"
+      ],
+      "dica": "Em prova, calcule xᵥ primeiro; substitua só depois.",
+      "erroComum": "−Δ/(4a) dá a ordenada, não a abscissa."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Ache o vértice de f(x)=x²−6x+5.",
+        "passos": [
+          "a=1, b=−6 ⇒ xᵥ=6/2=3.",
+          "f(3)=9−18+5=−4.",
+          "Vértice V=(3,−4), ponto mínimo."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Função quadrática e gráficos",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Aprofunde vértice, raízes e gráficos com explicações e prática.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-quadratics"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O x do vértice de x²−8x+1 é:",
+      "opcoes": [
+        "−4",
+        "1",
+        "4",
+        "8"
+      ],
+      "correta": 2,
+      "explicacao": "−b/(2a)=8/2=4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O vértice de −x²+4x é:",
+      "opcoes": [
+        "(2,4)",
+        "(4,2)",
+        "(−2,−4)",
+        "(0,4)"
+      ],
+      "correta": 0,
+      "explicacao": "xᵥ=2 e f(2)=4."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

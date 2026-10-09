@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de equações modulares",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Uma igualdade |A|=k, com k>0, vira dois caminhos: A=k ou A=−k. Se k=0, há um único caminho; se k<0, nenhuma solução real."
+      ],
+      "formulas": [
+        "|A|=k\\Longleftrightarrow A=\\pm k\\quad(k\\geq0)"
+      ],
+      "dica": "Imagine a distância de 2x−1 até zero: deve ser 5 nos dois sentidos.",
+      "erroComum": "Nunca abra dois casos se o lado direito for negativo; aí não há solução."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva |2x−1|=5.",
+        "passos": [
+          "Abra os dois casos: 2x−1=5 ou 2x−1=−5.",
+          "Primeiro caso: x=3.",
+          "Segundo caso: x=−2."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Introdução a equações e gráficos de valores absolutos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Exemplos de equações modulares e como separar os casos.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-absolute-value/alg-absolute-value-equations/v/absolute-value-equations"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "|x+3|=2 tem soluções:",
+      "opcoes": [
+        "−5 e −1",
+        "−1 e 5",
+        "1 e 5",
+        "−3 e 2"
+      ],
+      "correta": 0,
+      "explicacao": "x+3=±2 ⇒ x=−1 ou −5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "|x|=−1 possui:",
+      "opcoes": [
+        "Duas soluções",
+        "Uma solução",
+        "Infinitas soluções",
+        "Nenhuma solução real"
+      ],
+      "correta": 3,
+      "explicacao": "Módulos não podem ser negativos."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

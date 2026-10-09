@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de soma de p.g. finita e produto",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "A soma de uma PG finita também pode ser acelerada. Multiplicando a soma por q e subtraindo as expressões, os termos do meio se cancelam e sobra uma fórmula curta."
+      ],
+      "formulas": [
+        "S_n=a_1\\frac{q^n-1}{q-1}\\quad(q\\neq1)"
+      ],
+      "dica": "Se q=1, a soma é simplesmente n·a₁.",
+      "erroComum": "Não confunda soma de PG com o produto de termos de PG."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Some 2+6+18+54.",
+        "passos": [
+          "a₁=2, q=3, n=4.",
+          "S₄=2(3⁴−1)/(3−1).",
+          "S₄=2·80/2=80."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Progressões aritméticas e geométricas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "1+2+4+8+16 é:",
+      "opcoes": [
+        "15",
+        "30",
+        "31",
+        "32"
+      ],
+      "correta": 2,
+      "explicacao": "São cinco termos: 2⁵−1=31."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma PG tem quatro termos 3,3,3,3. Sua soma é:",
+      "opcoes": [
+        "3",
+        "6",
+        "9",
+        "12"
+      ],
+      "correta": 3,
+      "explicacao": "Com q=1, somamos 4·3=12."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

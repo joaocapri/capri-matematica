@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de complexos - forma trigonométrica",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Na forma trigonométrica, um complexo é descrito por comprimento (módulo) e ângulo (argumento). Ela permite enxergar multiplicação como combinação de rotações e escalas."
+      ],
+      "formulas": [
+        "z=r(\\cos\\theta+i\\sin\\theta)"
+      ],
+      "dica": "Descubra o quadrante antes de decidir o ângulo.",
+      "erroComum": "Um mesmo complexo não nulo tem argumentos que diferem em múltiplos de 2π."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Escreva z=1+i na forma trigonométrica.",
+        "passos": [
+          "Módulo r=√(1²+1²)=√2.",
+          "O ponto está no primeiro quadrante, com θ=π/4.",
+          "z=√2(cos(π/4)+i sen(π/4))."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O módulo de 1+i é:",
+      "opcoes": [
+        "1",
+        "√2",
+        "2",
+        "4"
+      ],
+      "correta": 1,
+      "explicacao": "Pitágoras no plano complexo: √2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O argumento principal de i é:",
+      "opcoes": [
+        "0",
+        "π/4",
+        "π/2",
+        "π"
+      ],
+      "correta": 2,
+      "explicacao": "O ponto (0,1) forma ângulo π/2 com o eixo real positivo."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

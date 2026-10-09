@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de teorema do resto e d'alembert",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "O teorema do resto evita divisão longa: quando o divisor é x−a, o resto é P(a). Se P(a)=0, x−a é fator de P, o que é justamente o teorema de D'Alembert."
+      ],
+      "formulas": [
+        "R_{x-a}=P(a)\\quad\\text{e}\\quad P(a)=0\\Leftrightarrow (x-a)\\mid P(x)"
+      ],
+      "dica": "Divisor x+3 corresponde a a=−3.",
+      "erroComum": "Não substitua o sinal errado: em x−2 use 2; em x+2 use −2."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Ache o resto de P(x)=x³−2x+4 por x−2.",
+        "passos": [
+          "Substitua a=2 em P.",
+          "P(2)=8−4+4.",
+          "O resto vale 8."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O resto de x²+3 por x−2 é:",
+      "opcoes": [
+        "2",
+        "5",
+        "7",
+        "9"
+      ],
+      "correta": 2,
+      "explicacao": "P(2)=4+3=7."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se P(4)=0, então P(x) é divisível por:",
+      "opcoes": [
+        "x+4",
+        "x−4",
+        "4x+1",
+        "x²+4"
+      ],
+      "correta": 1,
+      "explicacao": "P(a)=0 garante fator x−a."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

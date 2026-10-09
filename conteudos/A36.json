@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de progressão geométrica (p.g.) - termo geral",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Na progressão geométrica (PG), cada termo é o anterior multiplicado pela razão q. É a versão discreta do crescimento exponencial — inclusive quando a razão está entre 0 e 1."
+      ],
+      "formulas": [
+        "a_n=a_1q^{n-1}"
+      ],
+      "dica": "Se q é uma fração entre 0 e 1 e a₁>0, os termos decrescem.",
+      "erroComum": "Em PG não somamos a razão: multiplicamos."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Uma PG começa em 3 e tem q=2. Calcule a₅.",
+        "passos": [
+          "a₁=3, q=2.",
+          "a₅=3·2⁴.",
+          "a₅=48."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Progressões aritméticas e geométricas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O 4º termo da PG 2,6,18,... é:",
+      "opcoes": [
+        "24",
+        "36",
+        "54",
+        "72"
+      ],
+      "correta": 2,
+      "explicacao": "A razão é 3, então a₄=18·3=54."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Em 16,8,4,... a razão é:",
+      "opcoes": [
+        "2",
+        "1/2",
+        "−2",
+        "4"
+      ],
+      "correta": 1,
+      "explicacao": "8/16=1/2."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

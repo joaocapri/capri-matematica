@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de raízes complexas e pesquisa de raízes",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Se o polinômio tem coeficientes reais, raízes não reais aparecem em pares conjugados. Para procurar raízes racionais, o teorema das raízes racionais restringe candidatos a frações p/q, com p divisor do termo constante e q divisor do coeficiente líder."
+      ],
+      "formulas": [
+        "r=\\frac pq,\\quad p\\mid a_0,\\quad q\\mid a_n"
+      ],
+      "dica": "O teorema dá candidatos, não uma lista garantida de raízes.",
+      "erroComum": "Não aplique o critério p/q diretamente a coeficientes não inteiros sem antes limpar denominadores."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Pesquise uma raiz racional de P(x)=2x²−3x+1.",
+        "passos": [
+          "Os candidatos racionais incluem ±1 e ±1/2.",
+          "Teste P(1)=2−3+1=0.",
+          "Logo 1 é raiz; fatoração: (2x−1)(x−1)."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual candidato racional é permitido para 2x²+3x−2?",
+      "opcoes": [
+        "1/3",
+        "1/2",
+        "2/3",
+        "3/2"
+      ],
+      "correta": 1,
+      "explicacao": "O numerador divide 2 e o denominador divide 2; 1/2 é candidato."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se 2+i é raiz de polinômio com coeficientes reais, outra raiz é:",
+      "opcoes": [
+        "2−i",
+        "−2+i",
+        "−2−i",
+        "1+i"
+      ],
+      "correta": 0,
+      "explicacao": "Raízes não reais aparecem conjugadas para coeficientes reais."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

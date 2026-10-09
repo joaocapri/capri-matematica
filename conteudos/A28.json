@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de propriedades operatórias",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "As propriedades transformam produto em soma, quociente em diferença e potência em multiplicador. Elas ajudam a simplificar expressões — mas apenas quando os logaritmos envolvidos estão definidos."
+      ],
+      "formulas": [
+        "\\log_a(xy)=\\log_a x+\\log_a y\\quad(x,y>0)"
+      ],
+      "dica": "Quando há soma de logs da mesma base, procure um produto dentro do log.",
+      "erroComum": "Não existe regra log(x+y)=log x+log y."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule log₂8 + log₂4.",
+        "passos": [
+          "8=2³ e 4=2².",
+          "Os logaritmos valem 3 e 2.",
+          "Soma=5, equivalente a log₂32."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "log₁₀2 + log₁₀5 é:",
+      "opcoes": [
+        "1",
+        "7",
+        "10",
+        "0"
+      ],
+      "correta": 0,
+      "explicacao": "log₁₀(2·5)=log₁₀10=1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "log₂16 − log₂2 vale:",
+      "opcoes": [
+        "2",
+        "3",
+        "4",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "4−1=3, ou log₂8=3."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

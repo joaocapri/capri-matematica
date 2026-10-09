@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de função logarítmica",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "A função logarítmica é inversa da exponencial de mesma base. Só recebe entradas positivas; sua imagem são todos os reais. O gráfico atravessa (1,0) e tem assíntota vertical x=0."
+      ],
+      "formulas": [
+        "f(x)=\\log_a x,\\quad x>0,\\ a>0,\\ a\\neq1"
+      ],
+      "dica": "Repare no ponto fixo (1,0) e na ausência de gráfico para x≤0.",
+      "erroComum": "Não confunda domínio (0,+∞) com imagem R."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Compare log₂1 e log₂8.",
+        "passos": [
+          "2⁰=1 ⇒ log₂1=0.",
+          "2³=8 ⇒ log₂8=3.",
+          "A função com base 2 é crescente."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O domínio de log₅(x−2) é:",
+      "opcoes": [
+        "x≥2",
+        "x>2",
+        "x<2",
+        "Todos os reais"
+      ],
+      "correta": 1,
+      "explicacao": "O argumento precisa satisfazer x−2>0."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O gráfico de log₂x passa por:",
+      "opcoes": [
+        "(0,1)",
+        "(1,0)",
+        "(0,0)",
+        "(−1,0)"
+      ],
+      "correta": 1,
+      "explicacao": "log₂1=0."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

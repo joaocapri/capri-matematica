@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de equações logarítmicas",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Uma equação logarítmica só é resolvida de verdade após verificar as condições de existência dos logaritmos originais. Uma solução algébrica pode ser proibida pelo domínio."
+      ],
+      "formulas": [
+        "\\log_a u=\\log_a v\\Rightarrow u=v\\quad(u,v>0)"
+      ],
+      "dica": "Escreva o domínio antes de operar as igualdades.",
+      "erroComum": "Depois de juntar logs, verifique as condições originais, não apenas a expressão simplificada."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva log₂(x−1)=3.",
+        "passos": [
+          "Condição: x>1.",
+          "Converta para potência: x−1=2³=8.",
+          "x=9 satisfaz x>1; solução válida."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "log₃(x+2)=2 tem solução:",
+      "opcoes": [
+        "1",
+        "7",
+        "9",
+        "11"
+      ],
+      "correta": 1,
+      "explicacao": "x+2=9 ⇒ x=7, e x+2>0."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "log₂(x−3)=1 implica:",
+      "opcoes": [
+        "x=1",
+        "x=3",
+        "x=5",
+        "x=6"
+      ],
+      "correta": 2,
+      "explicacao": "x−3=2 ⇒ x=5."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

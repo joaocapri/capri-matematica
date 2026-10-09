@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de estudo do sinal e inequações do 2º grau",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Para decidir onde a quadrática é positiva ou negativa, localize as raízes e observe a concavidade. Fora das raízes, o sinal acompanha a; entre elas, quando existem duas distintas, é contrário."
+      ],
+      "formulas": [
+        "a(x-r_1)(x-r_2)>0"
+      ],
+      "dica": "Se Δ<0, a quadrática nunca troca de sinal: tem o sinal de a.",
+      "erroComum": "As raízes entram na resposta apenas em ≤ ou ≥."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva x²−5x+6<0.",
+        "passos": [
+          "Fatore: (x−2)(x−3)<0.",
+          "As raízes são 2 e 3; a=1>0.",
+          "A parábola é negativa entre as raízes: 2<x<3."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Função quadrática e gráficos",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Aprofunde vértice, raízes e gráficos com explicações e prática.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-quadratics"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "x²−1≥0 vale quando:",
+      "opcoes": [
+        "−1≤x≤1",
+        "x≤−1 ou x≥1",
+        "x>1 apenas",
+        "Todo real"
+      ],
+      "correta": 1,
+      "explicacao": "Raízes −1 e 1, concavidade para cima e igualdade permitida."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "−x²+4x>0 para:",
+      "opcoes": [
+        "x<0 ou x>4",
+        "0<x<4",
+        "0≤x≤4",
+        "Todo real"
+      ],
+      "correta": 1,
+      "explicacao": "−x(x−4)>0 entre 0 e 4."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

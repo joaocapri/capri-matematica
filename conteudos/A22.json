@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de definição de módulo e função modular",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Módulo mede distância até zero, por isso nunca é negativo. Já a função y=|x| forma um V, pois transforma a parte negativa da reta em alturas positivas."
+      ],
+      "formulas": [
+        "|x|=\\begin{cases}x,&x\\geq0\\\\-x,&x<0\\end{cases}"
+      ],
+      "dica": "Em |x−a|, pense em distância entre x e a.",
+      "erroComum": "Não substitua |x| por x sempre; isso só vale para x≥0."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule |−7| e determine os zeros de f(x)=|x−3|.",
+        "passos": [
+          "|−7|=7: distância de −7 a zero.",
+          "|x−3|=0 só quando x−3=0.",
+          "Único zero: x=3."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Introdução a equações e gráficos de valores absolutos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Exemplos de equações modulares e como separar os casos.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-absolute-value/alg-absolute-value-equations/v/absolute-value-equations"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "|−8| é:",
+      "opcoes": [
+        "−8",
+        "0",
+        "8",
+        "64"
+      ],
+      "correta": 2,
+      "explicacao": "Módulo é distância; logo 8."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A função |x−2| zera em:",
+      "opcoes": [
+        "−2",
+        "0",
+        "2",
+        "4"
+      ],
+      "correta": 2,
+      "explicacao": "O módulo vale zero quando seu interior é zero."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

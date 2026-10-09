@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de polinômios - definições e operações",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Polinômio é uma soma finita de potências inteiras não negativas da variável com coeficientes. O grau é o maior expoente com coeficiente não nulo; o valor numérico resulta de substituir x."
+      ],
+      "formulas": [
+        "P(x)=a_nx^n+\\cdots+a_1x+a_0"
+      ],
+      "dica": "Reduza termos semelhantes antes de determinar o grau.",
+      "erroComum": "x⁻¹ não é termo polinomial em x."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Para P(x)=2x³−x+4, calcule P(2).",
+        "passos": [
+          "2·2³=16.",
+          "−x=−2.",
+          "P(2)=16−2+4=18."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual o grau de 5x⁴−2x²+1?",
+      "opcoes": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correta": 2,
+      "explicacao": "O maior expoente com coeficiente não nulo é 4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "P(x)=x²−1. Quanto vale P(3)?",
+      "opcoes": [
+        "6",
+        "8",
+        "9",
+        "10"
+      ],
+      "correta": 1,
+      "explicacao": "3²−1=8."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de forma fatorada e canônica",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Na forma fatorada, as raízes ficam visíveis. Na forma canônica, o vértice salta aos olhos. Você pode alternar entre as formas para escolher a leitura mais rápida."
+      ],
+      "formulas": [
+        "f(x)=a(x-r_1)(x-r_2)=a(x-h)^2+k"
+      ],
+      "dica": "Se o gráfico fornece raízes e um ponto, use a forma fatorada para encontrar a.",
+      "erroComum": "Na forma canônica, h é a abscissa do vértice, mas aparece como (x−h)."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Escreva x²−6x+5 nas formas fatorada e canônica.",
+        "passos": [
+          "Raízes 1 e 5: (x−1)(x−5).",
+          "Complete quadrados: (x−3)²−9+5.",
+          "Forma canônica: (x−3)²−4."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Função quadrática e gráficos",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Aprofunde vértice, raízes e gráficos com explicações e prática.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-quadratics"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "As raízes de (x−4)(x+1) são:",
+      "opcoes": [
+        "4 e 1",
+        "−4 e −1",
+        "4 e −1",
+        "0 e 4"
+      ],
+      "correta": 2,
+      "explicacao": "Cada fator deve ser zero: 4 e −1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O vértice de (x+2)²−5 é:",
+      "opcoes": [
+        "(2,−5)",
+        "(−2,−5)",
+        "(−2,5)",
+        "(5,−2)"
+      ],
+      "correta": 1,
+      "explicacao": "A forma é (x−h)²+k, com h=−2 e k=−5."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

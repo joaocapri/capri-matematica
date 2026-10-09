@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de operações na forma trigonométrica",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Multiplicar complexos na forma trigonométrica multiplica módulos e soma argumentos. Dividir divide módulos e subtrai argumentos. Na potenciação, o teorema de Moivre multiplica o argumento pelo expoente."
+      ],
+      "formulas": [
+        "(r\\,\\mathrm{cis}\\theta)^n=r^n\\,\\mathrm{cis}(n\\theta)"
+      ],
+      "dica": "Use forma algébrica para somar; trigonométrica para multiplicar, dividir e elevar.",
+      "erroComum": "Na divisão, a ordem dos argumentos importa: argumento do numerador menos do denominador."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule i² usando argumento.",
+        "passos": [
+          "i tem módulo 1 e argumento π/2.",
+          "i² tem módulo 1²=1 e argumento π.",
+          "cosπ+i senπ=−1."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O módulo do produto (2 cis30°)(3 cis60°) é:",
+      "opcoes": [
+        "1",
+        "5",
+        "6",
+        "9"
+      ],
+      "correta": 2,
+      "explicacao": "Os módulos se multiplicam: 2·3=6."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O argumento do mesmo produto é:",
+      "opcoes": [
+        "30°",
+        "60°",
+        "90°",
+        "180°"
+      ],
+      "correta": 2,
+      "explicacao": "Somamos 30° e 60°."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

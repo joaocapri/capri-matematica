@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de complexos - plano de argand-gauss e módulo",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Um complexo a+bi é representado pelo ponto (a,b). Seu módulo é a distância desse ponto à origem, calculada por Pitágoras; não se trata do módulo apenas da parte real."
+      ],
+      "formulas": [
+        "|a+bi|=\\sqrt{a^2+b^2}"
+      ],
+      "dica": "Para a+bi, desenhe sempre o triângulo retângulo com catetos |a| e |b|.",
+      "erroComum": "|3+4i| não é 3+4=7."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Encontre o módulo de z=3+4i.",
+        "passos": [
+          "Ponto (3,4) no plano de Argand-Gauss.",
+          "|z|=√(3²+4²)=√25.",
+          "O módulo vale 5."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O módulo de 5+12i é:",
+      "opcoes": [
+        "7",
+        "13",
+        "17",
+        "25"
+      ],
+      "correta": 1,
+      "explicacao": "√(25+144)=13."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O complexo −2+3i corresponde ao ponto:",
+      "opcoes": [
+        "(3,−2)",
+        "(−2,3)",
+        "(2,3)",
+        "(−3,2)"
+      ],
+      "correta": 1,
+      "explicacao": "A parte real é x, a imaginária é y."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de números complexos - forma algébrica",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Os complexos estendem os reais com a unidade imaginária i, cuja propriedade é i²=−1. Na forma a+bi, somamos partes reais entre si e imaginárias entre si."
+      ],
+      "formulas": [
+        "i^2=-1,\\qquad z=a+bi"
+      ],
+      "dica": "Potências de i se repetem em ciclos de quatro.",
+      "erroComum": "√(−4)=2i no conjunto complexo, mas √a·√b não pode ser aplicada indiscriminadamente a radicandos negativos."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Some (3+2i)+(1−5i).",
+        "passos": [
+          "Some reais: 3+1=4.",
+          "Some imaginárias: 2i−5i=−3i.",
+          "Resultado 4−3i."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "i³ vale:",
+      "opcoes": [
+        "1",
+        "−1",
+        "i",
+        "−i"
+      ],
+      "correta": 3,
+      "explicacao": "i³=i²·i=−i."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "(2+i)+(3−4i) é:",
+      "opcoes": [
+        "5−3i",
+        "5+5i",
+        "−1−3i",
+        "5−4i"
+      ],
+      "correta": 0,
+      "explicacao": "Somando partes correspondentes: 5−3i."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

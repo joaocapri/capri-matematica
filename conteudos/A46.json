@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de equações polinomiais (algébricas)",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Uma equação polinomial de grau n tem n raízes complexas contadas com multiplicidade. Fatorar é traduzir a equação em fatores cujo produto é zero; raízes repetidas têm multiplicidade maior."
+      ],
+      "formulas": [
+        "P(x)=a\\prod_{j=1}^n(x-r_j)"
+      ],
+      "dica": "Conte multiplicidades para conferir o grau.",
+      "erroComum": "Ter grau 3 não significa possuir três raízes reais distintas."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva (x−2)²(x+1)=0.",
+        "passos": [
+          "Produto zero exige um fator zero.",
+          "x=2 é raiz dupla, pois (x−2) está ao quadrado.",
+          "x=−1 é raiz simples."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O polinômio (x−1)³ tem raiz 1 de multiplicidade:",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correta": 2,
+      "explicacao": "O fator x−1 aparece três vezes."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Quantas raízes complexas, contando multiplicidade, tem um polinômio de grau 4?",
+      "opcoes": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correta": 2,
+      "explicacao": "O Teorema Fundamental da Álgebra conta quatro raízes complexas com multiplicidade."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

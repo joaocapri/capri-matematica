@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de divisão de polinômios",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Dividir polinômios é escrever dividendo = divisor×quociente + resto. Para divisor linear monômico x−a, Ruffini acelera contas; para divisores gerais, use a divisão pela chave."
+      ],
+      "formulas": [
+        "P(x)=D(x)Q(x)+R(x),\\quad\\deg R<\\deg D"
+      ],
+      "dica": "Ao montar Ruffini, inclua coeficiente zero de potência ausente.",
+      "erroComum": "Ruffini usual serve para divisor da forma x−a, não para todo polinômio."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Divida x²−1 por x−1.",
+        "passos": [
+          "Reconheça a diferença de quadrados: x²−1=(x−1)(x+1).",
+          "Dividindo pelo fator x−1, sobra x+1.",
+          "Quociente x+1 e resto 0."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O quociente de (x²−9)/(x−3) é:",
+      "opcoes": [
+        "x−3",
+        "x+3",
+        "x²+3",
+        "3"
+      ],
+      "correta": 1,
+      "explicacao": "x²−9=(x−3)(x+3)."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O resto na divisão de x²+1 por x−1 vale:",
+      "opcoes": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correta": 2,
+      "explicacao": "P(1)=1²+1=2."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

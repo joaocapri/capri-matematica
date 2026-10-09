@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de introdução a sequências e lei de recorrência",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Sequência é uma lista ordenada de termos definidos por uma regra. Recorrência informa como obter o próximo termo a partir de anteriores; fórmula explícita permite calcular o termo n diretamente."
+      ],
+      "formulas": [
+        "a_{n+1}=a_n+d"
+      ],
+      "dica": "Confira qual é o primeiro índice: a₀ ou a₁ muda a fórmula.",
+      "erroComum": "Recorrência precisa de condição inicial; sozinha não define uma sequência única."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Em uma sequência, a₁=2 e aₙ₊₁=aₙ+3. Calcule a₄.",
+        "passos": [
+          "a₂=2+3=5.",
+          "a₃=5+3=8.",
+          "a₄=8+3=11."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Progressões aritméticas e geométricas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se a₁=1 e aₙ₊₁=2aₙ, então a₄ é:",
+      "opcoes": [
+        "4",
+        "6",
+        "8",
+        "16"
+      ],
+      "correta": 2,
+      "explicacao": "Sequência 1,2,4,8."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Na sequência 3,6,9,12,... o 5º termo é:",
+      "opcoes": [
+        "12",
+        "15",
+        "18",
+        "21"
+      ],
+      "correta": 1,
+      "explicacao": "A soma de 3 a cada passo leva ao 5º termo 15."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

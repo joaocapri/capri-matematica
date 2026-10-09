@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de soma de p.a",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Somar uma PA termo a termo funciona, mas emparelhar extremos é mais rápido. Em uma PA, primeiro+último tem sempre o mesmo valor dos pares simétricos."
+      ],
+      "formulas": [
+        "S_n=\\frac{n(a_1+a_n)}2"
+      ],
+      "dica": "Se o último termo não foi dado, calcule-o primeiro com a fórmula de PA.",
+      "erroComum": "Não use n(a₁+aₙ) sem dividir por 2."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule 1+2+...+100.",
+        "passos": [
+          "Há 100 termos, primeiro 1 e último 100.",
+          "S₁₀₀=100(1+100)/2.",
+          "Total: 5050."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Progressões aritméticas e geométricas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "A soma de 2+4+6+8 é:",
+      "opcoes": [
+        "16",
+        "18",
+        "20",
+        "24"
+      ],
+      "correta": 2,
+      "explicacao": "Quatro termos: 4(2+8)/2=20."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Quanto vale 1+2+...+10?",
+      "opcoes": [
+        "45",
+        "50",
+        "55",
+        "60"
+      ],
+      "correta": 2,
+      "explicacao": "10·11/2=55."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

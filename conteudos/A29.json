@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de mudança de base",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Mudança de base permite calcular qualquer logaritmo válido usando uma base que você domina, como 10 ou e. A troca cria uma fração: logaritmo do argumento sobre logaritmo da base."
+      ],
+      "formulas": [
+        "\\log_a b=\\frac{\\log_c b}{\\log_c a}"
+      ],
+      "dica": "Escolher uma base que transforma ambos em potências simples reduz o esforço.",
+      "erroComum": "Não inverta numerador e denominador: argumento em cima, base embaixo."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Encontre log₄8.",
+        "passos": [
+          "Escolha a base 2: 4=2² e 8=2³.",
+          "log₄8=log₂8/log₂4.",
+          "3/2=1,5."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "log₉3 vale:",
+      "opcoes": [
+        "2",
+        "1/2",
+        "3",
+        "9"
+      ],
+      "correta": 1,
+      "explicacao": "9^(1/2)=3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "log₂8 ÷ log₂4 vale:",
+      "opcoes": [
+        "1/2",
+        "2",
+        "3/2",
+        "4"
+      ],
+      "correta": 2,
+      "explicacao": "3/2 é o resultado da mudança de base."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

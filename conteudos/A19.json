@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de máximos e mínimos - problemas de otimização",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "O segredo da otimização é descobrir qual grandeza varia e escrever uma função para ela. Para uma função quadrática, o melhor resultado está no vértice da parábola."
+      ],
+      "formulas": [
+        "x_v=-\\frac{b}{2a}\\qquad y_{\\text{extremo}}=f(x_v)"
+      ],
+      "dica": "Verifique domínio e unidades: não existe comprimento negativo.",
+      "erroComum": "Vértice máximo só ocorre quando a<0; se a>0, é mínimo."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Uma cerca de 20 m forma três lados de um retângulo junto a um muro. Qual largura maximiza a área?",
+        "passos": [
+          "Se a largura é x, os dois lados dela usam 2x; o comprimento é 20−2x.",
+          "Área A(x)=x(20−2x)=−2x²+20x, com 0<x<10.",
+          "xᵥ=−20/(2·−2)=5; comprimento=10; área máxima=50 m²."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Função quadrática e gráficos",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Aprofunde vértice, raízes e gráficos com explicações e prática.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-quadratics"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "A(x)=−x²+10x atinge máximo em x=",
+      "opcoes": [
+        "2",
+        "5",
+        "10",
+        "20"
+      ],
+      "correta": 1,
+      "explicacao": "xᵥ=−10/(−2)=5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Qual é o valor máximo de f(x)=−(x−3)²+7?",
+      "opcoes": [
+        "3",
+        "−7",
+        "7",
+        "10"
+      ],
+      "correta": 2,
+      "explicacao": "O quadrado subtraído é no mínimo zero; máximo 7 em x=3."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

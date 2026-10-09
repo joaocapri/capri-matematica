@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de relações de girard",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "As relações de Girard conectam coeficientes e raízes sem exigir encontrá-las uma por uma. Para um polinômio mônico de grau 3, a soma das raízes é −b, a soma dos produtos dois a dois é c e o produto das três é −d."
+      ],
+      "formulas": [
+        "x^3+bx^2+cx+d=0\\Rightarrow r_1+r_2+r_3=-b"
+      ],
+      "dica": "Preste atenção à alternância dos sinais nas relações de Girard.",
+      "erroComum": "As fórmulas simplificadas acima exigem coeficiente líder 1."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule a soma e o produto das raízes de x³−6x²+11x−6=0.",
+        "passos": [
+          "Soma das três raízes: −(−6)=6.",
+          "Produto das três raízes: −(−6)=6.",
+          "De fato, as raízes 1,2,3 satisfazem ambas."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "A soma das raízes de x³−5x²+2x−1=0 é:",
+      "opcoes": [
+        "−5",
+        "−1",
+        "1",
+        "5"
+      ],
+      "correta": 3,
+      "explicacao": "Para polinômio mônico de grau 3, soma=−b=5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O produto das raízes de x³+2x²−x−8=0 é:",
+      "opcoes": [
+        "−8",
+        "8",
+        "2",
+        "−2"
+      ],
+      "correta": 1,
+      "explicacao": "Produto=−d=−(−8)=8."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

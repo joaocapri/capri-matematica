@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de função exponencial",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Em uma exponencial, a variável está no expoente. A base é positiva e diferente de 1. Quando base>1, cresce; quando 0<base<1, decresce."
+      ],
+      "formulas": [
+        "f(x)=a^x,\\quad a>0,\\ a\\neq1"
+      ],
+      "dica": "Exponencial positiva nunca cruza o eixo x.",
+      "erroComum": "O comportamento depende da base, não de o expoente ser positivo."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Compare 2^x e (1/2)^x em x=−1 e x=2.",
+        "passos": [
+          "2^(−1)=1/2 e 2²=4: há crescimento.",
+          "(1/2)^(−1)=2 e (1/2)²=1/4: há decrescimento.",
+          "Ambas são positivas em todo x real."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual função é decrescente?",
+      "opcoes": [
+        "3^x",
+        "(1/3)^x",
+        "2^x",
+        "10^x"
+      ],
+      "correta": 1,
+      "explicacao": "Base entre 0 e 1 implica decrescimento."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de 2^(−2) é:",
+      "opcoes": [
+        "−4",
+        "4",
+        "1/4",
+        "−1/4"
+      ],
+      "correta": 2,
+      "explicacao": "2^(−2)=1/2²=1/4."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}

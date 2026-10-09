@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer o conceito central de introdução aos logaritmos",
+    "Resolver um exemplo completo e justificar cada etapa",
+    "Identificar armadilhas comuns de prova"
+  ],
+  "teoria": [
+    {
+      "titulo": "Entenda a lógica",
+      "paragrafos": [
+        "Logaritmo responde a pergunta 'qual expoente transforma a base neste número?'. Ele desfaz uma potência, mas só existe nos reais com argumento positivo, base positiva e diferente de 1."
+      ],
+      "formulas": [
+        "\\log_a b=x\\Longleftrightarrow a^x=b\\quad(a>0,a\\neq1,b>0)"
+      ],
+      "dica": "Converta imediatamente para potência quando o logaritmo parecer estranho.",
+      "erroComum": "Log de zero ou número negativo não existe no conjunto real."
+    },
+    {
+      "titulo": "Na prática, sem enrolação",
+      "paragrafos": [
+        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule log₂32.",
+        "passos": [
+          "Pergunte 2 elevado a qual número dá 32?",
+          "2⁵=32.",
+          "Portanto log₂32=5."
+        ]
+      }
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "log₃81 vale:",
+      "opcoes": [
+        "3",
+        "4",
+        "9",
+        "27"
+      ],
+      "correta": 1,
+      "explicacao": "3⁴=81."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Qual expressão é definida nos reais?",
+      "opcoes": [
+        "log₂(−2)",
+        "log₁5",
+        "log₃9",
+        "log₀4"
+      ],
+      "correta": 2,
+      "explicacao": "Base 3 é válida e argumento 9>0."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Questões autorais para aprendizado e revisão. Revisão final do professor recomendada antes de uso avaliativo. Não são questões oficiais de vestibular."
+  }
+}
