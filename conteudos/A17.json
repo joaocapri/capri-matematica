@@ -348,7 +348,18 @@
       "comentario": "As raízes são 6 e −2. A distância é |6−(−2)|=8."
     }
   ],
-  "arquivos": [],
+  "arquivos": [
+    {
+      "titulo": "A17 · Lista autoral estilo vestibular (PDF)",
+      "tipo": "lista",
+      "url": "/pdfs/lista-A17.pdf"
+    },
+    {
+      "titulo": "A17 · Gabarito comentado (PDF)",
+      "tipo": "gabarito",
+      "url": "/pdfs/gabarito-A17.pdf"
+    }
+  ],
   "revisao": {
     "geradoPor": "Assistente IA",
     "status": "rascunho-pedagogico",
