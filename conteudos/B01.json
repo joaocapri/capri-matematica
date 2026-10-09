@@ -1,5 +1,5 @@
 {
-  "status": "rascunho-para-revisao",
+  "status": "publicado",
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
@@ -68,9 +68,5 @@
     }
   ],
   "arquivos": [],
-  "exercicios": [],
-  "revisao": {
-    "status": "rascunho-pedagogico",
-    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
-  }
+  "exercicios": []
 }
