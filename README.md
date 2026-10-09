@@ -47,3 +47,6 @@ Suba os arquivos PDF para a pasta \`pdfs/\` e adicione as referências acima. O 
 
 ## Importante
 O currículo é a ementa, **não teoria final**. Algumas fórmulas matemáticas desapareceram na exportação textual do Google Docs. Revise essas partes antes de transformar o roteiro em explicação definitiva. O site não inventa listas, gabaritos ou materiais que não existam.
+
+## Produção semi-automatizada de conteúdo
+Consulte `PADRAO_EDITORIAL.md`. A aula A17 é um **piloto publicado**, com teoria, sugestões de vídeos verificadas, quiz e uma lista A4 imprimível com gabarito separado.

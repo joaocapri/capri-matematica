@@ -1,0 +1,357 @@
+{
+  "status": "piloto",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Identificar raízes reais de uma equação do 2º grau",
+    "Aplicar Bhaskara sem errar sinais",
+    "Usar soma e produto quando for mais eficiente",
+    "Conferir soluções por substituição"
+  ],
+  "teoria": [
+    {
+      "titulo": "Antes da fórmula, entenda a missão",
+      "paragrafos": [
+        "Uma raiz é um valor de x que faz a expressão valer zero. Nada de mistério: na equação \\(x^2-5x+6=0\\), precisamos descobrir quais números zeram o lado esquerdo.",
+        "Se você conseguir fatorar de cabeça, ótimo. Se não, existe um caminho que sempre funciona quando \\(a\\neq 0\\): a fórmula resolutiva."
+      ],
+      "formulas": [
+        "ax^2+bx+c=0,\\quad a\\neq 0"
+      ],
+      "exemplo": {
+        "enunciado": "O que acontece em x² − 5x + 6 = 0?",
+        "passos": [
+          "(x − 2)(x − 3) = 0.",
+          "Produto zero? Um dos fatores precisa ser zero.",
+          "Logo, x = 2 ou x = 3."
+        ]
+      },
+      "dica": "Antes de fazer conta, veja se dá para fatorar rapidamente."
+    },
+    {
+      "titulo": "Bhaskara sem tropeçar nos sinais",
+      "paragrafos": [
+        "Separe primeiro os coeficientes \\(a\\), \\(b\\) e \\(c\\). Depois calcule \\(\\Delta\\) (delta). Só então substitua na fórmula. Pular essa ordem é onde muita gente se perde."
+      ],
+      "formulas": [
+        "\\Delta=b^2-4ac",
+        "x=\\frac{-b\\pm\\sqrt{\\Delta}}{2a}"
+      ],
+      "exemplo": {
+        "enunciado": "Resolva 2x² − 7x + 3 = 0.",
+        "passos": [
+          "a = 2, b = −7 e c = 3.",
+          "Δ = (−7)² − 4·2·3 = 49 − 24 = 25.",
+          "x = (7 ± 5)/4. Portanto, x = 3 ou x = 1/2."
+        ]
+      },
+      "erroComum": "Quando b = −7, o termo −b vale +7. E (−7)² = +49."
+    },
+    {
+      "titulo": "O delta diz quantas raízes reais existem",
+      "paragrafos": [
+        "O discriminante funciona como um semáforo da equação. Antes de calcular as raízes, ele já antecipa quantas soluções reais haverá.",
+        "Se \\(\\Delta>0\\), são duas raízes reais distintas; se \\(\\Delta=0\\), uma raiz real dupla; se \\(\\Delta<0\\), nenhuma raiz real (mas existem raízes complexas)."
+      ],
+      "formulas": [
+        "\\Delta>0\\Rightarrow\\text{duas raízes reais}",
+        "\\Delta=0\\Rightarrow\\text{raiz real dupla}",
+        "\\Delta<0\\Rightarrow\\text{nenhuma raiz real}"
+      ],
+      "exemplo": {
+        "enunciado": "Quantas raízes reais tem x² + 4x + 5 = 0?",
+        "passos": [
+          "Δ = 16 − 20 = −4.",
+          "Delta negativo: nenhuma raiz real."
+        ]
+      },
+      "dica": "Questões que perguntam somente o número de raízes não exigem aplicar Bhaskara até o fim."
+    },
+    {
+      "titulo": "Soma e produto: seu atalho de cursinho",
+      "paragrafos": [
+        "Para uma equação de segundo grau, a soma das raízes e o produto delas podem ser encontrados diretamente pelos coeficientes. Em questões com raízes inteiras, isso costuma ser muito mais rápido."
+      ],
+      "formulas": [
+        "x_1+x_2=-\\frac{b}{a}",
+        "x_1x_2=\\frac{c}{a}"
+      ],
+      "exemplo": {
+        "enunciado": "Encontre as raízes de x² − 8x + 15 = 0.",
+        "passos": [
+          "Queremos dois números que somem 8 e cujo produto seja 15.",
+          "3 e 5 satisfazem as duas condições.",
+          "Portanto, as raízes são 3 e 5."
+        ]
+      },
+      "dica": "Terminou? Substitua as raízes na equação para conferir. Dois segundos de verificação salvam a questão."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "A fórmula de Bhaskara",
+      "canal": "Khan Academy Brasil",
+      "descricao": "Introdução à fórmula com exemplos completos e explicação dos coeficientes.",
+      "url": "https://pt.khanacademy.org/v/using-the-quadratic-formula"
+    },
+    {
+      "titulo": "Equações quadráticas completando quadrados",
+      "canal": "Khan Academy Brasil (YouTube)",
+      "descricao": "Uma maneira diferente de resolver equações e entender de onde a fórmula vem.",
+      "url": "https://www.youtube.com/watch?v=3NiJWTBI5no"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "Quais são as raízes de x² − 5x + 4 = 0?",
+      "opcoes": [
+        "−1 e −4",
+        "1 e 4",
+        "2 e 3",
+        "−2 e 2"
+      ],
+      "correta": 1,
+      "explicacao": "(x − 1)(x − 4) = 0. As raízes são 1 e 4."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "Qual é o discriminante de 2x² − 4x + 5 = 0?",
+      "opcoes": [
+        "24",
+        "−24",
+        "−16",
+        "16"
+      ],
+      "correta": 1,
+      "explicacao": "Δ = (−4)² − 4·2·5 = 16 − 40 = −24."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se Δ = 0, o que acontece com as raízes reais?",
+      "opcoes": [
+        "Existem duas raízes reais diferentes",
+        "Não há nenhuma raiz real",
+        "Existe uma raiz real dupla",
+        "A equação deixa de ser do 2º grau"
+      ],
+      "correta": 2,
+      "explicacao": "A raiz quadrada de zero é zero; os dois resultados da fórmula coincidem."
+    },
+    {
+      "nivel": "Intermediário",
+      "enunciado": "As raízes de 2x² − x − 3 = 0 são:",
+      "opcoes": [
+        "3 e −1",
+        "3/2 e −1",
+        "−3/2 e 1",
+        "1/2 e −3"
+      ],
+      "correta": 1,
+      "explicacao": "Δ=25, então x=(1±5)/4. As raízes são 3/2 e −1."
+    },
+    {
+      "nivel": "Cursinho",
+      "enunciado": "Uma equação mônica tem raízes 2 e 5. Qual é seu termo constante?",
+      "opcoes": [
+        "−7",
+        "7",
+        "10",
+        "−10"
+      ],
+      "correta": 2,
+      "explicacao": "Em x² + bx + c = 0, o produto das raízes é c. Como 2·5 = 10, temos c=10."
+    },
+    {
+      "nivel": "Cursinho",
+      "enunciado": "Qual é a soma das raízes de x² + 3x − 10 = 0?",
+      "opcoes": [
+        "10",
+        "−10",
+        "3",
+        "−3"
+      ],
+      "correta": 3,
+      "explicacao": "Pela relação de Girard, a soma é −b/a = −3."
+    }
+  ],
+  "exercicios": [
+    {
+      "enunciado": "Resolva x² − 8x + 15 = 0 pelo método mais rápido possível.",
+      "resposta": "Raízes 3 e 5, pois somam 8 e multiplicam 15."
+    },
+    {
+      "enunciado": "A equação x² + 4x + 5 = 0 possui raízes reais?",
+      "resposta": "Não: o discriminante é −4."
+    },
+    {
+      "enunciado": "Uma praça retangular tem lados x e x+3 e área 40 m². Encontre as medidas.",
+      "resposta": "x(x+3)=40 ⇒ x=5 (a outra raiz é negativa). Lados 5 m e 8 m."
+    }
+  ],
+  "lista": [
+    {
+      "nivel": "Básico",
+      "enunciado": "As raízes da equação x² − 7x + 12 = 0 são:",
+      "opcoes": [
+        "2 e 6",
+        "3 e 4",
+        "−3 e −4",
+        "1 e 12",
+        "−2 e −6"
+      ],
+      "correta": 1,
+      "comentario": "Fatorando: (x−3)(x−4)=0."
+    },
+    {
+      "nivel": "Básico",
+      "enunciado": "O conjunto solução real de 2x² − 5x − 3 = 0 é:",
+      "opcoes": [
+        "{−3, 1/2}",
+        "{−1, 3/2}",
+        "{−1/2, 3}",
+        "{1/2, 3}",
+        "{−3, −1/2}"
+      ],
+      "correta": 2,
+      "comentario": "Δ=49 e x=(5±7)/4 ⇒ x=3 ou −1/2."
+    },
+    {
+      "nivel": "Básico",
+      "enunciado": "Considere a equação x² − 6x + 9 = 0. O discriminante vale:",
+      "opcoes": [
+        "−9",
+        "0",
+        "9",
+        "18",
+        "36"
+      ],
+      "correta": 1,
+      "comentario": "Δ=(−6)²−4·1·9=36−36=0."
+    },
+    {
+      "nivel": "Intermediário",
+      "enunciado": "Os zeros da função f(x)=x²−9x+20 são:",
+      "opcoes": [
+        "2 e 10",
+        "−4 e −5",
+        "−2 e −10",
+        "4 e 5",
+        "−1 e 20"
+      ],
+      "correta": 3,
+      "comentario": "(x−4)(x−5)=0."
+    },
+    {
+      "nivel": "Intermediário",
+      "enunciado": "Quantas raízes reais distintas possui a equação 3x² + 6x + 5 = 0?",
+      "opcoes": [
+        "Nenhuma",
+        "Uma",
+        "Duas",
+        "Três",
+        "Infinitas"
+      ],
+      "correta": 0,
+      "comentario": "Δ=36−60=−24<0."
+    },
+    {
+      "nivel": "Intermediário",
+      "enunciado": "Ao resolver (x+2)(x−5)=0, obtêm-se as soluções:",
+      "opcoes": [
+        "2 e −5",
+        "−2 e 5",
+        "2 e 5",
+        "−2 e −5",
+        "0 e 3"
+      ],
+      "correta": 1,
+      "comentario": "Pelo princípio do produto nulo, x+2=0 ou x−5=0."
+    },
+    {
+      "nivel": "Intermediário",
+      "enunciado": "Para quais valores reais de k a equação x²+(k−1)x+9=0 apresenta uma raiz real dupla?",
+      "opcoes": [
+        "Apenas k=7",
+        "Apenas k=−5",
+        "k=5 ou k=−7",
+        "k=7 ou k=−5",
+        "k=3 ou k=−3"
+      ],
+      "correta": 3,
+      "comentario": "Δ=(k−1)²−36=0 ⇒ k−1=±6 ⇒ k=7 ou −5."
+    },
+    {
+      "nivel": "Contextualizado",
+      "enunciado": "Um terreno retangular tem largura x metros e comprimento (x+4) metros. Sua área é 96 m². A largura mede:",
+      "opcoes": [
+        "6 m",
+        "7 m",
+        "8 m",
+        "10 m",
+        "12 m"
+      ],
+      "correta": 2,
+      "comentario": "x(x+4)=96 ⇒ x²+4x−96=0 ⇒ x=8 (descarta-se −12)."
+    },
+    {
+      "nivel": "Contextualizado",
+      "enunciado": "Em certo modelo, a altura de uma bola, em metros, é h(t)=−5t²+30t, em que t está em segundos. Após o lançamento, em qual instante a bola retorna ao solo?",
+      "opcoes": [
+        "2 s",
+        "3 s",
+        "4 s",
+        "5 s",
+        "6 s"
+      ],
+      "correta": 4,
+      "comentario": "h(t)=0 ⇒ −5t(t−6)=0 ⇒ t=0 ou t=6. O retorno ocorre em 6 s."
+    },
+    {
+      "nivel": "Intermediário",
+      "enunciado": "A soma das raízes de 2x²−9x+4=0 é:",
+      "opcoes": [
+        "−9/2",
+        "9/2",
+        "−4",
+        "2",
+        "4"
+      ],
+      "correta": 1,
+      "comentario": "Pela soma de Girard: −b/a=9/2."
+    },
+    {
+      "nivel": "Intermediário",
+      "enunciado": "A equação mônica cujas raízes são −3 e 5 é:",
+      "opcoes": [
+        "x²+2x−15=0",
+        "x²−2x−15=0",
+        "x²+2x+15=0",
+        "x²−8x+15=0",
+        "x²+8x−15=0"
+      ],
+      "correta": 1,
+      "comentario": "Soma 2, produto −15 ⇒ x²−2x−15=0."
+    },
+    {
+      "nivel": "Avançado",
+      "enunciado": "A distância, na reta real, entre as raízes de x²−4x−12=0 é:",
+      "opcoes": [
+        "4",
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "correta": 2,
+      "comentario": "As raízes são 6 e −2. A distância é |6−(−2)|=8."
+    }
+  ],
+  "arquivos": [],
+  "revisao": {
+    "geradoPor": "Assistente IA",
+    "status": "rascunho-pedagogico",
+    "notas": "Piloto demonstrativo. Recomenda-se revisão do professor antes de uso avaliativo. Todas as questões são autorais, inspiradas em habilidades cobradas em vestibulares, e não itens oficiais."
+  }
+}
