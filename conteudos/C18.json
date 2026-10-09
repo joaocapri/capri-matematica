@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Combinação com repetição conta seleções em que tipos podem aparecer várias vezes. O método de traços e bolas traduz soluções inteiras não negativas de uma soma."
+      ],
+      "formulas": [
+        "\\#\\{x_1+\\cdots+x_k=n,\\ x_i\\ge0\\}=\\binom{n+k-1}{k-1}"
+      ],
+      "dica": "Bolas marcam unidades; traços separam categorias.",
+      "erroComum": "Esta fórmula não é para objetos distintos com restrições específicas."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Distribua 4 balas idênticas entre 3 crianças, permitindo zero.",
+        "passos": [
+          "Conte soluções x₁+x₂+x₃=4.",
+          "C(4+3−1,3−1)=C(6,2)=15."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Soluções inteiras não negativas de x+y=3:",
+      "opcoes": [
+        "3",
+        "4",
+        "6",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "(0,3),(1,2),(2,1),(3,0): quatro."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Distribuir 2 itens idênticos entre 3 caixas com vazias permitidas:",
+      "opcoes": [
+        "3",
+        "6",
+        "9",
+        "12"
+      ],
+      "correta": 1,
+      "explicacao": "C(2+3−1,2)=C(4,2)=6."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

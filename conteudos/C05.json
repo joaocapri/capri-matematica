@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Grandezas diretamente proporcionais têm razão constante; inversamente proporcionais têm produto constante. A distinção depende da situação: mais pessoas fazendo o mesmo trabalho pode significar menos tempo."
+      ],
+      "formulas": [
+        "y=kx\\quad\\text{ou}\\quad xy=k"
+      ],
+      "dica": "Identifique o que permanece fixo: mesmo tanque, mesma vazão por torneira.",
+      "erroComum": "Não classifique como proporcional qualquer grandeza que aumenta quando outra aumenta."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Se 4 torneiras iguais enchem um tanque em 6 h, 8 torneiras iguais levam quanto?",
+        "passos": [
+          "Dobrou o número de torneiras.",
+          "Tempo reduz pela metade: 3 h."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Dobrar velocidade numa viagem de distância fixa reduz tempo para:",
+      "opcoes": [
+        "Dobro",
+        "Metade",
+        "Mesmo",
+        "Quádruplo"
+      ],
+      "correta": 1,
+      "explicacao": "Tempo é inversamente proporcional à velocidade."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se y=3x, a razão y/x é:",
+      "opcoes": [
+        "x",
+        "3",
+        "1/3",
+        "9"
+      ],
+      "correta": 1,
+      "explicacao": "Para x≠0, y/x=3 constante."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

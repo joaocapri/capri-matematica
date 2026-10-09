@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Razão compara duas grandezas da mesma natureza; proporção diz que duas razões são iguais. Em escalas, a medida do desenho e a medida real devem estar na mesma unidade."
+      ],
+      "formulas": [
+        "\\frac ab=\\frac cd\\Longleftrightarrow ad=bc"
+      ],
+      "dica": "Converta unidades antes de usar a proporção.",
+      "erroComum": "Escalas de área crescem com o quadrado da escala linear."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Uma escala 1:200 significa que 3 cm no desenho correspondem a quanto?",
+        "passos": [
+          "Cada cm no desenho vale 200 cm reais.",
+          "3·200=600 cm=6 m."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Escala 1:100; 5 cm no desenho representam:",
+      "opcoes": [
+        "0,5 m",
+        "5 m",
+        "50 m",
+        "500 m"
+      ],
+      "correta": 1,
+      "explicacao": "5·100=500 cm=5 m."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se 2/3=x/12, então x:",
+      "opcoes": [
+        "6",
+        "8",
+        "10",
+        "18"
+      ],
+      "correta": 1,
+      "explicacao": "3x=24 ⇒ x=8."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

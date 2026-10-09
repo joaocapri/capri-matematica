@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Probabilidade mede a chance de um evento. Se os resultados elementares forem equiprováveis, contamos favoráveis sobre possíveis. O complementar costuma simplificar cálculos."
+      ],
+      "formulas": [
+        "P(A)=\\frac{|A|}{|\\Omega|},\\quad P(A^c)=1-P(A)"
+      ],
+      "dica": "Defina o espaço amostral antes de contar.",
+      "erroComum": "Favoráveis/possíveis só é fórmula direta quando resultados são igualmente prováveis."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Lance um dado honesto: probabilidade de obter número par?",
+        "passos": [
+          "Favoráveis 2,4,6: são 3.",
+          "Possíveis: 6.",
+          "P=3/6=1/2."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Chance de sair 6 num dado honesto:",
+      "opcoes": [
+        "1/2",
+        "1/3",
+        "1/6",
+        "1/12"
+      ],
+      "correta": 2,
+      "explicacao": "Um caso favorável entre seis."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se P(A)=0,3, P(não A) =",
+      "opcoes": [
+        "0,3",
+        "0,5",
+        "0,7",
+        "1,3"
+      ],
+      "correta": 2,
+      "explicacao": "1−0,3=0,7."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Combinação seleciona grupos sem distinguir a ordem. A fórmula divide pela permutação interna do grupo, pois trocar posições não cria nova equipe."
+      ],
+      "formulas": [
+        "C(n,p)=\\frac{n!}{p!(n-p)!}"
+      ],
+      "dica": "Quando escolher p e escolher n−p são processos complementares, use C(n,p)=C(n,n−p).",
+      "erroComum": "Se cargos diferentes são atribuídos, provavelmente não é combinação simples."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Escolha 2 representantes entre 5 alunos.",
+        "passos": [
+          "São pares, ordem não importa.",
+          "C(5,2)=5·4/2=10."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "C(6,2) =",
+      "opcoes": [
+        "12",
+        "15",
+        "20",
+        "30"
+      ],
+      "correta": 1,
+      "explicacao": "6·5/2=15."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Formar dupla entre 4 pessoas dá:",
+      "opcoes": [
+        "4",
+        "6",
+        "8",
+        "12"
+      ],
+      "correta": 1,
+      "explicacao": "C(4,2)=6."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

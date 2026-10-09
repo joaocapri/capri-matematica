@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Variações percentuais sucessivas multiplicam fatores, não somam taxas. Para aumento de p%, use 1+p/100; para desconto, 1−p/100."
+      ],
+      "formulas": [
+        "V_f=V_i(1+i_1)(1+i_2)"
+      ],
+      "dica": "Para voltar de um desconto de 20%, o aumento necessário é 25%.",
+      "erroComum": "O percentual é sempre aplicado sobre a base de cada etapa."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Produto custa R$ 100. Aumenta 20% e depois cai 20%. Valor final?",
+        "passos": [
+          "Após aumento: 100·1,2=120.",
+          "Após desconto: 120·0,8=96.",
+          "Final 96; não voltou a 100."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "100 reais sobe 10% e depois 10%. Valor:",
+      "opcoes": [
+        "110",
+        "120",
+        "121",
+        "130"
+      ],
+      "correta": 2,
+      "explicacao": "100·1,1²=121."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "100 reais cai 30%. Novo valor:",
+      "opcoes": [
+        "30",
+        "70",
+        "100",
+        "130"
+      ],
+      "correta": 1,
+      "explicacao": "Fator 0,7 ⇒ 70."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Juros compostos são multiplicativos: a cada período, a taxa incide sobre o montante atualizado. É uma progressão geométrica."
+      ],
+      "formulas": [
+        "M=C(1+i)^n"
+      ],
+      "dica": "Taxas compostas sucessivas usam fatores multiplicativos.",
+      "erroComum": "10% por dois meses não equivale exatamente a 20%: equivale a 21%."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Aplique R$ 1000 a 10% ao mês por 2 meses.",
+        "passos": [
+          "Após mês 1: 1000·1,1=1100.",
+          "Após mês 2: 1100·1,1=1210."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "1000 a 20% composto por dois períodos:",
+      "opcoes": [
+        "1200",
+        "1400",
+        "1440",
+        "1500"
+      ],
+      "correta": 2,
+      "explicacao": "1000·1,2²=1440."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Fator de crescimento de 5% é:",
+      "opcoes": [
+        "0,05",
+        "0,95",
+        "1,05",
+        "1,5"
+      ],
+      "correta": 2,
+      "explicacao": "Acrescente 5%=0,05 à unidade."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

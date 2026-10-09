@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "O princípio fundamental da contagem multiplica números de escolhas em etapas sucessivas. Ele vale quando contamos corretamente as possibilidades condicionais de cada etapa."
+      ],
+      "formulas": [
+        "N=n_1\\cdot n_2\\cdots n_k"
+      ],
+      "dica": "Desenhe uma árvore quando alguma escolha muda as opções seguintes.",
+      "erroComum": "Multiplique etapas; some alternativas mutuamente exclusivas."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Uma lanchonete oferece 3 pães e 4 recheios. Quantos lanches diferentes?",
+        "passos": [
+          "Escolha um pão: 3 maneiras.",
+          "Para cada pão, 4 recheios.",
+          "3·4=12."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Código com 2 algarismos de 0 a 9, repetição permitida: quantos?",
+      "opcoes": [
+        "20",
+        "90",
+        "100",
+        "200"
+      ],
+      "correta": 2,
+      "explicacao": "10 escolhas para cada posição: 10²=100."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "3 camisas e 2 calças rendem:",
+      "opcoes": [
+        "5",
+        "6",
+        "8",
+        "9"
+      ],
+      "correta": 1,
+      "explicacao": "3·2=6 combinações."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

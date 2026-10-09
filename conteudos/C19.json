@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "O método destrutivo conta o total e subtrai casos proibidos. O princípio das gavetas garante repetição quando há mais objetos que categorias."
+      ],
+      "formulas": [
+        "\\text{favoráveis}=\\text{total}-\\text{desfavoráveis}"
+      ],
+      "dica": "Pelo menos um quase sempre sugere calcular o complementar.",
+      "erroComum": "Princípio das gavetas garante existência, não necessariamente a quantidade exata de repetições."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Quantas senhas de 2 algarismos (00 a 99) têm ao menos um dígito 7?",
+        "passos": [
+          "Total: 10²=100.",
+          "Sem nenhum 7: 9²=81.",
+          "Com pelo menos um 7: 100−81=19."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em 13 pessoas, ao menos duas nasceram no mesmo:",
+      "opcoes": [
+        "Dia",
+        "Mês",
+        "Ano",
+        "Horário"
+      ],
+      "correta": 1,
+      "explicacao": "Há 12 meses e 13 pessoas: uma gaveta terá ao menos 2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "De 100 senhas 00–99, sem algarismo 5 existem:",
+      "opcoes": [
+        "19",
+        "25",
+        "81",
+        "90"
+      ],
+      "correta": 2,
+      "explicacao": "9 possibilidades por dígito, 9²=81."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

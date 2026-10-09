@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Porcentagem é uma fração com denominador 100. Transformar 20% em 0,20 permite calcular rapidamente; 10% é dividir por 10 e 1% é dividir por 100."
+      ],
+      "formulas": [
+        "p\\%\\text{ de }V=\\frac{p}{100}V"
+      ],
+      "dica": "Quebre porcentagens em 10%, 5% e 1% para cálculo mental.",
+      "erroComum": "30% de 50% não é 80%: é 0,30·0,50=0,15."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Quanto é 15% de R$ 200?",
+        "passos": [
+          "10% de 200=20.",
+          "5% de 200=10.",
+          "15%=30 reais."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "20% de 80 é:",
+      "opcoes": [
+        "8",
+        "12",
+        "16",
+        "20"
+      ],
+      "correta": 2,
+      "explicacao": "0,2·80=16."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "5% de 300 é:",
+      "opcoes": [
+        "5",
+        "10",
+        "15",
+        "30"
+      ],
+      "correta": 2,
+      "explicacao": "0,05·300=15."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

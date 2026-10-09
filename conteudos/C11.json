@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Amortização é a parte da prestação que reduz a dívida. No SAC, a amortização é constante; na Price, a prestação é constante (mantidas as taxas e condições). Juros incidem sobre o saldo devedor."
+      ],
+      "formulas": [
+        "\\text{prestação}=\\text{amortização}+\\text{juros}"
+      ],
+      "dica": "Na Price, prestação constante não significa amortização constante.",
+      "erroComum": "Não confunda juros com redução do principal."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Uma dívida de R$ 1200 será paga em 3 amortizações iguais pelo SAC, sem considerar taxas extras.",
+        "passos": [
+          "Amortização por período: 1200/3=400.",
+          "Se o saldo inicial rende 1% no primeiro mês, juros iniciais=12.",
+          "Primeira prestação=400+12=412."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Num SAC de R$ 800 em 4 períodos, amortização é:",
+      "opcoes": [
+        "100",
+        "200",
+        "400",
+        "800"
+      ],
+      "correta": 1,
+      "explicacao": "800/4=200."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Ao longo do SAC, os juros sobre o saldo:",
+      "opcoes": [
+        "Crescem",
+        "Ficam iguais",
+        "Diminuem",
+        "São sempre zero"
+      ],
+      "correta": 2,
+      "explicacao": "O saldo devedor cai a cada amortização."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

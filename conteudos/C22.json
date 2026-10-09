@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Probabilidade condicional redefine o universo: sabendo que B ocorreu, só contamos resultados dentro de B. A probabilidade procurada é a parcela de B que também está em A."
+      ],
+      "formulas": [
+        "P(A\\mid B)=\\frac{P(A\\cap B)}{P(B)},\\quad P(B)>0"
+      ],
+      "dica": "A expressão 'sabendo que' geralmente anuncia condição.",
+      "erroComum": "Depois da condição, não divida pelo espaço amostral original."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Dado honesto: sabendo que saiu par, qual chance de ser 6?",
+        "passos": [
+          "Novo espaço amostral {2,4,6}.",
+          "Somente 6 é favorável.",
+          "P=1/3."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "No dado, dado que resultado >3, chance de 5:",
+      "opcoes": [
+        "1/6",
+        "1/3",
+        "1/2",
+        "2/3"
+      ],
+      "correta": 1,
+      "explicacao": "Restam 4,5,6: chance 1/3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se P(A∩B)=0,2 e P(B)=0,5, P(A|B) =",
+      "opcoes": [
+        "0,1",
+        "0,2",
+        "0,4",
+        "0,7"
+      ],
+      "correta": 2,
+      "explicacao": "0,2/0,5=0,4."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

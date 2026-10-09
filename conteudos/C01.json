@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Um número primo maior que 1 tem apenas dois divisores positivos: 1 e ele mesmo. Todo inteiro maior que 1 pode ser decomposto em primos; daí surgem os critérios de divisibilidade e a fatoração."
+      ],
+      "formulas": [
+        "60=2^2\\cdot3\\cdot5"
+      ],
+      "dica": "Para testar divisibilidade por 3 e 9, some os algarismos.",
+      "erroComum": "1 não é primo; o único primo par é 2."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Fatore 84 em primos.",
+        "passos": [
+          "84=2·42=2²·21.",
+          "21=3·7.",
+          "84=2²·3·7."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual número é primo?",
+      "opcoes": [
+        "1",
+        "9",
+        "11",
+        "15"
+      ],
+      "correta": 2,
+      "explicacao": "11 só tem divisores 1 e 11."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um número divisível por 9 possui:",
+      "opcoes": [
+        "Último algarismo 9",
+        "Soma dos algarismos múltipla de 9",
+        "Apenas algarismos ímpares",
+        "Sempre dois zeros"
+      ],
+      "correta": 1,
+      "explicacao": "O critério de 9 usa a soma dos algarismos."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

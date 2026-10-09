@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Fatorial conta maneiras de ordenar objetos distintos. Para escolher entre arranjo e combinação, pergunte se trocar a ordem muda o resultado."
+      ],
+      "formulas": [
+        "n!=n(n-1)\\cdots2\\cdot1,\\qquad0!=1"
+      ],
+      "dica": "Cancele fatoriais antes de expandir números enormes.",
+      "erroComum": "0! vale 1, não zero."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule 5!/3!.",
+        "passos": [
+          "5!=5·4·3!.",
+          "Cancele o 3!: 5·4=20."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "4! vale:",
+      "opcoes": [
+        "16",
+        "20",
+        "24",
+        "40"
+      ],
+      "correta": 2,
+      "explicacao": "4·3·2·1=24."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Para escolher comissão de 3 pessoas, a ordem:",
+      "opcoes": [
+        "Sempre importa",
+        "Não importa",
+        "Importa só se for par",
+        "Depende de ser triângulo"
+      ],
+      "correta": 1,
+      "explicacao": "Comissão é grupo, sem posições distintas."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

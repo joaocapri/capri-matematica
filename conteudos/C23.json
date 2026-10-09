@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Eventos independentes não interferem nas probabilidades um do outro. Para A e B, multiplique P(A) por P(B|A); se forem independentes, P(B|A)=P(B)."
+      ],
+      "formulas": [
+        "P(A\\cap B)=P(A)P(B\\mid A)"
+      ],
+      "dica": "Reposição em urnas costuma preservar probabilidades entre retiradas.",
+      "erroComum": "Sem reposição, o segundo sorteio costuma depender do primeiro."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Duas moedas honestas: chance de ambas darem cara?",
+        "passos": [
+          "Cada lançamento tem chance 1/2.",
+          "São independentes: 1/2·1/2=1/4."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Duas moedas: duas caras:",
+      "opcoes": [
+        "1/2",
+        "1/3",
+        "1/4",
+        "1/8"
+      ],
+      "correta": 2,
+      "explicacao": "(1/2)²=1/4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Urna com 2 vermelhas e 3 azuis; tirar 2 vermelhas sem reposição:",
+      "opcoes": [
+        "1/5",
+        "1/10",
+        "2/5",
+        "4/25"
+      ],
+      "correta": 1,
+      "explicacao": "(2/5)(1/4)=2/20=1/10."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

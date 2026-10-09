@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Juros simples crescem linearmente: a taxa incide sempre sobre o capital inicial. Montante é capital mais juros acumulados."
+      ],
+      "formulas": [
+        "J=Cit,\\qquad M=C(1+it)"
+      ],
+      "dica": "Taxa e tempo precisam estar na mesma unidade.",
+      "erroComum": "Em juros simples, o juro não rende juro adicional."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Aplique R$ 1000 a 2% ao mês por 5 meses em juros simples.",
+        "passos": [
+          "J=1000·0,02·5=100.",
+          "Montante M=1100."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Capital 500, taxa 1% mensal por 4 meses: juros =",
+      "opcoes": [
+        "5",
+        "10",
+        "20",
+        "40"
+      ],
+      "correta": 2,
+      "explicacao": "500·0,01·4=20."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Montante de 1000 a 10% simples por 2 anos é:",
+      "opcoes": [
+        "1100",
+        "1200",
+        "1210",
+        "2000"
+      ],
+      "correta": 1,
+      "explicacao": "1000(1+0,1·2)=1200."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

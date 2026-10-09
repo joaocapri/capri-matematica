@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Permutação ordena todos os elementos; arranjo ordena parte deles. Em senha e pódio, as posições diferenciam resultados: ordem importa."
+      ],
+      "formulas": [
+        "A_{n,p}=\\frac{n!}{(n-p)!}"
+      ],
+      "dica": "Se a ordem importa, conte escolhas decrescentes antes de buscar fórmula.",
+      "erroComum": "Combinação não serve para pódio, pois ouro e prata são posições diferentes."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Quantos pódios diferentes podem surgir com 5 atletas e 3 posições?",
+        "passos": [
+          "1º lugar: 5 opções.",
+          "2º: 4; 3º: 3.",
+          "5·4·3=60."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Permutações de A,B,C:",
+      "opcoes": [
+        "3",
+        "6",
+        "9",
+        "12"
+      ],
+      "correta": 1,
+      "explicacao": "3!=6."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Arranjos de 4 objetos escolhidos 2 a 2:",
+      "opcoes": [
+        "6",
+        "8",
+        "12",
+        "16"
+      ],
+      "correta": 2,
+      "explicacao": "4·3=12."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}
