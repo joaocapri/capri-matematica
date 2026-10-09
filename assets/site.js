@@ -1,0 +1,61 @@
+
+(function(){
+'use strict';
+var ROOT='/';var data=null;var saved=new Set(safeRead('capri-favoritos'));var done=new Set(safeRead('capri-estudadas'));
+function safeRead(key){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch(e){return []}}
+function store(key,set){try{localStorage.setItem(key,JSON.stringify(Array.from(set)))}catch(e){}}
+function esc(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
+function norm(v){return String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}
+function href(l){return '/aulas/'+encodeURIComponent(l.id)+'/'}
+function frontBy(id){return data.fronts.find(function(x){return x.id===id})}
+function blockBy(id){return data.blocks.find(function(x){return x.id===id})}
+function short(v,n){var s=String(v||'');return s.length>n?s.slice(0,n).trim()+'…':s}
+function title(str){document.title=str+' · Capri Matemática'}
+function empty(label,detail){return '<div class="placeholder"><div class="emoji">✦</div><h3>'+esc(label)+'</h3><p>'+esc(detail)+'</p></div>'}
+function header(){return '<header class="topbar"><div class="shell"><a href="/" class="brand"><span class="brand-badge">∑</span><span>capri<span style="color:#6b48d1">.</span>mat<small>matemática com personalidade</small></span></a><nav class="navlinks"><a href="/#explorar">Explorar aulas</a><a href="/#frentes">Frentes</a><a class="nav-cta" href="/#explorar">Encontrar uma aula ↗</a></nav></div></header>'}
+function footer(){return '<footer class="footer"><div class="shell"><div><strong>capri.mat ✳</strong><p>Feito para aprender, revisar e mandar bem. Prof. João Capri.</p></div><p>Álgebra • Geometria • Aritmética, Estatística e Trigonometria</p></div></footer>'}
+function card(l){return '<a class="lesson-card" href="'+href(l)+'"><span class="mini">Aula '+esc(l.id)+' · '+esc(frontBy(l.front).name)+'</span><h4>'+esc(l.title)+'</h4><p>'+esc(l.summary||'Abra a aula e explore seu roteiro de estudos.')+'</p><div class="card-bottom"><span class="badge '+(done.has(l.id)?'checkdone':'')+'">'+(done.has(l.id)?'✓ Estudada':'Ver aula')+'</span><span class="arrow">↗</span></div></a>'}
+function home(){
+ title('Todas as aulas');
+ var app=document.getElementById('app');var filter='TODAS',query='';
+ app.innerHTML=header()+'<main class="shell"><section class="hero"><div class="hero-copy"><div class="eyebrow"><span class="dot"></span> TEM MATEMÁTICA PRA TODO MUNDO</div><h1>Bora fazer <em>essa conta</em> fechar?</h1><p>Teoria, listas, revisão e aquele empurrãozinho que faltava. Tudo organizado para você achar o que precisa.</p><label class="searchwrap"><span>⌕</span><input id="hero-search" type="search" autocomplete="off" placeholder="Busque: logaritmo, geometria, A17…"><button type="button" id="btn-search">BUSCAR ↗</button></label><div class="searchhint">Tente: <b>função quadrática</b>, <b>probabilidade</b> ou <b>trigonometria</b></div></div><div class="hero-art" aria-hidden="true"><span class="art-star">✳</span><div class="art-circle"><span>π²</span></div><span class="art-label">100% sem pânico!</span><span class="art-label two">x = você consegue ✦</span></div></section><div class="layout-stats"><div class="stat"><div class="stat-ico">✦</div><div><b>'+data.lessons.length+'</b><small>aulas no mapa</small></div></div><div class="stat"><div class="stat-ico">▧</div><div><b>'+data.blocks.length+'</b><small>blocos de estudo</small></div></div><div class="stat"><div class="stat-ico">◉</div><div><b>'+data.fronts.length+'</b><small>frentes de matemática</small></div></div></div><section id="explorar"><div class="section-top"><div><div class="eyebrow"><span class="dot"></span> ESCOLHA SEU CAMINHO</div><h2>O que vamos estudar?</h2></div><span class="count">Seu mapa completo da matemática ↘</span></div><div class="fronts" id="frentes"><button class="filter active" data-front="TODAS">✳ Tudo</button>'+data.fronts.map(function(f){return '<button class="filter" data-front="'+f.id+'">'+esc(f.id)+' · '+esc(f.name)+'</button>'}).join('')+'<button class="filter" data-front="FAV">♡ Favoritas</button></div><div class="resultbar"><span class="count" id="result-count"></span><span class="count">Clique em uma aula para abrir ↗</span></div><div class="blocks" id="results"></div></section></main>'+footer();
+ var search=document.getElementById('hero-search'),result=document.getElementById('results'),count=document.getElementById('result-count');
+ function render(){
+  var qq=norm(query.trim());var items=data.lessons.filter(function(l){if(filter==='FAV'&&!saved.has(l.id))return false;if(filter!=='TODAS'&&filter!=='FAV'&&l.front!==filter)return false;return !qq||norm([l.id,l.title,l.summary,frontBy(l.front).name,blockBy(l.block).title,l.notes.join(' ')].join(' ')).includes(qq)});
+  count.textContent=items.length+' '+(items.length===1?'aula encontrada':'aulas encontradas');
+  var groups=data.blocks.map(function(b){var sub=items.filter(function(l){return l.block===b.id});if(!sub.length)return '';return '<section><div class="block-head"><span class="block-id">'+esc(b.id)+'</span><div><h3>'+esc(b.title)+'</h3><p>'+sub.length+' '+(sub.length===1?'aula':'aulas')+' · '+esc(frontBy(b.front).name)+'</p></div></div><div class="lesson-grid">'+sub.map(card).join('')+'</div></section>'}).filter(Boolean);
+  result.innerHTML=groups.length?groups.join(''):'<div class="empty"><b>Nada por aqui (ainda!)</b>Tente outro assunto, código de aula ou frente.</div>';
+ }
+ document.querySelectorAll('[data-front]').forEach(function(el){el.addEventListener('click',function(){filter=el.dataset.front;document.querySelectorAll('[data-front]').forEach(function(x){x.classList.toggle('active',x===el)});render()})});
+ search.addEventListener('input',function(){query=search.value;render()});
+ document.getElementById('btn-search').addEventListener('click',function(){document.getElementById('explorar').scrollIntoView({behavior:'smooth'})});
+ var p=new URLSearchParams(location.search);if(p.get('q')){query=p.get('q');search.value=query}if(p.get('frente')){var found=document.querySelector('[data-front="'+p.get('frente')+'"]');if(found)found.click()}render();
+}
+function saveAction(l,btn){if(saved.has(l.id))saved.delete(l.id);else saved.add(l.id);store('capri-favoritos',saved);btn.textContent=(saved.has(l.id)?'♥ Salvo':'♡ Favoritar');btn.classList.toggle('liked',saved.has(l.id))}
+function finishAction(l,btn){if(done.has(l.id))done.delete(l.id);else done.add(l.id);store('capri-estudadas',done);btn.textContent=(done.has(l.id)?'✓ Aula estudada':'✓ Marcar como estudada');btn.classList.toggle('liked',done.has(l.id))}
+async function lessonPage(){
+ var id=document.body.dataset.lesson;var l=data.lessons.find(function(x){return x.id===id});if(!l){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Aula não encontrada','Volte ao catálogo e tente novamente.')+'</main>'+footer();return}
+ var b=blockBy(l.block),f=frontBy(l.front),near=data.lessons.filter(function(x){return x.block===l.block});var i=data.lessons.findIndex(function(x){return x.id===id});
+ title(l.title);
+ var content=null;try{var r=await fetch('/conteudos/'+id+'.json');if(r.ok)content=await r.json()}catch(e){}
+ var app=document.getElementById('app');
+ app.innerHTML=header()+'<main class="shell"><div class="crumbs"><a href="/">Início</a> / <a href="/?frente='+l.front+'#explorar">Frente '+l.front+'</a> / '+esc(b.title)+' / '+id+'</div><section class="lesson-hero front-'+esc(l.front)+'"><div class="code">✦ FRENTE '+l.front+' · BLOCO '+esc(b.id)+' · AULA '+id+'</div><h1>'+esc(l.title)+'</h1><p>'+esc(l.summary||'Seu roteiro de estudos começa aqui. Em breve, novas explicações e exercícios.')+'</p><div class="spark">∑</div></section><div class="lesson-main"><aside class="sidepanel"><h3>✦ Neste bloco</h3><p>'+esc(b.title)+'</p><div class="sidelist">'+near.map(function(x){return '<a class="sidelesson '+(x.id===id?'active':'')+'" href="'+href(x)+'"><small>'+x.id+'</small>'+esc(x.title)+'</a>'}).join('')+'</div></aside><section><div class="actions"><button class="action primary" id="btn-done">'+(done.has(id)?'✓ Aula estudada':'✓ Marcar como estudada')+'</button><button class="action" id="btn-fav">'+(saved.has(id)?'♥ Salvo':'♡ Favoritar')+'</button><button class="action" id="btn-copy">↗ Copiar link</button></div><article class="contentpanel"><div class="tabs"><button class="tab active" data-tab="resumo">Visão geral</button><button class="tab" data-tab="teoria">Teoria</button><button class="tab" data-tab="exercicios">Exercícios</button><button class="tab" data-tab="arquivos">PDFs e gabaritos</button></div><div id="tab-body"></div></article><div class="prevnext">'+(i>0?'<a href="'+href(data.lessons[i-1])+'">← Anterior: '+esc(short(data.lessons[i-1].title,38))+'</a>':'<span></span>')+(i<data.lessons.length-1?'<a href="'+href(data.lessons[i+1])+'">Próxima: '+esc(short(data.lessons[i+1].title,38))+' →</a>':'')+'</div></section></div></main>'+footer();
+ var area=document.getElementById('tab-body');
+ function filesHtml(files,type){var list=(files||[]).filter(function(x){return !type||x.tipo===type});return list.length?list.map(function(x){return '<a class="filelink" target="_blank" rel="noopener" href="'+esc(x.url)+'"><span>📄 '+esc(x.titulo||'Material')+'</span><span>Baixar ↗</span></a>'}).join(''):empty('Materiais a caminho','As listas de exercícios e os gabaritos desta aula serão publicados aqui.')}
+ function renderTab(tab){
+  var html='';
+  if(tab==='resumo'){html='<div class="eyebrow"><span class="dot"></span> SEU PONTO DE PARTIDA</div><h2>O que você vai aprender</h2><div class="topic">'+esc(l.summary||'Roteiro curricular em preparação.')+'</div>'+(l.notes.length?'<h3>Para ficar de olho 👀</h3>'+l.notes.map(function(x){return '<div class="note">'+esc(x)+'</div>'}).join(''):'')+'<p class="muted">Esta é a ementa prevista no currículo. Explicações completas e atividades serão adicionadas ao longo do tempo.</p>'}
+  if(tab==='teoria'){var sections=content&&Array.isArray(content.teoria)?content.teoria:[];html='<h2>Teoria & exemplos</h2>'+(sections.length?sections.map(function(s){var h='<section><h3>'+esc(s.titulo||'Conceito')+'</h3>';for(var p of(s.paragrafos||[])){h+='<p>'+esc(p)+'</p>'}for(var formula of(s.formulas||[])){h+='<div class="formula">\\('+esc(formula)+'\\)</div>'}return h+'</section>'}).join(''):empty('A explicação vem aí','A teoria desta aula ainda não foi publicada. Por enquanto, consulte o roteiro na Visão geral.'))}
+  if(tab==='exercicios'){html='<h2>Hora de praticar</h2>'+(content&&Array.isArray(content.exercicios)&&content.exercicios.length?content.exercicios.map(function(x,j){return '<div class="topic"><b>Exercício '+(j+1)+'</b><p>'+esc(x.enunciado||'')+'</p>'+(x.resposta?'<details><summary>Ver resposta</summary><p>'+esc(x.resposta)+'</p></details>':'')+'</div>'}).join(''):empty('Em breve: exercícios','As questões e os desafios desta aula serão disponibilizados aqui.'))}
+  if(tab==='arquivos'){html='<h2>Listas & gabaritos</h2>'+filesHtml(content&&content.arquivos)}
+  area.innerHTML=html;if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([area]);
+ }
+ document.querySelectorAll('[data-tab]').forEach(function(el){el.addEventListener('click',function(){document.querySelectorAll('[data-tab]').forEach(function(x){x.classList.toggle('active',x===el)});renderTab(el.dataset.tab)})});
+ document.getElementById('btn-fav').addEventListener('click',function(){saveAction(l,this)});
+ document.getElementById('btn-done').addEventListener('click',function(){finishAction(l,this)});
+ document.getElementById('btn-copy').addEventListener('click',async function(){try{await navigator.clipboard.writeText(location.href);this.textContent='✓ Link copiado'}catch(e){this.textContent='Copie o endereço acima'}});
+ renderTab('resumo');
+}
+async function init(){try{var r=await fetch('/data/aulas.json');if(!r.ok)throw Error('Catálogo não encontrado');data=await r.json();if(document.body.dataset.lesson)await lessonPage();else home()}catch(e){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Não foi possível carregar o catálogo','Recarregue a página para tentar novamente.')+'</main>'+footer();console.error(e)}}
+init();
+})();

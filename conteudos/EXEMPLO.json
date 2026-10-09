@@ -1,0 +1,15 @@
+{
+  "teoria": [
+    {
+      "titulo": "Exemplo de teoria",
+      "paragrafos": [
+        "Escreva sua explicação aqui."
+      ],
+      "formulas": [
+        "ax^2+bx+c=0"
+      ]
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}
