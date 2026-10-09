@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Prismas têm duas bases congruentes em planos paralelos. A área total é a soma das áreas de todas as faces: duas bases mais a área lateral. Em prisma reto, as faces laterais são retângulos."
+      ],
+      "formulas": [
+        "A_T=2A_b+A_l"
+      ],
+      "dica": "Em prisma reto, A_l=P_b·h; em oblíquo, não use automaticamente.",
+      "erroComum": "A fórmula de volume não serve para área: unidades devem ser quadradas."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Prisma reto de base quadrada com lado 2 cm e altura 5 cm: área total?",
+        "passos": [
+          "Duas bases: 2·2²=8 cm².",
+          "Lateral: perímetro da base·altura=8·5=40 cm².",
+          "Total: 48 cm²."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Prisma triangular possui quantas bases?",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ],
+      "correta": 1,
+      "explicacao": "Todo prisma tem duas bases congruentes."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Prisma reto de base quadrada 3 e altura 4: área lateral =",
+      "opcoes": [
+        "12",
+        "24",
+        "36",
+        "48"
+      ],
+      "correta": 3,
+      "explicacao": "P_b·h=12·4=48."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

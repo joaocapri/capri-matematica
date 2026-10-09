@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Uma pirâmide ocupa um terço do volume do prisma de mesma base e altura. Troncos de pirâmide surgem ao cortar o sólido por um plano paralelo à base; os comprimentos variam proporcionalmente."
+      ],
+      "formulas": [
+        "V=\\frac{A_bh}{3}"
+      ],
+      "dica": "O fator 1/3 é obrigatório mesmo se a pirâmide for oblíqua.",
+      "erroComum": "Não use área lateral no lugar da área da base para calcular volume."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Pirâmide com área da base 18 cm² e altura 9 cm: volume?",
+        "passos": [
+          "V=18·9/3.",
+          "Volume 54 cm³."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "V de pirâmide com A_b=30 e h=6:",
+      "opcoes": [
+        "30",
+        "60",
+        "90",
+        "180"
+      ],
+      "correta": 1,
+      "explicacao": "30·6/3=60."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Cortar uma pirâmide paralelamente à base gera uma secção:",
+      "opcoes": [
+        "Congruente à base",
+        "Semelhante à base",
+        "Sempre quadrada",
+        "De mesma área"
+      ],
+      "correta": 1,
+      "explicacao": "A secção é semelhante à base; escala menor."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

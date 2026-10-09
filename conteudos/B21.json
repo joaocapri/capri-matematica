@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Pirâmide tem uma base poligonal e faces laterais triangulares que se encontram no vértice. Em pirâmides regulares, o apótema lateral é a altura de cada face triangular e não se confunde com o apótema da base."
+      ],
+      "formulas": [
+        "A_T=A_b+A_l"
+      ],
+      "dica": "Para calcular área lateral, procure a altura inclinada das faces.",
+      "erroComum": "Altura vertical, apótema lateral e aresta lateral são segmentos diferentes."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Pirâmide quadrangular regular de lado da base 4 e apótema lateral 5: área total?",
+        "passos": [
+          "Área da base: 4²=16.",
+          "Cada face lateral: 4·5/2=10; são 4 faces ⇒ 40.",
+          "Total 16+40=56."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Pirâmide de base quadrada tem quantas faces laterais?",
+      "opcoes": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correta": 2,
+      "explicacao": "Uma face por lado da base: quatro."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Pirâmide regular com perímetro de base 12 e apótema lateral 5: A_l =",
+      "opcoes": [
+        "17",
+        "30",
+        "60",
+        "120"
+      ],
+      "correta": 1,
+      "explicacao": "A_l=P_b·g/2=12·5/2=30."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

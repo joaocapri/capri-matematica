@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Uma reta não vertical pode ser escrita como y=mx+n, em que m é inclinação. A equação por um ponto conhecido usa y−y₀=m(x−x₀). Retas verticais têm x constante e não possuem m finito."
+      ],
+      "formulas": [
+        "y-y_0=m(x-x_0)"
+      ],
+      "dica": "Se conhece dois pontos, primeiro calcule m=Δy/Δx.",
+      "erroComum": "Reta vertical x=3 não tem equação reduzida y=mx+n."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Encontre a reta de coeficiente angular 2 passando por (1,3).",
+        "passos": [
+          "y−3=2(x−1).",
+          "y=2x+1."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Reta com m=3 passando por (0,2):",
+      "opcoes": [
+        "y=3x+2",
+        "y=2x+3",
+        "y=3x−2",
+        "x=3"
+      ],
+      "correta": 0,
+      "explicacao": "Intercepto 2, inclinação 3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma reta vertical passando por (5,1) é:",
+      "opcoes": [
+        "y=5",
+        "x=1",
+        "x=5",
+        "y=x+4"
+      ],
+      "correta": 2,
+      "explicacao": "Em reta vertical a coordenada x é fixa."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "O volume de qualquer prisma é a área da base vezes a altura perpendicular. O princípio de Cavalieri compara sólidos com secções correspondentes de mesma área e alturas iguais."
+      ],
+      "formulas": [
+        "V=A_bh"
+      ],
+      "dica": "Volume mede espaço e aparece em unidade cúbica.",
+      "erroComum": "Se o prisma for oblíquo, a altura não é a medida da aresta lateral."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Uma caixa mede 3 m por 4 m por 5 m. Qual volume?",
+        "passos": [
+          "Área da base: 3·4=12 m².",
+          "V=12·5=60 m³."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Um prisma tem A_b=10 e h=6. Volume =",
+      "opcoes": [
+        "16",
+        "30",
+        "60",
+        "100"
+      ],
+      "correta": 2,
+      "explicacao": "V=10·6=60."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Diagonal espacial de cubo com aresta 2:",
+      "opcoes": [
+        "2√2",
+        "2√3",
+        "4",
+        "6"
+      ],
+      "correta": 1,
+      "explicacao": "d=a√3=2√3."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

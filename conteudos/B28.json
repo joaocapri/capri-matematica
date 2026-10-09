@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Uma esfera inscrita num cubo toca as seis faces: diâmetro igual à aresta. Já a esfera circunscrita passa pelos oito vértices: diâmetro igual à diagonal espacial do cubo."
+      ],
+      "formulas": [
+        "r_{in}=\\frac a2,\\quad R_{circ}=\\frac{a\\sqrt3}{2}"
+      ],
+      "dica": "Desenhe os centros coincidentes das esferas e do cubo.",
+      "erroComum": "Na circunscrição, usar diagonal de face a√2 dá raio errado."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Cubo de aresta 6: raios das esferas inscrita e circunscrita?",
+        "passos": [
+          "Inscrita: r=6/2=3.",
+          "Circunscrita: R=6√3/2=3√3."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Inscrita em cubo de aresta 8: raio =",
+      "opcoes": [
+        "2",
+        "4",
+        "4√2",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "Raio metade da aresta: 4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Circunscrita a cubo aresta 2: raio =",
+      "opcoes": [
+        "1",
+        "√2",
+        "√3",
+        "2"
+      ],
+      "correta": 2,
+      "explicacao": "R=a√3/2=√3."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

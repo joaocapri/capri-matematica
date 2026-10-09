@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Uma projeção ortogonal é como a sombra lançada por raios perpendiculares ao plano. A altura de um sólido é a distância perpendicular entre os planos de base; uma aresta inclinada não é automaticamente uma altura."
+      ],
+      "formulas": [
+        "d=\\sqrt{h^2+p^2}"
+      ],
+      "dica": "Procure o segmento que faz 90° com o plano, não com uma reta qualquer.",
+      "erroComum": "Projeção de um segmento pode encolher; não mantém necessariamente seu comprimento."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Uma haste de 5 m projeta sombra horizontal de 3 m. Qual a altura da extremidade?",
+        "passos": [
+          "O triângulo entre haste, projeção e altura é retângulo.",
+          "h²+3²=5² ⇒ h=4 m."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "A projeção ortogonal sobre um plano ocorre por retas:",
+      "opcoes": [
+        "Paralelas ao plano",
+        "Perpendiculares ao plano",
+        "Oblíquas quaisquer",
+        "Circulares"
+      ],
+      "correta": 1,
+      "explicacao": "As retas projetantes são perpendiculares ao plano."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Hipotenusa 13 e projeção horizontal 5: altura =",
+      "opcoes": [
+        "5",
+        "8",
+        "12",
+        "18"
+      ],
+      "correta": 2,
+      "explicacao": "h=√(169−25)=12."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

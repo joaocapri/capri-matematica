@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "O volume da esfera mede o espaço ocupado por ela. Fatiamentos como calotas e cunhas exigem identificar altura ou ângulo; o volume inteiro é uma boa referência para conferir o resultado."
+      ],
+      "formulas": [
+        "V=\\frac43\\pi r^3"
+      ],
+      "dica": "Quando o enunciado falar em diâmetro, divida por 2 antes de substituir.",
+      "erroComum": "Não esqueça o cubo do raio: volume escala em r³."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Esfera com raio 3: volume?",
+        "passos": [
+          "r³=27.",
+          "V=(4/3)π·27=36π."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Esfera r=2 tem volume:",
+      "opcoes": [
+        "8π/3",
+        "16π/3",
+        "32π/3",
+        "64π/3"
+      ],
+      "correta": 2,
+      "explicacao": "(4/3)π·8=32π/3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Raio dobra: o volume fica:",
+      "opcoes": [
+        "2 vezes",
+        "4 vezes",
+        "8 vezes",
+        "16 vezes"
+      ],
+      "correta": 2,
+      "explicacao": "Volume proporcional a r³: 2³=8."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

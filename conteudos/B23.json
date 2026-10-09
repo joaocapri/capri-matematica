@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Cilindro circular reto pode ser visto como um retângulo girando em torno de um de seus lados. O volume é área da base circular vezes altura; a lateral aberta vira um retângulo."
+      ],
+      "formulas": [
+        "V=\\pi r^2h,\\quad A_T=2\\pi r(r+h)"
+      ],
+      "dica": "Para a lateral de cilindro reto, use perímetro da base × altura.",
+      "erroComum": "Não confunda raio com diâmetro na fórmula."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Cilindro com raio 3 e altura 4: volume?",
+        "passos": [
+          "Base: π·3²=9π.",
+          "V=9π·4=36π."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Cilindro de r=2,h=5 tem volume:",
+      "opcoes": [
+        "10π",
+        "20π",
+        "40π",
+        "50π"
+      ],
+      "correta": 1,
+      "explicacao": "π·2²·5=20π."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Área lateral de cilindro reto r=3,h=2:",
+      "opcoes": [
+        "6π",
+        "12π",
+        "18π",
+        "24π"
+      ],
+      "correta": 1,
+      "explicacao": "2πrh=12π."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

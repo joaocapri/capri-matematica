@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Poliedros são sólidos limitados por faces poligonais. Nos poliedros convexos vale a relação de Euler: vértices menos arestas mais faces é igual a 2."
+      ],
+      "formulas": [
+        "V-A+F=2"
+      ],
+      "dica": "Confira se o sólido é convexo antes de usar Euler sem ressalvas.",
+      "erroComum": "Corpos redondos, como esfera, não são poliedros."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Um poliedro convexo tem 8 vértices e 6 faces. Quantas arestas?",
+        "passos": [
+          "Euler: 8−A+6=2.",
+          "A=12 arestas."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Um cubo tem quantas arestas?",
+      "opcoes": [
+        "6",
+        "8",
+        "12",
+        "16"
+      ],
+      "correta": 2,
+      "explicacao": "São 12 arestas."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se V=6 e F=5, A é:",
+      "opcoes": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "6−A+5=2 ⇒ A=9."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

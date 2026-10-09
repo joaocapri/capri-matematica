@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Em três dimensões, cada ponto tem coordenadas (x,y,z); a distância mantém a ideia de Pitágoras, agora com três diferenças ao quadrado. Esferas no espaço usam a distância a um centro."
+      ],
+      "formulas": [
+        "d=\\sqrt{(\\Delta x)^2+(\\Delta y)^2+(\\Delta z)^2}"
+      ],
+      "dica": "Pense em x e y como piso e z como altura.",
+      "erroComum": "Em 3D, projeção em plano xy não conserva a coordenada z."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Distância de (1,2,3) a (4,6,3).",
+        "passos": [
+          "Diferenças: 3,4,0.",
+          "d=√(9+16)=5."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Distância entre origem e (1,2,2) =",
+      "opcoes": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correta": 1,
+      "explicacao": "√(1+4+4)=3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Centro da esfera (x−1)²+(y+2)²+(z−3)²=16:",
+      "opcoes": [
+        "(1,−2,3)",
+        "(−1,2,−3)",
+        "(1,2,3)",
+        "(4,4,4)"
+      ],
+      "correta": 0,
+      "explicacao": "Centro obtido com sinais trocados dentro dos parênteses."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Semelhança conserva forma. Se as dimensões lineares multiplicam por k, áreas multiplicam por k² e volumes por k³. Isso explica por que maquetes e objetos reais têm massas tão diferentes."
+      ],
+      "formulas": [
+        "A_2/A_1=k^2,\\quad V_2/V_1=k^3"
+      ],
+      "dica": "Mesma densidade? Então massa acompanha a razão de volumes.",
+      "erroComum": "Raio duplicado não significa volume duplicado."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Um cubo dobra sua aresta. O que ocorre com área e volume?",
+        "passos": [
+          "Área: multiplica por 2²=4.",
+          "Volume: multiplica por 2³=8."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Razão linear 3 significa volumes na razão:",
+      "opcoes": [
+        "3",
+        "6",
+        "9",
+        "27"
+      ],
+      "correta": 3,
+      "explicacao": "3³=27."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se a área quadruplica, a razão linear positiva é:",
+      "opcoes": [
+        "2",
+        "4",
+        "8",
+        "16"
+      ],
+      "correta": 0,
+      "explicacao": "k²=4 ⇒ k=2."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

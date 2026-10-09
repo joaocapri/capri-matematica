@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Sólidos gerados por rotação devem ser decompostos em partes conhecidas ou em diferença de volumes. Cuidado: girar uma região e girar apenas o seu contorno produzem objetos de naturezas diferentes."
+      ],
+      "formulas": [
+        "V_{\\text{composto}}=V_1+V_2- V_{\\text{sobreposi\\c c\\~oes}}"
+      ],
+      "dica": "Marque regiões vazias antes de decidir se soma ou subtrai.",
+      "erroComum": "Não some volumes de peças sobrepostas sem descontar a região comum."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Um cilindro de volume 80 cm³ contém uma cavidade cônica de volume 20 cm³. Qual volume de material?",
+        "passos": [
+          "Partimos do cilindro completo, 80.",
+          "Retiramos o cone vazado, 20.",
+          "Restam 60 cm³."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Um sólido com volume 50 e uma cavidade de volume 15 tem volume útil:",
+      "opcoes": [
+        "35",
+        "50",
+        "65",
+        "750"
+      ],
+      "correta": 0,
+      "explicacao": "50−15=35."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Girar um retângulo em torno de um de seus lados produz:",
+      "opcoes": [
+        "Esfera",
+        "Cone",
+        "Cilindro reto",
+        "Pirâmide"
+      ],
+      "correta": 2,
+      "explicacao": "A região retangular gera um cilindro circular reto."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "A área de uma esfera depende somente de seu raio. Ao contrário de um círculo, a esfera é uma superfície tridimensional: sua medida é expressa em unidades quadradas."
+      ],
+      "formulas": [
+        "A=4\\pi r^2"
+      ],
+      "dica": "Se o raio dobra, a área quadruplica.",
+      "erroComum": "Área da superfície não é πr²: essa é a área de um disco."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Esfera com raio 3: área da superfície?",
+        "passos": [
+          "A=4π·9.",
+          "A=36π unidades²."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Esfera com r=2: área =",
+      "opcoes": [
+        "4π",
+        "8π",
+        "16π",
+        "32π"
+      ],
+      "correta": 2,
+      "explicacao": "4π·2²=16π."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se o raio triplica, a área da esfera fica:",
+      "opcoes": [
+        "3 vezes",
+        "6 vezes",
+        "9 vezes",
+        "27 vezes"
+      ],
+      "correta": 2,
+      "explicacao": "Área proporcional a r², então 3²=9."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

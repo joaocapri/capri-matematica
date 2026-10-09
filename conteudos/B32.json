@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Questões integradas exigem conectar uma figura plana ao sólido: primeiro ache área, altura ou raio; depois aplique volume ou área superficial. Organize as unidades e verifique o resultado."
+      ],
+      "formulas": [
+        "V=A_bh\\quad(\\text{prisma})"
+      ],
+      "dica": "Uma boa pergunta é: 'qual figura plana aparece na base?'",
+      "erroComum": "Não use perímetro no lugar de área da base."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Um prisma reto tem base triangular retângula de catetos 3 e 4 e altura 10. Volume?",
+        "passos": [
+          "Base triangular: 3·4/2=6.",
+          "Volume: 6·10=60 unidades³."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Base triangular de área 12, prisma altura 5: volume =",
+      "opcoes": [
+        "17",
+        "30",
+        "60",
+        "120"
+      ],
+      "correta": 2,
+      "explicacao": "V=12·5=60."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A área de triângulo retângulo catetos 6 e 8 é:",
+      "opcoes": [
+        "14",
+        "24",
+        "48",
+        "96"
+      ],
+      "correta": 1,
+      "explicacao": "6·8/2=24."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

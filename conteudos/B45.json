@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Produto escalar pode ser calculado por coordenadas ou pelos módulos e cosseno do ângulo. Quando vale zero para vetores não nulos, os vetores são perpendiculares."
+      ],
+      "formulas": [
+        "\\vec u\\cdot\\vec v=u_xv_x+u_yv_y=\\|u\\|\\|v\\|\\cos\\theta"
+      ],
+      "dica": "Se o ângulo é obtuso, o produto escalar é negativo.",
+      "erroComum": "Produto escalar devolve número, não vetor."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Dados u=(2,1) e v=(−1,2), calcule o produto escalar.",
+        "passos": [
+          "2·(−1)+1·2=−2+2=0.",
+          "São ortogonais, pois ambos não são nulos."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "(1,2)·(3,4) =",
+      "opcoes": [
+        "7",
+        "10",
+        "11",
+        "14"
+      ],
+      "correta": 2,
+      "explicacao": "1·3+2·4=11."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Quando u·v=0 e ambos não nulos, o ângulo é:",
+      "opcoes": [
+        "0°",
+        "45°",
+        "90°",
+        "180°"
+      ],
+      "correta": 2,
+      "explicacao": "Cosseno zero ⇒ θ=90°."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

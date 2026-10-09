@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Tronco de cone resulta de cortar um cone por plano paralelo à base. Seu volume depende dos dois raios e da altura, enquanto a área lateral depende da geratriz do tronco."
+      ],
+      "formulas": [
+        "V=\\frac{\\pi h}{3}(R^2+Rr+r^2)"
+      ],
+      "dica": "Para achar geratriz do tronco reto: g²=h²+(R−r)².",
+      "erroComum": "Não substitua R+r por R−r na relação da geratriz."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Tronco com R=3,r=1,h=3. Calcule V.",
+        "passos": [
+          "Dentro do parêntese: 9+3+1=13.",
+          "π·3/3·13=13π."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "R=2,r=1,h=3: volume do tronco =",
+      "opcoes": [
+        "3π",
+        "7π",
+        "9π",
+        "14π"
+      ],
+      "correta": 1,
+      "explicacao": "(π·3/3)(4+2+1)=7π."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Para tronco reto, com h=4 e R−r=3, geratriz =",
+      "opcoes": [
+        "3",
+        "4",
+        "5",
+        "7"
+      ],
+      "correta": 2,
+      "explicacao": "g=√(16+9)=5."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Inscrição e circunscrição conectam dois sólidos por tangência. Num cilindro reto circunscrito a uma esfera de raio R, raio do cilindro R e altura 2R. Compare áreas e volumes com cuidado."
+      ],
+      "formulas": [
+        "h_{cil}=2R,\\quad r_{cil}=R"
+      ],
+      "dica": "Identifique os pontos de tangência antes de montar as equações.",
+      "erroComum": "Nem todo cone circunscrito a uma esfera tem uma fórmula única sem outras medidas."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Uma esfera de raio 3 está inscrita em um cilindro reto ajustado a ela. Dimensões do cilindro?",
+        "passos": [
+          "Raio do cilindro: 3.",
+          "Altura: diâmetro da esfera=6."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Esfera de raio 5 inscrita em cilindro reto: altura =",
+      "opcoes": [
+        "5",
+        "10",
+        "15",
+        "25"
+      ],
+      "correta": 1,
+      "explicacao": "h=2R=10."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Raio do cilindro circunscrito à esfera de raio 4:",
+      "opcoes": [
+        "2",
+        "4",
+        "8",
+        "16"
+      ],
+      "correta": 1,
+      "explicacao": "O raio lateral coincide com o raio da esfera."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

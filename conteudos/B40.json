@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Hipérbole reúne pontos cujo módulo da diferença das distâncias a dois focos é constante. Seus ramos se aproximam de assíntotas; na forma horizontal, c²=a²+b²."
+      ],
+      "formulas": [
+        "\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1,\\quad c^2=a^2+b^2"
+      ],
+      "dica": "Assíntotas da hipérbole horizontal central: y=±(b/a)x.",
+      "erroComum": "Na hipérbole não vale c²=a²−b², que é relação da elipse."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Hipérbole x²/9−y²/16=1. Qual distância do centro aos focos?",
+        "passos": [
+          "a=3 e b=4.",
+          "c²=9+16=25.",
+          "c=5."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em x²/4−y²/9=1, c vale:",
+      "opcoes": [
+        "1",
+        "√5",
+        "√13",
+        "5"
+      ],
+      "correta": 2,
+      "explicacao": "c²=4+9=13."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A hipérbole horizontal x²/9−y²/4=1 tem assíntotas:",
+      "opcoes": [
+        "y=±(2/3)x",
+        "y=±(3/2)x",
+        "y=±x",
+        "y=±3x"
+      ],
+      "correta": 0,
+      "explicacao": "Assíntotas y=±(b/a)x=±(2/3)x."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}
