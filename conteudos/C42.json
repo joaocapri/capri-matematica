@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Equações trigonométricas costumam ter infinitas soluções porque seno e cosseno são periódicos. Encontre as soluções na primeira volta e depois some voltas completas."
+      ],
+      "formulas": [
+        "\\sin x=0\\Longleftrightarrow x=k\\pi,\\quad k\\in\\mathbb Z"
+      ],
+      "dica": "Registre primeiro o intervalo pedido, depois generalize.",
+      "erroComum": "Se o enunciado pede primeira volta, não acrescente soluções fora dela."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva senx=1/2, 0≤x<2π.",
+        "passos": [
+          "Ângulo de referência π/6.",
+          "Seno positivo em QI e QII.",
+          "Soluções π/6 e 5π/6."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "No intervalo [0,2π), cosx=1 em:",
+      "opcoes": [
+        "0 apenas",
+        "π apenas",
+        "0 e 2π",
+        "π/2"
+      ],
+      "correta": 0,
+      "explicacao": "2π está excluído no intervalo dado."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "senx=0 no intervalo [0,2π) tem soluções:",
+      "opcoes": [
+        "0 apenas",
+        "π apenas",
+        "0 e π",
+        "0,π e 2π"
+      ],
+      "correta": 2,
+      "explicacao": "2π está excluído."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

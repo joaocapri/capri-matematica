@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Média é o valor que equilibra a soma dos dados. A média simples divide a soma pelo número de observações; com pesos ou frequências, cada valor contribui proporcionalmente."
+      ],
+      "formulas": [
+        "\\bar x=\\frac{\\sum x_i}{n}"
+      ],
+      "dica": "Se todos os dados aumentam 2, a média também aumenta 2.",
+      "erroComum": "Média não é necessariamente um valor que aparece nos dados."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Notas 6, 7 e 8: calcule a média.",
+        "passos": [
+          "Soma 21.",
+          "Divida por 3: média 7."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Média de 2,4,6,8:",
+      "opcoes": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correta": 1,
+      "explicacao": "(2+4+6+8)/4=5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Média ponderada de 6 com peso 1 e 9 com peso 2:",
+      "opcoes": [
+        "7",
+        "8",
+        "8,5",
+        "9"
+      ],
+      "correta": 1,
+      "explicacao": "(6+18)/3=8."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

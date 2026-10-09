@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Transformação em produto reescreve soma de senos/cossenos como produto. Em equações trigonométricas, isso permite fatorar a expressão e separar os casos em vez de somar frações complicadas."
+      ],
+      "formulas": [
+        "\\sin a+\\sin b=2\\sin\\frac{a+b}{2}\\cos\\frac{a-b}{2}"
+      ],
+      "dica": "Produto zero permite resolver equações por fatores.",
+      "erroComum": "A fórmula do cos(a)+cos(b) usa cos da semissoma, não sen."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Simplifique sen50°+sen10°.",
+        "passos": [
+          "Soma média 30°, meia diferença 20°.",
+          "2 sen30° cos20°=cos20°."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "sen50°+sen10° é igual a:",
+      "opcoes": [
+        "sen20°",
+        "cos20°",
+        "2cos30°",
+        "1"
+      ],
+      "correta": 1,
+      "explicacao": "2sen30cos20=cos20."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "senx+s en(−x) sempre seria:",
+      "opcoes": [
+        "0",
+        "1",
+        "2senx",
+        "cosx"
+      ],
+      "correta": 0,
+      "explicacao": "O seno é ímpar: sen(−x)=−senx."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

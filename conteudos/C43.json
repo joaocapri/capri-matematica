@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Resolver inequações trigonométricas é selecionar arcos onde a coordenada seno ou cosseno atende à condição. O ciclo ajuda a identificar intervalos e pontos incluídos."
+      ],
+      "formulas": [
+        "\\sin x>0\\quad\\text{em}\\quad(0,\\pi)\\ \\text{m\\'odulo }2\\pi"
+      ],
+      "dica": "Desenhe os quadrantes e marque as extremidades conforme < ou ≤.",
+      "erroComum": "Não confunda as zonas positivas de seno (parte superior) e cosseno (parte direita)."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva senx≥0 em [0,2π).",
+        "passos": [
+          "Seno é a coordenada vertical no ciclo.",
+          "Não negativo do ângulo 0 até π, inclusive.",
+          "Resposta [0,π]."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "No intervalo [0,2π), cosx<0 quando:",
+      "opcoes": [
+        "0<x<π",
+        "π/2<x<3π/2",
+        "π<x<2π",
+        "x=π/2"
+      ],
+      "correta": 1,
+      "explicacao": "No semicírculo esquerdo."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "senx>0 em [0,2π) quando:",
+      "opcoes": [
+        "0<x<π",
+        "π<x<2π",
+        "0≤x≤π",
+        "Todo x"
+      ],
+      "correta": 0,
+      "explicacao": "Acima do eixo horizontal, sem os zeros."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

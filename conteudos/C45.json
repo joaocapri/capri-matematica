@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Matrizes organizam dados em linhas e colunas. Soma exige mesmas dimensões; produto de A(m×n) por B(n×p) existe e resulta em matriz m×p."
+      ],
+      "formulas": [
+        "(AB)_{ij}=\\sum_k a_{ik}b_{kj}"
+      ],
+      "dica": "Confira dimensões antes de qualquer multiplicação.",
+      "erroComum": "Em geral AB≠BA; multiplicação de matrizes não é comutativa."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Multiplique [1 2] por coluna [3;4].",
+        "passos": [
+          "Multiplique e some: 1·3+2·4=11.",
+          "Resultado matriz 1×1 [11]."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Produto de matriz 2×3 com 3×4 tem dimensão:",
+      "opcoes": [
+        "2×4",
+        "3×3",
+        "4×2",
+        "Não existe"
+      ],
+      "correta": 0,
+      "explicacao": "Linhas da primeira, colunas da segunda: 2×4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Matrizes só podem ser somadas se tiverem:",
+      "opcoes": [
+        "Mesmo determinante",
+        "Mesma ordem",
+        "Mesmo número de zeros",
+        "Mesma transposta"
+      ],
+      "correta": 1,
+      "explicacao": "Soma é elemento a elemento."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

@@ -1,0 +1,59 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "O ciclo trigonométrico usa a circunferência de raio 1. Ângulos que diferem de voltas completas têm o mesmo ponto terminal; o arco reduzido ajuda a estudar sinais e simetrias."
+      ],
+      "formulas": [
+        "\\theta\\sim\\theta+2k\\pi,\\quad k\\in\\mathbb Z"
+      ],
+      "dica": "Reduza o ângulo módulo 360° antes de desenhar.",
+      "erroComum": "Arcos côngruos podem ter medidas diferentes, mas o mesmo ponto no ciclo."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Qual é a primeira determinação não negativa de 450°?",
+        "passos": [
+          "Subtraia 360°: 450°−360°=90°."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "810° é côngruo a:",
+      "opcoes": [
+        "45°",
+        "90°",
+        "180°",
+        "270°"
+      ],
+      "correta": 1,
+      "explicacao": "810−720=90."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma volta completa em radianos:",
+      "opcoes": [
+        "π/2",
+        "π",
+        "3π/2",
+        "2π"
+      ],
+      "correta": 3,
+      "explicacao": "Uma volta=2π."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

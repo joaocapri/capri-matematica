@@ -1,0 +1,59 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "No triângulo retângulo, seno relaciona cateto oposto e hipotenusa; cosseno, adjacente e hipotenusa; tangente, oposto e adjacente. Identifique o ângulo de referência antes de substituir."
+      ],
+      "formulas": [
+        "\\sin\\theta=\\frac{op}{hip},\\quad\\cos\\theta=\\frac{adj}{hip},\\quad\\tan\\theta=\\frac{op}{adj}"
+      ],
+      "dica": "O cateto 'oposto' depende do ângulo escolhido.",
+      "erroComum": "Seno e cosseno de ângulos agudos são menores que ou iguais a 1."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Um triângulo tem hipotenusa 10 e cateto oposto 6. Seno do ângulo?",
+        "passos": [
+          "senθ=6/10=3/5."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Triângulo retângulo oposto=3,hipotenusa=5: senθ =",
+      "opcoes": [
+        "3/4",
+        "3/5",
+        "4/5",
+        "5/3"
+      ],
+      "correta": 1,
+      "explicacao": "Definição de seno."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Tangente de 45° é:",
+      "opcoes": [
+        "0",
+        "1/2",
+        "1",
+        "√3"
+      ],
+      "correta": 2,
+      "explicacao": "Catetos iguais ⇒ oposto/adjacente=1."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

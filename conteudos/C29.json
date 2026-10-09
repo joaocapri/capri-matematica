@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Mediana é o valor central após ordenar os dados; moda é o valor mais frequente. Elas ajudam quando poucos valores extremos distorcem a média."
+      ],
+      "formulas": [
+        "\\mathrm{Mediana}(x_1,\\ldots,x_n)=\\text{valor central ordenado}"
+      ],
+      "dica": "Para número par de observações, use média dos dois termos centrais.",
+      "erroComum": "Sem ordenar os dados, você pode localizar mediana errada."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Dados 2,3,3,5,20. Encontre mediana e moda.",
+        "passos": [
+          "Já estão em ordem.",
+          "O terceiro valor é 3: mediana 3.",
+          "O valor 3 ocorre duas vezes: moda 3."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Mediana de 1,2,7,9:",
+      "opcoes": [
+        "2",
+        "4,5",
+        "7",
+        "9"
+      ],
+      "correta": 1,
+      "explicacao": "Termos centrais 2 e 7; média 4,5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Moda de 4,4,5,6,6,6:",
+      "opcoes": [
+        "4",
+        "5",
+        "6",
+        "Não existe"
+      ],
+      "correta": 2,
+      "explicacao": "6 é o mais frequente."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

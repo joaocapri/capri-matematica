@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Tangente é sen/cos, definida quando cos≠0. Secante é o inverso do cosseno e cossecante, o inverso do seno, respeitando seus domínios."
+      ],
+      "formulas": [
+        "\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta},\\quad\\sin^2\\theta+\\cos^2\\theta=1"
+      ],
+      "dica": "A relação fundamental costuma ser mais rápida que desenhar triângulo para ângulos gerais.",
+      "erroComum": "Tangente não existe em π/2+kπ."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Se senθ=3/5 e θ está no QI, calcule cosθ e tanθ.",
+        "passos": [
+          "cos²=1−9/25=16/25 ⇒ cos=4/5.",
+          "tan=(3/5)/(4/5)=3/4."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "tan45° =",
+      "opcoes": [
+        "0",
+        "1",
+        "√2",
+        "√3"
+      ],
+      "correta": 1,
+      "explicacao": "sen45°=cos45° ⇒ tangente 1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Secante de 60° =",
+      "opcoes": [
+        "1/2",
+        "1",
+        "2",
+        "√3"
+      ],
+      "correta": 2,
+      "explicacao": "sec60°=1/cos60°=2."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}
