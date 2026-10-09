@@ -50,3 +50,7 @@ O currículo é a ementa, **não teoria final**. Algumas fórmulas matemáticas 
 
 ## Produção semi-automatizada de conteúdo
 Consulte `PADRAO_EDITORIAL.md`. A aula A17 é um **piloto publicado**, com teoria, sugestões de vídeos verificadas, quiz e uma lista A4 imprimível com gabarito separado.
+
+
+## Área central de listas e PDFs
+O destaque da home é a biblioteca, com pesquisa em tempo real e índice `data/materiais.json`. Atualize esse índice sempre que publicar ou retirar PDFs. `Listas e PDFs` é a primeira aba de todas as aulas e abre por padrão quando há arquivos. A antiga aba `Exercícios` foi retirada; atividades curtas existentes agora aparecem na área de materiais.

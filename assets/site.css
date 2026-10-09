@@ -15,3 +15,37 @@
 .video-grid{display:grid;gap:14px}.video-card{display:grid;grid-template-columns:50px 1fr 20px;gap:15px;background:#fffefa;border:2px solid #312441;border-radius:15px;padding:18px;align-items:center;box-shadow:3px 3px 0 #dfd5ee}.video-card:hover{background:#f7f0ff;transform:translateY(-2px)}.video-play{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:#d3fc61;border:2px solid #2d2342;color:#4a27b7}.video-card small{font-size:11px;color:#6e569c;font-weight:800}.video-card h3{margin:3px 0;font-size:17px}.video-card p{margin:4px 0 0;font-size:12px}.video-arrow{font-size:23px}.small-explainer{font-size:12px!important;color:#777385!important;margin:17px 2px 23px}
 .quiz-meta{display:flex;justify-content:space-between;font-size:12px;font-weight:900;color:#655c75}.quiz-track{width:100%;height:9px;border-radius:10px;background:#ebe6f4;overflow:hidden;margin:12px 0 22px}.quiz-track span{display:block;height:100%;background:#4a27b7;transition:width .2s}.quiz-question{padding:22px;border:2px solid #302345;border-radius:20px;background:#fdfbf7}.quiz-question h3{font:700 22px/1.35 'Space Grotesk';margin:16px 0 20px}.quiz-options{display:grid;gap:10px}.quiz-option{display:flex;align-items:center;gap:13px;text-align:left;border:2px solid #e2dae9;border-radius:12px;background:#fff;padding:11px 14px;color:#322848;font-size:14px;font-weight:650}.quiz-option:hover:not(:disabled){border-color:#4a27b7;background:#f7f1ff}.quiz-option .letter{display:grid;place-items:center;width:29px;height:29px;flex-shrink:0;border-radius:8px;background:#eee7fa;color:#4a27b7;font-size:12px;font-weight:900}.quiz-option.correct{background:#e2f8b6;border-color:#74a82d}.quiz-option.incorrect{background:#ffe4df;border-color:#df6654}.quiz-feedback{background:#f3eefc;border-radius:12px;padding:17px 20px;margin-top:17px}.quiz-feedback>b{font:700 18px 'Space Grotesk'}.quiz-feedback p{font-size:13px}.quiz-score{text-align:center;background:#d3fc61;border:2px solid #211946;border-radius:20px;padding:30px}.quiz-score .emoji{font-size:36px}.quiz-score h3{font-size:30px}.quiz-score .big-score{font:700 60px 'Space Grotesk'}
 @media(max-width:650px){.tabs{gap:5px}.tab{padding:9px 10px;font-size:11px}.quiz-question{padding:15px}.quiz-question h3{font-size:19px}.video-card{grid-template-columns:36px 1fr 15px;gap:10px;padding:13px}.video-play{width:36px;height:36px}.video-card h3{font-size:14px}}
+
+/* Biblioteca de materiais prioritária */
+html{scroll-padding-top:88px}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:18px 0 13px}
+.hero-files-link{display:inline-flex;align-items:center;gap:8px;background:#d3fc61;border:2px solid #211946;color:#211946;font-weight:900;border-radius:13px;padding:12px 18px;box-shadow:4px 4px 0 #211946;font-size:13px}.hero-files-link:hover{transform:translateY(-2px)}
+.hero-small-link{color:#fff;font-weight:800;font-size:13px}
+.library-hub{background:#d3fc61;border:2px solid #211946;border-radius:25px;padding:31px;margin:4px 0 56px;box-shadow:6px 6px 0 #211946}
+.library-hub-top{display:flex;justify-content:space-between;align-items:center;gap:18px}
+.library-hub h2{font:700 clamp(35px,4.5vw,56px)/1 'Space Grotesk',sans-serif;letter-spacing:-2px;margin:13px 0}.library-hub h2 span{color:#4a27b7}
+.library-hub p{max-width:650px;font-size:14px;line-height:1.6;margin:0 0 18px}.library-icon{font-size:74px;transform:rotate(-12deg)}
+.library-search-label{display:flex;gap:12px;align-items:center;background:#fff;border:2px solid #211946;box-shadow:4px 4px 0 #211946;border-radius:14px;padding:8px 17px;max-width:665px}
+.library-search-label span{font-size:26px}.library-search-label input{border:0;outline:0;flex:1;min-width:0;width:100%;padding:11px 0;font-size:15px;color:#211946}
+.library-count{font-size:12px!important;font-weight:800;color:#4a386e;margin:18px 0 12px!important}
+.library-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.library-card{background:#fffefa;border:2px solid #211946;border-radius:17px;padding:17px}
+.library-card-head{display:flex;gap:10px;align-items:center}.library-card-head>span:nth-child(2){flex:1}
+.library-card-head strong{display:block;font:700 17px 'Space Grotesk';line-height:1.25}
+.library-card-head small{display:block;font-size:11px;color:#6a6174;margin-top:5px}
+.library-code{background:#4a27b7;color:#fff;border-radius:9px;font:800 12px 'DM Sans';padding:9px}
+.library-open{font-size:23px;font-weight:900}
+.library-files{display:grid;gap:7px;margin-top:17px}.library-file{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#f5f1fc;border:1px solid #e5ddf2;border-radius:10px;padding:12px;font-size:12px;font-weight:750}.library-file:hover{background:#eee2ff}
+.library-file b{flex-shrink:0;font-size:11px;color:#4a27b7}
+.library-empty{grid-column:1/-1;border:2px dashed #665285;border-radius:12px;padding:21px;background:#f9ffe0;font-weight:700;color:#524267;font-size:13px}
+.material-spotlight{display:flex;align-items:center;gap:14px;background:#d3fc61;border:2px solid #211946;box-shadow:4px 4px 0 #211946;border-radius:17px;padding:15px 18px;margin:0 0 24px}
+.material-spotlight-symbol{font-size:29px}.material-spotlight>div:nth-child(2){flex:1;min-width:0}
+.material-spotlight strong{font:700 18px 'Space Grotesk'}.material-spotlight p{color:#574878;font-size:12px;margin:5px 0 0}
+.material-spotlight-button{background:#4a27b7;color:#fff;border:2px solid #211946;border-radius:11px;padding:12px 16px;font-weight:900;white-space:nowrap}.material-spotlight-button:hover{transform:translateY(-2px)}
+.tab-featured{background:#d3fc61;border:2px solid #211946!important;color:#211946!important;font-size:14px!important;font-weight:900}
+.tab-featured.active{background:#4a27b7;color:#fff!important;box-shadow:3px 3px 0 #211946}
+.materials-tab-title{display:flex;justify-content:space-between;align-items:center;gap:13px;margin-bottom:20px}
+.materials-tab-title h2{font-size:30px;margin:10px 0 4px}.materials-tab-title p{margin:0;color:#615770;font-size:13px}
+.materials-tab-emoji{font-size:50px;color:#4a27b7;font-weight:900}
+.practice-inline{padding-top:17px;margin-top:18px;border-top:1px solid #e5deed}
+@media(max-width:700px){.library-hub{padding:20px;margin-bottom:40px;box-shadow:4px 4px 0 #211946}.library-hub h2{font-size:37px}.library-icon{font-size:44px}.library-results{grid-template-columns:1fr}.library-search-label input{font-size:13px}.material-spotlight{flex-wrap:wrap;gap:8px;padding:12px}.material-spotlight-button{flex:1;min-width:100%}.hero-actions{gap:12px}.hero-files-link{font-size:12px;padding:10px 13px}.tab-featured{font-size:12px!important}}

@@ -32,3 +32,9 @@ A aba **Listas e PDFs** cria links para \`/imprimir/?aula=A17&tipo=lista\` e \`t
 - Aula: \`/aulas/A17/\`
 - Lista imprimível: \`/imprimir/?aula=A17&tipo=lista\`
 - Gabarito: \`/imprimir/?aula=A17&tipo=gabarito\`
+
+## Regra de navegação — listas e PDFs
+- **Não criar aba Exercícios.** A tabulação agora é Listas e PDFs, Visão geral, Teoria, Quiz e Vídeos.
+- A biblioteca da home é abastecida pelo índice `data/materiais.json`; atualize-o ao publicar PDFs.
+- Atividades curtas antigas aparecem no interior de Listas e PDFs, sem aba separada.
+- Se o pedido excluir listas e PDFs, não gere arquivos nem novas entradas no índice.
