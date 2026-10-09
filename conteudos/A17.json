@@ -1,5 +1,5 @@
 {
-  "status": "piloto",
+  "status": "publicado",
   "versao": "1.0",
   "idioma": "pt-BR",
   "formato": "capri-mat-v1",
@@ -359,10 +359,5 @@
       "tipo": "gabarito",
       "url": "/pdfs/gabarito-A17.pdf"
     }
-  ],
-  "revisao": {
-    "geradoPor": "Assistente IA",
-    "status": "rascunho-pedagogico",
-    "notas": "Piloto demonstrativo. Recomenda-se revisão do professor antes de uso avaliativo. Todas as questões são autorais, inspiradas em habilidades cobradas em vestibulares, e não itens oficiais."
-  }
+  ]
 }
