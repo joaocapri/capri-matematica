@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de potenciação e notação científica",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Potências com a mesma base somam expoentes na multiplicação e subtraem na divisão. Expoente negativo representa inverso; expoente fracionário conecta potência à radiciação."
+      ],
+      "formulas": [
+        "a^m\\cdot a^n=a^{m+n}\\qquad a^{-n}=\\frac1{a^n}"
+      ],
+      "dica": "Em notação científica, deixe apenas um algarismo não nulo antes da vírgula.",
+      "erroComum": "(a+b)² não é a²+b²; as propriedades de potências não se aplicam a somas."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule (2³·2⁵)/2⁴.",
+        "passos": [
+          "Use a mesma base e trabalhe apenas os expoentes.",
+          "3+5−4=4.",
+          "Resultado: 2⁴=16."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual é o valor de 10⁻³?",
+      "opcoes": [
+        "−1000",
+        "−0,001",
+        "0,001",
+        "300"
+      ],
+      "correta": 2,
+      "explicacao": "10⁻³=1/1000=0,001."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "3×10⁴ equivale a:",
+      "opcoes": [
+        "300",
+        "3000",
+        "30 000",
+        "300 000"
+      ],
+      "correta": 2,
+      "explicacao": "Multiplicar por 10⁴ desloca quatro casas: 30 000."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: fundamentos de álgebra",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Uma coleção de videoaulas e exercícios para revisar fundamentos e notação.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-intro-to-algebra/alg-manipulating-expressions"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

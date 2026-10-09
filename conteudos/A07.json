@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de produto cartesiano e relações",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Um par ordenado guarda posição: (2,3) não é o mesmo que (3,2). O produto cartesiano A×B combina cada elemento de A com cada elemento de B."
+      ],
+      "formulas": [
+        "A\\times B=\\{(a,b)\\mid a\\in A,\\ b\\in B\\}"
+      ],
+      "dica": "A ordem dos conjuntos importa: A×B pode ser diferente de B×A.",
+      "erroComum": "Não trate (a,b) como um conjunto sem ordem."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Para A={1,2} e B={x,y}, construa A×B.",
+        "passos": [
+          "Pegue o 1 e combine com x e y.",
+          "Repita com o 2.",
+          "A×B={(1,x),(1,y),(2,x),(2,y)}."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "A tem 3 elementos e B tem 4. Quantos pares há em A×B?",
+      "opcoes": [
+        "7",
+        "12",
+        "16",
+        "1"
+      ],
+      "correta": 1,
+      "explicacao": "Cada um dos 3 elementos de A combina com os 4 de B: 3×4=12."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Qual par representa abscissa 4 e ordenada −2?",
+      "opcoes": [
+        "(−2,4)",
+        "(4,−2)",
+        "(2,4)",
+        "(−4,2)"
+      ],
+      "correta": 1,
+      "explicacao": "O primeiro valor é x (abscissa) e o segundo é y (ordenada)."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: funções",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Material de apoio sobre funções, domínio e composição.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

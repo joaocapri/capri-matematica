@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de sistemas lineares 2x2 e interpretação geométrica",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Duas equações com duas incógnitas representam retas. Se elas se cruzam, há solução única (SPD); se coincidem, infinitas (SPI); se são paralelas distintas, nenhuma (SI)."
+      ],
+      "formulas": [
+        "\\begin{cases}x+y=7\\\\x-y=1\\end{cases}"
+      ],
+      "dica": "Use adição quando uma incógnita aparece com coeficientes opostos.",
+      "erroComum": "Não confunda retas coincidentes (infinitas soluções) com paralelas distintas (nenhuma)."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva x+y=7 e x−y=1.",
+        "passos": [
+          "Some as equações: 2x=8.",
+          "x=4; substitua em x+y=7.",
+          "y=3, logo (x,y)=(4,3)."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O sistema x+y=6 e x−y=2 tem solução:",
+      "opcoes": [
+        "(2,4)",
+        "(3,3)",
+        "(4,2)",
+        "(5,1)"
+      ],
+      "correta": 2,
+      "explicacao": "Somando, 2x=8 ⇒ x=4 e y=2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Retas paralelas distintas representam um sistema:",
+      "opcoes": [
+        "SPD",
+        "SPI",
+        "SI",
+        "Sempre 2 soluções"
+      ],
+      "correta": 2,
+      "explicacao": "Não se cruzam, então não há par solução."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: funções afins e retas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Material com videoaulas e exercícios de funções lineares.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-linear-eq-func"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

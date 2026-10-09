@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de o conceito de função",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Função é uma regra que atribui a cada elemento do domínio exatamente uma imagem no contradomínio. Dois x diferentes podem chegar ao mesmo y; o mesmo x não pode apontar para duas saídas."
+      ],
+      "formulas": [
+        "f:A\\to B,\\quad x\\mapsto f(x)"
+      ],
+      "dica": "No gráfico, qualquer reta vertical deve encontrar no máximo um ponto.",
+      "erroComum": "Não confunda imagem da função com contradomínio: a imagem pode ser menor."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Considere f(x)=2x+1. Determine f(3).",
+        "passos": [
+          "Substitua a entrada x por 3.",
+          "f(3)=2·3+1.",
+          "A imagem de 3 é 7."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em uma função, cada entrada do domínio deve ter:",
+      "opcoes": [
+        "Duas imagens",
+        "Exatamente uma imagem",
+        "Nenhuma imagem",
+        "Sempre uma imagem diferente das outras"
+      ],
+      "correta": 1,
+      "explicacao": "Essa é a condição essencial para ser função."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se f(x)=x², qual é f(−3)?",
+      "opcoes": [
+        "−9",
+        "−6",
+        "6",
+        "9"
+      ],
+      "correta": 3,
+      "explicacao": "(−3)²=9."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: funções",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Material de apoio sobre funções, domínio e composição.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

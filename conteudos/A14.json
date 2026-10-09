@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de modelagem matemática e problemas de contexto",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Modelar é traduzir uma história para uma equação: identifique grandezas, unidade, parte fixa e parte variável. Depois interprete a resposta no contexto, não só na calculadora."
+      ],
+      "formulas": [
+        "\\text{lucro}=\\text{receita}-\\text{custo}"
+      ],
+      "dica": "Unidade é parte do raciocínio: reais, quilômetros, horas e quantidades não são intercambiáveis.",
+      "erroComum": "Não extrapole modelos lineares para situações em que a taxa não é constante."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Um serviço cobra R$ 20 fixos e R$ 5 por hora. Quanto custa 7 horas?",
+        "passos": [
+          "Monte C(t)=20+5t.",
+          "Faça C(7)=20+35.",
+          "Total: R$ 55."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Um produto custa R$ 15 por unidade. Receita por 8 unidades:",
+      "opcoes": [
+        "R$ 23",
+        "R$ 80",
+        "R$ 120",
+        "R$ 150"
+      ],
+      "correta": 2,
+      "explicacao": "R(q)=15q; R(8)=120."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se R(x)=10x e C(x)=2x+12, quando o lucro é zero?",
+      "opcoes": [
+        "x=1",
+        "x=1,5",
+        "x=6",
+        "x=12"
+      ],
+      "correta": 1,
+      "explicacao": "L=8x−12. Para L=0, x=12/8=1,5."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: funções afins e retas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Material com videoaulas e exercícios de funções lineares.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-linear-eq-func"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de gráficos e coeficientes",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "O gráfico de uma função afim é uma reta. O coeficiente angular é a razão entre a mudança vertical e a mudança horizontal; o zero aparece onde a reta cruza o eixo x."
+      ],
+      "formulas": [
+        "m=\\frac{\\Delta y}{\\Delta x}\\qquad ax+b=0\\Rightarrow x=-\\frac ba"
+      ],
+      "dica": "Dois pontos distintos bastam para determinar uma reta.",
+      "erroComum": "Intercepto em y é f(0); não confunda com zero da função."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Encontre o zero de f(x)=2x−8.",
+        "passos": [
+          "Iguale a zero: 2x−8=0.",
+          "2x=8 ⇒ x=4.",
+          "O ponto (4,0) pertence à reta."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "A reta passa por (0,1) e (2,5). Seu coeficiente angular é:",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correta": 1,
+      "explicacao": "m=(5−1)/(2−0)=2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O zero de f(x)=−3x+6 é:",
+      "opcoes": [
+        "−2",
+        "0",
+        "2",
+        "3"
+      ],
+      "correta": 2,
+      "explicacao": "−3x+6=0 ⇒ x=2."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: funções afins e retas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Material com videoaulas e exercícios de funções lineares.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-linear-eq-func"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

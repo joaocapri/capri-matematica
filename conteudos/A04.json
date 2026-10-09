@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de intervalos reais e inequações básicas",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Intervalos descrevem trechos da reta: colchete fechado inclui extremo; extremo aberto exclui. Inequações também descrevem conjuntos de números, não apenas uma resposta isolada."
+      ],
+      "formulas": [
+        "[a,b)=\\{x\\in\\mathbb R\\mid a\\leq x<b\\}"
+      ],
+      "dica": "A interseção mantém só a parte comum aos intervalos.",
+      "erroComum": "Ao multiplicar uma inequação por número negativo, inverta o sinal."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva 2x−3<7 e escreva o intervalo.",
+        "passos": [
+          "Some 3: 2x<10.",
+          "Divida por 2: x<5.",
+          "O conjunto solução é (−∞,5)."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "A interseção de [1,5] com (3,7) é:",
+      "opcoes": [
+        "[1,7)",
+        "(3,5]",
+        "[3,5]",
+        "(3,7)"
+      ],
+      "correta": 1,
+      "explicacao": "O 3 fica fora do segundo intervalo; 5 está dentro de ambos."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A solução de −2x>6 é:",
+      "opcoes": [
+        "x>−3",
+        "x<−3",
+        "x>3",
+        "x<3"
+      ],
+      "correta": 1,
+      "explicacao": "Dividindo por −2, o sinal inverte: x<−3."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: fundamentos de álgebra",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Uma coleção de videoaulas e exercícios para revisar fundamentos e notação.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-intro-to-algebra/alg-manipulating-expressions"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

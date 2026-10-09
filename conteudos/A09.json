@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de domínio, imagem e estudo gráfico",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Domínio indica entradas permitidas; imagem reúne as saídas efetivamente alcançadas. Frações proibem denominador zero, e raízes de índice par exigem radicando não negativo no conjunto dos reais."
+      ],
+      "formulas": [
+        "\\frac1{g(x)}:\\ g(x)\\neq0\\quad\\sqrt{h(x)}:\\ h(x)\\geq0"
+      ],
+      "dica": "Para estudar o sinal graficamente, olhe se o traço está acima ou abaixo do eixo x.",
+      "erroComum": "Uma função pode ter imagem diferente do contradomínio anunciado."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Encontre o domínio real de f(x)=√(x−2).",
+        "passos": [
+          "É raiz quadrada; imponha x−2≥0.",
+          "Logo, x≥2.",
+          "Domínio: [2,+∞)."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O domínio real de 1/(x−5) exclui:",
+      "opcoes": [
+        "0",
+        "1",
+        "5",
+        "−5"
+      ],
+      "correta": 2,
+      "explicacao": "Em x=5 o denominador zera."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A imagem de f(x)=x², com domínio R, é:",
+      "opcoes": [
+        "R",
+        "(−∞,0]",
+        "[0,+∞)",
+        "(0,+∞)"
+      ],
+      "correta": 2,
+      "explicacao": "Quadrados reais são não negativos e todo valor não negativo é atingido."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: funções",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Material de apoio sobre funções, domínio e composição.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

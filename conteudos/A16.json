@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de definição e concavidade",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Na parábola f(x)=ax²+bx+c, o sinal de a determina a abertura: positivo para cima e negativo para baixo. O termo c indica onde o gráfico cruza o eixo y."
+      ],
+      "formulas": [
+        "f(x)=ax^2+bx+c,\\qquad a\\neq0"
+      ],
+      "dica": "Antes de desenhar a parábola, anote concavidade, intercepto em y e vértice.",
+      "erroComum": "O sinal do coeficiente b, sozinho, não define concavidade."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Para f(x)=−2x²+3x+5, descreva a concavidade e a interseção com y.",
+        "passos": [
+          "a=−2<0: a concavidade é para baixo.",
+          "c=5: f(0)=5.",
+          "O gráfico cruza o eixo y em (0,5)."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em f(x)=4x²−x+2 a parábola é:",
+      "opcoes": [
+        "Voltada para baixo",
+        "Voltada para cima",
+        "Uma reta",
+        "Sempre tangente ao eixo x"
+      ],
+      "correta": 1,
+      "explicacao": "a=4>0, logo a concavidade é para cima."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A função f(x)=x²+2x−7 cruza o eixo y em:",
+      "opcoes": [
+        "(7,0)",
+        "(−7,0)",
+        "(0,−7)",
+        "(0,7)"
+      ],
+      "correta": 2,
+      "explicacao": "f(0)=c=−7."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: parábolas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Conteúdos sobre equações e funções do segundo grau.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-quadratics"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

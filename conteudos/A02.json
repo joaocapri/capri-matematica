@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de operações com conjuntos e problemas de contagem",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "A união junta quem está em A ou B. A interseção reúne quem está nos dois; ao somar as quantidades, a interseção precisa ser descontada para evitar repetição."
+      ],
+      "formulas": [
+        "n(A\\cup B)=n(A)+n(B)-n(A\\cap B)"
+      ],
+      "dica": "Faça o diagrama começando pelo centro, isto é, pela interseção.",
+      "erroComum": "'Ou' inclusivo permite ambos; 'apenas A' exige subtrair A∩B."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Em uma turma, 18 gostam de álgebra, 12 de geometria e 5 de ambas.",
+        "passos": [
+          "A soma 18+12 conta os 5 alunos duas vezes.",
+          "Desconte a interseção: 18+12−5=25.",
+          "São 25 alunos que gostam de pelo menos uma das duas."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "A tem 10 elementos, B tem 8 e a interseção tem 3. A união tem:",
+      "opcoes": [
+        "15",
+        "18",
+        "21",
+        "5"
+      ],
+      "correta": 0,
+      "explicacao": "10+8−3=15."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Em uma pesquisa, 'gosta de A ou B' representa:",
+      "opcoes": [
+        "Apenas a interseção",
+        "A união",
+        "A diferença A−B",
+        "O complementar"
+      ],
+      "correta": 1,
+      "explicacao": "'Ou' inclusivo indica A∪B."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: fundamentos de álgebra",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Uma coleção de videoaulas e exercícios para revisar fundamentos e notação.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-intro-to-algebra/alg-manipulating-expressions"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

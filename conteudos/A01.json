@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de teoria dos conjuntos - linguagem e representação",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Conjunto é uma coleção bem definida de objetos; o que está dentro é elemento, enquanto um conjunto formado por elementos pode ser subconjunto de outro. A escrita precisa vale tanto quanto a conta."
+      ],
+      "formulas": [
+        "a\\in A\\quad\\text{e}\\quad B\\subseteq A"
+      ],
+      "dica": "Para testar inclusão, confira todos os elementos do conjunto menor.",
+      "erroComum": "Não confunda 2 com {2}: um é número; o outro, conjunto."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Considere A={1,2,3} e B={1,2}.",
+        "passos": [
+          "2 pertence a A.",
+          "B está contido em A.",
+          "{2} é subconjunto de A, mas não é elemento de A."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se A={1,2}, qual afirmação é verdadeira?",
+      "opcoes": [
+        "{1} pertence a A",
+        "1 é subconjunto de A",
+        "{1} está contido em A",
+        "3 pertence a A"
+      ],
+      "correta": 2,
+      "explicacao": "{1} é conjunto com elemento que pertence a A, logo {1} ⊆ A."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Quantos subconjuntos possui um conjunto com três elementos?",
+      "opcoes": [
+        "3",
+        "6",
+        "8",
+        "9"
+      ],
+      "correta": 2,
+      "explicacao": "Cada elemento tem duas opções: entrar ou não. São 2³ = 8 subconjuntos."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: fundamentos de álgebra",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Uma coleção de videoaulas e exercícios para revisar fundamentos e notação.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-intro-to-algebra/alg-manipulating-expressions"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

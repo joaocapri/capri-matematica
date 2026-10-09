@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de função do 1º grau - definição e elementos",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Na função afim f(x)=ax+b, o número a controla a variação de y quando x cresce uma unidade; b é o valor inicial f(0). Quando a=0, a função é constante."
+      ],
+      "formulas": [
+        "f(x)=ax+b\\qquad f(0)=b"
+      ],
+      "dica": "Pergunte: 'quanto começa?' e 'quanto aumenta a cada passo?'",
+      "erroComum": "A função linear em sentido estrito é f(x)=ax (com b=0); nem toda afim é linear."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Uma corrida custa R$ 6 de bandeirada mais R$ 3 por quilômetro.",
+        "passos": [
+          "Custo inicial: b=6.",
+          "Variação por km: a=3.",
+          "A função é C(x)=3x+6, para x≥0."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em f(x)=−2x+5, qual é f(0)?",
+      "opcoes": [
+        "−2",
+        "0",
+        "5",
+        "3"
+      ],
+      "correta": 2,
+      "explicacao": "O termo independente é 5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Na função f(x)=3x+1, aumentar x em 2 unidades altera y em:",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "6"
+      ],
+      "correta": 3,
+      "explicacao": "Δy=aΔx=3·2=6."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: funções afins e retas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Material com videoaulas e exercícios de funções lineares.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-linear-eq-func"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de estudo do sinal e inequações do 1º grau",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Resolver f(x)>0 significa achar onde o gráfico fica acima do eixo x. Em produtos e quocientes, procure pontos críticos, divida a reta e avalie sinais por intervalo."
+      ],
+      "formulas": [
+        "(x-1)(x+2)>0\\Rightarrow x<-2\\ \\text{ou}\\ x>1"
+      ],
+      "dica": "Monte um quadro de sinais para fatores em vez de expandir tudo.",
+      "erroComum": "Em frações, o denominador zero nunca pode entrar na solução."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva (x−1)(x+2)>0.",
+        "passos": [
+          "Zeros: x=1 e x=−2.",
+          "Fatores têm sinais iguais fora das raízes.",
+          "Resposta: x<−2 ou x>1."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual o conjunto solução de 2x−6≥0?",
+      "opcoes": [
+        "x≤3",
+        "x<3",
+        "x≥3",
+        "x>6"
+      ],
+      "correta": 2,
+      "explicacao": "2x≥6 ⇒ x≥3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Quando (x−1)(x+2) é negativo?",
+      "opcoes": [
+        "x<−2",
+        "−2<x<1",
+        "x>1",
+        "Para todo x"
+      ],
+      "correta": 1,
+      "explicacao": "Entre as raízes, os dois fatores têm sinais opostos."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: funções afins e retas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Material com videoaulas e exercícios de funções lineares.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-linear-eq-func"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}

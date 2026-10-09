@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o conceito central de classificação e tipologia",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
+  ],
+  "teoria": [
+    {
+      "titulo": "A ideia que destrava",
+      "paragrafos": [
+        "Injetora significa que entradas distintas não compartilham saída. Sobrejetora significa atingir todo o contradomínio. Bijetora satisfaz ambas. Compor funções é encaixar uma regra dentro de outra."
+      ],
+      "formulas": [
+        "(f\\circ g)(x)=f(g(x))"
+      ],
+      "dica": "Desenhe setas entre domínio e contradomínio para visualizar injetividade e sobrejetividade.",
+      "erroComum": "Em geral f∘g não é igual a g∘f; a ordem pode mudar o resultado."
+    },
+    {
+      "titulo": "Vamos fazer uma juntos",
+      "paragrafos": [
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+      ],
+      "exemplo": {
+        "enunciado": "Se f(x)=2x e g(x)=x+3, calcule (f∘g)(1).",
+        "passos": [
+          "Comece pela função interna: g(1)=4.",
+          "Depois aplique f: f(4)=8.",
+          "(f∘g)(1)=8."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "f(x)=x+1 e g(x)=2x. Qual é (f∘g)(3)?",
+      "opcoes": [
+        "7",
+        "8",
+        "9",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "g(3)=6 e f(6)=7."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma função que é injetora e sobrejetora chama-se:",
+      "opcoes": [
+        "Par",
+        "Ímpar",
+        "Bijetora",
+        "Constante"
+      ],
+      "correta": 2,
+      "explicacao": "É a definição de bijeção."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: funções",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Material de apoio sobre funções, domínio e composição.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
+    }
+  ],
+  "exercicios": [],
+  "arquivos": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
+  }
+}
