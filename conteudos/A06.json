@@ -1,5 +1,5 @@
 {
-  "status": "rascunho-para-revisao",
+  "status": "publicado",
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
@@ -69,9 +69,5 @@
     }
   ],
   "exercicios": [],
-  "arquivos": [],
-  "revisao": {
-    "status": "rascunho-pedagogico",
-    "notas": "Material autoral gerado com apoio de IA. O professor deve revisar antes de uso avaliativo. Não são questões oficiais de banca."
-  }
+  "arquivos": []
 }
