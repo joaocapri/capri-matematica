@@ -92,14 +92,14 @@
     {
       "titulo": "A fórmula de Bhaskara",
       "canal": "Khan Academy Brasil",
-      "descricao": "Introdução à fórmula com exemplos completos e explicação dos coeficientes.",
+      "descricao": "Uma explicação completa de como usar a fórmula resolutiva, com exercícios.",
       "url": "https://pt.khanacademy.org/v/using-the-quadratic-formula"
     },
     {
-      "titulo": "Equações quadráticas completando quadrados",
-      "canal": "Khan Academy Brasil (YouTube)",
-      "descricao": "Uma maneira diferente de resolver equações e entender de onde a fórmula vem.",
-      "url": "https://www.youtube.com/watch?v=3NiJWTBI5no"
+      "titulo": "Demonstração da fórmula de Bhaskara",
+      "canal": "Khan Academy Brasil",
+      "descricao": "Entenda de onde a fórmula vem usando a técnica de completar quadrados.",
+      "url": "https://pt.khanacademy.org/math/brazil-math-grades/pt-9-ano/algebra-expressoes-algebricas-9ano/a-formula-de-bhaskara/v/proof-of-quadratic-formula"
     }
   ],
   "quiz": [
