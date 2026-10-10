@@ -58,3 +58,7 @@ O destaque da home é a biblioteca, com pesquisa em tempo real e índice `data/m
 
 ## Descoberta de aulas por assuntos
 Abaixo da área **Listas e PDFs**, o catálogo foi reorganizado em 9 áreas com ícones e navegação progressiva: área → assunto → aula. As 144 aulas permanecem em suas URLs originais. Busca geral (com sugestões), favoritos, lista completa sob demanda e URLs compartilháveis com `?area=...&assunto=...` continuam disponíveis. Os dados curriculares originais não foram alterados; o agrupamento amigável do aluno fica em `assets/site.js`, em `SUBJECT_AREAS`.
+
+
+### Assuntos refinados
+As nove áreas agora se dividem em 38 assuntos específicos, incluindo Estatística (leitura de dados ou dispersão), Trigonometria (ciclo, identidades ou equações), Geometria espacial (prismas, pirâmides, corpos redondos etc.) e Combinatória (contagem, combinações ou probabilidade). A classificação é definida em `SUBJECT_TOPICS` e validada para garantir que cada aula esteja em exatamente um assunto.

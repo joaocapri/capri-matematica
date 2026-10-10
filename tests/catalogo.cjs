@@ -31,17 +31,25 @@ function type(w, el, value){assert.ok(el, 'campo de busca ausente'); el.value=va
   assert.ok(d.querySelector('#materiais .library-card'),'Biblioteca de PDFs preservada');
   assert.equal(d.querySelectorAll('.browse-lesson-row').length,0,'Evitar as 144 aulas visíveis na entrada');
   click(w, d.querySelector('[data-catalog="area"][data-id="funcoes"]'));
-  assert.ok(d.querySelectorAll('.browse-topic').length >= 5,'Funções precisa ter vários tópicos');
-  click(w, d.querySelector('[data-catalog="topic"][data-id="A4"]'));
+  assert.equal(d.querySelectorAll('.browse-topic').length,6,'Funções precisa ter seis tópicos bem definidos');
+  click(w, d.querySelector('[data-catalog="topic"][data-id="fu-quadratica"]'));
   assert.equal(d.querySelectorAll('.browse-lesson-row').length,6,'Bloco quadrática deve ter 6 aulas');
   assert.ok(d.querySelector('a[href="/aulas/A17/"]'),'A17 visível e clicável');
-  assert.ok(w.location.search.includes('assunto=A4'),'URL mantém assunto compartilhável');
+  assert.ok(w.location.search.includes('assunto=fu-quadratica'),'URL mantém assunto compartilhável');
   click(w, d.querySelector('[data-catalog="areas"]'));
   assert.equal(d.querySelectorAll('.area-tile').length,9,'Breadcrumb volta para áreas');
   click(w, d.querySelector('[data-catalog="area"][data-id="geometria-espacial"]'));
-  assert.ok(d.querySelector('[data-catalog="topic"][data-id="B-space"]'),'Projeção espacial tem tópico próprio');
+  assert.ok(d.querySelector('[data-catalog="topic"][data-id="ge-posicao"]'),'Projeção espacial tem tópico próprio');
   click(w, d.querySelector('[data-catalog="topic"][data-id="B-space"]'));
   assert.equal(d.querySelectorAll('.browse-lesson-row').length,2,'B16 e B17 agrupados');
+
+  click(w, d.querySelector('[data-catalog="areas"]'));
+  click(w, d.querySelector('[data-catalog="area"][data-id="estatistica"]'));
+  assert.equal(d.querySelectorAll('.browse-topic').length,2,'Estatística deve ter dois assuntos específicos');
+  click(w, d.querySelector('[data-catalog="areas"]'));
+  click(w, d.querySelector('[data-catalog="area"][data-id="combinatoria"]'));
+  assert.equal(d.querySelectorAll('.browse-topic').length,3,'Combinatória e probabilidade devem ter três assuntos');
+  click(w, d.querySelector('[data-catalog="areas"]'));
   type(w,d.getElementById('hero-search'),'A17');
   assert.ok(d.querySelector('a[href="/aulas/A17/"]'),'Busca A17 encontra aula');
   assert.ok(!d.getElementById('hero-suggestions').hidden,'Autocompletar abre');
@@ -49,7 +57,7 @@ function type(w, el, value){assert.ok(el, 'campo de busca ausente'); el.value=va
   assert.equal(d.querySelectorAll('.area-tile').length,9,'Limpar busca restaura o catálogo');
   dom.window.close();
 
-  ({w,dom,d}=await boot('https://capri.mat/?area=funcoes&assunto=A4'));
+  ({w,dom,d}=await boot('https://capri.mat/?area=funcoes&assunto=fu-quadratica'));
   assert.equal(d.querySelectorAll('.browse-lesson-row').length,6,'Link direto abre aulas da área');
   assert.ok(d.querySelector('a[href="/aulas/A17/"]'));
   dom.window.close();
