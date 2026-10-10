@@ -116,29 +116,41 @@ function home(){
   else if(act==='all')goBrowse('all','','',true);
   else if(act==='more'){shown+=18;renderBrowse()}
  });
- var aliases={'bhaskara':'a17 a18 equacao segundo grau raizes formula resolutiva','pa':'progressao aritmetica','pg':'progressao geometrica','2 grau':'quadratica equacao','primeiro grau':'funcao afim','seno':'trigonometria seno','enem':'prova matematica'};
- function relevance(value,q){var s=norm(value),tokens=norm(q).trim().split(/\s+/).filter(Boolean);if(!tokens.length)return 0;return tokens.every(function(t){return s.includes(t)})?(s.includes(norm(q).trim())?100:25):0}
+
+ function relevance(value,q){
+  var s=norm(value),tokens=norm(q).trim().split(/\s+/).filter(Boolean);
+  if(!tokens.length)return 0;
+  return tokens.every(function(t){return s.includes(t)})?(s.includes(norm(q).trim())?100:25):0
+ }
+ function cleanSearch(q){return norm(q).replace(/\b(listas?|pdfs?|gabaritos?|materiais?|questoes?|exercicios?|de|do|da|das|dos|sobre|para)\b/g,' ').replace(/\s+/g,' ').trim()}
  function lessonScore(l,q){
-  var area=areaForLesson(l),topic=subTopic(l,area),titleScore=relevance(l.id+' '+l.title,q),topicScore=relevance(topic.title+' '+area.name,q),summaryScore=relevance(l.summary,q);
+  var actual=cleanSearch(q);
+  if(!actual)return 0;
+  var area=areaForLesson(l),topic=subTopic(l,area),
+    titleScore=relevance(l.id+' '+l.title,actual),
+    topicScore=relevance(topic.title+' '+area.name,actual),
+    summaryScore=relevance(l.summary,actual);
   var score=titleScore?titleScore+40:topicScore?topicScore+15:summaryScore;
-  if(norm(q).trim()===norm(l.id))score+=500;
-  var normalized=norm(q).trim();
-  if(normalized==='bhaskara'&&l.id==='A17')score+=450;
-  if(normalized==='pa'&&l.id>='A33'&&l.id<='A35')score+=180;
-  if(normalized==='pg'&&l.id>='A36'&&l.id<='A38')score+=180;
+  if(actual===norm(l.id))score+=500;
+  if(actual==='bhaskara'&&l.id==='A17')score+=450;
+  if((actual==='pa'||actual==='p.a')&&l.id>='A33'&&l.id<='A35')score+=180;
+  if((actual==='pg'||actual==='p.g')&&l.id>='A36'&&l.id<='A38')score+=180;
   return score;
  }
  function matchData(){
-  var q=search.query.trim();
-  var l=lessons.map(function(l){return {lesson:l,score:lessonScore(l,q)}}).filter(function(x){return x.score>0}).sort(function(a,b){return b.score-a.score||a.lesson.id.localeCompare(b.lesson.id)});
+  var q=search.query.trim(),clean=cleanSearch(q);
+  var l=lessons.map(function(l){return {lesson:l,score:lessonScore(l,q)}})
+   .filter(function(x){return x.score>0})
+   .sort(function(a,b){return b.score-a.score||a.lesson.id.localeCompare(b.lesson.id)});
   var m=featured.map(function(item){
    var lesson=lessons.find(function(l){return l.id===item.aula});
-   var score=Math.max(lessonScore(lesson,q),relevance(item.arquivos.map(function(f){return f.titulo}).join(' '),q));
-   if(norm(q).includes('pdf')||norm(q).includes('lista'))score+=score>0?30:0;
+   var fileLabels=item.arquivos.map(function(f){return f.titulo}).join(' ');
+   var score=Math.max(lessonScore(lesson,q),clean?relevance(fileLabels,clean):100);
+   if(/\b(pdf|lista|gabarito|material)/.test(norm(q)))score+=score>0?40:0;
    return {lesson:lesson,item:item,score:score};
   }).filter(function(x){return x.score>0}).sort(function(a,b){return b.score-a.score});
-  var a=SUBJECT_AREAS.map(function(area){return {area:area,score:relevance(area.name+' '+area.description,q)}}).filter(function(x){return x.score>0});
-  var t=SUBJECT_TOPICS.map(function(topic){return {topic:topic,score:relevance(topic.title+' '+topic.description,q)}}).filter(function(x){return x.score>0});
+  var a=clean?SUBJECT_AREAS.map(function(area){return {area:area,score:relevance(area.name+' '+area.description,clean)}}).filter(function(x){return x.score>0}):[];
+  var t=clean?SUBJECT_TOPICS.map(function(topic){return {topic:topic,score:relevance(topic.title+' '+topic.description,clean)}}).filter(function(x){return x.score>0}):[];
   return {lessons:l,materials:m,areas:a,topics:t}
  }
  function matCard(x){
