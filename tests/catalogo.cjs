@@ -40,7 +40,7 @@ function type(w, el, value){assert.ok(el, 'campo de busca ausente'); el.value=va
   assert.equal(d.querySelectorAll('.area-tile').length,9,'Breadcrumb volta para áreas');
   click(w, d.querySelector('[data-catalog="area"][data-id="geometria-espacial"]'));
   assert.ok(d.querySelector('[data-catalog="topic"][data-id="ge-posicao"]'),'Projeção espacial tem tópico próprio');
-  click(w, d.querySelector('[data-catalog="topic"][data-id="B-space"]'));
+  click(w, d.querySelector('[data-catalog="topic"][data-id="ge-posicao"]'));
   assert.equal(d.querySelectorAll('.browse-lesson-row').length,2,'B16 e B17 agrupados');
 
   click(w, d.querySelector('[data-catalog="areas"]'));
