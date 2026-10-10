@@ -24,6 +24,13 @@ async function checkWidth(page,name){
   {name:'mobile',viewport:{width:390,height:844},isMobile:true,hasTouch:true}
  ]){
   const page=await browser.newPage(setting);
+  page.setDefaultTimeout(15000);
+  // Bloqueia CDNs externos no CI: o teste valida a UI mesmo sem a rede pública.
+  await page.route('**/*', route => {
+    const u=new URL(route.request().url());
+    if(u.hostname==='127.0.0.1')return route.continue();
+    return route.abort();
+  });
   page.on('pageerror',e=>{console.log('Page error:',e.message)});
   await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
   await page.locator('.area-tile').first().waitFor({timeout:20000});
