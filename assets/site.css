@@ -316,3 +316,66 @@ body{background:var(--pale)}
 @media(prefers-reduced-motion:reduce){
  .home-searchbox,.area-tile,.home-popular button,.home-download,.home-scope{transition:none!important}
 }
+
+
+/* V4 · Páginas individuais alinhadas à nova identidade visual */
+.crumbs{color:#6e6480;font-size:12px;margin:27px 0 18px;line-height:1.55}
+.crumbs a{color:var(--purple);font-weight:850}
+.lesson-hero{border:2px solid var(--ink);border-radius:25px;box-shadow:5px 6px 0 #ddd5ec;padding:43px 45px 41px}
+.lesson-hero .code{display:inline-flex;border-radius:99px;background:rgba(255,255,255,.56);border:1px solid rgba(39,27,76,.16);padding:8px 12px;letter-spacing:1.4px}
+.lesson-hero h1{max-width:800px;line-height:1.05;margin:16px 0 15px}
+.lesson-hero p{line-height:1.7;margin-bottom:0;max-width:800px}
+.lesson-hero .spark{right:34px;top:27px;opacity:.09;pointer-events:none}
+.lesson-main{grid-template-columns:minmax(230px,260px) minmax(0,1fr);gap:23px;margin-top:34px}
+.sidepanel{border:1px solid #ded6e9;border-radius:20px;padding:22px;background:#fffdfa;box-shadow:2px 3px 0 #eee8f6;top:98px}
+.sidepanel h3{font-size:18px;margin-bottom:8px}
+.sidepanel p{font-size:12px;line-height:1.55}
+.sidelesson{border-radius:10px;padding:11px 10px;transition:background .15s}
+.sidelesson.active{background:#4d27b3;color:#fff}
+.contentpanel{border:1.5px solid #d9d0e7;border-radius:23px;background:#fffefa;padding:28px 28px 32px;box-shadow:4px 4px 0 #ede6f4}
+.contentpanel h2{letter-spacing:-.9px}
+.actions{margin-bottom:19px;gap:8px}
+.action{border:1.5px solid #ddd5e9;border-radius:11px;padding:11px 15px;font-size:12px;box-shadow:2px 3px 0 #e8e1ee;transition:transform .14s,background .14s}
+.action.primary{background:var(--purple);border-color:var(--ink)}
+.action:hover{transform:translateY(-2px)}
+.action.liked{background:#e8f5c0}
+.material-spotlight{background:var(--lime);border-radius:18px;box-shadow:4px 5px 0 #271b4c;gap:15px;padding:17px 20px}
+.material-spotlight p{font-size:12px}
+.material-spotlight-button{background:var(--purple);font-size:12px;transition:transform .14s}
+.material-spotlight-button:hover{transform:translateY(-2px)}
+.tabs{gap:7px;padding-bottom:17px;margin-bottom:25px}
+.tab{border:1px solid transparent;padding:10px 13px;border-radius:10px;transition:background .12s}
+.tab:hover{background:#f5f0fb}
+.tab.active:not(.tab-featured){background:#f1eafd;border-color:#d8cbec;box-shadow:none}
+.tab-featured{background:var(--lime);border:1.5px solid var(--ink)!important;box-shadow:2px 2px 0 var(--ink);border-radius:10px}
+.tab-featured.active{background:var(--purple);color:#fff!important}
+.topic{border-left:4px solid var(--purple);padding:18px 20px;background:#f6f1fd}
+.theory-section{margin-bottom:27px}
+.theory-section h3{letter-spacing:-.5px}
+.theory-example{background:#f6f1ff;border-color:#e2d9ef}
+.hint{background:#f0f9ce;border-color:#e1efae}
+.warning{background:#fff1e7;border-color:#f4d8c5}
+.filelink{border:1.5px solid #ded5e9;border-radius:14px;background:#fffdfa;transition:background .14s}
+.filelink:hover{background:#eff9d5;border-color:#b4d085}
+.quiz-question{border-radius:18px;background:#fffefa;border-color:#33244f}
+.quiz-option{border-radius:12px;transition:background .12s,border-color .12s}
+.prevnext a{border:1.5px solid #d5cde2;background:#fffdfa;box-shadow:2px 3px 0 #ece6f2;padding:14px}
+.footer{border-top:1px solid #e4deeb;background:#f2efea;padding:40px 0}
+.footer strong{color:var(--purple);font-size:19px}
+@media(max-width:930px){.lesson-main{grid-template-columns:1fr}.sidepanel{position:static}.sidelesson{font-size:12px}}
+@media(max-width:650px){
+ .lesson-hero{border-radius:20px;padding:28px 21px;box-shadow:3px 4px 0 #ddd5ec}
+ .lesson-hero h1{font-size:clamp(30px,8vw,40px);letter-spacing:-1.8px}
+ .lesson-hero p{font-size:13px}
+ .lesson-main{margin-top:25px;gap:19px}
+ .sidepanel{padding:18px}
+ .contentpanel{padding:18px 16px 24px;border-radius:18px;box-shadow:2px 3px 0 #ede6f4}
+ .material-spotlight{padding:13px}
+ .material-spotlight strong{font-size:16px}
+ .tabs{gap:6px}
+ .tab{padding:9px 10px;font-size:11px}
+ .actions .action{flex:1;min-width:calc(50% - 8px);text-align:center;padding:11px 9px}
+ .crumbs{font-size:11px}
+ .prevnext{gap:10px}
+ .prevnext a{font-size:11px}
+}
