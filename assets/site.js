@@ -40,7 +40,8 @@ function home(){
  '<span class="home-overline"><span class="home-live-dot"></span> SEU ATALHO PARA A MATEMÁTICA</span>'+
  '<h1 id="hero-title">A matemática fica <em>mais fácil</em> quando você acha o caminho.</h1>'+
  '<p>Uma dúvida, uma prova chegando ou só vontade de aprender? Comece por aqui. Encontre aulas, assuntos e materiais gratuitos em um só lugar.</p>'+
- '<div class="home-search-section"><label class="home-searchbox" for="hero-search"><span class="home-search-mark" aria-hidden="true">⌕</span><input type="search" id="hero-search" autocomplete="off" aria-label="Pesquisar aulas, assuntos e PDFs" placeholder="O que você quer estudar hoje?"><button type="button" id="clear-search" aria-label="Limpar busca" hidden>×</button><button type="button" id="btn-search" aria-label="Pesquisar">Buscar ↗</button></label>'+
+ '<div class="home-search-section"><label class="home-searchbox" for="hero-search"><span class="home-search-mark" aria-hidden="true">⌕</span><input type="search" id="hero-search" autocomplete="off" aria-label="Pesquisar aulas, assuntos e PDFs" aria-controls="quick-hits" aria-expanded="false" placeholder="O que você quer estudar hoje?"><button type="button" id="clear-search" aria-label="Limpar busca" hidden>×</button><button type="button" id="btn-search" aria-label="Pesquisar">Buscar ↗</button></label>'+
+ '<div class="home-quick-hits" id="quick-hits" hidden aria-live="polite"></div>'+
  '<div class="home-popular"><span>Experimente:</span><button data-example="Bhaskara">Bhaskara</button><button data-example="Geometria espacial">Geometria espacial</button><button data-example="Probabilidade">Probabilidade</button></div></div>'+
  '<div class="home-hero-meta"><span><b>144</b> aulas gratuitas</span><span class="meta-sep">✳</span><span><b>9</b> grandes áreas</span><span class="meta-sep">✳</span><span>Sem cadastro</span></div>'+
  '</div><div class="home-hero-art" aria-hidden="true"><span class="home-hero-spark">✳</span><div class="home-math-note home-math-note-a">matemática sem drama ✦</div><div class="home-math-card"><div class="home-math-card-top"><span>FUNÇÃO QUADRÁTICA</span><span>↗</span></div><strong>y = x² − 4</strong><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg"><g stroke="#e5dff5" stroke-width="1"><path d="M20 27H300M20 65H300M20 103H300M20 141H300M40 12V173M100 12V173M160 12V173M220 12V173M280 12V173"/></g><path d="M20 103H300M160 12V173" stroke="#ac9cc8" stroke-width="2" stroke-linecap="round"/><path d="M64 20Q160 318 256 20" stroke="#5e30c8" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="160" cy="169" r="6" fill="#FF7956" stroke="#211946" stroke-width="2"/><circle cx="90" cy="103" r="4" fill="#211946"/><circle cx="230" cy="103" r="4" fill="#211946"/></svg><span class="home-math-caption">Menos decorar. Mais entender.</span></div><div class="home-math-note home-math-note-b">você consegue! ↗</div></div></section>'+
@@ -51,6 +52,7 @@ function home(){
  '</div></main>'+footer();
  var input=document.getElementById('hero-search');
  var clearBtn=document.getElementById('clear-search');
+ var quick=document.getElementById('quick-hits');
  var main=document.getElementById('home-discover');
  var resultArea=document.getElementById('resultados');
  var scopeWrap=document.getElementById('search-scope');
@@ -102,7 +104,7 @@ function home(){
  }
  function goBrowse(view,area,topic,scroll){
   state={view:view,area:area||'',topic:topic||''};shown=18;
-  search.query='';input.value='';clearBtn.hidden=true;
+  search.query='';input.value='';clearBtn.hidden=true;quick.hidden=true;input.setAttribute('aria-expanded','false');
   main.hidden=false;resultArea.hidden=true;saveBrowseUrl(false);renderBrowse();
   if(scroll)document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'});
  }
@@ -177,11 +179,40 @@ function home(){
   if(!html)html='<div class="search-no-match"><strong>Não encontramos essa expressão.</strong><p>Experimente um assunto mais amplo ou um código de aula, como A17 ou C20.</p><button type="button" id="search-reset">Explorar todas as áreas ↗</button></div>';
   resultOutput.innerHTML=html;
  }
+
+ function renderQuick(){
+  var q=search.query.trim();
+  if(!q){quick.hidden=true;quick.innerHTML='';input.setAttribute('aria-expanded','false');return}
+  var found=matchData(),rows=[];
+  if(found.materials.length){
+   var mat=found.materials[0],file=mat.item.arquivos[0];
+   if(file)rows.push('<a class="home-quick-row" href="'+esc(file.url)+'" download><span class="home-quick-code home-quick-pdf">PDF</span><span><strong>'+esc(file.titulo)+'</strong><small>Material para baixar</small></span><b>↓</b></a>');
+  }
+  found.lessons.slice(0,4).forEach(function(entry){
+   var l=entry.lesson;
+   rows.push('<a class="home-quick-row" href="'+href(l)+'"><span class="home-quick-code">'+esc(l.id)+'</span><span><strong>'+esc(l.title)+'</strong><small>'+esc(subTopic(l,areaForLesson(l)).title)+'</small></span><b>↗</b></a>')
+  });
+  if(!rows.length){
+   found.topics.slice(0,2).forEach(function(entry){
+    rows.push('<button class="home-quick-row" type="button" data-quick-area="'+esc(entry.topic.area)+'" data-quick-topic="'+esc(entry.topic.id)+'"><span class="home-quick-code">✦</span><span><strong>'+esc(entry.topic.title)+'</strong><small>Explorar assunto</small></span><b>↗</b></button>')
+   });
+  }
+  if(!rows.length){quick.hidden=true;input.setAttribute('aria-expanded','false');return}
+  quick.innerHTML='<div class="home-quick-heading">ENCONTRAMOS ISSO PRA VOCÊ</div>'+rows.join('')+'<button type="button" class="home-quick-all" id="quick-all">Ver todos os resultados ↓</button>';
+  quick.hidden=false;input.setAttribute('aria-expanded','true');
+  document.getElementById('quick-all').addEventListener('click',function(){quick.hidden=true;input.setAttribute('aria-expanded','false');resultArea.scrollIntoView({behavior:'smooth',block:'start'})});
+ }
+ quick.addEventListener('click',function(e){
+  var hit=e.target.closest('button[data-quick-area]');if(hit){goBrowse('lessons',hit.dataset.quickArea,hit.dataset.quickTopic,true)}
+ });
+ document.addEventListener('click',function(e){
+  if(!e.target.closest('.home-search-section')&&!quick.hidden){quick.hidden=true;input.setAttribute('aria-expanded','false')}
+ });
  function setQuery(q,fromHistory){
   search.query=q;search.scope='tudo';search.shown=12;input.value=q;
   clearBtn.hidden=!q.trim();
   var searching=!!q.trim();main.hidden=searching;resultArea.hidden=!searching;
-  if(searching)renderSearch();
+  if(searching){renderSearch();renderQuick()}else renderQuick();
   if(!fromHistory){
    var u=new URL(location.href);
    ['area','assunto','favoritos','todas','q'].forEach(function(k){u.searchParams.delete(k)});
@@ -197,8 +228,8 @@ function home(){
   if(e.target.closest('#search-reset'))goBrowse('areas','','',true);
  });
  input.addEventListener('input',function(){setQuery(input.value,false)});
- document.getElementById('btn-search').addEventListener('click',function(){if(search.query.trim())resultArea.scrollIntoView({behavior:'smooth',block:'start'});else input.focus()});
- input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();if(search.query.trim())resultArea.scrollIntoView({behavior:'smooth',block:'start'})}if(e.key==='Escape'&&input.value)setQuery('',false)});
+ document.getElementById('btn-search').addEventListener('click',function(){if(search.query.trim())resultArea.scrollIntoView({behavior:'smooth',block:'start'});else input.focus();quick.hidden=true;input.setAttribute('aria-expanded','false')});
+ input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();if(search.query.trim()){resultArea.scrollIntoView({behavior:'smooth',block:'start'});quick.hidden=true;input.setAttribute('aria-expanded','false')}}if(e.key==='Escape'&&input.value)setQuery('',false)});
  clearBtn.addEventListener('click',function(){setQuery('',false);input.focus()});
  document.querySelectorAll('[data-example]').forEach(function(b){b.addEventListener('click',function(){setQuery(b.dataset.example,false);resultArea.scrollIntoView({behavior:'smooth',block:'start'})})});
  document.getElementById('return-home').addEventListener('click',function(){setQuery('',false);document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'})});
