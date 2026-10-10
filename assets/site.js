@@ -89,7 +89,7 @@ function home(){
    html=crumbs([{label:area.name,action:'area',id:area.id},{label:topic.title}])+'<div class="browse-section-head"><span class="browse-kicker">AGORA ESCOLHA A AULA</span><h3>'+esc(topic.title)+'</h3><p>'+esc(topic.description)+'</p></div>'+list(group,'Aulas deste assunto',false)
   }else{
    state.view='areas';
-   html='<div class="browser-toolbar"><div><span class="browse-kicker">EXPLORE POR ÁREA</span><h3>Por onde começamos?</h3><p>Escolha um universo para descobrir seus assuntos.</p></div><div class="browser-shortcuts"><button type="button" data-catalog="favorites">♡ Favoritas'+(saved.size?' ('+saved.size+')':'')+'</button><button type="button" data-catalog="all">Todas as 144 ↗</button></div></div><div class="area-grid">'+SUBJECT_AREAS.map(tile).join('')+'</div>';
+   html='<div class="browser-toolbar browser-toolbar-compact"><div><span class="browse-kicker">ESCOLHA UMA ÁREA PARA COMEÇAR ↘</span></div><div class="browser-shortcuts"><button type="button" data-catalog="favorites">♡ Favoritas'+(saved.size?' ('+saved.size+')':'')+'</button><button type="button" data-catalog="all">Todas as 144 ↗</button></div></div><div class="area-grid">'+SUBJECT_AREAS.map(tile).join('')+'</div>';
   }
   browser.innerHTML=html;
  }

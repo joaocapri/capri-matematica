@@ -50,7 +50,7 @@ async function checkWidth(page,name){
   await page.locator('#clear-search').click();
   await page.locator('[data-catalog="area"][data-id="funcoes"]').click();
   await page.locator('[data-catalog="topic"][data-id="fu-quadratica"]').click();
-  assert.equal(await page.locator('.browse-lesson-row').count(),6);
+  assert.equal(await page.locator('#explore-content .browse-lesson-row').count(),6);
   await checkWidth(page,setting.name+' aulas do assunto');
   await page.screenshot({path:'screenshots/'+setting.name+'-topic.png',fullPage:true});
 

@@ -401,3 +401,19 @@ body{background:var(--pale)}
 .home-hero{overflow:visible}
 .home-hero::before,.home-hero::after{display:none}
 .home-search-section{isolation:isolate}
+
+/* Ajustes finais após inspeção das capturas reais */
+.home-explore .browser-toolbar-compact{margin:0 0 18px;align-items:center}
+.home-explore .browser-toolbar-compact .browse-kicker{margin:0}
+.home-searchbox input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;display:none}
+.home-hero h1,.home-section-intro h2,.home-file-header strong,.home-results-head h2,
+.browser-toolbar h3,.browse-section-head h3,.area-tile-name,.browse-topic-copy strong,
+.browse-list-intro h3,.browse-lesson-copy strong,.search-group-head h3,
+.search-topic-link strong,.lesson-hero h1,.contentpanel h2,.theory-section h3,
+.home-math-card>strong,.home-math-card-top,.footer strong,.brand{
+ font-family:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media(max-width:540px){
+ .home-explore .browser-toolbar-compact{align-items:flex-start}
+ .home-explore .browser-toolbar-compact .browse-kicker{font-size:10px}
+}
