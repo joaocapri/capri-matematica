@@ -60,6 +60,9 @@ function visible(e){return !!e&&!e.hidden}
   assert.ok(visible(d.getElementById('resultados')),'Busca abre resultados');
   assert.ok(!visible(d.getElementById('home-discover')),'Exploração sai da frente da busca');
   assert.ok(d.querySelector('#search-output a[href="/aulas/A17/"]'),'Busca encontra A17');
+  assert.ok(!d.getElementById('quick-hits').hidden,'Sugestões aparecem sob o campo');
+  assert.ok(d.querySelector('#quick-hits a[href="/aulas/A17/"]'),'Sugestão abre a aula diretamente');
+  assert.equal(d.getElementById('hero-search').getAttribute('aria-expanded'),'true','Busca acessível');
   assert.equal(d.querySelectorAll('#search-scope button').length,4,'Filtros integrados sem outra busca');
   assert.ok(d.querySelector('#search-output .search-material-card'),'Lista e gabarito da A17 aparecem na busca');
   click(w,d.querySelector('[data-scope="materiais"]'));
@@ -67,6 +70,7 @@ function visible(e){return !!e&&!e.hidden}
   assert.equal(d.querySelectorAll('#search-output .browse-lesson-row').length,0,'Filtro não mistura aulas');
   type(w,d.getElementById('hero-search'),'PDF');
   assert.ok(d.querySelectorAll('#search-output .search-material-card').length>=1,'Termo PDF lista materiais');
+  assert.ok(d.querySelector('#quick-hits a[href="/pdfs/lista-A17.pdf"]'),'Sugestão de PDF aparece sem segunda busca');
   type(w,d.getElementById('hero-search'),'lista de bhaskara');
   assert.ok(d.querySelector('#search-output .search-material-card'),'Busca composta encontra material');
   type(w,d.getElementById('hero-search'),'probabilidade');
@@ -76,6 +80,7 @@ function visible(e){return !!e&&!e.hidden}
   click(w,d.getElementById('return-home'));
   assert.ok(visible(d.getElementById('home-discover')),'Volta à exploração');
   assert.equal(d.getElementById('hero-search').value,'','Limpa a busca');
+  assert.ok(d.getElementById('quick-hits').hidden,'Sugestões somem depois de limpar');
   click(w,d.querySelector('[data-catalog="all"]'));
   assert.equal(d.querySelectorAll('.browse-lesson-row').length,18,'Lista inicial paginada');
   click(w,d.querySelector('[data-catalog="more"]'));
