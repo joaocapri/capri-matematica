@@ -62,3 +62,7 @@ Abaixo da área **Listas e PDFs**, o catálogo foi reorganizado em 9 áreas com 
 
 ### Assuntos refinados
 As nove áreas agora se dividem em 38 assuntos específicos, incluindo Estatística (leitura de dados ou dispersão), Trigonometria (ciclo, identidades ou equações), Geometria espacial (prismas, pirâmides, corpos redondos etc.) e Combinatória (contagem, combinações ou probabilidade). A classificação é definida em `SUBJECT_TOPICS` e validada para garantir que cada aula esteja em exatamente um assunto.
+
+
+## Home unificada — navegação v3
+A página inicial possui **um único campo de busca** (`#hero-search`) que encontra aulas, assuntos e PDFs. A busca filtra instantaneamente os três tipos e permite focar somente em cada um sem uma nova caixa de texto. Sem busca, mostra materiais de fato publicados e explora 9 áreas → 38 assuntos → 144 aulas. O índice dos PDFs continua em `data/materiais.json`. Não invente arquivos: o painel de downloads lista apenas os existentes. Os links das aulas e URLs de filtros foram preservados.

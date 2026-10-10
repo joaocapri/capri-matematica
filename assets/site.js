@@ -24,103 +24,187 @@ var SUBJECT_TOPICS=[{"id":"f-conjuntos","area":"fundamentos","title":"Conjuntos 
 function subjectTopic(lesson,area){var n=Number(lesson.id.slice(1));var t=SUBJECT_TOPICS.find(function(x){return x.area===area.id&&x.ranges.some(function(r){return lesson.front===r[0]&&n>=r[1]&&n<=r[2]})});return t?t.id:lesson.block}
 function topicInfo(topic){return SUBJECT_TOPICS.find(function(x){return x.id===topic})||blockBy(topic)}
 
+
 function home(){
- title('Encontre sua aula');
+ title('Matemática, do seu jeito');
  var app=document.getElementById('app');
- app.innerHTML=header()+'<main class="shell"><section class="hero"><div class="hero-copy"><div class="eyebrow"><span class="dot"></span> TEM MATEMÁTICA PRA TODO MUNDO</div><h1>Bora fazer <em>essa conta</em> fechar?</h1><p>Encontre suas listas de exercícios, baixe PDFs e revise a teoria quando precisar. Tudo sem complicação.</p><label class="searchwrap"><span>⌕</span><input id="hero-search" type="search" autocomplete="off" placeholder="Busque: logaritmo, geometria, A17…"><button type="button" id="btn-search">BUSCAR ↗</button></label><div class="hero-suggestions" id="hero-suggestions" hidden aria-live="polite"></div><div class="hero-actions"><a class="hero-files-link" href="/#materiais">📄 Explorar listas e PDFs ↗</a><a class="hero-small-link" href="/#explorar">Ver todas as aulas ↓</a></div><div class="searchhint">Tente: <b>função quadrática</b>, <b>probabilidade</b> ou <b>trigonometria</b></div></div><div class="hero-art" aria-hidden="true"><span class="art-star">✳</span><div class="art-circle"><span>π²</span></div><span class="art-label">100% sem pânico!</span><span class="art-label two">x = você consegue ✦</span></div></section><div class="layout-stats"><div class="stat"><div class="stat-ico">✦</div><div><b>'+data.lessons.length+'</b><small>aulas no mapa</small></div></div><div class="stat"><div class="stat-ico">▧</div><div><b>'+data.blocks.length+'</b><small>blocos de estudo</small></div></div><div class="stat"><div class="stat-ico">◉</div><div><b>'+data.fronts.length+'</b><small>frentes de matemática</small></div></div></div><section class="library-hub" id="materiais"><div class="library-hub-top"><div><div class="eyebrow"><span class="dot"></span> DIRETO AO QUE INTERESSA</div><h2>Listas & PDFs <span>✳</span></h2><p>O material para treinar está aqui. Procure por assunto, código ou nome da aula — e baixe sem enrolação.</p></div><span class="library-icon" aria-hidden="true">📄</span></div><label class="library-search-label"><span>⌕</span><input type="search" id="library-search" placeholder="Busque: Bhaskara, A17, função…" autocomplete="off" aria-label="Buscar listas e PDFs"></label><p class="library-count" id="library-count" aria-live="polite"></p><div class="library-results" id="library-results"></div></section><section id="explorar" class="subject-browser"><div class="section-top browser-heading"><div><div class="eyebrow"><span class="dot"></span> UM PASSO DE CADA VEZ</div><h2>Encontre seu assunto ✳</h2><p class="browser-description">Escolha uma área, refine o assunto e chegue à aula certa. Sem precisar rolar 144 cartões.</p></div><span class="browser-illustration" aria-hidden="true">↗</span></div><div class="browser-searchbar"><span aria-hidden="true">⌕</span><input id="lesson-search" type="search" autocomplete="off" placeholder="Ou busque uma aula: Bhaskara, A17, matrizes…" aria-label="Buscar qualquer aula de matemática"><span class="browser-search-hint">144 aulas</span></div><div id="explore-content" aria-live="polite"></div></section></main>'+footer();
- var heroSearch=document.getElementById('hero-search');
- var lessonSearch=document.getElementById('lesson-search');
+ var featured=materialIndex.filter(function(item){return data.lessons.some(function(l){return l.id===item.aula})});
+ var fileTotal=featured.reduce(function(n,item){return n+(item.arquivos||[]).length},0);
+ var featuredCards=featured.length?featured.slice(0,3).map(function(item){
+  var l=data.lessons.find(function(x){return x.id===item.aula});
+  return '<article class="home-file-card"><div class="home-file-header"><span class="home-file-code">'+esc(l.id)+'</span><div><strong>'+esc(l.title)+'</strong><small>'+esc(topicInfo(subjectTopic(l,areaForLesson(l))).title)+'</small></div><a class="home-file-see" href="'+href(l)+'?tab=arquivos" aria-label="Abrir materiais da aula '+esc(l.id)+'">↗</a></div><div class="home-file-downloads">'+item.arquivos.map(function(f){return '<a href="'+esc(f.url)+'" class="home-download" download><span class="home-pdf-icon">↓</span><span>'+esc(f.titulo)+'</span><strong>PDF</strong></a>'}).join('')+'</div></article>'
+ }).join(''):'<div class="home-file-empty">Nenhum arquivo PDF vinculado no momento. Explore o currículo completo abaixo.</div>';
+ app.innerHTML=header()+
+ '<main class="shell home-shell">'+
+ '<section class="home-hero" aria-labelledby="hero-title"><div class="home-hero-copy">'+
+ '<span class="home-overline"><span class="home-live-dot"></span> SEU ATALHO PARA A MATEMÁTICA</span>'+
+ '<h1 id="hero-title">A matemática fica <em>mais fácil</em> quando você acha o caminho.</h1>'+
+ '<p>Uma dúvida, uma prova chegando ou só vontade de aprender? Comece por aqui. Encontre aulas, assuntos e materiais gratuitos em um só lugar.</p>'+
+ '<div class="home-search-section"><label class="home-searchbox" for="hero-search"><span class="home-search-mark" aria-hidden="true">⌕</span><input type="search" id="hero-search" autocomplete="off" aria-label="Pesquisar aulas, assuntos e PDFs" placeholder="O que você quer estudar hoje?"><button type="button" id="clear-search" aria-label="Limpar busca" hidden>×</button><button type="button" id="btn-search" aria-label="Pesquisar">Buscar ↗</button></label>'+
+ '<div class="home-popular"><span>Experimente:</span><button data-example="Bhaskara">Bhaskara</button><button data-example="Geometria espacial">Geometria espacial</button><button data-example="Probabilidade">Probabilidade</button></div></div>'+
+ '<div class="home-hero-meta"><span><b>144</b> aulas gratuitas</span><span class="meta-sep">✳</span><span><b>9</b> grandes áreas</span><span class="meta-sep">✳</span><span>Sem cadastro</span></div>'+
+ '</div><div class="home-hero-art" aria-hidden="true"><span class="home-hero-spark">✳</span><div class="home-math-note home-math-note-a">matemática sem drama ✦</div><div class="home-math-card"><div class="home-math-card-top"><span>FUNÇÃO QUADRÁTICA</span><span>↗</span></div><strong>y = x² − 4</strong><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg"><g stroke="#e5dff5" stroke-width="1"><path d="M20 27H300M20 65H300M20 103H300M20 141H300M40 12V173M100 12V173M160 12V173M220 12V173M280 12V173"/></g><path d="M20 103H300M160 12V173" stroke="#ac9cc8" stroke-width="2" stroke-linecap="round"/><path d="M64 20Q160 318 256 20" stroke="#5e30c8" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="160" cy="169" r="6" fill="#FF7956" stroke="#211946" stroke-width="2"/><circle cx="90" cy="103" r="4" fill="#211946"/><circle cx="230" cy="103" r="4" fill="#211946"/></svg><span class="home-math-caption">Menos decorar. Mais entender.</span></div><div class="home-math-note home-math-note-b">você consegue! ↗</div></div></section>'+
+ '<section class="home-search-results" id="resultados" hidden aria-live="polite"><div class="home-results-head"><div><span class="home-section-label">SUA PESQUISA</span><h2 id="search-title">Resultados</h2></div><button id="return-home" class="home-back-button" type="button">← Voltar à exploração</button></div><div id="search-scope" class="home-search-scopes" role="group" aria-label="Filtrar resultados"></div><div id="search-output"></div></section>'+
+ '<div id="home-discover">'+
+ '<section id="materiais" class="home-materials" aria-labelledby="materials-title"><div class="home-section-intro"><div><span class="home-section-label"><span class="home-section-indicator"></span> PRA IMPRIMIR E PRATICAR</span><h2 id="materials-title">Saiu do digital. <em>Foi pro caderno.</em></h2><p>Listas e gabaritos em PDF para baixar de graça, sem precisar criar conta.</p></div><div class="home-section-side"><span class="home-material-tag">'+fileTotal+' '+(fileTotal===1?'PDF disponível':'PDFs disponíveis')+'</span></div></div><div class="home-files-grid">'+featuredCards+'</div></section>'+
+ '<section id="explorar" class="home-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="home-section-label"><span class="home-section-indicator"></span> DESCUBRA O PRÓXIMO ASSUNTO</span><h2 id="explore-title">Sua matemática, <em>seu caminho.</em></h2><p>Não sabe o nome da aula? Escolha uma área, encontre o assunto e comece a estudar.</p></div><span class="home-explore-decoration" aria-hidden="true">↗</span></div><div id="explore-content"></div></section>'+
+ '</div></main>'+footer();
+ var input=document.getElementById('hero-search');
+ var clearBtn=document.getElementById('clear-search');
+ var main=document.getElementById('home-discover');
+ var resultArea=document.getElementById('resultados');
+ var scopeWrap=document.getElementById('search-scope');
+ var resultOutput=document.getElementById('search-output');
  var browser=document.getElementById('explore-content');
- var suggestions=document.getElementById('hero-suggestions');
- var state={view:'areas',area:'',topic:'',q:''},shown=24;
+ var state={view:'areas',area:'',topic:''},shown=18;
+ var search={query:'',scope:'tudo',shown:12};
  var lessons=data.lessons;
+ var materialByCode=new Map(featured.map(function(x){return [x.aula,x]}));
  function areaLessons(area){return lessons.filter(function(l){return subjectContains(area,l)})}
- function term(l){return norm([l.id,l.title,l.summary,frontBy(l.front).name,blockBy(l.block).title].join(' '))}
- function matches(q){var search=norm(q.trim());return !search?[]:lessons.filter(function(l){return term(l).includes(search)})}
- function drawRow(l,showArea){var area=areaForLesson(l);return '<a class="browse-lesson-row" href="'+href(l)+'"><span class="browse-lesson-number">'+esc(l.id)+'</span><span class="browse-lesson-copy"><strong>'+esc(l.title)+'</strong><small>'+esc(l.summary||'Abra para estudar.')+'</small>'+(showArea?'<span class="browse-lesson-meta">'+esc(area.name)+' · '+esc(topicInfo(subjectTopic(l,area)).title)+'</span>':'')+'</span><span class="browse-lesson-right">'+(done.has(l.id)?'<span class="browse-studied">✓ Estudada</span>':'<span class="browse-enter">↗</span>')+'</span></a>'}
- function crumbs(parts){return '<nav class="browser-crumbs" aria-label="Caminho da matéria"><button type="button" data-catalog="areas">Todas as áreas</button>'+parts.map(function(p){return '<span class="crumb-chevron">›</span>'+(p.action?'<button type="button" data-catalog="'+p.action+'" data-id="'+esc(p.id||'')+'">'+esc(p.label)+'</button>':'<strong>'+esc(p.label)+'</strong>')}).join('')+'</nav>'}
- function subjectTile(area){var n=areaLessons(area).length;return '<button class="area-tile" type="button" data-catalog="area" data-id="'+area.id+'"><span class="area-tile-icon tone-'+area.tone+'">'+esc(area.icon)+'</span><span class="area-tile-name">'+esc(area.name)+'</span><span class="area-tile-subtitle">'+esc(area.description)+'</span><span class="area-tile-foot"><span>'+n+' aulas</span><span class="area-tile-go">↗</span></span></button>'}
- function listWithLimit(items,label,showArea){var limit=items.slice(0,shown);return '<div class="browse-list-intro"><div><h3>'+esc(label)+'</h3><p>'+items.length+' '+(items.length===1?'aula':'aulas')+' · Escolha uma para começar.</p></div></div><div class="browse-lesson-list">'+(limit.length?limit.map(function(l){return drawRow(l,showArea)}).join(''):'<div class="browse-empty">Nenhuma aula encontrada. Tente outra palavra ou explore as áreas acima.</div>')+'</div>'+(shown<items.length?'<button type="button" class="browse-more" data-catalog="more">Mostrar mais '+Math.min(24,items.length-shown)+' aulas ↓</button>':'')}
- function render(){
-  var html='',area=SUBJECT_AREAS.find(function(a){return a.id===state.area});
-  if(state.view==='search'){
-   var found=matches(state.q);html=crumbs([{label:'Resultados da busca'}])+listWithLimit(found,'Resultados para “'+state.q+'”',true);
-  }else if(state.view==='favorites'){
-   html=crumbs([{label:'Favoritas'}])+listWithLimit(lessons.filter(function(l){return saved.has(l.id)}),'Suas aulas favoritas',true);
-  }else if(state.view==='all'){
-   html=crumbs([{label:'Todas as aulas'}])+listWithLimit(lessons,'Catálogo completo',true);
-  }else if(state.view==='topics'&&area){
-   var chosen=areaLessons(area),groups=[],seen=new Set();
-   chosen.forEach(function(l){var code=subjectTopic(l,area);if(!seen.has(code)){seen.add(code);groups.push(code)}});
-   html=crumbs([{label:area.name}])+'<div class="browse-section-head"><div class="browse-kicker">ETAPA 2 DE 3</div><h3>Qual assunto de '+esc(area.name.toLowerCase())+'?</h3><p>'+chosen.length+' aulas organizadas por tema. Escolha o que você quer estudar.</p></div><div class="browse-topic-grid">'+groups.map(function(code){var info=topicInfo(code),lst=chosen.filter(function(l){return subjectTopic(l,area)===code});return '<button class="browse-topic" type="button" data-catalog="topic" data-id="'+esc(code)+'"><span class="browse-topic-icon">'+esc(info.icon||SUBJECT_TOPIC_ICONS[code]||'✦')+'</span><span class="browse-topic-copy"><strong>'+esc(info.title)+'</strong><small>'+esc(info.description||'')+'</small><span class="browse-topic-count">'+lst.length+' '+(lst.length===1?'aula':'aulas')+'</span></span><span class="browse-topic-next">↗</span></button>'}).join('')+'</div>';
+ function subTopic(l,area){return topicInfo(subjectTopic(l,area))}
+ function drawRow(l,areaLabel){
+  var area=areaForLesson(l);
+  var hasMaterial=materialByCode.has(l.id);
+  return '<a class="browse-lesson-row" href="'+href(l)+'"><span class="browse-lesson-number">'+esc(l.id)+'</span><span class="browse-lesson-copy"><strong>'+esc(l.title)+'</strong><small>'+esc(l.summary||'Abra a aula para começar.')+'</small>'+(areaLabel?'<span class="browse-lesson-meta">'+esc(area.name)+' · '+esc(subTopic(l,area).title)+'</span>':'')+'</span><span class="browse-lesson-right">'+(done.has(l.id)?'<span class="browse-studied">✓ Estudada</span>':hasMaterial?'<span class="browse-material-tag">PDF</span>':'<span class="browse-enter">↗</span>')+'</span></a>'
+ }
+ function crumbs(parts){return '<nav class="browser-crumbs" aria-label="Caminho"><button data-catalog="areas" type="button">Todas as áreas</button>'+parts.map(function(p){return '<span class="crumb-chevron">›</span>'+(p.action?'<button type="button" data-catalog="'+p.action+'" data-id="'+esc(p.id||'')+'">'+esc(p.label)+'</button>':'<strong>'+esc(p.label)+'</strong>')}).join('')+'</nav>'}
+ function tile(area){return '<button class="area-tile" type="button" data-catalog="area" data-id="'+area.id+'"><span class="area-tile-icon tone-'+area.tone+'">'+esc(area.icon)+'</span><span class="area-tile-name">'+esc(area.name)+'</span><span class="area-tile-subtitle">'+esc(area.description)+'</span><span class="area-tile-foot"><span>'+areaLessons(area).length+' aulas</span><span class="area-tile-go">↗</span></span></button>'}
+ function list(items,label,showArea){
+  return '<div class="browse-list-intro"><div><h3>'+esc(label)+'</h3><p>'+items.length+' '+(items.length===1?'aula disponível':'aulas disponíveis')+'</p></div></div><div class="browse-lesson-list">'+(items.length?items.slice(0,shown).map(function(l){return drawRow(l,showArea)}).join(''):'<div class="browse-empty">Nenhuma aula aqui por enquanto.</div>')+'</div>'+(shown<items.length?'<button type="button" data-catalog="more" class="browse-more">Carregar mais aulas ↓</button>':'')
+ }
+ function renderBrowse(){
+  var area=SUBJECT_AREAS.find(function(a){return a.id===state.area}),html='';
+  if(state.view==='favorites'){html=crumbs([{label:'Favoritas'}])+list(lessons.filter(function(l){return saved.has(l.id)}),'Suas aulas favoritas',true)}
+  else if(state.view==='all'){html=crumbs([{label:'Catálogo completo'}])+list(lessons,'Todas as aulas',true)}
+  else if(state.view==='topics'&&area){
+   var listAreas=areaLessons(area);
+   var ids=SUBJECT_TOPICS.filter(function(t){return t.area===area.id});
+   html=crumbs([{label:area.name}])+'<div class="browse-section-head"><span class="browse-kicker">ESCOLHA UM ASSUNTO</span><h3>'+esc(area.name)+'</h3><p>'+listAreas.length+' aulas distribuídas em '+ids.length+' temas.</p></div><div class="browse-topic-grid">'+ids.map(function(t){var amount=listAreas.filter(function(l){return subjectTopic(l,area)===t.id}).length;return '<button class="browse-topic" type="button" data-catalog="topic" data-id="'+esc(t.id)+'"><span class="browse-topic-icon">'+esc(t.icon)+'</span><span class="browse-topic-copy"><strong>'+esc(t.title)+'</strong><small>'+esc(t.description)+'</small><span class="browse-topic-count">'+amount+' '+(amount===1?'aula':'aulas')+'</span></span><span class="browse-topic-next">↗</span></button>'}).join('')+'</div>'
   }else if(state.view==='lessons'&&area){
-   var topic=state.topic,group=areaLessons(area).filter(function(l){return subjectTopic(l,area)===topic});
-   if(!group.length){state.view='topics';return render()}
-   html=crumbs([{label:area.name,action:'area',id:area.id},{label:topicInfo(topic).title}])+'<div class="browse-section-head"><div class="browse-kicker">ETAPA 3 DE 3</div><h3>'+esc(topicInfo(topic).title)+'</h3><p>Agora escolha a aula que quer abrir.</p></div>'+listWithLimit(group,'Aulas deste assunto',false);
+   var topic=SUBJECT_TOPICS.find(function(t){return t.id===state.topic&&t.area===area.id});
+   if(!topic){state.view='topics';return renderBrowse()}
+   var group=areaLessons(area).filter(function(l){return subjectTopic(l,area)===topic.id});
+   html=crumbs([{label:area.name,action:'area',id:area.id},{label:topic.title}])+'<div class="browse-section-head"><span class="browse-kicker">AGORA ESCOLHA A AULA</span><h3>'+esc(topic.title)+'</h3><p>'+esc(topic.description)+'</p></div>'+list(group,'Aulas deste assunto',false)
   }else{
    state.view='areas';
-   html='<div class="browser-toolbar"><div><span class="browse-kicker">ETAPA 1 DE 3</span><h3>Por onde começamos?</h3><p>Nove áreas. Um universo de possibilidades.</p></div><div class="browser-shortcuts"><button type="button" data-catalog="favorites">♡ Favoritas'+(saved.size?' ('+saved.size+')':'')+'</button><button type="button" data-catalog="all">Ver todas as 144 ↗</button></div></div><div class="area-grid">'+SUBJECT_AREAS.map(subjectTile).join('')+'</div>';
+   html='<div class="browser-toolbar"><div><span class="browse-kicker">EXPLORE POR ÁREA</span><h3>Por onde começamos?</h3><p>Escolha um universo para descobrir seus assuntos.</p></div><div class="browser-shortcuts"><button type="button" data-catalog="favorites">♡ Favoritas'+(saved.size?' ('+saved.size+')':'')+'</button><button type="button" data-catalog="all">Todas as 144 ↗</button></div></div><div class="area-grid">'+SUBJECT_AREAS.map(tile).join('')+'</div>';
   }
   browser.innerHTML=html;
-  lessonSearch.value=state.view==='search'?state.q:'';
  }
- function syncUrl(replace){
-  var url=new URL(location.href);
-  ['area','assunto','q','favoritos','todas','frente'].forEach(function(k){url.searchParams.delete(k)});
-  if(state.view==='search'&&state.q.trim())url.searchParams.set('q',state.q.trim());
-  if(state.view==='topics'||state.view==='lessons')url.searchParams.set('area',state.area);
-  if(state.view==='lessons')url.searchParams.set('assunto',state.topic);
-  if(state.view==='favorites')url.searchParams.set('favoritos','1');
-  if(state.view==='all')url.searchParams.set('todas','1');
-  var path=url.pathname+url.search+url.hash;if(replace)history.replaceState(null,'',path);else history.pushState(null,'',path);
+ function saveBrowseUrl(replace){
+  var u=new URL(location.href);
+  ['area','assunto','favoritos','todas','q'].forEach(function(k){u.searchParams.delete(k)});
+  if(state.view==='topics'||state.view==='lessons')u.searchParams.set('area',state.area);
+  if(state.view==='lessons')u.searchParams.set('assunto',state.topic);
+  if(state.view==='favorites')u.searchParams.set('favoritos','1');
+  if(state.view==='all')u.searchParams.set('todas','1');
+  history[replace?'replaceState':'pushState'](null,'',u.pathname+u.search+u.hash);
  }
- function navigate(view,area,topic,q,opts){state={view:view,area:area||'',topic:topic||'',q:q||''};shown=24;syncUrl(opts&&opts.replace);render();if(opts&&opts.scroll)document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'})}
- function loadFromUrl(){
-  var p=new URLSearchParams(location.search),a=SUBJECT_AREAS.find(function(x){return x.id===p.get('area')});
-  if(p.get('q'))state={view:'search',area:'',topic:'',q:p.get('q')};
-  else if(p.has('favoritos'))state={view:'favorites',area:'',topic:'',q:''};
-  else if(p.has('todas'))state={view:'all',area:'',topic:'',q:''};
-  else if(a&&p.get('assunto')&&areaLessons(a).some(function(l){return subjectTopic(l,a)===p.get('assunto')}))state={view:'lessons',area:a.id,topic:p.get('assunto'),q:''};
-  else if(a)state={view:'topics',area:a.id,topic:'',q:''};
-  else state={view:'areas',area:'',topic:'',q:''};
-  shown=24;render();heroSearch.value=state.view==='search'?state.q:'';suggestions.hidden=true;
+ function goBrowse(view,area,topic,scroll){
+  state={view:view,area:area||'',topic:topic||''};shown=18;
+  search.query='';input.value='';clearBtn.hidden=true;
+  main.hidden=false;resultArea.hidden=true;saveBrowseUrl(false);renderBrowse();
+  if(scroll)document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'});
  }
  browser.addEventListener('click',function(e){
-  var btn=e.target.closest('button[data-catalog]');if(!btn)return;
-  var act=btn.dataset.catalog,id=btn.dataset.id||'';
-  if(act==='area')navigate('topics',id);
-  else if(act==='topic')navigate('lessons',state.area,id);
-  else if(act==='areas')navigate('areas');
-  else if(act==='all')navigate('all');
-  else if(act==='favorites')navigate('favorites');
-  else if(act==='more'){shown+=24;render()}
+  var b=e.target.closest('button[data-catalog]');if(!b)return;
+  var id=b.dataset.id,act=b.dataset.catalog;
+  if(act==='area')goBrowse('topics',id,'',true);
+  else if(act==='topic')goBrowse('lessons',state.area,id,true);
+  else if(act==='areas')goBrowse('areas','','',true);
+  else if(act==='favorites')goBrowse('favorites','','',true);
+  else if(act==='all')goBrowse('all','','',true);
+  else if(act==='more'){shown+=18;renderBrowse()}
  });
- function drawSuggestions(q){
-  var found=matches(q).slice(0,5);
-  if(!q.trim()||!found.length){suggestions.hidden=true;suggestions.innerHTML='';return}
-  suggestions.hidden=false;suggestions.innerHTML=found.map(function(l){return '<a href="'+href(l)+'"><b>'+esc(l.id)+'</b><span>'+esc(l.title)+'</span><span>↗</span></a>'}).join('')+'<button type="button" id="see-search-results">Ver todos os resultados ↓</button>';
-  document.getElementById('see-search-results').addEventListener('click',function(){suggestions.hidden=true;document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'})});
+ var aliases={'bhaskara':'a17 a18 equacao segundo grau raizes formula resolutiva','pa':'progressao aritmetica','pg':'progressao geometrica','2 grau':'quadratica equacao','primeiro grau':'funcao afim','seno':'trigonometria seno','enem':'prova matematica'};
+ function relevance(value,q){var s=norm(value),tokens=norm(q).trim().split(/\s+/).filter(Boolean);if(!tokens.length)return 0;return tokens.every(function(t){return s.includes(t)})?(s.includes(norm(q).trim())?100:25):0}
+ function lessonScore(l,q){
+  var area=areaForLesson(l),topic=subTopic(l,area),titleScore=relevance(l.id+' '+l.title,q),topicScore=relevance(topic.title+' '+area.name,q),summaryScore=relevance(l.summary,q);
+  var score=titleScore?titleScore+40:topicScore?topicScore+15:summaryScore;
+  if(norm(q).trim()===norm(l.id))score+=500;
+  var normalized=norm(q).trim();
+  if(normalized==='bhaskara'&&l.id==='A17')score+=450;
+  if(normalized==='pa'&&l.id>='A33'&&l.id<='A35')score+=180;
+  if(normalized==='pg'&&l.id>='A36'&&l.id<='A38')score+=180;
+  return score;
  }
- heroSearch.addEventListener('input',function(){var q=heroSearch.value; if(q.trim())navigate('search','','',q,{replace:true});else navigate('areas','','','',{replace:true});drawSuggestions(q)});
- heroSearch.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();suggestions.hidden=true;document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'})}if(e.key==='Escape')suggestions.hidden=true});
- document.getElementById('btn-search').addEventListener('click',function(){suggestions.hidden=true;document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'})});
- lessonSearch.addEventListener('input',function(){var q=lessonSearch.value;if(q.trim())navigate('search','','',q,{replace:true});else navigate('areas','','','',{replace:true});heroSearch.value=q});
- lessonSearch.addEventListener('keydown',function(e){if(e.key==='Escape'){lessonSearch.value='';heroSearch.value='';navigate('areas','','','',{replace:true})}});
- window.addEventListener('popstate',loadFromUrl);
-  const librarySearch=document.getElementById('library-search'),libraryResults=document.getElementById('library-results'),libraryCount=document.getElementById('library-count');
- function renderLibrary(){
-  var q=norm(librarySearch.value.trim());
-  var matches=materialIndex.filter(function(item){var l=data.lessons.find(function(lesson){return lesson.id===item.aula});return l&&(!q||norm([l.id,l.title,l.summary,blockBy(l.block).title,frontBy(l.front).name].join(' ')).includes(q))});
-  libraryCount.textContent=matches.length+' '+(matches.length===1?'aula com materiais disponíveis':'aulas com materiais disponíveis');
-  libraryResults.innerHTML=matches.length?matches.map(function(item){
-   var l=data.lessons.find(function(x){return x.id===item.aula});
-   return '<article class="library-card"><a class="library-card-head" href="'+href(l)+'?tab=arquivos"><span class="library-code">'+esc(l.id)+'</span><span><strong>'+esc(l.title)+'</strong><small>'+esc(blockBy(l.block).title)+' · Frente '+esc(l.front)+'</small></span><span class="library-open">↗</span></a><div class="library-files">'+item.arquivos.map(function(f){return '<a class="library-file" href="'+esc(f.url)+'" download><span>↓ '+esc(f.titulo||'Arquivo PDF')+'</span><b>PDF ↗</b></a>'}).join('')+'</div></article>'
-  }).join(''):(q?'<div class="library-empty">Ainda não há PDFs publicados para essa busca. Você pode encontrar a aula na lista completa logo abaixo.</div>':'<div class="library-empty">Explore o catálogo e confira os materiais publicados.</div>')
+ function matchData(){
+  var q=search.query.trim();
+  var l=lessons.map(function(l){return {lesson:l,score:lessonScore(l,q)}}).filter(function(x){return x.score>0}).sort(function(a,b){return b.score-a.score||a.lesson.id.localeCompare(b.lesson.id)});
+  var m=featured.map(function(item){
+   var lesson=lessons.find(function(l){return l.id===item.aula});
+   var score=Math.max(lessonScore(lesson,q),relevance(item.arquivos.map(function(f){return f.titulo}).join(' '),q));
+   if(norm(q).includes('pdf')||norm(q).includes('lista'))score+=score>0?30:0;
+   return {lesson:lesson,item:item,score:score};
+  }).filter(function(x){return x.score>0}).sort(function(a,b){return b.score-a.score});
+  var a=SUBJECT_AREAS.map(function(area){return {area:area,score:relevance(area.name+' '+area.description,q)}}).filter(function(x){return x.score>0});
+  var t=SUBJECT_TOPICS.map(function(topic){return {topic:topic,score:relevance(topic.title+' '+topic.description,q)}}).filter(function(x){return x.score>0});
+  return {lessons:l,materials:m,areas:a,topics:t}
  }
- librarySearch.addEventListener('input',renderLibrary);renderLibrary();
-
-
- loadFromUrl();
+ function matCard(x){
+  return '<article class="search-material-card"><div class="search-material-head"><span class="browse-material-tag">ARQUIVO PDF</span><a href="'+href(x.lesson)+'?tab=arquivos">'+esc(x.lesson.id)+' · '+esc(x.lesson.title)+' ↗</a></div>'+x.item.arquivos.map(function(f){return '<a class="home-download" href="'+esc(f.url)+'" download><span class="home-pdf-icon">↓</span><span>'+esc(f.titulo)+'</span><strong>PDF</strong></a>'}).join('')+'</article>'
+ }
+ function renderSearch(){
+  var q=search.query.trim(),matched=matchData(),types=[['tudo','Tudo'],['aulas','Aulas'],['materiais','Listas e PDFs'],['assuntos','Assuntos']];
+  document.getElementById('search-title').textContent='Resultados para “'+q+'”';
+  scopeWrap.innerHTML=types.map(function(t){return '<button type="button" class="home-scope '+(search.scope===t[0]?'active':'')+'" data-scope="'+t[0]+'" aria-pressed="'+(search.scope===t[0])+'">'+t[1]+'</button>'}).join('');
+  var html='';
+  if(search.scope==='tudo'||search.scope==='materiais'){
+   if(matched.materials.length)html+='<section class="search-group"><div class="search-group-head"><h3>📄 Materiais para baixar</h3><small>'+matched.materials.length+' '+(matched.materials.length===1?'aula':'aulas')+'</small></div><div class="search-material-grid">'+matched.materials.slice(0,search.shown).map(matCard).join('')+'</div></section>';
+   else if(search.scope==='materiais')html+='<div class="browse-empty">Nenhum PDF publicado para essa busca. Veja as aulas relacionadas na opção “Tudo”.</div>';
+  }
+  if(search.scope==='tudo'||search.scope==='aulas'){
+   if(matched.lessons.length){html+='<section class="search-group"><div class="search-group-head"><h3>✦ Aulas que combinam com sua busca</h3><small>'+matched.lessons.length+' resultado(s)</small></div><div class="browse-lesson-list">'+matched.lessons.slice(0,search.shown).map(function(x){return drawRow(x.lesson,true)}).join('')+'</div>'+(search.shown<matched.lessons.length?'<button type="button" class="browse-more" data-more-search>Ver mais aulas ↓</button>':'')+'</section>'}
+   else if(search.scope==='aulas')html+='<div class="browse-empty">Nenhuma aula com esse nome. Tente outra palavra ou um código, como A17.</div>';
+  }
+  if(search.scope==='tudo'||search.scope==='assuntos'){
+   var groups=matched.areas.map(function(x){return {name:x.area.name,desc:x.area.description,area:x.area.id,topic:'',score:x.score+15}}).concat(matched.topics.map(function(x){return {name:x.topic.title,desc:x.topic.description,area:x.topic.area,topic:x.topic.id,score:x.score}})).sort(function(a,b){return b.score-a.score});
+   if(groups.length)html+='<section class="search-group"><div class="search-group-head"><h3>◉ Assuntos para explorar</h3></div><div class="search-topic-grid">'+groups.slice(0,search.shown).map(function(x){return '<button type="button" class="search-topic-link" data-search-area="'+esc(x.area)+'" data-search-topic="'+esc(x.topic)+'"><strong>'+esc(x.name)+'</strong><small>'+esc(x.desc)+'</small><span>↗</span></button>'}).join('')+'</div></section>';
+   else if(search.scope==='assuntos')html+='<div class="browse-empty">Não encontrei essa área. Tente um nome mais amplo, como “Geometria”.</div>';
+  }
+  if(!html)html='<div class="search-no-match"><strong>Não encontramos essa expressão.</strong><p>Experimente um assunto mais amplo ou um código de aula, como A17 ou C20.</p><button type="button" id="search-reset">Explorar todas as áreas ↗</button></div>';
+  resultOutput.innerHTML=html;
+ }
+ function setQuery(q,fromHistory){
+  search.query=q;search.scope='tudo';search.shown=12;input.value=q;
+  clearBtn.hidden=!q.trim();
+  var searching=!!q.trim();main.hidden=searching;resultArea.hidden=!searching;
+  if(searching)renderSearch();
+  if(!fromHistory){
+   var u=new URL(location.href);
+   ['area','assunto','favoritos','todas','q'].forEach(function(k){u.searchParams.delete(k)});
+   if(searching)u.searchParams.set('q',q.trim());
+   history.replaceState(null,'',u.pathname+u.search);
+  }
+ }
+ scopeWrap.addEventListener('click',function(e){var el=e.target.closest('button[data-scope]');if(!el)return;search.scope=el.dataset.scope;search.shown=12;renderSearch()});
+ resultOutput.addEventListener('click',function(e){
+  if(e.target.closest('button[data-more-search]')){search.shown+=12;renderSearch();return}
+  var btn=e.target.closest('button[data-search-area]');
+  if(btn){goBrowse(btn.dataset.searchTopic?'lessons':'topics',btn.dataset.searchArea,btn.dataset.searchTopic,true);return}
+  if(e.target.closest('#search-reset'))goBrowse('areas','','',true);
+ });
+ input.addEventListener('input',function(){setQuery(input.value,false)});
+ document.getElementById('btn-search').addEventListener('click',function(){if(search.query.trim())resultArea.scrollIntoView({behavior:'smooth',block:'start'});else input.focus()});
+ input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();if(search.query.trim())resultArea.scrollIntoView({behavior:'smooth',block:'start'})}if(e.key==='Escape'&&input.value)setQuery('',false)});
+ clearBtn.addEventListener('click',function(){setQuery('',false);input.focus()});
+ document.querySelectorAll('[data-example]').forEach(function(b){b.addEventListener('click',function(){setQuery(b.dataset.example,false);resultArea.scrollIntoView({behavior:'smooth',block:'start'})})});
+ document.getElementById('return-home').addEventListener('click',function(){setQuery('',false);document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'})});
+ document.querySelectorAll('.navlinks a[href^="/#"]').forEach(function(a){a.addEventListener('click',function(){if(search.query.trim())setQuery('',false)})});
+ document.addEventListener('keydown',function(e){if((e.key==='/'||(e.key.toLowerCase()==='k'&&(e.ctrlKey||e.metaKey)))&&!e.altKey&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();input.focus()}});
+ function loadUrl(){
+  var p=new URLSearchParams(location.search),area=SUBJECT_AREAS.find(function(x){return x.id===p.get('area')});
+  if(p.get('q')){setQuery(p.get('q'),true);return}
+  setQuery('',true);
+  if(p.has('favoritos'))state={view:'favorites',area:'',topic:''};
+  else if(p.has('todas'))state={view:'all',area:'',topic:''};
+  else if(area&&p.get('assunto')&&SUBJECT_TOPICS.some(function(t){return t.id===p.get('assunto')&&t.area===area.id}))state={view:'lessons',area:area.id,topic:p.get('assunto')};
+  else if(area)state={view:'topics',area:area.id,topic:''};
+  else state={view:'areas',area:'',topic:''};
+  shown=18;renderBrowse();
+ }
+ window.addEventListener('popstate',loadUrl);
+ renderBrowse();loadUrl();
 }
 
 function saveAction(l,btn){if(saved.has(l.id))saved.delete(l.id);else saved.add(l.id);store('capri-favoritos',saved);btn.textContent=(saved.has(l.id)?'♥ Salvo':'♡ Favoritar');btn.classList.toggle('liked',saved.has(l.id))}
