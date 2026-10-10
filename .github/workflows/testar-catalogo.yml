@@ -1,0 +1,25 @@
+name: Verificar catálogo interativo
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/site.js'
+      - 'data/aulas.json'
+      - 'data/materiais.json'
+      - 'tests/**'
+      - '.github/workflows/testar-catalogo.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar DOM de teste
+        run: npm install --no-save --package-lock=false jsdom@26.1.0
+      - name: Testar interação das páginas
+        run: node tests/catalogo.cjs
