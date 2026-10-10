@@ -396,3 +396,8 @@ body{background:var(--pale)}
 .home-quick-all{width:100%;background:#eae0f9;color:var(--purple);border:0;border-radius:9px;font-weight:900;font-size:12px;margin-top:7px;padding:12px}
 .home-quick-all:hover{background:var(--lime)}
 @media(max-width:540px){.home-quick-hits{top:60px;border-radius:12px;padding:6px}.home-quick-row{padding:9px 7px}.home-quick-row strong{font-size:11px}}
+
+/* A lista de sugestões deve poder sair do painel hero sem ser cortada */
+.home-hero{overflow:visible}
+.home-hero::before,.home-hero::after{display:none}
+.home-search-section{isolation:isolate}
