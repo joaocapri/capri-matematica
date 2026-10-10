@@ -52,7 +52,9 @@ async function checkWidth(page,name){
   await page.locator('[data-catalog="topic"][data-id="fu-quadratica"]').click();
   assert.equal(await page.locator('#explore-content .browse-lesson-row').count(),6);
   await checkWidth(page,setting.name+' aulas do assunto');
-  await page.screenshot({path:'screenshots/'+setting.name+'-topic.png',fullPage:true});
+  await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+  await page.waitForTimeout(150);
+  await page.screenshot({timeout:12000,path:'screenshots/'+setting.name+'-topic.png',fullPage:true});
 
   await page.goto(BASE+'/aulas/A17/',{waitUntil:'domcontentloaded',timeout:18000});
   await page.locator('.contentpanel .tab').first().waitFor();

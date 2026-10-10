@@ -417,3 +417,22 @@ body{background:var(--pale)}
  .home-explore .browser-toolbar-compact{align-items:flex-start}
  .home-explore .browser-toolbar-compact .browse-kicker{font-size:10px}
 }
+
+/* Polimento final para navegação, materiais e tela pequena */
+.nav-cta-short{display:none}
+.practice-inline{border-top:1px solid #e8e1ef;margin-top:18px;padding-top:12px}
+.practice-inline>summary{font:800 14px 'DM Sans',sans-serif;color:var(--purple);cursor:pointer;padding:12px 4px;list-style-position:inside}
+.practice-inline[open]>summary{margin-bottom:12px}
+@media(max-width:650px){
+ .nav-cta-long{display:none}
+ .nav-cta-short{display:inline;font-size:12px;font-weight:900;white-space:nowrap}
+ .nav-cta{padding:9px 13px;min-width:0}
+ .lesson-main{display:flex;flex-direction:column}
+ .lesson-main>section{order:0}
+ .lesson-main>.sidepanel{order:1}
+ .contentpanel .tabs{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding:3px 2px 15px}
+ .contentpanel .tab{white-space:nowrap;flex-shrink:0}
+ .home-math-note-a{display:none}
+ .home-hero-meta{margin-bottom:13px}
+ .home-hero-art{min-height:170px;padding-top:10px}
+}
