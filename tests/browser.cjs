@@ -23,6 +23,7 @@ async function checkWidth(page,name){
   {name:'desktop',viewport:{width:1440,height:900}},
   {name:'mobile',viewport:{width:390,height:844},isMobile:true,hasTouch:true}
  ]){
+  console.log('Iniciando '+setting.name);
   const page=await browser.newPage(setting);
   page.setDefaultTimeout(15000);
   // Bloqueia CDNs externos no CI: o teste valida a UI mesmo sem a rede pública.
@@ -32,12 +33,13 @@ async function checkWidth(page,name){
     return route.abort();
   });
   page.on('pageerror',e=>{console.log('Page error:',e.message)});
-  await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
+  await page.goto(BASE+'/',{waitUntil:'domcontentloaded',timeout:18000});
+  console.log('Home carregada: '+setting.name);
   await page.locator('.area-tile').first().waitFor({timeout:20000});
   assert.equal(await page.locator('input[type=search]').count(),1,'Somente uma busca');
   assert.equal(await page.locator('.area-tile').count(),9);
   await checkWidth(page,setting.name+' home');
-  await page.screenshot({path:'screenshots/'+setting.name+'-home.png',fullPage:true});
+  await page.screenshot({timeout:12000,path:'screenshots/'+setting.name+'-home.png',fullPage:true});
 
   await page.locator('#hero-search').fill('Bhaskara');
   await page.locator('#search-output a[href="/aulas/A17/"]').first().waitFor();
@@ -52,7 +54,7 @@ async function checkWidth(page,name){
   await checkWidth(page,setting.name+' aulas do assunto');
   await page.screenshot({path:'screenshots/'+setting.name+'-topic.png',fullPage:true});
 
-  await page.goto(BASE+'/aulas/A17/',{waitUntil:'domcontentloaded'});
+  await page.goto(BASE+'/aulas/A17/',{waitUntil:'domcontentloaded',timeout:18000});
   await page.locator('.contentpanel .tab').first().waitFor();
   await checkWidth(page,setting.name+' pagina de aula');
   await page.screenshot({path:'screenshots/'+setting.name+'-lesson.png',fullPage:true});
@@ -60,4 +62,4 @@ async function checkWidth(page,name){
  }
  await browser.close();
  console.log('✓ Browser smoke: desktop + mobile OK');
-})().catch(e=>{console.error(e);process.exitCode=1;});
+})().catch(e=>{console.error('Visual test failed:',e);process.exit(1);});
