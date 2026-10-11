@@ -478,5 +478,37 @@
       }
     ],
     "tipo": "aula"
+  },
+  {
+    "aula": "A31",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A31 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A31.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A31 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A31.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A32",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A32 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A32.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A32 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A32.pdf"
+      }
+    ],
+    "tipo": "aula"
   }
 ]
