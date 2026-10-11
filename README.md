@@ -66,3 +66,7 @@ As nove áreas agora se dividem em 38 assuntos específicos, incluindo Estatíst
 
 ## Home unificada — navegação v3
 A página inicial possui **um único campo de busca** (`#hero-search`) que encontra aulas, assuntos e PDFs. A busca filtra instantaneamente os três tipos e permite focar somente em cada um sem uma nova caixa de texto. Sem busca, mostra materiais de fato publicados e explora 9 áreas → 38 assuntos → 144 aulas. O índice dos PDFs continua em `data/materiais.json`. Não invente arquivos: o painel de downloads lista apenas os existentes. Os links das aulas e URLs de filtros foram preservados.
+
+
+## Materiais gerais e ponte Exatoo
+Veja `GUIA_MATERIAIS_EXATOO.md` para cadastrar PDFs por aula, assunto ou área e para entender a integração contextual com Exatoo.
