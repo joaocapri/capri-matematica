@@ -13,7 +13,7 @@ function short(v,n){var s=String(v||'');return s.length>n?s.slice(0,n).trim()+'�
 function title(str){document.title=str+' · MAT MAT MAT'}
 function empty(label,detail){return '<div class="placeholder"><div class="emoji">✦</div><h3>'+esc(label)+'</h3><p>'+esc(detail)+'</p></div>'}
 function brandLogo(){return '<span class="mat-logo" aria-hidden="true"><span>MAT</span><span>MAT</span><span>MAT</span></span>'}
-function header(){return '<header class="topbar"><div class="shell"><a href="/" class="brand brand-mat" aria-label="MAT MAT MAT — página inicial">'+brandLogo()+'<span class="mat-brand-descriptor">MATEMÁTICA<br>SEM ENROLAÇÃO<span class="mat-brand-dot">✳</span></span></a><nav class="navlinks" aria-label="Navegação principal"><a href="/?q=PDF#resultados">Listas e PDFs</a><a href="/#explorar">Assuntos</a><a class="nav-cta" href="/?q=PDF#resultados"><span class="nav-cta-long">Baixar materiais ↗</span><span class="nav-cta-short">PDFs ↗</span></a></nav></div></header>'}
+function header(){return '<header class="topbar"><div class="shell"><a href="/" class="brand brand-mat" aria-label="MAT MAT MAT — página inicial">'+brandLogo()+'<span class="mat-brand-descriptor">MATEMÁTICA<br>SEM ENROLAÇÃO<span class="mat-brand-dot">✳</span></span></a><nav class="navlinks" aria-label="Navegação principal"><a href="/?q=PDF#resultados">Listas e PDFs</a><a href="/explorar/">Assuntos</a><a class="nav-cta" href="/teste-seu-nivel/"><span class="nav-cta-long">Teste seu nível ↗</span><span class="nav-cta-short">Teste seu nível ↗</span></a></nav></div></header>'}
 function footer(){return '<footer class="footer"><div class="shell"><div class="mat-footer-mark"><a href="/" class="brand-mat brand-mat-footer" aria-label="MAT MAT MAT — início">'+brandLogo()+'</a><div><strong>MAT MAT MAT</strong><p>Matemática de graça, do seu jeito. Conteúdo do Prof. João Capri.</p></div></div><p>Álgebra · Geometria · Aritmética · Estatística · Trigonometria</p></div></footer>'}
 function card(l){return '<a class="lesson-card" href="'+href(l)+'"><span class="mini">Aula '+esc(l.id)+' · '+esc(frontBy(l.front).name)+'</span><h4>'+esc(l.title)+'</h4><p>'+esc(l.summary||'Abra a aula e explore seu roteiro de estudos.')+'</p><div class="card-bottom"><span class="badge '+(done.has(l.id)?'checkdone':'')+'">'+(done.has(l.id)?'✓ Estudada':'Ver aula')+'</span><span class="arrow">↗</span></div></a>'}
 
@@ -30,8 +30,8 @@ function topicInfo(topic){return SUBJECT_TOPICS.find(function(x){return x.id===t
 /* Catálogo de PDFs: aula, assunto (tema) ou grande área. */
 function materialOwner(item){
  if(item.aula){var l=data.lessons.find(function(x){return x.id===item.aula});if(!l)return null;var a=areaForLesson(l);return {kind:'aula',id:l.id,title:l.title,description:topicInfo(subjectTopic(l,a)).title,href:href(l)+'?tab=arquivos',lesson:l}}
- if(item.assunto){var t=SUBJECT_TOPICS.find(function(x){return x.id===item.assunto});if(!t)return null;var a=SUBJECT_AREAS.find(function(x){return x.id===t.area});return {kind:'assunto',id:t.id,title:t.title,description:a.name,href:'/?area='+encodeURIComponent(a.id)+'&assunto='+encodeURIComponent(t.id)+'#explorar',topic:t}}
- if(item.area){var a=SUBJECT_AREAS.find(function(x){return x.id===item.area});if(!a)return null;return {kind:'area',id:a.id,title:a.name,description:'Material geral da área',href:'/?area='+encodeURIComponent(a.id)+'#explorar',area:a}}
+ if(item.assunto){var t=SUBJECT_TOPICS.find(function(x){return x.id===item.assunto});if(!t)return null;var a=SUBJECT_AREAS.find(function(x){return x.id===t.area});return {kind:'assunto',id:t.id,title:t.title,description:a.name,href:'/explorar/?area='+encodeURIComponent(a.id)+'&assunto='+encodeURIComponent(t.id),topic:t}}
+ if(item.area){var a=SUBJECT_AREAS.find(function(x){return x.id===item.area});if(!a)return null;return {kind:'area',id:a.id,title:a.name,description:'Material geral da área',href:'/explorar/?area='+encodeURIComponent(a.id),area:a}}
  return null;
 }
 function publishedMaterials(){return materialIndex.map(function(item){var owner=materialOwner(item);return owner&&item.arquivos&&item.arquivos.length?{owner:owner,item:item}:null}).filter(Boolean)}
@@ -52,13 +52,18 @@ function exatooCard(intent,lesson,topic){
 
 function home(){
  title('Aulas, listas e PDFs gratuitos');
+ // Links antigos continuam funcionando, agora no catálogo dedicado.
+ var old=new URLSearchParams(location.search);
+ if(old.has('area')||old.has('assunto')||old.has('favoritos')||old.has('todas')){
+   location.replace('/explorar/'+location.search);return;
+ }
  var app=document.getElementById('app');
  var featured=publishedMaterials();
  app.innerHTML=header()+
  '<main class="shell home-shell">'+
  '<section class="home-hero" aria-labelledby="hero-title"><div class="home-hero-copy">'+
  
- '<h1 id="hero-title">Qual matemática você <em>precisa?</em></h1>'+
+ '<h1 id="hero-title">O que você quer <em>estudar hoje?</em></h1>'+
  '<p>Aulas, listas e PDFs grátis. Simples assim.</p>'+
  '<div class="home-search-section"><label class="home-searchbox" for="hero-search"><span class="home-search-mark" aria-hidden="true">⌕</span><input type="search" id="hero-search" autocomplete="off" aria-label="Pesquisar aulas, assuntos e PDFs" aria-controls="quick-hits" aria-expanded="false" placeholder="Busque um assunto, aula ou PDF…"><button type="button" id="clear-search" aria-label="Limpar busca" hidden>×</button><button type="button" id="btn-search" aria-label="Pesquisar">Buscar ↗</button></label>'+
  '<div class="home-quick-hits" id="quick-hits" hidden aria-live="polite"></div>'+
@@ -123,10 +128,12 @@ function home(){
   history[replace?'replaceState':'pushState'](null,'',u.pathname+u.search+u.hash);
  }
  function goBrowse(view,area,topic,scroll){
-  state={view:view,area:area||'',topic:topic||''};shown=18;
-  search.query='';input.value='';clearBtn.hidden=true;quick.hidden=true;input.setAttribute('aria-expanded','false');
-  main.hidden=false;resultArea.hidden=true;saveBrowseUrl(false);renderBrowse();
-  if(scroll)document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'});
+ var u=new URL('/explorar/',location.origin);
+ if(view==='topics'||view==='lessons')u.searchParams.set('area',area);
+ if(view==='lessons')u.searchParams.set('assunto',topic);
+ if(view==='favorites')u.searchParams.set('favoritos','1');
+ if(view==='all')u.searchParams.set('todas','1');
+ location.assign(u.pathname+u.search);
  }
  browser.addEventListener('click',function(e){
   var b=e.target.closest('button[data-catalog]');if(!b)return;
@@ -282,7 +289,7 @@ async function lessonPage(){
  title(l.title);
  var content=null;try{var r=await fetch('/conteudos/'+id+'.json');if(r.ok)content=await r.json()}catch(e){}
  var app=document.getElementById('app');
- app.innerHTML=header()+'<main class="shell"><div class="crumbs"><a href="/">Início</a> / <a href="/?area='+subjectArea.id+'#explorar">'+esc(subjectArea.name)+'</a> / <a href="/?area='+subjectArea.id+'&assunto='+topicId+'#explorar">'+esc(topic.title)+'</a> / '+id+'</div><section class="lesson-hero front-'+esc(l.front)+'"><div class="code">✦ '+esc(subjectArea.name)+' · '+esc(topic.title)+' · AULA '+id+'</div><h1>'+esc(l.title)+'</h1><p>'+esc(l.summary||'Seu roteiro de estudos começa aqui. Em breve, novas explicações e materiais.')+'</p><div class="spark">∑</div></section><div class="lesson-main"><aside class="sidepanel"><h3>✦ Neste assunto</h3><p>'+esc(topic.title)+'</p><div class="sidelist">'+near.map(function(x){return '<a class="sidelesson '+(x.id===id?'active':'')+'" href="'+href(x)+'"><small>'+x.id+'</small>'+esc(x.title)+'</a>'}).join('')+'</div></aside><section><div class="actions"><button class="action primary" id="btn-done">'+(done.has(id)?'✓ Aula estudada':'✓ Marcar como estudada')+'</button><button class="action" id="btn-fav">'+(saved.has(id)?'♥ Salvo':'♡ Favoritar')+'</button><button class="action" id="btn-copy">↗ Copiar link</button></div><div class="material-spotlight"><div class="material-spotlight-symbol">📄</div><div><strong>Veio atrás de listas?</strong><p>'+(lessonPdfFiles().length||(content&&content.lista&&content.lista.length)?'Materiais gratuitos disponíveis para baixar.':'Confira listas e materiais deste assunto.')+'</p></div><button type="button" class="material-spotlight-button" id="open-materials">Listas e PDFs ↗</button></div><article class="contentpanel"><div class="tabs"><button class="tab tab-featured" data-tab="arquivos">📄 Listas e PDFs</button><button class="tab" data-tab="teoria">Teoria</button><button class="tab" data-tab="quiz">Quiz ⚡</button><button class="tab" data-tab="videos">Vídeos ▶</button></div><div id="tab-body"></div></article><div class="prevnext">'+(nearIndex>0?'<a href="'+href(near[nearIndex-1])+'">← Anterior: '+esc(short(near[nearIndex-1].title,38))+'</a>':'<span></span>')+(nearIndex<near.length-1?'<a href="'+href(near[nearIndex+1])+'">Próxima: '+esc(short(near[nearIndex+1].title,38))+' →</a>':'')+'</div></section></div></main>'+footer();
+ app.innerHTML=header()+'<main class="shell"><div class="crumbs"><a href="/">Início</a> / <a href="/explorar/?area='+subjectArea.id+'">'+esc(subjectArea.name)+'</a> / <a href="/explorar/?area='+subjectArea.id+'&assunto='+topicId+'">'+esc(topic.title)+'</a> / '+id+'</div><section class="lesson-hero front-'+esc(l.front)+'"><div class="code">✦ '+esc(subjectArea.name)+' · '+esc(topic.title)+' · AULA '+id+'</div><h1>'+esc(l.title)+'</h1><p>'+esc(l.summary||'Seu roteiro de estudos começa aqui. Em breve, novas explicações e materiais.')+'</p><div class="spark">∑</div></section><div class="lesson-main"><aside class="sidepanel"><h3>✦ Neste assunto</h3><p>'+esc(topic.title)+'</p><div class="sidelist">'+near.map(function(x){return '<a class="sidelesson '+(x.id===id?'active':'')+'" href="'+href(x)+'"><small>'+x.id+'</small>'+esc(x.title)+'</a>'}).join('')+'</div></aside><section><div class="actions"><button class="action primary" id="btn-done">'+(done.has(id)?'✓ Aula estudada':'✓ Marcar como estudada')+'</button><button class="action" id="btn-fav">'+(saved.has(id)?'♥ Salvo':'♡ Favoritar')+'</button><button class="action" id="btn-copy">↗ Copiar link</button></div><div class="material-spotlight"><div class="material-spotlight-symbol">📄</div><div><strong>Veio atrás de listas?</strong><p>'+(lessonPdfFiles().length||(content&&content.lista&&content.lista.length)?'Materiais gratuitos disponíveis para baixar.':'Confira listas e materiais deste assunto.')+'</p></div><button type="button" class="material-spotlight-button" id="open-materials">Listas e PDFs ↗</button></div><article class="contentpanel"><div class="tabs"><button class="tab tab-featured" data-tab="arquivos">📄 Listas e PDFs</button><button class="tab" data-tab="teoria">Teoria</button><button class="tab" data-tab="quiz">Quiz ⚡</button><button class="tab" data-tab="videos">Vídeos ▶</button></div><div id="tab-body"></div></article><div class="prevnext">'+(nearIndex>0?'<a href="'+href(near[nearIndex-1])+'">← Anterior: '+esc(short(near[nearIndex-1].title,38))+'</a>':'<span></span>')+(nearIndex<near.length-1?'<a href="'+href(near[nearIndex+1])+'">Próxima: '+esc(short(near[nearIndex+1].title,38))+' →</a>':'')+'</div></section></div></main>'+footer();
  var area=document.getElementById('tab-body');
 
  function lessonPdfFiles(){
