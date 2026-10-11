@@ -25,7 +25,7 @@ async function boot(url='https://matmatmat.test/'){
  w.MathJax={typesetPromise:async()=>{}};
  w.eval(app);
  for(let i=0;i<65;i++){
-  if(id?d.querySelector('.contentpanel .tab'):pathname.startsWith('/explorar')?d.querySelector('#explorer-content .area-tile, #explorer-content .browse-topic, #explorer-content .browse-lesson-row'):pathname.startsWith('/teste-seu-nivel')?d.querySelector('#diagnosis-start'):d.querySelector('.home-hero .area-tile, .home-hero'))break;
+  if(id?d.querySelector('.contentpanel .tab'):pathname.startsWith('/explorar')?d.querySelector('#explorer-content .area-tile, #explorer-content .browse-topic, #explorer-content .browse-lesson-row'):pathname.startsWith('/teste-seu-nivel')?d.querySelector('.diag-track-card'):d.querySelector('.home-hero .area-tile, .home-hero'))break;
   await wait();
  }
  return{w,d,dom};
@@ -40,13 +40,24 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.match(readFileSync('explorar/index.html','utf8'),/MAT MAT MAT!/);
  assert.match(readFileSync('teste-seu-nivel/index.html','utf8'),/MAT MAT MAT!/);
  assert.equal(curriculum.lessons.length,144);
- assert.equal(diagnostic.questions.length,15);
- assert.equal(new Set(diagnostic.questions.map(q=>q.id)).size,15);
- assert.equal(diagnostic.domains.length,5);
- for(const q of diagnostic.questions){
-  assert.ok(diagnostic.domains.some(d=>d.id===q.area),'domínio válido '+q.id);
-  assert.ok(q.opcoes.length===4&&q.correta>=0&&q.correta<4);
-  assert.ok(curriculum.lessons.some(l=>l.id===q.aula));
+ assert.equal(diagnostic.version,2);
+ assert.equal(diagnostic.tracks.length,5);
+ assert.equal(diagnostic.tracks.reduce((n,t)=>n+t.questions.length,0),60);
+ assert.equal(new Set(diagnostic.tracks.map(t=>t.id)).size,5);
+ for(const track of diagnostic.tracks){
+  assert.equal(track.questions.length,12);
+  assert.equal(track.areas.length,4);
+  assert.equal(new Set(track.questions.map(q=>q.id)).size,12);
+  for(const skill of track.areas){
+   const sample=track.questions.filter(q=>q.area===skill.id);
+   assert.deepEqual(sample.map(q=>q.dificuldade),[1,2,3]);
+  }
+  for(const q of track.questions){
+   assert.ok(track.areas.some(skill=>skill.id===q.area));
+   assert.equal(q.opcoes.length,4);
+   assert.ok(q.correta>=0&&q.correta<4&&q.explicacao);
+   assert.ok(curriculum.lessons.some(l=>l.id===q.aula),'Link para aula válido: '+q.aula);
+  }
  }
  for(const l of curriculum.lessons){
   const html=readFileSync('aulas/'+l.id+'/index.html','utf8');
@@ -155,25 +166,48 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelector('.tab.active').dataset.tab,'teoria');
  dom.window.close();
 
+ // Cinco provas independentes e recomendações contextualizadas.
  ({w,d,dom}=await boot('https://matmatmat.test/teste-seu-nivel/'));
- assert.match(d.querySelector('.diagnosis-start h1').textContent,/Descubra por onde começar/);
- assert.ok(d.querySelector('.diagnosis-disclaimer'));
- click(w,d.querySelector('#diagnosis-start'));
- assert.ok(d.querySelector('.diagnosis-question'));
- for(let i=0;i<15;i++){
-  const q=diagnostic.questions[i];
-  const selected=i<3?(q.correta+1)%4:q.correta;
-  click(w,d.querySelector('[data-diagnosis-answer="'+selected+'"]'));
-  assert.ok(!d.querySelector('#diagnosis-next').disabled);
+ assert.equal(d.querySelectorAll('[data-track]').length,5,'Cinco percursos para escolher');
+ assert.match(d.querySelector('.diag-intro h1').textContent,/Onde você está na matemática/);
+ assert.equal(d.querySelectorAll('.header-mobile-caption').length,1);
+ click(w,d.querySelector('[data-track="em1"]'));
+ assert.match(d.querySelector('.diag-selected h1').textContent,/Seu ponto de partida/);
+ assert.equal(d.querySelectorAll('.diag-skill-list>div').length,4);
+ click(w,d.querySelector('#diag-begin'));
+ assert.equal(d.querySelectorAll('.diagnosis-option').length,4);
+ assert.equal(d.querySelector('#diagnosis-next').disabled,true,'Avançar exige resposta');
+ const currentTitle=d.querySelector('.diagnosis-question h1').textContent;
+ const firstQuestion=diagnostic.tracks[0].questions.find(q=>q.enunciado===currentTitle);
+ click(w,d.querySelector('[data-diagnosis-answer="'+firstQuestion.correta+'"]'));
+ assert.equal(d.querySelector('#diagnosis-next').disabled,false);
+ // Volta à apresentação sem perder a possibilidade de escolher outro perfil.
+ click(w,d.querySelector('#diagnosis-prev'));
+ assert.ok(d.querySelector('#diag-back-tracks'));
+ click(w,d.querySelector('#diag-back-tracks'));
+ assert.equal(d.querySelectorAll('[data-track]').length,5);
+ click(w,d.querySelector('[data-track="vestib"]'));
+ assert.equal(d.querySelectorAll('.diag-skill-list>div').length,4);
+ click(w,d.querySelector('#diag-begin'));
+ const vestibQuestions=diagnostic.tracks.find(t=>t.id==='vestib').questions;
+ for(let i=0;i<12;i++){
+  const title=d.querySelector('.diagnosis-question h1').textContent;
+  const q=vestibQuestions.find(q=>q.enunciado===title);
+  assert.ok(q,'Questão real encontrada em vestibular: '+title);
+  const choice=i<3?(q.correta+1)%4:q.correta;
+  click(w,d.querySelector('[data-diagnosis-answer="'+choice+'"]'));
+  assert.equal(d.querySelector('#diagnosis-next').disabled,false);
   click(w,d.querySelector('#diagnosis-next'));
  }
- assert.equal(d.querySelectorAll('.diagnosis-domain').length,5);
- assert.match(d.querySelector('.diagnosis-score').textContent,/12\s*\/ 15/);
- assert.ok(d.querySelector('.diagnosis-recs a[href^="/aulas/"]'));
- assert.ok(d.querySelector('.diagnosis-review details'));
- assert.ok(d.querySelector('.diagnosis-exatoo a[href^="https://app.exatoo.com/"]'));
- click(w,d.querySelector('#diagnosis-restart'));
- assert.ok(d.querySelector('#diagnosis-start'),'reiniciar');
+ assert.match(d.querySelector('.diag-score-main').textContent,/9\s*\/12/,'Resultado com 9 acertos');
+ assert.equal(d.querySelectorAll('.diagnosis-domain').length,4);
+ assert.equal(d.querySelectorAll('.diag-complexity>div').length,3);
+ assert.ok(d.querySelector('.diagnosis-recs a[href^="/aulas/"]'),'Recomendações de revisão por conteúdo');
+ assert.equal(d.querySelectorAll('.diag-review-item').length,12,'Correção comentada');
+ assert.ok(d.querySelector('.diag-result-exatoo a[href^="https://app.exatoo.com/"]'));
+ click(w,d.querySelector('#diag-change'));
+ assert.equal(d.querySelectorAll('[data-track]').length,5,'Pode escolher outro percurso');
+ assert.match(d.querySelector('[data-track="vestib"]').textContent,/Última tentativa: 9\/12/);
  dom.window.close();
- console.log('✓ Home, 9 áreas, 38 assuntos, 144 aulas, links e diagnóstico de 15 questões: OK');
+ console.log('✓ Home, 144 aulas, header contextual e diagnóstico com 5 provas e 60 questões: OK');
 })().catch(e=>{console.error(e);process.exitCode=1});

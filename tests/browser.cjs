@@ -28,6 +28,9 @@ async function checkWidth(page,label){
   assert.equal(await page.locator('.home-hero-art').count(),0);
   assert.equal(await page.locator('[data-preview]').count(),0);
   assert.equal(await page.locator('.mat-bang').count(),2);
+  assert.equal(await page.locator('.header-audience').count(),1);
+  assert.equal(await page.locator('.header-mobile-caption').count(),1);
+  assert.match(await page.locator('.header-audience').textContent(),/Ensino Médio e Vestibulares/);
   assert.equal(await page.locator('.home-hero-copy>p').textContent(),'Listas de Exercícios e Teoria grátis. Simples assim');
   assert.match(await page.title(),/MAT MAT MAT!/);
   assert.equal(await page.locator('a.nav-cta[href="/teste-seu-nivel/"]').count(),1);
@@ -88,17 +91,28 @@ async function checkWidth(page,label){
   await checkWidth(page,config.name+' aula');
   await page.screenshot({path:'screenshots/'+config.name+'-lesson.png',fullPage:true});
   await page.goto(BASE+'/teste-seu-nivel/',{waitUntil:'domcontentloaded'});
-  await page.locator('#diagnosis-start').waitFor();
-  await checkWidth(page,config.name+' diagnóstico');
+  await page.locator('.diag-track-card').first().waitFor();
+  assert.equal(await page.locator('.diag-track-card').count(),5);
+  assert.equal(await page.locator('.header-mobile-caption').count(),1);
+  await checkWidth(page,config.name+' seleção de percurso');
   await page.screenshot({path:'screenshots/'+config.name+'-diagnostic.png',fullPage:true});
-  await page.locator('#diagnosis-start').click();
-  for(let i=0;i<15;i++){
+  await page.locator('[data-track="enem"]').click();
+  assert.equal(await page.locator('.diag-skill-list>div').count(),4);
+  await checkWidth(page,config.name+' apresentação da prova');
+  await page.screenshot({path:'screenshots/'+config.name+'-diagnostic-intro.png',fullPage:true});
+  await page.locator('#diag-begin').click();
+  assert.equal(await page.locator('.diagnosis-option').count(),4);
+  await checkWidth(page,config.name+' questão');
+  await page.screenshot({path:'screenshots/'+config.name+'-diagnostic-question.png',fullPage:true});
+  for(let i=0;i<12;i++){
    await page.locator('[data-diagnosis-answer="1"]').click();
    await page.locator('#diagnosis-next').click();
   }
-  await page.locator('.diagnosis-score').waitFor();
-  assert.equal(await page.locator('.diagnosis-domain').count(),5);
-  await checkWidth(page,config.name+' resultado');
+  await page.locator('.diag-score-main').waitFor();
+  assert.equal(await page.locator('.diagnosis-domain').count(),4);
+  assert.equal(await page.locator('.diag-complexity>div').count(),3);
+  assert.equal(await page.locator('.diag-review-item').count(),12);
+  await checkWidth(page,config.name+' relatório diagnóstico');
   await page.screenshot({path:'screenshots/'+config.name+'-diagnostic-result.png',fullPage:true});
   await page.close();
  }

@@ -101,3 +101,9 @@ Removido o botão redundante **Pesquisar** das páginas de áreas e assuntos (`/
 
 ## Ações na página de aula — barra compacta
 As ações **Já estudei / Favoritar / Compartilhar** aparecem em uma única barra horizontal, com ícones SVG de linha, contorno suave e estados ativos discretos. Em celular, os três botões permanecem alinhados numa linha com ícones acima do texto. Os controles de estudo e favorito guardam os mesmos dados no navegador e atualizam `aria-pressed`; o compartilhamento continua usando o menu nativo, com WhatsApp/cópia como alternativa.
+
+
+## Avaliação diagnóstica v2 — cinco percursos
+O botão **Teste seu nível** apresenta cinco avaliações separadas: 1ª, 2ª e 3ª séries do Ensino Médio, ENEM e vestibulares tradicionais. Cada percurso tem **12 questões autorais** (60 questões diferentes no arquivo `data/diagnostico.json`), divididas entre quatro áreas e três dificuldades por área: Base, Aplicação e Desafio. A ordem de assuntos varia a cada tentativa, preservando a progressão de dificuldade. O aluno pode voltar, mudar respostas e consultar a correção comentada no final. O relatório traz desempenho por área e grau de complexidade e prioriza aulas relacionadas aos erros. Um resumo da última tentativa é guardado localmente por percurso; respostas e dados pessoais não são enviados a terceiros. Não é uma avaliação psicometricamente validada nem reproduz provas oficiais.
+
+O cabeçalho mostra **Matemática para Ensino Médio e Vestibulares** no centro do desktop e numa segunda linha centralizada quando a largura é menor.
