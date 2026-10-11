@@ -308,7 +308,7 @@ def ajustar(x):
         # colchete "]" que abre intervalo e "[" que fecha: espaçamento de delimitador
         x = re.sub(r"(?<!\\)\](?=-|\d|\\infty)",
                    lambda m: "]" if re.search(r"\\sqrt\[[^\]]*$", x[:m.start()]) else r"\mathopen{]}", x)
-        x = re.sub(r"(?<!\\)\[(?=\$|\s|\\,|\\cup|\\cap|\\quad|\\ |\)|,|\.|;|$)", r"\\mathclose{[}", x)
+        x = re.sub(r"(?<!\\)(?<!\\left)(?<!\\right)\[(?=\$|\s|\\,|\\cup|\\cap|\\quad|\\ |\)|,|\.|;|$)", r"\\mathclose{[}", x)
         return x
     if isinstance(x, list):
         return [ajustar(i) for i in x]

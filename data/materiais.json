@@ -240,6 +240,22 @@
     "tipo": "aula"
   },
   {
+    "aula": "A16",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A16 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A16.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A16 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A16.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
     "aula": "A17",
     "arquivos": [
       {
@@ -251,6 +267,70 @@
         "titulo": "Lista de vestibular A17 — 20 questões + gabarito resolvido",
         "tipo": "lista",
         "url": "/pdfs/vestibular-A17.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A18",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A18 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A18.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A18 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A18.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A19",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A19 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A19.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A19 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A19.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A20",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A20 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A20.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A20 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A20.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A21",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A21 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A21.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A21 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A21.pdf"
       }
     ],
     "tipo": "aula"

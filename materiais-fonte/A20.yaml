@@ -1,0 +1,237 @@
+# A20 — Estudo do Sinal e Inequações do 2º Grau
+aula: A20
+
+fixacao:
+  intro: Resolva na ordem — do aquecimento ao desafio. Esboce a parábola — com duas raízes, ela tem o sinal de $a$ fora das raízes e o sinal contrário entre elas.
+  secoes:
+    - nome: Aquecimento
+      questoes:
+        - enunciado: Faça o estudo do sinal de $f(x)=x^2-5x+6$.
+          resolucao: |
+            Raízes $2$ e $3$; $a>0$: positiva fora das raízes e negativa entre elas.
+          resposta: '$f>0$ para $x<2$ ou $x>3$; \ $f<0$ para $2<x<3$'
+
+        - enunciado: Faça o estudo do sinal de $g(x)=-x^2+4$.
+          resolucao: |
+            Raízes $\pm2$; $a<0$: negativa fora das raízes e positiva entre elas.
+          resposta: '$g>0$ para $-2<x<2$; \ $g<0$ para $x<-2$ ou $x>2$'
+
+        - enunciado: Resolva $x^2-9>0$.
+          resolucao: |
+            Raízes $\pm3$, $a>0$: positivo fora das raízes.
+          resposta: '$x<-3$ ou $x>3$'
+
+        - enunciado: Resolva $x^2-4x\le0$.
+          resolucao: |
+            $x(x-4)\le0$: raízes $0$ e $4$; negativo entre elas e zero nelas.
+          resposta: '$[0,\,4]$'
+
+        - enunciado: Resolva $x^2-6x+9>0$.
+          resolucao: |
+            $(x-3)^2>0$: é positivo para todo $x$, exceto $x=3$, onde vale zero.
+          resposta: '$\mathbb{R}-\{3\}$'
+
+        - enunciado: Resolva $x^2+2x+5>0$.
+          resolucao: |
+            $\Delta=4-20<0$ e $a>0$: a parábola fica toda acima do eixo $x$.
+          resposta: '$\mathbb{R}$'
+
+        - enunciado: Resolva $-x^2+x+6\ge0$.
+          resolucao: |
+            Multiplicando por $-1$ (inverte o sinal): $x^2-x-6\le0$. Raízes $-2$ e $3$; entre elas.
+          resposta: '$[-2,\,3]$'
+
+    - nome: Treino
+      questoes:
+        - enunciado: Resolva $2x^2-7x+3<0$.
+          resolucao: |
+            $\Delta=49-24=25$; raízes $\tfrac{7\pm5}4$, isto é, $3$ e $\tfrac12$. Negativo entre as raízes.
+          resposta: '$]\tfrac12,\,3[$'
+
+        - enunciado: Resolva $x^2\ge2x+8$.
+          resolucao: |
+            $x^2-2x-8\ge0$, com raízes $-2$ e $4$. Positivo fora delas.
+          resposta: '$x\le-2$ ou $x\ge4$'
+
+        - enunciado: Resolva $x^2+4<0$.
+          resolucao: |
+            $x^2+4\ge4>0$ para todo $x$: nunca é negativo.
+          resposta: '$\varnothing$'
+
+        - enunciado: Resolva $(x^2-4)(x-1)\ge0$.
+          resolucao: |
+            Raízes $-2$, $1$ e $2$. Sinais: $-$ antes de $-2$, $+$ entre $-2$ e $1$, $-$ entre $1$ e $2$ e $+$ depois de $2$.
+          resposta: '$[-2,\,1]\ \cup\ [2,\,+\infty[$'
+
+        - enunciado: Resolva $\dfrac{x^2-1}{x-3}\le0$.
+          resolucao: |
+            Numerador: raízes $\pm1$. Denominador: zera em $3$ (excluído).
+            Sinais: $-$ para $x<-1$, $+$ em $]-1,1[$, $-$ em $]1,3[$ e $+$ para $x>3$.
+          resposta: '$x\le-1$ ou $1\le x<3$'
+
+        - enunciado: Determine o domínio real de $f(x)=\sqrt{x^2-3x-10}$.
+          resolucao: |
+            $x^2-3x-10\ge0$, com raízes $-2$ e $5$: fora delas.
+          resposta: '$]-\infty,\,-2]\ \cup\ [5,\,+\infty[$'
+
+        - enunciado: Quantos números inteiros satisfazem $x^2-5x-6<0$?
+          resolucao: |
+            Raízes $-1$ e $6$: $-1<x<6$. Inteiros: $0,1,2,3,4,5$, ou seja, $6$.
+          resposta: '$6$'
+
+        - enunciado: Para quais valores de $m$ temos $x^2-4x+m>0$ para todo $x$ real?
+          resolucao: |
+            Com $a>0$, basta que a parábola não toque o eixo $x$: $\Delta=16-4m<0\Rightarrow m>4$.
+          resposta: '$m>4$'
+
+    - nome: Desafio
+      questoes:
+        - enunciado: 'Resolva o sistema $\begin{cases}x^2-4\ge0\\ x^2-5x+4<0\end{cases}$'
+          resolucao: |
+            1ª: $x\le-2$ ou $x\ge2$. 2ª: raízes $1$ e $4$, então $1<x<4$.
+            Interseção: $2\le x<4$.
+          resposta: '$[2,\,4[$'
+
+        - enunciado: Para quais valores de $m$ temos $-x^2+2x+m<0$ para todo $x$ real?
+          resolucao: |
+            $a<0$: a parábola deve ficar toda abaixo do eixo $x$, então $\Delta<0$: $4+4m<0\Rightarrow m<-1$.
+          resposta: '$m<-1$'
+
+        - enunciado: O lucro de uma empresa é $L(x)=-x^2+14x-40$ (em mil reais), para $x$ centenas de unidades. Para quais valores de $x$ há lucro?
+          resolucao: |
+            $-x^2+14x-40>0\Leftrightarrow x^2-14x+40<0$. Raízes $4$ e $10$: entre elas.
+          resposta: '$4<x<10$'
+
+        - enunciado: Determine o domínio real de $f(x)=\dfrac1{\sqrt{4-x^2}}$.
+          resolucao: |
+            Raiz no denominador: $4-x^2>0\Rightarrow x^2<4\Rightarrow -2<x<2$.
+          resposta: '$]-2,\,2[$'
+
+        - enunciado: Resolva $\dfrac{x^2-5x+6}{x^2-16}\ge0$.
+          resolucao: |
+            Numerador: raízes $2$ e $3$. Denominador: zera em $\pm4$ (excluídos).
+            Sinais: $+$ para $x<-4$; $-$ em $]-4,2[$; $+$ em $]2,3[$; $-$ em $]3,4[$; $+$ para $x>4$.
+          resposta: '$x<-4$ ou $2\le x\le3$ ou $x>4$'
+
+vestibular:
+  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  questoes:
+    - enunciado: O conjunto solução de $x^2-5x+4<0$ é
+      opcoes: ['$]-4,\,-1[$', '$]1,\,4[$', '$]-\infty,\,1[\ \cup\ ]4,\,+\infty[$', '$[1,\,4]$', '$]4,\,+\infty[$']
+      correta: B
+      resolucao: |
+        Raízes $1$ e $4$, com $a>0$: negativo entre elas.
+
+    - enunciado: O conjunto solução de $x^2-16\ge0$ é
+      opcoes: ['$]-\infty,\,-4]\ \cup\ [4,\,+\infty[$', '$[-4,\,4]$', '$]-4,\,4[$', '$[4,\,+\infty[$', '$\mathbb{R}$']
+      correta: A
+      resolucao: |
+        Positivo ou zero fora das raízes $\pm4$. Errar o lado negativo (alternativa D) é o deslize clássico.
+
+    - enunciado: O conjunto solução de $-x^2+3x\ge0$ é
+      opcoes: ['$]0,\,3[$', '$]-\infty,\,0]\ \cup\ [3,\,+\infty[$', '$[-3,\,0]$', '$[0,\,3]$', '$\mathbb{R}$']
+      correta: D
+      resolucao: |
+        $x(3-x)\ge0$, com raízes $0$ e $3$ e $a<0$: positivo entre as raízes.
+
+    - enunciado: A quantidade de números inteiros que satisfazem $x^2-2x-15<0$ é
+      opcoes: ['$5$', '$6$', '$7$', '$8$', '$9$']
+      correta: C
+      resolucao: |
+        Raízes $-3$ e $5$: $-3<x<5$. Inteiros: de $-2$ a $4$, ou seja, $7$.
+
+    - enunciado: O conjunto solução de $x^2-10x+25\le0$ é
+      opcoes: ['$\mathbb{R}$', '$\varnothing$', '$]-\infty,\,5]$', '$\mathbb{R}-\{5\}$', '$\{5\}$']
+      correta: E
+      resolucao: |
+        $(x-5)^2\le0$ só vale quando $(x-5)^2=0$, isto é, $x=5$.
+
+    - enunciado: O conjunto solução de $x^2+x+1>0$ é
+      opcoes: ['$\varnothing$', '$\mathbb{R}$', '$]-1,\,1[$', '$]0,\,+\infty[$', '$\{-1\}$']
+      correta: B
+      resolucao: |
+        $\Delta=1-4<0$ e $a>0$: a expressão é sempre positiva.
+
+    - enunciado: A desigualdade $x^2-6x+m>0$ vale para todo $x$ real se, e somente se,
+      opcoes: ['$m<9$', '$m=9$', '$m\ge9$', '$m>9$', '$m>0$']
+      correta: D
+      resolucao: |
+        $\Delta=36-4m<0\Rightarrow m>9$. Com $m=9$, a expressão zera em $x=3$.
+
+    - enunciado: O lucro de uma empresa é $L(x)=-x^2+12x-20$ (em mil reais). Há lucro positivo exatamente quando
+      opcoes: ['$2<x<10$', '$x<2$ ou $x>10$', '$0<x<12$', '$x>10$', '$x<2$']
+      correta: A
+      resolucao: |
+        $x^2-12x+20<0$, com raízes $2$ e $10$: entre elas.
+
+    - enunciado: O domínio real de $f(x)=\sqrt{x^2-7x+10}$ é
+      opcoes: ['$[2,\,5]$', '$]2,\,5[$', '$]-\infty,\,2]\ \cup\ [5,\,+\infty[$', '$]-\infty,\,2[\ \cup\ ]5,\,+\infty[$', '$\mathbb{R}$']
+      correta: C
+      resolucao: |
+        $x^2-7x+10\ge0$, com raízes $2$ e $5$: fora delas, incluindo-as.
+
+    - enunciado: O conjunto solução de $\dfrac{x-3}{x^2-4}\ge0$ é
+      opcoes: ['$[-2,\,2]\ \cup\ [3,\,+\infty[$', '$]-2,\,2[\ \cup\ ]3,\,+\infty[$', '$]-\infty,\,-2[\ \cup\ ]2,\,3]$', '$]2,\,3]$', '$]-2,\,2[\ \cup\ [3,\,+\infty[$']
+      correta: E
+      resolucao: |
+        Sinais: $-$ antes de $-2$, $+$ em $]-2,2[$, $-$ em $]2,3[$ e $+$ depois de $3$. O $3$ entra; $\pm2$ não.
+
+    - enunciado: A soma dos números inteiros que satisfazem $x^2-x-6\le0$ é
+      opcoes: ['$3$', '$4$', '$5$', '$6$', '$9$']
+      correta: A
+      resolucao: |
+        Raízes $-2$ e $3$: $-2\le x\le3$. Soma: $-2-1+0+1+2+3=3$.
+
+    - enunciado: As soluções reais de $x^2<3x$ são os números $x$ tais que
+      opcoes: ['$x<3$', '$x>3$', '$0<x<3$', '$x<0$ ou $x>3$', '$x>0$']
+      correta: C
+      resolucao: |
+        $x^2-3x<0\Rightarrow x(x-3)<0$: entre $0$ e $3$. Dividir por $x$ (alternativa A) perde informação.
+
+    - enunciado: O conjunto solução de $(x^2-9)(x^2+1)\le0$ é
+      opcoes: ['$[-1,\,1]$', '$]-3,\,3[$', '$\mathbb{R}$', '$[-3,\,3]$', '$]-\infty,\,-3]\ \cup\ [3,\,+\infty[$']
+      correta: D
+      resolucao: |
+        $x^2+1>0$ sempre; o sinal é o de $x^2-9$, que é $\le0$ em $[-3,3]$.
+
+    - enunciado: 'O conjunto solução do sistema $\begin{cases}x^2-1>0\\ x^2-4x<0\end{cases}$ é'
+      opcoes: ['$]0,\,4[$', '$]1,\,4[$', '$]-1,\,4[$', '$]0,\,1[$', '$]4,\,+\infty[$']
+      correta: B
+      resolucao: |
+        1ª: $x<-1$ ou $x>1$. 2ª: $0<x<4$. Interseção: $1<x<4$.
+
+    - enunciado: A inequação $kx^2-4x+1>0$ vale para todo $x$ real se, e somente se,
+      opcoes: ['$k>0$', '$k<4$', '$0<k<4$', '$k\ge4$', '$k>4$']
+      correta: E
+      resolucao: |
+        É preciso $k>0$ (concavidade para cima) e $\Delta=16-4k<0$, isto é, $k>4$.
+
+    - enunciado: A altura de um projétil é $h(t)=-5t^2+30t$, em metros. O tempo durante o qual ele permanece acima de $40$ m é
+      opcoes: ['$2$ s', '$3$ s', '$4$ s', '$5$ s', '$6$ s']
+      correta: A
+      resolucao: |
+        $-5t^2+30t>40\Rightarrow t^2-6t+8<0\Rightarrow 2<t<4$: durante $2$ segundos.
+
+    - enunciado: A quantidade de números inteiros no domínio real de $f(x)=\sqrt{12+x-x^2}$ é
+      opcoes: ['$7$', '$8$', '$9$', '$10$', '$12$']
+      correta: B
+      resolucao: |
+        $12+x-x^2\ge0\Leftrightarrow x^2-x-12\le0$, com raízes $-3$ e $4$: de $-3$ a $4$ há $8$ inteiros.
+
+    - enunciado: O conjunto solução de $(x-2)^2(x+3)>0$ é formado pelos $x$ tais que
+      opcoes: ['$x>-3$', '$x>2$', '$x<-3$', '$x>-3$ e $x\neq2$', '$x\in\mathbb{R}$']
+      correta: D
+      resolucao: |
+        É preciso $x+3>0$ e $(x-2)^2\neq0$.
+
+    - enunciado: O conjunto solução de $x(x-1)(x+2)<0$ é
+      opcoes: ['$]-2,\,0[\ \cup\ ]1,\,+\infty[$', '$]-2,\,1[$', '$]-\infty,\,-2[\ \cup\ ]0,\,1[$', '$]0,\,1[$', '$]-\infty,\,-2[$']
+      correta: C
+      resolucao: |
+        Raízes $-2$, $0$ e $1$. Sinais: $-$, $+$, $-$, $+$ da esquerda para a direita.
+
+    - enunciado: O conjunto solução de $\dfrac1{x^2-1}>0$ é
+      opcoes: ['$]-1,\,1[$', '$\mathbb{R}-\{-1,\,1\}$', '$]1,\,+\infty[$', '$[-1,\,1]$', '$]-\infty,\,-1[\ \cup\ ]1,\,+\infty[$']
+      correta: E
+      resolucao: |
+        Numerador positivo; basta $x^2-1>0$, isto é, $x<-1$ ou $x>1$.
