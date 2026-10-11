@@ -96,6 +96,70 @@
     "tipo": "aula"
   },
   {
+    "aula": "A07",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A07 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A07.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A07 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A07.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A08",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A08 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A08.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A08 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A08.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A09",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A09 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A09.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A09 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A09.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A10",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A10 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A10.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A10 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A10.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
     "aula": "A17",
     "arquivos": [
       {
