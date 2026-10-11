@@ -38,6 +38,7 @@ async function checkWidth(page,name){
   await page.locator('.area-tile').first().waitFor({timeout:20000});
   assert.equal(await page.locator('input[type=search]').count(),1,'Somente uma busca');
   assert.equal(await page.locator('.area-tile').count(),9);
+  assert.equal(await page.locator('#materiais').count(),0,'PDF feature removed');
   await checkWidth(page,setting.name+' home');
   await page.screenshot({timeout:12000,path:'screenshots/'+setting.name+'-home.png',fullPage:true});
 
