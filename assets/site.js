@@ -257,7 +257,7 @@ function home(){
  document.addEventListener('keydown',function(e){if((e.key==='/'||(e.key.toLowerCase()==='k'&&(e.ctrlKey||e.metaKey)))&&!e.altKey&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();input.focus()}});
  function loadUrl(){
   var p=new URLSearchParams(location.search),area=SUBJECT_AREAS.find(function(x){return x.id===p.get('area')});
-  if(p.get('q')){setQuery(p.get('q'),true);return}
+  if(p.get('q')){setQuery(p.get('q'),true);if(location.hash==='#resultados')resultArea.scrollIntoView({block:'start'});return}
   setQuery('',true);
   if(p.has('favoritos'))state={view:'favorites',area:'',topic:''};
   else if(p.has('todas'))state={view:'all',area:'',topic:''};
