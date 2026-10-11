@@ -1,5 +1,101 @@
 [
   {
+    "aula": "A01",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A01 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A01.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A01 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A01.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A02",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A02 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A02.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A02 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A02.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A03",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A03 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A03.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A03 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A03.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A04",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A04 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A04.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A04 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A04.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A05",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A05 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A05.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A05 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A05.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A06",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A06 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A06.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A06 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A06.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
     "aula": "A17",
     "arquivos": [
       {

@@ -32,7 +32,7 @@ PREAMBULO = r"""
 \setmainfont{Inter}
 \setmathfont{Latin Modern Math}[Scale=MatchLowercase]
 \setmathfont[range={up/num},Scale=MatchLowercase]{Inter}
-\AtBeginDocument{\thickmuskip=5mu\medmuskip=4mu\relpenalty=900\binoppenalty=10000\lineskiplimit=2pt\lineskip=3.5pt}
+\AtBeginDocument{\thickmuskip=5mu\medmuskip=4mu\relpenalty=900\binoppenalty=10000\lineskiplimit=3pt\lineskip=5pt}
 \newfontfamily\logofont{Inter Display Black}
 \newfontfamily\displayfont{Inter Display}[UprightFont=* ExtraBold, BoldFont=* Black]
 \newfontfamily\symfont{DejaVu Sans}
@@ -58,6 +58,7 @@ PREAMBULO = r"""
 \renewcommand{\columnseprulecolor}{\color{roxo!18}}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
+\setlength{\headheight}{13pt}
 \usepackage{lastpage}
 \usepackage{needspace}
 \usepackage{calc}
@@ -102,7 +103,7 @@ PREAMBULO = r"""
   \parbox[t]{\linewidth-\badgew}{\RaggedRight\setlength{\parskip}{3pt}#3}\par\vspace{#1}}
 \NewDocumentCommand{\letra}{m}{\tikz[baseline=(l.base)]\node[circle,draw=roxo,line width=.7pt,inner sep=0pt,minimum size=4.6mm,font=\scriptsize\bfseries,text=roxo](l){#1};}
 \newlist{itens}{enumerate}{1}
-\setlist[itens]{label={\color{roxo}\bfseries(\alph*)},leftmargin=7mm,labelsep=2mm,topsep=3pt,itemsep=2.5pt,parsep=0pt}
+\setlist[itens]{label={\color{roxo}\bfseries(\alph*)},leftmargin=7mm,labelsep=2mm,topsep=3pt,itemsep=3.5pt,parsep=0pt}
 
 % alternativas: o LaTeX mede a maior e escolhe 5, 3, 2 ou 1 coluna
 \newlength{\altw}\newlength{\altmax}\newlength{\altcel}
@@ -112,7 +113,7 @@ PREAMBULO = r"""
 \newcommand{\alternativas}[5]{%
   \global\altmax=0pt\medir{#1}\medir{#2}\medir{#3}\medir{#4}\medir{#5}%
   \addtolength{\altmax}{8mm}%
-  \par\vspace{4pt}\setlength{\parskip}{3.5pt}%
+  \par\vspace{4pt}\setlength{\parskip}{3.5pt}\lineskiplimit=4pt\lineskip=7pt%
   \ifdim\dimexpr5\altmax\relax<\linewidth \setlength{\altcel}{\dimexpr\linewidth/5-0.2pt\relax}%
   \else\ifdim\dimexpr3\altmax\relax<\linewidth \setlength{\altcel}{\dimexpr\linewidth/3-0.2pt\relax}%
   \else\ifdim\dimexpr2\altmax\relax<\linewidth \setlength{\altcel}{\dimexpr\linewidth/2-0.2pt\relax}%
@@ -160,10 +161,10 @@ CAPA = r"""
      {Prof. João Capri};
   \node[anchor=north east,inner sep=0] at ($(current page.north east)+(-14mm,-10mm)$) {%
     \tikz\node[fill=lima,text=ink,rounded corners=7pt,inner xsep=7pt,inner ysep=3pt,font=\scriptsize\bfseries]{<<CHIP>>};};
-  \node[anchor=north east,text=white,font=\displayfont\fontsize{19}{22}\selectfont,align=right,text width=115mm,inner sep=0]
-     at ($(current page.north east)+(-14mm,-19mm)$) {<<TITULO>>};
+  \node[anchor=north east,text=white,font=\displayfont\fontsize{19}{21.5}\selectfont,align=right,text width=118mm,inner sep=0] (tit)
+     at ($(current page.north east)+(-14mm,-18mm)$) {<<TITULO>>};
   \node[anchor=north east,text=limatxt,font=\small\bfseries,align=right,inner sep=0]
-     at ($(current page.north east)+(-14mm,-35mm)$) {<<SUBTITULO>>};
+     at ($(tit.south east)+(0,-3.2mm)$) {<<SUBTITULO>>};
 \end{tikzpicture}
 \vspace*{21mm}
 
@@ -214,11 +215,11 @@ def documento(aula, tipo, dados):
     nome_tipo = "Lista de fixação" if fixa else "Lista de vestibular"
     total = (sum(len(s["questoes"]) for s in dados["secoes"]) if fixa else len(dados["questoes"]))
     tex = PREAMBULO
-    tex = tex.replace("<<CABECALHO>>", f"Aula {aula['id']} \\,·\\, {aula['title']}")
+    tex = tex.replace("<<CABECALHO>>", f"Aula {aula['id']} \\,·\\, " + re.sub(r"\s+-\s+", " — ", aula["title"]))
     tex = tex.replace("<<TIPOCURTO>>", nome_tipo.upper())
     corpo = CAPA
     corpo = corpo.replace("<<CHIP>>", f"AULA {aula['id']} \\,·\\, FRENTE {aula['front']} \\,·\\, BLOCO {aula['block']}")
-    corpo = corpo.replace("<<TITULO>>", aula["title"])
+    corpo = corpo.replace("<<TITULO>>", re.sub(r"\s+-\s+", " — ", aula["title"]))
     corpo = corpo.replace("<<SUBTITULO>>", f"{nome_tipo} \\,·\\, {total} questões \\,·\\, gabarito resolvido")
     corpo = corpo.replace("<<INTRO>>", dados.get("intro", ""))
 
@@ -301,11 +302,27 @@ def proximo_lote(tamanho=6):
     return [a for a in pendentes if a["block"] == bloco][:tamanho]
 
 
+def ajustar(x):
+    """Ajustes tipográficos: intervalos como ]-3, 5[ ganham espaçamento de delimitador."""
+    if isinstance(x, str):
+        # colchete "]" que abre intervalo e "[" que fecha: espaçamento de delimitador
+        x = re.sub(r"(?<!\\)\](?=-|\d|\\infty)",
+                   lambda m: "]" if re.search(r"\\sqrt\[[^\]]*$", x[:m.start()]) else r"\mathopen{]}", x)
+        x = re.sub(r"(?<!\\)\[(?=\$|\s|\\,|\\cup|\\cap|\\quad|\\ |\)|,|\.|;|$)", r"\\mathclose{[}", x)
+        return x
+    if isinstance(x, list):
+        return [ajustar(i) for i in x]
+    if isinstance(x, dict):
+        return {k: ajustar(v) for k, v in x.items()}
+    return x
+
+
 def gerar(codigo):
     aulas = json.loads((ROOT / "data" / "aulas.json").read_text(encoding="utf-8"))["lessons"]
     aula = next(a for a in aulas if a["id"] == codigo)
     fonte = yaml.safe_load((FONTE / f"{codigo}.yaml").read_text(encoding="utf-8"))
     validar(codigo, fonte)
+    fonte = ajustar(fonte)
     DEST.mkdir(exist_ok=True)
     saidas = []
     for tipo in ("fixacao", "vestibular"):
@@ -319,8 +336,9 @@ def gerar(codigo):
                 r = subprocess.run(["xelatex", "-interaction=nonstopmode", "-halt-on-error", arq.name],
                                    cwd=tmp, capture_output=True, text=True)
                 if r.returncode:
-                    (DEST / f"_erro-{tipo}-{codigo}.tex").write_text(tex, encoding="utf-8")
-                    sys.exit(f"Erro no XeLaTeX ({codigo} {tipo}):\n" + r.stdout[-2500:])
+                    debug = Path(tempfile.gettempdir()) / f"erro-{tipo}-{codigo}.tex"
+                    debug.write_text(tex, encoding="utf-8")
+                    sys.exit(f"Erro no XeLaTeX ({codigo} {tipo}); fonte em {debug}:\n" + r.stdout[-2500:])
             destino = DEST / f"{tipo}-{codigo}.pdf"
             shutil.copy(Path(tmp) / "lista.pdf", destino)
             saidas.append(destino)

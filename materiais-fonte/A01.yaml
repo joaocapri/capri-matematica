@@ -1,0 +1,294 @@
+# A01 — Teoria dos Conjuntos: Linguagem e Representação
+aula: A01
+
+fixacao:
+  intro: Resolva na ordem — do aquecimento ao desafio. O gabarito resolvido está no final.
+  secoes:
+    - nome: Aquecimento
+      questoes:
+        - enunciado: Escreva cada conjunto listando seus elementos (por extensão).
+          itens:
+            - $A=\{x\in\mathbb{N}\mid x<5\}$
+            - $B=\{x\mid x \text{ é letra da palavra ARARA}\}$
+            - $C=\{x\in\mathbb{Z}\mid -2\le x<3\}$
+          resolucao: |
+            (a) Naturais menores que $5$: $A=\{0,1,2,3,4\}$.
+            (b) Letras repetidas contam uma só vez: $B=\{A,R\}$.
+            (c) Inteiros de $-2$ (incluído) até $3$ (excluído): $C=\{-2,-1,0,1,2\}$.
+          resposta: '(a) $\{0,1,2,3,4\}$ \quad (b) $\{A,R\}$ \quad (c) $\{-2,-1,0,1,2\}$'
+
+        - enunciado: Descreva cada conjunto por uma propriedade de seus elementos (por compreensão).
+          itens:
+            - $\{2,4,6,8,\ldots\}$
+            - $\{1,4,9,16,25\}$
+          resolucao: |
+            Há mais de uma resposta correta. Exemplos:
+            (a) $\{x\in\mathbb{N}\mid x \text{ é par e } x\neq 0\}$.
+            (b) $\{x\mid x=n^2,\ n\in\mathbb{N} \text{ e } 1\le n\le 5\}$.
+          resposta: '(a) naturais pares não nulos \quad (b) quadrados de $1$ a $5$'
+
+        - enunciado: 'Sendo $A=\{1,\,2,\,\{3\},\,\varnothing\}$, classifique cada afirmação em V ou F.'
+          itens:
+            - $1\in A$
+            - $3\in A$
+            - $\{3\}\in A$
+            - $\varnothing\in A$
+            - $\varnothing\subset A$
+            - $\{1,2\}\subset A$
+          resolucao: |
+            Os elementos de $A$ são $1$, $2$, $\{3\}$ e $\varnothing$.
+            (a) V. (b) F: o elemento é $\{3\}$, não $3$. (c) V. (d) V: $\varnothing$ aparece na lista.
+            (e) V: o vazio é subconjunto de qualquer conjunto. (f) V: $1$ e $2$ pertencem a $A$.
+          resposta: '(a) V \quad (b) F \quad (c) V \quad (d) V \quad (e) V \quad (f) V'
+
+        - enunciado: Classifique cada conjunto como vazio, unitário ou nenhum dos dois.
+          itens:
+            - $\{x\in\mathbb{N}\mid x+3=1\}$
+            - $\{x\in\mathbb{R}\mid x^2=4\}$
+            - $\{x\in\mathbb{N}\mid 2x=10\}$
+          resolucao: |
+            (a) $x=-2\notin\mathbb{N}$: conjunto vazio.
+            (b) $x=2$ ou $x=-2$: dois elementos, nem vazio nem unitário.
+            (c) $x=5$: conjunto unitário $\{5\}$.
+          resposta: '(a) vazio \quad (b) nenhum dos dois \quad (c) unitário'
+
+        - enunciado: 'Sendo $A=\{0,1,2,3\}$, complete com $\in$, $\notin$, $\subset$ ou $\not\subset$.'
+          itens:
+            - $2\ \_\_\ A$
+            - $\{2\}\ \_\_\ A$
+            - $5\ \_\_\ A$
+            - $\{1,5\}\ \_\_\ A$
+          resolucao: |
+            Elemento com conjunto: $\in$ ou $\notin$. Conjunto com conjunto: $\subset$ ou $\not\subset$.
+            (a) $2\in A$. (b) $\{2\}\subset A$. (c) $5\notin A$. (d) $\{1,5\}\not\subset A$, pois $5\notin A$.
+          resposta: '(a) $\in$ \quad (b) $\subset$ \quad (c) $\notin$ \quad (d) $\not\subset$'
+
+        - enunciado: Quantos elementos tem cada conjunto?
+          itens:
+            - $\{x\in\mathbb{N}\mid 3<x\le 10\}$
+            - $\{x\in\mathbb{Z}\mid x^2<10\}$
+            - $\{x\mid x \text{ é divisor positivo de } 12\}$
+          resolucao: |
+            (a) $\{4,5,6,7,8,9,10\}$: $7$ elementos.
+            (b) $\{-3,-2,-1,0,1,2,3\}$: $7$ elementos.
+            (c) $\{1,2,3,4,6,12\}$: $6$ elementos.
+          resposta: '(a) $7$ \quad (b) $7$ \quad (c) $6$'
+
+        - enunciado: 'Escreva todos os subconjuntos de $A=\{1,2,3\}$.'
+          resolucao: |
+            Organize pelo número de elementos: $\varnothing$; $\{1\},\{2\},\{3\}$; $\{1,2\},\{1,3\},\{2,3\}$; $\{1,2,3\}$.
+            São $2^3=8$ subconjuntos.
+          resposta: '$8$ subconjuntos, de $\varnothing$ até $\{1,2,3\}$'
+
+    - nome: Treino
+      questoes:
+        - enunciado: Quantos subconjuntos tem um conjunto com $5$ elementos? Quantos deles são não vazios?
+          resolucao: |
+            Cada elemento entra ou não entra: $2^5=32$ subconjuntos.
+            Tirando o vazio, sobram $31$.
+          resposta: '$32$ subconjuntos; $31$ não vazios'
+
+        - enunciado: 'Escreva o conjunto das partes $\mathcal{P}(B)$, sendo $B=\{a,\{a\}\}$.'
+          resolucao: |
+            $B$ tem $2$ elementos: $a$ e $\{a\}$. Logo, $\mathcal{P}(B)$ tem $2^2=4$ elementos.
+            $\mathcal{P}(B)=\big\{\varnothing,\ \{a\},\ \{\{a\}\},\ \{a,\{a\}\}\big\}$.
+          resposta: '$\{\varnothing,\{a\},\{\{a\}\},\{a,\{a\}\}\}$'
+
+        - enunciado: 'Determine $x$ e $y$ para que $\{x+1,\ 6\}=\{4,\ y-2\}$.'
+          resolucao: |
+            Como $6\neq4$, o $6$ precisa ser igual a $y-2$, e $x+1$ precisa ser igual a $4$.
+            Então $y=8$ e $x=3$.
+          resposta: '$x=3$ e $y=8$'
+
+        - enunciado: 'Sejam $A=\{x\in\mathbb{N}\mid x \text{ é múltiplo de } 4\}$ e $B=\{x\in\mathbb{N}\mid x \text{ é par}\}$. Decida se $A\subset B$ e se $B\subset A$.'
+          resolucao: |
+            Todo múltiplo de $4$ é par, logo $A\subset B$.
+            Já $2\in B$, mas $2\notin A$, logo $B\not\subset A$.
+          resposta: '$A\subset B$; \ $B\not\subset A$'
+
+        - enunciado: Um conjunto $A$ tem $64$ subconjuntos. Quantos elementos tem $A$?
+          resolucao: |
+            $2^n=64=2^6\Rightarrow n=6$.
+          resposta: '$6$ elementos'
+
+        - enunciado: 'Determine todos os conjuntos $X$ tais que $\{1,2\}\subset X\subset\{1,2,3,4\}$.'
+          resolucao: |
+            $X$ contém obrigatoriamente $1$ e $2$; os elementos $3$ e $4$ podem entrar ou não.
+            $X\in\{\{1,2\},\ \{1,2,3\},\ \{1,2,4\},\ \{1,2,3,4\}\}$: são $2^2=4$ conjuntos.
+          resposta: '$\{1,2\},\ \{1,2,3\},\ \{1,2,4\},\ \{1,2,3,4\}$'
+
+        - enunciado: 'Sendo $A=\{\varnothing,\ \{\varnothing\}\}$, classifique em V ou F.'
+          itens:
+            - $\varnothing\in A$
+            - $\{\varnothing\}\subset A$
+            - $\{\{\varnothing\}\}\in A$
+            - $A$ tem $4$ subconjuntos
+          resolucao: |
+            Os elementos de $A$ são $\varnothing$ e $\{\varnothing\}$.
+            (a) V. (b) V: o único elemento de $\{\varnothing\}$ é $\varnothing$, que pertence a $A$.
+            (c) F: $\{\{\varnothing\}\}$ não está na lista de elementos (é um subconjunto de $A$).
+            (d) V: $n(A)=2$, logo $2^2=4$ subconjuntos.
+          resposta: '(a) V \quad (b) V \quad (c) F \quad (d) V'
+
+        - enunciado: 'Quantos subconjuntos de $\{1,2,3,4,5,6\}$ contêm o elemento $1$?'
+          resolucao: |
+            O $1$ está garantido; os outros $5$ elementos entram ou não: $2^5=32$.
+          resposta: '$32$'
+
+    - nome: Desafio
+      questoes:
+        - enunciado: Um conjunto $A$ tem $n$ elementos. Ao acrescentar $2$ elementos novos, o número de subconjuntos aumenta em $96$. Determine $n$.
+          resolucao: |
+            $2^{n+2}-2^n=96\Rightarrow 4\cdot2^n-2^n=3\cdot2^n=96\Rightarrow 2^n=32\Rightarrow n=5$.
+          resposta: '$n=5$'
+
+        - enunciado: 'Quantos subconjuntos de $\{1,2,3,4,5,6,7\}$ não contêm nenhum número par?'
+          resolucao: |
+            Só podem entrar os ímpares $\{1,3,5,7\}$: são $2^4=16$ subconjuntos (incluindo o vazio).
+          resposta: '$16$'
+
+        - enunciado: 'Sejam $A=\{x\in\mathbb{Z}\mid -2\le x\le 2\}$ e $B=\{x^2\mid x\in A\}$. Escreva $B$ por extensão e diga quantos elementos ele tem.'
+          resolucao: |
+            $A=\{-2,-1,0,1,2\}$; os quadrados são $4,1,0,1,4$.
+            Sem repetir: $B=\{0,1,4\}$, com $3$ elementos.
+          resposta: '$B=\{0,1,4\}$; $3$ elementos'
+
+        - enunciado: 'Sejam $A=\{2k\mid k\in\mathbb{N}\}$, $B=\{4k\mid k\in\mathbb{N}\}$ e $C=\{4k+2\mid k\in\mathbb{N}\}$. Classifique em V ou F.'
+          itens:
+            - $B\subset A$
+            - $C\subset A$
+            - $18\in C$
+            - $20\in C$
+          resolucao: |
+            (a) V: $4k=2(2k)$ é par. (b) V: $4k+2=2(2k+1)$ é par.
+            (c) V: $18=4\cdot4+2$. (d) F: $20=4\cdot5$ deixa resto $0$ na divisão por $4$.
+          resposta: '(a) V \quad (b) V \quad (c) V \quad (d) F'
+
+        - enunciado: 'Quantos elementos têm $\mathcal{P}(\varnothing)$ e $\mathcal{P}(\mathcal{P}(\varnothing))$? Liste-os.'
+          resolucao: |
+            $\varnothing$ tem $0$ elementos, então $\mathcal{P}(\varnothing)$ tem $2^0=1$ elemento: $\mathcal{P}(\varnothing)=\{\varnothing\}$.
+            $\{\varnothing\}$ tem $1$ elemento, então $\mathcal{P}(\{\varnothing\})=\{\varnothing,\{\varnothing\}\}$, com $2$ elementos.
+          resposta: '$1$ elemento: $\{\varnothing\}$; \ $2$ elementos: $\{\varnothing,\{\varnothing\}\}$'
+
+vestibular:
+  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  questoes:
+    - enunciado: 'Dado o conjunto $A=\{1,3,5,7\}$, a afirmação verdadeira é'
+      opcoes: ['$\{1,\,7\}\subset A$', '$3\subset A$', '$\{5\}\in A$', '$\varnothing\in A$', '$2\in A$']
+      correta: A
+      resolucao: |
+        $1$ e $7$ pertencem a $A$, logo $\{1,7\}\subset A$. As demais confundem $\in$ com $\subset$ ou citam elementos que não estão em $A$.
+
+    - enunciado: 'O número de subconjuntos de $\{a,b,c,d,e,f\}$ é'
+      opcoes: ['$12$', '$32$', '$36$', '$64$', '$720$']
+      correta: D
+      resolucao: |
+        Com $6$ elementos: $2^6=64$.
+
+    - enunciado: 'O conjunto $\{x\in\mathbb{Z}\mid -3<x\le 2\}$ tem'
+      opcoes: ['$4$ elementos', '$5$ elementos', '$6$ elementos', '$7$ elementos', '$8$ elementos']
+      correta: B
+      resolucao: |
+        $\{-2,-1,0,1,2\}$: $5$ elementos ($-3$ fica de fora).
+
+    - enunciado: É unitário o conjunto
+      opcoes: ['$\{x\in\mathbb{N}\mid x<0\}$', '$\{x\in\mathbb{N}\mid 1<x<2\}$', '$\{x\in\mathbb{Z}\mid 2x=7\}$', '$\{x\in\mathbb{R}\mid x^2=9\}$', '$\{x\in\mathbb{N}\mid x+4=4\}$']
+      correta: E
+      resolucao: |
+        $x+4=4\Rightarrow x=0\in\mathbb{N}$: o conjunto é $\{0\}$. Os três primeiros são vazios e o quarto é $\{-3,3\}$.
+
+    - enunciado: 'Sabendo que $\{2,\ x,\ 7\}=\{2,\ 5,\ y\}$, com $x\neq y$, o valor de $x+y$ é'
+      opcoes: ['$9$', '$10$', '$12$', '$14$', '$17$']
+      correta: C
+      resolucao: |
+        $7$ precisa estar no segundo conjunto, então $y=7$; e $5$ precisa estar no primeiro, então $x=5$. Logo, $x+y=12$.
+
+    - enunciado: Se o conjunto $A$ possui exatamente $256$ subconjuntos, então o número de elementos de $A$ é
+      opcoes: ['$8$', '$16$', '$32$', '$64$', '$128$']
+      correta: A
+      resolucao: |
+        $2^n=256=2^8\Rightarrow n=8$.
+
+    - enunciado: 'Considere $A=\{\varnothing,\ 1,\ \{1\}\}$. É FALSA a afirmação'
+      opcoes: ['$\varnothing\in A$', '$\varnothing\subset A$', '$\{1\}\in A$', '$\{1\}\subset A$', '$\{\{1\},\,2\}\subset A$']
+      correta: E
+      resolucao: |
+        $2\notin A$, então $\{\{1\},2\}\not\subset A$. Note que $\{1\}$ é, ao mesmo tempo, elemento de $A$ e subconjunto de $A$ (pois $1\in A$).
+
+    - enunciado: Uma pizzaria oferece $5$ coberturas extras, e o cliente pode escolher qualquer combinação delas, inclusive nenhuma. O número de escolhas possíveis de coberturas extras é
+      opcoes: ['$10$', '$25$', '$31$', '$32$', '$120$']
+      correta: D
+      resolucao: |
+        Cada escolha é um subconjunto das $5$ coberturas: $2^5=32$ (o vazio corresponde a "nenhuma").
+
+    - enunciado: 'O número de subconjuntos de $A=\{1,2,3,4\}$ com exatamente $2$ elementos é'
+      opcoes: ['$4$', '$6$', '$8$', '$12$', '$16$']
+      correta: B
+      resolucao: |
+        $\{1,2\},\{1,3\},\{1,4\},\{2,3\},\{2,4\},\{3,4\}$: $6$ subconjuntos.
+
+    - enunciado: 'Sejam $A$ o conjunto dos divisores naturais de $18$ e $B$ o conjunto dos divisores naturais de $36$. Então'
+      opcoes: ['$A\subset B$ e $A\neq B$', '$A=B$', '$B\subset A$', '$A$ e $B$ não têm elementos comuns', '$n(A)=n(B)$']
+      correta: A
+      resolucao: |
+        Todo divisor de $18$ divide $36$, logo $A\subset B$. Mas $4\in B$ e $4\notin A$, então $A\neq B$ ($n(A)=6$ e $n(B)=9$).
+
+    - enunciado: 'O número de conjuntos $X$ tais que $\{1,2\}\subset X\subset\{1,2,3,4,5\}$ é'
+      opcoes: ['$3$', '$6$', '$8$', '$16$', '$32$']
+      correta: C
+      resolucao: |
+        $1$ e $2$ estão garantidos; $3$, $4$ e $5$ entram ou não: $2^3=8$.
+
+    - enunciado: 'Uma representação correta do conjunto $\{1,3,5,7,9\}$ por compreensão é'
+      opcoes: ['$\{x\in\mathbb{N}\mid x<10\}$', '$\{x\in\mathbb{N}\mid x \text{ é primo e } x<10\}$', '$\{x\in\mathbb{Z}\mid x \text{ é ímpar e } x<10\}$', '$\{x\in\mathbb{N}\mid x \text{ é ímpar e } x\le 11\}$', '$\{x\in\mathbb{N}\mid x \text{ é ímpar e } x<10\}$']
+      correta: E
+      resolucao: |
+        Ímpares naturais menores que $10$: exatamente $1,3,5,7,9$. Em C entrariam ímpares negativos; em D entraria o $11$; em B entraria o $2$ e sairiam $1$ e $9$.
+
+    - enunciado: 'Seja $A=\{1,\ \{1\},\ \{1,2\}\}$. O número de subconjuntos de $A$ é'
+      opcoes: ['$3$', '$4$', '$6$', '$8$', '$16$']
+      correta: D
+      resolucao: |
+        $A$ tem $3$ elementos: $1$, $\{1\}$ e $\{1,2\}$. Logo, $2^3=8$ subconjuntos.
+
+    - enunciado: 'O número de subconjuntos de $\{1,2,3,\ldots,10\}$ que contêm $1$ e $2$, mas não contêm $3$, é'
+      opcoes: ['$64$', '$128$', '$256$', '$512$', '$1024$']
+      correta: B
+      resolucao: |
+        $1$ e $2$ estão fixos e $3$ está proibido; sobram $7$ elementos livres: $2^7=128$.
+
+    - enunciado: 'A respeito do conjunto das partes do vazio, $\mathcal{P}(\varnothing)$, é correto afirmar que'
+      opcoes: ['ele tem exatamente um elemento', 'ele é igual a $\varnothing$', 'ele não tem elementos', 'ele é igual a $\{0\}$', '$\varnothing\notin\mathcal{P}(\varnothing)$']
+      correta: A
+      resolucao: |
+        $\mathcal{P}(\varnothing)=\{\varnothing\}$: um conjunto com um único elemento, o vazio. Por isso ele não é vazio.
+
+    - enunciado: 'Se $\mathcal{P}(A)$ tem $8$ vezes mais elementos que $\mathcal{P}(B)$, então $n(A)-n(B)$ vale'
+      opcoes: ['$1$', '$2$', '$3$', '$4$', '$8$']
+      correta: C
+      resolucao: |
+        $2^{n(A)}=8\cdot2^{n(B)}=2^{n(B)+3}\Rightarrow n(A)-n(B)=3$.
+
+    - enunciado: 'Considere $M=\{x\in\mathbb{Z}\mid x=3k+1,\ k\in\mathbb{Z}\}$. Pertence a $M$ o número'
+      opcoes: ['$0$', '$6$', '$9$', '$14$', '$22$']
+      correta: E
+      resolucao: |
+        $22=3\cdot7+1$. Os outros deixam resto $0$ ($0$, $6$, $9$) ou $2$ ($14$) na divisão por $3$.
+
+    - enunciado: 'Sejam $A$ o conjunto dos múltiplos naturais de $6$ e $B$ o conjunto dos múltiplos naturais de $3$. É correto afirmar que'
+      opcoes: ['$B\subset A$', '$A\subset B$', '$A=B$', '$9\in A$', '$12\notin B$']
+      correta: B
+      resolucao: |
+        Todo múltiplo de $6$ é múltiplo de $3$: $A\subset B$. O recíproco falha ($3\in B$, $3\notin A$).
+
+    - enunciado: Um professor pode montar uma prova escolhendo qualquer grupo de questões de um banco com $10$ questões, desde que escolha pelo menos uma. O número de provas diferentes (quanto ao conjunto de questões) é
+      opcoes: ['$10$', '$100$', '$512$', '$1023$', '$1024$']
+      correta: D
+      resolucao: |
+        Subconjuntos de $10$ questões: $2^{10}=1024$. Tirando o vazio: $1023$.
+
+    - enunciado: Um conjunto $A$ tem $k$ elementos. Ao retirar um elemento de $A$, o número de subconjuntos diminui em $64$. O valor de $k$ é
+      opcoes: ['$5$', '$6$', '$7$', '$8$', '$64$']
+      correta: C
+      resolucao: |
+        $2^k-2^{k-1}=2^{k-1}=64=2^6\Rightarrow k=7$.
