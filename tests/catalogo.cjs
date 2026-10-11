@@ -42,7 +42,11 @@ function visible(e){return !!e&&!e.hidden}
   assert.equal(d.querySelectorAll('.home-materials').length,0,'Bloco de PDFs repetido removido');
   assert.ok(d.querySelector('.navlinks a[href="/?q=PDF#resultados"]'),'PDFs disponíveis pela única busca');
   assert.ok(d.querySelector('#explorar'),'Explorar currículo');
-  assert.ok(d.querySelectorAll('.home-popular button').length>=3,'Busca sugerida');
+  assert.equal(d.querySelectorAll('.home-popular button').length,0,'Home sem chips e textos repetidos');
+  assert.equal(d.querySelectorAll('.mat-logo').length,2,'Marca empilhada no cabeçalho e rodapé');
+  assert.equal(d.querySelectorAll('.mat-logo span').length,6,'MAT três vezes em cada assinatura');
+  assert.match(d.querySelector('#hero-title').textContent,/Qual matemática você precisa/);
+  assert.match(d.title,/MAT MAT MAT/);
   assert.ok(!visible(d.getElementById('resultados')),'Sem resultados antes de digitar');
 
   click(w,d.querySelector('[data-catalog="area"][data-id="funcoes"]'));
@@ -103,13 +107,17 @@ function visible(e){return !!e&&!e.hidden}
   dom.window.close();
 
   ({dom,w,d}=await boot());
-  click(w,d.querySelector('[data-example="Geometria espacial"]'));
-  assert.ok(visible(d.getElementById('resultados')),'Sugestão abre pesquisa');
+  type(w,d.getElementById('hero-search'),'Geometria espacial');
+  assert.ok(visible(d.getElementById('resultados')),'Busca simples abre resultados');
   assert.ok(d.querySelectorAll('#search-output .browse-lesson-row').length>0);
   dom.window.close();
 
   // A navegação contextual segue as categorias atuais do currículo.
   ({dom,w,d}=await boot('https://capri.mat/aulas/A17/'));
+  assert.equal(d.querySelectorAll('.tab').length,4,'Quatro abas em todas as aulas');
+  assert.equal(d.querySelectorAll('[data-tab="resumo"]').length,0,'Sem aba Visão geral');
+  assert.equal(d.querySelector('.tab.active').dataset.tab,'arquivos','Abre PDFs quando materiais existem');
+  assert.match(d.title,/MAT MAT MAT/);
   assert.equal(d.querySelectorAll('.sidelesson').length,6,'Sidebar da quadrática mantém apenas seis aulas');
   assert.ok(d.querySelector('.crumbs a[href="/?area=funcoes&assunto=fu-quadratica#explorar"]'),'Breadcrumb abre o assunto correto');
   assert.ok(d.querySelector('#tab-body a[href="/pdfs/lista-A17.pdf"]'),'PDF da A17 continua disponível');
@@ -120,6 +128,8 @@ function visible(e){return !!e&&!e.hidden}
   assert.ok(d.querySelector('#quiz-feedback a[href*="capri_aula=A17"]'),'Código de aula repassado sem informação pessoal');
   dom.window.close();
   ({dom,w,d}=await boot('https://capri.mat/aulas/B25/'));
+  assert.equal(d.querySelectorAll('.tab').length,4,'Quatro abas na aula sem PDF');
+  assert.equal(d.querySelector('.tab.active').dataset.tab,'teoria','Sem PDF inicia na Teoria');
   click(w,d.querySelector('[data-tab="arquivos"]'));
   assert.ok(d.querySelector('#tab-body a[href*="app.exatoo.com"]'),'Sem PDF publicado, oferece treino personalizado');
   assert.equal(d.querySelectorAll('.sidelesson').length,3,'Aula de cone navega somente dentro do tema');
@@ -139,5 +149,10 @@ function visible(e){return !!e&&!e.hidden}
   ({dom,w,d}=await boot('https://capri.mat/aulas/A17/'));
   assert.ok(d.querySelectorAll('#tab-body .filelink').length>=2,'Aula herda PDFs sem URLs repetidas');
   dom.window.close();materials.pop();materials.pop();
+  // Os endereços antigos não quebram ao retirar a aba.
+  ({dom,w,d}=await boot('https://capri.mat/aulas/B25/?tab=resumo'));
+  assert.equal(d.querySelector('.tab.active').dataset.tab,'teoria','Link legado de Visão geral migra para Teoria');
+  assert.ok(d.querySelector('#tab-body h2')?.textContent.includes('Teoria'));
+  dom.window.close();
   console.log('✓ Home v4: busca única, PDFs, filtros, hierarquia, histórico e catálogo: OK');
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,6 +1,6 @@
-# Capri Matemática ✳
+# MAT MAT MAT ✳
 
-Portal público de aulas do Prof. João Capri. Uma página por aula, com códigos estáveis A01–A48, B01–B48 e C01–C48.
+Portal gratuito de matemática MAT MAT MAT, por Prof. João Capri. Uma página por aula, com códigos estáveis A01–A48, B01–B48 e C01–C48.
 
 ## Estrutura
 - **144 páginas** em \`aulas/A01/index.html\` até \`aulas/C48/index.html\`.
@@ -70,3 +70,7 @@ A página inicial possui **um único campo de busca** (`#hero-search`) que encon
 
 ## Materiais gerais e ponte Exatoo
 Veja `GUIA_MATERIAIS_EXATOO.md` para cadastrar PDFs por aula, assunto ou área e para entender a integração contextual com Exatoo.
+
+
+## Identidade e abas (2026)
+O nome público do portal agora é **MAT MAT MAT**, com logotipo tipográfico empilhado em `assets/site.js` e favicon em `assets/favicon.svg`. Há **quatro abas por aula**: Listas e PDFs, Teoria, Quiz e Vídeos. A antiga Visão geral foi removida; links antigos `?tab=resumo` levam à Teoria. Na abertura padrão, a página seleciona **Listas e PDFs somente quando há materiais publicados ou lista gerada**, caso contrário seleciona **Teoria**. A home usa um único campo de busca, sem os textos de apoio e botões de exemplos anteriores.
