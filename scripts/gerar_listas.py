@@ -6,6 +6,7 @@ Saída: pdfs/fixacao-A17.pdf e pdfs/vestibular-A17.pdf
 
 Uso:  python3 scripts/gerar_listas.py A17 [B05 ...] [--publicar]
       --publicar registra os PDFs na biblioteca (data/materiais.json).
+      python3 scripts/gerar_listas.py --proximo   mostra o próximo lote pendente.
 Requer XeLaTeX (TeX Live), as fontes Inter e PyYAML.
 """
 import json
@@ -260,10 +261,51 @@ def documento(aula, tipo, dados):
     return tex + "\\begin{document}\n" + corpo + "\\end{document}\n"
 
 
+def validar(codigo, fonte):
+    """Checagens estruturais antes de diagramar."""
+    erros = []
+    fix = fonte.get("fixacao", {})
+    qf = [q for sec in fix.get("secoes", []) for q in sec["questoes"]]
+    if len(qf) != 20:
+        erros.append(f"fixação tem {len(qf)} questões (esperado 20)")
+    for i, q in enumerate(qf, 1):
+        for campo in ("enunciado", "resolucao", "resposta"):
+            if not q.get(campo):
+                erros.append(f"fixação {i}: falta {campo}")
+    qv = fonte.get("vestibular", {}).get("questoes", [])
+    if len(qv) != 20:
+        erros.append(f"vestibular tem {len(qv)} questões (esperado 20)")
+    cont = {}
+    for i, q in enumerate(qv, 1):
+        ops = q.get("opcoes", [])
+        if len(ops) != 5 or len(set(map(str, ops))) != 5:
+            erros.append(f"vestibular {i}: precisa de 5 alternativas distintas")
+        if q.get("correta") not in list("ABCDE"):
+            erros.append(f"vestibular {i}: correta inválida")
+        if not q.get("resolucao"):
+            erros.append(f"vestibular {i}: falta resolucao")
+        cont[q.get("correta")] = cont.get(q.get("correta"), 0) + 1
+    if qv and any(not 3 <= cont.get(l, 0) <= 5 for l in "ABCDE"):
+        erros.append(f"gabarito desequilibrado: {cont} (cada letra deve aparecer de 3 a 5 vezes)")
+    if erros:
+        sys.exit(f"{codigo}: fonte inválida\n  - " + "\n  - ".join(erros))
+
+
+def proximo_lote(tamanho=6):
+    """Próximas aulas sem fonte, na ordem do site, sem atravessar a fronteira de um bloco."""
+    aulas = json.loads((ROOT / "data" / "aulas.json").read_text(encoding="utf-8"))["lessons"]
+    pendentes = [a for a in aulas if not (FONTE / f"{a['id']}.yaml").exists()]
+    if not pendentes:
+        return []
+    bloco = pendentes[0]["block"]
+    return [a for a in pendentes if a["block"] == bloco][:tamanho]
+
+
 def gerar(codigo):
     aulas = json.loads((ROOT / "data" / "aulas.json").read_text(encoding="utf-8"))["lessons"]
     aula = next(a for a in aulas if a["id"] == codigo)
     fonte = yaml.safe_load((FONTE / f"{codigo}.yaml").read_text(encoding="utf-8"))
+    validar(codigo, fonte)
     DEST.mkdir(exist_ok=True)
     saidas = []
     for tipo in ("fixacao", "vestibular"):
@@ -310,6 +352,14 @@ def publicar(codigo, pdfs):
 
 
 if __name__ == "__main__":
+    if "--proximo" in sys.argv:
+        lote = proximo_lote()
+        feitas = len(list(FONTE.glob("[ABC][0-9][0-9].yaml")))
+        print(f"Aulas com listas: {feitas}/144")
+        print("Próximo lote:" if lote else "Todas as aulas têm listas.")
+        for a in lote:
+            print(f"  {a['id']} (bloco {a['block']}) {a['title']} — {a['summary']}")
+        sys.exit(0)
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     for c in args or ["A17"]:
         pdfs = gerar(c.upper())
