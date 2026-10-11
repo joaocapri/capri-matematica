@@ -1,0 +1,270 @@
+# A22 — Definição de Módulo e Função Modular
+aula: A22
+
+fixacao:
+  intro: Resolva na ordem — do aquecimento ao desafio. O módulo $|x|$ é a distância de $x$ até o zero na reta; por isso nunca é negativo.
+  secoes:
+    - nome: Aquecimento
+      questoes:
+        - enunciado: Calcule.
+          itens:
+            - $|-7|$
+            - $|3-8|$
+            - $|-2|\cdot|5|$
+            - $|-3|-|-5|$
+          resolucao: |
+            (a) $7$. (b) $|-5|=5$. (c) $2\cdot5=10$. (d) $3-5=-2$ (o resultado final pode ser negativo; cada módulo, não).
+          resposta: '(a) $7$ \quad (b) $5$ \quad (c) $10$ \quad (d) $-2$'
+
+        - enunciado: Escreva sem o símbolo de módulo.
+          itens:
+            - $|\pi-4|$
+            - $|\sqrt2-1|$
+            - $|2-\sqrt5|$
+          resolucao: |
+            Se o conteúdo é positivo, ele sai como está; se é negativo, sai com o sinal trocado.
+            (a) $\pi-4<0$: $4-\pi$. (b) $\sqrt2-1>0$: $\sqrt2-1$. (c) $2-\sqrt5<0$: $\sqrt5-2$.
+          resposta: '(a) $4-\pi$ \quad (b) $\sqrt2-1$ \quad (c) $\sqrt5-2$'
+
+        - enunciado: Calcule a distância, na reta real, entre os números
+          itens:
+            - $-3$ e $5$;
+            - $-7$ e $-2$.
+          resolucao: |
+            A distância entre $a$ e $b$ é $|a-b|$.
+            (a) $|-3-5|=8$. (b) $|-7-(-2)|=5$.
+          resposta: '(a) $8$ \quad (b) $5$'
+
+        - enunciado: Dada $f(x)=|x-3|$, calcule $f(0)$, $f(3)$, $f(5)$ e $f(-1)$.
+          resolucao: |
+            $f(0)=3$; \ $f(3)=0$; \ $f(5)=2$; \ $f(-1)=|-4|=4$.
+          resposta: '$3$; \ $0$; \ $2$; \ $4$'
+
+        - enunciado: Escreva $f(x)=|2x-4|$ como função definida por partes.
+          resolucao: |
+            $2x-4\ge0\Leftrightarrow x\ge2$. Para $x\ge2$, $f(x)=2x-4$; para $x<2$, $f(x)=-(2x-4)=-2x+4$.
+          resposta: '$2x-4$ se $x\ge2$; \ $-2x+4$ se $x<2$'
+
+        - enunciado: Dê o vértice do gráfico ("bico" do V) de cada função.
+          itens:
+            - $f(x)=|x-2|$
+            - $g(x)=|x|+3$
+            - $h(x)=|x+1|-2$
+          resolucao: |
+            O bico ocorre onde o conteúdo do módulo zera.
+            (a) $(2,0)$. (b) $(0,3)$. (c) $(-1,-2)$.
+          resposta: '(a) $(2,0)$ \quad (b) $(0,3)$ \quad (c) $(-1,-2)$'
+
+        - enunciado: Determine a imagem de cada função.
+          itens:
+            - $f(x)=|x|-4$
+            - $g(x)=3-|x|$
+          resolucao: |
+            $|x|\ge0$, com mínimo $0$.
+            (a) $f(x)\ge-4$: $Im=[-4,+\infty[$. (b) $g(x)\le3$: $Im=\,]-\infty,3]$.
+          resposta: '(a) $[-4,+\infty[$ \quad (b) $]-\infty,3]$'
+
+    - nome: Treino
+      questoes:
+        - enunciado: Resolva em $\mathbb{R}$.
+          itens:
+            - $|x|=5$
+            - $|x|=0$
+            - $|x|=-2$
+          resolucao: |
+            (a) $x=\pm5$. (b) $x=0$. (c) Módulo nunca é negativo: sem solução.
+          resposta: '(a) $\pm5$ \quad (b) $0$ \quad (c) $\varnothing$'
+
+        - enunciado: Simplifique.
+          itens:
+            - $\sqrt{x^2}$, para $x$ real qualquer;
+            - $\sqrt{(x-3)^2}$, para $x<3$.
+          resolucao: |
+            $\sqrt{a^2}=|a|$.
+            (a) $|x|$. (b) $|x-3|=3-x$, pois $x-3<0$.
+          resposta: '(a) $|x|$ \quad (b) $3-x$'
+
+        - enunciado: Calcule $\dfrac{|x|}x$ para $x>0$ e para $x<0$.
+          resolucao: |
+            Para $x>0$: $\tfrac xx=1$. Para $x<0$: $\tfrac{-x}x=-1$.
+          resposta: '$1$ e $-1$'
+
+        - enunciado: Escreva $f(x)=|x|+|x-2|$ por partes.
+          resolucao: |
+            Os pontos críticos são $0$ e $2$.
+            $x<0$: $-x-(x-2)=-2x+2$. \ $0\le x\le2$: $x-(x-2)=2$. \ $x>2$: $x+x-2=2x-2$.
+          resposta: '$-2x+2$ \ ($x<0$); \ $2$ \ ($0\le x\le2$); \ $2x-2$ \ ($x>2$)'
+
+        - enunciado: Determine os zeros de $f(x)=|x-1|-3$.
+          resolucao: |
+            $|x-1|=3\Rightarrow x-1=\pm3\Rightarrow x=4$ ou $x=-2$.
+          resposta: '$4$ e $-2$'
+
+        - enunciado: Para $a=3$ e $b=-5$, calcule $|a|+|b|$ e $|a+b|$. Qual é maior?
+          resolucao: |
+            $|a|+|b|=8$ e $|a+b|=|-2|=2$. Em geral, $|a+b|\le|a|+|b|$ (desigualdade triangular).
+          resposta: '$8$ e $2$; \ $|a|+|b|$ é maior'
+
+        - enunciado: Calcule a área do triângulo formado pelos gráficos de $y=|x|$ e $y=4$.
+          resolucao: |
+            $|x|=4\Rightarrow x=\pm4$. Vértices: $(-4,4)$, $(4,4)$ e $(0,0)$.
+            Base $8$, altura $4$: área $16$.
+          resposta: '$16$'
+
+        - enunciado: Para quais valores de $x$ vale $|x-2|=x-2$?
+          resolucao: |
+            $|a|=a$ exatamente quando $a\ge0$: $x-2\ge0\Rightarrow x\ge2$.
+          resposta: '$x\ge2$'
+
+    - nome: Desafio
+      questoes:
+        - enunciado: Determine o valor mínimo de $f(x)=|x-1|+|x-5|$ e os valores de $x$ em que ele ocorre.
+          resolucao: |
+            É a soma das distâncias de $x$ até $1$ e até $5$. Entre $1$ e $5$, essa soma é sempre $4$; fora, é maior.
+          resposta: 'mínimo $4$, para $1\le x\le5$'
+
+        - enunciado: Calcule a área da região limitada pelos gráficos de $y=|x-2|$ e $y=3$.
+          resolucao: |
+            $|x-2|=3\Rightarrow x=5$ ou $x=-1$. Triângulo de vértices $(-1,3)$, $(5,3)$ e $(2,0)$.
+            Base $6$, altura $3$: área $9$.
+          resposta: '$9$'
+
+        - enunciado: Simplifique $E=|x-1|+|x-4|$, sabendo que $1<x<4$.
+          resolucao: |
+            $x-1>0$ e $x-4<0$: $E=(x-1)+(4-x)=3$.
+          resposta: '$3$'
+
+        - enunciado: Escreva $f(x)=|x+2|-|x-2|$ por partes e determine sua imagem.
+          resolucao: |
+            $x<-2$: $-(x+2)+(x-2)=-4$. \ $-2\le x\le2$: $(x+2)+(x-2)=2x$. \ $x>2$: $4$.
+            No trecho do meio, $2x$ vai de $-4$ a $4$. Logo, $Im=[-4,4]$.
+          resposta: '$-4$; \ $2x$; \ $4$; \ $Im=[-4,\,4]$'
+
+        - enunciado: Para quais valores de $x$ temos $|x-1|=|x+1|$? Interprete geometricamente.
+          resolucao: |
+            $x$ está à mesma distância de $1$ e de $-1$: é o ponto médio, $x=0$.
+            Algebricamente: $x-1=-(x+1)\Rightarrow x=0$ (a outra igualdade, $x-1=x+1$, é impossível).
+          resposta: '$x=0$'
+
+vestibular:
+  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  questoes:
+    - enunciado: O valor de $|-8|+|3|-|-4|$ é
+      opcoes: ['$3$', '$5$', '$7$', '$11$', '$15$']
+      correta: C
+      resolucao: |
+        $8+3-4=7$.
+
+    - enunciado: O número $|\sqrt3-2|$ é igual a
+      opcoes: ['$\sqrt3-2$', '$2-\sqrt3$', '$\sqrt3+2$', '$-2-\sqrt3$', '$1$']
+      correta: B
+      resolucao: |
+        $\sqrt3\approx1{,}73<2$, então $\sqrt3-2<0$ e seu módulo é $2-\sqrt3$.
+
+    - enunciado: A distância, na reta real, entre os pontos $-6$ e $4$ é
+      opcoes: ['$2$', '$4$', '$6$', '$24$', '$10$']
+      correta: E
+      resolucao: |
+        $|-6-4|=10$.
+
+    - enunciado: Se $f(x)=|2x-5|$, então $f(1)+f(4)$ vale
+      opcoes: ['$6$', '$0$', '$-6$', '$3$', '$9$']
+      correta: A
+      resolucao: |
+        $f(1)=|-3|=3$ e $f(4)=|3|=3$. Soma: $6$.
+
+    - enunciado: O vértice do gráfico de $f(x)=|x-3|+1$ é
+      opcoes: ['$(-3,\,1)$', '$(1,\,3)$', '$(3,\,-1)$', '$(3,\,1)$', '$(0,\,4)$']
+      correta: D
+      resolucao: |
+        O módulo zera em $x=3$, e então $f(3)=1$.
+
+    - enunciado: A imagem de $f(x)=|x|-2$ é
+      opcoes: ['$\mathbb{R}$', '$[-2,\,+\infty[$', '$[0,\,+\infty[$', '$[2,\,+\infty[$', '$]-\infty,\,-2]$']
+      correta: B
+      resolucao: |
+        $|x|\ge0\Rightarrow |x|-2\ge-2$, e o valor $-2$ é atingido em $x=0$.
+
+    - enunciado: Para todo $x<2$, a expressão $|x-2|$ é igual a
+      opcoes: ['$2-x$', '$x-2$', '$x+2$', '$-x-2$', '$|x|-2$']
+      correta: A
+      resolucao: |
+        $x-2<0$, então $|x-2|=-(x-2)=2-x$.
+
+    - enunciado: A função $f(x)=|x+1|$ é decrescente para
+      opcoes: ['$x\ge-1$', '$x\ge1$', '$x\le-1$', '$x\le1$', '$x\ge0$']
+      correta: C
+      resolucao: |
+        O gráfico é um V com bico em $x=-1$: desce à esquerda do bico e sobe à direita.
+
+    - enunciado: Para $x=2$, o valor de $\sqrt{(x-5)^2}$ é
+      opcoes: ['$-3$', '$9$', '$\pm3$', '$3$', '$7$']
+      correta: D
+      resolucao: |
+        $\sqrt{(x-5)^2}=|x-5|=|-3|=3$. A raiz quadrada é sempre não negativa.
+
+    - enunciado: A área do triângulo formado pelos gráficos de $y=|x-1|$ e $y=2$ é
+      opcoes: ['$2$', '$3$', '$8$', '$6$', '$4$']
+      correta: E
+      resolucao: |
+        $|x-1|=2\Rightarrow x=-1$ ou $x=3$. Base $4$, altura $2$ (o bico está em $(1,0)$): área $4$.
+
+    - enunciado: O valor mínimo de $f(x)=|x-2|+|x-8|$ é
+      opcoes: ['$0$', '$6$', '$2$', '$8$', '$10$']
+      correta: B
+      resolucao: |
+        Soma das distâncias até $2$ e até $8$; o mínimo é a distância entre eles, $6$, para $2\le x\le8$.
+
+    - enunciado: A soma dos zeros da função $f(x)=|x|-3$ é
+      opcoes: ['$-6$', '$-3$', '$0$', '$3$', '$6$']
+      correta: C
+      resolucao: |
+        Os zeros são $3$ e $-3$. Soma: $0$.
+
+    - enunciado: Para $1<x<6$, a expressão $|x-1|+|x-6|$ é igual a
+      opcoes: ['$2x-7$', '$7-2x$', '$7$', '$-5$', '$5$']
+      correta: E
+      resolucao: |
+        $(x-1)+(6-x)=5$.
+
+    - enunciado: Sobre a função $f(x)=-|x|+4$, é correto afirmar que
+      opcoes: ['sua imagem é $]-\infty,\,4]$', 'seu valor mínimo é $4$', 'ela não tem zeros reais', 'seu gráfico tem vértice em $(4,\,0)$', 'ela é crescente para $x>0$']
+      correta: A
+      resolucao: |
+        $-|x|\le0$, então $f(x)\le4$, com máximo $4$ em $x=0$. Os zeros são $\pm4$, e para $x>0$ a função decresce.
+
+    - enunciado: Se $|a|=3$ e $|b|=5$, o maior valor possível de $|a-b|$ é
+      opcoes: ['$2$', '$4$', '$5$', '$8$', '$15$']
+      correta: D
+      resolucao: |
+        Com $a=3$ e $b=-5$ (ou $a=-3$ e $b=5$): $|a-b|=8$.
+
+    - enunciado: A quantidade de números inteiros $x$ tais que $|x|<4$ é
+      opcoes: ['$4$', '$6$', '$7$', '$8$', '$9$']
+      correta: C
+      resolucao: |
+        $-4<x<4$: $-3,-2,-1,0,1,2,3$, ou seja, $7$.
+
+    - enunciado: 'A imagem da função $f(x)=\dfrac x{|x|}$, definida para $x\neq0$, é'
+      opcoes: ['$\{-1,\,1\}$', '$\mathbb{R}$', '$[-1,\,1]$', '$\{1\}$', '$]0,\,+\infty[$']
+      correta: A
+      resolucao: |
+        Para $x>0$, vale $1$; para $x<0$, vale $-1$.
+
+    - enunciado: A imagem da função $f(x)=|x+2|-|x-2|$ é
+      opcoes: ['$[0,\,4]$', '$[-2,\,2]$', '$\mathbb{R}$', '$[0,\,+\infty[$', '$[-4,\,4]$']
+      correta: E
+      resolucao: |
+        Por partes: $-4$ para $x<-2$, $2x$ entre $-2$ e $2$, e $4$ para $x>2$. Logo, $Im=[-4,4]$.
+
+    - enunciado: Os gráficos de $y=|x|$ e $y=\dfrac x2+3$ se cortam em dois pontos. A soma das abscissas desses pontos é
+      opcoes: ['$2$', '$4$', '$6$', '$8$', '$-2$']
+      correta: B
+      resolucao: |
+        $x\ge0$: $x=\tfrac x2+3\Rightarrow x=6$. \ $x<0$: $-x=\tfrac x2+3\Rightarrow x=-2$. Soma: $4$.
+
+    - enunciado: Uma máquina produz parafusos de comprimento nominal $50$ mm, e são aceitos os que têm comprimento $x$ com $|x-50|\le0{,}2$. Os comprimentos aceitos estão no intervalo
+      opcoes: ['$[49{,}8;\,50]$', '$[50;\,50{,}2]$', '$[49{,}6;\,50{,}4]$', '$[49{,}8;\,50{,}2]$', '$[49;\,51]$']
+      correta: D
+      resolucao: |
+        A distância de $x$ até $50$ é no máximo $0{,}2$: $50-0{,}2\le x\le50+0{,}2$.

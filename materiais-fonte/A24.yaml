@@ -1,0 +1,245 @@
+# A24 — Inequações Modulares e Gráficos Avançados
+aula: A24
+
+fixacao:
+  intro: Resolva na ordem — do aquecimento ao desafio. Com $k>0$ — $|A|<k$ é o "miolo" ($-k<A<k$) e $|A|>k$ são as "caudas" ($A<-k$ ou $A>k$).
+  secoes:
+    - nome: Aquecimento
+      questoes:
+        - enunciado: Resolva em $\mathbb{R}$.
+          itens:
+            - $|x|<3$
+            - $|x|\ge2$
+          resolucao: |
+            (a) Miolo: $-3<x<3$. (b) Caudas: $x\le-2$ ou $x\ge2$.
+          resposta: '(a) $]-3,3[$ \quad (b) $x\le-2$ ou $x\ge2$'
+
+        - enunciado: Resolva $|x-3|<5$.
+          resolucao: |
+            $-5<x-3<5\Rightarrow -2<x<8$. São os números a menos de $5$ unidades de $3$.
+          resposta: '$]-2,\,8[$'
+
+        - enunciado: Resolva $|2x+1|\ge7$.
+          resolucao: |
+            $2x+1\le-7\Rightarrow x\le-4$, ou $2x+1\ge7\Rightarrow x\ge3$.
+          resposta: '$x\le-4$ ou $x\ge3$'
+
+        - enunciado: Resolva $|3-2x|\le1$.
+          resolucao: |
+            $-1\le3-2x\le1\Rightarrow -4\le-2x\le-2\Rightarrow 1\le x\le2$ (dividir por $-2$ inverte os sinais).
+          resposta: '$[1,\,2]$'
+
+        - enunciado: Resolva $|x-5|\ge3$.
+          resolucao: |
+            $x-5\le-3\Rightarrow x\le2$, ou $x-5\ge3\Rightarrow x\ge8$.
+          resposta: '$x\le2$ ou $x\ge8$'
+
+        - enunciado: Resolva.
+          itens:
+            - $|x+4|<0$
+            - $|x+4|\le0$
+            - $|x+4|\ge0$
+          resolucao: |
+            (a) Módulo nunca é negativo: $\varnothing$. (b) Só vale $|x+4|=0$: $x=-4$. (c) Sempre vale: $\mathbb{R}$.
+          resposta: '(a) $\varnothing$ \quad (b) $\{-4\}$ \quad (c) $\mathbb{R}$'
+
+        - enunciado: Quantos números inteiros satisfazem $|x-3|\le4$?
+          resolucao: |
+            $-4\le x-3\le4\Rightarrow -1\le x\le7$: de $-1$ a $7$ são $9$ inteiros.
+          resposta: '$9$'
+
+    - nome: Treino
+      questoes:
+        - enunciado: Resolva $|x^2-5|<4$.
+          resolucao: |
+            $-4<x^2-5<4\Rightarrow 1<x^2<9$. Então $1<|x|<3$.
+          resposta: '$]-3,\,-1[\ \cup\ ]1,\,3[$'
+
+        - enunciado: Resolva $|x+2|>|x-4|$.
+          resolucao: |
+            Os dois lados são não negativos; elevando ao quadrado: $(x+2)^2>(x-4)^2\Rightarrow 4x+4>-8x+16\Rightarrow x>1$.
+            ($x$ está mais longe de $-2$ do que de $4$ quando passa do ponto médio, $1$.)
+          resposta: '$x>1$'
+
+        - enunciado: Resolva $|x^2-4x|\le5$.
+          resolucao: |
+            $x^2-4x\le5\Rightarrow -1\le x\le5$. \ $x^2-4x\ge-5\Leftrightarrow (x-2)^2+1\ge0$: sempre vale.
+          resposta: '$[-1,\,5]$'
+
+        - enunciado: Resolva $|2x-1|<x+2$.
+          resolucao: |
+            $-(x+2)<2x-1<x+2$. Esquerda: $3x>-1\Rightarrow x>-\tfrac13$. Direita: $x<3$.
+          resposta: '$]-\tfrac13,\,3[$'
+
+        - enunciado: Descreva como obter o gráfico de $y=|x-3|+2$ a partir do gráfico de $y=|x|$ e dê o vértice.
+          resolucao: |
+            Translade $3$ unidades para a direita (por causa do $x-3$) e $2$ para cima (por causa do $+2$). O bico vai de $(0,0)$ para $(3,2)$.
+          resposta: 'direita $3$, cima $2$; vértice $(3,2)$'
+
+        - enunciado: Considere $y=-|x+1|+3$. Dê o vértice, diga se o "V" é para cima ou para baixo e determine os zeros.
+          resolucao: |
+            O sinal de menos reflete o V (ele fica de ponta-cabeça); o vértice é $(-1,3)$.
+            Zeros: $|x+1|=3\Rightarrow x=2$ ou $x=-4$.
+          resposta: 'vértice $(-1,3)$; para baixo; zeros $-4$ e $2$'
+
+        - enunciado: Uma peça deve ter $20$ mm, com tolerância de $0{,}05$ mm, ou seja, $|d-20|\le0{,}05$. Qual é o intervalo de medidas aceitas?
+          resolucao: |
+            $-0{,}05\le d-20\le0{,}05\Rightarrow 19{,}95\le d\le20{,}05$.
+          resposta: '$[19{,}95;\,20{,}05]$ mm'
+
+        - enunciado: Resolva $|x+1|\le|x-3|$.
+          resolucao: |
+            Quadrando: $x^2+2x+1\le x^2-6x+9\Rightarrow 8x\le8\Rightarrow x\le1$.
+          resposta: '$x\le1$'
+
+    - nome: Desafio
+      questoes:
+        - enunciado: Resolva $|x-1|+|x+2|\le5$.
+          resolucao: |
+            $x\ge1$: $2x+1\le5\Rightarrow x\le2$. \ $-2\le x<1$: $3\le5$, sempre. \ $x<-2$: $-2x-1\le5\Rightarrow x\ge-3$.
+            Juntando: $-3\le x\le2$.
+          resposta: '$[-3,\,2]$'
+
+        - enunciado: Resolva $|x|<3x-4$.
+          resolucao: |
+            É preciso $3x-4>0$, isto é, $x>\tfrac43$; aí $x>0$ e $|x|=x$: $x<3x-4\Rightarrow x>2$.
+          resposta: '$x>2$'
+
+        - enunciado: Resolva $\dfrac1{|x-2|}>\dfrac13$.
+          resolucao: |
+            Com $x\neq2$: $|x-2|<3\Rightarrow -1<x<5$. Retire o $2$.
+          resposta: '$]-1,\,2[\ \cup\ ]2,\,5[$'
+
+        - enunciado: Resolva $|x^2-x|\le2$.
+          resolucao: |
+            $x^2-x\le2\Rightarrow -1\le x\le2$. \ $x^2-x\ge-2\Leftrightarrow x^2-x+2\ge0$: sempre vale ($\Delta<0$).
+          resposta: '$[-1,\,2]$'
+
+        - enunciado: Esboce a região $|x|+|y|\le2$ no plano cartesiano e calcule sua área.
+          resolucao: |
+            No $1^\circ$ quadrante, é $x+y\le2$; por simetria, a região é um quadrado (losango) de vértices $(\pm2,0)$ e $(0,\pm2)$.
+            Diagonais de medida $4$: área $\tfrac{4\cdot4}2=8$.
+          resposta: 'losango de vértices $(\pm2,0)$, $(0,\pm2)$; área $8$'
+
+vestibular:
+  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  questoes:
+    - enunciado: O conjunto solução de $|x-2|<3$ é
+      opcoes: ['$]-1,\,5[$', '$]-5,\,1[$', '$]-\infty,\,-1[\ \cup\ ]5,\,+\infty[$', '$[-1,\,5]$', '$]-1,\,3[$']
+      correta: A
+      resolucao: |
+        $-3<x-2<3\Rightarrow -1<x<5$.
+
+    - enunciado: A quantidade de números inteiros que satisfazem $|2x-3|\le5$ é
+      opcoes: ['$4$', '$5$', '$6$', '$7$', '$8$']
+      correta: C
+      resolucao: |
+        $-5\le2x-3\le5\Rightarrow -1\le x\le4$: $-1,0,1,2,3,4$.
+
+    - enunciado: O conjunto solução de $|x|>4$ é
+      opcoes: ['$]-4,\,4[$', '$]4,\,+\infty[$', '$]-\infty,\,-4[$', '$\mathbb{R}$', '$]-\infty,\,-4[\ \cup\ ]4,\,+\infty[$']
+      correta: E
+      resolucao: |
+        Caudas: $x<-4$ ou $x>4$. Esquecer a cauda negativa (alternativa B) é o erro clássico.
+
+    - enunciado: O conjunto solução de $|x+1|\ge0$ é
+      opcoes: ['$[-1,\,+\infty[$', '$\mathbb{R}$', '$\{-1\}$', '$\varnothing$', '$]-1,\,+\infty[$']
+      correta: B
+      resolucao: |
+        Todo módulo é maior ou igual a zero: vale para todo $x$ real.
+
+    - enunciado: O conjunto solução de $|x-1|\le-1$ é
+      opcoes: ['$\{0\}$', '$[0,\,2]$', '$\{1\}$', '$\varnothing$', '$\mathbb{R}$']
+      correta: D
+      resolucao: |
+        Um módulo nunca é negativo, muito menos menor ou igual a $-1$.
+
+    - enunciado: O conjunto solução de $|x^2-1|<3$ é
+      opcoes: ['$]-2,\,2[$', '$]-\sqrt2,\,\sqrt2[$', '$]0,\,2[$', '$]-1,\,1[$', '$\mathbb{R}$']
+      correta: A
+      resolucao: |
+        $-3<x^2-1<3\Rightarrow -2<x^2<4$. A parte da esquerda sempre vale; a da direita dá $-2<x<2$.
+
+    - enunciado: As soluções de $|x+1|\le|x-3|$ são os números $x$ tais que
+      opcoes: ['$x\ge1$', '$x\le-1$', '$x\le1$', '$-1\le x\le3$', '$x\le3$']
+      correta: C
+      resolucao: |
+        $x$ deve estar mais perto de $-1$ do que de $3$ (ou à mesma distância): à esquerda do ponto médio, $1$, ou nele.
+
+    - enunciado: Em uma linha de produção, só são aprovadas as peças com massa $m$, em gramas, tal que $|m-250|\le4$. A massa mínima de uma peça aprovada é
+      opcoes: ['$4$ g', '$242$ g', '$246$ g', '$250$ g', '$254$ g']
+      correta: C
+      resolucao: |
+        $246\le m\le254$. A mínima é $246$ g.
+
+    - enunciado: O conjunto solução de $|3x-2|>4$ é
+      opcoes: ['$]-\tfrac23,\,2[$', '$]2,\,+\infty[$', '$]-\infty,\,-2[\ \cup\ ]\tfrac23,\,+\infty[$', '$]-\infty,\,-\tfrac23[\ \cup\ ]2,\,+\infty[$', '$\mathbb{R}$']
+      correta: D
+      resolucao: |
+        $3x-2<-4\Rightarrow x<-\tfrac23$, ou $3x-2>4\Rightarrow x>2$.
+
+    - enunciado: O vértice do gráfico de $y=|x-2|-3$ é
+      opcoes: ['$(-2,\,-3)$', '$(2,\,3)$', '$(3,\,-2)$', '$(-2,\,3)$', '$(2,\,-3)$']
+      correta: E
+      resolucao: |
+        O bico do $|x|$, em $(0,0)$, vai $2$ para a direita e $3$ para baixo.
+
+    - enunciado: O gráfico de $y=|x+3|$ é obtido a partir do gráfico de $y=|x|$ por uma translação de
+      opcoes: ['$3$ unidades para a esquerda', '$3$ unidades para a direita', '$3$ unidades para cima', '$3$ unidades para baixo', 'reflexão em torno do eixo $x$']
+      correta: A
+      resolucao: |
+        O bico passa a ocorrer em $x+3=0$, isto é, $x=-3$: deslocamento para a esquerda.
+
+    - enunciado: A função $f(x)=|x-1|-4$ é negativa exatamente para
+      opcoes: ['$x<5$', '$-3<x<5$', '$x<-3$ ou $x>5$', '$x>-3$', '$-5<x<3$']
+      correta: B
+      resolucao: |
+        $|x-1|<4\Rightarrow -3<x<5$.
+
+    - enunciado: A soma dos números inteiros que satisfazem $|x+1|<4$ é
+      opcoes: ['$-7$', '$-5$', '$-3$', '$0$', '$5$']
+      correta: A
+      resolucao: |
+        $-5<x<3$: $-4,-3,-2,-1,0,1,2$. Soma: $-7$.
+
+    - enunciado: Dos números inteiros de $0$ a $10$, a quantidade dos que satisfazem $|x-5|\ge3$ é
+      opcoes: ['$3$', '$4$', '$5$', '$6$', '$7$']
+      correta: D
+      resolucao: |
+        $x\le2$ ou $x\ge8$: $0,1,2,8,9,10$.
+
+    - enunciado: A quantidade de números inteiros que satisfazem $|2x-1|<x+2$ é
+      opcoes: ['$2$', '$3$', '$4$', '$5$', '$6$']
+      correta: B
+      resolucao: |
+        $-\tfrac13<x<3$: inteiros $0$, $1$ e $2$.
+
+    - enunciado: A área da região do plano definida por $|x|+|y|\le3$ é
+      opcoes: ['$6$', '$9$', '$12$', '$36$', '$18$']
+      correta: E
+      resolucao: |
+        É um losango de vértices $(\pm3,0)$ e $(0,\pm3)$, com diagonais $6$: área $\tfrac{6\cdot6}2=18$.
+
+    - enunciado: A quantidade de números inteiros que satisfazem $|x^2-4x|\le5$ é
+      opcoes: ['$5$', '$6$', '$7$', '$8$', '$9$']
+      correta: C
+      resolucao: |
+        A solução é $[-1,5]$: inteiros de $-1$ a $5$, ou seja, $7$.
+
+    - enunciado: Um termostato mantém a temperatura $T$ de uma sala de modo que $|T-22|\le1{,}5$, em $^\circ$C. A temperatura máxima da sala é
+      opcoes: ['$20{,}5\ ^\circ$C', '$22\ ^\circ$C', '$23\ ^\circ$C', '$23{,}5\ ^\circ$C', '$25\ ^\circ$C']
+      correta: D
+      resolucao: |
+        $20{,}5\le T\le23{,}5$.
+
+    - enunciado: O conjunto solução de $|x-a|<2$ é $]1,\,5[$. O valor de $a$ é
+      opcoes: ['$1$', '$3$', '$2$', '$4$', '$5$']
+      correta: B
+      resolucao: |
+        $a-2<x<a+2$; o centro do intervalo é $a=\tfrac{1+5}2=3$.
+
+    - enunciado: A área da região limitada pelos gráficos de $y=|x|-1$ e $y=3$ é
+      opcoes: ['$8$', '$12$', '$24$', '$32$', '$16$']
+      correta: E
+      resolucao: |
+        $|x|-1=3\Rightarrow x=\pm4$; o bico está em $(0,-1)$. Triângulo de base $8$ e altura $3-(-1)=4$: área $16$.

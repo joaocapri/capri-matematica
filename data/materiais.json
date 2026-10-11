@@ -334,5 +334,53 @@
       }
     ],
     "tipo": "aula"
+  },
+  {
+    "aula": "A22",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A22 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A22.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A22 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A22.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A23",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A23 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A23.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A23 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A23.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A24",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A24 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A24.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A24 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A24.pdf"
+      }
+    ],
+    "tipo": "aula"
   }
 ]
