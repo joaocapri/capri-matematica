@@ -12,7 +12,7 @@ function blockBy(id){return data.blocks.find(function(x){return x.id===id})}
 function short(v,n){var s=String(v||'');return s.length>n?s.slice(0,n).trim()+'…':s}
 function title(str){document.title=str+' · Capri Matemática'}
 function empty(label,detail){return '<div class="placeholder"><div class="emoji">✦</div><h3>'+esc(label)+'</h3><p>'+esc(detail)+'</p></div>'}
-function header(){return '<header class="topbar"><div class="shell"><a href="/" class="brand"><span class="brand-badge">∑</span><span>capri<span style="color:#6b48d1">.</span>mat<small>matemática com personalidade</small></span></a><nav class="navlinks"><a href="/#materiais">Listas e PDFs</a><a href="/#explorar">Explorar assuntos</a><a class="nav-cta" href="/#materiais"><span class="nav-cta-long">Baixar materiais ↗</span><span class="nav-cta-short">PDFs ↗</span></a></nav></div></header>'}
+function header(){return '<header class="topbar"><div class="shell"><a href="/" class="brand"><span class="brand-badge">∑</span><span>capri<span style="color:#6b48d1">.</span>mat<small>matemática com personalidade</small></span></a><nav class="navlinks"><a href="/?q=PDF#resultados">Listas e PDFs</a><a href="/#explorar">Explorar assuntos</a><a class="nav-cta" href="/?q=PDF#resultados"><span class="nav-cta-long">Baixar materiais ↗</span><span class="nav-cta-short">PDFs ↗</span></a></nav></div></header>'}
 function footer(){return '<footer class="footer"><div class="shell"><div><strong>capri.mat ✳</strong><p>Feito para aprender, revisar e mandar bem. Prof. João Capri.</p></div><p>Álgebra • Geometria • Aritmética, Estatística e Trigonometria</p></div></footer>'}
 function card(l){return '<a class="lesson-card" href="'+href(l)+'"><span class="mini">Aula '+esc(l.id)+' · '+esc(frontBy(l.front).name)+'</span><h4>'+esc(l.title)+'</h4><p>'+esc(l.summary||'Abra a aula e explore seu roteiro de estudos.')+'</p><div class="card-bottom"><span class="badge '+(done.has(l.id)?'checkdone':'')+'">'+(done.has(l.id)?'✓ Estudada':'Ver aula')+'</span><span class="arrow">↗</span></div></a>'}
 
@@ -25,15 +25,34 @@ function subjectTopic(lesson,area){var n=Number(lesson.id.slice(1));var t=SUBJEC
 function topicInfo(topic){return SUBJECT_TOPICS.find(function(x){return x.id===topic})||blockBy(topic)}
 
 
+
+/* Catálogo de PDFs: aula, assunto (tema) ou grande área. */
+function materialOwner(item){
+ if(item.aula){var l=data.lessons.find(function(x){return x.id===item.aula});if(!l)return null;var a=areaForLesson(l);return {kind:'aula',id:l.id,title:l.title,description:topicInfo(subjectTopic(l,a)).title,href:href(l)+'?tab=arquivos',lesson:l}}
+ if(item.assunto){var t=SUBJECT_TOPICS.find(function(x){return x.id===item.assunto});if(!t)return null;var a=SUBJECT_AREAS.find(function(x){return x.id===t.area});return {kind:'assunto',id:t.id,title:t.title,description:a.name,href:'/?area='+encodeURIComponent(a.id)+'&assunto='+encodeURIComponent(t.id)+'#explorar',topic:t}}
+ if(item.area){var a=SUBJECT_AREAS.find(function(x){return x.id===item.area});if(!a)return null;return {kind:'area',id:a.id,title:a.name,description:'Material geral da área',href:'/?area='+encodeURIComponent(a.id)+'#explorar',area:a}}
+ return null;
+}
+function publishedMaterials(){return materialIndex.map(function(item){var owner=materialOwner(item);return owner&&item.arquivos&&item.arquivos.length?{owner:owner,item:item}:null}).filter(Boolean)}
+function materialsAt(kind,id){return publishedMaterials().filter(function(x){return x.owner.kind===kind&&x.owner.id===id})}
+function pdfLinks(files){return(files||[]).map(function(f){var u=String(f.url||'');return /^\/(?!\/)/.test(u)||/^https:\/\//.test(u)?'<a class="material-download" target="_blank" rel="noopener noreferrer" href="'+esc(u)+'"><span class="material-download-icon">↓</span><span>'+esc(f.titulo||'Material PDF')+'</span><b>PDF ↗</b></a>':''}).join('')}
+function topicPdfPanel(kind,id,label){var items=materialsAt(kind,id);return items.length?'<section class="topic-pdf-panel"><div><span class="topic-pdf-eyebrow">📄 LISTAS PUBLICADAS</span><h4>'+esc(label)+'</h4></div><div class="topic-pdf-files">'+items.map(function(x){return pdfLinks(x.item.arquivos)}).join('')+'</div></section>':''}
+/* Parâmetros de contexto são de atribuição; o Exatoo só poderá abrir a
+   ferramenta com a matéria selecionada quando incorporar seu próprio roteador. */
+function exatooUrl(intent,lesson,topic){
+ var args=new URLSearchParams({utm_source:'capri-matematica',utm_medium:'referral',utm_campaign:intent});
+ if(lesson){args.set('capri_aula',lesson.id);args.set('capri_assunto',subjectTopic(lesson,areaForLesson(lesson)))}else if(topic)args.set('capri_assunto',topic.id);
+ return 'https://exatoo.com/?'+args.toString()
+}
+function exatooCard(intent,lesson,topic){
+ var m={erro:['Errou e não sabe onde?','O Exatoo tem um Detector de Erros para analisar sua resolução.','Conhecer o Detector de Erros ↗'],treino:['Quer treinar no seu nível?','O Gerador de Listas do Exatoo cria questões para praticar do seu jeito.','Criar treino personalizado ↗'],busca:['Sua dúvida é mais específica?','O Exatoo oferece ferramentas para trabalhar dificuldades individuais.','Conhecer o Exatoo ↗'],revisar:['Quer organizar sua revisão?','Monte uma sessão de estudos personalizada no Exatoo.','Montar sessão no Exatoo ↗']}[intent]||['Precisa de ajuda personalizada?','Encontre outras ferramentas no Exatoo.','Conhecer o Exatoo ↗'];
+ return '<aside class="exatoo-context"><span class="exatoo-symbol">✳</span><div class="exatoo-copy"><span class="exatoo-eyebrow">ESTUDO PERSONALIZADO · EXATOO</span><strong>'+m[0]+'</strong><p>'+m[1]+'</p><small>O Capri continua gratuito. Você será direcionado ao Exatoo.</small></div><a class="exatoo-link" href="'+esc(exatooUrl(intent,lesson,topic))+'" target="_blank" rel="noopener noreferrer">'+m[2]+'</a></aside>'
+}
+
 function home(){
  title('Matemática, do seu jeito');
  var app=document.getElementById('app');
- var featured=materialIndex.filter(function(item){return data.lessons.some(function(l){return l.id===item.aula})});
- var fileTotal=featured.reduce(function(n,item){return n+(item.arquivos||[]).length},0);
- var featuredCards=featured.length?featured.slice(0,3).map(function(item){
-  var l=data.lessons.find(function(x){return x.id===item.aula});
-  return '<article class="home-file-card"><div class="home-file-header"><span class="home-file-code">'+esc(l.id)+'</span><div><strong>'+esc(l.title)+'</strong><small>'+esc(topicInfo(subjectTopic(l,areaForLesson(l))).title)+'</small></div><a class="home-file-see" href="'+href(l)+'?tab=arquivos" aria-label="Abrir materiais da aula '+esc(l.id)+'">↗</a></div><div class="home-file-downloads">'+item.arquivos.map(function(f){return '<a href="'+esc(f.url)+'" class="home-download" download><span class="home-pdf-icon">↓</span><span>'+esc(f.titulo)+'</span><strong>PDF</strong></a>'}).join('')+'</div></article>'
- }).join(''):'<div class="home-file-empty">Nenhum arquivo PDF vinculado no momento. Explore o currículo completo abaixo.</div>';
+ var featured=publishedMaterials();
  app.innerHTML=header()+
  '<main class="shell home-shell">'+
  '<section class="home-hero" aria-labelledby="hero-title"><div class="home-hero-copy">'+
@@ -47,8 +66,7 @@ function home(){
  '</div><div class="home-hero-art" aria-hidden="true"><span class="home-hero-spark">✳</span><div class="home-math-note home-math-note-a">matemática sem drama ✦</div><div class="home-math-card"><div class="home-math-card-top"><span>FUNÇÃO QUADRÁTICA</span><span>↗</span></div><strong>y = x² − 4</strong><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg"><g stroke="#e5dff5" stroke-width="1"><path d="M20 27H300M20 65H300M20 103H300M20 141H300M40 12V173M100 12V173M160 12V173M220 12V173M280 12V173"/></g><path d="M20 103H300M160 12V173" stroke="#ac9cc8" stroke-width="2" stroke-linecap="round"/><path d="M64 20Q160 318 256 20" stroke="#5e30c8" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="160" cy="169" r="6" fill="#FF7956" stroke="#211946" stroke-width="2"/><circle cx="90" cy="103" r="4" fill="#211946"/><circle cx="230" cy="103" r="4" fill="#211946"/></svg><span class="home-math-caption">Menos decorar. Mais entender.</span></div><div class="home-math-note home-math-note-b">você consegue! ↗</div></div></section>'+
  '<section class="home-search-results" id="resultados" hidden aria-live="polite"><div class="home-results-head"><div><span class="home-section-label">SUA PESQUISA</span><h2 id="search-title">Resultados</h2></div><button id="return-home" class="home-back-button" type="button">← Voltar à exploração</button></div><div id="search-scope" class="home-search-scopes" role="group" aria-label="Filtrar resultados"></div><div id="search-output"></div></section>'+
  '<div id="home-discover">'+
- '<section id="materiais" class="home-materials" aria-labelledby="materials-title"><div class="home-section-intro"><div><span class="home-section-label"><span class="home-section-indicator"></span> PRA IMPRIMIR E PRATICAR</span><h2 id="materials-title">Saiu do digital. <em>Foi pro caderno.</em></h2><p>Listas e gabaritos em PDF para baixar de graça, sem precisar criar conta.</p></div><div class="home-section-side"><span class="home-material-tag">'+fileTotal+' '+(fileTotal===1?'PDF disponível':'PDFs disponíveis')+'</span></div></div><div class="home-files-grid">'+featuredCards+'</div></section>'+
- '<section id="explorar" class="home-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="home-section-label"><span class="home-section-indicator"></span> DESCUBRA O PRÓXIMO ASSUNTO</span><h2 id="explore-title">Sua matemática, <em>seu caminho.</em></h2><p>Não sabe o nome da aula? Escolha uma área, encontre o assunto e comece a estudar.</p></div><span class="home-explore-decoration" aria-hidden="true">↗</span></div><div id="explore-content"></div></section>'+
+ '<section id="explorar" class="home-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="home-section-label"><span class="home-section-indicator"></span> TODA A MATEMÁTICA, ORGANIZADA</span><h2 id="explore-title">Encontre seu <em>material.</em></h2><p>Prefere navegar? Escolha uma área, encontre o assunto e abra a aula ou lista de que precisa.</p></div><span class="home-explore-decoration" aria-hidden="true">↗</span></div><div id="explore-content"></div></section>'+
  '</div></main>'+footer();
  var input=document.getElementById('hero-search');
  var clearBtn=document.getElementById('clear-search');
@@ -61,7 +79,7 @@ function home(){
  var state={view:'areas',area:'',topic:''},shown=18;
  var search={query:'',scope:'tudo',shown:12};
  var lessons=data.lessons;
- var materialByCode=new Map(featured.map(function(x){return [x.aula,x]}));
+ var materialByCode=new Map(featured.filter(function(x){return x.owner.kind==='aula'}).map(function(x){return [x.owner.id,x]}));
  function areaLessons(area){return lessons.filter(function(l){return subjectContains(area,l)})}
  function subTopic(l,area){return topicInfo(subjectTopic(l,area))}
  function drawRow(l,areaLabel){
@@ -82,6 +100,7 @@ function home(){
    var listAreas=areaLessons(area);
    var ids=SUBJECT_TOPICS.filter(function(t){return t.area===area.id});
    html=crumbs([{label:area.name}])+'<div class="browse-section-head"><span class="browse-kicker">ESCOLHA UM ASSUNTO</span><h3>'+esc(area.name)+'</h3><p>'+listAreas.length+' aulas distribuídas em '+ids.length+' temas.</p></div><div class="browse-topic-grid">'+ids.map(function(t){var amount=listAreas.filter(function(l){return subjectTopic(l,area)===t.id}).length;return '<button class="browse-topic" type="button" data-catalog="topic" data-id="'+esc(t.id)+'"><span class="browse-topic-icon">'+esc(t.icon)+'</span><span class="browse-topic-copy"><strong>'+esc(t.title)+'</strong><small>'+esc(t.description)+'</small><span class="browse-topic-count">'+amount+' '+(amount===1?'aula':'aulas')+'</span></span><span class="browse-topic-next">↗</span></button>'}).join('')+'</div>'
+   html+=topicPdfPanel('area',area.id,'Materiais gerais de '+area.name);
   }else if(state.view==='lessons'&&area){
    var topic=SUBJECT_TOPICS.find(function(t){return t.id===state.topic&&t.area===area.id});
    if(!topic){state.view='topics';return renderBrowse()}
