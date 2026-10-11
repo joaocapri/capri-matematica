@@ -706,3 +706,123 @@ body{background:var(--pale)}
 @media(prefers-reduced-motion:reduce){
  .lesson-tools .lesson-tool{transition:none}
 }
+
+
+/* MAT MAT MAT! — audiência no centro do cabeçalho */
+.topbar .shell{position:relative}
+.header-audience{position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;pointer-events:none;white-space:nowrap;text-align:center;color:#665b78;font:600 11px/1.28 'DM Sans',system-ui,sans-serif}
+.header-audience strong{font:800 12px/1.28 'Space Grotesk',system-ui,sans-serif;letter-spacing:.2px;color:#5028ad}
+.header-mobile-caption{display:none}
+@media(max-width:1190px){
+ .header-audience{display:none}
+ .header-mobile-caption{display:block;text-align:center;border-top:1px solid #ebe5ef;padding:6px 12px 7px;font:600 10px/1.4 'DM Sans',system-ui,sans-serif;color:#716381;letter-spacing:.15px}
+ .header-mobile-caption strong{color:#5631a8;font-weight:900}
+}
+@media(max-width:650px){.header-mobile-caption{font-size:9.5px;padding:5px 10px 6px}}
+
+/* Diagnóstico v2: percursos, progressão e devolutiva de estudo */
+.diagnostic-page{padding-bottom:90px}
+.diag-intro{max-width:850px;padding:16px 0 22px}
+.diag-kicker{display:inline-flex;align-items:center;gap:7px;color:#5d2eb4;font-size:11px;letter-spacing:1.2px;font-weight:900;text-transform:uppercase}
+.diag-intro h1,.diag-selected h1,.diag-result-head h1{font:750 clamp(37px,5.5vw,64px)/1.06 'Space Grotesk',system-ui,sans-serif;letter-spacing:-2.5px;margin:17px 0}
+.diag-intro h1 em{font-style:normal;color:#6a3ac9}
+.diag-intro>p{max-width:690px;color:#665b78;font-size:15px;line-height:1.75;margin-bottom:21px}
+.diag-stats{display:flex;flex-wrap:wrap;gap:8px}
+.diag-stats span{display:inline-flex;align-items:center;background:#f0eaf8;color:#5b3e83;border:1px solid #e0d4ed;border-radius:99px;padding:9px 13px;font-size:11px;font-weight:900}
+.diag-catalog{display:grid;gap:28px;margin:21px 0 14px}
+.diag-group-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.diag-group-head h2{font:750 23px/1.15 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.7px;margin:0}
+.diag-group-head p{font-size:12px;color:#7c7389;margin:0}
+.diag-track-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.diag-track-group:nth-child(2) .diag-track-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.diag-track-card{display:flex;align-items:flex-start;gap:13px;min-width:0;min-height:165px;padding:18px 15px;background:#fffefa;border:1.5px solid #d9cde7;border-radius:18px;color:#291949;text-align:left;cursor:pointer;box-shadow:3px 4px 0 #ece4f3;transition:transform .16s ease,border-color .16s,box-shadow .16s}
+.diag-track-card:hover{transform:translateY(-3px);border-color:#5d32bd;box-shadow:4px 6px 0 #dfd3f1}
+.diag-track-card:focus-visible{outline:3px solid #ff9473;outline-offset:3px}
+.diag-track-symbol{display:grid;place-items:center;flex-shrink:0;width:45px;height:45px;background:#ddf99d;color:#2b1a4b;border:1.5px solid #291949;border-radius:12px;font:850 22px 'Space Grotesk',system-ui,sans-serif;transform:rotate(-4deg)}
+.diag-track-symbol.tone-purple{background:#d7c4fa}
+.diag-track-symbol.tone-peach{background:#ffdac4}
+.diag-track-info{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
+.diag-track-info strong{font:750 19px/1.15 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.4px}
+.diag-track-info>span{font-size:12px;line-height:1.5;color:#655a75}
+.diag-track-info small{font-size:10px;font-weight:900;color:#663bb0;margin-top:auto}
+.diag-track-arrow{font-size:18px;color:#663bb0;flex-shrink:0}
+.diag-privacy{border-top:1px solid #e7deed;margin:27px 0 0;padding-top:16px;color:#857b8f;font-size:11px;line-height:1.7;max-width:850px}
+.diag-selected,.diag-results{max-width:900px;margin:28px auto 0}
+.diag-selected-head>p,.diag-result-head>p{max-width:720px;color:#6e637e;font-size:14px;line-height:1.7}
+.diag-assessment-layout{display:grid;grid-template-columns:1fr 0.85fr;gap:18px;margin:27px 0}
+.diag-assessment-layout>div,.diag-assessment-meta{border:1.5px solid #e0d6e9;border-radius:17px;padding:22px;background:#fffefa}
+.diag-assessment-layout h2{font:750 22px/1.2 'Space Grotesk',system-ui,sans-serif;margin:0 0 18px}
+.diag-skill-list{display:grid;gap:10px}
+.diag-skill-list>div{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ece6f2;padding:9px 0 14px}
+.diag-skill-list>div:last-child{border-bottom:0;padding-bottom:0}
+.diag-skill-list>div span{font:850 14px 'Space Grotesk';color:#7040c2}
+.diag-skill-list>div strong{font-size:13px;flex:1}
+.diag-skill-list>div small{font-size:10px;color:#796f86;white-space:nowrap}
+.diag-assessment-meta{background:#eee9f9}
+.diag-assessment-meta>strong{font:750 18px 'Space Grotesk'}
+.diag-assessment-meta p{color:#5c5073;font-size:12px;line-height:1.7}
+.diag-meta-row{display:flex;justify-content:space-between;border-top:1px solid #d2c5df;margin-top:18px;padding-top:14px;font-size:12px}
+.diag-meta-row b{color:#4e25a3}
+.diag-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:21px 0 32px}
+.diag-actions>.diagnosis-button{min-height:46px}
+.diag-test{max-width:780px;margin:28px auto 0}
+.diag-test-top{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-bottom:29px;color:#675b7b;font-size:12px;font-weight:800}
+.diag-test-top button{border:0;background:transparent;color:#5e30af;font-weight:900;cursor:pointer;padding:7px 0}
+.diag-tier{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px;font-size:11px;color:#695d78;font-weight:850}
+.diag-tier-step{background:#ece2f9;color:#5729ae;border-radius:99px;padding:7px 11px;font-size:10px;letter-spacing:.65px}
+.diag-test .diagnosis-question{padding:20px 0 22px}
+.diag-test .diagnosis-question h1{font:750 clamp(22px,3.4vw,32px)/1.3 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.8px;margin:10px 0 27px}
+.diag-choice-fieldset{padding:0;margin:0;border:0;min-width:0}
+.diag-choice-fieldset legend{font-size:11px;letter-spacing:.55px;font-weight:900;color:#706681;text-transform:uppercase;margin-bottom:13px}
+.diag-test-note{font-size:11px;color:#81758c;line-height:1.6;margin-top:22px}
+.diag-results{margin-top:24px}
+.diag-result-head h1{font-size:clamp(32px,4.5vw,50px);max-width:750px}
+.diag-score-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;border:1.5px solid #e1d9ed;border-radius:19px;padding:17px 22px;background:#fffefa;align-items:center;margin:27px 0}
+.diag-score-strip>div:not(:first-child){display:flex;flex-direction:column;gap:8px;border-left:1px solid #eee8f4;padding-left:16px}
+.diag-score-strip>div:not(:first-child)>span{font-size:11px;font-weight:850;color:#8b8195}
+.diag-score-strip>div:not(:first-child)>strong{font-size:14px;color:#342451}
+.diag-score-main{display:flex;align-items:baseline;gap:9px}
+.diag-score-main strong{font:800 51px/1 'Space Grotesk';color:#5929b8;letter-spacing:-2px}
+.diag-score-main strong small{font-size:25px;color:#8d819e}
+.diag-score-main>span{font-size:11px;font-weight:900;color:#81768d}
+.diag-report-heading h2,.diag-secondary-title{font:750 23px 'Space Grotesk';margin:27px 0 13px}
+.diag-report-heading p{font-size:12px;color:#81768c;line-height:1.6}
+.diag-complexity{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.diag-complexity>div{border:1px solid #e3dae9;background:#faf8fe;border-radius:12px;padding:13px;display:flex;justify-content:space-between;gap:10px;font-size:12px}
+.diag-complexity strong{color:#5a2bb7}
+.diag-review{border:1.5px solid #e2d9ea;background:#fffefa;border-radius:17px;margin:29px 0;padding:17px 19px}
+.diag-review summary{display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;color:#522cb0;font-size:13px;font-weight:900}
+.diag-review-item{display:grid;gap:9px;padding:19px 0;border-top:1px solid #eee8f1;font-size:12px}
+.diag-review-item:first-of-type{margin-top:16px}
+.diag-review-item>span{font-size:10px;font-weight:900;letter-spacing:.65px}
+.diag-review-item .review-right{color:#327543}
+.diag-review-item .review-wrong{color:#bd543c}
+.diag-review-item strong{font-size:13px}
+.diag-review-item p{color:#706581;line-height:1.6;margin:0}
+.diag-review-item>a{font-size:12px;font-weight:900;color:#5d2eb4}
+.diag-result-exatoo{margin:28px 0}
+@media(max-width:850px){
+ .diag-track-grid{grid-template-columns:1fr 1fr}
+ .diag-track-group:nth-child(2) .diag-track-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+ .diag-intro{padding-top:9px}
+ .diag-intro h1,.diag-selected h1{font-size:36px;letter-spacing:-1.5px}
+ .diag-track-grid,.diag-track-group:nth-child(2) .diag-track-grid{grid-template-columns:1fr}
+ .diag-track-card{min-height:0;padding:15px}
+ .diag-track-symbol{width:42px;height:42px}
+ .diag-assessment-layout{grid-template-columns:1fr}
+ .diag-assessment-layout>div,.diag-assessment-meta{padding:17px}
+ .diag-test{margin-top:15px}
+ .diag-test-top{margin-bottom:23px}
+ .diag-score-strip{grid-template-columns:1fr 1fr;gap:12px;padding:15px}
+ .diag-score-main{grid-column:1/-1;border-bottom:1px solid #ede6f2;padding-bottom:13px}
+ .diag-score-strip>div:not(:first-child){border-left:0;padding:0}
+ .diag-complexity{grid-template-columns:1fr}
+ .diag-result-head h1{letter-spacing:-1.5px}
+ .diag-actions>.diagnosis-button,.diag-actions>.diagnosis-prev{flex:1}
+ .diag-review{padding:15px}
+}
+@media(prefers-reduced-motion:reduce){
+ .diag-track-card{transition:none}
+}
