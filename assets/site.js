@@ -163,19 +163,20 @@ function home(){
   var l=lessons.map(function(l){return {lesson:l,score:lessonScore(l,q)}})
    .filter(function(x){return x.score>0})
    .sort(function(a,b){return b.score-a.score||a.lesson.id.localeCompare(b.lesson.id)});
-  var m=featured.map(function(item){
-   var lesson=lessons.find(function(l){return l.id===item.aula});
-   var fileLabels=item.arquivos.map(function(f){return f.titulo}).join(' ');
-   var score=Math.max(lessonScore(lesson,q),clean?relevance(fileLabels,clean):100);
-   if(/\b(pdf|lista|gabarito|material)/.test(norm(q)))score+=score>0?40:0;
-   return {lesson:lesson,item:item,score:score};
+  var m=featured.map(function(entry){
+   var owner=entry.owner,labels=entry.item.arquivos.map(function(f){return f.titulo}).join(' ');
+   var context=[owner.id,owner.title,owner.description,labels].join(' ');
+   var score=owner.lesson?lessonScore(owner.lesson,q):0;
+   score=Math.max(score,clean?relevance(context,clean):100);
+   if(/\b(pdf|lista|gabarito|material)/.test(norm(q))&&score>0)score+=40;
+   return {owner:owner,item:entry.item,score:score}
   }).filter(function(x){return x.score>0}).sort(function(a,b){return b.score-a.score});
   var a=clean?SUBJECT_AREAS.map(function(area){return {area:area,score:relevance(area.name+' '+area.description,clean)}}).filter(function(x){return x.score>0}):[];
   var t=clean?SUBJECT_TOPICS.map(function(topic){return {topic:topic,score:relevance(topic.title+' '+topic.description,clean)}}).filter(function(x){return x.score>0}):[];
   return {lessons:l,materials:m,areas:a,topics:t}
  }
  function matCard(x){
-  return '<article class="search-material-card"><div class="search-material-head"><span class="browse-material-tag">ARQUIVO PDF</span><a href="'+href(x.lesson)+'?tab=arquivos">'+esc(x.lesson.id)+' · '+esc(x.lesson.title)+' ↗</a></div>'+x.item.arquivos.map(function(f){return '<a class="home-download" href="'+esc(f.url)+'" download><span class="home-pdf-icon">↓</span><span>'+esc(f.titulo)+'</span><strong>PDF</strong></a>'}).join('')+'</article>'
+  return '<article class="search-material-card"><div class="search-material-head"><span class="browse-material-tag">'+(x.owner.kind==='aula'?'LISTA DA AULA':x.owner.kind==='assunto'?'LISTA DO ASSUNTO':'LISTA GERAL')+'</span><a href="'+x.owner.href+'">'+esc(x.owner.title)+' ↗</a></div>'+pdfLinks(x.item.arquivos)+'</article>'
  }
  function renderSearch(){
   var q=search.query.trim(),matched=matchData(),types=[['tudo','Tudo'],['aulas','Aulas'],['materiais','Listas e PDFs'],['assuntos','Assuntos']];
@@ -195,7 +196,7 @@ function home(){
    if(groups.length)html+='<section class="search-group"><div class="search-group-head"><h3>◉ Assuntos para explorar</h3></div><div class="search-topic-grid">'+groups.slice(0,search.shown).map(function(x){return '<button type="button" class="search-topic-link" data-search-area="'+esc(x.area)+'" data-search-topic="'+esc(x.topic)+'"><strong>'+esc(x.name)+'</strong><small>'+esc(x.desc)+'</small><span>↗</span></button>'}).join('')+'</div></section>';
    else if(search.scope==='assuntos')html+='<div class="browse-empty">Não encontrei essa área. Tente um nome mais amplo, como “Geometria”.</div>';
   }
-  if(!html)html='<div class="search-no-match"><strong>Não encontramos essa expressão.</strong><p>Experimente um assunto mais amplo ou um código de aula, como A17 ou C20.</p><button type="button" id="search-reset">Explorar todas as áreas ↗</button></div>';
+  if(!html)html='<div class="search-no-match"><strong>Não encontramos essa expressão.</strong><p>Tente outro termo ou explore nossas áreas.</p><button type="button" id="search-reset">Explorar assuntos ↗</button></div>'+exatooCard('busca');
   resultOutput.innerHTML=html;
  }
 
