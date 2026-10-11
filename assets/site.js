@@ -10,11 +10,11 @@ function href(l){return '/aulas/'+encodeURIComponent(l.id)+'/'}
 function frontBy(id){return data.fronts.find(function(x){return x.id===id})}
 function blockBy(id){return data.blocks.find(function(x){return x.id===id})}
 function short(v,n){var s=String(v||'');return s.length>n?s.slice(0,n).trim()+'…':s}
-function title(str){document.title=str+' · MAT MAT MAT'}
+function title(str){document.title=str+' · MAT MAT MAT!'}
 function empty(label,detail){return '<div class="placeholder"><div class="emoji">✦</div><h3>'+esc(label)+'</h3><p>'+esc(detail)+'</p></div>'}
-function brandLogo(){return '<span class="mat-logo" aria-hidden="true"><span>MAT</span><span>MAT</span><span>MAT</span></span>'}
-function header(){return '<header class="topbar"><div class="shell"><a href="/" class="brand brand-mat" aria-label="MAT MAT MAT — página inicial">'+brandLogo()+'<span class="mat-brand-descriptor">MATEMÁTICA<br>SEM ENROLAÇÃO<span class="mat-brand-dot">✳</span></span></a><nav class="navlinks" aria-label="Navegação principal"><a href="/?q=PDF#resultados">Listas e PDFs</a><a href="/explorar/">Assuntos</a><a class="nav-cta" href="/teste-seu-nivel/"><span class="nav-cta-long">Teste seu nível ↗</span><span class="nav-cta-short">Teste seu nível ↗</span></a></nav></div></header>'}
-function footer(){return '<footer class="footer"><div class="shell"><div class="mat-footer-mark"><a href="/" class="brand-mat brand-mat-footer" aria-label="MAT MAT MAT — início">'+brandLogo()+'</a><div><strong>MAT MAT MAT</strong><p>Matemática de graça, do seu jeito. Conteúdo do Prof. João Capri.</p></div></div><p>Álgebra · Geometria · Aritmética · Estatística · Trigonometria</p></div></footer>'}
+function brandLogo(){return '<span class="mat-logo" aria-hidden="true"><span>MAT</span><span>MAT</span><span class="mat-last-row">MAT<b class="mat-bang">!</b></span></span>'}
+function header(){return '<header class="topbar"><div class="shell"><a href="/" class="brand brand-mat" aria-label="MAT MAT MAT! — página inicial">'+brandLogo()+'<span class="mat-brand-descriptor">MATEMÁTICA<br>SEM ENROLAÇÃO<span class="mat-brand-dot">✳</span></span></a><nav class="navlinks" aria-label="Navegação principal"><a href="/?q=PDF#resultados">Listas e PDFs</a><a href="/explorar/">Assuntos</a><a class="nav-cta" href="/teste-seu-nivel/"><span class="nav-cta-long">Teste seu nível ↗</span><span class="nav-cta-short">Teste seu nível ↗</span></a></nav></div></header>'}
+function footer(){return '<footer class="footer"><div class="shell"><div class="mat-footer-mark"><a href="/" class="brand-mat brand-mat-footer" aria-label="MAT MAT MAT! — início">'+brandLogo()+'</a><div><strong>MAT MAT MAT!</strong><p>Matemática de graça, do seu jeito. Conteúdo do Prof. João Capri.</p></div></div><p>Álgebra · Geometria · Aritmética · Estatística · Trigonometria</p></div></footer>'}
 function card(l){return '<a class="lesson-card" href="'+href(l)+'"><span class="mini">Aula '+esc(l.id)+' · '+esc(frontBy(l.front).name)+'</span><h4>'+esc(l.title)+'</h4><p>'+esc(l.summary||'Abra a aula e explore seu roteiro de estudos.')+'</p><div class="card-bottom"><span class="badge '+(done.has(l.id)?'checkdone':'')+'">'+(done.has(l.id)?'✓ Estudada':'Ver aula')+'</span><span class="arrow">↗</span></div></a>'}
 
 var SUBJECT_AREAS = [{"id":"fundamentos","name":"Fundamentos","icon":"123","tone":"mint","description":"Números, frações, porcentagens e aquela base que faz tudo funcionar.","ranges":[["A",1,6],["C",1,12]]},{"id":"funcoes","name":"Funções & gráficos","icon":"f(x)","tone":"violet","description":"Do primeiro grau aos logaritmos, com gráficos e aplicações.","ranges":[["A",7,32]]},{"id":"algebra","name":"Álgebra & sequências","icon":"x²","tone":"pink","description":"PA, PG, polinômios, complexos, matrizes e sistemas.","ranges":[["A",33,48],["C",45,48]]},{"id":"geometria-plana","name":"Geometria plana","icon":"△","tone":"peach","description":"Ângulos, triângulos, áreas e circunferências.","ranges":[["B",1,15]]},{"id":"geometria-espacial","name":"Geometria espacial","icon":"⬡","tone":"sky","description":"Posições no espaço, prismas, cones, pirâmides e esferas.","ranges":[["B",16,32]]},{"id":"geometria-analitica","name":"Geometria analítica","icon":"⌖","tone":"lilac","description":"Coordenadas, retas, circunferências, cônicas e vetores.","ranges":[["B",33,48]]},{"id":"combinatoria","name":"Combinatória & probabilidade","icon":"?!","tone":"yellow","description":"Contagem, possibilidades, probabilidades e binômio.","ranges":[["C",13,26]]},{"id":"estatistica","name":"Estatística","icon":"▥","tone":"cream","description":"Gráficos, médias, mediana, desvio e análise de dados.","ranges":[["C",27,32]]},{"id":"trigonometria","name":"Trigonometria","icon":"θ","tone":"lime","description":"Triângulos, ciclo trigonométrico e equações.","ranges":[["C",33,44]]}];
@@ -64,80 +64,16 @@ function home(){
  '<section class="home-hero" aria-labelledby="hero-title"><div class="home-hero-copy">'+
  
  '<h1 id="hero-title">O que você quer <em>estudar hoje?</em></h1>'+
- '<p>Aulas, listas e PDFs grátis. Simples assim.</p>'+
+ '<p>Listas de Exercícios e Teoria grátis. Simples assim</p>'+
  '<div class="home-search-section"><label class="home-searchbox" for="hero-search"><span class="home-search-mark" aria-hidden="true">⌕</span><input type="search" id="hero-search" autocomplete="off" aria-label="Pesquisar aulas, assuntos e PDFs" aria-controls="quick-hits" aria-expanded="false" placeholder="Busque um assunto, aula ou PDF…"><button type="button" id="clear-search" aria-label="Limpar busca" hidden>×</button><button type="button" id="btn-search" aria-label="Pesquisar">Buscar ↗</button></label>'+
  '<div class="home-quick-hits" id="quick-hits" hidden aria-live="polite"></div>'+
  '</div>'+
  
- '</div><div class="home-hero-art home-hero-showcase">'+
- '<section class="discovery-preview" id="discovery-preview" aria-label="Explore uma amostra de aulas, listas e quizzes">'+
- '<div class="preview-head"><span class="preview-eyebrow"><span class="preview-head-dot"></span> DÁ PRA FAZER TUDO ISSO AQUI</span><span class="preview-head-count" id="preview-count">01 / 03</span></div>'+
- '<div class="preview-stage" id="preview-stage">'+
- '<div class="preview-type"><span id="preview-kind">AULA</span><span class="preview-resource-code" id="preview-code">A17</span></div>'+
- '<h2 id="preview-title">Raízes e Fórmula Resolutiva</h2>'+
- '<p id="preview-desc">Bhaskara sem enrolação. Aprenda no seu ritmo.</p>'+
- '<div class="preview-equation"><span id="preview-math">x² − 5x + 6 = 0</span><small id="preview-equation-note">raízes: 2 e 3</small></div>'+
- '<a class="preview-open" id="preview-open" href="/aulas/A17/"><span id="preview-action">Abrir esta aula</span><span aria-hidden="true">↗</span></a>'+
- '</div>'+
- '<div class="preview-footer"><div class="preview-tabs" role="group" aria-label="Escolha o tipo de conteúdo"><button type="button" data-preview="0" class="active" aria-pressed="true">Aula</button><button type="button" data-preview="1" aria-pressed="false">PDF</button><button type="button" data-preview="2" aria-pressed="false">Quiz</button></div><span class="preview-footer-mark" aria-hidden="true">✳</span></div>'+
- '</section></div></section>'+
+ '</div></section>'+
  '<section class="home-search-results" id="resultados" hidden aria-live="polite"><div class="home-results-head"><div><span class="home-section-label">SUA PESQUISA</span><h2 id="search-title">Resultados</h2></div><button id="return-home" class="home-back-button" type="button">← Voltar à exploração</button></div><div id="search-scope" class="home-search-scopes" role="group" aria-label="Filtrar resultados"></div><div id="search-output"></div></section>'+
  '<div id="home-discover">'+
  '<section id="explorar" class="home-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="home-section-label"><span class="home-section-indicator"></span> TODA A MATEMÁTICA, ORGANIZADA</span><h2 id="explore-title">Encontre seu <em>material.</em></h2><p>Prefere navegar? Escolha uma área, encontre o assunto e abra a aula ou lista de que precisa.</p></div><span class="home-explore-decoration" aria-hidden="true">↗</span></div><div id="explore-content"></div></section>'+
  '</div></main>'+footer();
-
- // A demonstração é um tour visual, não uma nova caixa de busca.
- var hero=document.querySelector('.home-hero');
- var heroArt=document.querySelector('.home-hero-art');
- var preview=document.getElementById('discovery-preview');
- var previewStage=document.getElementById('preview-stage');
- var previewItems=[
-  {kind:'AULA',code:'A17',title:'Raízes e Fórmula Resolutiva',desc:'Bhaskara sem enrolação. Aprenda no seu ritmo.',math:'x² − 5x + 6 = 0',note:'raízes: 2 e 3',action:'Abrir esta aula',href:'/aulas/A17/'},
-  {kind:'LISTA EM PDF',code:'A17',title:'12 questões para praticar',desc:'Lista autoral com gabarito comentado.',math:'Δ = b² − 4ac',note:'PDF de graça · sem cadastro',action:'Baixar a lista',href:'/pdfs/lista-A17.pdf',pdf:true},
-  {kind:'QUIZ',code:'C20',title:'Teste sua probabilidade',desc:'Resolva questões com feedback imediato.',math:'P(A) = casos favoráveis / possíveis',note:'Quiz rápido da aula C20',action:'Fazer o quiz',href:'/aulas/C20/?tab=quiz'}
- ];
- var previewIndex=0,previewTimer=null;
- var reducedPreviewMotion=typeof window.matchMedia==='function'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- function showPreview(index){
-  previewIndex=(index+previewItems.length)%previewItems.length;
-  var item=previewItems[previewIndex];
-  document.getElementById('preview-kind').textContent=item.kind;
-  document.getElementById('preview-code').textContent=item.code;
-  document.getElementById('preview-title').textContent=item.title;
-  document.getElementById('preview-desc').textContent=item.desc;
-  document.getElementById('preview-math').textContent=item.math;
-  document.getElementById('preview-equation-note').textContent=item.note;
-  document.getElementById('preview-action').textContent=item.action;
-  document.getElementById('preview-count').textContent=String(previewIndex+1).padStart(2,'0')+' / 03';
-  var action=document.getElementById('preview-open');
-  action.href=item.href;
-  if(item.pdf){action.target='_blank';action.rel='noopener noreferrer'}
-  else{action.removeAttribute('target');action.removeAttribute('rel')}
-  preview.dataset.kind=item.pdf?'pdf':previewIndex===2?'quiz':'aula';
-  preview.querySelectorAll('button[data-preview]').forEach(function(b){
-   var selected=Number(b.dataset.preview)===previewIndex;
-   b.classList.toggle('active',selected);
-   b.setAttribute('aria-pressed',String(selected));
-  });
-  if(!reducedPreviewMotion){
-   previewStage.classList.remove('preview-transition');
-   void previewStage.offsetWidth;
-   previewStage.classList.add('preview-transition');
-  }
- }
- function resetPreviewAutoplay(){
-  if(previewTimer!==null)window.clearInterval(previewTimer);
-  previewTimer=null;
-  if(reducedPreviewMotion)return;
-  previewTimer=window.setInterval(function(){
-   if(document.hidden||heroArt.hidden||preview.matches(':hover')||preview.contains(document.activeElement)||document.getElementById('hero-search').value.trim())return;
-   showPreview(previewIndex+1);
-  },5600);
- }
- preview.querySelectorAll('button[data-preview]').forEach(function(b){
-  b.addEventListener('click',function(){showPreview(Number(b.dataset.preview));resetPreviewAutoplay()});
- });
- resetPreviewAutoplay();
 
  var input=document.getElementById('hero-search');
  var clearBtn=document.getElementById('clear-search');
@@ -305,7 +241,6 @@ function home(){
   search.query=q;search.scope='tudo';search.shown=12;input.value=q;
   clearBtn.hidden=!q.trim();
   var searching=!!q.trim();main.hidden=searching;resultArea.hidden=!searching;
-  heroArt.hidden=searching;hero.classList.toggle('is-searching',searching);
   if(searching){renderSearch();renderQuick()}else renderQuick();
   if(!fromHistory){
    var u=new URL(location.href);
@@ -351,7 +286,7 @@ function explorePage(){
  var query=new URLSearchParams(location.search),area=SUBJECT_AREAS.find(function(a){return a.id===query.get('area')});
  var topic=area&&SUBJECT_TOPICS.find(function(t){return t.id===query.get('assunto')&&t.area===area.id});
  var favorites=query.has('favoritos'),all=query.has('todas'),limit=24;
- document.getElementById('app').innerHTML=header()+'<main class="shell explorer-page"><div class="explorer-back"><a href="/">← Início</a><span>MAT MAT MAT / CATÁLOGO</span></div><div class="explorer-title"><div><span class="home-section-label">✳ BIBLIOTECA DE MATEMÁTICA</span><h1 id="explorer-heading">Explorar matemática</h1><p id="explorer-description">Escolha uma área para começar.</p></div><a class="explorer-search-link" href="/">⌕ Pesquisar ↗</a></div><div id="explorer-content"></div></main>'+footer();
+ document.getElementById('app').innerHTML=header()+'<main class="shell explorer-page"><div class="explorer-back"><a href="/">← Início</a><span>MAT MAT MAT! / CATÁLOGO</span></div><div class="explorer-title"><div><span class="home-section-label">✳ BIBLIOTECA DE MATEMÁTICA</span><h1 id="explorer-heading">Explorar matemática</h1><p id="explorer-description">Escolha uma área para começar.</p></div><a class="explorer-search-link" href="/">⌕ Pesquisar ↗</a></div><div id="explorer-content"></div></main>'+footer();
  function trail(items){return '<nav class="explorer-trail" aria-label="Caminho do assunto"><a href="/explorar/">Todas as áreas</a>'+items.map(function(it){return '<span>›</span>'+(it.url?'<a href="'+it.url+'">'+esc(it.name)+'</a>':'<strong aria-current="page">'+esc(it.name)+'</strong>')}).join('')+'</nav>'}
  function card(a){var n=data.lessons.filter(function(l){return subjectContains(a,l)}).length;return '<a class="area-tile" href="/explorar/?area='+a.id+'"><span class="area-tile-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="area-tile-name">'+esc(a.name)+'</span><span class="area-tile-subtitle">'+esc(a.description)+'</span><span class="area-tile-foot"><span>'+n+' aulas</span><span class="area-tile-go">↗</span></span></a>'}
  function lessonRow(l,full){var a=areaForLesson(l);return '<a class="browse-lesson-row" href="'+href(l)+'"><span class="browse-lesson-number">'+l.id+'</span><span class="browse-lesson-copy"><strong>'+esc(l.title)+'</strong><small>'+esc(l.summary||'Abra a aula.')+'</small>'+(full?'<span class="browse-lesson-meta">'+esc(a.name)+' · '+esc(topicInfo(subjectTopic(l,a)).title)+'</span>':'')+'</span><span class="browse-lesson-right">'+(done.has(l.id)?'<span class="browse-studied">✓ Estudada</span>':'<span class="browse-enter">↗</span>')+'</span></a>'}
@@ -387,7 +322,7 @@ function explorePage(){
 async function diagnosisPage(){
  title('Teste seu nível');
  var root=document.getElementById('app');
- root.innerHTML=header()+'<main class="shell diagnostic-page"><div class="explorer-back"><a href="/">← Página inicial</a><span>MAT MAT MAT / DIAGNÓSTICO</span></div><div id="diagnostic-content" aria-live="polite"></div></main>'+footer();
+ root.innerHTML=header()+'<main class="shell diagnostic-page"><div class="explorer-back"><a href="/">← Página inicial</a><span>MAT MAT MAT! / DIAGNÓSTICO</span></div><div id="diagnostic-content" aria-live="polite"></div></main>'+footer();
  var body=document.getElementById('diagnostic-content'),bank;
  try{var response=await fetch('/data/diagnostico.json');if(!response.ok)throw Error('Diagnóstico indisponível');bank=await response.json()}catch(e){body.innerHTML=empty('Não foi possível carregar o teste','Tente novamente em alguns instantes.');return}
  var current=-1,answers={};
