@@ -19,19 +19,16 @@ async function checkWidth(page,label){
   await page.locator('.area-tile').first().waitFor();
   assert.match(await page.locator('#hero-title').textContent(),/O que você quer estudar hoje/);
   assert.equal(await page.locator('input[type=search]').count(),1);
-  assert.equal(await page.locator('.discovery-preview').count(),1);
-  assert.equal(await page.locator('.home-math-card').count(),0);
-  await page.locator('[data-preview="1"]').click();
-  assert.equal(await page.locator('#preview-open').getAttribute('href'),'/pdfs/lista-A17.pdf');
-  await page.locator('[data-preview="2"]').click();
-  assert.equal(await page.locator('#preview-open').getAttribute('href'),'/aulas/C20/?tab=quiz');
-  await page.locator('[data-preview="0"]').click();
-
+  assert.equal(await page.locator('.discovery-preview').count(),0);
+  assert.equal(await page.locator('.home-hero-art').count(),0);
+  assert.equal(await page.locator('[data-preview]').count(),0);
+  assert.equal(await page.locator('.mat-bang').count(),2);
+  assert.equal(await page.locator('.home-hero-copy>p').textContent(),'Listas de Exercícios e Teoria grátis. Simples assim');
+  assert.match(await page.title(),/MAT MAT MAT!/);
   assert.equal(await page.locator('a.nav-cta[href="/teste-seu-nivel/"]').count(),1);
   await checkWidth(page,config.name+' home');
   await page.screenshot({path:'screenshots/'+config.name+'-home.png',fullPage:true});
   await page.locator('#hero-search').fill('Bhaskara');
-  assert.equal(await page.locator('.home-hero-art').isVisible(),false);
   await page.locator('#search-output a[href="/aulas/A17/"]').first().waitFor();
   await checkWidth(page,config.name+' pesquisa');
   await page.screenshot({path:'screenshots/'+config.name+'-search.png',fullPage:true});

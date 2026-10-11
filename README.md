@@ -85,3 +85,7 @@ O banco editável fica em `data/diagnostico.json`: 15 questões de quatro altern
 
 ## Mini-tour da home (2026)
 O antigo desenho da parábola foi substituído por um painel com exemplos **reais** da biblioteca: aula A17, lista PDF da A17 e quiz C20. O visitante pode alternar pelos controles Aula / PDF / Quiz. Sem interação, a prévia gira a cada 5,6 segundos, respeita `prefers-reduced-motion` e pausa na interação ou quando a aba não está visível. Ao começar uma pesquisa, o painel se oculta para priorizar os resultados. Os links abrem diretamente o conteúdo existente.
+
+
+## Home minimalista + MAT MAT MAT!
+Atualização visual: nenhuma ilustração, carousel ou mini-tour abaixo do campo de busca. A home mantém o título "O que você quer estudar hoje?" e o subtítulo exato **"Listas de Exercícios e Teoria grátis. Simples assim"**. Marca oficial **MAT MAT MAT!** com exclamação coral destacada na terceira linha da logo e presença uniforme nos metadados das 144 aulas, diagnóstico, exploração, impressão e favicon. As 144 URLs e o funcionamento da busca foram preservados.

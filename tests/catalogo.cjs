@@ -33,6 +33,12 @@ async function boot(url='https://matmatmat.test/'){
 function click(w,element){assert.ok(element,'controle não encontrado');element.dispatchEvent(new w.MouseEvent('click',{bubbles:true}))}
 function type(w,element,value){assert.ok(element);element.value=value;element.dispatchEvent(new w.Event('input',{bubbles:true}))}
 (async()=>{
+ assert.match(readFileSync('assets/favicon.svg','utf8'),/MAT MAT MAT!/);
+ assert.match(readFileSync('assets/print.js','utf8'),/mat-print-bang/);
+ assert.match(readFileSync('imprimir/index.html','utf8'),/MAT MAT MAT!/);
+ assert.match(readFileSync('index.html','utf8'),/<title>MAT MAT MAT!/);
+ assert.match(readFileSync('explorar/index.html','utf8'),/MAT MAT MAT!/);
+ assert.match(readFileSync('teste-seu-nivel/index.html','utf8'),/MAT MAT MAT!/);
  assert.equal(curriculum.lessons.length,144);
  assert.equal(diagnostic.questions.length,15);
  assert.equal(new Set(diagnostic.questions.map(q=>q.id)).size,15);
@@ -45,7 +51,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  for(const l of curriculum.lessons){
   const html=readFileSync('aulas/'+l.id+'/index.html','utf8');
   assert.ok(html.includes('data-lesson="'+l.id+'"'));
-  assert.ok(html.includes('MAT MAT MAT'));
+  assert.ok(html.includes('MAT MAT MAT!'));
  }
  assert.match(readFileSync('explorar/index.html','utf8'),/data-view="explorar"/);
  assert.match(readFileSync('teste-seu-nivel/index.html','utf8'),/data-view="diagnostico"/);
@@ -53,24 +59,19 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.match(d.querySelector('#hero-title').textContent,/O que você quer estudar hoje/);
  assert.equal(d.querySelectorAll('input[type=search]').length,1);
  assert.equal(d.querySelectorAll('.area-tile').length,9);
- assert.equal(d.querySelectorAll('.discovery-preview').length,1,'Existe uma única prévia da biblioteca');
- assert.equal(d.querySelectorAll('.home-math-card').length,0,'Ilustração antiga foi retirada');
- assert.equal(d.querySelectorAll('[data-preview]').length,3,'Botões de aula PDF quiz');
- assert.equal(d.querySelector('#preview-open').getAttribute('href'),'/aulas/A17/');
- click(w,d.querySelector('[data-preview="1"]'));
- assert.equal(d.querySelector('#preview-title').textContent,'12 questões para praticar');
- assert.equal(d.querySelector('#preview-open').getAttribute('href'),'/pdfs/lista-A17.pdf');
- assert.equal(d.querySelector('[data-preview="1"]').getAttribute('aria-pressed'),'true');
- click(w,d.querySelector('[data-preview="2"]'));
- assert.equal(d.querySelector('#preview-open').getAttribute('href'),'/aulas/C20/?tab=quiz');
- click(w,d.querySelector('[data-preview="0"]'));
-
+ assert.equal(d.querySelectorAll('.discovery-preview').length,0,'Sem vitrine de exemplos');
+ assert.equal(d.querySelectorAll('.home-hero-art').length,0,'Sem ilustração debaixo da busca');
+ assert.equal(d.querySelectorAll('[data-preview]').length,0,'Sem controles de animação');
+ assert.equal(d.querySelector('.home-hero-copy>p').textContent,'Listas de Exercícios e Teoria grátis. Simples assim');
+ assert.equal(d.querySelectorAll('.mat-bang').length,2,'Exclamação em ambas as marcas visíveis');
+ assert.equal(d.querySelector('.brand-mat').getAttribute('aria-label'),'MAT MAT MAT! — página inicial');
  assert.ok(d.querySelector('a.area-tile[href="/explorar/?area=funcoes"]'));
  assert.ok(d.querySelector('a.nav-cta[href="/teste-seu-nivel/"]'));
  assert.ok(!d.querySelector('#explore-content .browse-topic'));
  assert.equal(d.querySelectorAll('.mat-logo span').length,6);
+ assert.equal(d.querySelectorAll('.mat-bang').length,2);
  type(w,d.querySelector('#hero-search'),'Bhaskara');
- assert.equal(d.querySelector('.home-hero-art').hidden,true,'Prévia desaparece durante a busca');
+ assert.equal(d.querySelectorAll('.home-hero-art').length,0,'Busca continua sem ilustração');
  assert.ok(d.querySelector('#search-output a[href="/aulas/A17/"]'));
  assert.ok(d.querySelector('#search-output .search-material-card'));
  assert.equal(d.querySelector('#home-discover').hidden,true,'exploração oculta ao pesquisar');
