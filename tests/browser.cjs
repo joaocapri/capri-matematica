@@ -33,10 +33,12 @@ async function checkWidth(page,label){
   await checkWidth(page,config.name+' assuntos');
   await page.screenshot({path:'screenshots/'+config.name+'-subjects.png',fullPage:true});
   await page.locator('a.browse-topic[href="/explorar/?area=funcoes&assunto=fu-quadratica"]').click();
+  await page.locator('.browse-lesson-row').first().waitFor();
   assert.equal(await page.locator('.browse-lesson-row').count(),6);
   await checkWidth(page,config.name+' aulas do assunto');
   await page.screenshot({path:'screenshots/'+config.name+'-topic.png',fullPage:true});
   await page.locator('a.browse-lesson-row[href="/aulas/A17/"]').click();
+  await page.waitForURL('**/aulas/A17/');
   await page.locator('.contentpanel .tab').first().waitFor();
   assert.equal(await page.locator('.contentpanel .tab').count(),4);
   await checkWidth(page,config.name+' aula');
