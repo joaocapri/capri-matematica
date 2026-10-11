@@ -74,3 +74,10 @@ Veja `GUIA_MATERIAIS_EXATOO.md` para cadastrar PDFs por aula, assunto ou área e
 
 ## Identidade e abas (2026)
 O nome público do portal agora é **MAT MAT MAT**, com logotipo tipográfico empilhado em `assets/site.js` e favicon em `assets/favicon.svg`. Há **quatro abas por aula**: Listas e PDFs, Teoria, Quiz e Vídeos. A antiga Visão geral foi removida; links antigos `?tab=resumo` levam à Teoria. Na abertura padrão, a página seleciona **Listas e PDFs somente quando há materiais publicados ou lista gerada**, caso contrário seleciona **Teoria**. A home usa um único campo de busca, sem os textos de apoio e botões de exemplos anteriores.
+
+
+## Experiência do estudante — navegação 2026
+A home usa uma única busca e mostra as 9 áreas como atalhos. Os menus não se aprofundam na home: a exploração ocorre em `/explorar/`, com URLs específicas para cada área (`?area=funcoes`) e assunto (`?area=funcoes&assunto=fu-quadratica`) e breadcrumbs clicáveis. A partir do assunto, o aluno abre a página individual da aula. Links históricos da home com `?area=` ou `?assunto=` continuam sendo redirecionados para `/explorar/`. O botão superior **Teste seu nível** leva a `/teste-seu-nivel/`.
+
+## Diagnóstico matemático gratuito
+O banco editável fica em `data/diagnostico.json`: 15 questões de quatro alternativas, distribuídas igualmente entre 5 habilidades. A página `/teste-seu-nivel/` apresenta uma questão por vez, permite retornar e modificar a escolha, calcula acertos gerais e por habilidade e recomenda aulas das áreas de maior dificuldade. Mostra a correção explicada ao final. Não exige conta, não transmite escolhas ao Exatoo e **não** pretende medir proficiência com validade psicométrica ou fornecer nota escolar. Para mudar perguntas, manter `correta` como índice numérico de base zero (0 a 3), e cada campo `aula` deve apontar a uma das 144 aulas existentes. Links para Exatoo enviam apenas parâmetros de origem, sem respostas do aluno.
