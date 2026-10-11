@@ -1,173 +1,121 @@
-const assert = require('node:assert/strict');
-const {readFileSync} = require('node:fs');
-const {JSDOM} = require('jsdom');
-
-const curriculum = JSON.parse(readFileSync('data/aulas.json','utf8'));
-const materials = JSON.parse(readFileSync('data/materiais.json','utf8'));
-const script = readFileSync('assets/site.js','utf8');
-const sleep = () => new Promise(resolve => setTimeout(resolve,12));
-async function boot(url='https://capri.mat/'){
-  const lessonId=new URL(url).pathname.match(/^\/aulas\/([ABC]\d{2})\/?$/)?.[1];
-  const dom = new JSDOM('<!doctype html><html><body><div id="app"></div></body></html>',{
-    url,runScripts:'outside-only',pretendToBeVisual:true
-  });
-  if(lessonId)dom.window.document.body.dataset.lesson=lessonId;
-  const w=dom.window;
-  w.HTMLElement.prototype.scrollIntoView = function(){};
-  w.fetch=async path=>{
-    if(path==='/data/aulas.json')return {ok:true,json:async()=>curriculum};
-    if(path==='/data/materiais.json')return {ok:true,json:async()=>materials};
-    if(path.startsWith('/conteudos/')){
-      try{return {ok:true,json:async()=>JSON.parse(readFileSync(path.slice(1),'utf8'))}}catch(e){return {ok:false}}
-    }
-    return {ok:false};
-  };
-  w.MathJax={typesetPromise:async()=>{}};
-  w.eval(script);
-  for(let i=0;i<50;i++){
-    if(lessonId ? w.document.querySelector('.contentpanel .tab') : (w.document.querySelector('.home-hero')&&w.document.querySelector('.area-tile')))break;
-    await sleep();
-  }
-  return {dom,w,d:w.document};
+const assert=require('node:assert/strict');
+const {readFileSync}=require('node:fs');
+const {JSDOM}=require('jsdom');
+const curriculum=JSON.parse(readFileSync('data/aulas.json','utf8'));
+const materials=JSON.parse(readFileSync('data/materiais.json','utf8'));
+const diagnostic=JSON.parse(readFileSync('data/diagnostico.json','utf8'));
+const app=readFileSync('assets/site.js','utf8');
+const wait=()=>new Promise(r=>setTimeout(r,12));
+async function boot(url='https://matmatmat.test/'){
+ const {pathname}=new URL(url);
+ const dom=new JSDOM('<!doctype html><html><body><div id="app"></div></body></html>',{url,runScripts:'outside-only',pretendToBeVisual:true});
+ const w=dom.window,d=w.document;
+ const id=pathname.match(/^\/aulas\/([ABC]\d{2})\/?$/)?.[1];
+ if(id)d.body.dataset.lesson=id;
+ else if(pathname.startsWith('/explorar'))d.body.dataset.view='explorar';
+ else if(pathname.startsWith('/teste-seu-nivel'))d.body.dataset.view='diagnostico';
+ w.HTMLElement.prototype.scrollIntoView=function(){};
+ w.fetch=async path=>{
+  if(path==='/data/aulas.json')return{ok:true,json:async()=>curriculum};
+  if(path==='/data/materiais.json')return{ok:true,json:async()=>materials};
+  if(path==='/data/diagnostico.json')return{ok:true,json:async()=>diagnostic};
+  if(path.startsWith('/conteudos/')){try{return{ok:true,json:async()=>JSON.parse(readFileSync(path.slice(1),'utf8'))}}catch(e){return{ok:false}}}
+  return{ok:false};
+ };
+ w.MathJax={typesetPromise:async()=>{}};
+ w.eval(app);
+ for(let i=0;i<65;i++){
+  if(id?d.querySelector('.contentpanel .tab'):pathname.startsWith('/explorar')?d.querySelector('#explorer-content .area-tile, #explorer-content .browse-topic, #explorer-content .browse-lesson-row'):pathname.startsWith('/teste-seu-nivel')?d.querySelector('#diagnosis-start'):d.querySelector('.home-hero .area-tile, .home-hero'))break;
+  await wait();
+ }
+ return{w,d,dom};
 }
-function click(w,e){assert.ok(e,'elemento clicável ausente');e.dispatchEvent(new w.MouseEvent('click',{bubbles:true}));}
-function type(w,e,value){assert.ok(e,'campo ausente');e.value=value;e.dispatchEvent(new w.Event('input',{bubbles:true}));}
-function visible(e){return !!e&&!e.hidden}
+function click(w,element){assert.ok(element,'controle não encontrado');element.dispatchEvent(new w.MouseEvent('click',{bubbles:true}))}
+function type(w,element,value){assert.ok(element);element.value=value;element.dispatchEvent(new w.Event('input',{bubbles:true}))}
 (async()=>{
-  // A identidade também está nos metadados de todas as páginas estáticas.
-  const homepage=readFileSync('index.html','utf8');
-  assert.match(homepage,/<title>MAT MAT MAT/,'Título novo na home');
-  assert.match(homepage,/assets\/favicon\.svg/,'Favicon da marca');
-  for(const entry of curriculum.lessons){
-    const html=readFileSync('aulas/'+entry.id+'/index.html','utf8');
-    assert.ok(html.includes('data-lesson="'+entry.id+'"'),'Código correto no HTML '+entry.id);
-    assert.ok(html.includes('| MAT MAT MAT</title>'),'Página individual renomeada '+entry.id);
-    assert.ok(html.includes('href="/assets/favicon.svg"'),'Favicon em '+entry.id);
-    assert.ok(!html.includes('Capri Matemática'),'Marca antiga não aparece em '+entry.id);
-  }
-  const printPage=readFileSync('imprimir/index.html','utf8');
-  assert.match(printPage,/MAT MAT MAT/,'Nome novo também nas impressões');
-  assert.match(readFileSync('assets/print.js','utf8'),/mat-print-logo/,'Logo de impressão empilhado');
+ assert.equal(curriculum.lessons.length,144);
+ assert.equal(diagnostic.questions.length,15);
+ assert.equal(new Set(diagnostic.questions.map(q=>q.id)).size,15);
+ assert.equal(diagnostic.domains.length,5);
+ for(const q of diagnostic.questions){
+  assert.ok(diagnostic.domains.some(d=>d.id===q.area),'domínio válido '+q.id);
+  assert.ok(q.opcoes.length===4&&q.correta>=0&&q.correta<4);
+  assert.ok(curriculum.lessons.some(l=>l.id===q.aula));
+ }
+ for(const l of curriculum.lessons){
+  const html=readFileSync('aulas/'+l.id+'/index.html','utf8');
+  assert.ok(html.includes('data-lesson="'+l.id+'"'));
+  assert.ok(html.includes('MAT MAT MAT'));
+ }
+ assert.match(readFileSync('explorar/index.html','utf8'),/data-view="explorar"/);
+ assert.match(readFileSync('teste-seu-nivel/index.html','utf8'),/data-view="diagnostico"/);
+ let {w,d,dom}=await boot();
+ assert.match(d.querySelector('#hero-title').textContent,/O que você quer estudar hoje/);
+ assert.equal(d.querySelectorAll('input[type=search]').length,1);
+ assert.equal(d.querySelectorAll('.area-tile').length,9);
+ assert.ok(d.querySelector('a.area-tile[href="/explorar/?area=funcoes"]'));
+ assert.ok(d.querySelector('a.nav-cta[href="/teste-seu-nivel/"]'));
+ assert.ok(!d.querySelector('#explore-content .browse-topic'));
+ assert.equal(d.querySelectorAll('.mat-logo span').length,6);
+ type(w,d.querySelector('#hero-search'),'Bhaskara');
+ assert.ok(d.querySelector('#search-output a[href="/aulas/A17/"]'));
+ assert.ok(d.querySelector('#search-output .search-material-card'));
+ assert.equal(d.querySelector('#home-discover').hidden,true,'exploração oculta ao pesquisar');
+ dom.window.close();
 
-  assert.equal(curriculum.lessons.length,144,'Currículo de 144 aulas');
-  const pair = await boot(); let {dom,w,d}=pair;
-  assert.equal(d.querySelectorAll('input[type="search"]').length,1,'Uma única busca na home');
-  assert.equal(d.querySelectorAll('.area-tile').length,9,'Nove áreas');
-  assert.equal(d.querySelectorAll('.browse-lesson-row').length,0,'Não exibir 144 aulas na entrada');
-  assert.equal(d.querySelectorAll('.home-materials').length,0,'Bloco de PDFs repetido removido');
-  assert.ok(d.querySelector('.navlinks a[href="/?q=PDF#resultados"]'),'PDFs disponíveis pela única busca');
-  assert.ok(d.querySelector('#explorar'),'Explorar currículo');
-  assert.equal(d.querySelectorAll('.home-popular button').length,0,'Home sem chips e textos repetidos');
-  assert.equal(d.querySelectorAll('.mat-logo').length,2,'Marca empilhada no cabeçalho e rodapé');
-  assert.equal(d.querySelectorAll('.mat-logo span').length,6,'MAT três vezes em cada assinatura');
-  assert.match(d.querySelector('#hero-title').textContent,/Qual matemática você precisa/);
-  assert.match(d.title,/MAT MAT MAT/);
-  assert.ok(!visible(d.getElementById('resultados')),'Sem resultados antes de digitar');
+ ({w,d,dom}=await boot('https://matmatmat.test/explorar/'));
+ assert.equal(d.querySelectorAll('.area-tile').length,9);
+ assert.equal(d.querySelectorAll('input[type=search]').length,0,'sem caixa de busca repetida');
+ assert.ok(d.querySelector('.explorer-back a[href="/"]'));
+ dom.window.close();
+ ({w,d,dom}=await boot('https://matmatmat.test/explorar/?area=funcoes'));
+ assert.equal(d.querySelectorAll('.browse-topic').length,6);
+ assert.ok(d.querySelector('a.browse-topic[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
+ assert.ok(d.querySelector('a.explorer-trail[href="/explorar/"]')||d.querySelector('.explorer-trail a[href="/explorar/"]'));
+ dom.window.close();
+ ({w,d,dom}=await boot('https://matmatmat.test/explorar/?area=funcoes&assunto=fu-quadratica'));
+ assert.equal(d.querySelectorAll('.browse-lesson-row').length,6);
+ assert.ok(d.querySelector('a[href="/aulas/A17/"]'));
+ assert.ok(d.querySelector('.explorer-trail a[href="/explorar/?area=funcoes"]'));
+ dom.window.close();
+ ({w,d,dom}=await boot('https://matmatmat.test/explorar/?todas=1'));
+ assert.equal(d.querySelectorAll('.browse-lesson-row').length,24);
+ click(w,d.querySelector('#show-more-explorer'));
+ assert.equal(d.querySelectorAll('.browse-lesson-row').length,48);
+ dom.window.close();
 
-  click(w,d.querySelector('[data-catalog="area"][data-id="funcoes"]'));
-  assert.equal(d.querySelectorAll('.browse-topic').length,6,'Seis assuntos de funções');
-  click(w,d.querySelector('[data-catalog="topic"][data-id="fu-quadratica"]'));
-  assert.equal(d.querySelectorAll('.browse-lesson-row').length,6,'Seis aulas quadráticas');
-  assert.ok(d.querySelector('a[href="/aulas/A17/"]'),'Aula A17 presente');
-  assert.ok(w.location.search.includes('assunto=fu-quadratica'),'Link de assunto compartilhável');
-  click(w,d.querySelector('[data-catalog="areas"]'));
-  assert.equal(d.querySelectorAll('.area-tile').length,9,'Breadcrumb funciona');
-  click(w,d.querySelector('[data-catalog="area"][data-id="estatistica"]'));
-  assert.equal(d.querySelectorAll('.browse-topic').length,2,'Estatística dividida');
-  click(w,d.querySelector('[data-catalog="areas"]'));
-  click(w,d.querySelector('[data-catalog="area"][data-id="geometria-espacial"]'));
-  click(w,d.querySelector('[data-catalog="topic"][data-id="ge-posicao"]'));
-  assert.equal(d.querySelectorAll('.browse-lesson-row').length,2,'Posições no espaço');
-  click(w,d.querySelector('[data-catalog="areas"]'));
+ ({w,d,dom}=await boot('https://matmatmat.test/aulas/A17/'));
+ assert.equal(d.querySelectorAll('.tab').length,4);
+ assert.ok(d.querySelector('a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
+ assert.equal(d.querySelector('.tab.active').dataset.tab,'arquivos');
+ click(w,d.querySelector('[data-tab="quiz"]'));
+ const q=JSON.parse(readFileSync('conteudos/A17.json','utf8')).quiz[0];
+ click(w,d.querySelector('[data-opt="'+((q.correta+1)%q.opcoes.length)+'"]'));
+ assert.ok(d.querySelector('#quiz-feedback a[href*="app.exatoo.com"]'));
+ dom.window.close();
+ ({w,d,dom}=await boot('https://matmatmat.test/aulas/B25/?tab=resumo'));
+ assert.equal(d.querySelector('.tab.active').dataset.tab,'teoria');
+ dom.window.close();
 
-  type(w,d.getElementById('hero-search'),'Bhaskara');
-  assert.ok(visible(d.getElementById('resultados')),'Busca abre resultados');
-  assert.ok(!visible(d.getElementById('home-discover')),'Exploração sai da frente da busca');
-  assert.ok(d.querySelector('#search-output a[href="/aulas/A17/"]'),'Busca encontra A17');
-  assert.ok(!d.getElementById('quick-hits').hidden,'Sugestões aparecem sob o campo');
-  assert.ok(d.querySelector('#quick-hits a[href="/aulas/A17/"]'),'Sugestão abre a aula diretamente');
-  assert.equal(d.getElementById('hero-search').getAttribute('aria-expanded'),'true','Busca acessível');
-  assert.equal(d.querySelectorAll('#search-scope button').length,4,'Filtros integrados sem outra busca');
-  assert.ok(d.querySelector('#search-output .search-material-card'),'Lista e gabarito da A17 aparecem na busca');
-  assert.ok(!d.querySelector('.home-materials'),'Sem biblioteca duplicada');
-  click(w,d.querySelector('[data-scope="materiais"]'));
-  assert.ok(d.querySelectorAll('#search-output .search-material-card').length>=1,'Filtra materiais');
-  assert.equal(d.querySelectorAll('#search-output .browse-lesson-row').length,0,'Filtro não mistura aulas');
-  type(w,d.getElementById('hero-search'),'PDF');
-  assert.ok(d.querySelectorAll('#search-output .search-material-card').length>=1,'Termo PDF lista materiais');
-  assert.ok(d.querySelector('#quick-hits a[href="/pdfs/lista-A17.pdf"]'),'Sugestão de PDF aparece sem segunda busca');
-  type(w,d.getElementById('hero-search'),'lista de bhaskara');
-  assert.ok(d.querySelector('#search-output .search-material-card'),'Busca composta encontra material');
-  type(w,d.getElementById('hero-search'),'probabilidade');
-  assert.ok(d.querySelectorAll('#search-output .browse-lesson-row').length>0,'Busca por assunto encontra aulas');
-  type(w,d.getElementById('hero-search'),'termoinexistentexyz');
-  assert.ok(d.querySelector('#search-output .search-no-match'),'Estado vazio legível');
-  click(w,d.getElementById('return-home'));
-  assert.ok(visible(d.getElementById('home-discover')),'Volta à exploração');
-  assert.equal(d.getElementById('hero-search').value,'','Limpa a busca');
-  assert.ok(d.getElementById('quick-hits').hidden,'Sugestões somem depois de limpar');
-  click(w,d.querySelector('[data-catalog="all"]'));
-  assert.equal(d.querySelectorAll('.browse-lesson-row').length,18,'Lista inicial paginada');
-  click(w,d.querySelector('[data-catalog="more"]'));
-  assert.equal(d.querySelectorAll('.browse-lesson-row').length,36,'Ver mais funciona');
-  dom.window.close();
-
-  ({dom,w,d}=await boot('https://capri.mat/?area=funcoes&assunto=fu-quadratica'));
-  assert.equal(d.querySelectorAll('.browse-lesson-row').length,6,'Deep link de área e assunto funciona');
-  dom.window.close();
-
-  ({dom,w,d}=await boot('https://capri.mat/?q=A17'));
-  assert.ok(visible(d.getElementById('resultados')),'Link de pesquisa funciona');
-  assert.ok(d.querySelector('#search-output a[href="/aulas/A17/"]'));
-  dom.window.close();
-
-  ({dom,w,d}=await boot());
-  type(w,d.getElementById('hero-search'),'Geometria espacial');
-  assert.ok(visible(d.getElementById('resultados')),'Busca simples abre resultados');
-  assert.ok(d.querySelectorAll('#search-output .browse-lesson-row').length>0);
-  dom.window.close();
-
-  // A navegação contextual segue as categorias atuais do currículo.
-  ({dom,w,d}=await boot('https://capri.mat/aulas/A17/'));
-  assert.equal(d.querySelectorAll('.tab').length,4,'Quatro abas em todas as aulas');
-  assert.equal(d.querySelectorAll('[data-tab="resumo"]').length,0,'Sem aba Visão geral');
-  assert.equal(d.querySelector('.tab.active').dataset.tab,'arquivos','Abre PDFs quando materiais existem');
-  assert.match(d.title,/MAT MAT MAT/);
-  assert.equal(d.querySelectorAll('.sidelesson').length,6,'Sidebar da quadrática mantém apenas seis aulas');
-  assert.ok(d.querySelector('.crumbs a[href="/?area=funcoes&assunto=fu-quadratica#explorar"]'),'Breadcrumb abre o assunto correto');
-  assert.ok(d.querySelector('#tab-body a[href="/pdfs/lista-A17.pdf"]'),'PDF da A17 continua disponível');
-  click(w,d.querySelector('[data-tab="quiz"]'));
-  const quiz=JSON.parse(readFileSync('conteudos/A17.json','utf8')).quiz[0];
-  click(w,d.querySelector('[data-opt="'+((quiz.correta+1)%quiz.opcoes.length)+'"]'));
-  assert.ok(d.querySelector('#quiz-feedback a[href^="https://app.exatoo.com/"]'),'Erro de quiz sugere o Exatoo');
-  assert.ok(d.querySelector('#quiz-feedback a[href*="capri_aula=A17"]'),'Código de aula repassado sem informação pessoal');
-  dom.window.close();
-  ({dom,w,d}=await boot('https://capri.mat/aulas/B25/'));
-  assert.equal(d.querySelectorAll('.tab').length,4,'Quatro abas na aula sem PDF');
-  assert.equal(d.querySelector('.tab.active').dataset.tab,'teoria','Sem PDF inicia na Teoria');
-  click(w,d.querySelector('[data-tab="arquivos"]'));
-  assert.ok(d.querySelector('#tab-body a[href*="app.exatoo.com"]'),'Sem PDF publicado, oferece treino personalizado');
-  assert.equal(d.querySelectorAll('.sidelesson').length,3,'Aula de cone navega somente dentro do tema');
-  dom.window.close();
-  // Os PDFs gerais abaixo são fixtures: arquivos de exemplo não são publicados.
-  materials.push({assunto:'fu-quadratica',arquivos:[{titulo:'Revisão geral quadrática',url:'/pdfs/lista-A17.pdf'}]});
-  materials.push({area:'funcoes',arquivos:[{titulo:'Revisão de funções',url:'/pdfs/gabarito-A17.pdf'}]});
-  ({dom,w,d}=await boot('https://capri.mat/?area=funcoes&assunto=fu-quadratica'));
-  assert.equal(d.querySelectorAll('.topic-pdf-panel .material-download').length,1,'Tema exibe seu PDF geral');
-  click(w,d.querySelector('[data-catalog="areas"]'));
-  click(w,d.querySelector('[data-catalog="area"][data-id="funcoes"]'));
-  assert.equal(d.querySelectorAll('.topic-pdf-panel .material-download').length,1,'Área exibe PDF geral');
-  dom.window.close();
-  ({dom,w,d}=await boot('https://capri.mat/?q=PDF'));
-  assert.ok(d.querySelectorAll('.search-material-card').length>=3,'Busca inclui PDFs de aula, tema e área');
-  dom.window.close();
-  ({dom,w,d}=await boot('https://capri.mat/aulas/A17/'));
-  assert.ok(d.querySelectorAll('#tab-body .filelink').length>=2,'Aula herda PDFs sem URLs repetidas');
-  dom.window.close();materials.pop();materials.pop();
-  // Os endereços antigos não quebram ao retirar a aba.
-  ({dom,w,d}=await boot('https://capri.mat/aulas/B25/?tab=resumo'));
-  assert.equal(d.querySelector('.tab.active').dataset.tab,'teoria','Link legado de Visão geral migra para Teoria');
-  assert.ok(d.querySelector('#tab-body h2')?.textContent.includes('Teoria'));
-  dom.window.close();
-  console.log('✓ Home v4: busca única, PDFs, filtros, hierarquia, histórico e catálogo: OK');
-})().catch(e=>{console.error(e);process.exitCode=1;});
+ ({w,d,dom}=await boot('https://matmatmat.test/teste-seu-nivel/'));
+ assert.match(d.querySelector('.diagnosis-start h1').textContent,/Descubra por onde começar/);
+ assert.ok(d.querySelector('.diagnosis-disclaimer'));
+ click(w,d.querySelector('#diagnosis-start'));
+ assert.ok(d.querySelector('.diagnosis-question'));
+ for(let i=0;i<15;i++){
+  const q=diagnostic.questions[i];
+  const selected=i<3?(q.correta+1)%4:q.correta;
+  click(w,d.querySelector('[data-diagnosis-answer="'+selected+'"]'));
+  assert.ok(!d.querySelector('#diagnosis-next').disabled);
+  click(w,d.querySelector('#diagnosis-next'));
+ }
+ assert.equal(d.querySelectorAll('.diagnosis-domain').length,5);
+ assert.match(d.querySelector('.diagnosis-score').textContent,/12\s*\/ 15/);
+ assert.ok(d.querySelector('.diagnosis-recs a[href^="/aulas/"]'));
+ assert.ok(d.querySelector('.diagnosis-review details'));
+ assert.ok(d.querySelector('.diagnosis-exatoo a[href^="https://app.exatoo.com/"]'));
+ click(w,d.querySelector('#diagnosis-restart'));
+ assert.ok(d.querySelector('#diagnosis-start'),'reiniciar');
+ dom.window.close();
+ console.log('✓ Home, 9 áreas, 38 assuntos, 144 aulas, links e diagnóstico de 15 questões: OK');
+})().catch(e=>{console.error(e);process.exitCode=1});

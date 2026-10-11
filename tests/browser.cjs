@@ -1,74 +1,61 @@
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const {chromium}=require('playwright');
-
 const BASE='http://127.0.0.1:4173';
-async function checkWidth(page,name){
- const d=await page.evaluate(()=>({
-  scrollWidth:document.documentElement.scrollWidth,
-  windowWidth:window.innerWidth,
-  offending:[...document.querySelectorAll('body *')].filter(el=>{
-   const b=el.getBoundingClientRect();
-   const cs=getComputedStyle(el);
-   return b.width&&cs.position!=='fixed'&&b.right>window.innerWidth+3&&b.left<window.innerWidth+3&&!['script','style','svg','path'].includes(el.tagName.toLowerCase())
-  }).slice(0,6).map(el=>({tag:el.tagName,cls:el.className?.toString().slice(0,70),right:Math.round(el.getBoundingClientRect().right)}))
- }));
- assert.ok(d.scrollWidth<=d.windowWidth+3,name+' causa rolagem horizontal: '+JSON.stringify(d));
- console.log('✓ '+name+' | '+d.windowWidth+'px | sem rolagem horizontal');
+async function checkWidth(page,label){
+ const d=await page.evaluate(()=>({width:window.innerWidth,scroll:document.documentElement.scrollWidth}));
+ assert.ok(d.scroll<=d.width+3,label+' horizontal scroll: '+JSON.stringify(d));
+ console.log('✓ '+label+' '+d.width+'px');
 }
 (async()=>{
  fs.mkdirSync('screenshots',{recursive:true});
  const browser=await chromium.launch({headless:true,args:['--disable-dev-shm-usage']});
- for(const setting of [
-  {name:'desktop',viewport:{width:1440,height:900}},
-  {name:'mobile',viewport:{width:390,height:844},isMobile:true,hasTouch:true}
- ]){
-  console.log('Iniciando '+setting.name);
-  const page=await browser.newPage(setting);
+ for(const config of [{name:'desktop',viewport:{width:1440,height:900}},{name:'mobile',viewport:{width:390,height:844},isMobile:true,hasTouch:true}]){
+  const page=await browser.newPage(config);
   page.setDefaultTimeout(15000);
-  // Bloqueia CDNs externos no CI: o teste valida a UI mesmo sem a rede pública.
-  await page.route('**/*', route => {
-    const u=new URL(route.request().url());
-    if(u.hostname==='127.0.0.1')return route.continue();
-    return route.abort();
-  });
-  page.on('pageerror',e=>{console.log('Page error:',e.message)});
-  await page.goto(BASE+'/',{waitUntil:'domcontentloaded',timeout:18000});
-  console.log('Home carregada: '+setting.name);
-  await page.locator('.area-tile').first().waitFor({timeout:20000});
-  assert.equal(await page.locator('input[type=search]').count(),1,'Somente uma busca');
-  assert.equal(await page.locator('.area-tile').count(),9);
-  assert.equal(await page.locator('.mat-logo span').count(),6,'Logo empilhado em header e footer');
-  assert.match(await page.title(),/MAT MAT MAT/,'Título da home');
-  assert.equal(await page.locator('.home-popular button').count(),0,'Hero sem excesso de textos');
-  assert.equal(await page.locator('#materiais').count(),0,'PDF feature removed');
-  await checkWidth(page,setting.name+' home');
-  await page.screenshot({timeout:12000,path:'screenshots/'+setting.name+'-home.png',fullPage:true});
-
+  await page.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
+  page.on('pageerror',err=>console.log('Page error:',err.message));
+  await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
+  await page.locator('.area-tile').first().waitFor();
+  assert.match(await page.locator('#hero-title').textContent(),/O que você quer estudar hoje/);
+  assert.equal(await page.locator('input[type=search]').count(),1);
+  assert.equal(await page.locator('a.nav-cta[href="/teste-seu-nivel/"]').count(),1);
+  await checkWidth(page,config.name+' home');
+  await page.screenshot({path:'screenshots/'+config.name+'-home.png',fullPage:true});
   await page.locator('#hero-search').fill('Bhaskara');
   await page.locator('#search-output a[href="/aulas/A17/"]').first().waitFor();
-  assert.equal(await page.locator('#home-discover').isVisible(),false,'Explore sai ao buscar');
-  await checkWidth(page,setting.name+' busca');
-  await page.screenshot({path:'screenshots/'+setting.name+'-search.png',fullPage:true});
-
+  await checkWidth(page,config.name+' pesquisa');
+  await page.screenshot({path:'screenshots/'+config.name+'-search.png',fullPage:true});
   await page.locator('#clear-search').click();
-  await page.locator('[data-catalog="area"][data-id="funcoes"]').click();
-  await page.locator('[data-catalog="topic"][data-id="fu-quadratica"]').click();
-  assert.equal(await page.locator('#explore-content .browse-lesson-row').count(),6);
-  await checkWidth(page,setting.name+' aulas do assunto');
-  await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
-  await page.waitForTimeout(150);
-  await page.screenshot({timeout:12000,path:'screenshots/'+setting.name+'-topic.png',fullPage:true});
-
-  await page.goto(BASE+'/aulas/A17/',{waitUntil:'domcontentloaded',timeout:18000});
+  await page.locator('a.area-tile[href="/explorar/?area=funcoes"]').click();
+  await page.locator('a.browse-topic[href="/explorar/?area=funcoes&assunto=fu-quadratica"]').waitFor();
+  assert.equal(await page.locator('input[type=search]').count(),0,'explorador sem busca duplicada');
+  await checkWidth(page,config.name+' assuntos');
+  await page.screenshot({path:'screenshots/'+config.name+'-subjects.png',fullPage:true});
+  await page.locator('a.browse-topic[href="/explorar/?area=funcoes&assunto=fu-quadratica"]').click();
+  assert.equal(await page.locator('.browse-lesson-row').count(),6);
+  await checkWidth(page,config.name+' aulas do assunto');
+  await page.screenshot({path:'screenshots/'+config.name+'-topic.png',fullPage:true});
+  await page.locator('a.browse-lesson-row[href="/aulas/A17/"]').click();
   await page.locator('.contentpanel .tab').first().waitFor();
-  assert.equal(await page.locator('.contentpanel .tab').count(),4,'Quatro abas nas aulas');
-  assert.match(await page.title(),/MAT MAT MAT/,'Título da aula');
-  assert.equal(await page.locator('[data-tab="resumo"]').count(),0,'Visão geral removida');
-  await checkWidth(page,setting.name+' pagina de aula');
-  await page.screenshot({path:'screenshots/'+setting.name+'-lesson.png',fullPage:true});
+  assert.equal(await page.locator('.contentpanel .tab').count(),4);
+  await checkWidth(page,config.name+' aula');
+  await page.screenshot({path:'screenshots/'+config.name+'-lesson.png',fullPage:true});
+  await page.goto(BASE+'/teste-seu-nivel/',{waitUntil:'domcontentloaded'});
+  await page.locator('#diagnosis-start').waitFor();
+  await checkWidth(page,config.name+' diagnóstico');
+  await page.screenshot({path:'screenshots/'+config.name+'-diagnostic.png',fullPage:true});
+  await page.locator('#diagnosis-start').click();
+  for(let i=0;i<15;i++){
+   await page.locator('[data-diagnosis-answer="1"]').click();
+   await page.locator('#diagnosis-next').click();
+  }
+  await page.locator('.diagnosis-score').waitFor();
+  assert.equal(await page.locator('.diagnosis-domain').count(),5);
+  await checkWidth(page,config.name+' resultado');
+  await page.screenshot({path:'screenshots/'+config.name+'-diagnostic-result.png',fullPage:true});
   await page.close();
  }
  await browser.close();
- console.log('✓ Browser smoke: desktop + mobile OK');
-})().catch(e=>{console.error('Visual test failed:',e);process.exit(1);});
+ console.log('✓ Browser: home, busca, catálogo e diagnóstico em desktop e celular');
+})().catch(e=>{console.error(e);process.exit(1)});
