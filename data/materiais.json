@@ -382,5 +382,101 @@
       }
     ],
     "tipo": "aula"
+  },
+  {
+    "aula": "A25",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A25 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A25.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A25 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A25.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A26",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A26 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A26.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A26 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A26.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A27",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A27 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A27.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A27 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A27.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A28",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A28 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A28.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A28 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A28.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A29",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A29 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A29.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A29 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A29.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A30",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A30 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A30.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A30 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A30.pdf"
+      }
+    ],
+    "tipo": "aula"
   }
 ]

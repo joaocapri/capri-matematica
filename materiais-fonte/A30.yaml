@@ -1,0 +1,247 @@
+# A30 — Função Logarítmica
+aula: A30
+
+fixacao:
+  intro: Resolva na ordem — do aquecimento ao desafio. $f(x)=\log_a x$ tem domínio $]0,+\infty[$ e imagem $\mathbb{R}$; é a inversa de $a^x$, e os gráficos são simétricos em relação à reta $y=x$.
+  secoes:
+    - nome: Aquecimento
+      questoes:
+        - enunciado: Dada $f(x)=\log_2 x$, calcule $f(1)$, $f(2)$, $f(8)$ e $f\!\left(\tfrac12\right)$.
+          resolucao: |
+            $0$; \ $1$; \ $3$; \ $-1$. Esses pontos ajudam a esboçar o gráfico.
+          resposta: '$0$; \ $1$; \ $3$; \ $-1$'
+
+        - enunciado: Determine o domínio de cada função.
+          itens:
+            - $f(x)=\log_2(x-3)$
+            - $f(x)=\log(5-x)$
+            - $f(x)=\log_3(2x+4)$
+          resolucao: |
+            Logaritmando positivo. (a) $x>3$. (b) $x<5$. (c) $2x+4>0\Rightarrow x>-2$.
+          resposta: '(a) $x>3$ \quad (b) $x<5$ \quad (c) $x>-2$'
+
+        - enunciado: Classifique cada função como crescente ou decrescente.
+          itens:
+            - $f(x)=\log_3 x$
+            - $f(x)=\log_{1/2}x$
+            - $f(x)=\log_{0{,}9}x$
+          resolucao: |
+            Base maior que $1$: crescente; entre $0$ e $1$: decrescente.
+          resposta: '(a) cresc. \quad (b) decresc. \quad (c) decresc.'
+
+        - enunciado: Complete com $>$ ou $<$.
+          itens:
+            - $\log_2 5\ \_\_\ \log_2 7$
+            - $\log_{1/3}5\ \_\_\ \log_{1/3}7$
+          resolucao: |
+            (a) Base $>1$, crescente: $<$. (b) Base entre $0$ e $1$, decrescente: $>$.
+          resposta: '(a) $<$ \quad (b) $>$'
+
+        - enunciado: Qual é a função inversa de $f(x)=2^x$? Dê o domínio e a imagem de cada uma.
+          resolucao: |
+            $f^{-1}(x)=\log_2 x$. \ $2^x$: $D=\mathbb{R}$, $Im=]0,+\infty[$. \ $\log_2 x$: $D=]0,+\infty[$, $Im=\mathbb{R}$ (eles trocam de papel).
+          resposta: '$\log_2 x$; domínio e imagem se trocam'
+
+        - enunciado: Determine o zero de $f(x)=\log_3(x-2)$.
+          resolucao: |
+            $\log_3(x-2)=0\Rightarrow x-2=1\Rightarrow x=3$.
+          resposta: '$x=3$'
+
+        - enunciado: O gráfico de $f(x)=\log_b x$ passa pelo ponto $(9,\,2)$. Determine $b$ e $f(27)$.
+          resolucao: |
+            $b^2=9\Rightarrow b=3$. Então $f(27)=3$.
+          resposta: '$b=3$; \ $f(27)=3$'
+
+    - nome: Treino
+      questoes:
+        - enunciado: Determine o domínio de $f(x)=\log(x^2-4)$.
+          resolucao: |
+            $x^2-4>0\Rightarrow x<-2$ ou $x>2$.
+          resposta: '$]-\infty,-2[\ \cup\ ]2,+\infty[$'
+
+        - enunciado: Determine o domínio de $f(x)=\log(5-x)+\log(x+1)$.
+          resolucao: |
+            $5-x>0$ e $x+1>0$: $-1<x<5$.
+          resposta: '$]-1,\,5[$'
+
+        - enunciado: Determine o domínio de $f(x)=\log_{x-1}(7-x)$.
+          resolucao: |
+            $7-x>0\Rightarrow x<7$; base $x-1>0$ e $x-1\neq1$: $x>1$ e $x\neq2$.
+          resposta: '$]1,\,2[\ \cup\ ]2,\,7[$'
+
+        - enunciado: A função $f(x)=a+\log_2 x$ satisfaz $f(4)=5$. Determine $a$ e $f(\tfrac18)$.
+          resolucao: |
+            $a+2=5\Rightarrow a=3$. Então $f\!\left(\tfrac18\right)=3-3=0$.
+          resposta: '$a=3$; \ $0$'
+
+        - enunciado: Determine a inversa de $f(x)=\log_3(x-1)$.
+          resolucao: |
+            $y=\log_3(x-1)\Rightarrow x-1=3^y\Rightarrow x=3^y+1$. Trocando as letras: $f^{-1}(x)=3^x+1$.
+          resposta: '$f^{-1}(x)=3^x+1$'
+
+        - enunciado: Qual é a assíntota vertical do gráfico de $f(x)=\log_2(x+3)$? Em que ponto ele corta o eixo $x$?
+          resolucao: |
+            O logaritmando zera em $x=-3$: assíntota $x=-3$.
+            Zero: $x+3=1\Rightarrow x=-2$, ponto $(-2,0)$.
+          resposta: 'assíntota $x=-3$; corta o eixo $x$ em $(-2,0)$'
+
+        - enunciado: Determine a imagem de $f(x)=\log_2 x$ restrita ao intervalo $[1,\,16]$.
+          resolucao: |
+            $f$ é crescente: $f(1)=0$ e $f(16)=4$.
+          resposta: '$[0,\,4]$'
+
+        - enunciado: O gráfico de $f(x)=\log_2(x+k)$ passa pelo ponto $(0,\,2)$. Determine $k$.
+          resolucao: |
+            $\log_2 k=2\Rightarrow k=4$.
+          resposta: '$k=4$'
+
+    - nome: Desafio
+      questoes:
+        - enunciado: Quantos números inteiros pertencem ao domínio de $f(x)=\log(x-1)+\log(8-x)$?
+          resolucao: |
+            $1<x<8$: inteiros de $2$ a $7$, ou seja, $6$.
+          resposta: '$6$'
+
+        - enunciado: Mostre que o gráfico de $y=\log_2 x$ corta a reta $y=3-x$ no ponto $(2,\,1)$.
+          resolucao: |
+            $\log_2 2=1$ e $3-2=1$: o ponto pertence às duas curvas.
+            (É o único: uma função é crescente e a outra, decrescente.)
+          resposta: 'em $x=2$, ambos valem $1$'
+
+        - enunciado: Sendo $f(x)=\log x$, mostre que $f(ab)=f(a)+f(b)$ e calcule $f(ab)$ sabendo que $f(a)=2$ e $f(b)=3$.
+          resolucao: |
+            $\log(ab)=\log a+\log b=5$. (De fato, $a=100$, $b=1000$ e $ab=10^5$.)
+          resposta: '$f(ab)=5$'
+
+        - enunciado: Determine a inversa de $f(x)=2^x-1$ e o domínio dessa inversa.
+          resolucao: |
+            $y=2^x-1\Rightarrow 2^x=y+1\Rightarrow x=\log_2(y+1)$. Então $f^{-1}(x)=\log_2(x+1)$, com domínio $x>-1$ (que é a imagem de $f$).
+          resposta: '$f^{-1}(x)=\log_2(x+1)$; \ $x>-1$'
+
+        - enunciado: O pH é $\text{pH}=-\log[\text{H}^+]$. Se a concentração $[\text{H}^+]$ for multiplicada por $10$, o que acontece com o pH? E se for multiplicada por $100$?
+          resolucao: |
+            $-\log(10c)=-\log c-1$: o pH diminui $1$. Com $100$, diminui $2$.
+          resposta: 'diminui $1$; diminui $2$'
+
+vestibular:
+  intro: Questões autorais no estilo dos principais vestibulares. Quando necessário, use $\log2=0{,}301$.
+  questoes:
+    - enunciado: O domínio de $f(x)=\log(2x-6)$ é
+      opcoes: ['$x>6$', '$x>3$', '$x\ge3$', '$x<3$', '$x>-3$']
+      correta: B
+      resolucao: |
+        $2x-6>0\Rightarrow x>3$.
+
+    - enunciado: Sendo $f(x)=\log_3 x$, o valor de $f(27)-f\!\left(\tfrac13\right)$ é
+      opcoes: ['$2$', '$3$', '$4$', '$9$', '$26$']
+      correta: C
+      resolucao: |
+        $3-(-1)=4$.
+
+    - enunciado: A função inversa de $f(x)=10^x$ é
+      opcoes: ['$\log x$', '$\dfrac1{10^x}$', '$x^{10}$', '$10^{-x}$', '$\sqrt[10]{x}$']
+      correta: A
+      resolucao: |
+        Logaritmo e exponencial de mesma base são inversas.
+
+    - enunciado: Pertence ao gráfico de $f(x)=\log_2 x$ o ponto
+      opcoes: ['$(3,\,8)$', '$(0,\,1)$', '$(2,\,4)$', '$(1,\,1)$', '$(8,\,3)$']
+      correta: E
+      resolucao: |
+        $\log_2 8=3$. Note que $(0,1)$ é ponto de $2^x$, não de $\log_2 x$.
+
+    - enunciado: A função $f(x)=\log_a x$ é decrescente se, e somente se,
+      opcoes: ['$a<0$', '$0<a<1$', '$a>1$', '$a<1$', '$a\neq1$']
+      correta: B
+      resolucao: |
+        Com base entre $0$ e $1$, o logaritmo decresce.
+
+    - enunciado: O zero da função $f(x)=\log_2(x-1)$ é
+      opcoes: ['$0$', '$1$', '$2$', '$3$', '$\dfrac12$']
+      correta: C
+      resolucao: |
+        $x-1=1\Rightarrow x=2$.
+
+    - enunciado: A assíntota vertical do gráfico de $y=\log_2(x+3)$ é a reta
+      opcoes: ['$x=3$', '$y=-3$', '$x=0$', '$x=-3$', '$y=0$']
+      correta: D
+      resolucao: |
+        O logaritmando se anula em $x=-3$.
+
+    - enunciado: O domínio de $f(x)=\log(x^2-9)$ é
+      opcoes: ['$x>3$', '$]-3,\,3[$', '$x<-3$ ou $x>3$', '$\mathbb{R}-\{3\}$', '$x>9$']
+      correta: C
+      resolucao: |
+        $x^2-9>0\Rightarrow|x|>3$.
+
+    - enunciado: A imagem de $f(x)=\log_2 x$, com $x\in[1,\,8]$, é
+      opcoes: ['$[0,\,3]$', '$[1,\,8]$', '$[0,\,8]$', '$[1,\,3]$', '$\mathbb{R}$']
+      correta: A
+      resolucao: |
+        $f(1)=0$ e $f(8)=3$, com $f$ crescente.
+
+    - enunciado: O gráfico de $f(x)=\log_b x$ passa pelo ponto $\left(\tfrac14,\,2\right)$. O valor de $b$ é
+      opcoes: ['$4$', '$2$', '$\dfrac14$', '$\dfrac1{16}$', '$\dfrac12$']
+      correta: E
+      resolucao: |
+        $b^2=\tfrac14$, com $b>0$: $b=\tfrac12$.
+
+    - enunciado: A inversa de $f(x)=2^x+1$ é
+      opcoes: ['$\log_2 x+1$', '$\log_2(x-1)$', '$\log_2(x+1)$', '$2^{-x}-1$', '$\log_2 x-1$']
+      correta: B
+      resolucao: |
+        $y-1=2^x\Rightarrow x=\log_2(y-1)$.
+
+    - enunciado: 'Sendo $a=\log_2 3$, $b=\log_2 5$ e $c=\log_{1/2}3$, a ordem correta é'
+      opcoes: ['$a<b<c$', '$c<b<a$', '$b<a<c$', '$c<a<b$', '$a<c<b$']
+      correta: D
+      resolucao: |
+        $c=-\log_2 3<0$, e $0<a<b$ porque $\log_2$ é crescente.
+
+    - enunciado: A função $f(x)=k+\log_3 x$ satisfaz $f(9)=5$. O valor de $f(1)$ é
+      opcoes: ['$0$', '$2$', '$3$', '$5$', '$7$']
+      correta: C
+      resolucao: |
+        $k+2=5\Rightarrow k=3$, e $f(1)=3+0=3$.
+
+    - enunciado: Sendo $f(x)=\log_2 x$ e $g(x)=\log_4 x$, o valor de $f(16)-g(16)$ é
+      opcoes: ['$2$', '$0$', '$4$', '$8$', '$12$']
+      correta: A
+      resolucao: |
+        $4-2=2$.
+
+    - enunciado: O domínio de $f(x)=\log_{x-1}(3-x)$ é
+      opcoes: ['$1<x<3$', '$x>1$', '$x<3$', '$]1,\,2[\ \cup\ ]2,\,3[$', '$]1,\,3]$']
+      correta: D
+      resolucao: |
+        $3-x>0$, $x-1>0$ e $x-1\neq1$.
+
+    - enunciado: A quantidade de números inteiros no domínio de $f(x)=\log(x+2)+\log(5-x)$ é
+      opcoes: ['$4$', '$5$', '$6$', '$7$', '$8$']
+      correta: C
+      resolucao: |
+        $-2<x<5$: inteiros de $-1$ a $4$.
+
+    - enunciado: Sendo $f(x)=\log x$, com $f(a)=2$ e $f(b)=3$, o valor de $f(ab)$ é
+      opcoes: ['$6$', '$1$', '$\dfrac23$', '$8$', '$5$']
+      correta: E
+      resolucao: |
+        $\log(ab)=\log a+\log b=5$.
+
+    - enunciado: Uma solução tem concentração $[\text{H}^+]=2\cdot10^{-4}$ mol/L. Sendo $\text{pH}=-\log[\text{H}^+]$, seu pH é, aproximadamente,
+      opcoes: ['$3{,}7$', '$4{,}3$', '$4{,}0$', '$2{,}0$', '$8{,}0$']
+      correta: A
+      resolucao: |
+        $-(\log2-4)=4-0{,}301\approx3{,}7$.
+
+    - enunciado: Em decibéis, $N=10\log\dfrac I{I_0}$. Se a intensidade de um som dobra, o nível sonoro aumenta, aproximadamente,
+      opcoes: ['$2$ dB', '$0{,}3$ dB', '$10$ dB', '$3$ dB', '$20$ dB']
+      correta: D
+      resolucao: |
+        $10\log(2I/I_0)-10\log(I/I_0)=10\log2\approx3$ dB.
+
+    - enunciado: Os gráficos de $y=\log_2 x$ e $y=3-x$ se cortam no ponto
+      opcoes: ['$(1,\,0)$', '$(2,\,1)$', '$(3,\,0)$', '$(4,\,2)$', '$(8,\,3)$']
+      correta: B
+      resolucao: |
+        Em $x=2$: $\log_2 2=1$ e $3-2=1$.
