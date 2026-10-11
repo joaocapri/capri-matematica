@@ -19,6 +19,11 @@ async function checkWidth(page,label){
   await page.locator('.area-tile').first().waitFor();
   assert.match(await page.locator('#hero-title').textContent(),/O que você quer estudar hoje/);
   assert.equal(await page.locator('input[type=search]').count(),1);
+  assert.equal(await page.locator('.home-explore-decoration').count(),0);
+  assert.equal(await page.locator('.home-explore .home-section-intro p').count(),0);
+  assert.equal(await page.locator('.home-explore .browser-toolbar').count(),0);
+  assert.equal(await page.locator('.home-explore .browser-shortcuts').count(),0);
+  assert.equal(await page.locator('#explore-content .area-tile').count(),9);
   assert.equal(await page.locator('.discovery-preview').count(),0);
   assert.equal(await page.locator('.home-hero-art').count(),0);
   assert.equal(await page.locator('[data-preview]').count(),0);

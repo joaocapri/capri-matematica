@@ -59,6 +59,11 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.match(d.querySelector('#hero-title').textContent,/O que você quer estudar hoje/);
  assert.equal(d.querySelectorAll('input[type=search]').length,1);
  assert.equal(d.querySelectorAll('.area-tile').length,9);
+ assert.equal(d.querySelectorAll('.home-explore-decoration').length,0,'Sem seta decorativa gigante');
+ assert.equal(d.querySelectorAll('.home-explore .home-section-intro p').length,0,'Sem texto Prefere navegar');
+ assert.equal(d.querySelectorAll('.home-explore .browser-toolbar').length,0,'Sem Escolha uma área para começar');
+ assert.equal(d.querySelectorAll('.home-explore .browser-shortcuts').length,0,'Sem Favoritas nem Todas as 144 na home');
+ assert.equal(d.querySelector('#explore-content .area-grid').children.length,9,'Cartões seguem diretamente o título');
  assert.equal(d.querySelectorAll('.discovery-preview').length,0,'Sem vitrine de exemplos');
  assert.equal(d.querySelectorAll('.home-hero-art').length,0,'Sem ilustração debaixo da busca');
  assert.equal(d.querySelectorAll('[data-preview]').length,0,'Sem controles de animação');

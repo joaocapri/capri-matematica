@@ -72,7 +72,7 @@ function home(){
  '</div></section>'+
  '<section class="home-search-results" id="resultados" hidden aria-live="polite"><div class="home-results-head"><div><span class="home-section-label">SUA PESQUISA</span><h2 id="search-title">Resultados</h2></div><button id="return-home" class="home-back-button" type="button">← Voltar à exploração</button></div><div id="search-scope" class="home-search-scopes" role="group" aria-label="Filtrar resultados"></div><div id="search-output"></div></section>'+
  '<div id="home-discover">'+
- '<section id="explorar" class="home-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="home-section-label"><span class="home-section-indicator"></span> TODA A MATEMÁTICA, ORGANIZADA</span><h2 id="explore-title">Encontre seu <em>material.</em></h2><p>Prefere navegar? Escolha uma área, encontre o assunto e abra a aula ou lista de que precisa.</p></div><span class="home-explore-decoration" aria-hidden="true">↗</span></div><div id="explore-content"></div></section>'+
+ '<section id="explorar" class="home-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="home-section-label"><span class="home-section-indicator"></span> TODA A MATEMÁTICA, ORGANIZADA</span><h2 id="explore-title">Encontre seu <em>material.</em></h2></div></div><div id="explore-content"></div></section>'+
  '</div></main>'+footer();
 
  var input=document.getElementById('hero-search');
@@ -115,7 +115,7 @@ function home(){
    html=crumbs([{label:area.name,action:'area',id:area.id},{label:topic.title}])+'<div class="browse-section-head"><span class="browse-kicker">AGORA ESCOLHA A AULA</span><h3>'+esc(topic.title)+'</h3><p>'+esc(topic.description)+'</p></div>'+topicPdfPanel('assunto',topic.id,'Lista geral de '+topic.title)+list(group,'Aulas deste assunto',false)
   }else{
    state.view='areas';
-   html='<div class="browser-toolbar browser-toolbar-compact"><div><span class="browse-kicker">ESCOLHA UMA ÁREA PARA COMEÇAR ↘</span></div><div class="browser-shortcuts"><a href="/explorar/?favoritos=1">♡ Favoritas'+(saved.size?' ('+saved.size+')':'')+'</a><a href="/explorar/?todas=1">Todas as 144 ↗</a></div></div><div class="area-grid">'+SUBJECT_AREAS.map(tile).join('')+'</div>';
+   html='<div class="area-grid">'+SUBJECT_AREAS.map(tile).join('')+'</div>';
   }
   browser.innerHTML=html;
  }

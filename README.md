@@ -89,3 +89,7 @@ O antigo desenho da parábola foi substituído por um painel com exemplos **reai
 
 ## Home minimalista + MAT MAT MAT!
 Atualização visual: nenhuma ilustração, carousel ou mini-tour abaixo do campo de busca. A home mantém o título "O que você quer estudar hoje?" e o subtítulo exato **"Listas de Exercícios e Teoria grátis. Simples assim"**. Marca oficial **MAT MAT MAT!** com exclamação coral destacada na terceira linha da logo e presença uniforme nos metadados das 144 aulas, diagnóstico, exploração, impressão e favicon. As 144 URLs e o funcionamento da busca foram preservados.
+
+
+## Exploração enxuta (atualização da home)
+A seção **Toda a matemática, organizada / Encontre seu material.** apresenta imediatamente os 9 cartões de áreas, sem flecha decorativa, parágrafo introdutório, título extra de seleção, Favoritas ou Todas as 144 na home. As rotas `/explorar/?favoritos=1` e `/explorar/?todas=1` seguem disponíveis no catálogo dedicado, e os cartões das áreas mantêm seus destinos.

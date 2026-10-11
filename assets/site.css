@@ -630,3 +630,12 @@ body{background:var(--pale)}
 .mat-logo>.mat-last-row{position:relative;display:block}
 .mat-logo .mat-bang{position:absolute;left:100%;top:-.21em;color:#ff936e;font:900 1.22em/.83 'Space Grotesk',Arial,sans-serif;letter-spacing:-.09em;transform:rotate(10deg);text-shadow:1px 1px 0 #2d195a}
 @media(max-width:650px){.mat-logo{padding-right:14px}}
+
+
+/* Exploração imediata: título seguido diretamente pelos 9 cartões */
+.home-explore .home-section-intro{display:block;margin-bottom:20px}
+.home-explore .home-section-intro h2{margin-bottom:0}
+.home-explore #explore-content>.area-grid{margin-top:0}
+@media(max-width:650px){
+ .home-explore .home-section-intro{margin-bottom:20px}
+}
