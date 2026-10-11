@@ -600,3 +600,13 @@ body{background:var(--pale)}
 .diagnosis-review-row p{color:var(--mute);line-height:1.5;margin:6px 0}
 @media(max-width:760px){.diagnosis-start{grid-template-columns:1fr;padding:27px}.diagnosis-decor{width:165px}.diagnosis-decor strong{font-size:80px}.diagnosis-recs{grid-template-columns:1fr}}
 @media(max-width:460px){.diagnosis-controls{gap:9px}.diagnosis-prev,.diagnosis-button{font-size:11px;padding:12px}.diagnosis-option{padding:12px}.diagnosis-question h1{font-size:26px}}
+
+/* Acabamentos de navegação e foco */
+.home-explore .browser-shortcuts a{display:inline-flex;align-items:center;background:#fff;border:2px solid #d6cce4;color:var(--ink);padding:10px 13px;border-radius:11px;font-size:12px;font-weight:900}
+.home-explore .browser-shortcuts a:hover{background:var(--lime);border-color:var(--ink)}
+.area-tile:focus-visible,.browse-topic:focus-visible,.browse-lesson-row:focus-visible,.diagnosis-option:focus-visible,.diagnosis-button:focus-visible{outline:3px solid #f28a68;outline-offset:3px}
+@media(max-width:650px){
+ .topbar .navlinks a[href="/?q=PDF#resultados"]{display:none}
+ .topbar .navlinks{gap:9px}
+ .topbar .nav-cta{padding:9px 10px}
+}
