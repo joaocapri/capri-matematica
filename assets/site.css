@@ -826,3 +826,10 @@ body{background:var(--pale)}
 @media(prefers-reduced-motion:reduce){
  .diag-track-card{transition:none}
 }
+/* Logo principal (imagem) — 2026 */
+.mat-logo-img{display:block;flex-shrink:0;height:76px;width:auto;transform:rotate(-2deg);transition:transform .2s ease}
+.brand-mat:hover .mat-logo-img{transform:rotate(0deg) scale(1.04)}
+.brand-mat-footer .mat-logo-img{height:70px}
+@media(max-width:650px){.mat-logo-img{height:56px}.brand-mat-footer .mat-logo-img{height:56px}}
+@media(max-width:375px){.brand-mat .mat-logo-img{height:50px}}
+@media(prefers-reduced-motion:reduce){.mat-logo-img,.brand-mat:hover .mat-logo-img{transition:none;transform:none}}

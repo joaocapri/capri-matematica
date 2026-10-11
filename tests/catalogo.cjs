@@ -79,13 +79,12 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelectorAll('.home-hero-art').length,0,'Sem ilustração debaixo da busca');
  assert.equal(d.querySelectorAll('[data-preview]').length,0,'Sem controles de animação');
  assert.equal(d.querySelector('.home-hero-copy>p').textContent,'Listas de Exercícios e Teoria grátis. Simples assim');
- assert.equal(d.querySelectorAll('.mat-bang').length,2,'Exclamação em ambas as marcas visíveis');
+ assert.equal(d.querySelectorAll('img.mat-logo-img').length,2,'Logo em ambas as marcas visíveis');
  assert.equal(d.querySelector('.brand-mat').getAttribute('aria-label'),'MAT MAT MAT! — página inicial');
  assert.ok(d.querySelector('a.area-tile[href="/explorar/?area=funcoes"]'));
  assert.ok(d.querySelector('a.nav-cta[href="/teste-seu-nivel/"]'));
  assert.ok(!d.querySelector('#explore-content .browse-topic'));
- assert.equal(d.querySelectorAll('.mat-logo span').length,6);
- assert.equal(d.querySelectorAll('.mat-bang').length,2);
+ assert.equal(d.querySelectorAll('img.mat-logo-img[src="/assets/logo-mat-256.png"]').length,2,'Logo em imagem no topo e no rodapé');
  type(w,d.querySelector('#hero-search'),'Bhaskara');
  assert.equal(d.querySelectorAll('.home-hero-art').length,0,'Busca continua sem ilustração');
  assert.ok(d.querySelector('#search-output a[href="/aulas/A17/"]'));

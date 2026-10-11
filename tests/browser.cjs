@@ -27,7 +27,7 @@ async function checkWidth(page,label){
   assert.equal(await page.locator('.discovery-preview').count(),0);
   assert.equal(await page.locator('.home-hero-art').count(),0);
   assert.equal(await page.locator('[data-preview]').count(),0);
-  assert.equal(await page.locator('.mat-bang').count(),2);
+  assert.equal(await page.locator('img.mat-logo-img').count(),2);
   assert.equal(await page.locator('.header-audience').count(),1);
   assert.equal(await page.locator('.header-mobile-caption').count(),1);
   assert.match(await page.locator('.header-audience').textContent(),/Ensino Médio e Vestibulares/);
