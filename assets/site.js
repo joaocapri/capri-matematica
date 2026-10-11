@@ -105,7 +105,7 @@ function home(){
    var topic=SUBJECT_TOPICS.find(function(t){return t.id===state.topic&&t.area===area.id});
    if(!topic){state.view='topics';return renderBrowse()}
    var group=areaLessons(area).filter(function(l){return subjectTopic(l,area)===topic.id});
-   html=crumbs([{label:area.name,action:'area',id:area.id},{label:topic.title}])+'<div class="browse-section-head"><span class="browse-kicker">AGORA ESCOLHA A AULA</span><h3>'+esc(topic.title)+'</h3><p>'+esc(topic.description)+'</p></div>'+list(group,'Aulas deste assunto',false)
+   html=crumbs([{label:area.name,action:'area',id:area.id},{label:topic.title}])+'<div class="browse-section-head"><span class="browse-kicker">AGORA ESCOLHA A AULA</span><h3>'+esc(topic.title)+'</h3><p>'+esc(topic.description)+'</p></div>'+topicPdfPanel('assunto',topic.id,'Lista geral de '+topic.title)+list(group,'Aulas deste assunto',false)
   }else{
    state.view='areas';
    html='<div class="browser-toolbar browser-toolbar-compact"><div><span class="browse-kicker">ESCOLHA UMA ÁREA PARA COMEÇAR ↘</span></div><div class="browser-shortcuts"><button type="button" data-catalog="favorites">♡ Favoritas'+(saved.size?' ('+saved.size+')':'')+'</button><button type="button" data-catalog="all">Todas as 144 ↗</button></div></div><div class="area-grid">'+SUBJECT_AREAS.map(tile).join('')+'</div>';
@@ -265,6 +265,7 @@ function home(){
   else if(area)state={view:'topics',area:area.id,topic:''};
   else state={view:'areas',area:'',topic:''};
   shown=18;renderBrowse();
+  if(location.hash==='#explorar'&&document.getElementById('explorar'))document.getElementById('explorar').scrollIntoView({block:'start'});
  }
  window.addEventListener('popstate',loadUrl);
  renderBrowse();loadUrl();
