@@ -1,0 +1,248 @@
+{
+  "title": "Teste seu nível",
+  "description": "Diagnóstico inicial de matemática, sem nota oficial.",
+  "domains": [
+    {
+      "id": "fundamentos",
+      "label": "Fundamentos",
+      "lesson": "C03",
+      "description": "Frações, porcentagens e aritmética"
+    },
+    {
+      "id": "funcoes",
+      "label": "Funções",
+      "lesson": "A11",
+      "description": "Relações e funções algébricas"
+    },
+    {
+      "id": "geometria",
+      "label": "Geometria",
+      "lesson": "B05",
+      "description": "Formas, medidas e volumes"
+    },
+    {
+      "id": "probabilidade",
+      "label": "Probabilidade e estatística",
+      "lesson": "C20",
+      "description": "Contagem, probabilidade e dados"
+    },
+    {
+      "id": "trig-algebra",
+      "label": "Trigonometria e álgebra",
+      "lesson": "C33",
+      "description": "Razões trigonométricas e álgebra"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "area": "fundamentos",
+      "enunciado": "Quanto é 3/4 + 1/8?",
+      "opcoes": [
+        "4/12",
+        "7/8",
+        "5/8",
+        "1"
+      ],
+      "correta": 1,
+      "explicacao": "3/4 = 6/8. Portanto, 6/8 + 1/8 = 7/8.",
+      "aula": "C03"
+    },
+    {
+      "id": 2,
+      "area": "funcoes",
+      "enunciado": "Se f(x) = 2x − 3, quanto vale f(5)?",
+      "opcoes": [
+        "7",
+        "10",
+        "13",
+        "2"
+      ],
+      "correta": 0,
+      "explicacao": "Substitua x por 5: 2 × 5 − 3 = 7.",
+      "aula": "A11"
+    },
+    {
+      "id": 3,
+      "area": "geometria",
+      "enunciado": "Um triângulo tem dois ângulos de 55° e 65°. Qual é o terceiro?",
+      "opcoes": [
+        "50°",
+        "60°",
+        "70°",
+        "80°"
+      ],
+      "correta": 1,
+      "explicacao": "A soma dos ângulos internos é 180°. Logo, 180 − 55 − 65 = 60.",
+      "aula": "B02"
+    },
+    {
+      "id": 4,
+      "area": "probabilidade",
+      "enunciado": "Qual é a média aritmética dos números 4, 6 e 8?",
+      "opcoes": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "(4 + 6 + 8) / 3 = 18 / 3 = 6.",
+      "aula": "C28"
+    },
+    {
+      "id": 5,
+      "area": "trig-algebra",
+      "enunciado": "Quanto vale sen 30°?",
+      "opcoes": [
+        "0",
+        "1/2",
+        "√2/2",
+        "1"
+      ],
+      "correta": 1,
+      "explicacao": "No triângulo 30°–60°–90°, o seno de 30° é 1/2.",
+      "aula": "C33"
+    },
+    {
+      "id": 6,
+      "area": "fundamentos",
+      "enunciado": "Quanto é 20% de 150?",
+      "opcoes": [
+        "15",
+        "25",
+        "30",
+        "35"
+      ],
+      "correta": 2,
+      "explicacao": "0,20 × 150 = 30.",
+      "aula": "C07"
+    },
+    {
+      "id": 7,
+      "area": "funcoes",
+      "enunciado": "Quais são as raízes de x² − 5x + 6 = 0?",
+      "opcoes": [
+        "1 e 6",
+        "−2 e −3",
+        "2 e 3",
+        "0 e 5"
+      ],
+      "correta": 2,
+      "explicacao": "(x − 2)(x − 3) = 0. Logo, x = 2 ou x = 3.",
+      "aula": "A17"
+    },
+    {
+      "id": 8,
+      "area": "geometria",
+      "enunciado": "Um triângulo retângulo tem catetos 6 e 8. Qual é a hipotenusa?",
+      "opcoes": [
+        "10",
+        "12",
+        "14",
+        "16"
+      ],
+      "correta": 0,
+      "explicacao": "Pelo teorema de Pitágoras: √(6² + 8²) = √100 = 10.",
+      "aula": "B05"
+    },
+    {
+      "id": 9,
+      "area": "probabilidade",
+      "enunciado": "Em um dado justo de seis faces, qual a chance de obter o número 6?",
+      "opcoes": [
+        "1/2",
+        "1/3",
+        "1/6",
+        "1/12"
+      ],
+      "correta": 2,
+      "explicacao": "Há um único resultado favorável entre seis igualmente prováveis.",
+      "aula": "C20"
+    },
+    {
+      "id": 10,
+      "area": "trig-algebra",
+      "enunciado": "Se A = [[1, 2], [3, 4]], quanto vale det(A)?",
+      "opcoes": [
+        "−2",
+        "2",
+        "10",
+        "−10"
+      ],
+      "correta": 0,
+      "explicacao": "O determinante é 1 × 4 − 2 × 3 = −2.",
+      "aula": "C46"
+    },
+    {
+      "id": 11,
+      "area": "fundamentos",
+      "enunciado": "Qual é o MMC entre 6 e 8?",
+      "opcoes": [
+        "12",
+        "14",
+        "24",
+        "48"
+      ],
+      "correta": 2,
+      "explicacao": "6 = 2 × 3 e 8 = 2³. O MMC é 2³ × 3 = 24.",
+      "aula": "C02"
+    },
+    {
+      "id": 12,
+      "area": "funcoes",
+      "enunciado": "Se f(x) = 2ˣ, qual é f(4)?",
+      "opcoes": [
+        "6",
+        "8",
+        "12",
+        "16"
+      ],
+      "correta": 3,
+      "explicacao": "A função exponencial em x = 4 fornece 2⁴ = 16.",
+      "aula": "A25"
+    },
+    {
+      "id": 13,
+      "area": "geometria",
+      "enunciado": "Qual o volume de um cilindro de raio 2 e altura 3?",
+      "opcoes": [
+        "6π",
+        "12π",
+        "18π",
+        "24π"
+      ],
+      "correta": 1,
+      "explicacao": "V = πr²h = π × 2² × 3 = 12π.",
+      "aula": "B23"
+    },
+    {
+      "id": 14,
+      "area": "probabilidade",
+      "enunciado": "De 5 pessoas, quantas duplas diferentes podemos formar?",
+      "opcoes": [
+        "5",
+        "10",
+        "15",
+        "20"
+      ],
+      "correta": 1,
+      "explicacao": "Uma combinação de 5 tomadas 2 a 2: 5 × 4 / 2 = 10.",
+      "aula": "C17"
+    },
+    {
+      "id": 15,
+      "area": "trig-algebra",
+      "enunciado": "Em uma PA com termos 3, 7, 11, qual é o próximo?",
+      "opcoes": [
+        "13",
+        "14",
+        "15",
+        "17"
+      ],
+      "correta": 2,
+      "explicacao": "A razão é 4. Então, 11 + 4 = 15.",
+      "aula": "A34"
+    }
+  ]
+}

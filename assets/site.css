@@ -540,3 +540,63 @@ body{background:var(--pale)}
 .explorer-page .browse-topic-grid,.explorer-page .browse-lesson-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:760px){.explorer-title{align-items:start;flex-direction:column}.explorer-page .area-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.explorer-page .browse-topic-grid,.explorer-page .browse-lesson-list{grid-template-columns:1fr}}
 @media(max-width:430px){.explorer-back>span{display:none}.explorer-toolbar{align-items:start;flex-direction:column}.explorer-title h1{font-size:36px}}
+
+/* Diagnóstico leve e acessível */
+.diagnostic-page{min-height:62vh;padding:26px 0 85px}
+.diagnosis-start{display:grid;grid-template-columns:1.2fr .65fr;gap:32px;align-items:center;background:#4d27b3;color:#fff;border:2px solid var(--ink);border-radius:26px;padding:52px;box-shadow:6px 7px 0 var(--ink);margin-top:25px}
+.diagnosis-start .home-section-label{color:#d6fa74}
+.diagnosis-start h1{font:700 clamp(37px,5vw,63px)/1.04 'Space Grotesk',system-ui;letter-spacing:-2.4px;margin:19px 0}
+.diagnosis-start h1 em{font-style:normal;color:var(--lime)}
+.diagnosis-start p{color:#eee7ff;font-size:15px;line-height:1.6;max-width:530px}
+.diagnosis-highlights{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.diagnosis-highlights span{color:#fff;border:1px solid #ffffff48;border-radius:99px;padding:8px 12px;font-size:12px;font-weight:800}
+.diagnosis-button{display:inline-flex;justify-content:center;align-items:center;background:var(--lime);border:2px solid var(--ink);border-radius:13px;padding:15px 20px;color:var(--ink);font-weight:900;font-size:13px;box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.diagnosis-button:disabled{opacity:.45;box-shadow:none;cursor:not-allowed}
+.diagnosis-disclaimer{font-size:11px!important;opacity:.75}
+.diagnosis-decor{display:grid;place-items:center;justify-self:center;width:min(100%,250px);aspect-ratio:1;background:#fffefa;border:3px solid var(--ink);border-radius:30px;transform:rotate(7deg);box-shadow:10px 10px 0 #25134c;color:var(--purple)}
+.diagnosis-decor strong{font:800 145px 'Space Grotesk';line-height:.95}
+.diagnosis-decor span{font-size:20px;font-weight:900;color:#61547e}
+.diagnosis-quiz,.diagnosis-result{max-width:790px;margin:35px auto 0}
+.diagnosis-progress-top{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.8px;font-weight:900;color:var(--purple)}
+.diagnosis-progress{height:10px;background:#e7deef;border-radius:99px;margin-top:12px;overflow:hidden}
+.diagnosis-progress span{display:block;height:100%;background:var(--purple);transition:width .2s}
+.diagnosis-question{padding:35px 0 25px}
+.diagnosis-question h1{font:700 clamp(25px,3.3vw,37px)/1.22 'Space Grotesk';letter-spacing:-1px;margin:17px 0 27px}
+.diagnosis-answers{display:grid;gap:11px}
+.diagnosis-option{display:flex;align-items:center;gap:15px;text-align:left;background:#fffefa;border:2px solid #ded5e8;border-radius:15px;padding:16px;min-height:67px;color:var(--ink);cursor:pointer}
+.diagnosis-option:hover{background:#f5f0ff;border-color:var(--purple)}
+.diagnosis-option.selected{background:#eefacf;border-color:#241746;box-shadow:3px 3px 0 #241746}
+.diagnosis-option>b{display:grid;place-items:center;width:33px;height:33px;background:#ece5f9;color:var(--purple);border-radius:8px;flex-shrink:0}
+.diagnosis-option>span:nth-child(2){flex:1;font-weight:800;font-size:14px}
+.diagnosis-radio{width:26px;height:26px;border-radius:50%;border:2px solid #8c7cad;display:grid;place-items:center;font-size:12px}
+.diagnosis-option.selected .diagnosis-radio{background:var(--purple);color:white;border-color:var(--purple)}
+.diagnosis-controls{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.diagnosis-prev{border:2px solid #d7cee3;color:var(--purple);background:#fffefa;border-radius:12px;padding:14px 17px;font-weight:900;cursor:pointer;font-size:12px}
+.diagnosis-result-heading h1{font:700 clamp(32px,4vw,48px)/1.1 'Space Grotesk';letter-spacing:-1.4px;margin:12px 0}
+.diagnosis-result-heading p{font-size:14px;color:var(--mute);line-height:1.6}
+.diagnosis-score{display:flex;align-items:baseline;gap:16px;margin:20px 0 35px;padding:15px 0;border-bottom:2px solid #e5deeb}
+.diagnosis-score strong{font:800 70px 'Space Grotesk';color:var(--purple);letter-spacing:-3px}
+.diagnosis-score small{font-size:29px;color:var(--mute)}
+.diagnosis-score>span{font-size:13px;font-weight:800;color:var(--mute)}
+.diagnosis-result h2{font:700 24px 'Space Grotesk';margin:27px 0 17px}
+.diagnosis-domain-list{display:grid;gap:18px}
+.diagnosis-domain>div:first-child{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin-bottom:8px}
+.diagnosis-domain>div:first-child span{font-size:12px;color:var(--mute)}
+.diagnosis-domain-track{height:10px;background:#ece6f3;border-radius:99px;overflow:hidden}
+.diagnosis-domain-track span{display:block;height:100%;background:var(--purple)}
+.diagnosis-recs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.diagnosis-recs>a{display:flex;flex-direction:column;gap:9px;border:2px solid var(--ink);border-radius:15px;background:#fffefa;padding:16px;min-height:174px}
+.diagnosis-recs>a:hover{background:#f1eafb}
+.diagnosis-recs>a>span{font-size:9px;letter-spacing:1px;font-weight:900;color:var(--purple)}
+.diagnosis-recs>a>strong{font:700 18px 'Space Grotesk'}
+.diagnosis-recs>a>small{font-size:11px;line-height:1.45;color:var(--mute)}
+.diagnosis-recs>a>b{margin-top:auto;font-size:12px;color:var(--purple)}
+.diagnosis-perfect{grid-column:1/-1;background:#edf9d4;padding:20px;border-radius:15px}
+.diagnosis-end-actions{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0}
+.diagnosis-review{border:1px solid #ddd5e8;border-radius:14px;background:white;padding:16px}
+.diagnosis-review summary{font-size:13px;font-weight:900;color:var(--purple);cursor:pointer}
+.diagnosis-review-row{padding:12px 0;border-top:1px solid #eee9f4;font-size:13px}
+.diagnosis-review-row:first-of-type{margin-top:13px}
+.diagnosis-review-row p{color:var(--mute);line-height:1.5;margin:6px 0}
+@media(max-width:760px){.diagnosis-start{grid-template-columns:1fr;padding:27px}.diagnosis-decor{width:165px}.diagnosis-decor strong{font-size:80px}.diagnosis-recs{grid-template-columns:1fr}}
+@media(max-width:460px){.diagnosis-controls{gap:9px}.diagnosis-prev,.diagnosis-button{font-size:11px;padding:12px}.diagnosis-option{padding:12px}.diagnosis-question h1{font-size:26px}}

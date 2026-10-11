@@ -317,6 +317,35 @@ function explorePage(){
  render();
 }
 
+
+async function diagnosisPage(){
+ title('Teste seu nível');
+ var root=document.getElementById('app');
+ root.innerHTML=header()+'<main class="shell diagnostic-page"><div class="explorer-back"><a href="/">← Página inicial</a><span>MAT MAT MAT / DIAGNÓSTICO</span></div><div id="diagnostic-content" aria-live="polite"></div></main>'+footer();
+ var body=document.getElementById('diagnostic-content'),bank;
+ try{var response=await fetch('/data/diagnostico.json');if(!response.ok)throw Error('Diagnóstico indisponível');bank=await response.json()}catch(e){body.innerHTML=empty('Não foi possível carregar o teste','Tente novamente em alguns instantes.');return}
+ var current=-1,answers={};
+ function start(){body.innerHTML='<section class="diagnosis-start"><div><span class="home-section-label">✳ TESTE SEU NÍVEL</span><h1>Descubra por onde <em>começar.</em></h1><p>15 questões rápidas, cinco habilidades e uma sugestão de estudo para você. Grátis e sem cadastro.</p><div class="diagnosis-highlights"><span>◷ 6–10 min</span><span>✦ 15 questões</span><span>✓ Resultado na hora</span></div><button class="diagnosis-button" id="diagnosis-start">Começar teste ↗</button><p class="diagnosis-disclaimer">É uma sondagem inicial, não uma avaliação oficial. Suas respostas ficam nesta página e não são enviadas para o Exatoo.</p></div><div class="diagnosis-decor" aria-hidden="true"><strong>?</strong><span>x² · π · ½</span></div></section>';
+  document.getElementById('diagnosis-start').addEventListener('click',function(){current=0;draw()})}
+ function draw(){
+  if(current>=bank.questions.length){results();return}
+  var q=bank.questions[current],chosen=answers[q.id],progress=(current+1)/bank.questions.length*100;
+  body.innerHTML='<section class="diagnosis-quiz"><div class="diagnosis-progress-top"><span>QUESTÃO '+(current+1)+' DE '+bank.questions.length+'</span><span>'+Math.round(progress)+'% do teste</span></div><div class="diagnosis-progress"><span style="width:'+progress+'%"></span></div><div class="diagnosis-question"><span class="home-section-label">✳ ESCOLHA UMA RESPOSTA</span><h1>'+esc(q.enunciado)+'</h1><div class="diagnosis-answers">'+q.opcoes.map(function(opt,j){return '<button type="button" data-diagnosis-answer="'+j+'" class="diagnosis-option '+(chosen===j?'selected':'')+'" aria-pressed="'+(chosen===j)+'"><b>'+String.fromCharCode(65+j)+'</b><span>'+esc(opt)+'</span><span class="diagnosis-radio">'+(chosen===j?'✓':'')+'</span></button>'}).join('')+'</div></div><div class="diagnosis-controls"><button id="diagnosis-prev" type="button" class="diagnosis-prev">'+(current?'← Voltar':'← Início')+'</button><button type="button" class="diagnosis-button" id="diagnosis-next" '+(chosen==null?'disabled':'')+'>'+(current===bank.questions.length-1?'Ver meu resultado ↗':'Próxima questão ↗')+'</button></div></section>';
+  body.querySelectorAll('[data-diagnosis-answer]').forEach(function(b){b.addEventListener('click',function(){answers[q.id]=Number(b.dataset.diagnosisAnswer);draw()})});
+  document.getElementById('diagnosis-prev').addEventListener('click',function(){if(current===0){current=-1;start()}else{current--;draw()}});
+  document.getElementById('diagnosis-next').addEventListener('click',function(){if(answers[q.id]==null)return;current++;draw()});
+ }
+ function results(){
+  var total=bank.questions.filter(function(q){return answers[q.id]===q.correta}).length;
+  var headline=total<=5?'Vamos fortalecer a base.':total<=10?'Você já tem uma base. Vamos evoluir.':'Boa base! Hora de avançar.';
+  var ranking=bank.domains.map(function(d){var subset=bank.questions.filter(function(q){return q.area===d.id});var correct=subset.filter(function(q){return answers[q.id]===q.correta}).length;return {domain:d,correct:correct,max:subset.length}}).sort(function(a,b){return a.correct-b.correct});
+  var advice=ranking.filter(function(r){return r.correct<3}).slice(0,3);
+  body.innerHTML='<section class="diagnosis-result"><div class="diagnosis-result-heading"><span class="home-section-label">✳ SEU DIAGNÓSTICO</span><h1>'+esc(headline)+'</h1><p>Este resultado mostra como você foi nessas 15 perguntas. Não define seu nível absoluto de matemática.</p></div><div class="diagnosis-score"><strong>'+total+'<small>/ 15</small></strong><span>respostas corretas</span></div><h2>Suas habilidades</h2><div class="diagnosis-domain-list">'+ranking.map(function(r){return '<div class="diagnosis-domain"><div><strong>'+esc(r.domain.label)+'</strong><span>'+r.correct+' de '+r.max+'</span></div><div class="diagnosis-domain-track"><span style="width:'+(100*r.correct/r.max)+'%"></span></div></div>'}).join('')+'</div><h2>Por onde começar?</h2><div class="diagnosis-recs">'+(advice.length?advice.map(function(r){var l=data.lessons.find(function(l){return l.id===r.domain.lesson});return '<a href="'+href(l)+'"><span>REVISAR PRIMEIRO</span><strong>'+esc(r.domain.label)+'</strong><small>'+esc(l.title)+'</small><b>Estudar agora ↗</b></a>'}).join(''):'<div class="diagnosis-perfect">Você acertou todas as questões! Explore assuntos mais avançados e continue praticando.</div>')+'</div><div class="diagnosis-end-actions"><button class="diagnosis-prev" id="diagnosis-restart">↻ Refazer teste</button><a href="/explorar/" class="diagnosis-button">Explorar as aulas ↗</a></div><div class="diagnosis-review"><details><summary>Ver respostas e explicações das 15 questões</summary>'+bank.questions.map(function(q){var right=answers[q.id]===q.correta;return '<div class="diagnosis-review-row"><strong>'+(right?'✓':'✕')+' '+esc(q.enunciado)+'</strong><p>Resposta: '+esc(q.opcoes[q.correta])+'. '+esc(q.explicacao)+'</p></div>'}).join('')+'</details></div><div class="diagnosis-exatoo">'+exatooCard('revisar')+'</div></section>';
+  document.getElementById('diagnosis-restart').addEventListener('click',function(){current=-1;answers={};start()});
+ }
+ start();
+}
+
 function saveAction(l,btn){if(saved.has(l.id))saved.delete(l.id);else saved.add(l.id);store('capri-favoritos',saved);btn.textContent=(saved.has(l.id)?'♥ Salvo':'♡ Favoritar');btn.classList.toggle('liked',saved.has(l.id))}
 function finishAction(l,btn){if(done.has(l.id))done.delete(l.id);else done.add(l.id);store('capri-estudadas',done);btn.textContent=(done.has(l.id)?'✓ Aula estudada':'✓ Marcar como estudada');btn.classList.toggle('liked',done.has(l.id))}
 async function lessonPage(){
@@ -376,6 +405,6 @@ function initQuiz(questions,lesson){
  draw();
 }
 
-async function init(){try{var r=await fetch('/data/aulas.json');if(!r.ok)throw Error('Catálogo não encontrado');data=await r.json();try{var m=await fetch('/data/materiais.json');if(m.ok)materialIndex=await m.json()}catch(e){materialIndex=[]}if(document.body.dataset.lesson)await lessonPage();else if(document.body.dataset.view==='explorar')explorePage();else home()}catch(e){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Não foi possível carregar o catálogo','Recarregue a página para tentar novamente.')+'</main>'+footer();console.error(e)}}
+async function init(){try{var r=await fetch('/data/aulas.json');if(!r.ok)throw Error('Catálogo não encontrado');data=await r.json();try{var m=await fetch('/data/materiais.json');if(m.ok)materialIndex=await m.json()}catch(e){materialIndex=[]}if(document.body.dataset.lesson)await lessonPage();else if(document.body.dataset.view==='explorar')explorePage();else if(document.body.dataset.view==='diagnostico')await diagnosisPage();else home()}catch(e){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Não foi possível carregar o catálogo','Recarregue a página para tentar novamente.')+'</main>'+footer();console.error(e)}}
 init();
 })();
