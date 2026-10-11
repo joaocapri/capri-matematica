@@ -1,248 +1,1056 @@
 {
-  "title": "Teste seu nível",
-  "description": "Diagnóstico inicial de matemática, sem nota oficial.",
-  "domains": [
+  "version": 2,
+  "introduction": "Escolha o percurso. Cada prova contém 12 questões autorais, com complexidade crescente por área.",
+  "tracks": [
     {
-      "id": "fundamentos",
-      "label": "Fundamentos",
-      "lesson": "C03",
-      "description": "Frações, porcentagens e aritmética"
-    },
-    {
-      "id": "funcoes",
-      "label": "Funções",
-      "lesson": "A11",
-      "description": "Relações e funções algébricas"
-    },
-    {
-      "id": "geometria",
-      "label": "Geometria",
-      "lesson": "B05",
-      "description": "Formas, medidas e volumes"
-    },
-    {
-      "id": "probabilidade",
-      "label": "Probabilidade e estatística",
-      "lesson": "C20",
-      "description": "Contagem, probabilidade e dados"
-    },
-    {
-      "id": "trig-algebra",
-      "label": "Trigonometria e álgebra",
-      "lesson": "C33",
-      "description": "Razões trigonométricas e álgebra"
-    }
-  ],
-  "questions": [
-    {
-      "id": 1,
-      "area": "fundamentos",
-      "enunciado": "Quanto é 3/4 + 1/8?",
-      "opcoes": [
-        "4/12",
-        "7/8",
-        "5/8",
-        "1"
+      "id": "em1",
+      "group": "Ensino Médio",
+      "title": "1ª série",
+      "subtitle": "Base algébrica, funções e geometria plana",
+      "detail": "Do cálculo essencial às primeiras funções e suas aplicações.",
+      "minutes": "12–18 min",
+      "icon": "①",
+      "color": "lime",
+      "areas": [
+        {
+          "id": "numeros",
+          "label": "Números e proporções"
+        },
+        {
+          "id": "afim",
+          "label": "Função afim"
+        },
+        {
+          "id": "quadratica",
+          "label": "Função quadrática"
+        },
+        {
+          "id": "plana",
+          "label": "Geometria plana"
+        }
       ],
-      "correta": 1,
-      "explicacao": "3/4 = 6/8. Portanto, 6/8 + 1/8 = 7/8.",
-      "aula": "C03"
+      "questions": [
+        {
+          "id": "em1-01",
+          "area": "numeros",
+          "dificuldade": 1,
+          "aula": "C03",
+          "enunciado": "Quanto vale 3/4 + 5/6?",
+          "opcoes": [
+            "8/10",
+            "19/12",
+            "17/12",
+            "9/10"
+          ],
+          "correta": 1,
+          "explicacao": "O MMC de 4 e 6 é 12: 9/12 + 10/12 = 19/12."
+        },
+        {
+          "id": "em1-02",
+          "area": "numeros",
+          "dificuldade": 2,
+          "aula": "C08",
+          "enunciado": "Um tênis de R$ 240 recebe desconto de 15%. Quanto custa após o desconto?",
+          "opcoes": [
+            "R$ 204",
+            "R$ 216",
+            "R$ 225",
+            "R$ 200"
+          ],
+          "correta": 0,
+          "explicacao": "15% de 240 é 36. O preço final é 240 − 36 = 204."
+        },
+        {
+          "id": "em1-03",
+          "area": "numeros",
+          "dificuldade": 3,
+          "aula": "C05",
+          "enunciado": "Três máquinas iguais terminam uma tarefa em 8 horas. Seis máquinas iguais, na mesma taxa, terminam em:",
+          "opcoes": [
+            "2 h",
+            "4 h",
+            "6 h",
+            "16 h"
+          ],
+          "correta": 1,
+          "explicacao": "Máquinas e tempo são inversamente proporcionais: 3 × 8 = 6 × t, logo t = 4 horas."
+        },
+        {
+          "id": "em1-04",
+          "area": "afim",
+          "dificuldade": 1,
+          "aula": "A11",
+          "enunciado": "Se f(x) = 2x − 5, qual é f(3)?",
+          "opcoes": [
+            "−1",
+            "1",
+            "5",
+            "6"
+          ],
+          "correta": 1,
+          "explicacao": "f(3) = 2 × 3 − 5 = 1."
+        },
+        {
+          "id": "em1-05",
+          "area": "afim",
+          "dificuldade": 2,
+          "aula": "A12",
+          "enunciado": "A reta passa pelos pontos (1, 2) e (4, 11). Qual é seu coeficiente angular?",
+          "opcoes": [
+            "2",
+            "3",
+            "4",
+            "9"
+          ],
+          "correta": 1,
+          "explicacao": "m = (11 − 2)/(4 − 1) = 9/3 = 3."
+        },
+        {
+          "id": "em1-06",
+          "area": "afim",
+          "dificuldade": 3,
+          "aula": "A13",
+          "enunciado": "Para quais valores reais a função f(x) = −2x + 8 é positiva?",
+          "opcoes": [
+            "x > 4",
+            "x ≥ 4",
+            "x < 4",
+            "x ≤ −4"
+          ],
+          "correta": 2,
+          "explicacao": "−2x + 8 > 0 implica −2x > −8 e, invertendo o sinal ao dividir por −2, x < 4."
+        },
+        {
+          "id": "em1-07",
+          "area": "quadratica",
+          "dificuldade": 1,
+          "aula": "A17",
+          "enunciado": "Quais são as raízes de x² − 5x + 6 = 0?",
+          "opcoes": [
+            "1 e 6",
+            "−2 e −3",
+            "2 e 3",
+            "0 e 5"
+          ],
+          "correta": 2,
+          "explicacao": "x² − 5x + 6 = (x − 2)(x − 3). As raízes são 2 e 3."
+        },
+        {
+          "id": "em1-08",
+          "area": "quadratica",
+          "dificuldade": 2,
+          "aula": "A18",
+          "enunciado": "Qual o valor máximo de f(x) = −x² + 6x − 5?",
+          "opcoes": [
+            "3",
+            "4",
+            "5",
+            "9"
+          ],
+          "correta": 1,
+          "explicacao": "O vértice ocorre em x = −b/(2a) = 3; f(3) = −9 + 18 − 5 = 4."
+        },
+        {
+          "id": "em1-09",
+          "area": "quadratica",
+          "dificuldade": 3,
+          "aula": "A20",
+          "enunciado": "Resolva (x − 1)(x − 5) < 0.",
+          "opcoes": [
+            "x < 1 ou x > 5",
+            "1 < x < 5",
+            "x ≥ 5",
+            "x ≤ 1"
+          ],
+          "correta": 1,
+          "explicacao": "O produto de dois fatores lineares é negativo entre suas raízes: 1 < x < 5."
+        },
+        {
+          "id": "em1-10",
+          "area": "plana",
+          "dificuldade": 1,
+          "aula": "B02",
+          "enunciado": "Dois ângulos de um triângulo medem 50° e 65°. Quanto mede o terceiro?",
+          "opcoes": [
+            "55°",
+            "65°",
+            "75°",
+            "85°"
+          ],
+          "correta": 1,
+          "explicacao": "A soma interna é 180°. Então 180° − 50° − 65° = 65°."
+        },
+        {
+          "id": "em1-11",
+          "area": "plana",
+          "dificuldade": 2,
+          "aula": "B04",
+          "enunciado": "Os lados de um triângulo medem 4, 6 e 8. Um triângulo semelhante tem escala 3/2. Seus lados medem:",
+          "opcoes": [
+            "6, 9 e 12",
+            "6, 8 e 10",
+            "5, 7 e 9",
+            "8, 12 e 16"
+          ],
+          "correta": 0,
+          "explicacao": "Multiplique cada lado por 3/2: 6, 9 e 12."
+        },
+        {
+          "id": "em1-12",
+          "area": "plana",
+          "dificuldade": 3,
+          "aula": "B12",
+          "enunciado": "Um retângulo tem perímetro 30 cm e lados na razão 2:3. Qual é sua área?",
+          "opcoes": [
+            "36 cm²",
+            "45 cm²",
+            "54 cm²",
+            "60 cm²"
+          ],
+          "correta": 2,
+          "explicacao": "Lados 2k e 3k: 2(5k)=30, logo k=3. Lados 6 e 9; área 54 cm²."
+        }
+      ]
     },
     {
-      "id": 2,
-      "area": "funcoes",
-      "enunciado": "Se f(x) = 2x − 3, quanto vale f(5)?",
-      "opcoes": [
-        "7",
-        "10",
-        "13",
-        "2"
+      "id": "em2",
+      "group": "Ensino Médio",
+      "title": "2ª série",
+      "subtitle": "Exponenciais, sequências, sólidos e contagem",
+      "detail": "Relações entre conteúdos que começam a exigir mais etapas.",
+      "minutes": "12–18 min",
+      "icon": "②",
+      "color": "purple",
+      "areas": [
+        {
+          "id": "exp",
+          "label": "Exponenciais e logaritmos"
+        },
+        {
+          "id": "pa-pg",
+          "label": "Progressões"
+        },
+        {
+          "id": "espacial",
+          "label": "Geometria espacial"
+        },
+        {
+          "id": "contagem",
+          "label": "Combinatória e probabilidade"
+        }
       ],
-      "correta": 0,
-      "explicacao": "Substitua x por 5: 2 × 5 − 3 = 7.",
-      "aula": "A11"
+      "questions": [
+        {
+          "id": "em2-01",
+          "area": "exp",
+          "dificuldade": 1,
+          "aula": "A25",
+          "enunciado": "Se 2^(x + 1) = 32, qual é x?",
+          "opcoes": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "correta": 1,
+          "explicacao": "32 = 2⁵. Igualando expoentes, x + 1 = 5; x = 4."
+        },
+        {
+          "id": "em2-02",
+          "area": "exp",
+          "dificuldade": 2,
+          "aula": "A27",
+          "enunciado": "Quanto vale log₃(81)?",
+          "opcoes": [
+            "3",
+            "4",
+            "9",
+            "27"
+          ],
+          "correta": 1,
+          "explicacao": "Como 3⁴ = 81, o logaritmo na base 3 vale 4."
+        },
+        {
+          "id": "em2-03",
+          "area": "exp",
+          "dificuldade": 3,
+          "aula": "C10",
+          "enunciado": "Um capital de R$ 1.000 cresce 10% ao ano em juros compostos. Após dois anos, vale:",
+          "opcoes": [
+            "R$ 1.100",
+            "R$ 1.200",
+            "R$ 1.210",
+            "R$ 1.220"
+          ],
+          "correta": 2,
+          "explicacao": "Montante = 1000 × 1,1² = R$ 1.210."
+        },
+        {
+          "id": "em2-04",
+          "area": "pa-pg",
+          "dificuldade": 1,
+          "aula": "A34",
+          "enunciado": "Em uma PA, a₁ = 5 e a razão é 3. Qual é a₁₀?",
+          "opcoes": [
+            "29",
+            "30",
+            "32",
+            "35"
+          ],
+          "correta": 2,
+          "explicacao": "a₁₀ = 5 + 9 × 3 = 32."
+        },
+        {
+          "id": "em2-05",
+          "area": "pa-pg",
+          "dificuldade": 2,
+          "aula": "A35",
+          "enunciado": "Qual é a soma dos números inteiros de 1 a 20?",
+          "opcoes": [
+            "200",
+            "210",
+            "220",
+            "400"
+          ],
+          "correta": 1,
+          "explicacao": "S = (1 + 20) × 20/2 = 210."
+        },
+        {
+          "id": "em2-06",
+          "area": "pa-pg",
+          "dificuldade": 3,
+          "aula": "A37",
+          "enunciado": "Uma PG tem primeiro termo 3 e razão 2. Qual a soma dos primeiros cinco termos?",
+          "opcoes": [
+            "45",
+            "63",
+            "90",
+            "93"
+          ],
+          "correta": 3,
+          "explicacao": "S₅ = 3(2⁵ − 1)/(2 − 1) = 3 × 31 = 93."
+        },
+        {
+          "id": "em2-07",
+          "area": "espacial",
+          "dificuldade": 1,
+          "aula": "B20",
+          "enunciado": "Um prisma tem área da base 12 cm² e altura 7 cm. Seu volume é:",
+          "opcoes": [
+            "19 cm³",
+            "42 cm³",
+            "84 cm³",
+            "96 cm³"
+          ],
+          "correta": 2,
+          "explicacao": "V = área da base × altura = 12 × 7 = 84 cm³."
+        },
+        {
+          "id": "em2-08",
+          "area": "espacial",
+          "dificuldade": 2,
+          "aula": "B23",
+          "enunciado": "Um cilindro tem raio 3 cm e altura 4 cm. Seu volume é:",
+          "opcoes": [
+            "12π cm³",
+            "18π cm³",
+            "24π cm³",
+            "36π cm³"
+          ],
+          "correta": 3,
+          "explicacao": "V = πr²h = π × 9 × 4 = 36π cm³."
+        },
+        {
+          "id": "em2-09",
+          "area": "espacial",
+          "dificuldade": 3,
+          "aula": "B27",
+          "enunciado": "Se o raio de uma esfera é duplicado, seu volume é multiplicado por:",
+          "opcoes": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "correta": 3,
+          "explicacao": "O volume de uma esfera é proporcional ao cubo do raio: 2³ = 8."
+        },
+        {
+          "id": "em2-10",
+          "area": "contagem",
+          "dificuldade": 1,
+          "aula": "C17",
+          "enunciado": "Quantas duplas distintas podem ser formadas por 6 estudantes?",
+          "opcoes": [
+            "12",
+            "15",
+            "18",
+            "30"
+          ],
+          "correta": 1,
+          "explicacao": "Combinação de 6 elementos tomados 2 a 2: 6 × 5 / 2 = 15."
+        },
+        {
+          "id": "em2-11",
+          "area": "contagem",
+          "dificuldade": 2,
+          "aula": "C15",
+          "enunciado": "De quantas maneiras 5 pessoas podem formar uma fila se Ana e Bia devem ficar juntas?",
+          "opcoes": [
+            "24",
+            "48",
+            "60",
+            "120"
+          ],
+          "correta": 1,
+          "explicacao": "Trate Ana e Bia como bloco: são 4! arranjos de blocos e 2 ordens internas. 4! × 2 = 48."
+        },
+        {
+          "id": "em2-12",
+          "area": "contagem",
+          "dificuldade": 3,
+          "aula": "C24",
+          "enunciado": "Uma moeda justa é lançada 4 vezes. A probabilidade de sair exatamente 3 caras é:",
+          "opcoes": [
+            "1/8",
+            "1/4",
+            "3/8",
+            "1/2"
+          ],
+          "correta": 1,
+          "explicacao": "Há C(4,3) = 4 sequências com 3 caras, entre 2⁴ = 16 resultados: 4/16 = 1/4."
+        }
+      ]
     },
     {
-      "id": 3,
-      "area": "geometria",
-      "enunciado": "Um triângulo tem dois ângulos de 55° e 65°. Qual é o terceiro?",
-      "opcoes": [
-        "50°",
-        "60°",
-        "70°",
-        "80°"
+      "id": "em3",
+      "group": "Ensino Médio",
+      "title": "3ª série",
+      "subtitle": "Analítica, trigonometria e revisão integrada",
+      "detail": "Questões para consolidar o repertório de fim do Ensino Médio.",
+      "minutes": "12–18 min",
+      "icon": "③",
+      "color": "peach",
+      "areas": [
+        {
+          "id": "analitica",
+          "label": "Geometria analítica"
+        },
+        {
+          "id": "trigo",
+          "label": "Trigonometria"
+        },
+        {
+          "id": "algebra",
+          "label": "Álgebra"
+        },
+        {
+          "id": "dados",
+          "label": "Estatística e probabilidade"
+        }
       ],
-      "correta": 1,
-      "explicacao": "A soma dos ângulos internos é 180°. Logo, 180 − 55 − 65 = 60.",
-      "aula": "B02"
+      "questions": [
+        {
+          "id": "em3-01",
+          "area": "analitica",
+          "dificuldade": 1,
+          "aula": "B34",
+          "enunciado": "A reta passa por (0, 2) e (2, 6). Qual é seu coeficiente angular?",
+          "opcoes": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correta": 1,
+          "explicacao": "m = (6 − 2)/(2 − 0) = 2."
+        },
+        {
+          "id": "em3-02",
+          "area": "analitica",
+          "dificuldade": 2,
+          "aula": "B36",
+          "enunciado": "Qual é a distância entre os pontos (1, 2) e (4, 6)?",
+          "opcoes": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "correta": 1,
+          "explicacao": "d = √[(4−1)² + (6−2)²] = √(9+16) = 5."
+        },
+        {
+          "id": "em3-03",
+          "area": "analitica",
+          "dificuldade": 3,
+          "aula": "B37",
+          "enunciado": "A circunferência de centro (2, −1) e raio 3 tem equação:",
+          "opcoes": [
+            "(x+2)²+(y−1)²=9",
+            "(x−2)²+(y+1)²=9",
+            "(x−2)²+(y−1)²=3",
+            "(x+2)²+(y+1)²=3"
+          ],
+          "correta": 1,
+          "explicacao": "Na forma (x−a)²+(y−b)²=r², use a=2, b=−1, r=3."
+        },
+        {
+          "id": "em3-04",
+          "area": "trigo",
+          "dificuldade": 1,
+          "aula": "C33",
+          "enunciado": "Qual é o seno de 30°?",
+          "opcoes": [
+            "0",
+            "1/2",
+            "√2/2",
+            "1"
+          ],
+          "correta": 1,
+          "explicacao": "No triângulo retângulo notável de 30°, seno = 1/2."
+        },
+        {
+          "id": "em3-05",
+          "area": "trigo",
+          "dificuldade": 2,
+          "aula": "C36",
+          "enunciado": "No intervalo 0 ≤ x ≤ π, as soluções de sen(x)=√3/2 são:",
+          "opcoes": [
+            "π/6 e 5π/6",
+            "π/3 e 2π/3",
+            "π/4 e 3π/4",
+            "π/3 apenas"
+          ],
+          "correta": 1,
+          "explicacao": "O seno vale √3/2 nos ângulos de referência π/3, no primeiro e no segundo quadrantes."
+        },
+        {
+          "id": "em3-06",
+          "area": "trigo",
+          "dificuldade": 3,
+          "aula": "C39",
+          "enunciado": "Se x = π/6, quanto vale cos(2x)?",
+          "opcoes": [
+            "0",
+            "1/2",
+            "√3/2",
+            "1"
+          ],
+          "correta": 1,
+          "explicacao": "2x = π/3 e cos(π/3) = 1/2."
+        },
+        {
+          "id": "em3-07",
+          "area": "algebra",
+          "dificuldade": 1,
+          "aula": "C46",
+          "enunciado": "Quanto vale o determinante da matriz [[2,1],[5,3]]?",
+          "opcoes": [
+            "−1",
+            "1",
+            "6",
+            "11"
+          ],
+          "correta": 1,
+          "explicacao": "det = 2 × 3 − 1 × 5 = 1."
+        },
+        {
+          "id": "em3-08",
+          "area": "algebra",
+          "dificuldade": 2,
+          "aula": "A39",
+          "enunciado": "Calcule (2 + 3i)(2 − 3i), sabendo que i² = −1.",
+          "opcoes": [
+            "−5",
+            "5",
+            "13",
+            "4+9i"
+          ],
+          "correta": 2,
+          "explicacao": "Produto de conjugados: 2² + 3² = 13."
+        },
+        {
+          "id": "em3-09",
+          "area": "algebra",
+          "dificuldade": 3,
+          "aula": "A47",
+          "enunciado": "Se P(x)=x³−6x²+11x−6 tem raízes 1, 2 e 3, qual a soma dessas raízes?",
+          "opcoes": [
+            "3",
+            "5",
+            "6",
+            "11"
+          ],
+          "correta": 2,
+          "explicacao": "Pelas relações de Girard, soma das raízes = −(−6)/1 = 6."
+        },
+        {
+          "id": "em3-10",
+          "area": "dados",
+          "dificuldade": 1,
+          "aula": "C28",
+          "enunciado": "Qual é a média de 4, 8 e 12?",
+          "opcoes": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "correta": 2,
+          "explicacao": "(4 + 8 + 12)/3 = 8."
+        },
+        {
+          "id": "em3-11",
+          "area": "dados",
+          "dificuldade": 2,
+          "aula": "C22",
+          "enunciado": "Sabendo que dois dados somaram 8, qual a chance de o primeiro mostrar 3?",
+          "opcoes": [
+            "1/6",
+            "1/5",
+            "1/4",
+            "1/3"
+          ],
+          "correta": 1,
+          "explicacao": "As cinco duplas ordenadas que somam 8 são (2,6),(3,5),(4,4),(5,3),(6,2). Uma começa por 3."
+        },
+        {
+          "id": "em3-12",
+          "area": "dados",
+          "dificuldade": 3,
+          "aula": "C28",
+          "enunciado": "Uma prova tem notas 6 e 8, com pesos 2 e 3. Qual é a média ponderada?",
+          "opcoes": [
+            "6,8",
+            "7,0",
+            "7,2",
+            "7,5"
+          ],
+          "correta": 2,
+          "explicacao": "(6×2+8×3)/(2+3)=36/5=7,2."
+        }
+      ]
     },
     {
-      "id": 4,
-      "area": "probabilidade",
-      "enunciado": "Qual é a média aritmética dos números 4, 6 e 8?",
-      "opcoes": [
-        "5",
-        "6",
-        "7",
-        "8"
+      "id": "enem",
+      "group": "Pré-vestibular",
+      "title": "ENEM",
+      "subtitle": "Contexto, interpretação e modelagem matemática",
+      "detail": "Questões autorais contextualizadas, sem reproduzir provas oficiais.",
+      "minutes": "12–18 min",
+      "icon": "↗",
+      "color": "lime",
+      "areas": [
+        {
+          "id": "consumo",
+          "label": "Finanças e consumo"
+        },
+        {
+          "id": "modelagem",
+          "label": "Proporções e modelagem"
+        },
+        {
+          "id": "medidas",
+          "label": "Geometria e medidas"
+        },
+        {
+          "id": "dados",
+          "label": "Dados e probabilidade"
+        }
       ],
-      "correta": 1,
-      "explicacao": "(4 + 6 + 8) / 3 = 18 / 3 = 6.",
-      "aula": "C28"
+      "questions": [
+        {
+          "id": "enem-01",
+          "area": "consumo",
+          "dificuldade": 1,
+          "aula": "A14",
+          "enunciado": "Um aplicativo cobra R$ 5 fixos mais R$ 2,40 por km. Quanto custa uma corrida de 7,5 km?",
+          "opcoes": [
+            "R$ 18",
+            "R$ 21",
+            "R$ 23",
+            "R$ 25"
+          ],
+          "correta": 2,
+          "explicacao": "5 + 2,40 × 7,5 = 5 + 18 = R$ 23."
+        },
+        {
+          "id": "enem-02",
+          "area": "consumo",
+          "dificuldade": 2,
+          "aula": "C08",
+          "enunciado": "Um produto de R$ 200 sobe 20% e depois cai 20%. O preço final é:",
+          "opcoes": [
+            "R$ 200",
+            "R$ 192",
+            "R$ 180",
+            "R$ 208"
+          ],
+          "correta": 1,
+          "explicacao": "200 × 1,20 × 0,80 = 192. Variações percentuais sucessivas não se anulam."
+        },
+        {
+          "id": "enem-03",
+          "area": "consumo",
+          "dificuldade": 3,
+          "aula": "C10",
+          "enunciado": "R$ 1.000 rendem 10% ao ano em juros compostos. Qual o saldo após 2 anos?",
+          "opcoes": [
+            "R$ 1.100",
+            "R$ 1.200",
+            "R$ 1.210",
+            "R$ 1.300"
+          ],
+          "correta": 2,
+          "explicacao": "1000 × 1,1² = R$ 1.210."
+        },
+        {
+          "id": "enem-04",
+          "area": "modelagem",
+          "dificuldade": 1,
+          "aula": "C06",
+          "enunciado": "Uma receita usa 2,5 L para atender 4 pessoas. Mantida a proporção, quantos litros atendem 10?",
+          "opcoes": [
+            "5 L",
+            "6,25 L",
+            "7 L",
+            "8 L"
+          ],
+          "correta": 1,
+          "explicacao": "2,5 × 10/4 = 6,25 L."
+        },
+        {
+          "id": "enem-05",
+          "area": "modelagem",
+          "dificuldade": 2,
+          "aula": "A14",
+          "enunciado": "Plano A custa R$ 30 + R$ 0,50 por minuto; plano B, R$ 15 + R$ 0,80. Para quantos minutos os custos são iguais?",
+          "opcoes": [
+            "30",
+            "40",
+            "50",
+            "60"
+          ],
+          "correta": 2,
+          "explicacao": "30+0,5m=15+0,8m. Então 15=0,3m, logo m=50."
+        },
+        {
+          "id": "enem-06",
+          "area": "modelagem",
+          "dificuldade": 3,
+          "aula": "C07",
+          "enunciado": "Um reservatório tinha 800 litros. Uma perda de 12,5% deixou quantos litros?",
+          "opcoes": [
+            "680",
+            "700",
+            "720",
+            "750"
+          ],
+          "correta": 1,
+          "explicacao": "12,5% = 1/8; a perda é 100 L e restam 700 L."
+        },
+        {
+          "id": "enem-07",
+          "area": "medidas",
+          "dificuldade": 1,
+          "aula": "B12",
+          "enunciado": "Uma sala mede 4,5 m por 3,2 m. Qual é a área do piso?",
+          "opcoes": [
+            "7,7 m²",
+            "12,8 m²",
+            "14,4 m²",
+            "15,4 m²"
+          ],
+          "correta": 2,
+          "explicacao": "Área = 4,5 × 3,2 = 14,4 m²."
+        },
+        {
+          "id": "enem-08",
+          "area": "medidas",
+          "dificuldade": 2,
+          "aula": "C04",
+          "enunciado": "Em um mapa 1:50.000, uma distância de 3 cm equivale a:",
+          "opcoes": [
+            "150 m",
+            "500 m",
+            "1,5 km",
+            "15 km"
+          ],
+          "correta": 2,
+          "explicacao": "3×50.000 = 150.000 cm = 1.500 m = 1,5 km."
+        },
+        {
+          "id": "enem-09",
+          "area": "medidas",
+          "dificuldade": 3,
+          "aula": "B23",
+          "enunciado": "Uma embalagem cilíndrica tem raio 5 cm e altura 12 cm. Seu volume interno é:",
+          "opcoes": [
+            "60π cm³",
+            "120π cm³",
+            "300π cm³",
+            "600π cm³"
+          ],
+          "correta": 2,
+          "explicacao": "πr²h = π×25×12 = 300π cm³."
+        },
+        {
+          "id": "enem-10",
+          "area": "dados",
+          "dificuldade": 1,
+          "aula": "C28",
+          "enunciado": "Uma escola registrou 40, 50, 60 e 70 inscrições por semana. Qual a média?",
+          "opcoes": [
+            "50",
+            "55",
+            "60",
+            "65"
+          ],
+          "correta": 1,
+          "explicacao": "(40+50+60+70)/4=220/4=55."
+        },
+        {
+          "id": "enem-11",
+          "area": "dados",
+          "dificuldade": 2,
+          "aula": "C20",
+          "enunciado": "Em um lote de 100 peças, 3 apresentam defeito. A probabilidade de sortear uma defeituosa é:",
+          "opcoes": [
+            "0,3%",
+            "3%",
+            "30%",
+            "33%"
+          ],
+          "correta": 1,
+          "explicacao": "3 de 100 correspondem a 3%."
+        },
+        {
+          "id": "enem-12",
+          "area": "dados",
+          "dificuldade": 3,
+          "aula": "C29",
+          "enunciado": "Os tempos (min) de entrega foram 3, 7, 8, 9 e 50. Qual é a mediana?",
+          "opcoes": [
+            "7",
+            "8",
+            "9",
+            "15,4"
+          ],
+          "correta": 1,
+          "explicacao": "Com 5 dados ordenados, a mediana é o terceiro: 8. O valor extremo não afeta a mediana."
+        }
+      ]
     },
     {
-      "id": 5,
-      "area": "trig-algebra",
-      "enunciado": "Quanto vale sen 30°?",
-      "opcoes": [
-        "0",
-        "1/2",
-        "√2/2",
-        "1"
+      "id": "vestib",
+      "group": "Pré-vestibular",
+      "title": "Vestibulares",
+      "subtitle": "Raciocínio algébrico e problemas mais técnicos",
+      "detail": "Exercícios autorais de estilo tradicional, com etapas intermediárias.",
+      "minutes": "12–18 min",
+      "icon": "✳",
+      "color": "purple",
+      "areas": [
+        {
+          "id": "funcoes",
+          "label": "Funções e inequações"
+        },
+        {
+          "id": "geometria",
+          "label": "Geometria"
+        },
+        {
+          "id": "algebra",
+          "label": "Álgebra e polinômios"
+        },
+        {
+          "id": "combinatoria",
+          "label": "Combinatória e probabilidade"
+        }
       ],
-      "correta": 1,
-      "explicacao": "No triângulo 30°–60°–90°, o seno de 30° é 1/2.",
-      "aula": "C33"
-    },
-    {
-      "id": 6,
-      "area": "fundamentos",
-      "enunciado": "Quanto é 20% de 150?",
-      "opcoes": [
-        "15",
-        "25",
-        "30",
-        "35"
-      ],
-      "correta": 2,
-      "explicacao": "0,20 × 150 = 30.",
-      "aula": "C07"
-    },
-    {
-      "id": 7,
-      "area": "funcoes",
-      "enunciado": "Quais são as raízes de x² − 5x + 6 = 0?",
-      "opcoes": [
-        "1 e 6",
-        "−2 e −3",
-        "2 e 3",
-        "0 e 5"
-      ],
-      "correta": 2,
-      "explicacao": "(x − 2)(x − 3) = 0. Logo, x = 2 ou x = 3.",
-      "aula": "A17"
-    },
-    {
-      "id": 8,
-      "area": "geometria",
-      "enunciado": "Um triângulo retângulo tem catetos 6 e 8. Qual é a hipotenusa?",
-      "opcoes": [
-        "10",
-        "12",
-        "14",
-        "16"
-      ],
-      "correta": 0,
-      "explicacao": "Pelo teorema de Pitágoras: √(6² + 8²) = √100 = 10.",
-      "aula": "B05"
-    },
-    {
-      "id": 9,
-      "area": "probabilidade",
-      "enunciado": "Em um dado justo de seis faces, qual a chance de obter o número 6?",
-      "opcoes": [
-        "1/2",
-        "1/3",
-        "1/6",
-        "1/12"
-      ],
-      "correta": 2,
-      "explicacao": "Há um único resultado favorável entre seis igualmente prováveis.",
-      "aula": "C20"
-    },
-    {
-      "id": 10,
-      "area": "trig-algebra",
-      "enunciado": "Se A = [[1, 2], [3, 4]], quanto vale det(A)?",
-      "opcoes": [
-        "−2",
-        "2",
-        "10",
-        "−10"
-      ],
-      "correta": 0,
-      "explicacao": "O determinante é 1 × 4 − 2 × 3 = −2.",
-      "aula": "C46"
-    },
-    {
-      "id": 11,
-      "area": "fundamentos",
-      "enunciado": "Qual é o MMC entre 6 e 8?",
-      "opcoes": [
-        "12",
-        "14",
-        "24",
-        "48"
-      ],
-      "correta": 2,
-      "explicacao": "6 = 2 × 3 e 8 = 2³. O MMC é 2³ × 3 = 24.",
-      "aula": "C02"
-    },
-    {
-      "id": 12,
-      "area": "funcoes",
-      "enunciado": "Se f(x) = 2ˣ, qual é f(4)?",
-      "opcoes": [
-        "6",
-        "8",
-        "12",
-        "16"
-      ],
-      "correta": 3,
-      "explicacao": "A função exponencial em x = 4 fornece 2⁴ = 16.",
-      "aula": "A25"
-    },
-    {
-      "id": 13,
-      "area": "geometria",
-      "enunciado": "Qual o volume de um cilindro de raio 2 e altura 3?",
-      "opcoes": [
-        "6π",
-        "12π",
-        "18π",
-        "24π"
-      ],
-      "correta": 1,
-      "explicacao": "V = πr²h = π × 2² × 3 = 12π.",
-      "aula": "B23"
-    },
-    {
-      "id": 14,
-      "area": "probabilidade",
-      "enunciado": "De 5 pessoas, quantas duplas diferentes podemos formar?",
-      "opcoes": [
-        "5",
-        "10",
-        "15",
-        "20"
-      ],
-      "correta": 1,
-      "explicacao": "Uma combinação de 5 tomadas 2 a 2: 5 × 4 / 2 = 10.",
-      "aula": "C17"
-    },
-    {
-      "id": 15,
-      "area": "trig-algebra",
-      "enunciado": "Em uma PA com termos 3, 7, 11, qual é o próximo?",
-      "opcoes": [
-        "13",
-        "14",
-        "15",
-        "17"
-      ],
-      "correta": 2,
-      "explicacao": "A razão é 4. Então, 11 + 4 = 15.",
-      "aula": "A34"
+      "questions": [
+        {
+          "id": "vestib-01",
+          "area": "funcoes",
+          "dificuldade": 1,
+          "aula": "A18",
+          "enunciado": "Qual o valor mínimo de f(x)=x²−4x+1?",
+          "opcoes": [
+            "−4",
+            "−3",
+            "0",
+            "1"
+          ],
+          "correta": 1,
+          "explicacao": "No vértice, x=2; f(2)=4−8+1=−3."
+        },
+        {
+          "id": "vestib-02",
+          "area": "funcoes",
+          "dificuldade": 2,
+          "aula": "A20",
+          "enunciado": "Resolva (x−2)(x+3) ≥ 0.",
+          "opcoes": [
+            "−3 ≤ x ≤ 2",
+            "x ≤ −3 ou x ≥ 2",
+            "x > −3",
+            "x < 2"
+          ],
+          "correta": 1,
+          "explicacao": "A parábola de coeficiente positivo é não negativa fora das raízes −3 e 2, incluindo-as."
+        },
+        {
+          "id": "vestib-03",
+          "area": "funcoes",
+          "dificuldade": 3,
+          "aula": "A31",
+          "enunciado": "Se log₂(x−1)+log₂(x+1)=3, com x>1, quanto vale x?",
+          "opcoes": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correta": 1,
+          "explicacao": "log₂[(x−1)(x+1)]=3 implica x²−1=8, x²=9 e, como x>1, x=3."
+        },
+        {
+          "id": "vestib-04",
+          "area": "geometria",
+          "dificuldade": 1,
+          "aula": "B05",
+          "enunciado": "Um triângulo retângulo de catetos 3 e 4 tem hipotenusa 5. Seu raio da circunferência inscrita é:",
+          "opcoes": [
+            "0,5",
+            "1",
+            "1,5",
+            "2"
+          ],
+          "correta": 1,
+          "explicacao": "No triângulo retângulo, r=(a+b−c)/2=(3+4−5)/2=1."
+        },
+        {
+          "id": "vestib-05",
+          "area": "geometria",
+          "dificuldade": 2,
+          "aula": "B08",
+          "enunciado": "Qual é a área de um hexágono regular de lado 2?",
+          "opcoes": [
+            "3√3",
+            "4√3",
+            "6√3",
+            "12√3"
+          ],
+          "correta": 2,
+          "explicacao": "São 6 triângulos equiláteros de lado 2; cada um tem área √3. Total 6√3."
+        },
+        {
+          "id": "vestib-06",
+          "area": "geometria",
+          "dificuldade": 3,
+          "aula": "B24",
+          "enunciado": "Um cone e um cilindro têm mesma base e mesma altura. O volume do cone equivale a que fração do cilindro?",
+          "opcoes": [
+            "1/2",
+            "1/3",
+            "2/3",
+            "3/4"
+          ],
+          "correta": 1,
+          "explicacao": "O cone tem volume πr²h/3 e o cilindro πr²h."
+        },
+        {
+          "id": "vestib-07",
+          "area": "algebra",
+          "dificuldade": 1,
+          "aula": "A39",
+          "enunciado": "Quanto vale i²⁰²⁶, sendo i² = −1?",
+          "opcoes": [
+            "1",
+            "−1",
+            "i",
+            "−i"
+          ],
+          "correta": 1,
+          "explicacao": "Potências de i têm período 4. Como 2026 deixa resto 2, i²⁰²⁶=i²=−1."
+        },
+        {
+          "id": "vestib-08",
+          "area": "algebra",
+          "dificuldade": 2,
+          "aula": "A45",
+          "enunciado": "Se P(x)=x³−2x+4, qual o resto da divisão por x−2?",
+          "opcoes": [
+            "0",
+            "4",
+            "8",
+            "12"
+          ],
+          "correta": 2,
+          "explicacao": "Pelo teorema do resto, P(2)=8−4+4=8."
+        },
+        {
+          "id": "vestib-09",
+          "area": "algebra",
+          "dificuldade": 3,
+          "aula": "C46",
+          "enunciado": "Uma matriz triangular de ordem 3 tem diagonal 2, −3 e 4. Seu determinante é:",
+          "opcoes": [
+            "−24",
+            "−6",
+            "6",
+            "24"
+          ],
+          "correta": 0,
+          "explicacao": "O determinante de matriz triangular é o produto da diagonal: 2×(−3)×4=−24."
+        },
+        {
+          "id": "vestib-10",
+          "area": "combinatoria",
+          "dificuldade": 1,
+          "aula": "C15",
+          "enunciado": "Quantos números de três algarismos distintos podem ser formados com os dígitos de 0 a 9?",
+          "opcoes": [
+            "504",
+            "648",
+            "720",
+            "900"
+          ],
+          "correta": 1,
+          "explicacao": "Centena: 9 escolhas (sem 0), dezena: 9, unidade: 8. Total 9×9×8=648."
+        },
+        {
+          "id": "vestib-11",
+          "area": "combinatoria",
+          "dificuldade": 2,
+          "aula": "C23",
+          "enunciado": "Uma urna contém 4 bolas vermelhas e 3 azuis. Sem reposição, qual a chance de retirar duas vermelhas?",
+          "opcoes": [
+            "1/3",
+            "2/7",
+            "4/7",
+            "3/7"
+          ],
+          "correta": 1,
+          "explicacao": "P = (4/7)×(3/6)=12/42=2/7."
+        },
+        {
+          "id": "vestib-12",
+          "area": "combinatoria",
+          "dificuldade": 3,
+          "aula": "C16",
+          "enunciado": "Quantos anagramas distintos tem a palavra BANANA?",
+          "opcoes": [
+            "30",
+            "60",
+            "90",
+            "120"
+          ],
+          "correta": 1,
+          "explicacao": "São 6 letras, com A repetido 3 vezes e N 2 vezes: 6!/(3!2!)=60."
+        }
+      ]
     }
   ]
 }
