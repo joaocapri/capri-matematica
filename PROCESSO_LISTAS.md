@@ -13,7 +13,7 @@ O modelo de referência aprovado pelo professor é a aula **A17** (`materiais-fo
 4. Gere e publique com `python3 scripts/gerar_listas.py XNN YNN ... --publicar`. O validador recusa a fonte se faltar algo ou se o gabarito estiver desequilibrado.
 5. Renderize as páginas (`pdftoppm -r 70 -png`) e olhe todas elas. Procure alternativas quebradas, fórmulas estouradas, título de nível sozinho no pé da coluna e páginas vazias.
 6. Rode `node tests/catalogo.cjs`. Antes, instale o jsdom com `npm install --no-save --package-lock=false jsdom@26.1.0` e apague `node_modules` depois.
-7. Faça o commit no `main`, com a mensagem "Listas em PDF: aulas XNN–YNN", e dê push. O site publica sozinho.
+7. Faça o commit no `main`, com a mensagem "Listas em PDF: aulas XNN–YNN". Antes do push, rode `git fetch origin main && git rebase origin/main`: o robô do GitHub Actions às vezes publica commits de PDFs antigos. O site publica sozinho.
 8. Envie os PDFs do lote ao professor e informe o progresso (`--proximo` mostra "Aulas com listas: N/144").
 
 ## Padrão das questões
