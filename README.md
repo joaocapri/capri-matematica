@@ -81,3 +81,7 @@ A home usa uma única busca e mostra as 9 áreas como atalhos. Os menus não se 
 
 ## Diagnóstico matemático gratuito
 O banco editável fica em `data/diagnostico.json`: 15 questões de quatro alternativas, distribuídas igualmente entre 5 habilidades. A página `/teste-seu-nivel/` apresenta uma questão por vez, permite retornar e modificar a escolha, calcula acertos gerais e por habilidade e recomenda aulas das áreas de maior dificuldade. Mostra a correção explicada ao final. Não exige conta, não transmite escolhas ao Exatoo e **não** pretende medir proficiência com validade psicométrica ou fornecer nota escolar. Para mudar perguntas, manter `correta` como índice numérico de base zero (0 a 3), e cada campo `aula` deve apontar a uma das 144 aulas existentes. Links para Exatoo enviam apenas parâmetros de origem, sem respostas do aluno.
+
+
+## Mini-tour da home (2026)
+O antigo desenho da parábola foi substituído por um painel com exemplos **reais** da biblioteca: aula A17, lista PDF da A17 e quiz C20. O visitante pode alternar pelos controles Aula / PDF / Quiz. Sem interação, a prévia gira a cada 5,6 segundos, respeita `prefers-reduced-motion` e pausa na interação ou quando a aba não está visível. Ao começar uma pesquisa, o painel se oculta para priorizar os resultados. Os links abrem diretamente o conteúdo existente.

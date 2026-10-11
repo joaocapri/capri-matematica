@@ -53,11 +53,24 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.match(d.querySelector('#hero-title').textContent,/O que você quer estudar hoje/);
  assert.equal(d.querySelectorAll('input[type=search]').length,1);
  assert.equal(d.querySelectorAll('.area-tile').length,9);
+ assert.equal(d.querySelectorAll('.discovery-preview').length,1,'Existe uma única prévia da biblioteca');
+ assert.equal(d.querySelectorAll('.home-math-card').length,0,'Ilustração antiga foi retirada');
+ assert.equal(d.querySelectorAll('[data-preview]').length,3,'Botões de aula PDF quiz');
+ assert.equal(d.querySelector('#preview-open').getAttribute('href'),'/aulas/A17/');
+ click(w,d.querySelector('[data-preview="1"]'));
+ assert.equal(d.querySelector('#preview-title').textContent,'12 questões para praticar');
+ assert.equal(d.querySelector('#preview-open').getAttribute('href'),'/pdfs/lista-A17.pdf');
+ assert.equal(d.querySelector('[data-preview="1"]').getAttribute('aria-pressed'),'true');
+ click(w,d.querySelector('[data-preview="2"]'));
+ assert.equal(d.querySelector('#preview-open').getAttribute('href'),'/aulas/C20/?tab=quiz');
+ click(w,d.querySelector('[data-preview="0"]'));
+
  assert.ok(d.querySelector('a.area-tile[href="/explorar/?area=funcoes"]'));
  assert.ok(d.querySelector('a.nav-cta[href="/teste-seu-nivel/"]'));
  assert.ok(!d.querySelector('#explore-content .browse-topic'));
  assert.equal(d.querySelectorAll('.mat-logo span').length,6);
  type(w,d.querySelector('#hero-search'),'Bhaskara');
+ assert.equal(d.querySelector('.home-hero-art').hidden,true,'Prévia desaparece durante a busca');
  assert.ok(d.querySelector('#search-output a[href="/aulas/A17/"]'));
  assert.ok(d.querySelector('#search-output .search-material-card'));
  assert.equal(d.querySelector('#home-discover').hidden,true,'exploração oculta ao pesquisar');

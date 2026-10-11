@@ -69,11 +69,76 @@ function home(){
  '<div class="home-quick-hits" id="quick-hits" hidden aria-live="polite"></div>'+
  '</div>'+
  
- '</div><div class="home-hero-art" aria-hidden="true"><span class="home-hero-spark">✳</span><div class="home-math-card"><div class="home-math-card-top"><span>FUNÇÃO QUADRÁTICA</span><span>↗</span></div><strong>y = x² − 4</strong><svg viewBox="0 0 320 188" xmlns="http://www.w3.org/2000/svg"><g stroke="#e5dff5" stroke-width="1"><path d="M20 27H300M20 65H300M20 103H300M20 141H300M40 12V173M100 12V173M160 12V173M220 12V173M280 12V173"/></g><path d="M20 103H300M160 12V173" stroke="#ac9cc8" stroke-width="2" stroke-linecap="round"/><path d="M64 20Q160 318 256 20" stroke="#5e30c8" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="160" cy="169" r="6" fill="#FF7956" stroke="#211946" stroke-width="2"/><circle cx="90" cy="103" r="4" fill="#211946"/><circle cx="230" cy="103" r="4" fill="#211946"/></svg><span class="home-math-caption">Menos decorar. Mais entender.</span></div></div></section>'+
+ '</div><div class="home-hero-art home-hero-showcase">'+
+ '<section class="discovery-preview" id="discovery-preview" aria-label="Explore uma amostra de aulas, listas e quizzes">'+
+ '<div class="preview-head"><span class="preview-eyebrow"><span class="preview-head-dot"></span> DÁ PRA FAZER TUDO ISSO AQUI</span><span class="preview-head-count" id="preview-count">01 / 03</span></div>'+
+ '<div class="preview-stage" id="preview-stage">'+
+ '<div class="preview-type"><span id="preview-kind">AULA</span><span class="preview-resource-code" id="preview-code">A17</span></div>'+
+ '<h2 id="preview-title">Raízes e Fórmula Resolutiva</h2>'+
+ '<p id="preview-desc">Bhaskara sem enrolação. Aprenda no seu ritmo.</p>'+
+ '<div class="preview-equation"><span id="preview-math">x² − 5x + 6 = 0</span><small id="preview-equation-note">raízes: 2 e 3</small></div>'+
+ '<a class="preview-open" id="preview-open" href="/aulas/A17/"><span id="preview-action">Abrir esta aula</span><span aria-hidden="true">↗</span></a>'+
+ '</div>'+
+ '<div class="preview-footer"><div class="preview-tabs" role="group" aria-label="Escolha o tipo de conteúdo"><button type="button" data-preview="0" class="active" aria-pressed="true">Aula</button><button type="button" data-preview="1" aria-pressed="false">PDF</button><button type="button" data-preview="2" aria-pressed="false">Quiz</button></div><span class="preview-footer-mark" aria-hidden="true">✳</span></div>'+
+ '</section></div></section>'+
  '<section class="home-search-results" id="resultados" hidden aria-live="polite"><div class="home-results-head"><div><span class="home-section-label">SUA PESQUISA</span><h2 id="search-title">Resultados</h2></div><button id="return-home" class="home-back-button" type="button">← Voltar à exploração</button></div><div id="search-scope" class="home-search-scopes" role="group" aria-label="Filtrar resultados"></div><div id="search-output"></div></section>'+
  '<div id="home-discover">'+
  '<section id="explorar" class="home-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="home-section-label"><span class="home-section-indicator"></span> TODA A MATEMÁTICA, ORGANIZADA</span><h2 id="explore-title">Encontre seu <em>material.</em></h2><p>Prefere navegar? Escolha uma área, encontre o assunto e abra a aula ou lista de que precisa.</p></div><span class="home-explore-decoration" aria-hidden="true">↗</span></div><div id="explore-content"></div></section>'+
  '</div></main>'+footer();
+
+ // A demonstração é um tour visual, não uma nova caixa de busca.
+ var hero=document.querySelector('.home-hero');
+ var heroArt=document.querySelector('.home-hero-art');
+ var preview=document.getElementById('discovery-preview');
+ var previewStage=document.getElementById('preview-stage');
+ var previewItems=[
+  {kind:'AULA',code:'A17',title:'Raízes e Fórmula Resolutiva',desc:'Bhaskara sem enrolação. Aprenda no seu ritmo.',math:'x² − 5x + 6 = 0',note:'raízes: 2 e 3',action:'Abrir esta aula',href:'/aulas/A17/'},
+  {kind:'LISTA EM PDF',code:'A17',title:'12 questões para praticar',desc:'Lista autoral com gabarito comentado.',math:'Δ = b² − 4ac',note:'PDF de graça · sem cadastro',action:'Baixar a lista',href:'/pdfs/lista-A17.pdf',pdf:true},
+  {kind:'QUIZ',code:'C20',title:'Teste sua probabilidade',desc:'Resolva questões com feedback imediato.',math:'P(A) = casos favoráveis / possíveis',note:'Quiz rápido da aula C20',action:'Fazer o quiz',href:'/aulas/C20/?tab=quiz'}
+ ];
+ var previewIndex=0,previewTimer=null;
+ var reducedPreviewMotion=typeof window.matchMedia==='function'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function showPreview(index){
+  previewIndex=(index+previewItems.length)%previewItems.length;
+  var item=previewItems[previewIndex];
+  document.getElementById('preview-kind').textContent=item.kind;
+  document.getElementById('preview-code').textContent=item.code;
+  document.getElementById('preview-title').textContent=item.title;
+  document.getElementById('preview-desc').textContent=item.desc;
+  document.getElementById('preview-math').textContent=item.math;
+  document.getElementById('preview-equation-note').textContent=item.note;
+  document.getElementById('preview-action').textContent=item.action;
+  document.getElementById('preview-count').textContent=String(previewIndex+1).padStart(2,'0')+' / 03';
+  var action=document.getElementById('preview-open');
+  action.href=item.href;
+  if(item.pdf){action.target='_blank';action.rel='noopener noreferrer'}
+  else{action.removeAttribute('target');action.removeAttribute('rel')}
+  preview.dataset.kind=item.pdf?'pdf':previewIndex===2?'quiz':'aula';
+  preview.querySelectorAll('button[data-preview]').forEach(function(b){
+   var selected=Number(b.dataset.preview)===previewIndex;
+   b.classList.toggle('active',selected);
+   b.setAttribute('aria-pressed',String(selected));
+  });
+  if(!reducedPreviewMotion){
+   previewStage.classList.remove('preview-transition');
+   void previewStage.offsetWidth;
+   previewStage.classList.add('preview-transition');
+  }
+ }
+ function resetPreviewAutoplay(){
+  if(previewTimer!==null)window.clearInterval(previewTimer);
+  previewTimer=null;
+  if(reducedPreviewMotion)return;
+  previewTimer=window.setInterval(function(){
+   if(document.hidden||heroArt.hidden||preview.matches(':hover')||preview.contains(document.activeElement)||document.getElementById('hero-search').value.trim())return;
+   showPreview(previewIndex+1);
+  },5600);
+ }
+ preview.querySelectorAll('button[data-preview]').forEach(function(b){
+  b.addEventListener('click',function(){showPreview(Number(b.dataset.preview));resetPreviewAutoplay()});
+ });
+ resetPreviewAutoplay();
+
  var input=document.getElementById('hero-search');
  var clearBtn=document.getElementById('clear-search');
  var quick=document.getElementById('quick-hits');
@@ -240,6 +305,7 @@ function home(){
   search.query=q;search.scope='tudo';search.shown=12;input.value=q;
   clearBtn.hidden=!q.trim();
   var searching=!!q.trim();main.hidden=searching;resultArea.hidden=!searching;
+  heroArt.hidden=searching;hero.classList.toggle('is-searching',searching);
   if(searching){renderSearch();renderQuick()}else renderQuick();
   if(!fromHistory){
    var u=new URL(location.href);
