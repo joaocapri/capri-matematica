@@ -86,9 +86,11 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelectorAll('.area-tile').length,9);
  assert.equal(d.querySelectorAll('input[type=search]').length,0,'sem caixa de busca repetida');
  assert.ok(d.querySelector('.explorer-back a[href="/"]'));
+ assert.equal(d.querySelector('.explorer-search-link'),null,'Sem botão extra Pesquisar na biblioteca');
  dom.window.close();
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/?area=funcoes'));
  assert.equal(d.querySelectorAll('.browse-topic').length,6);
+ assert.equal(d.querySelector('.explorer-search-link'),null,'Sem botão Pesquisar ao abrir Fundamentos ou Funções');
  assert.ok(d.querySelector('a.browse-topic[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
  assert.ok(d.querySelector('a.explorer-trail[href="/explorar/"]')||d.querySelector('.explorer-trail a[href="/explorar/"]'));
  dom.window.close();
@@ -104,6 +106,25 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  dom.window.close();
 
  ({w,d,dom}=await boot('https://matmatmat.test/aulas/A17/'));
+ assert.equal(d.querySelector('#btn-share').textContent,'↗ Compartilhe essa aula');
+ assert.equal(d.querySelector('#btn-share').getAttribute('aria-expanded'),'false');
+ assert.equal(d.querySelector('#lesson-share-options').hidden,true,'Sem abrir o fallback antecipadamente');
+ assert.equal(d.querySelector('#btn-copy'),null,'Botão antigo removido');
+ click(w,d.querySelector('#btn-share'));
+ assert.equal(d.querySelector('#lesson-share-options').hidden,false,'Fallback visível sem Web Share');
+ var whatsapp=new URL(d.querySelector('#share-whatsapp').href);
+ assert.equal(whatsapp.hostname,'wa.me');
+ assert.match(whatsapp.searchParams.get('text'),/Raízes e Fórmula Resolutiva/);
+ assert.match(whatsapp.searchParams.get('text'),/https:\/\/matmatmat\.test\/aulas\/A17\//);
+ click(w,d.querySelector('#share-close'));
+ assert.ok(d.querySelector('#lesson-share-options').hidden);
+ var nativeSharePayload;
+ w.navigator.share=function(payload){nativeSharePayload=payload;return Promise.resolve()};
+ click(w,d.querySelector('#btn-share'));
+ assert.equal(nativeSharePayload.title,'Raízes e Fórmula Resolutiva | MAT MAT MAT!');
+ assert.match(nativeSharePayload.text,/Olha essa aula de matemática/);
+ assert.equal(nativeSharePayload.url,'https://matmatmat.test/aulas/A17/');
+ assert.equal(d.querySelector('#lesson-share-options').hidden,true);
  assert.equal(d.querySelectorAll('.tab').length,4);
  assert.ok(d.querySelector('a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
  assert.equal(d.querySelector('.tab.active').dataset.tab,'arquivos');

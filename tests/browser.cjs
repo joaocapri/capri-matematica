@@ -41,6 +41,7 @@ async function checkWidth(page,label){
   await page.locator('a.area-tile[href="/explorar/?area=funcoes"]').click();
   await page.locator('a.browse-topic[href="/explorar/?area=funcoes&assunto=fu-quadratica"]').waitFor();
   assert.equal(await page.locator('input[type=search]').count(),0,'explorador sem busca duplicada');
+  assert.equal(await page.locator('.explorer-search-link').count(),0,'Sem botão Pesquisar nas páginas de área');
   await checkWidth(page,config.name+' assuntos');
   await page.screenshot({path:'screenshots/'+config.name+'-subjects.png',fullPage:true});
   await page.locator('a.browse-topic[href="/explorar/?area=funcoes&assunto=fu-quadratica"]').click();
@@ -52,6 +53,23 @@ async function checkWidth(page,label){
   await page.waitForURL('**/aulas/A17/');
   await page.locator('.contentpanel .tab').first().waitFor();
   assert.equal(await page.locator('.contentpanel .tab').count(),4);
+  assert.equal(await page.locator('#btn-share').textContent(),'↗ Compartilhe essa aula');
+  await page.evaluate(()=>Object.defineProperty(navigator,'share',{configurable:true,value:undefined}));
+  await page.locator('#btn-share').click();
+  await page.locator('#lesson-share-options').waitFor({state:'visible'});
+  assert.match(await page.locator('#share-whatsapp').getAttribute('href'),/^https:\/\/wa\.me\/\?text=/);
+  await page.locator('#share-close').click();
+  assert.equal(await page.locator('#lesson-share-options').isVisible(),false);
+  await page.evaluate(()=>{
+    window.__lastSharePayload=null;
+    Object.defineProperty(navigator,'share',{configurable:true,value:function(payload){window.__lastSharePayload=payload;return Promise.resolve()}});
+  });
+  await page.locator('#btn-share').click();
+  const sharePayload=await page.evaluate(()=>window.__lastSharePayload);
+  assert.equal(sharePayload.url,BASE+'/aulas/A17/');
+  assert.match(sharePayload.title,/MAT MAT MAT!/);
+  assert.match(sharePayload.text,/Olha essa aula de matemática/);
+
   await checkWidth(page,config.name+' aula');
   await page.screenshot({path:'screenshots/'+config.name+'-lesson.png',fullPage:true});
   await page.goto(BASE+'/teste-seu-nivel/',{waitUntil:'domcontentloaded'});

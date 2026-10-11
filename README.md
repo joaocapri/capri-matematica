@@ -93,3 +93,7 @@ Atualização visual: nenhuma ilustração, carousel ou mini-tour abaixo do camp
 
 ## Exploração enxuta (atualização da home)
 A seção **Toda a matemática, organizada / Encontre seu material.** apresenta imediatamente os 9 cartões de áreas, sem flecha decorativa, parágrafo introdutório, título extra de seleção, Favoritas ou Todas as 144 na home. As rotas `/explorar/?favoritos=1` e `/explorar/?todas=1` seguem disponíveis no catálogo dedicado, e os cartões das áreas mantêm seus destinos.
+
+
+## Compartilhamento de aulas e catálogo limpo
+Removido o botão redundante **Pesquisar** das páginas de áreas e assuntos (`/explorar/`). Na aula, **Compartilhe essa aula** abre o menu nativo do celular (`navigator.share`), com nome da aula, mensagem curta e URL pública. O compartilhamento é disparado no próprio toque, sem etapas intermediárias. Em navegadores sem Web Share API ou que a bloqueiem, aparecem opções de WhatsApp e de cópia integral da mensagem. Cancelar o compartilhamento nativo não abre o fallback.
