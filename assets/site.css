@@ -639,3 +639,20 @@ body{background:var(--pale)}
 @media(max-width:650px){
  .home-explore .home-section-intro{margin-bottom:20px}
 }
+
+/* Compartilhar aula: opções de WhatsApp e cópia quando não há Web Share API */
+.lesson-share-options{margin:-7px 0 21px;padding:17px 19px;border:1.5px solid #d9cde8;border-radius:16px;background:#faf6ff;box-shadow:3px 4px 0 #ece4f5}
+.lesson-share-options[hidden],.share-manual[hidden]{display:none!important}
+.lesson-share-options-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lesson-share-options-head strong{font:700 17px 'Space Grotesk',system-ui,sans-serif}
+.lesson-share-options-head button{border:0;border-radius:8px;background:#e9e0f3;color:#47278c;font-size:23px;line-height:1;padding:4px 9px;cursor:pointer}
+.lesson-share-options>p{margin:9px 0 12px;font-size:12px;color:#645975;line-height:1.55}
+.lesson-share-links{display:flex;flex-wrap:wrap;gap:9px}
+.lesson-share-links a,.lesson-share-links button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 14px;border-radius:10px;border:1.5px solid #291b4d;background:#d6fa74;color:#291b4d;font-size:12px;font-weight:900;text-decoration:none;cursor:pointer}
+.lesson-share-links button{background:#fffefa;border-color:#d4c9e5}
+.lesson-share-links a:hover,.lesson-share-links button:hover{background:#ede4fc}
+.lesson-share-links a:focus-visible,.lesson-share-links button:focus-visible{outline:3px solid #ff9376;outline-offset:3px}
+.lesson-share-options .lesson-share-status{font-weight:800;color:#4b288f;margin:10px 0 0}
+.share-manual{width:100%;min-height:74px;resize:vertical;border:1px solid #b4a4d1;border-radius:9px;background:white;color:#291b4d;padding:10px;margin-top:8px;font-size:12px}
+.explorer-title{justify-content:flex-start}
+@media(max-width:650px){.lesson-share-options{padding:15px 14px}.lesson-share-links a,.lesson-share-links button{flex:1 1 100%}}

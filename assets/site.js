@@ -286,7 +286,7 @@ function explorePage(){
  var query=new URLSearchParams(location.search),area=SUBJECT_AREAS.find(function(a){return a.id===query.get('area')});
  var topic=area&&SUBJECT_TOPICS.find(function(t){return t.id===query.get('assunto')&&t.area===area.id});
  var favorites=query.has('favoritos'),all=query.has('todas'),limit=24;
- document.getElementById('app').innerHTML=header()+'<main class="shell explorer-page"><div class="explorer-back"><a href="/">← Início</a><span>MAT MAT MAT! / CATÁLOGO</span></div><div class="explorer-title"><div><span class="home-section-label">✳ BIBLIOTECA DE MATEMÁTICA</span><h1 id="explorer-heading">Explorar matemática</h1><p id="explorer-description">Escolha uma área para começar.</p></div><a class="explorer-search-link" href="/">⌕ Pesquisar ↗</a></div><div id="explorer-content"></div></main>'+footer();
+ document.getElementById('app').innerHTML=header()+'<main class="shell explorer-page"><div class="explorer-back"><a href="/">← Início</a><span>MAT MAT MAT! / CATÁLOGO</span></div><div class="explorer-title"><div><span class="home-section-label">✳ BIBLIOTECA DE MATEMÁTICA</span><h1 id="explorer-heading">Explorar matemática</h1><p id="explorer-description">Escolha uma área para começar.</p></div></div><div id="explorer-content"></div></main>'+footer();
  function trail(items){return '<nav class="explorer-trail" aria-label="Caminho do assunto"><a href="/explorar/">Todas as áreas</a>'+items.map(function(it){return '<span>›</span>'+(it.url?'<a href="'+it.url+'">'+esc(it.name)+'</a>':'<strong aria-current="page">'+esc(it.name)+'</strong>')}).join('')+'</nav>'}
  function card(a){var n=data.lessons.filter(function(l){return subjectContains(a,l)}).length;return '<a class="area-tile" href="/explorar/?area='+a.id+'"><span class="area-tile-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="area-tile-name">'+esc(a.name)+'</span><span class="area-tile-subtitle">'+esc(a.description)+'</span><span class="area-tile-foot"><span>'+n+' aulas</span><span class="area-tile-go">↗</span></span></a>'}
  function lessonRow(l,full){var a=areaForLesson(l);return '<a class="browse-lesson-row" href="'+href(l)+'"><span class="browse-lesson-number">'+l.id+'</span><span class="browse-lesson-copy"><strong>'+esc(l.title)+'</strong><small>'+esc(l.summary||'Abra a aula.')+'</small>'+(full?'<span class="browse-lesson-meta">'+esc(a.name)+' · '+esc(topicInfo(subjectTopic(l,a)).title)+'</span>':'')+'</span><span class="browse-lesson-right">'+(done.has(l.id)?'<span class="browse-studied">✓ Estudada</span>':'<span class="browse-enter">↗</span>')+'</span></a>'}
@@ -357,7 +357,7 @@ async function lessonPage(){
  title(l.title);
  var content=null;try{var r=await fetch('/conteudos/'+id+'.json');if(r.ok)content=await r.json()}catch(e){}
  var app=document.getElementById('app');
- app.innerHTML=header()+'<main class="shell"><div class="crumbs"><a href="/">Início</a> / <a href="/explorar/?area='+subjectArea.id+'">'+esc(subjectArea.name)+'</a> / <a href="/explorar/?area='+subjectArea.id+'&assunto='+topicId+'">'+esc(topic.title)+'</a> / '+id+'</div><section class="lesson-hero front-'+esc(l.front)+'"><div class="code">✦ '+esc(subjectArea.name)+' · '+esc(topic.title)+' · AULA '+id+'</div><h1>'+esc(l.title)+'</h1><p>'+esc(l.summary||'Seu roteiro de estudos começa aqui. Em breve, novas explicações e materiais.')+'</p><div class="spark">∑</div></section><div class="lesson-main"><aside class="sidepanel"><h3>✦ Neste assunto</h3><p>'+esc(topic.title)+'</p><div class="sidelist">'+near.map(function(x){return '<a class="sidelesson '+(x.id===id?'active':'')+'" href="'+href(x)+'"><small>'+x.id+'</small>'+esc(x.title)+'</a>'}).join('')+'</div></aside><section><div class="actions"><button class="action primary" id="btn-done">'+(done.has(id)?'✓ Aula estudada':'✓ Marcar como estudada')+'</button><button class="action" id="btn-fav">'+(saved.has(id)?'♥ Salvo':'♡ Favoritar')+'</button><button class="action" id="btn-copy">↗ Copiar link</button></div><div class="material-spotlight"><div class="material-spotlight-symbol">📄</div><div><strong>Veio atrás de listas?</strong><p>'+(lessonPdfFiles().length||(content&&content.lista&&content.lista.length)?'Materiais gratuitos disponíveis para baixar.':'Confira listas e materiais deste assunto.')+'</p></div><button type="button" class="material-spotlight-button" id="open-materials">Listas e PDFs ↗</button></div><article class="contentpanel"><div class="tabs"><button class="tab tab-featured" data-tab="arquivos">📄 Listas e PDFs</button><button class="tab" data-tab="teoria">Teoria</button><button class="tab" data-tab="quiz">Quiz ⚡</button><button class="tab" data-tab="videos">Vídeos ▶</button></div><div id="tab-body"></div></article><div class="prevnext">'+(nearIndex>0?'<a href="'+href(near[nearIndex-1])+'">← Anterior: '+esc(short(near[nearIndex-1].title,38))+'</a>':'<span></span>')+(nearIndex<near.length-1?'<a href="'+href(near[nearIndex+1])+'">Próxima: '+esc(short(near[nearIndex+1].title,38))+' →</a>':'')+'</div></section></div></main>'+footer();
+ app.innerHTML=header()+'<main class="shell"><div class="crumbs"><a href="/">Início</a> / <a href="/explorar/?area='+subjectArea.id+'">'+esc(subjectArea.name)+'</a> / <a href="/explorar/?area='+subjectArea.id+'&assunto='+topicId+'">'+esc(topic.title)+'</a> / '+id+'</div><section class="lesson-hero front-'+esc(l.front)+'"><div class="code">✦ '+esc(subjectArea.name)+' · '+esc(topic.title)+' · AULA '+id+'</div><h1>'+esc(l.title)+'</h1><p>'+esc(l.summary||'Seu roteiro de estudos começa aqui. Em breve, novas explicações e materiais.')+'</p><div class="spark">∑</div></section><div class="lesson-main"><aside class="sidepanel"><h3>✦ Neste assunto</h3><p>'+esc(topic.title)+'</p><div class="sidelist">'+near.map(function(x){return '<a class="sidelesson '+(x.id===id?'active':'')+'" href="'+href(x)+'"><small>'+x.id+'</small>'+esc(x.title)+'</a>'}).join('')+'</div></aside><section><div class="actions"><button class="action primary" id="btn-done">'+(done.has(id)?'✓ Aula estudada':'✓ Marcar como estudada')+'</button><button class="action" id="btn-fav">'+(saved.has(id)?'♥ Salvo':'♡ Favoritar')+'</button><button class="action" type="button" id="btn-share" aria-controls="lesson-share-options" aria-expanded="false">↗ Compartilhe essa aula</button></div><div class="lesson-share-options" id="lesson-share-options" hidden><div class="lesson-share-options-head"><strong>Compartilhe com alguém</strong><button type="button" id="share-close" aria-label="Fechar opções de compartilhamento">×</button></div><p>Envie esta aula para sua turma ou para um amigo.</p><div class="lesson-share-links"><a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer">↗ Enviar pelo WhatsApp</a><button id="share-copy" type="button">Copiar mensagem e link</button></div><p class="lesson-share-status" id="share-status" aria-live="polite"></p><textarea id="share-manual" class="share-manual" readonly hidden aria-label="Mensagem para copiar manualmente"></textarea></div><div class="material-spotlight"><div class="material-spotlight-symbol">📄</div><div><strong>Veio atrás de listas?</strong><p>'+(lessonPdfFiles().length||(content&&content.lista&&content.lista.length)?'Materiais gratuitos disponíveis para baixar.':'Confira listas e materiais deste assunto.')+'</p></div><button type="button" class="material-spotlight-button" id="open-materials">Listas e PDFs ↗</button></div><article class="contentpanel"><div class="tabs"><button class="tab tab-featured" data-tab="arquivos">📄 Listas e PDFs</button><button class="tab" data-tab="teoria">Teoria</button><button class="tab" data-tab="quiz">Quiz ⚡</button><button class="tab" data-tab="videos">Vídeos ▶</button></div><div id="tab-body"></div></article><div class="prevnext">'+(nearIndex>0?'<a href="'+href(near[nearIndex-1])+'">← Anterior: '+esc(short(near[nearIndex-1].title,38))+'</a>':'<span></span>')+(nearIndex<near.length-1?'<a href="'+href(near[nearIndex+1])+'">Próxima: '+esc(short(near[nearIndex+1].title,38))+' →</a>':'')+'</div></section></div></main>'+footer();
  var area=document.getElementById('tab-body');
 
  function lessonPdfFiles(){
@@ -383,7 +383,41 @@ async function lessonPage(){
  document.querySelectorAll('[data-tab]').forEach(function(el){el.addEventListener('click',function(){document.querySelectorAll('[data-tab]').forEach(function(x){x.classList.toggle('active',x===el)});renderTab(el.dataset.tab)})});
  document.getElementById('btn-fav').addEventListener('click',function(){saveAction(l,this)});
  document.getElementById('btn-done').addEventListener('click',function(){finishAction(l,this)});
- document.getElementById('btn-copy').addEventListener('click',async function(){try{await navigator.clipboard.writeText(location.href);this.textContent='✓ Link copiado'}catch(e){this.textContent='Copie o endereço acima'}});
+ // Chamada nativa feita diretamente pelo gesto (sem await antecipado).
+ var shareBtn=document.getElementById('btn-share');
+ var shareOptions=document.getElementById('lesson-share-options');
+ var shareStatus=document.getElementById('share-status');
+ var shareManual=document.getElementById('share-manual');
+ var shareUrl=new URL(href(l),location.origin).href;
+ var shareText='Olha essa aula de matemática no MAT MAT MAT!: '+l.title;
+ var shareMessage=shareText+'\n'+shareUrl;
+ document.getElementById('share-whatsapp').href='https://wa.me/?text='+encodeURIComponent(shareMessage);
+ function setShareOptions(visible){
+  shareOptions.hidden=!visible;
+  shareBtn.setAttribute('aria-expanded',String(visible));
+  if(!visible){shareStatus.textContent='';shareManual.hidden=true}
+ }
+ shareBtn.addEventListener('click',function(){
+  if(typeof navigator.share==='function'){
+   try{
+    var result=navigator.share({title:l.title+' | MAT MAT MAT!',text:shareText,url:shareUrl});
+    Promise.resolve(result).then(function(){setShareOptions(false)}).catch(function(err){
+     if(!err||err.name!=='AbortError')setShareOptions(true);
+    });
+   }catch(err){if(!err||err.name!=='AbortError')setShareOptions(true)}
+  }else setShareOptions(shareOptions.hidden);
+ });
+ document.getElementById('share-close').addEventListener('click',function(){setShareOptions(false);shareBtn.focus()});
+ document.getElementById('share-copy').addEventListener('click',function(){
+  function copied(){shareStatus.textContent='✓ Mensagem e link copiados!';shareManual.hidden=true}
+  function manual(){shareStatus.textContent='Selecione e copie a mensagem abaixo:';shareManual.value=shareMessage;shareManual.hidden=false;shareManual.focus();shareManual.select()}
+  if(navigator.clipboard&&typeof navigator.clipboard.writeText==='function'){
+   navigator.clipboard.writeText(shareMessage).then(copied).catch(manual);
+  }else{
+   shareManual.value=shareMessage;shareManual.hidden=false;shareManual.select();
+   try{if(document.execCommand&&document.execCommand('copy'))copied();else manual()}catch(e){manual()}
+  }
+ });
  document.getElementById('open-materials').addEventListener('click',function(){switchTab('arquivos')});
  function switchTab(tab){document.querySelectorAll('[data-tab]').forEach(function(x){x.classList.toggle('active',x.dataset.tab===tab)});renderTab(tab)}
  var requested=new URLSearchParams(location.search).get('tab');
