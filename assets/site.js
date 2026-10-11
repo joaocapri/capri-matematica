@@ -279,6 +279,44 @@ function home(){
  renderBrowse();loadUrl();
 }
 
+
+function explorePage(){
+ title('Explorar assuntos');
+ var query=new URLSearchParams(location.search),area=SUBJECT_AREAS.find(function(a){return a.id===query.get('area')});
+ var topic=area&&SUBJECT_TOPICS.find(function(t){return t.id===query.get('assunto')&&t.area===area.id});
+ var favorites=query.has('favoritos'),all=query.has('todas'),limit=24;
+ document.getElementById('app').innerHTML=header()+'<main class="shell explorer-page"><div class="explorer-back"><a href="/">← Início</a><span>MAT MAT MAT / CATÁLOGO</span></div><div class="explorer-title"><div><span class="home-section-label">✳ BIBLIOTECA DE MATEMÁTICA</span><h1 id="explorer-heading">Explorar matemática</h1><p id="explorer-description">Escolha uma área para começar.</p></div><a class="explorer-search-link" href="/">⌕ Pesquisar ↗</a></div><div id="explorer-content"></div></main>'+footer();
+ function trail(items){return '<nav class="explorer-trail" aria-label="Caminho do assunto"><a href="/explorar/">Todas as áreas</a>'+items.map(function(it){return '<span>›</span>'+(it.url?'<a href="'+it.url+'">'+esc(it.name)+'</a>':'<strong aria-current="page">'+esc(it.name)+'</strong>')}).join('')+'</nav>'}
+ function card(a){var n=data.lessons.filter(function(l){return subjectContains(a,l)}).length;return '<a class="area-tile" href="/explorar/?area='+a.id+'"><span class="area-tile-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="area-tile-name">'+esc(a.name)+'</span><span class="area-tile-subtitle">'+esc(a.description)+'</span><span class="area-tile-foot"><span>'+n+' aulas</span><span class="area-tile-go">↗</span></span></a>'}
+ function lessonRow(l,full){var a=areaForLesson(l);return '<a class="browse-lesson-row" href="'+href(l)+'"><span class="browse-lesson-number">'+l.id+'</span><span class="browse-lesson-copy"><strong>'+esc(l.title)+'</strong><small>'+esc(l.summary||'Abra a aula.')+'</small>'+(full?'<span class="browse-lesson-meta">'+esc(a.name)+' · '+esc(topicInfo(subjectTopic(l,a)).title)+'</span>':'')+'</span><span class="browse-lesson-right">'+(done.has(l.id)?'<span class="browse-studied">✓ Estudada</span>':'<span class="browse-enter">↗</span>')+'</span></a>'}
+ function list(items,label,full){return '<div class="browse-list-intro"><h3>'+esc(label)+'</h3><p>'+items.length+' aulas</p></div><div class="browse-lesson-list">'+(items.length?items.slice(0,limit).map(function(l){return lessonRow(l,full)}).join(''):'<div class="browse-empty">Você ainda não favoritou nenhuma aula.</div>')+'</div>'+(limit<items.length?'<button class="browse-more" id="show-more-explorer">Mostrar mais aulas ↓</button>':'')}
+ function render(){
+  var name='Escolha uma área',description='São 9 áreas e 38 assuntos. Vá direto ao que procura.',html='';
+  if(favorites||all){
+   name=favorites?'Suas favoritas':'Todas as aulas';description=favorites?'Seus conteúdos salvos.':'Todas as 144 aulas em um só lugar.';
+   html=trail([{name:name}])+list(favorites?data.lessons.filter(function(l){return saved.has(l.id)}):data.lessons,name,true);
+  }else if(topic){
+   name=topic.title;description=topic.description;
+   var ls=data.lessons.filter(function(l){return subjectTopic(l,areaForLesson(l))===topic.id});
+   html=trail([{name:area.name,url:'/explorar/?area='+area.id},{name:topic.title}])+'<div class="explorer-step">ETAPA 3 DE 3 · ESCOLHA UMA AULA</div>'+topicPdfPanel('assunto',topic.id,'Listas gerais deste assunto')+list(ls,'Aulas de '+topic.title,false);
+  }else if(area){
+   name=area.name;description=area.description;
+   var ts=SUBJECT_TOPICS.filter(function(t){return t.area===area.id});
+   html=trail([{name:area.name}])+'<div class="explorer-step">ETAPA 2 DE 3 · ESCOLHA UM ASSUNTO</div>'+topicPdfPanel('area',area.id,'Listas gerais da área')+'<div class="browse-topic-grid">'+ts.map(function(t){
+    var n=data.lessons.filter(function(l){return subjectTopic(l,areaForLesson(l))===t.id}).length;
+    return '<a class="browse-topic" href="/explorar/?area='+area.id+'&assunto='+t.id+'"><span class="browse-topic-icon">'+esc(t.icon)+'</span><span class="browse-topic-copy"><strong>'+esc(t.title)+'</strong><small>'+esc(t.description)+'</small><span class="browse-topic-count">'+n+' aulas</span></span><span class="browse-topic-next">↗</span></a>'
+   }).join('')+'</div>';
+  }else{
+   html='<div class="explorer-toolbar"><span>ETAPA 1 DE 3 · ESCOLHA UMA ÁREA</span><div><a href="/explorar/?favoritos=1">♡ Favoritas</a><a href="/explorar/?todas=1">Todas as 144 ↗</a></div></div><div class="area-grid">'+SUBJECT_AREAS.map(card).join('')+'</div>';
+  }
+  document.getElementById('explorer-heading').textContent=name;
+  document.getElementById('explorer-description').textContent=description;
+  document.getElementById('explorer-content').innerHTML=html;
+  var more=document.getElementById('show-more-explorer');if(more)more.addEventListener('click',function(){limit+=24;render()});
+ }
+ render();
+}
+
 function saveAction(l,btn){if(saved.has(l.id))saved.delete(l.id);else saved.add(l.id);store('capri-favoritos',saved);btn.textContent=(saved.has(l.id)?'♥ Salvo':'♡ Favoritar');btn.classList.toggle('liked',saved.has(l.id))}
 function finishAction(l,btn){if(done.has(l.id))done.delete(l.id);else done.add(l.id);store('capri-estudadas',done);btn.textContent=(done.has(l.id)?'✓ Aula estudada':'✓ Marcar como estudada');btn.classList.toggle('liked',done.has(l.id))}
 async function lessonPage(){
@@ -338,6 +376,6 @@ function initQuiz(questions,lesson){
  draw();
 }
 
-async function init(){try{var r=await fetch('/data/aulas.json');if(!r.ok)throw Error('Catálogo não encontrado');data=await r.json();try{var m=await fetch('/data/materiais.json');if(m.ok)materialIndex=await m.json()}catch(e){materialIndex=[]}if(document.body.dataset.lesson)await lessonPage();else home()}catch(e){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Não foi possível carregar o catálogo','Recarregue a página para tentar novamente.')+'</main>'+footer();console.error(e)}}
+async function init(){try{var r=await fetch('/data/aulas.json');if(!r.ok)throw Error('Catálogo não encontrado');data=await r.json();try{var m=await fetch('/data/materiais.json');if(m.ok)materialIndex=await m.json()}catch(e){materialIndex=[]}if(document.body.dataset.lesson)await lessonPage();else if(document.body.dataset.view==='explorar')explorePage();else home()}catch(e){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Não foi possível carregar o catálogo','Recarregue a página para tentar novamente.')+'</main>'+footer();console.error(e)}}
 init();
 })();
