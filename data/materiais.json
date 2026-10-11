@@ -11,6 +11,16 @@
         "titulo": "Gabarito comentado A17",
         "tipo": "gabarito",
         "url": "/pdfs/gabarito-A17.pdf"
+      },
+      {
+        "titulo": "Lista de fixação A17 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A17.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A17 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A17.pdf"
       }
     ],
     "tipo": "aula"

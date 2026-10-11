@@ -4,7 +4,8 @@
 Fonte: materiais-fonte/A17.yaml (uma por aula), com a matemática em LaTeX.
 Saída: pdfs/fixacao-A17.pdf e pdfs/vestibular-A17.pdf
 
-Uso:  python3 scripts/gerar_listas.py A17 [B05 ...]
+Uso:  python3 scripts/gerar_listas.py A17 [B05 ...] [--publicar]
+      --publicar registra os PDFs na biblioteca (data/materiais.json).
 Requer XeLaTeX (TeX Live), as fontes Inter e PyYAML.
 """
 import json
@@ -284,7 +285,36 @@ def gerar(codigo):
     return saidas
 
 
+TITULOS = {
+    "fixacao": "Lista de fixação {id} — 20 questões + gabarito resolvido",
+    "vestibular": "Lista de vestibular {id} — 20 questões + gabarito resolvido",
+}
+
+
+def publicar(codigo, pdfs):
+    """Registra os PDFs da aula em data/materiais.json (fonte de verdade da biblioteca)."""
+    idx_path = ROOT / "data" / "materiais.json"
+    idx = json.loads(idx_path.read_text(encoding="utf-8"))
+    entrada = next((e for e in idx if e.get("tipo") == "aula" and e.get("aula") == codigo), None)
+    if entrada is None:
+        entrada = {"aula": codigo, "arquivos": [], "tipo": "aula"}
+        idx.append(entrada)
+        idx.sort(key=lambda e: (e.get("tipo") != "aula", e.get("aula") or e.get("assunto") or e.get("area") or ""))
+    urls = {a["url"] for a in entrada["arquivos"]}
+    for pdf in pdfs:
+        tipo = pdf.stem.split("-")[0]
+        url = f"/pdfs/{pdf.name}"
+        if url not in urls:
+            entrada["arquivos"].append({"titulo": TITULOS[tipo].format(id=codigo), "tipo": "lista", "url": url})
+    idx_path.write_text(json.dumps(idx, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 if __name__ == "__main__":
-    for c in sys.argv[1:] or ["A17"]:
-        for s in gerar(c.upper()):
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    for c in args or ["A17"]:
+        pdfs = gerar(c.upper())
+        for s in pdfs:
             print("gerado:", s.relative_to(ROOT))
+        if "--publicar" in sys.argv:
+            publicar(c.upper(), pdfs)
+            print("publicado em data/materiais.json:", c.upper())
