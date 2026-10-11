@@ -34,6 +34,21 @@ function click(w,e){assert.ok(e,'elemento clicável ausente');e.dispatchEvent(ne
 function type(w,e,value){assert.ok(e,'campo ausente');e.value=value;e.dispatchEvent(new w.Event('input',{bubbles:true}));}
 function visible(e){return !!e&&!e.hidden}
 (async()=>{
+  // A identidade também está nos metadados de todas as páginas estáticas.
+  const homepage=readFileSync('index.html','utf8');
+  assert.match(homepage,/<title>MAT MAT MAT/,'Título novo na home');
+  assert.match(homepage,/assets\/favicon\.svg/,'Favicon da marca');
+  for(const entry of curriculum.lessons){
+    const html=readFileSync('aulas/'+entry.id+'/index.html','utf8');
+    assert.ok(html.includes('data-lesson="'+entry.id+'"'),'Código correto no HTML '+entry.id);
+    assert.ok(html.includes('| MAT MAT MAT</title>'),'Página individual renomeada '+entry.id);
+    assert.ok(html.includes('href="/assets/favicon.svg"'),'Favicon em '+entry.id);
+    assert.ok(!html.includes('Capri Matemática'),'Marca antiga não aparece em '+entry.id);
+  }
+  const printPage=readFileSync('imprimir/index.html','utf8');
+  assert.match(printPage,/MAT MAT MAT/,'Nome novo também nas impressões');
+  assert.match(readFileSync('assets/print.js','utf8'),/mat-print-logo/,'Logo de impressão empilhado');
+
   assert.equal(curriculum.lessons.length,144,'Currículo de 144 aulas');
   const pair = await boot(); let {dom,w,d}=pair;
   assert.equal(d.querySelectorAll('input[type="search"]').length,1,'Uma única busca na home');

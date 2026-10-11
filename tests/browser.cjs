@@ -39,6 +39,7 @@ async function checkWidth(page,name){
   assert.equal(await page.locator('input[type=search]').count(),1,'Somente uma busca');
   assert.equal(await page.locator('.area-tile').count(),9);
   assert.equal(await page.locator('.mat-logo span').count(),6,'Logo empilhado em header e footer');
+  assert.match(await page.title(),/MAT MAT MAT/,'Título da home');
   assert.equal(await page.locator('.home-popular button').count(),0,'Hero sem excesso de textos');
   assert.equal(await page.locator('#materiais').count(),0,'PDF feature removed');
   await checkWidth(page,setting.name+' home');
@@ -62,6 +63,7 @@ async function checkWidth(page,name){
   await page.goto(BASE+'/aulas/A17/',{waitUntil:'domcontentloaded',timeout:18000});
   await page.locator('.contentpanel .tab').first().waitFor();
   assert.equal(await page.locator('.contentpanel .tab').count(),4,'Quatro abas nas aulas');
+  assert.match(await page.title(),/MAT MAT MAT/,'Título da aula');
   assert.equal(await page.locator('[data-tab="resumo"]').count(),0,'Visão geral removida');
   await checkWidth(page,setting.name+' pagina de aula');
   await page.screenshot({path:'screenshots/'+setting.name+'-lesson.png',fullPage:true});
