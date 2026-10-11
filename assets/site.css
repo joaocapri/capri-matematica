@@ -656,3 +656,53 @@ body{background:var(--pale)}
 .share-manual{width:100%;min-height:74px;resize:vertical;border:1px solid #b4a4d1;border-radius:9px;background:white;color:#291b4d;padding:10px;margin-top:8px;font-size:12px}
 .explorer-title{justify-content:flex-start}
 @media(max-width:650px){.lesson-share-options{padding:15px 14px}.lesson-share-links a,.lesson-share-links button{flex:1 1 100%}}
+
+
+/* Toolbar de aula: 3 ações sutis, sem botões gigantes ou ícones-emoji */
+.lesson-tools.actions{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;
+  margin:0 0 18px;padding:5px;
+  border:1px solid #e2dbe9;border-radius:16px;
+  background:#faf8fd;box-shadow:0 3px 0 #eee9f4;
+}
+.lesson-tools .lesson-tool{
+  position:relative;display:flex;align-items:center;justify-content:center;gap:9px;
+  min-width:0;min-height:47px;padding:10px 7px;
+  border:0;border-radius:11px;background:transparent;color:#604b78;
+  font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:800;
+  line-height:1.25;text-align:center;cursor:pointer;
+  transition:background .16s ease,color .16s ease;
+}
+.lesson-tools .lesson-tool:not(:first-child)::before{
+  content:"";position:absolute;left:-3px;top:11px;bottom:11px;width:1px;
+  background:#e7dfed;pointer-events:none;
+}
+.lesson-tools .lesson-tool svg{
+  width:19px;height:19px;flex-shrink:0;stroke:currentColor;
+}
+.lesson-tools .lesson-tool:hover{background:#f0eafa;color:#45228f}
+.lesson-tools .lesson-tool:focus-visible{outline:3px solid #ff9276;outline-offset:-1px}
+.lesson-tools .lesson-tool.is-active{
+  background:#ecf7d7;color:#4c662a;
+}
+.lesson-tools .lesson-tool.is-active svg{stroke-width:2.1}
+.lesson-tools .lesson-tool-fav.is-active{
+  background:#f2eafa;color:#5a2c9d;
+}
+.lesson-tools .lesson-tool-label{overflow-wrap:normal}
+@media(max-width:750px){
+ .lesson-tools.actions{border-radius:15px;padding:4px}
+ .lesson-tools .lesson-tool{
+   flex-direction:column;gap:5px;min-height:66px;padding:8px 3px;
+   font-size:11px;letter-spacing:-.1px;white-space:nowrap;
+ }
+ .lesson-tools .lesson-tool svg{width:20px;height:20px}
+ .lesson-tools .lesson-tool:not(:first-child)::before{top:10px;bottom:10px;left:-2px}
+}
+@media(max-width:350px){
+ .lesson-tools .lesson-tool{font-size:10px;padding:7px 2px}
+ .lesson-tools .lesson-tool svg{width:18px;height:18px}
+}
+@media(prefers-reduced-motion:reduce){
+ .lesson-tools .lesson-tool{transition:none}
+}

@@ -53,7 +53,22 @@ async function checkWidth(page,label){
   await page.waitForURL('**/aulas/A17/');
   await page.locator('.contentpanel .tab').first().waitFor();
   assert.equal(await page.locator('.contentpanel .tab').count(),4);
-  assert.equal(await page.locator('#btn-share').textContent(),'↗ Compartilhe essa aula');
+  assert.equal(await page.locator('#btn-share').textContent(),'Compartilhar');
+  assert.equal(await page.locator('#btn-share').getAttribute('aria-label'),'Compartilhe essa aula');
+  assert.equal(await page.locator('.lesson-tools .lesson-tool').count(),3);
+  assert.equal(await page.locator('.lesson-tools svg').count(),3);
+  // A nova barra permanece na mesma linha também nos 390px do iPhone.
+  const actionBounds=await page.locator('.lesson-tools .lesson-tool').evaluateAll(els=>els.map(e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height}}));
+  assert.ok(actionBounds[0].x<actionBounds[1].x&&actionBounds[1].x<actionBounds[2].x,'Três ações na mesma linha');
+  assert.ok(Math.max(...actionBounds.map(b=>b.y))-Math.min(...actionBounds.map(b=>b.y))<3,'Ações alinhadas');
+  assert.ok(actionBounds.every(b=>b.h<85),'Ações mais compactas');
+  await page.locator('#btn-done').click();
+  assert.equal(await page.locator('#btn-done').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('#btn-done .lesson-tool-label').textContent(),'Estudada');
+  await page.locator('#btn-done').click();
+  await page.locator('#btn-fav').click();
+  assert.equal(await page.locator('#btn-fav').getAttribute('aria-pressed'),'true');
+  await page.locator('#btn-fav').click();
   await page.evaluate(()=>Object.defineProperty(navigator,'share',{configurable:true,value:undefined}));
   await page.locator('#btn-share').click();
   await page.locator('#lesson-share-options').waitFor({state:'visible'});

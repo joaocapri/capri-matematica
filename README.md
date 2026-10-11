@@ -97,3 +97,7 @@ A seção **Toda a matemática, organizada / Encontre seu material.** apresenta 
 
 ## Compartilhamento de aulas e catálogo limpo
 Removido o botão redundante **Pesquisar** das páginas de áreas e assuntos (`/explorar/`). Na aula, **Compartilhe essa aula** abre o menu nativo do celular (`navigator.share`), com nome da aula, mensagem curta e URL pública. O compartilhamento é disparado no próprio toque, sem etapas intermediárias. Em navegadores sem Web Share API ou que a bloqueiem, aparecem opções de WhatsApp e de cópia integral da mensagem. Cancelar o compartilhamento nativo não abre o fallback.
+
+
+## Ações na página de aula — barra compacta
+As ações **Já estudei / Favoritar / Compartilhar** aparecem em uma única barra horizontal, com ícones SVG de linha, contorno suave e estados ativos discretos. Em celular, os três botões permanecem alinhados numa linha com ícones acima do texto. Os controles de estudo e favorito guardam os mesmos dados no navegador e atualizam `aria-pressed`; o compartilhamento continua usando o menu nativo, com WhatsApp/cópia como alternativa.

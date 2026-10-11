@@ -106,7 +106,25 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  dom.window.close();
 
  ({w,d,dom}=await boot('https://matmatmat.test/aulas/A17/'));
- assert.equal(d.querySelector('#btn-share').textContent,'↗ Compartilhe essa aula');
+ assert.equal(d.querySelector('#btn-share').textContent,'Compartilhar');
+ assert.equal(d.querySelector('#btn-share').getAttribute('aria-label'),'Compartilhe essa aula');
+ assert.equal(d.querySelectorAll('.lesson-tools .lesson-tool').length,3,'Uma barra compacta de três ações');
+ assert.equal(d.querySelectorAll('.lesson-tools svg').length,3,'Ícones vetoriais sem emojis');
+ assert.equal(d.querySelector('#btn-done').getAttribute('aria-pressed'),'false');
+ assert.equal(d.querySelector('#btn-fav').getAttribute('aria-pressed'),'false');
+ click(w,d.querySelector('#btn-done'));
+ assert.equal(d.querySelector('#btn-done .lesson-tool-label').textContent,'Estudada');
+ assert.equal(d.querySelector('#btn-done').getAttribute('aria-pressed'),'true');
+ assert.ok(d.querySelector('#btn-done').classList.contains('is-active'));
+ click(w,d.querySelector('#btn-done'));
+ assert.equal(d.querySelector('#btn-done .lesson-tool-label').textContent,'Já estudei');
+ assert.equal(d.querySelector('#btn-done').getAttribute('aria-pressed'),'false');
+ click(w,d.querySelector('#btn-fav'));
+ assert.equal(d.querySelector('#btn-fav .lesson-tool-label').textContent,'Favorita');
+ assert.equal(d.querySelector('#btn-fav').getAttribute('aria-pressed'),'true');
+ click(w,d.querySelector('#btn-fav'));
+ assert.equal(d.querySelector('#btn-fav .lesson-tool-label').textContent,'Favoritar');
+ assert.equal(d.querySelector('#btn-fav').getAttribute('aria-pressed'),'false');
  assert.equal(d.querySelector('#btn-share').getAttribute('aria-expanded'),'false');
  assert.equal(d.querySelector('#lesson-share-options').hidden,true,'Sem abrir o fallback antecipadamente');
  assert.equal(d.querySelector('#btn-copy'),null,'Botão antigo removido');
