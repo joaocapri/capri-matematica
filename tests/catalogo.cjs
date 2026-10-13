@@ -76,6 +76,9 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelectorAll('.home-explore .browser-toolbar').length,0,'Sem Escolha uma área para começar');
  assert.equal(d.querySelectorAll('.home-explore .browser-shortcuts').length,0,'Sem Favoritas nem Todas as 144 na home');
  assert.equal(d.querySelector('#explore-content .area-grid').children.length,9,'Cartões seguem diretamente o título');
+ assert.equal(d.querySelectorAll('#explore-content .hv-topics a').length,38,'Os 38 assuntos acessíveis direto da página inicial');
+ assert.ok(d.querySelector('.hv-topics a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
+ assert.equal(d.querySelector('.hv-continue'),null,'Sem atalho de continuar para quem ainda não abriu aulas');
  assert.equal(d.querySelectorAll('.discovery-preview').length,0,'Sem vitrine de exemplos');
  assert.equal(d.querySelectorAll('.home-hero-art').length,0,'Sem ilustração debaixo da busca');
  assert.equal(d.querySelectorAll('[data-preview]').length,0,'Sem controles de animação');

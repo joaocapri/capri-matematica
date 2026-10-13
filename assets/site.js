@@ -50,6 +50,11 @@ function exatooCard(intent,lesson,topic){
  return '<aside class="exatoo-context"><span class="exatoo-symbol">✳</span><div class="exatoo-copy"><span class="exatoo-eyebrow">ESTUDO PERSONALIZADO · EXATOO</span><strong>'+m[0]+'</strong><p>'+m[1]+'</p><small>O Capri continua gratuito. Você será direcionado ao Exatoo.</small></div><a class="exatoo-link" href="'+esc(exatooUrl(intent,lesson,topic))+'" target="_blank" rel="noopener noreferrer">'+m[2]+'</a></aside>'
 }
 
+function hvContinue(){
+ var id=null;try{id=localStorage.getItem('matmat-ultima-aula')}catch(e){}
+ var l=id&&data.lessons.find(function(x){return x.id===id});if(!l)return '';
+ return '<a class="hv-continue" href="'+href(l)+'"><span class="hv-continue-k">Continuar de onde parou</span><span class="aula-id">'+esc(l.id)+'</span><span class="hv-continue-t">'+esc(l.title)+'</span></a>';
+}
 function home(){
  title('Aulas, listas e PDFs gratuitos');
  // Links antigos continuam funcionando, agora no catálogo dedicado.
@@ -60,20 +65,19 @@ function home(){
  var app=document.getElementById('app');
  var featured=publishedMaterials();
  app.innerHTML=header()+
- '<main class="shell home-shell">'+
- '<section class="home-hero" aria-labelledby="hero-title"><div class="home-hero-copy">'+
- 
+ '<main class="home-v2">'+
+ '<section class="hv-hero" aria-labelledby="hero-title"><div class="shell"><div class="home-hero-copy">'+
  '<h1 id="hero-title">O que você quer <em>estudar hoje?</em></h1>'+
  '<p>Listas de Exercícios e Teoria grátis. Simples assim</p>'+
  '<div class="home-search-section"><label class="home-searchbox" for="hero-search"><span class="home-search-mark" aria-hidden="true">⌕</span><input type="search" id="hero-search" autocomplete="off" aria-label="Pesquisar aulas, assuntos e PDFs" aria-controls="quick-hits" aria-expanded="false" placeholder="Busque um assunto, aula ou PDF…"><button type="button" id="clear-search" aria-label="Limpar busca" hidden>×</button><button type="button" id="btn-search" aria-label="Pesquisar">Buscar ↗</button></label>'+
  '<div class="home-quick-hits" id="quick-hits" hidden aria-live="polite"></div>'+
- '</div>'+
- 
- '</div></section>'+
+ '</div>'+hvContinue()+
+ '</div></div></section>'+
+ '<div class="shell">'+
  '<section class="home-search-results" id="resultados" hidden aria-live="polite"><div class="home-results-head"><div><span class="home-section-label">SUA PESQUISA</span><h2 id="search-title">Resultados</h2></div><button id="return-home" class="home-back-button" type="button">← Voltar à exploração</button></div><div id="search-scope" class="home-search-scopes" role="group" aria-label="Filtrar resultados"></div><div id="search-output"></div></section>'+
  '<div id="home-discover">'+
- '<section id="explorar" class="home-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="home-section-label"><span class="home-section-indicator"></span> TODA A MATEMÁTICA, ORGANIZADA</span><h2 id="explore-title">Encontre seu <em>material.</em></h2></div></div><div id="explore-content"></div></section>'+
- '</div></main>'+footer();
+ '<section id="explorar" class="home-explore hv-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="hv-kicker">'+SUBJECT_AREAS.length+' áreas, '+SUBJECT_TOPICS.length+' assuntos e '+data.lessons.length+' aulas</span><h2 id="explore-title">Encontre seu material.</h2></div></div><div id="explore-content"></div></section>'+
+ '</div></div></main>'+footer();
 
  var input=document.getElementById('hero-search');
  var clearBtn=document.getElementById('clear-search');
@@ -95,7 +99,19 @@ function home(){
   return '<a class="browse-lesson-row" href="'+href(l)+'"><span class="browse-lesson-number">'+esc(l.id)+'</span><span class="browse-lesson-copy"><strong>'+esc(l.title)+'</strong><small>'+esc(l.summary||'Abra a aula para começar.')+'</small>'+(areaLabel?'<span class="browse-lesson-meta">'+esc(area.name)+' · '+esc(subTopic(l,area).title)+'</span>':'')+'</span><span class="browse-lesson-right">'+(done.has(l.id)?'<span class="browse-studied">✓ Estudada</span>':hasMaterial?'<span class="browse-material-tag">PDF</span>':'<span class="browse-enter">↗</span>')+'</span></a>'
  }
  function crumbs(parts){return '<nav class="browser-crumbs" aria-label="Caminho"><button data-catalog="areas" type="button">Todas as áreas</button>'+parts.map(function(p){return '<span class="crumb-chevron">›</span>'+(p.action?'<button type="button" data-catalog="'+p.action+'" data-id="'+esc(p.id||'')+'">'+esc(p.label)+'</button>':'<strong>'+esc(p.label)+'</strong>')}).join('')+'</nav>'}
- function tile(area){var ls=areaLessons(area),n=ls.filter(function(l){return done.has(l.id)}).length;return '<a class="area-tile" href="/explorar/?area='+encodeURIComponent(area.id)+'"><span class="area-tile-icon tone-'+area.tone+'">'+esc(area.icon)+'</span><span class="area-tile-name">'+esc(area.name)+'</span><span class="area-tile-subtitle">'+esc(area.description)+'</span>'+(n?'<div class="tr-meter" role="img" aria-label="'+n+' de '+ls.length+' aulas estudadas"><span style="width:'+Math.round(n*100/ls.length)+'%"></span></div>':'')+'<span class="area-tile-foot"><span>'+ls.length+' aulas'+(n?' ('+n+' estudadas)':'')+'</span><span class="area-tile-go" aria-hidden="true">↗</span></span></a>'}
+ function tile(area){
+  var ls=areaLessons(area),n=ls.filter(function(l){return done.has(l.id)}).length;
+  var ts=SUBJECT_TOPICS.filter(function(t){return t.area===area.id});
+  var lists=ls.filter(function(l){return materialByCode.has(l.id)}).length;
+  var deco=ts.filter(function(t){return t.icon!==area.icon}).slice(0,4).map(function(t,k){return '<span class="hv-deco hv-deco-'+k+'">'+esc(t.icon)+'</span>'}).join('');
+  return '<article class="hv-area">'
+   +'<a class="area-tile" href="/explorar/?area='+encodeURIComponent(area.id)+'"><span class="hv-cover tone-'+area.tone+'" aria-hidden="true"><span class="hv-icon">'+esc(area.icon)+'</span>'+deco+'</span>'
+   +'<span class="hv-body"><span class="hv-name">'+esc(area.name)+'</span><span class="hv-desc">'+esc(area.description)+'</span></span></a>'
+   +'<ul class="hv-topics" aria-label="Assuntos de '+esc(area.name)+'">'+ts.map(function(t){return '<li><a href="/explorar/?area='+encodeURIComponent(area.id)+'&assunto='+encodeURIComponent(t.id)+'"><span class="hv-ti" aria-hidden="true">'+esc(t.icon)+'</span>'+esc(t.title)+'</a></li>'}).join('')+'</ul>'
+   +'<div class="hv-foot"><span><b>'+ls.length+' aulas</b> em '+ts.length+' assuntos</span>'+(n?'<span class="hv-done">'+n+' estudadas</span>':lists?'<span class="hv-lists">'+(lists===ls.length?'Todas com listas em PDF':plural(lists,'aula com listas','aulas com listas')+' em PDF')+'</span>':'')+'</div>'
+   +(n?'<div class="tr-meter hv-meter" role="img" aria-label="'+n+' de '+ls.length+' aulas estudadas"><span style="width:'+Math.round(n*100/ls.length)+'%"></span></div>':'')
+   +'</article>';
+ }
  function list(items,label,showArea){
   return '<div class="browse-list-intro"><div><h3>'+esc(label)+'</h3><p>'+items.length+' '+(items.length===1?'aula disponível':'aulas disponíveis')+'</p></div></div><div class="browse-lesson-list">'+(items.length?items.slice(0,shown).map(function(l){return drawRow(l,showArea)}).join(''):'<div class="browse-empty">Nenhuma aula aqui por enquanto.</div>')+'</div>'+(shown<items.length?'<button type="button" data-catalog="more" class="browse-more">Carregar mais aulas ↓</button>':'')
  }
@@ -588,6 +604,7 @@ async function lessonPage(){
  var nearIndex=near.findIndex(function(x){return x.id===id});
  var gi=data.lessons.findIndex(function(x){return x.id===id}),prev=data.lessons[gi-1],next=data.lessons[gi+1];
  title(l.title);
+ try{localStorage.setItem('matmat-ultima-aula',id)}catch(e){}
  var temLista=materialsAt('aula',id).some(function(x){return (x.item.arquivos||[]).some(function(f){return /\/(fixacao|vestibular)-[ABC]\d\d\.pdf$/.test(f.url||'')})});
  var loaded=await Promise.all([fetchJson('/conteudos/'+id+'.json'),temLista?fetchJson('/data/listas/'+id+'.json'):Promise.resolve(null)]);
  var content=loaded[0],lista=loaded[1];
