@@ -1544,3 +1544,8 @@ button.aula-opt:hover:not(:disabled){border-color:var(--a-purple);background:#fb
  .hq-row.is-best .hq-t b{font-size:15.5px}
  .hq-enter{display:none!important}
 }
+/* logo MAT com JOÃO! (mais largo que alto) */
+.mat-logo-img{height:74px;transform:rotate(-1.5deg)}
+.brand-mat-footer .mat-logo-img{height:64px}
+@media(max-width:650px){.mat-logo-img{height:50px}.brand-mat-footer .mat-logo-img{height:52px}}
+@media(max-width:375px){.brand-mat .mat-logo-img{height:46px}}
