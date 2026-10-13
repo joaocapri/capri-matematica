@@ -92,7 +92,27 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  type(w,d.querySelector('#hero-search'),'Bhaskara');
  assert.equal(d.querySelectorAll('.home-hero-art').length,0,'Busca continua sem ilustração');
  assert.ok(d.querySelector('#search-output a[href="/aulas/A17/"]'));
- assert.ok(d.querySelector('#search-output .search-material-card'));
+ assert.ok(d.querySelector('#search-output .hs-best .hs-file[href="/pdfs/fixacao-A17.pdf"]'),'Melhor resultado já oferece as listas');
+ // Busca: o aluno digita o nome do assunto e cai na aula certa, mesmo com erro de digitação.
+ const melhor=q=>{type(w,d.querySelector('#hero-search'),q);const a=d.querySelector('#search-output .hs-best h3 a');return a&&a.getAttribute('href')};
+ assert.equal(melhor('FUNÇÃO AFIM'),'/aulas/A11/');
+ assert.equal(melhor('funcao modular'),'/aulas/A22/');
+ assert.equal(melhor('equação do 2º grau'),'/aulas/A17/');
+ assert.equal(melhor('bascara'),'/aulas/A17/');
+ assert.equal(melhor('pa'),'/aulas/A34/');
+ assert.equal(melhor('a40'),'/aulas/A40/');
+ assert.equal(melhor('lista de juros compostos'),'/aulas/C10/');
+ assert.equal(melhor('logaritimo'),'/aulas/A27/');
+ assert.ok(d.querySelector('#search-output .hs-fixed'),'Avisa a correção de digitação');
+ assert.equal(melhor('exercícios de pa'),'/aulas/A34/#pratique','Intenção leva direto à etapa da aula');
+ assert.equal(melhor('trigonometria'),'/explorar/?area=trigonometria','Nome de área leva à área');
+ type(w,d.querySelector('#hero-search'),'geometria');
+ assert.equal(d.querySelectorAll('#search-output .hs-area').length,3);
+ type(w,d.querySelector('#hero-search'),'PDF');
+ assert.equal(d.querySelectorAll('#search-output .hs-pdfrow').length,new Set(materials.filter(m=>m.aula).map(m=>m.aula)).size,'Listas e PDFs mostra todas as aulas com listas');
+ type(w,d.querySelector('#hero-search'),'xyzw');
+ assert.ok(d.querySelector('#search-output .hs-none'));
+ type(w,d.querySelector('#hero-search'),'Bhaskara');
  assert.equal(d.querySelector('#home-discover').hidden,true,'exploração oculta ao pesquisar');
  dom.window.close();
 

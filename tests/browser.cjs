@@ -129,6 +129,15 @@ async function checkWidth(page,label){
   assert.equal(await page.locator('.diag-review-item').count(),12);
   await checkWidth(page,config.name+' relatório diagnóstico');
   await page.screenshot({path:'screenshots/'+config.name+'-diagnostic-result.png',fullPage:true});
+  // Busca: Enter abre a melhor aula direto.
+  await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
+  await page.locator('.area-tile').first().waitFor();
+  await page.locator('#hero-search').fill('função modular');
+  await page.locator('#quick-hits .hq-row.is-best').waitFor();
+  assert.match(await page.locator('#quick-hits .hq-row.is-best').getAttribute('href'),/\/aulas\/A22\/$/);
+  await checkWidth(page,config.name+' sugestões da busca');
+  await page.locator('#hero-search').press('Enter');
+  await page.waitForURL('**/aulas/A22/');
   await page.close();
  }
  await browser.close();

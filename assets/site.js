@@ -50,6 +50,217 @@ function exatooCard(intent,lesson,topic){
  return '<aside class="exatoo-context"><span class="exatoo-symbol">✳</span><div class="exatoo-copy"><span class="exatoo-eyebrow">ESTUDO PERSONALIZADO · EXATOO</span><strong>'+m[0]+'</strong><p>'+m[1]+'</p><small>O Capri continua gratuito. Você será direcionado ao Exatoo.</small></div><a class="exatoo-link" href="'+esc(exatooUrl(intent,lesson,topic))+'" target="_blank" rel="noopener noreferrer">'+m[2]+'</a></aside>'
 }
 
+/* ================= Busca v2: entende sinônimos, erros de digitação e leva direto à aula ================= */
+/* Outros nomes que os alunos usam. Aliases do assunto valem para todas as aulas dele; os da aula decidem qual aula abrir. */
+var BUSCA_ASSUNTO={
+ 'f-conjuntos':'conjuntos;teoria dos conjuntos;uniao;intersecao;interseccao;diagrama de venn;venn;conjuntos numericos;intervalos;numeros naturais;numeros inteiros;numeros racionais;numeros irracionais;numeros reais',
+ 'f-potencias':'potencia;potencias;potenciacao;expoente;radiciacao;raiz;raiz quadrada;radicais;racionalizacao;notacao cientifica',
+ 'f-aritmetica':'numeros primos;divisibilidade;mmc;mdc;minimo multiplo comum;maximo divisor comum;fracao;fracoes',
+ 'f-proporcoes':'razao;proporcao;escala;regra de tres;regra de 3;grandezas proporcionais;diretamente proporcional;inversamente proporcional;unidades de medida;conversao de unidades',
+ 'f-financeira':'porcentagem;percentual;juros;juros simples;juros compostos;desconto;aumento;matematica financeira;financeira;amortizacao;sac;price;inflacao',
+ 'fu-inicio':'funcao;funcoes;dominio;imagem;contradominio;injetora;sobrejetora;bijetora;funcao composta;funcao inversa;funcao par;funcao impar;produto cartesiano;relacao',
+ 'fu-afim':'funcao afim;funcao linear;funcao do primeiro grau;equacao do primeiro grau;reta;coeficiente angular;coeficiente linear;inequacao do primeiro grau;sistema linear 2x2;sistema de equacoes',
+ 'fu-quadratica':'funcao quadratica;funcao do segundo grau;equacao do segundo grau;parabola;bhaskara;baskara;delta;discriminante;raizes;vertice;maximo;minimo;soma e produto',
+ 'fu-modulo':'modulo;valor absoluto;funcao modular;equacao modular;inequacao modular',
+ 'fu-exponencial':'exponencial;funcao exponencial;equacao exponencial;inequacao exponencial;crescimento exponencial',
+ 'fu-logs':'logaritmo;logaritmos;log;ln;funcao logaritmica;equacao logaritmica;inequacao logaritmica;mudanca de base;propriedades dos logaritmos',
+ 'al-sequencias':'sequencia;sequencias;progressao;progressoes;pa;progressao aritmetica;pg;progressao geometrica;termo geral;recorrencia;fibonacci',
+ 'al-complexos':'numeros complexos;complexo;complexos;imaginario;unidade imaginaria;argand gauss;forma trigonometrica;moivre',
+ 'al-polinomios':'polinomio;polinomios;divisao de polinomios;briot ruffini;teorema do resto;dalembert;equacao polinomial;equacao algebrica;girard',
+ 'al-matrizes':'matriz;matrizes;determinante;determinantes;sistema linear;sistemas lineares;escalonamento;cramer;laplace;sarrus;matriz inversa',
+ 'gp-triangulos':'angulo;angulos;triangulo;triangulos;congruencia;semelhanca;semelhanca de triangulos;pitagoras;teorema de pitagoras;tales;teorema de tales;relacoes metricas;baricentro;incentro;ortocentro;circuncentro;retas paralelas',
+ 'gp-poligonos':'poligono;poligonos;diagonais;quadrilateros;trapezio;losango;paralelogramo;hexagono;apotema',
+ 'gp-circulo':'circunferencia;circulo;angulo inscrito;angulo central;potencia de ponto;comprimento da circunferencia;pi',
+ 'gp-areas':'area;areas;area do triangulo;area do circulo;area do trapezio;area do quadrado;area do retangulo;setor circular;coroa circular;heron',
+ 'ge-posicao':'geometria de posicao;retas reversas;planos;projecao ortogonal',
+ 'ge-poliedros':'poliedro;poliedros;euler;relacao de euler;prisma;prismas;cubo;paralelepipedo;volume do prisma;cavalieri',
+ 'ge-piramides':'piramide;piramides;tronco de piramide;volume da piramide',
+ 'ge-cilindro-cone':'cilindro;cone;tronco de cone;volume do cilindro;volume do cone;planificacao',
+ 'ge-esfera':'esfera;volume da esfera;area da esfera;calota;fuso;cunha',
+ 'ge-relacoes':'inscricao;circunscricao;solidos de revolucao;semelhanca de solidos',
+ 'ga-pontos-retas':'geometria analitica;plano cartesiano;distancia entre pontos;ponto medio;equacao da reta;coeficiente angular;retas paralelas;retas perpendiculares;distancia de ponto a reta;alinhamento',
+ 'ga-circunferencia':'equacao da circunferencia;centro e raio;posicao relativa',
+ 'ga-conicas':'conicas;conica;elipse;hiperbole;parabola;focos;excentricidade',
+ 'ga-vetores':'vetor;vetores;produto escalar;versor',
+ 'ga-avancada':'lugar geometrico;coordenadas polares',
+ 'cp-arranjos':'contagem;principio fundamental da contagem;pfc;fatorial;arranjo;arranjos;permutacao;permutacoes;anagrama;anagramas;analise combinatoria;combinatoria',
+ 'cp-combinacoes':'combinacao;combinacoes;binomio de newton;triangulo de pascal;analise combinatoria;combinatoria',
+ 'cp-probabilidade':'probabilidade;probabilidades;chance;evento;espaco amostral;probabilidade condicional;bayes;binomial',
+ 'es-graficos':'estatistica;graficos;tabelas;media;mediana;moda;frequencia',
+ 'es-dispersao':'desvio padrao;variancia;dispersao;desvio medio;amostra;populacao;correlacao',
+ 'tr-fundamentos':'trigonometria;seno;cosseno;tangente;sen;cos;tg;tan;triangulo retangulo;ciclo trigonometrico;circulo trigonometrico;radiano;radianos;arcos;quadrantes',
+ 'tr-identidades':'trigonometria;arco duplo;adicao de arcos;soma de arcos;identidades trigonometricas;relacao fundamental;prostaferese',
+ 'tr-equacoes':'trigonometria;equacao trigonometrica;inequacao trigonometrica;funcao seno;funcao cosseno;graficos trigonometricos;lei dos senos;lei dos cossenos'
+};
+var BUSCA_AULA={
+ A01:'teoria dos conjuntos;conjuntos;pertinencia;inclusao',A02:'uniao;intersecao;diagrama de venn;operacoes com conjuntos',A03:'conjuntos numericos;numeros reais;numeros irracionais',A04:'intervalos;intervalos reais',
+ A05:'potencia;potenciacao;notacao cientifica',A06:'raiz;radiciacao;racionalizacao;raiz quadrada',A07:'produto cartesiano;plano cartesiano;relacao',A08:'funcao;definicao de funcao;conceito de funcao',
+ A09:'dominio;imagem;grafico de funcao',A10:'funcao composta;funcao inversa;injetora;sobrejetora;bijetora;funcao par;funcao impar',
+ A11:'funcao afim;funcao linear;funcao do primeiro grau;equacao do primeiro grau',A12:'grafico da funcao afim;coeficiente angular;coeficiente linear;grafico da reta',A13:'inequacao do primeiro grau;inequacao produto;inequacao quociente;estudo do sinal',A14:'modelagem;funcao custo;funcao lucro',A15:'sistema linear 2x2;sistema de equacoes;metodo da substituicao;metodo da adicao',
+ A16:'funcao quadratica;funcao do segundo grau;parabola;concavidade',A17:'bhaskara;baskara;bascara;formula de bhaskara;equacao do segundo grau;delta;discriminante;soma e produto;raizes da equacao',A18:'vertice;vertice da parabola;xv;yv',A19:'maximo e minimo;otimizacao;valor maximo;valor minimo',A20:'inequacao do segundo grau;estudo do sinal da quadratica',A21:'forma canonica;forma fatorada',
+ A22:'modulo;valor absoluto;funcao modular',A23:'equacao modular',A24:'inequacao modular',A25:'funcao exponencial;exponencial',A26:'equacao exponencial;inequacao exponencial',
+ A27:'logaritmo;log;definicao de logaritmo',A28:'propriedades dos logaritmos;propriedades do log',A29:'mudanca de base',A30:'funcao logaritmica;grafico do log',A31:'equacao logaritmica',A32:'inequacao logaritmica;ph;richter',
+ A33:'sequencia;lei de recorrencia;fibonacci',A34:'pa;progressao aritmetica;termo geral da pa',A35:'soma da pa;soma dos termos da pa;gauss',A36:'pg;progressao geometrica;termo geral da pg',A37:'soma da pg;produto da pg',A38:'pg infinita;soma infinita;dizima periodica;fracao geratriz;serie',
+ A39:'numeros complexos;unidade imaginaria;potencias de i',A40:'argand gauss;modulo do complexo',A41:'forma trigonometrica;forma polar',A42:'moivre',
+ A43:'polinomio;polinomios',A44:'briot ruffini;divisao de polinomios',A45:'teorema do resto;dalembert',A46:'equacao polinomial;teorema fundamental da algebra',A47:'relacoes de girard;girard',A48:'raizes complexas;raizes racionais',
+ B01:'angulos;retas paralelas;transversal',B02:'triangulos;soma dos angulos do triangulo',B03:'baricentro;incentro;circuncentro;ortocentro;pontos notaveis',B04:'semelhanca;semelhanca de triangulos;congruencia;tales;teorema de tales',B05:'pitagoras;teorema de pitagoras;relacoes metricas;triangulo retangulo',
+ B06:'poligonos;diagonais;soma dos angulos internos',B07:'quadrilateros;trapezio;losango;paralelogramo',B08:'poligonos regulares;apotema;hexagono',B09:'angulo inscrito;angulo central;arco capaz',B10:'potencia de ponto;secante;tangente a circunferencia',B11:'comprimento da circunferencia;pi',
+ B12:'area;area do quadrado;area do retangulo;area do trapezio;area do losango;area do paralelogramo',B13:'area do triangulo;heron;formula de heron',B14:'area do circulo;setor circular;coroa circular',B15:'razao entre areas',
+ B16:'geometria espacial;retas reversas;posicoes relativas',B17:'projecao ortogonal',B18:'poliedros;euler;relacao de euler',B19:'prisma;prismas;area do prisma',B20:'volume do prisma;paralelepipedo;cubo;cavalieri',B21:'piramide;area da piramide',B22:'volume da piramide;tronco de piramide',
+ B23:'cilindro;volume do cilindro',B24:'cone;volume do cone',B25:'tronco de cone;planificacao',B26:'area da esfera;superficie esferica',B27:'volume da esfera;calota;cunha',B28:'esfera inscrita;esfera circunscrita',B29:'cilindro inscrito;cone inscrito',B30:'solidos de revolucao',B31:'semelhanca de solidos',B32:'revisao de geometria',
+ B33:'distancia entre dois pontos;ponto medio;plano cartesiano',B34:'equacao da reta;coeficiente angular;equacao reduzida da reta',B35:'retas paralelas;retas perpendiculares;posicao relativa entre retas',B36:'distancia de ponto a reta;area do triangulo;alinhamento de tres pontos',
+ B37:'equacao da circunferencia;circunferencia',B38:'posicao relativa;reta tangente',B39:'elipse',B40:'hiperbole',B41:'parabola foco e diretriz',B42:'reconhecimento de conicas',B43:'vetor;vetores',B44:'soma de vetores;operacoes com vetores',B45:'produto escalar;angulo entre vetores',B46:'geometria analitica no espaco',B47:'lugar geometrico',B48:'coordenadas polares',
+ C01:'numeros primos;divisibilidade;criterios de divisibilidade',C02:'mmc;mdc;minimo multiplo comum;maximo divisor comum',C03:'fracao;fracoes',C04:'razao;proporcao;escala',C05:'grandezas proporcionais;diretamente proporcional;inversamente proporcional',C06:'regra de tres;regra de 3;regra de tres composta',
+ C07:'porcentagem;percentual',C08:'aumento;desconto;aumentos e descontos sucessivos;variacao percentual;inflacao',C09:'juros simples',C10:'juros compostos',C11:'amortizacao;sac;price;financiamento',C12:'unidades de medida;conversao de unidades',
+ C13:'pfc;principio fundamental da contagem;principio multiplicativo',C14:'fatorial',C15:'arranjo;permutacao;anagrama',C16:'permutacao com repeticao;permutacao circular',C17:'combinacao;combinacao simples',C18:'combinacao completa;combinacao com repeticao',C19:'principio das gavetas',
+ C20:'probabilidade',C21:'probabilidade da uniao',C22:'probabilidade condicional',C23:'eventos independentes',C24:'distribuicao binomial',C25:'bayes;probabilidade total',C26:'binomio de newton;triangulo de pascal',
+ C27:'estatistica;graficos;tabelas;frequencia',C28:'media;media aritmetica;media ponderada',C29:'mediana;moda',C30:'desvio padrao;variancia',C31:'coeficiente de variacao',C32:'amostra;correlacao',
+ C33:'trigonometria;seno;cosseno;tangente;triangulo retangulo;angulos notaveis',C34:'radiano;radianos;arcos',C35:'ciclo trigonometrico;circulo trigonometrico;arcos congruos',C36:'seno e cosseno;quadrantes',C37:'tangente;secante;cossecante;cotangente;relacao fundamental',
+ C38:'soma de arcos;adicao de arcos',C39:'arco duplo',C40:'prostaferese',C41:'funcao seno;funcao cosseno;grafico do seno',C42:'equacao trigonometrica',C43:'inequacao trigonometrica',C44:'lei dos senos;lei dos cossenos',
+ C45:'matriz;matrizes;multiplicacao de matrizes',C46:'determinante;matriz inversa;sarrus',C47:'laplace;propriedades dos determinantes',C48:'sistema linear;sistemas lineares;cramer;escalonamento'
+};
+var BUSCA_STOP=new Set('de da do das dos e a o as os um uma uns umas para pra pro com em no na nos nas por pelo pela sobre como que qual quais aula aulas materia conteudo conteudos assunto assuntos estudar quero aprender'.split(' '));
+var BUSCA_INTENT={lista:'levar',pdf:'levar',gabarito:'levar',apostila:'levar',material:'levar',baixar:'levar',download:'levar',imprimir:'levar',video:'levar',videoaula:'levar',
+ exercicio:'pratique',questao:'pratique',treino:'pratique',treinar:'pratique',praticar:'pratique',fixacao:'pratique',
+ prova:'prova',simulado:'prova',vestibular:'prova',enem:'prova',
+ teoria:'entenda',resumo:'entenda',explicacao:'entenda',conceito:'entenda'};
+var BUSCA_POPULARES=['Função afim','Bhaskara','Função modular','Logaritmo','Porcentagem','P.A. e P.G.','Trigonometria','Probabilidade'];
+var bIndex=null;
+function bNorm(s){
+ s=String(s||'').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g,'');
+ s=s.replace(/\bp\s*\.\s*([ag])\b\.?/g,'p$1');
+ s=s.replace(/\b(1|primeiro)\s*o?\s*grau\b/g,'primeirograu').replace(/\b(2|segundo)\s*o?\s*grau\b/g,'segundograu');
+ return s.replace(/[^a-z0-9]+/g,' ').trim();
+}
+function bStem(t){
+ if(t.length<=3)return t;
+ if(/oes$/.test(t))return t.slice(0,-3)+'ao';
+ if(/aes$/.test(t))return t.slice(0,-3)+'ao';
+ if(/ais$/.test(t))return t.slice(0,-3)+'al';
+ if(/eis$/.test(t))return t.slice(0,-3)+'el';
+ if(/zes$/.test(t))return t.slice(0,-2);
+ if(t.length>4&&/ns$/.test(t))return t.slice(0,-2)+'m';
+ if(t.length>5&&/res$/.test(t))return t.slice(0,-2);
+ if(/[^s]s$/.test(t))return t.slice(0,-1);
+ return t;
+}
+function bToks(s){return bNorm(s).split(' ').filter(function(t){return t&&!BUSCA_STOP.has(t)}).map(bStem)}
+function bPhrase(s){return bToks(s).join(' ')}
+function bLev(a,b,max){
+ // distância de edição com transposição (troca de duas letras vizinhas conta como um erro)
+ if(Math.abs(a.length-b.length)>max)return max+1;
+ var pp=null,prev=[],cur,i,j;for(j=0;j<=b.length;j++)prev[j]=j;
+ for(i=1;i<=a.length;i++){
+  cur=[i];var low=i;
+  for(j=1;j<=b.length;j++){
+   var c=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));
+   if(pp&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])c=Math.min(c,pp[j-2]+1);
+   cur[j]=c;if(c<low)low=c;
+  }
+  if(low>max)return max+1;pp=prev;prev=cur;
+ }
+ return prev[b.length];
+}
+function bTok(q,d,last,known){
+ if(q===d)return 1;
+ if(d.indexOf(q)===0&&(q.length>=3||(last&&q.length>=2)))return .82;
+ if(!known&&q.length>=4&&d.length>=4){var max=q.length>=7?2:1;if(bLev(q,d,max)<=max)return .72}
+ return 0;
+}
+function bBuild(){
+ if(bIndex)return bIndex;
+ var lessons=[],topics=[],areas=[];
+ function split(s){return String(s||'').split(';').filter(Boolean)}
+ data.lessons.forEach(function(l,k){
+  var a=areaForLesson(l),t=topicInfo(subjectTopic(l,a)),tAl=split(BUSCA_ASSUNTO[t.id]),lAl=split(BUSCA_AULA[l.id]);
+  lessons.push({kind:'aula',l:l,area:a,topic:t,order:k,
+   fields:[{w:6,t:bToks(lAl.join(' '))},{w:5,t:bToks(l.title)},{w:3,t:bToks(t.title+' '+tAl.join(' '))},{w:1.5,t:bToks(l.summary)},{w:1,t:bToks(a.name)}],
+   aliases:lAl.map(bPhrase),topicAliases:[bPhrase(t.title)].concat(tAl.map(bPhrase)),title:bPhrase(l.title),topicTitle:bPhrase(t.title)});
+ });
+ SUBJECT_TOPICS.forEach(function(t,k){
+  var a=SUBJECT_AREAS.find(function(x){return x.id===t.area}),al=split(BUSCA_ASSUNTO[t.id]);
+  topics.push({kind:'assunto',t:t,area:a,order:k,fields:[{w:5,t:bToks(t.title)},{w:4,t:bToks(al.join(' '))},{w:1.5,t:bToks(t.description)},{w:1,t:bToks(a.name)}],aliases:[bPhrase(t.title)].concat(al.map(bPhrase)),title:bPhrase(t.title)});
+ });
+ SUBJECT_AREAS.forEach(function(a,k){areas.push({kind:'area',a:a,order:k,fields:[{w:5,t:bToks(a.name)},{w:1.5,t:bToks(a.description)}],aliases:[bPhrase(a.name)],title:bPhrase(a.name)})});
+ var vocab=new Map();
+ lessons.concat(topics,areas).forEach(function(d){d.fields.forEach(function(f){f.t.forEach(function(t){vocab.set(t,(vocab.get(t)||0)+f.w)})})});
+ bIndex={lessons:lessons,topics:topics,areas:areas,vocab:vocab};
+ return bIndex;
+}
+function bQuery(q){
+ var n=bNorm(q),words=n.split(' ').filter(Boolean),toks=[],soft=[],intent=null;
+ words.forEach(function(w){var s=bStem(w);if(BUSCA_INTENT[s]){intent=intent||BUSCA_INTENT[s];soft.push(s);return}if(BUSCA_STOP.has(w))return;toks.push(s)});
+ var V=bBuild().vocab,fixed=[];
+ toks=toks.map(function(t,i){
+  if(V.has(t)||/^\d+$/.test(t)||t.length<4)return t;
+  var last=i===toks.length-1,pre=false;V.forEach(function(c,v){if(!pre&&last&&v.indexOf(t)===0)pre=true});if(pre)return t;
+  var max=t.length>=7?2:1,best=null,bd=9,bc=0;
+  V.forEach(function(c,v){if(Math.abs(v.length-t.length)>max)return;var d=bLev(t,v,max);if(d<=max&&(d<bd||(d===bd&&c>bc))){best=v;bd=d;bc=c}});
+  if(best){fixed.push(best);return best}return t;
+ });
+ var code=null,m=n.replace(/\s+/g,'').match(/^([abc])0?(\d{1,2})$/);
+ if(m){var id=m[1].toUpperCase()+('0'+m[2]).slice(-2);if(data.lessons.some(function(l){return l.id===id}))code=id}
+ return {raw:q,n:n,toks:toks,soft:soft,intent:intent,phrase:toks.join(' '),code:code,fixed:fixed.length?toks.join(' '):null};
+}
+function bScore(doc,Q){
+ if(!Q.toks.length)return 0;
+ var total=0,miss=0;
+ Q.toks.forEach(function(q,i){
+  var last=i===Q.toks.length-1,best=0,known=bIndex.vocab.has(q);
+  doc.fields.forEach(function(f){for(var j=0;j<f.t.length;j++){var m=bTok(q,f.t[j],last,known);if(m*f.w>best)best=m*f.w;if(m===1)break}});
+  if(!best)miss++;total+=best;
+ });
+ if(miss===Q.toks.length)return 0;
+ if(miss)total*=.3;
+ Q.soft.forEach(function(s){if(doc.fields[1]&&doc.fields[1].t.indexOf(s)>=0)total+=1.5});
+ var p=Q.phrase;
+ if(p.length>=2){
+  var al=doc.aliases||[];
+  if(al.indexOf(p)>=0)total+=20;
+  else if(p.length>=3&&al.some(function(x){return x.indexOf(p)===0}))total+=6;
+  if(doc.title===p)total+=12;else if(p.length>=3&&(' '+doc.title+' ').indexOf(' '+p)>=0)total+=8;
+  if(doc.topicAliases){
+   if(doc.topicAliases.indexOf(p)>=0)total+=12;
+   else if(p.length>=3&&(' '+doc.topicTitle+' ').indexOf(' '+p)>=0)total+=4;
+  }
+ }
+ return total;
+}
+function bSearch(q){
+ var I=bBuild(),Q=bQuery(q);
+ function rank(list){return list.map(function(d){return {d:d,s:bScore(d,Q)}}).filter(function(x){return x.s>=2.4}).sort(function(a,b){return b.s-a.s||a.d.order-b.d.order})}
+ var lessons=rank(I.lessons),topics=rank(I.topics),areas=rank(I.areas);
+ // dentro de um assunto que combinou por inteiro, a ordem das aulas desempata
+ if(Q.code){var cl=I.lessons.find(function(d){return d.l.id===Q.code});lessons=[{d:cl,s:999}].concat(lessons.filter(function(x){return x.d!==cl}))}
+ var best=null;
+ if(lessons.length)best={kind:'aula',d:lessons[0].d,s:lessons[0].s};
+ if(!Q.code&&areas.length&&areas[0].d.aliases.indexOf(Q.phrase)>=0)best={kind:'area',d:areas[0].d,s:areas[0].s};
+ else if(!Q.code&&Q.phrase.length>=3){
+  var amb=I.areas.filter(function(d){return d.title.indexOf(Q.phrase)===0});
+  if(amb.length>1&&!(lessons.length&&lessons[0].d.aliases.indexOf(Q.phrase)>=0))best={kind:'areas',list:amb,s:0};
+ }
+ var confident=!!best&&(Q.code||best.kind!=='aula'||best.s>=14||(lessons[1]?best.s>=lessons[1].s*1.25:best.s>=6));
+ return {Q:Q,best:best,confident:confident,lessons:lessons,topics:topics,areas:areas,listas:!Q.toks.length&&!Q.code&&Q.intent==='levar'};
+}
+function bSuggest(q){
+ // nenhuma aula: oferece os assuntos mais próximos com tolerância maior
+ var Q=bQuery(q),I=bBuild(),out=[];
+ if(!Q.toks.length)return out;
+ I.topics.concat(I.lessons).forEach(function(d){
+  var s=0;Q.toks.forEach(function(q){d.fields.forEach(function(f){f.t.forEach(function(t){if(q.length>=4&&t.length>=4&&bLev(q,t,3)<=3)s+=f.w})})});
+  if(s)out.push({d:d,s:s});
+ });
+ return out.sort(function(a,b){return b.s-a.s}).slice(0,4).map(function(x){return x.d});
+}
+function bMark(text,Q){
+ return String(text||'').split(/(\s+)/).map(function(w){
+  if(!w.trim())return w;var nw=bStem(bNorm(w).replace(/\s+/g,''));
+  return nw&&Q.toks.some(function(q){return bTok(q,nw,true)>=.82})?'<mark>'+esc(w)+'</mark>':esc(w);
+ }).join('');
+}
+function bLessonHref(l,intent){return href(l)+(intent&&trHasLists(l.id)?'#'+intent:intent==='entenda'?'#entenda':'')}
+function bListFiles(id){var fs=[];materialsAt('aula',id).forEach(function(x){(x.item.arquivos||[]).forEach(function(f){if(/^\/(?!\/)/.test(String(f.url||'')))fs.push(f)})});return fs}
+
 function hvContinue(){
  var id=null;try{id=localStorage.getItem('matmat-ultima-aula')}catch(e){}
  var l=id&&data.lessons.find(function(x){return x.id===id});if(!l)return '';
@@ -163,101 +374,120 @@ function home(){
   else if(act==='more'){shown+=18;renderBrowse()}
  });
 
- function relevance(value,q){
-  var s=norm(value),tokens=norm(q).trim().split(/\s+/).filter(Boolean);
-  if(!tokens.length)return 0;
-  return tokens.every(function(t){return s.includes(t)})?(s.includes(norm(q).trim())?100:25):0
+ /* ---------- Busca: sugestões enquanto digita, Enter abre a melhor aula ---------- */
+ var hits=[],active=-1;
+ function openQuick(){quick.hidden=false;input.setAttribute('aria-expanded','true')}
+ function closeQuick(){quick.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');active=-1}
+ function setActive(i){
+  active=i;hits.forEach(function(h,k){h.classList.toggle('is-active',k===i);h.setAttribute('aria-selected',String(k===i))});
+  if(hits[i]){input.setAttribute('aria-activedescendant',hits[i].id);hits[i].scrollIntoView({block:'nearest'})}else input.removeAttribute('aria-activedescendant');
  }
- function cleanSearch(q){return norm(q).replace(/\b(listas?|pdfs?|gabaritos?|materiais?|questoes?|exercicios?|de|do|da|das|dos|sobre|para)\b/g,' ').replace(/\s+/g,' ').trim()}
- function lessonScore(l,q){
-  var actual=cleanSearch(q);
-  if(!actual)return 0;
-  var area=areaForLesson(l),topic=subTopic(l,area),
-    titleScore=relevance(l.id+' '+l.title,actual),
-    topicScore=relevance(topic.title+' '+area.name,actual),
-    summaryScore=relevance(l.summary,actual);
-  var score=titleScore?titleScore+40:topicScore?topicScore+15:summaryScore;
-  if(actual===norm(l.id))score+=500;
-  if(actual==='bhaskara'&&l.id==='A17')score+=450;
-  if((actual==='pa'||actual==='p.a')&&l.id>='A33'&&l.id<='A35')score+=180;
-  if((actual==='pg'||actual==='p.g')&&l.id>='A36'&&l.id<='A38')score+=180;
-  return score;
+ function topicUrl(t){return '/explorar/?area='+encodeURIComponent(t.area)+'&assunto='+encodeURIComponent(t.id)}
+ function areaUrl(a){return '/explorar/?area='+encodeURIComponent(a.id)}
+ function qRow(o){
+  return '<a class="home-quick-row hq-row'+(o.best?' is-best':'')+'" role="option" href="'+esc(o.href)+'"'+(o.download?' download':'')+'><span class="hq-code'+(o.codeClass?' '+o.codeClass:'')+'">'+o.code+'</span><span class="hq-t"><b>'+o.title+'</b><small>'+(o.best?'<span class="hq-tag">Melhor resultado</span>':'')+o.sub+'</small></span><kbd class="hq-enter" aria-hidden="true">Enter</kbd></a>';
  }
- function matchData(){
-  var q=search.query.trim(),clean=cleanSearch(q);
-  var l=lessons.map(function(l){return {lesson:l,score:lessonScore(l,q)}})
-   .filter(function(x){return x.score>0})
-   .sort(function(a,b){return b.score-a.score||a.lesson.id.localeCompare(b.lesson.id)});
-  var m=featured.map(function(entry){
-   var owner=entry.owner,labels=entry.item.arquivos.map(function(f){return f.titulo}).join(' ');
-   var context=[owner.id,owner.title,owner.description,labels].join(' ');
-   var score=owner.lesson?lessonScore(owner.lesson,q):0;
-   score=Math.max(score,clean?relevance(context,clean):100);
-   if(/\b(pdf|lista|gabarito|material)/.test(norm(q))&&score>0)score+=40;
-   return {owner:owner,item:entry.item,score:score}
-  }).filter(function(x){return x.score>0}).sort(function(a,b){return b.score-a.score});
-  var a=clean?SUBJECT_AREAS.map(function(area){return {area:area,score:relevance(area.name+' '+area.description,clean)}}).filter(function(x){return x.score>0}):[];
-  var t=clean?SUBJECT_TOPICS.map(function(topic){return {topic:topic,score:relevance(topic.title+' '+topic.description,clean)}}).filter(function(x){return x.score>0}):[];
-  return {lessons:l,materials:m,areas:a,topics:t}
- }
- function matCard(x){
-  return '<article class="search-material-card"><div class="search-material-head"><span class="browse-material-tag">'+(x.owner.kind==='aula'?'LISTA DA AULA':x.owner.kind==='assunto'?'LISTA DO ASSUNTO':'LISTA GERAL')+'</span><a href="'+x.owner.href+'">'+esc(x.owner.title)+' ↗</a></div>'+pdfLinks(x.item.arquivos)+'</article>'
- }
- function renderSearch(){
-  var q=search.query.trim(),matched=matchData(),types=[['tudo','Tudo'],['aulas','Aulas'],['materiais','Listas e PDFs'],['assuntos','Assuntos']];
-  document.getElementById('search-title').textContent='Resultados para “'+q+'”';
-  scopeWrap.innerHTML=types.map(function(t){return '<button type="button" class="home-scope '+(search.scope===t[0]?'active':'')+'" data-scope="'+t[0]+'" aria-pressed="'+(search.scope===t[0])+'">'+t[1]+'</button>'}).join('');
-  var html='';
-  if(search.scope==='tudo'||search.scope==='materiais'){
-   if(matched.materials.length)html+='<section class="search-group"><div class="search-group-head"><h3>📄 Materiais para baixar</h3><small>'+matched.materials.length+' '+(matched.materials.length===1?'aula':'aulas')+'</small></div><div class="search-material-grid">'+matched.materials.slice(0,search.shown).map(matCard).join('')+'</div></section>';
-   else if(search.scope==='materiais')html+='<div class="browse-empty">Nenhum PDF publicado para essa busca. Veja as aulas relacionadas na opção “Tudo”.</div>';
-  }
-  if(search.scope==='tudo'||search.scope==='aulas'){
-   if(matched.lessons.length){html+='<section class="search-group"><div class="search-group-head"><h3>✦ Aulas que combinam com sua busca</h3><small>'+matched.lessons.length+' resultado(s)</small></div><div class="browse-lesson-list">'+matched.lessons.slice(0,search.shown).map(function(x){return drawRow(x.lesson,true)}).join('')+'</div>'+(search.shown<matched.lessons.length?'<button type="button" class="browse-more" data-more-search>Ver mais aulas ↓</button>':'')+'</section>'}
-   else if(search.scope==='aulas')html+='<div class="browse-empty">Nenhuma aula com esse nome. Tente outra palavra ou um código, como A17.</div>';
-  }
-  if(search.scope==='tudo'||search.scope==='assuntos'){
-   var groups=matched.areas.map(function(x){return {name:x.area.name,desc:x.area.description,area:x.area.id,topic:'',score:x.score+15}}).concat(matched.topics.map(function(x){return {name:x.topic.title,desc:x.topic.description,area:x.topic.area,topic:x.topic.id,score:x.score}})).sort(function(a,b){return b.score-a.score});
-   if(groups.length)html+='<section class="search-group"><div class="search-group-head"><h3>◉ Assuntos para explorar</h3></div><div class="search-topic-grid">'+groups.slice(0,search.shown).map(function(x){return '<button type="button" class="search-topic-link" data-search-area="'+esc(x.area)+'" data-search-topic="'+esc(x.topic)+'"><strong>'+esc(x.name)+'</strong><small>'+esc(x.desc)+'</small><span>↗</span></button>'}).join('')+'</div></section>';
-   else if(search.scope==='assuntos')html+='<div class="browse-empty">Não encontrei essa área. Tente um nome mais amplo, como “Geometria”.</div>';
-  }
-  if(!html)html='<div class="search-no-match"><strong>Não encontramos essa expressão.</strong><p>Tente outro termo ou explore nossas áreas.</p><button type="button" id="search-reset">Explorar assuntos ↗</button></div>'+exatooCard('busca');
-  resultOutput.innerHTML=html;
- }
-
  function renderQuick(){
-  var q=search.query.trim();
-  if(!q){quick.hidden=true;quick.innerHTML='';input.setAttribute('aria-expanded','false');return}
-  var found=matchData(),rows=[];
-  if(found.materials.length){
-   var mat=found.materials[0],file=mat.item.arquivos[0];
-   if(file)rows.push('<a class="home-quick-row" href="'+esc(file.url)+'" download><span class="home-quick-code home-quick-pdf">PDF</span><span><strong>'+esc(file.titulo)+'</strong><small>Material para baixar</small></span><b>↓</b></a>');
+  var q=search.query.trim(),rows=[];
+  if(bNorm(q).length<2){
+   if(document.activeElement!==input){closeQuick();return}
+   quick.innerHTML='<div class="hq-head">Buscas comuns</div><div class="hq-pop">'+BUSCA_POPULARES.map(function(p){return '<button type="button" class="hq-chip" data-pop="'+esc(p)+'">'+esc(p)+'</button>'}).join('')+'</div>';
+   hits=[];openQuick();return;
   }
-  found.lessons.slice(0,4).forEach(function(entry){
-   var l=entry.lesson;
-   rows.push('<a class="home-quick-row" href="'+href(l)+'"><span class="home-quick-code">'+esc(l.id)+'</span><span><strong>'+esc(l.title)+'</strong><small>'+esc(subTopic(l,areaForLesson(l)).title)+'</small></span><b>↗</b></a>')
-  });
+  if(document.activeElement!==input){closeQuick();return}
+  var R=bSearch(q),Q=R.Q,used={};
+  if(R.listas){
+   rows.push(qRow({best:true,href:'#resultados',code:AULA_SVG.down,codeClass:'is-icon',title:'Ver todas as listas em PDF',sub:plural(data.lessons.filter(function(l){return trHasLists(l.id)}).length,'aula','aulas')+' com listas publicadas'}));
+  }
+  if(R.best&&R.best.kind==='aula'){
+   var l=R.best.d.l;used[l.id]=1;
+   rows.push(qRow({best:R.confident,href:bLessonHref(l,Q.intent),code:esc(l.id),title:bMark(l.title,Q),sub:esc(R.best.d.topic.title)+(Q.intent==='levar'&&trHasLists(l.id)?', listas em PDF':Q.intent==='pratique'&&trHasLists(l.id)?', exercícios':Q.intent==='prova'&&trHasLists(l.id)?', modo prova':'')}));
+  }else if(R.best&&R.best.kind==='area'){
+   var a=R.best.d.a;
+   rows.push(qRow({best:true,href:areaUrl(a),code:esc(a.icon),codeClass:'tone-'+a.tone,title:bMark(a.name,Q),sub:'Área com '+plural(SUBJECT_TOPICS.filter(function(t){return t.area===a.id}).length,'assunto','assuntos')}));
+  }else if(R.best&&R.best.kind==='areas'){
+   R.best.list.forEach(function(d){rows.push(qRow({href:areaUrl(d.a),code:esc(d.a.icon),codeClass:'tone-'+d.a.tone,title:bMark(d.a.name,Q),sub:'Área'}))});
+  }
+  R.lessons.filter(function(x){return !used[x.d.l.id]}).slice(0,R.best?3:5).forEach(function(x){var l=x.d.l;used[l.id]=1;rows.push(qRow({href:bLessonHref(l,Q.intent),code:esc(l.id),title:bMark(l.title,Q),sub:esc(x.d.topic.title)}))});
+  var tp=R.topics[0];
+  if(tp&&tp.s>=8&&!(R.best&&R.best.kind!=='aula')){var n=data.lessons.filter(function(l){return subjectTopic(l,areaForLesson(l))===tp.d.t.id}).length;rows.push(qRow({href:topicUrl(tp.d.t),code:esc(tp.d.t.icon),codeClass:'is-topic',title:'Todas as aulas de '+bMark(tp.d.t.title,Q),sub:'Assunto com '+plural(n,'aula','aulas')}))}
+  if(R.best&&R.best.kind==='aula'&&Q.intent==='levar')bListFiles(R.best.d.l.id).forEach(function(f){rows.push(qRow({href:f.url,download:true,code:'PDF',codeClass:'is-pdf',title:esc(f.titulo),sub:'Baixar o PDF'}))});
+  var head=Q.fixed&&rows.length?'<div class="hq-fixed">Mostrando resultados para <b>'+esc(Q.fixed)+'</b></div>':'';
   if(!rows.length){
-   found.topics.slice(0,2).forEach(function(entry){
-    rows.push('<button class="home-quick-row" type="button" data-quick-area="'+esc(entry.topic.area)+'" data-quick-topic="'+esc(entry.topic.id)+'"><span class="home-quick-code">✦</span><span><strong>'+esc(entry.topic.title)+'</strong><small>Explorar assunto</small></span><b>↗</b></button>')
-   });
+   var sug=bSuggest(q);
+   head='<div class="hq-empty"><b>Nenhuma aula com “'+esc(q)+'”.</b>'+(sug.length?' Você quis dizer:':' Tente outra palavra ou um código, como A17.')+'</div>';
+   sug.forEach(function(d){rows.push(d.kind==='aula'?qRow({href:href(d.l),code:esc(d.l.id),title:esc(d.l.title),sub:esc(d.topic.title)}):qRow({href:topicUrl(d.t),code:esc(d.t.icon),codeClass:'is-topic',title:esc(d.t.title),sub:'Assunto'}))});
   }
-  if(!rows.length){quick.hidden=true;input.setAttribute('aria-expanded','false');return}
-  quick.innerHTML='<div class="home-quick-heading">ENCONTRAMOS ISSO PRA VOCÊ</div>'+rows.join('')+'<button type="button" class="home-quick-all" id="quick-all">Ver todos os resultados ↓</button>';
-  quick.hidden=false;input.setAttribute('aria-expanded','true');
-  document.getElementById('quick-all').addEventListener('click',function(){quick.hidden=true;input.setAttribute('aria-expanded','false');resultArea.scrollIntoView({behavior:'smooth',block:'start'})});
+  quick.innerHTML=head+'<div role="listbox" aria-label="Sugestões">'+rows.join('')+'</div>'+(R.lessons.length+R.topics.length>rows.length||R.listas?'<button type="button" class="home-quick-all" id="quick-all">Ver todos os resultados</button>':'');
+  hits=[].slice.call(quick.querySelectorAll('.hq-row'));hits.forEach(function(h,k){h.id='hq-'+k});
+  openQuick();setActive(hits.length?0:-1);
+  var all=document.getElementById('quick-all');if(all)all.addEventListener('click',function(){closeQuick();resultArea.scrollIntoView({behavior:'smooth',block:'start'})});
  }
  quick.addEventListener('click',function(e){
-  var hit=e.target.closest('button[data-quick-area]');if(hit){goBrowse('lessons',hit.dataset.quickArea,hit.dataset.quickTopic,true)}
+  var pop=e.target.closest('[data-pop]');if(pop){setQuery(pop.dataset.pop,false);input.focus();return}
+  var row=e.target.closest('.hq-row');if(row&&row.getAttribute('href')==='#resultados'){e.preventDefault();closeQuick();resultArea.scrollIntoView({behavior:'smooth',block:'start'})}
  });
- document.addEventListener('click',function(e){
-  if(!e.target.closest('.home-search-section')&&!quick.hidden){quick.hidden=true;input.setAttribute('aria-expanded','false')}
- });
+ quick.addEventListener('mousemove',function(e){var row=e.target.closest('.hq-row');if(row){var i=hits.indexOf(row);if(i>=0&&i!==active)setActive(i)}});
+ document.addEventListener('click',function(e){if(!e.target.closest('.home-search-section')&&!quick.hidden)closeQuick()});
+
+ /* ---------- Página de resultados ---------- */
+ function steps(l,intent){
+  var lists=trHasLists(l.id),u=href(l);
+  var st=[['entenda','Teoria',true],['pratique','20 exercícios',lists],['prova','Modo prova',lists],['levar','PDFs e vídeos',true]].filter(function(s){return s[2]});
+  return '<nav class="tr-steps" aria-label="Etapas da aula '+l.id+'">'+st.map(function(s){return '<a href="'+u+'#'+s[0]+'"'+(intent===s[0]?' class="is-on"':'')+'>'+s[1]+'</a>'}).join('')+'</nav>';
+ }
+ function files(id){var fs=bListFiles(id);return fs.length?'<div class="hs-files">'+fs.map(function(f){var vest=/vestibular-/.test(f.url);return '<a class="hs-file" href="'+esc(f.url)+'" target="_blank" rel="noopener">'+AULA_SVG.down+'<span>'+(vest?'Lista de vestibular':'Lista de fixação')+'</span><small>PDF</small></a>'}).join('')+'</div>':''}
+ function bestCard(R){
+  var Q=R.Q,b=R.best;
+  if(b.kind==='aula'){
+   var d=b.d,l=d.l;
+   return '<article class="hs-best"><p class="hs-best-k"><span class="hs-tag">'+(R.confident?'Melhor resultado':'Resultado mais próximo')+'</span><span>em <a href="'+topicUrl(d.topic)+'">'+esc(d.topic.title)+'</a>, <a href="'+areaUrl(d.area)+'">'+esc(d.area.name)+'</a></span></p>'
+    +'<div class="hs-best-grid"><div class="hs-best-main"><p class="tr-lesson-kicker"><span class="aula-id">'+l.id+'</span>'+(done.has(l.id)?'<span class="tr-tag tr-tag-done">'+TR_SVG.check+'Estudada</span>':'')+'</p><h3><a href="'+bLessonHref(l,Q.intent)+'">'+bMark(l.title,Q)+'</a></h3><p class="tr-lesson-sum">'+esc(l.summary||'')+'</p>'
+    +steps(l,Q.intent)+files(l.id)+'</div>'
+    +'<a class="tr-formula hs-formula" href="'+href(l)+'" aria-label="Abrir a aula '+l.id+'"><div class="tr-formula-math" data-formula="'+l.id+'" data-mini></div></a></div>'
+    +'<a class="aula-btn aula-btn-lime hs-open" href="'+bLessonHref(l,Q.intent)+'">Abrir a aula '+l.id+'</a></article>';
+  }
+  if(b.kind==='area'){
+   var a=b.d.a,ts=SUBJECT_TOPICS.filter(function(t){return t.area===a.id});
+   return '<article class="hs-best hs-best-area"><p class="hs-best-k"><span class="hs-tag">Melhor resultado</span><span>Área</span></p><div class="hs-area-top"><span class="hv-icon-sm tone-'+a.tone+'">'+esc(a.icon)+'</span><div><h3><a href="'+areaUrl(a)+'">'+esc(a.name)+'</a></h3><p class="tr-lesson-sum">'+esc(a.description)+'</p></div></div>'
+    +'<ul class="hv-topics">'+ts.map(function(t){return '<li><a href="'+topicUrl(t)+'"><span class="hv-ti" aria-hidden="true">'+esc(t.icon)+'</span>'+esc(t.title)+'</a></li>'}).join('')+'</ul><a class="aula-btn aula-btn-lime hs-open" href="'+areaUrl(a)+'">Abrir a área</a></article>';
+  }
+  return '<section class="hs-group"><h3>Áreas</h3><div class="hs-areas">'+b.list.map(function(d){return '<a class="hs-area" href="'+areaUrl(d.a)+'"><span class="hv-icon-sm tone-'+d.a.tone+'">'+esc(d.a.icon)+'</span><b>'+esc(d.a.name)+'</b></a>'}).join('')+'</div></section>';
+ }
+ function listsView(){
+  var ls=data.lessons.filter(function(l){return trHasLists(l.id)}),html='<p class="hs-lead">'+plural(ls.length,'aula já tem','aulas já têm')+' listas de fixação e de vestibular em PDF, com gabarito resolvido.</p>';
+  SUBJECT_AREAS.forEach(function(a){var g=ls.filter(function(l){return subjectContains(a,l)});if(!g.length)return;
+   html+='<section class="hs-group"><h3><a href="'+areaUrl(a)+'">'+esc(a.name)+'</a></h3><ol class="hs-pdfrows">'+g.map(function(l){return '<li class="hs-pdfrow"><a class="hs-pdfrow-t" href="'+href(l)+'"><span class="aula-id">'+l.id+'</span><span><b>'+esc(l.title)+'</b><small>'+esc(topicInfo(subjectTopic(l,a)).title)+'</small></span></a>'+files(l.id)+'</li>'}).join('')+'</ol></section>'});
+  return html;
+ }
+ function renderSearch(){
+  var q=search.query.trim(),R=bSearch(q),Q=R.Q,html='',shownIds={};
+  document.getElementById('search-title').textContent=R.listas?'Listas em PDF':'Resultados para “'+q+'”';
+  scopeWrap.innerHTML='';scopeWrap.hidden=true;
+  if(R.listas){resultOutput.innerHTML=listsView();return}
+  if(Q.fixed)html+='<p class="hs-fixed">Mostrando resultados para <b>'+esc(Q.fixed)+'</b>.</p>';
+  if(R.best){html+=bestCard(R);if(R.best.kind==='aula')shownIds[R.best.d.l.id]=1}
+  if(R.best&&R.best.kind==='aula'){
+   var d=R.best.d,sib=data.lessons.filter(function(l){return subjectTopic(l,areaForLesson(l))===d.topic.id&&!shownIds[l.id]});
+   if(sib.length){sib.forEach(function(l){shownIds[l.id]=1});html+='<section class="hs-group"><h3>Mais aulas de <a href="'+topicUrl(d.topic)+'">'+esc(d.topic.title)+'</a></h3><ol class="tr-rows">'+sib.map(function(l){return trRow(l,false)}).join('')+'</ol></section>'}
+  }
+  var others=R.lessons.filter(function(x){return !shownIds[x.d.l.id]});
+  if(others.length)html+='<section class="hs-group"><h3>'+(R.best&&R.best.kind==='aula'?'Outras aulas que combinam':'Aulas que combinam')+'</h3><ol class="tr-rows">'+others.slice(0,search.shown).map(function(x){return trRow(x.d.l,true)}).join('')+'</ol>'+(others.length>search.shown?'<button type="button" class="aula-btn aula-btn-soft hs-more" data-more-search>Ver mais '+(others.length-search.shown)+'</button>':'')+'</section>';
+  var bt=R.best&&R.best.kind==='aula'?R.best.d.topic.id:null,ts=R.topics.filter(function(x){return x.d.t.id!==bt}).slice(0,6);
+  if(ts.length)html+='<section class="hs-group"><h3>Assuntos</h3><ul class="hv-topics hs-topics">'+ts.map(function(x){return '<li><a href="'+topicUrl(x.d.t)+'"><span class="hv-ti" aria-hidden="true">'+esc(x.d.t.icon)+'</span>'+esc(x.d.t.title)+'</a></li>'}).join('')+'</ul></section>';
+  if(!html){
+   var sug=bSuggest(q);
+   html='<div class="hs-none"><b>Nenhuma aula encontrada para “'+esc(q)+'”.</b><p>'+(sug.length?'Talvez você esteja procurando:':'Tente outra palavra, um código de aula (como A17) ou escolha uma área.')+'</p>'+(sug.length?'<ul class="hv-topics hs-topics">'+sug.map(function(d){return d.kind==='aula'?'<li><a href="'+href(d.l)+'"><span class="hv-ti">'+d.l.id+'</span>'+esc(d.l.title)+'</a></li>':'<li><a href="'+topicUrl(d.t)+'"><span class="hv-ti">'+esc(d.t.icon)+'</span>'+esc(d.t.title)+'</a></li>'}).join('')+'</ul>':'')+'<button type="button" class="aula-btn aula-btn-ink" id="search-reset">Ver todas as áreas</button></div>'+exatooCard('busca');
+  }
+  resultOutput.innerHTML=html;
+  trFormulas(resultOutput);
+ }
  function setQuery(q,fromHistory){
-  search.query=q;search.scope='tudo';search.shown=12;input.value=q;
+  search.query=q;search.shown=12;input.value=q;
   clearBtn.hidden=!q.trim();
-  var searching=!!q.trim();main.hidden=searching;resultArea.hidden=!searching;
-  if(searching){renderSearch();renderQuick()}else renderQuick();
+  var searching=bNorm(q).length>=2;main.hidden=searching;resultArea.hidden=!searching;
+  if(searching)renderSearch();
+  renderQuick();
   if(!fromHistory){
    var u=new URL(location.href);
    ['area','assunto','favoritos','todas','q'].forEach(function(k){u.searchParams.delete(k)});
@@ -265,20 +495,26 @@ function home(){
    history.replaceState(null,'',u.pathname+u.search);
   }
  }
- scopeWrap.addEventListener('click',function(e){var el=e.target.closest('button[data-scope]');if(!el)return;search.scope=el.dataset.scope;search.shown=12;renderSearch()});
  resultOutput.addEventListener('click',function(e){
   if(e.target.closest('button[data-more-search]')){search.shown+=12;renderSearch();return}
-  var btn=e.target.closest('button[data-search-area]');
-  if(btn){goBrowse(btn.dataset.searchTopic?'lessons':'topics',btn.dataset.searchArea,btn.dataset.searchTopic,true);return}
-  if(e.target.closest('#search-reset'))goBrowse('areas','','',true);
+  if(e.target.closest('#search-reset')){setQuery('',false);document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'})}
  });
+ input.setAttribute('role','combobox');input.setAttribute('aria-autocomplete','list');
  input.addEventListener('input',function(){setQuery(input.value,false)});
- document.getElementById('btn-search').addEventListener('click',function(){if(search.query.trim())resultArea.scrollIntoView({behavior:'smooth',block:'start'});else input.focus();quick.hidden=true;input.setAttribute('aria-expanded','false')});
- input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();if(search.query.trim()){resultArea.scrollIntoView({behavior:'smooth',block:'start'});quick.hidden=true;input.setAttribute('aria-expanded','false')}}if(e.key==='Escape'&&input.value)setQuery('',false)});
+ input.addEventListener('focus',function(){renderQuick()});
+ document.getElementById('btn-search').addEventListener('click',function(){if(search.query.trim()){closeQuick();resultArea.scrollIntoView({behavior:'smooth',block:'start'})}else input.focus()});
+ input.addEventListener('keydown',function(e){
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){if(quick.hidden)renderQuick();if(!hits.length)return;e.preventDefault();var n=hits.length;setActive(e.key==='ArrowDown'?(active+1)%n:(active-1+n)%n);return}
+  if(e.key==='Enter'){
+   e.preventDefault();if(!search.query.trim())return;
+   var row=!quick.hidden&&hits[active>=0?active:0];
+   if(row){if(row.getAttribute('href')==='#resultados'){closeQuick();resultArea.scrollIntoView({behavior:'smooth',block:'start'})}else row.click();return}
+   closeQuick();resultArea.scrollIntoView({behavior:'smooth',block:'start'});return;
+  }
+  if(e.key==='Escape'){if(!quick.hidden)closeQuick();else if(input.value)setQuery('',false)}
+ });
  clearBtn.addEventListener('click',function(){setQuery('',false);input.focus()});
- document.querySelectorAll('[data-example]').forEach(function(b){b.addEventListener('click',function(){setQuery(b.dataset.example,false);resultArea.scrollIntoView({behavior:'smooth',block:'start'})})});
  document.getElementById('return-home').addEventListener('click',function(){setQuery('',false);document.getElementById('explorar').scrollIntoView({behavior:'smooth',block:'start'})});
- document.querySelectorAll('.navlinks a[href^="/#"]').forEach(function(a){a.addEventListener('click',function(){if(search.query.trim())setQuery('',false)})});
  document.addEventListener('keydown',function(e){if((e.key==='/'||(e.key.toLowerCase()==='k'&&(e.ctrlKey||e.metaKey)))&&!e.altKey&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();input.focus()}});
  function loadUrl(){
   var p=new URLSearchParams(location.search),area=SUBJECT_AREAS.find(function(x){return x.id===p.get('area')});
