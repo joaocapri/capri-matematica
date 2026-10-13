@@ -26,7 +26,7 @@ async function boot(url='https://matmatmat.test/'){
  w.scrollTo=function(...a){w.__scrolled=a};
  w.eval(app);
  for(let i=0;i<65;i++){
-  if(id?d.querySelector('.aula-step'):pathname.startsWith('/explorar')?d.querySelector('#explorer-content .area-tile, #explorer-content .browse-topic, #explorer-content .browse-lesson-row'):pathname.startsWith('/teste-seu-nivel')?d.querySelector('.diag-track-card'):d.querySelector('.home-hero .area-tile, .home-hero'))break;
+  if(id?d.querySelector('.aula-step'):pathname.startsWith('/explorar')?d.querySelector('main.trilha .aula-hero'):pathname.startsWith('/teste-seu-nivel')?d.querySelector('.diag-track-card'):d.querySelector('.home-hero .area-tile, .home-hero'))break;
   await wait();
  }
  return{w,d,dom};
@@ -93,27 +93,43 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelector('#home-discover').hidden,true,'exploração oculta ao pesquisar');
  dom.window.close();
 
+ // Trilha: todas as áreas → área → assunto → aula.
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/'));
  assert.equal(d.querySelectorAll('.area-tile').length,9);
  assert.equal(d.querySelectorAll('input[type=search]').length,0,'sem caixa de busca repetida');
- assert.ok(d.querySelector('.explorer-back a[href="/"]'));
+ assert.ok(d.querySelector('.aula-crumbs a[href="/"]'));
+ assert.ok(d.querySelector('a.area-tile[href="/explorar/?area=funcoes"]'));
  assert.equal(d.querySelector('.explorer-search-link'),null,'Sem botão extra Pesquisar na biblioteca');
  dom.window.close();
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/?area=funcoes'));
- assert.equal(d.querySelectorAll('.browse-topic').length,6);
+ assert.equal(d.querySelectorAll('.tr-route > .tr-stop').length,6,'Seis assuntos na trilha da área');
+ assert.ok(d.querySelector('.tr-topic h3 a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
+ assert.ok(d.querySelector('a.tr-chip[href="/aulas/A17/"]'),'Aula acessível direto da página da área');
+ assert.equal(d.querySelectorAll('.tr-chip').length,26);
+ assert.ok(d.querySelector('.tr-areas a.is-current[href="/explorar/?area=funcoes"]'));
+ assert.equal(d.querySelectorAll('.tr-areas a').length,9);
+ assert.ok(d.querySelector('.aula-crumbs a[href="/explorar/"]'));
+ assert.equal(d.querySelector('.aula-hero-cta .aula-btn-lime').getAttribute('href'),'/aulas/A07/');
  assert.equal(d.querySelector('.explorer-search-link'),null,'Sem botão Pesquisar ao abrir Fundamentos ou Funções');
- assert.ok(d.querySelector('a.browse-topic[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
- assert.ok(d.querySelector('a.explorer-trail[href="/explorar/"]')||d.querySelector('.explorer-trail a[href="/explorar/"]'));
  dom.window.close();
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/?area=funcoes&assunto=fu-quadratica'));
- assert.equal(d.querySelectorAll('.browse-lesson-row').length,6);
- assert.ok(d.querySelector('a[href="/aulas/A17/"]'));
- assert.ok(d.querySelector('.explorer-trail a[href="/explorar/?area=funcoes"]'));
+ assert.equal(d.querySelectorAll('.tr-lesson').length,6);
+ assert.ok(d.querySelector('.tr-lesson h3 a[href="/aulas/A17/"]'));
+ assert.ok(d.querySelector('.tr-steps a[href="/aulas/A17/#prova"]'),'Atalho direto para o modo prova');
+ assert.ok(d.querySelector('.aula-crumbs a[href="/explorar/?area=funcoes"]'));
+ assert.ok(d.querySelector('.aula-trail .is-current a[aria-current="page"]'));
+ assert.equal(d.querySelector('.aula-seq-next').getAttribute('href'),'/explorar/?area=funcoes&assunto=fu-modulo');
+ assert.equal(d.querySelector('.aula-hero-cta .aula-btn-lime').getAttribute('href'),'/aulas/A16/');
+ await new Promise(r=>setTimeout(r,60));
+ assert.match(d.querySelector('#aula-formula-math').innerHTML,/\\frac\{-b/,'Fórmula-chave do assunto: Bhaskara');
+ assert.equal(d.querySelectorAll('.tr-lesson [data-formula]').length,6);
  dom.window.close();
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/?todas=1'));
- assert.equal(d.querySelectorAll('.browse-lesson-row').length,24);
- click(w,d.querySelector('#show-more-explorer'));
- assert.equal(d.querySelectorAll('.browse-lesson-row').length,48);
+ assert.equal(d.querySelectorAll('.tr-row').length,144);
+ assert.equal(d.querySelectorAll('.tr-group').length,9);
+ dom.window.close();
+ ({w,d,dom}=await boot('https://matmatmat.test/explorar/?favoritos=1'));
+ assert.ok(d.querySelector('.tr-empty a[href="/explorar/"]'),'Favoritas vazias orientam o próximo passo');
  dom.window.close();
 
  ({w,d,dom}=await boot('https://matmatmat.test/aulas/A17/'));

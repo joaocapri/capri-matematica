@@ -95,7 +95,7 @@ function home(){
   return '<a class="browse-lesson-row" href="'+href(l)+'"><span class="browse-lesson-number">'+esc(l.id)+'</span><span class="browse-lesson-copy"><strong>'+esc(l.title)+'</strong><small>'+esc(l.summary||'Abra a aula para começar.')+'</small>'+(areaLabel?'<span class="browse-lesson-meta">'+esc(area.name)+' · '+esc(subTopic(l,area).title)+'</span>':'')+'</span><span class="browse-lesson-right">'+(done.has(l.id)?'<span class="browse-studied">✓ Estudada</span>':hasMaterial?'<span class="browse-material-tag">PDF</span>':'<span class="browse-enter">↗</span>')+'</span></a>'
  }
  function crumbs(parts){return '<nav class="browser-crumbs" aria-label="Caminho"><button data-catalog="areas" type="button">Todas as áreas</button>'+parts.map(function(p){return '<span class="crumb-chevron">›</span>'+(p.action?'<button type="button" data-catalog="'+p.action+'" data-id="'+esc(p.id||'')+'">'+esc(p.label)+'</button>':'<strong>'+esc(p.label)+'</strong>')}).join('')+'</nav>'}
- function tile(area){return '<a class="area-tile" href="/explorar/?area='+encodeURIComponent(area.id)+'"><span class="area-tile-icon tone-'+area.tone+'">'+esc(area.icon)+'</span><span class="area-tile-name">'+esc(area.name)+'</span><span class="area-tile-subtitle">'+esc(area.description)+'</span><span class="area-tile-foot"><span>'+areaLessons(area).length+' aulas</span><span class="area-tile-go">↗</span></span></a>'}
+ function tile(area){var ls=areaLessons(area),n=ls.filter(function(l){return done.has(l.id)}).length;return '<a class="area-tile" href="/explorar/?area='+encodeURIComponent(area.id)+'"><span class="area-tile-icon tone-'+area.tone+'">'+esc(area.icon)+'</span><span class="area-tile-name">'+esc(area.name)+'</span><span class="area-tile-subtitle">'+esc(area.description)+'</span>'+(n?'<div class="tr-meter" role="img" aria-label="'+n+' de '+ls.length+' aulas estudadas"><span style="width:'+Math.round(n*100/ls.length)+'%"></span></div>':'')+'<span class="area-tile-foot"><span>'+ls.length+' aulas'+(n?' ('+n+' estudadas)':'')+'</span><span class="area-tile-go" aria-hidden="true">↗</span></span></a>'}
  function list(items,label,showArea){
   return '<div class="browse-list-intro"><div><h3>'+esc(label)+'</h3><p>'+items.length+' '+(items.length===1?'aula disponível':'aulas disponíveis')+'</p></div></div><div class="browse-lesson-list">'+(items.length?items.slice(0,shown).map(function(l){return drawRow(l,showArea)}).join(''):'<div class="browse-empty">Nenhuma aula aqui por enquanto.</div>')+'</div>'+(shown<items.length?'<button type="button" data-catalog="more" class="browse-more">Carregar mais aulas ↓</button>':'')
  }
@@ -281,41 +281,194 @@ function home(){
 }
 
 
+/* ================= Trilha (v2): áreas → assunto → aula ================= */
+var TR_SVG={
+ check:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>',
+ heart:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.8 4.8a5.4 5.4 0 0 0-7.6 0L12 6l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.6a5.4 5.4 0 0 0 0-7.6Z"></path></svg>',
+ doc:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path></svg>'
+};
+function trAreaLessons(area){return data.lessons.filter(function(l){return subjectContains(area,l)})}
+function trTopics(area){return SUBJECT_TOPICS.filter(function(t){return t.area===area.id})}
+function trTopicLessons(area,topic){return trAreaLessons(area).filter(function(l){return subjectTopic(l,area)===topic.id})}
+function trAreaUrl(area){return '/explorar/?area='+encodeURIComponent(area.id)}
+function trTopicUrl(area,topic){return trAreaUrl(area)+'&assunto='+encodeURIComponent(topic.id)}
+function trHasLists(id){return materialsAt('aula',id).some(function(x){return (x.item.arquivos||[]).some(function(f){return /\/(fixacao|vestibular)-[ABC]\d\d\.pdf$/.test(f.url||'')})})}
+function trDone(ls){return ls.filter(function(l){return done.has(l.id)}).length}
+function trNext(ls){return ls.find(function(l){return !done.has(l.id)})||null}
+function trProgress(l){
+ var st=aulaStore(l.id).st,fix=0;
+ Object.keys(st.fix).forEach(function(k){if(st.fix[k]==='ok'||st.fix[k]==='erro')fix++});
+ var p={done:done.has(l.id),entenda:!!st.entenda,fix:fix,best:st.prova.best,pdf:!!st.pdf};
+ p.started=!!(p.entenda||p.fix||p.best!=null||p.pdf);
+ return p;
+}
+function trMeter(n,total,label){var pct=total?Math.round(n*100/total):0;return '<div class="tr-meter" role="img" aria-label="'+esc(label)+'"><span style="width:'+pct+'%"></span></div>'}
+function trMini(f){if(!f)return null;var s=String(f).split(/\\q?quad/)[0].replace(/[\s,;.]+$/,'')||String(f);if(s.length>40){var parts=s.split('=');if(parts.length>2)s=parts.slice(0,2).join('=')}return s}
+async function trFormulas(root){
+ var els=[].slice.call(root.querySelectorAll('[data-formula]'));if(!els.length)return;
+ var ids=[];els.forEach(function(e){e.dataset.formula.split(',').forEach(function(id){if(ids.indexOf(id)<0)ids.push(id)})});
+ var map={};
+ await Promise.all(ids.map(function(id){return fetchJson('/conteudos/'+id+'.json').then(function(c){map[id]=heroFormula(c)})}));
+ els.forEach(function(el){
+  var f=null;el.dataset.formula.split(',').forEach(function(id){var g=map[id];if(g&&(!f||formulaScore(trMini(g))>formulaScore(trMini(f))))f=g});
+  if(!f){var box=el.closest('.tr-formula');if(box)box.hidden=true;return}
+  el.innerHTML='\\['+esc(el.hasAttribute('data-mini')?trMini(f):f)+'\\]';
+ });
+ await tex(root);
+ els.forEach(function(el){fitFormula(el)});
+}
+/* adesivos: ícone central e os ícones dos assuntos em órbita */
+function trSticker(center,tone,orbit,caption){
+ var n=orbit.length;
+ var items=orbit.map(function(o,k){
+  var ang=-Math.PI/2+k*2*Math.PI/n,x=50+40*Math.cos(ang),y=50+38*Math.sin(ang),rot=(k%2?7:-8)+(k%3)*2;
+  return '<span class="tr-orbit tone-'+esc(o.tone)+'" style="left:'+x.toFixed(1)+'%;top:'+y.toFixed(1)+'%;--r:'+rot+'deg">'+esc(o.icon)+'</span>';
+ }).join('');
+ return '<figure class="tr-sticker" aria-hidden="true"><div class="tr-sticker-card"><span class="tr-sticker-main tone-'+esc(tone)+'">'+esc(center)+'</span>'+items+'</div>'+(caption?'<figcaption>'+esc(caption)+'</figcaption>':'')+'</figure>';
+}
+function trCrumbs(items){return '<nav class="aula-crumbs" aria-label="Caminho"><a href="/">Início</a>'+items.map(function(it){return '<span aria-hidden="true">/</span>'+(it.url?'<a href="'+it.url+'">'+esc(it.name)+'</a>':'<span aria-current="page">'+esc(it.name)+'</span>')}).join('')+'</nav>'}
+function trAreaSwitch(current){
+ return '<nav class="tr-areas" aria-label="Outras áreas"><ol>'+SUBJECT_AREAS.map(function(a){var cur=current&&a.id===current.id;var ls=trAreaLessons(a),d=trDone(ls);return '<li><a href="'+trAreaUrl(a)+'" class="'+(cur?'is-current':'')+'"'+(cur?' aria-current="page"':'')+'><span class="tr-areas-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="tr-areas-name">'+esc(a.name)+'</span>'+(d?'<span class="tr-areas-done">'+d+'/'+ls.length+'</span>':'')+'</a></li>'}).join('')+'</ol></nav>';
+}
+function trRow(l,showTopic){
+ var a=areaForLesson(l),p=trProgress(l),fav=saved.has(l.id);
+ var status=p.done?'<span class="tr-tag tr-tag-done">'+TR_SVG.check+'Estudada</span>':p.best!=null?'<span class="tr-tag">Prova: '+p.best+'/20</span>':p.started?'<span class="tr-tag">Em andamento</span>':'';
+ return '<li><a class="tr-row'+(p.done?' is-done':'')+'" href="'+href(l)+'"><span class="aula-id">'+esc(l.id)+'</span><span class="tr-row-t"><b>'+esc(l.title)+'</b><small>'+esc(showTopic?topicInfo(subjectTopic(l,a)).title:(l.summary||''))+'</small></span><span class="tr-row-s">'+(fav?'<span class="tr-fav" title="Favorita">'+TR_SVG.heart+'<span class="sr-only">Favorita</span></span>':'')+(trHasLists(l.id)?'<span class="tr-pdf-ico" title="Tem listas em PDF">'+TR_SVG.doc+'<span class="sr-only">Tem listas em PDF</span></span>':'')+status+'</span></a></li>';
+}
+function trPdfPanel(kind,id,label){
+ var items=materialsAt(kind,id);if(!items.length)return '';
+ var files=[];items.forEach(function(x){(x.item.arquivos||[]).forEach(function(f){files.push(f)})});
+ return '<section class="tr-pdfs"><h2>'+esc(label)+'</h2><div class="tr-pdfs-list">'+files.map(function(f){var u=String(f.url||'');return /^\/(?!\/)/.test(u)||/^https:\/\//.test(u)?'<a class="aula-file" href="'+esc(u)+'" target="_blank" rel="noopener">'+AULA_SVG.down+'<span>'+esc(f.titulo||'Material em PDF')+'</span></a>':''}).join('')+'</div></section>';
+}
+
 function explorePage(){
+ var q=new URLSearchParams(location.search);
+ var area=SUBJECT_AREAS.find(function(a){return a.id===q.get('area')});
+ var topic=area&&SUBJECT_TOPICS.find(function(t){return t.id===q.get('assunto')&&t.area===area.id});
+ var app=document.getElementById('app'),html;
+ if(q.has('favoritos')||q.has('todas'))html=trListPage(q.has('favoritos'));
+ else if(topic)html=trTopicPage(area,topic);
+ else if(area)html=trAreaPage(area);
+ else html=trAreasPage();
+ app.innerHTML=header()+'<main class="aula trilha" id="conteudo">'+html+'</main>'+footer();
+ trFormulas(document.querySelector('main'));
+ var cur=document.querySelector('.aula-trail .is-current,.tr-areas .is-current');
+ if(cur){var ol=cur.closest('ol');if(ol&&ol.scrollWidth>ol.clientWidth+2){var r=cur.getBoundingClientRect(),o=ol.getBoundingClientRect();if(r.right>o.right||r.left<o.left)ol.scrollLeft+=r.left-o.left-24}}
+ if(location.hash){var t=document.getElementById(location.hash.slice(1));if(t)setTimeout(function(){t.scrollIntoView({block:'start'})},80)}
+}
+
+/* /explorar/ — escolha da área */
+function trAreasPage(){
  title('Explorar assuntos');
- var query=new URLSearchParams(location.search),area=SUBJECT_AREAS.find(function(a){return a.id===query.get('area')});
- var topic=area&&SUBJECT_TOPICS.find(function(t){return t.id===query.get('assunto')&&t.area===area.id});
- var favorites=query.has('favoritos'),all=query.has('todas'),limit=24;
- document.getElementById('app').innerHTML=header()+'<main class="shell explorer-page"><div class="explorer-back"><a href="/">← Início</a><span>MAT MAT MAT! / CATÁLOGO</span></div><div class="explorer-title"><div><span class="home-section-label">✳ BIBLIOTECA DE MATEMÁTICA</span><h1 id="explorer-heading">Explorar matemática</h1><p id="explorer-description">Escolha uma área para começar.</p></div></div><div id="explorer-content"></div></main>'+footer();
- function trail(items){return '<nav class="explorer-trail" aria-label="Caminho do assunto"><a href="/explorar/">Todas as áreas</a>'+items.map(function(it){return '<span>›</span>'+(it.url?'<a href="'+it.url+'">'+esc(it.name)+'</a>':'<strong aria-current="page">'+esc(it.name)+'</strong>')}).join('')+'</nav>'}
- function card(a){var n=data.lessons.filter(function(l){return subjectContains(a,l)}).length;return '<a class="area-tile" href="/explorar/?area='+a.id+'"><span class="area-tile-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="area-tile-name">'+esc(a.name)+'</span><span class="area-tile-subtitle">'+esc(a.description)+'</span><span class="area-tile-foot"><span>'+n+' aulas</span><span class="area-tile-go">↗</span></span></a>'}
- function lessonRow(l,full){var a=areaForLesson(l);return '<a class="browse-lesson-row" href="'+href(l)+'"><span class="browse-lesson-number">'+l.id+'</span><span class="browse-lesson-copy"><strong>'+esc(l.title)+'</strong><small>'+esc(l.summary||'Abra a aula.')+'</small>'+(full?'<span class="browse-lesson-meta">'+esc(a.name)+' · '+esc(topicInfo(subjectTopic(l,a)).title)+'</span>':'')+'</span><span class="browse-lesson-right">'+(done.has(l.id)?'<span class="browse-studied">✓ Estudada</span>':'<span class="browse-enter">↗</span>')+'</span></a>'}
- function list(items,label,full){return '<div class="browse-list-intro"><h3>'+esc(label)+'</h3><p>'+items.length+' aulas</p></div><div class="browse-lesson-list">'+(items.length?items.slice(0,limit).map(function(l){return lessonRow(l,full)}).join(''):'<div class="browse-empty">Você ainda não favoritou nenhuma aula.</div>')+'</div>'+(limit<items.length?'<button class="browse-more" id="show-more-explorer">Mostrar mais aulas ↓</button>':'')}
- function render(){
-  var name='Escolha uma área',description='São 9 áreas e 38 assuntos. Vá direto ao que procura.',html='';
-  if(favorites||all){
-   name=favorites?'Suas favoritas':'Todas as aulas';description=favorites?'Seus conteúdos salvos.':'Todas as 144 aulas em um só lugar.';
-   html=trail([{name:name}])+list(favorites?data.lessons.filter(function(l){return saved.has(l.id)}):data.lessons,name,true);
-  }else if(topic){
-   name=topic.title;description=topic.description;
-   var ls=data.lessons.filter(function(l){return subjectTopic(l,areaForLesson(l))===topic.id});
-   html=trail([{name:area.name,url:'/explorar/?area='+area.id},{name:topic.title}])+'<div class="explorer-step">ETAPA 3 DE 3 · ESCOLHA UMA AULA</div>'+topicPdfPanel('assunto',topic.id,'Listas gerais deste assunto')+list(ls,'Aulas de '+topic.title,false);
-  }else if(area){
-   name=area.name;description=area.description;
-   var ts=SUBJECT_TOPICS.filter(function(t){return t.area===area.id});
-   html=trail([{name:area.name}])+'<div class="explorer-step">ETAPA 2 DE 3 · ESCOLHA UM ASSUNTO</div>'+topicPdfPanel('area',area.id,'Listas gerais da área')+'<div class="browse-topic-grid">'+ts.map(function(t){
-    var n=data.lessons.filter(function(l){return subjectTopic(l,areaForLesson(l))===t.id}).length;
-    return '<a class="browse-topic" href="/explorar/?area='+area.id+'&assunto='+t.id+'"><span class="browse-topic-icon">'+esc(t.icon)+'</span><span class="browse-topic-copy"><strong>'+esc(t.title)+'</strong><small>'+esc(t.description)+'</small><span class="browse-topic-count">'+n+' aulas</span></span><span class="browse-topic-next">↗</span></a>'
-   }).join('')+'</div>';
-  }else{
-   html='<div class="explorer-toolbar"><span>ETAPA 1 DE 3 · ESCOLHA UMA ÁREA</span><div><a href="/explorar/?favoritos=1">♡ Favoritas</a><a href="/explorar/?todas=1">Todas as 144 ↗</a></div></div><div class="area-grid">'+SUBJECT_AREAS.map(card).join('')+'</div>';
-  }
-  document.getElementById('explorer-heading').textContent=name;
-  document.getElementById('explorer-description').textContent=description;
-  document.getElementById('explorer-content').innerHTML=html;
-  var more=document.getElementById('show-more-explorer');if(more)more.addEventListener('click',function(){limit+=24;render()});
+ var total=data.lessons.length,d=trDone(data.lessons);
+ var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Assuntos'}])
+  +'<div class="aula-hero-grid"><div>'
+  +'<p class="aula-kicker">'+SUBJECT_AREAS.length+' áreas, '+SUBJECT_TOPICS.length+' assuntos e '+total+' aulas</p>'
+  +'<h1 id="tr-titulo">Escolha uma área</h1>'
+  +'<p class="aula-summary">Cada área é uma trilha de assuntos, na ordem em que costumam ser estudados. Dentro de cada assunto, as aulas trazem teoria, exercícios resolvidos e modo prova.</p>'
+  +'<div class="aula-hero-cta"><a class="aula-btn aula-btn-lime" href="/teste-seu-nivel/">Descobrir por onde começar</a><a class="aula-btn aula-btn-ghost" href="/explorar/?todas=1">Ver todas as aulas</a></div>'
+  +(d?'<div class="tr-hero-progress">'+trMeter(d,total,d+' de '+total+' aulas estudadas')+'<span>Você já estudou <b>'+plural(d,'aula','aulas')+'</b> de '+total+'.</span></div>':'')
+  +(saved.size?'<a class="tr-hero-link" href="/explorar/?favoritos=1">'+TR_SVG.heart+'Suas favoritas ('+saved.size+')</a>':'')
+  +'</div>'+trSticker('∑','mint',SUBJECT_AREAS.map(function(a){return {icon:a.icon,tone:a.tone}}),'Toda a matemática do ensino médio')+'</div></div></section>';
+ var tiles='<section class="shell tr-body"><header class="tr-head"><h2>As 9 áreas</h2><p>Toque em uma área para ver os assuntos dela.</p></header><div class="area-grid tr-area-grid">'+SUBJECT_AREAS.map(function(a){
+  var ls=trAreaLessons(a),n=trDone(ls),ts=trTopics(a).length;
+  return '<a class="area-tile" href="'+trAreaUrl(a)+'"><span class="area-tile-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="area-tile-name">'+esc(a.name)+'</span><span class="area-tile-subtitle">'+esc(a.description)+'</span>'
+   +(n?trMeter(n,ls.length,n+' de '+ls.length+' aulas estudadas'):'')
+   +'<span class="area-tile-foot"><span>'+plural(ts,'assunto','assuntos')+', '+ls.length+' aulas'+(n?' ('+n+' estudadas)':'')+'</span><span class="area-tile-go" aria-hidden="true">↗</span></span></a>'
+ }).join('')+'</div></section>';
+ return hero+tiles;
+}
+
+/* /explorar/?area=… — os assuntos da área como uma trilha */
+function trAreaPage(area){
+ title(area.name);
+ var topics=trTopics(area),ls=trAreaLessons(area),d=trDone(ls),next=trNext(ls);
+ var withLists=ls.filter(function(l){return trHasLists(l.id)}).length;
+ var cta=next?(d?'<a class="aula-btn aula-btn-lime" href="'+href(next)+'">Continuar na '+next.id+'</a>':'<a class="aula-btn aula-btn-lime" href="'+href(next)+'">Começar pela primeira aula</a>'):'<a class="aula-btn aula-btn-lime" href="'+href(ls[0])+'">Revisar desde o início</a>';
+ var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Assuntos',url:'/explorar/'},{name:area.name}])
+  +'<div class="aula-hero-grid"><div>'
+  +'<p class="aula-kicker"><span class="aula-id">'+esc(area.icon)+'</span>'+plural(topics.length,'assunto','assuntos')+' e '+ls.length+' aulas</p>'
+  +'<h1 id="tr-titulo">'+esc(area.name)+'</h1>'
+  +'<p class="aula-summary">'+esc(area.description)+'</p>'
+  +'<div class="aula-hero-cta">'+cta+'<a class="aula-btn aula-btn-ghost" href="#trilha">Ver os assuntos</a></div>'
+  +'<div class="tr-hero-progress">'+(d?trMeter(d,ls.length,d+' de '+ls.length+' aulas estudadas'):'')+'<span>'+(d?'<b>'+d+' de '+ls.length+'</b> aulas estudadas'+(next?'. A próxima é a '+next.id+', '+esc(next.title)+'.':'. Área completa!'):(withLists?withLists===ls.length?'Todas as aulas têm listas em PDF com gabarito resolvido.':withLists+' das '+ls.length+' aulas já têm listas em PDF com gabarito.':'Marque as aulas como estudadas e acompanhe seu avanço aqui.'))+'</span></div>'
+  +'</div>'+trSticker(area.icon,area.tone,topics.map(function(t){return {icon:t.icon,tone:'paper'}}),area.name)+'</div>'
+  +trAreaSwitch(area)+'</div></section>';
+ var route='<section class="shell tr-body" id="trilha"><header class="tr-head"><h2>Os assuntos, em ordem</h2><p>Siga a trilha do começo ou vá direto ao assunto que você precisa. Cada aula abre direto pelo código.</p></header><ol class="tr-route">'+topics.map(function(t,k){
+  var tl=trTopicLessons(area,t),td=trDone(tl),tn=trNext(tl);
+  var state=tl.length&&td===tl.length?'is-done':(td||tl.some(function(l){return trProgress(l).started}))?'is-started':'';
+  var lists=tl.filter(function(l){return trHasLists(l.id)}).length;
+  return '<li class="tr-stop '+state+'" id="assunto-'+t.id+'"><span class="tr-stop-n" aria-hidden="true">'+(state==='is-done'?TR_SVG.check:(k+1))+'</span>'
+   +'<article class="tr-topic"><div class="tr-topic-top"><span class="tr-topic-icon tone-'+area.tone+'" aria-hidden="true">'+esc(t.icon)+'</span><div class="tr-topic-copy"><h3><a href="'+trTopicUrl(area,t)+'">'+esc(t.title)+'</a></h3><p>'+esc(t.description)+'</p></div>'
+   +(tl[0]?'<div class="tr-formula" aria-hidden="true"><div class="tr-formula-math" data-formula="'+tl[0].id+'" data-mini></div></div>':'')+'</div>'
+   +'<ul class="tr-chips" aria-label="Aulas de '+esc(t.title)+'">'+tl.map(function(l){var dn=done.has(l.id);return '<li><a class="tr-chip'+(dn?' is-done':'')+(tn&&tn.id===l.id&&td?' is-next':'')+'" href="'+href(l)+'"><b>'+l.id+'</b><span>'+esc(l.title)+'</span>'+(dn?'<span class="sr-only">, estudada</span>':'')+'</a></li>'}).join('')+'</ul>'
+   +'<div class="tr-topic-foot"><div class="tr-topic-meta"><span>'+plural(tl.length,'aula','aulas')+'</span>'+(lists?'<span>'+TR_SVG.doc+(lists===tl.length?'Todas com listas em PDF':plural(lists,'aula com listas','aulas com listas')+' em PDF')+'</span>':'')+(td?'<span class="tr-topic-done">'+td+' de '+tl.length+' estudadas</span>':'')+'</div>'
+   +'<a class="aula-btn aula-btn-soft tr-topic-go" href="'+trTopicUrl(area,t)+'">Abrir o assunto</a></div></article></li>';
+ }).join('')+'</ol>'
+  +trPdfPanel('area',area.id,'Materiais gerais de '+area.name)
+  +'<aside class="tr-nudge"><div><b>Não sabe em que ponto está?</b><p>O teste de nível mostra quais assuntos revisar primeiro.</p></div><a class="aula-btn aula-btn-ink" href="/teste-seu-nivel/">Fazer o teste de nível</a></aside></section>';
+ return hero+route;
+}
+
+/* /explorar/?area=…&assunto=… — as aulas do assunto, em ordem */
+function trTopicPage(area,topic){
+ title(topic.title+' | '+area.name);
+ var topics=trTopics(area),ti=topics.findIndex(function(t){return t.id===topic.id});
+ var ls=trTopicLessons(area,topic),d=trDone(ls),next=trNext(ls);
+ var anyLists=ls.some(function(l){return trHasLists(l.id)});
+ var cta=next?'<a class="aula-btn aula-btn-lime" href="'+href(next)+'">'+(d?'Continuar na ':'Começar pela ')+next.id+'</a>':(ls[0]?'<a class="aula-btn aula-btn-lime" href="'+href(ls[0])+'#prova">Revisar com o modo prova</a>':'');
+ var trail='<ol class="aula-trail" aria-label="Assuntos de '+esc(area.name)+'">'+topics.map(function(t){var cur=t.id===topic.id,tl=trTopicLessons(area,t),all=tl.length&&trDone(tl)===tl.length;return '<li class="'+(cur?'is-current ':'')+(all?'is-done':'')+'"><a href="'+trTopicUrl(area,t)+'"'+(cur?' aria-current="page"':'')+'><span class="aula-trail-dot" aria-hidden="true"></span><span class="aula-trail-id">'+esc(t.icon)+'</span><span class="aula-trail-name">'+esc(t.title)+'</span></a></li>'}).join('')+'</ol>';
+ var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:area.name,url:trAreaUrl(area)},{name:topic.title}])
+  +'<div class="aula-hero-grid"><div>'
+  +'<p class="aula-kicker"><span class="aula-id">'+esc(topic.icon)+'</span>Assunto '+(ti+1)+' de '+topics.length+' em '+esc(area.name)+'</p>'
+  +'<h1 id="tr-titulo">'+esc(topic.title)+'</h1>'
+  +'<p class="aula-summary">'+esc(topic.description)+' '+plural(ls.length,'aula','aulas')+(anyLists?', cada uma com teoria, exercícios resolvidos e modo prova.':', com teoria e exemplos resolvidos.')+'</p>'
+  +'<div class="aula-hero-cta">'+cta+'<a class="aula-btn aula-btn-ghost" href="#aulas">Ver as aulas</a></div>'
+  +(d?'<div class="tr-hero-progress">'+trMeter(d,ls.length,d+' de '+ls.length+' aulas estudadas')+'<span>'+(d===ls.length?'<b>Assunto completo.</b> Todas as aulas estão marcadas como estudadas.':'<b>'+d+' de '+ls.length+'</b> aulas estudadas.')+'</span></div>':'')
+  +'</div>'+(ls[0]?'<figure class="aula-formula"><div class="aula-formula-card"><div class="aula-formula-math tr-hero-formula" id="aula-formula-math" data-formula="'+ls.map(function(l){return l.id}).join(',')+'" data-mini></div></div><figcaption>A fórmula-chave do assunto</figcaption></figure>':'')+'</div>'
+  +(topics.length>1?trail:'')+'</div></section>';
+ var list='<section class="shell tr-body" id="aulas"><header class="tr-head"><h2>As aulas, em ordem</h2><p>'+(anyLists?'Toque no título para abrir a aula, ou vá direto à etapa que você quer: teoria, exercícios, modo prova ou PDFs.':'Toque no título para abrir a aula.')+'</p></header><ol class="tr-route tr-lessons">'+ls.map(function(l,k){
+  var p=trProgress(l),lists=trHasLists(l.id),u=href(l);
+  var state=p.done?'is-done':p.started?'is-started':'';
+  var steps=[['entenda','Teoria',true],['pratique','20 exercícios',lists],['prova','Modo prova',lists],['levar','PDFs',lists]].filter(function(s){return s[2]});
+  var segs=[p.entenda,lists&&p.fix>=20,p.best!=null,p.pdf];
+  var label=p.done?'Estudada':p.best!=null?'Melhor nota na prova: '+p.best+' de 20':p.fix?plural(p.fix,'exercício conferido','exercícios conferidos'):p.entenda?'Teoria concluída':'';
+  return '<li class="tr-stop '+state+'"><span class="tr-stop-n" aria-hidden="true">'+(p.done?TR_SVG.check:(k+1))+'</span>'
+   +'<article class="tr-lesson"><div class="tr-lesson-main"><p class="tr-lesson-kicker"><span class="aula-id">'+l.id+'</span>'+(saved.has(l.id)?'<span class="tr-fav" title="Favorita">'+TR_SVG.heart+'<span class="sr-only">Favorita</span></span>':'')+(label?'<span class="tr-tag'+(p.done?' tr-tag-done':'')+'">'+(p.done?TR_SVG.check:'')+esc(label)+'</span>':'')+'</p>'
+   +'<h3><a href="'+u+'">'+esc(l.title)+'</a></h3><p class="tr-lesson-sum">'+esc(l.summary||'')+'</p>'
+   +'<div class="tr-lesson-foot"><nav class="tr-steps" aria-label="Etapas da aula '+l.id+'">'+steps.map(function(s){return '<a href="'+u+'#'+s[0]+'">'+s[1]+'</a>'}).join('')+'</nav>'
+   +(p.started&&!p.done?'<span class="tr-segs" role="img" aria-label="Etapas concluídas: '+segs.filter(Boolean).length+' de 4">'+segs.map(function(s){return '<i class="'+(s?'on':'')+'"></i>'}).join('')+'</span>':'')+'</div></div>'
+   +'<div class="tr-formula" aria-hidden="true"><div class="tr-formula-math" data-formula="'+l.id+'" data-mini></div></div></article></li>';
+ }).join('')+'</ol>'
+  +trPdfPanel('assunto',topic.id,'Listas gerais de '+topic.title);
+ var prevT=topics[ti-1],nextT=topics[ti+1];
+ if(!nextT){var ai=SUBJECT_AREAS.findIndex(function(a){return a.id===area.id}),na=SUBJECT_AREAS[ai+1];if(na)nextT={next:true,area:na,t:trTopics(na)[0]}}
+ list+='<nav class="aula-seq tr-seq" aria-label="Outros assuntos">'
+  +(prevT?'<a class="aula-seq-prev" href="'+trTopicUrl(area,prevT)+'"><small>Assunto anterior</small><b>'+esc(prevT.title)+'</b></a>':'<a class="aula-seq-prev" href="'+trAreaUrl(area)+'"><small>Voltar para a área</small><b>'+esc(area.name)+'</b></a>')
+  +(nextT?(nextT.next?'<a class="aula-seq-next" href="'+trTopicUrl(nextT.area,nextT.t)+'"><small>Próxima área, '+esc(nextT.area.name)+'</small><b>'+esc(nextT.t.title)+'</b></a>':'<a class="aula-seq-next" href="'+trTopicUrl(area,nextT)+'"><small>Próximo assunto</small><b>'+esc(nextT.title)+'</b></a>'):'')
+  +'</nav></section>';
+ return hero+list;
+}
+
+/* /explorar/?todas=1 e ?favoritos=1 */
+function trListPage(favs){
+ title(favs?'Suas favoritas':'Todas as aulas');
+ var hero='<section class="aula-hero tr-hero tr-hero-small" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Assuntos',url:'/explorar/'},{name:favs?'Favoritas':'Todas as aulas'}])
+  +'<div class="tr-hero-solo"><p class="aula-kicker">'+(favs?plural(saved.size,'aula salva','aulas salvas'):data.lessons.length+' aulas em '+SUBJECT_AREAS.length+' áreas')+'</p><h1 id="tr-titulo">'+(favs?'Suas favoritas':'Todas as aulas')+'</h1>'
+  +'<p class="aula-summary">'+(favs?'As aulas que você favoritou ficam guardadas neste navegador.':'O catálogo completo, organizado por área e assunto.')+'</p></div>'
+  +(favs?'':trAreaSwitch(null).replace(/href="\/explorar\/\?area=([^"]+)"/g,'href="#area-$1"'))+'</div></section>';
+ var body='<section class="shell tr-body tr-catalog">';
+ if(favs){
+  var ls=data.lessons.filter(function(l){return saved.has(l.id)});
+  if(!ls.length)body+='<div class="tr-empty"><b>Nenhuma aula favoritada ainda.</b><p>Na página de qualquer aula, toque em Favoritar para guardá-la aqui.</p><a class="aula-btn aula-btn-ink" href="/explorar/">Escolher uma área</a></div>';
+  else SUBJECT_AREAS.forEach(function(a){var g=ls.filter(function(l){return subjectContains(a,l)});if(g.length)body+='<section class="tr-group"><h2><span class="tr-areas-icon tone-'+a.tone+'" aria-hidden="true">'+esc(a.icon)+'</span><a href="'+trAreaUrl(a)+'">'+esc(a.name)+'</a></h2><ol class="tr-rows">'+g.map(function(l){return trRow(l,true)}).join('')+'</ol></section>'});
+ }else{
+  SUBJECT_AREAS.forEach(function(a){
+   body+='<section class="tr-group" id="area-'+a.id+'"><h2><span class="tr-areas-icon tone-'+a.tone+'" aria-hidden="true">'+esc(a.icon)+'</span><a href="'+trAreaUrl(a)+'">'+esc(a.name)+'</a></h2>'
+    +trTopics(a).map(function(t){return '<h3><a href="'+trTopicUrl(a,t)+'">'+esc(t.title)+'</a></h3><ol class="tr-rows">'+trTopicLessons(a,t).map(function(l){return trRow(l,false)}).join('')+'</ol>'}).join('')+'</section>';
+  });
  }
- render();
+ return hero+body+'</section>';
 }
 
 
@@ -412,12 +565,12 @@ function aulaStore(id){
  st.fix=st.fix||{};st.prova=st.prova||{};
  return{st:st,save:function(){try{localStorage.setItem(key,JSON.stringify(st))}catch(e){}}};
 }
+function formulaScore(f){var s=0;if(/=/.test(f))s+=2;if(/\\d?frac/.test(f))s+=2;if(/\\text/.test(f))s-=4;if(/\\Rightarrow/.test(f))s-=2;if(f.length>60)s-=2;if(f.length<6)s-=3;return s}
 function heroFormula(content){
  if(content&&content.formulaChave)return content.formulaChave;
  var fs=[];(content&&content.teoria||[]).forEach(function(s){(s.formulas||[]).forEach(function(f){fs.push(f)})});
  if(!fs.length)return null;
- function score(f){var s=0;if(/=/.test(f))s+=2;if(/\\d?frac/.test(f))s+=2;if(/\\text/.test(f))s-=4;if(/\\Rightarrow/.test(f))s-=2;if(f.length>60)s-=2;if(f.length<6)s-=3;return s}
- var best=fs[0];fs.forEach(function(f){if(score(f)>score(best))best=f});return best;
+ var best=fs[0];fs.forEach(function(f){if(formulaScore(f)>formulaScore(best))best=f});return best;
 }
 function fitFormula(box){
  // Reduz a fórmula do destaque até caber no adesivo, sem rolagem lateral.
