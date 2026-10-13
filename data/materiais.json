@@ -510,5 +510,101 @@
       }
     ],
     "tipo": "aula"
+  },
+  {
+    "aula": "A33",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A33 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A33.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A33 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A33.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A34",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A34 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A34.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A34 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A34.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A35",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A35 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A35.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A35 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A35.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A36",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A36 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A36.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A36 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A36.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A37",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A37 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A37.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A37 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A37.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A38",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A38 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A38.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A38 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A38.pdf"
+      }
+    ],
+    "tipo": "aula"
   }
 ]

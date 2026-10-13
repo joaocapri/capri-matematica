@@ -123,11 +123,11 @@ PREAMBULO = r"""
 \newlist{alts}{itemize}{1}
 \setlist[alts]{leftmargin=7mm,labelsep=2mm,topsep=4pt,itemsep=3pt,parsep=0pt}
 \newcommand{\nivel}[2]{%
-  \par\needspace{38mm}\vspace{1mm}\noindent
+  \par\penalty-200\vspace{1mm}\noindent
   \begin{tikzpicture}
     \node[fill=lima,text=ink,rounded corners=2pt,inner xsep=6pt,inner ysep=3.5pt,font=\scriptsize\bfseries,anchor=west](t) at (0,0){\MakeUppercase{#1}};
     \node[font=\scriptsize,text=mudo,anchor=west] at ($(t.east)+(4pt,0)$) {#2};
-  \end{tikzpicture}\par\vspace{4mm}}
+  \end{tikzpicture}\par\nopagebreak\vspace{4mm}}
 
 % ---------- gabarito ----------
 \newcommand{\resolucao}[3]{%
