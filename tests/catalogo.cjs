@@ -229,7 +229,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  ({w,d,dom}=await boot('https://matmatmat.test/teste-seu-nivel/'));
  assert.equal(d.querySelectorAll('[data-track]').length,5,'Cinco percursos para escolher');
  assert.match(d.querySelector('.diag-intro h1').textContent,/Onde você está na matemática/);
- assert.equal(d.querySelectorAll('.header-mobile-caption').length,1);
+ assert.equal(d.querySelectorAll('.header-promise-bar').length,1);
  click(w,d.querySelector('[data-track="em1"]'));
  assert.match(d.querySelector('.diag-selected h1').textContent,/Seu ponto de partida/);
  assert.equal(d.querySelectorAll('.diag-skill-list>div').length,4);

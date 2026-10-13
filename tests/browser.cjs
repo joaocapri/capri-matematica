@@ -28,9 +28,11 @@ async function checkWidth(page,label){
   assert.equal(await page.locator('.home-hero-art').count(),0);
   assert.equal(await page.locator('[data-preview]').count(),0);
   assert.equal(await page.locator('img.mat-logo-img').count(),2);
-  assert.equal(await page.locator('.header-audience').count(),1);
-  assert.equal(await page.locator('.header-mobile-caption').count(),1);
-  assert.match(await page.locator('.header-audience').textContent(),/Ensino Médio e Vestibulares/);
+  assert.equal(await page.locator('.header-promise').count(),1);
+  assert.equal(await page.locator('.header-promise-bar').count(),1);
+  const promise=await page.locator(config.name==='mobile'?'.header-promise-bar':'.header-promise').innerText();
+  assert.match(promise,/ensino médio e vestibulares/i,'Cabeçalho deixa claro o público');
+  assert.match(promise,/gratuito/i,'Cabeçalho deixa claro que é gratuito');
   assert.equal(await page.locator('.home-hero-copy>p').textContent(),'Listas de Exercícios e Teoria grátis. Simples assim');
   assert.match(await page.title(),/MAT MAT MAT!/);
   assert.equal(await page.locator('a.nav-cta[href="/teste-seu-nivel/"]').count(),1);
@@ -106,7 +108,7 @@ async function checkWidth(page,label){
   await page.goto(BASE+'/teste-seu-nivel/',{waitUntil:'domcontentloaded'});
   await page.locator('.diag-track-card').first().waitFor();
   assert.equal(await page.locator('.diag-track-card').count(),5);
-  assert.equal(await page.locator('.header-mobile-caption').count(),1);
+  assert.equal(await page.locator('.header-promise-bar').count(),1);
   await checkWidth(page,config.name+' seleção de percurso');
   await page.screenshot({path:'screenshots/'+config.name+'-diagnostic.png',fullPage:true});
   await page.locator('[data-track="enem"]').click();
