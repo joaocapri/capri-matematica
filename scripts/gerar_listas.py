@@ -383,6 +383,8 @@ if __name__ == "__main__":
         pdfs = gerar(c.upper())
         for s in pdfs:
             print("gerado:", s.relative_to(ROOT))
+        from exportar_listas import exportar  # questões interativas e capas para a página da aula
+        print("exportado:", exportar(c.upper()).relative_to(ROOT))
         if "--publicar" in sys.argv:
             publicar(c.upper(), pdfs)
             print("publicado em data/materiais.json:", c.upper())

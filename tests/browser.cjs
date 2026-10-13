@@ -54,8 +54,9 @@ async function checkWidth(page,label){
   await page.screenshot({path:'screenshots/'+config.name+'-topic.png',fullPage:true});
   await page.locator('a.browse-lesson-row[href="/aulas/A17/"]').click();
   await page.waitForURL('**/aulas/A17/');
-  await page.locator('.contentpanel .tab').first().waitFor();
-  assert.equal(await page.locator('.contentpanel .tab').count(),4);
+  await page.locator('.aula-step').first().waitFor();
+  assert.equal(await page.locator('.aula-step').count(),4);
+  assert.equal(await page.locator('.aula-rail [data-rail]').count(),4);
   assert.equal(await page.locator('#btn-share').textContent(),'Compartilhar');
   assert.equal(await page.locator('#btn-share').getAttribute('aria-label'),'Compartilhe essa aula');
   assert.equal(await page.locator('.lesson-tools .lesson-tool').count(),3);
@@ -88,6 +89,17 @@ async function checkWidth(page,label){
   assert.match(sharePayload.title,/MAT MAT MAT!/);
   assert.match(sharePayload.text,/Olha essa aula de matemática/);
 
+  // Roteiro: o atalho leva ao modo prova, que responde pelo teclado.
+  await page.locator('[data-rail="prova"]').click();
+  await page.locator('#prova-start').click();
+  await page.locator('#prova-root .aula-prova-q').waitFor();
+  await page.waitForTimeout(400);
+  await page.keyboard.press('a');
+  await page.locator('#prova-next').waitFor();
+  assert.equal(await page.locator('#prova-root .aula-opt.is-right').count(),1);
+  assert.ok(await page.locator('.aula-rail').isVisible(),'Roteiro fixo visível durante a prova');
+  await page.locator('#ex-list .aula-ex-ver').first().click();
+  assert.ok(await page.locator('#ex-list .aula-ex-sol').first().isVisible());
   await checkWidth(page,config.name+' aula');
   await page.screenshot({path:'screenshots/'+config.name+'-lesson.png',fullPage:true});
   await page.goto(BASE+'/teste-seu-nivel/',{waitUntil:'domcontentloaded'});

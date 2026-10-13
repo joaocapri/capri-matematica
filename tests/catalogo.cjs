@@ -19,13 +19,14 @@ async function boot(url='https://matmatmat.test/'){
   if(path==='/data/aulas.json')return{ok:true,json:async()=>curriculum};
   if(path==='/data/materiais.json')return{ok:true,json:async()=>materials};
   if(path==='/data/diagnostico.json')return{ok:true,json:async()=>diagnostic};
-  if(path.startsWith('/conteudos/')){try{return{ok:true,json:async()=>JSON.parse(readFileSync(path.slice(1),'utf8'))}}catch(e){return{ok:false}}}
+  if(path.startsWith('/conteudos/')||path.startsWith('/data/listas/')){try{return{ok:true,json:async()=>JSON.parse(readFileSync(path.slice(1),'utf8'))}}catch(e){return{ok:false}}}
   return{ok:false};
  };
  w.MathJax={typesetPromise:async()=>{}};
+ w.scrollTo=function(...a){w.__scrolled=a};
  w.eval(app);
  for(let i=0;i<65;i++){
-  if(id?d.querySelector('.contentpanel .tab'):pathname.startsWith('/explorar')?d.querySelector('#explorer-content .area-tile, #explorer-content .browse-topic, #explorer-content .browse-lesson-row'):pathname.startsWith('/teste-seu-nivel')?d.querySelector('.diag-track-card'):d.querySelector('.home-hero .area-tile, .home-hero'))break;
+  if(id?d.querySelector('.aula-step'):pathname.startsWith('/explorar')?d.querySelector('#explorer-content .area-tile, #explorer-content .browse-topic, #explorer-content .browse-lesson-row'):pathname.startsWith('/teste-seu-nivel')?d.querySelector('.diag-track-card'):d.querySelector('.home-hero .area-tile, .home-hero'))break;
   await wait();
  }
  return{w,d,dom};
@@ -153,16 +154,59 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.match(nativeSharePayload.text,/Olha essa aula de matemática/);
  assert.equal(nativeSharePayload.url,'https://matmatmat.test/aulas/A17/');
  assert.equal(d.querySelector('#lesson-share-options').hidden,true);
- assert.equal(d.querySelectorAll('.tab').length,4);
+ // Página da aula: roteiro em quatro etapas com teoria, exercícios, modo prova e PDFs.
+ assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['entenda','pratique','prova','levar']);
+ assert.equal(d.querySelectorAll('.aula-rail [data-rail]').length,4);
  assert.ok(d.querySelector('a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
- assert.equal(d.querySelector('.tab.active').dataset.tab,'arquivos');
- click(w,d.querySelector('[data-tab="quiz"]'));
+ assert.match(d.querySelector('#aula-formula-math').textContent,/\\frac\{-b/,'Fórmula da aula no destaque');
+ assert.ok(d.querySelector('.aula-trail .is-current a[aria-current="page"]'));
+ assert.equal(d.querySelectorAll('.aula-pdf').length,2,'Vitrine com as duas listas');
+ assert.ok(d.querySelector('.aula-pdf[href="/pdfs/fixacao-A17.pdf"] img[src="/pdfs/capas/fixacao-A17.webp"]'));
+ // Checagem rápida: uma pergunta por vez, com o Exatoo quando erra.
  const q=JSON.parse(readFileSync('conteudos/A17.json','utf8')).quiz[0];
- click(w,d.querySelector('[data-opt="'+((q.correta+1)%q.opcoes.length)+'"]'));
- assert.ok(d.querySelector('#quiz-feedback a[href*="app.exatoo.com"]'));
+ assert.equal(d.querySelector('[data-check="1"]').hidden,true);
+ click(w,d.querySelector('[data-check="0"] [data-opt="'+((q.correta+1)%q.opcoes.length)+'"]'));
+ assert.ok(d.querySelector('[data-check="0"] .aula-fb a[href*="app.exatoo.com"]'));
+ assert.ok(d.querySelector('[data-check="0"] [data-opt="'+q.correta+'"]').classList.contains('is-right'));
+ click(w,d.querySelector('[data-check="0"] [data-check-next]'));
+ assert.equal(d.querySelector('[data-check="0"]').hidden,true);
+ assert.equal(d.querySelector('[data-check="1"]').hidden,false);
+ // Pratique: resolução sob demanda e autoavaliação que alimenta o progresso.
+ const lista=JSON.parse(readFileSync('data/listas/A17.json','utf8'));
+ assert.equal(d.querySelectorAll('#ex-list .aula-ex').length,lista.fixacao.secoes[0].questoes.length);
+ const ex=d.querySelector('#ex-list .aula-ex');
+ assert.equal(ex.querySelector('.aula-ex-sol').hidden,true);
+ click(w,ex.querySelector('.aula-ex-ver'));
+ assert.equal(ex.querySelector('.aula-ex-sol').hidden,false);
+ click(w,ex.querySelector('[data-mark="ok"]'));
+ assert.ok(ex.classList.contains('is-ok'));
+ assert.match(d.querySelector('#prat-sum').textContent,/^1 de 20 conferidos, 1 certo$/);
+ assert.equal(JSON.parse(w.localStorage.getItem('matmat-aula-A17')).fix['1'],'ok');
+ click(w,d.querySelector('[data-level="2"]'));
+ assert.equal(d.querySelectorAll('#ex-list .aula-ex').length,lista.fixacao.secoes[2].questoes.length);
+ // Modo prova: 20 questões corrigidas na hora, nota e revisão das erradas.
+ click(w,d.querySelector('#prova-start'));
+ const vest=lista.vestibular.questoes;
+ vest.forEach((qq,k)=>{
+  click(w,d.querySelector('#prova-root [data-popt="'+(k===0?(qq.correta+1)%5:qq.correta)+'"]'));
+  assert.ok(d.querySelector('#quiz-feedback .aula-fb-box'));
+  click(w,d.querySelector('#prova-next'));
+ });
+ assert.equal(d.querySelector('.aula-score-n').textContent,'19');
+ assert.equal(d.querySelectorAll('.aula-grid .aula-cell.is-wrong').length,1);
+ assert.match(d.querySelector('#rail-prova').textContent,/Melhor nota: 19 de 20/);
+ assert.ok(d.querySelector('#prova-root a[href*="app.exatoo.com"]'));
+ click(w,d.querySelector('#prova-wrong'));
+ assert.match(d.querySelector('.aula-prova-bar').textContent,/Questão 1 de 1/);
+ assert.equal(d.querySelectorAll('.aula-seq a').length,2);
  dom.window.close();
+ // Aula sem listas publicadas: teoria e materiais, sem etapas vazias; ?tab= antigo ainda leva à etapa.
  ({w,d,dom}=await boot('https://matmatmat.test/aulas/B25/?tab=resumo'));
- assert.equal(d.querySelector('.tab.active').dataset.tab,'teoria');
+ assert.ok(d.querySelector('#entenda'));
+ assert.equal(d.querySelector('#prova'),null);
+ assert.ok(d.querySelector('#levar'));
+ await new Promise(r=>setTimeout(r,120));
+ assert.ok(w.__scrolled,'Rolou até a etapa pedida');
  dom.window.close();
 
  // Cinco provas independentes e recomendações contextualizadas.

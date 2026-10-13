@@ -391,16 +391,71 @@ function finishAction(l,btn){
  btn.setAttribute('aria-pressed',String(active));
  btn.setAttribute('aria-label',active?'Desmarcar aula como estudada':'Marcar aula como estudada');
 }
+/* ================= Página da aula (v2): entenda → pratique → modo prova → leve pra casa ================= */
+var AULA_SVG={
+ done:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.5 2.5L16 9"></path></svg>',
+ fav:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.8a5.4 5.4 0 0 0-7.6 0L12 6l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.6a5.4 5.4 0 0 0 0-7.6Z"></path></svg>',
+ share:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2"></circle><circle cx="6" cy="12" r="2"></circle><circle cx="18" cy="19" r="2"></circle><path d="m8 11 8-5m-8 7 8 5"></path></svg>',
+ down:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"></path></svg>',
+ play:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"></path></svg>'
+};
+function tex(el,tries){
+ var M=window.MathJax;if(!el)return Promise.resolve();
+ if(M&&typeof M.typesetPromise==='function'){return M.typesetPromise([el]).catch(function(){})}
+ tries=(tries||0)+1;if(tries>40)return Promise.resolve();
+ return new Promise(function(res){setTimeout(function(){tex(el,tries).then(res)},250)});
+}
+async function fetchJson(path){try{var r=await fetch(path);return r&&r.ok?await r.json():null}catch(e){return null}}
+function aulaStore(id){
+ var key='matmat-aula-'+id,st={};
+ try{st=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch(e){st={}}
+ st.fix=st.fix||{};st.prova=st.prova||{};
+ return{st:st,save:function(){try{localStorage.setItem(key,JSON.stringify(st))}catch(e){}}};
+}
+function heroFormula(content){
+ if(content&&content.formulaChave)return content.formulaChave;
+ var fs=[];(content&&content.teoria||[]).forEach(function(s){(s.formulas||[]).forEach(function(f){fs.push(f)})});
+ if(!fs.length)return null;
+ function score(f){var s=0;if(/=/.test(f))s+=2;if(/\\d?frac/.test(f))s+=2;if(/\\text/.test(f))s-=4;if(/\\Rightarrow/.test(f))s-=2;if(f.length>60)s-=2;if(f.length<6)s-=3;return s}
+ var best=fs[0];fs.forEach(function(f){if(score(f)>score(best))best=f});return best;
+}
+function fitFormula(box){
+ // Reduz a fórmula do destaque até caber no adesivo, sem rolagem lateral.
+ if(!box)return;var inner=box.querySelector('mjx-container')||box.firstElementChild;if(!inner)return;
+ var size=parseFloat(getComputedStyle(box).fontSize)||32,guard=0;
+ while(inner.scrollWidth>box.clientWidth+1&&size>13&&guard<40){size-=1.5;box.style.fontSize=size+'px';guard++}
+}
+function plural(n,um,varios){return n+' '+(n===1?um:varios)}
+
 async function lessonPage(){
- var id=document.body.dataset.lesson;var l=data.lessons.find(function(x){return x.id===id});if(!l){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Aula não encontrada','Volte ao catálogo e tente novamente.')+'</main>'+footer();return}
- var b=blockBy(l.block),f=frontBy(l.front),subjectArea=areaForLesson(l),topicId=subjectTopic(l,subjectArea),topic=topicInfo(topicId);
+ var id=document.body.dataset.lesson;var l=data.lessons.find(function(x){return x.id===id});
+ if(!l){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Aula não encontrada','Volte ao catálogo e tente novamente.')+'</main>'+footer();return}
+ var subjectArea=areaForLesson(l),topicId=subjectTopic(l,subjectArea),topic=topicInfo(topicId);
  var near=data.lessons.filter(function(x){return subjectTopic(x,areaForLesson(x))===topicId});
  var nearIndex=near.findIndex(function(x){return x.id===id});
+ var gi=data.lessons.findIndex(function(x){return x.id===id}),prev=data.lessons[gi-1],next=data.lessons[gi+1];
  title(l.title);
- var content=null;try{var r=await fetch('/conteudos/'+id+'.json');if(r.ok)content=await r.json()}catch(e){}
- var app=document.getElementById('app');
- app.innerHTML=header()+'<main class="shell"><div class="crumbs"><a href="/">Início</a> / <a href="/explorar/?area='+subjectArea.id+'">'+esc(subjectArea.name)+'</a> / <a href="/explorar/?area='+subjectArea.id+'&assunto='+topicId+'">'+esc(topic.title)+'</a> / '+id+'</div><section class="lesson-hero front-'+esc(l.front)+'"><div class="code">✦ '+esc(subjectArea.name)+' · '+esc(topic.title)+' · AULA '+id+'</div><h1>'+esc(l.title)+'</h1><p>'+esc(l.summary||'Seu roteiro de estudos começa aqui. Em breve, novas explicações e materiais.')+'</p><div class="spark">∑</div></section><div class="lesson-main"><aside class="sidepanel"><h3>✦ Neste assunto</h3><p>'+esc(topic.title)+'</p><div class="sidelist">'+near.map(function(x){return '<a class="sidelesson '+(x.id===id?'active':'')+'" href="'+href(x)+'"><small>'+x.id+'</small>'+esc(x.title)+'</a>'}).join('')+'</div></aside><section><div class="actions lesson-tools" role="group" aria-label="Ações desta aula"><button type="button" class="lesson-tool lesson-tool-done '+(done.has(id)?'is-active':'')+'" id="btn-done" aria-pressed="'+done.has(id)+'" aria-label="'+(done.has(id)?'Desmarcar aula como estudada':'Marcar aula como estudada')+'"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.5 2.5L16 9"></path></svg><span class="lesson-tool-label">'+(done.has(id)?'Estudada':'Já estudei')+'</span></button><button type="button" class="lesson-tool lesson-tool-fav '+(saved.has(id)?'is-active':'')+'" id="btn-fav" aria-pressed="'+saved.has(id)+'" aria-label="'+(saved.has(id)?'Remover aula dos favoritos':'Favoritar esta aula')+'"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.8a5.4 5.4 0 0 0-7.6 0L12 6l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.6a5.4 5.4 0 0 0 0-7.6Z"></path></svg><span class="lesson-tool-label">'+(saved.has(id)?'Favorita':'Favoritar')+'</span></button><button type="button" class="lesson-tool lesson-tool-share" id="btn-share" aria-label="Compartilhe essa aula" aria-controls="lesson-share-options" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2"></circle><circle cx="6" cy="12" r="2"></circle><circle cx="18" cy="19" r="2"></circle><path d="m8 11 8-5m-8 7 8 5"></path></svg><span class="lesson-tool-label">Compartilhar</span></button></div><div class="lesson-share-options" id="lesson-share-options" hidden><div class="lesson-share-options-head"><strong>Compartilhe com alguém</strong><button type="button" id="share-close" aria-label="Fechar opções de compartilhamento">×</button></div><p>Envie esta aula para sua turma ou para um amigo.</p><div class="lesson-share-links"><a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer">↗ Enviar pelo WhatsApp</a><button id="share-copy" type="button">Copiar mensagem e link</button></div><p class="lesson-share-status" id="share-status" aria-live="polite"></p><textarea id="share-manual" class="share-manual" readonly hidden aria-label="Mensagem para copiar manualmente"></textarea></div><div class="material-spotlight"><div class="material-spotlight-symbol">📄</div><div><strong>Veio atrás de listas?</strong><p>'+(lessonPdfFiles().length||(content&&content.lista&&content.lista.length)?'Materiais gratuitos disponíveis para baixar.':'Confira listas e materiais deste assunto.')+'</p></div><button type="button" class="material-spotlight-button" id="open-materials">Listas e PDFs ↗</button></div><article class="contentpanel"><div class="tabs"><button class="tab tab-featured" data-tab="arquivos">📄 Listas e PDFs</button><button class="tab" data-tab="teoria">Teoria</button><button class="tab" data-tab="quiz">Quiz ⚡</button><button class="tab" data-tab="videos">Vídeos ▶</button></div><div id="tab-body"></div></article><div class="prevnext">'+(nearIndex>0?'<a href="'+href(near[nearIndex-1])+'">← Anterior: '+esc(short(near[nearIndex-1].title,38))+'</a>':'<span></span>')+(nearIndex<near.length-1?'<a href="'+href(near[nearIndex+1])+'">Próxima: '+esc(short(near[nearIndex+1].title,38))+' →</a>':'')+'</div></section></div></main>'+footer();
- var area=document.getElementById('tab-body');
+ var temLista=materialsAt('aula',id).some(function(x){return (x.item.arquivos||[]).some(function(f){return /\/(fixacao|vestibular)-[ABC]\d\d\.pdf$/.test(f.url||'')})});
+ var loaded=await Promise.all([fetchJson('/conteudos/'+id+'.json'),temLista?fetchJson('/data/listas/'+id+'.json'):Promise.resolve(null)]);
+ var content=loaded[0],lista=loaded[1];
+ var store=aulaStore(id),st=store.st;
+ var teoria=content&&Array.isArray(content.teoria)?content.teoria:[];
+ var quiz=content&&Array.isArray(content.quiz)?content.quiz:[];
+ var extras=content&&Array.isArray(content.exercicios)?content.exercicios:[];
+ var videos=content&&Array.isArray(content.videos)?content.videos:[];
+ var fixSecoes=lista&&lista.fixacao&&lista.fixacao.secoes||[];
+ var fixQs=[];fixSecoes.forEach(function(s){s.questoes.forEach(function(q){fixQs.push(Object.assign({nivel:s.nome},q))})});
+ if(!fixQs.length&&extras.length){fixSecoes=[{nome:'Exercícios',questoes:extras.map(function(x,k){return{n:k+1,enunciado:String(x.enunciado||''),itens:[],resolucao:[],resposta:String(x.resposta||'')}})}];fixSecoes[0].questoes.forEach(function(q){fixQs.push(Object.assign({nivel:'Exercícios'},q))})}
+ var vestQs=lista&&lista.vestibular&&lista.vestibular.questoes||[];
+ var listaPdfs=lista&&lista.pdfs||{};
+ var listaUrls=Object.keys(listaPdfs).map(function(k){return listaPdfs[k].url});
+ var allFiles=lessonPdfFiles();
+ var otherFiles=allFiles.filter(function(f){return listaUrls.indexOf(f.url)<0});
+ var steps=[{id:'entenda',nome:'Entenda'}];
+ if(fixQs.length)steps.push({id:'pratique',nome:'Pratique'});
+ if(vestQs.length)steps.push({id:'prova',nome:'Modo prova'});
+ steps.push({id:'levar',nome:'Leve pra casa'});
+ function stepNum(sid){return steps.findIndex(function(s){return s.id===sid})+1}
 
  function lessonPdfFiles(){
   var linked=materialsAt('aula',id).concat(materialsAt('assunto',topicId),materialsAt('area',subjectArea.id));
@@ -408,80 +463,288 @@ async function lessonPage(){
   var seen=new Set();return files.filter(function(f){if(!f.url||seen.has(f.url))return false;seen.add(f.url);return true});
  }
 
- function filesHtml(files,type){var list=(files||[]).filter(function(x){return !type||x.tipo===type});return list.length?list.map(function(x){return '<a class="filelink" target="_blank" rel="noopener" href="'+esc(x.url)+'"><span>📄 '+esc(x.titulo||'Material')+'</span><span>Baixar ↗</span></a>'}).join(''):empty('Materiais a caminho','As listas de exercícios e os gabaritos desta aula serão publicados aqui.')}
- function renderTab(tab){
-  var html='';
-  if(tab==='teoria'){var sections=content&&Array.isArray(content.teoria)?content.teoria:[];html='<h2>Teoria & exemplos</h2>'+(sections.length?sections.map(function(s,j){var h='<section class="theory-section"><span class="step-label">PASSO '+(j+1)+'</span><h3>'+esc(s.titulo||'Conceito')+'</h3>';for(var p of(s.paragrafos||[])){h+='<p>'+esc(p)+'</p>'}for(var formula of(s.formulas||[])){h+='<div class="formula">\\('+esc(formula)+'\\)</div>'}if(s.exemplo){h+='<div class="theory-example"><b>✦ Bora ver na prática?</b><p>'+esc(s.exemplo.enunciado)+'</p>'+(s.exemplo.passos||[]).map(function(p){return '<p class="example-step">'+esc(p)+'</p>'}).join('')+'</div>'}if(s.dica)h+='<div class="hint">💡 <b>Macete:</b> '+esc(s.dica)+'</div>';if(s.erroComum)h+='<div class="warning">⚠️ <b>Armadilha de prova:</b> '+esc(s.erroComum)+'</div>';return h+'</section>'}).join(''):empty('A explicação vem aí','A teoria desta aula ainda não está disponível. Confira os outros recursos desta aula.'))}
-  if(tab==='quiz'){html='<h2>Quiz relâmpago ⚡</h2>'+(content&&content.quiz&&content.quiz.length?'<p>Responda, descubra o porquê e continue. Sem pegadinhas desnecessárias!</p><div id="quiz-root"></div>':empty('Quiz a caminho','As perguntas interativas serão publicadas nesta aba.'))}
-  if(tab==='videos'){var videos=content&&content.videos||[];html='<h2>Viu, entendeu? ▶</h2><p>Videoaulas e materiais complementares para estudar o assunto.</p>'+(videos.length?'<div class="video-grid">'+videos.map(function(v){var u=safeUrl(v.url);return u?'<a class="video-card" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer"><span class="video-play">▶</span><div><small>'+esc(v.canal||'Vídeo recomendado')+'</small><h3>'+esc(v.titulo)+'</h3><p>'+esc(v.descricao||'')+'</p></div><span class="video-arrow">↗</span></a>':''}).join('')+'</div>':empty('Videoaulas','Encontre uma aula em vídeo sobre este tema.'))+'<a class="video-search-more" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query='+encodeURIComponent(l.title+' matemática videoaula')+'">⌕ Pesquisar videoaulas: '+esc(l.title)+' ↗</a>'}
-  if(tab==='arquivos'){
-   var links=(content&&content.lista&&content.lista.length&&!lessonPdfFiles().length)?'<div class="print-actions"><a class="filelink" target="_blank" rel="noopener" href="/imprimir/?aula='+encodeURIComponent(id)+'&tipo=lista"><span>📝 Lista formatada para A4</span><span>Salvar PDF ↗</span></a><a class="filelink" target="_blank" rel="noopener" href="/imprimir/?aula='+encodeURIComponent(id)+'&tipo=gabarito"><span>✅ Gabarito comentado em A4</span><span>Salvar PDF ↗</span></a><p class="small-explainer">Abra o material e escolha <b>Imprimir / Salvar PDF</b> para criar uma cópia em seu dispositivo.</p></div>':'';
-   var files=lessonPdfFiles();
-   var practice=content&&Array.isArray(content.exercicios)?content.exercicios:[];
-   html='<div class="materials-tab-title"><div><div class="eyebrow"><span class="dot"></span> SEUS MATERIAIS DE ESTUDO</div><h2>Listas & PDFs</h2><p>Baixe, imprima e pratique no seu ritmo.</p></div><span class="materials-tab-emoji">↗</span></div>'+links+(files.length?filesHtml(files):(!links?empty('Listas e PDFs','Ainda não há PDFs associados a esta aula. Explore a teoria e o quiz nas outras abas.'):''))+(files.length||links?'':exatooCard('treino',l))+(practice.length?'<details class="practice-inline"><summary>Mais atividades para treinar · '+practice.length+'</summary>'+practice.map(function(x,j){return '<div class="topic"><b>Atividade '+(j+1)+'</b><p>'+esc(x.enunciado||'')+'</p>'+(x.resposta?'<details><summary>Conferir resposta</summary><p>'+esc(x.resposta)+'</p></details>':'')+'</div>'}).join('')+'</details>':'');
+ /* ---------- HTML ---------- */
+ var formula=heroFormula(content);
+ var heroArt=formula
+  ?'<figure class="aula-formula"><div class="aula-formula-card"><div class="aula-formula-math" id="aula-formula-math">\\['+esc(formula)+'\\]</div></div><figcaption>A fórmula da aula</figcaption></figure>'
+  :'<figure class="aula-formula aula-formula-symbol"><div class="aula-formula-card"><div class="aula-formula-math">'+esc(SUBJECT_TOPIC_ICONS[l.block]||'∑')+'</div></div><figcaption>'+esc(topic.title)+'</figcaption></figure>';
+ var tools='<div class="actions lesson-tools" role="group" aria-label="Ações desta aula">'
+  +'<button type="button" class="lesson-tool lesson-tool-done '+(done.has(id)?'is-active':'')+'" id="btn-done" aria-pressed="'+done.has(id)+'" aria-label="'+(done.has(id)?'Desmarcar aula como estudada':'Marcar aula como estudada')+'">'+AULA_SVG.done+'<span class="lesson-tool-label">'+(done.has(id)?'Estudada':'Já estudei')+'</span></button>'
+  +'<button type="button" class="lesson-tool lesson-tool-fav '+(saved.has(id)?'is-active':'')+'" id="btn-fav" aria-pressed="'+saved.has(id)+'" aria-label="'+(saved.has(id)?'Remover aula dos favoritos':'Favoritar esta aula')+'">'+AULA_SVG.fav+'<span class="lesson-tool-label">'+(saved.has(id)?'Favorita':'Favoritar')+'</span></button>'
+  +'<button type="button" class="lesson-tool lesson-tool-share" id="btn-share" aria-label="Compartilhe essa aula" aria-controls="lesson-share-options" aria-expanded="false">'+AULA_SVG.share+'<span class="lesson-tool-label">Compartilhar</span></button></div>'
+  +'<div class="lesson-share-options" id="lesson-share-options" hidden><div class="lesson-share-options-head"><strong>Compartilhe com alguém</strong><button type="button" id="share-close" aria-label="Fechar opções de compartilhamento">×</button></div><p>Envie esta aula para sua turma ou para um amigo.</p><div class="lesson-share-links"><a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer">Enviar pelo WhatsApp</a><button id="share-copy" type="button">Copiar mensagem e link</button></div><p class="lesson-share-status" id="share-status" aria-live="polite"></p><textarea id="share-manual" class="share-manual" readonly hidden aria-label="Mensagem para copiar manualmente"></textarea></div>';
+ var trail=near.length>1?'<ol class="aula-trail" aria-label="Aulas de '+esc(topic.title)+'">'+near.map(function(x){var cur=x.id===id;return '<li class="'+(cur?'is-current ':'')+(done.has(x.id)?'is-done':'')+'"><a href="'+href(x)+'"'+(cur?' aria-current="page"':'')+'><span class="aula-trail-dot" aria-hidden="true"></span><span class="aula-trail-id">'+x.id+'</span><span class="aula-trail-name">'+esc(x.title)+'</span></a></li>'}).join('')+'</ol>':'';
+ var hasPdfs=listaUrls.length||allFiles.length;
+ var hero='<section class="aula-hero" aria-labelledby="aula-titulo"><div class="shell aula-hero-in">'
+  +'<nav class="aula-crumbs" aria-label="Caminho"><a href="/">Início</a><span aria-hidden="true">/</span><a href="/explorar/?area='+subjectArea.id+'">'+esc(subjectArea.name)+'</a><span aria-hidden="true">/</span><a href="/explorar/?area='+subjectArea.id+'&assunto='+topicId+'">'+esc(topic.title)+'</a></nav>'
+  +'<div class="aula-hero-grid"><div class="aula-hero-copy">'
+  +'<p class="aula-kicker"><span class="aula-id">'+id+'</span>'+(near.length>1?'Aula '+(nearIndex+1)+' de '+near.length+' em '+esc(topic.title):esc(topic.title))+'</p>'
+  +'<h1 id="aula-titulo">'+esc(l.title)+'</h1>'
+  +'<p class="aula-summary">'+esc(l.summary||'Teoria, exemplos e treino desta aula.')+'</p>'
+  +'<div class="aula-hero-cta"><a class="aula-btn aula-btn-lime" href="#entenda" data-goto="entenda">Começar a aula</a>'+(hasPdfs?'<a class="aula-btn aula-btn-ghost" href="#levar" data-goto="levar">'+AULA_SVG.down+'Baixar as listas</a>':'')+'</div>'
+  +tools+'</div>'+heroArt+'</div>'+trail+'</div></section>';
+
+ var rail='<nav class="aula-rail" aria-label="Roteiro da aula"><p class="aula-rail-title">Seu roteiro</p><ol>'+steps.map(function(s,k){return '<li><a href="#'+s.id+'" data-goto="'+s.id+'" data-rail="'+s.id+'"><span class="aula-rail-n">'+(k+1)+'</span><span class="aula-rail-txt"><b>'+s.nome+'</b><small id="rail-'+s.id+'"></small></span></a></li>'}).join('')+'</ol><div class="aula-rail-meter" aria-hidden="true"><span id="rail-meter"></span></div><p class="aula-rail-sum" id="rail-sum"></p></nav>';
+
+ function head(sid,titulo,desc){return '<header class="aula-step-head"><span class="aula-step-n" aria-hidden="true">'+stepNum(sid)+'</span><div><h2 id="h-'+sid+'">'+titulo+'</h2><p>'+desc+'</p></div></header>'}
+
+ function teoriaHtml(){
+  if(!teoria.length)return empty('A explicação vem aí','A teoria desta aula ainda não foi publicada. Enquanto isso, use as listas e o quiz.');
+  return teoria.map(function(s,j){
+   var h='<article class="aula-teoria"><h3>'+esc(s.titulo||'Conceito')+'</h3>';
+   (s.paragrafos||[]).forEach(function(p){h+='<p>'+esc(p)+'</p>'});
+   (s.formulas||[]).forEach(function(f){h+='<div class="aula-formula-bloco">\\['+esc(f)+'\\]</div>'});
+   if(s.exemplo){var ps=s.exemplo.passos||[];h+='<div class="aula-exemplo"><p class="aula-exemplo-tag">Exemplo resolvido</p><p class="aula-exemplo-q">'+esc(s.exemplo.enunciado)+'</p>'+(ps.length?'<ol class="aula-passos">'+ps.map(function(p){return '<li hidden><span>'+esc(p)+'</span></li>'}).join('')+'</ol><button type="button" class="aula-btn aula-btn-soft aula-passo-btn" data-total="'+ps.length+'">Mostrar o 1º passo de '+ps.length+'</button>':'')+'</div>'}
+   if(s.dica)h+='<p class="aula-callout aula-macete"><b>Macete</b>'+esc(s.dica)+'</p>';
+   if(s.erroComum)h+='<p class="aula-callout aula-armadilha"><b>Armadilha de prova</b>'+esc(s.erroComum)+'</p>';
+   return h+'</article>';
+  }).join('');
+ }
+ function optsClass(opts){return opts.every(function(o){return String(o).length<=34&&String(o).indexOf('\\[')<0})?' aula-opts-2':''}
+ function checkHtml(){
+  if(!quiz.length)return '';
+  return '<div class="aula-check" id="check-root"><div class="aula-check-top"><div><h3>Checagem rápida</h3><p class="aula-check-sub">'+plural(quiz.length,'pergunta','perguntas')+' para ver se a ideia ficou.</p></div><span class="aula-check-count" id="check-count" aria-live="polite">1 de '+quiz.length+'</span></div>'
+   +'<div class="aula-dots aula-check-dots" aria-hidden="true">'+quiz.map(function(q,k){return '<span class="aula-dot'+(k?'':' is-now')+'"></span>'}).join('')+'</div>'
+   +quiz.map(function(q,k){return '<div class="aula-mcq" data-check="'+k+'"'+(k?' hidden':'')+'><p class="aula-mcq-q"><span class="aula-mcq-n">'+(k+1)+'</span><span>'+esc(q.enunciado)+'</span></p><div class="aula-opts'+optsClass(q.opcoes)+'">'+q.opcoes.map(function(o,j){return '<button type="button" class="aula-opt" data-opt="'+j+'"><span class="aula-opt-l">'+String.fromCharCode(65+j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></button>'}).join('')+'</div><div class="aula-fb" aria-live="polite"></div></div>'}).join('')
+   +'<div class="aula-check-end" id="check-end" hidden></div></div>';
+ }
+ var okLabel=fixQs.length?'Entendi, bora praticar':vestQs.length?'Entendi, bora para a prova':'Entendi a teoria';
+ var secEntenda='<section class="aula-step" id="entenda" data-step="entenda" aria-labelledby="h-entenda">'+head('entenda','Entenda','A ideia central, as fórmulas e exemplos resolvidos passo a passo.')+teoriaHtml()+checkHtml()
+  +'<div class="aula-step-end"><button type="button" class="aula-btn aula-btn-ink" id="entenda-ok" aria-pressed="'+(!!st.entenda)+'">'+(st.entenda?'Teoria concluída':okLabel)+'</button></div></section>';
+
+ var secPratique=fixQs.length?'<section class="aula-step" id="pratique" data-step="pratique" aria-labelledby="h-pratique">'+head('pratique','Pratique',(lista&&lista.fixacao?plural(fixQs.length,'exercício','exercícios')+' em '+plural(fixSecoes.length,'nível','níveis')+'. Resolva no caderno e depois confira a resolução.':'Exercícios curtos para fixar a ideia.'))
+  +'<div class="aula-prat-top"><div class="aula-levels" role="tablist" aria-label="Níveis">'+fixSecoes.map(function(s,k){return '<button type="button" role="tab" class="aula-level" data-level="'+k+'" aria-selected="false"><b>'+esc(s.nome)+'</b><small data-level-count="'+k+'"></small></button>'}).join('')+'</div>'
+  +'<div class="aula-prat-meter"><span class="aula-meter" aria-hidden="true"><span id="prat-meter"></span></span><span id="prat-sum"></span></div></div><div class="aula-ex-list" id="ex-list" role="tabpanel"></div></section>':'';
+
+ var secProva=vestQs.length?'<section class="aula-step" id="prova" data-step="prova" aria-labelledby="h-prova">'+head('prova','Modo prova',plural(vestQs.length,'questão','questões')+' no estilo vestibular, corrigidas na hora.')+'<div class="aula-prova" id="prova-root" tabindex="-1"></div></section>':'';
+
+ function pdfCard(tipo){
+  var p=listaPdfs[tipo];if(!p)return '';
+  var nome=tipo==='fixacao'?'Lista de fixação':'Lista de vestibular';
+  var desc=tipo==='fixacao'?'Do aquecimento ao desafio':'Questões de múltipla escolha';
+  var nq=tipo==='fixacao'?fixQs.length:vestQs.length;
+  return '<a class="aula-pdf" href="'+esc(p.url)+'" target="_blank" rel="noopener" data-pdf="'+tipo+'"><span class="aula-pdf-capa"><img src="'+esc(p.capa)+'" alt="" loading="lazy" width="520" height="736"></span><span class="aula-pdf-info"><b>'+nome+'</b><span>'+desc+'. '+plural(nq,'questão','questões')+' com gabarito resolvido'+(p.paginas?', '+plural(p.paginas,'página','páginas'):'')+'.</span><span class="aula-btn aula-btn-ink aula-pdf-btn">'+AULA_SVG.down+'Baixar PDF</span></span></a>';
+ }
+ var pdfGrid=listaUrls.length?'<div class="aula-pdfs">'+pdfCard('fixacao')+pdfCard('vestibular')+'</div>':'';
+ var otherHtml=otherFiles.length?'<div class="aula-files"><h3>'+(listaUrls.length?'Outros materiais':'Materiais para baixar')+'</h3>'+otherFiles.map(function(f){return '<a class="aula-file" href="'+esc(f.url)+'" target="_blank" rel="noopener" data-pdf="outro">'+AULA_SVG.down+'<span>'+esc(f.titulo||'Material')+'</span></a>'}).join('')+'</div>':'';
+ var videosHtml='<div class="aula-videos"><h3>Para ver em vídeo</h3>'+videos.map(function(v){var u=safeUrl(v.url);return u?'<a class="aula-video" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>'+esc(v.titulo)+'</b><small>'+esc(v.canal||'')+'</small></span></a>':''}).join('')+'<a class="aula-video aula-video-search" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query='+encodeURIComponent(l.title+' matemática videoaula')+'"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>Procurar videoaulas sobre '+esc(l.title)+'</b><small>Busca no YouTube</small></span></a></div>';
+ var secLevar='<section class="aula-step" id="levar" data-step="levar" aria-labelledby="h-levar">'+head('levar','Leve pra casa',listaUrls.length?'As listas em PDF para imprimir, com gabarito resolvido no final.':'Materiais para estudar fora da tela.')
+  +(pdfGrid||otherHtml?pdfGrid+otherHtml:empty('Listas a caminho','As listas em PDF desta aula ainda vão ser publicadas.')+exatooCard('treino',l))+videosHtml+'</section>';
+
+ var seq='<nav class="aula-seq" aria-label="Outras aulas">'+(prev?'<a class="aula-seq-prev" href="'+href(prev)+'"><small>Aula anterior</small><b>'+esc(prev.title)+'</b></a>':'<span></span>')+(next?'<a class="aula-seq-next" href="'+href(next)+'"><small>Próxima aula, '+next.id+'</small><b>'+esc(next.title)+'</b></a>':'')+'</nav>';
+
+ var app=document.getElementById('app');
+ app.innerHTML=header()+'<main class="aula" id="conteudo">'+hero+'<div class="shell aula-body">'+rail+'<div class="aula-main">'+secEntenda+secPratique+secProva+secLevar+seq+'</div></div></main>'+footer();
+
+ /* ---------- Progresso ---------- */
+ function fixDone(){return fixQs.filter(function(q){return st.fix[q.n]==='ok'||st.fix[q.n]==='erro'}).length}
+ function fixOk(){return fixQs.filter(function(q){return st.fix[q.n]==='ok'}).length}
+ function stepIsDone(sid){
+  if(sid==='entenda')return !!st.entenda;
+  if(sid==='pratique')return fixQs.length>0&&fixDone()===fixQs.length;
+  if(sid==='prova')return st.prova.best!=null;
+  if(sid==='levar')return !!st.pdf;
+ }
+ function updateProgress(){
+  var txt={entenda:st.entenda?'Concluída':'Teoria e exemplos',pratique:fixDone()+' de '+fixQs.length+' conferidos',prova:st.prova.best!=null?'Melhor nota: '+st.prova.best+' de '+vestQs.length:plural(vestQs.length,'questão','questões'),levar:listaUrls.length?plural(listaUrls.length,'PDF','PDFs')+' e vídeos':'Materiais e vídeos'};
+  var n=0;steps.forEach(function(s){var el=document.getElementById('rail-'+s.id);if(el)el.textContent=txt[s.id];var a=document.querySelector('[data-rail="'+s.id+'"]');var ok=stepIsDone(s.id);if(a)a.classList.toggle('is-done',ok);if(ok)n++});
+  var m=document.getElementById('rail-meter');if(m)m.style.width=(n*100/steps.length)+'%';
+  var sum=document.getElementById('rail-sum');if(sum)sum.textContent=n===steps.length?'Aula completa!':n+' de '+steps.length+' etapas';
+  var pm=document.getElementById('prat-meter');if(pm)pm.style.width=(fixDone()*100/fixQs.length)+'%';
+  var ps=document.getElementById('prat-sum');if(ps)ps.textContent=fixDone()+' de '+fixQs.length+' conferidos'+(fixDone()?', '+plural(fixOk(),'certo','certos'):'');
+  fixSecoes.forEach(function(s,k){var c=document.querySelector('[data-level-count="'+k+'"]');if(c){var d=s.questoes.filter(function(q){return st.fix[q.n]==='ok'||st.fix[q.n]==='erro'}).length;c.textContent=d?d+'/'+s.questoes.length:plural(s.questoes.length,'questão','questões')}});
+ }
+
+ /* ---------- Entenda ---------- */
+ document.querySelectorAll('.aula-passo-btn').forEach(function(btn){btn.addEventListener('click',function(){
+  var items=btn.parentNode.querySelectorAll('.aula-passos li'),shown=0;items.forEach(function(li){if(!li.hidden)shown++});
+  if(shown<items.length){items[shown].hidden=false;items[shown].classList.add('is-new');shown++}
+  if(shown>=items.length){btn.remove()}else btn.textContent='Mostrar o '+(shown+1)+'º passo de '+items.length;
+ })});
+ var checkRes={};
+ function checkDots(cur){document.querySelectorAll('.aula-check-dots .aula-dot').forEach(function(d,k){d.className='aula-dot'+(k===cur?' is-now':'')+(checkRes[k]===true?' is-right':checkRes[k]===false?' is-wrong':'')})}
+ function checkShow(k){
+  var root=document.getElementById('check-root');if(!root)return;
+  root.querySelectorAll('[data-check]').forEach(function(b){b.hidden=Number(b.dataset.check)!==k});
+  var end=document.getElementById('check-end'),cnt=document.getElementById('check-count');
+  if(k>=quiz.length){
+   var ok=Object.keys(checkRes).filter(function(x){return checkRes[x]}).length;
+   end.hidden=false;cnt.textContent=ok+' de '+quiz.length+' certas';
+   end.innerHTML='<div class="aula-check-score"><span class="aula-check-big">'+ok+'<small>/'+quiz.length+'</small></span><div><b>'+(ok===quiz.length?'Ideia dominada.':ok>=quiz.length/2?'Quase lá.':'Vale reler a teoria.')+'</b><p>'+(ok===quiz.length?'Pode partir para os exercícios.':'Releia o trecho do que errou e tente de novo, ou siga para os exercícios.')+'</p></div></div><div class="aula-prova-actions"><button type="button" class="aula-btn aula-btn-soft" id="check-again">Refazer a checagem</button></div>';
+   end.querySelector('#check-again').addEventListener('click',function(){checkRes={};root.querySelectorAll('[data-check]').forEach(function(box){box.classList.remove('is-answered');box.querySelector('.aula-fb').innerHTML='';box.querySelectorAll('[data-opt]').forEach(function(x){x.disabled=false;x.classList.remove('is-right','is-wrong')})});checkShow(0)});
+   checkDots(-1);return;
   }
-  area.innerHTML=html;if(tab==='quiz'&&content&&content.quiz&&content.quiz.length)initQuiz(content.quiz,l);if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([area]);
+  end.hidden=true;end.innerHTML='';cnt.textContent=(k+1)+' de '+quiz.length;checkDots(k);
  }
- document.querySelectorAll('[data-tab]').forEach(function(el){el.addEventListener('click',function(){document.querySelectorAll('[data-tab]').forEach(function(x){x.classList.toggle('active',x===el)});renderTab(el.dataset.tab)})});
+ document.querySelectorAll('[data-check]').forEach(function(box){
+  var k=Number(box.dataset.check),q=quiz[k];
+  box.querySelectorAll('[data-opt]').forEach(function(b){b.addEventListener('click',function(){
+   if(box.classList.contains('is-answered'))return;box.classList.add('is-answered');
+   var n=Number(b.dataset.opt),ok=n===q.correta;checkRes[k]=ok;checkDots(k);
+   box.querySelectorAll('[data-opt]').forEach(function(x){var c=Number(x.dataset.opt);x.disabled=true;if(c===q.correta)x.classList.add('is-right');else if(c===n)x.classList.add('is-wrong')});
+   var last=k>=quiz.length-1;
+   var fb=box.querySelector('.aula-fb');fb.innerHTML='<div class="aula-fb-box '+(ok?'is-right':'is-wrong')+'"><b>'+(ok?'Isso!':'Não é essa. A certa é a '+String.fromCharCode(65+q.correta)+'.')+'</b>'+(q.explicacao?'<p>'+esc(q.explicacao)+'</p>':'')+'<button type="button" class="aula-btn aula-btn-ink" data-check-next>'+(last?'Ver como fui':'Próxima pergunta')+'</button>'+(ok?'':exatooCard('erro',l))+'</div>';
+   fb.querySelector('[data-check-next]').addEventListener('click',function(){checkShow(k+1);var nb=document.querySelector('[data-check="'+(k+1)+'"] [data-opt]')||document.getElementById('check-again');if(nb)nb.focus({preventScroll:true});var cr=document.getElementById('check-root');if(cr.getBoundingClientRect().top<0)cr.scrollIntoView({block:'start'})});
+   tex(fb);
+  })});
+ });
+ var okBtn=document.getElementById('entenda-ok');
+ okBtn.addEventListener('click',function(){st.entenda=!st.entenda;store.save();okBtn.setAttribute('aria-pressed',String(!!st.entenda));okBtn.textContent=st.entenda?'Teoria concluída':okLabel;updateProgress();if(st.entenda)goTo(steps[1]?steps[1].id:'levar')});
+
+ /* ---------- Pratique ---------- */
+ var level=0;
+ if(fixQs.length){
+  var firstOpen=fixSecoes.findIndex(function(s){return s.questoes.some(function(q){return !st.fix[q.n]||st.fix[q.n]==='visto'})});level=firstOpen<0?0:firstOpen;
+  document.querySelectorAll('[data-level]').forEach(function(b){b.addEventListener('click',function(){level=Number(b.dataset.level);drawLevel()})});
+  drawLevel();
+ }
+ function exCard(q){
+  var s=st.fix[q.n]||'';
+  return '<article class="aula-ex'+(s?' is-'+s:'')+'" data-ex="'+q.n+'"><div class="aula-ex-q"><span class="aula-ex-n">'+q.n+'</span><div class="aula-ex-body"><p>'+esc(q.enunciado)+'</p>'+(q.itens&&q.itens.length?'<ol class="aula-itens">'+q.itens.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ol>':'')+'</div><span class="aula-ex-badge" aria-hidden="true"></span></div>'
+   +'<button type="button" class="aula-ex-ver" aria-expanded="false">'+(q.resolucao.length?'Ver resolução':'Ver resposta')+'</button>'
+   +'<div class="aula-ex-sol" hidden>'+q.resolucao.map(function(r){return '<p>'+esc(r)+'</p>'}).join('')+(q.resposta?'<p class="aula-ex-resp"><b>Resposta</b><span>'+esc(q.resposta)+'</span></p>':'')
+   +'<div class="aula-ex-check"><span>Como foi?</span><button type="button" class="aula-mark" data-mark="ok" aria-pressed="'+(s==='ok')+'">Acertei</button><button type="button" class="aula-mark" data-mark="erro" aria-pressed="'+(s==='erro')+'">Errei</button></div></div></article>';
+ }
+ function drawLevel(){
+  document.querySelectorAll('[data-level]').forEach(function(b){var on=Number(b.dataset.level)===level;b.setAttribute('aria-selected',String(on));b.classList.toggle('is-on',on)});
+  var list=document.getElementById('ex-list');
+  list.innerHTML=fixSecoes[level].questoes.map(function(q){return exCard(Object.assign({nivel:fixSecoes[level].nome},q))}).join('')
+   +(level<fixSecoes.length-1?'<button type="button" class="aula-btn aula-btn-soft aula-next-level" data-next-level>Ir para o nível '+esc(fixSecoes[level+1].nome)+'</button>':(vestQs.length?'<a class="aula-btn aula-btn-soft aula-next-level" href="#prova" data-goto="prova">Encarar o modo prova</a>':''));
+  list.querySelectorAll('.aula-ex').forEach(function(card){
+   var n=Number(card.dataset.ex),btn=card.querySelector('.aula-ex-ver'),sol=card.querySelector('.aula-ex-sol');
+   btn.addEventListener('click',function(){var open=sol.hidden;sol.hidden=!open;btn.setAttribute('aria-expanded',String(open));btn.textContent=open?'Esconder resolução':(btn.textContent.indexOf('resposta')>0?'Ver resposta':'Ver resolução');if(open){if(!st.fix[n]){st.fix[n]='visto';store.save()}tex(sol)}});
+   card.querySelectorAll('[data-mark]').forEach(function(m){m.addEventListener('click',function(){
+    st.fix[n]=st.fix[n]===m.dataset.mark?'visto':m.dataset.mark;store.save();
+    card.classList.remove('is-ok','is-erro','is-visto');card.classList.add('is-'+st.fix[n]);
+    card.querySelectorAll('[data-mark]').forEach(function(x){x.setAttribute('aria-pressed',String(st.fix[n]===x.dataset.mark))});
+    updateProgress();
+   })});
+  });
+  var nl=list.querySelector('[data-next-level]');if(nl)nl.addEventListener('click',function(){level++;drawLevel();goTo('pratique')});
+  bindGoto(list);
+  tex(list);updateProgress();
+ }
+
+ /* ---------- Modo prova ---------- */
+ var prova={state:'intro',order:[],i:0,answers:{},review:null};
+ var provaRoot=document.getElementById('prova-root');
+ function letter(k){return String.fromCharCode(65+k)}
+ function drawProva(){
+  if(!provaRoot)return;
+  var total=vestQs.length;
+  if(prova.state==='intro'){
+   var best=st.prova.best;
+   provaRoot.innerHTML='<div class="aula-prova-intro"><div><h3>'+plural(total,'questão','questões')+', uma de cada vez</h3><p>Você escolhe a alternativa e vê na hora se acertou, com a resolução completa. No final, dá para refazer só as que errou.</p>'+(best!=null?'<p class="aula-prova-best">Sua melhor nota até agora: <b>'+best+' de '+total+'</b></p>':'')+'</div><button type="button" class="aula-btn aula-btn-lime aula-btn-big" id="prova-start">'+(best!=null?'Fazer de novo':'Começar a prova')+'</button></div>';
+   provaRoot.querySelector('#prova-start').addEventListener('click',function(){startProva(vestQs.map(function(q,k){return k}))});
+   return;
+  }
+  if(prova.state==='run'){
+   var qi=prova.order[prova.i],q=vestQs[qi],ans=prova.answers[qi];
+   var dots=prova.order.map(function(k,pos){var a=prova.answers[k];return '<span class="aula-dot'+(pos===prova.i?' is-now':'')+(a!=null?(a===vestQs[k].correta?' is-right':' is-wrong'):'')+'"></span>'}).join('');
+   var acertos=prova.order.filter(function(k){return prova.answers[k]===vestQs[k].correta}).length;
+   provaRoot.innerHTML='<div class="aula-prova-bar"><span>Questão <b>'+(prova.i+1)+'</b> de '+prova.order.length+'</span><span class="aula-dots" aria-hidden="true">'+dots+'</span><span>'+plural(acertos,'acerto','acertos')+'</span></div>'
+    +'<div class="aula-prova-q"><p class="aula-prova-enun"><span class="aula-mcq-n">'+q.n+'</span><span>'+esc(q.enunciado)+'</span></p><div class="aula-opts aula-opts-big'+optsClass(q.opcoes)+'">'+q.opcoes.map(function(o,j){var cls='';if(ans!=null){if(j===q.correta)cls=' is-right';else if(j===ans)cls=' is-wrong'}return '<button type="button" class="aula-opt'+cls+'" data-popt="'+j+'"'+(ans!=null?' disabled':'')+'><span class="aula-opt-l">'+letter(j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></button>'}).join('')+'</div>'
+    +'<div id="quiz-feedback" class="aula-fb" aria-live="polite">'+(ans!=null?provaFeedback(q,ans):'<p class="aula-kbd-hint">Dica: dá para responder com as teclas A a E.</p>')+'</div></div>';
+   provaRoot.querySelectorAll('[data-popt]').forEach(function(b){b.addEventListener('click',function(){answer(Number(b.dataset.popt))})});
+   var nx=provaRoot.querySelector('#prova-next');if(nx){nx.addEventListener('click',nextQ);nx.focus({preventScroll:true})}
+   tex(provaRoot);return;
+  }
+  if(prova.state==='end'){
+   var right=prova.order.filter(function(k){return prova.answers[k]===vestQs[k].correta}),wrong=prova.order.filter(function(k){return prova.answers[k]!==vestQs[k].correta});
+   var full=prova.order.length===total,score=right.length;
+   var pct=score/prova.order.length;
+   var msg=pct===1?'Gabaritou. Pode ir para a próxima aula com tranquilidade.':pct>=.7?'Mandou bem. Revise as que errou e essa aula está dominada.':pct>=.4?'Está no caminho. Refaça as erradas olhando a resolução de cada uma.':'Vale voltar à teoria e aos exercícios de fixação antes de tentar de novo.';
+   provaRoot.innerHTML='<div class="aula-prova-end"><div class="aula-score"><span class="aula-score-n">'+score+'</span><span class="aula-score-d">de '+prova.order.length+'</span></div><div><h3>'+(full?'Resultado da prova':'Resultado da revisão')+'</h3><p>'+msg+'</p>'+(full&&st.prova.best!=null?'<p class="aula-prova-best">Melhor nota: <b>'+st.prova.best+' de '+total+'</b></p>':'')+'</div></div>'
+    +'<p class="aula-grid-label">Toque numa questão para rever a resolução.</p><div class="aula-grid">'+prova.order.map(function(k){var ok=prova.answers[k]===vestQs[k].correta;return '<button type="button" class="aula-cell '+(ok?'is-right':'is-wrong')+(prova.review===k?' is-open':'')+'" data-review="'+k+'" aria-label="Questão '+vestQs[k].n+(ok?', acertou':', errou')+'">'+vestQs[k].n+'</button>'}).join('')+'</div>'
+    +'<div id="prova-review"></div>'
+    +'<div class="aula-prova-actions">'+(wrong.length?'<button type="button" class="aula-btn aula-btn-lime" id="prova-wrong">Refazer '+(wrong.length===1?'a errada':'as '+wrong.length+' erradas')+'</button>':'')+'<button type="button" class="aula-btn aula-btn-soft" id="prova-again">Recomeçar a prova</button>'+(!done.has(id)&&pct>=.7?'<button type="button" class="aula-btn aula-btn-soft" id="prova-done">Marcar aula como estudada</button>':'')+'</div>'
+    +(wrong.length?exatooCard('erro',l):'');
+   provaRoot.querySelectorAll('[data-review]').forEach(function(b){b.addEventListener('click',function(){var k=Number(b.dataset.review);prova.review=prova.review===k?null:k;provaRoot.querySelectorAll('[data-review]').forEach(function(x){x.classList.toggle('is-open',Number(x.dataset.review)===prova.review)});drawReview()})});
+   var w=provaRoot.querySelector('#prova-wrong');if(w)w.addEventListener('click',function(){startProva(wrong)});
+   provaRoot.querySelector('#prova-again').addEventListener('click',function(){startProva(vestQs.map(function(q,k){return k}))});
+   var pd=provaRoot.querySelector('#prova-done');if(pd)pd.addEventListener('click',function(){var b=document.getElementById('btn-done');if(b&&!done.has(id))b.click();pd.remove()});
+   drawReview();
+  }
+ }
+ function provaFeedback(q,ans){
+  var ok=ans===q.correta,last=prova.i>=prova.order.length-1;
+  return '<div class="aula-fb-box '+(ok?'is-right':'is-wrong')+'"><b>'+(ok?'Certa!':'Não foi dessa vez. A correta é a '+letter(q.correta)+'.')+'</b>'+q.resolucao.map(function(r){return '<p>'+esc(r)+'</p>'}).join('')+'<button type="button" class="aula-btn aula-btn-ink" id="prova-next">'+(last?'Ver meu resultado':'Próxima questão')+'</button></div>';
+ }
+ function drawReview(){
+  var box=provaRoot.querySelector('#prova-review');if(!box)return;
+  if(prova.review==null){box.innerHTML='';return}
+  var q=vestQs[prova.review],a=prova.answers[prova.review];
+  box.innerHTML='<div class="aula-prova-q aula-review"><p class="aula-prova-enun"><span class="aula-mcq-n">'+q.n+'</span><span>'+esc(q.enunciado)+'</span></p><div class="aula-opts">'+q.opcoes.map(function(o,j){return '<div class="aula-opt'+(j===q.correta?' is-right':j===a?' is-wrong':'')+'"><span class="aula-opt-l">'+letter(j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></div>'}).join('')+'</div><div class="aula-fb-box '+(a===q.correta?'is-right':'is-wrong')+'"><b>Resolução</b>'+q.resolucao.map(function(r){return '<p>'+esc(r)+'</p>'}).join('')+'</div></div>';
+  tex(box);
+ }
+ function startProva(order){prova={state:'run',order:order,i:0,answers:{},review:null};drawProva();provaRoot.focus({preventScroll:true});goTo('prova')}
+ function answer(j){
+  if(prova.state!=='run')return;var qi=prova.order[prova.i];if(prova.answers[qi]!=null)return;
+  prova.answers[qi]=j;drawProva();
+  var fb=document.getElementById('quiz-feedback');if(fb){var r=fb.getBoundingClientRect(),over=r.bottom-window.innerHeight+20;if(over>0){var dy=Math.min(over,Math.max(0,r.top-topOffset()));try{window.scrollBy({top:dy,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}catch(e){window.scrollBy(0,dy)}}}
+ }
+ function nextQ(){
+  if(prova.i<prova.order.length-1){prova.i++;drawProva();var top=provaRoot.getBoundingClientRect().top;if(top<0)goTo('prova');return}
+  if(prova.order.length===vestQs.length){var sc=prova.order.filter(function(k){return prova.answers[k]===vestQs[k].correta}).length;if(st.prova.best==null||sc>st.prova.best)st.prova.best=sc;st.prova.last=sc;store.save();updateProgress()}
+  prova.state='end';drawProva();
+ }
+ document.addEventListener('keydown',function(e){
+  if(!provaRoot||prova.state!=='run'||e.altKey||e.ctrlKey||e.metaKey)return;
+  var t=e.target;if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable))return;
+  var r=provaRoot.getBoundingClientRect();if(r.bottom<80||r.top>window.innerHeight-80)return;
+  var k=e.key.toLowerCase(),idx='abcde'.indexOf(k);if(idx<0&&/^[1-5]$/.test(k))idx=Number(k)-1;
+  var qi=prova.order[prova.i];
+  if(idx>=0&&idx<vestQs[qi].opcoes.length&&prova.answers[qi]==null){e.preventDefault();answer(idx)}
+  else if((e.key==='Enter'||e.key==='ArrowRight')&&prova.answers[qi]!=null&&!(t&&t.tagName==='BUTTON'&&e.key==='Enter')){e.preventDefault();nextQ()}
+ });
+ drawProva();
+
+ /* ---------- Leve pra casa ---------- */
+ document.querySelectorAll('[data-pdf]').forEach(function(a){a.addEventListener('click',function(){st.pdf=true;store.save();updateProgress()})});
+
+ /* ---------- Navegação ---------- */
+ function topOffset(){var tb=document.querySelector('.topbar'),h=tb?tb.offsetHeight:0;var main=document.querySelector('main.aula');if(main)main.style.setProperty('--a-top',h+'px');var rail=document.querySelector('.aula-rail');var extra=window.innerWidth<=1000&&rail?rail.offsetHeight:0;return h+extra+16}
+ function goTo(sid){var el=document.getElementById(sid);if(!el)return;var y=el.getBoundingClientRect().top+window.pageYOffset-topOffset();try{window.scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}catch(e){window.scrollTo(0,y)}}
+ function bindGoto(root){root.querySelectorAll('[data-goto]').forEach(function(a){if(a.dataset.bound)return;a.dataset.bound='1';a.addEventListener('click',function(e){e.preventDefault();goTo(a.dataset.goto);try{history.replaceState(null,'','#'+a.dataset.goto)}catch(err){}})})}
+ bindGoto(document);
+ if('IntersectionObserver' in window){
+  var vis={};var io=new IntersectionObserver(function(entries){entries.forEach(function(en){vis[en.target.id]=en.isIntersecting?en.intersectionRect.height:0});var bestId=null,bestH=0;steps.forEach(function(s){if((vis[s.id]||0)>bestH){bestH=vis[s.id];bestId=s.id}});document.querySelectorAll('[data-rail]').forEach(function(a){var on=a.dataset.rail===bestId;a.classList.toggle('is-active',on);if(on){a.setAttribute('aria-current','step');var ol=a.closest('ol');if(ol&&ol.scrollWidth>ol.clientWidth+2){try{ol.scrollTo({left:Math.max(0,a.parentNode.offsetLeft-12),behavior:'smooth'})}catch(e){ol.scrollLeft=a.parentNode.offsetLeft}}}else a.removeAttribute('aria-current')})},{threshold:[0,.1,.25,.5,.75,1],rootMargin:'-90px 0px -35% 0px'});
+  steps.forEach(function(s){var el=document.getElementById(s.id);if(el)io.observe(el)});
+ }
+ updateProgress();
+
+ /* ---------- Ações da aula ---------- */
  document.getElementById('btn-fav').addEventListener('click',function(){saveAction(l,this)});
- document.getElementById('btn-done').addEventListener('click',function(){finishAction(l,this)});
- // Chamada nativa feita diretamente pelo gesto (sem await antecipado).
- var shareBtn=document.getElementById('btn-share');
- var shareOptions=document.getElementById('lesson-share-options');
- var shareStatus=document.getElementById('share-status');
- var shareManual=document.getElementById('share-manual');
- var shareUrl=new URL(href(l),location.origin).href;
- var shareText='Olha essa aula de matemática no MAT MAT MAT!: '+l.title;
- var shareMessage=shareText+'\n'+shareUrl;
+ document.getElementById('btn-done').addEventListener('click',function(){finishAction(l,this);var cur=document.querySelector('.aula-trail .is-current');if(cur)cur.classList.toggle('is-done',done.has(id))});
+ var shareBtn=document.getElementById('btn-share'),shareOptions=document.getElementById('lesson-share-options'),shareStatus=document.getElementById('share-status'),shareManual=document.getElementById('share-manual');
+ var shareUrl=new URL(href(l),location.origin).href,shareText='Olha essa aula de matemática no MAT MAT MAT!: '+l.title,shareMessage=shareText+'\n'+shareUrl;
  document.getElementById('share-whatsapp').href='https://wa.me/?text='+encodeURIComponent(shareMessage);
- function setShareOptions(visible){
-  shareOptions.hidden=!visible;
-  shareBtn.setAttribute('aria-expanded',String(visible));
-  if(!visible){shareStatus.textContent='';shareManual.hidden=true}
- }
+ function setShareOptions(visible){shareOptions.hidden=!visible;shareBtn.setAttribute('aria-expanded',String(visible));if(!visible){shareStatus.textContent='';shareManual.hidden=true}}
  shareBtn.addEventListener('click',function(){
   if(typeof navigator.share==='function'){
-   try{
-    var result=navigator.share({title:l.title+' | MAT MAT MAT!',text:shareText,url:shareUrl});
-    Promise.resolve(result).then(function(){setShareOptions(false)}).catch(function(err){
-     if(!err||err.name!=='AbortError')setShareOptions(true);
-    });
-   }catch(err){if(!err||err.name!=='AbortError')setShareOptions(true)}
+   try{var result=navigator.share({title:l.title+' | MAT MAT MAT!',text:shareText,url:shareUrl});Promise.resolve(result).then(function(){setShareOptions(false)}).catch(function(err){if(!err||err.name!=='AbortError')setShareOptions(true)})}catch(err){if(!err||err.name!=='AbortError')setShareOptions(true)}
   }else setShareOptions(shareOptions.hidden);
  });
  document.getElementById('share-close').addEventListener('click',function(){setShareOptions(false);shareBtn.focus()});
  document.getElementById('share-copy').addEventListener('click',function(){
-  function copied(){shareStatus.textContent='✓ Mensagem e link copiados!';shareManual.hidden=true}
+  function copied(){shareStatus.textContent='Mensagem e link copiados.';shareManual.hidden=true}
   function manual(){shareStatus.textContent='Selecione e copie a mensagem abaixo:';shareManual.value=shareMessage;shareManual.hidden=false;shareManual.focus();shareManual.select()}
-  if(navigator.clipboard&&typeof navigator.clipboard.writeText==='function'){
-   navigator.clipboard.writeText(shareMessage).then(copied).catch(manual);
-  }else{
-   shareManual.value=shareMessage;shareManual.hidden=false;shareManual.select();
-   try{if(document.execCommand&&document.execCommand('copy'))copied();else manual()}catch(e){manual()}
-  }
+  if(navigator.clipboard&&typeof navigator.clipboard.writeText==='function'){navigator.clipboard.writeText(shareMessage).then(copied).catch(manual)}
+  else{shareManual.value=shareMessage;shareManual.hidden=false;shareManual.select();try{if(document.execCommand&&document.execCommand('copy'))copied();else manual()}catch(e){manual()}}
  });
- document.getElementById('open-materials').addEventListener('click',function(){switchTab('arquivos')});
- function switchTab(tab){document.querySelectorAll('[data-tab]').forEach(function(x){x.classList.toggle('active',x.dataset.tab===tab)});renderTab(tab)}
- var requested=new URLSearchParams(location.search).get('tab');
- // Compartilhamentos antigos com ?tab=resumo continuam funcionando sem exibir uma aba removida.
- if(requested==='resumo')requested='teoria';
- if(['teoria','quiz','videos','arquivos'].includes(requested))switchTab(requested);
- else switchTab((lessonPdfFiles().length||(content&&content.lista&&content.lista.length))?'arquivos':'teoria');
+
+ /* ---------- Matemática e chegada direta a uma etapa ---------- */
+ tex(document.querySelector('.aula-hero')).then(function(){fitFormula(document.getElementById('aula-formula-math'))});
+ tex(document.getElementById('entenda'));
+ topOffset();
+ if(window.addEventListener)window.addEventListener('resize',function(){topOffset();var f=document.getElementById('aula-formula-math');if(f){f.style.fontSize='';fitFormula(f)}});
+ var requested=new URLSearchParams(location.search).get('tab')||location.hash.replace('#','');
+ var map={resumo:'entenda',teoria:'entenda',quiz:vestQs.length?'prova':'entenda',videos:'levar',arquivos:'levar'};
+ var target=map[requested]||requested;
+ if(steps.some(function(s){return s.id===target}))setTimeout(function(){goTo(target)},60);
 }
 
 function safeUrl(url){try{var x=new URL(url);return (x.protocol==='https:'||x.protocol==='http:')?x.toString():null}catch(e){return null}}
-function initQuiz(questions,lesson){
- var root=document.getElementById('quiz-root');if(!root)return;
- var idx=0,score=0,answered=false,finish=false;
- function draw(){
-  if(finish){root.innerHTML='<div class="quiz-score"><div class="emoji">✦</div><h3>Fim de jogo!</h3><div class="big-score">'+score+' / '+questions.length+'</div><p>'+(score===questions.length?'Você gabaritou! 👑':'Boa! Confira as explicações e tente de novo para fixar.')+'</p><button class="action primary" id="quiz-again">↻ Tentar novamente</button>'+(score<questions.length?exatooCard('treino',lesson):'')+'</div>';document.getElementById('quiz-again').addEventListener('click',function(){idx=0;score=0;answered=false;finish=false;draw()});return}
-  var q=questions[idx];root.innerHTML='<div class="quiz-meta"><span>QUESTÃO '+(idx+1)+' DE '+questions.length+'</span><span>ACERTOS: '+score+'</span></div><div class="quiz-track"><span style="width:'+((idx+1)*100/questions.length)+'%"></span></div><div class="quiz-question"><span class="step-label">'+esc(q.nivel||'Treino')+'</span><h3>'+esc(q.enunciado)+'</h3><div class="quiz-options">'+q.opcoes.map(function(opt,j){return '<button class="quiz-option" data-opt="'+j+'" type="button"><span class="letter">'+String.fromCharCode(65+j)+'</span><span>'+esc(opt)+'</span></button>'}).join('')+'</div><div id="quiz-feedback" aria-live="polite"></div></div>';
-  root.querySelectorAll('[data-opt]').forEach(function(button){button.addEventListener('click',function(){if(answered)return;answered=true;var n=Number(button.dataset.opt),ok=n===q.correta;if(ok)score++;root.querySelectorAll('[data-opt]').forEach(function(b){var current=Number(b.dataset.opt);b.disabled=true;if(current===q.correta)b.classList.add('correct');else if(current===n)b.classList.add('incorrect')});document.getElementById('quiz-feedback').innerHTML='<div class="quiz-feedback"><b>'+(ok?'✓ Boa! Resposta certa.':'↗ Quase! Agora faz sentido.')+'</b><p>'+esc(q.explicacao)+'</p><button class="action primary" id="quiz-next">'+(idx===questions.length-1?'Ver resultado':'Próxima questão →')+'</button>'+(ok?'':exatooCard('erro',lesson))+'</div>';document.getElementById('quiz-next').addEventListener('click',function(){idx++;answered=false;if(idx>=questions.length)finish=true;draw()});if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([root])})});
-  if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([root]);
- }
- draw();
-}
-
 async function init(){try{var r=await fetch('/data/aulas.json');if(!r.ok)throw Error('Catálogo não encontrado');data=await r.json();try{var m=await fetch('/data/materiais.json');if(m.ok)materialIndex=await m.json()}catch(e){materialIndex=[]}if(document.body.dataset.lesson)await lessonPage();else if(document.body.dataset.view==='explorar')explorePage();else if(document.body.dataset.view==='diagnostico')await diagnosisPage();else home()}catch(e){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Não foi possível carregar o catálogo','Recarregue a página para tentar novamente.')+'</main>'+footer();console.error(e)}}
 init();
 })();
