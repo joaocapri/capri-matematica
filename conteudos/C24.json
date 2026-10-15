@@ -6,13 +6,13 @@
     {
       "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "A distribuição binomial conta o número de sucessos em n tentativas independentes com a mesma probabilidade p. Escolhemos quais posições foram sucesso e multiplicamos pelas probabilidades."
+        "Eventos independentes não interferem nas probabilidades um do outro. Para A e B, multiplique P(A) por P(B|A); se forem independentes, P(B|A)=P(B)."
       ],
       "formulas": [
-        "P(X=k)=\\binom nk p^k(1-p)^{n-k}"
+        "P(A\\cap B)=P(A)P(B\\mid A)"
       ],
-      "dica": "Confira se n é fixo, os ensaios são independentes e p é constante.",
-      "erroComum": "Binomial não serve automaticamente se as chances mudam a cada tentativa."
+      "dica": "Reposição em urnas costuma preservar probabilidades entre retiradas.",
+      "erroComum": "Sem reposição, o segundo sorteio costuma depender do primeiro."
     },
     {
       "titulo": "Hora de ver funcionar",
@@ -20,11 +20,10 @@
         "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Três moedas honestas: probabilidade de exatamente duas caras?",
+        "enunciado": "Duas moedas honestas: chance de ambas darem cara?",
         "passos": [
-          "Escolha 2 posições entre 3: C(3,2)=3.",
-          "Probabilidade de cada sequência específica: (1/2)³=1/8.",
-          "Total 3/8."
+          "Cada lançamento tem chance 1/2.",
+          "São independentes: 1/2·1/2=1/4."
         ]
       }
     }
@@ -32,27 +31,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Em 2 moedas honestas, chance de exatamente 1 cara:",
+      "enunciado": "Duas moedas: duas caras:",
       "opcoes": [
-        "1/4",
         "1/2",
-        "3/4",
-        "1"
+        "1/3",
+        "1/4",
+        "1/8"
       ],
-      "correta": 1,
-      "explicacao": "C(2,1)/4=2/4=1/2."
+      "correta": 2,
+      "explicacao": "(1/2)²=1/4."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Em 3 tentativas p=1/2, chance de 3 sucessos:",
+      "enunciado": "Urna com 2 vermelhas e 3 azuis; tirar 2 vermelhas sem reposição:",
       "opcoes": [
-        "1/2",
-        "1/4",
-        "1/8",
-        "3/8"
+        "1/5",
+        "1/10",
+        "2/5",
+        "4/25"
       ],
-      "correta": 2,
-      "explicacao": "(1/2)³=1/8."
+      "correta": 1,
+      "explicacao": "(2/5)(1/4)=2/20=1/10."
     }
   ],
   "videos": [],

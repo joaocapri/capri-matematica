@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de operações na forma trigonométrica",
+    "Reconhecer o conceito central de soma de p.a",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Multiplicar complexos na forma trigonométrica multiplica módulos e soma argumentos. Dividir divide módulos e subtrai argumentos. Na potenciação, o teorema de Moivre multiplica o argumento pelo expoente."
+        "Somar uma PA termo a termo funciona, mas emparelhar extremos é mais rápido. Em uma PA, primeiro+último tem sempre o mesmo valor dos pares simétricos."
       ],
       "formulas": [
-        "(r\\,\\mathrm{cis}\\theta)^n=r^n\\,\\mathrm{cis}(n\\theta)"
+        "S_n=\\frac{n(a_1+a_n)}2"
       ],
-      "dica": "Use forma algébrica para somar; trigonométrica para multiplicar, dividir e elevar.",
-      "erroComum": "Na divisão, a ordem dos argumentos importa: argumento do numerador menos do denominador."
+      "dica": "Se o último termo não foi dado, calcule-o primeiro com a fórmula de PA.",
+      "erroComum": "Não use n(a₁+aₙ) sem dividir por 2."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,47 +25,47 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Calcule i² usando argumento.",
+        "enunciado": "Calcule 1+2+...+100.",
         "passos": [
-          "i tem módulo 1 e argumento π/2.",
-          "i² tem módulo 1²=1 e argumento π.",
-          "cosπ+i senπ=−1."
+          "Há 100 termos, primeiro 1 e último 100.",
+          "S₁₀₀=100(1+100)/2.",
+          "Total: 5050."
         ]
       }
     }
   ],
   "videos": [
     {
-      "titulo": "Números complexos e polinômios",
+      "titulo": "Progressões aritméticas e geométricas",
       "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Revisão de números complexos e técnicas de fatoração.",
-      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
     }
   ],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "O módulo do produto (2 cis30°)(3 cis60°) é:",
+      "enunciado": "A soma de 2+4+6+8 é:",
       "opcoes": [
-        "1",
-        "5",
-        "6",
-        "9"
+        "16",
+        "18",
+        "20",
+        "24"
       ],
       "correta": 2,
-      "explicacao": "Os módulos se multiplicam: 2·3=6."
+      "explicacao": "Quatro termos: 4(2+8)/2=20."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O argumento do mesmo produto é:",
+      "enunciado": "Quanto vale 1+2+...+10?",
       "opcoes": [
-        "30°",
-        "60°",
-        "90°",
-        "180°"
+        "45",
+        "50",
+        "55",
+        "60"
       ],
       "correta": 2,
-      "explicacao": "Somamos 30° e 60°."
+      "explicacao": "10·11/2=55."
     }
   ],
   "exercicios": [],

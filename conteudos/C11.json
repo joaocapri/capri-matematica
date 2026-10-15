@@ -6,13 +6,13 @@
     {
       "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "Amortização é a parte da prestação que reduz a dívida. No SAC, a amortização é constante; na Price, a prestação é constante (mantidas as taxas e condições). Juros incidem sobre o saldo devedor."
+        "Juros compostos são multiplicativos: a cada período, a taxa incide sobre o montante atualizado. É uma progressão geométrica."
       ],
       "formulas": [
-        "\\text{prestação}=\\text{amortização}+\\text{juros}"
+        "M=C(1+i)^n"
       ],
-      "dica": "Na Price, prestação constante não significa amortização constante.",
-      "erroComum": "Não confunda juros com redução do principal."
+      "dica": "Taxas compostas sucessivas usam fatores multiplicativos.",
+      "erroComum": "10% por dois meses não equivale exatamente a 20%: equivale a 21%."
     },
     {
       "titulo": "Hora de ver funcionar",
@@ -20,11 +20,10 @@
         "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Uma dívida de R$ 1200 será paga em 3 amortizações iguais pelo SAC, sem considerar taxas extras.",
+        "enunciado": "Aplique R$ 1000 a 10% ao mês por 2 meses.",
         "passos": [
-          "Amortização por período: 1200/3=400.",
-          "Se o saldo inicial rende 1% no primeiro mês, juros iniciais=12.",
-          "Primeira prestação=400+12=412."
+          "Após mês 1: 1000·1,1=1100.",
+          "Após mês 2: 1100·1,1=1210."
         ]
       }
     }
@@ -32,27 +31,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Num SAC de R$ 800 em 4 períodos, amortização é:",
+      "enunciado": "1000 a 20% composto por dois períodos:",
       "opcoes": [
-        "100",
-        "200",
-        "400",
-        "800"
+        "1200",
+        "1400",
+        "1440",
+        "1500"
       ],
-      "correta": 1,
-      "explicacao": "800/4=200."
+      "correta": 2,
+      "explicacao": "1000·1,2²=1440."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Ao longo do SAC, os juros sobre o saldo:",
+      "enunciado": "Fator de crescimento de 5% é:",
       "opcoes": [
-        "Crescem",
-        "Ficam iguais",
-        "Diminuem",
-        "São sempre zero"
+        "0,05",
+        "0,95",
+        "1,05",
+        "1,5"
       ],
       "correta": 2,
-      "explicacao": "O saldo devedor cai a cada amortização."
+      "explicacao": "Acrescente 5%=0,05 à unidade."
     }
   ],
   "videos": [],

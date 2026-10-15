@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de estudo do sinal e inequações do 1º grau",
+    "Entender o conceito central de o conceito de função",
     "Aplicar o procedimento em um exemplo resolvido",
     "Reconhecer erros frequentes antes de enfrentar uma questão"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "A ideia que destrava",
       "paragrafos": [
-        "Resolver f(x)>0 significa achar onde o gráfico fica acima do eixo x. Em produtos e quocientes, procure pontos críticos, divida a reta e avalie sinais por intervalo."
+        "Função é uma regra que atribui a cada elemento do domínio exatamente uma imagem no contradomínio. Dois x diferentes podem chegar ao mesmo y; o mesmo x não pode apontar para duas saídas."
       ],
       "formulas": [
-        "(x-1)(x+2)>0\\Rightarrow x<-2\\ \\text{ou}\\ x>1"
+        "f:A\\to B,\\quad x\\mapsto f(x)"
       ],
-      "dica": "Monte um quadro de sinais para fatores em vez de expandir tudo.",
-      "erroComum": "Em frações, o denominador zero nunca pode entrar na solução."
+      "dica": "No gráfico, qualquer reta vertical deve encontrar no máximo um ponto.",
+      "erroComum": "Não confunda imagem da função com contradomínio: a imagem pode ser menor."
     },
     {
       "titulo": "Vamos fazer uma juntos",
@@ -25,11 +25,11 @@
         "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
       ],
       "exemplo": {
-        "enunciado": "Resolva (x−1)(x+2)>0.",
+        "enunciado": "Considere f(x)=2x+1. Determine f(3).",
         "passos": [
-          "Zeros: x=1 e x=−2.",
-          "Fatores têm sinais iguais fora das raízes.",
-          "Resposta: x<−2 ou x>1."
+          "Substitua a entrada x por 3.",
+          "f(3)=2·3+1.",
+          "A imagem de 3 é 7."
         ]
       }
     }
@@ -37,35 +37,35 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Qual o conjunto solução de 2x−6≥0?",
+      "enunciado": "Em uma função, cada entrada do domínio deve ter:",
       "opcoes": [
-        "x≤3",
-        "x<3",
-        "x≥3",
-        "x>6"
+        "Duas imagens",
+        "Exatamente uma imagem",
+        "Nenhuma imagem",
+        "Sempre uma imagem diferente das outras"
       ],
-      "correta": 2,
-      "explicacao": "2x≥6 ⇒ x≥3."
+      "correta": 1,
+      "explicacao": "Essa é a condição essencial para ser função."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Quando (x−1)(x+2) é negativo?",
+      "enunciado": "Se f(x)=x², qual é f(−3)?",
       "opcoes": [
-        "x<−2",
-        "−2<x<1",
-        "x>1",
-        "Para todo x"
+        "−9",
+        "−6",
+        "6",
+        "9"
       ],
-      "correta": 1,
-      "explicacao": "Entre as raízes, os dois fatores têm sinais opostos."
+      "correta": 3,
+      "explicacao": "(−3)²=9."
     }
   ],
   "videos": [
     {
-      "titulo": "Vídeos e prática: funções afins e retas",
+      "titulo": "Vídeos e prática: funções",
       "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Material com videoaulas e exercícios de funções lineares.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-linear-eq-func"
+      "descricao": "Material de apoio sobre funções, domínio e composição.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
     }
   ],
   "exercicios": [],

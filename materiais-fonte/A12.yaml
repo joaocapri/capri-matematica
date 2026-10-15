@@ -1,247 +1,258 @@
-# A12 — Gráficos e Coeficientes
+# Fonte das listas em PDF da aula A12 — Produto Cartesiano e Relações
 aula: A12
 
 fixacao:
-  intro: Resolva na ordem — do aquecimento ao desafio. O gráfico de $f(x)=ax+b$ é uma reta; $a>0$ sobe, $a<0$ desce, e $b$ marca onde ela corta o eixo $y$.
+  intro: Resolva na ordem — do aquecimento ao desafio. Em par ordenado, a ordem importa — $(2,3)\neq(3,2)$.
   secoes:
     - nome: Aquecimento
       questoes:
-        - enunciado: Diga se cada função é crescente ou decrescente e em que ponto seu gráfico corta o eixo $y$.
+        - enunciado: Determine $x$ e $y$ em cada igualdade de pares ordenados.
           itens:
-            - $f(x)=2x-3$
-            - $f(x)=-x+4$
-            - $f(x)=\tfrac12x$
+            - $(x+1,\ 2y)=(4,\ 6)$
+            - $(2x-1,\ y+3)=(5,\ -1)$
           resolucao: |
-            O sinal de $a$ decide o crescimento, e o eixo $y$ é cortado em $(0,b)$.
-            (a) Crescente; $(0,-3)$. (b) Decrescente; $(0,4)$. (c) Crescente; $(0,0)$.
-          resposta: '(a) cresc.; $(0,-3)$ \quad (b) decresc.; $(0,4)$ \quad (c) cresc.; $(0,0)$'
+            Pares são iguais quando as coordenadas correspondentes são iguais.
+            (a) $x+1=4\Rightarrow x=3$; $2y=6\Rightarrow y=3$.
+            (b) $2x-1=5\Rightarrow x=3$; $y+3=-1\Rightarrow y=-4$.
+          resposta: '(a) $x=3,\ y=3$ \quad (b) $x=3,\ y=-4$'
 
-        - enunciado: Determine os pontos em que o gráfico de $f(x)=3x-6$ corta os eixos.
+        - enunciado: 'Sendo $A=\{1,2\}$ e $B=\{a,b,c\}$, escreva $A\times B$ e dê seu número de elementos.'
           resolucao: |
-            Eixo $y$: $x=0\Rightarrow(0,-6)$. Eixo $x$: $3x-6=0\Rightarrow(2,0)$.
-          resposta: '$(0,-6)$ e $(2,0)$'
+            Cada elemento de $A$ combina com cada elemento de $B$:
+            $A\times B=\{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c)\}$, com $2\cdot3=6$ pares.
+          resposta: '$6$ pares, de $(1,a)$ até $(2,c)$'
 
-        - enunciado: Calcule o coeficiente angular da reta que passa por $(1,\,2)$ e $(4,\,11)$.
-          resolucao: |
-            $a=\dfrac{\Delta y}{\Delta x}=\dfrac{11-2}{4-1}=3$.
-          resposta: '$3$'
-
-        - enunciado: Calcule os pontos do gráfico de $f(x)=-2x+4$ para $x=0,1,2,3$ e diga onde ele corta o eixo $x$.
-          resolucao: |
-            $(0,4)$, $(1,2)$, $(2,0)$ e $(3,-2)$. A reta corta o eixo $x$ em $(2,0)$.
-          resposta: '$(0,4),(1,2),(2,0),(3,-2)$; raiz em $x=2$'
-
-        - enunciado: Os pontos $A(1,5)$, $B(3,9)$ e $C(5,13)$ estão alinhados? Justifique.
-          resolucao: |
-            Inclinação de $AB$: $\tfrac{9-5}{3-1}=2$. Inclinação de $BC$: $\tfrac{13-9}{5-3}=2$.
-            Mesma inclinação e um ponto comum: sim, estão alinhados.
-          resposta: 'sim (inclinação $2$ nos dois trechos)'
-
-        - enunciado: Determine a função afim cujo gráfico passa por $(0,\,2)$ e $(3,\,0)$.
-          resolucao: |
-            $b=2$ e $a=\dfrac{0-2}{3-0}=-\dfrac23$.
-          resposta: '$f(x)=-\tfrac23x+2$'
-
-        - enunciado: Dê os sinais de $a$ e $b$ para a reta $y=ax+b$ em cada caso.
+        - enunciado: 'Sendo $A=\{0,1\}$ e $B=\{2,3\}$, determine'
           itens:
-            - Crescente e corta o eixo $y$ acima da origem.
-            - Decrescente e passa pela origem.
-            - Decrescente e corta o eixo $y$ abaixo da origem.
+            - $A\times B$
+            - $B\times A$
+            - se $A\times B=B\times A$.
           resolucao: |
-            (a) $a>0$ e $b>0$. (b) $a<0$ e $b=0$. (c) $a<0$ e $b<0$.
-          resposta: '(a) $a>0,\ b>0$ \quad (b) $a<0,\ b=0$ \quad (c) $a<0,\ b<0$'
+            (a) $\{(0,2),(0,3),(1,2),(1,3)\}$.
+            (b) $\{(2,0),(2,1),(3,0),(3,1)\}$.
+            (c) Não: $(0,2)\in A\times B$, mas $(0,2)\notin B\times A$.
+          resposta: '(c) $A\times B\neq B\times A$'
+
+        - enunciado: 'Sabendo que $n(A)=4$ e $n(B)=5$, calcule $n(A\times B)$ e $n(A\times A)$.'
+          resolucao: |
+            $n(A\times B)=4\cdot5=20$ e $n(A\times A)=4\cdot4=16$.
+          resposta: '$20$ e $16$'
+
+        - enunciado: Indique o quadrante (ou o eixo) de cada ponto.
+          itens:
+            - $(3,-2)$
+            - $(-1,-5)$
+            - $(-2,4)$
+            - $(0,3)$
+          resolucao: |
+            (a) $x>0$, $y<0$: $4^\circ$ quadrante. (b) $x<0$, $y<0$: $3^\circ$ quadrante.
+            (c) $x<0$, $y>0$: $2^\circ$ quadrante. (d) $x=0$: está no eixo $y$ (em nenhum quadrante).
+          resposta: '(a) $4^\circ$ \quad (b) $3^\circ$ \quad (c) $2^\circ$ \quad (d) eixo $y$'
+
+        - enunciado: 'Sendo $A=\{1,2,3\}$, quantos elementos tem $A\times A$? Liste os pares de coordenadas iguais.'
+          resolucao: |
+            $n(A\times A)=3\cdot3=9$. Pares com coordenadas iguais: $(1,1)$, $(2,2)$ e $(3,3)$.
+          resposta: '$9$; \ $(1,1),(2,2),(3,3)$'
+
+        - enunciado: 'Sendo $A=\{1,2,3\}$ e $B=\{2,4,6\}$, escreva por extensão a relação $R=\{(x,y)\in A\times B\mid y=2x\}$.'
+          resolucao: |
+            Para cada $x$ de $A$, procure $y=2x$ em $B$: $R=\{(1,2),(2,4),(3,6)\}$.
+          resposta: '$R=\{(1,2),(2,4),(3,6)\}$'
 
     - nome: Treino
       questoes:
-        - enunciado: Determine a reta paralela a $y=2x+1$ que passa pelo ponto $(3,\,4)$.
+        - enunciado: 'Sendo $A=\{1,2,3,4\}$, escreva $R=\{(x,y)\in A\times A\mid x<y\}$ e dê o número de pares.'
           resolucao: |
-            Retas paralelas têm o mesmo coeficiente angular: $y=2x+b$. Então $4=6+b\Rightarrow b=-2$.
-          resposta: '$y=2x-2$'
+            $R=\{(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)\}$: $6$ pares.
+          resposta: '$6$ pares'
 
-        - enunciado: Determine o ponto de interseção dos gráficos de $f(x)=x+3$ e $g(x)=-2x+9$.
+        - enunciado: 'Determine o domínio e a imagem da relação $R=\{(1,3),(2,5),(4,3),(5,7)\}$.'
           resolucao: |
-            $x+3=-2x+9\Rightarrow 3x=6\Rightarrow x=2$, e $y=5$.
-          resposta: '$(2,\,5)$'
+            Domínio: primeiras coordenadas, $D=\{1,2,4,5\}$.
+            Imagem: segundas coordenadas, sem repetir, $Im=\{3,5,7\}$.
+          resposta: '$D=\{1,2,4,5\}$; \ $Im=\{3,5,7\}$'
 
-        - enunciado: Calcule a área do triângulo formado pela reta $y=-2x+6$ e os eixos coordenados.
+        - enunciado: 'Escreva a relação inversa de $R=\{(1,4),(2,5),(3,4)\}$.'
           resolucao: |
-            A reta corta os eixos em $(3,0)$ e $(0,6)$. Área: $\dfrac{3\cdot6}2=9$.
-          resposta: '$9$'
+            Inverta cada par: $R^{-1}=\{(4,1),(5,2),(4,3)\}$.
+          resposta: '$R^{-1}=\{(4,1),(5,2),(4,3)\}$'
 
-        - enunciado: Para quais valores de $k$ a função $f(x)=(2k-4)x+1$ é crescente?
+        - enunciado: 'Sendo $A=\{-1,0,1\}$ e $B=\{0,1,2\}$, escreva $R=\{(x,y)\in A\times B\mid y=x^2\}$ e dê seu domínio e sua imagem.'
           resolucao: |
-            $2k-4>0\Rightarrow k>2$.
-          resposta: '$k>2$'
+            $(-1)^2=1$, $0^2=0$ e $1^2=1$: $R=\{(-1,1),(0,0),(1,1)\}$.
+            $D=\{-1,0,1\}$ e $Im=\{0,1\}$.
+          resposta: '$R=\{(-1,1),(0,0),(1,1)\}$; $D=A$; $Im=\{0,1\}$'
 
-        - enunciado: Determine a função afim cujo gráfico passa por $(2,\,1)$ e é paralelo ao gráfico de $y=-3x+5$.
+        - enunciado: 'Sabendo que $n(A\times B)=24$ e $n(B)=6$, determine $n(A)$ e $n(B\times B)$.'
           resolucao: |
-            $a=-3$ e $1=-6+b\Rightarrow b=7$.
-          resposta: '$f(x)=-3x+7$'
+            $n(A)\cdot6=24\Rightarrow n(A)=4$. Além disso, $n(B\times B)=6\cdot6=36$.
+          resposta: '$n(A)=4$; \ $n(B\times B)=36$'
 
-        - enunciado: Para qual valor de $m$ o gráfico de $f(x)=mx+3$ passa pelo ponto $(2,\,-1)$?
+        - enunciado: Quantas relações binárias de $A$ em $B$ existem, se $n(A)=2$ e $n(B)=3$?
           resolucao: |
-            $2m+3=-1\Rightarrow m=-2$.
-          resposta: '$m=-2$'
+            Uma relação de $A$ em $B$ é qualquer subconjunto de $A\times B$, que tem $2\cdot3=6$ pares.
+            Número de subconjuntos: $2^6=64$.
+          resposta: '$64$'
 
-        - enunciado: O gráfico de uma função afim passa por $(-1,\,4)$ e corta o eixo $x$ em $x=3$. Determine a função.
+        - enunciado: 'Sendo $A=[1,\,3]$ e $B=[2,\,5]$, o produto $A\times B$ é um retângulo no plano cartesiano. Calcule sua área.'
           resolucao: |
-            Passa por $(-1,4)$ e $(3,0)$: $a=\dfrac{0-4}{3-(-1)}=-1$. Então $0=-3+b\Rightarrow b=3$.
-          resposta: '$f(x)=-x+3$'
+            Base: $3-1=2$ (no eixo $x$). Altura: $5-2=3$ (no eixo $y$). Área: $2\cdot3=6$.
+          resposta: '$6$ unidades de área'
 
-        - enunciado: 'Entre as retas $r_1:\,y=2x+1$, $r_2:\,y=-2x+1$, $r_3:\,y=2x-5$ e $r_4:\,y=\tfrac12x$, quais são paralelas?'
+        - enunciado: Os pontos $(2,3)$, $(-2,3)$, $(-2,-3)$ e $(2,-3)$ são vértices de um retângulo. Calcule sua área e seu perímetro.
           resolucao: |
-            Paralelas (distintas) têm o mesmo $a$ e $b$ diferentes: $r_1$ e $r_3$, com $a=2$.
-          resposta: '$r_1$ e $r_3$'
+            Lado horizontal: de $x=-2$ a $x=2$, ou seja, $4$. Lado vertical: de $y=-3$ a $y=3$, ou seja, $6$.
+            Área: $4\cdot6=24$. Perímetro: $2(4+6)=20$.
+          resposta: 'área $24$; perímetro $20$'
 
     - nome: Desafio
       questoes:
-        - enunciado: Calcule a área do triângulo formado pelas retas $y=x+2$, $y=-x+6$ e pelo eixo $x$.
+        - enunciado: 'Sendo $A=\{1,2,3,4\}$, escreva $R=\{(x,y)\in A\times A\mid x+y=5\}$. Verifique se $R=R^{-1}$.'
           resolucao: |
-            Eixo $x$: $y=x+2$ em $(-2,0)$ e $y=-x+6$ em $(6,0)$. Base: $8$.
-            Interseção: $x+2=-x+6\Rightarrow x=2$, $y=4$. Altura: $4$. Área: $\tfrac{8\cdot4}2=16$.
-          resposta: '$16$'
+            $R=\{(1,4),(2,3),(3,2),(4,1)\}$. Invertendo cada par, obtemos os mesmos pares, logo $R^{-1}=R$.
+          resposta: '$R=\{(1,4),(2,3),(3,2),(4,1)\}$; sim, $R=R^{-1}$'
 
-        - enunciado: Para qual valor de $k$ as retas $y=(k+1)x+2$ e $y=3x-1$ são paralelas?
+        - enunciado: 'Sabendo que $A\times B=\{(1,2),(1,5),(3,2),(3,5),(7,2),(7,5)\}$, determine $A$ e $B$.'
           resolucao: |
-            $k+1=3\Rightarrow k=2$ (os coeficientes lineares $2$ e $-1$ já são diferentes).
-          resposta: '$k=2$'
+            $A$ reúne as primeiras coordenadas e $B$, as segundas: $A=\{1,3,7\}$ e $B=\{2,5\}$.
+          resposta: '$A=\{1,3,7\}$; \ $B=\{2,5\}$'
 
-        - enunciado: O gráfico de $f(x)=ax+b$ passa por $(2,\,5)$ e $(6,\,-3)$. Determine os pontos em que ele corta os eixos e a área do triângulo que forma com eles.
+        - enunciado: 'Sabendo que $n(A\times A)=49$ e $n(A\times B)=21$, determine $n(A)$ e $n(B)$.'
           resolucao: |
-            $a=\dfrac{-3-5}{6-2}=-2$ e $5=-4+b\Rightarrow b=9$: $f(x)=-2x+9$.
-            Cortes: $(0,9)$ e $(4{,}5;\,0)$. Área: $\dfrac{9\cdot4{,}5}2=20{,}25$.
-          resposta: '$(0,9)$ e $(4{,}5;\,0)$; área $20{,}25$'
+            $n(A)^2=49\Rightarrow n(A)=7$. Então $7\cdot n(B)=21\Rightarrow n(B)=3$.
+          resposta: '$n(A)=7$; \ $n(B)=3$'
 
-        - enunciado: Calcule a área do triângulo formado pelas retas $y=2x$, $y=-x+6$ e $y=0$.
+        - enunciado: 'Sendo $A=\{1,2,3,4,5,6\}$, quantos pares tem a relação $R=\{(x,y)\in A\times A\mid y \text{ é múltiplo de } x \text{ e } x\neq y\}$?'
           resolucao: |
-            $y=2x$ e $y=-x+6$ se cortam em $(2,4)$. No eixo $x$: $(0,0)$ e $(6,0)$.
-            Base $6$, altura $4$: área $12$.
-          resposta: '$12$'
+            $x=1$: $y\in\{2,3,4,5,6\}$ ($5$ pares). $x=2$: $y\in\{4,6\}$ ($2$). $x=3$: $y=6$ ($1$).
+            $x=4,5,6$: nenhum múltiplo diferente em $A$. Total: $8$ pares.
+          resposta: '$8$ pares'
 
-        - enunciado: Determine $k$ para que os pontos $(1,\,2)$, $(3,\,k)$ e $(6,\,12)$ estejam alinhados.
+        - enunciado: 'Sejam os retângulos $R_1=[-1,\,2]\times[0,\,3]$ e $R_2=[0,\,4]\times[1,\,5]$. Calcule a área de $R_1\cap R_2$.'
           resolucao: |
-            Inclinação de $(1,2)$ a $(6,12)$: $\tfrac{10}5=2$. De $x=1$ a $x=3$: $k=2+2\cdot2=6$.
-          resposta: '$k=6$'
+            Na direção $x$: $[-1,2]\cap[0,4]=[0,2]$. Na direção $y$: $[0,3]\cap[1,5]=[1,3]$.
+            $R_1\cap R_2=[0,2]\times[1,3]$, com área $2\cdot2=4$.
+          resposta: '$4$ unidades de área'
 
 vestibular:
   intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
   questoes:
-    - enunciado: O gráfico de $f(x)=-3x+6$ corta o eixo das abscissas no ponto
-      opcoes: ['$(2,\,0)$', '$(0,\,6)$', '$(-2,\,0)$', '$(6,\,0)$', '$(0,\,2)$']
-      correta: A
-      resolucao: |
-        $-3x+6=0\Rightarrow x=2$. O ponto $(0,6)$ é o corte com o eixo $y$.
-
-    - enunciado: O coeficiente angular da reta que passa por $(-1,\,3)$ e $(2,\,12)$ é
-      opcoes: ['$-3$', '$1$', '$3$', '$4$', '$9$']
-      correta: C
-      resolucao: |
-        $\dfrac{12-3}{2-(-1)}=\dfrac93=3$.
-
-    - enunciado: Se o gráfico de $f(x)=ax+b$ é uma reta decrescente que corta o eixo $y$ abaixo da origem, então
-      opcoes: ['$a>0$ e $b>0$', '$a<0$ e $b<0$', '$a>0$ e $b<0$', '$a<0$ e $b>0$', '$a=0$ e $b<0$']
+    - enunciado: Se $(2a-1,\ b+3)=(5,\ 1)$, então $a+b$ vale
+      opcoes: ['$-1$', '$1$', '$2$', '$3$', '$5$']
       correta: B
       resolucao: |
-        Decrescente: $a<0$. Corta o eixo $y$ em $(0,b)$, abaixo da origem: $b<0$.
+        $2a-1=5\Rightarrow a=3$ e $b+3=1\Rightarrow b=-2$. Logo, $a+b=1$.
 
-    - enunciado: As retas $y=2x-1$ e $y=-x+8$ se cortam no ponto
-      opcoes: ['$(5,\,3)$', '$(3,\,-5)$', '$(-3,\,5)$', '$(3,\,5)$', '$(2,\,3)$']
-      correta: D
-      resolucao: |
-        $2x-1=-x+8\Rightarrow x=3$ e $y=5$.
-
-    - enunciado: A área do triângulo formado pela reta $y=-\tfrac x2+4$ e pelos eixos coordenados é
-      opcoes: ['$4$', '$8$', '$12$', '$14$', '$16$']
-      correta: E
-      resolucao: |
-        Cortes: $(0,4)$ e $(8,0)$. Área: $\tfrac{8\cdot4}2=16$.
-
-    - enunciado: A reta paralela a $y=4x-1$ que passa pelo ponto $(1,\,6)$ tem equação
-      opcoes: ['$y=4x+1$', '$y=4x+2$', '$y=-4x+10$', '$y=4x+6$', '$y=2x+4$']
-      correta: B
-      resolucao: |
-        Mesmo coeficiente angular: $y=4x+b$, com $6=4+b\Rightarrow b=2$.
-
-    - enunciado: A função $f(x)=(3-m)x+2$ é crescente se, e somente se,
-      opcoes: ['$m>3$', '$m=3$', '$m<3$', '$m>-3$', '$m<-3$']
-      correta: C
-      resolucao: |
-        $3-m>0\Rightarrow m<3$.
-
-    - enunciado: Os pontos $(0,\,1)$, $(2,\,k)$ e $(4,\,9)$ estão alinhados. O valor de $k$ é
-      opcoes: ['$5$', '$6$', '$7$', '$8$', '$9$']
+    - enunciado: Se $n(A)=3$ e $n(B)=4$, o número de elementos de $A\times B$ é
+      opcoes: ['$12$', '$16$', '$24$', '$64$', '$81$']
       correta: A
       resolucao: |
-        Inclinação: $\tfrac{9-1}{4}=2$. Em $x=2$: $1+2\cdot2=5$ (é o ponto médio).
+        $n(A\times B)=n(A)\cdot n(B)=3\cdot4=12$.
 
-    - enunciado: O gráfico de uma função linear passa pelo ponto $(3,\,-6)$. O valor de $f(-4)$ é
-      opcoes: ['$-8$', '$-2$', '$2$', '$4$', '$8$']
-      correta: E
-      resolucao: |
-        Linear: $f(x)=ax$, com $3a=-6\Rightarrow a=-2$. Então $f(-4)=8$.
-
-    - enunciado: O plano A de uma operadora custa $30+0{,}5x$ reais e o plano B custa $50+0{,}3x$ reais, em que $x$ é o número de minutos. Os gráficos dos dois custos se cortam no ponto
-      opcoes: ['$(40,\,50)$', '$(80,\,100)$', '$(50,\,55)$', '$(100,\,80)$', '$(100,\,60)$']
+    - enunciado: 'Sendo $A=\{1,2\}$ e $B=\{1,3\}$, o produto cartesiano $A\times B$ é'
+      opcoes: ['$\{(1,1),(2,3)\}$', '$\{(1,1),(3,1),(1,2),(3,2)\}$', '$\{(1,1),(1,2),(1,3)\}$', '$\{(1,1),(1,3),(2,1),(2,3)\}$', '$\{(1,2),(1,3),(2,3)\}$']
       correta: D
       resolucao: |
-        $30+0{,}5x=50+0{,}3x\Rightarrow 0{,}2x=20\Rightarrow x=100$. Custo: $30+50=80$.
+        Primeira coordenada em $A$, segunda em $B$: $(1,1),(1,3),(2,1),(2,3)$. A alternativa B é $B\times A$.
 
-    - enunciado: Uma função afim decrescente tem $f(0)=4$ e raiz $x=2$. Seu coeficiente angular é
-      opcoes: ['$-4$', '$-2$', '$-\dfrac12$', '$\dfrac12$', '$2$']
-      correta: B
-      resolucao: |
-        A reta passa por $(0,4)$ e $(2,0)$: $a=\dfrac{0-4}{2-0}=-2$.
-
-    - enunciado: A reta que passa por $(1,\,1)$ e $(3,\,7)$ corta o eixo $x$ no ponto de abscissa
-      opcoes: ['$-2$', '$-\dfrac23$', '$\dfrac13$', '$\dfrac23$', '$2$']
-      correta: D
-      resolucao: |
-        $a=3$ e $y=3x-2$. Raiz: $3x-2=0\Rightarrow x=\tfrac23$.
-
-    - enunciado: A área do triângulo formado pelas retas $y=x$, $y=-x+4$ e pelo eixo $x$ é
-      opcoes: ['$2$', '$3$', '$4$', '$6$', '$8$']
+    - enunciado: O ponto $(-3,\ 5)$ pertence ao
+      opcoes: ['$1^\circ$ quadrante', '$3^\circ$ quadrante', '$2^\circ$ quadrante', '$4^\circ$ quadrante', 'eixo das ordenadas']
       correta: C
       resolucao: |
-        As retas se cortam em $(2,2)$. No eixo $x$: $(0,0)$ e $(4,0)$. Base $4$, altura $2$: área $4$.
+        Abscissa negativa e ordenada positiva: $2^\circ$ quadrante.
 
-    - enunciado: A reta $y=(2k-1)x+3$ é paralela à reta $y=5x$ quando $k$ vale
-      opcoes: ['$3$', '$4$', '$5$', '$6$', '$9$']
-      correta: A
-      resolucao: |
-        $2k-1=5\Rightarrow k=3$.
-
-    - enunciado: O custo total de produção de $x$ unidades de um produto é $C(x)=12x+30$, em reais. No gráfico de $C$, o coeficiente linear $30$ representa
-      opcoes: ['o preço de cada unidade', 'a quantidade produzida', 'o lucro da empresa', 'a receita total', 'o custo fixo']
+    - enunciado: O ponto $P(a-3,\ 2b+4)$ coincide com a origem do plano cartesiano. Então $a\cdot b$ vale
+      opcoes: ['$6$', '$3$', '$0$', '$-2$', '$-6$']
       correta: E
       resolucao: |
-        É o valor de $C(0)$: o custo mesmo sem produzir nada, ou seja, o custo fixo. O $12$ é o custo por unidade.
+        $a-3=0\Rightarrow a=3$ e $2b+4=0\Rightarrow b=-2$. Produto: $-6$.
 
-    - enunciado: A reta $r$ passa por $(0,\,2)$ e $(2,\,0)$, e a reta $s$ passa por $(0,\,-1)$ e $(1,\,1)$. As retas se cortam em
-      opcoes: ['$(0,\,2)$', '$(2,\,0)$', '$(1,\,1)$', '$(-1,\,3)$', '$(1,\,-1)$']
-      correta: C
-      resolucao: |
-        $r:\ y=-x+2$ e $s:\ y=2x-1$. Igualando: $3x=3\Rightarrow x=1$, $y=1$.
-
-    - enunciado: As retas $y=3x+1$ e $y=3x-4$ são
-      opcoes: ['concorrentes', 'paralelas distintas', 'coincidentes', 'perpendiculares', 'concorrentes no ponto $(0,\,1)$']
-      correta: B
-      resolucao: |
-        Mesmo coeficiente angular ($3$) e coeficientes lineares diferentes: paralelas distintas.
-
-    - enunciado: A reta que passa por $(2,\,3)$ e corta o eixo $y$ no ponto $(0,\,7)$ corta o eixo $x$ no ponto de abscissa
-      opcoes: ['$3{,}5$', '$4$', '$5$', '$7$', '$14$']
-      correta: A
-      resolucao: |
-        $a=\tfrac{3-7}{2-0}=-2$ e $y=-2x+7$. Raiz: $x=3{,}5$.
-
-    - enunciado: O gráfico de $g$ é obtido deslocando o gráfico de $f(x)=2x$ três unidades para cima. A raiz de $g$ é
-      opcoes: ['$\dfrac32$', '$3$', '$-3$', '$0$', '$-\dfrac32$']
-      correta: E
-      resolucao: |
-        $g(x)=2x+3$. Raiz: $2x+3=0\Rightarrow x=-\tfrac32$.
-
-    - enunciado: Sejam $A(0,\,0)$, $B(4,\,0)$ e $C$ o ponto de interseção das retas $y=2x$ e $y=-x+6$. A área do triângulo $ABC$ é
-      opcoes: ['$4$', '$6$', '$7$', '$8$', '$12$']
+    - enunciado: 'Sendo $A=\{0,1,2,3\}$ e $B=\{2,3,4\}$, o número de pares da relação $R=\{(x,y)\in A\times B\mid y=x+2\}$ é'
+      opcoes: ['$0$', '$1$', '$2$', '$3$', '$4$']
       correta: D
       resolucao: |
-        $2x=-x+6\Rightarrow C=(2,4)$. Base $AB=4$, altura $4$: área $8$.
+        $(0,2)$, $(1,3)$ e $(2,4)$. Para $x=3$, $y=5\notin B$. São $3$ pares.
+
+    - enunciado: 'O domínio da relação $R=\{(1,2),(3,2),(5,6)\}$ é'
+      opcoes: ['$\{2,6\}$', '$\{1,3,5\}$', '$\{1,2,3,5,6\}$', '$\{1,2,3,6\}$', '$\{5\}$']
+      correta: B
+      resolucao: |
+        Domínio: conjunto das primeiras coordenadas, $\{1,3,5\}$.
+
+    - enunciado: O número de relações binárias de $A$ em $B$, sendo $n(A)=2$ e $n(B)=2$, é
+      opcoes: ['$16$', '$32$', '$64$', '$128$', '$256$']
+      correta: A
+      resolucao: |
+        $A\times B$ tem $4$ pares; cada relação é um subconjunto: $2^4=16$.
+
+    - enunciado: Os pontos $(1,1)$, $(5,1)$, $(5,4)$ e $(1,4)$ são vértices de um retângulo. Sua área é
+      opcoes: ['$4$', '$7$', '$9$', '$10$', '$12$']
+      correta: E
+      resolucao: |
+        Base: $5-1=4$. Altura: $4-1=3$. Área: $12$. (A soma $4+3=7$ é o semiperímetro.)
+
+    - enunciado: 'Sejam $A=\{x\in\mathbb{Z}\mid 0<x<4\}$ e $B=\{x\in\mathbb{Z}\mid -1\le x\le1\}$. O número de elementos de $A\times B$ é'
+      opcoes: ['$6$', '$7$', '$9$', '$12$', '$16$']
+      correta: C
+      resolucao: |
+        $A=\{1,2,3\}$ e $B=\{-1,0,1\}$: $3\cdot3=9$.
+
+    - enunciado: 'A relação inversa de $R=\{(2,5),(3,7)\}$ é'
+      opcoes: ['$\{(2,5),(3,7)\}$', '$\{(5,2),(7,3)\}$', '$\{(5,3),(7,2)\}$', '$\{(2,7),(3,5)\}$', '$\{(-2,-5),(-3,-7)\}$']
+      correta: B
+      resolucao: |
+        Basta inverter a ordem de cada par: $(5,2)$ e $(7,3)$.
+
+    - enunciado: 'Se $A$ e $B$ são conjuntos não vazios e $A\times B=B\times A$, então'
+      opcoes: ['$A\cap B=\varnothing$', '$n(A)=n(B)$, mas $A$ pode ser diferente de $B$', '$A\subset B$ e $A\neq B$', '$B\subset A$ e $A\neq B$', '$A=B$']
+      correta: E
+      resolucao: |
+        Se $a\in A$ e $b\in B$, então $(a,b)\in A\times B=B\times A$, logo $a\in B$. Assim $A\subset B$; de modo análogo, $B\subset A$. Portanto, $A=B$.
+
+    - enunciado: 'Sendo $A=\{1,2,3,4,5\}$, o número de pares da relação $R=\{(x,y)\in A\times A\mid x+y=6\}$ é'
+      opcoes: ['$2$', '$3$', '$4$', '$5$', '$6$']
+      correta: D
+      resolucao: |
+        $(1,5),(2,4),(3,3),(4,2),(5,1)$: $5$ pares.
+
+    - enunciado: No jogo de batalha naval, cada casa do tabuleiro é um par (letra, número), com letras de A a J e números de 1 a 10. O número de casas que estão nas linhas A, B ou C, ou nas colunas 1 ou 2, é
+      opcoes: ['$44$', '$46$', '$50$', '$56$', '$60$']
+      correta: A
+      resolucao: |
+        Linhas A, B, C: $3\cdot10=30$ casas. Colunas 1, 2: $10\cdot2=20$ casas. Casas contadas duas vezes: $3\cdot2=6$. Total: $30+20-6=44$.
+
+    - enunciado: 'Sendo $A=\{-2,-1,0,1,2\}$, o número de elementos da imagem da relação $R=\{(x,y)\in A\times\mathbb{Z}\mid y=x^2\}$ é'
+      opcoes: ['$1$', '$2$', '$3$', '$4$', '$5$']
+      correta: C
+      resolucao: |
+        Os quadrados são $4,1,0,1,4$. Sem repetir: $\{0,1,4\}$, com $3$ elementos.
+
+    - enunciado: Os pontos $(x,y)$ do plano cartesiano com $x\cdot y<0$ estão
+      opcoes: ['no $1^\circ$ e no $3^\circ$ quadrantes', 'no $1^\circ$ e no $2^\circ$ quadrantes', 'no $3^\circ$ e no $4^\circ$ quadrantes', 'no $1^\circ$ e no $4^\circ$ quadrantes', 'no $2^\circ$ e no $4^\circ$ quadrantes']
+      correta: E
+      resolucao: |
+        Produto negativo exige coordenadas de sinais opostos: $(-,+)$ no $2^\circ$ ou $(+,-)$ no $4^\circ$ quadrante.
+
+    - enunciado: Sabe-se que $n(A\times B)=15$, $n(B\times C)=21$ e $n(B)>1$. Então $n(A\times C)$ é
+      opcoes: ['$35$', '$45$', '$49$', '$63$', '$105$']
+      correta: A
+      resolucao: |
+        $n(B)$ divide $15$ e $21$ e é maior que $1$: $n(B)=3$. Então $n(A)=5$, $n(C)=7$ e $n(A\times C)=35$.
+
+    - enunciado: 'O número de pares da relação $R=\{(x,y)\in\mathbb{N}\times\mathbb{N}\mid x+2y=10\}$ é'
+      opcoes: ['$3$', '$4$', '$5$', '$6$', '$11$']
+      correta: D
+      resolucao: |
+        $y$ pode ser $0,1,2,3,4,5$, com $x=10-2y\ge0$: $(10,0),(8,1),(6,2),(4,3),(2,4),(0,5)$. São $6$ pares.
+
+    - enunciado: Se $(x+y,\ x-y)=(8,\ 2)$, então $x\cdot y$ vale
+      opcoes: ['$6$', '$10$', '$15$', '$16$', '$24$']
+      correta: C
+      resolucao: |
+        Somando as equações: $2x=10\Rightarrow x=5$; então $y=3$. Produto: $15$.
+
+    - enunciado: 'Seja $A=\{1,2,3\}$. O número de relações $R\subset A\times A$ que contêm os pares $(1,1)$, $(2,2)$ e $(3,3)$ é'
+      opcoes: ['$8$', '$64$', '$128$', '$256$', '$512$']
+      correta: B
+      resolucao: |
+        $A\times A$ tem $9$ pares; $3$ deles são obrigatórios e os outros $6$ entram ou não: $2^6=64$.

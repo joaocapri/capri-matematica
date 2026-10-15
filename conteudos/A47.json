@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de relações de girard",
+    "Reconhecer o conceito central de complexos - plano de argand-gauss e módulo",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "As relações de Girard conectam coeficientes e raízes sem exigir encontrá-las uma por uma. Para um polinômio mônico de grau 3, a soma das raízes é −b, a soma dos produtos dois a dois é c e o produto das três é −d."
+        "Um complexo a+bi é representado pelo ponto (a,b). Seu módulo é a distância desse ponto à origem, calculada por Pitágoras; não se trata do módulo apenas da parte real."
       ],
       "formulas": [
-        "x^3+bx^2+cx+d=0\\Rightarrow r_1+r_2+r_3=-b"
+        "|a+bi|=\\sqrt{a^2+b^2}"
       ],
-      "dica": "Preste atenção à alternância dos sinais nas relações de Girard.",
-      "erroComum": "As fórmulas simplificadas acima exigem coeficiente líder 1."
+      "dica": "Para a+bi, desenhe sempre o triângulo retângulo com catetos |a| e |b|.",
+      "erroComum": "|3+4i| não é 3+4=7."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,11 +25,11 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Calcule a soma e o produto das raízes de x³−6x²+11x−6=0.",
+        "enunciado": "Encontre o módulo de z=3+4i.",
         "passos": [
-          "Soma das três raízes: −(−6)=6.",
-          "Produto das três raízes: −(−6)=6.",
-          "De fato, as raízes 1,2,3 satisfazem ambas."
+          "Ponto (3,4) no plano de Argand-Gauss.",
+          "|z|=√(3²+4²)=√25.",
+          "O módulo vale 5."
         ]
       }
     }
@@ -45,27 +45,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "A soma das raízes de x³−5x²+2x−1=0 é:",
+      "enunciado": "O módulo de 5+12i é:",
       "opcoes": [
-        "−5",
-        "−1",
-        "1",
-        "5"
+        "7",
+        "13",
+        "17",
+        "25"
       ],
-      "correta": 3,
-      "explicacao": "Para polinômio mônico de grau 3, soma=−b=5."
+      "correta": 1,
+      "explicacao": "√(25+144)=13."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O produto das raízes de x³+2x²−x−8=0 é:",
+      "enunciado": "O complexo −2+3i corresponde ao ponto:",
       "opcoes": [
-        "−8",
-        "8",
-        "2",
-        "−2"
+        "(3,−2)",
+        "(−2,3)",
+        "(2,3)",
+        "(−3,2)"
       ],
       "correta": 1,
-      "explicacao": "Produto=−d=−(−8)=8."
+      "explicacao": "A parte real é x, a imaginária é y."
     }
   ],
   "exercicios": [],

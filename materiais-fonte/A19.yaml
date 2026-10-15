@@ -1,239 +1,264 @@
-# A19 — Máximos e Mínimos: Problemas de Otimização
+# Fonte das listas em PDF da aula A19 — Definição e Concavidade
 aula: A19
 
 fixacao:
-  intro: Resolva na ordem — do aquecimento ao desafio. Roteiro — escreva a grandeza como função quadrática de uma variável, ache $x_V$ e depois calcule o valor ótimo.
+  intro: Resolva na ordem — do aquecimento ao desafio. Em $f(x)=ax^2+bx+c$, com $a\neq0$, o sinal de $a$ decide a concavidade e $c=f(0)$ é onde a parábola corta o eixo $y$.
   secoes:
     - nome: Aquecimento
       questoes:
-        - enunciado: O lucro de uma empresa é $L(x)=-x^2+12x-20$ (em mil reais), para $x$ centenas de unidades. Qual é o lucro máximo e para qual $x$ ele ocorre?
+        - enunciado: Identifique os coeficientes $a$, $b$ e $c$ de cada função.
+          itens:
+            - $f(x)=2x^2-3x+1$
+            - $f(x)=-x^2+5$
+            - $f(x)=\tfrac12x^2-4x$
+            - $f(x)=(x-1)(x+3)$
           resolucao: |
-            $x_V=6$ e $L(6)=-36+72-20=16$.
-          resposta: 'lucro máximo $16$ mil reais, com $x=6$'
+            (a) $a=2$, $b=-3$, $c=1$. (b) $a=-1$, $b=0$, $c=5$. (c) $a=\tfrac12$, $b=-4$, $c=0$.
+            (d) Desenvolvendo: $x^2+2x-3$, então $a=1$, $b=2$, $c=-3$.
+          resposta: '(a) $2,-3,1$ \quad (b) $-1,0,5$ \quad (c) $\tfrac12,-4,0$ \quad (d) $1,2,-3$'
 
-        - enunciado: O custo de produção é $C(x)=x^2-10x+40$. Qual é o custo mínimo?
+        - enunciado: Diga quais funções são quadráticas.
+          itens:
+            - $f(x)=3x^2-x$
+            - $f(x)=2x+1$
+            - $f(x)=(x+1)^2-x^2$
+            - $f(x)=5-x^2$
           resolucao: |
-            $x_V=5$ e $C(5)=25-50+40=15$.
-          resposta: '$15$, para $x=5$'
+            (a) Sim. (b) Não: é afim. (c) Não: $(x+1)^2-x^2=2x+1$, o termo $x^2$ se cancela. (d) Sim, com $a=-1$.
+          resposta: '(a) sim \quad (b) não \quad (c) não \quad (d) sim'
 
-        - enunciado: A altura de uma bola é $h(t)=-5t^2+30t$, em metros, com $t$ em segundos. Qual é a altura máxima e em que instante ocorre?
+        - enunciado: Indique a concavidade da parábola de cada função.
+          itens:
+            - $f(x)=3x^2-x$
+            - $f(x)=-2x^2+4$
+            - $f(x)=x^2-6x+9$
           resolucao: |
-            $t_V=3$ s e $h(3)=-45+90=45$ m.
-          resposta: '$45$ m, em $t=3$ s'
+            $a>0$: para cima; $a<0$: para baixo.
+            (a) Para cima. (b) Para baixo. (c) Para cima.
+          resposta: '(a) para cima \quad (b) para baixo \quad (c) para cima'
 
-        - enunciado: Dois números somam $20$. Quais são eles se o produto é o maior possível? Qual é esse produto?
+        - enunciado: Dada $f(x)=x^2-4x+3$, calcule $f(0)$, $f(1)$, $f(-2)$ e $f(4)$.
           resolucao: |
-            $P(x)=x(20-x)=-x^2+20x$, máximo em $x_V=10$. Os números são $10$ e $10$, com produto $100$.
-          resposta: '$10$ e $10$; produto $100$'
+            $f(0)=3$; \ $f(1)=1-4+3=0$; \ $f(-2)=4+8+3=15$; \ $f(4)=16-16+3=3$.
+          resposta: '$3$; \ $0$; \ $15$; \ $3$'
 
-        - enunciado: Entre os retângulos de perímetro $40$ cm, qual tem a maior área?
+        - enunciado: Em que ponto o gráfico de $f(x)=-2x^2+3x-7$ corta o eixo $y$?
           resolucao: |
-            Lados $x$ e $20-x$: $A(x)=x(20-x)$, máxima em $x=10$. É o quadrado de lado $10$, com área $100$ cm².
-          resposta: 'o quadrado de lado $10$ cm; $100$ cm²'
+            No eixo $y$, $x=0$: $f(0)=c=-7$.
+          resposta: '$(0,\,-7)$'
 
-        - enunciado: A receita de uma loja é $R(p)=p(100-p)$, em que $p$ é o preço. Qual preço dá a maior receita? Qual é essa receita?
+        - enunciado: Considere $f(x)=(m-3)x^2+2x-1$. Determine $m$ para que
+          itens:
+            - $f$ seja quadrática;
+            - a parábola tenha concavidade para cima.
           resolucao: |
-            $R(p)=-p^2+100p$, máxima em $p_V=50$, com $R(50)=2500$.
-          resposta: 'preço $50$; receita $2500$'
+            (a) $m-3\neq0\Rightarrow m\neq3$. (b) $m-3>0\Rightarrow m>3$.
+          resposta: '(a) $m\neq3$ \quad (b) $m>3$'
 
-        - enunciado: Determine o valor mínimo de $f(x)=x^2-6x$ e onde ele ocorre.
+        - enunciado: A área de um quadrado de lado $x+2$ é $A(x)=(x+2)^2$. Escreva $A(x)$ na forma $ax^2+bx+c$ e calcule $A(3)$.
           resolucao: |
-            $x_V=3$ e $f(3)=9-18=-9$.
-          resposta: '$-9$, em $x=3$'
+            $A(x)=x^2+4x+4$, com $a=1$, $b=4$, $c=4$. \ $A(3)=25$.
+          resposta: '$x^2+4x+4$; \ $25$'
 
     - nome: Treino
       questoes:
-        - enunciado: Com $60$ m de tela, um fazendeiro vai cercar um terreno retangular encostado em um muro, de modo que só $3$ lados precisam de tela. Quais dimensões dão a maior área?
+        - enunciado: A parábola de $f(x)=x^2+bx+c$ passa por $(0,\,5)$ e $(1,\,8)$. Determine $b$ e $c$.
           resolucao: |
-            Lados perpendiculares ao muro: $x$ cada; lado paralelo: $60-2x$.
-            $A(x)=x(60-2x)=-2x^2+60x$, máxima em $x_V=15$. Dimensões $15$ m e $30$ m; área $450$ m².
-          resposta: '$15$ m por $30$ m; $450$ m²'
+            $f(0)=c=5$. \ $f(1)=1+b+5=8\Rightarrow b=2$.
+          resposta: '$b=2$, \ $c=5$'
 
-        - enunciado: Dois números têm diferença $8$. Quais são eles se o produto é o menor possível?
+        - enunciado: Determine $f(x)=ax^2+bx+c$ sabendo que $f(0)=1$, $f(1)=4$ e $f(-1)=0$.
           resolucao: |
-            $P(x)=x(x-8)=x^2-8x$, mínimo em $x_V=4$. Os números são $4$ e $-4$, com produto $-16$.
-          resposta: '$4$ e $-4$; produto $-16$'
+            $c=1$; \ $a+b+1=4$ e $a-b+1=0$. Somando: $2a=2\Rightarrow a=1$; então $b=2$.
+          resposta: '$f(x)=x^2+2x+1$'
 
-        - enunciado: Com o ingresso a R\$\,20{,}00, um teatro recebe $300$ pessoas. Cada R\$\,1{,}00 de aumento afasta $10$ pessoas. Qual preço dá a maior arrecadação?
+        - enunciado: Para quais valores de $k$ a parábola de $f(x)=(2k-6)x^2+x$ tem concavidade para baixo?
           resolucao: |
-            Com $x$ reais de aumento: $R(x)=(20+x)(300-10x)=-10x^2+100x+6000$.
-            $x_V=5$: preço R\$\,25{,}00, $250$ pessoas, arrecadação R\$\,6\,250{,}00.
-          resposta: 'R\$\,25{,}00 (arrecadação R\$\,6\,250{,}00)'
+            $2k-6<0\Rightarrow k<3$.
+          resposta: '$k<3$'
 
-        - enunciado: O lucro de uma fábrica é $L(x)=-2x^2+120x-1000$ reais. Determine o lucro máximo.
+        - enunciado: Dada $f(x)=x^2-2x$, determine $x$ tal que $f(x)=8$.
           resolucao: |
-            $x_V=\tfrac{-120}{-4}=30$ e $L(30)=-1800+3600-1000=800$.
-          resposta: 'R\$\,800{,}00, com $x=30$'
+            $x^2-2x-8=0\Rightarrow(x-4)(x+2)=0$. Logo, $x=4$ ou $x=-2$.
+          resposta: '$x=4$ ou $x=-2$'
 
-        - enunciado: Dois números positivos somam $16$. Qual é o maior valor possível do produto de um deles pelo triplo do outro?
+        - enunciado: Determine os pontos em que o gráfico de $f(x)=x^2-9$ corta o eixo $x$.
           resolucao: |
-            $P(x)=3x(16-x)=-3x^2+48x$, máximo em $x_V=8$: $P(8)=3\cdot8\cdot8=192$.
-          resposta: '$192$'
+            $x^2=9\Rightarrow x=\pm3$.
+          resposta: '$(-3,\,0)$ e $(3,\,0)$'
 
-        - enunciado: A altura de um projétil é $h(t)=-4{,}9t^2+19{,}6t+2$, em metros. Qual é a altura máxima?
+        - enunciado: Determine os zeros de $f(x)=2x^2-8x$.
           resolucao: |
-            $t_V=\tfrac{-19{,}6}{-9{,}8}=2$ s. Então $h(2)=-19{,}6+39{,}2+2=21{,}6$ m.
-          resposta: '$21{,}6$ m'
+            $2x(x-4)=0\Rightarrow x=0$ ou $x=4$.
+          resposta: '$0$ e $4$'
 
-        - enunciado: Dois números somam $10$. Qual é o menor valor possível da soma de seus quadrados?
+        - enunciado: A altura, em metros, de uma bola lançada para cima é $h(t)=-5t^2+30t$, em que $t$ é o tempo em segundos.
+          itens:
+            - Qual é a altura em $t=2$ s?
+            - Em que instantes a bola está no chão?
           resolucao: |
-            $S(x)=x^2+(10-x)^2=2x^2-20x+100$, mínimo em $x_V=5$: $S(5)=50$.
-          resposta: '$50$'
+            (a) $h(2)=-20+60=40$ m.
+            (b) $-5t(t-6)=0\Rightarrow t=0$ (lançamento) ou $t=6$ s (queda).
+          resposta: '(a) $40$ m \quad (b) $t=0$ e $t=6$ s'
 
-        - enunciado: Um fazendeiro tem $120$ m de tela para cercar um terreno retangular e dividi-lo em dois currais iguais com uma cerca interna paralela a um dos lados. Qual é a maior área total possível?
+        - enunciado: A parábola de $f(x)=ax^2+3$ passa pelo ponto $(2,\,15)$. Determine $a$ e a concavidade.
           resolucao: |
-            Três segmentos de comprimento $x$ e dois de comprimento $y$: $3x+2y=120\Rightarrow y=\tfrac{120-3x}2$.
-            $A(x)=x\cdot\tfrac{120-3x}2=-\tfrac32x^2+60x$, máxima em $x_V=20$. Então $y=30$ e $A=600$ m².
-          resposta: '$600$ m² ($20$ m por $30$ m)'
+            $4a+3=15\Rightarrow a=3>0$: concavidade para cima.
+          resposta: '$a=3$; para cima'
 
     - nome: Desafio
       questoes:
-        - enunciado: Um retângulo tem dois lados sobre os catetos de um triângulo retângulo de catetos $6$ e $8$ e o vértice oposto sobre a hipotenusa. Qual é a maior área possível desse retângulo?
+        - enunciado: Determine a função quadrática cujo gráfico passa por $(0,\,-3)$, $(1,\,0)$ e $(3,\,0)$, e diga sua concavidade.
           resolucao: |
-            Com os catetos sobre os eixos (de $0$ a $6$ e de $0$ a $8$), a hipotenusa é $y=8-\tfrac43x$.
-            $A(x)=x\left(8-\tfrac43x\right)=-\tfrac43x^2+8x$, máxima em $x_V=3$, com $y=4$ e $A=12$.
-          resposta: '$12$ (retângulo $3\times4$)'
+            $c=-3$; \ $a+b-3=0$ e $9a+3b-3=0\Rightarrow 3a+b=1$.
+            Subtraindo $a+b=3$: $2a=-2\Rightarrow a=-1$ e $b=4$.
+          resposta: '$f(x)=-x^2+4x-3$; para baixo'
 
-        - enunciado: Uma loja vende $100$ camisetas por mês a R\$\,40{,}00. Para cada R\$\,2{,}00 de desconto, vende $10$ camisetas a mais. Qual preço maximiza a receita?
+        - enunciado: O número de diagonais de um polígono convexo de $n$ lados é $d(n)=\dfrac{n(n-3)}2$.
+          itens:
+            - Calcule $d(10)$.
+            - Qual polígono tem $20$ diagonais?
           resolucao: |
-            Com $n$ descontos: $R(n)=(40-2n)(100+10n)=-20n^2+200n+4000$.
-            $n_V=5$: preço R\$\,30{,}00, $150$ camisetas, receita R\$\,4\,500{,}00.
-          resposta: 'R\$\,30{,}00 (receita R\$\,4\,500{,}00)'
+            (a) $d(10)=\tfrac{10\cdot7}2=35$.
+            (b) $n(n-3)=40\Rightarrow n^2-3n-40=0\Rightarrow(n-8)(n+5)=0$, então $n=8$: o octógono.
+          resposta: '(a) $35$ \quad (b) octógono ($n=8$)'
 
-        - enunciado: Determine o valor mínimo de $f(x)=(x-1)(x-5)$ sem desenvolver o produto.
+        - enunciado: Para $f(x)=x^2$, mostre que $f(x+1)-f(x)=2x+1$ e use isso para calcular $f(11)-f(10)$.
           resolucao: |
-            O vértice fica no meio das raízes: $x_V=3$. Então $f(3)=(2)(-2)=-4$.
-          resposta: '$-4$'
+            $(x+1)^2-x^2=x^2+2x+1-x^2=2x+1$. Com $x=10$: $21$ (confira: $121-100$).
+          resposta: '$2x+1$; \ $21$'
 
-        - enunciado: Os números reais $x$ e $y$ satisfazem $x+2y=20$. Qual é o maior valor possível de $x\cdot y$?
+        - enunciado: A função $f(x)=x^2+bx+c$ satisfaz $f(1)=0$ e $f(5)=0$. Determine $b$ e $c$.
           resolucao: |
-            $x=20-2y$ e $P(y)=(20-2y)y=-2y^2+20y$, máximo em $y_V=5$. Então $x=10$ e $P=50$.
-          resposta: '$50$'
+            $1+b+c=0$ e $25+5b+c=0$. Subtraindo: $24+4b=0\Rightarrow b=-6$; então $c=5$.
+            De fato, $x^2-6x+5=(x-1)(x-5)$.
+          resposta: '$b=-6$, \ $c=5$'
 
-        - enunciado: Determine $k$ para que o valor máximo de $f(x)=-x^2+4x+k$ seja $10$.
+        - enunciado: Um retângulo tem perímetro $20$ cm e um dos lados mede $x$ cm. Escreva sua área $A(x)$, identifique a concavidade do gráfico e calcule $A(3)$.
           resolucao: |
-            $x_V=2$ e $f(2)=-4+8+k=4+k=10\Rightarrow k=6$.
-          resposta: '$k=6$'
+            O outro lado mede $10-x$, então $A(x)=x(10-x)=-x^2+10x$.
+            $a=-1<0$: concavidade para baixo. \ $A(3)=21$ cm².
+          resposta: '$A(x)=-x^2+10x$; para baixo; $21$ cm²'
 
 vestibular:
   intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
   questoes:
-    - enunciado: A altura de uma bola é $h(t)=-5t^2+20t$, em metros, com $t$ em segundos. A altura máxima atingida é
-      opcoes: ['$10$ m', '$20$ m', '$40$ m', '$80$ m', '$100$ m']
-      correta: B
-      resolucao: |
-        $t_V=2$ e $h(2)=-20+40=20$ m.
-
-    - enunciado: O lucro de uma empresa é $L(x)=-x^2+30x-125$ (em mil reais). O lucro máximo é
-      opcoes: ['$100$ mil reais', '$125$ mil reais', '$150$ mil reais', '$200$ mil reais', '$225$ mil reais']
-      correta: A
-      resolucao: |
-        $x_V=15$ e $L(15)=-225+450-125=100$. (A alternativa E esquece o $-125$.)
-
-    - enunciado: Dois números somam $30$. O maior valor possível do produto entre eles é
-      opcoes: ['$100$', '$150$', '$200$', '$225$', '$900$']
-      correta: D
-      resolucao: |
-        $x(30-x)$ é máximo em $x=15$: $15\cdot15=225$.
-
-    - enunciado: Entre os retângulos de perímetro $48$ cm, a maior área possível é
-      opcoes: ['$96\ \text{cm}^2$', '$128\ \text{cm}^2$', '$144\ \text{cm}^2$', '$192\ \text{cm}^2$', '$576\ \text{cm}^2$']
+    - enunciado: Das funções abaixo, a única quadrática é
+      opcoes: ['$f(x)=2x+3$', '$f(x)=x^3-x$', '$f(x)=3-2x^2$', '$f(x)=\dfrac1{x^2}$', '$f(x)=(x+1)^2-x^2$']
       correta: C
       resolucao: |
-        $A(x)=x(24-x)$, máxima em $x=12$: quadrado de área $144\ \text{cm}^2$.
+        $3-2x^2$ tem grau $2$, com $a=-2$. Em E, o $x^2$ se cancela e sobra $2x+1$.
 
-    - enunciado: Com $80$ m de tela, deseja-se cercar um terreno retangular encostado em um muro, usando tela em apenas $3$ lados. A maior área possível é
-      opcoes: ['$400\ \text{m}^2$', '$600\ \text{m}^2$', '$640\ \text{m}^2$', '$750\ \text{m}^2$', '$800\ \text{m}^2$']
-      correta: E
-      resolucao: |
-        $A(x)=x(80-2x)$, máxima em $x=20$: $20\cdot40=800\ \text{m}^2$.
-
-    - enunciado: Com ingresso a R\$\,30{,}00, um evento atrai $500$ pessoas; cada R\$\,1{,}00 de aumento afasta $10$ pessoas. O preço que maximiza a arrecadação é
-      opcoes: ['R\$\,30{,}00', 'R\$\,32{,}00', 'R\$\,35{,}00', 'R\$\,40{,}00', 'R\$\,50{,}00']
-      correta: D
-      resolucao: |
-        $R(x)=(30+x)(500-10x)=-10x^2+200x+15\,000$, máxima em $x=10$: preço R\$\,40{,}00.
-
-    - enunciado: A altura de um projétil é $h(t)=-5t^2+50t$, em metros. A altura máxima ocorre no instante
-      opcoes: ['$2{,}5$ s', '$5$ s', '$10$ s', '$25$ s', '$125$ s']
+    - enunciado: Escrevendo $f(x)=(2x-1)(x+3)$ na forma $ax^2+bx+c$, o valor de $a+b+c$ é
+      opcoes: ['$2$', '$4$', '$6$', '$8$', '$10$']
       correta: B
       resolucao: |
-        $t_V=\tfrac{-50}{-10}=5$ s. A alternativa C é o instante em que ele volta ao chão.
+        $a+b+c=f(1)=(2-1)(1+3)=4$. (Desenvolvendo: $2x^2+5x-3$.)
 
-    - enunciado: A receita de uma empresa é $R(q)=-2q^2+400q$. A quantidade $q$ que maximiza a receita é
-      opcoes: ['$100$', '$150$', '$200$', '$300$', '$400$']
+    - enunciado: Se $f(x)=x^2-5x+6$, então $f(-1)$ vale
+      opcoes: ['$12$', '$14$', '$16$', '$18$', '$20$']
       correta: A
       resolucao: |
-        $q_V=\tfrac{-400}{-4}=100$.
+        $1+5+6=12$.
 
-    - enunciado: O valor mínimo de $f(x)=x^2-8x+20$ é
-      opcoes: ['$0$', '$1$', '$2$', '$3$', '$4$']
-      correta: E
-      resolucao: |
-        $x_V=4$ e $f(4)=16-32+20=4$.
-
-    - enunciado: Dois números têm diferença $10$. O menor valor possível do produto entre eles é
-      opcoes: ['$-100$', '$-50$', '$-25$', '$0$', '$25$']
-      correta: C
-      resolucao: |
-        $x(x-10)$ é mínimo em $x=5$: $5\cdot(-5)=-25$.
-
-    - enunciado: Uma janela retangular tem perímetro de $6$ m. Sua maior área possível é
-      opcoes: ['$1{,}5\ \text{m}^2$', '$2{,}25\ \text{m}^2$', '$3\ \text{m}^2$', '$4{,}5\ \text{m}^2$', '$9\ \text{m}^2$']
-      correta: B
-      resolucao: |
-        $A(x)=x(3-x)$, máxima em $x=1{,}5$: $1{,}5^2=2{,}25\ \text{m}^2$.
-
-    - enunciado: O custo por unidade de um produto é $C(x)=x^2-40x+500$ reais, em que $x$ é o número de unidades produzidas. O menor custo por unidade possível é
-      opcoes: ['R\$\,20{,}00', 'R\$\,40{,}00', 'R\$\,60{,}00', 'R\$\,80{,}00', 'R\$\,100{,}00']
-      correta: E
-      resolucao: |
-        $x_V=20$ e $C(20)=400-800+500=100$. (O $20$ é a quantidade, não o custo.)
-
-    - enunciado: Um retângulo tem dois lados sobre os catetos de um triângulo retângulo de catetos $4$ e $6$ e um vértice sobre a hipotenusa. Sua maior área possível é
-      opcoes: ['$3$', '$4$', '$5$', '$6$', '$12$']
+    - enunciado: A função $f(x)=(k^2-4)x^2+3x$ é quadrática se, e somente se,
+      opcoes: ['$k=2$', '$k\neq2$', '$k>2$', '$k\neq2$ e $k\neq-2$', 'para qualquer $k$ real']
       correta: D
       resolucao: |
-        Hipotenusa: $y=6-\tfrac32x$. $A(x)=x\left(6-\tfrac32x\right)$, máxima em $x=2$, com $y=3$ e $A=6$.
+        É preciso $k^2-4\neq0$, ou seja, $k\neq\pm2$.
 
-    - enunciado: Uma loja vende $200$ unidades por mês a R\$\,50{,}00; para cada R\$\,1{,}00 de desconto, vende $10$ unidades a mais. O preço que maximiza a receita é
-      opcoes: ['R\$\,35{,}00', 'R\$\,38{,}00', 'R\$\,40{,}00', 'R\$\,45{,}00', 'R\$\,50{,}00']
-      correta: A
-      resolucao: |
-        $R(n)=(50-n)(200+10n)=-10n^2+300n+10\,000$, máxima em $n=15$: preço R\$\,35{,}00.
-
-    - enunciado: O valor máximo de $f(x)=-2x^2+8x+k$ é $11$. Então $k$ vale
-      opcoes: ['$1$', '$2$', '$3$', '$5$', '$11$']
-      correta: C
-      resolucao: |
-        $x_V=2$ e $f(2)=-8+16+k=8+k=11\Rightarrow k=3$.
-
-    - enunciado: Dois números somam $8$. O menor valor possível da soma de seus quadrados é
-      opcoes: ['$8$', '$16$', '$24$', '$28$', '$32$']
+    - enunciado: A parábola de $f(x)=-3x^2+2x-5$
+      opcoes: ['corta o eixo $y$ em $(0,5)$ e tem concavidade para cima', 'corta o eixo $y$ em $(0,-5)$ e tem concavidade para cima', 'corta o eixo $y$ em $(0,5)$ e tem concavidade para baixo', 'corta o eixo $y$ em $(-5,0)$ e tem concavidade para baixo', 'corta o eixo $y$ em $(0,-5)$ e tem concavidade para baixo']
       correta: E
       resolucao: |
-        $x^2+(8-x)^2=2x^2-16x+64$, mínima em $x=4$: $16+16=32$.
+        $c=-5$ e $a=-3<0$.
 
-    - enunciado: Os números reais positivos $x$ e $y$ satisfazem $x+3y=24$. O maior valor possível de $xy$ é
-      opcoes: ['$48$', '$54$', '$64$', '$96$', '$144$']
-      correta: A
-      resolucao: |
-        $x=24-3y$ e $xy=24y-3y^2$, máximo em $y=4$. Então $x=12$ e $xy=48$.
-
-    - enunciado: A altura de uma bola é $h(t)=-5t^2+30t+1{,}5$, em metros. A altura máxima é
-      opcoes: ['$31{,}5$ m', '$45$ m', '$45{,}5$ m', '$46{,}5$ m', '$91{,}5$ m']
-      correta: D
-      resolucao: |
-        $t_V=3$ e $h(3)=-45+90+1{,}5=46{,}5$ m.
-
-    - enunciado: Com $240$ m de cerca, quer-se fazer um terreno retangular dividido em dois currais iguais por uma cerca interna paralela a um dos lados. A maior área total possível é
-      opcoes: ['$1\,200\ \text{m}^2$', '$1\,800\ \text{m}^2$', '$2\,400\ \text{m}^2$', '$3\,600\ \text{m}^2$', '$4\,800\ \text{m}^2$']
+    - enunciado: Uma função $f(x)=ax^2+bx+c$ satisfaz $f(0)=2$, $f(1)=3$ e $f(2)=8$. O valor de $f(3)$ é
+      opcoes: ['$11$', '$14$', '$17$', '$20$', '$23$']
       correta: C
       resolucao: |
-        $3x+2y=240$ e $A=x\cdot\tfrac{240-3x}2$, máxima em $x=40$. Então $y=60$ e $A=2\,400\ \text{m}^2$.
+        $c=2$; $a+b=1$; $4a+2b=6\Rightarrow 2a+b=3$. Então $a=2$, $b=-1$ e $f(3)=18-3+2=17$.
 
-    - enunciado: O valor mínimo da função $f(x)=(x-2)(x-8)$ é
-      opcoes: ['$-16$', '$-9$', '$-5$', '$0$', '$16$']
+    - enunciado: A altura de uma bola, em metros, é $h(t)=-5t^2+20t+1$, com $t$ em segundos. No instante $t=1$ s, a bola está a uma altura de
+      opcoes: ['$6$ m', '$11$ m', '$15$ m', '$16$ m', '$21$ m']
+      correta: D
+      resolucao: |
+        $-5+20+1=16$ m.
+
+    - enunciado: 'O conjunto dos zeros de $f(x)=x^2-7x$ é'
+      opcoes: ['$\{7\}$', '$\{0,\,7\}$', '$\{-7,\,0\}$', '$\{-7,\,7\}$', '$\{0\}$']
       correta: B
       resolucao: |
-        $x_V=\tfrac{2+8}2=5$ e $f(5)=3\cdot(-3)=-9$.
+        $x(x-7)=0\Rightarrow x=0$ ou $x=7$. Não divida por $x$: isso faria perder a raiz $0$.
+
+    - enunciado: A parábola de $f(x)=mx^2+x-2$ passa pelo ponto $(2,\,8)$. O valor de $m$ é
+      opcoes: ['$-2$', '$0$', '$\dfrac12$', '$1$', '$2$']
+      correta: E
+      resolucao: |
+        $4m+2-2=8\Rightarrow m=2$.
+
+    - enunciado: Em uma reunião com $n$ pessoas, cada uma cumprimenta todas as outras uma única vez, e o total de apertos de mão é $\dfrac{n(n-1)}2$. Com $12$ pessoas, o total é
+      opcoes: ['$66$', '$72$', '$78$', '$132$', '$144$']
+      correta: A
+      resolucao: |
+        $\tfrac{12\cdot11}2=66$.
+
+    - enunciado: A parábola de $f(x)=x^2+bx+c$ passa por $(0,\,4)$ e $(2,\,0)$. O valor de $f(5)$ é
+      opcoes: ['$4$', '$9$', '$14$', '$16$', '$29$']
+      correta: B
+      resolucao: |
+        $c=4$ e $4+2b+4=0\Rightarrow b=-4$. Então $f(x)=x^2-4x+4$ e $f(5)=9$.
+
+    - enunciado: A parábola de $f(x)=(5-2m)x^2+1$ tem concavidade para baixo se, e somente se,
+      opcoes: ['$m<\tfrac52$', '$m=\tfrac52$', '$m>2$', '$m<0$', '$m>\tfrac52$']
+      correta: E
+      resolucao: |
+        $5-2m<0\Rightarrow m>\tfrac52$.
+
+    - enunciado: Um terreno retangular tem um lado $5$ m maior que o outro e área de $84\ \text{m}^2$. Seu perímetro é
+      opcoes: ['$38$ m', '$40$ m', '$42$ m', '$44$ m', '$84$ m']
+      correta: A
+      resolucao: |
+        $x(x+5)=84\Rightarrow x^2+5x-84=0\Rightarrow(x-7)(x+12)=0$, então $x=7$. Lados $7$ e $12$: perímetro $38$ m.
+
+    - enunciado: Se $f(x)=2x^2-3x+k$ e $f(2)=7$, então $k$ vale
+      opcoes: ['$1$', '$2$', '$3$', '$5$', '$7$']
+      correta: D
+      resolucao: |
+        $8-6+k=7\Rightarrow k=5$.
+
+    - enunciado: 'Sendo $f(x)=x^2-6x+5$, o conjunto dos valores de $x$ para os quais $f(x)=-3$ é'
+      opcoes: ['$\{-2,\,-4\}$', '$\{1,\,5\}$', '$\{2,\,4\}$', '$\{3\}$', '$\varnothing$']
+      correta: C
+      resolucao: |
+        $x^2-6x+8=0\Rightarrow(x-2)(x-4)=0$. A alternativa B traz os zeros de $f$, não a resposta.
+
+    - enunciado: O número de diagonais de um polígono convexo de $n$ lados é $\dfrac{n(n-3)}2$. Um dodecágono ($12$ lados) tem
+      opcoes: ['$24$ diagonais', '$36$ diagonais', '$48$ diagonais', '$50$ diagonais', '$54$ diagonais']
+      correta: E
+      resolucao: |
+        $\tfrac{12\cdot9}2=54$.
+
+    - enunciado: Para $f(x)=x^2+3x$, a expressão $f(x+1)-f(x)$ é igual a
+      opcoes: ['$2x+1$', '$2x+4$', '$x+4$', '$2x+3$', '$4$']
+      correta: B
+      resolucao: |
+        $(x+1)^2+3(x+1)-x^2-3x=2x+1+3=2x+4$.
+
+    - enunciado: A parábola de $f(x)=ax^2+bx+c$ tem concavidade para baixo e corta o eixo $y$ acima da origem. Então
+      opcoes: ['$a>0$ e $c>0$', '$a>0$ e $c<0$', '$a<0$ e $c<0$', '$a<0$ e $c>0$', '$a=0$ e $c>0$']
+      correta: D
+      resolucao: |
+        Concavidade para baixo: $a<0$. Corte com o eixo $y$ em $(0,c)$, acima da origem: $c>0$.
+
+    - enunciado: Um retângulo tem perímetro $40$ m e um dos lados mede $x$ m. Para $x=5$, sua área é
+      opcoes: ['$25\ \text{m}^2$', '$50\ \text{m}^2$', '$75\ \text{m}^2$', '$100\ \text{m}^2$', '$175\ \text{m}^2$']
+      correta: C
+      resolucao: |
+        $A(x)=x(20-x)$ e $A(5)=5\cdot15=75$.
+
+    - enunciado: Uma função quadrática tem zeros $2$ e $3$, e $f(0)=12$. Escrita como $ax^2+bx+c$, o coeficiente $b$ vale
+      opcoes: ['$-10$', '$-5$', '$5$', '$10$', '$12$']
+      correta: A
+      resolucao: |
+        $f(x)=a(x-2)(x-3)$ e $f(0)=6a=12\Rightarrow a=2$. Então $f(x)=2x^2-10x+12$.

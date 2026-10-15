@@ -49,7 +49,7 @@
           "id": "em1-02",
           "area": "numeros",
           "dificuldade": 2,
-          "aula": "C08",
+          "aula": "C09",
           "enunciado": "Um tênis de R$ 240 recebe desconto de 15%. Quanto custa após o desconto?",
           "opcoes": [
             "R$ 204",
@@ -79,7 +79,7 @@
           "id": "em1-04",
           "area": "afim",
           "dificuldade": 1,
-          "aula": "A11",
+          "aula": "A15",
           "enunciado": "Se f(x) = 2x − 5, qual é f(3)?",
           "opcoes": [
             "−1",
@@ -94,7 +94,7 @@
           "id": "em1-05",
           "area": "afim",
           "dificuldade": 2,
-          "aula": "A12",
+          "aula": "A16",
           "enunciado": "A reta passa pelos pontos (1, 2) e (4, 11). Qual é seu coeficiente angular?",
           "opcoes": [
             "2",
@@ -109,7 +109,7 @@
           "id": "em1-06",
           "area": "afim",
           "dificuldade": 3,
-          "aula": "A13",
+          "aula": "A17",
           "enunciado": "Para quais valores reais a função f(x) = −2x + 8 é positiva?",
           "opcoes": [
             "x > 4",
@@ -124,7 +124,7 @@
           "id": "em1-07",
           "area": "quadratica",
           "dificuldade": 1,
-          "aula": "A17",
+          "aula": "A20",
           "enunciado": "Quais são as raízes de x² − 5x + 6 = 0?",
           "opcoes": [
             "1 e 6",
@@ -139,7 +139,7 @@
           "id": "em1-08",
           "area": "quadratica",
           "dificuldade": 2,
-          "aula": "A18",
+          "aula": "A21",
           "enunciado": "Qual o valor máximo de f(x) = −x² + 6x − 5?",
           "opcoes": [
             "3",
@@ -154,7 +154,7 @@
           "id": "em1-09",
           "area": "quadratica",
           "dificuldade": 3,
-          "aula": "A20",
+          "aula": "A23",
           "enunciado": "Resolva (x − 1)(x − 5) < 0.",
           "opcoes": [
             "x < 1 ou x > 5",
@@ -244,7 +244,7 @@
           "id": "em2-01",
           "area": "exp",
           "dificuldade": 1,
-          "aula": "A25",
+          "aula": "A32",
           "enunciado": "Se 2^(x + 1) = 32, qual é x?",
           "opcoes": [
             "3",
@@ -259,7 +259,7 @@
           "id": "em2-02",
           "area": "exp",
           "dificuldade": 2,
-          "aula": "A27",
+          "aula": "A34",
           "enunciado": "Quanto vale log₃(81)?",
           "opcoes": [
             "3",
@@ -274,7 +274,7 @@
           "id": "em2-03",
           "area": "exp",
           "dificuldade": 3,
-          "aula": "C10",
+          "aula": "C11",
           "enunciado": "Um capital de R$ 1.000 cresce 10% ao ano em juros compostos. Após dois anos, vale:",
           "opcoes": [
             "R$ 1.100",
@@ -289,7 +289,7 @@
           "id": "em2-04",
           "area": "pa-pg",
           "dificuldade": 1,
-          "aula": "A34",
+          "aula": "A41",
           "enunciado": "Em uma PA, a₁ = 5 e a razão é 3. Qual é a₁₀?",
           "opcoes": [
             "29",
@@ -304,7 +304,7 @@
           "id": "em2-05",
           "area": "pa-pg",
           "dificuldade": 2,
-          "aula": "A35",
+          "aula": "A42",
           "enunciado": "Qual é a soma dos números inteiros de 1 a 20?",
           "opcoes": [
             "200",
@@ -319,7 +319,7 @@
           "id": "em2-06",
           "area": "pa-pg",
           "dificuldade": 3,
-          "aula": "A37",
+          "aula": "A44",
           "enunciado": "Uma PG tem primeiro termo 3 e razão 2. Qual a soma dos primeiros cinco termos?",
           "opcoes": [
             "45",
@@ -409,7 +409,7 @@
           "id": "em2-12",
           "area": "contagem",
           "dificuldade": 3,
-          "aula": "C24",
+          "aula": "C25",
           "enunciado": "Uma moeda justa é lançada 4 vezes. A probabilidade de sair exatamente 3 caras é:",
           "opcoes": [
             "1/8",
@@ -559,7 +559,7 @@
           "id": "em3-08",
           "area": "algebra",
           "dificuldade": 2,
-          "aula": "A39",
+          "aula": "A46",
           "enunciado": "Calcule (2 + 3i)(2 − 3i), sabendo que i² = −1.",
           "opcoes": [
             "−5",
@@ -574,7 +574,7 @@
           "id": "em3-09",
           "area": "algebra",
           "dificuldade": 3,
-          "aula": "A47",
+          "aula": "A54",
           "enunciado": "Se P(x)=x³−6x²+11x−6 tem raízes 1, 2 e 3, qual a soma dessas raízes?",
           "opcoes": [
             "3",
@@ -604,7 +604,7 @@
           "id": "em3-11",
           "area": "dados",
           "dificuldade": 2,
-          "aula": "C22",
+          "aula": "C23",
           "enunciado": "Sabendo que dois dados somaram 8, qual a chance de o primeiro mostrar 3?",
           "opcoes": [
             "1/6",
@@ -664,7 +664,7 @@
           "id": "enem-01",
           "area": "consumo",
           "dificuldade": 1,
-          "aula": "A14",
+          "aula": "A18",
           "enunciado": "Um aplicativo cobra R$ 5 fixos mais R$ 2,40 por km. Quanto custa uma corrida de 7,5 km?",
           "opcoes": [
             "R$ 18",
@@ -679,7 +679,7 @@
           "id": "enem-02",
           "area": "consumo",
           "dificuldade": 2,
-          "aula": "C08",
+          "aula": "C09",
           "enunciado": "Um produto de R$ 200 sobe 20% e depois cai 20%. O preço final é:",
           "opcoes": [
             "R$ 200",
@@ -694,7 +694,7 @@
           "id": "enem-03",
           "area": "consumo",
           "dificuldade": 3,
-          "aula": "C10",
+          "aula": "C11",
           "enunciado": "R$ 1.000 rendem 10% ao ano em juros compostos. Qual o saldo após 2 anos?",
           "opcoes": [
             "R$ 1.100",
@@ -724,7 +724,7 @@
           "id": "enem-05",
           "area": "modelagem",
           "dificuldade": 2,
-          "aula": "A14",
+          "aula": "A18",
           "enunciado": "Plano A custa R$ 30 + R$ 0,50 por minuto; plano B, R$ 15 + R$ 0,80. Para quantos minutos os custos são iguais?",
           "opcoes": [
             "30",
@@ -739,7 +739,7 @@
           "id": "enem-06",
           "area": "modelagem",
           "dificuldade": 3,
-          "aula": "C07",
+          "aula": "C08",
           "enunciado": "Um reservatório tinha 800 litros. Uma perda de 12,5% deixou quantos litros?",
           "opcoes": [
             "680",
@@ -814,7 +814,7 @@
           "id": "enem-11",
           "area": "dados",
           "dificuldade": 2,
-          "aula": "C20",
+          "aula": "C21",
           "enunciado": "Em um lote de 100 peças, 3 apresentam defeito. A probabilidade de sortear uma defeituosa é:",
           "opcoes": [
             "0,3%",
@@ -874,7 +874,7 @@
           "id": "vestib-01",
           "area": "funcoes",
           "dificuldade": 1,
-          "aula": "A18",
+          "aula": "A21",
           "enunciado": "Qual o valor mínimo de f(x)=x²−4x+1?",
           "opcoes": [
             "−4",
@@ -889,7 +889,7 @@
           "id": "vestib-02",
           "area": "funcoes",
           "dificuldade": 2,
-          "aula": "A20",
+          "aula": "A23",
           "enunciado": "Resolva (x−2)(x+3) ≥ 0.",
           "opcoes": [
             "−3 ≤ x ≤ 2",
@@ -904,7 +904,7 @@
           "id": "vestib-03",
           "area": "funcoes",
           "dificuldade": 3,
-          "aula": "A31",
+          "aula": "A38",
           "enunciado": "Se log₂(x−1)+log₂(x+1)=3, com x>1, quanto vale x?",
           "opcoes": [
             "2",
@@ -964,7 +964,7 @@
           "id": "vestib-07",
           "area": "algebra",
           "dificuldade": 1,
-          "aula": "A39",
+          "aula": "A46",
           "enunciado": "Quanto vale i²⁰²⁶, sendo i² = −1?",
           "opcoes": [
             "1",
@@ -979,7 +979,7 @@
           "id": "vestib-08",
           "area": "algebra",
           "dificuldade": 2,
-          "aula": "A45",
+          "aula": "A52",
           "enunciado": "Se P(x)=x³−2x+4, qual o resto da divisão por x−2?",
           "opcoes": [
             "0",
@@ -1024,7 +1024,7 @@
           "id": "vestib-11",
           "area": "combinatoria",
           "dificuldade": 2,
-          "aula": "C23",
+          "aula": "C24",
           "enunciado": "Uma urna contém 4 bolas vermelhas e 3 azuis. Sem reposição, qual a chance de retirar duas vermelhas?",
           "opcoes": [
             "1/3",

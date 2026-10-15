@@ -1,265 +1,237 @@
-# Fonte das listas em PDF da aula A38 — P.G. Infinita e Convergência
-# Matemática em LaTeX. Todas as respostas foram conferidas por cálculo independente.
+# Fonte das listas em PDF da aula A38 — Equações Logarítmicas
 aula: A38
 
 fixacao:
-  intro: Resolva na ordem — do aquecimento ao desafio. A soma infinita só existe quando $|q|<1$; nesse caso, $S_\infty=\dfrac{a_1}{1-q}$.
+  intro: Resolva na ordem — do aquecimento ao desafio. Antes de tudo, escreva as condições de existência; no final, descarte as soluções que não as cumprem.
   secoes:
     - nome: Aquecimento
       questoes:
-        - enunciado: Calcule a soma de cada P.G. infinita.
+        - enunciado: Resolva.
           itens:
-            - $1+\tfrac12+\tfrac14+\dots$
-            - $9+3+1+\dots$
-            - $10-5+\tfrac52-\dots$
+            - $\log_2(x+3)=4$
+            - $\log_3(2x-1)=2$
           resolucao: |
-            (a) $q=\tfrac12$: $S=\dfrac{1}{1-\frac12}=2$.
-            (b) $q=\tfrac13$: $S=\dfrac{9}{1-\frac13}=\tfrac{27}{2}$.
-            (c) $q=-\tfrac12$: $S=\dfrac{10}{1+\frac12}=\tfrac{20}{3}$.
-          resposta: '(a) $2$ \quad (b) $\tfrac{27}2$ \quad (c) $\tfrac{20}3$'
+            (a) $x+3=2^4=16\Rightarrow x=13$. (b) $2x-1=9\Rightarrow x=5$. Ambos deixam o logaritmando positivo.
+          resposta: '(a) $13$ \quad (b) $5$'
 
-        - enunciado: Diga se cada série converge e, quando convergir, calcule a soma.
-          itens:
-            - $4+3{,}6+3{,}24+\dots$
-            - $2-2{,}4+2{,}88-\dots$
-            - $5+5+5+\dots$
-            - $8-4+2-\dots$
+        - enunciado: Resolva $\log(x^2)=2$.
           resolucao: |
-            (a) $q=0{,}9$: converge, $S=\tfrac{4}{0{,}1}=40$.
-            (b) $q=-1{,}2$, $|q|>1$: não converge.
-            (c) $q=1$: não converge (a soma cresce sem limite).
-            (d) $q=-\tfrac12$: converge, $S=\dfrac{8}{\frac32}=\tfrac{16}3$.
-          resposta: '(a) $40$ \quad (b) diverge \quad (c) diverge \quad (d) $\tfrac{16}3$'
+            $x^2=100\Rightarrow x=\pm10$. Os dois servem, pois $x^2>0$.
+          resposta: '$\{-10,\,10\}$'
 
-        - enunciado: Escreva $0{,}333\dots$ como soma de uma P.G. infinita e obtenha sua fração geratriz.
+        - enunciado: Resolva $\log_x 16=2$.
           resolucao: |
-            $0{,}333\dots=\tfrac3{10}+\tfrac3{100}+\dots$, com $q=\tfrac1{10}$.
-            $S=\dfrac{\frac3{10}}{1-\frac1{10}}=\tfrac{3}{9}=\tfrac13$.
-          resposta: '$\tfrac13$'
+            $x^2=16$, com $x>0$ e $x\neq1$: $x=4$ (o $-4$ não serve como base).
+          resposta: '$x=4$'
 
-        - enunciado: Obtenha a fração geratriz de $0{,}4545\dots$
+        - enunciado: Resolva $\log_5(x^2-4x)=1$.
           resolucao: |
-            $\tfrac{45}{100}+\tfrac{45}{10\,000}+\dots$, com $q=\tfrac1{100}$: $S=\dfrac{\frac{45}{100}}{\frac{99}{100}}=\tfrac{45}{99}=\tfrac5{11}$.
-          resposta: '$\tfrac5{11}$'
+            $x^2-4x=5\Rightarrow x=5$ ou $x=-1$. Em ambos, $x^2-4x=5>0$: as duas servem.
+          resposta: '$\{-1,\,5\}$'
 
-        - enunciado: A soma de uma P.G. infinita é $12$ e o primeiro termo é $8$. Calcule a razão.
+        - enunciado: Resolva $\log(x+2)=\log(2x-3)$.
           resolucao: |
-            $\tfrac{8}{1-q}=12\Rightarrow 1-q=\tfrac23\Rightarrow q=\tfrac13$.
-          resposta: '$q=\tfrac13$'
+            Condições: $x>\tfrac32$. \ $x+2=2x-3\Rightarrow x=5$, que serve.
+          resposta: '$x=5$'
 
-        - enunciado: A soma de uma P.G. infinita de razão $\tfrac34$ é $20$. Calcule o primeiro termo.
+        - enunciado: Resolva $\log_2(x-1)+\log_2(x+1)=3$.
           resolucao: |
-            $\dfrac{a_1}{1-\frac34}=20\Rightarrow a_1=20\cdot\tfrac14=5$.
-          resposta: '$a_1=5$'
+            Condição: $x>1$. \ $(x-1)(x+1)=8\Rightarrow x^2=9\Rightarrow x=\pm3$. Só $x=3$ serve.
+          resposta: '$x=3$'
 
-        - enunciado: Calcule $0{,}1+0{,}01+0{,}001+\dots$
+        - enunciado: Resolva $\log_3(\log_2 x)=1$.
           resolucao: |
-            $q=\tfrac1{10}$: $S=\tfrac{0{,}1}{0{,}9}=\tfrac19$.
-          resposta: '$\tfrac19$'
+            $\log_2 x=3\Rightarrow x=8$.
+          resposta: '$x=8$'
 
     - nome: Treino
       questoes:
-        - enunciado: Obtenha a fração geratriz de $1{,}2777\dots$
+        - enunciado: Resolva $\log_3 x+\log_3(x-8)=2$.
           resolucao: |
-            $1{,}2777\dots=1{,}2+0{,}0777\dots$
-            $0{,}0777\dots=\tfrac{7}{100}+\tfrac{7}{1000}+\dots=\dfrac{\frac7{100}}{\frac9{10}}=\tfrac7{90}$.
-            $\tfrac{12}{10}+\tfrac7{90}=\tfrac{108+7}{90}=\tfrac{115}{90}=\tfrac{23}{18}$.
-          resposta: '$\tfrac{23}{18}$'
+            Condição: $x>8$. \ $x(x-8)=9\Rightarrow x^2-8x-9=0\Rightarrow x=9$ ou $x=-1$. Só $x=9$ serve.
+          resposta: '$x=9$'
 
-        - enunciado: Resolva a equação $x+\dfrac x3+\dfrac x9+\dots=12$.
+        - enunciado: Resolva $(\log_2 x)^2-3\log_2 x+2=0$.
           resolucao: |
-            P.G. de razão $\tfrac13$: $\dfrac{x}{1-\frac13}=\tfrac{3x}{2}=12\Rightarrow x=8$.
-          resposta: '$x=8$'
+            Com $t=\log_2 x$: $t^2-3t+2=0\Rightarrow t=1$ ou $t=2$. Então $x=2$ ou $x=4$.
+          resposta: '$\{2,\,4\}$'
 
-        - enunciado: Uma bola é largada de $6$ m de altura e, a cada quique, sobe $\tfrac23$ da altura de que caiu. Supondo que ela quique indefinidamente, que distância total percorre?
+        - enunciado: Resolva $\log_2(x+1)-\log_2(x-2)=2$.
           resolucao: |
-            Subidas: $4+\tfrac83+\dots=\dfrac{4}{1-\frac23}=12$ m. As descidas depois do $1^\circ$ quique somam o mesmo.
-            Total: $6+2\cdot12=30$ m.
-          resposta: '$30$ m'
+            Condição: $x>2$. \ $\dfrac{x+1}{x-2}=4\Rightarrow x+1=4x-8\Rightarrow x=3$.
+          resposta: '$x=3$'
 
-        - enunciado: Um quadrado tem lado $10$ cm. Unindo os pontos médios de seus lados obtém-se outro quadrado, e o processo se repete indefinidamente.
-          itens:
-            - Calcule a soma das áreas de todos os quadrados.
-            - Calcule a soma dos perímetros de todos os quadrados.
+        - enunciado: Resolva $\log x+\log(x-21)=2$.
           resolucao: |
-            (a) Áreas: $100,\ 50,\ 25,\ \dots$ ($q=\tfrac12$): $\dfrac{100}{1-\frac12}=200$ cm$^2$.
-            (b) Lados: $10,\ \tfrac{10}{\sqrt2},\ \dots$ ($q=\tfrac{\sqrt2}{2}$). Perímetros: $\dfrac{40}{1-\frac{\sqrt2}2}=\tfrac{80}{2-\sqrt2}=40(2+\sqrt2)$ cm.
-          resposta: '(a) $200$ cm$^2$ \quad (b) $40(2+\sqrt2)$ cm'
+            Condição: $x>21$. \ $x^2-21x-100=0\Rightarrow x=25$ ou $x=-4$. Só $x=25$ serve.
+          resposta: '$x=25$'
 
-        - enunciado: Para quais valores reais de $x$ a série $1+2x+4x^2+8x^3+\dots$ converge? Qual é a soma nesses casos?
+        - enunciado: Resolva $\log_2(x^2-x)=1$.
           resolucao: |
-            $q=2x$; converge se $|2x|<1$, isto é, $-\tfrac12<x<\tfrac12$.
-            Soma: $\tfrac{1}{1-2x}$.
-          resposta: '$-\tfrac12<x<\tfrac12$; \ $S=\tfrac1{1-2x}$'
+            $x^2-x=2\Rightarrow x=2$ ou $x=-1$. Nos dois casos, $x^2-x=2>0$.
+          resposta: '$\{-1,\,2\}$'
 
-        - enunciado: Calcule $1-\dfrac13+\dfrac19-\dfrac1{27}+\dots$
+        - enunciado: Resolva $2\log x=\log(3x+4)$.
           resolucao: |
-            $q=-\tfrac13$: $S=\dfrac{1}{1+\frac13}=\tfrac34$.
-          resposta: '$\tfrac34$'
+            Condições: $x>0$. \ $\log x^2=\log(3x+4)\Rightarrow x^2-3x-4=0\Rightarrow x=4$ ou $x=-1$. Só $x=4$ serve.
+          resposta: '$x=4$'
 
-        - enunciado: Obtenha a fração geratriz de $2{,}151515\dots$
+        - enunciado: Resolva $\log_x(3x-2)=2$.
           resolucao: |
-            $2+\tfrac{15}{100}+\tfrac{15}{10\,000}+\dots=2+\tfrac{15}{99}=2+\tfrac5{33}=\tfrac{71}{33}$.
-          resposta: '$\tfrac{71}{33}$'
+            $x^2=3x-2\Rightarrow x=1$ ou $x=2$. Como a base não pode ser $1$, fica $x=2$.
+          resposta: '$x=2$'
 
-        - enunciado: De um triângulo de área $1$, retira-se o triângulo central formado pelos pontos médios dos lados (um quarto da área). Repete-se o processo em cada um dos $3$ triângulos que sobram, e assim indefinidamente. Qual é a área total retirada?
+        - enunciado: Resolva $\log_2 x+\log_4 x=6$.
           resolucao: |
-            Retira-se $\tfrac14$, depois $3\cdot\tfrac1{16}$, depois $9\cdot\tfrac1{64}$, …: P.G. de $a_1=\tfrac14$ e $q=\tfrac34$.
-            $S=\dfrac{\frac14}{1-\frac34}=1$. No limite, toda a área é retirada.
-          resposta: '$1$ (toda a área)'
+            $\log_4 x=\tfrac12\log_2 x$: $\tfrac32\log_2 x=6\Rightarrow\log_2 x=4\Rightarrow x=16$.
+          resposta: '$x=16$'
 
     - nome: Desafio
       questoes:
-        - enunciado: Aquiles corre a $10$ m/s e uma tartaruga anda a $1$ m/s, com $100$ m de vantagem. Aquiles leva $10$ s para chegar onde a tartaruga estava; nesse tempo ela avança $10$ m, e assim por diante. Some a P.G. dos tempos e diga quando Aquiles alcança a tartaruga.
+        - enunciado: Resolva $(\log x)^2-\log x^2=3$.
           resolucao: |
-            Tempos: $10,\ 1,\ 0{,}1,\ \dots$ ($q=0{,}1$): $S=\tfrac{10}{0{,}9}=\tfrac{100}9$ s.
-            Confira: a diferença de velocidade é $9$ m/s e a vantagem é $100$ m: $\tfrac{100}9$ s.
-          resposta: '$\tfrac{100}9\approx11{,}1$ s'
+            $\log x^2=2\log x$. Com $t=\log x$: $t^2-2t-3=0\Rightarrow t=3$ ou $t=-1$. Então $x=1000$ ou $x=\tfrac1{10}$.
+          resposta: '$\left\{\tfrac1{10},\,1000\right\}$'
 
-        - enunciado: Resolva a equação $x+x^2+x^3+\dots=3$, com $|x|<1$.
+        - enunciado: Resolva $\log_2 x+\log_4 x+\log_{16}x=7$.
           resolucao: |
-            $\tfrac{x}{1-x}=3\Rightarrow x=3-3x\Rightarrow x=\tfrac34$.
-          resposta: '$x=\tfrac34$'
+            Tudo na base $2$: $\left(1+\tfrac12+\tfrac14\right)\log_2 x=7\Rightarrow\tfrac74\log_2 x=7\Rightarrow\log_2 x=4$.
+          resposta: '$x=16$'
 
-        - enunciado: Uma P.G. infinita tem soma $9$, e a soma dos quadrados de seus termos é $27$. Determine $a_1$ e $q$.
+        - enunciado: Resolva $x^{\log x}=10\,000$.
           resolucao: |
-            $\tfrac{a_1}{1-q}=9$ e os quadrados formam P.G. de razão $q^2$: $\tfrac{a_1^2}{1-q^2}=27$.
-            Dividindo a segunda pela primeira: $\tfrac{a_1}{1+q}=3$.
-            $9(1-q)=3(1+q)\Rightarrow q=\tfrac12$ e $a_1=\tfrac92$.
-          resposta: '$a_1=\tfrac92$; \ $q=\tfrac12$'
+            Aplicando $\log$ dos dois lados: $(\log x)^2=4\Rightarrow\log x=\pm2\Rightarrow x=100$ ou $x=\tfrac1{100}$.
+          resposta: '$\left\{\tfrac1{100},\,100\right\}$'
 
-        - enunciado: Um ponto parte da origem e anda $1$ unidade para a direita, $\tfrac12$ para cima, $\tfrac14$ para a esquerda, $\tfrac18$ para baixo, $\tfrac1{16}$ para a direita, e assim por diante. De que ponto ele se aproxima?
+        - enunciado: Resolva $2^x=5$ usando $\log2=0{,}301$.
           resolucao: |
-            Abscissa: $1-\tfrac14+\tfrac1{16}-\dots=\dfrac{1}{1+\frac14}=\tfrac45$.
-            Ordenada: $\tfrac12-\tfrac18+\dots=\dfrac{\frac12}{1+\frac14}=\tfrac25$.
-          resposta: '$\left(\tfrac45,\ \tfrac25\right)$'
+            $x=\log_2 5=\dfrac{\log5}{\log2}=\dfrac{0{,}699}{0{,}301}\approx2{,}32$.
+          resposta: '$x\approx2{,}32$'
 
-        - enunciado: Usando a soma da P.G. infinita, mostre que $0{,}999\dots=1$.
+        - enunciado: Resolva $\log_2(4^x-12)=x$.
           resolucao: |
-            $0{,}999\dots=\tfrac9{10}+\tfrac9{100}+\dots=\dfrac{\frac9{10}}{1-\frac1{10}}=\dfrac{\frac9{10}}{\frac9{10}}=1$.
-          resposta: '$0{,}999\dots=1$'
+            $4^x-12=2^x$. Com $t=2^x>0$: $t^2-t-12=0\Rightarrow t=4$ (ou $-3$, descartado). Então $x=2$, e $16-12=4>0$.
+          resposta: '$x=2$'
 
 vestibular:
-  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  intro: Questões autorais no estilo dos principais vestibulares. Quando necessário, use $\log2=0{,}301$, $\log3=0{,}477$ e $\log7=0{,}845$.
   questoes:
-    - enunciado: O valor da soma infinita $4+2+1+\tfrac12+\dots$ é
-      opcoes: ['$4$', '$6$', '$7$', '$8$', '$16$']
-      correta: D
-      resolucao: |
-        $q=\tfrac12$: $S=\dfrac{4}{1-\frac12}=8$.
-
-    - enunciado: A fração geratriz de $0{,}777\dots$ é
-      opcoes: ['$\tfrac7{10}$', '$\tfrac79$', '$\tfrac{77}{90}$', '$\tfrac78$', '$\tfrac{70}9$']
-      correta: B
-      resolucao: |
-        $\dfrac{\frac7{10}}{1-\frac1{10}}=\tfrac79$.
-
-    - enunciado: A fração geratriz de $0{,}121212\dots$ é
-      opcoes: ['$\tfrac4{33}$', '$\tfrac2{15}$', '$\tfrac6{11}$', '$\tfrac{12}{11}$', '$\tfrac43$']
-      correta: A
-      resolucao: |
-        $\tfrac{12}{99}=\tfrac4{33}$.
-
-    - enunciado: Uma P.G. infinita tem soma $30$ e razão $\tfrac25$. O primeiro termo é
-      opcoes: ['$10$', '$12$', '$15$', '$16$', '$18$']
-      correta: E
-      resolucao: |
-        $a_1=30\left(1-\tfrac25\right)=18$.
-
-    - enunciado: O valor de $1-\tfrac12+\tfrac14-\tfrac18+\dots$ é
-      opcoes: ['$\tfrac12$', '$\tfrac35$', '$\tfrac23$', '$\tfrac34$', '$2$']
+    - enunciado: A solução de $\log_2(x-1)=3$ é
+      opcoes: ['$7$', '$8$', '$9$', '$10$', '$4$']
       correta: C
       resolucao: |
-        $q=-\tfrac12$: $S=\dfrac{1}{1+\frac12}=\tfrac23$.
+        $x-1=8\Rightarrow x=9$.
 
-    - enunciado: Se $x+\tfrac x2+\tfrac x4+\dots=10$, então $x$ vale
-      opcoes: ['$5$', '$8$', '$10$', '$15$', '$20$']
+    - enunciado: A solução de $\log_3(x+1)+\log_3(x-1)=1$ é
+      opcoes: ['$2$', '$-2$ e $2$', '$\sqrt3$', '$4$', '$3$']
       correta: A
       resolucao: |
-        $\dfrac{x}{1-\frac12}=2x=10\Rightarrow x=5$.
+        $x^2-1=3\Rightarrow x=\pm2$; só $x=2$ satisfaz $x>1$.
 
-    - enunciado: Uma bola é largada de $10$ m de altura e, a cada quique, sobe metade da altura de que caiu. Supondo que ela quique indefinidamente, a distância total percorrida é
-      opcoes: ['$15$ m', '$20$ m', '$25$ m', '$30$ m', '$40$ m']
-      correta: D
-      resolucao: |
-        Subidas: $5+2{,}5+\dots=10$ m; descidas depois da primeira: também $10$ m.
-        Total: $10+10+10=30$ m.
-
-    - enunciado: Um quadrado tem lado $4$. Unindo os pontos médios de seus lados obtém-se outro quadrado, e o processo se repete indefinidamente. A soma das áreas de todos os quadrados é
-      opcoes: ['$16$', '$32$', '$48$', '$64$', '$128$']
-      correta: B
-      resolucao: |
-        Áreas: $16,\ 8,\ 4,\ \dots$ ($q=\tfrac12$): $\dfrac{16}{1-\frac12}=32$.
-
-    - enunciado: A fração geratriz de $1{,}0333\dots$ é
-      opcoes: ['$\tfrac{10}{11}$', '$1$', '$\tfrac{103}{100}$', '$\tfrac{1033}{1000}$', '$\tfrac{31}{30}$']
+    - enunciado: A soma das soluções de $\log(x^2-15)=1$ é
+      opcoes: ['$10$', '$5$', '$25$', '$-5$', '$0$']
       correta: E
       resolucao: |
-        $1+0{,}0333\dots=1+\dfrac{\frac3{100}}{\frac9{10}}=1+\tfrac1{30}=\tfrac{31}{30}$.
+        $x^2=25\Rightarrow x=\pm5$; ambas servem ($x^2-15=10>0$). Soma: $0$.
 
-    - enunciado: A série $1+(x-1)+(x-1)^2+(x-1)^3+\dots$ converge se, e somente se,
-      opcoes: ['$x<2$', '$-1<x<1$', '$0<x<2$', '$x>0$', '$1<x<2$']
+    - enunciado: A solução de $\log_2 x+\log_2(x+2)=3$ é
+      opcoes: ['$-4$', '$2$', '$4$', '$-4$ e $2$', '$6$']
+      correta: B
+      resolucao: |
+        $x^2+2x-8=0\Rightarrow x=2$ ou $x=-4$; só $x=2$ serve.
+
+    - enunciado: A solução de $\log_x 27=3$ é
+      opcoes: ['$9$', '$3$', '$-3$', '$81$', '$\dfrac13$']
+      correta: B
+      resolucao: |
+        $x^3=27\Rightarrow x=3$.
+
+    - enunciado: A soma das soluções de $(\log_3 x)^2-5\log_3 x+6=0$ é
+      opcoes: ['$5$', '$6$', '$12$', '$36$', '$243$']
+      correta: D
+      resolucao: |
+        $\log_3 x=2$ ou $3$: $x=9$ ou $x=27$. Soma: $36$. (A alternativa A soma os logaritmos.)
+
+    - enunciado: A solução de $\log(x+7)-\log(x-2)=1$ é
+      opcoes: ['$1$', '$2$', '$3$', '$4$', '$5$']
       correta: C
       resolucao: |
-        $q=x-1$; converge se $|x-1|<1\Leftrightarrow 0<x<2$.
+        $x+7=10(x-2)\Rightarrow 9x=27\Rightarrow x=3$.
 
-    - enunciado: Uma P.G. infinita tem $a_1=2$ e soma $3$. O terceiro termo é
-      opcoes: ['$\tfrac29$', '$\tfrac13$', '$\tfrac23$', '$1$', '$\tfrac43$']
+    - enunciado: O produto das soluções de $\log_5(x^2-2x)=\log_5 3$ é
+      opcoes: ['$-3$', '$3$', '$-1$', '$2$', '$-2$']
       correta: A
       resolucao: |
-        $\tfrac{2}{1-q}=3\Rightarrow q=\tfrac13$; \ $a_3=2\cdot\tfrac19=\tfrac29$.
+        $x^2-2x-3=0\Rightarrow x=3$ ou $x=-1$; ambos dão $x^2-2x=3>0$. Produto: $-3$.
 
-    - enunciado: Um triângulo equilátero tem lado $6$. Unindo os pontos médios de seus lados obtém-se outro triângulo equilátero, e o processo se repete indefinidamente. A soma dos perímetros de todos os triângulos é
-      opcoes: ['$18$', '$24$', '$27$', '$36$', '$54$']
-      correta: D
-      resolucao: |
-        Perímetros: $18,\ 9,\ \tfrac92,\ \dots$ ($q=\tfrac12$): $\dfrac{18}{1-\frac12}=36$.
-
-    - enunciado: Se $x+x^2+x^3+\dots=4$, com $|x|<1$, então $x$ vale
-      opcoes: ['$\tfrac34$', '$\tfrac45$', '$\tfrac56$', '$3$', '$4$']
-      correta: B
-      resolucao: |
-        $\tfrac{x}{1-x}=4\Rightarrow x=4-4x\Rightarrow x=\tfrac45$.
-
-    - enunciado: O valor da soma com infinitas parcelas $0{,}3+0{,}03+0{,}003+\dots$ é
-      opcoes: ['$0{,}03$', '$0{,}3$', '$0{,}33$', '$0{,}333$', '$\tfrac13$']
+    - enunciado: A solução de $2\log_2 x=\log_2(x+6)$ é
+      opcoes: ['$-2$', '$-2$ e $3$', '$2$', '$6$', '$3$']
       correta: E
       resolucao: |
-        $\tfrac{0{,}3}{1-0{,}1}=\tfrac{0{,}3}{0{,}9}=\tfrac13$.
+        $x^2=x+6\Rightarrow x=3$ ou $x=-2$; só $x=3$ satisfaz $x>0$.
 
-    - enunciado: Aquiles corre a $10$ m/s e uma tartaruga a $2$ m/s, com $40$ m de vantagem. Os tempos que Aquiles leva para chegar a cada posição anterior da tartaruga formam uma P.G. ($4$ s, $0{,}8$ s, …). Ele alcança a tartaruga após
-      opcoes: ['$4$ s', '$4{,}8$ s', '$5$ s', '$6$ s', '$20$ s']
-      correta: C
+    - enunciado: A solução de $\log_2(\log_3 x)=1$ é
+      opcoes: ['$3$', '$6$', '$8$', '$9$', '$27$']
+      correta: D
       resolucao: |
-        $q=\tfrac{2}{10}=0{,}2$: $S=\tfrac{4}{1-0{,}2}=5$ s (confira: $\tfrac{40}{10-2}=5$).
+        $\log_3 x=2\Rightarrow x=9$.
 
-    - enunciado: A soma dos termos de uma P.G. infinita é $12$ e a soma dos termos de ordem ímpar $(a_1+a_3+a_5+\dots)$ é $8$. O primeiro termo é
-      opcoes: ['$6$', '$8$', '$9$', '$12$', '$18$']
+    - enunciado: A solução de $\log_x(x+6)=2$ é
+      opcoes: ['$-2$', '$2$', '$6$', '$-2$ e $3$', '$3$']
+      correta: E
+      resolucao: |
+        $x^2=x+6\Rightarrow x=3$ ou $x=-2$; a base deve ser positiva: $x=3$.
+
+    - enunciado: A soma das soluções de $(\log x)^2=\log x^2$ é
+      opcoes: ['$2$', '$101$', '$100$', '$10$', '$110$']
+      correta: B
+      resolucao: |
+        $t^2=2t\Rightarrow t=0$ ou $t=2$: $x=1$ ou $x=100$. Soma: $101$.
+
+    - enunciado: A solução de $\log_2 x+\log_4 x=3$ é
+      opcoes: ['$2$', '$4$', '$8$', '$16$', '$\sqrt2$']
+      correta: B
+      resolucao: |
+        $\tfrac32\log_2 x=3\Rightarrow\log_2 x=2\Rightarrow x=4$.
+
+    - enunciado: A solução de $3^x=7$ é, aproximadamente,
+      opcoes: ['$1{,}77$', '$2{,}33$', '$0{,}57$', '$1{,}43$', '$2{,}10$']
       correta: A
       resolucao: |
-        $\tfrac{a_1}{1-q}=12$ e $\tfrac{a_1}{1-q^2}=8$. Dividindo: $1+q=\tfrac{12}8\Rightarrow q=\tfrac12$; \ $a_1=12\cdot\tfrac12=6$.
+        $x=\dfrac{\log7}{\log3}=\dfrac{0{,}845}{0{,}477}\approx1{,}77$.
 
-    - enunciado: O número $2{,}4999\dots$ é igual a
-      opcoes: ['$\tfrac{12}5$', '$\tfrac52$', '$\tfrac{23}9$', '$\tfrac{25}9$', '$\tfrac{49}9$']
-      correta: B
-      resolucao: |
-        $2{,}4+0{,}0999\dots=2{,}4+\dfrac{\frac9{100}}{\frac9{10}}=2{,}4+0{,}1=2{,}5=\tfrac52$.
-
-    - enunciado: Um paciente toma $100$ mg de um remédio a cada $6$ horas e, a cada intervalo de $6$ horas, o organismo elimina metade da quantidade presente. A longo prazo, a quantidade logo após cada dose se aproxima de
-      opcoes: ['$100$ mg', '$150$ mg', '$175$ mg', '$200$ mg', '$400$ mg']
-      correta: D
-      resolucao: |
-        Logo após a $n$-ésima dose: $100+50+25+\dots$ ($q=\tfrac12$), que tende a $\dfrac{100}{1-\frac12}=200$ mg.
-
-    - enunciado: Das séries abaixo, a única que converge é
-      opcoes: ['$1+2+4+8+\dots$', '$3-3+3-3+\dots$', '$1+0{,}9+0{,}81+\dots$', '$1-1{,}1+1{,}21-\dots$', '$2+2+2+\dots$']
+    - enunciado: A solução de $\log(2x)+\log(x-3)=\log20$ é
+      opcoes: ['$-2$', '$2$', '$5$', '$10$', '$-2$ e $5$']
       correta: C
       resolucao: |
-        As razões são $2$, $-1$, $0{,}9$, $-1{,}1$ e $1$. Só converge a de $|q|<1$: $q=0{,}9$.
+        $2x(x-3)=20\Rightarrow x^2-3x-10=0\Rightarrow x=5$ ou $x=-2$; só $x=5$ serve.
 
-    - enunciado: De um segmento de $1$ m retira-se o terço central; de cada um dos dois pedaços restantes retira-se o terço central, e assim indefinidamente. O comprimento total retirado é
-      opcoes: ['$\tfrac13$ m', '$\tfrac12$ m', '$\tfrac23$ m', '$\tfrac34$ m', '$1$ m']
+    - enunciado: A solução de $\log_2(x+4)-\log_2 x=2$ é
+      opcoes: ['$\dfrac43$', '$4$', '$\dfrac34$', '$2$', '$\dfrac12$']
+      correta: A
+      resolucao: |
+        $x+4=4x\Rightarrow x=\tfrac43$.
+
+    - enunciado: Uma população cresce $5\%$ ao ano, ou seja, $P(t)=P_0\cdot1{,}05^t$. Usando $\log1{,}05\approx0{,}0212$, ela dobrará em aproximadamente
+      opcoes: ['$10$ anos', '$12{,}5$ anos', '$14{,}2$ anos', '$20$ anos', '$40$ anos']
+      correta: C
+      resolucao: |
+        $t=\dfrac{\log2}{\log1{,}05}\approx\dfrac{0{,}301}{0{,}0212}\approx14{,}2$. (A alternativa D seria com crescimento linear.)
+
+    - enunciado: A solução de $\log_3 x+\log_3 9=5$ é
+      opcoes: ['$3$', '$9$', '$81$', '$27$', '$243$']
+      correta: D
+      resolucao: |
+        $\log_3 x+2=5\Rightarrow\log_3 x=3\Rightarrow x=27$.
+
+    - enunciado: A solução de $\log_{1/2}(x-1)=-3$ é
+      opcoes: ['$7$', '$\dfrac98$', '$-7$', '$\dfrac78$', '$9$']
       correta: E
       resolucao: |
-        Retira-se $\tfrac13$, depois $2\cdot\tfrac19$, depois $4\cdot\tfrac1{27}$, …: P.G. de $a_1=\tfrac13$ e $q=\tfrac23$.
-        $S=\dfrac{\frac13}{1-\frac23}=1$ m.
+        $x-1=\left(\tfrac12\right)^{-3}=8\Rightarrow x=9$.
+
+    - enunciado: A solução de $\log_2(4^x-12)=x$ é
+      opcoes: ['$1$', '$3$', '$4$', '$2$', '$12$']
+      correta: D
+      resolucao: |
+        $4^x-12=2^x$. Com $t=2^x$: $t^2-t-12=0\Rightarrow t=4\Rightarrow x=2$.

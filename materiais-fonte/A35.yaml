@@ -1,257 +1,250 @@
-# Fonte das listas em PDF da aula A35 — Soma de P.A
-# Matemática em LaTeX. Todas as respostas foram conferidas por cálculo independente.
+# Fonte das listas em PDF da aula A35 — Propriedades Operatórias
 aula: A35
 
 fixacao:
-  intro: Resolva na ordem — do aquecimento ao desafio. Na P.A., termos equidistantes dos extremos têm a mesma soma; por isso $S_n=\dfrac{n(a_1+a_n)}{2}$.
+  intro: Resolva na ordem — do aquecimento ao desafio. Use, quando necessário, $\log2=0{,}301$ e $\log3=0{,}477$. Produto vira soma, quociente vira diferença e o expoente "dá um peteleco" para a frente.
   secoes:
     - nome: Aquecimento
       questoes:
-        - enunciado: Calcule a soma dos $20$ primeiros termos da P.A. $(3,\ 7,\ 11,\ \dots)$.
+        - enunciado: Usando $\log2=0{,}301$ e $\log3=0{,}477$, calcule.
+          itens:
+            - $\log6$
+            - $\log12$
+            - $\log1{,}5$
           resolucao: |
-            $a_{20}=3+19\cdot4=79$.
-            $S_{20}=\tfrac{20\,(3+79)}{2}=820$.
-          resposta: '$820$'
+            (a) $\log2+\log3=0{,}778$. (b) $2\log2+\log3=1{,}079$. (c) $\log\tfrac32=0{,}477-0{,}301=0{,}176$.
+          resposta: '(a) $0{,}778$ \quad (b) $1{,}079$ \quad (c) $0{,}176$'
 
-        - enunciado: Calcule $1+2+3+\dots+100$.
+        - enunciado: Usando os mesmos valores, calcule.
+          itens:
+            - $\log5$
+            - $\log8$
+            - $\log\sqrt3$
           resolucao: |
-            São $100$ termos com $a_1=1$ e $a_{100}=100$: $S=\tfrac{100\cdot101}{2}=5050$.
-          resposta: '$5050$'
+            (a) $\log\tfrac{10}2=1-0{,}301=0{,}699$. (b) $3\log2=0{,}903$. (c) $\tfrac12\log3\approx0{,}2385$.
+          resposta: '(a) $0{,}699$ \quad (b) $0{,}903$ \quad (c) $0{,}2385$'
 
-        - enunciado: Calcule a soma dos $50$ primeiros números ímpares positivos.
+        - enunciado: Calcule.
+          itens:
+            - $\log_2 12+\log_2\tfrac23$
+            - $\log_3 54-\log_3 2$
           resolucao: |
-            $a_{50}=2\cdot50-1=99$.
-            $S_{50}=\tfrac{50\,(1+99)}{2}=2500$.
-          resposta: '$2500$'
+            (a) $\log_2\left(12\cdot\tfrac23\right)=\log_2 8=3$. (b) $\log_3\tfrac{54}2=\log_3 27=3$.
+          resposta: '(a) $3$ \quad (b) $3$'
 
-        - enunciado: Calcule a soma dos termos da P.A. $(5,\ 8,\ 11,\ \dots,\ 62)$.
+        - enunciado: Calcule $\log25+\log4$.
           resolucao: |
-            Número de termos: $62=5+(n-1)\cdot3\Rightarrow n=20$.
-            $S=\tfrac{20\,(5+62)}{2}=670$.
-          resposta: '$670$'
+            $\log(25\cdot4)=\log100=2$.
+          resposta: '$2$'
 
-        - enunciado: Em uma P.A., $a_1=10$ e $a_{15}=52$. Calcule $S_{15}$.
+        - enunciado: Calcule $2\log_5 10-\log_5 4$.
           resolucao: |
-            $S_{15}=\tfrac{15\,(10+52)}{2}=465$.
-          resposta: '$465$'
+            $\log_5 100-\log_5 4=\log_5 25=2$.
+          resposta: '$2$'
 
-        - enunciado: Calcule a soma dos múltiplos de $5$ de $5$ a $200$.
+        - enunciado: Calcule $\log_2\sqrt8$.
           resolucao: |
-            São $40$ termos ($200=5\cdot40$): $S=\tfrac{40\,(5+200)}{2}=4100$.
-          resposta: '$4100$'
+            $\log_2 2^{3/2}=\tfrac32$.
+          resposta: '$\tfrac32$'
 
-        - enunciado: Calcule a soma dos $10$ primeiros termos da P.A. $(20,\ 17,\ 14,\ \dots)$.
+        - enunciado: Sabendo que $\log_a x=2$ e $\log_a y=3$, calcule
+          itens:
+            - $\log_a(x^2y)$
+            - $\log_a\dfrac x{y^3}$
+            - $\log_a\sqrt{xy}$
           resolucao: |
-            $a_{10}=20+9\cdot(-3)=-7$.
-            $S_{10}=\tfrac{10\,(20-7)}{2}=65$.
-          resposta: '$65$'
+            (a) $2\cdot2+3=7$. (b) $2-3\cdot3=-7$. (c) $\tfrac12(2+3)=\tfrac52$.
+          resposta: '(a) $7$ \quad (b) $-7$ \quad (c) $\tfrac52$'
 
     - nome: Treino
       questoes:
-        - enunciado: Quantos termos da P.A. $(2,\ 5,\ 8,\ \dots)$ devem ser somados para que a soma seja $155$?
+        - enunciado: Usando $\log2=0{,}301$ e $\log3=0{,}477$, calcule $\log18$ e $\log72$.
           resolucao: |
-            $S_n=\tfrac{n\,[2\cdot2+(n-1)\cdot3]}{2}=\tfrac{n(3n+1)}{2}=155$.
-            $3n^2+n-310=0\Rightarrow n=\tfrac{-1+61}{6}=10$ (a outra raiz é negativa).
-          resposta: '$10$ termos'
+            $\log18=\log2+2\log3=1{,}255$. \ $\log72=3\log2+2\log3=1{,}857$.
+          resposta: '$1{,}255$ e $1{,}857$'
 
-        - enunciado: A soma dos $n$ primeiros termos de uma P.A. é $S_n=n^2+2n$. Determine $a_1$, a razão e $a_{10}$.
+        - enunciado: Calcule $\log0{,}6$ e $\log2{,}4$.
           resolucao: |
-            $a_1=S_1=3$. \ $S_2=8\Rightarrow a_2=8-3=5$, logo $r=2$.
-            $a_{10}=3+9\cdot2=21$ (confira: $S_{10}-S_9=120-99=21$).
-          resposta: '$a_1=3$; \ $r=2$; \ $a_{10}=21$'
+            $\log0{,}6=\log6-\log10=0{,}778-1=-0{,}222$.
+            $\log2{,}4=\log24-1=(3\log2+\log3)-1=0{,}380$.
+          resposta: '$-0{,}222$ e $0{,}380$'
 
-        - enunciado: Calcule a soma dos múltiplos de $3$ compreendidos entre $100$ e $200$.
+        - enunciado: Escreva como um único logaritmo $2\log x+\log y-\tfrac12\log z$.
           resolucao: |
-            Vão de $102$ a $198$: $198=102+(n-1)\cdot3\Rightarrow n=33$.
-            $S=\tfrac{33\,(102+198)}{2}=4950$.
-          resposta: '$4950$'
+            $\log x^2+\log y-\log\sqrt z=\log\dfrac{x^2y}{\sqrt z}$.
+          resposta: '$\log\dfrac{x^2y}{\sqrt z}$'
 
-        - enunciado: Um auditório tem $15$ filas. A primeira tem $20$ cadeiras e cada fila seguinte tem $2$ cadeiras a mais que a anterior. Quantas cadeiras há no total?
+        - enunciado: Desenvolva $\log\dfrac{100a^3}{b}$ em função de $\log a$ e $\log b$.
           resolucao: |
-            $a_{15}=20+14\cdot2=48$.
-            $S_{15}=\tfrac{15\,(20+48)}{2}=510$.
-          resposta: '$510$ cadeiras'
+            $\log100+3\log a-\log b=2+3\log a-\log b$.
+          resposta: '$2+3\log a-\log b$'
 
-        - enunciado: Toras são empilhadas com $1$ na fileira de cima, $2$ na seguinte, $3$ na próxima, e assim por diante. Quantas fileiras tem uma pilha com $66$ toras?
+        - enunciado: Resolva $\log_2 x+\log_2(x-2)=3$.
           resolucao: |
-            $1+2+\dots+n=\tfrac{n(n+1)}{2}=66\Rightarrow n^2+n-132=0\Rightarrow n=11$.
-          resposta: '$11$ fileiras'
+            Condições: $x>2$. \ $\log_2[x(x-2)]=3\Rightarrow x^2-2x-8=0\Rightarrow x=4$ ou $x=-2$ (não serve).
+          resposta: '$x=4$'
 
-        - enunciado: Entre $4$ e $40$ inserimos meios aritméticos de modo que a soma de todos os termos, incluindo os extremos, seja $286$. Quantos meios foram inseridos e qual é a razão?
+        - enunciado: Resolva $\log(x+1)-\log(x-1)=\log3$.
           resolucao: |
-            $S_n=\tfrac{n\,(4+40)}{2}=22n=286\Rightarrow n=13$ termos, logo $11$ meios.
-            $12r=36\Rightarrow r=3$.
-          resposta: '$11$ meios; \ $r=3$'
+            Condição: $x>1$. \ $\dfrac{x+1}{x-1}=3\Rightarrow x+1=3x-3\Rightarrow x=2$.
+          resposta: '$x=2$'
 
-        - enunciado: Pedro guardou R\$ 10,00 na primeira semana do ano, R\$ 15,00 na segunda, R\$ 20,00 na terceira, e assim por diante. Quanto ele terá guardado ao fim de $52$ semanas?
+        - enunciado: Resolva $\log_3 x+\log_3(x+6)=3$.
           resolucao: |
-            $a_{52}=10+51\cdot5=265$.
-            $S_{52}=\tfrac{52\,(10+265)}{2}=7150$.
-          resposta: 'R\$ 7.150,00'
+            $x(x+6)=27\Rightarrow x^2+6x-27=0\Rightarrow x=3$ ou $x=-9$ (não serve, pois $x>0$).
+          resposta: '$x=3$'
 
-        - enunciado: Em uma P.A. de $20$ termos, $a_1=1$ e $r=3$. Calcule a soma dos termos de ordem par $(a_2+a_4+\dots+a_{20})$.
+        - enunciado: Sendo $a=\log2$, escreva $\log12{,}5$ em função de $a$.
           resolucao: |
-            Os termos de ordem par formam uma P.A. de $10$ termos, de $a_2=4$ até $a_{20}=58$.
-            $S=\tfrac{10\,(4+58)}{2}=310$.
-          resposta: '$310$'
+            $12{,}5=\dfrac{100}8$: $\log100-\log8=2-3a$.
+          resposta: '$2-3a$'
 
     - nome: Desafio
       questoes:
-        - enunciado: Calcule a soma dos números naturais de três algarismos que não são múltiplos de $5$.
+        - enunciado: Quantos algarismos tem o número $2^{50}$? (Use $\log2=0{,}301$.)
           resolucao: |
-            Todos de $100$ a $999$: $\tfrac{900\,(100+999)}{2}=494\,550$.
-            Múltiplos de $5$ de $100$ a $995$: $180$ termos, soma $\tfrac{180\,(100+995)}{2}=98\,550$.
-            Resposta: $494\,550-98\,550=396\,000$.
-          resposta: '$396\,000$'
+            $\log2^{50}=50\cdot0{,}301=15{,}05$, então $10^{15}<2^{50}<10^{16}$: o número tem $16$ algarismos.
+          resposta: '$16$'
 
-        - enunciado: Os ângulos internos de um polígono convexo estão em P.A. de razão $5^\circ$ e o menor deles mede $120^\circ$. Quantos lados tem o polígono?
+        - enunciado: Calcule $\log_2 3\cdot\log_3 4\cdot\log_4 8$ escrevendo cada fator como quociente de logaritmos decimais.
           resolucao: |
-            $(n-2)\cdot180=\tfrac{n\,[2\cdot120+(n-1)\cdot5]}{2}\Rightarrow n^2-25n+144=0\Rightarrow n=9$ ou $n=16$.
-            Com $n=16$, o maior ângulo seria $120^\circ+75^\circ=195^\circ$, impossível em polígono convexo.
-            Com $n=9$, o maior é $160^\circ$.
-          resposta: '$9$ lados'
+            $\dfrac{\log3}{\log2}\cdot\dfrac{\log4}{\log3}\cdot\dfrac{\log8}{\log4}=\dfrac{\log8}{\log2}=\dfrac{3\log2}{\log2}=3$.
+          resposta: '$3$'
 
-        - enunciado: Qual é o menor $n$ para o qual $1+2+3+\dots+n$ passa de $1000$?
+        - enunciado: Resolva $\log(x-3)+\log x=1$.
           resolucao: |
-            $\tfrac{n(n+1)}{2}>1000\Rightarrow n(n+1)>2000$.
-            $44\cdot45=1980$ não basta; $45\cdot46=2070$ basta.
-          resposta: '$n=45$'
+            Condição $x>3$. \ $x(x-3)=10\Rightarrow x^2-3x-10=0\Rightarrow x=5$ ou $x=-2$ (não serve).
+          resposta: '$x=5$'
 
-        - enunciado: Mostre que a soma dos $n$ primeiros números ímpares é $n^2$ e use esse fato para calcular $21+23+25+\dots+59$.
+        - enunciado: Sabendo que $\log a=0{,}4$ e $\log b=0{,}3$, calcule $\log\dfrac{a^2}{\sqrt b}$ e $\log(10ab)$.
           resolucao: |
-            $S_n=\tfrac{n\,[1+(2n-1)]}{2}=n^2$.
-            $1+3+\dots+59$: $59=2\cdot30-1$, soma $30^2=900$. \ $1+3+\dots+19$: soma $10^2=100$.
-            $21+\dots+59=900-100=800$.
-          resposta: '$800$'
+            $2\cdot0{,}4-\tfrac12\cdot0{,}3=0{,}65$. \ $1+0{,}4+0{,}3=1{,}7$.
+          resposta: '$0{,}65$ e $1{,}7$'
 
-        - enunciado: Uma P.A. tem $12$ termos. A soma dos $6$ primeiros é $51$ e a soma dos $6$ últimos é $159$. Determine $a_1$ e $r$.
+        - enunciado: Simplifique $\log_2 4+\log_2 8+\log_2 16+\cdots+\log_2 1024$.
           resolucao: |
-            $S_6=6a_1+15r=51$ e $S_{12}=51+159=210=12a_1+66r$.
-            Simplificando: $2a_1+5r=17$ e $2a_1+11r=35\Rightarrow 6r=18\Rightarrow r=3$ e $a_1=1$.
-          resposta: '$a_1=1$; \ $r=3$'
+            $2+3+4+\cdots+10=\dfrac{(2+10)\cdot9}{2}=54$.
+          resposta: '$54$'
 
 vestibular:
-  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  intro: Questões autorais no estilo dos principais vestibulares. Quando necessário, use $\log2=0{,}301$ e $\log3=0{,}477$.
   questoes:
-    - enunciado: A soma dos $30$ primeiros termos da P.A. $(2,\ 5,\ 8,\ \dots)$ é
-      opcoes: ['$1275$', '$1305$', '$1365$', '$1395$', '$2730$']
-      correta: C
-      resolucao: |
-        $a_{30}=2+29\cdot3=89$; \ $S_{30}=\tfrac{30\,(2+89)}{2}=1365$.
-
-    - enunciado: A soma dos números pares de $2$ a $100$ é
-      opcoes: ['$2450$', '$2500$', '$2525$', '$2550$', '$5050$']
-      correta: D
-      resolucao: |
-        São $50$ termos: $\tfrac{50\,(2+100)}{2}=2550$.
-
-    - enunciado: A soma dos $40$ primeiros números ímpares positivos é
-      opcoes: ['$1600$', '$1640$', '$1681$', '$1720$', '$3200$']
-      correta: A
-      resolucao: |
-        A soma dos $n$ primeiros ímpares é $n^2$: $40^2=1600$.
-
-    - enunciado: A soma dos múltiplos de $7$ compreendidos entre $1$ e $100$ é
-      opcoes: ['$700$', '$735$', '$770$', '$805$', '$1050$']
+    - enunciado: O valor de $\log20$ é
+      opcoes: ['$0{,}602$', '$1{,}301$', '$2{,}301$', '$3{,}01$', '$0{,}699$']
       correta: B
       resolucao: |
-        De $7$ a $98$ são $14$ termos: $\tfrac{14\,(7+98)}{2}=735$.
+        $\log(2\cdot10)=0{,}301+1=1{,}301$.
 
-    - enunciado: A soma dos $n$ primeiros termos de uma P.A. é $S_n=3n^2-n$. O quinto termo dessa P.A. é
-      opcoes: ['$14$', '$20$', '$23$', '$24$', '$26$']
-      correta: E
-      resolucao: |
-        $a_5=S_5-S_4=70-44=26$.
-
-    - enunciado: Um teatro tem $20$ filas. A primeira tem $12$ lugares e cada fila seguinte tem $3$ lugares a mais. O total de lugares é
-      opcoes: ['$780$', '$810$', '$840$', '$1380$', '$1620$']
-      correta: B
-      resolucao: |
-        $a_{20}=12+19\cdot3=69$; \ $S_{20}=\tfrac{20\,(12+69)}{2}=810$.
-
-    - enunciado: Para que a soma dos primeiros termos da P.A. $(1,\ 4,\ 7,\ \dots)$ seja $590$, devemos somar
-      opcoes: ['$17$ termos', '$18$ termos', '$19$ termos', '$20$ termos', '$21$ termos']
-      correta: D
-      resolucao: |
-        $S_n=\tfrac{n(3n-1)}{2}=590\Rightarrow 3n^2-n-1180=0\Rightarrow n=\tfrac{1+119}{6}=20$.
-
-    - enunciado: A soma dos termos da P.A. $(100,\ 96,\ 92,\ \dots,\ 4)$ é
-      opcoes: ['$1200$', '$1248$', '$1300$', '$1352$', '$2600$']
-      correta: C
-      resolucao: |
-        $4=100+(n-1)(-4)\Rightarrow n=25$; \ $S=\tfrac{25\,(100+4)}{2}=1300$.
-
-    - enunciado: Uma pessoa caminha $2$ km no primeiro dia e aumenta $0{,}5$ km a cada dia. Em $20$ dias, ela percorre, ao todo,
-      opcoes: ['$105$ km', '$115$ km', '$125$ km', '$130$ km', '$135$ km']
-      correta: E
-      resolucao: |
-        $a_{20}=2+19\cdot0{,}5=11{,}5$; \ $S_{20}=\tfrac{20\,(2+11{,}5)}{2}=135$.
-
-    - enunciado: A soma de todos os números naturais de dois algarismos é
-      opcoes: ['$4905$', '$4950$', '$4995$', '$5050$', '$9810$']
+    - enunciado: O valor de $\log0{,}5$ é
+      opcoes: ['$-0{,}301$', '$0{,}699$', '$-0{,}699$', '$0{,}301$', '$0{,}150$']
       correta: A
       resolucao: |
-        De $10$ a $99$ são $90$ termos: $\tfrac{90\,(10+99)}{2}=4905$.
+        $\log\tfrac12=-\log2=-0{,}301$.
 
-    - enunciado: Em uma P.A., $a_1=3$ e a soma dos $10$ primeiros termos é $255$. A razão é
-      opcoes: ['$4$', '$5$', '$6$', '$7$', '$25$']
-      correta: B
-      resolucao: |
-        $S_{10}=\tfrac{10\,(6+9r)}{2}=30+45r=255\Rightarrow r=5$.
-
-    - enunciado: Latas são empilhadas em forma de triângulo, com $1$ lata no topo e uma lata a mais em cada fileira abaixo. Com $210$ latas, a pilha tem
-      opcoes: ['$14$ fileiras', '$15$ fileiras', '$18$ fileiras', '$20$ fileiras', '$21$ fileiras']
-      correta: D
-      resolucao: |
-        $\tfrac{n(n+1)}{2}=210\Rightarrow n^2+n-420=0\Rightarrow n=20$.
-
-    - enunciado: Uma P.A. tem $11$ termos e o termo central vale $15$. A soma de todos os termos é
-      opcoes: ['$150$', '$160$', '$165$', '$170$', '$330$']
-      correta: C
-      resolucao: |
-        O termo central é a média de cada par de extremos: $S=11\cdot15=165$.
-
-    - enunciado: A soma dos múltiplos de $4$ compreendidos entre $50$ e $150$ é
-      opcoes: ['$2300$', '$2350$', '$2400$', '$2450$', '$2500$']
+    - enunciado: O valor de $\log60$ é
+      opcoes: ['$0{,}778$', '$1{,}477$', '$7{,}78$', '$1{,}903$', '$1{,}778$']
       correta: E
       resolucao: |
-        De $52$ a $148$ são $25$ termos: $\tfrac{25\,(52+148)}{2}=2500$.
+        $\log6+\log10=0{,}778+1=1{,}778$.
 
-    - enunciado: Um vendedor ganhou R\$ 1.200,00 no primeiro mês de trabalho e, a cada mês, R\$ 150,00 a mais que no mês anterior. Em $12$ meses, ele ganhou, ao todo,
-      opcoes: ['R\$ 24.300,00', 'R\$ 25.200,00', 'R\$ 26.100,00', 'R\$ 34.200,00', 'R\$ 48.600,00']
-      correta: A
-      resolucao: |
-        $a_{12}=1200+11\cdot150=2850$; \ $S_{12}=\tfrac{12\,(1200+2850)}{2}=24\,300$.
-
-    - enunciado: O menor número de naturais consecutivos, a partir de $1$, que devem ser somados para que a soma passe de $500$ é
-      opcoes: ['$22$', '$30$', '$31$', '$32$', '$33$']
+    - enunciado: O valor de $\log_2 40-\log_2 5$ é
+      opcoes: ['$2$', '$8$', '$35$', '$3$', '$\log_2 35$']
       correta: D
       resolucao: |
-        $\tfrac{31\cdot32}{2}=496$ não passa; $\tfrac{32\cdot33}{2}=528$ passa.
+        $\log_2\tfrac{40}5=\log_2 8=3$.
 
-    - enunciado: A soma dos $n$ primeiros termos de uma P.A. é $S_n=2n^2+3n$. O $10^\circ$ termo é
-      opcoes: ['$39$', '$41$', '$43$', '$45$', '$230$']
-      correta: B
-      resolucao: |
-        $a_{10}=S_{10}-S_9=230-189=41$.
-
-    - enunciado: Os ângulos internos de um polígono convexo estão em P.A. de razão $10^\circ$ e o menor mede $100^\circ$. O número de lados é
-      opcoes: ['$8$', '$9$', '$10$', '$12$', '$16$']
-      correta: A
-      resolucao: |
-        $(n-2)\cdot180=\tfrac{n\,[200+(n-1)\cdot10]}{2}\Rightarrow n^2-17n+72=0\Rightarrow n=8$ ou $n=9$.
-        Com $n=9$, o maior ângulo seria $180^\circ$; logo $n=8$ (maior ângulo $170^\circ$).
-
-    - enunciado: Na P.A. $a_n=2n+1$, a soma $a_1+a_4+a_7+\dots+a_{28}$ vale
-      opcoes: ['$270$', '$290$', '$300$', '$310$', '$330$']
-      correta: C
-      resolucao: |
-        São $10$ termos ($1,4,\dots,28$), formando uma P.A. de $a_1=3$ até $a_{28}=57$.
-        $S=\tfrac{10\,(3+57)}{2}=300$.
-
-    - enunciado: Escrevem-se os números naturais de $1$ a $50$ e apagam-se os múltiplos de $3$. A soma dos números que restam é
-      opcoes: ['$408$', '$825$', '$850$', '$858$', '$867$']
+    - enunciado: O valor de $\log_3 18+\log_3\tfrac12$ é
+      opcoes: ['$1$', '$9$', '$3$', '$\log_3 18{,}5$', '$2$']
       correta: E
       resolucao: |
-        Soma de $1$ a $50$: $1275$. Múltiplos de $3$ (de $3$ a $48$): $16$ termos, soma $\tfrac{16\,(3+48)}{2}=408$.
-        Restam $1275-408=867$.
+        $\log_3 9=2$.
+
+    - enunciado: O valor de $\log50+\log2$ é
+      opcoes: ['$1$', '$\log52$', '$2$', '$10$', '$100$']
+      correta: C
+      resolucao: |
+        $\log100=2$.
+
+    - enunciado: Se $\log x=2\log3-\log2$, então $x$ vale
+      opcoes: ['$4$', '$\dfrac92$', '$6$', '$\dfrac32$', '$3$']
+      correta: B
+      resolucao: |
+        $\log x=\log9-\log2=\log\tfrac92$.
+
+    - enunciado: O valor de $\log\sqrt{1000}$ é
+      opcoes: ['$\sqrt3$', '$3$', '$1{,}5$', '$30$', '$0{,}5$']
+      correta: C
+      resolucao: |
+        $\tfrac12\log1000=\tfrac32$.
+
+    - enunciado: O valor de $\log_a\left(a^3\sqrt a\right)$ é
+      opcoes: ['$3$', '$1{,}5$', '$4$', '$3{,}5$', '$a^{3{,}5}$']
+      correta: D
+      resolucao: |
+        $a^3\cdot a^{1/2}=a^{7/2}$: $\tfrac72=3{,}5$.
+
+    - enunciado: Se $\log a=0{,}4$ e $\log b=0{,}3$, então $\log(a^2b)$ vale
+      opcoes: ['$0{,}7$', '$0{,}048$', '$1{,}1$', '$0{,}11$', '$1{,}4$']
+      correta: C
+      resolucao: |
+        $2\cdot0{,}4+0{,}3=1{,}1$.
+
+    - enunciado: O número $3^{20}$ tem
+      opcoes: ['$9$ algarismos', '$10$ algarismos', '$11$ algarismos', '$20$ algarismos', '$60$ algarismos']
+      correta: B
+      resolucao: |
+        $\log3^{20}=20\cdot0{,}477=9{,}54$: o número está entre $10^9$ e $10^{10}$, com $10$ algarismos.
+
+    - enunciado: A solução de $\log_2 x+\log_2 x^2=6$ é
+      opcoes: ['$2$', '$\sqrt2$', '$8$', '$64$', '$4$']
+      correta: E
+      resolucao: |
+        $3\log_2 x=6\Rightarrow\log_2 x=2\Rightarrow x=4$.
+
+    - enunciado: O valor de $\log\tfrac18$ é
+      opcoes: ['$-0{,}903$', '$0{,}903$', '$-0{,}125$', '$-0{,}301$', '$0{,}097$']
+      correta: A
+      resolucao: |
+        $-\log8=-3\log2=-0{,}903$.
+
+    - enunciado: A solução de $\log(x-3)+\log x=1$ é
+      opcoes: ['$-2$', '$5$', '$-2$ e $5$', '$10$', '$13$']
+      correta: B
+      resolucao: |
+        $x^2-3x-10=0\Rightarrow x=5$ ou $x=-2$; só $x=5$ satisfaz $x>3$.
+
+    - enunciado: Sendo $a=\log2$, o valor de $\log12{,}5$ é
+      opcoes: ['$1+a$', '$2a-3$', '$3a-2$', '$2-3a$', '$\dfrac{12}{5}a$']
+      correta: D
+      resolucao: |
+        $12{,}5=\tfrac{100}8$: $2-3a$.
+
+    - enunciado: A solução de $\log_2(x+2)-\log_2(x-1)=2$ é
+      opcoes: ['$1$', '$3$', '$2$', '$4$', '$6$']
+      correta: C
+      resolucao: |
+        $\dfrac{x+2}{x-1}=4\Rightarrow x+2=4x-4\Rightarrow x=2$.
+
+    - enunciado: O valor de $\log2+\log3+\log5$ é, aproximadamente,
+      opcoes: ['$1{,}076$', '$1{,}301$', '$1{,}000$', '$1{,}477$', '$0{,}301$']
+      correta: D
+      resolucao: |
+        $\log(2\cdot3\cdot5)=\log30=\log3+1=1{,}477$.
+
+    - enunciado: O valor de $\log72$ é
+      opcoes: ['$1{,}857$', '$1{,}556$', '$1{,}954$', '$0{,}857$', '$2{,}857$']
+      correta: A
+      resolucao: |
+        $72=2^3\cdot3^2$: $0{,}903+0{,}954=1{,}857$.
+
+    - enunciado: Se $\log_a x=2$ e $\log_a y=3$, então $\log_a\dfrac{x^3}{y^2}$ vale
+      opcoes: ['$0$', '$12$', '$1$', '$\dfrac23$', '$-1$']
+      correta: A
+      resolucao: |
+        $3\cdot2-2\cdot3=0$.
+
+    - enunciado: O valor de $\log4+\log25-\log10$ é
+      opcoes: ['$0$', '$2$', '$10$', '$\log19$', '$1$']
+      correta: E
+      resolucao: |
+        $\log\dfrac{4\cdot25}{10}=\log10=1$.

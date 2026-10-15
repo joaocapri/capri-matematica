@@ -1,71 +1,131 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de domínio, imagem e estudo gráfico",
-    "Aplicar o procedimento em um exemplo resolvido",
-    "Reconhecer erros frequentes antes de enfrentar uma questão"
+    "Resolver equações do 1º grau com parênteses, frações e decimais",
+    "Isolar uma letra em fórmulas (equações literais)",
+    "Conferir a solução substituindo na equação"
   ],
   "teoria": [
     {
-      "titulo": "A ideia que destrava",
+      "titulo": "Equilíbrio dos dois lados",
       "paragrafos": [
-        "Domínio indica entradas permitidas; imagem reúne as saídas efetivamente alcançadas. Frações proibem denominador zero, e raízes de índice par exigem radicando não negativo no conjunto dos reais."
+        "Uma equação é uma balança em equilíbrio. Tudo o que você fizer de um lado precisa fazer do outro: somar, subtrair, multiplicar ou dividir pelo mesmo número (diferente de zero).",
+        "O objetivo é deixar x sozinho de um lado."
       ],
       "formulas": [
-        "\\frac1{g(x)}:\\ g(x)\\neq0\\quad\\sqrt{h(x)}:\\ h(x)\\geq0"
-      ],
-      "dica": "Para estudar o sinal graficamente, olhe se o traço está acima ou abaixo do eixo x.",
-      "erroComum": "Uma função pode ter imagem diferente do contradomínio anunciado."
-    },
-    {
-      "titulo": "Vamos fazer uma juntos",
-      "paragrafos": [
-        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+        "ax+b=0\\;\\Rightarrow\\;x=-\\dfrac{b}{a}\\quad(a\\neq0)"
       ],
       "exemplo": {
-        "enunciado": "Encontre o domínio real de f(x)=√(x−2).",
+        "enunciado": "Resolva 3(x − 2) = x + 8.",
         "passos": [
-          "É raiz quadrada; imponha x−2≥0.",
-          "Logo, x≥2.",
-          "Domínio: [2,+∞)."
+          "Distribua: 3x − 6 = x + 8.",
+          "Junte os termos com x: 3x − x = 8 + 6, ou seja, 2x = 14.",
+          "x = 7. Conferindo: 3·5 = 15 e 7 + 8 = 15."
+        ]
+      },
+      "dica": "Ao terminar, substitua o valor na equação original. Se os dois lados derem o mesmo número, está certo.",
+      "erroComum": "Ao distribuir um sinal de menos, todos os termos dos parênteses trocam de sinal: −(x − 4) = −x + 4."
+    },
+    {
+      "titulo": "Equações com frações",
+      "paragrafos": [
+        "Multiplique todos os termos pelo MMC dos denominadores. As frações somem e a equação fica inteira."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva x/2 + x/3 = 10.",
+        "passos": [
+          "O MMC de 2 e 3 é 6.",
+          "Multiplique tudo por 6: 3x + 2x = 60.",
+          "5x = 60, logo x = 12."
         ]
       }
+    },
+    {
+      "titulo": "Equações literais",
+      "paragrafos": [
+        "Em fórmulas com várias letras, isole a letra pedida com as mesmas regras, tratando as outras como números."
+      ],
+      "formulas": [
+        "v=v_0+at\\;\\Rightarrow\\;t=\\dfrac{v-v_0}{a}"
+      ]
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "O domínio real de 1/(x−5) exclui:",
+      "nivel": "Aquecimento",
+      "enunciado": "A solução de 2x + 7 = 19 é",
       "opcoes": [
-        "0",
-        "1",
-        "5",
-        "−5"
+        "x = 5",
+        "x = 6",
+        "x = 12",
+        "x = 13"
+      ],
+      "correta": 1,
+      "explicacao": "2x = 12, logo x = 6."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "A solução de 5x − 3 = 2x + 9 é",
+      "opcoes": [
+        "x = 2",
+        "x = 3",
+        "x = 4",
+        "x = 6"
       ],
       "correta": 2,
-      "explicacao": "Em x=5 o denominador zera."
+      "explicacao": "3x = 12, logo x = 4."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A solução de 4 − (x − 1) = 2x é",
+      "opcoes": [
+        "x = 1",
+        "x = 5/3",
+        "x = 3/5",
+        "x = 5"
+      ],
+      "correta": 1,
+      "explicacao": "4 − x + 1 = 2x ⇒ 5 = 3x ⇒ x = 5/3."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "A imagem de f(x)=x², com domínio R, é:",
+      "enunciado": "A solução de x/4 − 1 = x/6 é",
       "opcoes": [
-        "R",
-        "(−∞,0]",
-        "[0,+∞)",
-        "(0,+∞)"
+        "x = 6",
+        "x = 10",
+        "x = 12",
+        "x = 24"
       ],
       "correta": 2,
-      "explicacao": "Quadrados reais são não negativos e todo valor não negativo é atingido."
-    }
-  ],
-  "videos": [
+      "explicacao": "Multiplicando por 12: 3x − 12 = 2x, logo x = 12."
+    },
     {
-      "titulo": "Vídeos e prática: funções",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Material de apoio sobre funções, domínio e composição.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
+      "nivel": "Aplicação",
+      "enunciado": "Isolando h em A = (b·h)/2, obtém-se",
+      "opcoes": [
+        "h = 2A/b",
+        "h = A/(2b)",
+        "h = 2b/A",
+        "h = Ab/2"
+      ],
+      "correta": 0,
+      "explicacao": "2A = b·h, logo h = 2A/b."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Para que valor de k a equação 2x + k = 5x − 4 tem solução x = 3?",
+      "opcoes": [
+        "k = 1",
+        "k = 5",
+        "k = 7",
+        "k = 11"
+      ],
+      "correta": 1,
+      "explicacao": "2·3 + k = 15 − 4 ⇒ 6 + k = 11 ⇒ k = 5."
     }
   ],
   "exercicios": [],

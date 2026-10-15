@@ -1,71 +1,123 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de função exponencial",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Reconhecer funções pares e ímpares pelo gráfico",
+    "Fazer o teste algébrico com f(−x)",
+    "Usar a paridade para economizar contas"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "Simetria no gráfico",
       "paragrafos": [
-        "Em uma exponencial, a variável está no expoente. A base é positiva e diferente de 1. Quando base>1, cresce; quando 0<base<1, decresce."
+        "Uma função é par quando o gráfico é simétrico em relação ao eixo y: o que acontece em x acontece igual em −x. É ímpar quando o gráfico é simétrico em relação à origem: girando 180°, o desenho volta igual.",
+        "A maioria das funções não é nem par nem ímpar."
       ],
       "formulas": [
-        "f(x)=a^x,\\quad a>0,\\ a\\neq1"
-      ],
-      "dica": "Exponencial positiva nunca cruza o eixo x.",
-      "erroComum": "O comportamento depende da base, não de o expoente ser positivo."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "f(-x)=f(x)\\;\\text{(par)}",
+        "f(-x)=-f(x)\\;\\text{(ímpar)}"
       ],
       "exemplo": {
-        "enunciado": "Compare 2^x e (1/2)^x em x=−1 e x=2.",
+        "enunciado": "Classifique f(x) = x⁴ − 3x².",
         "passos": [
-          "2^(−1)=1/2 e 2²=4: há crescimento.",
-          "(1/2)^(−1)=2 e (1/2)²=1/4: há decrescimento.",
-          "Ambas são positivas em todo x real."
+          "Troque x por −x: f(−x) = (−x)⁴ − 3(−x)² = x⁴ − 3x².",
+          "O resultado é igual a f(x).",
+          "Logo, f é par."
         ]
-      }
-    }
-  ],
-  "videos": [
+      },
+      "dica": "Potências pares de x mantêm o sinal; potências ímpares invertem. Isso já dá uma boa pista."
+    },
     {
-      "titulo": "Introdução aos logaritmos",
-      "canal": "Khan Academy Brasil · vídeo",
-      "descricao": "Relação entre potências, expoentes e logaritmos.",
-      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
+      "titulo": "Nem par nem ímpar",
+      "paragrafos": [
+        "Se f(−x) não for igual a f(x) nem a −f(x), a função não é par nem ímpar. Basta um contraexemplo numérico para mostrar isso."
+      ],
+      "exemplo": {
+        "enunciado": "f(x) = x² + x é par ou ímpar?",
+        "passos": [
+          "f(1) = 2 e f(−1) = 0.",
+          "f(−1) ≠ f(1), então não é par; f(−1) ≠ −f(1), então não é ímpar.",
+          "f não é par nem ímpar."
+        ]
+      },
+      "erroComum": "Uma função ímpar definida em 0 precisa ter f(0) = 0. Se f(0) ≠ 0, ela não pode ser ímpar."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Qual função é decrescente?",
+      "nivel": "Aquecimento",
+      "enunciado": "A função f(x) = x² é",
       "opcoes": [
-        "3^x",
-        "(1/3)^x",
-        "2^x",
-        "10^x"
+        "par",
+        "ímpar",
+        "par e ímpar",
+        "nem par nem ímpar"
+      ],
+      "correta": 0,
+      "explicacao": "f(−x) = x² = f(x)."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "A função f(x) = x³ é",
+      "opcoes": [
+        "par",
+        "ímpar",
+        "par e ímpar",
+        "nem par nem ímpar"
       ],
       "correta": 1,
-      "explicacao": "Base entre 0 e 1 implica decrescimento."
+      "explicacao": "f(−x) = −x³ = −f(x)."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "O gráfico de uma função ímpar é simétrico em relação",
+      "opcoes": [
+        "ao eixo x",
+        "ao eixo y",
+        "à origem",
+        "à reta y = x"
+      ],
+      "correta": 2,
+      "explicacao": "Ímpar: simetria central na origem."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O valor de 2^(−2) é:",
+      "enunciado": "A função f(x) = 2x + 1 é",
       "opcoes": [
+        "par",
+        "ímpar",
+        "par e ímpar",
+        "nem par nem ímpar"
+      ],
+      "correta": 3,
+      "explicacao": "f(−1) = −1 e f(1) = 3: não vale nenhuma das igualdades."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se f é par e f(3) = 7, então f(−3) vale",
+      "opcoes": [
+        "−7",
+        "0",
+        "3",
+        "7"
+      ],
+      "correta": 3,
+      "explicacao": "Par: f(−3) = f(3) = 7."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Se f é ímpar, f(2) = 5 e g(x) = f(x) + 1, então g(−2) vale",
+      "opcoes": [
+        "−6",
         "−4",
         "4",
-        "1/4",
-        "−1/4"
+        "6"
       ],
-      "correta": 2,
-      "explicacao": "2^(−2)=1/2²=1/4."
+      "correta": 1,
+      "explicacao": "f(−2) = −5, logo g(−2) = −5 + 1 = −4."
     }
   ],
   "exercicios": [],

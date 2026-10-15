@@ -1,266 +1,258 @@
-# Fonte das listas em PDF da aula A34 — Progressão Aritmética (P.A.) - Termo Geral
-# Matemática em LaTeX. Todas as respostas foram conferidas por cálculo independente.
+# Fonte das listas em PDF da aula A34 — Introdução aos Logaritmos
 aula: A34
 
 fixacao:
-  intro: Resolva na ordem — do aquecimento ao desafio. Na P.A. somamos sempre a mesma razão $r$; do $1^\circ$ ao $n$-ésimo termo são $n-1$ saltos, por isso $a_n=a_1+(n-1)r$.
+  intro: Resolva na ordem — do aquecimento ao desafio. $\log_a b=x\Leftrightarrow a^x=b$, com $b>0$, $a>0$ e $a\neq1$. O logaritmo é o expoente.
   secoes:
     - nome: Aquecimento
       questoes:
-        - enunciado: Dê a razão de cada P.A. e classifique-a em crescente, decrescente ou constante.
+        - enunciado: Calcule.
           itens:
-            - $(3,\ 7,\ 11,\ 15,\ \dots)$
-            - $(20,\ 14,\ 8,\ 2,\ \dots)$
-            - $(5,\ 5,\ 5,\ \dots)$
-            - $\left(-2,\ -\tfrac12,\ 1,\ \tfrac52,\ \dots\right)$
+            - $\log_2 8$
+            - $\log_3 81$
+            - $\log_5 1$
+            - $\log 1000$
           resolucao: |
-            A razão é a diferença entre um termo e o anterior.
-            (a) $r=4$, crescente. \ (b) $r=-6$, decrescente.
-            (c) $r=0$, constante. \ (d) $r=\tfrac32$, crescente.
-          resposta: '(a) $4$, cresc. \quad (b) $-6$, decresc. \quad (c) $0$, const. \quad (d) $\tfrac32$, cresc.'
+            Pergunte "a base elevada a quanto dá o número?".
+            (a) $2^3=8$: $3$. (b) $3^4=81$: $4$. (c) $5^0=1$: $0$. (d) Base $10$: $10^3=1000$, então $3$.
+          resposta: '(a) $3$ \quad (b) $4$ \quad (c) $0$ \quad (d) $3$'
 
-        - enunciado: Calcule o $20^\circ$ termo da P.A. $(2,\ 5,\ 8,\ \dots)$.
+        - enunciado: Calcule.
+          itens:
+            - $\log_2\tfrac14$
+            - $\log_{1/2}8$
+            - $\log_4 2$
+            - $\log_9 27$
           resolucao: |
-            $a_1=2$ e $r=3$: $a_{20}=2+19\cdot3=59$.
-          resposta: '$a_{20}=59$'
+            (a) $2^{-2}=\tfrac14$: $-2$. (b) $\left(\tfrac12\right)^{-3}=8$: $-3$.
+            (c) $4^{1/2}=2$: $\tfrac12$. (d) $9^x=27\Rightarrow 3^{2x}=3^3\Rightarrow x=\tfrac32$.
+          resposta: '(a) $-2$ \quad (b) $-3$ \quad (c) $\tfrac12$ \quad (d) $\tfrac32$'
 
-        - enunciado: Em uma P.A., $a_1=10$ e $r=-3$. Calcule $a_{15}$.
+        - enunciado: Escreva na forma de logaritmo.
+          itens:
+            - $2^5=32$
+            - $10^{-2}=0{,}01$
+            - $7^0=1$
           resolucao: |
-            $a_{15}=10+14\cdot(-3)=10-42=-32$.
-          resposta: '$a_{15}=-32$'
+            (a) $\log_2 32=5$. (b) $\log 0{,}01=-2$. (c) $\log_7 1=0$.
+          resposta: '(a) $\log_2 32=5$ \quad (b) $\log 0{,}01=-2$ \quad (c) $\log_7 1=0$'
 
-        - enunciado: Escreva o termo geral da P.A. $(7,\ 11,\ 15,\ \dots)$.
+        - enunciado: Calcule usando as consequências da definição.
+          itens:
+            - $\log_6 6$
+            - $3^{\log_3 7}$
+            - $\log_5 5^4$
           resolucao: |
-            $a_n=7+(n-1)\cdot4=4n+3$.
-          resposta: '$a_n=4n+3$'
+            (a) $\log_a a=1$. (b) $a^{\log_a b}=b$: $7$. (c) $\log_a a^n=n$: $4$.
+          resposta: '(a) $1$ \quad (b) $7$ \quad (c) $4$'
 
-        - enunciado: Em uma P.A., $a_1=4$ e $a_9=36$. Calcule a razão.
+        - enunciado: Resolva.
+          itens:
+            - $\log_2 x=5$
+            - $\log_x 49=2$
           resolucao: |
-            Do $1^\circ$ ao $9^\circ$ termo são $8$ saltos: $8r=36-4=32\Rightarrow r=4$.
-          resposta: '$r=4$'
+            (a) $x=2^5=32$. (b) $x^2=49$ com $x>0$ e $x\neq1$: $x=7$.
+          resposta: '(a) $32$ \quad (b) $7$'
 
-        - enunciado: Determine $x$ para que $(x,\ 2x+1,\ 5x-4)$ seja uma P.A. e escreva seus termos.
+        - enunciado: Por que $\log_2(-4)$ e $\log_1 5$ não existem?
           resolucao: |
-            Na P.A., o termo do meio é a média dos vizinhos: $2(2x+1)=x+(5x-4)$.
-            $4x+2=6x-4\Rightarrow x=3$. A P.A. é $(3,\ 7,\ 11)$.
-          resposta: '$x=3$; \ $(3,\ 7,\ 11)$'
+            $2^x$ é sempre positivo, então nunca dá $-4$.
+            $1^x=1$ para todo $x$, então nunca dá $5$. Por isso a base não pode ser $1$.
+          resposta: 'logaritmando negativo; base igual a $1$'
 
-        - enunciado: Qual é a posição do termo $101$ na P.A. $(5,\ 9,\ 13,\ \dots)$?
+        - enunciado: Calcule $\log_3 9+\log_2 16-\log 100$.
           resolucao: |
-            $5+(n-1)\cdot4=101\Rightarrow n-1=24\Rightarrow n=25$.
-          resposta: '$25^\circ$ termo'
+            $2+4-2=4$.
+          resposta: '$4$'
 
     - nome: Treino
       questoes:
-        - enunciado: Em uma P.A., $a_3=10$ e $a_8=30$. Calcule a razão e o primeiro termo.
+        - enunciado: Resolva $\log_3(x-1)=2$.
           resolucao: |
-            Do $3^\circ$ ao $8^\circ$ termo são $5$ saltos: $5r=20\Rightarrow r=4$.
-            $a_1=a_3-2r=10-8=2$.
-          resposta: '$r=4$; \ $a_1=2$'
+            $x-1=3^2=9\Rightarrow x=10$ (e $x-1>0$, válido).
+          resposta: '$x=10$'
 
-        - enunciado: Quantos múltiplos de $7$ existem entre $100$ e $500$?
+        - enunciado: Resolva $\log_x 8=\tfrac32$.
           resolucao: |
-            O primeiro é $105=7\cdot15$ e o último é $497=7\cdot71$.
-            É uma P.A. de razão $7$: $497=105+(n-1)\cdot7\Rightarrow n=57$.
-          resposta: '$57$ múltiplos'
+            $x^{3/2}=8\Rightarrow x=8^{2/3}=4$.
+          resposta: '$x=4$'
 
-        - enunciado: Interpole $4$ meios aritméticos entre $3$ e $23$.
+        - enunciado: Determine as condições de existência de $\log_{x-2}(10-x)$.
           resolucao: |
-            A P.A. terá $6$ termos, com $a_1=3$ e $a_6=23$: $5r=20\Rightarrow r=4$.
-            $(3,\ 7,\ 11,\ 15,\ 19,\ 23)$.
-          resposta: '$7,\ 11,\ 15,\ 19$'
+            Logaritmando: $10-x>0\Rightarrow x<10$. Base: $x-2>0$ e $x-2\neq1$, isto é, $x>2$ e $x\neq3$.
+          resposta: '$2<x<10$ e $x\neq3$'
 
-        - enunciado: Três números em P.A. têm soma $21$ e produto $231$. Determine esses números.
+        - enunciado: Calcule $\log_{\sqrt2}8$.
           resolucao: |
-            Escreva-os como $x-r$, $x$, $x+r$. Soma: $3x=21\Rightarrow x=7$.
-            Produto: $(7-r)\cdot7\cdot(7+r)=231\Rightarrow 49-r^2=33\Rightarrow r=\pm4$.
-            Os números são $3$, $7$ e $11$.
-          resposta: '$3,\ 7$ e $11$'
+            $(\sqrt2)^x=8\Rightarrow 2^{x/2}=2^3\Rightarrow x=6$.
+          resposta: '$6$'
 
-        - enunciado: Em uma P.A. de razão $5$, o $10^\circ$ termo é $48$. Calcule $a_1$ e $a_{30}$.
+        - enunciado: Calcule $9^{\log_3 2}$.
           resolucao: |
-            $a_1=48-9\cdot5=3$.
-            $a_{30}=a_{10}+20\cdot5=148$.
-          resposta: '$a_1=3$; \ $a_{30}=148$'
+            $9^{\log_3 2}=\left(3^{\log_3 2}\right)^2=2^2=4$.
+          resposta: '$4$'
 
-        - enunciado: A P.A. $(50,\ 47,\ 44,\ \dots)$ é decrescente. Qual é o seu primeiro termo negativo e que posição ele ocupa?
+        - enunciado: Calcule $\log_2(\log_3 81)$.
           resolucao: |
-            $50-3(n-1)<0\Rightarrow n-1>\tfrac{50}3\approx16{,}7\Rightarrow n-1\ge17$.
-            Para $n=18$: $a_{18}=50-51=-1$.
-          resposta: '$a_{18}=-1$'
+            $\log_3 81=4$ e $\log_2 4=2$.
+          resposta: '$2$'
 
-        - enunciado: Um táxi cobra bandeirada de R\$ 5,50 e mais R\$ 2,80 por quilômetro rodado. Os valores para $1,2,3,\dots$ km formam uma P.A.
-          itens:
-            - Escreva o valor $a_n$ de uma corrida de $n$ km.
-            - Quanto custa uma corrida de $12$ km?
+        - enunciado: Se $\log_2 x=-3$, quanto vale $x$? E $\log_{x}64$?
           resolucao: |
-            (a) $a_n=5{,}50+2{,}80n$ (P.A. de razão $2{,}80$).
-            (b) $a_{12}=5{,}50+33{,}60=39{,}10$.
-          resposta: '(a) $a_n=5{,}50+2{,}80n$ \quad (b) R\$ 39,10'
+            $x=2^{-3}=\tfrac18$. \ $\left(\tfrac18\right)^y=64\Rightarrow 2^{-3y}=2^6\Rightarrow y=-2$.
+          resposta: '$x=\tfrac18$; \ $\log_{1/8}64=-2$'
 
-        - enunciado: Os ângulos internos de um triângulo estão em P.A. e o menor deles mede $30^\circ$. Calcule os outros dois.
+        - enunciado: O pH de uma solução é $\text{pH}=-\log[\text{H}^+]$. Calcule o pH de soluções com $[\text{H}^+]=10^{-3}$ e $[\text{H}^+]=10^{-8}$ mol/L e diga qual é ácida.
           resolucao: |
-            Ângulos $x-r$, $x$, $x+r$: a soma é $3x=180^\circ\Rightarrow x=60^\circ$.
-            Como $x-r=30^\circ$, $r=30^\circ$ e o maior é $90^\circ$.
-          resposta: '$60^\circ$ e $90^\circ$'
+            $\text{pH}=3$ e $\text{pH}=8$. A primeira é ácida (pH menor que $7$).
+          resposta: 'pH $3$ (ácida) e pH $8$'
 
     - nome: Desafio
       questoes:
-        - enunciado: Em uma P.A., $a_2+a_7=30$ e $a_4+a_{10}=50$. Determine $a_1$ e $r$.
+        - enunciado: Sabendo que $\log_3 x=2$ e $\log_x y=3$, determine $x$ e $y$.
           resolucao: |
-            $(a_1+r)+(a_1+6r)=30\Rightarrow 2a_1+7r=30$.
-            $(a_1+3r)+(a_1+9r)=50\Rightarrow 2a_1+12r=50$.
-            Subtraindo: $5r=20\Rightarrow r=4$ e $2a_1=30-28\Rightarrow a_1=1$.
-          resposta: '$a_1=1$; \ $r=4$'
+            $x=3^2=9$ e $y=9^3=729$.
+          resposta: '$x=9$; \ $y=729$'
 
-        - enunciado: Os lados de um triângulo retângulo estão em P.A. de razão $3$. Calcule os três lados.
+        - enunciado: Determine o domínio de $f(x)=\log_x(5-x)$.
           resolucao: |
-            Lados $x-3$, $x$, $x+3$, com $x+3$ a hipotenusa.
-            $(x-3)^2+x^2=(x+3)^2\Rightarrow x^2-12x=0\Rightarrow x=12$.
-          resposta: '$9,\ 12$ e $15$'
+            $5-x>0\Rightarrow x<5$; base: $x>0$ e $x\neq1$.
+          resposta: '$]0,\,1[\ \cup\ ]1,\,5[$'
 
-        - enunciado: Quantos números inteiros de $1$ a $1000$ deixam resto $3$ na divisão por $8$?
+        - enunciado: Calcule $10^{2+\log 3}$.
           resolucao: |
-            São $3,\ 11,\ 19,\ \dots$, P.A. de razão $8$. O maior é $995=8\cdot124+3$.
-            $995=3+(n-1)\cdot8\Rightarrow n=125$.
-          resposta: '$125$ números'
+            $10^2\cdot10^{\log3}=100\cdot3=300$.
+          resposta: '$300$'
 
-        - enunciado: Em uma P.A., $a_m=n$ e $a_n=m$, com $m\neq n$. Mostre que $r=-1$ e calcule $a_{m+n}$.
+        - enunciado: Resolva $\log_2(x^2-1)=3$.
           resolucao: |
-            $a_m-a_n=(m-n)r$, ou seja, $n-m=(m-n)r\Rightarrow r=-1$.
-            $a_{m+n}=a_m+n\cdot r=n-n=0$.
-          resposta: '$r=-1$; \ $a_{m+n}=0$'
+            $x^2-1=8\Rightarrow x=\pm3$; ambos deixam $x^2-1=8>0$.
+          resposta: '$\{-3,\,3\}$'
 
-        - enunciado: Um ônibus passa por um ponto às 6h10 e, depois, a cada $25$ minutos.
-          itens:
-            - Em que horário ocorre a $20^{\text{a}}$ passagem?
-            - Algum ônibus passa exatamente às 12h00? Se sim, qual passagem?
+        - enunciado: O nível sonoro, em decibéis, é $N=10\log\dfrac I{I_0}$. Qual é o nível de um som com $I=10^6\,I_0$? E se a intensidade for multiplicada por $100$?
           resolucao: |
-            Os horários, em minutos depois das 6h10, formam a P.A. $0,\ 25,\ 50,\ \dots$, com $a_n=25(n-1)$.
-            (a) $a_{20}=25\cdot19=475$ min, ou seja, 7 h 55 min depois das 6h10: 14h05.
-            (b) De 6h10 a 12h00 são $350$ min: $25(n-1)=350\Rightarrow n=15$. Sim, a $15^{\text{a}}$ passagem.
-          resposta: '(a) 14h05 \quad (b) sim, a $15^{\text{a}}$'
+            $N=10\cdot6=60$ dB. Com $I=10^8\,I_0$: $N=80$ dB (multiplicar por $100$ soma $20$ dB).
+          resposta: '$60$ dB; \ $80$ dB'
 
 vestibular:
   intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
   questoes:
-    - enunciado: O $15^\circ$ termo da P.A. $(4,\ 7,\ 10,\ \dots)$ é
-      opcoes: ['$46$', '$49$', '$52$', '$55$', '$60$']
-      correta: A
-      resolucao: |
-        $a_{15}=4+14\cdot3=46$.
-
-    - enunciado: A razão da P.A. em que $a_1=-5$ e $a_{11}=25$ é
-      opcoes: ['$2$', '$\tfrac{30}{11}$', '$3$', '$\tfrac{10}3$', '$5$']
+    - enunciado: O valor de $\log_2 32+\log_3\tfrac1{27}$ é
+      opcoes: ['$-2$', '$8$', '$2$', '$3$', '$-8$']
       correta: C
       resolucao: |
-        Do $1^\circ$ ao $11^\circ$ termo são $10$ saltos: $10r=30\Rightarrow r=3$.
+        $5+(-3)=2$.
 
-    - enunciado: O termo geral da P.A. $(-3,\ 1,\ 5,\ 9,\ \dots)$ é
-      opcoes: ['$a_n=4n-7$', '$a_n=4n-3$', '$a_n=4n+1$', '$a_n=-3n+4$', '$a_n=n-4$']
+    - enunciado: O valor de $\log 0{,}01$ é
+      opcoes: ['$-2$', '$2$', '$-1$', '$0{,}01$', '$-0{,}2$']
       correta: A
       resolucao: |
-        $a_n=-3+(n-1)\cdot4=4n-7$.
+        $0{,}01=10^{-2}$.
 
-    - enunciado: A quantidade de múltiplos de $6$ entre $50$ e $500$ é
-      opcoes: ['$72$', '$73$', '$74$', '$75$', '$76$']
-      correta: D
-      resolucao: |
-        O primeiro é $54=6\cdot9$ e o último é $498=6\cdot83$: são $83-9+1=75$.
-
-    - enunciado: Se $(x+1,\ 3x,\ 4x+2)$ é uma P.A., então $x$ vale
-      opcoes: ['$-3$', '$-1$', '$1$', '$2$', '$3$']
+    - enunciado: O valor de $\log_{\sqrt2}8$ é
+      opcoes: ['$3$', '$4$', '$\dfrac32$', '$4\sqrt2$', '$6$']
       correta: E
       resolucao: |
-        $2\cdot3x=(x+1)+(4x+2)\Rightarrow 6x=5x+3\Rightarrow x=3$.
+        $(\sqrt2)^x=2^{x/2}=2^3\Rightarrow x=6$.
 
-    - enunciado: Em uma P.A., $a_5=18$ e $a_{12}=46$. O primeiro termo é
-      opcoes: ['$2$', '$4$', '$6$', '$14$', '$18$']
+    - enunciado: O valor de $2^{\log_2 5}+\log_5 25$ é
+      opcoes: ['$5$', '$7$', '$10$', '$12$', '$27$']
+      correta: B
+      resolucao: |
+        $2^{\log_2 5}=5$ e $\log_5 25=2$. Soma: $7$.
+
+    - enunciado: A expressão $\log_x(5-x)$ está definida se, e somente se,
+      opcoes: ['$x<5$', '$0<x<5$', '$x>0$ e $x\neq1$', '$0<x<5$ e $x\neq1$', '$1<x<5$']
+      correta: D
+      resolucao: |
+        Logaritmando positivo ($x<5$) e base positiva e diferente de $1$.
+
+    - enunciado: O valor de $\log_8 4$ é
+      opcoes: ['$\dfrac12$', '$\dfrac23$', '$\dfrac32$', '$2$', '$\dfrac34$']
+      correta: B
+      resolucao: |
+        $8^x=4\Rightarrow 2^{3x}=2^2\Rightarrow x=\tfrac23$.
+
+    - enunciado: Se $\log_x 81=4$, então $x$ vale
+      opcoes: ['$\dfrac{81}4$', '$9$', '$3$', '$-3$', '$\pm3$']
+      correta: C
+      resolucao: |
+        $x^4=81$, com $x>0$ e $x\neq1$: $x=3$.
+
+    - enunciado: O valor de $10^{2+\log 3}$ é
+      opcoes: ['$5$', '$30$', '$103$', '$1000$', '$300$']
+      correta: E
+      resolucao: |
+        $10^2\cdot10^{\log 3}=100\cdot3=300$.
+
+    - enunciado: O valor de $\log_2(\log_3 81)$ é
+      opcoes: ['$2$', '$4$', '$1$', '$3$', '$\dfrac12$']
       correta: A
       resolucao: |
-        $7r=46-18=28\Rightarrow r=4$; \ $a_1=a_5-4r=18-16=2$.
+        $\log_3 81=4$ e $\log_2 4=2$.
 
-    - enunciado: O primeiro termo negativo da P.A. $(100,\ 93,\ 86,\ \dots)$ é
-      opcoes: ['$-7$', '$-5$', '$-3$', '$-2$', '$-1$']
-      correta: B
-      resolucao: |
-        $100-7(n-1)<0\Rightarrow n-1\ge15$. Para $n=16$: $a_{16}=100-105=-5$.
-
-    - enunciado: Ao interpolar $6$ meios aritméticos entre $5$ e $40$, obtém-se uma P.A. de razão
-      opcoes: ['$\tfrac{35}8$', '$5$', '$\tfrac{35}6$', '$6$', '$7$']
-      correta: B
-      resolucao: |
-        A P.A. tem $8$ termos, com $7$ saltos: $7r=35\Rightarrow r=5$.
-
-    - enunciado: Três números em P.A. têm soma $15$ e produto $105$. O maior deles é
-      opcoes: ['$5$', '$6$', '$7$', '$9$', '$11$']
-      correta: C
-      resolucao: |
-        $x-r$, $x$, $x+r$: $3x=15\Rightarrow x=5$; \ $5(25-r^2)=105\Rightarrow r^2=4$.
-        Os números são $3$, $5$ e $7$.
-
-    - enunciado: Um táxi cobra bandeirada de R\$ 4,80 e mais R\$ 2,50 por quilômetro rodado. Uma corrida de $18$ km custa
-      opcoes: ['R\$ 45,00', 'R\$ 47,30', 'R\$ 48,10', 'R\$ 49,80', 'R\$ 52,30']
+    - enunciado: O pH de uma solução é $\text{pH}=-\log[\text{H}^+]$. Uma solução com $[\text{H}^+]=10^{-5}$ mol/L tem pH
+      opcoes: ['$-5$', '$0{,}5$', '$10$', '$5$', '$7$']
       correta: D
       resolucao: |
-        $4{,}80+18\cdot2{,}50=4{,}80+45{,}00=49{,}80$.
+        $\text{pH}=-(-5)=5$: solução ácida.
 
-    - enunciado: Os ângulos internos de um quadrilátero estão em P.A. e o menor deles mede $60^\circ$. O maior ângulo mede
-      opcoes: ['$90^\circ$', '$100^\circ$', '$105^\circ$', '$110^\circ$', '$120^\circ$']
-      correta: E
-      resolucao: |
-        Soma: $4\cdot60^\circ+6r=360^\circ\Rightarrow r=20^\circ$. O maior é $60^\circ+3\cdot20^\circ=120^\circ$.
-
-    - enunciado: O primeiro ônibus de uma linha sai às 5h40 e os seguintes saem a cada $18$ minutos. O $11^\circ$ ônibus sai às
-      opcoes: ['8h22', '8h30', '8h36', '8h40', '8h58']
+    - enunciado: O valor de $\log_{1/3}9$ é
+      opcoes: ['$3$', '$2$', '$\dfrac12$', '$-2$', '$-3$']
       correta: D
       resolucao: |
-        Do $1^\circ$ ao $11^\circ$ ônibus são $10$ intervalos de $18$ min, ou seja, $180$ min (3 h) depois das 5h40: 8h40.
+        $\left(\tfrac13\right)^x=9\Rightarrow 3^{-x}=3^2\Rightarrow x=-2$.
 
-    - enunciado: O número de termos da P.A. $(7,\ 12,\ 17,\ \dots,\ 497)$ é
-      opcoes: ['$98$', '$99$', '$100$', '$101$', '$102$']
-      correta: B
-      resolucao: |
-        $497=7+(n-1)\cdot5\Rightarrow n-1=98\Rightarrow n=99$.
-
-    - enunciado: Os lados de um triângulo retângulo estão em P.A. de razão $4$. O perímetro desse triângulo é
-      opcoes: ['$24$', '$30$', '$36$', '$40$', '$48$']
-      correta: E
-      resolucao: |
-        $(x-4)^2+x^2=(x+4)^2\Rightarrow x=16$. Lados $12$, $16$ e $20$: perímetro $48$.
-
-    - enunciado: Em uma P.A., $a_4+a_9=50$ e $a_6=22$. O primeiro termo é
-      opcoes: ['$-10$', '$-9$', '$-8$', '$-6$', '$2$']
-      correta: C
-      resolucao: |
-        $2a_1+11r=50$ e $a_1+5r=22\Rightarrow 2a_1+10r=44$. Subtraindo: $r=6$; \ $a_1=22-30=-8$.
-
-    - enunciado: Os números naturais que deixam resto $2$ na divisão por $5$, em ordem crescente, formam a sequência $(2,\ 7,\ 12,\ \dots)$. O $100^\circ$ termo é
-      opcoes: ['$497$', '$498$', '$500$', '$502$', '$505$']
+    - enunciado: Se $\log_2 x=-3$, então $x$ vale
+      opcoes: ['$\dfrac18$', '$-8$', '$-6$', '$8$', '$-\dfrac18$']
       correta: A
       resolucao: |
-        $a_{100}=2+99\cdot5=497$.
+        $x=2^{-3}=\tfrac18$. Um logaritmo negativo não significa que o número seja negativo.
 
-    - enunciado: Em uma escada, o primeiro degrau está a $20$ cm do chão e cada degrau seguinte fica $17$ cm acima do anterior. O $15^\circ$ degrau está a uma altura de
-      opcoes: ['$238$ cm', '$245$ cm', '$255$ cm', '$258$ cm', '$275$ cm']
-      correta: D
-      resolucao: |
-        $a_{15}=20+14\cdot17=258$ cm.
-
-    - enunciado: Em uma P.A. com $a_1=2$, o $10^\circ$ termo é o triplo do $3^\circ$. A razão é
-      opcoes: ['$1$', '$\tfrac43$', '$\tfrac32$', '$2$', '$3$']
-      correta: B
-      resolucao: |
-        $2+9r=3(2+2r)\Rightarrow 3r=4\Rightarrow r=\tfrac43$.
-
-    - enunciado: Um corredor treina $3$ km no primeiro dia e aumenta $0{,}5$ km por dia. Ele corre $12$ km pela primeira vez no
-      opcoes: ['$15^\circ$ dia', '$16^\circ$ dia', '$17^\circ$ dia', '$18^\circ$ dia', '$19^\circ$ dia']
-      correta: E
-      resolucao: |
-        $3+0{,}5(n-1)=12\Rightarrow n-1=18\Rightarrow n=19$.
-
-    - enunciado: Em uma P.A., $a_m=n$ e $a_n=m$, com $m\neq n$. Então $a_{m+n}$ vale
-      opcoes: ['$-(m+n)$', '$-1$', '$0$', '$1$', '$m+n$']
+    - enunciado: O valor de $\log_{25}5$ é
+      opcoes: ['$2$', '$5$', '$\dfrac12$', '$-\dfrac12$', '$\dfrac15$']
       correta: C
       resolucao: |
-        $(m-n)r=a_m-a_n=n-m\Rightarrow r=-1$. Logo $a_{m+n}=a_m+nr=n-n=0$.
+        $25^{1/2}=5$.
+
+    - enunciado: A quantidade de números inteiros $x$ para os quais $\log(x-1)$ e $\log(6-x)$ estão ambos definidos é
+      opcoes: ['$6$', '$3$', '$5$', '$2$', '$4$']
+      correta: E
+      resolucao: |
+        $x>1$ e $x<6$: inteiros $2,3,4,5$.
+
+    - enunciado: O nível sonoro é $N=10\log\dfrac I{I_0}$ decibéis. Um som com $I=10^6\,I_0$ tem nível de
+      opcoes: ['$6$ dB', '$60$ dB', '$16$ dB', '$600$ dB', '$10^6$ dB']
+      correta: B
+      resolucao: |
+        $N=10\cdot\log10^6=10\cdot6=60$ dB.
+
+    - enunciado: Se $a=\log_2 3$, então $4^a$ vale
+      opcoes: ['$6$', '$12$', '$3$', '$8$', '$9$']
+      correta: E
+      resolucao: |
+        $2^a=3$, então $4^a=(2^a)^2=9$.
+
+    - enunciado: Sabendo que $\log_3 x=2$ e $\log_x y=3$, o valor de $y$ é
+      opcoes: ['$729$', '$27$', '$81$', '$243$', '$18$']
+      correta: A
+      resolucao: |
+        $x=9$ e $y=9^3=729$.
+
+    - enunciado: O valor de $\log1+\log10+\log100$ é
+      opcoes: ['$0$', '$1$', '$2$', '$3$', '$111$']
+      correta: D
+      resolucao: |
+        $0+1+2=3$.
+
+    - enunciado: O valor de $9^{\log_3 2}$ é
+      opcoes: ['$2$', '$4$', '$6$', '$8$', '$18$']
+      correta: B
+      resolucao: |
+        $9^{\log_3 2}=\left(3^{\log_3 2}\right)^2=2^2=4$.
+
+    - enunciado: O valor de $\log_{0{,}5}0{,}125$ é
+      opcoes: ['$\dfrac14$', '$-3$', '$3$', '$4$', '$-\dfrac13$']
+      correta: C
+      resolucao: |
+        $0{,}5^3=0{,}125$.

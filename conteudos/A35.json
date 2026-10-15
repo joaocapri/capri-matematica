@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de soma de p.a",
+    "Reconhecer o conceito central de propriedades operatórias",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Somar uma PA termo a termo funciona, mas emparelhar extremos é mais rápido. Em uma PA, primeiro+último tem sempre o mesmo valor dos pares simétricos."
+        "As propriedades transformam produto em soma, quociente em diferença e potência em multiplicador. Elas ajudam a simplificar expressões — mas apenas quando os logaritmos envolvidos estão definidos."
       ],
       "formulas": [
-        "S_n=\\frac{n(a_1+a_n)}2"
+        "\\log_a(xy)=\\log_a x+\\log_a y\\quad(x,y>0)"
       ],
-      "dica": "Se o último termo não foi dado, calcule-o primeiro com a fórmula de PA.",
-      "erroComum": "Não use n(a₁+aₙ) sem dividir por 2."
+      "dica": "Quando há soma de logs da mesma base, procure um produto dentro do log.",
+      "erroComum": "Não existe regra log(x+y)=log x+log y."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,47 +25,47 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Calcule 1+2+...+100.",
+        "enunciado": "Calcule log₂8 + log₂4.",
         "passos": [
-          "Há 100 termos, primeiro 1 e último 100.",
-          "S₁₀₀=100(1+100)/2.",
-          "Total: 5050."
+          "8=2³ e 4=2².",
+          "Os logaritmos valem 3 e 2.",
+          "Soma=5, equivalente a log₂32."
         ]
       }
     }
   ],
   "videos": [
     {
-      "titulo": "Progressões aritméticas e geométricas",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
     }
   ],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "A soma de 2+4+6+8 é:",
+      "enunciado": "log₁₀2 + log₁₀5 é:",
       "opcoes": [
-        "16",
-        "18",
-        "20",
-        "24"
+        "1",
+        "7",
+        "10",
+        "0"
       ],
-      "correta": 2,
-      "explicacao": "Quatro termos: 4(2+8)/2=20."
+      "correta": 0,
+      "explicacao": "log₁₀(2·5)=log₁₀10=1."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Quanto vale 1+2+...+10?",
+      "enunciado": "log₂16 − log₂2 vale:",
       "opcoes": [
-        "45",
-        "50",
-        "55",
-        "60"
+        "2",
+        "3",
+        "4",
+        "8"
       ],
-      "correta": 2,
-      "explicacao": "10·11/2=55."
+      "correta": 1,
+      "explicacao": "4−1=3, ou log₂8=3."
     }
   ],
   "exercicios": [],

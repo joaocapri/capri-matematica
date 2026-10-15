@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de progressão aritmética (p.a.) - termo geral",
+    "Reconhecer o conceito central de introdução aos logaritmos",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Progressão aritmética (PA) é a sequência em que se soma sempre a mesma razão r. Para chegar direto ao termo n, conte quantos saltos existem desde o primeiro: n−1."
+        "Logaritmo responde a pergunta 'qual expoente transforma a base neste número?'. Ele desfaz uma potência, mas só existe nos reais com argumento positivo, base positiva e diferente de 1."
       ],
       "formulas": [
-        "a_n=a_1+(n-1)r"
+        "\\log_a b=x\\Longleftrightarrow a^x=b\\quad(a>0,a\\neq1,b>0)"
       ],
-      "dica": "De a₁ até a₁₀ são nove intervalos, não dez.",
-      "erroComum": "Razão negativa gera PA decrescente; não muda a fórmula."
+      "dica": "Converta imediatamente para potência quando o logaritmo parecer estranho.",
+      "erroComum": "Log de zero ou número negativo não existe no conjunto real."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,47 +25,47 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Uma PA começa em 7 e tem razão 4. Ache a₁₀.",
+        "enunciado": "Calcule log₂32.",
         "passos": [
-          "a₁=7, r=4.",
-          "a₁₀=7+9·4.",
-          "a₁₀=43."
+          "Pergunte 2 elevado a qual número dá 32?",
+          "2⁵=32.",
+          "Portanto log₂32=5."
         ]
       }
     }
   ],
   "videos": [
     {
-      "titulo": "Progressões aritméticas e geométricas",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
     }
   ],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "O 6º termo da PA 2,5,8,... é:",
+      "enunciado": "log₃81 vale:",
       "opcoes": [
-        "14",
-        "15",
-        "17",
-        "20"
+        "3",
+        "4",
+        "9",
+        "27"
       ],
-      "correta": 2,
-      "explicacao": "a₆=2+5·3=17."
+      "correta": 1,
+      "explicacao": "3⁴=81."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Em uma PA, a média entre dois termos vizinhos vale:",
+      "enunciado": "Qual expressão é definida nos reais?",
       "opcoes": [
-        "A soma deles",
-        "O termo central",
-        "O produto deles",
-        "A razão"
+        "log₂(−2)",
+        "log₁5",
+        "log₃9",
+        "log₀4"
       ],
-      "correta": 1,
-      "explicacao": "Para três termos consecutivos, a do meio é a média aritmética dos extremos."
+      "correta": 2,
+      "explicacao": "Base 3 é válida e argumento 9>0."
     }
   ],
   "exercicios": [],

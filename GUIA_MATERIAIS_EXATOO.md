@@ -1,12 +1,12 @@
 # Materiais gerais e ponte Capri → Exatoo
 
-O Capri mantém uma única busca, seguida da exploração por 9 áreas, 38 assuntos e 144 aulas. O antigo destaque promocional dos dois PDFs foi retirado. Os materiais continuam disponíveis na busca e na aba de cada aula.
+O Capri mantém uma única busca, seguida da exploração por 9 áreas, 41 assuntos e 152 aulas. O antigo destaque promocional dos dois PDFs foi retirado. Os materiais continuam disponíveis na busca e na aba de cada aula.
 
 ## Como cadastrar PDFs
 
 Fonte de verdade: data/materiais.json. Use uma das chaves abaixo (e apenas uma):
 
-- Aula: tipo=aula, aula=A17, arquivos=[{titulo, tipo, url}].
+- Aula: tipo=aula, aula=A20, arquivos=[{titulo, tipo, url}].
 - Assunto: tipo=assunto, assunto=fu-quadratica, arquivos=[{titulo, tipo, url}].
 - Grande área: tipo=area, area=funcoes, arquivos=[{titulo, tipo, url}].
 
@@ -32,10 +32,10 @@ Na home, a busca mostra PDFs associados à aula, ao assunto e à grande área. A
 - Nenhum resultado na busca → convite discreto para ajuda personalizada.
 
 Links de origem genéricos: exatoo.com. Links de ferramenta: app.exatoo.com.
-Parâmetros enviados: utm_source=capri-matematica, utm_medium=referral, utm_campaign (intenção), capri_aula (código A17 etc.) e capri_assunto (código como fu-quadratica). Não enviamos respostas do quiz ou informações pessoais.
+Parâmetros enviados: utm_source=capri-matematica, utm_medium=referral, utm_campaign (intenção), capri_aula (código A20 etc.) e capri_assunto (código como fu-quadratica). Não enviamos respostas do quiz ou informações pessoais.
 
 IMPORTANTE: o Exatoo ainda precisa implementar um receptor para ler e traduzir esses parâmetros. Por enquanto os links levam ao site/app, sem pré-selecionar automaticamente a ferramenta nem a aula.
 
 ## Navegação
 
-Home: área → assunto → aula. Dentro da aula, o breadcrumb, a barra lateral e os links de anterior/próxima utilizam os mesmos 38 assuntos da home. É possível retornar diretamente ao assunto pelo link com parâmetros de URL.
+Home: área → assunto → aula. Dentro da aula, o breadcrumb, a barra lateral e os links de anterior/próxima utilizam os mesmos 41 assuntos da home. É possível retornar diretamente ao assunto pelo link com parâmetros de URL.

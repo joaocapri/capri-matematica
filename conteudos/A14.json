@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de modelagem matemática e problemas de contexto",
+    "Entender o conceito central de domínio, imagem e estudo gráfico",
     "Aplicar o procedimento em um exemplo resolvido",
     "Reconhecer erros frequentes antes de enfrentar uma questão"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "A ideia que destrava",
       "paragrafos": [
-        "Modelar é traduzir uma história para uma equação: identifique grandezas, unidade, parte fixa e parte variável. Depois interprete a resposta no contexto, não só na calculadora."
+        "Domínio indica entradas permitidas; imagem reúne as saídas efetivamente alcançadas. Frações proibem denominador zero, e raízes de índice par exigem radicando não negativo no conjunto dos reais."
       ],
       "formulas": [
-        "\\text{lucro}=\\text{receita}-\\text{custo}"
+        "\\frac1{g(x)}:\\ g(x)\\neq0\\quad\\sqrt{h(x)}:\\ h(x)\\geq0"
       ],
-      "dica": "Unidade é parte do raciocínio: reais, quilômetros, horas e quantidades não são intercambiáveis.",
-      "erroComum": "Não extrapole modelos lineares para situações em que a taxa não é constante."
+      "dica": "Para estudar o sinal graficamente, olhe se o traço está acima ou abaixo do eixo x.",
+      "erroComum": "Uma função pode ter imagem diferente do contradomínio anunciado."
     },
     {
       "titulo": "Vamos fazer uma juntos",
@@ -25,11 +25,11 @@
         "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
       ],
       "exemplo": {
-        "enunciado": "Um serviço cobra R$ 20 fixos e R$ 5 por hora. Quanto custa 7 horas?",
+        "enunciado": "Encontre o domínio real de f(x)=√(x−2).",
         "passos": [
-          "Monte C(t)=20+5t.",
-          "Faça C(7)=20+35.",
-          "Total: R$ 55."
+          "É raiz quadrada; imponha x−2≥0.",
+          "Logo, x≥2.",
+          "Domínio: [2,+∞)."
         ]
       }
     }
@@ -37,35 +37,35 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Um produto custa R$ 15 por unidade. Receita por 8 unidades:",
+      "enunciado": "O domínio real de 1/(x−5) exclui:",
       "opcoes": [
-        "R$ 23",
-        "R$ 80",
-        "R$ 120",
-        "R$ 150"
+        "0",
+        "1",
+        "5",
+        "−5"
       ],
       "correta": 2,
-      "explicacao": "R(q)=15q; R(8)=120."
+      "explicacao": "Em x=5 o denominador zera."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se R(x)=10x e C(x)=2x+12, quando o lucro é zero?",
+      "enunciado": "A imagem de f(x)=x², com domínio R, é:",
       "opcoes": [
-        "x=1",
-        "x=1,5",
-        "x=6",
-        "x=12"
+        "R",
+        "(−∞,0]",
+        "[0,+∞)",
+        "(0,+∞)"
       ],
-      "correta": 1,
-      "explicacao": "L=8x−12. Para L=0, x=12/8=1,5."
+      "correta": 2,
+      "explicacao": "Quadrados reais são não negativos e todo valor não negativo é atingido."
     }
   ],
   "videos": [
     {
-      "titulo": "Vídeos e prática: funções afins e retas",
+      "titulo": "Vídeos e prática: funções",
       "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Material com videoaulas e exercícios de funções lineares.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-linear-eq-func"
+      "descricao": "Material de apoio sobre funções, domínio e composição.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
     }
   ],
   "exercicios": [],

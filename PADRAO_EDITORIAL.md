@@ -5,7 +5,7 @@
 Publicar conteúdos didáticos consistentes pelo chat, incluindo teoria rigorosa com linguagem jovem, vídeos reais verificados, quiz interativo e lista de múltipla escolha para impressão em A4.
 
 ## Formato de cada aula
-Crie ou atualize \`conteudos/A17.json\` (substitua o código) com:
+Crie ou atualize \`conteudos/A20.json\` (substitua o código) com:
 - \`teoria\`: array de seções, cada uma com \`titulo\`, \`paragrafos\`, \`formulas\` (expressões LaTeX), \`exemplo\` {enunciado, passos[]}, \`dica\`, \`erroComum\`.
 - \`videos\`: lista de links reais verificados com \`titulo\`, \`canal\`, \`descricao\`, \`url\`. Jamais inventar IDs do YouTube.
 - \`quiz\`: perguntas de alternativas \`opcoes\`, índice correto \`correta\` (0 a 3/4), \`explicacao\`, \`nivel\`.
@@ -23,15 +23,15 @@ Crie ou atualize \`conteudos/A17.json\` (substitua o código) com:
 7. Conteúdos devem manter definições precisas, quizzes consistentes e fórmulas legíveis.
 
 ## PDF
-A aba **Listas e PDFs** cria links para \`/imprimir/?aula=A17&tipo=lista\` e \`tipo=gabarito\`. O navegador gera a versão impressa padronizada e permite **Salvar como PDF**. Isso ainda não é um arquivo PDF pré-renderizado hospedado; para distribuição imediata como anexo, gere PDFs finais e salve no GitHub ou em armazenamento externo e adicione aos \`arquivos\`.
+A aba **Listas e PDFs** cria links para \`/imprimir/?aula=A20&tipo=lista\` e \`tipo=gabarito\`. O navegador gera a versão impressa padronizada e permite **Salvar como PDF**. Isso ainda não é um arquivo PDF pré-renderizado hospedado; para distribuição imediata como anexo, gere PDFs finais e salve no GitHub ou em armazenamento externo e adicione aos \`arquivos\`.
 
 ## Exemplo de comando para o chat
 "Gere a aula A18 com teoria jovem e rigorosa, 5 questões de quiz, 12 originais estilo UEL/FUVEST/ENEM, 2 vídeos reais verificados e gabarito comentado. Confira cálculos e publique em meu repositório capri-matematica, mantendo o padrão editorial."
 
 ## Links
-- Aula: \`/aulas/A17/\`
-- Lista imprimível: \`/imprimir/?aula=A17&tipo=lista\`
-- Gabarito: \`/imprimir/?aula=A17&tipo=gabarito\`
+- Aula: \`/aulas/A20/\`
+- Lista imprimível: \`/imprimir/?aula=A20&tipo=lista\`
+- Gabarito: \`/imprimir/?aula=A20&tipo=gabarito\`
 
 ## Regra de navegação — listas e PDFs
 - **Não criar aba Exercícios.** A tabulação agora é Listas e PDFs, Visão geral, Teoria, Quiz e Vídeos.

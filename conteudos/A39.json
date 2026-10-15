@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de números complexos - forma algébrica",
+    "Reconhecer o conceito central de inequações logarítmicas e aplicações",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Os complexos estendem os reais com a unidade imaginária i, cuja propriedade é i²=−1. Na forma a+bi, somamos partes reais entre si e imaginárias entre si."
+        "Nas inequações logarítmicas, primeiro garanta argumentos positivos. Com base>1, a comparação entre argumentos mantém o sinal; com base entre 0 e 1, inverte."
       ],
       "formulas": [
-        "i^2=-1,\\qquad z=a+bi"
+        "\\log_a u>\\log_a v\\Longleftrightarrow u>v\\quad(a>1;\\ u,v>0)"
       ],
-      "dica": "Potências de i se repetem em ciclos de quatro.",
-      "erroComum": "√(−4)=2i no conjunto complexo, mas √a·√b não pode ser aplicada indiscriminadamente a radicandos negativos."
+      "dica": "A resposta final deve ser a interseção entre domínio e inequação.",
+      "erroComum": "Não use monotonicidade crescente quando 0<a<1."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,47 +25,47 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Some (3+2i)+(1−5i).",
+        "enunciado": "Resolva log₁/₂(x−1)>log₁/₂3.",
         "passos": [
-          "Some reais: 3+1=4.",
-          "Some imaginárias: 2i−5i=−3i.",
-          "Resultado 4−3i."
+          "Domínio: x−1>0 ⇒ x>1.",
+          "Base 1/2 é decrescente: x−1<3.",
+          "Conclusão: 1<x<4."
         ]
       }
     }
   ],
   "videos": [
     {
-      "titulo": "Números complexos e polinômios",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Revisão de números complexos e técnicas de fatoração.",
-      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
     }
   ],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "i³ vale:",
+      "enunciado": "log₂x>3 vale para:",
       "opcoes": [
-        "1",
-        "−1",
-        "i",
-        "−i"
+        "x>8",
+        "x<8",
+        "x>3",
+        "0<x<3"
       ],
-      "correta": 3,
-      "explicacao": "i³=i²·i=−i."
+      "correta": 0,
+      "explicacao": "Base 2 crescente: x>2³=8."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "(2+i)+(3−4i) é:",
+      "enunciado": "log₁/₃x>0 equivale a:",
       "opcoes": [
-        "5−3i",
-        "5+5i",
-        "−1−3i",
-        "5−4i"
+        "x>1",
+        "0<x<1",
+        "x<0",
+        "x=1"
       ],
-      "correta": 0,
-      "explicacao": "Somando partes correspondentes: 5−3i."
+      "correta": 1,
+      "explicacao": "Base 1/3 decrescente, e log₁/₃1=0."
     }
   ],
   "exercicios": [],

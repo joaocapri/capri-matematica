@@ -6,13 +6,13 @@
     {
       "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "Juros simples crescem linearmente: a taxa incide sempre sobre o capital inicial. Montante é capital mais juros acumulados."
+        "Variações percentuais sucessivas multiplicam fatores, não somam taxas. Para aumento de p%, use 1+p/100; para desconto, 1−p/100."
       ],
       "formulas": [
-        "J=Cit,\\qquad M=C(1+it)"
+        "V_f=V_i(1+i_1)(1+i_2)"
       ],
-      "dica": "Taxa e tempo precisam estar na mesma unidade.",
-      "erroComum": "Em juros simples, o juro não rende juro adicional."
+      "dica": "Para voltar de um desconto de 20%, o aumento necessário é 25%.",
+      "erroComum": "O percentual é sempre aplicado sobre a base de cada etapa."
     },
     {
       "titulo": "Hora de ver funcionar",
@@ -20,10 +20,11 @@
         "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Aplique R$ 1000 a 2% ao mês por 5 meses em juros simples.",
+        "enunciado": "Produto custa R$ 100. Aumenta 20% e depois cai 20%. Valor final?",
         "passos": [
-          "J=1000·0,02·5=100.",
-          "Montante M=1100."
+          "Após aumento: 100·1,2=120.",
+          "Após desconto: 120·0,8=96.",
+          "Final 96; não voltou a 100."
         ]
       }
     }
@@ -31,27 +32,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Capital 500, taxa 1% mensal por 4 meses: juros =",
+      "enunciado": "100 reais sobe 10% e depois 10%. Valor:",
       "opcoes": [
-        "5",
-        "10",
-        "20",
-        "40"
+        "110",
+        "120",
+        "121",
+        "130"
       ],
       "correta": 2,
-      "explicacao": "500·0,01·4=20."
+      "explicacao": "100·1,1²=121."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Montante de 1000 a 10% simples por 2 anos é:",
+      "enunciado": "100 reais cai 30%. Novo valor:",
       "opcoes": [
-        "1100",
-        "1200",
-        "1210",
-        "2000"
+        "30",
+        "70",
+        "100",
+        "130"
       ],
       "correta": 1,
-      "explicacao": "1000(1+0,1·2)=1200."
+      "explicacao": "Fator 0,7 ⇒ 70."
     }
   ],
   "videos": [],

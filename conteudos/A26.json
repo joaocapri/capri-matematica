@@ -1,71 +1,120 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de equações e inequações exponenciais",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Distinguir injetora, sobrejetora e bijetora",
+    "Usar diagramas e o teste da reta horizontal",
+    "Restringir domínio e contradomínio para obter uma bijeção"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "Três classificações",
       "paragrafos": [
-        "Se as potências têm a mesma base, iguale expoentes. Se as bases são recíprocas, reescreva. Nas inequações, base entre 0 e 1 inverte a comparação entre expoentes."
+        "Injetora: elementos diferentes do domínio têm imagens diferentes. Sobrejetora: a imagem é todo o contradomínio, nenhum elemento fica sem flecha. Bijetora: as duas coisas ao mesmo tempo."
       ],
       "formulas": [
-        "a^u=a^v\\Rightarrow u=v\\quad(a>0,\\ a\\neq1)"
+        "x_1\\neq x_2\\Rightarrow f(x_1)\\neq f(x_2)\\;\\text{(injetora)}",
+        "\\operatorname{Im}(f)=\\operatorname{CD}(f)\\;\\text{(sobrejetora)}"
       ],
-      "dica": "Tente reescrever todas as potências na mesma base antes de usar logaritmos.",
-      "erroComum": "Base inferior a 1 faz a desigualdade inverter na comparação dos expoentes."
+      "dica": "No diagrama de flechas: injetora não tem dois caminhos chegando no mesmo ponto; sobrejetora não deixa ninguém sozinho do lado de chegada."
     },
     {
-      "titulo": "Na prática, sem enrolação",
+      "titulo": "Teste da reta horizontal",
       "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "No gráfico de uma função real, trace retas horizontais. Se alguma corta o gráfico mais de uma vez, a função não é injetora."
       ],
       "exemplo": {
-        "enunciado": "Resolva (1/2)^(x+1)<(1/2)^3.",
+        "enunciado": "f: ℝ → ℝ, f(x) = x² é injetora?",
         "passos": [
-          "A base 1/2 está entre 0 e 1.",
-          "Como a potência decresce, o sinal entre expoentes inverte.",
-          "x+1>3 ⇒ x>2."
+          "A reta y = 4 corta o gráfico em x = 2 e x = −2.",
+          "Duas entradas com a mesma saída.",
+          "Não é injetora. Também não é sobrejetora, pois valores negativos não são atingidos."
         ]
-      }
-    }
-  ],
-  "videos": [
+      },
+      "erroComum": "Sobrejetividade depende do contradomínio escolhido. f(x) = x² é sobrejetora de ℝ em [0, +∞[, mas não de ℝ em ℝ."
+    },
     {
-      "titulo": "Introdução aos logaritmos",
-      "canal": "Khan Academy Brasil · vídeo",
-      "descricao": "Relação entre potências, expoentes e logaritmos.",
-      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
+      "titulo": "Ajustando para virar bijeção",
+      "paragrafos": [
+        "Restringindo o domínio a [0, +∞[ e o contradomínio a [0, +∞[, a função x² passa a ser bijetora. É isso que permite falar da inversa na próxima aula."
+      ]
     }
   ],
+  "videos": [],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "2^(x+1)=16 implica:",
+      "enunciado": "Uma função em que elementos diferentes do domínio têm imagens diferentes é chamada",
       "opcoes": [
-        "x=2",
-        "x=3",
-        "x=4",
-        "x=5"
+        "sobrejetora",
+        "injetora",
+        "constante",
+        "par"
       ],
       "correta": 1,
-      "explicacao": "16=2⁴, logo x+1=4 ⇒ x=3."
+      "explicacao": "É a definição de injetora."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Uma função é bijetora quando é",
+      "opcoes": [
+        "injetora ou sobrejetora",
+        "injetora e sobrejetora",
+        "par e ímpar",
+        "crescente"
+      ],
+      "correta": 1,
+      "explicacao": "Bijetora = injetora e sobrejetora."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "(1/3)^x>(1/3)^2 quando:",
+      "enunciado": "A função f: ℝ → ℝ, f(x) = 3x − 2 é",
       "opcoes": [
-        "x>2",
-        "x≥2",
-        "x<2",
-        "x=2"
+        "só injetora",
+        "só sobrejetora",
+        "bijetora",
+        "nem injetora nem sobrejetora"
       ],
       "correta": 2,
-      "explicacao": "Para base entre 0 e 1, a função é decrescente."
+      "explicacao": "Funções afins com a ≠ 0 de ℝ em ℝ são bijetoras."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A função f: ℝ → ℝ, f(x) = x² + 1 é",
+      "opcoes": [
+        "injetora",
+        "sobrejetora",
+        "bijetora",
+        "nem injetora nem sobrejetora"
+      ],
+      "correta": 3,
+      "explicacao": "f(1) = f(−1) e valores menores que 1 não são atingidos."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Para que f(x) = x² + 1, com domínio [0, +∞[, seja bijetora, o contradomínio deve ser",
+      "opcoes": [
+        "ℝ",
+        "[0, +∞[",
+        "[1, +∞[",
+        "]1, +∞["
+      ],
+      "correta": 2,
+      "explicacao": "A imagem é [1, +∞[."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "A = {1, 2, 3} e B = {a, b}. Quantas funções de A em B são injetoras?",
+      "opcoes": [
+        "0",
+        "2",
+        "6",
+        "8"
+      ],
+      "correta": 0,
+      "explicacao": "Não há como dar 3 imagens diferentes com só 2 elementos em B."
     }
   ],
   "exercicios": [],

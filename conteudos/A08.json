@@ -1,71 +1,142 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de o conceito de função",
-    "Aplicar o procedimento em um exemplo resolvido",
-    "Reconhecer erros frequentes antes de enfrentar uma questão"
+    "Escolher a técnica de fatoração adequada a cada expressão",
+    "Fatorar diferenças de quadrados e trinômios quadrados perfeitos",
+    "Simplificar frações algébricas"
   ],
   "teoria": [
     {
-      "titulo": "A ideia que destrava",
+      "titulo": "Fatorar é desfazer a multiplicação",
       "paragrafos": [
-        "Função é uma regra que atribui a cada elemento do domínio exatamente uma imagem no contradomínio. Dois x diferentes podem chegar ao mesmo y; o mesmo x não pode apontar para duas saídas."
+        "Fatorar é escrever uma expressão como produto. É o caminho inverso dos produtos notáveis e a base para simplificar frações e resolver equações.",
+        "O primeiro passo é sempre procurar um fator comum a todos os termos e colocá-lo em evidência."
       ],
       "formulas": [
-        "f:A\\to B,\\quad x\\mapsto f(x)"
-      ],
-      "dica": "No gráfico, qualquer reta vertical deve encontrar no máximo um ponto.",
-      "erroComum": "Não confunda imagem da função com contradomínio: a imagem pode ser menor."
-    },
-    {
-      "titulo": "Vamos fazer uma juntos",
-      "paragrafos": [
-        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+        "ax+ay=a(x+y)"
       ],
       "exemplo": {
-        "enunciado": "Considere f(x)=2x+1. Determine f(3).",
+        "enunciado": "Fatore 6x² + 9x.",
         "passos": [
-          "Substitua a entrada x por 3.",
-          "f(3)=2·3+1.",
-          "A imagem de 3 é 7."
+          "O fator comum de 6 e 9 é 3; de x² e x é x.",
+          "Coloque 3x em evidência: 3x(2x + 3).",
+          "Confira distribuindo: 6x² + 9x."
         ]
-      }
+      },
+      "dica": "Confira sempre a fatoração multiplicando de volta. Leva poucos segundos."
+    },
+    {
+      "titulo": "Os casos que mais caem",
+      "paragrafos": [
+        "Agrupamento: separe os termos em pares com fator comum. Diferença de quadrados: dois quadrados com sinal de menos entre eles. Trinômio quadrado perfeito: dois quadrados e o dobro do produto das raízes."
+      ],
+      "formulas": [
+        "a^2-b^2=(a+b)(a-b)",
+        "a^2\\pm2ab+b^2=(a\\pm b)^2",
+        "ax+ay+bx+by=(a+b)(x+y)"
+      ],
+      "exemplo": {
+        "enunciado": "Fatore x² − 10x + 25.",
+        "passos": [
+          "x² e 25 são quadrados de x e 5.",
+          "O termo do meio é 2·x·5 = 10x, com sinal de menos.",
+          "Logo, x² − 10x + 25 = (x − 5)²."
+        ]
+      },
+      "erroComum": "x² + 9 não é diferença de quadrados e não se fatora nos reais."
+    },
+    {
+      "titulo": "Simplificando frações algébricas",
+      "paragrafos": [
+        "Para simplificar, fatore numerador e denominador e cancele apenas fatores iguais, nunca parcelas."
+      ],
+      "exemplo": {
+        "enunciado": "Simplifique (x² − 9)/(x + 3), com x ≠ −3.",
+        "passos": [
+          "Fatore o numerador: (x + 3)(x − 3).",
+          "Cancele o fator x + 3.",
+          "Resultado: x − 3."
+        ]
+      },
+      "erroComum": "Em (x + 3)/3 não se pode cortar o 3: ele é parcela, não fator."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Em uma função, cada entrada do domínio deve ter:",
+      "nivel": "Aquecimento",
+      "enunciado": "A fatoração de 5x + 15 é",
       "opcoes": [
-        "Duas imagens",
-        "Exatamente uma imagem",
-        "Nenhuma imagem",
-        "Sempre uma imagem diferente das outras"
+        "5(x + 3)",
+        "5(x + 15)",
+        "x(5 + 15)",
+        "15(x + 5)"
+      ],
+      "correta": 0,
+      "explicacao": "5 é fator comum: 5(x + 3)."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "A fatoração de x² − 16 é",
+      "opcoes": [
+        "(x − 4)²",
+        "(x + 4)(x − 4)",
+        "(x − 8)(x + 2)",
+        "x(x − 16)"
       ],
       "correta": 1,
-      "explicacao": "Essa é a condição essencial para ser função."
+      "explicacao": "Diferença de quadrados: x² − 4²."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual expressão é um trinômio quadrado perfeito?",
+      "opcoes": [
+        "x² + 4x + 2",
+        "x² + 6x + 9",
+        "x² + 9",
+        "x² + 3x + 9"
+      ],
+      "correta": 1,
+      "explicacao": "x² + 6x + 9 = (x + 3)², pois 6x = 2·x·3."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se f(x)=x², qual é f(−3)?",
+      "enunciado": "A fatoração de ax + bx + 2a + 2b é",
       "opcoes": [
-        "−9",
-        "−6",
-        "6",
-        "9"
+        "(a + b)(x + 2)",
+        "(a + 2)(x + b)",
+        "ab(x + 2)",
+        "(a + x)(b + 2)"
       ],
-      "correta": 3,
-      "explicacao": "(−3)²=9."
-    }
-  ],
-  "videos": [
+      "correta": 0,
+      "explicacao": "x(a + b) + 2(a + b) = (a + b)(x + 2)."
+    },
     {
-      "titulo": "Vídeos e prática: funções",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Material de apoio sobre funções, domínio e composição.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
+      "nivel": "Aplicação",
+      "enunciado": "Simplificando (x² − 4)/(x² + 4x + 4), com x ≠ −2, obtém-se",
+      "opcoes": [
+        "(x − 2)/(x + 2)",
+        "(x + 2)/(x − 2)",
+        "−1",
+        "1/(x + 2)"
+      ],
+      "correta": 0,
+      "explicacao": "(x + 2)(x − 2)/(x + 2)² = (x − 2)/(x + 2)."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "O valor de 2023² − 2022² é",
+      "opcoes": [
+        "1",
+        "2022",
+        "4045",
+        "4046"
+      ],
+      "correta": 2,
+      "explicacao": "(2023 + 2022)(2023 − 2022) = 4045 · 1."
     }
   ],
   "exercicios": [],

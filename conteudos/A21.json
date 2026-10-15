@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de forma fatorada e canônica",
+    "Reconhecer o conceito central de o vértice da parábola",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Na forma fatorada, as raízes ficam visíveis. Na forma canônica, o vértice salta aos olhos. Você pode alternar entre as formas para escolher a leitura mais rápida."
+        "O vértice é o ponto de virada da parábola: mínimo quando a>0 e máximo quando a<0. O x do vértice é o ponto médio das raízes, quando elas existem."
       ],
       "formulas": [
-        "f(x)=a(x-r_1)(x-r_2)=a(x-h)^2+k"
+        "x_v=-\\frac{b}{2a},\\qquad y_v=f(x_v)"
       ],
-      "dica": "Se o gráfico fornece raízes e um ponto, use a forma fatorada para encontrar a.",
-      "erroComum": "Na forma canônica, h é a abscissa do vértice, mas aparece como (x−h)."
+      "dica": "Em prova, calcule xᵥ primeiro; substitua só depois.",
+      "erroComum": "−Δ/(4a) dá a ordenada, não a abscissa."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,11 +25,11 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Escreva x²−6x+5 nas formas fatorada e canônica.",
+        "enunciado": "Ache o vértice de f(x)=x²−6x+5.",
         "passos": [
-          "Raízes 1 e 5: (x−1)(x−5).",
-          "Complete quadrados: (x−3)²−9+5.",
-          "Forma canônica: (x−3)²−4."
+          "a=1, b=−6 ⇒ xᵥ=6/2=3.",
+          "f(3)=9−18+5=−4.",
+          "Vértice V=(3,−4), ponto mínimo."
         ]
       }
     }
@@ -45,27 +45,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "As raízes de (x−4)(x+1) são:",
+      "enunciado": "O x do vértice de x²−8x+1 é:",
       "opcoes": [
-        "4 e 1",
-        "−4 e −1",
-        "4 e −1",
-        "0 e 4"
+        "−4",
+        "1",
+        "4",
+        "8"
       ],
       "correta": 2,
-      "explicacao": "Cada fator deve ser zero: 4 e −1."
+      "explicacao": "−b/(2a)=8/2=4."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O vértice de (x+2)²−5 é:",
+      "enunciado": "O vértice de −x²+4x é:",
       "opcoes": [
-        "(2,−5)",
-        "(−2,−5)",
-        "(−2,5)",
-        "(5,−2)"
+        "(2,4)",
+        "(4,2)",
+        "(−2,−4)",
+        "(0,4)"
       ],
-      "correta": 1,
-      "explicacao": "A forma é (x−h)²+k, com h=−2 e k=−5."
+      "correta": 0,
+      "explicacao": "xᵥ=2 e f(2)=4."
     }
   ],
   "exercicios": [],

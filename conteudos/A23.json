@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de equações modulares",
+    "Reconhecer o conceito central de estudo do sinal e inequações do 2º grau",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Uma igualdade |A|=k, com k>0, vira dois caminhos: A=k ou A=−k. Se k=0, há um único caminho; se k<0, nenhuma solução real."
+        "Para decidir onde a quadrática é positiva ou negativa, localize as raízes e observe a concavidade. Fora das raízes, o sinal acompanha a; entre elas, quando existem duas distintas, é contrário."
       ],
       "formulas": [
-        "|A|=k\\Longleftrightarrow A=\\pm k\\quad(k\\geq0)"
+        "a(x-r_1)(x-r_2)>0"
       ],
-      "dica": "Imagine a distância de 2x−1 até zero: deve ser 5 nos dois sentidos.",
-      "erroComum": "Nunca abra dois casos se o lado direito for negativo; aí não há solução."
+      "dica": "Se Δ<0, a quadrática nunca troca de sinal: tem o sinal de a.",
+      "erroComum": "As raízes entram na resposta apenas em ≤ ou ≥."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,47 +25,47 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Resolva |2x−1|=5.",
+        "enunciado": "Resolva x²−5x+6<0.",
         "passos": [
-          "Abra os dois casos: 2x−1=5 ou 2x−1=−5.",
-          "Primeiro caso: x=3.",
-          "Segundo caso: x=−2."
+          "Fatore: (x−2)(x−3)<0.",
+          "As raízes são 2 e 3; a=1>0.",
+          "A parábola é negativa entre as raízes: 2<x<3."
         ]
       }
     }
   ],
   "videos": [
     {
-      "titulo": "Introdução a equações e gráficos de valores absolutos",
-      "canal": "Khan Academy Brasil · vídeo",
-      "descricao": "Exemplos de equações modulares e como separar os casos.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-absolute-value/alg-absolute-value-equations/v/absolute-value-equations"
+      "titulo": "Função quadrática e gráficos",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Aprofunde vértice, raízes e gráficos com explicações e prática.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-quadratics"
     }
   ],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "|x+3|=2 tem soluções:",
+      "enunciado": "x²−1≥0 vale quando:",
       "opcoes": [
-        "−5 e −1",
-        "−1 e 5",
-        "1 e 5",
-        "−3 e 2"
+        "−1≤x≤1",
+        "x≤−1 ou x≥1",
+        "x>1 apenas",
+        "Todo real"
       ],
-      "correta": 0,
-      "explicacao": "x+3=±2 ⇒ x=−1 ou −5."
+      "correta": 1,
+      "explicacao": "Raízes −1 e 1, concavidade para cima e igualdade permitida."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "|x|=−1 possui:",
+      "enunciado": "−x²+4x>0 para:",
       "opcoes": [
-        "Duas soluções",
-        "Uma solução",
-        "Infinitas soluções",
-        "Nenhuma solução real"
+        "x<0 ou x>4",
+        "0<x<4",
+        "0≤x≤4",
+        "Todo real"
       ],
-      "correta": 3,
-      "explicacao": "Módulos não podem ser negativos."
+      "correta": 1,
+      "explicacao": "−x(x−4)>0 entre 0 e 4."
     }
   ],
   "exercicios": [],

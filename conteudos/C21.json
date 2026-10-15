@@ -6,13 +6,13 @@
     {
       "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "A probabilidade de A ou B soma as probabilidades individuais e subtrai a interseção. Somente quando eventos são mutuamente exclusivos a interseção é zero."
+        "Probabilidade mede a chance de um evento. Se os resultados elementares forem equiprováveis, contamos favoráveis sobre possíveis. O complementar costuma simplificar cálculos."
       ],
       "formulas": [
-        "P(A\\cup B)=P(A)+P(B)-P(A\\cap B)"
+        "P(A)=\\frac{|A|}{|\\Omega|},\\quad P(A^c)=1-P(A)"
       ],
-      "dica": "'Ou' pode incluir os dois acontecimentos simultaneamente.",
-      "erroComum": "Não some P(A)+P(B) sem analisar a interseção."
+      "dica": "Defina o espaço amostral antes de contar.",
+      "erroComum": "Favoráveis/possíveis só é fórmula direta quando resultados são igualmente prováveis."
     },
     {
       "titulo": "Hora de ver funcionar",
@@ -20,11 +20,11 @@
         "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Dado honesto: chance de sair par ou maior que 4?",
+        "enunciado": "Lance um dado honesto: probabilidade de obter número par?",
         "passos": [
-          "Par: {2,4,6}; maior que 4: {5,6}.",
-          "União: {2,4,5,6}.",
-          "P=4/6=2/3."
+          "Favoráveis 2,4,6: são 3.",
+          "Possíveis: 6.",
+          "P=3/6=1/2."
         ]
       }
     }
@@ -32,27 +32,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "No dado, probabilidade de sair 1 ou 2:",
+      "enunciado": "Chance de sair 6 num dado honesto:",
       "opcoes": [
-        "1/6",
-        "1/3",
         "1/2",
-        "2/3"
+        "1/3",
+        "1/6",
+        "1/12"
       ],
-      "correta": 1,
-      "explicacao": "2 dos 6 resultados."
+      "correta": 2,
+      "explicacao": "Um caso favorável entre seis."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Quando A e B são disjuntos, P(A∩B) =",
+      "enunciado": "Se P(A)=0,3, P(não A) =",
       "opcoes": [
-        "0",
-        "1/2",
-        "1",
-        "P(A)+P(B)"
+        "0,3",
+        "0,5",
+        "0,7",
+        "1,3"
       ],
-      "correta": 0,
-      "explicacao": "Disjuntos não compartilham resultados."
+      "correta": 2,
+      "explicacao": "1−0,3=0,7."
     }
   ],
   "videos": [],

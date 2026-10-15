@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de progressão geométrica (p.g.) - termo geral",
+    "Reconhecer o conceito central de mudança de base",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Na progressão geométrica (PG), cada termo é o anterior multiplicado pela razão q. É a versão discreta do crescimento exponencial — inclusive quando a razão está entre 0 e 1."
+        "Mudança de base permite calcular qualquer logaritmo válido usando uma base que você domina, como 10 ou e. A troca cria uma fração: logaritmo do argumento sobre logaritmo da base."
       ],
       "formulas": [
-        "a_n=a_1q^{n-1}"
+        "\\log_a b=\\frac{\\log_c b}{\\log_c a}"
       ],
-      "dica": "Se q é uma fração entre 0 e 1 e a₁>0, os termos decrescem.",
-      "erroComum": "Em PG não somamos a razão: multiplicamos."
+      "dica": "Escolher uma base que transforma ambos em potências simples reduz o esforço.",
+      "erroComum": "Não inverta numerador e denominador: argumento em cima, base embaixo."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,47 +25,47 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Uma PG começa em 3 e tem q=2. Calcule a₅.",
+        "enunciado": "Encontre log₄8.",
         "passos": [
-          "a₁=3, q=2.",
-          "a₅=3·2⁴.",
-          "a₅=48."
+          "Escolha a base 2: 4=2² e 8=2³.",
+          "log₄8=log₂8/log₂4.",
+          "3/2=1,5."
         ]
       }
     }
   ],
   "videos": [
     {
-      "titulo": "Progressões aritméticas e geométricas",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
     }
   ],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "O 4º termo da PG 2,6,18,... é:",
-      "opcoes": [
-        "24",
-        "36",
-        "54",
-        "72"
-      ],
-      "correta": 2,
-      "explicacao": "A razão é 3, então a₄=18·3=54."
-    },
-    {
-      "nivel": "Aplicação",
-      "enunciado": "Em 16,8,4,... a razão é:",
+      "enunciado": "log₉3 vale:",
       "opcoes": [
         "2",
         "1/2",
-        "−2",
-        "4"
+        "3",
+        "9"
       ],
       "correta": 1,
-      "explicacao": "8/16=1/2."
+      "explicacao": "9^(1/2)=3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "log₂8 ÷ log₂4 vale:",
+      "opcoes": [
+        "1/2",
+        "2",
+        "3/2",
+        "4"
+      ],
+      "correta": 2,
+      "explicacao": "3/2 é o resultado da mudança de base."
     }
   ],
   "exercicios": [],

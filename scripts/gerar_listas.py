@@ -373,7 +373,8 @@ if __name__ == "__main__":
     if "--proximo" in sys.argv:
         lote = proximo_lote()
         feitas = len(list(FONTE.glob("[ABC][0-9][0-9].yaml")))
-        print(f"Aulas com listas: {feitas}/144")
+        total = len(json.loads((ROOT / "data" / "aulas.json").read_text(encoding="utf-8"))["lessons"])
+        print(f"Aulas com listas: {feitas}/{total}")
         print("Próximo lote:" if lote else "Todas as aulas têm listas.")
         for a in lote:
             print(f"  {a['id']} (bloco {a['block']}) {a['title']} — {a['summary']}")

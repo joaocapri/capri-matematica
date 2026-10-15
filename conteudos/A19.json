@@ -3,69 +3,69 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de máximos e mínimos - problemas de otimização",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Entender o conceito central de definição e concavidade",
+    "Aplicar o procedimento em um exemplo resolvido",
+    "Reconhecer erros frequentes antes de enfrentar uma questão"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "A ideia que destrava",
       "paragrafos": [
-        "O segredo da otimização é descobrir qual grandeza varia e escrever uma função para ela. Para uma função quadrática, o melhor resultado está no vértice da parábola."
+        "Na parábola f(x)=ax²+bx+c, o sinal de a determina a abertura: positivo para cima e negativo para baixo. O termo c indica onde o gráfico cruza o eixo y."
       ],
       "formulas": [
-        "x_v=-\\frac{b}{2a}\\qquad y_{\\text{extremo}}=f(x_v)"
+        "f(x)=ax^2+bx+c,\\qquad a\\neq0"
       ],
-      "dica": "Verifique domínio e unidades: não existe comprimento negativo.",
-      "erroComum": "Vértice máximo só ocorre quando a<0; se a>0, é mínimo."
+      "dica": "Antes de desenhar a parábola, anote concavidade, intercepto em y e vértice.",
+      "erroComum": "O sinal do coeficiente b, sozinho, não define concavidade."
     },
     {
-      "titulo": "Na prática, sem enrolação",
+      "titulo": "Vamos fazer uma juntos",
       "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
       ],
       "exemplo": {
-        "enunciado": "Uma cerca de 20 m forma três lados de um retângulo junto a um muro. Qual largura maximiza a área?",
+        "enunciado": "Para f(x)=−2x²+3x+5, descreva a concavidade e a interseção com y.",
         "passos": [
-          "Se a largura é x, os dois lados dela usam 2x; o comprimento é 20−2x.",
-          "Área A(x)=x(20−2x)=−2x²+20x, com 0<x<10.",
-          "xᵥ=−20/(2·−2)=5; comprimento=10; área máxima=50 m²."
+          "a=−2<0: a concavidade é para baixo.",
+          "c=5: f(0)=5.",
+          "O gráfico cruza o eixo y em (0,5)."
         ]
       }
-    }
-  ],
-  "videos": [
-    {
-      "titulo": "Função quadrática e gráficos",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Aprofunde vértice, raízes e gráficos com explicações e prática.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-quadratics"
     }
   ],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "A(x)=−x²+10x atinge máximo em x=",
+      "enunciado": "Em f(x)=4x²−x+2 a parábola é:",
       "opcoes": [
-        "2",
-        "5",
-        "10",
-        "20"
+        "Voltada para baixo",
+        "Voltada para cima",
+        "Uma reta",
+        "Sempre tangente ao eixo x"
       ],
       "correta": 1,
-      "explicacao": "xᵥ=−10/(−2)=5."
+      "explicacao": "a=4>0, logo a concavidade é para cima."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Qual é o valor máximo de f(x)=−(x−3)²+7?",
+      "enunciado": "A função f(x)=x²+2x−7 cruza o eixo y em:",
       "opcoes": [
-        "3",
-        "−7",
-        "7",
-        "10"
+        "(7,0)",
+        "(−7,0)",
+        "(0,−7)",
+        "(0,7)"
       ],
       "correta": 2,
-      "explicacao": "O quadrado subtraído é no mínimo zero; máximo 7 em x=3."
+      "explicacao": "f(0)=c=−7."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: parábolas",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Conteúdos sobre equações e funções do segundo grau.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-quadratics"
     }
   ],
   "exercicios": [],

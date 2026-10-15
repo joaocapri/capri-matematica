@@ -1,20 +1,20 @@
 # Listas em PDF por aula — processo em lotes
 
-Meta: **2 PDFs para cada uma das 144 aulas**
+Meta: **2 PDFs para cada uma das 152 aulas**
 - `pdfs/fixacao-XNN.pdf`: lista de fixação com 20 questões discursivas e gabarito resolvido.
 - `pdfs/vestibular-XNN.pdf`: lista de vestibular com 20 questões de múltipla escolha (A–E) e gabarito resolvido.
 
-O modelo de referência aprovado pelo professor é a aula **A17** (`materiais-fonte/A17.yaml`).
+O modelo de referência aprovado pelo professor é a aula **A20** (`materiais-fonte/A20.yaml`).
 
 ## Quando o pedido for "faça o próximo lote"
 1. `git pull` no `main` e rode `python3 scripts/gerar_listas.py --proximo`. O comando mostra as próximas aulas pendentes: até 6 por lote, sem atravessar o fim de um bloco.
-2. Para cada aula do lote, leia `data/aulas.json` (título e resumo) e `conteudos/XNN.json` (teoria). Em seguida, escreva `materiais-fonte/XNN.yaml` no mesmo formato da A17.
+2. Para cada aula do lote, leia `data/aulas.json` (título e resumo) e `conteudos/XNN.json` (teoria). Em seguida, escreva `materiais-fonte/XNN.yaml` no mesmo formato da A20.
 3. **Confira toda resposta por cálculo independente**, com sympy ou script próprio, antes de gerar. Se uma conta não fechar, reescreva a questão.
 4. Gere e publique com `python3 scripts/gerar_listas.py XNN YNN ... --publicar`. O validador recusa a fonte se faltar algo ou se o gabarito estiver desequilibrado. O mesmo comando exporta as questões para a página da aula (`data/listas/XNN.json`) e as capas dos PDFs (`pdfs/capas/*.webp`). Esses arquivos também entram no commit.
 5. Renderize as páginas (`pdftoppm -r 70 -png`) e olhe todas elas. Procure alternativas quebradas, fórmulas estouradas, título de nível sozinho no pé da coluna e páginas vazias.
 6. Rode `node tests/catalogo.cjs`. Antes, instale o jsdom com `npm install --no-save --package-lock=false jsdom@26.1.0` e apague `node_modules` depois.
 7. Faça o commit no `main`, com a mensagem "Listas em PDF: aulas XNN–YNN". Antes do push, rode `git fetch origin main && git rebase origin/main`: o robô do GitHub Actions às vezes publica commits de PDFs antigos. O site publica sozinho.
-8. Envie os PDFs do lote ao professor e informe o progresso (`--proximo` mostra "Aulas com listas: N/144").
+8. Envie os PDFs do lote ao professor e informe o progresso (`--proximo` mostra "Aulas com listas: N/152").
 
 ## Padrão das questões
 - **Fixação**: 20 questões em três níveis.

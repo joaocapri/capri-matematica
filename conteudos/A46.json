@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de equações polinomiais (algébricas)",
+    "Reconhecer o conceito central de números complexos - forma algébrica",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Uma equação polinomial de grau n tem n raízes complexas contadas com multiplicidade. Fatorar é traduzir a equação em fatores cujo produto é zero; raízes repetidas têm multiplicidade maior."
+        "Os complexos estendem os reais com a unidade imaginária i, cuja propriedade é i²=−1. Na forma a+bi, somamos partes reais entre si e imaginárias entre si."
       ],
       "formulas": [
-        "P(x)=a\\prod_{j=1}^n(x-r_j)"
+        "i^2=-1,\\qquad z=a+bi"
       ],
-      "dica": "Conte multiplicidades para conferir o grau.",
-      "erroComum": "Ter grau 3 não significa possuir três raízes reais distintas."
+      "dica": "Potências de i se repetem em ciclos de quatro.",
+      "erroComum": "√(−4)=2i no conjunto complexo, mas √a·√b não pode ser aplicada indiscriminadamente a radicandos negativos."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,11 +25,11 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Resolva (x−2)²(x+1)=0.",
+        "enunciado": "Some (3+2i)+(1−5i).",
         "passos": [
-          "Produto zero exige um fator zero.",
-          "x=2 é raiz dupla, pois (x−2) está ao quadrado.",
-          "x=−1 é raiz simples."
+          "Some reais: 3+1=4.",
+          "Some imaginárias: 2i−5i=−3i.",
+          "Resultado 4−3i."
         ]
       }
     }
@@ -45,27 +45,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "O polinômio (x−1)³ tem raiz 1 de multiplicidade:",
+      "enunciado": "i³ vale:",
       "opcoes": [
         "1",
-        "2",
-        "3",
-        "4"
+        "−1",
+        "i",
+        "−i"
       ],
-      "correta": 2,
-      "explicacao": "O fator x−1 aparece três vezes."
+      "correta": 3,
+      "explicacao": "i³=i²·i=−i."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Quantas raízes complexas, contando multiplicidade, tem um polinômio de grau 4?",
+      "enunciado": "(2+i)+(3−4i) é:",
       "opcoes": [
-        "2",
-        "3",
-        "4",
-        "5"
+        "5−3i",
+        "5+5i",
+        "−1−3i",
+        "5−4i"
       ],
-      "correta": 2,
-      "explicacao": "O Teorema Fundamental da Álgebra conta quatro raízes complexas com multiplicidade."
+      "correta": 0,
+      "explicacao": "Somando partes correspondentes: 5−3i."
     }
   ],
   "exercicios": [],

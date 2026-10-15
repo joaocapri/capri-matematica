@@ -6,13 +6,13 @@
     {
       "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "Variações percentuais sucessivas multiplicam fatores, não somam taxas. Para aumento de p%, use 1+p/100; para desconto, 1−p/100."
+        "Porcentagem é uma fração com denominador 100. Transformar 20% em 0,20 permite calcular rapidamente; 10% é dividir por 10 e 1% é dividir por 100."
       ],
       "formulas": [
-        "V_f=V_i(1+i_1)(1+i_2)"
+        "p\\%\\text{ de }V=\\frac{p}{100}V"
       ],
-      "dica": "Para voltar de um desconto de 20%, o aumento necessário é 25%.",
-      "erroComum": "O percentual é sempre aplicado sobre a base de cada etapa."
+      "dica": "Quebre porcentagens em 10%, 5% e 1% para cálculo mental.",
+      "erroComum": "30% de 50% não é 80%: é 0,30·0,50=0,15."
     },
     {
       "titulo": "Hora de ver funcionar",
@@ -20,11 +20,11 @@
         "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Produto custa R$ 100. Aumenta 20% e depois cai 20%. Valor final?",
+        "enunciado": "Quanto é 15% de R$ 200?",
         "passos": [
-          "Após aumento: 100·1,2=120.",
-          "Após desconto: 120·0,8=96.",
-          "Final 96; não voltou a 100."
+          "10% de 200=20.",
+          "5% de 200=10.",
+          "15%=30 reais."
         ]
       }
     }
@@ -32,27 +32,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "100 reais sobe 10% e depois 10%. Valor:",
+      "enunciado": "20% de 80 é:",
       "opcoes": [
-        "110",
-        "120",
-        "121",
-        "130"
+        "8",
+        "12",
+        "16",
+        "20"
       ],
       "correta": 2,
-      "explicacao": "100·1,1²=121."
+      "explicacao": "0,2·80=16."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "100 reais cai 30%. Novo valor:",
+      "enunciado": "5% de 300 é:",
       "opcoes": [
-        "30",
-        "70",
-        "100",
-        "130"
+        "5",
+        "10",
+        "15",
+        "30"
       ],
-      "correta": 1,
-      "explicacao": "Fator 0,7 ⇒ 70."
+      "correta": 2,
+      "explicacao": "0,05·300=15."
     }
   ],
   "videos": [],

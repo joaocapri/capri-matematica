@@ -1,282 +1,242 @@
-# Fonte das listas em PDF da aula A33 — Introdução a Sequências e Lei de Recorrência
-# Matemática em LaTeX. Todas as respostas foram conferidas por cálculo independente.
+# Fonte das listas em PDF da aula A33 — Equações e Inequações Exponenciais
 aula: A33
 
 fixacao:
-  intro: Resolva na ordem — do aquecimento ao desafio. O termo geral $a_n$ dá qualquer termo direto pela posição $n$; a lei de recorrência dá cada termo a partir dos anteriores.
+  intro: Resolva na ordem — do aquecimento ao desafio. Iguale as bases e compare os expoentes; em inequações com base entre $0$ e $1$, o sinal se inverte.
   secoes:
     - nome: Aquecimento
       questoes:
-        - enunciado: Escreva os cinco primeiros termos de cada sequência.
+        - enunciado: Resolva.
           itens:
-            - $a_n=3n-1$
-            - $a_n=n^2+1$
-            - $a_n=(-1)^n\cdot n$
+            - $2^x=32$
+            - $3^x=\tfrac19$
+            - $5^{x-1}=125$
           resolucao: |
-            Substitua $n=1,2,3,4,5$.
-            (a) $2,\ 5,\ 8,\ 11,\ 14$.
-            (b) $2,\ 5,\ 10,\ 17,\ 26$.
-            (c) $-1,\ 2,\ -3,\ 4,\ -5$ (o sinal alterna).
-          resposta: '(a) $(2,5,8,11,14)$ \quad (b) $(2,5,10,17,26)$ \quad (c) $(-1,2,-3,4,-5)$'
+            (a) $2^x=2^5\Rightarrow x=5$. (b) $3^x=3^{-2}\Rightarrow x=-2$. (c) $x-1=3\Rightarrow x=4$.
+          resposta: '(a) $5$ \quad (b) $-2$ \quad (c) $4$'
 
-        - enunciado: Na sequência de termo geral $a_n=2^n-n$, calcule $a_5$ e $a_{10}$.
+        - enunciado: Resolva $4^x=8$.
           resolucao: |
-            $a_5=2^5-5=32-5=27$.
-            $a_{10}=2^{10}-10=1024-10=1014$.
-          resposta: '$a_5=27$; \ $a_{10}=1014$'
+            Base $2$: $2^{2x}=2^3\Rightarrow x=\tfrac32$.
+          resposta: '$x=\tfrac32$'
 
-        - enunciado: Uma sequência é definida por $a_1=4$ e $a_{n+1}=a_n+3$. Escreva seus cinco primeiros termos.
+        - enunciado: Resolva $9^{x+1}=27^x$.
           resolucao: |
-            Cada termo é o anterior mais $3$: $a_2=7$, $a_3=10$, $a_4=13$, $a_5=16$.
-          resposta: '$(4,\ 7,\ 10,\ 13,\ 16)$'
+            Base $3$: $3^{2x+2}=3^{3x}\Rightarrow 2x+2=3x\Rightarrow x=2$.
+          resposta: '$x=2$'
 
-        - enunciado: Uma sequência é definida por $a_1=2$ e $a_{n+1}=3a_n$. Escreva seus quatro primeiros termos.
+        - enunciado: Resolva $\left(\tfrac12\right)^x=16$.
           resolucao: |
-            Cada termo é o triplo do anterior: $a_2=6$, $a_3=18$, $a_4=54$.
-          resposta: '$(2,\ 6,\ 18,\ 54)$'
+            $2^{-x}=2^4\Rightarrow x=-4$.
+          resposta: '$x=-4$'
 
-        - enunciado: Descubra o próximo termo de cada sequência e escreva um termo geral para ela.
+        - enunciado: Resolva $2^{x^2-3x}=\tfrac14$.
+          resolucao: |
+            $x^2-3x=-2\Rightarrow x^2-3x+2=0\Rightarrow x=1$ ou $x=2$.
+          resposta: '$\{1,\,2\}$'
+
+        - enunciado: Resolva as inequações.
           itens:
-            - $1,\ 4,\ 9,\ 16,\ \dots$
-            - $3,\ 7,\ 11,\ 15,\ \dots$
-            - $1,\ \tfrac12,\ \tfrac14,\ \tfrac18,\ \dots$
+            - $2^x>8$
+            - $\left(\tfrac13\right)^x\ge9$
           resolucao: |
-            (a) Quadrados perfeitos: o próximo é $25$ e $a_n=n^2$.
-            (b) Somamos $4$ a cada passo: o próximo é $19$ e $a_n=4n-1$.
-            (c) Cada termo é a metade do anterior: o próximo é $\tfrac1{16}$ e $a_n=\left(\tfrac12\right)^{n-1}$.
-          resposta: '(a) $25$; $a_n=n^2$ \quad (b) $19$; $a_n=4n-1$ \quad (c) $\tfrac1{16}$; $a_n=\left(\tfrac12\right)^{n-1}$'
+            (a) Base $>1$, mantém o sinal: $x>3$.
+            (b) $\left(\tfrac13\right)^x\ge\left(\tfrac13\right)^{-2}$, base entre $0$ e $1$, inverte: $x\le-2$.
+          resposta: '(a) $x>3$ \quad (b) $x\le-2$'
 
-        - enunciado: Na sequência $a_n=\dfrac{n+1}{n}$, calcule $a_1$, $a_2$ e $a_{10}$.
+        - enunciado: Resolva $7^{x^2-4}=1$.
           resolucao: |
-            $a_1=\tfrac21=2$, \ $a_2=\tfrac32$, \ $a_{10}=\tfrac{11}{10}$.
-          resposta: '$2$, \ $\tfrac32$ \ e \ $\tfrac{11}{10}$'
-
-        - enunciado: Os números $47$ e $60$ são termos da sequência $a_n=5n-3$? Em caso afirmativo, diga a posição.
-          resolucao: |
-            $5n-3=47\Rightarrow n=10$: sim, $47$ é o $10^\circ$ termo.
-            $5n-3=60\Rightarrow n=\tfrac{63}5$, que não é natural: $60$ não é termo.
-          resposta: '$47$ é o $10^\circ$ termo; $60$ não é termo'
+            $1=7^0$: $x^2-4=0\Rightarrow x=\pm2$.
+          resposta: '$\{-2,\,2\}$'
 
     - nome: Treino
       questoes:
-        - enunciado: 'A sequência de Fibonacci é definida por $a_1=a_2=1$ e $a_{n+2}=a_{n+1}+a_n$. Escreva seus dez primeiros termos.'
+        - enunciado: Resolva $4^x-6\cdot2^x+8=0$.
           resolucao: |
-            Cada termo é a soma dos dois anteriores:
-            $1,\ 1,\ 2,\ 3,\ 5,\ 8,\ 13,\ 21,\ 34,\ 55$.
-          resposta: '$(1,1,2,3,5,8,13,21,34,55)$'
+            Com $y=2^x$: $y^2-6y+8=0\Rightarrow y=2$ ou $y=4$. Então $x=1$ ou $x=2$.
+          resposta: '$\{1,\,2\}$'
 
-        - enunciado: Uma sequência é definida por $a_1=1$ e $a_{n+1}=2a_n+1$. Calcule $a_2$, $a_3$, $a_4$ e $a_5$ e proponha um termo geral.
+        - enunciado: Resolva $9^x-4\cdot3^x+3=0$.
           resolucao: |
-            $a_2=3$, $a_3=7$, $a_4=15$, $a_5=31$.
-            Os termos são uma unidade a menos que as potências de $2$: $a_n=2^n-1$.
-          resposta: '$3,\ 7,\ 15,\ 31$; \ $a_n=2^n-1$'
+            Com $y=3^x$: $y^2-4y+3=0\Rightarrow y=1$ ou $y=3$. Então $x=0$ ou $x=1$.
+          resposta: '$\{0,\,1\}$'
 
-        - enunciado: Dada a recorrência $a_1=5$ e $a_{n+1}=a_n-2n$, calcule $a_4$.
+        - enunciado: Resolva $2^{x+1}+2^x=24$.
           resolucao: |
-            $a_2=a_1-2\cdot1=3$.
-            $a_3=a_2-2\cdot2=-1$.
-            $a_4=a_3-2\cdot3=-7$.
-          resposta: '$a_4=-7$'
+            $2\cdot2^x+2^x=3\cdot2^x=24\Rightarrow 2^x=8\Rightarrow x=3$.
+          resposta: '$x=3$'
 
-        - enunciado: Considere a sequência $a_n=n^2-6n+10$.
-          itens:
-            - Calcule $a_1$, $a_2$, $a_3$, $a_4$ e $a_5$.
-            - Qual é o menor termo da sequência?
+        - enunciado: Resolva $3^{x+2}-3^x=72$.
           resolucao: |
-            (a) $a_1=5$, $a_2=2$, $a_3=1$, $a_4=2$, $a_5=5$.
-            (b) $a_n=(n-3)^2+1$, que é mínimo para $n=3$: o menor termo é $a_3=1$.
-          resposta: '(a) $5,\ 2,\ 1,\ 2,\ 5$ \quad (b) $a_3=1$'
+            $9\cdot3^x-3^x=8\cdot3^x=72\Rightarrow 3^x=9\Rightarrow x=2$.
+          resposta: '$x=2$'
 
-        - enunciado: Escreva uma lei de recorrência e um termo geral para a sequência $2,\ 6,\ 18,\ 54,\ \dots$
+        - enunciado: Resolva $5^{2x-1}<5^{x+3}$.
           resolucao: |
-            Cada termo é o triplo do anterior: $a_1=2$ e $a_{n+1}=3a_n$.
-            Termo geral: $a_n=2\cdot3^{n-1}$.
-          resposta: '$a_1=2$, \ $a_{n+1}=3a_n$; \ $a_n=2\cdot3^{n-1}$'
+            Base $>1$: $2x-1<x+3\Rightarrow x<4$.
+          resposta: '$x<4$'
 
-        - enunciado: Quantos termos da sequência $a_n=3n+2$ são menores que $100$?
+        - enunciado: Resolva $(0{,}5)^{x-2}>(0{,}5)^4$.
           resolucao: |
-            $3n+2<100\Rightarrow n<\tfrac{98}3\approx32{,}7$.
-            Logo $n=1,2,\dots,32$: são $32$ termos.
-          resposta: '$32$ termos'
+            Base entre $0$ e $1$, inverte: $x-2<4\Rightarrow x<6$.
+          resposta: '$x<6$'
 
-        - enunciado: Na sequência dos números ímpares positivos, $a_n=2n-1$, qual é a posição do termo $199$?
+        - enunciado: Resolva $2^{x^2}<16$.
           resolucao: |
-            $2n-1=199\Rightarrow n=100$.
-          resposta: '$100^\circ$ termo'
+            $x^2<4\Rightarrow -2<x<2$.
+          resposta: '$]-2,\,2[$'
 
-        - enunciado: Com palitos de fósforo, formamos quadrados lado a lado — $1$ quadrado usa $4$ palitos, $2$ quadrados usam $7$ e $3$ quadrados usam $10$.
-          itens:
-            - Escreva uma lei de recorrência para o número de palitos $a_n$ com $n$ quadrados.
-            - Escreva o termo geral $a_n$.
-            - Quantos palitos são necessários para $20$ quadrados?
+        - enunciado: Uma população de bactérias é $N(t)=500\cdot2^{t/3}$, com $t$ em horas. A partir de quando ela passa a ter pelo menos $8\,000$ bactérias?
           resolucao: |
-            (a) Cada quadrado novo aproveita um lado e acrescenta $3$ palitos: $a_1=4$ e $a_{n+1}=a_n+3$.
-            (b) $a_n=4+3(n-1)=3n+1$.
-            (c) $a_{20}=3\cdot20+1=61$.
-          resposta: '(a) $a_1=4$, $a_{n+1}=a_n+3$ \quad (b) $a_n=3n+1$ \quad (c) $61$'
+            $2^{t/3}\ge16=2^4\Rightarrow \tfrac t3\ge4\Rightarrow t\ge12$ h.
+          resposta: '$t\ge12$ h'
 
     - nome: Desafio
       questoes:
-        - enunciado: Uma sequência é definida por $a_1=1$ e $a_{n+1}=a_n+2n+1$. Calcule $a_2$, $a_3$, $a_4$ e $a_5$ e proponha um termo geral.
+        - enunciado: Resolva $4^x-3\cdot2^x-4=0$.
           resolucao: |
-            $a_2=1+3=4$, $a_3=4+5=9$, $a_4=9+7=16$, $a_5=16+9=25$.
-            São os quadrados perfeitos: $a_n=n^2$.
-          resposta: '$4,\ 9,\ 16,\ 25$; \ $a_n=n^2$'
+            $y=2^x$: $y^2-3y-4=0\Rightarrow y=4$ ou $y=-1$ (descartado, pois $2^x>0$). Então $x=2$.
+          resposta: '$x=2$'
 
-        - enunciado: Uma sequência é definida por $a_1=2$ e $a_{n+1}=\dfrac{1}{1-a_n}$. Calcule $a_2$, $a_3$ e $a_4$ e, em seguida, $a_{100}$.
+        - enunciado: Resolva $25^x-6\cdot5^x+5\le0$.
           resolucao: |
-            $a_2=\tfrac{1}{1-2}=-1$, \ $a_3=\tfrac{1}{1-(-1)}=\tfrac12$, \ $a_4=\dfrac{1}{1-\frac12}=2$.
-            Como $a_4=a_1$, a sequência se repete de $3$ em $3$ termos.
-            $100=3\cdot33+1$, logo $a_{100}=a_1=2$.
-          resposta: '$a_2=-1$, $a_3=\tfrac12$, $a_4=2$; \ $a_{100}=2$'
+            $y=5^x$: $y^2-6y+5\le0\Rightarrow 1\le y\le5\Rightarrow 0\le x\le1$.
+          resposta: '$[0,\,1]$'
 
-        - enunciado: Em uma reunião com $n$ pessoas, cada uma cumprimenta todas as outras uma única vez. Seja $a_n$ o número de cumprimentos.
-          itens:
-            - Explique por que $a_1=0$ e $a_{n+1}=a_n+n$.
-            - Calcule $a_{10}$.
+        - enunciado: Resolva $\left(\tfrac12\right)^{x^2-x}\ge\tfrac14$.
           resolucao: |
-            (a) Com uma pessoa não há cumprimentos. Quando chega a $(n+1)$-ésima pessoa, ela cumprimenta as $n$ que já estavam.
-            (b) $a_{10}=0+1+2+\dots+9=45$.
-          resposta: '(b) $a_{10}=45$'
+            $\tfrac14=\left(\tfrac12\right)^2$. Base entre $0$ e $1$, inverte: $x^2-x\le2\Rightarrow -1\le x\le2$.
+          resposta: '$[-1,\,2]$'
 
-        - enunciado: Uma cultura começa com $300$ bactérias. A cada hora a população dobra e, logo depois, $100$ bactérias são retiradas para análise. Escreva a recorrência e calcule a população ao fim da $3^{\text{a}}$ hora.
+        - enunciado: Resolva o sistema $\begin{cases}2^{x+y}=32\\ 3^{x-y}=27\end{cases}$
           resolucao: |
-            $P_0=300$ e $P_{n+1}=2P_n-100$.
-            $P_1=500$, \ $P_2=900$, \ $P_3=1700$.
-          resposta: '$P_{n+1}=2P_n-100$; \ $1700$ bactérias'
+            $x+y=5$ e $x-y=3$. Então $x=4$ e $y=1$.
+          resposta: '$(4,\,1)$'
 
-        - enunciado: Considere a sequência $a_n=\dfrac{1}{n(n+1)}$.
-          itens:
-            - Mostre que $a_n=\dfrac1n-\dfrac1{n+1}$.
-            - Calcule $a_1+a_2+\dots+a_9$.
+        - enunciado: Resolva $3^{x+1}+3^{x-1}=30$.
           resolucao: |
-            (a) $\tfrac1n-\tfrac1{n+1}=\tfrac{(n+1)-n}{n(n+1)}=\tfrac1{n(n+1)}$.
-            (b) Na soma, os termos intermediários se cancelam: $\left(1-\tfrac12\right)+\left(\tfrac12-\tfrac13\right)+\dots+\left(\tfrac19-\tfrac1{10}\right)=1-\tfrac1{10}=\tfrac9{10}$.
-          resposta: '(b) $\tfrac{9}{10}$'
+            $3^x\left(3+\tfrac13\right)=\tfrac{10}3\cdot3^x=30\Rightarrow 3^x=9\Rightarrow x=2$.
+          resposta: '$x=2$'
 
 vestibular:
   intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
   questoes:
-    - enunciado: O quinto termo da sequência de termo geral $a_n=n^2-2n$ é
-      opcoes: ['$8$', '$10$', '$15$', '$23$', '$24$']
+    - enunciado: A solução de $3^{x+1}=81$ é
+      opcoes: ['$2$', '$3$', '$4$', '$5$', '$27$']
+      correta: B
+      resolucao: |
+        $81=3^4$: $x+1=4\Rightarrow x=3$.
+
+    - enunciado: A solução de $8^x=\tfrac14$ é
+      opcoes: ['$-\dfrac23$', '$-\dfrac32$', '$-2$', '$\dfrac23$', '$-\dfrac12$']
+      correta: A
+      resolucao: |
+        $2^{3x}=2^{-2}\Rightarrow x=-\tfrac23$.
+
+    - enunciado: A soma das soluções de $2^{x^2-5x+6}=1$ é
+      opcoes: ['$1$', '$6$', '$-5$', '$0$', '$5$']
+      correta: E
+      resolucao: |
+        $x^2-5x+6=0\Rightarrow x=2$ ou $x=3$. Soma: $5$.
+
+    - enunciado: A soma das soluções de $4^x-5\cdot2^x+4=0$ é
+      opcoes: ['$1$', '$4$', '$5$', '$0$', '$2$']
+      correta: E
+      resolucao: |
+        $2^x=1$ ou $2^x=4$: $x=0$ ou $x=2$. Soma: $2$.
+
+    - enunciado: O conjunto solução de $\left(\tfrac12\right)^x>8$ é
+      opcoes: ['$x>3$', '$x<3$', '$x>-3$', '$x<-3$', '$x<\tfrac18$']
+      correta: D
+      resolucao: |
+        $2^{-x}>2^3\Rightarrow -x>3\Rightarrow x<-3$.
+
+    - enunciado: O conjunto solução de $3^{2x-1}\le27$ é
+      opcoes: ['$x\le1$', '$x\ge2$', '$x\le2$', '$x\le3$', '$x\ge1$']
       correta: C
       resolucao: |
-        $a_5=25-10=15$.
+        $2x-1\le3\Rightarrow x\le2$.
 
-    - enunciado: Uma sequência é definida por $a_1=3$ e $a_{n+1}=2a_n-1$. O termo $a_4$ é
-      opcoes: ['$5$', '$9$', '$15$', '$17$', '$33$']
-      correta: D
-      resolucao: |
-        $a_2=5$, \ $a_3=9$, \ $a_4=17$.
-
-    - enunciado: Na sequência $a_n=4n+3$, o termo igual a $87$ ocupa a posição
-      opcoes: ['$21$', '$22$', '$24$', '$28$', '$30$']
-      correta: A
-      resolucao: |
-        $4n+3=87\Rightarrow 4n=84\Rightarrow n=21$.
-
-    - enunciado: Um termo geral para a sequência $5,\ 8,\ 11,\ 14,\ \dots$ é
-      opcoes: ['$a_n=n+4$', '$a_n=3n+2$', '$a_n=3n+5$', '$a_n=5n+3$', '$a_n=5n-2$']
-      correta: B
-      resolucao: |
-        Somamos $3$ a cada passo e $a_1=5$: $a_n=5+3(n-1)=3n+2$.
-
-    - enunciado: Uma sequência é definida por $a_1=2$, $a_2=3$ e $a_{n+2}=a_{n+1}+a_n$. O termo $a_6$ é
-      opcoes: ['$8$', '$13$', '$15$', '$18$', '$21$']
+    - enunciado: A solução de $5^x+5^{x+1}=150$ é
+      opcoes: ['$1$', '$3$', '$5$', '$25$', '$2$']
       correta: E
       resolucao: |
-        $a_3=5$, \ $a_4=8$, \ $a_5=13$, \ $a_6=21$.
+        $5^x(1+5)=150\Rightarrow 5^x=25\Rightarrow x=2$.
 
-    - enunciado: A soma dos quatro primeiros termos da sequência $a_n=(-1)^n(2n+1)$ é
-      opcoes: ['$-4$', '$0$', '$2$', '$4$', '$24$']
+    - enunciado: A solução de $9^x=3^{x+4}$ é
+      opcoes: ['$1$', '$2$', '$3$', '$4$', '$8$']
       correta: D
       resolucao: |
-        $a_1=-3$, $a_2=5$, $a_3=-7$, $a_4=9$. Soma: $-3+5-7+9=4$.
+        $3^{2x}=3^{x+4}\Rightarrow 2x=x+4\Rightarrow x=4$.
 
-    - enunciado: Quantos termos da sequência $a_n=7n-4$ são números de dois algarismos?
-      opcoes: ['$12$', '$13$', '$14$', '$15$', '$16$']
-      correta: B
-      resolucao: |
-        $10\le 7n-4\le 99\Rightarrow 2\le n\le 14{,}7$. Logo $n=2,3,\dots,14$: $13$ termos.
-
-    - enunciado: Uma sequência é definida por $a_1=1$ e $a_{n+1}=a_n+n$. O termo $a_6$ é
-      opcoes: ['$7$', '$11$', '$15$', '$16$', '$22$']
-      correta: D
-      resolucao: |
-        $a_2=2$, $a_3=4$, $a_4=7$, $a_5=11$, $a_6=16$.
-
-    - enunciado: Uma sequência é definida por $a_1=3$ e $a_{n+1}=\dfrac{1}{1-a_n}$. O termo $a_{50}$ é
-      opcoes: ['$-3$', '$-\tfrac12$', '$\tfrac12$', '$\tfrac23$', '$3$']
-      correta: B
-      resolucao: |
-        $a_2=-\tfrac12$, $a_3=\tfrac23$, $a_4=3=a_1$: a sequência se repete de $3$ em $3$.
-        $50=3\cdot16+2$, logo $a_{50}=a_2=-\tfrac12$.
-
-    - enunciado: Triângulos são formados com palitos, lado a lado e alternando a posição — $1$ triângulo usa $3$ palitos, $2$ triângulos usam $5$ e $3$ triângulos usam $7$. Com $101$ palitos, o número de triângulos formados é
-      opcoes: ['$50$', '$51$', '$52$', '$99$', '$100$']
+    - enunciado: A solução de $2^x\cdot4^x=64$ é
+      opcoes: ['$2$', '$1$', '$3$', '$6$', '$8$']
       correta: A
       resolucao: |
-        Cada triângulo novo acrescenta $2$ palitos: $a_n=2n+1$.
-        $2n+1=101\Rightarrow n=50$.
+        $2^x\cdot2^{2x}=2^{3x}=2^6\Rightarrow x=2$.
 
-    - enunciado: Para a sequência $a_n=\dfrac{n}{n+1}$, o produto $a_1\cdot a_2\cdot a_3\cdots a_9$ vale
-      opcoes: ['$\tfrac1{100}$', '$\tfrac1{45}$', '$\tfrac1{10}$', '$\tfrac19$', '$\tfrac9{10}$']
+    - enunciado: A quantidade de números inteiros $x$ tais que $2<2^x<64$ é
+      opcoes: ['$3$', '$4$', '$5$', '$6$', '$62$']
+      correta: B
+      resolucao: |
+        $2^1<2^x<2^6\Rightarrow 1<x<6$: inteiros $2,3,4,5$.
+
+    - enunciado: Uma população de microrganismos é $N(t)=100\cdot3^t$, com $t$ em horas. Ela chega a $8\,100$ após
+      opcoes: ['$2$ h', '$3$ h', '$4$ h', '$27$ h', '$81$ h']
       correta: C
       resolucao: |
-        $\tfrac12\cdot\tfrac23\cdot\tfrac34\cdots\tfrac9{10}$: cada numerador cancela o denominador anterior e sobra $\tfrac1{10}$.
+        $3^t=81=3^4\Rightarrow t=4$.
 
-    - enunciado: Em uma sequência, $a_1=10$ e cada termo, a partir do segundo, é a metade do anterior somada a $4$. O quarto termo é
-      opcoes: ['$8$', '$8{,}25$', '$8{,}5$', '$9$', '$12$']
-      correta: B
-      resolucao: |
-        $a_{n+1}=\tfrac{a_n}{2}+4$: $a_2=9$, $a_3=8{,}5$, $a_4=8{,}25$.
-
-    - enunciado: O menor termo da sequência $a_n=n^2-10n+30$, com $n\ge1$, é
-      opcoes: ['$-5$', '$0$', '$1$', '$4$', '$5$']
-      correta: E
-      resolucao: |
-        $a_n=(n-5)^2+5$, mínimo para $n=5$: $a_5=5$.
-
-    - enunciado: Quantos termos da sequência $a_n=2^n-1$ são menores que $1000$?
-      opcoes: ['$8$', '$9$', '$10$', '$11$', '$12$']
-      correta: B
-      resolucao: |
-        $2^n-1<1000\Rightarrow 2^n<1001$. Como $2^9=512$ e $2^{10}=1024$, vale para $n=1,\dots,9$: $9$ termos.
-
-    - enunciado: Ana guardou R\$ 50,00 no primeiro mês e, em cada mês seguinte, guardou R\$ 20,00 a mais que no mês anterior. No $12^\circ$ mês, ela guardou
-      opcoes: ['R\$ 220,00', 'R\$ 240,00', 'R\$ 250,00', 'R\$ 260,00', 'R\$ 270,00']
-      correta: E
-      resolucao: |
-        $a_1=50$ e $a_{n+1}=a_n+20$: do $1^\circ$ ao $12^\circ$ mês são $11$ aumentos.
-        $a_{12}=50+11\cdot20=270$.
-
-    - enunciado: A sequência definida por $a_1=1$ e $a_{n+1}=a_n+2n$ tem termo geral
-      opcoes: ['$a_n=n^2-n+1$', '$a_n=n^2$', '$a_n=n^2+1$', '$a_n=2n-1$', '$a_n=n^2+n-1$']
+    - enunciado: O produto das soluções de $25^x-30\cdot5^x+125=0$ é
+      opcoes: ['$2$', '$3$', '$5$', '$25$', '$125$']
       correta: A
       resolucao: |
-        Os termos são $1,\ 3,\ 7,\ 13,\ \dots$
-        $n^2-n+1$ dá $1,\ 3,\ 7,\ 13$; as outras falham já em $n=1$ ou $n=2$.
+        $5^x=5$ ou $5^x=25$: $x=1$ ou $x=2$. Produto: $2$.
 
-    - enunciado: Na sequência $a_n=\dfrac{n+3}{2n-1}$, o termo igual a $1$ ocupa a posição
+    - enunciado: O conjunto solução de $(0{,}2)^{x-1}\le(0{,}2)^3$ é
+      opcoes: ['$x\le4$', '$x\le3$', '$x\ge3$', '$x<4$', '$x\ge4$']
+      correta: E
+      resolucao: |
+        Base entre $0$ e $1$, inverte: $x-1\ge3\Rightarrow x\ge4$.
+
+    - enunciado: A solução de $4^x-2^{x+2}=32$ é
+      opcoes: ['$2$', '$3$', '$4$', '$5$', '$8$']
+      correta: B
+      resolucao: |
+        $y=2^x$: $y^2-4y-32=0\Rightarrow y=8$ (ou $-4$, descartado). Então $x=3$.
+
+    - enunciado: O produto das soluções de $2^{x^2}=256$ é
+      opcoes: ['$-8$', '$8$', '$-4$', '$0$', '$-16$']
+      correta: A
+      resolucao: |
+        $x^2=8\Rightarrow x=\pm2\sqrt2$. Produto: $-8$.
+
+    - enunciado: A quantidade de números inteiros que satisfazem $\left(\tfrac13\right)^{x^2-4}>1$ é
       opcoes: ['$1$', '$2$', '$3$', '$4$', '$5$']
-      correta: D
-      resolucao: |
-        $n+3=2n-1\Rightarrow n=4$.
-
-    - enunciado: Uma sequência é definida por $a_1=1$, $a_2=2$ e $a_n=a_{n-1}\cdot a_{n-2}$ para $n\ge3$. O termo $a_7$ é
-      opcoes: ['$64$', '$128$', '$256$', '$512$', '$1024$']
       correta: C
       resolucao: |
-        $a_3=2$, $a_4=4$, $a_5=8$, $a_6=32$, $a_7=256$.
+        $1=\left(\tfrac13\right)^0$; base entre $0$ e $1$, inverte: $x^2-4<0\Rightarrow -2<x<2$. Inteiros: $-1,0,1$.
 
-    - enunciado: Retas no plano, duas a duas concorrentes e sem três passando pelo mesmo ponto, dividem o plano em $R_n$ regiões, com $R_1=2$ e $R_{n+1}=R_n+(n+1)$. Com $5$ retas, o número de regiões é
-      opcoes: ['$16$', '$21$', '$25$', '$31$', '$32$']
-      correta: A
+    - enunciado: A população de uma cidade é $P(t)=2000\cdot2^{t/10}$, com $t$ em anos. Ela chegará a $16\,000$ habitantes após
+      opcoes: ['$8$ anos', '$10$ anos', '$20$ anos', '$30$ anos', '$80$ anos']
+      correta: D
       resolucao: |
-        $R_2=4$, $R_3=7$, $R_4=11$, $R_5=16$.
+        $2^{t/10}=8=2^3\Rightarrow t=30$.
 
-    - enunciado: A soma dos $99$ primeiros termos da sequência $a_n=\dfrac{1}{n(n+1)}$ é
-      opcoes: ['$\tfrac1{100}$', '$\tfrac1{99}$', '$\tfrac12$', '$\tfrac{98}{99}$', '$\tfrac{99}{100}$']
+    - enunciado: A solução de $3^{x+1}+3^{x-1}=90$ é
+      opcoes: ['$1$', '$2$', '$3$', '$4$', '$9$']
+      correta: C
+      resolucao: |
+        $3^x\left(3+\tfrac13\right)=90\Rightarrow 3^x=27\Rightarrow x=3$.
+
+    - enunciado: A solução de $2^{3x-2}=\sqrt2$ é
+      opcoes: ['$\dfrac12$', '$\dfrac23$', '$\dfrac34$', '$\dfrac56$', '$1$']
+      correta: D
+      resolucao: |
+        $3x-2=\tfrac12\Rightarrow 3x=\tfrac52\Rightarrow x=\tfrac56$.
+
+    - enunciado: A quantidade de um medicamento no sangue cai pela metade a cada $4$ horas. Partindo de $400$ mg, a quantidade chega a $25$ mg após
+      opcoes: ['$4$ h', '$8$ h', '$12$ h', '$15$ h', '$16$ h']
       correta: E
       resolucao: |
-        $a_n=\tfrac1n-\tfrac1{n+1}$; na soma tudo se cancela, exceto $1-\tfrac1{100}=\tfrac{99}{100}$.
+        $400\cdot\left(\tfrac12\right)^{t/4}=25\Rightarrow\left(\tfrac12\right)^{t/4}=\tfrac1{16}=\left(\tfrac12\right)^4\Rightarrow t=16$ h.

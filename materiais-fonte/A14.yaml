@@ -1,242 +1,262 @@
-# A14 — Modelagem Matemática e Problemas de Contexto
+# Fonte das listas em PDF da aula A14 — Domínio, Imagem e Estudo Gráfico
 aula: A14
 
 fixacao:
-  intro: Resolva na ordem — do aquecimento ao desafio. Em cada problema, identifique a parte fixa (o $b$) e a parte que cresce por unidade (o $a$).
+  intro: Resolva na ordem — do aquecimento ao desafio. No domínio real, denominador não pode ser zero e raiz de índice par exige radicando maior ou igual a zero.
   secoes:
     - nome: Aquecimento
       questoes:
-        - enunciado: Uma fábrica tem custo fixo de R\$\,800{,}00 por mês e gasta R\$\,12{,}00 para produzir cada unidade. Escreva o custo $C(x)$ de $x$ unidades e calcule $C(50)$.
+        - enunciado: Determine o domínio real de cada função.
+          itens:
+            - $f(x)=3x-7$
+            - $f(x)=\dfrac1{x-4}$
+            - $f(x)=\sqrt{x-2}$
           resolucao: |
-            $C(x)=800+12x$. \ $C(50)=800+600=1400$.
-          resposta: '$C(x)=800+12x$; \ R\$\,1\,400{,}00'
+            (a) Não há restrição: $\mathbb{R}$.
+            (b) $x-4\neq0\Rightarrow x\neq4$: $\mathbb{R}-\{4\}$.
+            (c) $x-2\ge0\Rightarrow x\ge2$: $[2,+\infty[$.
+          resposta: '(a) $\mathbb{R}$ \quad (b) $\mathbb{R}-\{4\}$ \quad (c) $[2,+\infty[$'
 
-        - enunciado: A mesma fábrica vende cada unidade por R\$\,20{,}00. Escreva a receita $R(x)$ e calcule $R(50)$.
+        - enunciado: Determine o domínio real de cada função.
+          itens:
+            - $f(x)=\dfrac5{2x+6}$
+            - $f(x)=\sqrt{10-2x}$
+            - $f(x)=\dfrac{x+1}{x^2-9}$
           resolucao: |
-            $R(x)=20x$ e $R(50)=1000$.
-          resposta: '$R(x)=20x$; \ R\$\,1\,000{,}00'
+            (a) $2x+6\neq0\Rightarrow x\neq-3$.
+            (b) $10-2x\ge0\Rightarrow x\le5$.
+            (c) $x^2-9\neq0\Rightarrow x\neq3$ e $x\neq-3$.
+          resposta: '(a) $\mathbb{R}-\{-3\}$ \quad (b) $]-\infty,5]$ \quad (c) $\mathbb{R}-\{-3,3\}$'
 
-        - enunciado: Com os dados das duas questões anteriores, escreva o lucro $L(x)=R(x)-C(x)$ e determine o ponto de equilíbrio (lucro zero).
+        - enunciado: 'Seja $f:\{-2,-1,0,1,2\}\to\mathbb{R}$, $f(x)=2x+1$. Determine a imagem de $f$.'
           resolucao: |
-            $L(x)=20x-(800+12x)=8x-800$. \ $8x-800=0\Rightarrow x=100$ unidades.
-          resposta: '$L(x)=8x-800$; \ $100$ unidades'
+            $f(-2)=-3$, $f(-1)=-1$, $f(0)=1$, $f(1)=3$, $f(2)=5$.
+          resposta: '$Im=\{-3,-1,1,3,5\}$'
 
-        - enunciado: Um táxi cobra R\$\,6{,}00 de bandeirada e R\$\,3{,}00 por quilômetro. Quanto custa uma corrida de $12$ km?
+        - enunciado: 'Seja $f:[0,\,4]\to\mathbb{R}$, $f(x)=2x-1$. Determine a imagem de $f$.'
           resolucao: |
-            $C=6+3\cdot12=42$ reais.
-          resposta: 'R\$\,42{,}00'
+            $f$ é crescente: a menor imagem é $f(0)=-1$ e a maior é $f(4)=7$.
+          resposta: '$Im=[-1,\,7]$'
 
-        - enunciado: Um plano de celular cobra R\$\,35{,}00 por mês mais R\$\,0{,}20 por minuto de ligação. Qual é a conta de quem falou $200$ minutos?
+        - enunciado: 'Seja $f(x)=x^2$, com domínio $D=\{-3,-1,0,2,3\}$. Determine a imagem de $f$.'
           resolucao: |
-            $35+0{,}2\cdot200=35+40=75$ reais.
-          resposta: 'R\$\,75{,}00'
+            $9,1,0,4,9$. Sem repetir: $Im=\{0,1,4,9\}$.
+          resposta: '$Im=\{0,1,4,9\}$'
 
-        - enunciado: A conta de água de uma cidade tem taxa fixa de R\$\,25{,}00 mais R\$\,4{,}50 por m³ consumido. Quanto paga quem consumiu $18$ m³?
+        - enunciado: 'O gráfico de uma função $f$ é formado apenas pelos pontos $(-2,3)$, $(0,1)$, $(1,-1)$ e $(3,2)$. Determine o domínio, a imagem e $f(1)$.'
           resolucao: |
-            $25+4{,}5\cdot18=25+81=106$ reais.
-          resposta: 'R\$\,106{,}00'
+            Domínio: abscissas, $\{-2,0,1,3\}$. Imagem: ordenadas, $\{-1,1,2,3\}$. E $f(1)=-1$.
+          resposta: '$D=\{-2,0,1,3\}$; \ $Im=\{-1,1,2,3\}$; \ $f(1)=-1$'
 
-        - enunciado: Um vendedor recebe R\$\,1\,200{,}00 fixos mais $5\%$ do total que vende. Quanto recebe em um mês com R\$\,20\,000{,}00 em vendas?
+        - enunciado: Classifique cada função como crescente ou decrescente, comparando $f(1)$ e $f(2)$.
+          itens:
+            - $f(x)=3x+2$
+            - $g(x)=-2x+5$
           resolucao: |
-            $1200+0{,}05\cdot20\,000=1200+1000=2200$ reais.
-          resposta: 'R\$\,2\,200{,}00'
+            (a) $f(1)=5<f(2)=8$: quando $x$ aumenta, $f$ aumenta. Crescente.
+            (b) $g(1)=3>g(2)=1$: quando $x$ aumenta, $g$ diminui. Decrescente.
+          resposta: '(a) crescente \quad (b) decrescente'
 
     - nome: Treino
       questoes:
-        - enunciado: O plano A custa $20+0{,}40x$ reais e o plano B custa $50+0{,}25x$ reais, em que $x$ é o número de minutos. A partir de quantos minutos o plano B é mais vantajoso?
+        - enunciado: Determine o domínio real de $f(x)=\sqrt{x+3}+\dfrac1{x-1}$.
           resolucao: |
-            $50+0{,}25x<20+0{,}40x\Rightarrow 30<0{,}15x\Rightarrow x>200$.
-          resposta: 'mais de $200$ minutos'
+            Raiz: $x+3\ge0\Rightarrow x\ge-3$. Fração: $x\neq1$. As duas condições juntas:
+          resposta: '$[-3,\,1[\ \cup\ ]1,\,+\infty[$'
 
-        - enunciado: Um carro de R\$\,60\,000{,}00 se desvaloriza R\$\,4\,500{,}00 por ano, de forma linear.
+        - enunciado: Determine o domínio real de $f(x)=\dfrac{\sqrt{x-1}}{\sqrt{5-x}}$.
+          resolucao: |
+            Numerador: $x-1\ge0\Rightarrow x\ge1$.
+            Denominador: $5-x>0\Rightarrow x<5$ (estritamente, pois não pode zerar).
+          resposta: '$[1,\,5[$'
+
+        - enunciado: Determine o domínio real de $f(x)=\sqrt[3]{x-2}$.
+          resolucao: |
+            Raiz de índice ímpar existe para radicandos negativos, como $\sqrt[3]{-8}=-2$. Não há restrição.
+          resposta: '$\mathbb{R}$'
+
+        - enunciado: Determine o domínio real de $f(x)=\dfrac1{\sqrt{4-x}}$.
+          resolucao: |
+            Radicando não negativo e raiz não nula (está no denominador): $4-x>0\Rightarrow x<4$.
+          resposta: '$]-\infty,\,4[$'
+
+        - enunciado: 'Seja $f:[-1,\,3]\to\mathbb{R}$, $f(x)=-2x+4$. Determine a imagem de $f$.'
+          resolucao: |
+            $f$ é decrescente: a maior imagem é $f(-1)=6$ e a menor é $f(3)=-2$.
+          resposta: '$Im=[-2,\,6]$'
+
+        - enunciado: 'Seja $f:[-2,\,3]\to\mathbb{R}$, $f(x)=x^2$. Determine a imagem de $f$.'
+          resolucao: |
+            Cuidado: não basta calcular as extremidades. Como $0\in[-2,3]$, o menor valor é $f(0)=0$.
+            O maior é $f(3)=9$ (pois $f(-2)=4$). Logo, $Im=[0,9]$.
+          resposta: '$Im=[0,\,9]$'
+
+        - enunciado: Determine os zeros (raízes) de cada função.
           itens:
-            - Qual será seu valor após $6$ anos?
-            - Após quantos anos valerá R\$\,15\,000{,}00?
+            - $f(x)=4x-10$
+            - $g(x)=x^2-16$
           resolucao: |
-            $V(t)=60\,000-4\,500t$.
-            (a) $V(6)=60\,000-27\,000=33\,000$.
-            (b) $60\,000-4\,500t=15\,000\Rightarrow t=10$ anos.
-          resposta: '(a) R\$\,33\,000{,}00 \quad (b) $10$ anos'
+            (a) $4x-10=0\Rightarrow x=\tfrac52$. (b) $x^2=16\Rightarrow x=\pm4$.
+          resposta: '(a) $\tfrac52$ \quad (b) $-4$ e $4$'
 
-        - enunciado: O custo de produção é uma função afim. Produzir zero unidade custa R\$\,500{,}00 e produzir $10$ unidades custa R\$\,650{,}00. Quanto custa produzir $40$ unidades?
+        - enunciado: Para $f(x)=2x-6$, determine os valores de $x$ para os quais $f(x)>0$ e aqueles para os quais $f(x)<0$.
           resolucao: |
-            Custo por unidade: $\tfrac{650-500}{10}=15$. Então $C(x)=500+15x$ e $C(40)=1100$.
-          resposta: 'R\$\,1\,100{,}00'
-
-        - enunciado: Uma empresa tem receita $R(x)=25x$ e custo $C(x)=10x+1000$. Quantas unidades precisa vender para lucrar R\$\,2\,000{,}00?
-          resolucao: |
-            $L(x)=15x-1000=2000\Rightarrow x=200$.
-          resposta: '$200$ unidades'
-
-        - enunciado: Em uma escala termométrica X, a água congela a $10\ ^\circ$X e ferve a $210\ ^\circ$X (ao nível do mar). Sabendo que a relação com Celsius é afim, converta $30\ ^\circ$C para a escala X.
-          resolucao: |
-            De $0$ a $100\ ^\circ$C, X vai de $10$ a $210$: aumento de $2\ ^\circ$X por grau Celsius. Então $X=2C+10$.
-            $X=2\cdot30+10=70\ ^\circ$X.
-          resposta: '$70\ ^\circ$X'
-
-        - enunciado: Um mototáxi cobra R\$\,4{,}00 mais R\$\,1{,}50 por km; um carro de aplicativo cobra R\$\,2{,}00 mais R\$\,2{,}00 por km. Para que distância os preços são iguais? Qual é mais barato para $10$ km?
-          resolucao: |
-            $4+1{,}5d=2+2d\Rightarrow d=4$ km.
-            Para $10$ km: mototáxi R\$\,19{,}00 e carro R\$\,22{,}00.
-          resposta: '$4$ km; para $10$ km, o mototáxi'
-
-        - enunciado: Uma piscina já tem $2\,000$ L de água e é abastecida a $150$ L por minuto. Sua capacidade é de $20\,000$ L. Em quanto tempo ficará cheia?
-          resolucao: |
-            $2000+150t=20\,000\Rightarrow 150t=18\,000\Rightarrow t=120$ min $=2$ h.
-          resposta: '$120$ min ($2$ h)'
-
-        - enunciado: Sobre o preço $x$ de um produto incidem $20\%$ de imposto e uma taxa fixa de R\$\,5{,}00, resultando no preço final $P(x)=1{,}2x+5$. Se o preço final foi R\$\,65{,}00, qual era o preço $x$?
-          resolucao: |
-            $1{,}2x+5=65\Rightarrow 1{,}2x=60\Rightarrow x=50$.
-          resposta: 'R\$\,50{,}00'
+            $2x-6>0\Leftrightarrow x>3$ e $2x-6<0\Leftrightarrow x<3$. Em $x=3$, $f$ se anula.
+          resposta: '$f>0$ para $x>3$; \ $f<0$ para $x<3$'
 
     - nome: Desafio
       questoes:
-        - enunciado: Uma empresa tem custo fixo de R\$\,3\,000{,}00, custo de R\$\,18{,}00 por unidade e vende cada unidade por R\$\,30{,}00. Quantas unidades, no mínimo, precisa vender para lucrar pelo menos R\$\,1\,800{,}00?
+        - enunciado: Determine o domínio real de $f(x)=\dfrac{\sqrt{x-2}}{x-5}+\sqrt{8-x}$.
           resolucao: |
-            $L(x)=30x-(3000+18x)=12x-3000\ge1800\Rightarrow 12x\ge4800\Rightarrow x\ge400$.
-          resposta: '$400$ unidades'
+            $x-2\ge0\Rightarrow x\ge2$; \ $x\neq5$; \ $8-x\ge0\Rightarrow x\le8$.
+            Juntando: $2\le x\le8$, sem o $5$.
+          resposta: '$[2,\,5[\ \cup\ ]5,\,8]$'
 
-        - enunciado: A vela A tem $30$ cm e queima $2$ cm por hora; a vela B tem $24$ cm e queima $1$ cm por hora. Acesas juntas, depois de quanto tempo terão a mesma altura? Qual será essa altura?
+        - enunciado: O domínio real de $f(x)=\sqrt{ax-6}$, com $a>0$, é $[2,\,+\infty[$. Determine $a$.
           resolucao: |
-            $30-2t=24-t\Rightarrow t=6$ h. Altura: $30-12=18$ cm.
-          resposta: '$6$ h; $18$ cm'
+            $ax-6\ge0\Rightarrow x\ge\tfrac6a$. Para que seja $x\ge2$: $\tfrac6a=2\Rightarrow a=3$.
+          resposta: '$a=3$'
 
-        - enunciado: 'Uma concessionária oferece dois tipos de salário: A, de R\$\,1\,500{,}00 mais $3\%$ das vendas, e B, de R\$\,2\,100{,}00 mais $1\%$ das vendas. Para qual valor de vendas os dois salários são iguais?'
+        - enunciado: Determine a imagem de $f(x)=\dfrac{x+2}{x-1}$, com $x\neq1$.
           resolucao: |
-            $1500+0{,}03v=2100+0{,}01v\Rightarrow 0{,}02v=600\Rightarrow v=30\,000$.
-            Acima disso, o tipo A é melhor.
-          resposta: 'R\$\,30\,000{,}00'
+            Isole $x$ em $y=\dfrac{x+2}{x-1}$: $y(x-1)=x+2\Rightarrow x(y-1)=y+2\Rightarrow x=\dfrac{y+2}{y-1}$.
+            Esse $x$ existe para todo $y\neq1$. Logo, $Im=\mathbb{R}-\{1\}$.
+          resposta: '$Im=\mathbb{R}-\{1\}$'
 
-        - enunciado: Uma fábrica produz no máximo $1\,000$ unidades por mês, vende cada uma por R\$\,40{,}00 e tem custo $C(x)=25x+4500$. Qual é o maior lucro mensal possível?
+        - enunciado: 'Ao longo de um dia, a temperatura de uma cidade foi registrada a cada $4$ horas: às $0$, $4$, $8$, $12$, $16$, $20$ e $24$ h, os valores foram $18$, $15$, $19$, $27$, $29$, $22$ e $17\ ^\circ$C.'
+          itens:
+            - Quais foram a menor e a maior temperatura registradas?
+            - Entre quais horários a temperatura subiu, segundo os registros?
           resolucao: |
-            $L(x)=40x-25x-4500=15x-4500$. Como $L$ é crescente, o máximo ocorre em $x=1000$: $L=15\,000-4500=10\,500$.
-          resposta: 'R\$\,10\,500{,}00'
+            (a) Mínima: $15\ ^\circ$C (às $4$ h). Máxima: $29\ ^\circ$C (às $16$ h).
+            (b) Os registros crescem de $4$ h a $16$ h ($15\to19\to27\to29$) e caem de $0$ a $4$ h e de $16$ a $24$ h.
+          resposta: '(a) $15$ e $29\ ^\circ$C \quad (b) das $4$ h às $16$ h'
 
-        - enunciado: A população de uma cidade era de $50$ mil habitantes em 2020 e de $62$ mil em 2026. Supondo crescimento linear, estime a população em 2030.
+        - enunciado: Determine o domínio e a imagem de $f(x)=\sqrt{x-1}+\sqrt{1-x}$.
           resolucao: |
-            Crescimento: $\tfrac{12}{6}=2$ mil por ano. Em 2030: $62+4\cdot2=70$ mil.
-          resposta: '$70$ mil habitantes'
+            $x-1\ge0$ e $1-x\ge0$ exigem $x\ge1$ e $x\le1$, isto é, $x=1$.
+            Então $D=\{1\}$ e $f(1)=0$, logo $Im=\{0\}$.
+          resposta: '$D=\{1\}$; \ $Im=\{0\}$'
 
 vestibular:
   intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
   questoes:
-    - enunciado: Uma pequena fábrica tem custo fixo mensal de R\$\,2\,000{,}00 e custo de R\$\,8{,}00 por unidade produzida. Cada unidade é vendida por R\$\,18{,}00. O número de unidades que precisa vender para não ter prejuízo nem lucro é
-      opcoes: ['$100$', '$200$', '$250$', '$300$', '$400$']
-      correta: B
-      resolucao: |
-        $18x=2000+8x\Rightarrow 10x=2000\Rightarrow x=200$.
-
-    - enunciado: Um táxi cobra R\$\,5{,}00 de bandeirada e R\$\,2{,}80 por quilômetro rodado. Uma corrida de $20$ km custa
-      opcoes: ['R\$\,61{,}00', 'R\$\,64{,}00', 'R\$\,66{,}00', 'R\$\,70{,}00', 'R\$\,106{,}00']
+    - enunciado: O domínio real da função $f(x)=\dfrac2{x-5}$ é
+      opcoes: ['$\mathbb{R}-\{5\}$', '$\mathbb{R}-\{-5\}$', '$\mathbb{R}$', '$]5,\,+\infty[$', '$\mathbb{R}-\{0\}$']
       correta: A
       resolucao: |
-        $5+2{,}8\cdot20=5+56=61$ reais.
+        Só é proibido $x-5=0$, isto é, $x=5$.
 
-    - enunciado: O plano A cobra R\$\,40{,}00 fixos mais R\$\,0{,}10 por minuto; o plano B cobra apenas R\$\,0{,}30 por minuto. O plano A é mais vantajoso para quem fala mais de
-      opcoes: ['$100$ min', '$133$ min', '$150$ min', '$200$ min', '$400$ min']
-      correta: D
-      resolucao: |
-        $40+0{,}1x<0{,}3x\Rightarrow 40<0{,}2x\Rightarrow x>200$.
-
-    - enunciado: O lucro de uma empresa é $L(x)=15x-900$ reais, para $x$ unidades vendidas. Para lucrar R\$\,600{,}00, ela precisa vender
-      opcoes: ['$40$ unidades', '$60$ unidades', '$100$ unidades', '$120$ unidades', '$150$ unidades']
+    - enunciado: O domínio real da função $f(x)=\sqrt{2x-8}$ é
+      opcoes: ['$]4,\,+\infty[$', '$]-\infty,\,4]$', '$[4,\,+\infty[$', '$[-4,\,+\infty[$', '$[8,\,+\infty[$']
       correta: C
       resolucao: |
-        $15x-900=600\Rightarrow 15x=1500\Rightarrow x=100$.
+        $2x-8\ge0\Rightarrow x\ge4$. O $4$ é permitido, pois $\sqrt0=0$.
 
-    - enunciado: Uma máquina comprada por R\$\,80\,000{,}00 vale R\$\,50\,000{,}00 após $5$ anos. Supondo depreciação linear, seu valor após $8$ anos será
-      opcoes: ['R\$\,18\,000{,}00', 'R\$\,24\,000{,}00', 'R\$\,26\,000{,}00', 'R\$\,30\,000{,}00', 'R\$\,32\,000{,}00']
-      correta: E
-      resolucao: |
-        Perde $\tfrac{30\,000}5=6\,000$ por ano. Após $8$ anos: $80\,000-48\,000=32\,000$.
-
-    - enunciado: A conta de luz é calculada como R\$\,12{,}00 de taxa fixa mais R\$\,0{,}75 por kWh. Uma conta de R\$\,162{,}00 corresponde a um consumo de
-      opcoes: ['$150$ kWh', '$200$ kWh', '$216$ kWh', '$225$ kWh', '$240$ kWh']
+    - enunciado: 'A imagem da função $f:\{0,1,2,3\}\to\mathbb{R}$, $f(x)=x^2-2x$, é'
+      opcoes: ['$\{0,1,2,3\}$', '$\{-1,0,3\}$', '$\{0,3\}$', '$\{-1,0,1,3\}$', '$\{-1,0,3,9\}$']
       correta: B
       resolucao: |
-        $12+0{,}75k=162\Rightarrow 0{,}75k=150\Rightarrow k=200$.
+        $f(0)=0$, $f(1)=-1$, $f(2)=0$ e $f(3)=3$. Logo, $Im=\{-1,0,3\}$.
 
-    - enunciado: Em uma escala termométrica E, a água congela a $20\ ^\circ$E e ferve a $220\ ^\circ$E. A temperatura de $40\ ^\circ$C corresponde, nessa escala, a
-      opcoes: ['$60\ ^\circ$E', '$80\ ^\circ$E', '$90\ ^\circ$E', '$100\ ^\circ$E', '$120\ ^\circ$E']
+    - enunciado: O domínio real da função $f(x)=\dfrac{\sqrt{x+1}}{x-3}$ é
+      opcoes: ['$[-1,\,+\infty[$', '$]-1,\,3[$', '$]-1,\,+\infty[-\{3\}$', '$[-1,\,3[\ \cup\ ]3,\,+\infty[$', '$\mathbb{R}-\{3\}$']
       correta: D
       resolucao: |
-        $E=2C+20$ (sobe $2\ ^\circ$E por grau Celsius). Para $C=40$: $E=100$.
+        $x+1\ge0\Rightarrow x\ge-1$ e $x\neq3$.
 
-    - enunciado: Uma empresa tem receita $R(x)=45x$ e custo $C(x)=1500+30x$, em reais. Vendendo $300$ unidades, seu lucro é
-      opcoes: ['R\$\,3\,000{,}00', 'R\$\,4\,500{,}00', 'R\$\,5\,000{,}00', 'R\$\,6\,000{,}00', 'R\$\,13\,500{,}00']
-      correta: A
-      resolucao: |
-        $L(x)=15x-1500$. Para $x=300$: $4500-1500=3000$.
-
-    - enunciado: A locadora A cobra R\$\,80{,}00 mais R\$\,1{,}20 por km; a locadora B cobra R\$\,50{,}00 mais R\$\,1{,}50 por km. A locadora A é mais barata para distâncias $d$, em km, tais que
-      opcoes: ['$d<100$', '$d=100$', '$d>100$', '$d>130$', '$d<130$']
-      correta: C
-      resolucao: |
-        $80+1{,}2d<50+1{,}5d\Rightarrow 30<0{,}3d\Rightarrow d>100$.
-
-    - enunciado: A bateria de um celular estava em $100\%$ às $8$ h e em $64\%$ às $11$ h, descarregando de forma linear. Mantido esse ritmo, ela acabará às
-      opcoes: ['$14$ h', '$15$ h', '$15$ h $20$ min', '$16$ h', '$16$ h $20$ min']
+    - enunciado: 'A imagem da função $f:[1,\,4]\to\mathbb{R}$, $f(x)=3x-2$, é'
+      opcoes: ['$[1,\,4]$', '$[3,\,12]$', '$]1,\,10[$', '$[-2,\,10]$', '$[1,\,10]$']
       correta: E
       resolucao: |
-        Perde $\tfrac{36}3=12$ pontos por hora. Para perder $100$: $\tfrac{100}{12}$ h $=8$ h $20$ min. Às $8$ h $+\,8$ h $20$ min $=16$ h $20$ min.
+        $f$ é crescente: $f(1)=1$ e $f(4)=10$.
 
-    - enunciado: Um vendedor recebe R\$\,1\,800{,}00 fixos mais $6\%$ das vendas. Em um mês em que recebeu R\$\,3\,000{,}00, suas vendas foram de
-      opcoes: ['R\$\,20\,000{,}00', 'R\$\,25\,000{,}00', 'R\$\,30\,000{,}00', 'R\$\,50\,000{,}00', 'R\$\,80\,000{,}00']
-      correta: A
-      resolucao: |
-        $0{,}06v=1200\Rightarrow v=20\,000$.
-
-    - enunciado: O custo de produção é uma função afim, com $C(0)=400$ e $C(20)=700$, em reais. O custo de cada unidade adicional é
-      opcoes: ['R\$\,5{,}00', 'R\$\,10{,}00', 'R\$\,15{,}00', 'R\$\,20{,}00', 'R\$\,35{,}00']
-      correta: C
-      resolucao: |
-        Coeficiente angular: $\tfrac{700-400}{20}=15$.
-
-    - enunciado: A população de uma cidade cresceu linearmente de $120$ mil habitantes em 2010 para $150$ mil em 2020. Mantido esse ritmo, em 2035 ela terá
-      opcoes: ['$165$ mil', '$180$ mil', '$190$ mil', '$195$ mil', '$210$ mil']
-      correta: D
-      resolucao: |
-        $3$ mil por ano. De 2020 a 2035: $15\cdot3=45$ mil a mais. Total: $195$ mil.
-
-    - enunciado: Um tanque com capacidade de $1\,800$ L tem $450$ L de água. Ele recebe $60$ L por minuto e, ao mesmo tempo, perde $15$ L por minuto por um vazamento. O tanque ficará cheio após
-      opcoes: ['$25$ min', '$30$ min', '$36$ min', '$40$ min', '$45$ min']
+    - enunciado: O domínio real de $f(x)=\dfrac1{\sqrt{6-2x}}$ é formado pelos números $x$ tais que
+      opcoes: ['$x\le3$', '$x<3$', '$x>3$', '$x\ge3$', '$x\neq3$']
       correta: B
       resolucao: |
-        Ganho líquido: $45$ L/min. Faltam $1\,350$ L: $\tfrac{1350}{45}=30$ min.
+        A raiz está no denominador: $6-2x>0\Rightarrow x<3$.
 
-    - enunciado: Uma empresa tem custo fixo de R\$\,2\,400{,}00 e custo de R\$\,12{,}00 por unidade, e vende $400$ unidades por mês. O menor preço de venda por unidade que evita prejuízo é
-      opcoes: ['R\$\,6{,}00', 'R\$\,12{,}00', 'R\$\,14{,}00', 'R\$\,16{,}00', 'R\$\,18{,}00']
-      correta: E
-      resolucao: |
-        $400p\ge2400+12\cdot400=7200\Rightarrow p\ge18$.
-
-    - enunciado: Um estacionamento cobra R\$\,10{,}00 pela primeira hora e R\$\,4{,}00 por hora adicional. Quem ficar $5$ horas pagará
-      opcoes: ['R\$\,26{,}00', 'R\$\,28{,}00', 'R\$\,30{,}00', 'R\$\,34{,}00', 'R\$\,50{,}00']
-      correta: A
-      resolucao: |
-        $10+4\cdot4=26$ reais (são $4$ horas adicionais, não $5$).
-
-    - enunciado: A academia X cobra R\$\,150{,}00 de matrícula e R\$\,90{,}00 por mês; a academia Y cobra R\$\,120{,}00 por mês, sem matrícula. O gasto total é o mesmo após
-      opcoes: ['$4$ meses', '$5$ meses', '$6$ meses', '$8$ meses', '$10$ meses']
-      correta: B
-      resolucao: |
-        $150+90n=120n\Rightarrow 30n=150\Rightarrow n=5$.
-
-    - enunciado: Os gráficos de receita $R(x)$ e de custo $C(x)$ de uma empresa se cortam no ponto $(250,\,7500)$, e a receita é $R(x)=px$. O preço de venda $p$ de cada unidade é
-      opcoes: ['R\$\,7{,}50', 'R\$\,15{,}00', 'R\$\,25{,}00', 'R\$\,30{,}00', 'R\$\,250{,}00']
-      correta: D
-      resolucao: |
-        $R(250)=7500\Rightarrow 250p=7500\Rightarrow p=30$.
-
-    - enunciado: Uma casa de câmbio vende cada dólar por R\$\,5{,}40 e cobra uma taxa fixa de R\$\,12{,}00 por operação. Com R\$\,552{,}00, compram-se
-      opcoes: ['US\$\,90', 'US\$\,98', 'US\$\,100', 'US\$\,102', 'US\$\,110']
+    - enunciado: O único número real que não pertence à imagem de $f(x)=\dfrac{3x-1}{x+2}$, com $x\neq-2$, é
+      opcoes: ['$-2$', '$\dfrac13$', '$3$', '$0$', '$-\dfrac12$']
       correta: C
       resolucao: |
-        Tirando a taxa: $540$ reais. Então $\tfrac{540}{5{,}4}=100$ dólares.
+        Isolando $x$: $y(x+2)=3x-1\Rightarrow x(y-3)=-1-2y$. Para $y=3$, fica $0=-7$, impossível. Para os demais $y$, existe $x$.
 
-    - enunciado: Uma gráfica cobra R\$\,0{,}25 por página impressa mais R\$\,30{,}00 de encadernação por livro. O custo de $40$ livros de $200$ páginas cada é
-      opcoes: ['R\$\,1\,200{,}00', 'R\$\,2\,000{,}00', 'R\$\,2\,030{,}00', 'R\$\,3\,030{,}00', 'R\$\,3\,200{,}00']
+    - enunciado: Durante um experimento, a temperatura de uma substância é $T(t)=20+3t$, em $^\circ$C, para $0\le t\le5$ minutos. O conjunto de temperaturas atingidas é
+      opcoes: ['$[20,\,35]$', '$[0,\,5]$', '$[20,\,23]$', '$[3,\,35]$', '$[23,\,35]$']
+      correta: A
+      resolucao: |
+        $T(0)=20$ e $T(5)=35$, e $T$ é crescente: a imagem é $[20,35]$. A alternativa B é o domínio.
+
+    - enunciado: O domínio real de $f(x)=\sqrt{x-1}+\sqrt{7-x}$ é
+      opcoes: ['$]1,\,7[$', '$[1,\,+\infty[$', '$]-\infty,\,7]$', '$[1,\,7[$', '$[1,\,7]$']
       correta: E
       resolucao: |
-        Cada livro: $0{,}25\cdot200+30=80$ reais. Total: $40\cdot80=3200$.
+        $x\ge1$ e $x\le7$, com as duas extremidades permitidas.
+
+    - enunciado: A soma dos zeros da função $f(x)=(x-2)(x+5)$ é
+      opcoes: ['$-10$', '$-7$', '$-5$', '$-3$', '$3$']
+      correta: D
+      resolucao: |
+        Os zeros são $x=2$ e $x=-5$. Soma: $-3$.
+
+    - enunciado: A função $f(x)=-2x+8$ é positiva para
+      opcoes: ['$x>4$', '$x<4$', '$x>-4$', '$x<8$', '$x>8$']
+      correta: B
+      resolucao: |
+        $-2x+8>0\Rightarrow -2x>-8\Rightarrow x<4$ (o sinal inverte ao dividir por $-2$).
+
+    - enunciado: A quantidade de números inteiros no domínio real de $f(x)=\sqrt{x+2}+\sqrt{3-x}$ é
+      opcoes: ['$3$', '$4$', '$5$', '$6$', '$7$']
+      correta: D
+      resolucao: |
+        $D=[-2,3]$. Inteiros: $-2,-1,0,1,2,3$, ou seja, $6$.
+
+    - enunciado: 'A imagem de $f:[-3,\,2]\to\mathbb{R}$, $f(x)=x^2$, é'
+      opcoes: ['$[4,\,9]$', '$[-3,\,2]$', '$[0,\,9]$', '$[0,\,4]$', '$[-9,\,4]$']
+      correta: C
+      resolucao: |
+        O menor valor é $f(0)=0$, pois $0$ está no domínio. O maior é $f(-3)=9$.
+
+    - enunciado: Um estacionamento cobra R\$\,8{,}00 pela primeira hora e R\$\,3{,}00 por hora adicional, com permanência máxima de $10$ horas (cobradas em horas inteiras). O maior valor possível de uma conta é
+      opcoes: ['R\$\,35{,}00', 'R\$\,38{,}00', 'R\$\,41{,}00', 'R\$\,44{,}00', 'R\$\,80{,}00']
+      correta: A
+      resolucao: |
+        Com $10$ horas: $8+9\cdot3=35$ reais. (A alternativa B cobra a primeira hora também como adicional.)
+
+    - enunciado: Das funções abaixo, a única crescente é
+      opcoes: ['$f(x)=-3x+1$', '$f(x)=5-x$', '$f(x)=-\dfrac x2$', '$f(x)=4$', '$f(x)=2x-9$']
+      correta: E
+      resolucao: |
+        Em $f(x)=ax+b$, a função é crescente quando $a>0$. Só em E temos $a=2>0$; em D, $f$ é constante.
+
+    - enunciado: O domínio real de $f(x)=\dfrac{x+1}{x^2-4}$ é
+      opcoes: ['$\mathbb{R}-\{2\}$', '$\mathbb{R}-\{-1\}$', '$\mathbb{R}-\{-2,\,2\}$', '$\mathbb{R}-\{4\}$', '$\mathbb{R}-\{-2,\,-1,\,2\}$']
+      correta: C
+      resolucao: |
+        $x^2-4=0\Leftrightarrow x=\pm2$. O numerador pode ser zero sem problema.
+
+    - enunciado: A imagem de $f(x)=\dfrac{x+1}{x-1}$, com $x\neq1$, é
+      opcoes: ['$\mathbb{R}-\{-1\}$', '$\mathbb{R}-\{1\}$', '$\mathbb{R}-\{0\}$', '$\mathbb{R}$', '$\mathbb{R}-\{-1,\,1\}$']
+      correta: B
+      resolucao: |
+        $y(x-1)=x+1\Rightarrow x(y-1)=y+1$. Não há solução para $y=1$; para os demais $y$, sim.
+
+    - enunciado: O domínio de $f(x)=\dfrac1{x^2+m}$ é todo o conjunto $\mathbb{R}$ se, e somente se,
+      opcoes: ['$m>0$', '$m\ge0$', '$m<0$', '$m=0$', '$m\neq0$']
+      correta: A
+      resolucao: |
+        É preciso $x^2+m\neq0$ para todo $x$. Se $m>0$, então $x^2+m>0$. Se $m\le0$, $x=\sqrt{-m}$ zera o denominador.
+
+    - enunciado: O domínio real de $f(x)=\sqrt{5-x}-\sqrt{x-5}$ é
+      opcoes: ['$[5,\,+\infty[$', '$]-\infty,\,5]$', '$\mathbb{R}$', '$\varnothing$', '$\{5\}$']
+      correta: E
+      resolucao: |
+        $5-x\ge0$ e $x-5\ge0$ ao mesmo tempo só valem para $x=5$.
+
+    - enunciado: 'As vendas mensais de uma loja nos meses $1$ a $6$ foram $120$, $150$, $140$, $170$, $200$ e $180$ unidades. O período de meses consecutivos mais longo em que as vendas cresceram mês a mês foi'
+      opcoes: ['do mês $1$ ao $2$', 'do mês $2$ ao $3$', 'do mês $1$ ao $3$', 'do mês $3$ ao $5$', 'do mês $5$ ao $6$']
+      correta: D
+      resolucao: |
+        De $3$ a $5$: $140\to170\to200$, dois aumentos seguidos. De $1$ a $2$ houve só um aumento; de $2$ a $3$ e de $5$ a $6$ as vendas caíram.

@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de função logarítmica",
+    "Reconhecer o conceito central de equações modulares",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "A função logarítmica é inversa da exponencial de mesma base. Só recebe entradas positivas; sua imagem são todos os reais. O gráfico atravessa (1,0) e tem assíntota vertical x=0."
+        "Uma igualdade |A|=k, com k>0, vira dois caminhos: A=k ou A=−k. Se k=0, há um único caminho; se k<0, nenhuma solução real."
       ],
       "formulas": [
-        "f(x)=\\log_a x,\\quad x>0,\\ a>0,\\ a\\neq1"
+        "|A|=k\\Longleftrightarrow A=\\pm k\\quad(k\\geq0)"
       ],
-      "dica": "Repare no ponto fixo (1,0) e na ausência de gráfico para x≤0.",
-      "erroComum": "Não confunda domínio (0,+∞) com imagem R."
+      "dica": "Imagine a distância de 2x−1 até zero: deve ser 5 nos dois sentidos.",
+      "erroComum": "Nunca abra dois casos se o lado direito for negativo; aí não há solução."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,47 +25,47 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Compare log₂1 e log₂8.",
+        "enunciado": "Resolva |2x−1|=5.",
         "passos": [
-          "2⁰=1 ⇒ log₂1=0.",
-          "2³=8 ⇒ log₂8=3.",
-          "A função com base 2 é crescente."
+          "Abra os dois casos: 2x−1=5 ou 2x−1=−5.",
+          "Primeiro caso: x=3.",
+          "Segundo caso: x=−2."
         ]
       }
     }
   ],
   "videos": [
     {
-      "titulo": "Introdução aos logaritmos",
+      "titulo": "Introdução a equações e gráficos de valores absolutos",
       "canal": "Khan Academy Brasil · vídeo",
-      "descricao": "Relação entre potências, expoentes e logaritmos.",
-      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
+      "descricao": "Exemplos de equações modulares e como separar os casos.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-absolute-value/alg-absolute-value-equations/v/absolute-value-equations"
     }
   ],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "O domínio de log₅(x−2) é:",
+      "enunciado": "|x+3|=2 tem soluções:",
       "opcoes": [
-        "x≥2",
-        "x>2",
-        "x<2",
-        "Todos os reais"
+        "−5 e −1",
+        "−1 e 5",
+        "1 e 5",
+        "−3 e 2"
       ],
-      "correta": 1,
-      "explicacao": "O argumento precisa satisfazer x−2>0."
+      "correta": 0,
+      "explicacao": "x+3=±2 ⇒ x=−1 ou −5."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O gráfico de log₂x passa por:",
+      "enunciado": "|x|=−1 possui:",
       "opcoes": [
-        "(0,1)",
-        "(1,0)",
-        "(0,0)",
-        "(−1,0)"
+        "Duas soluções",
+        "Uma solução",
+        "Infinitas soluções",
+        "Nenhuma solução real"
       ],
-      "correta": 1,
-      "explicacao": "log₂1=0."
+      "correta": 3,
+      "explicacao": "Módulos não podem ser negativos."
     }
   ],
   "exercicios": [],

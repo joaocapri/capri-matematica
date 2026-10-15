@@ -39,13 +39,13 @@ async function checkWidth(page,label){
   await checkWidth(page,config.name+' home');
   await page.screenshot({path:'screenshots/'+config.name+'-home.png',fullPage:true});
   await page.locator('#hero-search').fill('Bhaskara');
-  await page.locator('#search-output a[href="/aulas/A17/"]').first().waitFor();
+  await page.locator('#search-output a[href="/aulas/A20/"]').first().waitFor();
   await checkWidth(page,config.name+' pesquisa');
   await page.screenshot({path:'screenshots/'+config.name+'-search.png',fullPage:true});
   await page.locator('#clear-search').click();
   await page.locator('a.area-tile[href="/explorar/?area=funcoes"]').click();
   await page.locator('.tr-topic h3 a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]').waitFor();
-  assert.equal(await page.locator('.tr-route > .tr-stop').count(),6);
+  assert.equal(await page.locator('.tr-route > .tr-stop').count(),7);
   assert.equal(await page.locator('input[type=search]').count(),0,'explorador sem busca duplicada');
   assert.equal(await page.locator('.explorer-search-link').count(),0,'Sem botão Pesquisar nas páginas de área');
   await checkWidth(page,config.name+' assuntos');
@@ -55,8 +55,8 @@ async function checkWidth(page,label){
   assert.equal(await page.locator('.tr-lesson').count(),6);
   await checkWidth(page,config.name+' aulas do assunto');
   await page.screenshot({path:'screenshots/'+config.name+'-topic.png',fullPage:true});
-  await page.locator('.tr-lesson h3 a[href="/aulas/A17/"]').click();
-  await page.waitForURL('**/aulas/A17/');
+  await page.locator('.tr-lesson h3 a[href="/aulas/A20/"]').click();
+  await page.waitForURL('**/aulas/A20/');
   await page.locator('.aula-step').first().waitFor();
   assert.equal(await page.locator('.aula-step').count(),4);
   assert.equal(await page.locator('.aula-rail [data-rail]').count(),4);
@@ -88,7 +88,7 @@ async function checkWidth(page,label){
   });
   await page.locator('#btn-share').click();
   const sharePayload=await page.evaluate(()=>window.__lastSharePayload);
-  assert.equal(sharePayload.url,BASE+'/aulas/A17/');
+  assert.equal(sharePayload.url,BASE+'/aulas/A20/');
   assert.match(sharePayload.title,/MAT MAT MAT!/);
   assert.match(sharePayload.text,/Olha essa aula de matemática/);
 
@@ -134,10 +134,10 @@ async function checkWidth(page,label){
   await page.locator('.area-tile').first().waitFor();
   await page.locator('#hero-search').fill('função modular');
   await page.locator('#quick-hits .hq-row.is-best').waitFor();
-  assert.match(await page.locator('#quick-hits .hq-row.is-best').getAttribute('href'),/\/aulas\/A22\/$/);
+  assert.match(await page.locator('#quick-hits .hq-row.is-best').getAttribute('href'),/\/aulas\/A29\/$/);
   await checkWidth(page,config.name+' sugestões da busca');
   await page.locator('#hero-search').press('Enter');
-  await page.waitForURL('**/aulas/A22/');
+  await page.waitForURL('**/aulas/A29/');
   await page.close();
  }
  await browser.close();

@@ -6,13 +6,13 @@
     {
       "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "Análise dimensional evita erros: comprimento usa unidade linear, área unidade ao quadrado e volume ao cubo. Ao trocar metros por centímetros, o fator muda segundo a dimensão."
+        "Amortização é a parte da prestação que reduz a dívida. No SAC, a amortização é constante; na Price, a prestação é constante (mantidas as taxas e condições). Juros incidem sobre o saldo devedor."
       ],
       "formulas": [
-        "1\\,m^2=10^4\\,cm^2,\\quad1\\,m^3=10^3\\,L"
+        "\\text{prestação}=\\text{amortização}+\\text{juros}"
       ],
-      "dica": "Escreva a unidade ao lado de cada número da conta.",
-      "erroComum": "Converter m² para cm² exige fator 10 000, não 100."
+      "dica": "Na Price, prestação constante não significa amortização constante.",
+      "erroComum": "Não confunda juros com redução do principal."
     },
     {
       "titulo": "Hora de ver funcionar",
@@ -20,10 +20,11 @@
         "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Converta 2,5 m³ em litros.",
+        "enunciado": "Uma dívida de R$ 1200 será paga em 3 amortizações iguais pelo SAC, sem considerar taxas extras.",
         "passos": [
-          "1 m³ corresponde a 1000 L.",
-          "2,5·1000=2500 litros."
+          "Amortização por período: 1200/3=400.",
+          "Se o saldo inicial rende 1% no primeiro mês, juros iniciais=12.",
+          "Primeira prestação=400+12=412."
         ]
       }
     }
@@ -31,27 +32,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "3 m² em cm² equivalem a:",
+      "enunciado": "Num SAC de R$ 800 em 4 períodos, amortização é:",
       "opcoes": [
-        "300",
-        "3000",
-        "30 000",
-        "300 000"
+        "100",
+        "200",
+        "400",
+        "800"
       ],
-      "correta": 2,
-      "explicacao": "3·10000=30000 cm²."
+      "correta": 1,
+      "explicacao": "800/4=200."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "1 litro corresponde a:",
+      "enunciado": "Ao longo do SAC, os juros sobre o saldo:",
       "opcoes": [
-        "1 cm³",
-        "10 cm³",
-        "100 cm³",
-        "1000 cm³"
+        "Crescem",
+        "Ficam iguais",
+        "Diminuem",
+        "São sempre zero"
       ],
-      "correta": 3,
-      "explicacao": "1 L = 1 dm³ =1000 cm³."
+      "correta": 2,
+      "explicacao": "O saldo devedor cai a cada amortização."
     }
   ],
   "videos": [],
