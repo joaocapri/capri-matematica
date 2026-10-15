@@ -6,13 +6,13 @@
     {
       "titulo": "Pegue a ideia",
       "paragrafos": [
-        "Uma esfera inscrita num cubo toca as seis faces: diâmetro igual à aresta. Já a esfera circunscrita passa pelos oito vértices: diâmetro igual à diagonal espacial do cubo."
+        "Pirâmide tem uma base poligonal e faces laterais triangulares que se encontram no vértice. Em pirâmides regulares, o apótema lateral é a altura de cada face triangular e não se confunde com o apótema da base."
       ],
       "formulas": [
-        "r_{in}=\\frac a2,\\quad R_{circ}=\\frac{a\\sqrt3}{2}"
+        "A_T=A_b+A_l"
       ],
-      "dica": "Desenhe os centros coincidentes das esferas e do cubo.",
-      "erroComum": "Na circunscrição, usar diagonal de face a√2 dá raio errado."
+      "dica": "Para calcular área lateral, procure a altura inclinada das faces.",
+      "erroComum": "Altura vertical, apótema lateral e aresta lateral são segmentos diferentes."
     },
     {
       "titulo": "Na prática",
@@ -20,10 +20,11 @@
         "Agora aplique o conceito em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Cubo de aresta 6: raios das esferas inscrita e circunscrita?",
+        "enunciado": "Pirâmide quadrangular regular de lado da base 4 e apótema lateral 5: área total?",
         "passos": [
-          "Inscrita: r=6/2=3.",
-          "Circunscrita: R=6√3/2=3√3."
+          "Área da base: 4²=16.",
+          "Cada face lateral: 4·5/2=10; são 4 faces ⇒ 40.",
+          "Total 16+40=56."
         ]
       }
     }
@@ -31,27 +32,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Inscrita em cubo de aresta 8: raio =",
+      "enunciado": "Pirâmide de base quadrada tem quantas faces laterais?",
       "opcoes": [
         "2",
+        "3",
         "4",
-        "4√2",
-        "8"
+        "5"
       ],
-      "correta": 1,
-      "explicacao": "Raio metade da aresta: 4."
+      "correta": 2,
+      "explicacao": "Uma face por lado da base: quatro."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Circunscrita a cubo aresta 2: raio =",
+      "enunciado": "Pirâmide regular com perímetro de base 12 e apótema lateral 5: A_l =",
       "opcoes": [
-        "1",
-        "√2",
-        "√3",
-        "2"
+        "17",
+        "30",
+        "60",
+        "120"
       ],
-      "correta": 2,
-      "explicacao": "R=a√3/2=√3."
+      "correta": 1,
+      "explicacao": "A_l=P_b·g/2=12·5/2=30."
     }
   ],
   "videos": [],

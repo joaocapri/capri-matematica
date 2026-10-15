@@ -6,13 +6,13 @@
     {
       "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "Razão compara duas grandezas da mesma natureza; proporção diz que duas razões são iguais. Em escalas, a medida do desenho e a medida real devem estar na mesma unidade."
+        "MMC é o menor múltiplo comum positivo; serve para sincronizar ciclos. MDC é o maior divisor comum; aparece quando precisamos dividir em grupos iguais sem sobras."
       ],
       "formulas": [
-        "\\frac ab=\\frac cd\\Longleftrightarrow ad=bc"
+        "\\operatorname{mmc}(12,18)=36,\\quad\\operatorname{mdc}(12,18)=6"
       ],
-      "dica": "Converta unidades antes de usar a proporção.",
-      "erroComum": "Escalas de área crescem com o quadrado da escala linear."
+      "dica": "Encontros periódicos pedem MMC; cortes iguais máximos pedem MDC.",
+      "erroComum": "MMC não é a multiplicação pura de dois números quando compartilham fatores."
     },
     {
       "titulo": "Hora de ver funcionar",
@@ -20,10 +20,11 @@
         "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Uma escala 1:200 significa que 3 cm no desenho correspondem a quanto?",
+        "enunciado": "Um sinal pisca a cada 12 s e outro a cada 18 s. Quando piscam juntos novamente?",
         "passos": [
-          "Cada cm no desenho vale 200 cm reais.",
-          "3·200=600 cm=6 m."
+          "12=2²·3, 18=2·3².",
+          "MMC=2²·3²=36.",
+          "Após 36 segundos."
         ]
       }
     }
@@ -31,27 +32,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Escala 1:100; 5 cm no desenho representam:",
+      "enunciado": "MDC de 18 e 24:",
       "opcoes": [
-        "0,5 m",
-        "5 m",
-        "50 m",
-        "500 m"
+        "2",
+        "3",
+        "6",
+        "12"
       ],
-      "correta": 1,
-      "explicacao": "5·100=500 cm=5 m."
+      "correta": 2,
+      "explicacao": "Divisores comuns: 1,2,3,6; maior 6."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se 2/3=x/12, então x:",
+      "enunciado": "MMC de 4 e 6:",
       "opcoes": [
-        "6",
-        "8",
         "10",
-        "18"
+        "12",
+        "18",
+        "24"
       ],
       "correta": 1,
-      "explicacao": "3x=24 ⇒ x=8."
+      "explicacao": "Múltiplos comuns: 12,24... menor 12."
     }
   ],
   "videos": [],

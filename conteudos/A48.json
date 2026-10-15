@@ -1,71 +1,100 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de complexos - forma trigonométrica",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Usar a propriedade da média geométrica",
+    "Representar três termos em PG",
+    "Interpolar meios geométricos"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "O termo do meio ao quadrado",
       "paragrafos": [
-        "Na forma trigonométrica, um complexo é descrito por comprimento (módulo) e ângulo (argumento). Ela permite enxergar multiplicação como combinação de rotações e escalas."
+        "Em uma PG, o quadrado de cada termo do meio é o produto do anterior pelo seguinte. Para termos positivos, isso diz que ele é a média geométrica dos vizinhos."
       ],
       "formulas": [
-        "z=r(\\cos\\theta+i\\sin\\theta)"
-      ],
-      "dica": "Descubra o quadrante antes de decidir o ângulo.",
-      "erroComum": "Um mesmo complexo não nulo tem argumentos que diferem em múltiplos de 2π."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "b^2=a\\cdot c\\quad(a,\\,b,\\,c\\ \\text{em PG})"
       ],
       "exemplo": {
-        "enunciado": "Escreva z=1+i na forma trigonométrica.",
+        "enunciado": "Para que valor positivo de x a sequência (x, x + 3, 4x) é uma PG?",
         "passos": [
-          "Módulo r=√(1²+1²)=√2.",
-          "O ponto está no primeiro quadrante, com θ=π/4.",
-          "z=√2(cos(π/4)+i sen(π/4))."
+          "(x + 3)² = x · 4x.",
+          "x² + 6x + 9 = 4x² ⇒ 3x² − 6x − 9 = 0 ⇒ x² − 2x − 3 = 0.",
+          "x = 3 (o valor −1 não é positivo). A PG é (3, 6, 12)."
         ]
-      }
-    }
-  ],
-  "videos": [
+      },
+      "dica": "Três termos desconhecidos em PG? Escreva como x/q, x, xq. O produto fica x³."
+    },
     {
-      "titulo": "Números complexos e polinômios",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Revisão de números complexos e técnicas de fatoração.",
-      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+      "titulo": "Interpolação geométrica",
+      "paragrafos": [
+        "Interpolar k meios geométricos entre a e b é montar uma PG de k + 2 termos de a até b."
+      ],
+      "formulas": [
+        "b=a\\,q^{k+1}"
+      ],
+      "exemplo": {
+        "enunciado": "Interpole 3 meios geométricos positivos entre 2 e 162.",
+        "passos": [
+          "A PG tem 5 termos: 162 = 2q⁴.",
+          "q⁴ = 81 ⇒ q = 3.",
+          "PG: (2, 6, 18, 54, 162)."
+        ]
+      },
+      "erroComum": "Esquecer que q⁴ = 81 também tem a solução q = −3. Ela só sai porque pedimos meios positivos."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "O módulo de 1+i é:",
+      "nivel": "Aquecimento",
+      "enunciado": "Se (4, x, 16) é uma PG de termos positivos, então x vale",
       "opcoes": [
-        "1",
-        "√2",
-        "2",
-        "4"
+        "8",
+        "10",
+        "12",
+        "64"
       ],
-      "correta": 1,
-      "explicacao": "Pitágoras no plano complexo: √2."
+      "correta": 0,
+      "explicacao": "x² = 4 · 16 = 64."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em uma PG, a₁ · a₉ = 36. Então a₅² vale",
+      "opcoes": [
+        "6",
+        "18",
+        "36",
+        "72"
+      ],
+      "correta": 2,
+      "explicacao": "a₅ é o termo do meio entre a₁ e a₉: a₅² = a₁ · a₉."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O argumento principal de i é:",
+      "enunciado": "Ao interpolar 2 meios geométricos entre 3 e 81, a razão é",
       "opcoes": [
-        "0",
-        "π/4",
-        "π/2",
-        "π"
+        "3",
+        "9",
+        "26",
+        "27"
       ],
-      "correta": 2,
-      "explicacao": "O ponto (0,1) forma ângulo π/2 com o eixo real positivo."
+      "correta": 0,
+      "explicacao": "81 = 3q³ ⇒ q³ = 27 ⇒ q = 3."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Três números positivos em PG têm produto 216 e soma 21. O maior é",
+      "opcoes": [
+        "9",
+        "12",
+        "18",
+        "24"
+      ],
+      "correta": 1,
+      "explicacao": "x³ = 216 ⇒ x = 6. 6/q + 6 + 6q = 21 ⇒ 2q² − 5q + 2 = 0 ⇒ q = 2 ou 1/2. Os números são 3, 6 e 12."
     }
   ],
   "exercicios": [],

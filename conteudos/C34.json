@@ -1,59 +1,100 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Levar valores para uma mesma data",
+    "Calcular o valor presente de uma parcela",
+    "Comparar propostas de pagamento"
+  ],
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Dinheiro tem data",
       "paragrafos": [
-        "Radianos medem ângulo por comprimento de arco dividido pelo raio. Uma volta vale 2π rad, isto é, 360°. Fórmulas de arco exigem ângulo em radianos."
+        "Com juros compostos, R$ 100,00 hoje valem mais que R$ 100,00 daqui a um ano. Para comparar valores de datas diferentes, leve todos para a mesma data: multiplique pelo fator para ir ao futuro e divida para trazer ao presente."
       ],
       "formulas": [
-        "s=r\\theta\\quad(\\theta\\text{ em radianos})"
-      ],
-      "dica": "Para converter graus→radianos, multiplique por π/180.",
-      "erroComum": "Não use s=rθ com θ em graus sem converter."
-    },
-    {
-      "titulo": "Veja funcionando",
-      "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "VF=VP(1+i)^n",
+        "VP=\\dfrac{VF}{(1+i)^n}"
       ],
       "exemplo": {
-        "enunciado": "Arco de raio 3 m e ângulo π/2: comprimento?",
+        "enunciado": "Quanto vale hoje uma parcela de R$ 1210,00 que vence em 2 meses, a 10% ao mês?",
         "passos": [
-          "s=3·π/2=3π/2 m."
+          "VP = 1210/1,1².",
+          "1210/1,21 = 1000.",
+          "R$ 1000,00."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "180° equivalem a:",
-      "opcoes": [
-        "π/2",
-        "π",
-        "2π",
-        "3π"
-      ],
-      "correta": 1,
-      "explicacao": "Meia volta=π rad."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "90° corresponde a:",
-      "opcoes": [
-        "π/6",
-        "π/4",
-        "π/2",
-        "π"
+      "titulo": "Comparando propostas",
+      "paragrafos": [
+        "À vista ou a prazo? Traga todas as parcelas para hoje e compare com o preço à vista."
       ],
-      "correta": 2,
-      "explicacao": "Quarto de volta: π/2."
+      "exemplo": {
+        "enunciado": "Uma TV custa R$ 1900,00 à vista ou duas parcelas de R$ 1000,00 (entrada e 1 mês). Com juros de 10% ao mês, qual compensa?",
+        "passos": [
+          "Valor presente a prazo: 1000 + 1000/1,1 ≈ 1909,09.",
+          "À vista: 1900,00.",
+          "À vista é um pouco melhor."
+        ]
+      },
+      "dica": "Desenhe uma linha do tempo com cada valor na sua data.",
+      "erroComum": "Somar valores de datas diferentes sem corrigir pelos juros."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Para trazer um valor futuro para hoje, é preciso",
+      "opcoes": [
+        "multiplicar pelo fator",
+        "dividir pelo fator",
+        "somar os juros",
+        "subtrair a taxa"
+      ],
+      "correta": 1,
+      "explicacao": "VP = VF/(1 + i)ⁿ."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor presente de R$ 550,00 que vencem em 1 mês, a 10% ao mês, é",
+      "opcoes": [
+        "R$ 495,00",
+        "R$ 500,00",
+        "R$ 505,00",
+        "R$ 540,00"
+      ],
+      "correta": 1,
+      "explicacao": "550/1,1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "R$ 2000,00 aplicados por 2 meses a 5% ao mês (compostos) valem",
+      "opcoes": [
+        "R$ 2200,00",
+        "R$ 2205,00",
+        "R$ 2100,00",
+        "R$ 2210,00"
+      ],
+      "correta": 1,
+      "explicacao": "2000 · 1,05² = 2205."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Pagar R$ 1050,00 daqui a 1 mês ou R$ 1000,00 hoje, com dinheiro rendendo 4% ao mês. A melhor opção é",
+      "opcoes": [
+        "pagar hoje",
+        "pagar daqui a 1 mês",
+        "tanto faz",
+        "impossível saber"
+      ],
+      "correta": 0,
+      "explicacao": "Valor presente de 1050 é 1050/1,04 ≈ 1009,62, maior que 1000."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

@@ -4,128 +4,85 @@
   "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Resolver equações do 1º grau com parênteses, frações e decimais",
-    "Isolar uma letra em fórmulas (equações literais)",
-    "Conferir a solução substituindo na equação"
+    "Ler crescimento e decrescimento direto no gráfico",
+    "Identificar zeros, sinais, máximos e mínimos",
+    "Interpretar gráficos de situações reais"
   ],
   "teoria": [
     {
-      "titulo": "Equilíbrio dos dois lados",
+      "titulo": "O que o gráfico conta",
       "paragrafos": [
-        "Uma equação é uma balança em equilíbrio. Tudo o que você fizer de um lado precisa fazer do outro: somar, subtrair, multiplicar ou dividir pelo mesmo número (diferente de zero).",
-        "O objetivo é deixar x sozinho de um lado."
-      ],
-      "formulas": [
-        "ax+b=0\\;\\Rightarrow\\;x=-\\dfrac{b}{a}\\quad(a\\neq0)"
+        "Um gráfico mostra a função inteira de uma vez. Lendo da esquerda para a direita: se a curva sobe, a função é crescente naquele trecho; se desce, é decrescente.",
+        "Os pontos onde o gráfico cruza o eixo x são os zeros. Acima do eixo x a função é positiva; abaixo, negativa."
       ],
       "exemplo": {
-        "enunciado": "Resolva 3(x − 2) = x + 8.",
+        "enunciado": "O gráfico de f passa por (−2, 0), sobe até (1, 4) e desce até (5, −2). O que dá para dizer?",
         "passos": [
-          "Distribua: 3x − 6 = x + 8.",
-          "Junte os termos com x: 3x − x = 8 + 6, ou seja, 2x = 14.",
-          "x = 7. Conferindo: 3·5 = 15 e 7 + 8 = 15."
+          "f é crescente em [−2, 1] e decrescente em [1, 5].",
+          "O valor máximo é 4, atingido em x = 1.",
+          "Como desce de 4 até −2, cruza o eixo x mais uma vez entre 1 e 5."
         ]
       },
-      "dica": "Ao terminar, substitua o valor na equação original. Se os dois lados derem o mesmo número, está certo.",
-      "erroComum": "Ao distribuir um sinal de menos, todos os termos dos parênteses trocam de sinal: −(x − 4) = −x + 4."
+      "dica": "Diga sempre os intervalos no eixo x. O máximo é um valor de y.",
+      "erroComum": "Responder o máximo com o x do ponto. O máximo da função é o valor de y; o x é onde ele acontece."
     },
     {
-      "titulo": "Equações com frações",
+      "titulo": "Gráficos do dia a dia",
       "paragrafos": [
-        "Multiplique todos os termos pelo MMC dos denominadores. As frações somem e a equação fica inteira."
+        "No ENEM, os gráficos aparecem como temperatura ao longo do dia, vendas por mês ou nível de um reservatório. As perguntas são sempre as mesmas: quando aumentou, quando diminuiu, quando foi maior, quando passou de um certo valor."
       ],
-      "exemplo": {
-        "enunciado": "Resolva x/2 + x/3 = 10.",
-        "passos": [
-          "O MMC de 2 e 3 é 6.",
-          "Multiplique tudo por 6: 3x + 2x = 60.",
-          "5x = 60, logo x = 12."
-        ]
-      }
-    },
-    {
-      "titulo": "Equações literais",
-      "paragrafos": [
-        "Em fórmulas com várias letras, isole a letra pedida com as mesmas regras, tratando as outras como números."
-      ],
-      "formulas": [
-        "v=v_0+at\\;\\Rightarrow\\;t=\\dfrac{v-v_0}{a}"
-      ]
+      "dica": "Trace uma reta horizontal na altura pedida para ver em que intervalos o gráfico fica acima ou abaixo dela."
     }
   ],
   "videos": [],
   "quiz": [
     {
-      "nivel": "Aquecimento",
-      "enunciado": "A solução de 2x + 7 = 19 é",
+      "nivel": "Conceito",
+      "enunciado": "Se o gráfico de f desce da esquerda para a direita no intervalo [2, 6], então em [2, 6] a função é",
       "opcoes": [
-        "x = 5",
-        "x = 6",
-        "x = 12",
-        "x = 13"
+        "crescente",
+        "decrescente",
+        "constante",
+        "positiva"
       ],
       "correta": 1,
-      "explicacao": "2x = 12, logo x = 6."
-    },
-    {
-      "nivel": "Aquecimento",
-      "enunciado": "A solução de 5x − 3 = 2x + 9 é",
-      "opcoes": [
-        "x = 2",
-        "x = 3",
-        "x = 4",
-        "x = 6"
-      ],
-      "correta": 2,
-      "explicacao": "3x = 12, logo x = 4."
+      "explicacao": "Descer da esquerda para a direita é decrescer."
     },
     {
       "nivel": "Conceito",
-      "enunciado": "A solução de 4 − (x − 1) = 2x é",
+      "enunciado": "Os zeros de uma função são lidos no gráfico como",
       "opcoes": [
-        "x = 1",
-        "x = 5/3",
-        "x = 3/5",
-        "x = 5"
-      ],
-      "correta": 1,
-      "explicacao": "4 − x + 1 = 2x ⇒ 5 = 3x ⇒ x = 5/3."
-    },
-    {
-      "nivel": "Aplicação",
-      "enunciado": "A solução de x/4 − 1 = x/6 é",
-      "opcoes": [
-        "x = 6",
-        "x = 10",
-        "x = 12",
-        "x = 24"
+        "os pontos mais altos",
+        "os cortes no eixo y",
+        "os cortes no eixo x",
+        "os pontos mais baixos"
       ],
       "correta": 2,
-      "explicacao": "Multiplicando por 12: 3x − 12 = 2x, logo x = 12."
+      "explicacao": "Zero é onde f(x) = 0, ou seja, sobre o eixo x."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Isolando h em A = (b·h)/2, obtém-se",
+      "enunciado": "Um gráfico de temperatura vai de 18 °C às 6 h, sobe até 30 °C às 14 h e cai para 22 °C às 20 h. A temperatura máxima e o horário em que ocorre são",
       "opcoes": [
-        "h = 2A/b",
-        "h = A/(2b)",
-        "h = 2b/A",
-        "h = Ab/2"
+        "30 °C, às 14 h",
+        "14 °C, às 30 h",
+        "22 °C, às 20 h",
+        "30 °C, às 20 h"
       ],
       "correta": 0,
-      "explicacao": "2A = b·h, logo h = 2A/b."
+      "explicacao": "O máximo é o maior valor de y, 30 °C, atingido às 14 h."
     },
     {
-      "nivel": "Desafio",
-      "enunciado": "Para que valor de k a equação 2x + k = 5x − 4 tem solução x = 3?",
+      "nivel": "Aplicação",
+      "enunciado": "Uma função vale −3 em x = 0 e cresce sempre até valer 5 em x = 4. Então, entre 0 e 4, ela",
       "opcoes": [
-        "k = 1",
-        "k = 5",
-        "k = 7",
-        "k = 11"
+        "não tem zero",
+        "tem exatamente um zero",
+        "tem dois zeros",
+        "é sempre negativa"
       ],
       "correta": 1,
-      "explicacao": "2·3 + k = 15 − 4 ⇒ 6 + k = 11 ⇒ k = 5."
+      "explicacao": "Sendo crescente e passando de negativo para positivo, cruza o eixo x uma única vez."
     }
   ],
   "exercicios": [],

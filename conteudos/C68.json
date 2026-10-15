@@ -1,0 +1,101 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reduzir arcos ao 1º quadrante",
+    "Usar as simetrias do ciclo",
+    "Calcular seno e cosseno de qualquer arco notável"
+  ],
+  "teoria": [
+    {
+      "titulo": "Simetrias",
+      "paragrafos": [
+        "Todo arco tem um correspondente no 1º quadrante com o mesmo seno e cosseno em módulo. Só muda o sinal, que depende do quadrante."
+      ],
+      "formulas": [
+        "\\operatorname{sen}(180^\\circ-x)=\\operatorname{sen}x",
+        "\\cos(180^\\circ-x)=-\\cos x",
+        "\\operatorname{sen}(180^\\circ+x)=-\\operatorname{sen}x",
+        "\\cos(360^\\circ-x)=\\cos x"
+      ],
+      "exemplo": {
+        "enunciado": "Calcule sen 150°.",
+        "passos": [
+          "150° está no 2º quadrante: 180° − 30°.",
+          "O seno é positivo no 2º quadrante.",
+          "sen 150° = sen 30° = 1/2."
+        ]
+      }
+    },
+    {
+      "titulo": "Passo a passo",
+      "paragrafos": [
+        "1) Veja o quadrante. 2) Encontre o ângulo de referência (distância até o eixo horizontal mais próximo). 3) Pegue o valor do ângulo de referência. 4) Coloque o sinal do quadrante."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule cos 240°.",
+        "passos": [
+          "3º quadrante: 240° = 180° + 60°.",
+          "cos 60° = 1/2.",
+          "No 3º quadrante o cosseno é negativo: −1/2."
+        ]
+      },
+      "erroComum": "Esquecer o sinal no final."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de cos 120° é",
+      "opcoes": [
+        "1/2",
+        "−1/2",
+        "√3/2",
+        "−√3/2"
+      ],
+      "correta": 1,
+      "explicacao": "180° − 60°, cosseno negativo no 2º quadrante."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de sen 210° é",
+      "opcoes": [
+        "1/2",
+        "−1/2",
+        "√3/2",
+        "−√3/2"
+      ],
+      "correta": 1,
+      "explicacao": "180° + 30°, seno negativo no 3º quadrante."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de cos 315° é",
+      "opcoes": [
+        "√2/2",
+        "−√2/2",
+        "1/2",
+        "−1/2"
+      ],
+      "correta": 0,
+      "explicacao": "360° − 45°, cosseno positivo no 4º quadrante."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de sen 300° é",
+      "opcoes": [
+        "√3/2",
+        "−√3/2",
+        "1/2",
+        "−1/2"
+      ],
+      "correta": 1,
+      "explicacao": "360° − 60°, seno negativo no 4º quadrante."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

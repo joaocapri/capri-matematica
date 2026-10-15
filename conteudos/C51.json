@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "A distribuição binomial conta o número de sucessos em n tentativas independentes com a mesma probabilidade p. Escolhemos quais posições foram sucesso e multiplicamos pelas probabilidades."
+      ],
+      "formulas": [
+        "P(X=k)=\\binom nk p^k(1-p)^{n-k}"
+      ],
+      "dica": "Confira se n é fixo, os ensaios são independentes e p é constante.",
+      "erroComum": "Binomial não serve automaticamente se as chances mudam a cada tentativa."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Três moedas honestas: probabilidade de exatamente duas caras?",
+        "passos": [
+          "Escolha 2 posições entre 3: C(3,2)=3.",
+          "Probabilidade de cada sequência específica: (1/2)³=1/8.",
+          "Total 3/8."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em 2 moedas honestas, chance de exatamente 1 cara:",
+      "opcoes": [
+        "1/4",
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "correta": 1,
+      "explicacao": "C(2,1)/4=2/4=1/2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Em 3 tentativas p=1/2, chance de 3 sucessos:",
+      "opcoes": [
+        "1/2",
+        "1/4",
+        "1/8",
+        "3/8"
+      ],
+      "correta": 2,
+      "explicacao": "(1/2)³=1/8."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

@@ -4,120 +4,117 @@
   "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer funções pares e ímpares pelo gráfico",
-    "Fazer o teste algébrico com f(−x)",
-    "Usar a paridade para economizar contas"
+    "Distinguir injetora, sobrejetora e bijetora",
+    "Usar diagramas e o teste da reta horizontal",
+    "Restringir domínio e contradomínio para obter uma bijeção"
   ],
   "teoria": [
     {
-      "titulo": "Simetria no gráfico",
+      "titulo": "Três classificações",
       "paragrafos": [
-        "Uma função é par quando o gráfico é simétrico em relação ao eixo y: o que acontece em x acontece igual em −x. É ímpar quando o gráfico é simétrico em relação à origem: girando 180°, o desenho volta igual.",
-        "A maioria das funções não é nem par nem ímpar."
+        "Injetora: elementos diferentes do domínio têm imagens diferentes. Sobrejetora: a imagem é todo o contradomínio, nenhum elemento fica sem flecha. Bijetora: as duas coisas ao mesmo tempo."
       ],
       "formulas": [
-        "f(-x)=f(x)\\;\\text{(par)}",
-        "f(-x)=-f(x)\\;\\text{(ímpar)}"
+        "x_1\\neq x_2\\Rightarrow f(x_1)\\neq f(x_2)\\;\\text{(injetora)}",
+        "\\operatorname{Im}(f)=\\operatorname{CD}(f)\\;\\text{(sobrejetora)}"
       ],
-      "exemplo": {
-        "enunciado": "Classifique f(x) = x⁴ − 3x².",
-        "passos": [
-          "Troque x por −x: f(−x) = (−x)⁴ − 3(−x)² = x⁴ − 3x².",
-          "O resultado é igual a f(x).",
-          "Logo, f é par."
-        ]
-      },
-      "dica": "Potências pares de x mantêm o sinal; potências ímpares invertem. Isso já dá uma boa pista."
+      "dica": "No diagrama de flechas: injetora não tem dois caminhos chegando no mesmo ponto; sobrejetora não deixa ninguém sozinho do lado de chegada."
     },
     {
-      "titulo": "Nem par nem ímpar",
+      "titulo": "Teste da reta horizontal",
       "paragrafos": [
-        "Se f(−x) não for igual a f(x) nem a −f(x), a função não é par nem ímpar. Basta um contraexemplo numérico para mostrar isso."
+        "No gráfico de uma função real, trace retas horizontais. Se alguma corta o gráfico mais de uma vez, a função não é injetora."
       ],
       "exemplo": {
-        "enunciado": "f(x) = x² + x é par ou ímpar?",
+        "enunciado": "f: ℝ → ℝ, f(x) = x² é injetora?",
         "passos": [
-          "f(1) = 2 e f(−1) = 0.",
-          "f(−1) ≠ f(1), então não é par; f(−1) ≠ −f(1), então não é ímpar.",
-          "f não é par nem ímpar."
+          "A reta y = 4 corta o gráfico em x = 2 e x = −2.",
+          "Duas entradas com a mesma saída.",
+          "Não é injetora. Também não é sobrejetora, pois valores negativos não são atingidos."
         ]
       },
-      "erroComum": "Uma função ímpar definida em 0 precisa ter f(0) = 0. Se f(0) ≠ 0, ela não pode ser ímpar."
+      "erroComum": "Sobrejetividade depende do contradomínio escolhido. f(x) = x² é sobrejetora de ℝ em [0, +∞[, mas não de ℝ em ℝ."
+    },
+    {
+      "titulo": "Ajustando para virar bijeção",
+      "paragrafos": [
+        "Restringindo o domínio a [0, +∞[ e o contradomínio a [0, +∞[, a função x² passa a ser bijetora. É isso que permite falar da inversa na próxima aula."
+      ]
     }
   ],
   "videos": [],
   "quiz": [
     {
-      "nivel": "Aquecimento",
-      "enunciado": "A função f(x) = x² é",
+      "nivel": "Conceito",
+      "enunciado": "Uma função em que elementos diferentes do domínio têm imagens diferentes é chamada",
       "opcoes": [
-        "par",
-        "ímpar",
-        "par e ímpar",
-        "nem par nem ímpar"
-      ],
-      "correta": 0,
-      "explicacao": "f(−x) = x² = f(x)."
-    },
-    {
-      "nivel": "Aquecimento",
-      "enunciado": "A função f(x) = x³ é",
-      "opcoes": [
-        "par",
-        "ímpar",
-        "par e ímpar",
-        "nem par nem ímpar"
+        "sobrejetora",
+        "injetora",
+        "constante",
+        "par"
       ],
       "correta": 1,
-      "explicacao": "f(−x) = −x³ = −f(x)."
+      "explicacao": "É a definição de injetora."
     },
     {
       "nivel": "Conceito",
-      "enunciado": "O gráfico de uma função ímpar é simétrico em relação",
+      "enunciado": "Uma função é bijetora quando é",
       "opcoes": [
-        "ao eixo x",
-        "ao eixo y",
-        "à origem",
-        "à reta y = x"
+        "injetora ou sobrejetora",
+        "injetora e sobrejetora",
+        "par e ímpar",
+        "crescente"
+      ],
+      "correta": 1,
+      "explicacao": "Bijetora = injetora e sobrejetora."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A função f: ℝ → ℝ, f(x) = 3x − 2 é",
+      "opcoes": [
+        "só injetora",
+        "só sobrejetora",
+        "bijetora",
+        "nem injetora nem sobrejetora"
       ],
       "correta": 2,
-      "explicacao": "Ímpar: simetria central na origem."
+      "explicacao": "Funções afins com a ≠ 0 de ℝ em ℝ são bijetoras."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "A função f(x) = 2x + 1 é",
+      "enunciado": "A função f: ℝ → ℝ, f(x) = x² + 1 é",
       "opcoes": [
-        "par",
-        "ímpar",
-        "par e ímpar",
-        "nem par nem ímpar"
+        "injetora",
+        "sobrejetora",
+        "bijetora",
+        "nem injetora nem sobrejetora"
       ],
       "correta": 3,
-      "explicacao": "f(−1) = −1 e f(1) = 3: não vale nenhuma das igualdades."
+      "explicacao": "f(1) = f(−1) e valores menores que 1 não são atingidos."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se f é par e f(3) = 7, então f(−3) vale",
+      "enunciado": "Para que f(x) = x² + 1, com domínio [0, +∞[, seja bijetora, o contradomínio deve ser",
       "opcoes": [
-        "−7",
-        "0",
-        "3",
-        "7"
+        "ℝ",
+        "[0, +∞[",
+        "[1, +∞[",
+        "]1, +∞["
       ],
-      "correta": 3,
-      "explicacao": "Par: f(−3) = f(3) = 7."
+      "correta": 2,
+      "explicacao": "A imagem é [1, +∞[."
     },
     {
       "nivel": "Desafio",
-      "enunciado": "Se f é ímpar, f(2) = 5 e g(x) = f(x) + 1, então g(−2) vale",
+      "enunciado": "A = {1, 2, 3} e B = {a, b}. Quantas funções de A em B são injetoras?",
       "opcoes": [
-        "−6",
-        "−4",
-        "4",
-        "6"
+        "0",
+        "2",
+        "6",
+        "8"
       ],
-      "correta": 1,
-      "explicacao": "f(−2) = −5, logo g(−2) = −5 + 1 = −4."
+      "correta": 0,
+      "explicacao": "Não há como dar 3 imagens diferentes com só 2 elementos em B."
     }
   ],
   "exercicios": [],

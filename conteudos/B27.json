@@ -6,13 +6,13 @@
     {
       "titulo": "Pegue a ideia",
       "paragrafos": [
-        "O volume da esfera mede o espaço ocupado por ela. Fatiamentos como calotas e cunhas exigem identificar altura ou ângulo; o volume inteiro é uma boa referência para conferir o resultado."
+        "O volume de qualquer prisma é a área da base vezes a altura perpendicular. O princípio de Cavalieri compara sólidos com secções correspondentes de mesma área e alturas iguais."
       ],
       "formulas": [
-        "V=\\frac43\\pi r^3"
+        "V=A_bh"
       ],
-      "dica": "Quando o enunciado falar em diâmetro, divida por 2 antes de substituir.",
-      "erroComum": "Não esqueça o cubo do raio: volume escala em r³."
+      "dica": "Volume mede espaço e aparece em unidade cúbica.",
+      "erroComum": "Se o prisma for oblíquo, a altura não é a medida da aresta lateral."
     },
     {
       "titulo": "Na prática",
@@ -20,10 +20,10 @@
         "Agora aplique o conceito em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Esfera com raio 3: volume?",
+        "enunciado": "Uma caixa mede 3 m por 4 m por 5 m. Qual volume?",
         "passos": [
-          "r³=27.",
-          "V=(4/3)π·27=36π."
+          "Área da base: 3·4=12 m².",
+          "V=12·5=60 m³."
         ]
       }
     }
@@ -31,27 +31,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Esfera r=2 tem volume:",
+      "enunciado": "Um prisma tem A_b=10 e h=6. Volume =",
       "opcoes": [
-        "8π/3",
-        "16π/3",
-        "32π/3",
-        "64π/3"
+        "16",
+        "30",
+        "60",
+        "100"
       ],
       "correta": 2,
-      "explicacao": "(4/3)π·8=32π/3."
+      "explicacao": "V=10·6=60."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Raio dobra: o volume fica:",
+      "enunciado": "Diagonal espacial de cubo com aresta 2:",
       "opcoes": [
-        "2 vezes",
-        "4 vezes",
-        "8 vezes",
-        "16 vezes"
+        "2√2",
+        "2√3",
+        "4",
+        "6"
       ],
-      "correta": 2,
-      "explicacao": "Volume proporcional a r³: 2³=8."
+      "correta": 1,
+      "explicacao": "d=a√3=2√3."
     }
   ],
   "videos": [],

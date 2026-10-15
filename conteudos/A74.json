@@ -1,0 +1,88 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Dividir por x − a com o dispositivo de Briot-Ruffini",
+    "Ler quociente e resto no dispositivo",
+    "Fazer divisões sucessivas"
+  ],
+  "teoria": [
+    {
+      "titulo": "Como montar",
+      "paragrafos": [
+        "Para dividir P(x) por x − a, escreva a raiz a à esquerda e os coeficientes de P à direita, sem esquecer os zeros. Desça o primeiro coeficiente; depois, multiplique por a, some com o próximo e repita."
+      ],
+      "exemplo": {
+        "enunciado": "Divida 2x³ − 3x² + 0x + 5 por x − 2.",
+        "passos": [
+          "Coeficientes: 2, −3, 0, 5 e a = 2.",
+          "Desce 2. 2·2 − 3 = 1. 1·2 + 0 = 2. 2·2 + 5 = 9.",
+          "Q(x) = 2x² + x + 2 e resto 9."
+        ]
+      },
+      "dica": "Divisor x + 3 é x − (−3): use a = −3.",
+      "erroComum": "Esquecer o zero dos graus que faltam. 2x³ + 5 tem os coeficientes 2, 0, 0, 5."
+    },
+    {
+      "titulo": "Divisor do tipo ax − b",
+      "paragrafos": [
+        "Para dividir por 2x − 1, faça Briot-Ruffini com a = 1/2 e depois divida o quociente obtido por 2. O resto não muda."
+      ]
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Para dividir por x + 4 com Briot-Ruffini, usa-se o número",
+      "opcoes": [
+        "4",
+        "−4",
+        "1/4",
+        "−1/4"
+      ],
+      "correta": 1,
+      "explicacao": "x + 4 = x − (−4)."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O resto da divisão de x³ − 4x + 1 por x − 2 é",
+      "opcoes": [
+        "1",
+        "0",
+        "9",
+        "−1"
+      ],
+      "correta": 0,
+      "explicacao": "Coeficientes 1, 0, −4, 1: desce 1; 2; 0; 1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O quociente de x³ − 1 por x − 1 é",
+      "opcoes": [
+        "x² + x + 1",
+        "x² − x + 1",
+        "x² − 1",
+        "x² + 1"
+      ],
+      "correta": 0,
+      "explicacao": "Coeficientes 1, 0, 0, −1 com a = 1: 1, 1, 1 e resto 0."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Dividindo 3x² + 5x − 2 por x + 2, o quociente é",
+      "opcoes": [
+        "3x − 1",
+        "3x + 1",
+        "3x + 11",
+        "x − 1"
+      ],
+      "correta": 0,
+      "explicacao": "a = −2: desce 3; 3·(−2) + 5 = −1; −1·(−2) − 2 = 0."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

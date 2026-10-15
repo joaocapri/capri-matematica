@@ -1,0 +1,59 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Radianos medem ângulo por comprimento de arco dividido pelo raio. Uma volta vale 2π rad, isto é, 360°. Fórmulas de arco exigem ângulo em radianos."
+      ],
+      "formulas": [
+        "s=r\\theta\\quad(\\theta\\text{ em radianos})"
+      ],
+      "dica": "Para converter graus→radianos, multiplique por π/180.",
+      "erroComum": "Não use s=rθ com θ em graus sem converter."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Arco de raio 3 m e ângulo π/2: comprimento?",
+        "passos": [
+          "s=3·π/2=3π/2 m."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "180° equivalem a:",
+      "opcoes": [
+        "π/2",
+        "π",
+        "2π",
+        "3π"
+      ],
+      "correta": 1,
+      "explicacao": "Meia volta=π rad."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "90° corresponde a:",
+      "opcoes": [
+        "π/6",
+        "π/4",
+        "π/2",
+        "π"
+      ],
+      "correta": 2,
+      "explicacao": "Quarto de volta: π/2."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

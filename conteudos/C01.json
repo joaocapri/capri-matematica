@@ -1,61 +1,91 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Operar com números naturais e inteiros",
+    "Aplicar a regra de sinais",
+    "Usar a reta numérica para comparar inteiros"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Naturais e inteiros",
       "paragrafos": [
-        "Um número primo maior que 1 tem apenas dois divisores positivos: 1 e ele mesmo. Todo inteiro maior que 1 pode ser decomposto em primos; daí surgem os critérios de divisibilidade e a fatoração."
+        "Os naturais são 0, 1, 2, 3, ... Os inteiros incluem também os negativos: ..., −2, −1, 0, 1, 2, ... Na reta numérica, quanto mais à direita, maior o número; por isso −2 > −5."
       ],
       "formulas": [
-        "60=2^2\\cdot3\\cdot5"
+        "\\mathbb{N}\\subset\\mathbb{Z}"
       ],
-      "dica": "Para testar divisibilidade por 3 e 9, some os algarismos.",
-      "erroComum": "1 não é primo; o único primo par é 2."
+      "dica": "Pense em temperatura: −2 °C é mais quente que −5 °C."
     },
     {
-      "titulo": "Hora de ver funcionar",
+      "titulo": "Regra de sinais",
       "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "Na soma, sinais iguais somam e mantêm o sinal; sinais diferentes subtraem e ficam com o sinal do maior em valor absoluto. Na multiplicação e na divisão, sinais iguais dão positivo e sinais diferentes dão negativo."
       ],
       "exemplo": {
-        "enunciado": "Fatore 84 em primos.",
+        "enunciado": "Calcule (−3) · (−4) + (−15) ÷ 5.",
         "passos": [
-          "84=2·42=2²·21.",
-          "21=3·7.",
-          "84=2²·3·7."
+          "(−3) · (−4) = 12, sinais iguais.",
+          "(−15) ÷ 5 = −3, sinais diferentes.",
+          "12 + (−3) = 9."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Qual número é primo?",
-      "opcoes": [
-        "1",
-        "9",
-        "11",
-        "15"
-      ],
-      "correta": 2,
-      "explicacao": "11 só tem divisores 1 e 11."
-    },
-    {
-      "nivel": "Aplicação",
-      "enunciado": "Um número divisível por 9 possui:",
-      "opcoes": [
-        "Último algarismo 9",
-        "Soma dos algarismos múltipla de 9",
-        "Apenas algarismos ímpares",
-        "Sempre dois zeros"
-      ],
-      "correta": 1,
-      "explicacao": "O critério de 9 usa a soma dos algarismos."
+      },
+      "erroComum": "Usar a regra da multiplicação na soma: −3 − 4 é −7, não +7."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O valor de −8 + 3 é",
+      "opcoes": [
+        "−11",
+        "−5",
+        "5",
+        "11"
+      ],
+      "correta": 1,
+      "explicacao": "Sinais diferentes: 8 − 3 = 5, com o sinal do 8."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O valor de (−6) · (−7) é",
+      "opcoes": [
+        "−42",
+        "−13",
+        "13",
+        "42"
+      ],
+      "correta": 3,
+      "explicacao": "Sinais iguais dão positivo."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual é o maior número?",
+      "opcoes": [
+        "−10",
+        "−3",
+        "−7",
+        "−15"
+      ],
+      "correta": 1,
+      "explicacao": "Na reta, −3 está mais à direita."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Às 6 h a temperatura era −4 °C e ao meio-dia subiu 11 °C. A temperatura ao meio-dia era",
+      "opcoes": [
+        "−15 °C",
+        "−7 °C",
+        "7 °C",
+        "15 °C"
+      ],
+      "correta": 2,
+      "explicacao": "−4 + 11 = 7."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

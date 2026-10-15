@@ -1,0 +1,101 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Aplicar a lei dos cossenos",
+    "Descobrir um ângulo conhecendo os três lados",
+    "Calcular a área com dois lados e o ângulo entre eles"
+  ],
+  "teoria": [
+    {
+      "titulo": "A lei",
+      "paragrafos": [
+        "A lei dos cossenos generaliza Pitágoras para qualquer triângulo. Use-a quando conhecer dois lados e o ângulo entre eles, ou os três lados."
+      ],
+      "formulas": [
+        "a^2=b^2+c^2-2bc\\cos A"
+      ],
+      "exemplo": {
+        "enunciado": "Dois lados medem 5 e 8 e formam 60°. Quanto mede o terceiro?",
+        "passos": [
+          "a² = 25 + 64 − 2 · 5 · 8 · (1/2).",
+          "a² = 89 − 40 = 49.",
+          "a = 7."
+        ]
+      },
+      "dica": "Se o ângulo for 90°, o cosseno vale zero e volta Pitágoras.",
+      "erroComum": "Esquecer que o cosseno de ângulo obtuso é negativo, o que faz o termo virar soma."
+    },
+    {
+      "titulo": "Área pelo seno",
+      "paragrafos": [
+        "A área de um triângulo é metade do produto de dois lados pelo seno do ângulo entre eles."
+      ],
+      "formulas": [
+        "A=\\dfrac{b\\,c\\,\\operatorname{sen}A}{2}"
+      ],
+      "exemplo": {
+        "enunciado": "Calcule a área do triângulo com lados 6 e 10 formando 30°.",
+        "passos": [
+          "A = 6 · 10 · (1/2)/2.",
+          "A = 15."
+        ]
+      }
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Dois lados medem 3 e 5 e formam 120°. O terceiro lado mede",
+      "opcoes": [
+        "4",
+        "7",
+        "√19",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "9 + 25 − 30 · (−1/2) = 49."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um triângulo tem lados 5, 7 e 8. O cosseno do ângulo oposto ao lado 7 é",
+      "opcoes": [
+        "1/2",
+        "1/7",
+        "−1/2",
+        "√3/2"
+      ],
+      "correta": 0,
+      "explicacao": "49 = 25 + 64 − 80 cos θ ⇒ cos θ = 40/80."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A área do triângulo com lados 4 e 6 formando 60° é",
+      "opcoes": [
+        "6",
+        "6√3",
+        "12",
+        "12√3"
+      ],
+      "correta": 1,
+      "explicacao": "4 · 6 · (√3/2)/2."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Num triângulo com lados conhecidos 7, 8 e 9, para achar um ângulo usa-se",
+      "opcoes": [
+        "a lei dos senos",
+        "a lei dos cossenos",
+        "Pitágoras",
+        "Tales"
+      ],
+      "correta": 1,
+      "explicacao": "Com três lados, a lei dos cossenos."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

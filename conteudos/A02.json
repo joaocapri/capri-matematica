@@ -1,63 +1,51 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de operações com conjuntos e problemas de contagem",
-    "Aplicar o procedimento em um exemplo resolvido",
-    "Reconhecer erros frequentes antes de enfrentar uma questão"
+    "Calcular união, interseção, diferença e complementar",
+    "Representar as operações em diagramas",
+    "Usar a fórmula do número de elementos da união"
   ],
   "teoria": [
     {
-      "titulo": "A ideia que destrava",
+      "titulo": "As quatro operações",
       "paragrafos": [
-        "A união junta quem está em A ou B. A interseção reúne quem está nos dois; ao somar as quantidades, a interseção precisa ser descontada para evitar repetição."
+        "A união \\(A\\cup B\\) junta tudo o que está em A ou em B. A interseção \\(A\\cap B\\) guarda só o que está nos dois ao mesmo tempo. A diferença \\(A-B\\) fica com o que é de A e não é de B.",
+        "O complementar de A em relação ao universo U é tudo o que está em U e não está em A."
+      ],
+      "formulas": [
+        "A\\cup B=\\{x\\mid x\\in A\\ \\text{ou}\\ x\\in B\\}",
+        "A\\cap B=\\{x\\mid x\\in A\\ \\text{e}\\ x\\in B\\}",
+        "A-B=\\{x\\mid x\\in A\\ \\text{e}\\ x\\notin B\\}"
+      ],
+      "exemplo": {
+        "enunciado": "Com A = {1, 2, 3, 4} e B = {3, 4, 5}, calcule as operações.",
+        "passos": [
+          "A ∪ B = {1, 2, 3, 4, 5}.",
+          "A ∩ B = {3, 4}.",
+          "A − B = {1, 2} e B − A = {5}."
+        ]
+      },
+      "dica": "No diagrama de Venn, pinte a região pedida antes de listar os elementos.",
+      "erroComum": "A − B e B − A são conjuntos diferentes. A ordem importa."
+    },
+    {
+      "titulo": "Quantos elementos tem a união?",
+      "paragrafos": [
+        "Se você somar n(A) com n(B), os elementos da interseção são contados duas vezes. Por isso é preciso descontar uma vez."
       ],
       "formulas": [
         "n(A\\cup B)=n(A)+n(B)-n(A\\cap B)"
       ],
-      "dica": "Faça o diagrama começando pelo centro, isto é, pela interseção.",
-      "erroComum": "'Ou' inclusivo permite ambos; 'apenas A' exige subtrair A∩B."
-    },
-    {
-      "titulo": "Vamos fazer uma juntos",
-      "paragrafos": [
-        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
-      ],
       "exemplo": {
-        "enunciado": "Em uma turma, 18 gostam de álgebra, 12 de geometria e 5 de ambas.",
+        "enunciado": "n(A) = 12, n(B) = 9 e n(A ∩ B) = 4. Quanto vale n(A ∪ B)?",
         "passos": [
-          "A soma 18+12 conta os 5 alunos duas vezes.",
-          "Desconte a interseção: 18+12−5=25.",
-          "São 25 alunos que gostam de pelo menos uma das duas."
+          "Some: 12 + 9 = 21.",
+          "Desconte a interseção: 21 − 4 = 17."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "A tem 10 elementos, B tem 8 e a interseção tem 3. A união tem:",
-      "opcoes": [
-        "15",
-        "18",
-        "21",
-        "5"
-      ],
-      "correta": 0,
-      "explicacao": "10+8−3=15."
-    },
-    {
-      "nivel": "Aplicação",
-      "enunciado": "Em uma pesquisa, 'gosta de A ou B' representa:",
-      "opcoes": [
-        "Apenas a interseção",
-        "A união",
-        "A diferença A−B",
-        "O complementar"
-      ],
-      "correta": 1,
-      "explicacao": "'Ou' inclusivo indica A∪B."
     }
   ],
   "videos": [
@@ -66,6 +54,56 @@
       "canal": "Khan Academy Brasil · unidade de estudos",
       "descricao": "Uma coleção de videoaulas e exercícios para revisar fundamentos e notação.",
       "url": "https://pt.khanacademy.org/math/algebra-home/alg-intro-to-algebra/alg-manipulating-expressions"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "Com A = {1, 3, 5, 7} e B = {3, 4, 5}, o conjunto A ∩ B é",
+      "opcoes": [
+        "{3, 5}",
+        "{1, 3, 4, 5, 7}",
+        "{1, 7}",
+        "{4}"
+      ],
+      "correta": 0,
+      "explicacao": "Só 3 e 5 estão nos dois conjuntos."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "Com A = {a, b, c, d} e B = {b, d, e}, o conjunto A − B é",
+      "opcoes": [
+        "{a, c}",
+        "{e}",
+        "{b, d}",
+        "{a, c, e}"
+      ],
+      "correta": 0,
+      "explicacao": "Tire de A os elementos que também estão em B."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se A ⊂ B, então A ∪ B é igual a",
+      "opcoes": [
+        "A",
+        "B",
+        "∅",
+        "A ∩ B"
+      ],
+      "correta": 1,
+      "explicacao": "Todo elemento de A já está em B, então a união é o próprio B."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se n(A) = 20, n(B) = 15 e n(A ∪ B) = 28, então n(A ∩ B) vale",
+      "opcoes": [
+        "5",
+        "7",
+        "13",
+        "35"
+      ],
+      "correta": 1,
+      "explicacao": "28 = 20 + 15 − n(A ∩ B), logo n(A ∩ B) = 7."
     }
   ],
   "exercicios": [],

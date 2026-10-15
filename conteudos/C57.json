@@ -1,0 +1,88 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Escolher a medida central mais adequada",
+    "Perceber o efeito de valores extremos",
+    "Interpretar quartis e o diagrama de caixa"
+  ],
+  "teoria": [
+    {
+      "titulo": "Qual medida usar",
+      "paragrafos": [
+        "A média usa todos os valores e por isso é sensível a valores muito altos ou muito baixos. A mediana, o valor do meio, é resistente a esses extremos. A moda serve até para dados não numéricos, como a cor preferida."
+      ],
+      "exemplo": {
+        "enunciado": "Salários (em mil reais): 2, 2, 3, 3, 4, 30. Qual medida representa melhor o grupo?",
+        "passos": [
+          "Média: 44/6 ≈ 7,3, puxada pelo 30.",
+          "Mediana: (3 + 3)/2 = 3.",
+          "A mediana representa melhor."
+        ]
+      },
+      "dica": "Se houver um valor muito discrepante, prefira a mediana."
+    },
+    {
+      "titulo": "Quartis",
+      "paragrafos": [
+        "Os quartis dividem os dados ordenados em quatro partes iguais. Q2 é a mediana. A distância entre Q3 e Q1 mostra como se espalha a metade central dos dados. O diagrama de caixa (boxplot) desenha mínimo, Q1, Q2, Q3 e máximo."
+      ],
+      "erroComum": "Calcular a mediana sem ordenar os dados."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual medida é menos afetada por um valor extremo?",
+      "opcoes": [
+        "média",
+        "mediana",
+        "soma",
+        "amplitude"
+      ],
+      "correta": 1,
+      "explicacao": "A mediana depende só da posição."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Nos dados 1, 2, 3, 4, 100, a média e a mediana são",
+      "opcoes": [
+        "22 e 3",
+        "3 e 22",
+        "22 e 4",
+        "20 e 3"
+      ],
+      "correta": 0,
+      "explicacao": "Média 110/5; mediana 3."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Para a cor de carro mais vendida, a medida adequada é a",
+      "opcoes": [
+        "média",
+        "mediana",
+        "moda",
+        "variância"
+      ],
+      "correta": 2,
+      "explicacao": "Dados não numéricos: moda."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "No diagrama de caixa, a linha dentro da caixa representa",
+      "opcoes": [
+        "a média",
+        "a mediana",
+        "a moda",
+        "o máximo"
+      ],
+      "correta": 1,
+      "explicacao": "É o Q2."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

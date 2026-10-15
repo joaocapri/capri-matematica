@@ -6,13 +6,13 @@
     {
       "titulo": "Pegue a ideia",
       "paragrafos": [
-        "A distância de ponto a reta Ax+By+C=0 usa um valor absoluto no numerador. A área de um triângulo no plano pode ser obtida por determinante; área zero indica vértices alinhados."
+        "O volume da esfera mede o espaço ocupado por ela. Fatiamentos como calotas e cunhas exigem identificar altura ou ângulo; o volume inteiro é uma boa referência para conferir o resultado."
       ],
       "formulas": [
-        "d=\\frac{|Ax_0+By_0+C|}{\\sqrt{A^2+B^2}}"
+        "V=\\frac43\\pi r^3"
       ],
-      "dica": "Os coeficientes A e B da reta devem ser os da forma geral.",
-      "erroComum": "Sem módulo no numerador, você pode obter distância negativa, o que é impossível."
+      "dica": "Quando o enunciado falar em diâmetro, divida por 2 antes de substituir.",
+      "erroComum": "Não esqueça o cubo do raio: volume escala em r³."
     },
     {
       "titulo": "Na prática",
@@ -20,11 +20,10 @@
         "Agora aplique o conceito em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Distância de P=(1,2) à reta 3x+4y−5=0?",
+        "enunciado": "Esfera com raio 3: volume?",
         "passos": [
-          "Numerador: |3+8−5|=6.",
-          "Denominador: √(9+16)=5.",
-          "Distância=6/5."
+          "r³=27.",
+          "V=(4/3)π·27=36π."
         ]
       }
     }
@@ -32,27 +31,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Distância da origem à reta x−3=0:",
+      "enunciado": "Esfera r=2 tem volume:",
       "opcoes": [
-        "0",
-        "1",
-        "2",
-        "3"
+        "8π/3",
+        "16π/3",
+        "32π/3",
+        "64π/3"
       ],
-      "correta": 3,
-      "explicacao": "|−3|/√1=3."
+      "correta": 2,
+      "explicacao": "(4/3)π·8=32π/3."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Três pontos colineares formam triângulo de área:",
+      "enunciado": "Raio dobra: o volume fica:",
       "opcoes": [
-        "0",
-        "1",
-        "2",
-        "3"
+        "2 vezes",
+        "4 vezes",
+        "8 vezes",
+        "16 vezes"
       ],
-      "correta": 0,
-      "explicacao": "Alinhamento ⇒ determinante e área nulos."
+      "correta": 2,
+      "explicacao": "Volume proporcional a r³: 2³=8."
     }
   ],
   "videos": [],

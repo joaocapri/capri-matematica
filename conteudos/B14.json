@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender áreas de figuras planas iii - círculo",
+    "Compreender circunferência - ângulos",
     "Resolver um exemplo geométrico passo a passo",
     "Evitar armadilhas de interpretação do desenho"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Desenhe antes de calcular",
       "paragrafos": [
-        "Setor circular é uma fatia proporcional ao ângulo central. A coroa circular é a diferença entre duas áreas de círculos concêntricos."
+        "Ângulo central mede o mesmo que o arco correspondente, enquanto o inscrito, com vértice na circunferência, mede metade do arco que intercepta."
       ],
       "formulas": [
-        "A_{\\text{setor}}=\\frac{\\theta}{360^{\\circ}}\\pi r^2"
+        "\\alpha_{\\text{inscrito}}=\\frac{\\alpha_{\\text{central}}}2"
       ],
-      "dica": "Se o ângulo vier em radianos, a área do setor é r²θ/2.",
-      "erroComum": "Para coroa circular, subtraia quadrados dos raios, não quadrados dos diâmetros sem ajuste."
+      "dica": "Se dois ângulos inscritos interceptam o mesmo arco, são congruentes.",
+      "erroComum": "Não compare ângulos inscritos de arcos diferentes como se fossem iguais."
     },
     {
       "titulo": "Resolução com raciocínio",
@@ -25,11 +25,10 @@
         "A ideia é enxergar a propriedade na figura e só depois colocar números."
       ],
       "exemplo": {
-        "enunciado": "Calcule a área de setor de 90° em círculo de raio 4.",
+        "enunciado": "Um arco mede 100°. Qual é o ângulo inscrito que o intercepta?",
         "passos": [
-          "Círculo inteiro: 16π.",
-          "O setor corresponde a 1/4 da volta.",
-          "Área=4π."
+          "Inscrito mede metade do arco.",
+          "100°/2=50°."
         ]
       }
     }
@@ -37,27 +36,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Área de círculo de raio 5:",
+      "enunciado": "Um arco de 80° determina inscrito de:",
       "opcoes": [
-        "5π",
-        "10π",
-        "25π",
-        "50π"
+        "20°",
+        "40°",
+        "80°",
+        "160°"
       ],
-      "correta": 2,
-      "explicacao": "π·5²=25π."
+      "correta": 1,
+      "explicacao": "80/2=40."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Setor de 180° de raio 3 tem área:",
+      "enunciado": "O ângulo inscrito que intercepta uma semicircunferência mede:",
       "opcoes": [
-        "3π",
-        "9π/2",
-        "9π",
-        "18π"
+        "45°",
+        "60°",
+        "90°",
+        "180°"
       ],
-      "correta": 1,
-      "explicacao": "Metade de 9π é 9π/2."
+      "correta": 2,
+      "explicacao": "Metade de 180° é 90°."
     }
   ],
   "videos": [

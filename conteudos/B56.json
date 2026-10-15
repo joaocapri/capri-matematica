@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Parábola geométrica é o conjunto dos pontos equidistantes de um foco fixo e uma reta diretriz. Para vértice na origem e eixo horizontal, y²=4px; p indica deslocamento do foco."
+      ],
+      "formulas": [
+        "y^2=4px\\quad\\text{ou}\\quad x^2=4py"
+      ],
+      "dica": "Veja qual variável está ao quadrado: y² indica eixo horizontal.",
+      "erroComum": "O coeficiente 4p não é a distância vértice-foco; p é."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Parábola y²=8x: identifique foco e diretriz.",
+        "passos": [
+          "4p=8 ⇒ p=2.",
+          "Foco (2,0), diretriz x=−2."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em y²=12x, p é:",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "6"
+      ],
+      "correta": 2,
+      "explicacao": "4p=12 ⇒ p=3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Parábola x²=−4y abre para:",
+      "opcoes": [
+        "Direita",
+        "Esquerda",
+        "Cima",
+        "Baixo"
+      ],
+      "correta": 3,
+      "explicacao": "4p=−4 ⇒ p<0; eixo vertical para baixo."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

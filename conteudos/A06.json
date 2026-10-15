@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de radiciação e racionalização",
+    "Entender o conceito central de produto cartesiano e relações",
     "Aplicar o procedimento em um exemplo resolvido",
     "Reconhecer erros frequentes antes de enfrentar uma questão"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "A ideia que destrava",
       "paragrafos": [
-        "Radiciar é procurar uma potência que devolve o radicando. Racionalizar é reescrever frações para tirar raízes do denominador, sem mudar o valor da expressão."
+        "Um par ordenado guarda posição: (2,3) não é o mesmo que (3,2). O produto cartesiano A×B combina cada elemento de A com cada elemento de B."
       ],
       "formulas": [
-        "\\sqrt{ab}=\\sqrt a\\sqrt b\\quad(a,b\\geq0)"
+        "A\\times B=\\{(a,b)\\mid a\\in A,\\ b\\in B\\}"
       ],
-      "dica": "Em raízes quadradas, separe o maior fator quadrado perfeito.",
-      "erroComum": "√(a+b) geralmente NÃO é √a+√b; cuidado com distribuição indevida."
+      "dica": "A ordem dos conjuntos importa: A×B pode ser diferente de B×A.",
+      "erroComum": "Não trate (a,b) como um conjunto sem ordem."
     },
     {
       "titulo": "Vamos fazer uma juntos",
@@ -25,11 +25,11 @@
         "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
       ],
       "exemplo": {
-        "enunciado": "Simplifique √72 e racionalize 1/√2.",
+        "enunciado": "Para A={1,2} e B={x,y}, construa A×B.",
         "passos": [
-          "72=36·2 ⇒ √72=6√2.",
-          "1/√2 × √2/√2=√2/2.",
-          "Não precisamos aproximar as raízes para operar."
+          "Pegue o 1 e combine com x e y.",
+          "Repita com o 2.",
+          "A×B={(1,x),(1,y),(2,x),(2,y)}."
         ]
       }
     }
@@ -37,35 +37,35 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "√50 é igual a:",
+      "enunciado": "A tem 3 elementos e B tem 4. Quantos pares há em A×B?",
       "opcoes": [
-        "25√2",
-        "5√2",
-        "10√5",
-        "2√5"
+        "7",
+        "12",
+        "16",
+        "1"
       ],
       "correta": 1,
-      "explicacao": "50=25·2 ⇒ √50=5√2."
+      "explicacao": "Cada um dos 3 elementos de A combina com os 4 de B: 3×4=12."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "A forma racionalizada de 1/√3 é:",
+      "enunciado": "Qual par representa abscissa 4 e ordenada −2?",
       "opcoes": [
-        "√3",
-        "3√3",
-        "√3/3",
-        "1/3"
+        "(−2,4)",
+        "(4,−2)",
+        "(2,4)",
+        "(−4,2)"
       ],
-      "correta": 2,
-      "explicacao": "Multiplique numerador e denominador por √3."
+      "correta": 1,
+      "explicacao": "O primeiro valor é x (abscissa) e o segundo é y (ordenada)."
     }
   ],
   "videos": [
     {
-      "titulo": "Vídeos e prática: fundamentos de álgebra",
+      "titulo": "Vídeos e prática: funções",
       "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Uma coleção de videoaulas e exercícios para revisar fundamentos e notação.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-intro-to-algebra/alg-manipulating-expressions"
+      "descricao": "Material de apoio sobre funções, domínio e composição.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
     }
   ],
   "exercicios": [],

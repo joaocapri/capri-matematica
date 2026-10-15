@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender congruência e semelhança de triângulos",
+    "Compreender pontos notáveis do triângulo",
     "Resolver um exemplo geométrico passo a passo",
     "Evitar armadilhas de interpretação do desenho"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Desenhe antes de calcular",
       "paragrafos": [
-        "Congruência significa mesma forma e tamanho; semelhança preserva ângulos, mas permite alterar o tamanho por uma razão k. Os lados correspondentes ficam proporcionais."
+        "Baricentro é encontro das medianas e divide cada uma em razão 2:1 a partir do vértice. Incentro encontra bissetrizes; circuncentro, mediatrizes; ortocentro, alturas."
       ],
       "formulas": [
-        "\\frac{a'}a=\\frac{b'}b=k"
+        "VG:GM=2:1\\quad\\text{(G baricentro)}"
       ],
-      "dica": "AA é suficiente para semelhança de triângulos.",
-      "erroComum": "Ter somente um ângulo igual não garante semelhança."
+      "dica": "Associe cada ponto à linha: mediana, bissetriz, mediatriz, altura.",
+      "erroComum": "Circuncentro de triângulo retângulo fica no ponto médio da hipotenusa."
     },
     {
       "titulo": "Resolução com raciocínio",
@@ -25,10 +25,10 @@
         "A ideia é enxergar a propriedade na figura e só depois colocar números."
       ],
       "exemplo": {
-        "enunciado": "Dois triângulos semelhantes têm lados correspondentes 3 e 9. Um outro lado do menor mede 5. Quanto mede no maior?",
+        "enunciado": "Uma mediana de triângulo mede 12 cm. A distância do vértice ao baricentro é:",
         "passos": [
-          "Razão maior/menor: 9/3=3.",
-          "Multiplique o correspondente: 5·3=15."
+          "Do vértice ao baricentro são dois terços da mediana.",
+          "(2/3)·12=8 cm."
         ]
       }
     }
@@ -36,27 +36,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Se razão linear de semelhança é 2, um lado 7 torna-se:",
+      "enunciado": "Qual ponto é encontro das bissetrizes internas?",
       "opcoes": [
-        "3,5",
-        "7",
-        "9",
-        "14"
+        "Baricentro",
+        "Ortocentro",
+        "Incentro",
+        "Circuncentro"
       ],
-      "correta": 3,
-      "explicacao": "7·2=14."
+      "correta": 2,
+      "explicacao": "O incentro é equidistante dos lados."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Dois triângulos com os três ângulos correspondentes iguais são:",
+      "enunciado": "Se uma mediana mede 9 cm, do baricentro ao ponto médio do lado há:",
       "opcoes": [
-        "Congruentes sempre",
-        "Semelhantes",
-        "Retângulos sempre",
-        "Isósceles sempre"
+        "3 cm",
+        "4,5 cm",
+        "6 cm",
+        "9 cm"
       ],
-      "correta": 1,
-      "explicacao": "Critério AA de semelhança."
+      "correta": 0,
+      "explicacao": "G divide a mediana em 2:1; parte menor é 1/3 de 9=3."
     }
   ],
   "videos": [

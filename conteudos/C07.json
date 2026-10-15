@@ -1,60 +1,94 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Ler e escrever números decimais",
+    "Operar com decimais",
+    "Converter decimais em frações e vice-versa"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Casas decimais",
       "paragrafos": [
-        "Análise dimensional evita erros: comprimento usa unidade linear, área unidade ao quadrado e volume ao cubo. Ao trocar metros por centímetros, o fator muda segundo a dimensão."
-      ],
-      "formulas": [
-        "1\\,m^2=10^4\\,cm^2,\\quad1\\,m^3=10^3\\,L"
-      ],
-      "dica": "Escreva a unidade ao lado de cada número da conta.",
-      "erroComum": "Converter m² para cm² exige fator 10 000, não 100."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "Cada casa depois da vírgula vale um décimo da anterior: décimos, centésimos, milésimos. Por isso 0,25 = 25/100 = 1/4."
       ],
       "exemplo": {
-        "enunciado": "Converta 2,5 m³ em litros.",
+        "enunciado": "Escreva 0,375 como fração irredutível.",
         "passos": [
-          "1 m³ corresponde a 1000 L.",
-          "2,5·1000=2500 litros."
+          "0,375 = 375/1000.",
+          "Divida por 125: 3/8."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "3 m² em cm² equivalem a:",
-      "opcoes": [
-        "300",
-        "3000",
-        "30 000",
-        "300 000"
-      ],
-      "correta": 2,
-      "explicacao": "3·10000=30000 cm²."
+      },
+      "dica": "Para multiplicar por 10, 100 ou 1000, ande a vírgula 1, 2 ou 3 casas para a direita."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "1 litro corresponde a:",
-      "opcoes": [
-        "1 cm³",
-        "10 cm³",
-        "100 cm³",
-        "1000 cm³"
+      "titulo": "Operações",
+      "paragrafos": [
+        "Na soma e subtração, alinhe as vírgulas. Na multiplicação, multiplique sem vírgula e depois conte as casas decimais dos fatores. Na divisão, iguale as casas e corte as vírgulas."
       ],
-      "correta": 3,
-      "explicacao": "1 L = 1 dm³ =1000 cm³."
+      "exemplo": {
+        "enunciado": "Calcule 2,5 · 0,4 e 7,2 ÷ 0,06.",
+        "passos": [
+          "25 · 4 = 100, com duas casas: 1,00 = 1.",
+          "7,20 ÷ 0,06 = 720 ÷ 6 = 120."
+        ]
+      },
+      "erroComum": "Esquecer de contar as casas na multiplicação: 0,3 · 0,2 é 0,06, não 0,6."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "0,6 + 0,45 é",
+      "opcoes": [
+        "0,51",
+        "1,05",
+        "1,5",
+        "0,105"
+      ],
+      "correta": 1,
+      "explicacao": "Alinhe as vírgulas."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "1,2 · 0,3 é",
+      "opcoes": [
+        "0,036",
+        "0,36",
+        "3,6",
+        "36"
+      ],
+      "correta": 1,
+      "explicacao": "12 · 3 = 36, com duas casas."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "4,8 ÷ 0,12 é",
+      "opcoes": [
+        "0,4",
+        "4",
+        "40",
+        "400"
+      ],
+      "correta": 2,
+      "explicacao": "480 ÷ 12."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A fração 3/5 em decimal é",
+      "opcoes": [
+        "0,35",
+        "0,6",
+        "0,53",
+        "1,6"
+      ],
+      "correta": 1,
+      "explicacao": "3 ÷ 5."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

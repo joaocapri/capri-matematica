@@ -1,59 +1,99 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Verificar se três pontos estão alinhados",
+    "Calcular a área de um triângulo pelo determinante",
+    "Usar a área para problemas de alinhamento com parâmetro"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "O determinante dos três pontos",
       "paragrafos": [
-        "Vetor representa deslocamento com módulo, direção e sentido. No plano, descreva-o como (a,b), independente do ponto de partida; seu módulo vem de Pitágoras."
+        "Monte o determinante com as coordenadas dos pontos e uma coluna de 1. Se ele for zero, os pontos estão alinhados. Se não, metade do seu módulo é a área do triângulo."
       ],
       "formulas": [
-        "\\|\\vec v\\|=\\sqrt{a^2+b^2}"
-      ],
-      "dica": "Distingua sentido (para qual lado) de direção (reta suporte).",
-      "erroComum": "Dois vetores opostos têm mesmo módulo e direções iguais, mas sentidos contrários."
-    },
-    {
-      "titulo": "Na prática",
-      "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "D=\\begin{vmatrix}x_A&y_A&1\\\\x_B&y_B&1\\\\x_C&y_C&1\\end{vmatrix}",
+        "A=\\dfrac{|D|}{2}"
       ],
       "exemplo": {
-        "enunciado": "Vetor v=(−3,4): módulo?",
+        "enunciado": "Calcule a área do triângulo A(1, 1), B(4, 1), C(1, 5).",
         "passos": [
-          "Módulo √(9+16)=5."
+          "D = 1(1 − 5) − 1(4 − 1) + 1(20 − 1) = −4 − 3 + 19 = 12.",
+          "Área = 12/2 = 6."
+        ]
+      },
+      "dica": "Confira com base × altura quando o triângulo tiver lados nos eixos ou paralelos a eles.",
+      "erroComum": "Esquecer o módulo. Área nunca é negativa."
+    },
+    {
+      "titulo": "Alinhamento com parâmetro",
+      "paragrafos": [
+        "Para descobrir o valor que deixa três pontos alinhados, iguale o determinante a zero."
+      ],
+      "exemplo": {
+        "enunciado": "Para que valor de k os pontos (1, 2), (3, 6) e (k, 10) estão alinhados?",
+        "passos": [
+          "A reta por (1, 2) e (3, 6) é y = 2x.",
+          "Para y = 10, x = 5.",
+          "k = 5."
         ]
       }
     }
   ],
+  "videos": [],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Módulo de (6,8) =",
+      "enunciado": "Três pontos estão alinhados quando o determinante das coordenadas é",
       "opcoes": [
-        "8",
-        "10",
-        "12",
-        "14"
+        "1",
+        "0",
+        "positivo",
+        "negativo"
       ],
       "correta": 1,
-      "explicacao": "√(36+64)=10."
+      "explicacao": "Determinante nulo indica alinhamento."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O vetor que leva (1,2) até (4,6) é:",
+      "enunciado": "A área do triângulo de vértices (0, 0), (4, 0) e (0, 6) é",
       "opcoes": [
-        "(5,8)",
-        "(−3,−4)",
-        "(3,4)",
-        "(4,6)"
+        "10",
+        "12",
+        "24",
+        "6"
       ],
-      "correta": 2,
-      "explicacao": "Final menos inicial: (3,4)."
+      "correta": 1,
+      "explicacao": "Base 4 e altura 6."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Os pontos (0, 1), (2, 5) e (k, 9) estão alinhados para k igual a",
+      "opcoes": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correta": 1,
+      "explicacao": "Reta y = 2x + 1; 9 = 2k + 1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A área do triângulo A(1, 1), B(5, 1), C(3, 4) é",
+      "opcoes": [
+        "6",
+        "8",
+        "12",
+        "4"
+      ],
+      "correta": 0,
+      "explicacao": "Base 4 e altura 3."
     }
   ],
-  "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "arquivos": []
 }

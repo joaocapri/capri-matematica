@@ -6,13 +6,13 @@
     {
       "titulo": "Pegue a ideia",
       "paragrafos": [
-        "Equação reduzida da circunferência fornece centro e raio de imediato. Se receber a equação geral, complete quadrados para recuperar a forma (x−a)²+(y−b)²=r²."
+        "Uma esfera inscrita num cubo toca as seis faces: diâmetro igual à aresta. Já a esfera circunscrita passa pelos oito vértices: diâmetro igual à diagonal espacial do cubo."
       ],
       "formulas": [
-        "(x-a)^2+(y-b)^2=r^2"
+        "r_{in}=\\frac a2,\\quad R_{circ}=\\frac{a\\sqrt3}{2}"
       ],
-      "dica": "Lembre: o sinal do centro é oposto ao da expressão dentro do quadrado.",
-      "erroComum": "Uma equação geral com 'raio ao quadrado' negativo não representa circunferência real."
+      "dica": "Desenhe os centros coincidentes das esferas e do cubo.",
+      "erroComum": "Na circunscrição, usar diagonal de face a√2 dá raio errado."
     },
     {
       "titulo": "Na prática",
@@ -20,11 +20,10 @@
         "Agora aplique o conceito em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Determine centro e raio de x²+y²−4x+6y−12=0.",
+        "enunciado": "Cubo de aresta 6: raios das esferas inscrita e circunscrita?",
         "passos": [
-          "Agrupe: (x²−4x)+(y²+6y)=12.",
-          "Complete quadrados: (x−2)²+(y+3)²=25.",
-          "Centro (2,−3), raio 5."
+          "Inscrita: r=6/2=3.",
+          "Circunscrita: R=6√3/2=3√3."
         ]
       }
     }
@@ -32,27 +31,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Centro de (x−1)²+(y+2)²=9:",
-      "opcoes": [
-        "(1,−2)",
-        "(−1,2)",
-        "(1,2)",
-        "(−1,−2)"
-      ],
-      "correta": 0,
-      "explicacao": "Centro é (1,−2)."
-    },
-    {
-      "nivel": "Aplicação",
-      "enunciado": "Raio de x²+y²=16:",
+      "enunciado": "Inscrita em cubo de aresta 8: raio =",
       "opcoes": [
         "2",
         "4",
-        "8",
-        "16"
+        "4√2",
+        "8"
       ],
       "correta": 1,
-      "explicacao": "r=√16=4."
+      "explicacao": "Raio metade da aresta: 4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Circunscrita a cubo aresta 2: raio =",
+      "opcoes": [
+        "1",
+        "√2",
+        "√3",
+        "2"
+      ],
+      "correta": 2,
+      "explicacao": "R=a√3/2=√3."
     }
   ],
   "videos": [],

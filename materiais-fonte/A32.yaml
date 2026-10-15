@@ -1,256 +1,245 @@
-# Fonte das listas em PDF da aula A32 — Função Exponencial
+# Fonte das listas em PDF da aula A32 — Gráficos com módulo
 aula: A32
 
 fixacao:
-  intro: Resolva na ordem — do aquecimento ao desafio. Em $f(x)=a^x$, a base é positiva e diferente de $1$; com $a>1$ a função cresce, com $0<a<1$ decresce.
+  intro: Resolva na ordem — do aquecimento ao desafio. Com $k>0$ — $|A|<k$ é o "miolo" ($-k<A<k$) e $|A|>k$ são as "caudas" ($A<-k$ ou $A>k$).
   secoes:
     - nome: Aquecimento
       questoes:
-        - enunciado: Dada $f(x)=2^x$, calcule $f(0)$, $f(3)$, $f(-2)$ e $f\!\left(\tfrac12\right)$.
-          resolucao: |
-            $f(0)=1$; \ $f(3)=8$; \ $f(-2)=\tfrac1{2^2}=\tfrac14$; \ $f\!\left(\tfrac12\right)=\sqrt2$.
-          resposta: '$1$; \ $8$; \ $\tfrac14$; \ $\sqrt2$'
-
-        - enunciado: Quais leis definem uma função exponencial?
+        - enunciado: Resolva em $\mathbb{R}$.
           itens:
-            - $f(x)=3^x$
-            - $f(x)=\left(\tfrac12\right)^x$
-            - $f(x)=1^x$
-            - $f(x)=(-2)^x$
-            - $f(x)=x^2$
+            - $|x|<3$
+            - $|x|\ge2$
           resolucao: |
-            A base deve ser positiva e diferente de $1$, e a variável fica no expoente.
-            (a) Sim. (b) Sim. (c) Não: é a constante $1$. (d) Não: base negativa ($(-2)^{1/2}$ não é real). (e) Não: é quadrática.
-          resposta: '(a) sim \quad (b) sim \quad (c) não \quad (d) não \quad (e) não'
+            (a) Miolo: $-3<x<3$. (b) Caudas: $x\le-2$ ou $x\ge2$.
+          resposta: '(a) $]-3,3[$ \quad (b) $x\le-2$ ou $x\ge2$'
 
-        - enunciado: Classifique cada função como crescente ou decrescente.
+        - enunciado: Resolva $|x-3|<5$.
+          resolucao: |
+            $-5<x-3<5\Rightarrow -2<x<8$. São os números a menos de $5$ unidades de $3$.
+          resposta: '$]-2,\,8[$'
+
+        - enunciado: Resolva $|2x+1|\ge7$.
+          resolucao: |
+            $2x+1\le-7\Rightarrow x\le-4$, ou $2x+1\ge7\Rightarrow x\ge3$.
+          resposta: '$x\le-4$ ou $x\ge3$'
+
+        - enunciado: Resolva $|3-2x|\le1$.
+          resolucao: |
+            $-1\le3-2x\le1\Rightarrow -4\le-2x\le-2\Rightarrow 1\le x\le2$ (dividir por $-2$ inverte os sinais).
+          resposta: '$[1,\,2]$'
+
+        - enunciado: Resolva $|x-5|\ge3$.
+          resolucao: |
+            $x-5\le-3\Rightarrow x\le2$, ou $x-5\ge3\Rightarrow x\ge8$.
+          resposta: '$x\le2$ ou $x\ge8$'
+
+        - enunciado: Resolva.
           itens:
-            - $f(x)=5^x$
-            - $f(x)=(0{,}3)^x$
-            - $f(x)=(\sqrt2)^x$
-            - $f(x)=\left(\tfrac23\right)^x$
+            - $|x+4|<0$
+            - $|x+4|\le0$
+            - $|x+4|\ge0$
           resolucao: |
-            Base maior que $1$: crescente; entre $0$ e $1$: decrescente.
-            (a) Cresc. (b) Decresc. (c) Cresc. ($\sqrt2\approx1{,}41$). (d) Decresc.
-          resposta: '(a) cresc. \quad (b) decresc. \quad (c) cresc. \quad (d) decresc.'
+            (a) Módulo nunca é negativo: $\varnothing$. (b) Só vale $|x+4|=0$: $x=-4$. (c) Sempre vale: $\mathbb{R}$.
+          resposta: '(a) $\varnothing$ \quad (b) $\{-4\}$ \quad (c) $\mathbb{R}$'
 
-        - enunciado: Dê o domínio e a imagem de $f(x)=3^x$.
+        - enunciado: Quantos números inteiros satisfazem $|x-3|\le4$?
           resolucao: |
-            O expoente pode ser qualquer real; já $3^x$ é sempre positivo e nunca vale zero.
-          resposta: '$D=\mathbb{R}$; \ $Im=\,]0,\,+\infty[$'
-
-        - enunciado: Para $f(x)=2^x+1$, determine $f(0)$, a imagem e a assíntota horizontal do gráfico.
-          resolucao: |
-            $f(0)=1+1=2$. Como $2^x>0$, temos $f(x)>1$: $Im=\,]1,+\infty[$.
-            O gráfico se aproxima da reta $y=1$ sem tocá-la.
-          resposta: '$f(0)=2$; \ $Im=\,]1,+\infty[$; \ assíntota $y=1$'
-
-        - enunciado: Complete com $>$ ou $<$.
-          itens:
-            - $2^{0{,}5}\ \_\_\ 2^{0{,}7}$
-            - $\left(\tfrac13\right)^2\ \_\_\ \left(\tfrac13\right)^5$
-          resolucao: |
-            (a) Base $>1$: maior expoente, maior valor. $2^{0{,}5}<2^{0{,}7}$.
-            (b) Base entre $0$ e $1$: maior expoente, menor valor. $\left(\tfrac13\right)^2>\left(\tfrac13\right)^5$.
-          resposta: '(a) $<$ \quad (b) $>$'
-
-        - enunciado: A função $f(x)=a\cdot b^x$ satisfaz $f(0)=3$ e $f(1)=6$. Determine $a$, $b$ e $f(4)$.
-          resolucao: |
-            $f(0)=a=3$ e $f(1)=3b=6\Rightarrow b=2$. Então $f(4)=3\cdot16=48$.
-          resposta: '$a=3$, $b=2$; \ $f(4)=48$'
+            $-4\le x-3\le4\Rightarrow -1\le x\le7$: de $-1$ a $7$ são $9$ inteiros.
+          resposta: '$9$'
 
     - nome: Treino
       questoes:
-        - enunciado: Uma cultura tem $N(t)=500\cdot2^t$ bactérias após $t$ horas.
-          itens:
-            - Quantas bactérias haverá após $5$ horas?
-            - Em quanto tempo a população chega a $8\,000$?
+        - enunciado: Resolva $|x^2-5|<4$.
           resolucao: |
-            (a) $500\cdot32=16\,000$.
-            (b) $500\cdot2^t=8000\Rightarrow 2^t=16\Rightarrow t=4$ h.
-          resposta: '(a) $16\,000$ \quad (b) $4$ h'
+            $-4<x^2-5<4\Rightarrow 1<x^2<9$. Então $1<|x|<3$.
+          resposta: '$]-3,\,-1[\ \cup\ ]1,\,3[$'
 
-        - enunciado: O gráfico de $f(x)=k\cdot3^x$ passa pelo ponto $(2,\,18)$. Determine $k$ e $f(0)$.
+        - enunciado: Resolva $|x+2|>|x-4|$.
           resolucao: |
-            $9k=18\Rightarrow k=2$. Então $f(0)=2$.
-          resposta: '$k=2$; \ $f(0)=2$'
+            Os dois lados são não negativos; elevando ao quadrado: $(x+2)^2>(x-4)^2\Rightarrow 4x+4>-8x+16\Rightarrow x>1$.
+            ($x$ está mais longe de $-2$ do que de $4$ quando passa do ponto médio, $1$.)
+          resposta: '$x>1$'
 
-        - enunciado: Um carro de R\$\,50\,000{,}00 perde $20\%$ do valor por ano, ou seja, $V(t)=50\,000\cdot0{,}8^t$. Quanto valerá após $2$ anos?
+        - enunciado: Resolva $|x^2-4x|\le5$.
           resolucao: |
-            $50\,000\cdot0{,}64=32\,000$.
-          resposta: 'R\$\,32\,000{,}00'
+            $x^2-4x\le5\Rightarrow -1\le x\le5$. \ $x^2-4x\ge-5\Leftrightarrow (x-2)^2+1\ge0$: sempre vale.
+          resposta: '$[-1,\,5]$'
 
-        - enunciado: Para $f(x)=2^{x-1}+3$, calcule $f(1)$ e $f(0)$ e determine a imagem.
+        - enunciado: Resolva $|2x-1|<x+2$.
           resolucao: |
-            $f(1)=2^0+3=4$; \ $f(0)=\tfrac12+3=3{,}5$. Como $2^{x-1}>0$: $f(x)>3$.
-          resposta: '$4$; \ $3{,}5$; \ $Im=\,]3,+\infty[$'
+            $-(x+2)<2x-1<x+2$. Esquerda: $3x>-1\Rightarrow x>-\tfrac13$. Direita: $x<3$.
+          resposta: '$]-\tfrac13,\,3[$'
 
-        - enunciado: Para quais valores de $a$ a função $f(x)=(a-2)^x$ é exponencial decrescente?
+        - enunciado: Descreva como obter o gráfico de $y=|x-3|+2$ a partir do gráfico de $y=|x|$ e dê o vértice.
           resolucao: |
-            É preciso $0<a-2<1\Rightarrow 2<a<3$.
-          resposta: '$2<a<3$'
+            Translade $3$ unidades para a direita (por causa do $x-3$) e $2$ para cima (por causa do $+2$). O bico vai de $(0,0)$ para $(3,2)$.
+          resposta: 'direita $3$, cima $2$; vértice $(3,2)$'
 
-        - enunciado: 'Compare o crescimento linear e o exponencial: calcule $L(n)=3+2n$ e $E(n)=3\cdot2^n$ para $n=1,3,5$.'
+        - enunciado: Considere $y=-|x+1|+3$. Dê o vértice, diga se o "V" é para cima ou para baixo e determine os zeros.
           resolucao: |
-            $L$: $5$, $9$, $13$ (soma $2$ a cada passo). \ $E$: $6$, $24$, $96$ (dobra a cada passo).
-          resposta: '$L$: $5,9,13$; \ $E$: $6,24,96$'
+            O sinal de menos reflete o V (ele fica de ponta-cabeça); o vértice é $(-1,3)$.
+            Zeros: $|x+1|=3\Rightarrow x=2$ ou $x=-4$.
+          resposta: 'vértice $(-1,3)$; para baixo; zeros $-4$ e $2$'
 
-        - enunciado: Um capital de R\$\,1\,000{,}00 rende juros compostos de $10\%$ ao ano, ou seja, $M(t)=1000\cdot1{,}1^t$. Qual é o montante após $3$ anos?
+        - enunciado: Uma peça deve ter $20$ mm, com tolerância de $0{,}05$ mm, ou seja, $|d-20|\le0{,}05$. Qual é o intervalo de medidas aceitas?
           resolucao: |
-            $1{,}1^3=1{,}331$. Montante: R\$\,1\,331{,}00.
-          resposta: 'R\$\,1\,331{,}00'
+            $-0{,}05\le d-20\le0{,}05\Rightarrow 19{,}95\le d\le20{,}05$.
+          resposta: '$[19{,}95;\,20{,}05]$ mm'
 
-        - enunciado: Uma amostra radioativa de $80$ g tem meia-vida de $5$ anos. Que massa resta após $20$ anos?
+        - enunciado: Resolva $|x+1|\le|x-3|$.
           resolucao: |
-            $20$ anos são $4$ meias-vidas: $80\cdot\left(\tfrac12\right)^4=5$ g.
-          resposta: '$5$ g'
+            Quadrando: $x^2+2x+1\le x^2-6x+9\Rightarrow 8x\le8\Rightarrow x\le1$.
+          resposta: '$x\le1$'
 
     - nome: Desafio
       questoes:
-        - enunciado: Uma função $f(x)=a\cdot b^x$, com $b>0$, satisfaz $f(1)=6$ e $f(3)=54$. Determine $a$, $b$ e $f(0)$.
+        - enunciado: Resolva $|x-1|+|x+2|\le5$.
           resolucao: |
-            $\dfrac{f(3)}{f(1)}=b^2=9\Rightarrow b=3$. Então $3a=6\Rightarrow a=2$, e $f(0)=2$.
-          resposta: '$a=2$, \ $b=3$; \ $f(0)=2$'
+            $x\ge1$: $2x+1\le5\Rightarrow x\le2$. \ $-2\le x<1$: $3\le5$, sempre. \ $x<-2$: $-2x-1\le5\Rightarrow x\ge-3$.
+            Juntando: $-3\le x\le2$.
+          resposta: '$[-3,\,2]$'
 
-        - enunciado: Uma cultura de $200$ bactérias dobra a cada $3$ horas. Em quanto tempo chega a $6\,400$?
+        - enunciado: Resolva $|x|<3x-4$.
           resolucao: |
-            $200\cdot2^{t/3}=6400\Rightarrow 2^{t/3}=32=2^5\Rightarrow t=15$ h.
-          resposta: '$15$ h'
+            É preciso $3x-4>0$, isto é, $x>\tfrac43$; aí $x>0$ e $|x|=x$: $x<3x-4\Rightarrow x>2$.
+          resposta: '$x>2$'
 
-        - enunciado: Para $f(x)=5\cdot3^x$, mostre que $\dfrac{f(x+1)}{f(x)}$ é constante e calcule esse valor.
+        - enunciado: Resolva $\dfrac1{|x-2|}>\dfrac13$.
           resolucao: |
-            $\dfrac{5\cdot3^{x+1}}{5\cdot3^x}=3$. Na exponencial, cada passo de $1$ em $x$ multiplica o valor pela base.
-          resposta: '$3$'
+            Com $x\neq2$: $|x-2|<3\Rightarrow -1<x<5$. Retire o $2$.
+          resposta: '$]-1,\,2[\ \cup\ ]2,\,5[$'
 
-        - enunciado: Determine a imagem de $f(x)=3-2^x$.
+        - enunciado: Resolva $|x^2-x|\le2$.
           resolucao: |
-            $2^x>0\Rightarrow -2^x<0\Rightarrow 3-2^x<3$, e $2^x$ assume todos os valores positivos.
-          resposta: '$Im=\,]-\infty,\,3[$'
+            $x^2-x\le2\Rightarrow -1\le x\le2$. \ $x^2-x\ge-2\Leftrightarrow x^2-x+2\ge0$: sempre vale ($\Delta<0$).
+          resposta: '$[-1,\,2]$'
 
-        - enunciado: Sendo $f(x)=2^x$, mostre que $f(a+b)=f(a)\cdot f(b)$ e calcule $f(3)\cdot f(-3)$.
+        - enunciado: Esboce a região $|x|+|y|\le2$ no plano cartesiano e calcule sua área.
           resolucao: |
-            $2^{a+b}=2^a\cdot2^b$. \ $f(3)\cdot f(-3)=f(0)=1$ (de fato, $8\cdot\tfrac18=1$).
-          resposta: '$f(3)\cdot f(-3)=1$'
+            No $1^\circ$ quadrante, é $x+y\le2$; por simetria, a região é um quadrado (losango) de vértices $(\pm2,0)$ e $(0,\pm2)$.
+            Diagonais de medida $4$: área $\tfrac{4\cdot4}2=8$.
+          resposta: 'losango de vértices $(\pm2,0)$, $(0,\pm2)$; área $8$'
 
 vestibular:
   intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
   questoes:
-    - enunciado: Se $f(x)=3^x$, então $f(2)+f(-1)$ vale
-      opcoes: ['$\dfrac{17}3$', '$\dfrac{26}3$', '$\dfrac{28}3$', '$9$', '$6$']
-      correta: C
-      resolucao: |
-        $9+\tfrac13=\tfrac{28}3$.
-
-    - enunciado: Das funções abaixo, a única exponencial decrescente é
-      opcoes: ['$f(x)=2^x$', '$f(x)=(0{,}5)^x$', '$f(x)=(\sqrt3)^x$', '$f(x)=\left(\tfrac32\right)^x$', '$f(x)=1^x$']
-      correta: B
-      resolucao: |
-        Base entre $0$ e $1$. A alternativa E é constante (e não é exponencial).
-
-    - enunciado: A imagem da função $f(x)=2^x-3$ é
-      opcoes: ['$\mathbb{R}$', '$]0,\,+\infty[$', '$]3,\,+\infty[$', '$]-3,\,+\infty[$', '$[-3,\,+\infty[$']
-      correta: D
-      resolucao: |
-        $2^x>0\Rightarrow 2^x-3>-3$; o valor $-3$ nunca é atingido.
-
-    - enunciado: Uma cultura começa com $300$ bactérias e a população dobra a cada hora. Após $6$ horas, haverá
-      opcoes: ['$1\,800$', '$3\,600$', '$9\,600$', '$19\,200$', '$38\,400$']
-      correta: D
-      resolucao: |
-        $300\cdot2^6=300\cdot64=19\,200$.
-
-    - enunciado: A função $f(x)=a\cdot2^x$ satisfaz $f(3)=40$. O valor de $f(0)$ é
-      opcoes: ['$5$', '$8$', '$10$', '$20$', '$40$']
+    - enunciado: O conjunto solução de $|x-2|<3$ é
+      opcoes: ['$]-1,\,5[$', '$]-5,\,1[$', '$]-\infty,\,-1[\ \cup\ ]5,\,+\infty[$', '$[-1,\,5]$', '$]-1,\,3[$']
       correta: A
       resolucao: |
-        $8a=40\Rightarrow a=5=f(0)$.
+        $-3<x-2<3\Rightarrow -1<x<5$.
 
-    - enunciado: Um equipamento de R\$\,20\,000{,}00 desvaloriza $10\%$ ao ano, a cada ano sobre o valor do ano anterior. Após $2$ anos, valerá
-      opcoes: ['R\$\,16\,000{,}00', 'R\$\,16\,200{,}00', 'R\$\,18\,000{,}00', 'R\$\,18\,200{,}00', 'R\$\,19\,800{,}00']
-      correta: B
-      resolucao: |
-        $20\,000\cdot0{,}9^2=16\,200$. (A alternativa A seria a perda linear de R\$\,2\,000 por ano.)
-
-    - enunciado: A assíntota horizontal do gráfico de $y=5^x+2$ é a reta
-      opcoes: ['$y=0$', '$y=5$', '$x=2$', '$y=-2$', '$y=2$']
-      correta: E
-      resolucao: |
-        $5^x\to0$ quando $x\to-\infty$, então $y\to2$, sem atingir esse valor.
-
-    - enunciado: A função $f(x)=(m-1)^x$ é exponencial crescente se, e somente se,
-      opcoes: ['$m>1$', '$m>0$', '$m>2$', '$1<m<2$', '$m\neq2$']
+    - enunciado: A quantidade de números inteiros que satisfazem $|2x-3|\le5$ é
+      opcoes: ['$4$', '$5$', '$6$', '$7$', '$8$']
       correta: C
       resolucao: |
-        É preciso base maior que $1$: $m-1>1\Rightarrow m>2$.
+        $-5\le2x-3\le5\Rightarrow -1\le x\le4$: $-1,0,1,2,3,4$.
 
-    - enunciado: Um medicamento tem meia-vida de $8$ dias. De uma dose de $64$ mg, após $24$ dias restarão
-      opcoes: ['$4$ mg', '$8$ mg', '$16$ mg', '$21{,}3$ mg', '$32$ mg']
+    - enunciado: O conjunto solução de $|x|>4$ é
+      opcoes: ['$]-4,\,4[$', '$]4,\,+\infty[$', '$]-\infty,\,-4[$', '$\mathbb{R}$', '$]-\infty,\,-4[\ \cup\ ]4,\,+\infty[$']
+      correta: E
+      resolucao: |
+        Caudas: $x<-4$ ou $x>4$. Esquecer a cauda negativa (alternativa B) é o erro clássico.
+
+    - enunciado: O conjunto solução de $|x+1|\ge0$ é
+      opcoes: ['$[-1,\,+\infty[$', '$\mathbb{R}$', '$\{-1\}$', '$\varnothing$', '$]-1,\,+\infty[$']
       correta: B
       resolucao: |
-        São $3$ meias-vidas: $64\cdot\left(\tfrac12\right)^3=8$ mg.
+        Todo módulo é maior ou igual a zero: vale para todo $x$ real.
 
-    - enunciado: O gráfico de $f(x)=a\cdot b^x$, com $b>0$, passa por $(0,\,4)$ e $(2,\,36)$. O valor de $f(1)$ é
-      opcoes: ['$12$', '$16$', '$18$', '$20$', '$24$']
+    - enunciado: O conjunto solução de $|x-1|\le-1$ é
+      opcoes: ['$\{0\}$', '$[0,\,2]$', '$\{1\}$', '$\varnothing$', '$\mathbb{R}$']
+      correta: D
+      resolucao: |
+        Um módulo nunca é negativo, muito menos menor ou igual a $-1$.
+
+    - enunciado: O conjunto solução de $|x^2-1|<3$ é
+      opcoes: ['$]-2,\,2[$', '$]-\sqrt2,\,\sqrt2[$', '$]0,\,2[$', '$]-1,\,1[$', '$\mathbb{R}$']
       correta: A
       resolucao: |
-        $a=4$ e $4b^2=36\Rightarrow b=3$. Então $f(1)=12$.
+        $-3<x^2-1<3\Rightarrow -2<x^2<4$. A parte da esquerda sempre vale; a da direita dá $-2<x<2$.
 
-    - enunciado: 'Sendo $a=2^{1/2}$, $b=4^{1/3}$ e $c=8^{1/5}$, a ordem correta é'
-      opcoes: ['$a<b<c$', '$b<c<a$', '$c<a<b$', '$a<c<b$', '$c<b<a$']
-      correta: D
-      resolucao: |
-        Na base $2$: expoentes $\tfrac12=0{,}5$, $\tfrac23\approx0{,}67$ e $\tfrac35=0{,}6$. Como $2^x$ é crescente: $a<c<b$.
-
-    - enunciado: Um capital de R\$\,2\,000{,}00 é aplicado a juros compostos de $10\%$ ao ano. Após $2$ anos, o montante é
-      opcoes: ['R\$\,2\,200{,}00', 'R\$\,2\,400{,}00', 'R\$\,2\,420{,}00', 'R\$\,2\,440{,}00', 'R\$\,4\,000{,}00']
+    - enunciado: As soluções de $|x+1|\le|x-3|$ são os números $x$ tais que
+      opcoes: ['$x\ge1$', '$x\le-1$', '$x\le1$', '$-1\le x\le3$', '$x\le3$']
       correta: C
       resolucao: |
-        $2000\cdot1{,}1^2=2000\cdot1{,}21=2420$. (A alternativa B são juros simples.)
+        $x$ deve estar mais perto de $-1$ do que de $3$ (ou à mesma distância): à esquerda do ponto médio, $1$, ou nele.
 
-    - enunciado: Para toda base $a$, com $a>0$ e $a\neq1$, o gráfico de $f(x)=a^x$ passa pelo ponto
-      opcoes: ['$(1,\,0)$', '$(0,\,0)$', '$(a,\,1)$', '$(1,\,1)$', '$(0,\,1)$']
+    - enunciado: Em uma linha de produção, só são aprovadas as peças com massa $m$, em gramas, tal que $|m-250|\le4$. A massa mínima de uma peça aprovada é
+      opcoes: ['$4$ g', '$242$ g', '$246$ g', '$250$ g', '$254$ g']
+      correta: C
+      resolucao: |
+        $246\le m\le254$. A mínima é $246$ g.
+
+    - enunciado: O conjunto solução de $|3x-2|>4$ é
+      opcoes: ['$]-\tfrac23,\,2[$', '$]2,\,+\infty[$', '$]-\infty,\,-2[\ \cup\ ]\tfrac23,\,+\infty[$', '$]-\infty,\,-\tfrac23[\ \cup\ ]2,\,+\infty[$', '$\mathbb{R}$']
+      correta: D
+      resolucao: |
+        $3x-2<-4\Rightarrow x<-\tfrac23$, ou $3x-2>4\Rightarrow x>2$.
+
+    - enunciado: O vértice do gráfico de $y=|x-2|-3$ é
+      opcoes: ['$(-2,\,-3)$', '$(2,\,3)$', '$(3,\,-2)$', '$(-2,\,3)$', '$(2,\,-3)$']
       correta: E
       resolucao: |
-        $a^0=1$ para toda base: o gráfico corta o eixo $y$ em $(0,1)$.
+        O bico do $|x|$, em $(0,0)$, vai $2$ para a direita e $3$ para baixo.
 
-    - enunciado: Se $f(x)=2^x$, então $\dfrac{f(x+3)}{f(x)}$ vale
-      opcoes: ['$3$', '$6$', '$2^x$', '$8$', '$2^{x+3}$']
-      correta: D
-      resolucao: |
-        $\dfrac{2^{x+3}}{2^x}=2^3=8$.
-
-    - enunciado: Uma cidade de $10\,000$ habitantes cresce $2\%$ ao ano, sempre sobre a população do ano anterior. Após $2$ anos, terá
-      opcoes: ['$10\,200$ hab.', '$10\,400$ hab.', '$10\,404$ hab.', '$10\,440$ hab.', '$12\,000$ hab.']
-      correta: C
-      resolucao: |
-        $10\,000\cdot1{,}02^2=10\,000\cdot1{,}0404=10\,404$.
-
-    - enunciado: O gráfico de $y=3^x+k$ passa pelo ponto $(1,\,5)$. O valor de $k$ é
-      opcoes: ['$2$', '$3$', '$4$', '$5$', '$8$']
+    - enunciado: O gráfico de $y=|x+3|$ é obtido a partir do gráfico de $y=|x|$ por uma translação de
+      opcoes: ['$3$ unidades para a esquerda', '$3$ unidades para a direita', '$3$ unidades para cima', '$3$ unidades para baixo', 'reflexão em torno do eixo $x$']
       correta: A
       resolucao: |
-        $3+k=5\Rightarrow k=2$.
+        O bico passa a ocorrer em $x+3=0$, isto é, $x=-3$: deslocamento para a esquerda.
 
-    - enunciado: Sobre a função $f(x)=\left(\tfrac12\right)^x$, é correto afirmar que
-      opcoes: ['é crescente e sua imagem é $\mathbb{R}$', 'é decrescente e sua imagem é $]0,\,+\infty[$', 'tem um zero em $x=0$', 'é decrescente e sua imagem é $\mathbb{R}$', 'passa pelo ponto $(1,\,2)$']
+    - enunciado: A função $f(x)=|x-1|-4$ é negativa exatamente para
+      opcoes: ['$x<5$', '$-3<x<5$', '$x<-3$ ou $x>5$', '$x>-3$', '$-5<x<3$']
       correta: B
       resolucao: |
-        Base entre $0$ e $1$: decrescente; os valores são sempre positivos. Ela passa por $(0,1)$ e por $\left(1,\tfrac12\right)$.
+        $|x-1|<4\Rightarrow -3<x<5$.
 
-    - enunciado: Uma cultura de $100$ bactérias triplica a cada $2$ horas. Após $6$ horas, haverá
-      opcoes: ['$600$', '$900$', '$1\,800$', '$8\,100$', '$2\,700$']
-      correta: E
+    - enunciado: A soma dos números inteiros que satisfazem $|x+1|<4$ é
+      opcoes: ['$-7$', '$-5$', '$-3$', '$0$', '$5$']
+      correta: A
       resolucao: |
-        Em $6$ h a população triplica $3$ vezes: $100\cdot3^3=2700$.
+        $-5<x<3$: $-4,-3,-2,-1,0,1,2$. Soma: $-7$.
 
-    - enunciado: Uma função $f(x)=k\cdot a^x$, com $a>0$, satisfaz $f(0)=5$ e $f(2)=20$. O valor de $f(3)$ é
-      opcoes: ['$25$', '$30$', '$35$', '$40$', '$80$']
+    - enunciado: Dos números inteiros de $0$ a $10$, a quantidade dos que satisfazem $|x-5|\ge3$ é
+      opcoes: ['$3$', '$4$', '$5$', '$6$', '$7$']
       correta: D
       resolucao: |
-        $k=5$ e $5a^2=20\Rightarrow a=2$. Então $f(3)=5\cdot8=40$.
+        $x\le2$ ou $x\ge8$: $0,1,2,8,9,10$.
 
-    - enunciado: O menor número natural $n$ para o qual $2^n>10n$ é
-      opcoes: ['$4$', '$5$', '$6$', '$7$', '$10$']
+    - enunciado: A quantidade de números inteiros que satisfazem $|2x-1|<x+2$ é
+      opcoes: ['$2$', '$3$', '$4$', '$5$', '$6$']
+      correta: B
+      resolucao: |
+        $-\tfrac13<x<3$: inteiros $0$, $1$ e $2$.
+
+    - enunciado: A área da região do plano definida por $|x|+|y|\le3$ é
+      opcoes: ['$6$', '$9$', '$12$', '$36$', '$18$']
+      correta: E
+      resolucao: |
+        É um losango de vértices $(\pm3,0)$ e $(0,\pm3)$, com diagonais $6$: área $\tfrac{6\cdot6}2=18$.
+
+    - enunciado: A quantidade de números inteiros que satisfazem $|x^2-4x|\le5$ é
+      opcoes: ['$5$', '$6$', '$7$', '$8$', '$9$']
       correta: C
       resolucao: |
-        $n=5$: $32<50$. \ $n=6$: $64>60$. A partir daí, a exponencial nunca mais perde para a reta.
+        A solução é $[-1,5]$: inteiros de $-1$ a $5$, ou seja, $7$.
+
+    - enunciado: Um termostato mantém a temperatura $T$ de uma sala de modo que $|T-22|\le1{,}5$, em $^\circ$C. A temperatura máxima da sala é
+      opcoes: ['$20{,}5\ ^\circ$C', '$22\ ^\circ$C', '$23\ ^\circ$C', '$23{,}5\ ^\circ$C', '$25\ ^\circ$C']
+      correta: D
+      resolucao: |
+        $20{,}5\le T\le23{,}5$.
+
+    - enunciado: O conjunto solução de $|x-a|<2$ é $]1,\,5[$. O valor de $a$ é
+      opcoes: ['$1$', '$3$', '$2$', '$4$', '$5$']
+      correta: B
+      resolucao: |
+        $a-2<x<a+2$; o centro do intervalo é $a=\tfrac{1+5}2=3$.
+
+    - enunciado: A área da região limitada pelos gráficos de $y=|x|-1$ e $y=3$ é
+      opcoes: ['$8$', '$12$', '$24$', '$32$', '$16$']
+      correta: E
+      resolucao: |
+        $|x|-1=3\Rightarrow x=\pm4$; o bico está em $(0,-1)$. Triângulo de base $8$ e altura $3-(-1)=4$: área $16$.

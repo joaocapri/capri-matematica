@@ -16,22 +16,6 @@
     "tipo": "aula"
   },
   {
-    "aula": "A02",
-    "arquivos": [
-      {
-        "titulo": "Lista de fixação A02 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/fixacao-A02.pdf"
-      },
-      {
-        "titulo": "Lista de vestibular A02 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/vestibular-A02.pdf"
-      }
-    ],
-    "tipo": "aula"
-  },
-  {
     "aula": "A03",
     "arquivos": [
       {
@@ -96,33 +80,65 @@
     "tipo": "aula"
   },
   {
-    "aula": "A12",
+    "aula": "A07",
     "arquivos": [
       {
-        "titulo": "Lista de fixação A12 — 20 questões + gabarito resolvido",
+        "titulo": "Lista de fixação A07 — 20 questões + gabarito resolvido",
         "tipo": "lista",
-        "url": "/pdfs/fixacao-A12.pdf"
+        "url": "/pdfs/fixacao-A07.pdf"
       },
       {
-        "titulo": "Lista de vestibular A12 — 20 questões + gabarito resolvido",
+        "titulo": "Lista de vestibular A07 — 20 questões + gabarito resolvido",
         "tipo": "lista",
-        "url": "/pdfs/vestibular-A12.pdf"
+        "url": "/pdfs/vestibular-A07.pdf"
       }
     ],
     "tipo": "aula"
   },
   {
-    "aula": "A13",
+    "aula": "A09",
     "arquivos": [
       {
-        "titulo": "Lista de fixação A13 — 20 questões + gabarito resolvido",
+        "titulo": "Lista de fixação A09 — 20 questões + gabarito resolvido",
         "tipo": "lista",
-        "url": "/pdfs/fixacao-A13.pdf"
+        "url": "/pdfs/fixacao-A09.pdf"
       },
       {
-        "titulo": "Lista de vestibular A13 — 20 questões + gabarito resolvido",
+        "titulo": "Lista de vestibular A09 — 20 questões + gabarito resolvido",
         "tipo": "lista",
-        "url": "/pdfs/vestibular-A13.pdf"
+        "url": "/pdfs/vestibular-A09.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A10",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A10 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A10.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A10 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A10.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A11",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A11 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A11.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A11 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A11.pdf"
       }
     ],
     "tipo": "aula"
@@ -208,22 +224,6 @@
     "tipo": "aula"
   },
   {
-    "aula": "A19",
-    "arquivos": [
-      {
-        "titulo": "Lista de fixação A19 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/fixacao-A19.pdf"
-      },
-      {
-        "titulo": "Lista de vestibular A19 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/vestibular-A19.pdf"
-      }
-    ],
-    "tipo": "aula"
-  },
-  {
     "aula": "A20",
     "arquivos": [
       {
@@ -235,22 +235,6 @@
         "titulo": "Lista de vestibular A20 — 20 questões + gabarito resolvido",
         "tipo": "lista",
         "url": "/pdfs/vestibular-A20.pdf"
-      }
-    ],
-    "tipo": "aula"
-  },
-  {
-    "aula": "A21",
-    "arquivos": [
-      {
-        "titulo": "Lista de fixação A21 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/fixacao-A21.pdf"
-      },
-      {
-        "titulo": "Lista de vestibular A21 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/vestibular-A21.pdf"
       }
     ],
     "tipo": "aula"
@@ -288,22 +272,6 @@
     "tipo": "aula"
   },
   {
-    "aula": "A24",
-    "arquivos": [
-      {
-        "titulo": "Lista de fixação A24 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/fixacao-A24.pdf"
-      },
-      {
-        "titulo": "Lista de vestibular A24 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/vestibular-A24.pdf"
-      }
-    ],
-    "tipo": "aula"
-  },
-  {
     "aula": "A29",
     "arquivos": [
       {
@@ -336,22 +304,6 @@
     "tipo": "aula"
   },
   {
-    "aula": "A31",
-    "arquivos": [
-      {
-        "titulo": "Lista de fixação A31 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/fixacao-A31.pdf"
-      },
-      {
-        "titulo": "Lista de vestibular A31 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/vestibular-A31.pdf"
-      }
-    ],
-    "tipo": "aula"
-  },
-  {
     "aula": "A32",
     "arquivos": [
       {
@@ -379,22 +331,6 @@
         "titulo": "Lista de vestibular A33 — 20 questões + gabarito resolvido",
         "tipo": "lista",
         "url": "/pdfs/vestibular-A33.pdf"
-      }
-    ],
-    "tipo": "aula"
-  },
-  {
-    "aula": "A34",
-    "arquivos": [
-      {
-        "titulo": "Lista de fixação A34 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/fixacao-A34.pdf"
-      },
-      {
-        "titulo": "Lista de vestibular A34 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/vestibular-A34.pdf"
       }
     ],
     "tipo": "aula"
@@ -496,22 +432,6 @@
     "tipo": "aula"
   },
   {
-    "aula": "A41",
-    "arquivos": [
-      {
-        "titulo": "Lista de fixação A41 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/fixacao-A41.pdf"
-      },
-      {
-        "titulo": "Lista de vestibular A41 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/vestibular-A41.pdf"
-      }
-    ],
-    "tipo": "aula"
-  },
-  {
     "aula": "A42",
     "arquivos": [
       {
@@ -544,22 +464,6 @@
     "tipo": "aula"
   },
   {
-    "aula": "A44",
-    "arquivos": [
-      {
-        "titulo": "Lista de fixação A44 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/fixacao-A44.pdf"
-      },
-      {
-        "titulo": "Lista de vestibular A44 — 20 questões + gabarito resolvido",
-        "tipo": "lista",
-        "url": "/pdfs/vestibular-A44.pdf"
-      }
-    ],
-    "tipo": "aula"
-  },
-  {
     "aula": "A45",
     "arquivos": [
       {
@@ -576,17 +480,113 @@
     "tipo": "aula"
   },
   {
-    "aula": "C48",
+    "aula": "A46",
     "arquivos": [
       {
-        "titulo": "Lista de fixação C48 — 20 questões + gabarito resolvido",
+        "titulo": "Lista de fixação A46 — 20 questões + gabarito resolvido",
         "tipo": "lista",
-        "url": "/pdfs/fixacao-C48.pdf"
+        "url": "/pdfs/fixacao-A46.pdf"
       },
       {
-        "titulo": "Lista de vestibular C48 — 20 questões + gabarito resolvido",
+        "titulo": "Lista de vestibular A46 — 20 questões + gabarito resolvido",
         "tipo": "lista",
-        "url": "/pdfs/vestibular-C48.pdf"
+        "url": "/pdfs/vestibular-A46.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A47",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A47 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A47.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A47 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A47.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A49",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A49 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A49.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A49 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A49.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A50",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A50 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A50.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A50 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A50.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "A60",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação A60 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-A60.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular A60 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-A60.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "C10",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação C10 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-C10.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular C10 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-C10.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
+    "aula": "C12",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação C12 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-C12.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular C12 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-C12.pdf"
       }
     ],
     "tipo": "aula"

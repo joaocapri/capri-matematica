@@ -1,0 +1,98 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o efeito de cada parâmetro em a + b·sen(cx + d)",
+    "Calcular período, amplitude e imagem",
+    "Modelar fenômenos periódicos"
+  ],
+  "teoria": [
+    {
+      "titulo": "Os parâmetros",
+      "paragrafos": [
+        "Em f(x) = a + b·sen(cx + d): a desloca o gráfico na vertical; |b| é a amplitude (metade da distância entre máximo e mínimo); c muda o período; d desloca na horizontal."
+      ],
+      "formulas": [
+        "p=\\dfrac{2\\pi}{|c|}",
+        "\\operatorname{Im}=[a-|b|,\\ a+|b|]"
+      ],
+      "exemplo": {
+        "enunciado": "Qual o período e a imagem de f(x) = 3 + 2 sen(4x)?",
+        "passos": [
+          "p = 2π/4 = π/2.",
+          "Imagem: [3 − 2, 3 + 2] = [1, 5]."
+        ]
+      }
+    },
+    {
+      "titulo": "Fenômenos periódicos",
+      "paragrafos": [
+        "Marés, temperatura ao longo do ano e altura de uma cadeira na roda-gigante seguem esse modelo. As perguntas típicas: valor máximo e mínimo, quando ocorrem e qual o período."
+      ],
+      "exemplo": {
+        "enunciado": "A altura da maré é h(t) = 2 + 1,5 cos(πt/6), com t em horas. Qual a maré máxima e o período?",
+        "passos": [
+          "Máxima: 2 + 1,5 = 3,5 m.",
+          "p = 2π/(π/6) = 12 h."
+        ]
+      },
+      "dica": "O máximo de a + b·sen(...) é a + |b|, não importa o que está dentro do seno.",
+      "erroComum": "Usar c em vez de 2π/c como período."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O período de f(x) = sen(3x) é",
+      "opcoes": [
+        "3π",
+        "2π/3",
+        "π/3",
+        "6π"
+      ],
+      "correta": 1,
+      "explicacao": "2π/3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A imagem de f(x) = 1 − 4 cos x é",
+      "opcoes": [
+        "[−3, 5]",
+        "[−4, 4]",
+        "[1, 5]",
+        "[−5, 3]"
+      ],
+      "correta": 0,
+      "explicacao": "1 − 4 a 1 + 4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor máximo de f(x) = 5 + 2 sen(x − π) é",
+      "opcoes": [
+        "5",
+        "7",
+        "3",
+        "2"
+      ],
+      "correta": 1,
+      "explicacao": "5 + 2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma roda-gigante tem altura h(t) = 20 − 18 cos(πt/10), t em minutos. Uma volta completa leva",
+      "opcoes": [
+        "10 min",
+        "20 min",
+        "18 min",
+        "40 min"
+      ],
+      "correta": 1,
+      "explicacao": "p = 2π/(π/10) = 20."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

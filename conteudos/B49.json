@@ -1,0 +1,94 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Calcular a distância de um ponto a uma reta",
+    "Calcular a distância entre retas paralelas",
+    "Usar a distância em problemas de altura de triângulo"
+  ],
+  "teoria": [
+    {
+      "titulo": "A fórmula",
+      "paragrafos": [
+        "A distância de P(x₀, y₀) à reta ax + by + c = 0 é medida na perpendicular. Substitua o ponto na equação geral, tire o módulo e divida pela raiz de a² + b²."
+      ],
+      "formulas": [
+        "d=\\dfrac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}"
+      ],
+      "exemplo": {
+        "enunciado": "Calcule a distância de P(1, 2) à reta 3x + 4y − 1 = 0.",
+        "passos": [
+          "|3 + 8 − 1| = 10.",
+          "√(9 + 16) = 5.",
+          "d = 2."
+        ]
+      },
+      "erroComum": "Usar a forma reduzida na fórmula. A reta precisa estar na forma geral."
+    },
+    {
+      "titulo": "Retas paralelas",
+      "paragrafos": [
+        "Para retas paralelas ax + by + c₁ = 0 e ax + by + c₂ = 0, a distância é |c₁ − c₂| dividido por √(a² + b²)."
+      ],
+      "formulas": [
+        "d=\\dfrac{|c_1-c_2|}{\\sqrt{a^2+b^2}}"
+      ],
+      "dica": "A distância de ponto a reta também dá a altura de um triângulo relativa a um lado."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A distância da origem à reta 3x + 4y − 10 = 0 é",
+      "opcoes": [
+        "1",
+        "2",
+        "5",
+        "10"
+      ],
+      "correta": 1,
+      "explicacao": "|−10|/5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A distância de (2, 3) à reta y = 1 é",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ],
+      "correta": 1,
+      "explicacao": "Reta horizontal: diferença dos y."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A distância entre as retas 3x + 4y + 2 = 0 e 3x + 4y − 8 = 0 é",
+      "opcoes": [
+        "1",
+        "2",
+        "6",
+        "10"
+      ],
+      "correta": 1,
+      "explicacao": "|2 + 8|/5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A distância de P(0, 0) à reta x + y − 4 = 0 é",
+      "opcoes": [
+        "2",
+        "2√2",
+        "4",
+        "4√2"
+      ],
+      "correta": 1,
+      "explicacao": "4/√2 = 2√2."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

@@ -1,61 +1,101 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Calcular razões",
+    "Usar a propriedade fundamental das proporções",
+    "Usar as propriedades da soma"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Razão e proporção",
       "paragrafos": [
-        "A probabilidade de A ou B soma as probabilidades individuais e subtrai a interseção. Somente quando eventos são mutuamente exclusivos a interseção é zero."
+        "Razão é a comparação de duas grandezas por divisão. Proporção é a igualdade entre duas razões. Numa proporção, o produto dos meios é igual ao produto dos extremos."
       ],
       "formulas": [
-        "P(A\\cup B)=P(A)+P(B)-P(A\\cap B)"
-      ],
-      "dica": "'Ou' pode incluir os dois acontecimentos simultaneamente.",
-      "erroComum": "Não some P(A)+P(B) sem analisar a interseção."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "\\dfrac{a}{b}=\\dfrac{c}{d}",
+        "a\\cdot d=b\\cdot c"
       ],
       "exemplo": {
-        "enunciado": "Dado honesto: chance de sair par ou maior que 4?",
+        "enunciado": "Resolva x/6 = 4/3.",
         "passos": [
-          "Par: {2,4,6}; maior que 4: {5,6}.",
-          "União: {2,4,5,6}.",
-          "P=4/6=2/3."
+          "3x = 24.",
+          "x = 8."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "No dado, probabilidade de sair 1 ou 2:",
-      "opcoes": [
-        "1/6",
-        "1/3",
-        "1/2",
-        "2/3"
-      ],
-      "correta": 1,
-      "explicacao": "2 dos 6 resultados."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Quando A e B são disjuntos, P(A∩B) =",
-      "opcoes": [
-        "0",
-        "1/2",
-        "1",
-        "P(A)+P(B)"
+      "titulo": "Propriedade da soma",
+      "paragrafos": [
+        "Se a/b = c/d, então (a + c)/(b + d) também é igual a essas razões. Isso resolve problemas de dividir um total numa razão dada."
       ],
-      "correta": 0,
-      "explicacao": "Disjuntos não compartilham resultados."
+      "formulas": [
+        "\\dfrac{a}{b}=\\dfrac{c}{d}=\\dfrac{a+c}{b+d}"
+      ],
+      "exemplo": {
+        "enunciado": "A razão entre meninos e meninas é 3/5 e a turma tem 40 alunos. Quantos são os meninos?",
+        "passos": [
+          "m/3 = f/5 = 40/8 = 5.",
+          "m = 15."
+        ]
+      },
+      "dica": "Com a razão 3 : 5, pense em 8 partes iguais.",
+      "erroComum": "Inverter a ordem: a razão de a para b é a/b, não b/a."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "A razão entre 15 e 25 é",
+      "opcoes": [
+        "3/5",
+        "5/3",
+        "10",
+        "2/5"
+      ],
+      "correta": 0,
+      "explicacao": "15/25."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de x em 3/x = 12/20 é",
+      "opcoes": [
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "12x = 60."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Dois números estão na razão 2/7 e somam 36. O maior é",
+      "opcoes": [
+        "8",
+        "14",
+        "28",
+        "32"
+      ],
+      "correta": 2,
+      "explicacao": "9 partes de 4: o maior tem 7 · 4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A razão entre a altura de uma pessoa e sua sombra é 3/2. Se a altura é 1,80 m, a sombra mede",
+      "opcoes": [
+        "1,20 m",
+        "1,50 m",
+        "2,70 m",
+        "0,60 m"
+      ],
+      "correta": 0,
+      "explicacao": "1,8/s = 3/2."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

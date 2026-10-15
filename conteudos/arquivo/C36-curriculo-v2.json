@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "No ciclo unitário, a abscissa é o cosseno e a ordenada é o seno. Os sinais dependem do quadrante; ângulos de referência no primeiro quadrante dão módulos conhecidos."
+      ],
+      "formulas": [
+        "(x,y)=(\\cos\\theta,\\sin\\theta)"
+      ],
+      "dica": "No QII: sen positivo, cos negativo; no QIII: ambos negativos.",
+      "erroComum": "Cuidado: tangente não é definida quando cosθ=0."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Para 150°, determine sinais de seno e cosseno.",
+        "passos": [
+          "Está no segundo quadrante.",
+          "Seno positivo e cosseno negativo."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "sen150° =",
+      "opcoes": [
+        "−1/2",
+        "1/2",
+        "−√3/2",
+        "√3/2"
+      ],
+      "correta": 1,
+      "explicacao": "Referência 30° no QII, seno positivo."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "cos180° =",
+      "opcoes": [
+        "−1",
+        "0",
+        "1/2",
+        "1"
+      ],
+      "correta": 0,
+      "explicacao": "No extremo esquerdo do ciclo, x=−1."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

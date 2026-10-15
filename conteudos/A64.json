@@ -1,0 +1,88 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Discutir sistemas com parâmetros",
+    "Combinar determinante e escalonamento",
+    "Responder para quais valores o sistema é SPD, SPI ou SI"
+  ],
+  "teoria": [
+    {
+      "titulo": "Comece pelo determinante",
+      "paragrafos": [
+        "Em sistemas quadrados com parâmetro, calcule D em função do parâmetro. Para os valores em que D ≠ 0, o sistema é SPD. Os valores que zeram D precisam ser testados um a um."
+      ],
+      "exemplo": {
+        "enunciado": "Discuta x + ky = 2 e kx + 4y = 4.",
+        "passos": [
+          "D = 4 − k². D ≠ 0 para k ≠ ±2: SPD.",
+          "k = 2: x + 2y = 2 e 2x + 4y = 4 (dobro): SPI.",
+          "k = −2: x − 2y = 2 e −2x + 4y = 4 ⇒ multiplicando a 1ª por −2: −2x + 4y = −4 ≠ 4: SI."
+        ]
+      }
+    },
+    {
+      "titulo": "Teste cada caso",
+      "paragrafos": [
+        "Para cada valor que zera D, substitua no sistema e escalone. Linhas iguais ou proporcionais, inclusive no termo independente, dão SPI. Coeficientes proporcionais e termos independentes não, dão SI."
+      ],
+      "dica": "Organize a resposta em três linhas: SPD para ..., SPI para ..., SI para ....",
+      "erroComum": "Concluir SPI ou SI só por D = 0, sem testar o caso."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em um sistema 2 × 2 com D ≠ 0 para todo valor do parâmetro, o sistema é sempre",
+      "opcoes": [
+        "SPD",
+        "SPI",
+        "SI",
+        "indefinido"
+      ],
+      "correta": 0,
+      "explicacao": "D ≠ 0 garante solução única."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O sistema x + y = 1 e 2x + 2y = k é SPI quando k vale",
+      "opcoes": [
+        "0",
+        "1",
+        "2",
+        "4"
+      ],
+      "correta": 2,
+      "explicacao": "Com k = 2 a segunda é o dobro da primeira."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O sistema x + y = 1 e 2x + 2y = k é SI quando",
+      "opcoes": [
+        "k = 2",
+        "k ≠ 2",
+        "k = 0 apenas",
+        "nunca"
+      ],
+      "correta": 1,
+      "explicacao": "Coeficientes proporcionais com termo independente fora da proporção."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "O sistema mx + y = 1 e x + my = 1 é SI para m igual a",
+      "opcoes": [
+        "1",
+        "−1",
+        "0",
+        "2"
+      ],
+      "correta": 1,
+      "explicacao": "D = m² − 1 = 0 ⇒ m = ±1. m = 1: equações iguais (SPI). m = −1: −x + y = 1 e x − y = 1, que somadas dão 0 = 2 (SI)."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

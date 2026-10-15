@@ -4,27 +4,27 @@
   "formato": "capri-mat-v1",
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "Mediana é o valor central após ordenar os dados; moda é o valor mais frequente. Elas ajudam quando poucos valores extremos distorcem a média."
+        "Porcentagem é uma fração com denominador 100. Transformar 20% em 0,20 permite calcular rapidamente; 10% é dividir por 10 e 1% é dividir por 100."
       ],
       "formulas": [
-        "\\mathrm{Mediana}(x_1,\\ldots,x_n)=\\text{valor central ordenado}"
+        "p\\%\\text{ de }V=\\frac{p}{100}V"
       ],
-      "dica": "Para número par de observações, use média dos dois termos centrais.",
-      "erroComum": "Sem ordenar os dados, você pode localizar mediana errada."
+      "dica": "Quebre porcentagens em 10%, 5% e 1% para cálculo mental.",
+      "erroComum": "30% de 50% não é 80%: é 0,30·0,50=0,15."
     },
     {
-      "titulo": "Veja funcionando",
+      "titulo": "Hora de ver funcionar",
       "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Dados 2,3,3,5,20. Encontre mediana e moda.",
+        "enunciado": "Quanto é 15% de R$ 200?",
         "passos": [
-          "Já estão em ordem.",
-          "O terceiro valor é 3: mediana 3.",
-          "O valor 3 ocorre duas vezes: moda 3."
+          "10% de 200=20.",
+          "5% de 200=10.",
+          "15%=30 reais."
         ]
       }
     }
@@ -32,27 +32,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Mediana de 1,2,7,9:",
+      "enunciado": "20% de 80 é:",
       "opcoes": [
-        "2",
-        "4,5",
-        "7",
-        "9"
+        "8",
+        "12",
+        "16",
+        "20"
       ],
-      "correta": 1,
-      "explicacao": "Termos centrais 2 e 7; média 4,5."
+      "correta": 2,
+      "explicacao": "0,2·80=16."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Moda de 4,4,5,6,6,6:",
+      "enunciado": "5% de 300 é:",
       "opcoes": [
-        "4",
         "5",
-        "6",
-        "Não existe"
+        "10",
+        "15",
+        "30"
       ],
       "correta": 2,
-      "explicacao": "6 é o mais frequente."
+      "explicacao": "0,05·300=15."
     }
   ],
   "videos": [],

@@ -1,61 +1,95 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Identificar termos semelhantes",
+    "Calcular o valor numérico de uma expressão",
+    "Somar, subtrair e multiplicar monômios"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Letras no lugar de números",
       "paragrafos": [
-        "O princípio fundamental da contagem multiplica números de escolhas em etapas sucessivas. Ele vale quando contamos corretamente as possibilidades condicionais de cada etapa."
-      ],
-      "formulas": [
-        "N=n_1\\cdot n_2\\cdots n_k"
-      ],
-      "dica": "Desenhe uma árvore quando alguma escolha muda as opções seguintes.",
-      "erroComum": "Multiplique etapas; some alternativas mutuamente exclusivas."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "Uma expressão algébrica usa letras para representar números. Termos semelhantes têm a mesma parte literal (mesmas letras com os mesmos expoentes) e podem ser somados juntando os coeficientes."
       ],
       "exemplo": {
-        "enunciado": "Uma lanchonete oferece 3 pães e 4 recheios. Quantos lanches diferentes?",
+        "enunciado": "Simplifique 3x² + 5x − x² + 2x − 4.",
         "passos": [
-          "Escolha um pão: 3 maneiras.",
-          "Para cada pão, 4 recheios.",
-          "3·4=12."
+          "Termos em x²: 3x² − x² = 2x².",
+          "Termos em x: 5x + 2x = 7x.",
+          "Resultado: 2x² + 7x − 4."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Código com 2 algarismos de 0 a 9, repetição permitida: quantos?",
-      "opcoes": [
-        "20",
-        "90",
-        "100",
-        "200"
-      ],
-      "correta": 2,
-      "explicacao": "10 escolhas para cada posição: 10²=100."
+      },
+      "erroComum": "Somar termos não semelhantes: 3x + 2x² não é 5x³."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "3 camisas e 2 calças rendem:",
-      "opcoes": [
-        "5",
-        "6",
-        "8",
-        "9"
+      "titulo": "Valor numérico e produtos",
+      "paragrafos": [
+        "O valor numérico é o resultado de substituir as letras por números. Use parênteses ao substituir números negativos. Para multiplicar monômios, multiplique os coeficientes e some os expoentes das mesmas letras."
       ],
-      "correta": 1,
-      "explicacao": "3·2=6 combinações."
+      "exemplo": {
+        "enunciado": "Calcule 2x² − 3x para x = −2.",
+        "passos": [
+          "2 · (−2)² − 3 · (−2).",
+          "8 + 6 = 14."
+        ]
+      },
+      "dica": "Sempre coloque o número negativo entre parênteses na substituição."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "4a + 3b − a + 2b é",
+      "opcoes": [
+        "3a + 5b",
+        "5a + 5b",
+        "8ab",
+        "3a + b"
+      ],
+      "correta": 0,
+      "explicacao": "Junte a com a e b com b."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de x² − 5x + 6 para x = −1 é",
+      "opcoes": [
+        "0",
+        "2",
+        "12",
+        "10"
+      ],
+      "correta": 2,
+      "explicacao": "1 + 5 + 6."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O produto (3x²y) · (−2xy³) é",
+      "opcoes": [
+        "−6x³y⁴",
+        "−6x²y³",
+        "6x³y⁴",
+        "x³y⁴"
+      ],
+      "correta": 0,
+      "explicacao": "Coeficientes: −6; expoentes somados."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O perímetro de um retângulo de lados 2x + 1 e x − 3 é",
+      "opcoes": [
+        "3x − 2",
+        "6x − 4",
+        "6x + 4",
+        "2x² − 5x − 3"
+      ],
+      "correta": 1,
+      "explicacao": "2(2x + 1 + x − 3)."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

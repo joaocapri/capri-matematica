@@ -1,37 +1,43 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de o vértice da parábola",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Fazer o estudo do sinal da função quadrática",
+    "Usar a regra “fora das raízes, sinal de a”",
+    "Tratar os casos Δ = 0 e Δ < 0"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "Fora e dentro das raízes",
       "paragrafos": [
-        "O vértice é o ponto de virada da parábola: mínimo quando a>0 e máximo quando a<0. O x do vértice é o ponto médio das raízes, quando elas existem."
-      ],
-      "formulas": [
-        "x_v=-\\frac{b}{2a},\\qquad y_v=f(x_v)"
-      ],
-      "dica": "Em prova, calcule xᵥ primeiro; substitua só depois.",
-      "erroComum": "−Δ/(4a) dá a ordenada, não a abscissa."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "Com duas raízes reais, a função tem o sinal de a fora do intervalo entre as raízes e o sinal contrário de a entre elas."
       ],
       "exemplo": {
-        "enunciado": "Ache o vértice de f(x)=x²−6x+5.",
+        "enunciado": "Faça o estudo do sinal de f(x) = x² − 5x + 6.",
         "passos": [
-          "a=1, b=−6 ⇒ xᵥ=6/2=3.",
-          "f(3)=9−18+5=−4.",
-          "Vértice V=(3,−4), ponto mínimo."
+          "Raízes: 2 e 3. a = 1 > 0.",
+          "f(x) > 0 para x < 2 ou x > 3.",
+          "f(x) < 0 para 2 < x < 3; f(x) = 0 em x = 2 e x = 3."
         ]
-      }
+      },
+      "dica": "Esboce só a parábola cortando o eixo x: o desenho já mostra os sinais."
+    },
+    {
+      "titulo": "Quando não há duas raízes",
+      "paragrafos": [
+        "Com Δ = 0, a função tem o sinal de a em todo lugar, menos na raiz dupla, onde vale zero. Com Δ < 0, a função tem o sinal de a para todo x real."
+      ],
+      "exemplo": {
+        "enunciado": "Qual é o sinal de f(x) = −x² + 2x − 5?",
+        "passos": [
+          "Δ = 4 − 20 = −16 < 0.",
+          "a = −1 < 0.",
+          "f(x) < 0 para todo x real."
+        ]
+      },
+      "erroComum": "Achar que, sem raízes reais, a função é sempre positiva. Ela tem o sinal de a."
     }
   ],
   "videos": [
@@ -44,28 +50,52 @@
   ],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "O x do vértice de x²−8x+1 é:",
+      "nivel": "Aquecimento",
+      "enunciado": "Para f(x) = x² − 4, temos f(x) < 0 quando",
       "opcoes": [
-        "−4",
-        "1",
-        "4",
-        "8"
+        "x < −2 ou x > 2",
+        "−2 < x < 2",
+        "x > 4",
+        "nunca"
       ],
-      "correta": 2,
-      "explicacao": "−b/(2a)=8/2=4."
+      "correta": 1,
+      "explicacao": "Raízes ±2, a > 0: negativa entre as raízes."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se a > 0 e Δ < 0, então a função quadrática é",
+      "opcoes": [
+        "sempre positiva",
+        "sempre negativa",
+        "positiva só para x > 0",
+        "nula em um ponto"
+      ],
+      "correta": 0,
+      "explicacao": "Sem raízes, ela tem o sinal de a."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O vértice de −x²+4x é:",
+      "enunciado": "Para f(x) = −x² + x + 6, temos f(x) > 0 quando",
       "opcoes": [
-        "(2,4)",
-        "(4,2)",
-        "(−2,−4)",
-        "(0,4)"
+        "x < −2 ou x > 3",
+        "−2 < x < 3",
+        "−3 < x < 2",
+        "x > 3"
       ],
-      "correta": 0,
-      "explicacao": "xᵥ=2 e f(2)=4."
+      "correta": 1,
+      "explicacao": "Raízes −2 e 3 com a < 0: positiva entre as raízes."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A função f(x) = x² − 6x + 9 é negativa para",
+      "opcoes": [
+        "x < 3",
+        "x > 3",
+        "nenhum x real",
+        "todo x ≠ 3"
+      ],
+      "correta": 2,
+      "explicacao": "f(x) = (x − 3)² nunca é negativa."
     }
   ],
   "exercicios": [],

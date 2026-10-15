@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de estudo do sinal e inequações do 2º grau",
+    "Reconhecer o conceito central de forma fatorada e canônica",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Para decidir onde a quadrática é positiva ou negativa, localize as raízes e observe a concavidade. Fora das raízes, o sinal acompanha a; entre elas, quando existem duas distintas, é contrário."
+        "Na forma fatorada, as raízes ficam visíveis. Na forma canônica, o vértice salta aos olhos. Você pode alternar entre as formas para escolher a leitura mais rápida."
       ],
       "formulas": [
-        "a(x-r_1)(x-r_2)>0"
+        "f(x)=a(x-r_1)(x-r_2)=a(x-h)^2+k"
       ],
-      "dica": "Se Δ<0, a quadrática nunca troca de sinal: tem o sinal de a.",
-      "erroComum": "As raízes entram na resposta apenas em ≤ ou ≥."
+      "dica": "Se o gráfico fornece raízes e um ponto, use a forma fatorada para encontrar a.",
+      "erroComum": "Na forma canônica, h é a abscissa do vértice, mas aparece como (x−h)."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,11 +25,11 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Resolva x²−5x+6<0.",
+        "enunciado": "Escreva x²−6x+5 nas formas fatorada e canônica.",
         "passos": [
-          "Fatore: (x−2)(x−3)<0.",
-          "As raízes são 2 e 3; a=1>0.",
-          "A parábola é negativa entre as raízes: 2<x<3."
+          "Raízes 1 e 5: (x−1)(x−5).",
+          "Complete quadrados: (x−3)²−9+5.",
+          "Forma canônica: (x−3)²−4."
         ]
       }
     }
@@ -45,27 +45,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "x²−1≥0 vale quando:",
+      "enunciado": "As raízes de (x−4)(x+1) são:",
       "opcoes": [
-        "−1≤x≤1",
-        "x≤−1 ou x≥1",
-        "x>1 apenas",
-        "Todo real"
+        "4 e 1",
+        "−4 e −1",
+        "4 e −1",
+        "0 e 4"
       ],
-      "correta": 1,
-      "explicacao": "Raízes −1 e 1, concavidade para cima e igualdade permitida."
+      "correta": 2,
+      "explicacao": "Cada fator deve ser zero: 4 e −1."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "−x²+4x>0 para:",
+      "enunciado": "O vértice de (x+2)²−5 é:",
       "opcoes": [
-        "x<0 ou x>4",
-        "0<x<4",
-        "0≤x≤4",
-        "Todo real"
+        "(2,−5)",
+        "(−2,−5)",
+        "(−2,5)",
+        "(5,−2)"
       ],
       "correta": 1,
-      "explicacao": "−x(x−4)>0 entre 0 e 4."
+      "explicacao": "A forma é (x−h)²+k, com h=−2 e k=−5."
     }
   ],
   "exercicios": [],

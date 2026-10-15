@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "As fórmulas de adição combinam seno e cosseno de dois ângulos, mas atenção aos sinais: seno mantém o sinal da soma; cosseno o troca no produto de senos."
+      ],
+      "formulas": [
+        "\\sin(a+b)=\\sin a\\cos b+\\cos a\\sin b"
+      ],
+      "dica": "Memorize usando testes simples, como a=b=0 e a=b=45°.",
+      "erroComum": "cos(a+b)=cosa cosb−sena senb, com sinal menos."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule sen75° como sen(45°+30°).",
+        "passos": [
+          "sen75=sen45cos30+cos45sen30.",
+          "=√2/2·√3/2+√2/2·1/2.",
+          "Resultado (√6+√2)/4."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "cos(60°+30°) =",
+      "opcoes": [
+        "0",
+        "1/2",
+        "√2/2",
+        "1"
+      ],
+      "correta": 0,
+      "explicacao": "cos90°=0."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "sen(30°+30°) =",
+      "opcoes": [
+        "1/2",
+        "√2/2",
+        "√3/2",
+        "1"
+      ],
+      "correta": 2,
+      "explicacao": "sen60°=√3/2."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

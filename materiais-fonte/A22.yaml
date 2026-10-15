@@ -1,239 +1,237 @@
-# Fonte das listas em PDF da aula A22 — Máximos e Mínimos - Problemas de Otimização
+# Fonte das listas em PDF da aula A22 — Inequações do 2º grau
 aula: A22
 
 fixacao:
-  intro: Resolva na ordem — do aquecimento ao desafio. Roteiro — escreva a grandeza como função quadrática de uma variável, ache $x_V$ e depois calcule o valor ótimo.
+  intro: Resolva na ordem — do aquecimento ao desafio. Esboce a parábola — com duas raízes, ela tem o sinal de $a$ fora das raízes e o sinal contrário entre elas.
   secoes:
     - nome: Aquecimento
       questoes:
-        - enunciado: O lucro de uma empresa é $L(x)=-x^2+12x-20$ (em mil reais), para $x$ centenas de unidades. Qual é o lucro máximo e para qual $x$ ele ocorre?
+        - enunciado: Faça o estudo do sinal de $f(x)=x^2-5x+6$.
           resolucao: |
-            $x_V=6$ e $L(6)=-36+72-20=16$.
-          resposta: 'lucro máximo $16$ mil reais, com $x=6$'
+            Raízes $2$ e $3$; $a>0$: positiva fora das raízes e negativa entre elas.
+          resposta: '$f>0$ para $x<2$ ou $x>3$; \ $f<0$ para $2<x<3$'
 
-        - enunciado: O custo de produção é $C(x)=x^2-10x+40$. Qual é o custo mínimo?
+        - enunciado: Faça o estudo do sinal de $g(x)=-x^2+4$.
           resolucao: |
-            $x_V=5$ e $C(5)=25-50+40=15$.
-          resposta: '$15$, para $x=5$'
+            Raízes $\pm2$; $a<0$: negativa fora das raízes e positiva entre elas.
+          resposta: '$g>0$ para $-2<x<2$; \ $g<0$ para $x<-2$ ou $x>2$'
 
-        - enunciado: A altura de uma bola é $h(t)=-5t^2+30t$, em metros, com $t$ em segundos. Qual é a altura máxima e em que instante ocorre?
+        - enunciado: Resolva $x^2-9>0$.
           resolucao: |
-            $t_V=3$ s e $h(3)=-45+90=45$ m.
-          resposta: '$45$ m, em $t=3$ s'
+            Raízes $\pm3$, $a>0$: positivo fora das raízes.
+          resposta: '$x<-3$ ou $x>3$'
 
-        - enunciado: Dois números somam $20$. Quais são eles se o produto é o maior possível? Qual é esse produto?
+        - enunciado: Resolva $x^2-4x\le0$.
           resolucao: |
-            $P(x)=x(20-x)=-x^2+20x$, máximo em $x_V=10$. Os números são $10$ e $10$, com produto $100$.
-          resposta: '$10$ e $10$; produto $100$'
+            $x(x-4)\le0$: raízes $0$ e $4$; negativo entre elas e zero nelas.
+          resposta: '$[0,\,4]$'
 
-        - enunciado: Entre os retângulos de perímetro $40$ cm, qual tem a maior área?
+        - enunciado: Resolva $x^2-6x+9>0$.
           resolucao: |
-            Lados $x$ e $20-x$: $A(x)=x(20-x)$, máxima em $x=10$. É o quadrado de lado $10$, com área $100$ cm².
-          resposta: 'o quadrado de lado $10$ cm; $100$ cm²'
+            $(x-3)^2>0$: é positivo para todo $x$, exceto $x=3$, onde vale zero.
+          resposta: '$\mathbb{R}-\{3\}$'
 
-        - enunciado: A receita de uma loja é $R(p)=p(100-p)$, em que $p$ é o preço. Qual preço dá a maior receita? Qual é essa receita?
+        - enunciado: Resolva $x^2+2x+5>0$.
           resolucao: |
-            $R(p)=-p^2+100p$, máxima em $p_V=50$, com $R(50)=2500$.
-          resposta: 'preço $50$; receita $2500$'
+            $\Delta=4-20<0$ e $a>0$: a parábola fica toda acima do eixo $x$.
+          resposta: '$\mathbb{R}$'
 
-        - enunciado: Determine o valor mínimo de $f(x)=x^2-6x$ e onde ele ocorre.
+        - enunciado: Resolva $-x^2+x+6\ge0$.
           resolucao: |
-            $x_V=3$ e $f(3)=9-18=-9$.
-          resposta: '$-9$, em $x=3$'
+            Multiplicando por $-1$ (inverte o sinal): $x^2-x-6\le0$. Raízes $-2$ e $3$; entre elas.
+          resposta: '$[-2,\,3]$'
 
     - nome: Treino
       questoes:
-        - enunciado: Com $60$ m de tela, um fazendeiro vai cercar um terreno retangular encostado em um muro, de modo que só $3$ lados precisam de tela. Quais dimensões dão a maior área?
+        - enunciado: Resolva $2x^2-7x+3<0$.
           resolucao: |
-            Lados perpendiculares ao muro: $x$ cada; lado paralelo: $60-2x$.
-            $A(x)=x(60-2x)=-2x^2+60x$, máxima em $x_V=15$. Dimensões $15$ m e $30$ m; área $450$ m².
-          resposta: '$15$ m por $30$ m; $450$ m²'
+            $\Delta=49-24=25$; raízes $\tfrac{7\pm5}4$, isto é, $3$ e $\tfrac12$. Negativo entre as raízes.
+          resposta: '$]\tfrac12,\,3[$'
 
-        - enunciado: Dois números têm diferença $8$. Quais são eles se o produto é o menor possível?
+        - enunciado: Resolva $x^2\ge2x+8$.
           resolucao: |
-            $P(x)=x(x-8)=x^2-8x$, mínimo em $x_V=4$. Os números são $4$ e $-4$, com produto $-16$.
-          resposta: '$4$ e $-4$; produto $-16$'
+            $x^2-2x-8\ge0$, com raízes $-2$ e $4$. Positivo fora delas.
+          resposta: '$x\le-2$ ou $x\ge4$'
 
-        - enunciado: Com o ingresso a R\$\,20{,}00, um teatro recebe $300$ pessoas. Cada R\$\,1{,}00 de aumento afasta $10$ pessoas. Qual preço dá a maior arrecadação?
+        - enunciado: Resolva $x^2+4<0$.
           resolucao: |
-            Com $x$ reais de aumento: $R(x)=(20+x)(300-10x)=-10x^2+100x+6000$.
-            $x_V=5$: preço R\$\,25{,}00, $250$ pessoas, arrecadação R\$\,6\,250{,}00.
-          resposta: 'R\$\,25{,}00 (arrecadação R\$\,6\,250{,}00)'
+            $x^2+4\ge4>0$ para todo $x$: nunca é negativo.
+          resposta: '$\varnothing$'
 
-        - enunciado: O lucro de uma fábrica é $L(x)=-2x^2+120x-1000$ reais. Determine o lucro máximo.
+        - enunciado: Resolva $(x^2-4)(x-1)\ge0$.
           resolucao: |
-            $x_V=\tfrac{-120}{-4}=30$ e $L(30)=-1800+3600-1000=800$.
-          resposta: 'R\$\,800{,}00, com $x=30$'
+            Raízes $-2$, $1$ e $2$. Sinais: $-$ antes de $-2$, $+$ entre $-2$ e $1$, $-$ entre $1$ e $2$ e $+$ depois de $2$.
+          resposta: '$[-2,\,1]\ \cup\ [2,\,+\infty[$'
 
-        - enunciado: Dois números positivos somam $16$. Qual é o maior valor possível do produto de um deles pelo triplo do outro?
+        - enunciado: Resolva $\dfrac{x^2-1}{x-3}\le0$.
           resolucao: |
-            $P(x)=3x(16-x)=-3x^2+48x$, máximo em $x_V=8$: $P(8)=3\cdot8\cdot8=192$.
-          resposta: '$192$'
+            Numerador: raízes $\pm1$. Denominador: zera em $3$ (excluído).
+            Sinais: $-$ para $x<-1$, $+$ em $]-1,1[$, $-$ em $]1,3[$ e $+$ para $x>3$.
+          resposta: '$x\le-1$ ou $1\le x<3$'
 
-        - enunciado: A altura de um projétil é $h(t)=-4{,}9t^2+19{,}6t+2$, em metros. Qual é a altura máxima?
+        - enunciado: Determine o domínio real de $f(x)=\sqrt{x^2-3x-10}$.
           resolucao: |
-            $t_V=\tfrac{-19{,}6}{-9{,}8}=2$ s. Então $h(2)=-19{,}6+39{,}2+2=21{,}6$ m.
-          resposta: '$21{,}6$ m'
+            $x^2-3x-10\ge0$, com raízes $-2$ e $5$: fora delas.
+          resposta: '$]-\infty,\,-2]\ \cup\ [5,\,+\infty[$'
 
-        - enunciado: Dois números somam $10$. Qual é o menor valor possível da soma de seus quadrados?
+        - enunciado: Quantos números inteiros satisfazem $x^2-5x-6<0$?
           resolucao: |
-            $S(x)=x^2+(10-x)^2=2x^2-20x+100$, mínimo em $x_V=5$: $S(5)=50$.
-          resposta: '$50$'
+            Raízes $-1$ e $6$: $-1<x<6$. Inteiros: $0,1,2,3,4,5$, ou seja, $6$.
+          resposta: '$6$'
 
-        - enunciado: Um fazendeiro tem $120$ m de tela para cercar um terreno retangular e dividi-lo em dois currais iguais com uma cerca interna paralela a um dos lados. Qual é a maior área total possível?
+        - enunciado: Para quais valores de $m$ temos $x^2-4x+m>0$ para todo $x$ real?
           resolucao: |
-            Três segmentos de comprimento $x$ e dois de comprimento $y$: $3x+2y=120\Rightarrow y=\tfrac{120-3x}2$.
-            $A(x)=x\cdot\tfrac{120-3x}2=-\tfrac32x^2+60x$, máxima em $x_V=20$. Então $y=30$ e $A=600$ m².
-          resposta: '$600$ m² ($20$ m por $30$ m)'
+            Com $a>0$, basta que a parábola não toque o eixo $x$: $\Delta=16-4m<0\Rightarrow m>4$.
+          resposta: '$m>4$'
 
     - nome: Desafio
       questoes:
-        - enunciado: Um retângulo tem dois lados sobre os catetos de um triângulo retângulo de catetos $6$ e $8$ e o vértice oposto sobre a hipotenusa. Qual é a maior área possível desse retângulo?
+        - enunciado: 'Resolva o sistema $\begin{cases}x^2-4\ge0\\ x^2-5x+4<0\end{cases}$'
           resolucao: |
-            Com os catetos sobre os eixos (de $0$ a $6$ e de $0$ a $8$), a hipotenusa é $y=8-\tfrac43x$.
-            $A(x)=x\left(8-\tfrac43x\right)=-\tfrac43x^2+8x$, máxima em $x_V=3$, com $y=4$ e $A=12$.
-          resposta: '$12$ (retângulo $3\times4$)'
+            1ª: $x\le-2$ ou $x\ge2$. 2ª: raízes $1$ e $4$, então $1<x<4$.
+            Interseção: $2\le x<4$.
+          resposta: '$[2,\,4[$'
 
-        - enunciado: Uma loja vende $100$ camisetas por mês a R\$\,40{,}00. Para cada R\$\,2{,}00 de desconto, vende $10$ camisetas a mais. Qual preço maximiza a receita?
+        - enunciado: Para quais valores de $m$ temos $-x^2+2x+m<0$ para todo $x$ real?
           resolucao: |
-            Com $n$ descontos: $R(n)=(40-2n)(100+10n)=-20n^2+200n+4000$.
-            $n_V=5$: preço R\$\,30{,}00, $150$ camisetas, receita R\$\,4\,500{,}00.
-          resposta: 'R\$\,30{,}00 (receita R\$\,4\,500{,}00)'
+            $a<0$: a parábola deve ficar toda abaixo do eixo $x$, então $\Delta<0$: $4+4m<0\Rightarrow m<-1$.
+          resposta: '$m<-1$'
 
-        - enunciado: Determine o valor mínimo de $f(x)=(x-1)(x-5)$ sem desenvolver o produto.
+        - enunciado: O lucro de uma empresa é $L(x)=-x^2+14x-40$ (em mil reais), para $x$ centenas de unidades. Para quais valores de $x$ há lucro?
           resolucao: |
-            O vértice fica no meio das raízes: $x_V=3$. Então $f(3)=(2)(-2)=-4$.
-          resposta: '$-4$'
+            $-x^2+14x-40>0\Leftrightarrow x^2-14x+40<0$. Raízes $4$ e $10$: entre elas.
+          resposta: '$4<x<10$'
 
-        - enunciado: Os números reais $x$ e $y$ satisfazem $x+2y=20$. Qual é o maior valor possível de $x\cdot y$?
+        - enunciado: Determine o domínio real de $f(x)=\dfrac1{\sqrt{4-x^2}}$.
           resolucao: |
-            $x=20-2y$ e $P(y)=(20-2y)y=-2y^2+20y$, máximo em $y_V=5$. Então $x=10$ e $P=50$.
-          resposta: '$50$'
+            Raiz no denominador: $4-x^2>0\Rightarrow x^2<4\Rightarrow -2<x<2$.
+          resposta: '$]-2,\,2[$'
 
-        - enunciado: Determine $k$ para que o valor máximo de $f(x)=-x^2+4x+k$ seja $10$.
+        - enunciado: Resolva $\dfrac{x^2-5x+6}{x^2-16}\ge0$.
           resolucao: |
-            $x_V=2$ e $f(2)=-4+8+k=4+k=10\Rightarrow k=6$.
-          resposta: '$k=6$'
+            Numerador: raízes $2$ e $3$. Denominador: zera em $\pm4$ (excluídos).
+            Sinais: $+$ para $x<-4$; $-$ em $]-4,2[$; $+$ em $]2,3[$; $-$ em $]3,4[$; $+$ para $x>4$.
+          resposta: '$x<-4$ ou $2\le x\le3$ ou $x>4$'
 
 vestibular:
   intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
   questoes:
-    - enunciado: A altura de uma bola é $h(t)=-5t^2+20t$, em metros, com $t$ em segundos. A altura máxima atingida é
-      opcoes: ['$10$ m', '$20$ m', '$40$ m', '$80$ m', '$100$ m']
+    - enunciado: O conjunto solução de $x^2-5x+4<0$ é
+      opcoes: ['$]-4,\,-1[$', '$]1,\,4[$', '$]-\infty,\,1[\ \cup\ ]4,\,+\infty[$', '$[1,\,4]$', '$]4,\,+\infty[$']
       correta: B
       resolucao: |
-        $t_V=2$ e $h(2)=-20+40=20$ m.
+        Raízes $1$ e $4$, com $a>0$: negativo entre elas.
 
-    - enunciado: O lucro de uma empresa é $L(x)=-x^2+30x-125$ (em mil reais). O lucro máximo é
-      opcoes: ['$100$ mil reais', '$125$ mil reais', '$150$ mil reais', '$200$ mil reais', '$225$ mil reais']
+    - enunciado: O conjunto solução de $x^2-16\ge0$ é
+      opcoes: ['$]-\infty,\,-4]\ \cup\ [4,\,+\infty[$', '$[-4,\,4]$', '$]-4,\,4[$', '$[4,\,+\infty[$', '$\mathbb{R}$']
       correta: A
       resolucao: |
-        $x_V=15$ e $L(15)=-225+450-125=100$. (A alternativa E esquece o $-125$.)
+        Positivo ou zero fora das raízes $\pm4$. Errar o lado negativo (alternativa D) é o deslize clássico.
 
-    - enunciado: Dois números somam $30$. O maior valor possível do produto entre eles é
-      opcoes: ['$100$', '$150$', '$200$', '$225$', '$900$']
+    - enunciado: O conjunto solução de $-x^2+3x\ge0$ é
+      opcoes: ['$]0,\,3[$', '$]-\infty,\,0]\ \cup\ [3,\,+\infty[$', '$[-3,\,0]$', '$[0,\,3]$', '$\mathbb{R}$']
       correta: D
       resolucao: |
-        $x(30-x)$ é máximo em $x=15$: $15\cdot15=225$.
+        $x(3-x)\ge0$, com raízes $0$ e $3$ e $a<0$: positivo entre as raízes.
 
-    - enunciado: Entre os retângulos de perímetro $48$ cm, a maior área possível é
-      opcoes: ['$96\ \text{cm}^2$', '$128\ \text{cm}^2$', '$144\ \text{cm}^2$', '$192\ \text{cm}^2$', '$576\ \text{cm}^2$']
+    - enunciado: A quantidade de números inteiros que satisfazem $x^2-2x-15<0$ é
+      opcoes: ['$5$', '$6$', '$7$', '$8$', '$9$']
       correta: C
       resolucao: |
-        $A(x)=x(24-x)$, máxima em $x=12$: quadrado de área $144\ \text{cm}^2$.
+        Raízes $-3$ e $5$: $-3<x<5$. Inteiros: de $-2$ a $4$, ou seja, $7$.
 
-    - enunciado: Com $80$ m de tela, deseja-se cercar um terreno retangular encostado em um muro, usando tela em apenas $3$ lados. A maior área possível é
-      opcoes: ['$400\ \text{m}^2$', '$600\ \text{m}^2$', '$640\ \text{m}^2$', '$750\ \text{m}^2$', '$800\ \text{m}^2$']
+    - enunciado: O conjunto solução de $x^2-10x+25\le0$ é
+      opcoes: ['$\mathbb{R}$', '$\varnothing$', '$]-\infty,\,5]$', '$\mathbb{R}-\{5\}$', '$\{5\}$']
       correta: E
       resolucao: |
-        $A(x)=x(80-2x)$, máxima em $x=20$: $20\cdot40=800\ \text{m}^2$.
+        $(x-5)^2\le0$ só vale quando $(x-5)^2=0$, isto é, $x=5$.
 
-    - enunciado: Com ingresso a R\$\,30{,}00, um evento atrai $500$ pessoas; cada R\$\,1{,}00 de aumento afasta $10$ pessoas. O preço que maximiza a arrecadação é
-      opcoes: ['R\$\,30{,}00', 'R\$\,32{,}00', 'R\$\,35{,}00', 'R\$\,40{,}00', 'R\$\,50{,}00']
-      correta: D
-      resolucao: |
-        $R(x)=(30+x)(500-10x)=-10x^2+200x+15\,000$, máxima em $x=10$: preço R\$\,40{,}00.
-
-    - enunciado: A altura de um projétil é $h(t)=-5t^2+50t$, em metros. A altura máxima ocorre no instante
-      opcoes: ['$2{,}5$ s', '$5$ s', '$10$ s', '$25$ s', '$125$ s']
+    - enunciado: O conjunto solução de $x^2+x+1>0$ é
+      opcoes: ['$\varnothing$', '$\mathbb{R}$', '$]-1,\,1[$', '$]0,\,+\infty[$', '$\{-1\}$']
       correta: B
       resolucao: |
-        $t_V=\tfrac{-50}{-10}=5$ s. A alternativa C é o instante em que ele volta ao chão.
+        $\Delta=1-4<0$ e $a>0$: a expressão é sempre positiva.
 
-    - enunciado: A receita de uma empresa é $R(q)=-2q^2+400q$. A quantidade $q$ que maximiza a receita é
-      opcoes: ['$100$', '$150$', '$200$', '$300$', '$400$']
-      correta: A
-      resolucao: |
-        $q_V=\tfrac{-400}{-4}=100$.
-
-    - enunciado: O valor mínimo de $f(x)=x^2-8x+20$ é
-      opcoes: ['$0$', '$1$', '$2$', '$3$', '$4$']
-      correta: E
-      resolucao: |
-        $x_V=4$ e $f(4)=16-32+20=4$.
-
-    - enunciado: Dois números têm diferença $10$. O menor valor possível do produto entre eles é
-      opcoes: ['$-100$', '$-50$', '$-25$', '$0$', '$25$']
-      correta: C
-      resolucao: |
-        $x(x-10)$ é mínimo em $x=5$: $5\cdot(-5)=-25$.
-
-    - enunciado: Uma janela retangular tem perímetro de $6$ m. Sua maior área possível é
-      opcoes: ['$1{,}5\ \text{m}^2$', '$2{,}25\ \text{m}^2$', '$3\ \text{m}^2$', '$4{,}5\ \text{m}^2$', '$9\ \text{m}^2$']
-      correta: B
-      resolucao: |
-        $A(x)=x(3-x)$, máxima em $x=1{,}5$: $1{,}5^2=2{,}25\ \text{m}^2$.
-
-    - enunciado: O custo por unidade de um produto é $C(x)=x^2-40x+500$ reais, em que $x$ é o número de unidades produzidas. O menor custo por unidade possível é
-      opcoes: ['R\$\,20{,}00', 'R\$\,40{,}00', 'R\$\,60{,}00', 'R\$\,80{,}00', 'R\$\,100{,}00']
-      correta: E
-      resolucao: |
-        $x_V=20$ e $C(20)=400-800+500=100$. (O $20$ é a quantidade, não o custo.)
-
-    - enunciado: Um retângulo tem dois lados sobre os catetos de um triângulo retângulo de catetos $4$ e $6$ e um vértice sobre a hipotenusa. Sua maior área possível é
-      opcoes: ['$3$', '$4$', '$5$', '$6$', '$12$']
+    - enunciado: A desigualdade $x^2-6x+m>0$ vale para todo $x$ real se, e somente se,
+      opcoes: ['$m<9$', '$m=9$', '$m\ge9$', '$m>9$', '$m>0$']
       correta: D
       resolucao: |
-        Hipotenusa: $y=6-\tfrac32x$. $A(x)=x\left(6-\tfrac32x\right)$, máxima em $x=2$, com $y=3$ e $A=6$.
+        $\Delta=36-4m<0\Rightarrow m>9$. Com $m=9$, a expressão zera em $x=3$.
 
-    - enunciado: Uma loja vende $200$ unidades por mês a R\$\,50{,}00; para cada R\$\,1{,}00 de desconto, vende $10$ unidades a mais. O preço que maximiza a receita é
-      opcoes: ['R\$\,35{,}00', 'R\$\,38{,}00', 'R\$\,40{,}00', 'R\$\,45{,}00', 'R\$\,50{,}00']
+    - enunciado: O lucro de uma empresa é $L(x)=-x^2+12x-20$ (em mil reais). Há lucro positivo exatamente quando
+      opcoes: ['$2<x<10$', '$x<2$ ou $x>10$', '$0<x<12$', '$x>10$', '$x<2$']
       correta: A
       resolucao: |
-        $R(n)=(50-n)(200+10n)=-10n^2+300n+10\,000$, máxima em $n=15$: preço R\$\,35{,}00.
+        $x^2-12x+20<0$, com raízes $2$ e $10$: entre elas.
 
-    - enunciado: O valor máximo de $f(x)=-2x^2+8x+k$ é $11$. Então $k$ vale
-      opcoes: ['$1$', '$2$', '$3$', '$5$', '$11$']
+    - enunciado: O domínio real de $f(x)=\sqrt{x^2-7x+10}$ é
+      opcoes: ['$[2,\,5]$', '$]2,\,5[$', '$]-\infty,\,2]\ \cup\ [5,\,+\infty[$', '$]-\infty,\,2[\ \cup\ ]5,\,+\infty[$', '$\mathbb{R}$']
       correta: C
       resolucao: |
-        $x_V=2$ e $f(2)=-8+16+k=8+k=11\Rightarrow k=3$.
+        $x^2-7x+10\ge0$, com raízes $2$ e $5$: fora delas, incluindo-as.
 
-    - enunciado: Dois números somam $8$. O menor valor possível da soma de seus quadrados é
-      opcoes: ['$8$', '$16$', '$24$', '$28$', '$32$']
+    - enunciado: O conjunto solução de $\dfrac{x-3}{x^2-4}\ge0$ é
+      opcoes: ['$[-2,\,2]\ \cup\ [3,\,+\infty[$', '$]-2,\,2[\ \cup\ ]3,\,+\infty[$', '$]-\infty,\,-2[\ \cup\ ]2,\,3]$', '$]2,\,3]$', '$]-2,\,2[\ \cup\ [3,\,+\infty[$']
       correta: E
       resolucao: |
-        $x^2+(8-x)^2=2x^2-16x+64$, mínima em $x=4$: $16+16=32$.
+        Sinais: $-$ antes de $-2$, $+$ em $]-2,2[$, $-$ em $]2,3[$ e $+$ depois de $3$. O $3$ entra; $\pm2$ não.
 
-    - enunciado: Os números reais positivos $x$ e $y$ satisfazem $x+3y=24$. O maior valor possível de $xy$ é
-      opcoes: ['$48$', '$54$', '$64$', '$96$', '$144$']
+    - enunciado: A soma dos números inteiros que satisfazem $x^2-x-6\le0$ é
+      opcoes: ['$3$', '$4$', '$5$', '$6$', '$9$']
       correta: A
       resolucao: |
-        $x=24-3y$ e $xy=24y-3y^2$, máximo em $y=4$. Então $x=12$ e $xy=48$.
+        Raízes $-2$ e $3$: $-2\le x\le3$. Soma: $-2-1+0+1+2+3=3$.
 
-    - enunciado: A altura de uma bola é $h(t)=-5t^2+30t+1{,}5$, em metros. A altura máxima é
-      opcoes: ['$31{,}5$ m', '$45$ m', '$45{,}5$ m', '$46{,}5$ m', '$91{,}5$ m']
-      correta: D
-      resolucao: |
-        $t_V=3$ e $h(3)=-45+90+1{,}5=46{,}5$ m.
-
-    - enunciado: Com $240$ m de cerca, quer-se fazer um terreno retangular dividido em dois currais iguais por uma cerca interna paralela a um dos lados. A maior área total possível é
-      opcoes: ['$1\,200\ \text{m}^2$', '$1\,800\ \text{m}^2$', '$2\,400\ \text{m}^2$', '$3\,600\ \text{m}^2$', '$4\,800\ \text{m}^2$']
+    - enunciado: As soluções reais de $x^2<3x$ são os números $x$ tais que
+      opcoes: ['$x<3$', '$x>3$', '$0<x<3$', '$x<0$ ou $x>3$', '$x>0$']
       correta: C
       resolucao: |
-        $3x+2y=240$ e $A=x\cdot\tfrac{240-3x}2$, máxima em $x=40$. Então $y=60$ e $A=2\,400\ \text{m}^2$.
+        $x^2-3x<0\Rightarrow x(x-3)<0$: entre $0$ e $3$. Dividir por $x$ (alternativa A) perde informação.
 
-    - enunciado: O valor mínimo da função $f(x)=(x-2)(x-8)$ é
-      opcoes: ['$-16$', '$-9$', '$-5$', '$0$', '$16$']
+    - enunciado: O conjunto solução de $(x^2-9)(x^2+1)\le0$ é
+      opcoes: ['$[-1,\,1]$', '$]-3,\,3[$', '$\mathbb{R}$', '$[-3,\,3]$', '$]-\infty,\,-3]\ \cup\ [3,\,+\infty[$']
+      correta: D
+      resolucao: |
+        $x^2+1>0$ sempre; o sinal é o de $x^2-9$, que é $\le0$ em $[-3,3]$.
+
+    - enunciado: 'O conjunto solução do sistema $\begin{cases}x^2-1>0\\ x^2-4x<0\end{cases}$ é'
+      opcoes: ['$]0,\,4[$', '$]1,\,4[$', '$]-1,\,4[$', '$]0,\,1[$', '$]4,\,+\infty[$']
       correta: B
       resolucao: |
-        $x_V=\tfrac{2+8}2=5$ e $f(5)=3\cdot(-3)=-9$.
+        1ª: $x<-1$ ou $x>1$. 2ª: $0<x<4$. Interseção: $1<x<4$.
+
+    - enunciado: A inequação $kx^2-4x+1>0$ vale para todo $x$ real se, e somente se,
+      opcoes: ['$k>0$', '$k<4$', '$0<k<4$', '$k\ge4$', '$k>4$']
+      correta: E
+      resolucao: |
+        É preciso $k>0$ (concavidade para cima) e $\Delta=16-4k<0$, isto é, $k>4$.
+
+    - enunciado: A altura de um projétil é $h(t)=-5t^2+30t$, em metros. O tempo durante o qual ele permanece acima de $40$ m é
+      opcoes: ['$2$ s', '$3$ s', '$4$ s', '$5$ s', '$6$ s']
+      correta: A
+      resolucao: |
+        $-5t^2+30t>40\Rightarrow t^2-6t+8<0\Rightarrow 2<t<4$: durante $2$ segundos.
+
+    - enunciado: A quantidade de números inteiros no domínio real de $f(x)=\sqrt{12+x-x^2}$ é
+      opcoes: ['$7$', '$8$', '$9$', '$10$', '$12$']
+      correta: B
+      resolucao: |
+        $12+x-x^2\ge0\Leftrightarrow x^2-x-12\le0$, com raízes $-3$ e $4$: de $-3$ a $4$ há $8$ inteiros.
+
+    - enunciado: O conjunto solução de $(x-2)^2(x+3)>0$ é formado pelos $x$ tais que
+      opcoes: ['$x>-3$', '$x>2$', '$x<-3$', '$x>-3$ e $x\neq2$', '$x\in\mathbb{R}$']
+      correta: D
+      resolucao: |
+        É preciso $x+3>0$ e $(x-2)^2\neq0$.
+
+    - enunciado: O conjunto solução de $x(x-1)(x+2)<0$ é
+      opcoes: ['$]-2,\,0[\ \cup\ ]1,\,+\infty[$', '$]-2,\,1[$', '$]-\infty,\,-2[\ \cup\ ]0,\,1[$', '$]0,\,1[$', '$]-\infty,\,-2[$']
+      correta: C
+      resolucao: |
+        Raízes $-2$, $0$ e $1$. Sinais: $-$, $+$, $-$, $+$ da esquerda para a direita.
+
+    - enunciado: O conjunto solução de $\dfrac1{x^2-1}>0$ é
+      opcoes: ['$]-1,\,1[$', '$\mathbb{R}-\{-1,\,1\}$', '$]1,\,+\infty[$', '$[-1,\,1]$', '$]-\infty,\,-1[\ \cup\ ]1,\,+\infty[$']
+      correta: E
+      resolucao: |
+        Numerador positivo; basta $x^2-1>0$, isto é, $x<-1$ ou $x>1$.

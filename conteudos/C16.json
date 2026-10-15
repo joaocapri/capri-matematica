@@ -1,60 +1,96 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Simplificar frações algébricas",
+    "Somar e subtrair frações algébricas",
+    "Indicar os valores proibidos"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Simplificar",
       "paragrafos": [
-        "Permutações com letras repetidas exigem dividir pelos fatoriais das repetições. Em mesa circular, rotações são consideradas equivalentes quando não existe assento marcado."
-      ],
-      "formulas": [
-        "P=\\frac{n!}{a!b!\\cdots}"
-      ],
-      "dica": "Em arranjos circulares de n pessoas distintas, use (n−1)! se rotações forem equivalentes.",
-      "erroComum": "Em anagramas com letras repetidas, 6! sozinho conta duplicações."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "Para simplificar, fatore numerador e denominador e cancele os fatores iguais. Só se cancelam fatores (coisas multiplicando), nunca parcelas. Os valores que zeram o denominador original ficam proibidos."
       ],
       "exemplo": {
-        "enunciado": "Quantos anagramas distintos tem a palavra BANANA?",
+        "enunciado": "Simplifique (x² − 9)/(x² + 6x + 9).",
         "passos": [
-          "São 6 letras com A repetido 3 vezes e N repetido 2.",
-          "6!/(3!2!)=60."
+          "Numerador: (x + 3)(x − 3). Denominador: (x + 3)².",
+          "Cancele um fator x + 3.",
+          "(x − 3)/(x + 3), com x ≠ −3."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Anagramas distintos de ARARA:",
-      "opcoes": [
-        "10",
-        "20",
-        "30",
-        "60"
-      ],
-      "correta": 0,
-      "explicacao": "5!/(3!2!)=10."
+      },
+      "erroComum": "Cortar o 3 em (x + 3)/3. Ele é parcela, não fator."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "4 pessoas em roda circular (sem lugar fixo):",
-      "opcoes": [
-        "4",
-        "6",
-        "12",
-        "24"
+      "titulo": "Somar e subtrair",
+      "paragrafos": [
+        "Funciona como com números: encontre um denominador comum, usando os fatores dos denominadores."
       ],
-      "correta": 1,
-      "explicacao": "(4−1)!=6."
+      "exemplo": {
+        "enunciado": "Calcule 1/x + 2/(x + 1).",
+        "passos": [
+          "Denominador comum: x(x + 1).",
+          "(x + 1 + 2x)/[x(x + 1)].",
+          "(3x + 1)/[x(x + 1)], com x ≠ 0 e x ≠ −1."
+        ]
+      },
+      "dica": "Deixe os denominadores fatorados até o fim. Fica mais fácil simplificar."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Simplificando (x² − 4)/(x − 2), com x ≠ 2, obtém-se",
+      "opcoes": [
+        "x − 2",
+        "x + 2",
+        "x² − 2",
+        "1"
+      ],
+      "correta": 1,
+      "explicacao": "(x + 2)(x − 2)/(x − 2)."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Simplificando (3x + 6)/(x² + 2x), com x ≠ 0 e x ≠ −2, obtém-se",
+      "opcoes": [
+        "3/x",
+        "3x",
+        "(3 + 6)/x",
+        "3/(x + 2)"
+      ],
+      "correta": 0,
+      "explicacao": "3(x + 2)/[x(x + 2)]."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A soma 2/x + 3/x é",
+      "opcoes": [
+        "5/x",
+        "5/(2x)",
+        "6/x²",
+        "5/x²"
+      ],
+      "correta": 0,
+      "explicacao": "Mesmo denominador: some os numeradores."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em (x + 5)/(x − 1), o valor proibido para x é",
+      "opcoes": [
+        "−5",
+        "0",
+        "1",
+        "5"
+      ],
+      "correta": 2,
+      "explicacao": "x − 1 não pode ser zero."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

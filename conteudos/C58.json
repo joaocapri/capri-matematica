@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Medidas de dispersão contam quão espalhados estão os dados. Variância mede a média dos quadrados dos desvios (na definição populacional); desvio padrão traz a escala de volta à unidade original."
+      ],
+      "formulas": [
+        "\\sigma^2=\\frac{\\sum(x_i-\\mu)^2}{N},\\quad\\sigma=\\sqrt{\\sigma^2}"
+      ],
+      "dica": "Compare desvios na mesma unidade; variância tem unidade ao quadrado.",
+      "erroComum": "Variância amostral usual usa n−1, não N: identifique a definição cobrada."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Dados populacionais 2,4,6. Calcule variância e desvio padrão.",
+        "passos": [
+          "Média μ=4.",
+          "Desvios −2,0,2; quadrados 4,0,4.",
+          "Variância 8/3; desvio padrão √(8/3)."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Amplitude de 3,5,12:",
+      "opcoes": [
+        "7",
+        "9",
+        "12",
+        "15"
+      ],
+      "correta": 1,
+      "explicacao": "12−3=9."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Variância populacional de 5,5,5:",
+      "opcoes": [
+        "0",
+        "1",
+        "5",
+        "25"
+      ],
+      "correta": 0,
+      "explicacao": "Todos iguais à média, desvios zero."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

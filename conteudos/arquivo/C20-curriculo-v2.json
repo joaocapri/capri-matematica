@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "O binômio de Newton expande (a+b)^n usando coeficientes combinatórios. O termo geral escolhe quantas vezes aparece b; no triângulo de Pascal, cada número é a soma dos dois acima."
+      ],
+      "formulas": [
+        "(a+b)^n=\\sum_{k=0}^n\\binom nk a^{n-k}b^k"
+      ],
+      "dica": "Soma dos coeficientes de (a+b)^n em a=b=1 vale 2^n.",
+      "erroComum": "(a+b)² não vale a²+b²; o termo 2ab é indispensável."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Expanda (x+2)³.",
+        "passos": [
+          "Coeficientes da linha n=3: 1,3,3,1.",
+          "x³+3x²·2+3x·2²+2³.",
+          "Resultado: x³+6x²+12x+8."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Coeficiente de x² em (x+1)³:",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "6"
+      ],
+      "correta": 2,
+      "explicacao": "É C(3,1)=3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Soma dos coeficientes de (x+1)^4:",
+      "opcoes": [
+        "4",
+        "8",
+        "16",
+        "32"
+      ],
+      "correta": 2,
+      "explicacao": "Coloque x=1: 2^4=16."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

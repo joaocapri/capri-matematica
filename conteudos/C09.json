@@ -1,61 +1,111 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Usar as propriedades das potências",
+    "Trabalhar com expoente zero e negativo",
+    "Calcular potências de expoente fracionário"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Propriedades",
       "paragrafos": [
-        "Variações percentuais sucessivas multiplicam fatores, não somam taxas. Para aumento de p%, use 1+p/100; para desconto, 1−p/100."
+        "Com a mesma base, na multiplicação somam-se os expoentes e na divisão subtraem-se. Potência de potência multiplica os expoentes."
       ],
       "formulas": [
-        "V_f=V_i(1+i_1)(1+i_2)"
-      ],
-      "dica": "Para voltar de um desconto de 20%, o aumento necessário é 25%.",
-      "erroComum": "O percentual é sempre aplicado sobre a base de cada etapa."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "a^m\\cdot a^n=a^{m+n}",
+        "\\dfrac{a^m}{a^n}=a^{m-n}",
+        "(a^m)^n=a^{mn}"
       ],
       "exemplo": {
-        "enunciado": "Produto custa R$ 100. Aumenta 20% e depois cai 20%. Valor final?",
+        "enunciado": "Simplifique 2⁶ · 4³ / 8⁴.",
         "passos": [
-          "Após aumento: 100·1,2=120.",
-          "Após desconto: 120·0,8=96.",
-          "Final 96; não voltou a 100."
+          "Escreva tudo em base 2: 2⁶ · 2⁶ / 2¹².",
+          "2¹² / 2¹² = 1."
+        ]
+      },
+      "erroComum": "Somar expoentes de bases diferentes: 2³ · 3² não é 6⁵."
+    },
+    {
+      "titulo": "Expoentes especiais",
+      "paragrafos": [
+        "Todo número não nulo elevado a zero vale 1. Expoente negativo inverte a base. Expoente fracionário é raiz."
+      ],
+      "formulas": [
+        "a^0=1",
+        "a^{-n}=\\dfrac{1}{a^n}",
+        "a^{p/q}=\\sqrt[q]{a^p}"
+      ],
+      "exemplo": {
+        "enunciado": "Calcule 8^(2/3) + 2⁻².",
+        "passos": [
+          "8^(2/3) = (∛8)² = 4.",
+          "2⁻² = 1/4.",
+          "Soma: 17/4."
         ]
       }
     }
   ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: fundamentos de álgebra",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Uma coleção de videoaulas e exercícios para revisar fundamentos e notação.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-intro-to-algebra/alg-manipulating-expressions"
+    }
+  ],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "100 reais sobe 10% e depois 10%. Valor:",
+      "nivel": "Aquecimento",
+      "enunciado": "O valor de 3⁻² é",
       "opcoes": [
-        "110",
-        "120",
-        "121",
-        "130"
+        "−9",
+        "−6",
+        "1/9",
+        "1/6"
       ],
       "correta": 2,
-      "explicacao": "100·1,1²=121."
+      "explicacao": "1/3²."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "100 reais cai 30%. Novo valor:",
+      "enunciado": "O valor de (2³)² ÷ 2⁴ é",
       "opcoes": [
-        "30",
-        "70",
-        "100",
-        "130"
+        "2",
+        "4",
+        "8",
+        "16"
       ],
       "correta": 1,
-      "explicacao": "Fator 0,7 ⇒ 70."
+      "explicacao": "2⁶ ÷ 2⁴ = 2²."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de 16^(3/4) é",
+      "opcoes": [
+        "4",
+        "8",
+        "12",
+        "64"
+      ],
+      "correta": 1,
+      "explicacao": "(⁴√16)³ = 2³."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "O valor de (2¹⁰⁰ + 2¹⁰⁰)/2⁹⁹ é",
+      "opcoes": [
+        "2",
+        "4",
+        "2¹⁰⁰",
+        "2²⁰⁰"
+      ],
+      "correta": 1,
+      "explicacao": "2 · 2¹⁰⁰ / 2⁹⁹ = 2¹⁰¹/2⁹⁹ = 4."
     }
   ],
-  "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "arquivos": []
 }

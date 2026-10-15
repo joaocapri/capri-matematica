@@ -1,0 +1,88 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Escalonar um sistema linear",
+    "Resolver o sistema escalonado de baixo para cima",
+    "Identificar SPI e SI durante o escalonamento"
+  ],
+  "teoria": [
+    {
+      "titulo": "Criando zeros em escada",
+      "paragrafos": [
+        "Escalonar é usar operações que não mudam as soluções (trocar equações, multiplicar uma equação por número não nulo, somar a uma equação um múltiplo de outra) até que cada equação tenha menos incógnitas que a de cima."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva x + y + z = 6, 2x − y + z = 3, x + 2y − z = 2.",
+        "passos": [
+          "L2 − 2L1: −3y − z = −9. L3 − L1: y − 2z = −4.",
+          "Com y = 2z − 4 na outra: −3(2z − 4) − z = −9 ⇒ −7z = −21 ⇒ z = 3.",
+          "y = 2 e x = 1. Solução (1, 2, 3)."
+        ]
+      },
+      "dica": "Trabalhe com a primeira equação tendo coeficiente 1 em x. Facilita todas as contas."
+    },
+    {
+      "titulo": "O que o escalonamento revela",
+      "paragrafos": [
+        "Se aparecer uma linha 0 = 0, ela some e sobra menos equação que incógnita: o sistema é SPI. Se aparecer 0 = k com k ≠ 0, o sistema é SI."
+      ],
+      "erroComum": "Parar ao encontrar 0 = 0 e dizer que o sistema é impossível. 0 = 0 é sempre verdade."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Durante o escalonamento apareceu a linha 0x + 0y + 0z = 5. O sistema é",
+      "opcoes": [
+        "SPD",
+        "SPI",
+        "SI",
+        "homogêneo"
+      ],
+      "correta": 2,
+      "explicacao": "0 = 5 é falso."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual operação NÃO pode ser usada no escalonamento?",
+      "opcoes": [
+        "trocar duas equações",
+        "multiplicar uma equação por 3",
+        "somar a uma equação o dobro de outra",
+        "multiplicar uma equação por 0"
+      ],
+      "correta": 3,
+      "explicacao": "Multiplicar por zero apaga informação."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O sistema escalonado x + y + z = 6, y − z = −1, 2z = 6 tem x igual a",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correta": 0,
+      "explicacao": "z = 3, y = 2, x = 1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O sistema x + y = 3 e 2x + 2y = 6 é",
+      "opcoes": [
+        "SPD",
+        "SPI",
+        "SI",
+        "sem equações"
+      ],
+      "correta": 1,
+      "explicacao": "A segunda é o dobro da primeira; sobra uma equação para duas incógnitas."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

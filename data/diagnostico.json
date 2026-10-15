@@ -34,7 +34,7 @@
           "id": "em1-01",
           "area": "numeros",
           "dificuldade": 1,
-          "aula": "C03",
+          "aula": "C05",
           "enunciado": "Quanto vale 3/4 + 5/6?",
           "opcoes": [
             "8/10",
@@ -49,7 +49,7 @@
           "id": "em1-02",
           "area": "numeros",
           "dificuldade": 2,
-          "aula": "C09",
+          "aula": "C30",
           "enunciado": "Um tênis de R$ 240 recebe desconto de 15%. Quanto custa após o desconto?",
           "opcoes": [
             "R$ 204",
@@ -64,7 +64,7 @@
           "id": "em1-03",
           "area": "numeros",
           "dificuldade": 3,
-          "aula": "C05",
+          "aula": "C24",
           "enunciado": "Três máquinas iguais terminam uma tarefa em 8 horas. Seis máquinas iguais, na mesma taxa, terminam em:",
           "opcoes": [
             "2 h",
@@ -79,7 +79,7 @@
           "id": "em1-04",
           "area": "afim",
           "dificuldade": 1,
-          "aula": "A15",
+          "aula": "A10",
           "enunciado": "Se f(x) = 2x − 5, qual é f(3)?",
           "opcoes": [
             "−1",
@@ -94,7 +94,7 @@
           "id": "em1-05",
           "area": "afim",
           "dificuldade": 2,
-          "aula": "A16",
+          "aula": "A11",
           "enunciado": "A reta passa pelos pontos (1, 2) e (4, 11). Qual é seu coeficiente angular?",
           "opcoes": [
             "2",
@@ -109,7 +109,7 @@
           "id": "em1-06",
           "area": "afim",
           "dificuldade": 3,
-          "aula": "A17",
+          "aula": "A12",
           "enunciado": "Para quais valores reais a função f(x) = −2x + 8 é positiva?",
           "opcoes": [
             "x > 4",
@@ -124,7 +124,7 @@
           "id": "em1-07",
           "area": "quadratica",
           "dificuldade": 1,
-          "aula": "A20",
+          "aula": "A17",
           "enunciado": "Quais são as raízes de x² − 5x + 6 = 0?",
           "opcoes": [
             "1 e 6",
@@ -139,7 +139,7 @@
           "id": "em1-08",
           "area": "quadratica",
           "dificuldade": 2,
-          "aula": "A21",
+          "aula": "A18",
           "enunciado": "Qual o valor máximo de f(x) = −x² + 6x − 5?",
           "opcoes": [
             "3",
@@ -154,7 +154,7 @@
           "id": "em1-09",
           "area": "quadratica",
           "dificuldade": 3,
-          "aula": "A23",
+          "aula": "A21",
           "enunciado": "Resolva (x − 1)(x − 5) < 0.",
           "opcoes": [
             "x < 1 ou x > 5",
@@ -169,7 +169,7 @@
           "id": "em1-10",
           "area": "plana",
           "dificuldade": 1,
-          "aula": "B02",
+          "aula": "B03",
           "enunciado": "Dois ângulos de um triângulo medem 50° e 65°. Quanto mede o terceiro?",
           "opcoes": [
             "55°",
@@ -184,7 +184,7 @@
           "id": "em1-11",
           "area": "plana",
           "dificuldade": 2,
-          "aula": "B04",
+          "aula": "B05",
           "enunciado": "Os lados de um triângulo medem 4, 6 e 8. Um triângulo semelhante tem escala 3/2. Seus lados medem:",
           "opcoes": [
             "6, 9 e 12",
@@ -199,7 +199,7 @@
           "id": "em1-12",
           "area": "plana",
           "dificuldade": 3,
-          "aula": "B12",
+          "aula": "B17",
           "enunciado": "Um retângulo tem perímetro 30 cm e lados na razão 2:3. Qual é sua área?",
           "opcoes": [
             "36 cm²",
@@ -244,7 +244,7 @@
           "id": "em2-01",
           "area": "exp",
           "dificuldade": 1,
-          "aula": "A32",
+          "aula": "A33",
           "enunciado": "Se 2^(x + 1) = 32, qual é x?",
           "opcoes": [
             "3",
@@ -259,7 +259,7 @@
           "id": "em2-02",
           "area": "exp",
           "dificuldade": 2,
-          "aula": "A34",
+          "aula": "A36",
           "enunciado": "Quanto vale log₃(81)?",
           "opcoes": [
             "3",
@@ -274,7 +274,7 @@
           "id": "em2-03",
           "area": "exp",
           "dificuldade": 3,
-          "aula": "C11",
+          "aula": "C33",
           "enunciado": "Um capital de R$ 1.000 cresce 10% ao ano em juros compostos. Após dois anos, vale:",
           "opcoes": [
             "R$ 1.100",
@@ -289,7 +289,7 @@
           "id": "em2-04",
           "area": "pa-pg",
           "dificuldade": 1,
-          "aula": "A41",
+          "aula": "A44",
           "enunciado": "Em uma PA, a₁ = 5 e a razão é 3. Qual é a₁₀?",
           "opcoes": [
             "29",
@@ -304,7 +304,7 @@
           "id": "em2-05",
           "area": "pa-pg",
           "dificuldade": 2,
-          "aula": "A42",
+          "aula": "A46",
           "enunciado": "Qual é a soma dos números inteiros de 1 a 20?",
           "opcoes": [
             "200",
@@ -319,7 +319,7 @@
           "id": "em2-06",
           "area": "pa-pg",
           "dificuldade": 3,
-          "aula": "A44",
+          "aula": "A49",
           "enunciado": "Uma PG tem primeiro termo 3 e razão 2. Qual a soma dos primeiros cinco termos?",
           "opcoes": [
             "45",
@@ -334,7 +334,7 @@
           "id": "em2-07",
           "area": "espacial",
           "dificuldade": 1,
-          "aula": "B20",
+          "aula": "B27",
           "enunciado": "Um prisma tem área da base 12 cm² e altura 7 cm. Seu volume é:",
           "opcoes": [
             "19 cm³",
@@ -349,7 +349,7 @@
           "id": "em2-08",
           "area": "espacial",
           "dificuldade": 2,
-          "aula": "B23",
+          "aula": "B31",
           "enunciado": "Um cilindro tem raio 3 cm e altura 4 cm. Seu volume é:",
           "opcoes": [
             "12π cm³",
@@ -364,7 +364,7 @@
           "id": "em2-09",
           "area": "espacial",
           "dificuldade": 3,
-          "aula": "B27",
+          "aula": "B36",
           "enunciado": "Se o raio de uma esfera é duplicado, seu volume é multiplicado por:",
           "opcoes": [
             "2",
@@ -379,7 +379,7 @@
           "id": "em2-10",
           "area": "contagem",
           "dificuldade": 1,
-          "aula": "C17",
+          "aula": "C41",
           "enunciado": "Quantas duplas distintas podem ser formadas por 6 estudantes?",
           "opcoes": [
             "12",
@@ -394,7 +394,7 @@
           "id": "em2-11",
           "area": "contagem",
           "dificuldade": 2,
-          "aula": "C15",
+          "aula": "C37",
           "enunciado": "De quantas maneiras 5 pessoas podem formar uma fila se Ana e Bia devem ficar juntas?",
           "opcoes": [
             "24",
@@ -409,7 +409,7 @@
           "id": "em2-12",
           "area": "contagem",
           "dificuldade": 3,
-          "aula": "C25",
+          "aula": "C51",
           "enunciado": "Uma moeda justa é lançada 4 vezes. A probabilidade de sair exatamente 3 caras é:",
           "opcoes": [
             "1/8",
@@ -454,7 +454,7 @@
           "id": "em3-01",
           "area": "analitica",
           "dificuldade": 1,
-          "aula": "B34",
+          "aula": "B44",
           "enunciado": "A reta passa por (0, 2) e (2, 6). Qual é seu coeficiente angular?",
           "opcoes": [
             "1",
@@ -469,7 +469,7 @@
           "id": "em3-02",
           "area": "analitica",
           "dificuldade": 2,
-          "aula": "B36",
+          "aula": "B43",
           "enunciado": "Qual é a distância entre os pontos (1, 2) e (4, 6)?",
           "opcoes": [
             "4",
@@ -484,7 +484,7 @@
           "id": "em3-03",
           "area": "analitica",
           "dificuldade": 3,
-          "aula": "B37",
+          "aula": "B51",
           "enunciado": "A circunferência de centro (2, −1) e raio 3 tem equação:",
           "opcoes": [
             "(x+2)²+(y−1)²=9",
@@ -499,7 +499,7 @@
           "id": "em3-04",
           "area": "trigo",
           "dificuldade": 1,
-          "aula": "C33",
+          "aula": "C61",
           "enunciado": "Qual é o seno de 30°?",
           "opcoes": [
             "0",
@@ -514,7 +514,7 @@
           "id": "em3-05",
           "area": "trigo",
           "dificuldade": 2,
-          "aula": "C36",
+          "aula": "C67",
           "enunciado": "No intervalo 0 ≤ x ≤ π, as soluções de sen(x)=√3/2 são:",
           "opcoes": [
             "π/6 e 5π/6",
@@ -529,7 +529,7 @@
           "id": "em3-06",
           "area": "trigo",
           "dificuldade": 3,
-          "aula": "C39",
+          "aula": "C72",
           "enunciado": "Se x = π/6, quanto vale cos(2x)?",
           "opcoes": [
             "0",
@@ -544,7 +544,7 @@
           "id": "em3-07",
           "area": "algebra",
           "dificuldade": 1,
-          "aula": "C46",
+          "aula": "A55",
           "enunciado": "Quanto vale o determinante da matriz [[2,1],[5,3]]?",
           "opcoes": [
             "−1",
@@ -559,7 +559,7 @@
           "id": "em3-08",
           "area": "algebra",
           "dificuldade": 2,
-          "aula": "A46",
+          "aula": "A65",
           "enunciado": "Calcule (2 + 3i)(2 − 3i), sabendo que i² = −1.",
           "opcoes": [
             "−5",
@@ -574,7 +574,7 @@
           "id": "em3-09",
           "area": "algebra",
           "dificuldade": 3,
-          "aula": "A54",
+          "aula": "A78",
           "enunciado": "Se P(x)=x³−6x²+11x−6 tem raízes 1, 2 e 3, qual a soma dessas raízes?",
           "opcoes": [
             "3",
@@ -589,7 +589,7 @@
           "id": "em3-10",
           "area": "dados",
           "dificuldade": 1,
-          "aula": "C28",
+          "aula": "C55",
           "enunciado": "Qual é a média de 4, 8 e 12?",
           "opcoes": [
             "6",
@@ -604,7 +604,7 @@
           "id": "em3-11",
           "area": "dados",
           "dificuldade": 2,
-          "aula": "C23",
+          "aula": "C49",
           "enunciado": "Sabendo que dois dados somaram 8, qual a chance de o primeiro mostrar 3?",
           "opcoes": [
             "1/6",
@@ -619,7 +619,7 @@
           "id": "em3-12",
           "area": "dados",
           "dificuldade": 3,
-          "aula": "C28",
+          "aula": "C55",
           "enunciado": "Uma prova tem notas 6 e 8, com pesos 2 e 3. Qual é a média ponderada?",
           "opcoes": [
             "6,8",
@@ -664,7 +664,7 @@
           "id": "enem-01",
           "area": "consumo",
           "dificuldade": 1,
-          "aula": "A18",
+          "aula": "A15",
           "enunciado": "Um aplicativo cobra R$ 5 fixos mais R$ 2,40 por km. Quanto custa uma corrida de 7,5 km?",
           "opcoes": [
             "R$ 18",
@@ -679,7 +679,7 @@
           "id": "enem-02",
           "area": "consumo",
           "dificuldade": 2,
-          "aula": "C09",
+          "aula": "C30",
           "enunciado": "Um produto de R$ 200 sobe 20% e depois cai 20%. O preço final é:",
           "opcoes": [
             "R$ 200",
@@ -694,7 +694,7 @@
           "id": "enem-03",
           "area": "consumo",
           "dificuldade": 3,
-          "aula": "C11",
+          "aula": "C33",
           "enunciado": "R$ 1.000 rendem 10% ao ano em juros compostos. Qual o saldo após 2 anos?",
           "opcoes": [
             "R$ 1.100",
@@ -709,7 +709,7 @@
           "id": "enem-04",
           "area": "modelagem",
           "dificuldade": 1,
-          "aula": "C06",
+          "aula": "C25",
           "enunciado": "Uma receita usa 2,5 L para atender 4 pessoas. Mantida a proporção, quantos litros atendem 10?",
           "opcoes": [
             "5 L",
@@ -724,7 +724,7 @@
           "id": "enem-05",
           "area": "modelagem",
           "dificuldade": 2,
-          "aula": "A18",
+          "aula": "A15",
           "enunciado": "Plano A custa R$ 30 + R$ 0,50 por minuto; plano B, R$ 15 + R$ 0,80. Para quantos minutos os custos são iguais?",
           "opcoes": [
             "30",
@@ -739,7 +739,7 @@
           "id": "enem-06",
           "area": "modelagem",
           "dificuldade": 3,
-          "aula": "C08",
+          "aula": "C29",
           "enunciado": "Um reservatório tinha 800 litros. Uma perda de 12,5% deixou quantos litros?",
           "opcoes": [
             "680",
@@ -754,7 +754,7 @@
           "id": "enem-07",
           "area": "medidas",
           "dificuldade": 1,
-          "aula": "B12",
+          "aula": "B17",
           "enunciado": "Uma sala mede 4,5 m por 3,2 m. Qual é a área do piso?",
           "opcoes": [
             "7,7 m²",
@@ -769,7 +769,7 @@
           "id": "enem-08",
           "area": "medidas",
           "dificuldade": 2,
-          "aula": "C04",
+          "aula": "C22",
           "enunciado": "Em um mapa 1:50.000, uma distância de 3 cm equivale a:",
           "opcoes": [
             "150 m",
@@ -784,7 +784,7 @@
           "id": "enem-09",
           "area": "medidas",
           "dificuldade": 3,
-          "aula": "B23",
+          "aula": "B31",
           "enunciado": "Uma embalagem cilíndrica tem raio 5 cm e altura 12 cm. Seu volume interno é:",
           "opcoes": [
             "60π cm³",
@@ -799,7 +799,7 @@
           "id": "enem-10",
           "area": "dados",
           "dificuldade": 1,
-          "aula": "C28",
+          "aula": "C55",
           "enunciado": "Uma escola registrou 40, 50, 60 e 70 inscrições por semana. Qual a média?",
           "opcoes": [
             "50",
@@ -814,7 +814,7 @@
           "id": "enem-11",
           "area": "dados",
           "dificuldade": 2,
-          "aula": "C21",
+          "aula": "C47",
           "enunciado": "Em um lote de 100 peças, 3 apresentam defeito. A probabilidade de sortear uma defeituosa é:",
           "opcoes": [
             "0,3%",
@@ -829,7 +829,7 @@
           "id": "enem-12",
           "area": "dados",
           "dificuldade": 3,
-          "aula": "C29",
+          "aula": "C56",
           "enunciado": "Os tempos (min) de entrega foram 3, 7, 8, 9 e 50. Qual é a mediana?",
           "opcoes": [
             "7",
@@ -874,7 +874,7 @@
           "id": "vestib-01",
           "area": "funcoes",
           "dificuldade": 1,
-          "aula": "A21",
+          "aula": "A18",
           "enunciado": "Qual o valor mínimo de f(x)=x²−4x+1?",
           "opcoes": [
             "−4",
@@ -889,7 +889,7 @@
           "id": "vestib-02",
           "area": "funcoes",
           "dificuldade": 2,
-          "aula": "A23",
+          "aula": "A21",
           "enunciado": "Resolva (x−2)(x+3) ≥ 0.",
           "opcoes": [
             "−3 ≤ x ≤ 2",
@@ -904,7 +904,7 @@
           "id": "vestib-03",
           "area": "funcoes",
           "dificuldade": 3,
-          "aula": "A38",
+          "aula": "A40",
           "enunciado": "Se log₂(x−1)+log₂(x+1)=3, com x>1, quanto vale x?",
           "opcoes": [
             "2",
@@ -919,7 +919,7 @@
           "id": "vestib-04",
           "area": "geometria",
           "dificuldade": 1,
-          "aula": "B05",
+          "aula": "B08",
           "enunciado": "Um triângulo retângulo de catetos 3 e 4 tem hipotenusa 5. Seu raio da circunferência inscrita é:",
           "opcoes": [
             "0,5",
@@ -934,7 +934,7 @@
           "id": "vestib-05",
           "area": "geometria",
           "dificuldade": 2,
-          "aula": "B08",
+          "aula": "B12",
           "enunciado": "Qual é a área de um hexágono regular de lado 2?",
           "opcoes": [
             "3√3",
@@ -949,7 +949,7 @@
           "id": "vestib-06",
           "area": "geometria",
           "dificuldade": 3,
-          "aula": "B24",
+          "aula": "B32",
           "enunciado": "Um cone e um cilindro têm mesma base e mesma altura. O volume do cone equivale a que fração do cilindro?",
           "opcoes": [
             "1/2",
@@ -964,7 +964,7 @@
           "id": "vestib-07",
           "area": "algebra",
           "dificuldade": 1,
-          "aula": "A46",
+          "aula": "A65",
           "enunciado": "Quanto vale i²⁰²⁶, sendo i² = −1?",
           "opcoes": [
             "1",
@@ -979,7 +979,7 @@
           "id": "vestib-08",
           "area": "algebra",
           "dificuldade": 2,
-          "aula": "A52",
+          "aula": "A75",
           "enunciado": "Se P(x)=x³−2x+4, qual o resto da divisão por x−2?",
           "opcoes": [
             "0",
@@ -994,7 +994,7 @@
           "id": "vestib-09",
           "area": "algebra",
           "dificuldade": 3,
-          "aula": "C46",
+          "aula": "A55",
           "enunciado": "Uma matriz triangular de ordem 3 tem diagonal 2, −3 e 4. Seu determinante é:",
           "opcoes": [
             "−24",
@@ -1009,7 +1009,7 @@
           "id": "vestib-10",
           "area": "combinatoria",
           "dificuldade": 1,
-          "aula": "C15",
+          "aula": "C37",
           "enunciado": "Quantos números de três algarismos distintos podem ser formados com os dígitos de 0 a 9?",
           "opcoes": [
             "504",
@@ -1024,7 +1024,7 @@
           "id": "vestib-11",
           "area": "combinatoria",
           "dificuldade": 2,
-          "aula": "C24",
+          "aula": "C50",
           "enunciado": "Uma urna contém 4 bolas vermelhas e 3 azuis. Sem reposição, qual a chance de retirar duas vermelhas?",
           "opcoes": [
             "1/3",
@@ -1039,7 +1039,7 @@
           "id": "vestib-12",
           "area": "combinatoria",
           "dificuldade": 3,
-          "aula": "C16",
+          "aula": "C38",
           "enunciado": "Quantos anagramas distintos tem a palavra BANANA?",
           "opcoes": [
             "30",

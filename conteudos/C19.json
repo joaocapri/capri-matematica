@@ -1,61 +1,137 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Resolver equações incompletas sem fórmula",
+    "Usar a fórmula resolutiva e o discriminante",
+    "Decidir o número de raízes reais antes de resolver"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Comece pelas incompletas",
       "paragrafos": [
-        "O método destrutivo conta o total e subtrai casos proibidos. O princípio das gavetas garante repetição quando há mais objetos que categorias."
+        "Quando b = 0 ou c = 0, não precisa de fórmula. Com c = 0, coloque x em evidência; com b = 0, isole x²."
       ],
       "formulas": [
-        "\\text{favoráveis}=\\text{total}-\\text{desfavoráveis}"
-      ],
-      "dica": "Pelo menos um quase sempre sugere calcular o complementar.",
-      "erroComum": "Princípio das gavetas garante existência, não necessariamente a quantidade exata de repetições."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "ax^2+bx=0\\;\\Rightarrow\\;x(ax+b)=0",
+        "ax^2+c=0\\;\\Rightarrow\\;x^2=-\\dfrac{c}{a}"
       ],
       "exemplo": {
-        "enunciado": "Quantas senhas de 2 algarismos (00 a 99) têm ao menos um dígito 7?",
+        "enunciado": "Resolva 3x² − 12x = 0.",
         "passos": [
-          "Total: 10²=100.",
-          "Sem nenhum 7: 9²=81.",
-          "Com pelo menos um 7: 100−81=19."
+          "Coloque 3x em evidência: 3x(x − 4) = 0.",
+          "Produto zero: 3x = 0 ou x − 4 = 0.",
+          "S = {0, 4}."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Em 13 pessoas, ao menos duas nasceram no mesmo:",
-      "opcoes": [
-        "Dia",
-        "Mês",
-        "Ano",
-        "Horário"
-      ],
-      "correta": 1,
-      "explicacao": "Há 12 meses e 13 pessoas: uma gaveta terá ao menos 2."
+      },
+      "erroComum": "Em x² = 9 são duas soluções, 3 e −3. Esquecer a negativa é o erro mais comum."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "De 100 senhas 00–99, sem algarismo 5 existem:",
-      "opcoes": [
-        "19",
-        "25",
-        "81",
-        "90"
+      "titulo": "A fórmula resolutiva",
+      "paragrafos": [
+        "Para a equação completa ax² + bx + c = 0, calcule primeiro o discriminante. Ele diz quantas raízes reais existem: duas se Δ > 0, uma (dupla) se Δ = 0 e nenhuma se Δ < 0."
       ],
-      "correta": 2,
-      "explicacao": "9 possibilidades por dígito, 9²=81."
+      "formulas": [
+        "\\Delta=b^2-4ac",
+        "x=\\dfrac{-b\\pm\\sqrt{\\Delta}}{2a}"
+      ],
+      "exemplo": {
+        "enunciado": "Resolva x² − 2x − 15 = 0.",
+        "passos": [
+          "a = 1, b = −2, c = −15.",
+          "Δ = 4 + 60 = 64.",
+          "x = (2 ± 8)/2: x = 5 ou x = −3."
+        ]
+      },
+      "dica": "Antes da fórmula, tente achar dois números com soma −b/a e produto c/a. Muitas equações de prova saem assim."
+    },
+    {
+      "titulo": "Completar quadrados",
+      "paragrafos": [
+        "A fórmula vem de completar quadrados: some o que falta para formar um trinômio quadrado perfeito."
+      ],
+      "formulas": [
+        "x^2+6x=7\\;\\Rightarrow\\;(x+3)^2=16"
+      ]
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "As soluções de x² − 25 = 0 são",
+      "opcoes": [
+        "5",
+        "−5 e 5",
+        "0 e 25",
+        "−25 e 25"
+      ],
+      "correta": 1,
+      "explicacao": "x² = 25 ⇒ x = ±5."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "As soluções de x² + 7x = 0 são",
+      "opcoes": [
+        "0 e 7",
+        "0 e −7",
+        "7 e −7",
+        "só 0"
+      ],
+      "correta": 1,
+      "explicacao": "x(x + 7) = 0 ⇒ x = 0 ou x = −7."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "O discriminante de 2x² − 3x + 5 = 0 é",
+      "opcoes": [
+        "−31",
+        "−49",
+        "31",
+        "49"
+      ],
+      "correta": 0,
+      "explicacao": "Δ = 9 − 40 = −31."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A equação x² − 6x + 9 = 0 tem",
+      "opcoes": [
+        "duas raízes reais distintas",
+        "uma raiz real dupla",
+        "nenhuma raiz real",
+        "infinitas raízes"
+      ],
+      "correta": 1,
+      "explicacao": "Δ = 36 − 36 = 0."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "As soluções de 2x² − 5x + 2 = 0 são",
+      "opcoes": [
+        "1 e 2",
+        "1/2 e 2",
+        "−1/2 e −2",
+        "1/2 e 1"
+      ],
+      "correta": 1,
+      "explicacao": "Δ = 9; x = (5 ± 3)/4, logo 2 ou 1/2."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Para que valores de m a equação x² + 4x + m = 0 tem duas raízes reais distintas?",
+      "opcoes": [
+        "m < 4",
+        "m > 4",
+        "m = 4",
+        "m < −4"
+      ],
+      "correta": 0,
+      "explicacao": "Δ = 16 − 4m > 0 ⇒ m < 4."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

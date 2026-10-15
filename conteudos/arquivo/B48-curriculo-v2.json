@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Coordenadas polares localizam um ponto por distância r à origem e ângulo θ com o eixo x. Rotação dos eixos também muda a escrita da equação, mas não a curva geométrica."
+      ],
+      "formulas": [
+        "x=r\\cos\\theta,\\quad y=r\\sin\\theta"
+      ],
+      "dica": "Para r≥0, a distância radial é direta; em convenções com r negativo, ajuste o ângulo.",
+      "erroComum": "Ângulos diferentes por múltiplos de 2π representam a mesma direção."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Converta polar (r=2,θ=π/2) para cartesiano.",
+        "passos": [
+          "x=2·cos(π/2)=0.",
+          "y=2·sen(π/2)=2.",
+          "Ponto (0,2)."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O ponto polar (3,0) é cartesiano:",
+      "opcoes": [
+        "(0,3)",
+        "(3,0)",
+        "(−3,0)",
+        "(0,−3)"
+      ],
+      "correta": 1,
+      "explicacao": "cos0=1, sen0=0."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se x=r cosθ e y=r senθ, então x²+y² =",
+      "opcoes": [
+        "r",
+        "2r",
+        "r²",
+        "0"
+      ],
+      "correta": 2,
+      "explicacao": "Pela identidade cos²+sen²=1, soma=r²."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

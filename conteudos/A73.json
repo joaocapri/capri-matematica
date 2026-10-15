@@ -1,0 +1,101 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Dividir polinômios pelo método da chave",
+    "Escrever a identidade da divisão",
+    "Prever o grau do quociente e do resto"
+  ],
+  "teoria": [
+    {
+      "titulo": "Igual à divisão de números",
+      "paragrafos": [
+        "Divida o termo de maior grau do dividendo pelo termo de maior grau do divisor, multiplique o resultado pelo divisor, subtraia e repita até o resto ter grau menor que o divisor."
+      ],
+      "formulas": [
+        "P(x)=D(x)\\cdot Q(x)+R(x),\\quad \\operatorname{gr}R<\\operatorname{gr}D"
+      ],
+      "exemplo": {
+        "enunciado": "Divida x³ − 2x² + 4x − 5 por x² + 1.",
+        "passos": [
+          "x³ ÷ x² = x. Subtraia x(x² + 1): sobra −2x² + 3x − 5.",
+          "−2x² ÷ x² = −2. Subtraia −2(x² + 1): sobra 3x − 3.",
+          "Q(x) = x − 2 e R(x) = 3x − 3."
+        ]
+      },
+      "dica": "Complete os graus que faltam com coeficiente zero (por exemplo, 0x²) para não se perder.",
+      "erroComum": "Errar o sinal na subtração. Troque o sinal de todos os termos do produto antes de somar."
+    },
+    {
+      "titulo": "Graus na divisão",
+      "paragrafos": [
+        "O grau do quociente é o grau do dividendo menos o grau do divisor. O resto tem grau menor que o do divisor, e pode ser zero."
+      ],
+      "formulas": [
+        "\\operatorname{gr}Q=\\operatorname{gr}P-\\operatorname{gr}D"
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Dividindo um polinômio de grau 7 por um de grau 3, o quociente tem grau",
+      "opcoes": [
+        "3",
+        "4",
+        "7",
+        "10"
+      ],
+      "correta": 1,
+      "explicacao": "7 − 3 = 4."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Ao dividir por um polinômio de grau 2, o resto pode ter grau no máximo",
+      "opcoes": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correta": 1,
+      "explicacao": "O resto tem grau menor que o divisor."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O quociente de x² + 5x + 6 por x + 2 é",
+      "opcoes": [
+        "x + 3",
+        "x − 3",
+        "x + 2",
+        "x² + 3"
+      ],
+      "correta": 0,
+      "explicacao": "x² + 5x + 6 = (x + 2)(x + 3)."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O resto da divisão de x³ + 1 por x² é",
+      "opcoes": [
+        "1",
+        "x",
+        "x + 1",
+        "0"
+      ],
+      "correta": 0,
+      "explicacao": "x³ + 1 = x² · x + 1."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

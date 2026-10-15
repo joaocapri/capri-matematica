@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Lei dos senos relaciona lados aos senos dos ângulos opostos; lei dos cossenos generaliza Pitágoras em triângulos quaisquer. Escolha a lei conforme as informações disponíveis."
+      ],
+      "formulas": [
+        "\\frac a{\\sin A}=\\frac b{\\sin B}=\\frac c{\\sin C}=2R"
+      ],
+      "dica": "Se tem SAS (dois lados e ângulo entre eles), a lei dos cossenos costuma ser direta.",
+      "erroComum": "Na lei dos senos, cada lado deve estar associado ao seu ângulo oposto."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Triângulo com a=6 oposto a A=30° e b oposto a B=90°. Calcule b.",
+        "passos": [
+          "Pela lei dos senos, b/sen90°=6/sen30°.",
+          "b=6/(1/2)=12."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Lados 3 e 4 com ângulo incluso de 90°; lado oposto vale:",
+      "opcoes": [
+        "5",
+        "6",
+        "7",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "Lei dos cossenos: c²=9+16=25."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Lei dos senos usa:",
+      "opcoes": [
+        "Tangente dos lados",
+        "Seno dos ângulos opostos",
+        "Cosseno dos lados",
+        "Área do círculo"
+      ],
+      "correta": 1,
+      "explicacao": "Razão lado/seno do oposto é constante."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

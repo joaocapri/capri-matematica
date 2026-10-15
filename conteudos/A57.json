@@ -1,0 +1,91 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer quando o determinante é zero sem calcular",
+    "Saber o efeito de trocar filas e multiplicar por número",
+    "Usar as propriedades para simplificar contas"
+  ],
+  "teoria": [
+    {
+      "titulo": "Quando o determinante é zero",
+      "paragrafos": [
+        "O determinante é nulo quando a matriz tem uma fila (linha ou coluna) de zeros, duas filas iguais ou duas filas proporcionais."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule det [[1, 2, 3], [2, 4, 6], [5, 1, 7]].",
+        "passos": [
+          "A segunda linha é o dobro da primeira.",
+          "Filas proporcionais: o determinante é 0."
+        ]
+      }
+    },
+    {
+      "titulo": "O que muda o valor",
+      "paragrafos": [
+        "Trocar duas filas de lugar troca o sinal do determinante. Multiplicar uma fila por k multiplica o determinante por k. Multiplicar a matriz inteira de ordem n por k multiplica o determinante por kⁿ. O determinante da transposta é igual ao da matriz."
+      ],
+      "formulas": [
+        "\\det(kA)=k^n\\det A",
+        "\\det(A^t)=\\det A"
+      ],
+      "dica": "Somar a uma fila um múltiplo de outra não muda o determinante. É o truque para criar zeros.",
+      "erroComum": "Achar que det(2A) = 2 det A para uma matriz 3 × 3. O certo é 2³ det A = 8 det A."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se duas linhas de uma matriz são iguais, o determinante",
+      "opcoes": [
+        "dobra",
+        "troca de sinal",
+        "é zero",
+        "não muda"
+      ],
+      "correta": 2,
+      "explicacao": "Filas iguais anulam o determinante."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Trocando duas colunas de lugar, o determinante",
+      "opcoes": [
+        "não muda",
+        "troca de sinal",
+        "vira zero",
+        "dobra"
+      ],
+      "correta": 1,
+      "explicacao": "Cada troca de filas inverte o sinal."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se A é 3 × 3 e det A = 5, então det(2A) vale",
+      "opcoes": [
+        "10",
+        "20",
+        "40",
+        "125"
+      ],
+      "correta": 2,
+      "explicacao": "2³ · 5 = 40."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se det A = 4, com A de ordem 2, então det(Aᵗ) vale",
+      "opcoes": [
+        "−4",
+        "1/4",
+        "4",
+        "16"
+      ],
+      "correta": 2,
+      "explicacao": "A transposta tem o mesmo determinante."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

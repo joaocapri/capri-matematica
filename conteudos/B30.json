@@ -1,61 +1,94 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender o tronco como pirâmide menos pirâmide",
+    "Usar semelhança para achar medidas",
+    "Calcular o volume do tronco"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Cortando a pirâmide",
       "paragrafos": [
-        "Sólidos gerados por rotação devem ser decompostos em partes conhecidas ou em diferença de volumes. Cuidado: girar uma região e girar apenas o seu contorno produzem objetos de naturezas diferentes."
+        "Um plano paralelo à base corta a pirâmide em uma pirâmide menor e um tronco. A pirâmide menor é semelhante à original: se a razão entre as alturas é k, a razão entre as áreas das bases é k² e entre os volumes é k³."
       ],
       "formulas": [
-        "V_{\\text{composto}}=V_1+V_2- V_{\\text{sobreposi\\c c\\~oes}}"
-      ],
-      "dica": "Marque regiões vazias antes de decidir se soma ou subtrai.",
-      "erroComum": "Não some volumes de peças sobrepostas sem descontar a região comum."
-    },
-    {
-      "titulo": "Na prática",
-      "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "\\dfrac{V_{menor}}{V_{maior}}=k^3"
       ],
       "exemplo": {
-        "enunciado": "Um cilindro de volume 80 cm³ contém uma cavidade cônica de volume 20 cm³. Qual volume de material?",
+        "enunciado": "Uma pirâmide de volume 216 cm³ é cortada na metade da altura. Qual o volume do tronco?",
         "passos": [
-          "Partimos do cilindro completo, 80.",
-          "Retiramos o cone vazado, 20.",
-          "Restam 60 cm³."
+          "k = 1/2, então a pirâmide menor tem 216/8 = 27 cm³.",
+          "Tronco = 216 − 27.",
+          "Tronco = 189 cm³."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Um sólido com volume 50 e uma cavidade de volume 15 tem volume útil:",
-      "opcoes": [
-        "35",
-        "50",
-        "65",
-        "750"
-      ],
-      "correta": 0,
-      "explicacao": "50−15=35."
+      },
+      "dica": "Calcule o tronco como pirâmide grande menos pirâmide pequena.",
+      "erroComum": "Achar que cortar na metade da altura divide o volume ao meio."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Girar um retângulo em torno de um de seus lados produz:",
-      "opcoes": [
-        "Esfera",
-        "Cone",
-        "Cilindro reto",
-        "Pirâmide"
+      "titulo": "A fórmula direta",
+      "paragrafos": [
+        "Se forem dadas as áreas das duas bases e a altura do tronco, use a fórmula direta."
       ],
-      "correta": 2,
-      "explicacao": "A região retangular gera um cilindro circular reto."
+      "formulas": [
+        "V=\\dfrac{h}{3}\\left(A_B+A_b+\\sqrt{A_B\\,A_b}\\right)"
+      ]
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Cortando uma pirâmide na metade da altura, a pirâmide menor tem que fração do volume original?",
+      "opcoes": [
+        "1/2",
+        "1/4",
+        "1/8",
+        "1/3"
+      ],
+      "correta": 2,
+      "explicacao": "(1/2)³ = 1/8."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma pirâmide de volume 81 é cortada a 1/3 da altura a partir do vértice. O tronco tem volume",
+      "opcoes": [
+        "3",
+        "27",
+        "54",
+        "78"
+      ],
+      "correta": 3,
+      "explicacao": "A menor tem 81/27 = 3; tronco 78."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um tronco tem bases de áreas 16 e 4 e altura 3. O volume é",
+      "opcoes": [
+        "20",
+        "28",
+        "36",
+        "60"
+      ],
+      "correta": 1,
+      "explicacao": "3/3 · (16 + 4 + 8) = 28."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se a razão entre alturas é 2/3, a razão entre as áreas das bases é",
+      "opcoes": [
+        "2/3",
+        "4/9",
+        "8/27",
+        "4/6"
+      ],
+      "correta": 1,
+      "explicacao": "Áreas na razão k²."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

@@ -6,13 +6,13 @@
     {
       "titulo": "Pegue a ideia",
       "paragrafos": [
-        "Compare distância centro-ponto com o raio; para reta, distância centro-reta; entre duas circunferências, compare distância entre centros com soma e diferença dos raios."
+        "Inscrição e circunscrição conectam dois sólidos por tangência. Num cilindro reto circunscrito a uma esfera de raio R, raio do cilindro R e altura 2R. Compare áreas e volumes com cuidado."
       ],
       "formulas": [
-        "d_{\\text{centro-reta}}\\lessgtr r"
+        "h_{cil}=2R,\\quad r_{cil}=R"
       ],
-      "dica": "Distância igual ao raio caracteriza tangência.",
-      "erroComum": "Não compare centro-reta com o diâmetro: a referência é o raio."
+      "dica": "Identifique os pontos de tangência antes de montar as equações.",
+      "erroComum": "Nem todo cone circunscrito a uma esfera tem uma fórmula única sem outras medidas."
     },
     {
       "titulo": "Na prática",
@@ -20,10 +20,10 @@
         "Agora aplique o conceito em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "A circunferência de centro (0,0) e raio 5 é cortada pela reta y=3?",
+        "enunciado": "Uma esfera de raio 3 está inscrita em um cilindro reto ajustado a ela. Dimensões do cilindro?",
         "passos": [
-          "A distância da origem à reta horizontal y=3 é 3.",
-          "Como 3<5, a reta é secante: dois pontos de interseção."
+          "Raio do cilindro: 3.",
+          "Altura: diâmetro da esfera=6."
         ]
       }
     }
@@ -31,27 +31,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Uma reta a distância 7 do centro de círculo de raio 5 é:",
+      "enunciado": "Esfera de raio 5 inscrita em cilindro reto: altura =",
       "opcoes": [
-        "Secante",
-        "Tangente",
-        "Externa",
-        "Diâmetro"
+        "5",
+        "10",
+        "15",
+        "25"
       ],
-      "correta": 2,
-      "explicacao": "Distância maior que o raio: nenhum ponto em comum."
+      "correta": 1,
+      "explicacao": "h=2R=10."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Centro (0,0), raio 4; ponto (4,0) está:",
+      "enunciado": "Raio do cilindro circunscrito à esfera de raio 4:",
       "opcoes": [
-        "Interior",
-        "Na circunferência",
-        "Exterior",
-        "No centro"
+        "2",
+        "4",
+        "8",
+        "16"
       ],
       "correta": 1,
-      "explicacao": "Distância ao centro é exatamente 4."
+      "explicacao": "O raio lateral coincide com o raio da esfera."
     }
   ],
   "videos": [],

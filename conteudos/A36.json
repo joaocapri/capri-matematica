@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de mudança de base",
+    "Reconhecer o conceito central de introdução aos logaritmos",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Mudança de base permite calcular qualquer logaritmo válido usando uma base que você domina, como 10 ou e. A troca cria uma fração: logaritmo do argumento sobre logaritmo da base."
+        "Logaritmo responde a pergunta 'qual expoente transforma a base neste número?'. Ele desfaz uma potência, mas só existe nos reais com argumento positivo, base positiva e diferente de 1."
       ],
       "formulas": [
-        "\\log_a b=\\frac{\\log_c b}{\\log_c a}"
+        "\\log_a b=x\\Longleftrightarrow a^x=b\\quad(a>0,a\\neq1,b>0)"
       ],
-      "dica": "Escolher uma base que transforma ambos em potências simples reduz o esforço.",
-      "erroComum": "Não inverta numerador e denominador: argumento em cima, base embaixo."
+      "dica": "Converta imediatamente para potência quando o logaritmo parecer estranho.",
+      "erroComum": "Log de zero ou número negativo não existe no conjunto real."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,11 +25,11 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Encontre log₄8.",
+        "enunciado": "Calcule log₂32.",
         "passos": [
-          "Escolha a base 2: 4=2² e 8=2³.",
-          "log₄8=log₂8/log₂4.",
-          "3/2=1,5."
+          "Pergunte 2 elevado a qual número dá 32?",
+          "2⁵=32.",
+          "Portanto log₂32=5."
         ]
       }
     }
@@ -45,27 +45,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "log₉3 vale:",
+      "enunciado": "log₃81 vale:",
       "opcoes": [
-        "2",
-        "1/2",
         "3",
-        "9"
+        "4",
+        "9",
+        "27"
       ],
       "correta": 1,
-      "explicacao": "9^(1/2)=3."
+      "explicacao": "3⁴=81."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "log₂8 ÷ log₂4 vale:",
+      "enunciado": "Qual expressão é definida nos reais?",
       "opcoes": [
-        "1/2",
-        "2",
-        "3/2",
-        "4"
+        "log₂(−2)",
+        "log₁5",
+        "log₃9",
+        "log₀4"
       ],
       "correta": 2,
-      "explicacao": "3/2 é o resultado da mudança de base."
+      "explicacao": "Base 3 é válida e argumento 9>0."
     }
   ],
   "exercicios": [],

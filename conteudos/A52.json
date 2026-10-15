@@ -1,71 +1,92 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de teorema do resto e d'alembert",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Ler a notação aᵢⱼ",
+    "Construir uma matriz pela lei de formação",
+    "Reconhecer matrizes especiais"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "Tabela com endereço",
       "paragrafos": [
-        "O teorema do resto evita divisão longa: quando o divisor é x−a, o resto é P(a). Se P(a)=0, x−a é fator de P, o que é justamente o teorema de D'Alembert."
+        "Uma matriz m × n é uma tabela com m linhas e n colunas. O elemento aᵢⱼ fica na linha i e na coluna j."
       ],
       "formulas": [
-        "R_{x-a}=P(a)\\quad\\text{e}\\quad P(a)=0\\Leftrightarrow (x-a)\\mid P(x)"
-      ],
-      "dica": "Divisor x+3 corresponde a a=−3.",
-      "erroComum": "Não substitua o sinal errado: em x−2 use 2; em x+2 use −2."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "A=(a_{ij})_{m\\times n}"
       ],
       "exemplo": {
-        "enunciado": "Ache o resto de P(x)=x³−2x+4 por x−2.",
+        "enunciado": "Construa A = (aᵢⱼ)₂ₓ₃ com aᵢⱼ = 2i − j.",
         "passos": [
-          "Substitua a=2 em P.",
-          "P(2)=8−4+4.",
-          "O resto vale 8."
+          "a₁₁ = 1, a₁₂ = 0, a₁₃ = −1.",
+          "a₂₁ = 3, a₂₂ = 2, a₂₃ = 1.",
+          "A tem linhas (1, 0, −1) e (3, 2, 1)."
         ]
-      }
-    }
-  ],
-  "videos": [
+      },
+      "dica": "Primeiro índice: linha. Segundo: coluna. Pense em “linha antes de coluna”."
+    },
     {
-      "titulo": "Números complexos e polinômios",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Revisão de números complexos e técnicas de fatoração.",
-      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+      "titulo": "Matrizes especiais",
+      "paragrafos": [
+        "Matriz quadrada tem o mesmo número de linhas e colunas. Sua diagonal principal tem os elementos com i = j. A matriz identidade tem 1 na diagonal principal e 0 fora dela. A matriz nula tem todos os elementos iguais a zero."
+      ],
+      "formulas": [
+        "I_3=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\end{pmatrix}"
+      ],
+      "erroComum": "Chamar de diagonal principal a que vai do canto superior direito ao inferior esquerdo. Essa é a secundária."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "O resto de x²+3 por x−2 é:",
+      "nivel": "Aquecimento",
+      "enunciado": "Uma matriz 3 × 4 tem quantos elementos?",
       "opcoes": [
-        "2",
-        "5",
         "7",
-        "9"
+        "12",
+        "34",
+        "43"
       ],
-      "correta": 2,
-      "explicacao": "P(2)=4+3=7."
+      "correta": 1,
+      "explicacao": "3 linhas vezes 4 colunas."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "O elemento a₂₃ está",
+      "opcoes": [
+        "na linha 3, coluna 2",
+        "na linha 2, coluna 3",
+        "na diagonal principal",
+        "na coluna 23"
+      ],
+      "correta": 1,
+      "explicacao": "O primeiro índice é a linha."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se P(4)=0, então P(x) é divisível por:",
+      "enunciado": "Na matriz A = (aᵢⱼ)₃ₓ₃ com aᵢⱼ = i + j, a soma dos elementos da diagonal principal é",
       "opcoes": [
-        "x+4",
-        "x−4",
-        "4x+1",
-        "x²+4"
+        "6",
+        "9",
+        "12",
+        "18"
       ],
-      "correta": 1,
-      "explicacao": "P(a)=0 garante fator x−a."
+      "correta": 2,
+      "explicacao": "2 + 4 + 6 = 12."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Na matriz identidade de ordem 4, quantos elementos são iguais a zero?",
+      "opcoes": [
+        "4",
+        "8",
+        "12",
+        "16"
+      ],
+      "correta": 2,
+      "explicacao": "São 16 elementos, 4 na diagonal valem 1."
     }
   ],
   "exercicios": [],

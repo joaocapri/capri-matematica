@@ -1,71 +1,92 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de relações de girard",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Saber quando o produto AB existe",
+    "Multiplicar linha por coluna",
+    "Perceber que AB e BA costumam ser diferentes"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "Quando existe e qual a ordem",
       "paragrafos": [
-        "As relações de Girard conectam coeficientes e raízes sem exigir encontrá-las uma por uma. Para um polinômio mônico de grau 3, a soma das raízes é −b, a soma dos produtos dois a dois é c e o produto das três é −d."
+        "O produto AB só existe se o número de colunas de A for igual ao número de linhas de B. O resultado tem as linhas de A e as colunas de B."
       ],
       "formulas": [
-        "x^3+bx^2+cx+d=0\\Rightarrow r_1+r_2+r_3=-b"
+        "A_{m\\times n}\\cdot B_{n\\times p}=C_{m\\times p}"
       ],
-      "dica": "Preste atenção à alternância dos sinais nas relações de Girard.",
-      "erroComum": "As fórmulas simplificadas acima exigem coeficiente líder 1."
+      "dica": "Escreva as ordens lado a lado: (2 × 3)(3 × 4). Os números do meio precisam ser iguais; os de fora dão a ordem do resultado."
     },
     {
-      "titulo": "Na prática, sem enrolação",
+      "titulo": "Linha vezes coluna",
       "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "Cada elemento cᵢⱼ é a soma dos produtos da linha i de A pela coluna j de B, termo a termo."
+      ],
+      "formulas": [
+        "c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\\dots+a_{in}b_{nj}"
       ],
       "exemplo": {
-        "enunciado": "Calcule a soma e o produto das raízes de x³−6x²+11x−6=0.",
+        "enunciado": "Calcule AB com A = [[1, 2], [3, 4]] e B = [[2, 0], [1, 5]].",
         "passos": [
-          "Soma das três raízes: −(−6)=6.",
-          "Produto das três raízes: −(−6)=6.",
-          "De fato, as raízes 1,2,3 satisfazem ambas."
+          "c₁₁ = 1·2 + 2·1 = 4 e c₁₂ = 1·0 + 2·5 = 10.",
+          "c₂₁ = 3·2 + 4·1 = 10 e c₂₂ = 3·0 + 4·5 = 20.",
+          "AB = [[4, 10], [10, 20]]."
         ]
-      }
+      },
+      "erroComum": "Multiplicar elemento por elemento, como na soma. O produto de matrizes é linha por coluna."
     }
   ],
-  "videos": [
-    {
-      "titulo": "Números complexos e polinômios",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Revisão de números complexos e técnicas de fatoração.",
-      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
-    }
-  ],
+  "videos": [],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "A soma das raízes de x³−5x²+2x−1=0 é:",
+      "enunciado": "Se A é 2 × 3 e B é 3 × 5, então AB é",
       "opcoes": [
-        "−5",
-        "−1",
-        "1",
-        "5"
+        "2 × 5",
+        "3 × 3",
+        "5 × 2",
+        "não existe"
+      ],
+      "correta": 0,
+      "explicacao": "Colunas de A = linhas de B = 3; resultado 2 × 5."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se A é 2 × 3 e B é 2 × 3, então AB",
+      "opcoes": [
+        "é 2 × 3",
+        "é 3 × 3",
+        "é 2 × 2",
+        "não existe"
       ],
       "correta": 3,
-      "explicacao": "Para polinômio mônico de grau 3, soma=−b=5."
+      "explicacao": "A tem 3 colunas e B tem 2 linhas."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O produto das raízes de x³+2x²−x−8=0 é:",
+      "enunciado": "O produto [[1, 2]] · [[3], [4]] é",
       "opcoes": [
-        "−8",
-        "8",
-        "2",
-        "−2"
+        "[[3, 8]]",
+        "[[11]]",
+        "[[7]]",
+        "[[3], [8]]"
       ],
       "correta": 1,
-      "explicacao": "Produto=−d=−(−8)=8."
+      "explicacao": "1·3 + 2·4 = 11."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Com A = [[1, 1], [0, 1]], a matriz A² é",
+      "opcoes": [
+        "[[1, 2], [0, 1]]",
+        "[[1, 1], [0, 1]]",
+        "[[2, 2], [0, 2]]",
+        "[[1, 0], [0, 1]]"
+      ],
+      "correta": 0,
+      "explicacao": "Linha 1 por coluna 2: 1·1 + 1·1 = 2; os demais ficam iguais."
     }
   ],
   "exercicios": [],

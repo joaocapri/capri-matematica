@@ -1,0 +1,121 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Traduzir enunciados em equações",
+    "Escolher a incógnita certa",
+    "Verificar se a resposta faz sentido no problema"
+  ],
+  "teoria": [
+    {
+      "titulo": "Do texto para a equação",
+      "paragrafos": [
+        "Problemas de equação seguem sempre três passos: dar nome ao que você não sabe, escrever a relação do enunciado e resolver.",
+        "Depois, volte ao texto e confira se a resposta faz sentido: idade negativa ou medida negativa devem ser descartadas."
+      ],
+      "exemplo": {
+        "enunciado": "A soma de três números consecutivos é 72. Quais são eles?",
+        "passos": [
+          "Chame o menor de x: os números são x, x + 1 e x + 2.",
+          "3x + 3 = 72, logo x = 23.",
+          "Os números são 23, 24 e 25."
+        ]
+      },
+      "dica": "Escreva por extenso o que x representa antes de montar a equação."
+    },
+    {
+      "titulo": "Quando aparece o 2º grau",
+      "paragrafos": [
+        "Áreas, produtos e velocidades costumam gerar equações do 2º grau. Resolva normalmente e descarte as soluções impossíveis no contexto."
+      ],
+      "exemplo": {
+        "enunciado": "Um retângulo tem comprimento 3 m maior que a largura e área 40 m². Quais são as medidas?",
+        "passos": [
+          "Largura x, comprimento x + 3.",
+          "x(x + 3) = 40 ⇒ x² + 3x − 40 = 0.",
+          "x = 5 ou x = −8; como é medida, x = 5. Lados: 5 m e 8 m."
+        ]
+      },
+      "erroComum": "Esquecer de descartar a raiz negativa quando a incógnita é uma medida, idade ou quantidade."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O dobro de um número, somado a 9, dá 35. O número é",
+      "opcoes": [
+        "11",
+        "13",
+        "22",
+        "26"
+      ],
+      "correta": 1,
+      "explicacao": "2x + 9 = 35 ⇒ x = 13."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "Ana tem o triplo da idade de Bia, e a soma das idades é 48. A idade de Bia é",
+      "opcoes": [
+        "12",
+        "16",
+        "24",
+        "36"
+      ],
+      "correta": 0,
+      "explicacao": "x + 3x = 48 ⇒ x = 12."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um celular foi pago com entrada de R$ 300,00 e 6 parcelas iguais, num total de R$ 1.500,00. Cada parcela foi de",
+      "opcoes": [
+        "R$ 150,00",
+        "R$ 200,00",
+        "R$ 250,00",
+        "R$ 300,00"
+      ],
+      "correta": 1,
+      "explicacao": "300 + 6p = 1500 ⇒ p = 200."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O produto de dois números naturais consecutivos é 132. O maior deles é",
+      "opcoes": [
+        "11",
+        "12",
+        "13",
+        "66"
+      ],
+      "correta": 1,
+      "explicacao": "x(x + 1) = 132 ⇒ x = 11; o maior é 12."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um terreno quadrado teve 2 m acrescentados em cada lado e a área passou a ser 81 m². O lado original media",
+      "opcoes": [
+        "5 m",
+        "7 m",
+        "9 m",
+        "11 m"
+      ],
+      "correta": 1,
+      "explicacao": "(x + 2)² = 81 ⇒ x + 2 = 9 ⇒ x = 7."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Num estacionamento há carros e motos, 30 veículos e 100 rodas. Quantos são os carros?",
+      "opcoes": [
+        "10",
+        "15",
+        "20",
+        "25"
+      ],
+      "correta": 2,
+      "explicacao": "c + m = 30 e 4c + 2m = 100 ⇒ 2c = 40 ⇒ c = 20."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

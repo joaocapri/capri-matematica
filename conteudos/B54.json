@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Elipse reúne pontos cuja soma das distâncias a dois focos é constante. Centro na origem, eixo maior horizontal: a²>b² e c²=a²−b². Excentricidade e=c/a fica entre 0 e 1."
+      ],
+      "formulas": [
+        "\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1,\\quad c^2=a^2-b^2"
+      ],
+      "dica": "Denominador maior revela direção do eixo maior na forma canônica.",
+      "erroComum": "Elipse não é hipérbole: os sinais entre os termos quadráticos são iguais."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Elipse x²/25+y²/9=1: semieixos e focos?",
+        "passos": [
+          "a=5,b=3.",
+          "c²=25−9=16 ⇒ c=4.",
+          "Focos (−4,0) e (4,0)."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Para x²/16+y²/9=1, a vale:",
+      "opcoes": [
+        "3",
+        "4",
+        "5",
+        "7"
+      ],
+      "correta": 1,
+      "explicacao": "Maior denominador 16 ⇒ semieixo maior a=4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Na elipse, excentricidade satisfaz:",
+      "opcoes": [
+        "e<0",
+        "0≤e<1",
+        "e=1 sempre",
+        "e>1"
+      ],
+      "correta": 1,
+      "explicacao": "Para elipse não degenerada, 0≤e<1."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

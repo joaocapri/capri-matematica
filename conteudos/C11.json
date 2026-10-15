@@ -1,60 +1,99 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Usar as propriedades dos radicais",
+    "Simplificar radicais",
+    "Somar radicais semelhantes"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Propriedades",
       "paragrafos": [
-        "Juros compostos são multiplicativos: a cada período, a taxa incide sobre o montante atualizado. É uma progressão geométrica."
+        "A raiz do produto é o produto das raízes e a raiz do quociente é o quociente das raízes. Raiz de uma soma não se separa."
       ],
       "formulas": [
-        "M=C(1+i)^n"
+        "\\sqrt{ab}=\\sqrt a\\,\\sqrt b",
+        "\\sqrt{\\dfrac{a}{b}}=\\dfrac{\\sqrt a}{\\sqrt b}"
       ],
-      "dica": "Taxas compostas sucessivas usam fatores multiplicativos.",
-      "erroComum": "10% por dois meses não equivale exatamente a 20%: equivale a 21%."
+      "erroComum": "Escrever √(9 + 16) = √9 + √16. O certo é √25 = 5, e não 7."
     },
     {
-      "titulo": "Hora de ver funcionar",
+      "titulo": "Simplificar e somar",
       "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "Para simplificar, fatore o radicando e tire da raiz os fatores que formam quadrados (ou cubos, na raiz cúbica). Só se somam radicais com o mesmo índice e o mesmo radicando."
       ],
       "exemplo": {
-        "enunciado": "Aplique R$ 1000 a 10% ao mês por 2 meses.",
+        "enunciado": "Calcule √12 + √27.",
         "passos": [
-          "Após mês 1: 1000·1,1=1100.",
-          "Após mês 2: 1100·1,1=1210."
+          "√12 = √(4 · 3) = 2√3.",
+          "√27 = √(9 · 3) = 3√3.",
+          "Soma: 5√3."
         ]
-      }
+      },
+      "dica": "Procure o maior quadrado perfeito que divide o radicando: 4, 9, 16, 25, 36..."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Vídeos e prática: fundamentos de álgebra",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Uma coleção de videoaulas e exercícios para revisar fundamentos e notação.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-intro-to-algebra/alg-manipulating-expressions"
     }
   ],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "1000 a 20% composto por dois períodos:",
+      "nivel": "Aquecimento",
+      "enunciado": "√50 simplificada é",
       "opcoes": [
-        "1200",
-        "1400",
-        "1440",
-        "1500"
+        "5√2",
+        "2√5",
+        "25√2",
+        "10√5"
       ],
-      "correta": 2,
-      "explicacao": "1000·1,2²=1440."
+      "correta": 0,
+      "explicacao": "√(25 · 2)."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Fator de crescimento de 5% é:",
+      "enunciado": "√8 + √18 é",
       "opcoes": [
-        "0,05",
-        "0,95",
-        "1,05",
-        "1,5"
+        "√26",
+        "5√2",
+        "6√2",
+        "13√2"
       ],
-      "correta": 2,
-      "explicacao": "Acrescente 5%=0,05 à unidade."
+      "correta": 1,
+      "explicacao": "2√2 + 3√2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "∛54 simplificada é",
+      "opcoes": [
+        "3∛2",
+        "2∛3",
+        "9∛2",
+        "6∛3"
+      ],
+      "correta": 0,
+      "explicacao": "∛(27 · 2)."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "(√2 + √8 + √18)/√2 é",
+      "opcoes": [
+        "3",
+        "6",
+        "√28",
+        "2√7"
+      ],
+      "correta": 1,
+      "explicacao": "(√2 + 2√2 + 3√2)/√2 = 6."
     }
   ],
-  "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "arquivos": []
 }

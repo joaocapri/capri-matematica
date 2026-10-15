@@ -1,62 +1,36 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender conceitos primitivos e ângulos",
-    "Resolver um exemplo geométrico passo a passo",
-    "Evitar armadilhas de interpretação do desenho"
+    "Reconhecer os conceitos primitivos",
+    "Classificar ângulos",
+    "Usar complementares, suplementares e opostos pelo vértice"
   ],
   "teoria": [
     {
-      "titulo": "Desenhe antes de calcular",
+      "titulo": "O ponto de partida",
       "paragrafos": [
-        "Ponto marca posição, reta se prolonga indefinidamente e plano é uma superfície ideal sem espessura. Paralelas cortadas por uma transversal formam ângulos relacionados: alternos internos e correspondentes são congruentes; colaterais internos são suplementares."
-      ],
-      "formulas": [
-        "\\alpha+\\beta=180^{\\circ}\\quad\\text{(colaterais internos)}"
-      ],
-      "dica": "Desenhe F, Z e U para lembrar das posições dos ângulos.",
-      "erroComum": "Não confunda alternos internos com colaterais internos."
+        "Ponto, reta e plano são conceitos primitivos: não são definidos, são aceitos a partir da intuição. Um ângulo é a abertura entre duas semirretas de mesma origem, o vértice.",
+        "Quanto à medida, o ângulo é agudo (menor que 90°), reto (90°), obtuso (entre 90° e 180°) ou raso (180°)."
+      ]
     },
     {
-      "titulo": "Resolução com raciocínio",
+      "titulo": "Pares de ângulos",
       "paragrafos": [
-        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+        "Dois ângulos são complementares quando somam 90° e suplementares quando somam 180°. Ângulos opostos pelo vértice são sempre iguais."
       ],
       "exemplo": {
-        "enunciado": "Duas paralelas são cortadas por uma transversal e um ângulo mede 65°. Quanto mede seu colateral interno?",
+        "enunciado": "Um ângulo mede o dobro do seu complemento. Quanto ele mede?",
         "passos": [
-          "Colaterais internos somam 180°.",
-          "180°−65°=115°."
+          "Se o ângulo é x, o complemento é 90° − x.",
+          "x = 2(90° − x) ⇒ 3x = 180°.",
+          "x = 60°."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Dois ângulos suplementares somam:",
-      "opcoes": [
-        "90°",
-        "120°",
-        "180°",
-        "360°"
-      ],
-      "correta": 2,
-      "explicacao": "Suplementares somam 180°."
-    },
-    {
-      "nivel": "Aplicação",
-      "enunciado": "Um colateral interno de 70° mede:",
-      "opcoes": [
-        "70°",
-        "90°",
-        "110°",
-        "180°"
-      ],
-      "correta": 2,
-      "explicacao": "Em paralelas, colaterais internos são suplementares: 180−70=110."
+      },
+      "dica": "Escreva o complemento como 90° − x e o suplemento como 180° − x. O resto é equação.",
+      "erroComum": "Trocar complemento por suplemento. Complemento fecha 90°; suplemento fecha 180°."
     }
   ],
   "videos": [
@@ -67,6 +41,56 @@
       "url": "https://pt.khanacademy.org/math/geometry"
     }
   ],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "Um ângulo de 120° é",
+      "opcoes": [
+        "agudo",
+        "reto",
+        "obtuso",
+        "raso"
+      ],
+      "correta": 2,
+      "explicacao": "Está entre 90° e 180°."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O complemento de 35° é",
+      "opcoes": [
+        "55°",
+        "65°",
+        "145°",
+        "325°"
+      ],
+      "correta": 0,
+      "explicacao": "90° − 35° = 55°."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Dois ângulos opostos pelo vértice medem 3x + 10° e 5x − 30°. O valor de x é",
+      "opcoes": [
+        "10°",
+        "20°",
+        "25°",
+        "40°"
+      ],
+      "correta": 1,
+      "explicacao": "3x + 10 = 5x − 30 ⇒ x = 20."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O suplemento de um ângulo é o triplo do seu complemento. O ângulo mede",
+      "opcoes": [
+        "30°",
+        "45°",
+        "60°",
+        "90°"
+      ],
+      "correta": 1,
+      "explicacao": "180 − x = 3(90 − x) ⇒ 2x = 90 ⇒ x = 45."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

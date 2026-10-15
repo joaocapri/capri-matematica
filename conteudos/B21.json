@@ -1,61 +1,96 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Decompor figuras em partes conhecidas",
+    "Calcular áreas por diferença",
+    "Resolver problemas de pisos, terrenos e regiões sombreadas"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Dividir ou completar",
       "paragrafos": [
-        "Pirâmide tem uma base poligonal e faces laterais triangulares que se encontram no vértice. Em pirâmides regulares, o apótema lateral é a altura de cada face triangular e não se confunde com o apótema da base."
-      ],
-      "formulas": [
-        "A_T=A_b+A_l"
-      ],
-      "dica": "Para calcular área lateral, procure a altura inclinada das faces.",
-      "erroComum": "Altura vertical, apótema lateral e aresta lateral são segmentos diferentes."
-    },
-    {
-      "titulo": "Na prática",
-      "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "Figuras compostas quase nunca têm fórmula pronta. Há dois caminhos: dividir a figura em partes simples e somar as áreas, ou completar a figura até um retângulo conhecido e subtrair o que sobra."
       ],
       "exemplo": {
-        "enunciado": "Pirâmide quadrangular regular de lado da base 4 e apótema lateral 5: área total?",
+        "enunciado": "Um terreno em L é um retângulo de 10 m × 8 m do qual se retirou um canto de 4 m × 3 m. Qual a área?",
         "passos": [
-          "Área da base: 4²=16.",
-          "Cada face lateral: 4·5/2=10; são 4 faces ⇒ 40.",
-          "Total 16+40=56."
+          "Retângulo completo: 80 m².",
+          "Canto retirado: 12 m².",
+          "Área: 68 m²."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Pirâmide de base quadrada tem quantas faces laterais?",
-      "opcoes": [
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "correta": 2,
-      "explicacao": "Uma face por lado da base: quatro."
+      },
+      "dica": "Antes de calcular, desenhe as linhas de divisão na figura."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Pirâmide regular com perímetro de base 12 e apótema lateral 5: A_l =",
-      "opcoes": [
-        "17",
-        "30",
-        "60",
-        "120"
+      "titulo": "Regiões sombreadas",
+      "paragrafos": [
+        "Em figuras com círculos, a região sombreada costuma ser a diferença entre um quadrado e setores, ou entre dois círculos."
       ],
-      "correta": 1,
-      "explicacao": "A_l=P_b·g/2=12·5/2=30."
+      "exemplo": {
+        "enunciado": "Um quadrado de lado 4 tem um quarto de círculo de raio 4 com centro em um vértice. Qual a área fora do quarto de círculo? (Use π ≈ 3,14.)",
+        "passos": [
+          "Quadrado: 16.",
+          "Quarto de círculo: π · 16/4 ≈ 12,56.",
+          "Área fora: 16 − 12,56 ≈ 3,44."
+        ]
+      },
+      "erroComum": "Somar partes que se sobrepõem e contar a sobreposição duas vezes."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma sala retangular de 6 m × 5 m tem um pilar quadrado de 1 m de lado. A área de piso a revestir é",
+      "opcoes": [
+        "29 m²",
+        "30 m²",
+        "31 m²",
+        "24 m²"
+      ],
+      "correta": 0,
+      "explicacao": "30 − 1 = 29."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um quadrado de lado 10 tem um círculo inscrito. A área fora do círculo, com π ≈ 3,14, é",
+      "opcoes": [
+        "21,5",
+        "31,4",
+        "78,5",
+        "100"
+      ],
+      "correta": 0,
+      "explicacao": "100 − 78,5 = 21,5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma figura é formada por um retângulo 8 × 4 com um semicírculo de diâmetro 4 em um dos lados menores. Com π = 3, a área total é",
+      "opcoes": [
+        "32",
+        "38",
+        "44",
+        "56"
+      ],
+      "correta": 1,
+      "explicacao": "32 + π · 2²/2 = 32 + 6."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Um piso retangular de 4 m × 3 m será coberto por lajotas quadradas de 20 cm de lado. São necessárias",
+      "opcoes": [
+        "60 lajotas",
+        "150 lajotas",
+        "300 lajotas",
+        "600 lajotas"
+      ],
+      "correta": 2,
+      "explicacao": "12 m² ÷ 0,04 m² = 300."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

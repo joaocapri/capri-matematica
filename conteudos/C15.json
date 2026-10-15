@@ -1,61 +1,104 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Escolher a técnica de fatoração adequada",
+    "Fatorar por fator comum e agrupamento",
+    "Fatorar diferenças de quadrados e trinômios quadrados perfeitos"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Fatorar é desfazer a multiplicação",
       "paragrafos": [
-        "Permutação ordena todos os elementos; arranjo ordena parte deles. Em senha e pódio, as posições diferenciam resultados: ordem importa."
+        "Fatorar é escrever uma expressão como produto. O primeiro passo é sempre procurar um fator comum a todos os termos e colocá-lo em evidência. Se sobrarem quatro termos, tente agrupar dois a dois."
       ],
       "formulas": [
-        "A_{n,p}=\\frac{n!}{(n-p)!}"
-      ],
-      "dica": "Se a ordem importa, conte escolhas decrescentes antes de buscar fórmula.",
-      "erroComum": "Combinação não serve para pódio, pois ouro e prata são posições diferentes."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "ax+ay=a(x+y)",
+        "ax+ay+bx+by=(a+b)(x+y)"
       ],
       "exemplo": {
-        "enunciado": "Quantos pódios diferentes podem surgir com 5 atletas e 3 posições?",
+        "enunciado": "Fatore 6x² + 9x.",
         "passos": [
-          "1º lugar: 5 opções.",
-          "2º: 4; 3º: 3.",
-          "5·4·3=60."
+          "O fator comum de 6 e 9 é 3; de x² e x é x.",
+          "3x(2x + 3).",
+          "Confira distribuindo: 6x² + 9x."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Permutações de A,B,C:",
-      "opcoes": [
-        "3",
-        "6",
-        "9",
-        "12"
-      ],
-      "correta": 1,
-      "explicacao": "3!=6."
+      },
+      "dica": "Confira sempre a fatoração multiplicando de volta."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Arranjos de 4 objetos escolhidos 2 a 2:",
-      "opcoes": [
-        "6",
-        "8",
-        "12",
-        "16"
+      "titulo": "Os produtos notáveis ao contrário",
+      "paragrafos": [
+        "Diferença de quadrados: dois quadrados com sinal de menos entre eles. Trinômio quadrado perfeito: dois quadrados e o dobro do produto das raízes."
       ],
-      "correta": 2,
-      "explicacao": "4·3=12."
+      "formulas": [
+        "a^2-b^2=(a+b)(a-b)",
+        "a^2\\pm2ab+b^2=(a\\pm b)^2"
+      ],
+      "exemplo": {
+        "enunciado": "Fatore x² − 10x + 25.",
+        "passos": [
+          "x² e 25 são quadrados de x e 5.",
+          "O termo do meio é 2 · x · 5 = 10x.",
+          "x² − 10x + 25 = (x − 5)²."
+        ]
+      },
+      "erroComum": "x² + 9 não é diferença de quadrados e não se fatora nos reais."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "A fatoração de 5x + 15 é",
+      "opcoes": [
+        "5(x + 3)",
+        "5(x + 15)",
+        "x(5 + 15)",
+        "15(x + 5)"
+      ],
+      "correta": 0,
+      "explicacao": "5 é fator comum."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "A fatoração de x² − 16 é",
+      "opcoes": [
+        "(x − 4)²",
+        "(x + 4)(x − 4)",
+        "(x − 8)(x + 2)",
+        "x(x − 16)"
+      ],
+      "correta": 1,
+      "explicacao": "Diferença de quadrados."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A fatoração de ax + bx + 2a + 2b é",
+      "opcoes": [
+        "(a + b)(x + 2)",
+        "(a + 2)(x + b)",
+        "ab(x + 2)",
+        "(a + x)(b + 2)"
+      ],
+      "correta": 0,
+      "explicacao": "x(a + b) + 2(a + b)."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "O valor de 2023² − 2022² é",
+      "opcoes": [
+        "1",
+        "2022",
+        "4045",
+        "4046"
+      ],
+      "correta": 2,
+      "explicacao": "(2023 + 2022)(2023 − 2022)."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

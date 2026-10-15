@@ -1,0 +1,77 @@
+{
+  "status": "rascunho-para-revisao",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender relações métricas no triângulo retângulo",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
+  "teoria": [
+    {
+      "titulo": "Desenhe antes de calcular",
+      "paragrafos": [
+        "No triângulo retângulo, a soma dos quadrados dos catetos é o quadrado da hipotenusa. A altura relativa à hipotenusa também cria triângulos semelhantes e relações úteis."
+      ],
+      "formulas": [
+        "a^2=b^2+c^2"
+      ],
+      "dica": "Desenhe e identifique qual lado está diante do ângulo reto: é sempre a hipotenusa.",
+      "erroComum": "Não some os catetos e iguale à hipotenusa."
+    },
+    {
+      "titulo": "Resolução com raciocínio",
+      "paragrafos": [
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+      ],
+      "exemplo": {
+        "enunciado": "Uma escada de 5 m encosta numa parede e seu pé fica a 3 m dela. Qual a altura?",
+        "passos": [
+          "Hipotenusa 5, cateto horizontal 3.",
+          "Altura²=25−9=16.",
+          "Altura=4 m."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Catetos 6 e 8 dão hipotenusa:",
+      "opcoes": [
+        "10",
+        "12",
+        "14",
+        "16"
+      ],
+      "correta": 0,
+      "explicacao": "√(36+64)=10."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Hipotenusa 13 e cateto 5: outro cateto é:",
+      "opcoes": [
+        "8",
+        "10",
+        "12",
+        "18"
+      ],
+      "correta": 2,
+      "explicacao": "√(169−25)=12."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Geometria: retas, ângulos e triângulos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
+  "arquivos": [],
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
+}

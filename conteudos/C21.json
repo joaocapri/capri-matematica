@@ -1,61 +1,95 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Montar equações do 2º grau a partir de problemas",
+    "Descartar soluções sem sentido",
+    "Resolver problemas de área, produto e lucro"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Quando aparece o 2º grau",
       "paragrafos": [
-        "Probabilidade mede a chance de um evento. Se os resultados elementares forem equiprováveis, contamos favoráveis sobre possíveis. O complementar costuma simplificar cálculos."
-      ],
-      "formulas": [
-        "P(A)=\\frac{|A|}{|\\Omega|},\\quad P(A^c)=1-P(A)"
-      ],
-      "dica": "Defina o espaço amostral antes de contar.",
-      "erroComum": "Favoráveis/possíveis só é fórmula direta quando resultados são igualmente prováveis."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "Áreas, produtos de números e problemas com “o quadrado de” costumam gerar equações do 2º grau. Resolva normalmente e descarte o que não faz sentido no contexto."
       ],
       "exemplo": {
-        "enunciado": "Lance um dado honesto: probabilidade de obter número par?",
+        "enunciado": "Um retângulo tem comprimento 3 m maior que a largura e área 40 m². Quais as medidas?",
         "passos": [
-          "Favoráveis 2,4,6: são 3.",
-          "Possíveis: 6.",
-          "P=3/6=1/2."
+          "Largura x, comprimento x + 3.",
+          "x(x + 3) = 40 ⇒ x² + 3x − 40 = 0.",
+          "x = 5 ou x = −8. Como é medida, x = 5: lados 5 m e 8 m."
+        ]
+      },
+      "erroComum": "Manter a raiz negativa quando a incógnita é uma medida, idade ou quantidade."
+    },
+    {
+      "titulo": "Divisão entre pessoas",
+      "paragrafos": [
+        "Problemas do tipo “se fossem duas pessoas a menos, cada uma pagaria mais” levam a equações com frações que viram 2º grau."
+      ],
+      "exemplo": {
+        "enunciado": "Uma conta de R$ 120,00 seria dividida igualmente. Como 2 amigos não foram, cada um pagou R$ 5,00 a mais. Quantos foram?",
+        "passos": [
+          "Com n pessoas: 120/(n − 2) = 120/n + 5.",
+          "Multiplicando: 120n = 120(n − 2) + 5n(n − 2) ⇒ n² − 2n − 48 = 0.",
+          "n = 8. Foram 6 amigos."
         ]
       }
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Chance de sair 6 num dado honesto:",
+      "nivel": "Aplicação",
+      "enunciado": "O produto de dois naturais consecutivos é 132. O maior deles é",
       "opcoes": [
-        "1/2",
-        "1/3",
-        "1/6",
-        "1/12"
+        "11",
+        "12",
+        "13",
+        "66"
       ],
-      "correta": 2,
-      "explicacao": "Um caso favorável entre seis."
+      "correta": 1,
+      "explicacao": "x(x + 1) = 132 ⇒ x = 11."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se P(A)=0,3, P(não A) =",
+      "enunciado": "Um terreno quadrado ganhou 2 m em cada lado e passou a ter 81 m². O lado original media",
       "opcoes": [
-        "0,3",
-        "0,5",
-        "0,7",
-        "1,3"
+        "5 m",
+        "7 m",
+        "9 m",
+        "11 m"
       ],
-      "correta": 2,
-      "explicacao": "1−0,3=0,7."
+      "correta": 1,
+      "explicacao": "(x + 2)² = 81."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um número somado com o seu quadrado dá 30. Um valor possível para o número é",
+      "opcoes": [
+        "5",
+        "6",
+        "−5",
+        "10"
+      ],
+      "correta": 0,
+      "explicacao": "x² + x − 30 = 0 ⇒ x = 5 ou −6."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Um jardim retangular de 10 m × 6 m tem um caminho de largura x em volta, e a área total é 96 m². A largura x é",
+      "opcoes": [
+        "1 m",
+        "1,5 m",
+        "2 m",
+        "3 m"
+      ],
+      "correta": 0,
+      "explicacao": "(10 + 2x)(6 + 2x) = 96 ⇒ x² + 8x − 9 = 0 ⇒ x = 1."
     }
   ],
-  "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "arquivos": []
 }

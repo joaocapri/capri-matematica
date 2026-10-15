@@ -1,72 +1,87 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender triângulos - definições e soma angular",
-    "Resolver um exemplo geométrico passo a passo",
-    "Evitar armadilhas de interpretação do desenho"
+    "Identificar ângulos alternos, correspondentes e colaterais",
+    "Usar as relações entre eles quando as retas são paralelas",
+    "Resolver o problema do “bico” entre paralelas"
   ],
   "teoria": [
     {
-      "titulo": "Desenhe antes de calcular",
+      "titulo": "Duas paralelas e uma transversal",
       "paragrafos": [
-        "Em qualquer triângulo plano, a soma dos ângulos internos é 180°. O ângulo externo em um vértice, adjacente ao interno, mede a soma dos dois internos não adjacentes."
-      ],
-      "formulas": [
-        "A+B+C=180^{\\circ}"
-      ],
-      "dica": "Use o ângulo externo quando ele aparece no desenho: economiza uma etapa.",
-      "erroComum": "Triângulo pode ter no máximo um ângulo interno obtuso."
-    },
-    {
-      "titulo": "Resolução com raciocínio",
-      "paragrafos": [
-        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+        "Quando uma reta corta duas paralelas, formam-se oito ângulos. Os correspondentes (mesma posição em cada cruzamento) são iguais. Os alternos (lados opostos da transversal, entre ou fora das paralelas) são iguais. Os colaterais (mesmo lado, entre as paralelas) somam 180°."
       ],
       "exemplo": {
-        "enunciado": "Um triângulo tem dois ângulos internos de 50° e 60°. Ache o terceiro.",
+        "enunciado": "Dois ângulos colaterais internos medem 2x e x + 30°. Quanto vale x?",
         "passos": [
-          "Some os conhecidos: 50+60=110°.",
-          "Subtraia de 180°: 70°."
+          "Colaterais somam 180°.",
+          "2x + x + 30 = 180 ⇒ x = 50°."
         ]
-      }
+      },
+      "dica": "Na dúvida, só existem dois valores na figura: um ângulo e o seu suplemento."
+    },
+    {
+      "titulo": "O bico",
+      "paragrafos": [
+        "Se entre duas paralelas há um “bico” apontando para dentro, o ângulo do bico é a soma dos ângulos que os lados fazem com as paralelas. Trace uma terceira paralela pelo vértice do bico para ver isso."
+      ],
+      "erroComum": "Usar as relações de alternos e correspondentes quando as retas não são paralelas. Elas só valem com paralelas."
     }
   ],
+  "videos": [],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Dois ângulos medem 45° e 65°. O terceiro mede:",
+      "enunciado": "Ângulos alternos internos entre retas paralelas são",
       "opcoes": [
-        "65°",
-        "70°",
-        "80°",
-        "90°"
+        "suplementares",
+        "complementares",
+        "iguais",
+        "sempre retos"
       ],
-      "correta": 1,
-      "explicacao": "180−45−65=70."
+      "correta": 2,
+      "explicacao": "É a propriedade das paralelas."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Ângulos colaterais internos entre paralelas",
+      "opcoes": [
+        "são iguais",
+        "somam 90°",
+        "somam 180°",
+        "somam 360°"
+      ],
+      "correta": 2,
+      "explicacao": "São suplementares."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se os dois ângulos internos não adjacentes são 30° e 80°, o externo vale:",
+      "enunciado": "Dois ângulos correspondentes medem 4x − 20° e 2x + 40°. Cada um mede",
       "opcoes": [
-        "50°",
-        "80°",
+        "30°",
+        "60°",
         "100°",
-        "110°"
+        "120°"
       ],
-      "correta": 3,
-      "explicacao": "30+80=110."
-    }
-  ],
-  "videos": [
+      "correta": 2,
+      "explicacao": "4x − 20 = 2x + 40 ⇒ x = 30; ângulo 100°."
+    },
     {
-      "titulo": "Geometria: retas, ângulos e triângulos",
-      "canal": "Khan Academy Brasil · biblioteca",
-      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
-      "url": "https://pt.khanacademy.org/math/geometry"
+      "nivel": "Aplicação",
+      "enunciado": "Entre duas paralelas, os lados de um bico fazem 30° e 45° com elas. O ângulo do bico mede",
+      "opcoes": [
+        "15°",
+        "75°",
+        "105°",
+        "150°"
+      ],
+      "correta": 1,
+      "explicacao": "O bico é a soma: 30° + 45°."
     }
   ],
-  "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "arquivos": []
 }

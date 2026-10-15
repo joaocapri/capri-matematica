@@ -1,0 +1,91 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Desenhar os gráficos de seno e cosseno",
+    "Identificar domínio, imagem e período",
+    "Reconhecer onde cada função cresce e decresce"
+  ],
+  "teoria": [
+    {
+      "titulo": "Senoide e cossenoide",
+      "paragrafos": [
+        "A função seno começa em 0, sobe até 1 em π/2, volta a 0 em π, desce até −1 em 3π/2 e volta a 0 em 2π. Depois tudo se repete. A cossenoide tem o mesmo formato, deslocada: começa em 1."
+      ],
+      "formulas": [
+        "D=\\mathbb{R},\\quad\\operatorname{Im}=[-1,1],\\quad p=2\\pi"
+      ],
+      "dica": "Marque os cinco pontos principais (0, π/2, π, 3π/2, 2π) e ligue com uma curva suave."
+    },
+    {
+      "titulo": "Lendo o gráfico",
+      "paragrafos": [
+        "O período é o comprimento de um ciclo completo. A imagem vai do valor mínimo ao máximo. O seno é crescente de −π/2 a π/2 e decrescente de π/2 a 3π/2."
+      ],
+      "exemplo": {
+        "enunciado": "Quantas vezes sen x = 1/2 em [0, 2π]?",
+        "passos": [
+          "A reta y = 1/2 corta a senoide uma vez na subida e uma na descida, no intervalo de 0 a π.",
+          "Nas soluções x = π/6 e x = 5π/6.",
+          "São 2 vezes."
+        ]
+      },
+      "erroComum": "Achar que a função seno tem imagem ℝ."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O período da função f(x) = sen x é",
+      "opcoes": [
+        "π/2",
+        "π",
+        "2π",
+        "4π"
+      ],
+      "correta": 2,
+      "explicacao": "Um ciclo completo."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A imagem de f(x) = cos x é",
+      "opcoes": [
+        "ℝ",
+        "[0, 1]",
+        "[−1, 1]",
+        "[−2, 2]"
+      ],
+      "correta": 2,
+      "explicacao": "Cosseno entre −1 e 1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor máximo de f(x) = sen x ocorre, em [0, 2π], em x igual a",
+      "opcoes": [
+        "0",
+        "π/2",
+        "π",
+        "3π/2"
+      ],
+      "correta": 1,
+      "explicacao": "sen(π/2) = 1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Em [0, 2π], a função cos x vale zero em",
+      "opcoes": [
+        "0 e π",
+        "π/2 e 3π/2",
+        "π e 2π",
+        "só em π/2"
+      ],
+      "correta": 1,
+      "explicacao": "Cosseno zera nos pontos do eixo vertical."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

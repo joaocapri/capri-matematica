@@ -1,29 +1,34 @@
 {
-  "status": "publicado",
+  "status": "rascunho-para-revisao",
   "versao": "1.0",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender áreas de figuras planas i - quadriláteros",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Desenhe antes de calcular",
       "paragrafos": [
-        "Uma projeção ortogonal é como a sombra lançada por raios perpendiculares ao plano. A altura de um sólido é a distância perpendicular entre os planos de base; uma aresta inclinada não é automaticamente uma altura."
+        "Área mede superfície em unidades quadradas. Para quadriláteros, vale organizar a figura em triângulos ou retângulos e reconhecer as fórmulas com base e altura perpendicular."
       ],
       "formulas": [
-        "d=\\sqrt{h^2+p^2}"
+        "A_{\\text{paralelogramo}}=bh,\\quad A_{\\text{trap\\acute ezio}}=\\frac{(B+b)h}2"
       ],
-      "dica": "Procure o segmento que faz 90° com o plano, não com uma reta qualquer.",
-      "erroComum": "Projeção de um segmento pode encolher; não mantém necessariamente seu comprimento."
+      "dica": "Se a figura é composta, divida-a em áreas simples e depois some ou subtraia.",
+      "erroComum": "O lado inclinado de um paralelogramo nem sempre é sua altura."
     },
     {
-      "titulo": "Na prática",
+      "titulo": "Resolução com raciocínio",
       "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
       ],
       "exemplo": {
-        "enunciado": "Uma haste de 5 m projeta sombra horizontal de 3 m. Qual a altura da extremidade?",
+        "enunciado": "Um trapézio tem bases 10 e 6, altura 4. Calcule a área.",
         "passos": [
-          "O triângulo entre haste, projeção e altura é retângulo.",
-          "h²+3²=5² ⇒ h=4 m."
+          "A=(10+6)·4/2.",
+          "A=32 unidades²."
         ]
       }
     }
@@ -31,30 +36,41 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "A projeção ortogonal sobre um plano ocorre por retas:",
+      "enunciado": "Trapézio com B=8,b=4,h=3 tem área:",
       "opcoes": [
-        "Paralelas ao plano",
-        "Perpendiculares ao plano",
-        "Oblíquas quaisquer",
-        "Circulares"
+        "12",
+        "18",
+        "24",
+        "36"
       ],
       "correta": 1,
-      "explicacao": "As retas projetantes são perpendiculares ao plano."
+      "explicacao": "(8+4)·3/2=18."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Hipotenusa 13 e projeção horizontal 5: altura =",
+      "enunciado": "Um losango tem diagonais 6 e 10. Área:",
       "opcoes": [
-        "5",
-        "8",
-        "12",
-        "18"
+        "16",
+        "30",
+        "60",
+        "120"
       ],
-      "correta": 2,
-      "explicacao": "h=√(169−25)=12."
+      "correta": 1,
+      "explicacao": "A=D·d/2=30."
     }
   ],
-  "videos": [],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
   "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
 }

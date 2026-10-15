@@ -1,71 +1,97 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de o conceito de função",
-    "Aplicar o procedimento em um exemplo resolvido",
-    "Reconhecer erros frequentes antes de enfrentar uma questão"
+    "Resolver inequações do 1º grau",
+    "Inverter a desigualdade ao multiplicar por negativo",
+    "Resolver inequações simultâneas"
   ],
   "teoria": [
     {
-      "titulo": "A ideia que destrava",
+      "titulo": "Como uma equação, com um cuidado",
       "paragrafos": [
-        "Função é uma regra que atribui a cada elemento do domínio exatamente uma imagem no contradomínio. Dois x diferentes podem chegar ao mesmo y; o mesmo x não pode apontar para duas saídas."
+        "Uma inequação se resolve como uma equação: isole x. A única diferença é que, ao multiplicar ou dividir os dois lados por um número negativo, o sinal da desigualdade se inverte."
       ],
       "formulas": [
-        "f:A\\to B,\\quad x\\mapsto f(x)"
-      ],
-      "dica": "No gráfico, qualquer reta vertical deve encontrar no máximo um ponto.",
-      "erroComum": "Não confunda imagem da função com contradomínio: a imagem pode ser menor."
-    },
-    {
-      "titulo": "Vamos fazer uma juntos",
-      "paragrafos": [
-        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+        "-2x>6\\;\\Rightarrow\\;x<-3"
       ],
       "exemplo": {
-        "enunciado": "Considere f(x)=2x+1. Determine f(3).",
+        "enunciado": "Resolva 5 − 3x ≤ 11.",
         "passos": [
-          "Substitua a entrada x por 3.",
-          "f(3)=2·3+1.",
-          "A imagem de 3 é 7."
+          "−3x ≤ 6.",
+          "Dividindo por −3, o sinal vira: x ≥ −2.",
+          "S = [−2, +∞[."
         ]
-      }
+      },
+      "erroComum": "Dividir por número negativo sem inverter o sinal da desigualdade."
+    },
+    {
+      "titulo": "Inequações simultâneas",
+      "paragrafos": [
+        "Em a < f(x) < b, resolva as duas desigualdades e faça a interseção. Quando possível, resolva tudo de uma vez, operando nas três partes."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva −1 < 2x + 3 ≤ 9.",
+        "passos": [
+          "Subtraia 3 nas três partes: −4 < 2x ≤ 6.",
+          "Divida por 2: −2 < x ≤ 3.",
+          "S = ]−2, 3]."
+        ]
+      },
+      "dica": "Represente a solução na reta numérica, com bolinha aberta ou fechada."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Em uma função, cada entrada do domínio deve ter:",
+      "nivel": "Aquecimento",
+      "enunciado": "A solução de 2x − 5 > 7 é",
       "opcoes": [
-        "Duas imagens",
-        "Exatamente uma imagem",
-        "Nenhuma imagem",
-        "Sempre uma imagem diferente das outras"
+        "x > 1",
+        "x > 6",
+        "x < 6",
+        "x > 12"
       ],
       "correta": 1,
-      "explicacao": "Essa é a condição essencial para ser função."
+      "explicacao": "2x > 12, logo x > 6."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A solução de −4x ≥ 12 é",
+      "opcoes": [
+        "x ≥ −3",
+        "x ≤ −3",
+        "x ≥ 3",
+        "x ≤ 3"
+      ],
+      "correta": 1,
+      "explicacao": "Dividindo por −4, o sinal se inverte: x ≤ −3."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se f(x)=x², qual é f(−3)?",
+      "enunciado": "Quantos números inteiros satisfazem 1 ≤ 3x − 2 < 13?",
       "opcoes": [
-        "−9",
-        "−6",
+        "4",
+        "5",
         "6",
-        "9"
+        "15"
       ],
-      "correta": 3,
-      "explicacao": "(−3)²=9."
-    }
-  ],
-  "videos": [
+      "correta": 0,
+      "explicacao": "3 ≤ 3x < 15, então 1 ≤ x < 5: x = 1, 2, 3 ou 4."
+    },
     {
-      "titulo": "Vídeos e prática: funções",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Material de apoio sobre funções, domínio e composição.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
+      "nivel": "Aplicação",
+      "enunciado": "Um plano cobra R$ 40,00 fixos mais R$ 0,50 por minuto. Para a conta não passar de R$ 100,00, o máximo de minutos é",
+      "opcoes": [
+        "80",
+        "100",
+        "120",
+        "200"
+      ],
+      "correta": 2,
+      "explicacao": "40 + 0,5x ≤ 100 ⇒ x ≤ 120."
     }
   ],
   "exercicios": [],

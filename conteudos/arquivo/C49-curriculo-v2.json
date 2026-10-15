@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Sistemas lineares podem ter solução única (SPD), nenhuma (SI) ou infinitas (SPI). Escalonar preservando equivalência ajuda a reconhecer as três situações; Cramer exige matriz de coeficientes quadrada e det≠0 para solução única."
+      ],
+      "formulas": [
+        "AX=b,\\qquad \\det(A)\\neq0\\Rightarrow\\text{solu\\c c\\~ao \\`unica}"
+      ],
+      "dica": "Ao escalonar, linha [0 0 | 1] denuncia incompatibilidade.",
+      "erroComum": "DetA=0 não distingue SPI de SI sozinho; olhe o sistema aumentado."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva x+y=5 e x−y=1.",
+        "passos": [
+          "Somando: 2x=6 ⇒ x=3.",
+          "Substituindo: y=2.",
+          "Solução única (3,2): SPD."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Sistema x+y=2 e 2x+2y=4 é:",
+      "opcoes": [
+        "SPD",
+        "SPI",
+        "SI",
+        "Impossível avaliar"
+      ],
+      "correta": 1,
+      "explicacao": "Uma equação é múltipla da outra: infinitas soluções."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Sistema x+y=2 e x+y=3 é:",
+      "opcoes": [
+        "SPD",
+        "SPI",
+        "SI",
+        "Sempre solução (2,3)"
+      ],
+      "correta": 2,
+      "explicacao": "Mesma expressão não pode valer 2 e 3 simultaneamente."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

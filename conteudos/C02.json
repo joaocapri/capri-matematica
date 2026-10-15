@@ -1,61 +1,95 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Seguir a ordem das operações",
+    "Resolver parênteses, colchetes e chaves",
+    "Evitar os erros mais comuns em expressões"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Quem vem primeiro",
       "paragrafos": [
-        "MMC é o menor múltiplo comum positivo; serve para sincronizar ciclos. MDC é o maior divisor comum; aparece quando precisamos dividir em grupos iguais sem sobras."
-      ],
-      "formulas": [
-        "\\operatorname{mmc}(12,18)=36,\\quad\\operatorname{mdc}(12,18)=6"
-      ],
-      "dica": "Encontros periódicos pedem MMC; cortes iguais máximos pedem MDC.",
-      "erroComum": "MMC não é a multiplicação pura de dois números quando compartilham fatores."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "Numa expressão numérica, faça primeiro as potências e raízes, depois multiplicações e divisões (na ordem em que aparecem) e, por último, somas e subtrações. Parênteses, colchetes e chaves são resolvidos de dentro para fora."
       ],
       "exemplo": {
-        "enunciado": "Um sinal pisca a cada 12 s e outro a cada 18 s. Quando piscam juntos novamente?",
+        "enunciado": "Calcule 20 − 3 · [8 − (2 + 1)²] .",
         "passos": [
-          "12=2²·3, 18=2·3².",
-          "MMC=2²·3²=36.",
-          "Após 36 segundos."
+          "Parênteses: 2 + 1 = 3, e 3² = 9.",
+          "Colchetes: 8 − 9 = −1.",
+          "20 − 3 · (−1) = 20 + 3 = 23."
+        ]
+      },
+      "dica": "Sublinhe a operação que você vai fazer em cada passo e reescreva o resto igual.",
+      "erroComum": "Fazer as contas da esquerda para a direita sem respeitar a prioridade: 2 + 3 · 4 é 14, não 20."
+    },
+    {
+      "titulo": "Divisão e multiplicação em sequência",
+      "paragrafos": [
+        "Quando multiplicação e divisão aparecem juntas, resolva na ordem em que aparecem, da esquerda para a direita."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule 24 ÷ 4 · 2.",
+        "passos": [
+          "Da esquerda para a direita: 24 ÷ 4 = 6.",
+          "6 · 2 = 12."
         ]
       }
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "MDC de 18 e 24:",
+      "nivel": "Aquecimento",
+      "enunciado": "O valor de 5 + 2 · 3 é",
       "opcoes": [
-        "2",
-        "3",
-        "6",
-        "12"
+        "11",
+        "21",
+        "13",
+        "10"
       ],
-      "correta": 2,
-      "explicacao": "Divisores comuns: 1,2,3,6; maior 6."
+      "correta": 0,
+      "explicacao": "Primeiro a multiplicação."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "MMC de 4 e 6:",
+      "enunciado": "O valor de 36 ÷ 6 · 3 é",
       "opcoes": [
-        "10",
-        "12",
+        "2",
         "18",
-        "24"
+        "12",
+        "108"
       ],
       "correta": 1,
-      "explicacao": "Múltiplos comuns: 12,24... menor 12."
+      "explicacao": "Da esquerda para a direita: 6 · 3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de 2 · [10 − (3 + 1)²] é",
+      "opcoes": [
+        "−12",
+        "12",
+        "4",
+        "−36"
+      ],
+      "correta": 0,
+      "explicacao": "(4)² = 16; 10 − 16 = −6; 2 · (−6) = −12."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de 50 − {4 · [3 + 2 · (5 − 3)]} é",
+      "opcoes": [
+        "22",
+        "30",
+        "10",
+        "28"
+      ],
+      "correta": 0,
+      "explicacao": "5 − 3 = 2; 3 + 4 = 7; 4 · 7 = 28; 50 − 28 = 22."
     }
   ],
-  "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "arquivos": []
 }

@@ -1,0 +1,98 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Ler seno e cosseno no ciclo trigonométrico",
+    "Saber os sinais em cada quadrante",
+    "Encontrar seno e cosseno de arcos notáveis"
+  ],
+  "teoria": [
+    {
+      "titulo": "Os eixos",
+      "paragrafos": [
+        "No ciclo trigonométrico (raio 1), o ponto que corresponde a um arco x tem coordenadas (cos x, sen x). O cosseno é lido no eixo horizontal e o seno, no vertical. Por isso os dois ficam sempre entre −1 e 1."
+      ],
+      "formulas": [
+        "-1\\le\\operatorname{sen}x\\le1",
+        "-1\\le\\cos x\\le1"
+      ],
+      "exemplo": {
+        "enunciado": "Quanto valem sen 90° e cos 180°?",
+        "passos": [
+          "90° é o ponto (0, 1): sen 90° = 1.",
+          "180° é o ponto (−1, 0): cos 180° = −1."
+        ]
+      }
+    },
+    {
+      "titulo": "Sinais por quadrante",
+      "paragrafos": [
+        "O seno é positivo onde o ponto está acima do eixo x (1º e 2º quadrantes). O cosseno é positivo à direita do eixo y (1º e 4º quadrantes)."
+      ],
+      "exemplo": {
+        "enunciado": "Qual o sinal de sen 200° e cos 200°?",
+        "passos": [
+          "200° está no 3º quadrante.",
+          "Abaixo e à esquerda: seno negativo e cosseno negativo."
+        ]
+      },
+      "dica": "Desenhe o ciclo com as projeções antes de responder.",
+      "erroComum": "Achar que o seno pode valer 2. Ele nunca passa de 1."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O valor de cos 0° é",
+      "opcoes": [
+        "0",
+        "1",
+        "−1",
+        "1/2"
+      ],
+      "correta": 1,
+      "explicacao": "O ponto é (1, 0)."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em qual quadrante seno e cosseno são ambos negativos?",
+      "opcoes": [
+        "1º",
+        "2º",
+        "3º",
+        "4º"
+      ],
+      "correta": 2,
+      "explicacao": "Abaixo e à esquerda."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de sen 270° é",
+      "opcoes": [
+        "0",
+        "1",
+        "−1",
+        "1/2"
+      ],
+      "correta": 2,
+      "explicacao": "O ponto é (0, −1)."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "O cosseno é positivo nos quadrantes",
+      "opcoes": [
+        "1º e 2º",
+        "1º e 4º",
+        "2º e 3º",
+        "3º e 4º"
+      ],
+      "correta": 1,
+      "explicacao": "À direita do eixo y."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

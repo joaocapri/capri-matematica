@@ -1,60 +1,88 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Relacionar sólidos e suas planificações",
+    "Reconhecer vistas frontal, lateral e superior",
+    "Resolver questões de vistas no estilo ENEM"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Planificar",
       "paragrafos": [
-        "Tronco de cone resulta de cortar um cone por plano paralelo à base. Seu volume depende dos dois raios e da altura, enquanto a área lateral depende da geratriz do tronco."
+        "Planificar um sólido é abrir a sua superfície sobre o plano. Um cubo vira seis quadrados ligados; um cilindro, dois círculos e um retângulo; um cone, um círculo e um setor circular."
       ],
-      "formulas": [
-        "V=\\frac{\\pi h}{3}(R^2+Rr+r^2)"
-      ],
-      "dica": "Para achar geratriz do tronco reto: g²=h²+(R−r)².",
-      "erroComum": "Não substitua R+r por R−r na relação da geratriz."
+      "dica": "Para testar uma planificação de cubo, imagine dobrar: duas faces não podem cair no mesmo lugar.",
+      "erroComum": "Achar que qualquer arranjo de seis quadrados forma um cubo. Só 11 arranjos funcionam."
     },
     {
-      "titulo": "Na prática",
+      "titulo": "Vistas ortogonais",
       "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "A vista frontal é o que se vê olhando de frente; a lateral, de lado; a superior, de cima. Cada vista mostra só o contorno e as arestas visíveis daquela direção."
       ],
       "exemplo": {
-        "enunciado": "Tronco com R=3,r=1,h=3. Calcule V.",
+        "enunciado": "Qual é a vista superior de um cone em pé?",
         "passos": [
-          "Dentro do parêntese: 9+3+1=13.",
-          "π·3/3·13=13π."
+          "De cima se vê a base circular.",
+          "O vértice aparece como um ponto no centro.",
+          "A vista é um círculo com um ponto central."
         ]
       }
     }
   ],
+  "videos": [],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "R=2,r=1,h=3: volume do tronco =",
+      "enunciado": "A planificação da superfície lateral de um cilindro é",
       "opcoes": [
-        "3π",
-        "7π",
-        "9π",
-        "14π"
+        "um círculo",
+        "um retângulo",
+        "um setor circular",
+        "um triângulo"
       ],
       "correta": 1,
-      "explicacao": "(π·3/3)(4+2+1)=7π."
+      "explicacao": "A lateral desenrolada é um retângulo."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A planificação da superfície lateral de um cone é",
+      "opcoes": [
+        "um retângulo",
+        "um setor circular",
+        "um trapézio",
+        "um quadrado"
+      ],
+      "correta": 1,
+      "explicacao": "Abrindo o cone surge um setor."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Para tronco reto, com h=4 e R−r=3, geratriz =",
+      "enunciado": "A vista frontal de um cilindro em pé sobre a mesa é",
       "opcoes": [
-        "3",
+        "um círculo",
+        "um retângulo",
+        "um triângulo",
+        "uma elipse"
+      ],
+      "correta": 1,
+      "explicacao": "De frente se vê a altura e o diâmetro."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Quantas faces tem a planificação de uma pirâmide de base quadrada?",
+      "opcoes": [
         "4",
         "5",
-        "7"
+        "6",
+        "8"
       ],
-      "correta": 2,
-      "explicacao": "g=√(16+9)=5."
+      "correta": 1,
+      "explicacao": "A base e quatro triângulos."
     }
   ],
-  "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "arquivos": []
 }

@@ -1,59 +1,97 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Contar arranjos em círculo",
+    "Entender por que se fixa uma posição",
+    "Resolver problemas com pessoas juntas em rodas"
+  ],
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Rodas",
       "paragrafos": [
-        "Arco duplo é um caso particular das fórmulas de adição quando os dois ângulos são iguais. Para cosseno, existem três formas equivalentes conforme a informação dada."
+        "Numa roda, o que importa é quem está ao lado de quem, não a posição absoluta. Girar todo mundo não muda a configuração. Por isso, fixe uma pessoa e permute as demais."
       ],
       "formulas": [
-        "\\sin2x=2\\sin x\\cos x,\\quad\\cos2x=1-2\\sin^2x"
-      ],
-      "dica": "Use cos2x=2cos²x−1 quando só conhecer cosseno.",
-      "erroComum": "sen2x não é 2senx."
-    },
-    {
-      "titulo": "Veja funcionando",
-      "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "PC_n=(n-1)!"
       ],
       "exemplo": {
-        "enunciado": "Se senx=3/5 e cosx=4/5, calcule sen2x.",
+        "enunciado": "De quantas formas 6 pessoas sentam numa mesa redonda?",
         "passos": [
-          "sen2x=2·(3/5)·(4/5)=24/25."
+          "Fixe uma pessoa.",
+          "As outras 5 se permutam: 5! = 120."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "sen(2·30°) =",
-      "opcoes": [
-        "1/2",
-        "√3/2",
-        "1",
-        "√2/2"
-      ],
-      "correta": 1,
-      "explicacao": "sen60°=√3/2."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "cos(2·45°) =",
-      "opcoes": [
-        "0",
-        "1/2",
-        "1",
-        "−1"
+      "titulo": "Com restrições",
+      "paragrafos": [
+        "Para manter duas pessoas juntas, trate-as como um bloco e lembre que elas podem trocar de lugar dentro dele."
       ],
-      "correta": 0,
-      "explicacao": "cos90°=0."
+      "exemplo": {
+        "enunciado": "6 pessoas numa roda, com A e B sempre juntos. Quantas formas?",
+        "passos": [
+          "O bloco AB conta como uma pessoa: 5 elementos na roda.",
+          "(5 − 1)! = 24, vezes 2 pela troca dentro do bloco.",
+          "48 formas."
+        ]
+      },
+      "erroComum": "Usar n! numa roda. Isso conta a mesma roda várias vezes."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "De quantas formas 5 crianças formam uma ciranda?",
+      "opcoes": [
+        "24",
+        "60",
+        "120",
+        "5"
+      ],
+      "correta": 0,
+      "explicacao": "(5 − 1)!."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "De quantas formas 4 casais sentam numa mesa redonda de 8 lugares, sem restrição?",
+      "opcoes": [
+        "40320",
+        "5040",
+        "2520",
+        "720"
+      ],
+      "correta": 1,
+      "explicacao": "7! = 5040."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Numa roda de 7 pessoas, duas querem ficar juntas. O número de formas é",
+      "opcoes": [
+        "240",
+        "720",
+        "1440",
+        "120"
+      ],
+      "correta": 0,
+      "explicacao": "(6 − 1)! · 2."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Na permutação circular divide-se n! por n porque",
+      "opcoes": [
+        "há n pessoas",
+        "cada roda é contada n vezes, uma por rotação",
+        "a ordem não importa",
+        "há repetição de elementos"
+      ],
+      "correta": 1,
+      "explicacao": "Cada rotação gera a mesma roda."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

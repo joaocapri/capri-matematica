@@ -1,60 +1,102 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Converter entre as formas geral e reduzida",
+    "Ler coeficientes angular e linear",
+    "Usar a forma segmentária e a paramétrica"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Geral e reduzida",
       "paragrafos": [
-        "Produto escalar pode ser calculado por coordenadas ou pelos módulos e cosseno do ângulo. Quando vale zero para vetores não nulos, os vetores são perpendiculares."
+        "A forma geral é ax + by + c = 0. Isolando y, obtém-se a forma reduzida y = mx + n, em que m é o coeficiente angular e n é onde a reta corta o eixo y."
       ],
       "formulas": [
-        "\\vec u\\cdot\\vec v=u_xv_x+u_yv_y=\\|u\\|\\|v\\|\\cos\\theta"
-      ],
-      "dica": "Se o ângulo é obtuso, o produto escalar é negativo.",
-      "erroComum": "Produto escalar devolve número, não vetor."
-    },
-    {
-      "titulo": "Na prática",
-      "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "ax+by+c=0",
+        "y=-\\dfrac{a}{b}x-\\dfrac{c}{b}"
       ],
       "exemplo": {
-        "enunciado": "Dados u=(2,1) e v=(−1,2), calcule o produto escalar.",
+        "enunciado": "Escreva 2x − 3y + 6 = 0 na forma reduzida.",
         "passos": [
-          "2·(−1)+1·2=−2+2=0.",
-          "São ortogonais, pois ambos não são nulos."
+          "−3y = −2x − 6.",
+          "y = (2/3)x + 2.",
+          "m = 2/3 e n = 2."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "(1,2)·(3,4) =",
-      "opcoes": [
-        "7",
-        "10",
-        "11",
-        "14"
-      ],
-      "correta": 2,
-      "explicacao": "1·3+2·4=11."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Quando u·v=0 e ambos não nulos, o ângulo é:",
-      "opcoes": [
-        "0°",
-        "45°",
-        "90°",
-        "180°"
+      "titulo": "Segmentária e paramétrica",
+      "paragrafos": [
+        "Na forma segmentária, os denominadores são os pontos onde a reta corta os eixos. Na paramétrica, x e y são escritos em função de um parâmetro t."
       ],
-      "correta": 2,
-      "explicacao": "Cosseno zero ⇒ θ=90°."
+      "formulas": [
+        "\\dfrac{x}{p}+\\dfrac{y}{q}=1",
+        "x=f(t),\\ y=g(t)"
+      ],
+      "exemplo": {
+        "enunciado": "Escreva na forma segmentária a reta que corta os eixos em (4, 0) e (0, 2).",
+        "passos": [
+          "p = 4 e q = 2.",
+          "x/4 + y/2 = 1."
+        ]
+      },
+      "dica": "Da paramétrica para a geral, isole t numa equação e substitua na outra."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O coeficiente angular de 4x + 2y − 6 = 0 é",
+      "opcoes": [
+        "2",
+        "−2",
+        "4",
+        "3"
+      ],
+      "correta": 1,
+      "explicacao": "y = −2x + 3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A reta 3x − y + 5 = 0 corta o eixo y em",
+      "opcoes": [
+        "(0, 5)",
+        "(0, −5)",
+        "(5, 0)",
+        "(0, 3)"
+      ],
+      "correta": 0,
+      "explicacao": "y = 3x + 5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A reta x/3 + y/6 = 1 corta o eixo x em",
+      "opcoes": [
+        "(3, 0)",
+        "(6, 0)",
+        "(0, 3)",
+        "(2, 0)"
+      ],
+      "correta": 0,
+      "explicacao": "Na forma segmentária, p = 3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A reta x = 2t + 1, y = t − 3 tem forma geral",
+      "opcoes": [
+        "x − 2y − 7 = 0",
+        "x + 2y − 7 = 0",
+        "2x − y + 1 = 0",
+        "x − 2y + 7 = 0"
+      ],
+      "correta": 0,
+      "explicacao": "t = y + 3 ⇒ x = 2y + 7."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

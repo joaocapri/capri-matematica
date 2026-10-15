@@ -1,37 +1,46 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de introdução aos logaritmos",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Resolver equações exponenciais reduzindo à mesma base",
+    "Usar mudança de variável em equações do tipo 4ˣ e 2ˣ",
+    "Colocar fator comum em somas de potências"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "Mesma base, expoentes iguais",
       "paragrafos": [
-        "Logaritmo responde a pergunta 'qual expoente transforma a base neste número?'. Ele desfaz uma potência, mas só existe nos reais com argumento positivo, base positiva e diferente de 1."
+        "Se duas potências de mesma base (positiva e diferente de 1) são iguais, os expoentes são iguais. O trabalho é escrever os dois lados na mesma base."
       ],
       "formulas": [
-        "\\log_a b=x\\Longleftrightarrow a^x=b\\quad(a>0,a\\neq1,b>0)"
-      ],
-      "dica": "Converta imediatamente para potência quando o logaritmo parecer estranho.",
-      "erroComum": "Log de zero ou número negativo não existe no conjunto real."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "a^{m}=a^{n}\\;\\Leftrightarrow\\;m=n"
       ],
       "exemplo": {
-        "enunciado": "Calcule log₂32.",
+        "enunciado": "Resolva (1/2)ˣ = 16.",
         "passos": [
-          "Pergunte 2 elevado a qual número dá 32?",
-          "2⁵=32.",
-          "Portanto log₂32=5."
+          "1/2 = 2⁻¹ e 16 = 2⁴.",
+          "2⁻ˣ = 2⁴.",
+          "−x = 4, logo x = −4."
         ]
-      }
+      },
+      "dica": "Decore as potências de 2, 3 e 5 até uns 1000. Elas aparecem o tempo todo."
+    },
+    {
+      "titulo": "Fator comum e troca de variável",
+      "paragrafos": [
+        "Em 2ˣ⁺¹ + 2ˣ = 24, coloque 2ˣ em evidência. Em 4ˣ − 3·2ˣ − 4 = 0, faça 2ˣ = y e resolva a equação do 2º grau em y."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva 4ˣ − 3·2ˣ − 4 = 0.",
+        "passos": [
+          "Com y = 2ˣ: y² − 3y − 4 = 0.",
+          "y = 4 ou y = −1. Como 2ˣ > 0, só vale y = 4.",
+          "2ˣ = 4 ⇒ x = 2."
+        ]
+      },
+      "erroComum": "Esquecer de descartar a solução negativa: 2ˣ nunca é negativo."
     }
   ],
   "videos": [
@@ -44,8 +53,8 @@
   ],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "log₃81 vale:",
+      "nivel": "Aquecimento",
+      "enunciado": "A solução de 3ˣ = 81 é",
       "opcoes": [
         "3",
         "4",
@@ -53,19 +62,43 @@
         "27"
       ],
       "correta": 1,
-      "explicacao": "3⁴=81."
+      "explicacao": "81 = 3⁴."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A solução de 8ˣ = 1/4 é",
+      "opcoes": [
+        "−2/3",
+        "−3/2",
+        "2/3",
+        "−1/2"
+      ],
+      "correta": 0,
+      "explicacao": "2³ˣ = 2⁻², logo 3x = −2."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Qual expressão é definida nos reais?",
+      "enunciado": "A solução de 2ˣ⁺¹ + 2ˣ = 24 é",
       "opcoes": [
-        "log₂(−2)",
-        "log₁5",
-        "log₃9",
-        "log₀4"
+        "2",
+        "3",
+        "4",
+        "8"
       ],
-      "correta": 2,
-      "explicacao": "Base 3 é válida e argumento 9>0."
+      "correta": 1,
+      "explicacao": "2ˣ(2 + 1) = 24 ⇒ 2ˣ = 8 ⇒ x = 3."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "A solução de 4ˣ − 2ˣ⁺² = 32 é",
+      "opcoes": [
+        "2",
+        "3",
+        "4",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "Com y = 2ˣ: y² − 4y − 32 = 0, y = 8 (y = −4 é descartado), logo x = 3."
     }
   ],
   "exercicios": [],

@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Compare distância centro-ponto com o raio; para reta, distância centro-reta; entre duas circunferências, compare distância entre centros com soma e diferença dos raios."
+      ],
+      "formulas": [
+        "d_{\\text{centro-reta}}\\lessgtr r"
+      ],
+      "dica": "Distância igual ao raio caracteriza tangência.",
+      "erroComum": "Não compare centro-reta com o diâmetro: a referência é o raio."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "A circunferência de centro (0,0) e raio 5 é cortada pela reta y=3?",
+        "passos": [
+          "A distância da origem à reta horizontal y=3 é 3.",
+          "Como 3<5, a reta é secante: dois pontos de interseção."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Uma reta a distância 7 do centro de círculo de raio 5 é:",
+      "opcoes": [
+        "Secante",
+        "Tangente",
+        "Externa",
+        "Diâmetro"
+      ],
+      "correta": 2,
+      "explicacao": "Distância maior que o raio: nenhum ponto em comum."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Centro (0,0), raio 4; ponto (4,0) está:",
+      "opcoes": [
+        "Interior",
+        "Na circunferência",
+        "Exterior",
+        "No centro"
+      ],
+      "correta": 1,
+      "explicacao": "Distância ao centro é exatamente 4."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

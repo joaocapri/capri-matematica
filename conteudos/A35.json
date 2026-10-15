@@ -1,71 +1,97 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de propriedades operatórias",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Comparar potências de mesma base",
+    "Inverter a desigualdade quando a base está entre 0 e 1",
+    "Resolver problemas de crescimento com inequações"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "A base decide o sentido",
       "paragrafos": [
-        "As propriedades transformam produto em soma, quociente em diferença e potência em multiplicador. Elas ajudam a simplificar expressões — mas apenas quando os logaritmos envolvidos estão definidos."
+        "Se a base é maior que 1, a função exponencial é crescente: quanto maior o expoente, maior a potência, e a desigualdade se mantém. Se a base está entre 0 e 1, a função é decrescente e a desigualdade se inverte."
       ],
       "formulas": [
-        "\\log_a(xy)=\\log_a x+\\log_a y\\quad(x,y>0)"
-      ],
-      "dica": "Quando há soma de logs da mesma base, procure um produto dentro do log.",
-      "erroComum": "Não existe regra log(x+y)=log x+log y."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "a>1:\\;a^{m}>a^{n}\\Leftrightarrow m>n",
+        "0<a<1:\\;a^{m}>a^{n}\\Leftrightarrow m<n"
       ],
       "exemplo": {
-        "enunciado": "Calcule log₂8 + log₂4.",
+        "enunciado": "Resolva (0,5)ˣ⁻² > (0,5)⁴.",
         "passos": [
-          "8=2³ e 4=2².",
-          "Os logaritmos valem 3 e 2.",
-          "Soma=5, equivalente a log₂32."
+          "A base 0,5 está entre 0 e 1: inverte.",
+          "x − 2 < 4.",
+          "x < 6."
+        ]
+      },
+      "erroComum": "Manter o sentido da desigualdade com base menor que 1."
+    },
+    {
+      "titulo": "Aplicações",
+      "paragrafos": [
+        "Perguntas como “a partir de quando a população passa de tanto?” viram inequações exponenciais."
+      ],
+      "exemplo": {
+        "enunciado": "Uma cultura tem N(t) = 100·2ᵗ bactérias após t horas. A partir de quando passa de 3200?",
+        "passos": [
+          "100·2ᵗ > 3200 ⇒ 2ᵗ > 32 = 2⁵.",
+          "Base maior que 1: t > 5.",
+          "Depois de 5 horas."
         ]
       }
     }
   ],
-  "videos": [
-    {
-      "titulo": "Introdução aos logaritmos",
-      "canal": "Khan Academy Brasil · vídeo",
-      "descricao": "Relação entre potências, expoentes e logaritmos.",
-      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
-    }
-  ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "log₁₀2 + log₁₀5 é:",
+      "nivel": "Aquecimento",
+      "enunciado": "A solução de 2ˣ > 8 é",
       "opcoes": [
-        "1",
-        "7",
-        "10",
-        "0"
+        "x > 3",
+        "x < 3",
+        "x > 4",
+        "x > 8"
       ],
       "correta": 0,
-      "explicacao": "log₁₀(2·5)=log₁₀10=1."
+      "explicacao": "2ˣ > 2³ e a base é maior que 1."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A solução de (1/2)ˣ > 8 é",
+      "opcoes": [
+        "x > 3",
+        "x < −3",
+        "x > −3",
+        "x < 3"
+      ],
+      "correta": 1,
+      "explicacao": "(1/2)ˣ > (1/2)⁻³ e a base é menor que 1: x < −3."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "log₂16 − log₂2 vale:",
+      "enunciado": "A solução de 3²ˣ⁻¹ ≤ 27 é",
       "opcoes": [
-        "2",
-        "3",
-        "4",
-        "8"
+        "x ≤ 1",
+        "x ≤ 2",
+        "x ≥ 2",
+        "x ≤ 3"
       ],
       "correta": 1,
-      "explicacao": "4−1=3, ou log₂8=3."
+      "explicacao": "2x − 1 ≤ 3 ⇒ x ≤ 2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um remédio no sangue cai pela metade a cada 4 h. Partindo de 80 mg, fica abaixo de 10 mg depois de mais de",
+      "opcoes": [
+        "8 h",
+        "12 h",
+        "16 h",
+        "20 h"
+      ],
+      "correta": 1,
+      "explicacao": "80·(1/2)^(t/4) < 10 ⇒ (1/2)^(t/4) < 1/8 ⇒ t/4 > 3 ⇒ t > 12."
     }
   ],
   "exercicios": [],

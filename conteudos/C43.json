@@ -4,27 +4,26 @@
   "formato": "capri-mat-v1",
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "Resolver inequações trigonométricas é selecionar arcos onde a coordenada seno ou cosseno atende à condição. O ciclo ajuda a identificar intervalos e pontos incluídos."
+        "Combinação com repetição conta seleções em que tipos podem aparecer várias vezes. O método de traços e bolas traduz soluções inteiras não negativas de uma soma."
       ],
       "formulas": [
-        "\\sin x>0\\quad\\text{em}\\quad(0,\\pi)\\ \\text{m\\'odulo }2\\pi"
+        "\\#\\{x_1+\\cdots+x_k=n,\\ x_i\\ge0\\}=\\binom{n+k-1}{k-1}"
       ],
-      "dica": "Desenhe os quadrantes e marque as extremidades conforme < ou ≤.",
-      "erroComum": "Não confunda as zonas positivas de seno (parte superior) e cosseno (parte direita)."
+      "dica": "Bolas marcam unidades; traços separam categorias.",
+      "erroComum": "Esta fórmula não é para objetos distintos com restrições específicas."
     },
     {
-      "titulo": "Veja funcionando",
+      "titulo": "Hora de ver funcionar",
       "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Resolva senx≥0 em [0,2π).",
+        "enunciado": "Distribua 4 balas idênticas entre 3 crianças, permitindo zero.",
         "passos": [
-          "Seno é a coordenada vertical no ciclo.",
-          "Não negativo do ângulo 0 até π, inclusive.",
-          "Resposta [0,π]."
+          "Conte soluções x₁+x₂+x₃=4.",
+          "C(4+3−1,3−1)=C(6,2)=15."
         ]
       }
     }
@@ -32,27 +31,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "No intervalo [0,2π), cosx<0 quando:",
+      "enunciado": "Soluções inteiras não negativas de x+y=3:",
       "opcoes": [
-        "0<x<π",
-        "π/2<x<3π/2",
-        "π<x<2π",
-        "x=π/2"
+        "3",
+        "4",
+        "6",
+        "8"
       ],
       "correta": 1,
-      "explicacao": "No semicírculo esquerdo."
+      "explicacao": "(0,3),(1,2),(2,1),(3,0): quatro."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "senx>0 em [0,2π) quando:",
+      "enunciado": "Distribuir 2 itens idênticos entre 3 caixas com vazias permitidas:",
       "opcoes": [
-        "0<x<π",
-        "π<x<2π",
-        "0≤x≤π",
-        "Todo x"
+        "3",
+        "6",
+        "9",
+        "12"
       ],
-      "correta": 0,
-      "explicacao": "Acima do eixo horizontal, sem os zeros."
+      "correta": 1,
+      "explicacao": "C(2+3−1,2)=C(4,2)=6."
     }
   ],
   "videos": [],

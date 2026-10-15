@@ -4,117 +4,132 @@
   "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Distinguir injetora, sobrejetora e bijetora",
-    "Usar diagramas e o teste da reta horizontal",
-    "Restringir domínio e contradomínio para obter uma bijeção"
+    "Calcular composições como f(g(x))",
+    "Perceber que a ordem importa",
+    "Decompor uma função em funções mais simples"
   ],
   "teoria": [
     {
-      "titulo": "Três classificações",
+      "titulo": "Uma função dentro da outra",
       "paragrafos": [
-        "Injetora: elementos diferentes do domínio têm imagens diferentes. Sobrejetora: a imagem é todo o contradomínio, nenhum elemento fica sem flecha. Bijetora: as duas coisas ao mesmo tempo."
+        "Compor é usar a saída de uma função como entrada da outra. Em f(g(x)), primeiro calcule g e depois aplique f no resultado."
       ],
       "formulas": [
-        "x_1\\neq x_2\\Rightarrow f(x_1)\\neq f(x_2)\\;\\text{(injetora)}",
-        "\\operatorname{Im}(f)=\\operatorname{CD}(f)\\;\\text{(sobrejetora)}"
-      ],
-      "dica": "No diagrama de flechas: injetora não tem dois caminhos chegando no mesmo ponto; sobrejetora não deixa ninguém sozinho do lado de chegada."
-    },
-    {
-      "titulo": "Teste da reta horizontal",
-      "paragrafos": [
-        "No gráfico de uma função real, trace retas horizontais. Se alguma corta o gráfico mais de uma vez, a função não é injetora."
+        "(f\\circ g)(x)=f(g(x))"
       ],
       "exemplo": {
-        "enunciado": "f: ℝ → ℝ, f(x) = x² é injetora?",
+        "enunciado": "f(x) = 2x + 1 e g(x) = x². Calcule f(g(3)) e g(f(3)).",
         "passos": [
-          "A reta y = 4 corta o gráfico em x = 2 e x = −2.",
-          "Duas entradas com a mesma saída.",
-          "Não é injetora. Também não é sobrejetora, pois valores negativos não são atingidos."
+          "g(3) = 9 e f(9) = 19. Então f(g(3)) = 19.",
+          "f(3) = 7 e g(7) = 49. Então g(f(3)) = 49.",
+          "Os resultados são diferentes: a ordem importa."
         ]
       },
-      "erroComum": "Sobrejetividade depende do contradomínio escolhido. f(x) = x² é sobrejetora de ℝ em [0, +∞[, mas não de ℝ em ℝ."
+      "dica": "Leia f∘g da direita para a esquerda: a função mais perto do x é a primeira a agir.",
+      "erroComum": "Em geral f∘g ≠ g∘f. Inverter a ordem é o erro mais comum."
     },
     {
-      "titulo": "Ajustando para virar bijeção",
+      "titulo": "A lei da composta",
       "paragrafos": [
-        "Restringindo o domínio a [0, +∞[ e o contradomínio a [0, +∞[, a função x² passa a ser bijetora. É isso que permite falar da inversa na próxima aula."
-      ]
+        "Para obter a lei, substitua x por g(x) em toda a expressão de f."
+      ],
+      "exemplo": {
+        "enunciado": "f(x) = 3x − 4 e g(x) = x + 2. Determine f(g(x)).",
+        "passos": [
+          "Troque x por x + 2 na lei de f.",
+          "f(g(x)) = 3(x + 2) − 4.",
+          "f(g(x)) = 3x + 2."
+        ]
+      }
+    },
+    {
+      "titulo": "Descobrindo uma das funções",
+      "paragrafos": [
+        "Se você conhece f∘g e uma das funções, dá para descobrir a outra. Às vezes basta trocar a variável."
+      ],
+      "exemplo": {
+        "enunciado": "f(x + 1) = 2x + 5. Determine f(x).",
+        "passos": [
+          "Chame t = x + 1, então x = t − 1.",
+          "f(t) = 2(t − 1) + 5 = 2t + 3.",
+          "Logo, f(x) = 2x + 3."
+        ]
+      }
     }
   ],
   "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Uma função em que elementos diferentes do domínio têm imagens diferentes é chamada",
+      "nivel": "Aquecimento",
+      "enunciado": "f(x) = x + 1 e g(x) = 2x. O valor de (f∘g)(3) é",
       "opcoes": [
-        "sobrejetora",
-        "injetora",
-        "constante",
-        "par"
+        "7",
+        "8",
+        "9",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "g(3) = 6 e f(6) = 7."
+    },
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "f(x) = x + 1 e g(x) = 2x. O valor de (g∘f)(3) é",
+      "opcoes": [
+        "7",
+        "8",
+        "9",
+        "12"
       ],
       "correta": 1,
-      "explicacao": "É a definição de injetora."
+      "explicacao": "f(3) = 4 e g(4) = 8."
     },
     {
       "nivel": "Conceito",
-      "enunciado": "Uma função é bijetora quando é",
+      "enunciado": "Com f(x) = x² e g(x) = x − 1, a lei de f(g(x)) é",
       "opcoes": [
-        "injetora ou sobrejetora",
-        "injetora e sobrejetora",
-        "par e ímpar",
-        "crescente"
+        "x² − 1",
+        "(x − 1)²",
+        "x² − x",
+        "x³ − x²"
       ],
       "correta": 1,
-      "explicacao": "Bijetora = injetora e sobrejetora."
+      "explicacao": "Substitua x por x − 1 em f."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "A função f: ℝ → ℝ, f(x) = 3x − 2 é",
+      "enunciado": "Com f(x) = 2x − 3 e g(x) = 5x + 1, a lei de (f∘g)(x) é",
       "opcoes": [
-        "só injetora",
-        "só sobrejetora",
-        "bijetora",
-        "nem injetora nem sobrejetora"
+        "10x − 1",
+        "10x + 2",
+        "10x − 14",
+        "7x − 2"
       ],
-      "correta": 2,
-      "explicacao": "Funções afins com a ≠ 0 de ℝ em ℝ são bijetoras."
+      "correta": 0,
+      "explicacao": "2(5x + 1) − 3 = 10x − 1."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "A função f: ℝ → ℝ, f(x) = x² + 1 é",
+      "enunciado": "Se f(x + 2) = 3x − 1, então f(5) vale",
       "opcoes": [
-        "injetora",
-        "sobrejetora",
-        "bijetora",
-        "nem injetora nem sobrejetora"
+        "8",
+        "11",
+        "14",
+        "17"
       ],
-      "correta": 3,
-      "explicacao": "f(1) = f(−1) e valores menores que 1 não são atingidos."
-    },
-    {
-      "nivel": "Aplicação",
-      "enunciado": "Para que f(x) = x² + 1, com domínio [0, +∞[, seja bijetora, o contradomínio deve ser",
-      "opcoes": [
-        "ℝ",
-        "[0, +∞[",
-        "[1, +∞[",
-        "]1, +∞["
-      ],
-      "correta": 2,
-      "explicacao": "A imagem é [1, +∞[."
+      "correta": 0,
+      "explicacao": "x + 2 = 5 ⇒ x = 3; f(5) = 9 − 1 = 8."
     },
     {
       "nivel": "Desafio",
-      "enunciado": "A = {1, 2, 3} e B = {a, b}. Quantas funções de A em B são injetoras?",
+      "enunciado": "f(x) = 2x + 3 e g(x) = x + k. Se f(g(x)) = g(f(x)) para todo x, então k vale",
       "opcoes": [
+        "−3",
         "0",
-        "2",
-        "6",
-        "8"
+        "3",
+        "qualquer valor"
       ],
-      "correta": 0,
-      "explicacao": "Não há como dar 3 imagens diferentes com só 2 elementos em B."
+      "correta": 1,
+      "explicacao": "f(g(x)) = 2x + 2k + 3 e g(f(x)) = 2x + 3 + k. Igualando: 2k = k, logo k = 0."
     }
   ],
   "exercicios": [],

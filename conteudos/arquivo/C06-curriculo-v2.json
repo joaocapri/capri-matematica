@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Regra de três não é decorar setinhas: é reconhecer relações de proporcionalidade. Em problemas compostos, compare cada grandeza separadamente com a incógnita."
+      ],
+      "formulas": [
+        "\\text{trabalho}\\propto \\text{pessoas}\\times\\text{tempo}\\times\\text{produtividade}"
+      ],
+      "dica": "Antes da conta, faça uma previsão: a resposta deve subir ou descer?",
+      "erroComum": "Duas grandezas nem sempre são proporcionais só porque aparecem no mesmo problema."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Se 5 pessoas fazem uma tarefa em 12 dias, quantos dias levarão 10 pessoas na mesma produtividade?",
+        "passos": [
+          "É a mesma tarefa, então pessoas×dias é constante.",
+          "5·12=10·t.",
+          "t=6 dias."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se 3 máquinas fazem 60 peças por hora, 6 máquinas iguais fazem:",
+      "opcoes": [
+        "30",
+        "60",
+        "90",
+        "120"
+      ],
+      "correta": 3,
+      "explicacao": "Dobrar máquinas dobra peças por hora."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "4 trabalhadores fazem serviço em 9 dias; 6 iguais levam:",
+      "opcoes": [
+        "4",
+        "6",
+        "9",
+        "12"
+      ],
+      "correta": 1,
+      "explicacao": "4·9/6=6 dias."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

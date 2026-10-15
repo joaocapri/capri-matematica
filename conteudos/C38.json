@@ -1,61 +1,97 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Contar anagramas com letras repetidas",
+    "Usar a fórmula da permutação com repetição",
+    "Contar caminhos em malhas"
+  ],
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Letras repetidas",
       "paragrafos": [
-        "As fórmulas de adição combinam seno e cosseno de dois ângulos, mas atenção aos sinais: seno mantém o sinal da soma; cosseno o troca no produto de senos."
+        "Se uma palavra tem letras repetidas, trocar letras iguais de lugar não gera um anagrama novo. Divida n! pelo fatorial de cada repetição."
       ],
       "formulas": [
-        "\\sin(a+b)=\\sin a\\cos b+\\cos a\\sin b"
-      ],
-      "dica": "Memorize usando testes simples, como a=b=0 e a=b=45°.",
-      "erroComum": "cos(a+b)=cosa cosb−sena senb, com sinal menos."
-    },
-    {
-      "titulo": "Veja funcionando",
-      "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "P_n^{a,b,\\dots}=\\dfrac{n!}{a!\\,b!\\cdots}"
       ],
       "exemplo": {
-        "enunciado": "Calcule sen75° como sen(45°+30°).",
+        "enunciado": "Quantos anagramas tem BANANA?",
         "passos": [
-          "sen75=sen45cos30+cos45sen30.",
-          "=√2/2·√3/2+√2/2·1/2.",
-          "Resultado (√6+√2)/4."
+          "6 letras: A aparece 3 vezes e N, 2 vezes.",
+          "6!/(3! · 2!) = 720/12.",
+          "60 anagramas."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "cos(60°+30°) =",
-      "opcoes": [
-        "0",
-        "1/2",
-        "√2/2",
-        "1"
-      ],
-      "correta": 0,
-      "explicacao": "cos90°=0."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "sen(30°+30°) =",
-      "opcoes": [
-        "1/2",
-        "√2/2",
-        "√3/2",
-        "1"
+      "titulo": "Caminhos em malha",
+      "paragrafos": [
+        "Para ir de um canto a outro de uma malha andando só para a direita (D) e para cima (C), cada caminho é uma sequência de D e C. Contar caminhos é contar anagramas."
       ],
-      "correta": 2,
-      "explicacao": "sen60°=√3/2."
+      "exemplo": {
+        "enunciado": "Quantos caminhos mínimos há numa malha 4 × 3?",
+        "passos": [
+          "São 4 passos D e 3 passos C.",
+          "7!/(4! · 3!) = 35."
+        ]
+      },
+      "erroComum": "Esquecer alguma letra repetida no denominador."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O número de anagramas de ARARA é",
+      "opcoes": [
+        "10",
+        "20",
+        "60",
+        "120"
+      ],
+      "correta": 0,
+      "explicacao": "5!/(3! · 2!)."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O número de anagramas de MATEMATICA é",
+      "opcoes": [
+        "10!/(2! · 3! · 2!)",
+        "10!/3!",
+        "10!/(2! · 2!)",
+        "10!"
+      ],
+      "correta": 0,
+      "explicacao": "M duas vezes, A três vezes, T duas vezes."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O número de caminhos mínimos numa malha 3 × 2 é",
+      "opcoes": [
+        "5",
+        "6",
+        "10",
+        "20"
+      ],
+      "correta": 2,
+      "explicacao": "5!/(3! · 2!)."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma moeda é lançada 6 vezes. Quantas sequências têm exatamente 2 caras?",
+      "opcoes": [
+        "12",
+        "15",
+        "30",
+        "64"
+      ],
+      "correta": 1,
+      "explicacao": "6!/(2! · 4!)."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

@@ -1,0 +1,104 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Conhecer o teorema fundamental da álgebra",
+    "Escrever um polinômio na forma fatorada",
+    "Baixar o grau de uma equação conhecendo raízes"
+  ],
+  "teoria": [
+    {
+      "titulo": "Quantas raízes?",
+      "paragrafos": [
+        "O teorema fundamental da álgebra garante que toda equação polinomial de grau n ≥ 1 tem n raízes complexas, contando repetições. Assim, todo polinômio pode ser escrito como produto de fatores do 1º grau."
+      ],
+      "formulas": [
+        "P(x)=a_n(x-r_1)(x-r_2)\\cdots(x-r_n)"
+      ],
+      "exemplo": {
+        "enunciado": "Escreva o polinômio de grau 3, com coeficiente dominante 2, cujas raízes são 1, −1 e 3.",
+        "passos": [
+          "P(x) = 2(x − 1)(x + 1)(x − 3).",
+          "Desenvolvendo: 2(x² − 1)(x − 3) = 2x³ − 6x² − 2x + 6."
+        ]
+      }
+    },
+    {
+      "titulo": "Baixando o grau",
+      "paragrafos": [
+        "Se você conhece uma raiz r, divida o polinômio por x − r (Briot-Ruffini). O quociente tem grau menor e contém as raízes restantes."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva x³ − 6x² + 11x − 6 = 0, sabendo que 1 é raiz.",
+        "passos": [
+          "Briot com a = 1: coeficientes 1, −6, 11, −6 dão 1, −5, 6 e resto 0.",
+          "Sobra x² − 5x + 6 = 0, com raízes 2 e 3.",
+          "S = {1, 2, 3}."
+        ]
+      },
+      "dica": "Teste primeiro os divisores do termo independente: 1, −1, 2, −2..."
+    }
+  ],
+  "videos": [
+    {
+      "titulo": "Números complexos e polinômios",
+      "canal": "Khan Academy Brasil · unidade de estudos",
+      "descricao": "Revisão de números complexos e técnicas de fatoração.",
+      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Uma equação polinomial de grau 5 tem quantas raízes complexas, contando repetições?",
+      "opcoes": [
+        "no máximo 4",
+        "exatamente 5",
+        "no mínimo 6",
+        "depende dos coeficientes"
+      ],
+      "correta": 1,
+      "explicacao": "Teorema fundamental da álgebra."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O polinômio mônico de grau 2 com raízes 2 e −5 é",
+      "opcoes": [
+        "x² + 3x − 10",
+        "x² − 3x − 10",
+        "x² + 3x + 10",
+        "x² − 7x + 10"
+      ],
+      "correta": 0,
+      "explicacao": "(x − 2)(x + 5) = x² + 3x − 10."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Sabendo que 2 é raiz de x³ − 2x² − x + 2 = 0, as outras raízes são",
+      "opcoes": [
+        "1 e −1",
+        "2 e −2",
+        "1 e 2",
+        "−1 e −2"
+      ],
+      "correta": 0,
+      "explicacao": "Dividindo por x − 2 sobra x² − 1."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Se P(x) = x³ + ax² + bx − 6 tem raízes 1 e 2, a terceira raiz é",
+      "opcoes": [
+        "3",
+        "−3",
+        "6",
+        "1"
+      ],
+      "correta": 0,
+      "explicacao": "O produto das raízes é −(−6)/1 = 6, então 1 · 2 · r = 6 e r = 3."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

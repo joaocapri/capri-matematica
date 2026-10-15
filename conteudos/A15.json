@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de função do 1º grau - definição e elementos",
+    "Entender o conceito central de modelagem matemática e problemas de contexto",
     "Aplicar o procedimento em um exemplo resolvido",
     "Reconhecer erros frequentes antes de enfrentar uma questão"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "A ideia que destrava",
       "paragrafos": [
-        "Na função afim f(x)=ax+b, o número a controla a variação de y quando x cresce uma unidade; b é o valor inicial f(0). Quando a=0, a função é constante."
+        "Modelar é traduzir uma história para uma equação: identifique grandezas, unidade, parte fixa e parte variável. Depois interprete a resposta no contexto, não só na calculadora."
       ],
       "formulas": [
-        "f(x)=ax+b\\qquad f(0)=b"
+        "\\text{lucro}=\\text{receita}-\\text{custo}"
       ],
-      "dica": "Pergunte: 'quanto começa?' e 'quanto aumenta a cada passo?'",
-      "erroComum": "A função linear em sentido estrito é f(x)=ax (com b=0); nem toda afim é linear."
+      "dica": "Unidade é parte do raciocínio: reais, quilômetros, horas e quantidades não são intercambiáveis.",
+      "erroComum": "Não extrapole modelos lineares para situações em que a taxa não é constante."
     },
     {
       "titulo": "Vamos fazer uma juntos",
@@ -25,11 +25,11 @@
         "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
       ],
       "exemplo": {
-        "enunciado": "Uma corrida custa R$ 6 de bandeirada mais R$ 3 por quilômetro.",
+        "enunciado": "Um serviço cobra R$ 20 fixos e R$ 5 por hora. Quanto custa 7 horas?",
         "passos": [
-          "Custo inicial: b=6.",
-          "Variação por km: a=3.",
-          "A função é C(x)=3x+6, para x≥0."
+          "Monte C(t)=20+5t.",
+          "Faça C(7)=20+35.",
+          "Total: R$ 55."
         ]
       }
     }
@@ -37,27 +37,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Em f(x)=−2x+5, qual é f(0)?",
+      "enunciado": "Um produto custa R$ 15 por unidade. Receita por 8 unidades:",
       "opcoes": [
-        "−2",
-        "0",
-        "5",
-        "3"
+        "R$ 23",
+        "R$ 80",
+        "R$ 120",
+        "R$ 150"
       ],
       "correta": 2,
-      "explicacao": "O termo independente é 5."
+      "explicacao": "R(q)=15q; R(8)=120."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Na função f(x)=3x+1, aumentar x em 2 unidades altera y em:",
+      "enunciado": "Se R(x)=10x e C(x)=2x+12, quando o lucro é zero?",
       "opcoes": [
-        "1",
-        "2",
-        "3",
-        "6"
+        "x=1",
+        "x=1,5",
+        "x=6",
+        "x=12"
       ],
-      "correta": 3,
-      "explicacao": "Δy=aΔx=3·2=6."
+      "correta": 1,
+      "explicacao": "L=8x−12. Para L=0, x=12/8=1,5."
     }
   ],
   "videos": [

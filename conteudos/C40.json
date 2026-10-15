@@ -1,60 +1,90 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Reconhecer quando a ordem importa",
+    "Calcular arranjos simples",
+    "Resolver problemas de senhas, pódios e cargos"
+  ],
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Escolher e ordenar",
       "paragrafos": [
-        "Transformação em produto reescreve soma de senos/cossenos como produto. Em equações trigonométricas, isso permite fatorar a expressão e separar os casos em vez de somar frações complicadas."
+        "Arranjo é escolher p elementos entre n e colocá-los em ordem. Pódio, senha sem repetição e cargos diferentes são arranjos."
       ],
       "formulas": [
-        "\\sin a+\\sin b=2\\sin\\frac{a+b}{2}\\cos\\frac{a-b}{2}"
-      ],
-      "dica": "Produto zero permite resolver equações por fatores.",
-      "erroComum": "A fórmula do cos(a)+cos(b) usa cos da semissoma, não sen."
-    },
-    {
-      "titulo": "Veja funcionando",
-      "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "A_{n,p}=\\dfrac{n!}{(n-p)!}"
       ],
       "exemplo": {
-        "enunciado": "Simplifique sen50°+sen10°.",
+        "enunciado": "Numa corrida com 8 atletas, quantos pódios (1º, 2º e 3º) são possíveis?",
         "passos": [
-          "Soma média 30°, meia diferença 20°.",
-          "2 sen30° cos20°=cos20°."
+          "8 opções para o 1º, 7 para o 2º e 6 para o 3º.",
+          "8 · 7 · 6 = 336."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "sen50°+sen10° é igual a:",
-      "opcoes": [
-        "sen20°",
-        "cos20°",
-        "2cos30°",
-        "1"
-      ],
-      "correta": 1,
-      "explicacao": "2sen30cos20=cos20."
+      },
+      "dica": "Na prática, o PFC resolve todo arranjo: multiplique as opções de cada posição."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "sen x + sen(−x) é sempre igual a:",
-      "opcoes": [
-        "0",
-        "1",
-        "2senx",
-        "cosx"
+      "titulo": "Teste da ordem",
+      "paragrafos": [
+        "Troque dois escolhidos de lugar. Se o resultado mudou (outra senha, outro pódio), é arranjo. Se ficou igual (mesmo grupo), é combinação."
       ],
-      "correta": 0,
-      "explicacao": "O seno é ímpar: sen(−x)=−senx."
+      "erroComum": "Usar arranjo para formar comissões sem cargos. Ali a ordem não importa."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Quantas senhas de 3 dígitos distintos podem ser formadas com 0 a 9?",
+      "opcoes": [
+        "120",
+        "720",
+        "1000",
+        "504"
+      ],
+      "correta": 1,
+      "explicacao": "10 · 9 · 8."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "De 10 alunos, escolhem-se presidente e vice. O número de possibilidades é",
+      "opcoes": [
+        "45",
+        "90",
+        "100",
+        "20"
+      ],
+      "correta": 1,
+      "explicacao": "10 · 9."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em qual situação a ordem importa?",
+      "opcoes": [
+        "escolher 3 frutas para uma salada",
+        "formar uma comissão de 4 pessoas",
+        "formar um número de 3 algarismos",
+        "escolher 2 sabores de sorvete"
+      ],
+      "correta": 2,
+      "explicacao": "123 e 321 são números diferentes."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Quantos números de 4 algarismos distintos podem ser formados com 1, 2, 3, 4, 5 e 6?",
+      "opcoes": [
+        "360",
+        "720",
+        "1296",
+        "15"
+      ],
+      "correta": 0,
+      "explicacao": "6 · 5 · 4 · 3."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

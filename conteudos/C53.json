@@ -1,0 +1,90 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Ler tabelas e gráficos de barras, colunas, linhas e setores",
+    "Escolher o gráfico certo para cada situação",
+    "Calcular ângulos em gráficos de setores"
+  ],
+  "teoria": [
+    {
+      "titulo": "Cada gráfico, uma pergunta",
+      "paragrafos": [
+        "Gráficos de barras e colunas comparam categorias. Gráficos de linha mostram evolução no tempo. Gráficos de setores mostram partes de um todo. Leia sempre o título, os eixos e as unidades antes dos valores."
+      ],
+      "dica": "Desconfie de eixos que não começam no zero: eles exageram as diferenças.",
+      "erroComum": "Comparar alturas de colunas sem olhar a escala do eixo."
+    },
+    {
+      "titulo": "Setores",
+      "paragrafos": [
+        "No gráfico de setores, o círculo inteiro (360°) representa 100%. Cada 1% vale 3,6°."
+      ],
+      "formulas": [
+        "\\text{ângulo}=\\dfrac{p}{100}\\cdot360^\\circ"
+      ],
+      "exemplo": {
+        "enunciado": "Numa pesquisa, 25% preferem futebol. Qual o ângulo do setor?",
+        "passos": [
+          "0,25 · 360°.",
+          "90°."
+        ]
+      }
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Para mostrar a evolução da temperatura ao longo de um dia, o gráfico mais adequado é o de",
+      "opcoes": [
+        "setores",
+        "linhas",
+        "pictograma",
+        "barras horizontais"
+      ],
+      "correta": 1,
+      "explicacao": "Linhas mostram variação no tempo."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um setor de 72° corresponde a que porcentagem?",
+      "opcoes": [
+        "7,2%",
+        "20%",
+        "25%",
+        "72%"
+      ],
+      "correta": 1,
+      "explicacao": "72/360 = 0,2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Num gráfico de colunas, as vendas foram 120, 150 e 90 em três meses. A média mensal é",
+      "opcoes": [
+        "110",
+        "120",
+        "130",
+        "150"
+      ],
+      "correta": 1,
+      "explicacao": "360/3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Dos 400 alunos de uma escola, 30% vão a pé. No gráfico de setores, esse grupo tem",
+      "opcoes": [
+        "30°",
+        "108°",
+        "120°",
+        "90°"
+      ],
+      "correta": 1,
+      "explicacao": "0,3 · 360."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

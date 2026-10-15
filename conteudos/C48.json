@@ -2,34 +2,29 @@
   "status": "publicado",
   "versao": "1.0",
   "formato": "capri-mat-v1",
-  "objetivos": [
-    "Entender o conceito central de sistemas lineares 2x2 e interpretação geométrica",
-    "Aplicar o procedimento em um exemplo resolvido",
-    "Reconhecer erros frequentes antes de enfrentar uma questão"
-  ],
   "teoria": [
     {
-      "titulo": "A ideia que destrava",
+      "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "Duas equações com duas incógnitas representam retas. Se elas se cruzam, há solução única (SPD); se coincidem, infinitas (SPI); se são paralelas distintas, nenhuma (SI)."
+        "A probabilidade de A ou B soma as probabilidades individuais e subtrai a interseção. Somente quando eventos são mutuamente exclusivos a interseção é zero."
       ],
       "formulas": [
-        "\\begin{cases}x+y=7\\\\x-y=1\\end{cases}"
+        "P(A\\cup B)=P(A)+P(B)-P(A\\cap B)"
       ],
-      "dica": "Use adição quando uma incógnita aparece com coeficientes opostos.",
-      "erroComum": "Não confunda retas coincidentes (infinitas soluções) com paralelas distintas (nenhuma)."
+      "dica": "'Ou' pode incluir os dois acontecimentos simultaneamente.",
+      "erroComum": "Não some P(A)+P(B) sem analisar a interseção."
     },
     {
-      "titulo": "Vamos fazer uma juntos",
+      "titulo": "Hora de ver funcionar",
       "paragrafos": [
-        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+        "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Resolva x+y=7 e x−y=1.",
+        "enunciado": "Dado honesto: chance de sair par ou maior que 4?",
         "passos": [
-          "Some as equações: 2x=8.",
-          "x=4; substitua em x+y=7.",
-          "y=3, logo (x,y)=(4,3)."
+          "Par: {2,4,6}; maior que 4: {5,6}.",
+          "União: {2,4,5,6}.",
+          "P=4/6=2/3."
         ]
       }
     }
@@ -37,37 +32,30 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "O sistema x+y=6 e x−y=2 tem solução:",
+      "enunciado": "No dado, probabilidade de sair 1 ou 2:",
       "opcoes": [
-        "(2,4)",
-        "(3,3)",
-        "(4,2)",
-        "(5,1)"
+        "1/6",
+        "1/3",
+        "1/2",
+        "2/3"
       ],
-      "correta": 2,
-      "explicacao": "Somando, 2x=8 ⇒ x=4 e y=2."
+      "correta": 1,
+      "explicacao": "2 dos 6 resultados."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Retas paralelas distintas representam um sistema:",
+      "enunciado": "Quando A e B são disjuntos, P(A∩B) =",
       "opcoes": [
-        "SPD",
-        "SPI",
-        "SI",
-        "Sempre 2 soluções"
+        "0",
+        "1/2",
+        "1",
+        "P(A)+P(B)"
       ],
-      "correta": 2,
-      "explicacao": "Não se cruzam, então não há par solução."
+      "correta": 0,
+      "explicacao": "Disjuntos não compartilham resultados."
     }
   ],
-  "videos": [
-    {
-      "titulo": "Vídeos e prática: funções afins e retas",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Material com videoaulas e exercícios de funções lineares.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-linear-eq-func"
-    }
-  ],
-  "exercicios": [],
-  "arquivos": []
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
 }

@@ -1,29 +1,34 @@
 {
-  "status": "publicado",
+  "status": "rascunho-para-revisao",
   "versao": "1.0",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender razão entre áreas",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Desenhe antes de calcular",
       "paragrafos": [
-        "O volume de qualquer prisma é a área da base vezes a altura perpendicular. O princípio de Cavalieri compara sólidos com secções correspondentes de mesma área e alturas iguais."
+        "Quando figuras são semelhantes, seus comprimentos escalam por k, áreas por k² e volumes por k³. Isso explica por que ampliar uma figura é mais impactante do que parece."
       ],
       "formulas": [
-        "V=A_bh"
+        "\\frac{A_2}{A_1}=k^2"
       ],
-      "dica": "Volume mede espaço e aparece em unidade cúbica.",
-      "erroComum": "Se o prisma for oblíquo, a altura não é a medida da aresta lateral."
+      "dica": "Compare grandezas da mesma dimensão antes de elevar a razão.",
+      "erroComum": "Triplicar lado não triplica área: multiplica por 9."
     },
     {
-      "titulo": "Na prática",
+      "titulo": "Resolução com raciocínio",
       "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
       ],
       "exemplo": {
-        "enunciado": "Uma caixa mede 3 m por 4 m por 5 m. Qual volume?",
+        "enunciado": "Dois quadrados semelhantes têm lados 3 e 9. Qual razão entre áreas (maior/menor)?",
         "passos": [
-          "Área da base: 3·4=12 m².",
-          "V=12·5=60 m³."
+          "Razão linear k=9/3=3.",
+          "Razão de áreas k²=9."
         ]
       }
     }
@@ -31,30 +36,41 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Um prisma tem A_b=10 e h=6. Volume =",
+      "enunciado": "Lados na razão 2:1 produzem áreas na razão:",
       "opcoes": [
-        "16",
-        "30",
-        "60",
-        "100"
+        "2:1",
+        "3:1",
+        "4:1",
+        "8:1"
       ],
       "correta": 2,
-      "explicacao": "V=10·6=60."
+      "explicacao": "2²=4."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Diagonal espacial de cubo com aresta 2:",
+      "enunciado": "Se área dobra, a razão linear é:",
       "opcoes": [
-        "2√2",
-        "2√3",
+        "2",
+        "√2",
         "4",
-        "6"
+        "1/2"
       ],
       "correta": 1,
-      "explicacao": "d=a√3=2√3."
+      "explicacao": "k²=2 ⇒ k=√2."
     }
   ],
-  "videos": [],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
   "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
 }

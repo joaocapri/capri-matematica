@@ -1,60 +1,102 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Identificar raio, altura e geratriz do cone",
+    "Calcular a área lateral e total",
+    "Relacionar o cone com sua planificação"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Elementos",
       "paragrafos": [
-        "Questões integradas exigem conectar uma figura plana ao sólido: primeiro ache área, altura ou raio; depois aplique volume ou área superficial. Organize as unidades e verifique o resultado."
+        "Num cone reto, a altura h, o raio r da base e a geratriz g formam um triângulo retângulo."
       ],
       "formulas": [
-        "V=A_bh\\quad(\\text{prisma})"
-      ],
-      "dica": "Uma boa pergunta é: 'qual figura plana aparece na base?'",
-      "erroComum": "Não use perímetro no lugar de área da base."
-    },
-    {
-      "titulo": "Na prática",
-      "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "g^2=h^2+r^2"
       ],
       "exemplo": {
-        "enunciado": "Um prisma reto tem base triangular retângula de catetos 3 e 4 e altura 10. Volume?",
+        "enunciado": "Um cone tem raio 3 e altura 4. Quanto mede a geratriz?",
         "passos": [
-          "Base triangular: 3·4/2=6.",
-          "Volume: 6·10=60 unidades³."
+          "g² = 16 + 9 = 25.",
+          "g = 5."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Base triangular de área 12, prisma altura 5: volume =",
-      "opcoes": [
-        "17",
-        "30",
-        "60",
-        "120"
-      ],
-      "correta": 2,
-      "explicacao": "V=12·5=60."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "A área de triângulo retângulo catetos 6 e 8 é:",
-      "opcoes": [
-        "14",
-        "24",
-        "48",
-        "96"
+      "titulo": "Áreas",
+      "paragrafos": [
+        "A superfície lateral, aberta, vira um setor circular de raio g e arco igual ao comprimento da base, 2πr. Sua área é πrg."
       ],
-      "correta": 1,
-      "explicacao": "6·8/2=24."
+      "formulas": [
+        "A_L=\\pi r g",
+        "A_T=\\pi r(g+r)"
+      ],
+      "exemplo": {
+        "enunciado": "Calcule a área total do cone de raio 3 e geratriz 5.",
+        "passos": [
+          "A_L = π · 3 · 5 = 15π.",
+          "A_base = 9π.",
+          "A_T = 24π."
+        ]
+      },
+      "dica": "Cone equilátero: a geratriz é igual ao diâmetro (g = 2r).",
+      "erroComum": "Usar a altura no lugar da geratriz na área lateral."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um cone tem raio 6 e altura 8. A geratriz mede",
+      "opcoes": [
+        "10",
+        "12",
+        "14",
+        "√28"
+      ],
+      "correta": 0,
+      "explicacao": "36 + 64 = 100."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A área lateral de um cone de raio 4 e geratriz 7 é",
+      "opcoes": [
+        "16π",
+        "28π",
+        "44π",
+        "56π"
+      ],
+      "correta": 1,
+      "explicacao": "π · 4 · 7."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A área total de um cone de raio 2 e geratriz 6 é",
+      "opcoes": [
+        "12π",
+        "16π",
+        "20π",
+        "24π"
+      ],
+      "correta": 1,
+      "explicacao": "π · 2 · (6 + 2)."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Num cone equilátero de raio 3, a geratriz mede",
+      "opcoes": [
+        "3",
+        "3√3",
+        "6",
+        "9"
+      ],
+      "correta": 2,
+      "explicacao": "g = 2r."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

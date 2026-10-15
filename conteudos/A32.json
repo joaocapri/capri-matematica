@@ -1,71 +1,94 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de função exponencial",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Construir o gráfico de |f(x)| rebatendo a parte negativa",
+    "Construir o gráfico de f(|x|) espelhando a parte direita",
+    "Calcular áreas e interseções com gráficos com módulo"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "Rebater: y = |f(x)|",
       "paragrafos": [
-        "Em uma exponencial, a variável está no expoente. A base é positiva e diferente de 1. Quando base>1, cresce; quando 0<base<1, decresce."
-      ],
-      "formulas": [
-        "f(x)=a^x,\\quad a>0,\\ a\\neq1"
-      ],
-      "dica": "Exponencial positiva nunca cruza o eixo x.",
-      "erroComum": "O comportamento depende da base, não de o expoente ser positivo."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "Para desenhar y = |f(x)|, desenhe f e rebata para cima tudo o que estiver abaixo do eixo x. O que já estava acima não muda."
       ],
       "exemplo": {
-        "enunciado": "Compare 2^x e (1/2)^x em x=−1 e x=2.",
+        "enunciado": "Esboce y = |x² − 4|.",
         "passos": [
-          "2^(−1)=1/2 e 2²=4: há crescimento.",
-          "(1/2)^(−1)=2 e (1/2)²=1/4: há decrescimento.",
-          "Ambas são positivas em todo x real."
+          "Desenhe a parábola x² − 4, com raízes ±2 e vértice (0, −4).",
+          "Rebata o trecho entre −2 e 2 para cima.",
+          "O vértice vai para (0, 4) e o gráfico fica com formato de W."
         ]
       }
-    }
-  ],
-  "videos": [
+    },
     {
-      "titulo": "Introdução aos logaritmos",
-      "canal": "Khan Academy Brasil · vídeo",
-      "descricao": "Relação entre potências, expoentes e logaritmos.",
-      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
+      "titulo": "Espelhar: y = f(|x|)",
+      "paragrafos": [
+        "Para desenhar y = f(|x|), mantenha a parte do gráfico com x ≥ 0 e copie-a espelhada para o lado esquerdo. O resultado é sempre simétrico em relação ao eixo y."
+      ],
+      "exemplo": {
+        "enunciado": "Esboce y = |x| − 1 e calcule a área entre ele e a reta y = 3.",
+        "passos": [
+          "O V tem vértice (0, −1) e corta y = 3 em x = ±4.",
+          "A região é um triângulo de base 8 e altura 4.",
+          "Área = 8 · 4 / 2 = 16."
+        ]
+      },
+      "dica": "Rebater mexe no eixo y (valores negativos viram positivos). Espelhar mexe no eixo x (o lado esquerdo copia o direito).",
+      "erroComum": "Confundir |f(x)| com f(|x|). Teste x = −1 nas duas para ver a diferença."
     }
   ],
+  "videos": [],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Qual função é decrescente?",
+      "enunciado": "O gráfico de y = |f(x)| nunca fica",
       "opcoes": [
-        "3^x",
-        "(1/3)^x",
-        "2^x",
-        "10^x"
+        "acima do eixo x",
+        "abaixo do eixo x",
+        "sobre o eixo y",
+        "simétrico"
       ],
       "correta": 1,
-      "explicacao": "Base entre 0 e 1 implica decrescimento."
+      "explicacao": "O módulo de qualquer valor é maior ou igual a zero."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "O gráfico de y = f(|x|) é sempre simétrico em relação",
+      "opcoes": [
+        "ao eixo x",
+        "ao eixo y",
+        "à origem",
+        "à reta y = x"
+      ],
+      "correta": 1,
+      "explicacao": "f(|−x|) = f(|x|): a função é par."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O valor de 2^(−2) é:",
+      "enunciado": "O gráfico de y = |x + 3| é obtido do gráfico de y = |x| por uma translação de",
       "opcoes": [
-        "−4",
-        "4",
-        "1/4",
-        "−1/4"
+        "3 unidades para a direita",
+        "3 unidades para a esquerda",
+        "3 unidades para cima",
+        "3 unidades para baixo"
+      ],
+      "correta": 1,
+      "explicacao": "O vértice vai de (0, 0) para (−3, 0)."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "A área da região limitada pelos gráficos de y = |x| − 1 e y = 3 é",
+      "opcoes": [
+        "8",
+        "12",
+        "16",
+        "32"
       ],
       "correta": 2,
-      "explicacao": "2^(−2)=1/2²=1/4."
+      "explicacao": "Triângulo com vértices (−4, 3), (4, 3) e (0, −1): base 8 e altura 4."
     }
   ],
   "exercicios": [],

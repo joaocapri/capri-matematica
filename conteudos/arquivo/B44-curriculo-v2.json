@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Para somar vetores, some coordenadas ou coloque a origem do segundo na ponta do primeiro. Multiplicar por escalar altera o módulo e, se negativo, inverte o sentido."
+      ],
+      "formulas": [
+        "(a,b)+(c,d)=(a+c,b+d)"
+      ],
+      "dica": "No método do polígono, a resultante vai da origem inicial até a ponta final.",
+      "erroComum": "Vetor não é ponto: somá-los representa composição de deslocamentos."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule (2,−1)+(−3,4).",
+        "passos": [
+          "Primeira coordenada: 2−3=−1.",
+          "Segunda: −1+4=3.",
+          "Vetor soma: (−1,3)."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "(1,2)+(3,−1) =",
+      "opcoes": [
+        "(4,1)",
+        "(−2,3)",
+        "(3,−2)",
+        "(4,3)"
+      ],
+      "correta": 0,
+      "explicacao": "Some coordenadas: (4,1)."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "−2(2,−3) =",
+      "opcoes": [
+        "(−4,6)",
+        "(4,−6)",
+        "(−2,3)",
+        "(0,−1)"
+      ],
+      "correta": 0,
+      "explicacao": "Multiplicação por escalar em ambas as coordenadas."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

@@ -1,60 +1,95 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Aplicar o princípio das gavetas",
+    "Garantir que algo aconteça no pior caso",
+    "Montar o pior caso antes de responder"
+  ],
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "O princípio",
       "paragrafos": [
-        "Lei dos senos relaciona lados aos senos dos ângulos opostos; lei dos cossenos generaliza Pitágoras em triângulos quaisquer. Escolha a lei conforme as informações disponíveis."
-      ],
-      "formulas": [
-        "\\frac a{\\sin A}=\\frac b{\\sin B}=\\frac c{\\sin C}=2R"
-      ],
-      "dica": "Se tem SAS (dois lados e ângulo entre eles), a lei dos cossenos costuma ser direta.",
-      "erroComum": "Na lei dos senos, cada lado deve estar associado ao seu ângulo oposto."
-    },
-    {
-      "titulo": "Veja funcionando",
-      "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "Se n + 1 objetos são colocados em n gavetas, pelo menos uma gaveta recebe dois objetos. A pergunta típica é: quantos elementos preciso pegar para ter certeza de algo?"
       ],
       "exemplo": {
-        "enunciado": "Triângulo com a=6 oposto a A=30° e b oposto a B=90°. Calcule b.",
+        "enunciado": "Numa gaveta há meias pretas e brancas. Quantas preciso pegar no escuro para garantir um par da mesma cor?",
         "passos": [
-          "Pela lei dos senos, b/sen90°=6/sen30°.",
-          "b=6/(1/2)=12."
+          "Pior caso: uma de cada cor (2 meias).",
+          "A próxima forma um par.",
+          "Resposta: 3."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Lados 3 e 4 com ângulo incluso de 90°; lado oposto vale:",
-      "opcoes": [
-        "5",
-        "6",
-        "7",
-        "12"
-      ],
-      "correta": 0,
-      "explicacao": "Lei dos cossenos: c²=9+16=25."
+      },
+      "dica": "Pense sempre no azar máximo e some 1."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Lei dos senos usa:",
-      "opcoes": [
-        "Tangente dos lados",
-        "Seno dos ângulos opostos",
-        "Cosseno dos lados",
-        "Área do círculo"
+      "titulo": "Generalizando",
+      "paragrafos": [
+        "Com n gavetas e kn + 1 objetos, alguma gaveta recebe pelo menos k + 1 objetos."
       ],
-      "correta": 1,
-      "explicacao": "Razão lado/seno do oposto é constante."
+      "exemplo": {
+        "enunciado": "Quantas pessoas são necessárias para garantir que 3 façam aniversário no mesmo mês?",
+        "passos": [
+          "Pior caso: 2 por mês, 24 pessoas.",
+          "A 25ª garante 3 no mesmo mês."
+        ]
+      },
+      "erroComum": "Contar o caso favorável em vez do pior caso."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma urna tem bolas de 4 cores. Quantas tirar para garantir 2 da mesma cor?",
+      "opcoes": [
+        "4",
+        "5",
+        "8",
+        "2"
+      ],
+      "correta": 1,
+      "explicacao": "Pior caso: 4 diferentes."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Quantas pessoas garantem duas nascidas no mesmo dia da semana?",
+      "opcoes": [
+        "7",
+        "8",
+        "14",
+        "15"
+      ],
+      "correta": 1,
+      "explicacao": "7 + 1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma caixa tem 10 bolas vermelhas e 10 azuis. Quantas tirar para garantir 3 vermelhas?",
+      "opcoes": [
+        "3",
+        "12",
+        "13",
+        "20"
+      ],
+      "correta": 2,
+      "explicacao": "Pior caso: 10 azuis e 2 vermelhas."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Num grupo de 37 pessoas, pode-se garantir que pelo menos quantas nasceram no mesmo mês?",
+      "opcoes": [
+        "3",
+        "4",
+        "2",
+        "13"
+      ],
+      "correta": 1,
+      "explicacao": "37 = 3 · 12 + 1."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

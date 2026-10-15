@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Entenda sem decorar",
+      "paragrafos": [
+        "Permutações com letras repetidas exigem dividir pelos fatoriais das repetições. Em mesa circular, rotações são consideradas equivalentes quando não existe assento marcado."
+      ],
+      "formulas": [
+        "P=\\frac{n!}{a!b!\\cdots}"
+      ],
+      "dica": "Em arranjos circulares de n pessoas distintas, use (n−1)! se rotações forem equivalentes.",
+      "erroComum": "Em anagramas com letras repetidas, 6! sozinho conta duplicações."
+    },
+    {
+      "titulo": "Hora de ver funcionar",
+      "paragrafos": [
+        "Vamos transformar a ideia em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Quantos anagramas distintos tem a palavra BANANA?",
+        "passos": [
+          "São 6 letras com A repetido 3 vezes e N repetido 2.",
+          "6!/(3!2!)=60."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Anagramas distintos de ARARA:",
+      "opcoes": [
+        "10",
+        "20",
+        "30",
+        "60"
+      ],
+      "correta": 0,
+      "explicacao": "5!/(3!2!)=10."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "4 pessoas em roda circular (sem lugar fixo):",
+      "opcoes": [
+        "4",
+        "6",
+        "12",
+        "24"
+      ],
+      "correta": 1,
+      "explicacao": "(4−1)!=6."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

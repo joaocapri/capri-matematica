@@ -1,0 +1,98 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Perceber o ciclo das potências de i",
+    "Calcular potências grandes pelo resto da divisão por 4",
+    "Somar potências consecutivas de i"
+  ],
+  "teoria": [
+    {
+      "titulo": "O ciclo de 4",
+      "paragrafos": [
+        "As potências de i se repetem de 4 em 4: i⁰ = 1, i¹ = i, i² = −1, i³ = −i, e depois tudo recomeça."
+      ],
+      "formulas": [
+        "i^n=i^{r},\\ \\text{onde } r \\text{ é o resto de } n \\div 4"
+      ],
+      "exemplo": {
+        "enunciado": "Calcule i⁸³.",
+        "passos": [
+          "83 dividido por 4 dá resto 3.",
+          "i⁸³ = i³ = −i."
+        ]
+      },
+      "dica": "Para achar o resto por 4, basta olhar os dois últimos algarismos do expoente.",
+      "erroComum": "Dividir o expoente por 4 e usar o quociente. O que importa é o resto."
+    },
+    {
+      "titulo": "Somas de potências",
+      "paragrafos": [
+        "Quatro potências consecutivas de i somam zero: 1 + i − 1 − i = 0. Em somas longas, agrupe de 4 em 4 e sobra pouca coisa para calcular."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule i + i² + ... + i¹⁰.",
+        "passos": [
+          "Os 8 primeiros termos formam dois grupos de 4 e somam 0.",
+          "Sobram i⁹ + i¹⁰ = i + (−1).",
+          "Resultado: −1 + i."
+        ]
+      }
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O valor de i³ é",
+      "opcoes": [
+        "1",
+        "−1",
+        "i",
+        "−i"
+      ],
+      "correta": 3,
+      "explicacao": "i³ = i² · i = −i."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de i¹⁰² é",
+      "opcoes": [
+        "1",
+        "−1",
+        "i",
+        "−i"
+      ],
+      "correta": 1,
+      "explicacao": "102 deixa resto 2 na divisão por 4."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de i²⁰²⁴ é",
+      "opcoes": [
+        "1",
+        "−1",
+        "i",
+        "−i"
+      ],
+      "correta": 0,
+      "explicacao": "2024 é múltiplo de 4."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "A soma i + i² + i³ + ... + i²⁰ vale",
+      "opcoes": [
+        "0",
+        "1",
+        "i",
+        "−1"
+      ],
+      "correta": 0,
+      "explicacao": "São 20 termos, cinco grupos de quatro."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

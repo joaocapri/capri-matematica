@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de operações na forma trigonométrica",
+    "Reconhecer o conceito central de soma de p.g. finita e produto",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Multiplicar complexos na forma trigonométrica multiplica módulos e soma argumentos. Dividir divide módulos e subtrai argumentos. Na potenciação, o teorema de Moivre multiplica o argumento pelo expoente."
+        "A soma de uma PG finita também pode ser acelerada. Multiplicando a soma por q e subtraindo as expressões, os termos do meio se cancelam e sobra uma fórmula curta."
       ],
       "formulas": [
-        "(r\\,\\mathrm{cis}\\theta)^n=r^n\\,\\mathrm{cis}(n\\theta)"
+        "S_n=a_1\\frac{q^n-1}{q-1}\\quad(q\\neq1)"
       ],
-      "dica": "Use forma algébrica para somar; trigonométrica para multiplicar, dividir e elevar.",
-      "erroComum": "Na divisão, a ordem dos argumentos importa: argumento do numerador menos do denominador."
+      "dica": "Se q=1, a soma é simplesmente n·a₁.",
+      "erroComum": "Não confunda soma de PG com o produto de termos de PG."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,47 +25,47 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Calcule i² usando argumento.",
+        "enunciado": "Some 2+6+18+54.",
         "passos": [
-          "i tem módulo 1 e argumento π/2.",
-          "i² tem módulo 1²=1 e argumento π.",
-          "cosπ+i senπ=−1."
+          "a₁=2, q=3, n=4.",
+          "S₄=2(3⁴−1)/(3−1).",
+          "S₄=2·80/2=80."
         ]
       }
     }
   ],
   "videos": [
     {
-      "titulo": "Números complexos e polinômios",
+      "titulo": "Progressões aritméticas e geométricas",
       "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Revisão de números complexos e técnicas de fatoração.",
-      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
     }
   ],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "O módulo do produto (2 cis30°)(3 cis60°) é:",
+      "enunciado": "1+2+4+8+16 é:",
       "opcoes": [
-        "1",
-        "5",
-        "6",
-        "9"
+        "15",
+        "30",
+        "31",
+        "32"
       ],
       "correta": 2,
-      "explicacao": "Os módulos se multiplicam: 2·3=6."
+      "explicacao": "São cinco termos: 2⁵−1=31."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O argumento do mesmo produto é:",
+      "enunciado": "Uma PG tem quatro termos 3,3,3,3. Sua soma é:",
       "opcoes": [
-        "30°",
-        "60°",
-        "90°",
-        "180°"
+        "3",
+        "6",
+        "9",
+        "12"
       ],
-      "correta": 2,
-      "explicacao": "Somamos 30° e 60°."
+      "correta": 3,
+      "explicacao": "Com q=1, somamos 4·3=12."
     }
   ],
   "exercicios": [],

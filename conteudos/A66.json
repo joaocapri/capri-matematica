@@ -1,0 +1,101 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Somar, subtrair e multiplicar complexos",
+    "Calcular o conjugado",
+    "Dividir complexos usando o conjugado"
+  ],
+  "teoria": [
+    {
+      "titulo": "Soma e produto",
+      "paragrafos": [
+        "Some partes reais com partes reais e imaginárias com imaginárias. Para multiplicar, use a distributiva e substitua i² por −1."
+      ],
+      "formulas": [
+        "(a+bi)(c+di)=(ac-bd)+(ad+bc)i"
+      ],
+      "exemplo": {
+        "enunciado": "Calcule (2 + 3i)(1 − i).",
+        "passos": [
+          "2 − 2i + 3i − 3i².",
+          "2 + i + 3 (pois −3i² = 3).",
+          "Resultado: 5 + i."
+        ]
+      }
+    },
+    {
+      "titulo": "Conjugado e divisão",
+      "paragrafos": [
+        "O conjugado de z = a + bi é z̄ = a − bi. O produto z · z̄ = a² + b² é sempre real. Para dividir, multiplique numerador e denominador pelo conjugado do denominador."
+      ],
+      "formulas": [
+        "z\\cdot\\bar z=a^2+b^2"
+      ],
+      "exemplo": {
+        "enunciado": "Calcule (3 + i)/(1 + i).",
+        "passos": [
+          "Multiplique em cima e embaixo por 1 − i.",
+          "Numerador: (3 + i)(1 − i) = 3 − 3i + i − i² = 4 − 2i. Denominador: 1 + 1 = 2.",
+          "Resultado: 2 − i."
+        ]
+      },
+      "erroComum": "Esquecer que i² = −1 e deixar o termo i² na resposta."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "A soma (4 + 2i) + (1 − 5i) é",
+      "opcoes": [
+        "5 − 3i",
+        "5 + 3i",
+        "3 − 3i",
+        "5 − 7i"
+      ],
+      "correta": 0,
+      "explicacao": "4 + 1 = 5 e 2 − 5 = −3."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "O conjugado de −2 + 7i é",
+      "opcoes": [
+        "2 − 7i",
+        "−2 − 7i",
+        "2 + 7i",
+        "7 − 2i"
+      ],
+      "correta": 1,
+      "explicacao": "Troca-se o sinal da parte imaginária."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O produto (1 + 2i)(3 − i) é",
+      "opcoes": [
+        "5 + 5i",
+        "3 − 2i",
+        "1 + 5i",
+        "5 − 5i"
+      ],
+      "correta": 0,
+      "explicacao": "3 − i + 6i − 2i² = 3 + 5i + 2 = 5 + 5i."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O quociente 10/(1 − 3i) é",
+      "opcoes": [
+        "1 + 3i",
+        "1 − 3i",
+        "10 + 30i",
+        "−1 + 3i"
+      ],
+      "correta": 0,
+      "explicacao": "Multiplique por 1 + 3i: 10(1 + 3i)/10."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

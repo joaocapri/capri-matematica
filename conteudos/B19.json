@@ -1,30 +1,35 @@
 {
-  "status": "publicado",
+  "status": "rascunho-para-revisao",
   "versao": "1.0",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender áreas de figuras planas iii - círculo",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Desenhe antes de calcular",
       "paragrafos": [
-        "Prismas têm duas bases congruentes em planos paralelos. A área total é a soma das áreas de todas as faces: duas bases mais a área lateral. Em prisma reto, as faces laterais são retângulos."
+        "Setor circular é uma fatia proporcional ao ângulo central. A coroa circular é a diferença entre duas áreas de círculos concêntricos."
       ],
       "formulas": [
-        "A_T=2A_b+A_l"
+        "A_{\\text{setor}}=\\frac{\\theta}{360^{\\circ}}\\pi r^2"
       ],
-      "dica": "Em prisma reto, A_l=P_b·h; em oblíquo, não use automaticamente.",
-      "erroComum": "A fórmula de volume não serve para área: unidades devem ser quadradas."
+      "dica": "Se o ângulo vier em radianos, a área do setor é r²θ/2.",
+      "erroComum": "Para coroa circular, subtraia quadrados dos raios, não quadrados dos diâmetros sem ajuste."
     },
     {
-      "titulo": "Na prática",
+      "titulo": "Resolução com raciocínio",
       "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
       ],
       "exemplo": {
-        "enunciado": "Prisma reto de base quadrada com lado 2 cm e altura 5 cm: área total?",
+        "enunciado": "Calcule a área de setor de 90° em círculo de raio 4.",
         "passos": [
-          "Duas bases: 2·2²=8 cm².",
-          "Lateral: perímetro da base·altura=8·5=40 cm².",
-          "Total: 48 cm²."
+          "Círculo inteiro: 16π.",
+          "O setor corresponde a 1/4 da volta.",
+          "Área=4π."
         ]
       }
     }
@@ -32,30 +37,41 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Prisma triangular possui quantas bases?",
+      "enunciado": "Área de círculo de raio 5:",
       "opcoes": [
-        "1",
-        "2",
-        "3",
-        "5"
+        "5π",
+        "10π",
+        "25π",
+        "50π"
       ],
-      "correta": 1,
-      "explicacao": "Todo prisma tem duas bases congruentes."
+      "correta": 2,
+      "explicacao": "π·5²=25π."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Prisma reto de base quadrada 3 e altura 4: área lateral =",
+      "enunciado": "Setor de 180° de raio 3 tem área:",
       "opcoes": [
-        "12",
-        "24",
-        "36",
-        "48"
+        "3π",
+        "9π/2",
+        "9π",
+        "18π"
       ],
-      "correta": 3,
-      "explicacao": "P_b·h=12·4=48."
+      "correta": 1,
+      "explicacao": "Metade de 9π é 9π/2."
     }
   ],
-  "videos": [],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
   "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
 }

@@ -1,71 +1,90 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de conjuntos numéricos: a evolução do número",
-    "Aplicar o procedimento em um exemplo resolvido",
-    "Reconhecer erros frequentes antes de enfrentar uma questão"
+    "Organizar dados de pesquisas em diagramas de Venn",
+    "Resolver problemas com dois e três conjuntos",
+    "Começar sempre pela interseção"
   ],
   "teoria": [
     {
-      "titulo": "A ideia que destrava",
+      "titulo": "Comece pelo meio",
       "paragrafos": [
-        "Naturais, inteiros, racionais e reais são conjuntos encaixados. Todo inteiro é racional; irracionais não podem ser escritos como razão de dois inteiros com denominador diferente de zero."
-      ],
-      "formulas": [
-        "\\mathbb N\\subseteq\\mathbb Z\\subseteq\\mathbb Q\\subseteq\\mathbb R"
-      ],
-      "dica": "Uma decimal infinita periódica é racional; infinita não periódica é irracional.",
-      "erroComum": "O número π não é racional só porque usamos 3,14 como aproximação."
-    },
-    {
-      "titulo": "Vamos fazer uma juntos",
-      "paragrafos": [
-        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+        "Em problemas de pesquisa, preencha o diagrama de dentro para fora: primeiro a interseção de todos, depois as interseções de dois em dois e, por último, as partes que pertencem a um só conjunto.",
+        "Quem não está em nenhum conjunto fica do lado de fora, mas ainda dentro do universo."
       ],
       "exemplo": {
-        "enunciado": "Classifique −3, 0,5 e √2.",
+        "enunciado": "Em uma turma de 40 alunos, 25 gostam de futebol, 18 de vôlei e 8 dos dois. Quantos não gostam de nenhum?",
         "passos": [
-          "−3 é inteiro e racional.",
-          "0,5=1/2 é racional.",
-          "√2 é irracional e real."
+          "Só futebol: 25 − 8 = 17. Só vôlei: 18 − 8 = 10.",
+          "Gostam de pelo menos um: 17 + 8 + 10 = 35.",
+          "Nenhum: 40 − 35 = 5."
         ]
-      }
+      },
+      "dica": "Escreva o número de cada região dentro do diagrama. Fica fácil conferir se a soma bate com o total."
+    },
+    {
+      "titulo": "Três conjuntos",
+      "paragrafos": [
+        "Com três conjuntos o raciocínio é o mesmo, só que com sete regiões internas. A fórmula ajuda a conferir, mas o diagrama evita erros."
+      ],
+      "formulas": [
+        "n(A\\cup B\\cup C)=n(A)+n(B)+n(C)-n(A\\cap B)-n(A\\cap C)-n(B\\cap C)+n(A\\cap B\\cap C)"
+      ],
+      "erroComum": "Usar o número “gostam de A e B” como se fosse “só A e B”. Ele inclui quem gosta dos três."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Qual número é irracional?",
+      "nivel": "Aquecimento",
+      "enunciado": "Numa pesquisa, 30 pessoas leem jornal, 20 leem revista e 12 leem os dois. Quantas leem só jornal?",
       "opcoes": [
-        "0,75",
-        "√9",
-        "√2",
-        "−7"
+        "8",
+        "12",
+        "18",
+        "30"
       ],
       "correta": 2,
-      "explicacao": "√2 não é razão de inteiros."
+      "explicacao": "30 − 12 = 18."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Qual afirmação é sempre verdadeira?",
+      "enunciado": "Em um grupo de 50 pessoas, 28 falam inglês, 20 falam espanhol e 9 falam os dois idiomas. Quantas não falam nenhum dos dois?",
       "opcoes": [
-        "Todo real é racional",
-        "Todo inteiro é racional",
-        "Todo racional é natural",
-        "Todo irracional é inteiro"
+        "2",
+        "9",
+        "11",
+        "13"
+      ],
+      "correta": 2,
+      "explicacao": "Falam pelo menos um: 28 + 20 − 9 = 39. Nenhum: 50 − 39 = 11."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Em uma escola, 70% dos alunos estudam inglês, 50% estudam espanhol e 10% não estudam nenhum. Qual porcentagem estuda os dois?",
+      "opcoes": [
+        "20%",
+        "30%",
+        "40%",
+        "60%"
       ],
       "correta": 1,
-      "explicacao": "n = n/1, então qualquer inteiro pertence aos racionais."
-    }
-  ],
-  "videos": [
+      "explicacao": "Estudam pelo menos um: 90%. Então 70% + 50% − x = 90% e x = 30%."
+    },
     {
-      "titulo": "Vídeos e prática: fundamentos de álgebra",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Uma coleção de videoaulas e exercícios para revisar fundamentos e notação.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-intro-to-algebra/alg-manipulating-expressions"
+      "nivel": "Desafio",
+      "enunciado": "Consomem A: 100; B: 80; C: 60; A e B: 30; A e C: 20; B e C: 15; os três: 5. Quantas pessoas consomem pelo menos um produto?",
+      "opcoes": [
+        "175",
+        "180",
+        "185",
+        "190"
+      ],
+      "correta": 1,
+      "explicacao": "100 + 80 + 60 − 30 − 20 − 15 + 5 = 180."
     }
   ],
   "exercicios": [],

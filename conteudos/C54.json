@@ -1,0 +1,90 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Montar tabelas de frequência",
+    "Calcular frequência relativa e acumulada",
+    "Ler histogramas"
+  ],
+  "teoria": [
+    {
+      "titulo": "Frequências",
+      "paragrafos": [
+        "A frequência absoluta é quantas vezes um valor aparece. A relativa é essa quantidade dividida pelo total (em fração ou porcentagem). A acumulada soma as frequências até aquela linha."
+      ],
+      "formulas": [
+        "f_r=\\dfrac{f}{n}"
+      ],
+      "exemplo": {
+        "enunciado": "Notas: 6, 7, 7, 8, 8, 8, 9, 10. Qual a frequência relativa da nota 8?",
+        "passos": [
+          "A nota 8 aparece 3 vezes em 8 dados.",
+          "3/8 = 37,5%."
+        ]
+      }
+    },
+    {
+      "titulo": "Classes e histogramas",
+      "paragrafos": [
+        "Com muitos valores diferentes, agrupe em classes (intervalos). O histograma tem colunas encostadas, uma por classe, com altura igual à frequência."
+      ],
+      "dica": "Na classe [10, 20[, o 10 entra e o 20 fica para a classe seguinte.",
+      "erroComum": "Somar frequências relativas e não chegar a 100%: revise a contagem."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Num grupo de 50 alunos, 15 tiraram nota acima de 8. A frequência relativa é",
+      "opcoes": [
+        "15%",
+        "30%",
+        "35%",
+        "3%"
+      ],
+      "correta": 1,
+      "explicacao": "15/50."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A soma das frequências relativas de uma tabela é",
+      "opcoes": [
+        "o total de dados",
+        "1 (ou 100%)",
+        "a média",
+        "a moda"
+      ],
+      "correta": 1,
+      "explicacao": "As partes somam o todo."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Nas classes [0,10[, [10,20[ e [20,30[, as frequências são 4, 10 e 6. A frequência acumulada até [10,20[ é",
+      "opcoes": [
+        "10",
+        "14",
+        "20",
+        "6"
+      ],
+      "correta": 1,
+      "explicacao": "4 + 10."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "O valor 20 pertence a qual classe?",
+      "opcoes": [
+        "[10, 20[",
+        "[20, 30[",
+        "às duas",
+        "a nenhuma"
+      ],
+      "correta": 1,
+      "explicacao": "O intervalo [10, 20[ não inclui o 20."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

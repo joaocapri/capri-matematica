@@ -1,0 +1,95 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Memorizar as razões de 30°, 45° e 60°",
+    "Resolver problemas de altura e distância",
+    "Usar ângulos de elevação"
+  ],
+  "teoria": [
+    {
+      "titulo": "A tabela",
+      "paragrafos": [
+        "Os ângulos notáveis aparecem em quase todo problema. Uma forma de lembrar: os senos de 30°, 45° e 60° são √1/2, √2/2 e √3/2; os cossenos são os mesmos na ordem inversa."
+      ],
+      "formulas": [
+        "\\operatorname{sen}30^\\circ=\\tfrac12",
+        "\\operatorname{sen}45^\\circ=\\tfrac{\\sqrt2}{2}",
+        "\\operatorname{sen}60^\\circ=\\tfrac{\\sqrt3}{2}",
+        "\\operatorname{tg}30^\\circ=\\tfrac{\\sqrt3}{3}",
+        "\\operatorname{tg}45^\\circ=1",
+        "\\operatorname{tg}60^\\circ=\\sqrt3"
+      ]
+    },
+    {
+      "titulo": "Alturas e distâncias",
+      "paragrafos": [
+        "Ângulo de elevação é o ângulo entre a horizontal e a linha de visão para cima. Com a distância horizontal e esse ângulo, a tangente dá a altura."
+      ],
+      "exemplo": {
+        "enunciado": "A 30 m de um prédio, uma pessoa vê o topo sob 60°. Qual a altura do prédio (ignorando a altura da pessoa)?",
+        "passos": [
+          "tg 60° = h/30.",
+          "h = 30√3.",
+          "h ≈ 52 m."
+        ]
+      },
+      "dica": "Desenhe o triângulo e marque qual lado você tem e qual quer: isso escolhe a razão."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O valor de cos 60° é",
+      "opcoes": [
+        "1/2",
+        "√2/2",
+        "√3/2",
+        "1"
+      ],
+      "correta": 0,
+      "explicacao": "Tabela."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma rampa de 10 m faz 30° com o chão. A altura alcançada é",
+      "opcoes": [
+        "5 m",
+        "5√3 m",
+        "10√3 m",
+        "20 m"
+      ],
+      "correta": 0,
+      "explicacao": "10 · sen 30°."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma escada faz 60° com o chão e seu pé está a 2 m da parede. O comprimento da escada é",
+      "opcoes": [
+        "2 m",
+        "4 m",
+        "2√3 m",
+        "1 m"
+      ],
+      "correta": 1,
+      "explicacao": "cos 60° = 2/L."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Do alto de um farol de 50 m, um barco é visto sob ângulo de depressão de 45°. A distância horizontal até o barco é",
+      "opcoes": [
+        "25 m",
+        "50 m",
+        "50√2 m",
+        "100 m"
+      ],
+      "correta": 1,
+      "explicacao": "tg 45° = 1."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

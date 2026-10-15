@@ -1,0 +1,100 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Usar a relação fundamental",
+    "Encontrar uma razão a partir de outra",
+    "Simplificar expressões e provar identidades"
+  ],
+  "teoria": [
+    {
+      "titulo": "sen² + cos² = 1",
+      "paragrafos": [
+        "Pelo teorema de Pitágoras no ciclo, a soma dos quadrados de seno e cosseno de qualquer arco é 1."
+      ],
+      "formulas": [
+        "\\operatorname{sen}^2x+\\cos^2x=1",
+        "1+\\operatorname{tg}^2x=\\sec^2x",
+        "1+\\operatorname{cotg}^2x=\\operatorname{cossec}^2x"
+      ],
+      "exemplo": {
+        "enunciado": "Se sen x = 3/5 e x está no 2º quadrante, quanto vale cos x?",
+        "passos": [
+          "cos² x = 1 − 9/25 = 16/25.",
+          "cos x = ±4/5.",
+          "No 2º quadrante o cosseno é negativo: −4/5."
+        ]
+      },
+      "erroComum": "Esquecer de escolher o sinal pelo quadrante."
+    },
+    {
+      "titulo": "Simplificando",
+      "paragrafos": [
+        "Para simplificar expressões, escreva tudo em seno e cosseno e use a relação fundamental."
+      ],
+      "exemplo": {
+        "enunciado": "Simplifique (1 − cos² x)/sen x.",
+        "passos": [
+          "1 − cos² x = sen² x.",
+          "sen² x / sen x = sen x."
+        ]
+      },
+      "dica": "Ao provar uma identidade, trabalhe só um dos lados até chegar ao outro."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O valor de sen² 25° + cos² 25° é",
+      "opcoes": [
+        "0",
+        "1",
+        "2",
+        "sen 50°"
+      ],
+      "correta": 1,
+      "explicacao": "Relação fundamental."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se cos x = 0,8 e x está no 1º quadrante, sen x vale",
+      "opcoes": [
+        "0,2",
+        "0,6",
+        "0,36",
+        "0,64"
+      ],
+      "correta": 1,
+      "explicacao": "1 − 0,64 = 0,36."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A expressão (sen x · cos x)/(1 − sen² x) é igual a",
+      "opcoes": [
+        "tg x",
+        "cotg x",
+        "sen x",
+        "sec x"
+      ],
+      "correta": 0,
+      "explicacao": "1 − sen² x = cos² x."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se tg x = 2, então sec² x vale",
+      "opcoes": [
+        "3",
+        "4",
+        "5",
+        "√5"
+      ],
+      "correta": 2,
+      "explicacao": "1 + tg² x."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

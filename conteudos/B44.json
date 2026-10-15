@@ -1,61 +1,101 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Calcular o coeficiente angular",
+    "Relacionar coeficiente angular e inclinação",
+    "Escrever a equação da reta por um ponto"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Inclinação",
       "paragrafos": [
-        "Para somar vetores, some coordenadas ou coloque a origem do segundo na ponta do primeiro. Multiplicar por escalar altera o módulo e, se negativo, inverte o sentido."
+        "O coeficiente angular m mede quanto y varia quando x aumenta 1. Ele é a tangente do ângulo que a reta faz com o eixo x."
       ],
       "formulas": [
-        "(a,b)+(c,d)=(a+c,b+d)"
-      ],
-      "dica": "No método do polígono, a resultante vai da origem inicial até a ponta final.",
-      "erroComum": "Vetor não é ponto: somá-los representa composição de deslocamentos."
-    },
-    {
-      "titulo": "Na prática",
-      "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "m=\\dfrac{y_B-y_A}{x_B-x_A}=\\operatorname{tg}\\alpha"
       ],
       "exemplo": {
-        "enunciado": "Calcule (2,−1)+(−3,4).",
+        "enunciado": "Qual o coeficiente angular da reta por A(1, 3) e B(4, 9)?",
         "passos": [
-          "Primeira coordenada: 2−3=−1.",
-          "Segunda: −1+4=3.",
-          "Vetor soma: (−1,3)."
+          "m = (9 − 3)/(4 − 1).",
+          "m = 2."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "(1,2)+(3,−1) =",
-      "opcoes": [
-        "(4,1)",
-        "(−2,3)",
-        "(3,−2)",
-        "(4,3)"
-      ],
-      "correta": 0,
-      "explicacao": "Some coordenadas: (4,1)."
+      },
+      "erroComum": "Inverter a fração: é variação de y sobre variação de x."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "−2(2,−3) =",
-      "opcoes": [
-        "(−4,6)",
-        "(4,−6)",
-        "(−2,3)",
-        "(0,−1)"
+      "titulo": "Equação por um ponto",
+      "paragrafos": [
+        "Com um ponto (x₀, y₀) e o coeficiente angular m, a equação da reta sai direto."
       ],
-      "correta": 0,
-      "explicacao": "Multiplicação por escalar em ambas as coordenadas."
+      "formulas": [
+        "y-y_0=m(x-x_0)"
+      ],
+      "exemplo": {
+        "enunciado": "Encontre a reta que passa por (2, −1) com inclinação de 45°.",
+        "passos": [
+          "m = tg 45° = 1.",
+          "y + 1 = 1(x − 2).",
+          "y = x − 3."
+        ]
+      },
+      "dica": "Reta vertical não tem coeficiente angular: sua equação é x = constante."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O coeficiente angular da reta por (0, 1) e (2, 7) é",
+      "opcoes": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "correta": 1,
+      "explicacao": "(7 − 1)/2 = 3."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Uma reta com inclinação de 45° tem coeficiente angular",
+      "opcoes": [
+        "0",
+        "1",
+        "√3",
+        "−1"
+      ],
+      "correta": 1,
+      "explicacao": "tg 45° = 1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A reta que passa por (1, 2) com m = 3 tem equação",
+      "opcoes": [
+        "y = 3x − 1",
+        "y = 3x + 2",
+        "y = 3x + 1",
+        "y = x + 3"
+      ],
+      "correta": 0,
+      "explicacao": "y − 2 = 3(x − 1)."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Uma reta horizontal tem coeficiente angular",
+      "opcoes": [
+        "0",
+        "1",
+        "infinito",
+        "negativo"
+      ],
+      "correta": 0,
+      "explicacao": "y não varia."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

@@ -1,61 +1,97 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Calcular variações sucessivas",
+    "Calcular a inflação acumulada",
+    "Diferenciar lucro sobre o custo e sobre a venda"
+  ],
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Variações em sequência",
       "paragrafos": [
-        "Duas turmas podem ter a mesma média e consistência diferente. Desvio padrão menor indica menor dispersão na mesma escala; coeficiente de variação compara dispersão relativa entre médias positivas e não nulas."
+        "Aumentos e descontos sucessivos não se somam: multiplicam-se os fatores. Um aumento de 10% seguido de um desconto de 10% não volta ao valor inicial."
       ],
       "formulas": [
-        "CV=\\frac\\sigma{\\mu}\\times100\\%\\quad(\\mu>0)"
-      ],
-      "dica": "Coeficiente de variação faz mais sentido para variáveis de razão e média diferente de zero.",
-      "erroComum": "Menor desvio padrão absoluto não garante menor dispersão relativa quando médias diferem."
-    },
-    {
-      "titulo": "Veja funcionando",
-      "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "(1+i_1)(1+i_2)\\cdots"
       ],
       "exemplo": {
-        "enunciado": "Turma A tem média 10 e desvio 2; turma B, média 20 e desvio 2. CV?",
+        "enunciado": "Um preço subiu 10% e depois caiu 10%. Qual a variação total?",
         "passos": [
-          "CV_A=2/10=20%.",
-          "CV_B=2/20=10%.",
-          "B tem menor dispersão relativa."
+          "1,1 · 0,9 = 0,99.",
+          "Queda de 1%."
+        ]
+      },
+      "erroComum": "Somar as porcentagens: +10% − 10% não é 0%."
+    },
+    {
+      "titulo": "Lucro sobre custo e sobre venda",
+      "paragrafos": [
+        "Lucro sobre o custo é calculado como porcentagem do preço de custo. Lucro sobre a venda é porcentagem do preço de venda. O mesmo lucro em reais dá porcentagens diferentes."
+      ],
+      "exemplo": {
+        "enunciado": "Um item custa R$ 80,00 e é vendido por R$ 100,00. Qual o lucro sobre o custo e sobre a venda?",
+        "passos": [
+          "Lucro: R$ 20,00.",
+          "Sobre o custo: 20/80 = 25%.",
+          "Sobre a venda: 20/100 = 20%."
         ]
       }
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Média 50, desvio 5: CV =",
+      "nivel": "Aplicação",
+      "enunciado": "Dois aumentos sucessivos de 20% equivalem a um aumento de",
       "opcoes": [
-        "1%",
-        "5%",
-        "10%",
-        "20%"
+        "40%",
+        "44%",
+        "42%",
+        "24%"
       ],
-      "correta": 2,
-      "explicacao": "5/50=0,1=10%."
+      "correta": 1,
+      "explicacao": "1,2² = 1,44."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Mesma média, qual turma é mais homogênea?",
+      "enunciado": "Um desconto de 20% seguido de outro de 10% equivale a um desconto de",
       "opcoes": [
-        "Maior desvio padrão",
-        "Menor desvio padrão",
-        "Maior amplitude sempre",
-        "Maior nota máxima"
+        "30%",
+        "28%",
+        "27%",
+        "32%"
       ],
       "correta": 1,
-      "explicacao": "Menor desvio padrão indica menor dispersão."
+      "explicacao": "0,8 · 0,9 = 0,72."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A inflação foi de 5% num mês e 4% no seguinte. A inflação acumulada é",
+      "opcoes": [
+        "9%",
+        "9,2%",
+        "10%",
+        "20%"
+      ],
+      "correta": 1,
+      "explicacao": "1,05 · 1,04 = 1,092."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um produto que custa R$ 60,00 é vendido com lucro de 20% sobre a venda. O preço de venda é",
+      "opcoes": [
+        "R$ 72,00",
+        "R$ 75,00",
+        "R$ 80,00",
+        "R$ 70,00"
+      ],
+      "correta": 1,
+      "explicacao": "Custo é 80% da venda: 60 ÷ 0,8."
     }
   ],
-  "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "arquivos": []
 }

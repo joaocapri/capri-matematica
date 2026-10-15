@@ -1,0 +1,101 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Aplicar o teorema de Binet",
+    "Calcular o determinante da inversa",
+    "Combinar propriedades em uma única conta"
+  ],
+  "teoria": [
+    {
+      "titulo": "Determinante do produto",
+      "paragrafos": [
+        "O teorema de Binet diz que o determinante do produto é o produto dos determinantes, para matrizes quadradas de mesma ordem."
+      ],
+      "formulas": [
+        "\\det(AB)=\\det A\\cdot\\det B"
+      ],
+      "exemplo": {
+        "enunciado": "Se det A = 3 e det B = −2, quanto vale det(AB)?",
+        "passos": [
+          "Pelo teorema de Binet: 3 · (−2).",
+          "det(AB) = −6."
+        ]
+      },
+      "erroComum": "Achar que det(A + B) = det A + det B. Isso em geral é falso."
+    },
+    {
+      "titulo": "Determinante da inversa",
+      "paragrafos": [
+        "Como A · A⁻¹ = I e det I = 1, Binet dá det A · det A⁻¹ = 1."
+      ],
+      "formulas": [
+        "\\det(A^{-1})=\\dfrac{1}{\\det A}"
+      ],
+      "exemplo": {
+        "enunciado": "A é 2 × 2 com det A = 4. Calcule det(3A⁻¹).",
+        "passos": [
+          "det A⁻¹ = 1/4.",
+          "Multiplicar a matriz de ordem 2 por 3 multiplica o determinante por 3² = 9.",
+          "det(3A⁻¹) = 9/4."
+        ]
+      },
+      "dica": "Monte a conta em etapas: primeiro Binet ou inversa, depois o fator kⁿ."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "Se det A = 2 e det B = 5, então det(AB) vale",
+      "opcoes": [
+        "7",
+        "10",
+        "2/5",
+        "25"
+      ],
+      "correta": 1,
+      "explicacao": "Binet: 2 · 5."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se det A = 4, então det(A⁻¹) vale",
+      "opcoes": [
+        "−4",
+        "1/4",
+        "4",
+        "16"
+      ],
+      "correta": 1,
+      "explicacao": "det A⁻¹ = 1/det A."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se A é 3 × 3 com det A = 2, então det(A²) vale",
+      "opcoes": [
+        "4",
+        "8",
+        "16",
+        "64"
+      ],
+      "correta": 0,
+      "explicacao": "det(A · A) = 2 · 2."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "A e B são 2 × 2, com det A = 3 e det B = 2. O valor de det(2AB⁻¹) é",
+      "opcoes": [
+        "3",
+        "6",
+        "12",
+        "24"
+      ],
+      "correta": 1,
+      "explicacao": "det(AB⁻¹) = 3 · 1/2 = 3/2 e o fator 2 em ordem 2 vale 2² = 4. Resultado: 6."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

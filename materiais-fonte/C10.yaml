@@ -1,0 +1,276 @@
+# Fonte das listas em PDF da aula C10 — Notação científica e ordem de grandeza
+aula: C10
+
+fixacao:
+  intro: Resolva na ordem — do aquecimento ao desafio. Em notação científica, o número que multiplica a potência de $10$ fica entre $1$ e $10$.
+  secoes:
+    - nome: Aquecimento
+      questoes:
+        - enunciado: Calcule.
+          itens:
+            - $2^5$
+            - $(-3)^4$
+            - $-3^4$
+            - $(-2)^3$
+            - $5^0$
+          resolucao: |
+            (a) $32$. (b) Base negativa e expoente par: $81$.
+            (c) O sinal não está na base: $-(3^4)=-81$. (d) Expoente ímpar mantém o sinal: $-8$. (e) $1$.
+          resposta: '(a) $32$ \quad (b) $81$ \quad (c) $-81$ \quad (d) $-8$ \quad (e) $1$'
+
+        - enunciado: Calcule as potências de expoente negativo.
+          itens:
+            - $2^{-3}$
+            - $\left(\tfrac23\right)^{-2}$
+            - $10^{-2}$
+          resolucao: |
+            Expoente negativo inverte a base.
+            (a) $\tfrac1{2^3}=\tfrac18$. (b) $\left(\tfrac32\right)^2=\tfrac94$. (c) $\tfrac1{100}=0{,}01$.
+          resposta: '(a) $\tfrac18$ \quad (b) $\tfrac94$ \quad (c) $0{,}01$'
+
+        - enunciado: Escreva como uma única potência.
+          itens:
+            - $3^4\cdot3^5$
+            - $7^8\div7^3$
+            - $(5^2)^3$
+            - $2^3\cdot5^3$
+          resolucao: |
+            (a) Mesma base, multiplicação: soma os expoentes, $3^9$.
+            (b) Divisão: subtrai, $7^5$. (c) Potência de potência: multiplica, $5^6$.
+            (d) Mesmo expoente: $(2\cdot5)^3=10^3$.
+          resposta: '(a) $3^9$ \quad (b) $7^5$ \quad (c) $5^6$ \quad (d) $10^3$'
+
+        - enunciado: Calcule as potências de expoente fracionário.
+          itens:
+            - $16^{1/2}$
+            - $27^{1/3}$
+            - $8^{2/3}$
+          resolucao: |
+            $a^{m/n}=\sqrt[n]{a^m}$.
+            (a) $\sqrt{16}=4$. (b) $\sqrt[3]{27}=3$. (c) $(\sqrt[3]8)^2=2^2=4$.
+          resposta: '(a) $4$ \quad (b) $3$ \quad (c) $4$'
+
+        - enunciado: Escreva em notação científica.
+          itens:
+            - $45\,000\,000$
+            - $0{,}00032$
+            - $602\,000$
+          resolucao: |
+            (a) A vírgula anda $7$ casas para a esquerda: $4{,}5\cdot10^7$.
+            (b) Anda $4$ casas para a direita: $3{,}2\cdot10^{-4}$.
+            (c) $6{,}02\cdot10^5$.
+          resposta: '(a) $4{,}5\cdot10^7$ \quad (b) $3{,}2\cdot10^{-4}$ \quad (c) $6{,}02\cdot10^5$'
+
+        - enunciado: Escreva na forma decimal.
+          itens:
+            - $3{,}1\cdot10^4$
+            - $7\cdot10^{-3}$
+          resolucao: |
+            (a) $31\,000$. (b) $0{,}007$.
+          resposta: '(a) $31\,000$ \quad (b) $0{,}007$'
+
+        - enunciado: Simplifique, considerando $a\neq0$ e $x\neq0$.
+          itens:
+            - $(a^3)^2\cdot a^{-4}$
+            - $\dfrac{x^5\cdot x^{-2}}{x}$
+          resolucao: |
+            (a) $a^6\cdot a^{-4}=a^2$. (b) $\dfrac{x^3}{x}=x^2$.
+          resposta: '(a) $a^2$ \quad (b) $x^2$'
+
+    - nome: Treino
+      questoes:
+        - enunciado: Calcule $2^{-1}+2^{-2}+2^0$.
+          resolucao: |
+            $\tfrac12+\tfrac14+1=\tfrac24+\tfrac14+\tfrac44=\tfrac74$.
+          resposta: '$\tfrac74$'
+
+        - enunciado: Calcule.
+          itens:
+            - $\left(-\tfrac12\right)^{-3}$
+            - $(0{,}2)^{-2}$
+          resolucao: |
+            (a) $(-2)^3=-8$. (b) $0{,}2=\tfrac15$, então $(5)^2=25$.
+          resposta: '(a) $-8$ \quad (b) $25$'
+
+        - enunciado: Simplifique $\dfrac{2^6\cdot4^3}{8^4}$.
+          resolucao: |
+            Tudo na base $2$: $4^3=2^6$ e $8^4=2^{12}$.
+            $\dfrac{2^6\cdot2^6}{2^{12}}=\dfrac{2^{12}}{2^{12}}=1$.
+          resposta: '$1$'
+
+        - enunciado: Calcule e dê a resposta em notação científica $(3\cdot10^5)\cdot(4\cdot10^{-2})$.
+          resolucao: |
+            $12\cdot10^{3}=1{,}2\cdot10^1\cdot10^3=1{,}2\cdot10^4$.
+          resposta: '$1{,}2\cdot10^4$'
+
+        - enunciado: Calcule $\dfrac{8\cdot10^6}{2\cdot10^{-3}}$.
+          resolucao: |
+            $\tfrac82\cdot10^{6-(-3)}=4\cdot10^9$.
+          resposta: '$4\cdot10^9$'
+
+        - enunciado: Calcule $9^{3/2}+32^{2/5}$.
+          resolucao: |
+            $9^{3/2}=(\sqrt9)^3=27$ e $32^{2/5}=(\sqrt[5]{32})^2=2^2=4$. Soma: $31$.
+          resposta: '$31$'
+
+        - enunciado: A luz percorre cerca de $3\cdot10^8$ metros por segundo. Que distância ela percorre em $1$ minuto? Responda em notação científica.
+          resolucao: |
+            $3\cdot10^8\cdot60=180\cdot10^8=1{,}8\cdot10^{10}$ m.
+          resposta: '$1{,}8\cdot10^{10}$ m'
+
+        - enunciado: Escreva $\dfrac{4^5\cdot8^{-1}}{16}$ como uma única potência de base $2$.
+          resolucao: |
+            $\dfrac{2^{10}\cdot2^{-3}}{2^4}=2^{10-3-4}=2^3$.
+          resposta: '$2^3$'
+
+    - nome: Desafio
+      questoes:
+        - enunciado: Simplifique $\dfrac{2^{n+3}-2^{n+1}}{2^n}$.
+          resolucao: |
+            Coloque $2^n$ em evidência: $\dfrac{2^n(2^3-2^1)}{2^n}=8-2=6$.
+          resposta: '$6$'
+
+        - enunciado: Escreva $3^{10}+3^{10}+3^{10}$ como uma única potência de $3$.
+          resolucao: |
+            $3\cdot3^{10}=3^{11}$. Cuidado: não é $3^{30}$, pois estamos somando, não multiplicando.
+          resposta: '$3^{11}$'
+
+        - enunciado: Um vírus mede $2\cdot10^{-7}$ m. Quantos desses vírus, enfileirados, ocupam $1$ mm?
+          resolucao: |
+            $1$ mm $=10^{-3}$ m. Quantidade: $\dfrac{10^{-3}}{2\cdot10^{-7}}=0{,}5\cdot10^4=5\cdot10^3=5000$.
+          resposta: '$5000$ vírus'
+
+        - enunciado: Qual é maior, $2^{30}$ ou $3^{20}$? Justifique sem calcular os valores.
+          resolucao: |
+            Use o mesmo expoente: $2^{30}=(2^3)^{10}=8^{10}$ e $3^{20}=(3^2)^{10}=9^{10}$.
+            Como $9>8$, temos $3^{20}>2^{30}$.
+          resposta: '$3^{20}$'
+
+        - enunciado: Calcule $(0{,}25)^{-1/2}+\left(\tfrac1{27}\right)^{-2/3}$.
+          resolucao: |
+            $(0{,}25)^{-1/2}=\left(\tfrac14\right)^{-1/2}=4^{1/2}=2$.
+            $\left(\tfrac1{27}\right)^{-2/3}=27^{2/3}=(\sqrt[3]{27})^2=9$. Soma: $11$.
+          resposta: '$11$'
+
+vestibular:
+  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  questoes:
+    - enunciado: O valor de $(-2)^4-2^4+(-2)^3$ é
+      opcoes: ['$-8$', '$0$', '$8$', '$24$', '$40$']
+      correta: A
+      resolucao: |
+        $16-16+(-8)=-8$.
+
+    - enunciado: O valor de $2^{-2}+3^{-1}$ é
+      opcoes: ['$\dfrac17$', '$\dfrac27$', '$\dfrac7{12}$', '$\dfrac23$', '$1$']
+      correta: C
+      resolucao: |
+        $\tfrac14+\tfrac13=\tfrac3{12}+\tfrac4{12}=\tfrac7{12}$.
+
+    - enunciado: A notação científica de $0{,}000045$ é
+      opcoes: ['$4{,}5\cdot10^{-4}$', '$4{,}5\cdot10^{-5}$', '$45\cdot10^{-6}$', '$0{,}45\cdot10^{-4}$', '$4{,}5\cdot10^{5}$']
+      correta: B
+      resolucao: |
+        A vírgula anda $5$ casas para a direita: $4{,}5\cdot10^{-5}$. C e D têm o mesmo valor, mas não estão em notação científica (o fator deve estar entre $1$ e $10$).
+
+    - enunciado: Para $a\neq0$ e $b\neq0$, a expressão $\dfrac{(a^2b^3)^2}{a^3b}$ é igual a
+      opcoes: ['$a^5b$', '$a^2b^5$', '$ab^6$', '$ab^5$', '$a^7b^7$']
+      correta: D
+      resolucao: |
+        $\dfrac{a^4b^6}{a^3b}=a^{4-3}b^{6-1}=ab^5$.
+
+    - enunciado: O valor de $8^{2/3}+16^{3/4}$ é
+      opcoes: ['$4$', '$6$', '$8$', '$10$', '$12$']
+      correta: E
+      resolucao: |
+        $8^{2/3}=(\sqrt[3]8)^2=4$ e $16^{3/4}=(\sqrt[4]{16})^3=8$. Soma: $12$.
+
+    - enunciado: A distância média entre a Terra e o Sol é de cerca de $1{,}5\cdot10^8$ km, e a luz viaja a cerca de $3\cdot10^5$ km/s. O tempo que a luz do Sol leva para chegar à Terra é, aproximadamente,
+      opcoes: ['$50$ s', '$500$ s', '$5\,000$ s', '$50\,000$ s', '$4{,}5\cdot10^{13}$ s']
+      correta: B
+      resolucao: |
+        $t=\dfrac{1{,}5\cdot10^8}{3\cdot10^5}=0{,}5\cdot10^3=500$ s (pouco mais de $8$ minutos).
+
+    - enunciado: O valor de $\dfrac{0{,}001\cdot(10^4)^2}{10^{-2}}$ é
+      opcoes: ['$10^3$', '$10^5$', '$10^7$', '$10^9$', '$10^{11}$']
+      correta: C
+      resolucao: |
+        $\dfrac{10^{-3}\cdot10^8}{10^{-2}}=10^{-3+8+2}=10^7$.
+
+    - enunciado: O valor de $\dfrac{2^{100}+2^{100}}{2^{99}}$ é
+      opcoes: ['$4$', '$8$', '$2^{100}$', '$2^{101}$', '$2^{199}$']
+      correta: A
+      resolucao: |
+        $2^{100}+2^{100}=2\cdot2^{100}=2^{101}$. Então $\dfrac{2^{101}}{2^{99}}=2^2=4$.
+
+    - enunciado: 'Sendo $a=2^{-3}$, $b=3^{-2}$ e $c=4^{-1}$, a ordem correta é'
+      opcoes: ['$a<b<c$', '$a<c<b$', '$c<a<b$', '$b<c<a$', '$b<a<c$']
+      correta: E
+      resolucao: |
+        $a=\tfrac18$, $b=\tfrac19$ e $c=\tfrac14$. Como $\tfrac19<\tfrac18<\tfrac14$: $b<a<c$.
+
+    - enunciado: Uma cultura começa com $3\cdot10^3$ bactérias, e a população dobra a cada hora. Após $10$ horas, a população será de
+      opcoes: ['$3\cdot10^4$', '$6\cdot10^4$', '$3{,}072\cdot10^5$', '$3{,}072\cdot10^6$', '$3\cdot10^{13}$']
+      correta: D
+      resolucao: |
+        $3\cdot10^3\cdot2^{10}=3\cdot10^3\cdot1024=3\,072\,000=3{,}072\cdot10^6$.
+
+    - enunciado: Para todo $n$ natural, o valor de $\dfrac{5^{n+2}-5^n}{24\cdot5^n}$ é
+      opcoes: ['$\dfrac15$', '$1$', '$5$', '$24$', '$5^n$']
+      correta: B
+      resolucao: |
+        $\dfrac{5^n(25-1)}{24\cdot5^n}=\dfrac{24}{24}=1$.
+
+    - enunciado: O valor de $(-1)^{2026}+(-1)^{2027}+1^{2028}$ é
+      opcoes: ['$-3$', '$-1$', '$0$', '$1$', '$3$']
+      correta: D
+      resolucao: |
+        Expoente par: $1$; ímpar: $-1$. Então $1-1+1=1$.
+
+    - enunciado: O valor de $3^{-2}\cdot\left(\tfrac13\right)^{-3}$ é
+      opcoes: ['$\dfrac13$', '$1$', '$3$', '$9$', '$27$']
+      correta: C
+      resolucao: |
+        $\left(\tfrac13\right)^{-3}=3^3$. Então $3^{-2}\cdot3^3=3^1=3$.
+
+    - enunciado: A massa de um próton é de aproximadamente $1{,}67\cdot10^{-27}$ kg. A massa de $6\cdot10^{23}$ prótons é, aproximadamente,
+      opcoes: ['$1$ g', '$10$ g', '$1$ kg', '$1$ mg', '$0{,}1$ g']
+      correta: A
+      resolucao: |
+        $1{,}67\cdot6\cdot10^{-27+23}\approx10\cdot10^{-4}=10^{-3}$ kg $=1$ g.
+
+    - enunciado: Se $2^x=5$, então $2^{x+2}+2^{x-1}$ vale
+      opcoes: ['$7$', '$12{,}5$', '$20$', '$21$', '$22{,}5$']
+      correta: E
+      resolucao: |
+        $2^{x+2}=2^x\cdot4=20$ e $2^{x-1}=\tfrac{2^x}{2}=2{,}5$. Soma: $22{,}5$.
+
+    - enunciado: O número $2^{10}\cdot5^{12}$, escrito no sistema decimal, tem
+      opcoes: ['$10$ algarismos', '$11$ algarismos', '$12$ algarismos', '$13$ algarismos', '$22$ algarismos']
+      correta: C
+      resolucao: |
+        $2^{10}\cdot5^{10}\cdot5^2=10^{10}\cdot25$: o número $25$ seguido de $10$ zeros, com $12$ algarismos.
+
+    - enunciado: Para $x=2$ e $y=3$, o valor de $(x^{-1}+y^{-1})^{-1}$ é
+      opcoes: ['$\dfrac56$', '$\dfrac65$', '$5$', '$6$', '$\dfrac15$']
+      correta: B
+      resolucao: |
+        $\left(\tfrac12+\tfrac13\right)^{-1}=\left(\tfrac56\right)^{-1}=\tfrac65$. A alternativa A esquece o último expoente $-1$.
+
+    - enunciado: O valor de $(0{,}5)^{-2}-(0{,}25)^{1/2}$ é
+      opcoes: ['$3{,}5$', '$4$', '$4{,}5$', '$7{,}5$', '$15{,}5$']
+      correta: A
+      resolucao: |
+        $(0{,}5)^{-2}=2^2=4$ e $(0{,}25)^{1/2}=0{,}5$. Diferença: $3{,}5$.
+
+    - enunciado: Um HD tem capacidade de $2$ TB, isto é, $2\cdot10^{12}$ bytes. Se cada foto ocupa $4\cdot10^6$ bytes, o número máximo de fotos que cabem no HD é
+      opcoes: ['$5\cdot10^3$', '$5\cdot10^4$', '$2\cdot10^5$', '$2{,}5\cdot10^5$', '$5\cdot10^5$']
+      correta: E
+      resolucao: |
+        $\dfrac{2\cdot10^{12}}{4\cdot10^6}=0{,}5\cdot10^6=5\cdot10^5$.
+
+    - enunciado: 'Sendo $a=2^{20}$, $b=3^{12}$ e $c=5^8$, a ordem correta é'
+      opcoes: ['$a<b<c$', '$a<c<b$', '$b<c<a$', '$c<b<a$', '$c<a<b$']
+      correta: D
+      resolucao: |
+        Use o expoente comum $4$: $a=(2^5)^4=32^4$, $b=(3^3)^4=27^4$ e $c=(5^2)^4=25^4$. Logo, $c<b<a$.

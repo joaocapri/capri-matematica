@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de gráficos e coeficientes",
+    "Entender o conceito central de definição e concavidade",
     "Aplicar o procedimento em um exemplo resolvido",
     "Reconhecer erros frequentes antes de enfrentar uma questão"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "A ideia que destrava",
       "paragrafos": [
-        "O gráfico de uma função afim é uma reta. O coeficiente angular é a razão entre a mudança vertical e a mudança horizontal; o zero aparece onde a reta cruza o eixo x."
+        "Na parábola f(x)=ax²+bx+c, o sinal de a determina a abertura: positivo para cima e negativo para baixo. O termo c indica onde o gráfico cruza o eixo y."
       ],
       "formulas": [
-        "m=\\frac{\\Delta y}{\\Delta x}\\qquad ax+b=0\\Rightarrow x=-\\frac ba"
+        "f(x)=ax^2+bx+c,\\qquad a\\neq0"
       ],
-      "dica": "Dois pontos distintos bastam para determinar uma reta.",
-      "erroComum": "Intercepto em y é f(0); não confunda com zero da função."
+      "dica": "Antes de desenhar a parábola, anote concavidade, intercepto em y e vértice.",
+      "erroComum": "O sinal do coeficiente b, sozinho, não define concavidade."
     },
     {
       "titulo": "Vamos fazer uma juntos",
@@ -25,11 +25,11 @@
         "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
       ],
       "exemplo": {
-        "enunciado": "Encontre o zero de f(x)=2x−8.",
+        "enunciado": "Para f(x)=−2x²+3x+5, descreva a concavidade e a interseção com y.",
         "passos": [
-          "Iguale a zero: 2x−8=0.",
-          "2x=8 ⇒ x=4.",
-          "O ponto (4,0) pertence à reta."
+          "a=−2<0: a concavidade é para baixo.",
+          "c=5: f(0)=5.",
+          "O gráfico cruza o eixo y em (0,5)."
         ]
       }
     }
@@ -37,35 +37,35 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "A reta passa por (0,1) e (2,5). Seu coeficiente angular é:",
+      "enunciado": "Em f(x)=4x²−x+2 a parábola é:",
       "opcoes": [
-        "1",
-        "2",
-        "3",
-        "4"
+        "Voltada para baixo",
+        "Voltada para cima",
+        "Uma reta",
+        "Sempre tangente ao eixo x"
       ],
       "correta": 1,
-      "explicacao": "m=(5−1)/(2−0)=2."
+      "explicacao": "a=4>0, logo a concavidade é para cima."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O zero de f(x)=−3x+6 é:",
+      "enunciado": "A função f(x)=x²+2x−7 cruza o eixo y em:",
       "opcoes": [
-        "−2",
-        "0",
-        "2",
-        "3"
+        "(7,0)",
+        "(−7,0)",
+        "(0,−7)",
+        "(0,7)"
       ],
       "correta": 2,
-      "explicacao": "−3x+6=0 ⇒ x=2."
+      "explicacao": "f(0)=c=−7."
     }
   ],
   "videos": [
     {
-      "titulo": "Vídeos e prática: funções afins e retas",
+      "titulo": "Vídeos e prática: parábolas",
       "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Material com videoaulas e exercícios de funções lineares.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-linear-eq-func"
+      "descricao": "Conteúdos sobre equações e funções do segundo grau.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-quadratics"
     }
   ],
   "exercicios": [],

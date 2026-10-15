@@ -1,61 +1,98 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Usar a condição de perpendicularidade",
+    "Escrever a reta perpendicular por um ponto",
+    "Encontrar a mediatriz de um segmento"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "m₁ · m₂ = −1",
       "paragrafos": [
-        "Lugar geométrico é o conjunto de todos os pontos que cumprem uma condição. A distância a ponto fixo gera circunferência; a equidistância de dois pontos gera mediatriz; distância fixa a reta produz retas paralelas."
+        "Duas retas não verticais são perpendiculares quando o produto dos coeficientes angulares é −1. Na prática, o m da perpendicular é o inverso trocado de sinal."
       ],
       "formulas": [
-        "d(P,A)=d(P,B)\\quad\\Rightarrow\\quad\\text{mediatriz de }AB"
-      ],
-      "dica": "Escreva a condição em distâncias antes de simplificar as contas.",
-      "erroComum": "Ao elevar ao quadrado, avalie se criou soluções extras."
-    },
-    {
-      "titulo": "Na prática",
-      "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "m_1\\cdot m_2=-1"
       ],
       "exemplo": {
-        "enunciado": "P=(x,y) equidista de A=(0,0) e B=(4,0). Qual lugar?",
+        "enunciado": "Encontre a perpendicular a y = 2x + 3 que passa por (4, 1).",
         "passos": [
-          "x²+y²=(x−4)²+y².",
-          "8x=16 ⇒ x=2.",
-          "É a reta mediatriz x=2."
+          "m = −1/2.",
+          "y − 1 = −(1/2)(x − 4).",
+          "y = −x/2 + 3."
+        ]
+      },
+      "erroComum": "Só trocar o sinal ou só inverter. É preciso fazer as duas coisas."
+    },
+    {
+      "titulo": "Mediatriz",
+      "paragrafos": [
+        "A mediatriz de AB é a reta perpendicular a AB que passa pelo ponto médio. Todos os seus pontos são equidistantes de A e B."
+      ],
+      "exemplo": {
+        "enunciado": "Encontre a mediatriz de A(0, 0) e B(4, 2).",
+        "passos": [
+          "M = (2, 1) e m_AB = 1/2.",
+          "m da mediatriz: −2.",
+          "y − 1 = −2(x − 2) ⇒ y = −2x + 5."
         ]
       }
     }
   ],
+  "videos": [],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Pontos à distância 3 da origem formam:",
+      "enunciado": "Se uma reta tem m = 3, a perpendicular tem m igual a",
       "opcoes": [
-        "Reta",
-        "Circunferência",
-        "Parábola",
-        "Hipérbole"
+        "3",
+        "−3",
+        "1/3",
+        "−1/3"
       ],
-      "correta": 1,
-      "explicacao": "São a circunferência x²+y²=9."
+      "correta": 3,
+      "explicacao": "Inverso trocado de sinal."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Pontos equidistantes de (−1,0) e (1,0) formam:",
+      "enunciado": "As retas y = 2x + 1 e y = −x/2 + 4 são",
       "opcoes": [
-        "x=0",
-        "y=1",
-        "x=1",
-        "Circunferência"
+        "paralelas",
+        "perpendiculares",
+        "coincidentes",
+        "concorrentes não perpendiculares"
+      ],
+      "correta": 1,
+      "explicacao": "2 · (−1/2) = −1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A perpendicular a y = −x + 3 por (2, 5) é",
+      "opcoes": [
+        "y = x + 3",
+        "y = −x + 7",
+        "y = x − 3",
+        "y = x + 5"
       ],
       "correta": 0,
-      "explicacao": "A mediatriz do segmento é eixo y: x=0."
+      "explicacao": "m = 1: y − 5 = x − 2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A mediatriz do segmento de A(1, 1) a B(5, 1) é",
+      "opcoes": [
+        "x = 3",
+        "y = 3",
+        "y = x",
+        "x = 1"
+      ],
+      "correta": 0,
+      "explicacao": "AB é horizontal; a mediatriz é vertical pelo ponto médio (3, 1)."
     }
   ],
-  "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "arquivos": []
 }

@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Equação reduzida da circunferência fornece centro e raio de imediato. Se receber a equação geral, complete quadrados para recuperar a forma (x−a)²+(y−b)²=r²."
+      ],
+      "formulas": [
+        "(x-a)^2+(y-b)^2=r^2"
+      ],
+      "dica": "Lembre: o sinal do centro é oposto ao da expressão dentro do quadrado.",
+      "erroComum": "Uma equação geral com 'raio ao quadrado' negativo não representa circunferência real."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Determine centro e raio de x²+y²−4x+6y−12=0.",
+        "passos": [
+          "Agrupe: (x²−4x)+(y²+6y)=12.",
+          "Complete quadrados: (x−2)²+(y+3)²=25.",
+          "Centro (2,−3), raio 5."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Centro de (x−1)²+(y+2)²=9:",
+      "opcoes": [
+        "(1,−2)",
+        "(−1,2)",
+        "(1,2)",
+        "(−1,−2)"
+      ],
+      "correta": 0,
+      "explicacao": "Centro é (1,−2)."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Raio de x²+y²=16:",
+      "opcoes": [
+        "2",
+        "4",
+        "8",
+        "16"
+      ],
+      "correta": 1,
+      "explicacao": "r=√16=4."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

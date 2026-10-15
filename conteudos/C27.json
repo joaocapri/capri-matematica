@@ -1,60 +1,102 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Converter unidades de comprimento",
+    "Converter unidades de área e de volume",
+    "Relacionar volume e capacidade"
+  ],
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Comprimento, área e volume",
       "paragrafos": [
-        "Estatística transforma dados em informações. Frequência absoluta conta ocorrências, frequência relativa mede a proporção; gráficos permitem comparar categorias, mas escalas podem distorcer interpretações."
+        "No comprimento, cada unidade é 10 vezes a seguinte (km, hm, dam, m, dm, cm, mm). Na área, como são duas dimensões, o fator é 100. No volume, com três dimensões, é 1000."
       ],
       "formulas": [
-        "f_{rel}=\\frac{f_{abs}}{N}"
-      ],
-      "dica": "Leia os eixos e as unidades antes de tirar conclusões de um gráfico.",
-      "erroComum": "Gráfico com eixo vertical truncado pode exagerar diferenças visuais."
-    },
-    {
-      "titulo": "Veja funcionando",
-      "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "1\\,\\text{m}^2=10\\,000\\,\\text{cm}^2",
+        "1\\,\\text{m}^3=1\\,000\\,000\\,\\text{cm}^3"
       ],
       "exemplo": {
-        "enunciado": "Em 40 alunos, 12 preferem futebol. Qual frequência relativa?",
+        "enunciado": "Quantos cm² há em 2,5 m²?",
         "passos": [
-          "12/40=0,3.",
-          "Ou 30% da turma."
+          "1 m² = 100 cm · 100 cm = 10 000 cm².",
+          "2,5 · 10 000 = 25 000 cm²."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Em 20 observações, frequência de 5 corresponde a:",
-      "opcoes": [
-        "10%",
-        "20%",
-        "25%",
-        "50%"
-      ],
-      "correta": 2,
-      "explicacao": "5/20=25%."
+      },
+      "erroComum": "Usar fator 10 em área: 1 m² não é 100 cm², é 10 000 cm²."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Gráfico de setores tem soma dos ângulos:",
-      "opcoes": [
-        "90°",
-        "180°",
-        "270°",
-        "360°"
+      "titulo": "Capacidade",
+      "paragrafos": [
+        "Capacidade é o volume em litros. A ligação é: 1 litro = 1 dm³ e 1 m³ = 1000 litros."
       ],
-      "correta": 3,
-      "explicacao": "Setores preenchem uma volta completa."
+      "formulas": [
+        "1\\,\\text{L}=1\\,\\text{dm}^3",
+        "1\\,\\text{m}^3=1000\\,\\text{L}"
+      ],
+      "exemplo": {
+        "enunciado": "Uma caixa d’água tem 2 m × 1,5 m × 1 m. Quantos litros cabem?",
+        "passos": [
+          "V = 3 m³.",
+          "3 · 1000 = 3000 L."
+        ]
+      },
+      "dica": "Converta todas as medidas para decímetros e o volume já sai em litros."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "3,2 km em metros é",
+      "opcoes": [
+        "32 m",
+        "320 m",
+        "3200 m",
+        "32 000 m"
+      ],
+      "correta": 2,
+      "explicacao": "1 km = 1000 m."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "5 m² em cm² é",
+      "opcoes": [
+        "500 cm²",
+        "5 000 cm²",
+        "50 000 cm²",
+        "500 000 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "5 · 10 000."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um aquário de 50 cm × 30 cm × 40 cm comporta",
+      "opcoes": [
+        "6 L",
+        "60 L",
+        "600 L",
+        "6000 L"
+      ],
+      "correta": 1,
+      "explicacao": "5 dm · 3 dm · 4 dm = 60 dm³."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma piscina de 12 m³ tem capacidade de",
+      "opcoes": [
+        "120 L",
+        "1200 L",
+        "12 000 L",
+        "120 000 L"
+      ],
+      "correta": 2,
+      "explicacao": "12 · 1000."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

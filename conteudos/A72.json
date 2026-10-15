@@ -1,0 +1,98 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Somar e subtrair polinômios",
+    "Multiplicar polinômios",
+    "Prever o grau do resultado"
+  ],
+  "teoria": [
+    {
+      "titulo": "Soma e subtração",
+      "paragrafos": [
+        "Some ou subtraia os coeficientes dos termos de mesmo grau. O grau da soma é no máximo o maior dos graus, e pode cair se os termos de maior grau se cancelarem."
+      ],
+      "exemplo": {
+        "enunciado": "Calcule (3x² − x + 4) − (x² + 2x − 1).",
+        "passos": [
+          "3x² − x² = 2x².",
+          "−x − 2x = −3x.",
+          "4 − (−1) = 5. Resultado: 2x² − 3x + 5."
+        ]
+      },
+      "erroComum": "Esquecer de trocar o sinal de todos os termos do polinômio que está sendo subtraído."
+    },
+    {
+      "titulo": "Multiplicação",
+      "paragrafos": [
+        "Multiplique cada termo de um polinômio por todos os termos do outro e junte os termos semelhantes. O grau do produto é a soma dos graus."
+      ],
+      "formulas": [
+        "\\operatorname{gr}(P\\cdot Q)=\\operatorname{gr}P+\\operatorname{gr}Q"
+      ],
+      "exemplo": {
+        "enunciado": "Calcule (x + 2)(x² − x + 3).",
+        "passos": [
+          "x · (x² − x + 3) = x³ − x² + 3x.",
+          "2 · (x² − x + 3) = 2x² − 2x + 6.",
+          "Soma: x³ + x² + x + 6."
+        ]
+      }
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "A soma (2x² + 3x) + (x² − 5x + 1) é",
+      "opcoes": [
+        "3x² − 2x + 1",
+        "3x² + 8x + 1",
+        "x² − 2x + 1",
+        "3x² − 2x"
+      ],
+      "correta": 0,
+      "explicacao": "Some termo a termo."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se P tem grau 3 e Q tem grau 4, o grau de P · Q é",
+      "opcoes": [
+        "4",
+        "7",
+        "12",
+        "3"
+      ],
+      "correta": 1,
+      "explicacao": "Os graus se somam."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O produto (x − 1)(x + 1)(x² + 1) é",
+      "opcoes": [
+        "x⁴ − 1",
+        "x⁴ + 1",
+        "x⁴ − 2x² + 1",
+        "x³ − 1"
+      ],
+      "correta": 0,
+      "explicacao": "(x² − 1)(x² + 1) = x⁴ − 1."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se P e Q têm grau 5, o grau de P + Q é",
+      "opcoes": [
+        "exatamente 5",
+        "exatamente 10",
+        "no máximo 5",
+        "no mínimo 5"
+      ],
+      "correta": 2,
+      "explicacao": "Os termos de grau 5 podem se cancelar."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

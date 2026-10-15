@@ -1,61 +1,88 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Organizar problemas com três ou mais grandezas",
+    "Comparar cada grandeza com a incógnita",
+    "Resolver a regra de três composta"
+  ],
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Uma grandeza de cada vez",
       "paragrafos": [
-        "Probabilidade total divide um evento em caminhos possíveis; Bayes inverte uma condição usando a probabilidade do caminho e seu peso no total. Desenhar árvore evita confusões."
-      ],
-      "formulas": [
-        "P(A\\mid B)=\\frac{P(B\\mid A)P(A)}{P(B)}"
-      ],
-      "dica": "Em árvores, multiplique ao longo do ramo e some ramos alternativos.",
-      "erroComum": "A taxa de defeito dentro de uma fábrica não é a taxa de participação dessa fábrica."
-    },
-    {
-      "titulo": "Veja funcionando",
-      "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "Na regra de três composta, monte uma tabela com as grandezas. Compare cada uma com a incógnita, separadamente, para decidir se é direta ou inversa. Inverta as inversas e multiplique as razões."
       ],
       "exemplo": {
-        "enunciado": "Duas fábricas produzem 70% e 30% de peças; defeitos são 2% e 5%, respectivamente. Chance de defeito?",
+        "enunciado": "5 operários fazem 200 m de muro em 8 dias. Quantos dias 4 operários levam para fazer 300 m?",
         "passos": [
-          "Fábrica 1: 0,7·0,02=0,014.",
-          "Fábrica 2: 0,3·0,05=0,015.",
-          "Total 0,029=2,9%."
+          "Dias e operários: inversa. Dias e metros: direta.",
+          "8/x = (4/5) · (200/300).",
+          "8/x = 800/1500 ⇒ x = 15 dias."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Se P(A)=0,4, P(B|A)=0,5, P(A∩B) =",
-      "opcoes": [
-        "0,1",
-        "0,2",
-        "0,4",
-        "0,9"
-      ],
-      "correta": 1,
-      "explicacao": "P(A∩B)=0,4·0,5=0,2."
+      },
+      "dica": "Pergunte sempre comparando com a coluna da incógnita: “se aumentar isto, os dias aumentam ou diminuem?”",
+      "erroComum": "Comparar as grandezas entre si em vez de compará-las com a incógnita."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Uma urna A é escolhida com chance 1/2 e contém 2/3 de bolas azuis. Chance do ramo 'A e azul':",
-      "opcoes": [
-        "1/6",
-        "1/3",
-        "1/2",
-        "2/3"
-      ],
-      "correta": 1,
-      "explicacao": "(1/2)(2/3)=1/3."
+      "titulo": "Conferindo pelo produto",
+      "paragrafos": [
+        "Uma conferência: “operário-dia por metro” fica constante. 5 · 8/200 = 0,2 e 4 · 15/300 = 0,2."
+      ]
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "3 máquinas produzem 600 peças em 4 h. Quantas peças 5 máquinas produzem em 6 h?",
+      "opcoes": [
+        "1000",
+        "1200",
+        "1500",
+        "1800"
+      ],
+      "correta": 2,
+      "explicacao": "600 · (5/3) · (6/4) = 1500."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "8 pessoas gastam 2400 litros de água em 5 dias. 10 pessoas em 6 dias gastam",
+      "opcoes": [
+        "3000 L",
+        "3600 L",
+        "2880 L",
+        "4000 L"
+      ],
+      "correta": 1,
+      "explicacao": "2400 · (10/8) · (6/5) = 3600."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "6 operários, trabalhando 8 h por dia, fazem uma obra em 10 dias. 4 operários, trabalhando 10 h por dia, levam",
+      "opcoes": [
+        "8 dias",
+        "10 dias",
+        "12 dias",
+        "15 dias"
+      ],
+      "correta": 2,
+      "explicacao": "6 · 8 · 10 = 4 · 10 · d ⇒ d = 12."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Na regra de três composta, cada grandeza é comparada com",
+      "opcoes": [
+        "a primeira grandeza",
+        "a grandeza da incógnita",
+        "a maior grandeza",
+        "todas as outras ao mesmo tempo"
+      ],
+      "correta": 1,
+      "explicacao": "A comparação é sempre com a incógnita."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

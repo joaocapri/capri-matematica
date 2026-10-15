@@ -1,63 +1,42 @@
 {
-  "status": "rascunho-para-revisao",
+  "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender polígonos regulares e apótema",
-    "Resolver um exemplo geométrico passo a passo",
-    "Evitar armadilhas de interpretação do desenho"
+    "Aplicar o teorema de Pitágoras",
+    "Reconhecer ternas pitagóricas",
+    "Usar Pitágoras em diagonais e alturas"
   ],
   "teoria": [
     {
-      "titulo": "Desenhe antes de calcular",
+      "titulo": "O teorema",
       "paragrafos": [
-        "Polígono regular tem todos os lados e ângulos iguais. O apótema liga o centro perpendicularmente a um lado e funciona como altura dos triângulos que dividem o polígono."
+        "Em todo triângulo retângulo, o quadrado da hipotenusa é igual à soma dos quadrados dos catetos. A hipotenusa é o lado oposto ao ângulo reto e é sempre o maior lado."
       ],
       "formulas": [
-        "A=\\frac{P\\cdot ap}2"
-      ],
-      "dica": "No hexágono regular, lado e raio da circunferência circunscrita são iguais.",
-      "erroComum": "Apótema não é igual ao raio circunscrito, salvo casos degenerados."
-    },
-    {
-      "titulo": "Resolução com raciocínio",
-      "paragrafos": [
-        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+        "a^2=b^2+c^2"
       ],
       "exemplo": {
-        "enunciado": "Um hexágono regular tem perímetro 24 e apótema 2√3. Ache a área.",
+        "enunciado": "Uma escada de 5 m está apoiada num muro, com o pé a 3 m da parede. A que altura ela toca o muro?",
         "passos": [
-          "Área=P·ap/2.",
-          "A=24·2√3/2.",
-          "A=24√3."
+          "5² = 3² + h².",
+          "h² = 16.",
+          "h = 4 m."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Um hexágono regular com lado 5 tem perímetro:",
-      "opcoes": [
-        "20",
-        "25",
-        "30",
-        "36"
-      ],
-      "correta": 2,
-      "explicacao": "Seis lados de 5 ⇒ 30."
+      },
+      "dica": "Ternas que aparecem muito: 3-4-5, 5-12-13, 8-15-17 e seus múltiplos.",
+      "erroComum": "Colocar a hipotenusa no lugar de um cateto."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Área de polígono regular com P=20 e apótema 3:",
-      "opcoes": [
-        "20",
-        "30",
-        "40",
-        "60"
+      "titulo": "Aplicações clássicas",
+      "paragrafos": [
+        "A diagonal de um quadrado de lado ℓ mede ℓ√2. A altura de um triângulo equilátero de lado ℓ mede ℓ√3/2. As duas fórmulas saem direto de Pitágoras."
       ],
-      "correta": 1,
-      "explicacao": "A=20·3/2=30."
+      "formulas": [
+        "d=\\ell\\sqrt2",
+        "h=\\dfrac{\\ell\\sqrt3}{2}"
+      ]
     }
   ],
   "videos": [
@@ -68,10 +47,56 @@
       "url": "https://pt.khanacademy.org/math/geometry"
     }
   ],
-  "arquivos": [],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "Os catetos de um triângulo retângulo medem 6 e 8. A hipotenusa mede",
+      "opcoes": [
+        "10",
+        "12",
+        "14",
+        "48"
+      ],
+      "correta": 0,
+      "explicacao": "36 + 64 = 100."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A hipotenusa mede 13 e um cateto mede 5. O outro cateto mede",
+      "opcoes": [
+        "8",
+        "10",
+        "12",
+        "18"
+      ],
+      "correta": 2,
+      "explicacao": "169 − 25 = 144."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A diagonal de um quadrado de lado 4 mede",
+      "opcoes": [
+        "4√2",
+        "8",
+        "4√3",
+        "16"
+      ],
+      "correta": 0,
+      "explicacao": "d = ℓ√2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A altura de um triângulo equilátero de lado 6 mede",
+      "opcoes": [
+        "3",
+        "3√2",
+        "3√3",
+        "6√3"
+      ],
+      "correta": 2,
+      "explicacao": "h = 6√3/2."
+    }
+  ],
   "exercicios": [],
-  "revisao": {
-    "status": "rascunho-pedagogico",
-    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
-  }
+  "arquivos": []
 }

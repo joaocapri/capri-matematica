@@ -1,77 +1,91 @@
 {
-  "status": "rascunho-para-revisao",
+  "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender áreas de figuras planas ii - triângulos especiais",
-    "Resolver um exemplo geométrico passo a passo",
-    "Evitar armadilhas de interpretação do desenho"
+    "Reconhecer os elementos da circunferência",
+    "Usar a perpendicularidade entre raio e tangente",
+    "Aplicar a igualdade dos segmentos tangentes"
   ],
   "teoria": [
     {
-      "titulo": "Desenhe antes de calcular",
+      "titulo": "Elementos",
       "paragrafos": [
-        "Algumas áreas triangulares dispensam a altura. Heron usa apenas os três lados; a fórmula trigonométrica usa dois lados e o seno do ângulo compreendido."
+        "Circunferência é o conjunto dos pontos a uma mesma distância (o raio) de um ponto fixo, o centro. Corda é um segmento com extremos na circunferência; o diâmetro é a maior corda e passa pelo centro."
       ],
       "formulas": [
-        "A=\\sqrt{s(s-a)(s-b)(s-c)},\\quad s=\\frac{a+b+c}2"
-      ],
-      "dica": "Se dois lados e o ângulo entre eles são dados, use A=ab·senC/2.",
-      "erroComum": "Não use seno de um ângulo que não esteja entre os dois lados escolhidos."
+        "d=2r"
+      ]
     },
     {
-      "titulo": "Resolução com raciocínio",
+      "titulo": "Tangentes",
       "paragrafos": [
-        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+        "A reta tangente toca a circunferência em um só ponto e é perpendicular ao raio nesse ponto. De um ponto externo, os dois segmentos tangentes até a circunferência têm a mesma medida."
       ],
       "exemplo": {
-        "enunciado": "Um triângulo tem lados 3,4,5. Calcule a área por Heron.",
+        "enunciado": "De um ponto P a 13 cm do centro de uma circunferência de raio 5 cm traça-se uma tangente. Quanto mede o segmento tangente?",
         "passos": [
-          "Semiperímetro s=(3+4+5)/2=6.",
-          "A=√(6·3·2·1)=√36.",
-          "A=6."
+          "O raio é perpendicular à tangente: forma-se um triângulo retângulo.",
+          "t² + 5² = 13².",
+          "t = 12 cm."
         ]
-      }
+      },
+      "dica": "Sempre que aparecer tangente, desenhe o raio até o ponto de tangência: surge um ângulo reto.",
+      "erroComum": "Esquecer que as duas tangentes de um mesmo ponto externo são iguais."
     }
   ],
+  "videos": [],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Área de triângulo com lados 6 e 4 formando 90°:",
+      "enunciado": "A reta tangente a uma circunferência forma com o raio no ponto de tangência um ângulo de",
       "opcoes": [
-        "10",
-        "12",
-        "20",
-        "24"
+        "45°",
+        "60°",
+        "90°",
+        "180°"
       ],
-      "correta": 1,
-      "explicacao": "6·4·sen90°/2=12."
+      "correta": 2,
+      "explicacao": "Tangente é perpendicular ao raio."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Semiperímetro de lados 5,5,6 é:",
+      "enunciado": "De um ponto a 10 cm do centro de uma circunferência de raio 6 cm, o segmento tangente mede",
       "opcoes": [
+        "4 cm",
+        "8 cm",
+        "12 cm",
+        "16 cm"
+      ],
+      "correta": 1,
+      "explicacao": "t² = 100 − 36."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um quadrilátero circunscrito a uma circunferência tem lados AB = 7, BC = 9 e CD = 8. Então DA mede",
+      "opcoes": [
+        "6",
+        "7",
         "8",
-        "10",
-        "16",
-        "20"
+        "10"
       ],
       "correta": 0,
-      "explicacao": "(5+5+6)/2=8."
-    }
-  ],
-  "videos": [
+      "explicacao": "Em quadrilátero circunscrito, AB + CD = BC + DA: 15 = 9 + DA."
+    },
     {
-      "titulo": "Geometria: áreas e círculos",
-      "canal": "Khan Academy Brasil · biblioteca",
-      "descricao": "Áreas, medidas e problemas geométricos com animações.",
-      "url": "https://pt.khanacademy.org/math/geometry"
+      "nivel": "Conceito",
+      "enunciado": "A maior corda de uma circunferência é",
+      "opcoes": [
+        "o raio",
+        "o diâmetro",
+        "a tangente",
+        "o arco"
+      ],
+      "correta": 1,
+      "explicacao": "O diâmetro passa pelo centro."
     }
   ],
-  "arquivos": [],
   "exercicios": [],
-  "revisao": {
-    "status": "rascunho-pedagogico",
-    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
-  }
+  "arquivos": []
 }

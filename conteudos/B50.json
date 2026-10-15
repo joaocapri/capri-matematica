@@ -1,0 +1,96 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Representar semiplanos",
+    "Descrever regiões limitadas por retas",
+    "Resolver problemas simples de programação linear"
+  ],
+  "teoria": [
+    {
+      "titulo": "Um lado da reta",
+      "paragrafos": [
+        "A reta ax + by + c = 0 divide o plano em dois semiplanos. Em um deles, ax + by + c > 0; no outro, < 0. Para saber qual lado é qual, teste um ponto fora da reta, de preferência a origem."
+      ],
+      "exemplo": {
+        "enunciado": "Que região é descrita por 2x + y − 4 ≤ 0?",
+        "passos": [
+          "Reta 2x + y = 4, passando por (2, 0) e (0, 4).",
+          "Teste (0, 0): −4 ≤ 0, verdadeiro.",
+          "É o semiplano que contém a origem, incluindo a reta."
+        ]
+      },
+      "dica": "Para y > mx + n, a região fica acima da reta; para y < mx + n, abaixo."
+    },
+    {
+      "titulo": "Regiões e otimização",
+      "paragrafos": [
+        "Um sistema de inequações descreve uma região: a interseção dos semiplanos. Em problemas de otimização com função linear, o máximo e o mínimo acontecem nos vértices da região."
+      ],
+      "exemplo": {
+        "enunciado": "Maximize L = 3x + 2y na região x ≥ 0, y ≥ 0, x + y ≤ 4.",
+        "passos": [
+          "Vértices: (0, 0), (4, 0) e (0, 4).",
+          "L vale 0, 12 e 8.",
+          "Máximo 12, em (4, 0)."
+        ]
+      },
+      "erroComum": "Testar o ponto que está sobre a reta. Escolha um ponto fora dela."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "A origem pertence à região x + y > 2?",
+      "opcoes": [
+        "sim",
+        "não",
+        "só se x = y",
+        "depende de y"
+      ],
+      "correta": 1,
+      "explicacao": "0 + 0 = 0, que não é maior que 2."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A região y ≥ 2x + 1 fica",
+      "opcoes": [
+        "acima da reta, incluindo a reta",
+        "abaixo da reta",
+        "só sobre a reta",
+        "à direita da reta"
+      ],
+      "correta": 0,
+      "explicacao": "y maior ou igual: acima e na reta."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A área da região x ≥ 0, y ≥ 0, x + y ≤ 6 é",
+      "opcoes": [
+        "6",
+        "12",
+        "18",
+        "36"
+      ],
+      "correta": 2,
+      "explicacao": "Triângulo de catetos 6 e 6."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Na região x ≥ 0, y ≥ 0, x + 2y ≤ 8, o máximo de L = x + 3y é",
+      "opcoes": [
+        "8",
+        "12",
+        "16",
+        "24"
+      ],
+      "correta": 1,
+      "explicacao": "Vértices (0, 0), (8, 0), (0, 4): L = 0, 8, 12."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

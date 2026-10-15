@@ -1,77 +1,99 @@
 {
-  "status": "rascunho-para-revisao",
+  "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender quadriláteros notáveis",
-    "Resolver um exemplo geométrico passo a passo",
-    "Evitar armadilhas de interpretação do desenho"
+    "Conhecer os casos de semelhança",
+    "Calcular a razão de semelhança",
+    "Resolver problemas de sombras e alturas"
   ],
   "teoria": [
     {
-      "titulo": "Desenhe antes de calcular",
+      "titulo": "Mesma forma",
       "paragrafos": [
-        "Paralelogramos têm lados opostos paralelos e diagonais que se cortam ao meio. Retângulo tem ângulos retos; losango, quatro lados iguais; quadrado possui as duas características."
+        "Triângulos semelhantes têm ângulos iguais e lados proporcionais. Para garantir a semelhança basta: dois ângulos iguais (AA), dois lados proporcionais com o ângulo entre eles igual (LAL) ou os três lados proporcionais (LLL)."
       ],
       "formulas": [
-        "A_{\\text{trap\\acute ezio}}=\\frac{(B+b)h}2"
-      ],
-      "dica": "Use diagonais para reconhecer retângulo ou losango.",
-      "erroComum": "Diagonais iguais não bastam, sozinhas, para caracterizar todo quadrado."
-    },
-    {
-      "titulo": "Resolução com raciocínio",
-      "paragrafos": [
-        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+        "\\dfrac{a}{a'}=\\dfrac{b}{b'}=\\dfrac{c}{c'}=k"
       ],
       "exemplo": {
-        "enunciado": "Um trapézio tem bases 12 e 8, altura 5. Qual a área?",
+        "enunciado": "Uma vara de 2 m projeta uma sombra de 3 m. No mesmo instante, um prédio projeta 30 m de sombra. Qual a altura do prédio?",
         "passos": [
-          "Some as bases: 20.",
-          "Multiplique pela altura e divida por 2.",
-          "A=50 unidades²."
+          "Os raios de sol são paralelos: os triângulos são semelhantes (AA).",
+          "2/3 = h/30.",
+          "h = 20 m."
         ]
-      }
+      },
+      "dica": "Marque os ângulos iguais com o mesmo símbolo antes de escrever a proporção."
+    },
+    {
+      "titulo": "Paralela a um lado",
+      "paragrafos": [
+        "Uma reta paralela a um lado de um triângulo forma, com os outros dois lados, um triângulo menor semelhante ao original."
+      ],
+      "exemplo": {
+        "enunciado": "No triângulo ABC, DE é paralelo a BC, com AD = 4, DB = 2 e BC = 9. Quanto mede DE?",
+        "passos": [
+          "AD/AB = DE/BC, com AB = 6.",
+          "4/6 = DE/9.",
+          "DE = 6."
+        ]
+      },
+      "erroComum": "Usar DB em vez de AB na proporção. Compare o triângulo pequeno com o grande inteiro."
     }
   ],
+  "videos": [],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Um quadrado é necessariamente:",
+      "enunciado": "Para dois triângulos serem semelhantes pelo caso AA, eles precisam ter",
       "opcoes": [
-        "Retângulo e losango",
-        "Trapézio sem lados paralelos",
-        "Triângulo",
-        "Romboide sem ângulos retos"
+        "dois lados iguais",
+        "dois ângulos iguais",
+        "a mesma área",
+        "o mesmo perímetro"
       ],
-      "correta": 0,
-      "explicacao": "Tem quatro lados iguais e quatro ângulos retos."
+      "correta": 1,
+      "explicacao": "Dois ângulos iguais bastam."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Área do paralelogramo com base 7 e altura 4:",
+      "enunciado": "Dois triângulos semelhantes têm razão 3. Se um lado do menor mede 4, o lado correspondente do maior mede",
       "opcoes": [
-        "11",
-        "14",
-        "28",
-        "49"
+        "7",
+        "9",
+        "12",
+        "36"
       ],
       "correta": 2,
-      "explicacao": "A=b·h=28."
-    }
-  ],
-  "videos": [
+      "explicacao": "4 · 3 = 12."
+    },
     {
-      "titulo": "Geometria: retas, ângulos e triângulos",
-      "canal": "Khan Academy Brasil · biblioteca",
-      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
-      "url": "https://pt.khanacademy.org/math/geometry"
+      "nivel": "Aplicação",
+      "enunciado": "Uma pessoa de 1,8 m tem sombra de 1,2 m. Uma árvore ao lado tem sombra de 6 m. Sua altura é",
+      "opcoes": [
+        "4 m",
+        "7,2 m",
+        "9 m",
+        "10,8 m"
+      ],
+      "correta": 2,
+      "explicacao": "1,8/1,2 = h/6 ⇒ h = 9."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Em ABC, DE ∥ BC, AD = 3, AB = 9 e BC = 12. Então DE mede",
+      "opcoes": [
+        "3",
+        "4",
+        "6",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "3/9 = DE/12 ⇒ DE = 4."
     }
   ],
-  "arquivos": [],
   "exercicios": [],
-  "revisao": {
-    "status": "rascunho-pedagogico",
-    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
-  }
+  "arquivos": []
 }

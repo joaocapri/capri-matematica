@@ -1,71 +1,104 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de produto cartesiano e relações",
-    "Aplicar o procedimento em um exemplo resolvido",
-    "Reconhecer erros frequentes antes de enfrentar uma questão"
+    "Calcular o zero da função afim",
+    "Fazer o estudo do sinal pela posição da reta",
+    "Ligar o sinal ao coeficiente a"
   ],
   "teoria": [
     {
-      "titulo": "A ideia que destrava",
+      "titulo": "O zero da função",
       "paragrafos": [
-        "Um par ordenado guarda posição: (2,3) não é o mesmo que (3,2). O produto cartesiano A×B combina cada elemento de A com cada elemento de B."
+        "O zero da função afim é o valor de x que faz f(x) = 0. No gráfico, é onde a reta corta o eixo x."
       ],
       "formulas": [
-        "A\\times B=\\{(a,b)\\mid a\\in A,\\ b\\in B\\}"
-      ],
-      "dica": "A ordem dos conjuntos importa: A×B pode ser diferente de B×A.",
-      "erroComum": "Não trate (a,b) como um conjunto sem ordem."
-    },
-    {
-      "titulo": "Vamos fazer uma juntos",
-      "paragrafos": [
-        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+        "ax+b=0\\;\\Rightarrow\\;x=-\\dfrac{b}{a}"
       ],
       "exemplo": {
-        "enunciado": "Para A={1,2} e B={x,y}, construa A×B.",
+        "enunciado": "Qual é o zero de f(x) = 2x − 6?",
         "passos": [
-          "Pegue o 1 e combine com x e y.",
-          "Repita com o 2.",
-          "A×B={(1,x),(1,y),(2,x),(2,y)}."
+          "2x − 6 = 0.",
+          "x = 3.",
+          "A reta corta o eixo x no ponto (3, 0)."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "A tem 3 elementos e B tem 4. Quantos pares há em A×B?",
-      "opcoes": [
-        "7",
-        "12",
-        "16",
-        "1"
-      ],
-      "correta": 1,
-      "explicacao": "Cada um dos 3 elementos de A combina com os 4 de B: 3×4=12."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Qual par representa abscissa 4 e ordenada −2?",
-      "opcoes": [
-        "(−2,4)",
-        "(4,−2)",
-        "(2,4)",
-        "(−4,2)"
+      "titulo": "Estudo do sinal",
+      "paragrafos": [
+        "Com o zero marcado na reta numérica, olhe o sinal de a. Se a > 0, a reta sobe: à direita do zero a função é positiva e à esquerda, negativa. Se a < 0, é o contrário."
       ],
-      "correta": 1,
-      "explicacao": "O primeiro valor é x (abscissa) e o segundo é y (ordenada)."
+      "exemplo": {
+        "enunciado": "Faça o estudo do sinal de f(x) = −x + 7.",
+        "passos": [
+          "Zero: x = 7.",
+          "a = −1 < 0, então a reta desce.",
+          "f(x) > 0 para x < 7, f(x) = 0 em x = 7 e f(x) < 0 para x > 7."
+        ]
+      },
+      "dica": "Desenhe só um traço com o zero e a inclinação. Não precisa do gráfico completo.",
+      "erroComum": "Esquecer que, com a < 0, os sinais ficam invertidos em relação ao caso a > 0."
     }
   ],
   "videos": [
     {
-      "titulo": "Vídeos e prática: funções",
+      "titulo": "Vídeos e prática: funções afins e retas",
       "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Material de apoio sobre funções, domínio e composição.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
+      "descricao": "Material com videoaulas e exercícios de funções lineares.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-linear-eq-func"
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O zero de f(x) = 3x − 12 é",
+      "opcoes": [
+        "−4",
+        "3",
+        "4",
+        "12"
+      ],
+      "correta": 2,
+      "explicacao": "3x = 12, logo x = 4."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Para f(x) = 2x − 6, temos f(x) > 0 quando",
+      "opcoes": [
+        "x > 3",
+        "x < 3",
+        "x > −3",
+        "x < −3"
+      ],
+      "correta": 0,
+      "explicacao": "Zero em 3 e a > 0: positiva à direita do zero."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A função f(x) = −2x + 8 é positiva para",
+      "opcoes": [
+        "x > 4",
+        "x < 4",
+        "x > −4",
+        "x < −4"
+      ],
+      "correta": 1,
+      "explicacao": "Zero em 4 e a < 0: positiva à esquerda do zero."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O lucro de uma loja é L(x) = 25x − 4000 reais para x unidades vendidas. Há lucro a partir de quantas unidades?",
+      "opcoes": [
+        "160",
+        "161",
+        "400",
+        "4000"
+      ],
+      "correta": 1,
+      "explicacao": "L(x) > 0 para x > 160. A partir de 161 unidades."
     }
   ],
   "exercicios": [],

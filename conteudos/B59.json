@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Lugar geométrico é o conjunto de todos os pontos que cumprem uma condição. A distância a ponto fixo gera circunferência; a equidistância de dois pontos gera mediatriz; distância fixa a reta produz retas paralelas."
+      ],
+      "formulas": [
+        "d(P,A)=d(P,B)\\quad\\Rightarrow\\quad\\text{mediatriz de }AB"
+      ],
+      "dica": "Escreva a condição em distâncias antes de simplificar as contas.",
+      "erroComum": "Ao elevar ao quadrado, avalie se criou soluções extras."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "P=(x,y) equidista de A=(0,0) e B=(4,0). Qual lugar?",
+        "passos": [
+          "x²+y²=(x−4)²+y².",
+          "8x=16 ⇒ x=2.",
+          "É a reta mediatriz x=2."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Pontos à distância 3 da origem formam:",
+      "opcoes": [
+        "Reta",
+        "Circunferência",
+        "Parábola",
+        "Hipérbole"
+      ],
+      "correta": 1,
+      "explicacao": "São a circunferência x²+y²=9."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Pontos equidistantes de (−1,0) e (1,0) formam:",
+      "opcoes": [
+        "x=0",
+        "y=1",
+        "x=1",
+        "Circunferência"
+      ],
+      "correta": 0,
+      "explicacao": "A mediatriz do segmento é eixo y: x=0."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

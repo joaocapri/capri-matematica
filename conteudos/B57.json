@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Uma cônica sem termo misto xy pode ser identificada pelo sinal dos quadrados: iguais (e coeficientes compatíveis) sugerem círculo; mesmo sinal, elipse; sinais opostos, hipérbole; só um quadrado, parábola. Verifique degenerescências."
+      ],
+      "formulas": [
+        "Ax^2+Cy^2+Dx+Ey+F=0"
+      ],
+      "dica": "Para termos xy, complete a classificação usando rotação de eixos ou discriminante B²−4AC.",
+      "erroComum": "Uma equação de segundo grau pode representar cônica degenerada ou conjunto vazio."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Classifique x²/9−y²/4=1.",
+        "passos": [
+          "Há dois termos quadráticos com sinais opostos.",
+          "A curva é uma hipérbole."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "x²+y²=25 representa:",
+      "opcoes": [
+        "Parábola",
+        "Elipse não circular",
+        "Circunferência",
+        "Hipérbole"
+      ],
+      "correta": 2,
+      "explicacao": "Centro na origem, raio 5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "y=x² corresponde a:",
+      "opcoes": [
+        "Parábola",
+        "Elipse",
+        "Hipérbole",
+        "Circunferência"
+      ],
+      "correta": 0,
+      "explicacao": "Só x está ao quadrado."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

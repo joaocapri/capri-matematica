@@ -1,60 +1,98 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Decidir se duas retas são paralelas, coincidentes ou concorrentes",
+    "Encontrar o ponto de interseção",
+    "Escrever a reta paralela por um ponto"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Comparando coeficientes",
       "paragrafos": [
-        "Em três dimensões, cada ponto tem coordenadas (x,y,z); a distância mantém a ideia de Pitágoras, agora com três diferenças ao quadrado. Esferas no espaço usam a distância a um centro."
+        "Retas com coeficientes angulares diferentes são concorrentes. Com o mesmo coeficiente angular, são paralelas distintas (n diferentes) ou coincidentes (n iguais)."
       ],
       "formulas": [
-        "d=\\sqrt{(\\Delta x)^2+(\\Delta y)^2+(\\Delta z)^2}"
-      ],
-      "dica": "Pense em x e y como piso e z como altura.",
-      "erroComum": "Em 3D, projeção em plano xy não conserva a coordenada z."
-    },
-    {
-      "titulo": "Na prática",
-      "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "m_1=m_2\\Rightarrow\\text{paralelas ou coincidentes}"
       ],
       "exemplo": {
-        "enunciado": "Distância de (1,2,3) a (4,6,3).",
+        "enunciado": "Qual a posição de y = 2x + 1 e 4x − 2y + 6 = 0?",
         "passos": [
-          "Diferenças: 3,4,0.",
-          "d=√(9+16)=5."
+          "A segunda é y = 2x + 3.",
+          "Mesmo m = 2 e n diferentes.",
+          "Paralelas distintas."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Distância entre origem e (1,2,2) =",
-      "opcoes": [
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "correta": 1,
-      "explicacao": "√(1+4+4)=3."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Centro da esfera (x−1)²+(y+2)²+(z−3)²=16:",
-      "opcoes": [
-        "(1,−2,3)",
-        "(−1,2,−3)",
-        "(1,2,3)",
-        "(4,4,4)"
+      "titulo": "Interseção e paralela",
+      "paragrafos": [
+        "O ponto de interseção é a solução do sistema formado pelas duas equações. A paralela a uma reta por um ponto usa o mesmo m."
       ],
-      "correta": 0,
-      "explicacao": "Centro obtido com sinais trocados dentro dos parênteses."
+      "exemplo": {
+        "enunciado": "Encontre a interseção de y = x + 1 e y = −2x + 7.",
+        "passos": [
+          "x + 1 = −2x + 7 ⇒ x = 2.",
+          "y = 3.",
+          "Ponto (2, 3)."
+        ]
+      },
+      "erroComum": "Concluir que retas são paralelas só porque têm o mesmo coeficiente linear."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "As retas y = 3x − 1 e y = 3x + 4 são",
+      "opcoes": [
+        "concorrentes",
+        "paralelas distintas",
+        "coincidentes",
+        "perpendiculares"
+      ],
+      "correta": 1,
+      "explicacao": "Mesmo m e n diferentes."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A interseção de y = 2x e y = −x + 6 é",
+      "opcoes": [
+        "(2, 4)",
+        "(3, 6)",
+        "(1, 2)",
+        "(4, 2)"
+      ],
+      "correta": 0,
+      "explicacao": "2x = −x + 6 ⇒ x = 2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A reta paralela a y = −x + 5 que passa por (1, 1) é",
+      "opcoes": [
+        "y = −x + 2",
+        "y = x",
+        "y = −x + 1",
+        "y = x + 2"
+      ],
+      "correta": 0,
+      "explicacao": "y − 1 = −(x − 1)."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "As retas 2x + y = 3 e 4x + 2y = 6 são",
+      "opcoes": [
+        "concorrentes",
+        "paralelas distintas",
+        "coincidentes",
+        "perpendiculares"
+      ],
+      "correta": 2,
+      "explicacao": "A segunda é o dobro da primeira."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

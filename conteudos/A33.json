@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de equações e inequações exponenciais",
+    "Reconhecer o conceito central de função exponencial",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Se as potências têm a mesma base, iguale expoentes. Se as bases são recíprocas, reescreva. Nas inequações, base entre 0 e 1 inverte a comparação entre expoentes."
+        "Em uma exponencial, a variável está no expoente. A base é positiva e diferente de 1. Quando base>1, cresce; quando 0<base<1, decresce."
       ],
       "formulas": [
-        "a^u=a^v\\Rightarrow u=v\\quad(a>0,\\ a\\neq1)"
+        "f(x)=a^x,\\quad a>0,\\ a\\neq1"
       ],
-      "dica": "Tente reescrever todas as potências na mesma base antes de usar logaritmos.",
-      "erroComum": "Base inferior a 1 faz a desigualdade inverter na comparação dos expoentes."
+      "dica": "Exponencial positiva nunca cruza o eixo x.",
+      "erroComum": "O comportamento depende da base, não de o expoente ser positivo."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,11 +25,11 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Resolva (1/2)^(x+1)<(1/2)^3.",
+        "enunciado": "Compare 2^x e (1/2)^x em x=−1 e x=2.",
         "passos": [
-          "A base 1/2 está entre 0 e 1.",
-          "Como a potência decresce, o sinal entre expoentes inverte.",
-          "x+1>3 ⇒ x>2."
+          "2^(−1)=1/2 e 2²=4: há crescimento.",
+          "(1/2)^(−1)=2 e (1/2)²=1/4: há decrescimento.",
+          "Ambas são positivas em todo x real."
         ]
       }
     }
@@ -45,27 +45,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "2^(x+1)=16 implica:",
+      "enunciado": "Qual função é decrescente?",
       "opcoes": [
-        "x=2",
-        "x=3",
-        "x=4",
-        "x=5"
+        "3^x",
+        "(1/3)^x",
+        "2^x",
+        "10^x"
       ],
       "correta": 1,
-      "explicacao": "16=2⁴, logo x+1=4 ⇒ x=3."
+      "explicacao": "Base entre 0 e 1 implica decrescimento."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "(1/3)^x>(1/3)^2 quando:",
+      "enunciado": "O valor de 2^(−2) é:",
       "opcoes": [
-        "x>2",
-        "x≥2",
-        "x<2",
-        "x=2"
+        "−4",
+        "4",
+        "1/4",
+        "−1/4"
       ],
       "correta": 2,
-      "explicacao": "Para base entre 0 e 1, a função é decrescente."
+      "explicacao": "2^(−2)=1/2²=1/4."
     }
   ],
   "exercicios": [],

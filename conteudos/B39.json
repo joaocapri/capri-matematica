@@ -6,13 +6,13 @@
     {
       "titulo": "Pegue a ideia",
       "paragrafos": [
-        "Elipse reúne pontos cuja soma das distâncias a dois focos é constante. Centro na origem, eixo maior horizontal: a²>b² e c²=a²−b². Excentricidade e=c/a fica entre 0 e 1."
+        "Sólidos gerados por rotação devem ser decompostos em partes conhecidas ou em diferença de volumes. Cuidado: girar uma região e girar apenas o seu contorno produzem objetos de naturezas diferentes."
       ],
       "formulas": [
-        "\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1,\\quad c^2=a^2-b^2"
+        "V_{\\text{composto}}=V_1+V_2- V_{\\text{sobreposi\\c c\\~oes}}"
       ],
-      "dica": "Denominador maior revela direção do eixo maior na forma canônica.",
-      "erroComum": "Elipse não é hipérbole: os sinais entre os termos quadráticos são iguais."
+      "dica": "Marque regiões vazias antes de decidir se soma ou subtrai.",
+      "erroComum": "Não some volumes de peças sobrepostas sem descontar a região comum."
     },
     {
       "titulo": "Na prática",
@@ -20,11 +20,11 @@
         "Agora aplique o conceito em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Elipse x²/25+y²/9=1: semieixos e focos?",
+        "enunciado": "Um cilindro de volume 80 cm³ contém uma cavidade cônica de volume 20 cm³. Qual volume de material?",
         "passos": [
-          "a=5,b=3.",
-          "c²=25−9=16 ⇒ c=4.",
-          "Focos (−4,0) e (4,0)."
+          "Partimos do cilindro completo, 80.",
+          "Retiramos o cone vazado, 20.",
+          "Restam 60 cm³."
         ]
       }
     }
@@ -32,27 +32,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Para x²/16+y²/9=1, a vale:",
+      "enunciado": "Um sólido com volume 50 e uma cavidade de volume 15 tem volume útil:",
       "opcoes": [
-        "3",
-        "4",
-        "5",
-        "7"
+        "35",
+        "50",
+        "65",
+        "750"
       ],
-      "correta": 1,
-      "explicacao": "Maior denominador 16 ⇒ semieixo maior a=4."
+      "correta": 0,
+      "explicacao": "50−15=35."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Na elipse, excentricidade satisfaz:",
+      "enunciado": "Girar um retângulo em torno de um de seus lados produz:",
       "opcoes": [
-        "e<0",
-        "0≤e<1",
-        "e=1 sempre",
-        "e>1"
+        "Esfera",
+        "Cone",
+        "Cilindro reto",
+        "Pirâmide"
       ],
-      "correta": 1,
-      "explicacao": "Para elipse não degenerada, 0≤e<1."
+      "correta": 2,
+      "explicacao": "A região retangular gera um cilindro circular reto."
     }
   ],
   "videos": [],

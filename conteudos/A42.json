@@ -1,71 +1,100 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de soma de p.a",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Usar logaritmos em escalas como pH e decibéis",
+    "Calcular tempos em juros compostos e crescimento",
+    "Interpretar o que significa somar 1 numa escala logarítmica"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "Escalas logarítmicas",
       "paragrafos": [
-        "Somar uma PA termo a termo funciona, mas emparelhar extremos é mais rápido. Em uma PA, primeiro+último tem sempre o mesmo valor dos pares simétricos."
+        "Algumas grandezas variam tanto que medimos o expoente em vez do valor. É o caso do pH, da escala Richter e do nível sonoro. Em base 10, somar 1 na escala significa multiplicar por 10 a grandeza original."
       ],
       "formulas": [
-        "S_n=\\frac{n(a_1+a_n)}2"
-      ],
-      "dica": "Se o último termo não foi dado, calcule-o primeiro com a fórmula de PA.",
-      "erroComum": "Não use n(a₁+aₙ) sem dividir por 2."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "\\text{pH}=-\\log[\\text{H}^+]",
+        "N=10\\log\\dfrac{I}{I_0}\\ \\text{dB}"
       ],
       "exemplo": {
-        "enunciado": "Calcule 1+2+...+100.",
+        "enunciado": "Uma solução tem [H⁺] = 10⁻³ mol/L. Qual é o pH?",
         "passos": [
-          "Há 100 termos, primeiro 1 e último 100.",
-          "S₁₀₀=100(1+100)/2.",
-          "Total: 5050."
+          "pH = −log 10⁻³.",
+          "pH = 3. É ácida, pois pH < 7."
         ]
       }
-    }
-  ],
-  "videos": [
+    },
     {
-      "titulo": "Progressões aritméticas e geométricas",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
+      "titulo": "Quanto tempo leva?",
+      "paragrafos": [
+        "Quando a incógnita está no expoente e não dá para igualar bases, aplique logaritmo dos dois lados."
+      ],
+      "formulas": [
+        "M=C(1+i)^t",
+        "t=\\dfrac{\\log(M/C)}{\\log(1+i)}"
+      ],
+      "exemplo": {
+        "enunciado": "Em quanto tempo um capital dobra a 10% ao ano? Use log 2 ≈ 0,30 e log 1,1 ≈ 0,041.",
+        "passos": [
+          "2 = 1,1ᵗ.",
+          "t = log 2 / log 1,1 ≈ 0,30 / 0,041.",
+          "t ≈ 7,3, ou seja, cerca de 7 anos e 4 meses."
+        ]
+      },
+      "dica": "Nas provas, os valores de log 2, log 3 e log 1,1 costumam vir no enunciado."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "A soma de 2+4+6+8 é:",
+      "nivel": "Aquecimento",
+      "enunciado": "Uma solução com [H⁺] = 10⁻⁸ mol/L tem pH",
       "opcoes": [
-        "16",
-        "18",
+        "−8",
+        "8",
+        "0,8",
+        "10⁸"
+      ],
+      "correta": 1,
+      "explicacao": "pH = −log 10⁻⁸ = 8."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Um terremoto de magnitude 7 libera, em amplitude, quantas vezes mais que um de magnitude 5 na escala Richter (base 10)?",
+      "opcoes": [
+        "2",
         "20",
-        "24"
+        "100",
+        "1000"
       ],
       "correta": 2,
-      "explicacao": "Quatro termos: 4(2+8)/2=20."
+      "explicacao": "Diferença de 2 na escala: 10² = 100."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Quanto vale 1+2+...+10?",
+      "enunciado": "Um som com intensidade 1000 vezes a de referência tem nível",
       "opcoes": [
-        "45",
-        "50",
-        "55",
-        "60"
+        "3 dB",
+        "30 dB",
+        "300 dB",
+        "1000 dB"
+      ],
+      "correta": 1,
+      "explicacao": "N = 10 log 1000 = 30."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma cultura de 100 bactérias dobra a cada hora. Com log 2 ≈ 0,3, ela passa de 10 000 bactérias depois de, no mínimo, quantas horas inteiras?",
+      "opcoes": [
+        "5",
+        "6",
+        "7",
+        "10"
       ],
       "correta": 2,
-      "explicacao": "10·11/2=55."
+      "explicacao": "2ᵗ > 100 ⇒ t > 2/0,3 ≈ 6,7. A primeira hora inteira é 7."
     }
   ],
   "exercicios": [],

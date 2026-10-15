@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender áreas de figuras planas i - quadriláteros",
+    "Compreender polígonos regulares e apótema",
     "Resolver um exemplo geométrico passo a passo",
     "Evitar armadilhas de interpretação do desenho"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Desenhe antes de calcular",
       "paragrafos": [
-        "Área mede superfície em unidades quadradas. Para quadriláteros, vale organizar a figura em triângulos ou retângulos e reconhecer as fórmulas com base e altura perpendicular."
+        "Polígono regular tem todos os lados e ângulos iguais. O apótema liga o centro perpendicularmente a um lado e funciona como altura dos triângulos que dividem o polígono."
       ],
       "formulas": [
-        "A_{\\text{paralelogramo}}=bh,\\quad A_{\\text{trap\\acute ezio}}=\\frac{(B+b)h}2"
+        "A=\\frac{P\\cdot ap}2"
       ],
-      "dica": "Se a figura é composta, divida-a em áreas simples e depois some ou subtraia.",
-      "erroComum": "O lado inclinado de um paralelogramo nem sempre é sua altura."
+      "dica": "No hexágono regular, lado e raio da circunferência circunscrita são iguais.",
+      "erroComum": "Apótema não é igual ao raio circunscrito, salvo casos degenerados."
     },
     {
       "titulo": "Resolução com raciocínio",
@@ -25,10 +25,11 @@
         "A ideia é enxergar a propriedade na figura e só depois colocar números."
       ],
       "exemplo": {
-        "enunciado": "Um trapézio tem bases 10 e 6, altura 4. Calcule a área.",
+        "enunciado": "Um hexágono regular tem perímetro 24 e apótema 2√3. Ache a área.",
         "passos": [
-          "A=(10+6)·4/2.",
-          "A=32 unidades²."
+          "Área=P·ap/2.",
+          "A=24·2√3/2.",
+          "A=24√3."
         ]
       }
     }
@@ -36,34 +37,34 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Trapézio com B=8,b=4,h=3 tem área:",
+      "enunciado": "Um hexágono regular com lado 5 tem perímetro:",
       "opcoes": [
-        "12",
-        "18",
-        "24",
+        "20",
+        "25",
+        "30",
         "36"
       ],
-      "correta": 1,
-      "explicacao": "(8+4)·3/2=18."
+      "correta": 2,
+      "explicacao": "Seis lados de 5 ⇒ 30."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Um losango tem diagonais 6 e 10. Área:",
+      "enunciado": "Área de polígono regular com P=20 e apótema 3:",
       "opcoes": [
-        "16",
+        "20",
         "30",
-        "60",
-        "120"
+        "40",
+        "60"
       ],
       "correta": 1,
-      "explicacao": "A=D·d/2=30."
+      "explicacao": "A=20·3/2=30."
     }
   ],
   "videos": [
     {
-      "titulo": "Geometria: áreas e círculos",
+      "titulo": "Geometria: retas, ângulos e triângulos",
       "canal": "Khan Academy Brasil · biblioteca",
-      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
       "url": "https://pt.khanacademy.org/math/geometry"
     }
   ],

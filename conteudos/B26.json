@@ -6,13 +6,13 @@
     {
       "titulo": "Pegue a ideia",
       "paragrafos": [
-        "A área de uma esfera depende somente de seu raio. Ao contrário de um círculo, a esfera é uma superfície tridimensional: sua medida é expressa em unidades quadradas."
+        "Prismas têm duas bases congruentes em planos paralelos. A área total é a soma das áreas de todas as faces: duas bases mais a área lateral. Em prisma reto, as faces laterais são retângulos."
       ],
       "formulas": [
-        "A=4\\pi r^2"
+        "A_T=2A_b+A_l"
       ],
-      "dica": "Se o raio dobra, a área quadruplica.",
-      "erroComum": "Área da superfície não é πr²: essa é a área de um disco."
+      "dica": "Em prisma reto, A_l=P_b·h; em oblíquo, não use automaticamente.",
+      "erroComum": "A fórmula de volume não serve para área: unidades devem ser quadradas."
     },
     {
       "titulo": "Na prática",
@@ -20,10 +20,11 @@
         "Agora aplique o conceito em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Esfera com raio 3: área da superfície?",
+        "enunciado": "Prisma reto de base quadrada com lado 2 cm e altura 5 cm: área total?",
         "passos": [
-          "A=4π·9.",
-          "A=36π unidades²."
+          "Duas bases: 2·2²=8 cm².",
+          "Lateral: perímetro da base·altura=8·5=40 cm².",
+          "Total: 48 cm²."
         ]
       }
     }
@@ -31,27 +32,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Esfera com r=2: área =",
+      "enunciado": "Prisma triangular possui quantas bases?",
       "opcoes": [
-        "4π",
-        "8π",
-        "16π",
-        "32π"
+        "1",
+        "2",
+        "3",
+        "5"
       ],
-      "correta": 2,
-      "explicacao": "4π·2²=16π."
+      "correta": 1,
+      "explicacao": "Todo prisma tem duas bases congruentes."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se o raio triplica, a área da esfera fica:",
+      "enunciado": "Prisma reto de base quadrada 3 e altura 4: área lateral =",
       "opcoes": [
-        "3 vezes",
-        "6 vezes",
-        "9 vezes",
-        "27 vezes"
+        "12",
+        "24",
+        "36",
+        "48"
       ],
-      "correta": 2,
-      "explicacao": "Área proporcional a r², então 3²=9."
+      "correta": 3,
+      "explicacao": "P_b·h=12·4=48."
     }
   ],
   "videos": [],

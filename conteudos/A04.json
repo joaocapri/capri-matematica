@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de intervalos reais e inequações básicas",
+    "Entender o conceito central de conjuntos numéricos: a evolução do número",
     "Aplicar o procedimento em um exemplo resolvido",
     "Reconhecer erros frequentes antes de enfrentar uma questão"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "A ideia que destrava",
       "paragrafos": [
-        "Intervalos descrevem trechos da reta: colchete fechado inclui extremo; extremo aberto exclui. Inequações também descrevem conjuntos de números, não apenas uma resposta isolada."
+        "Naturais, inteiros, racionais e reais são conjuntos encaixados. Todo inteiro é racional; irracionais não podem ser escritos como razão de dois inteiros com denominador diferente de zero."
       ],
       "formulas": [
-        "[a,b)=\\{x\\in\\mathbb R\\mid a\\leq x<b\\}"
+        "\\mathbb N\\subseteq\\mathbb Z\\subseteq\\mathbb Q\\subseteq\\mathbb R"
       ],
-      "dica": "A interseção mantém só a parte comum aos intervalos.",
-      "erroComum": "Ao multiplicar uma inequação por número negativo, inverta o sinal."
+      "dica": "Uma decimal infinita periódica é racional; infinita não periódica é irracional.",
+      "erroComum": "O número π não é racional só porque usamos 3,14 como aproximação."
     },
     {
       "titulo": "Vamos fazer uma juntos",
@@ -25,11 +25,11 @@
         "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
       ],
       "exemplo": {
-        "enunciado": "Resolva 2x−3<7 e escreva o intervalo.",
+        "enunciado": "Classifique −3, 0,5 e √2.",
         "passos": [
-          "Some 3: 2x<10.",
-          "Divida por 2: x<5.",
-          "O conjunto solução é (−∞,5)."
+          "−3 é inteiro e racional.",
+          "0,5=1/2 é racional.",
+          "√2 é irracional e real."
         ]
       }
     }
@@ -37,27 +37,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "A interseção de [1,5] com (3,7) é:",
+      "enunciado": "Qual número é irracional?",
       "opcoes": [
-        "[1,7)",
-        "(3,5]",
-        "[3,5]",
-        "(3,7)"
+        "0,75",
+        "√9",
+        "√2",
+        "−7"
       ],
-      "correta": 1,
-      "explicacao": "O 3 fica fora do segundo intervalo; 5 está dentro de ambos."
+      "correta": 2,
+      "explicacao": "√2 não é razão de inteiros."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "A solução de −2x>6 é:",
+      "enunciado": "Qual afirmação é sempre verdadeira?",
       "opcoes": [
-        "x>−3",
-        "x<−3",
-        "x>3",
-        "x<3"
+        "Todo real é racional",
+        "Todo inteiro é racional",
+        "Todo racional é natural",
+        "Todo irracional é inteiro"
       ],
       "correta": 1,
-      "explicacao": "Dividindo por −2, o sinal inverte: x<−3."
+      "explicacao": "n = n/1, então qualquer inteiro pertence aos racionais."
     }
   ],
   "videos": [

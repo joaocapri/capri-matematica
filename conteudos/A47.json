@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de complexos - plano de argand-gauss e módulo",
+    "Reconhecer o conceito central de progressão geométrica (p.g.) - termo geral",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Um complexo a+bi é representado pelo ponto (a,b). Seu módulo é a distância desse ponto à origem, calculada por Pitágoras; não se trata do módulo apenas da parte real."
+        "Na progressão geométrica (PG), cada termo é o anterior multiplicado pela razão q. É a versão discreta do crescimento exponencial — inclusive quando a razão está entre 0 e 1."
       ],
       "formulas": [
-        "|a+bi|=\\sqrt{a^2+b^2}"
+        "a_n=a_1q^{n-1}"
       ],
-      "dica": "Para a+bi, desenhe sempre o triângulo retângulo com catetos |a| e |b|.",
-      "erroComum": "|3+4i| não é 3+4=7."
+      "dica": "Se q é uma fração entre 0 e 1 e a₁>0, os termos decrescem.",
+      "erroComum": "Em PG não somamos a razão: multiplicamos."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,47 +25,47 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Encontre o módulo de z=3+4i.",
+        "enunciado": "Uma PG começa em 3 e tem q=2. Calcule a₅.",
         "passos": [
-          "Ponto (3,4) no plano de Argand-Gauss.",
-          "|z|=√(3²+4²)=√25.",
-          "O módulo vale 5."
+          "a₁=3, q=2.",
+          "a₅=3·2⁴.",
+          "a₅=48."
         ]
       }
     }
   ],
   "videos": [
     {
-      "titulo": "Números complexos e polinômios",
+      "titulo": "Progressões aritméticas e geométricas",
       "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Revisão de números complexos e técnicas de fatoração.",
-      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
     }
   ],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "O módulo de 5+12i é:",
+      "enunciado": "O 4º termo da PG 2,6,18,... é:",
       "opcoes": [
-        "7",
-        "13",
-        "17",
-        "25"
+        "24",
+        "36",
+        "54",
+        "72"
       ],
-      "correta": 1,
-      "explicacao": "√(25+144)=13."
+      "correta": 2,
+      "explicacao": "A razão é 3, então a₄=18·3=54."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O complexo −2+3i corresponde ao ponto:",
+      "enunciado": "Em 16,8,4,... a razão é:",
       "opcoes": [
-        "(3,−2)",
-        "(−2,3)",
-        "(2,3)",
-        "(−3,2)"
+        "2",
+        "1/2",
+        "−2",
+        "4"
       ],
       "correta": 1,
-      "explicacao": "A parte real é x, a imaginária é y."
+      "explicacao": "8/16=1/2."
     }
   ],
   "exercicios": [],

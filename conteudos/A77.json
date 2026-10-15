@@ -1,0 +1,97 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Identificar a multiplicidade de uma raiz",
+    "Ler a multiplicidade na forma fatorada",
+    "Relacionar multiplicidade com o gráfico"
+  ],
+  "teoria": [
+    {
+      "titulo": "Raiz que se repete",
+      "paragrafos": [
+        "Uma raiz r tem multiplicidade m quando o fator (x − r) aparece exatamente m vezes na forma fatorada. Raiz de multiplicidade 2 é chamada de raiz dupla; de multiplicidade 3, tripla."
+      ],
+      "formulas": [
+        "P(x)=(x-r)^m\\cdot Q(x),\\quad Q(r)\\neq0"
+      ],
+      "exemplo": {
+        "enunciado": "Quais as raízes e multiplicidades de P(x) = (x − 1)³(x + 2)²?",
+        "passos": [
+          "1 é raiz tripla.",
+          "−2 é raiz dupla.",
+          "O grau é 5: 3 + 2."
+        ]
+      }
+    },
+    {
+      "titulo": "O que o gráfico mostra",
+      "paragrafos": [
+        "Numa raiz de multiplicidade ímpar, o gráfico atravessa o eixo x. Numa raiz de multiplicidade par, o gráfico só encosta no eixo e volta."
+      ],
+      "exemplo": {
+        "enunciado": "Como é o gráfico de (x − 1)²(x − 3) perto de x = 1 e de x = 3?",
+        "passos": [
+          "x = 1 é dupla: o gráfico encosta no eixo e volta.",
+          "x = 3 é simples: o gráfico atravessa o eixo."
+        ]
+      },
+      "dica": "Para saber se r é raiz dupla, divida por x − r e veja se r ainda é raiz do quociente."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em P(x) = x²(x − 4)³, o número 4 é raiz de multiplicidade",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ],
+      "correta": 2,
+      "explicacao": "O fator (x − 4) aparece 3 vezes."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em uma raiz de multiplicidade par, o gráfico de P",
+      "opcoes": [
+        "atravessa o eixo x",
+        "encosta no eixo x sem atravessar",
+        "não toca o eixo x",
+        "é vertical"
+      ],
+      "correta": 1,
+      "explicacao": "O sinal não muda ao passar pela raiz."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A soma das multiplicidades das raízes de (x + 1)²(x − 2)(x − 5)⁴ é",
+      "opcoes": [
+        "3",
+        "5",
+        "7",
+        "8"
+      ],
+      "correta": 2,
+      "explicacao": "2 + 1 + 4 = 7, que é o grau."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O polinômio x³ − 3x² + 3x − 1 tem",
+      "opcoes": [
+        "três raízes distintas",
+        "a raiz 1 com multiplicidade 3",
+        "a raiz −1 dupla",
+        "nenhuma raiz real"
+      ],
+      "correta": 1,
+      "explicacao": "É (x − 1)³."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

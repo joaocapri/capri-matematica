@@ -1,0 +1,96 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Decidir se um ponto é interno, externo ou pertence à circunferência",
+    "Decidir se uma reta é secante, tangente ou externa",
+    "Usar a distância do centro"
+  ],
+  "teoria": [
+    {
+      "titulo": "Ponto e circunferência",
+      "paragrafos": [
+        "Compare a distância do ponto ao centro com o raio: menor, o ponto é interno; igual, pertence; maior, é externo."
+      ],
+      "exemplo": {
+        "enunciado": "O ponto (4, 1) em relação a (x − 1)² + (y − 1)² = 4.",
+        "passos": [
+          "Centro (1, 1) e raio 2.",
+          "Distância: 3.",
+          "Como 3 > 2, o ponto é externo."
+        ]
+      },
+      "dica": "Atalho: substitua o ponto no lado esquerdo da equação e compare com r²."
+    },
+    {
+      "titulo": "Reta e circunferência",
+      "paragrafos": [
+        "Calcule a distância d do centro à reta. Se d < r, a reta é secante (corta em dois pontos). Se d = r, é tangente. Se d > r, é externa."
+      ],
+      "exemplo": {
+        "enunciado": "Qual a posição da reta 3x + 4y − 5 = 0 em relação a x² + y² = 1?",
+        "passos": [
+          "Centro (0, 0) e raio 1.",
+          "d = |−5|/5 = 1.",
+          "d = r: a reta é tangente."
+        ]
+      },
+      "erroComum": "Comparar a distância com o diâmetro em vez do raio."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se a distância do centro à reta é menor que o raio, a reta é",
+      "opcoes": [
+        "tangente",
+        "secante",
+        "externa",
+        "paralela"
+      ],
+      "correta": 1,
+      "explicacao": "Corta em dois pontos."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Em relação a x² + y² = 25, o ponto (3, 4)",
+      "opcoes": [
+        "é interno",
+        "pertence à circunferência",
+        "é externo",
+        "é o centro"
+      ],
+      "correta": 1,
+      "explicacao": "9 + 16 = 25."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A reta y = 5 em relação a x² + y² = 9 é",
+      "opcoes": [
+        "secante",
+        "tangente",
+        "externa",
+        "passa pelo centro"
+      ],
+      "correta": 2,
+      "explicacao": "Distância 5 > raio 3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A reta x = 2 é tangente a qual circunferência de centro na origem?",
+      "opcoes": [
+        "x² + y² = 2",
+        "x² + y² = 4",
+        "x² + y² = 16",
+        "x² + y² = 1"
+      ],
+      "correta": 1,
+      "explicacao": "Distância 2 = raio."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

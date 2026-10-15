@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Estatística transforma dados em informações. Frequência absoluta conta ocorrências, frequência relativa mede a proporção; gráficos permitem comparar categorias, mas escalas podem distorcer interpretações."
+      ],
+      "formulas": [
+        "f_{rel}=\\frac{f_{abs}}{N}"
+      ],
+      "dica": "Leia os eixos e as unidades antes de tirar conclusões de um gráfico.",
+      "erroComum": "Gráfico com eixo vertical truncado pode exagerar diferenças visuais."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Em 40 alunos, 12 preferem futebol. Qual frequência relativa?",
+        "passos": [
+          "12/40=0,3.",
+          "Ou 30% da turma."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em 20 observações, frequência de 5 corresponde a:",
+      "opcoes": [
+        "10%",
+        "20%",
+        "25%",
+        "50%"
+      ],
+      "correta": 2,
+      "explicacao": "5/20=25%."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Gráfico de setores tem soma dos ângulos:",
+      "opcoes": [
+        "90°",
+        "180°",
+        "270°",
+        "360°"
+      ],
+      "correta": 3,
+      "explicacao": "Setores preenchem uma volta completa."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

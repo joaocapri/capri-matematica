@@ -1,60 +1,102 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Calcular fatoriais e simplificar quocientes",
+    "Contar filas e anagramas sem repetição",
+    "Lidar com restrições de posição"
+  ],
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Fatorial",
       "paragrafos": [
-        "Tangente é sen/cos, definida quando cos≠0. Secante é o inverso do cosseno e cossecante, o inverso do seno, respeitando seus domínios."
+        "O fatorial de n é o produto de todos os naturais de 1 até n. Por definição, 0! = 1. Em quocientes, escreva o maior fatorial até chegar no menor e cancele."
       ],
       "formulas": [
-        "\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta},\\quad\\sin^2\\theta+\\cos^2\\theta=1"
-      ],
-      "dica": "A relação fundamental costuma ser mais rápida que desenhar triângulo para ângulos gerais.",
-      "erroComum": "Tangente não existe em π/2+kπ."
-    },
-    {
-      "titulo": "Veja funcionando",
-      "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "n!=n\\cdot(n-1)\\cdots2\\cdot1",
+        "0!=1"
       ],
       "exemplo": {
-        "enunciado": "Se senθ=3/5 e θ está no QI, calcule cosθ e tanθ.",
+        "enunciado": "Calcule 10!/8!.",
         "passos": [
-          "cos²=1−9/25=16/25 ⇒ cos=4/5.",
-          "tan=(3/5)/(4/5)=3/4."
+          "10! = 10 · 9 · 8!.",
+          "10 · 9 = 90."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "tan45° =",
-      "opcoes": [
-        "0",
-        "1",
-        "√2",
-        "√3"
-      ],
-      "correta": 1,
-      "explicacao": "sen45°=cos45° ⇒ tangente 1."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Secante de 60° =",
-      "opcoes": [
-        "1/2",
-        "1",
-        "2",
-        "√3"
+      "titulo": "Permutação simples",
+      "paragrafos": [
+        "O número de modos de ordenar n elementos distintos é n!. Anagramas de uma palavra sem letras repetidas são permutações das suas letras."
       ],
-      "correta": 2,
-      "explicacao": "sec60°=1/cos60°=2."
+      "formulas": [
+        "P_n=n!"
+      ],
+      "exemplo": {
+        "enunciado": "Quantos anagramas de PROVA começam por vogal?",
+        "passos": [
+          "A primeira letra é O ou A: 2 opções.",
+          "As 4 letras restantes se permutam: 4! = 24.",
+          "Total: 48."
+        ]
+      },
+      "dica": "Comece pelas posições com restrição e depois preencha o resto.",
+      "erroComum": "Ignorar a restrição e calcular 5! direto."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "O valor de 5! é",
+      "opcoes": [
+        "25",
+        "60",
+        "120",
+        "720"
+      ],
+      "correta": 2,
+      "explicacao": "5 · 4 · 3 · 2 · 1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O valor de 8!/6! é",
+      "opcoes": [
+        "2",
+        "48",
+        "56",
+        "336"
+      ],
+      "correta": 2,
+      "explicacao": "8 · 7."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "De quantas formas 5 pessoas podem formar uma fila?",
+      "opcoes": [
+        "25",
+        "60",
+        "120",
+        "3125"
+      ],
+      "correta": 2,
+      "explicacao": "5!."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Quantos anagramas de LIVRO começam e terminam por consoante?",
+      "opcoes": [
+        "36",
+        "18",
+        "24",
+        "72"
+      ],
+      "correta": 0,
+      "explicacao": "Consoantes L, V, R: 3 · 2 para as pontas e 3! no meio."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

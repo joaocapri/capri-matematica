@@ -4,27 +4,26 @@
   "formato": "capri-mat-v1",
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "Seno e cosseno geram ondas periódicas. Em y=A sen(Bx+C)+D, amplitude |A|, período 2π/|B| e eixo médio y=D, desde que A e B não sejam zero."
+        "Combinação seleciona grupos sem distinguir a ordem. A fórmula divide pela permutação interna do grupo, pois trocar posições não cria nova equipe."
       ],
       "formulas": [
-        "T=\\frac{2\\pi}{|B|},\\quad \\text{amplitude}=|A|"
+        "C(n,p)=\\frac{n!}{p!(n-p)!}"
       ],
-      "dica": "O deslocamento vertical não muda amplitude.",
-      "erroComum": "A amplitude é metade da diferença entre máximo e mínimo, não a diferença inteira."
+      "dica": "Quando escolher p e escolher n−p são processos complementares, use C(n,p)=C(n,n−p).",
+      "erroComum": "Se cargos diferentes são atribuídos, provavelmente não é combinação simples."
     },
     {
-      "titulo": "Veja funcionando",
+      "titulo": "Hora de ver funcionar",
       "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Para y=3sen(2x)+1, ache amplitude e período.",
+        "enunciado": "Escolha 2 representantes entre 5 alunos.",
         "passos": [
-          "Amplitude 3.",
-          "Período 2π/2=π.",
-          "Linha média y=1."
+          "São pares, ordem não importa.",
+          "C(5,2)=5·4/2=10."
         ]
       }
     }
@@ -32,27 +31,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Período de sen(3x) =",
+      "enunciado": "C(6,2) =",
       "opcoes": [
-        "π/3",
-        "2π/3",
-        "π",
-        "6π"
+        "12",
+        "15",
+        "20",
+        "30"
       ],
       "correta": 1,
-      "explicacao": "2π/3."
+      "explicacao": "6·5/2=15."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Amplitude de −4cosx+2 =",
+      "enunciado": "Formar dupla entre 4 pessoas dá:",
       "opcoes": [
-        "2",
         "4",
         "6",
-        "8"
+        "8",
+        "12"
       ],
       "correta": 1,
-      "explicacao": "|−4|=4."
+      "explicacao": "C(4,2)=6."
     }
   ],
   "videos": [],

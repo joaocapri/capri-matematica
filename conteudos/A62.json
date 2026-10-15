@@ -1,0 +1,91 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Resolver sistemas pela regra de Cramer",
+    "Montar os determinantes D, Dx, Dy e Dz",
+    "Usar D para saber se o sistema é SPD"
+  ],
+  "teoria": [
+    {
+      "titulo": "A regra",
+      "paragrafos": [
+        "Em um sistema n × n, D é o determinante dos coeficientes. Dx é o mesmo determinante com a coluna de x trocada pela coluna dos termos independentes; o mesmo vale para as outras incógnitas. Se D ≠ 0, o sistema é SPD e cada incógnita é o seu determinante dividido por D."
+      ],
+      "formulas": [
+        "x=\\dfrac{D_x}{D},\\quad y=\\dfrac{D_y}{D}"
+      ],
+      "exemplo": {
+        "enunciado": "Resolva 2x + y = 7 e x − 3y = −7 por Cramer.",
+        "passos": [
+          "D = 2·(−3) − 1·1 = −7.",
+          "Dx = 7·(−3) − 1·(−7) = −14 e Dy = 2·(−7) − 7·1 = −21.",
+          "x = −14/−7 = 2 e y = −21/−7 = 3."
+        ]
+      }
+    },
+    {
+      "titulo": "Quando D = 0",
+      "paragrafos": [
+        "Se D = 0, Cramer não resolve: o sistema pode ser SPI ou SI. Para decidir, é preciso escalonar."
+      ],
+      "dica": "D ≠ 0 é o teste mais rápido para garantir solução única.",
+      "erroComum": "Concluir que D = 0 significa sistema impossível. Pode ser SPI."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em um sistema 2 × 2, se D ≠ 0 o sistema é",
+      "opcoes": [
+        "SPD",
+        "SPI",
+        "SI",
+        "homogêneo"
+      ],
+      "correta": 0,
+      "explicacao": "D ≠ 0 garante solução única."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "No sistema x + y = 5 e x − y = 1, o valor de D é",
+      "opcoes": [
+        "−2",
+        "0",
+        "2",
+        "5"
+      ],
+      "correta": 0,
+      "explicacao": "1·(−1) − 1·1 = −2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Pela regra de Cramer, o valor de x em 3x + 2y = 12 e x − y = −1 é",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correta": 1,
+      "explicacao": "D = −3 − 2 = −5; Dx = 12·(−1) − 2·(−1) = −10; x = 2."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Para que valor de k o sistema kx + 2y = 1 e 3x + 6y = 2 não é SPD?",
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "6"
+      ],
+      "correta": 0,
+      "explicacao": "D = 6k − 6 = 0 ⇒ k = 1."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

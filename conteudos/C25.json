@@ -1,61 +1,96 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Identificar se as grandezas são diretas ou inversas",
+    "Montar e resolver a regra de três simples",
+    "Evitar a inversão errada"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "Direta ou inversa?",
       "paragrafos": [
-        "A distribuição binomial conta o número de sucessos em n tentativas independentes com a mesma probabilidade p. Escolhemos quais posições foram sucesso e multiplicamos pelas probabilidades."
-      ],
-      "formulas": [
-        "P(X=k)=\\binom nk p^k(1-p)^{n-k}"
-      ],
-      "dica": "Confira se n é fixo, os ensaios são independentes e p é constante.",
-      "erroComum": "Binomial não serve automaticamente se as chances mudam a cada tentativa."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "Antes de montar, pergunte: se uma grandeza dobra, a outra dobra (direta) ou cai pela metade (inversa)? Mais produtos custam mais (direta). Mais operários terminam em menos tempo (inversa)."
       ],
       "exemplo": {
-        "enunciado": "Três moedas honestas: probabilidade de exatamente duas caras?",
+        "enunciado": "6 cadernos custam R$ 45,00. Quanto custam 10?",
         "passos": [
-          "Escolha 2 posições entre 3: C(3,2)=3.",
-          "Probabilidade de cada sequência específica: (1/2)³=1/8.",
-          "Total 3/8."
+          "Grandezas diretas.",
+          "6/10 = 45/x.",
+          "x = 75. R$ 75,00."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Em 2 moedas honestas, chance de exatamente 1 cara:",
-      "opcoes": [
-        "1/4",
-        "1/2",
-        "3/4",
-        "1"
-      ],
-      "correta": 1,
-      "explicacao": "C(2,1)/4=2/4=1/2."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Em 3 tentativas p=1/2, chance de 3 sucessos:",
-      "opcoes": [
-        "1/2",
-        "1/4",
-        "1/8",
-        "3/8"
+      "titulo": "Quando é inversa",
+      "paragrafos": [
+        "Se as grandezas são inversamente proporcionais, inverta uma das razões antes de igualar. Ou, mais simples, o produto das duas fica constante."
       ],
-      "correta": 2,
-      "explicacao": "(1/2)³=1/8."
+      "exemplo": {
+        "enunciado": "4 torneiras enchem um tanque em 6 h. Em quanto tempo 3 torneiras enchem?",
+        "passos": [
+          "Menos torneiras, mais tempo: inversa.",
+          "4 · 6 = 3 · x.",
+          "x = 8 h."
+        ]
+      },
+      "dica": "Em grandezas inversas, o produto é constante. É o jeito mais rápido.",
+      "erroComum": "Montar sempre “cruzado” sem checar se as grandezas são diretas ou inversas."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "3 kg de arroz custam R$ 18,00. 5 kg custam",
+      "opcoes": [
+        "R$ 25,00",
+        "R$ 30,00",
+        "R$ 35,00",
+        "R$ 54,00"
+      ],
+      "correta": 1,
+      "explicacao": "R$ 6,00 por quilo."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A 60 km/h uma viagem leva 4 h. A 80 km/h leva",
+      "opcoes": [
+        "2 h",
+        "3 h",
+        "5 h",
+        "5 h 20 min"
+      ],
+      "correta": 1,
+      "explicacao": "60 · 4 = 80 · t."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "O número de pintores e o tempo para pintar um muro são grandezas",
+      "opcoes": [
+        "diretas",
+        "inversas",
+        "iguais",
+        "sem relação"
+      ],
+      "correta": 1,
+      "explicacao": "Mais pintores, menos tempo."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma ração dura 20 dias para 15 cavalos. Para 25 cavalos, dura",
+      "opcoes": [
+        "10 dias",
+        "12 dias",
+        "30 dias",
+        "33 dias"
+      ],
+      "correta": 1,
+      "explicacao": "15 · 20 = 25 · d."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

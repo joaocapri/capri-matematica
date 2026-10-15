@@ -1,60 +1,101 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Calcular o volume de pirâmides",
+    "Relacionar o volume da pirâmide com o do prisma",
+    "Usar o apótema e Pitágoras para achar a altura"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Um terço do prisma",
       "paragrafos": [
-        "Inscrição e circunscrição conectam dois sólidos por tangência. Num cilindro reto circunscrito a uma esfera de raio R, raio do cilindro R e altura 2R. Compare áreas e volumes com cuidado."
+        "Uma pirâmide tem um terço do volume do prisma de mesma base e mesma altura."
       ],
       "formulas": [
-        "h_{cil}=2R,\\quad r_{cil}=R"
-      ],
-      "dica": "Identifique os pontos de tangência antes de montar as equações.",
-      "erroComum": "Nem todo cone circunscrito a uma esfera tem uma fórmula única sem outras medidas."
-    },
-    {
-      "titulo": "Na prática",
-      "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "V=\\dfrac{A_b\\cdot h}{3}"
       ],
       "exemplo": {
-        "enunciado": "Uma esfera de raio 3 está inscrita em um cilindro reto ajustado a ela. Dimensões do cilindro?",
+        "enunciado": "Uma pirâmide de base quadrada de lado 6 cm tem altura 10 cm. Qual o volume?",
         "passos": [
-          "Raio do cilindro: 3.",
-          "Altura: diâmetro da esfera=6."
+          "Área da base: 36 cm².",
+          "V = 36 · 10/3.",
+          "V = 120 cm³."
+        ]
+      },
+      "erroComum": "Esquecer de dividir por 3."
+    },
+    {
+      "titulo": "Quando a altura não é dada",
+      "paragrafos": [
+        "Muitas vezes o problema dá o apótema da pirâmide (altura da face lateral). Com o apótema da base, ele forma um triângulo retângulo com a altura."
+      ],
+      "formulas": [
+        "g^2=h^2+m^2"
+      ],
+      "exemplo": {
+        "enunciado": "Uma pirâmide regular de base quadrada de lado 8 tem apótema 5. Qual o volume?",
+        "passos": [
+          "O apótema da base é metade do lado: m = 4.",
+          "h² = 25 − 16 ⇒ h = 3.",
+          "V = 64 · 3/3 = 64."
         ]
       }
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Esfera de raio 5 inscrita em cilindro reto: altura =",
+      "nivel": "Aquecimento",
+      "enunciado": "Uma pirâmide tem base de área 30 cm² e altura 9 cm. O volume é",
       "opcoes": [
-        "5",
-        "10",
-        "15",
-        "25"
+        "90 cm³",
+        "135 cm³",
+        "270 cm³",
+        "30 cm³"
       ],
-      "correta": 1,
-      "explicacao": "h=2R=10."
+      "correta": 0,
+      "explicacao": "30 · 9/3."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Um prisma e uma pirâmide têm a mesma base e a mesma altura. O volume da pirâmide é",
+      "opcoes": [
+        "igual ao do prisma",
+        "metade",
+        "um terço",
+        "o triplo"
+      ],
+      "correta": 2,
+      "explicacao": "V pirâmide = V prisma / 3."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Raio do cilindro circunscrito à esfera de raio 4:",
+      "enunciado": "Uma pirâmide regular de base quadrada tem aresta da base 6 e apótema 5. A altura mede",
       "opcoes": [
-        "2",
+        "3",
         "4",
-        "8",
-        "16"
+        "√34",
+        "√61"
       ],
       "correta": 1,
-      "explicacao": "O raio lateral coincide com o raio da esfera."
+      "explicacao": "m = 3 e h² = 25 − 9."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Um tetraedro tem base triangular de área 12 e altura 5. O volume é",
+      "opcoes": [
+        "12",
+        "20",
+        "30",
+        "60"
+      ],
+      "correta": 1,
+      "explicacao": "12 · 5/3."
     }
   ],
-  "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "arquivos": []
 }

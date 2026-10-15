@@ -4,25 +4,27 @@
   "formato": "capri-mat-v1",
   "teoria": [
     {
-      "titulo": "A ideia central",
+      "titulo": "Entenda sem decorar",
       "paragrafos": [
-        "O ciclo trigonométrico usa a circunferência de raio 1. Ângulos que diferem de voltas completas têm o mesmo ponto terminal; o arco reduzido ajuda a estudar sinais e simetrias."
+        "Amortização é a parte da prestação que reduz a dívida. No SAC, a amortização é constante; na Price, a prestação é constante (mantidas as taxas e condições). Juros incidem sobre o saldo devedor."
       ],
       "formulas": [
-        "\\theta\\sim\\theta+2k\\pi,\\quad k\\in\\mathbb Z"
+        "\\text{prestação}=\\text{amortização}+\\text{juros}"
       ],
-      "dica": "Reduza o ângulo módulo 360° antes de desenhar.",
-      "erroComum": "Arcos côngruos podem ter medidas diferentes, mas o mesmo ponto no ciclo."
+      "dica": "Na Price, prestação constante não significa amortização constante.",
+      "erroComum": "Não confunda juros com redução do principal."
     },
     {
-      "titulo": "Veja funcionando",
+      "titulo": "Hora de ver funcionar",
       "paragrafos": [
-        "Vamos aplicar o conceito sem pular etapas."
+        "Vamos transformar a ideia em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Qual é a primeira determinação não negativa de 450°?",
+        "enunciado": "Uma dívida de R$ 1200 será paga em 3 amortizações iguais pelo SAC, sem considerar taxas extras.",
         "passos": [
-          "Subtraia 360°: 450°−360°=90°."
+          "Amortização por período: 1200/3=400.",
+          "Se o saldo inicial rende 1% no primeiro mês, juros iniciais=12.",
+          "Primeira prestação=400+12=412."
         ]
       }
     }
@@ -30,27 +32,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "810° é côngruo a:",
+      "enunciado": "Num SAC de R$ 800 em 4 períodos, amortização é:",
       "opcoes": [
-        "45°",
-        "90°",
-        "180°",
-        "270°"
+        "100",
+        "200",
+        "400",
+        "800"
       ],
       "correta": 1,
-      "explicacao": "810−720=90."
+      "explicacao": "800/4=200."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Uma volta completa em radianos:",
+      "enunciado": "Ao longo do SAC, os juros sobre o saldo:",
       "opcoes": [
-        "π/2",
-        "π",
-        "3π/2",
-        "2π"
+        "Crescem",
+        "Ficam iguais",
+        "Diminuem",
+        "São sempre zero"
       ],
-      "correta": 3,
-      "explicacao": "Uma volta=2π."
+      "correta": 2,
+      "explicacao": "O saldo devedor cai a cada amortização."
     }
   ],
   "videos": [],

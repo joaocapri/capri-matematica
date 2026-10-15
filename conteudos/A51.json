@@ -1,71 +1,97 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de divisão de polinômios",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Escolher entre PA e PG lendo o enunciado",
+    "Resolver problemas que misturam as duas",
+    "Usar as fórmulas de soma com segurança"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "Soma ou multiplica?",
       "paragrafos": [
-        "Dividir polinômios é escrever dividendo = divisor×quociente + resto. Para divisor linear monômico x−a, Ruffini acelera contas; para divisores gerais, use a divisão pela chave."
+        "O primeiro passo é decidir o tipo de progressão. Se a cada etapa se acrescenta o mesmo valor, é PA. Se a cada etapa se multiplica pelo mesmo fator (dobra, aumenta 10%, cai pela metade), é PG."
       ],
       "formulas": [
-        "P(x)=D(x)Q(x)+R(x),\\quad\\deg R<\\deg D"
-      ],
-      "dica": "Ao montar Ruffini, inclua coeficiente zero de potência ausente.",
-      "erroComum": "Ruffini usual serve para divisor da forma x−a, não para todo polinômio."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "S_n^{PA}=\\dfrac{(a_1+a_n)\\,n}{2}",
+        "S_n^{PG}=\\dfrac{a_1(q^n-1)}{q-1}"
       ],
       "exemplo": {
-        "enunciado": "Divida x²−1 por x−1.",
+        "enunciado": "Um atleta corre 2 km no 1º dia e acrescenta 0,5 km por dia. Quanto corre no total em 10 dias?",
         "passos": [
-          "Reconheça a diferença de quadrados: x²−1=(x−1)(x+1).",
-          "Dividindo pelo fator x−1, sobra x+1.",
-          "Quociente x+1 e resto 0."
+          "Acrescenta sempre 0,5 km: PA com a₁ = 2 e r = 0,5.",
+          "a₁₀ = 2 + 9 · 0,5 = 6,5.",
+          "S₁₀ = (2 + 6,5) · 10/2 = 42,5 km."
         ]
       }
-    }
-  ],
-  "videos": [
+    },
     {
-      "titulo": "Números complexos e polinômios",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Revisão de números complexos e técnicas de fatoração.",
-      "url": "https://pt.khanacademy.org/math/algebra2?t=practice"
+      "titulo": "Quando as duas aparecem",
+      "paragrafos": [
+        "Alguns problemas dizem que três números estão em PA e, depois de uma mudança, passam a estar em PG. Monte as duas condições e resolva o sistema."
+      ],
+      "exemplo": {
+        "enunciado": "Os números (2, x, y) estão em PA e (x, y, 9) estão em PG. Encontre x e y positivos.",
+        "passos": [
+          "PA: 2x = 2 + y ⇒ y = 2x − 2.",
+          "PG: y² = 9x ⇒ (2x − 2)² = 9x ⇒ 4x² − 17x + 4 = 0 ⇒ x = 4 ou x = 1/4.",
+          "Com x = 1/4, y seria negativo. Então x = 4 e y = 6: PA (2, 4, 6) e PG (4, 6, 9)."
+        ]
+      },
+      "dica": "Escreva por extenso: “cada mês aumenta R$ 50” (PA) ou “cada mês aumenta 5%” (PG)."
     }
   ],
+  "videos": [],
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "O quociente de (x²−9)/(x−3) é:",
+      "enunciado": "Uma dívida cresce 2% ao mês. Os valores mês a mês formam uma",
       "opcoes": [
-        "x−3",
-        "x+3",
-        "x²+3",
-        "3"
+        "PA de razão 2",
+        "PA de razão 0,02",
+        "PG de razão 1,02",
+        "PG de razão 2"
       ],
-      "correta": 1,
-      "explicacao": "x²−9=(x−3)(x+3)."
+      "correta": 2,
+      "explicacao": "Crescer 2% é multiplicar por 1,02 a cada mês."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O resto na divisão de x²+1 por x−1 vale:",
+      "enunciado": "Um teatro tem 20 cadeiras na 1ª fila e 2 a mais em cada fila seguinte. Com 15 filas, o total de cadeiras é",
       "opcoes": [
-        "0",
-        "1",
-        "2",
-        "3"
+        "300",
+        "450",
+        "510",
+        "600"
       ],
       "correta": 2,
-      "explicacao": "P(1)=1²+1=2."
+      "explicacao": "a₁₅ = 20 + 28 = 48; S = (20 + 48) · 15/2 = 510."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma pessoa guarda R$ 1 no 1º dia, R$ 2 no 2º, R$ 4 no 3º e assim por diante. Ao fim do 10º dia, terá guardado",
+      "opcoes": [
+        "R$ 512",
+        "R$ 1023",
+        "R$ 1024",
+        "R$ 2047"
+      ],
+      "correta": 1,
+      "explicacao": "PG com a₁ = 1 e q = 2: S₁₀ = 2¹⁰ − 1 = 1023."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Os números (1, x, y) estão em PA e (1, x, y + 1) estão em PG, com x > 1. O valor de x é",
+      "opcoes": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correta": 0,
+      "explicacao": "PA: y = 2x − 1. PG: x² = 1 · (y + 1) = 2x ⇒ x = 2. Então y = 3 e a PG é (1, 2, 4)."
     }
   ],
   "exercicios": [],

@@ -1,0 +1,59 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Vetor representa deslocamento com módulo, direção e sentido. No plano, descreva-o como (a,b), independente do ponto de partida; seu módulo vem de Pitágoras."
+      ],
+      "formulas": [
+        "\\|\\vec v\\|=\\sqrt{a^2+b^2}"
+      ],
+      "dica": "Distingua sentido (para qual lado) de direção (reta suporte).",
+      "erroComum": "Dois vetores opostos têm mesmo módulo e direções iguais, mas sentidos contrários."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Vetor v=(−3,4): módulo?",
+        "passos": [
+          "Módulo √(9+16)=5."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Módulo de (6,8) =",
+      "opcoes": [
+        "8",
+        "10",
+        "12",
+        "14"
+      ],
+      "correta": 1,
+      "explicacao": "√(36+64)=10."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O vetor que leva (1,2) até (4,6) é:",
+      "opcoes": [
+        "(5,8)",
+        "(−3,−4)",
+        "(3,4)",
+        "(4,6)"
+      ],
+      "correta": 2,
+      "explicacao": "Final menos inicial: (3,4)."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

@@ -1,71 +1,91 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de definição e concavidade",
-    "Aplicar o procedimento em um exemplo resolvido",
-    "Reconhecer erros frequentes antes de enfrentar uma questão"
+    "Descobrir o sinal de a, b, c e Δ olhando a parábola",
+    "Ligar cada coeficiente a um detalhe do gráfico",
+    "Montar o esboço a partir dos coeficientes"
   ],
   "teoria": [
     {
-      "titulo": "A ideia que destrava",
+      "titulo": "Cada coeficiente deixa uma marca",
       "paragrafos": [
-        "Na parábola f(x)=ax²+bx+c, o sinal de a determina a abertura: positivo para cima e negativo para baixo. O termo c indica onde o gráfico cruza o eixo y."
+        "O sinal de a está na concavidade: para cima, a > 0; para baixo, a < 0. O valor de c é onde a parábola corta o eixo y. O Δ diz quantas vezes ela corta o eixo x.",
+        "O b é o mais escondido: ele aparece na inclinação da parábola quando ela cruza o eixo y. Se a parábola sobe ao cruzar o eixo y, b > 0; se desce, b < 0; se o vértice está no eixo y, b = 0."
       ],
       "formulas": [
-        "f(x)=ax^2+bx+c,\\qquad a\\neq0"
-      ],
-      "dica": "Antes de desenhar a parábola, anote concavidade, intercepto em y e vértice.",
-      "erroComum": "O sinal do coeficiente b, sozinho, não define concavidade."
-    },
-    {
-      "titulo": "Vamos fazer uma juntos",
-      "paragrafos": [
-        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+        "f(0)=c",
+        "x_v=-\\dfrac{b}{2a}"
       ],
       "exemplo": {
-        "enunciado": "Para f(x)=−2x²+3x+5, descreva a concavidade e a interseção com y.",
+        "enunciado": "Uma parábola com concavidade para cima tem o vértice à direita do eixo y e corta o eixo y abaixo da origem. Quais os sinais?",
         "passos": [
-          "a=−2<0: a concavidade é para baixo.",
-          "c=5: f(0)=5.",
-          "O gráfico cruza o eixo y em (0,5)."
+          "Concavidade para cima: a > 0.",
+          "Corta o eixo y abaixo da origem: c < 0.",
+          "x_v = −b/(2a) > 0 com a > 0 exige b < 0."
         ]
-      }
+      },
+      "dica": "Para o b, use o vértice: x_v e a com o mesmo sinal significa b negativo."
+    },
+    {
+      "titulo": "O papel do Δ",
+      "paragrafos": [
+        "Δ > 0: corta o eixo x em dois pontos. Δ = 0: só encosta (vértice no eixo x). Δ < 0: não toca o eixo x."
+      ],
+      "erroComum": "Confundir “não cortar o eixo x” com “ser sempre positiva”. Se a < 0 e Δ < 0, a função é sempre negativa."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Em f(x)=4x²−x+2 a parábola é:",
+      "nivel": "Aquecimento",
+      "enunciado": "Uma parábola com concavidade para baixo tem",
       "opcoes": [
-        "Voltada para baixo",
-        "Voltada para cima",
-        "Uma reta",
-        "Sempre tangente ao eixo x"
+        "a > 0",
+        "a < 0",
+        "c < 0",
+        "Δ < 0"
       ],
       "correta": 1,
-      "explicacao": "a=4>0, logo a concavidade é para cima."
+      "explicacao": "Concavidade para baixo indica a < 0."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "O gráfico de f(x) = ax² + bx + c corta o eixo y no ponto",
+      "opcoes": [
+        "(c, 0)",
+        "(0, c)",
+        "(0, b)",
+        "(−b/2a, 0)"
+      ],
+      "correta": 1,
+      "explicacao": "Em x = 0, f(0) = c."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "A função f(x)=x²+2x−7 cruza o eixo y em:",
+      "enunciado": "Uma parábola com concavidade para cima não toca o eixo x. Então",
       "opcoes": [
-        "(7,0)",
-        "(−7,0)",
-        "(0,−7)",
-        "(0,7)"
+        "a > 0 e Δ > 0",
+        "a > 0 e Δ < 0",
+        "a < 0 e Δ < 0",
+        "a < 0 e Δ = 0"
       ],
-      "correta": 2,
-      "explicacao": "f(0)=c=−7."
-    }
-  ],
-  "videos": [
+      "correta": 1,
+      "explicacao": "Para cima: a > 0. Sem raízes reais: Δ < 0."
+    },
     {
-      "titulo": "Vídeos e prática: parábolas",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Conteúdos sobre equações e funções do segundo grau.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-quadratics"
+      "nivel": "Desafio",
+      "enunciado": "Uma parábola tem concavidade para baixo e vértice à esquerda do eixo y. O sinal de b é",
+      "opcoes": [
+        "positivo",
+        "negativo",
+        "zero",
+        "impossível de saber"
+      ],
+      "correta": 1,
+      "explicacao": "x_v = −b/(2a) < 0. Como 2a < 0, o numerador −b precisa ser positivo, então b < 0."
     }
   ],
   "exercicios": [],

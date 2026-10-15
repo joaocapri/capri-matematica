@@ -1,0 +1,100 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Calcular cofatores",
+    "Usar o teorema de Laplace para qualquer ordem",
+    "Escolher a fila com mais zeros"
+  ],
+  "teoria": [
+    {
+      "titulo": "Cofator",
+      "paragrafos": [
+        "O cofator do elemento aᵢⱼ é o determinante que sobra ao apagar a linha i e a coluna j, multiplicado por (−1)^(i+j). O sinal segue um tabuleiro de xadrez começando com + no canto."
+      ],
+      "formulas": [
+        "A_{ij}=(-1)^{i+j}\\,D_{ij}"
+      ]
+    },
+    {
+      "titulo": "Teorema de Laplace",
+      "paragrafos": [
+        "O determinante é a soma dos produtos dos elementos de uma fila qualquer pelos seus cofatores. Escolha a fila com mais zeros: os termos com zero somem."
+      ],
+      "formulas": [
+        "\\det A=a_{i1}A_{i1}+a_{i2}A_{i2}+\\dots+a_{in}A_{in}"
+      ],
+      "exemplo": {
+        "enunciado": "Calcule det [[2, 0, 0, 0], [1, 3, 0, 0], [5, 2, 1, 0], [7, 4, 6, 2]].",
+        "passos": [
+          "A matriz é triangular: só há zeros acima da diagonal.",
+          "Desenvolvendo por Laplace sempre pela primeira linha, sobra o produto da diagonal.",
+          "det = 2 · 3 · 1 · 2 = 12."
+        ]
+      },
+      "dica": "Em matrizes triangulares, o determinante é o produto da diagonal principal.",
+      "erroComum": "Esquecer o sinal (−1)^(i+j) do cofator."
+    },
+    {
+      "titulo": "Regra de Chió",
+      "paragrafos": [
+        "Quando a matriz tem a₁₁ = 1, a regra de Chió reduz a ordem em uma unidade: apague a primeira linha e a primeira coluna e, de cada elemento restante, subtraia o produto do elemento da sua linha na 1ª coluna pelo da sua coluna na 1ª linha."
+      ]
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O sinal do cofator do elemento a₂₃ é",
+      "opcoes": [
+        "+",
+        "−",
+        "depende do elemento",
+        "sempre zero"
+      ],
+      "correta": 1,
+      "explicacao": "(−1)^(2+3) = −1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O determinante de uma matriz triangular com diagonal (2, −1, 3, 4) é",
+      "opcoes": [
+        "8",
+        "−24",
+        "24",
+        "−8"
+      ],
+      "correta": 1,
+      "explicacao": "2 · (−1) · 3 · 4 = −24."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Em det [[0, 5, 0], [2, 1, 3], [0, 4, 1]], desenvolvendo pela 1ª coluna, o resultado é",
+      "opcoes": [
+        "−2",
+        "2",
+        "−10",
+        "10"
+      ],
+      "correta": 2,
+      "explicacao": "Só a₂₁ = 2 contribui: 2 · (−1)²⁺¹ · det [[5, 0], [4, 1]] = −2 · 5 = −10."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Para usar Laplace com menos contas, deve-se escolher",
+      "opcoes": [
+        "a fila com mais zeros",
+        "a primeira linha sempre",
+        "a diagonal principal",
+        "a última coluna sempre"
+      ],
+      "correta": 0,
+      "explicacao": "Elementos nulos eliminam termos."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

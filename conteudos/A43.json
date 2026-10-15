@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de progressão geométrica (p.g.) - termo geral",
+    "Reconhecer o conceito central de introdução a sequências e lei de recorrência",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Na progressão geométrica (PG), cada termo é o anterior multiplicado pela razão q. É a versão discreta do crescimento exponencial — inclusive quando a razão está entre 0 e 1."
+        "Sequência é uma lista ordenada de termos definidos por uma regra. Recorrência informa como obter o próximo termo a partir de anteriores; fórmula explícita permite calcular o termo n diretamente."
       ],
       "formulas": [
-        "a_n=a_1q^{n-1}"
+        "a_{n+1}=a_n+d"
       ],
-      "dica": "Se q é uma fração entre 0 e 1 e a₁>0, os termos decrescem.",
-      "erroComum": "Em PG não somamos a razão: multiplicamos."
+      "dica": "Confira qual é o primeiro índice: a₀ ou a₁ muda a fórmula.",
+      "erroComum": "Recorrência precisa de condição inicial; sozinha não define uma sequência única."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,11 +25,11 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Uma PG começa em 3 e tem q=2. Calcule a₅.",
+        "enunciado": "Em uma sequência, a₁=2 e aₙ₊₁=aₙ+3. Calcule a₄.",
         "passos": [
-          "a₁=3, q=2.",
-          "a₅=3·2⁴.",
-          "a₅=48."
+          "a₂=2+3=5.",
+          "a₃=5+3=8.",
+          "a₄=8+3=11."
         ]
       }
     }
@@ -45,27 +45,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "O 4º termo da PG 2,6,18,... é:",
+      "enunciado": "Se a₁=1 e aₙ₊₁=2aₙ, então a₄ é:",
       "opcoes": [
-        "24",
-        "36",
-        "54",
-        "72"
+        "4",
+        "6",
+        "8",
+        "16"
       ],
       "correta": 2,
-      "explicacao": "A razão é 3, então a₄=18·3=54."
+      "explicacao": "Sequência 1,2,4,8."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Em 16,8,4,... a razão é:",
+      "enunciado": "Na sequência 3,6,9,12,... o 5º termo é:",
       "opcoes": [
-        "2",
-        "1/2",
-        "−2",
-        "4"
+        "12",
+        "15",
+        "18",
+        "21"
       ],
       "correta": 1,
-      "explicacao": "8/16=1/2."
+      "explicacao": "A soma de 3 a cada passo leva ao 5º termo 15."
     }
   ],
   "exercicios": [],

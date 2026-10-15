@@ -1,76 +1,93 @@
 {
-  "status": "rascunho-para-revisao",
+  "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender circunferência - ângulos",
-    "Resolver um exemplo geométrico passo a passo",
-    "Evitar armadilhas de interpretação do desenho"
+    "Identificar projeções e altura relativa à hipotenusa",
+    "Usar as relações métricas do triângulo retângulo",
+    "Escolher a relação certa para cada dado"
   ],
   "teoria": [
     {
-      "titulo": "Desenhe antes de calcular",
+      "titulo": "Os elementos",
       "paragrafos": [
-        "Ângulo central mede o mesmo que o arco correspondente, enquanto o inscrito, com vértice na circunferência, mede metade do arco que intercepta."
+        "Traçando a altura h relativa à hipotenusa a, ela fica dividida em duas projeções: m (do cateto b) e n (do cateto c). Os dois triângulos menores são semelhantes ao original, e daí saem as relações."
       ],
       "formulas": [
-        "\\alpha_{\\text{inscrito}}=\\frac{\\alpha_{\\text{central}}}2"
-      ],
-      "dica": "Se dois ângulos inscritos interceptam o mesmo arco, são congruentes.",
-      "erroComum": "Não compare ângulos inscritos de arcos diferentes como se fossem iguais."
+        "h^2=m\\cdot n",
+        "b^2=a\\cdot m",
+        "c^2=a\\cdot n",
+        "a\\cdot h=b\\cdot c"
+      ]
     },
     {
-      "titulo": "Resolução com raciocínio",
+      "titulo": "Usando as relações",
       "paragrafos": [
-        "A ideia é enxergar a propriedade na figura e só depois colocar números."
+        "Escolha a relação que liga o que você tem ao que quer."
       ],
       "exemplo": {
-        "enunciado": "Um arco mede 100°. Qual é o ângulo inscrito que o intercepta?",
+        "enunciado": "Num triângulo retângulo, as projeções dos catetos sobre a hipotenusa medem 4 e 9. Quanto mede a altura?",
         "passos": [
-          "Inscrito mede metade do arco.",
-          "100°/2=50°."
+          "h² = m · n = 4 · 9 = 36.",
+          "h = 6."
         ]
-      }
+      },
+      "dica": "a · h = b · c vem de calcular a área de dois jeitos.",
+      "erroComum": "Associar o cateto à projeção errada. Cada cateto tem a sua projeção vizinha."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Um arco de 80° determina inscrito de:",
+      "nivel": "Aplicação",
+      "enunciado": "As projeções dos catetos sobre a hipotenusa medem 2 e 8. A altura relativa à hipotenusa mede",
       "opcoes": [
-        "20°",
-        "40°",
-        "80°",
-        "160°"
+        "4",
+        "5",
+        "10",
+        "16"
       ],
-      "correta": 1,
-      "explicacao": "80/2=40."
+      "correta": 0,
+      "explicacao": "h² = 16."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "O ângulo inscrito que intercepta uma semicircunferência mede:",
+      "enunciado": "A hipotenusa mede 10 e a projeção de um cateto mede 3,6. Esse cateto mede",
       "opcoes": [
-        "45°",
-        "60°",
-        "90°",
-        "180°"
+        "6",
+        "8",
+        "3,6",
+        "36"
       ],
-      "correta": 2,
-      "explicacao": "Metade de 180° é 90°."
-    }
-  ],
-  "videos": [
+      "correta": 0,
+      "explicacao": "b² = 10 · 3,6 = 36."
+    },
     {
-      "titulo": "Geometria: áreas e círculos",
-      "canal": "Khan Academy Brasil · biblioteca",
-      "descricao": "Áreas, medidas e problemas geométricos com animações.",
-      "url": "https://pt.khanacademy.org/math/geometry"
+      "nivel": "Aplicação",
+      "enunciado": "Os catetos medem 6 e 8. A altura relativa à hipotenusa mede",
+      "opcoes": [
+        "4,8",
+        "5",
+        "7",
+        "14"
+      ],
+      "correta": 0,
+      "explicacao": "a = 10 e a · h = 48 ⇒ h = 4,8."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A relação a · h = b · c pode ser obtida",
+      "opcoes": [
+        "pela área do triângulo",
+        "pela lei dos senos",
+        "pelo teorema de Tales",
+        "pelo perímetro"
+      ],
+      "correta": 0,
+      "explicacao": "Área = b · c/2 = a · h/2."
     }
   ],
-  "arquivos": [],
   "exercicios": [],
-  "revisao": {
-    "status": "rascunho-pedagogico",
-    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
-  }
+  "arquivos": []
 }

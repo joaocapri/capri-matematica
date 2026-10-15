@@ -1,0 +1,98 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Aplicar a lei dos senos",
+    "Relacionar a lei com o raio da circunferência circunscrita",
+    "Escolher quando usar a lei dos senos"
+  ],
+  "teoria": [
+    {
+      "titulo": "A lei",
+      "paragrafos": [
+        "Em qualquer triângulo, cada lado dividido pelo seno do ângulo oposto dá o mesmo valor, igual ao diâmetro da circunferência circunscrita."
+      ],
+      "formulas": [
+        "\\dfrac{a}{\\operatorname{sen}A}=\\dfrac{b}{\\operatorname{sen}B}=\\dfrac{c}{\\operatorname{sen}C}=2R"
+      ],
+      "exemplo": {
+        "enunciado": "Num triângulo, A = 30°, B = 45° e a = 4. Quanto mede b?",
+        "passos": [
+          "4/sen 30° = b/sen 45°.",
+          "4/(1/2) = b/(√2/2) ⇒ 8 = b/(√2/2).",
+          "b = 4√2."
+        ]
+      },
+      "dica": "Use a lei dos senos quando tiver um lado e o ângulo oposto a ele."
+    },
+    {
+      "titulo": "Raio circunscrito",
+      "paragrafos": [
+        "Como a/sen A = 2R, dá para achar o raio da circunferência que passa pelos três vértices."
+      ],
+      "exemplo": {
+        "enunciado": "Um triângulo tem lado 6 oposto a um ângulo de 30°. Qual o raio da circunferência circunscrita?",
+        "passos": [
+          "6/sen 30° = 2R.",
+          "12 = 2R ⇒ R = 6."
+        ]
+      },
+      "erroComum": "Usar o ângulo errado: cada lado vai com o ângulo oposto a ele."
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Num triângulo, a = 10, A = 30° e B = 90°. Então b mede",
+      "opcoes": [
+        "5",
+        "10",
+        "20",
+        "10√3"
+      ],
+      "correta": 2,
+      "explicacao": "10/(1/2) = b/1."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O raio da circunferência circunscrita a um triângulo com lado 8 oposto a 30° é",
+      "opcoes": [
+        "4",
+        "8",
+        "16",
+        "4√3"
+      ],
+      "correta": 1,
+      "explicacao": "8/(1/2) = 2R."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Na lei dos senos, cada lado é dividido pelo seno do ângulo",
+      "opcoes": [
+        "adjacente",
+        "oposto",
+        "maior",
+        "reto"
+      ],
+      "correta": 1,
+      "explicacao": "Lado com ângulo oposto."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Num triângulo, A = 45°, C = 60° e a = 2√2. Então c mede",
+      "opcoes": [
+        "√3",
+        "2√3",
+        "2",
+        "4"
+      ],
+      "correta": 1,
+      "explicacao": "2√2/(√2/2) = 4 = c/(√3/2) ⇒ c = 2√3."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

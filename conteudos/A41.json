@@ -1,71 +1,105 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de progressão aritmética (p.a.) - termo geral",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Resolver inequações logarítmicas",
+    "Inverter a desigualdade para bases entre 0 e 1",
+    "Fazer a interseção com a condição de existência"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "Dois cuidados",
       "paragrafos": [
-        "Progressão aritmética (PA) é a sequência em que se soma sempre a mesma razão r. Para chegar direto ao termo n, conte quantos saltos existem desde o primeiro: n−1."
+        "Primeiro, a condição de existência: o logaritmando precisa ser positivo. Segundo, o sentido: com base maior que 1 a desigualdade se mantém; com base entre 0 e 1 ela se inverte.",
+        "A solução final é a interseção do que sai da inequação com a condição de existência."
       ],
       "formulas": [
-        "a_n=a_1+(n-1)r"
-      ],
-      "dica": "De a₁ até a₁₀ são nove intervalos, não dez.",
-      "erroComum": "Razão negativa gera PA decrescente; não muda a fórmula."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "a>1:\\;\\log_a x>\\log_a y\\Leftrightarrow x>y>0",
+        "0<a<1:\\;\\log_a x>\\log_a y\\Leftrightarrow 0<x<y"
       ],
       "exemplo": {
-        "enunciado": "Uma PA começa em 7 e tem razão 4. Ache a₁₀.",
+        "enunciado": "Resolva log₃(2x − 1) ≥ 2.",
         "passos": [
-          "a₁=7, r=4.",
-          "a₁₀=7+9·4.",
-          "a₁₀=43."
+          "Existência: 2x − 1 > 0 ⇒ x > 1/2.",
+          "2x − 1 ≥ 3² = 9 ⇒ x ≥ 5.",
+          "Interseção: x ≥ 5."
         ]
       }
+    },
+    {
+      "titulo": "Base menor que 1",
+      "paragrafos": [
+        "Com base entre 0 e 1, inverta o sentido e não esqueça a existência."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva log₁/₃ x > 2.",
+        "passos": [
+          "Existência: x > 0.",
+          "Inverte: x < (1/3)² = 1/9.",
+          "S = ]0, 1/9[."
+        ]
+      },
+      "erroComum": "Resolver só a desigualdade e esquecer que x precisa ser positivo."
     }
   ],
   "videos": [
     {
-      "titulo": "Progressões aritméticas e geométricas",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
+      "titulo": "Introdução aos logaritmos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Relação entre potências, expoentes e logaritmos.",
+      "url": "https://pt.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89%3Alogs/x2ec2f6f830c9fb89%3Alog-intro/v/logarithms"
     }
   ],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "O 6º termo da PA 2,5,8,... é:",
+      "nivel": "Aquecimento",
+      "enunciado": "A solução de log₂ x > 3 é",
       "opcoes": [
-        "14",
-        "15",
-        "17",
-        "20"
+        "x > 3",
+        "x > 8",
+        "0 < x < 8",
+        "x > 9"
       ],
-      "correta": 2,
-      "explicacao": "a₆=2+5·3=17."
+      "correta": 1,
+      "explicacao": "Base maior que 1: x > 2³."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A solução de log₁/₃ x > 2 é",
+      "opcoes": [
+        "x > 1/9",
+        "0 < x < 1/9",
+        "x < 9",
+        "x > 9"
+      ],
+      "correta": 1,
+      "explicacao": "Base menor que 1 inverte; e x > 0."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Em uma PA, a média entre dois termos vizinhos vale:",
+      "enunciado": "A solução de log₀,₅(x − 2) ≥ −1 é",
       "opcoes": [
-        "A soma deles",
-        "O termo central",
-        "O produto deles",
-        "A razão"
+        "2 < x ≤ 4",
+        "x ≥ 4",
+        "x ≤ 4",
+        "2 < x < 3"
       ],
-      "correta": 1,
-      "explicacao": "Para três termos consecutivos, a do meio é a média aritmética dos extremos."
+      "correta": 0,
+      "explicacao": "Inverte: x − 2 ≤ 2 ⇒ x ≤ 4; existência: x > 2."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Quantos inteiros satisfazem log(x² − 3x) ≤ 1?",
+      "opcoes": [
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      "correta": 0,
+      "explicacao": "x² − 3x > 0 dá x < 0 ou x > 3; x² − 3x ≤ 10 dá −2 ≤ x ≤ 5. Inteiros: −2, −1, 4 e 5."
     }
   ],
   "exercicios": [],

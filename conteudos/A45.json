@@ -1,71 +1,98 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de p.g. infinita e convergência",
-    "Resolver um exemplo completo e justificar cada etapa",
-    "Identificar armadilhas comuns de prova"
+    "Usar a propriedade da média aritmética",
+    "Aplicar a propriedade dos termos equidistantes",
+    "Interpolar meios aritméticos"
   ],
   "teoria": [
     {
-      "titulo": "Entenda a lógica",
+      "titulo": "O termo do meio é a média",
       "paragrafos": [
-        "Uma PG infinita pode ter soma finita quando os termos diminuem suficientemente rápido: |q|<1. A série converge porque as parcelas restantes ficam cada vez menores."
+        "Em uma PA, cada termo (exceto o primeiro e o último) é a média aritmética do anterior e do seguinte. Isso resolve muitos problemas com três termos em PA."
       ],
       "formulas": [
-        "S_\\infty=\\frac{a_1}{1-q}\\quad(|q|<1)"
-      ],
-      "dica": "A dica é testar |q|<1 antes de aplicar a fórmula.",
-      "erroComum": "Uma sequência cujos termos vão a zero não garante, por si só, que sua soma infinita convirja."
-    },
-    {
-      "titulo": "Na prática, sem enrolação",
-      "paragrafos": [
-        "Vamos sair da teoria e aplicar a ideia a um caso de prova."
+        "b=\\dfrac{a+c}{2}\\quad(a,\\,b,\\,c\\ \\text{em PA})"
       ],
       "exemplo": {
-        "enunciado": "Calcule 1+1/2+1/4+1/8+...",
+        "enunciado": "Para que valor de x a sequência (x + 1, 3x, 4x + 2) é uma PA?",
         "passos": [
-          "a₁=1 e q=1/2.",
-          "Como |q|<1, a soma converge.",
-          "S∞=1/(1−1/2)=2."
+          "3x = [(x + 1) + (4x + 2)]/2.",
+          "6x = 5x + 3.",
+          "x = 3. A PA é (4, 9, 14)."
         ]
-      }
-    }
-  ],
-  "videos": [
+      },
+      "dica": "Três termos desconhecidos em PA? Escreva como x − r, x, x + r. A soma fica 3x."
+    },
     {
-      "titulo": "Progressões aritméticas e geométricas",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Exemplos e exercícios sobre PA, PG e sequências.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-sequences/alg-introduction-to-arithmetic-squences"
+      "titulo": "Equidistantes e interpolação",
+      "paragrafos": [
+        "Em uma PA finita, termos à mesma distância dos extremos têm a mesma soma: a₁ + aₙ = a₂ + aₙ₋₁ = ...",
+        "Interpolar k meios entre a e b é montar uma PA com k + 2 termos que começa em a e termina em b."
+      ],
+      "exemplo": {
+        "enunciado": "Interpole 4 meios aritméticos entre 3 e 23.",
+        "passos": [
+          "A PA terá 6 termos: a₁ = 3 e a₆ = 23.",
+          "23 = 3 + 5r ⇒ r = 4.",
+          "PA: (3, 7, 11, 15, 19, 23)."
+        ]
+      },
+      "erroComum": "Contar só os meios como número de termos. Com 4 meios, a PA tem 6 termos."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "A soma 3+1+1/3+... vale:",
+      "nivel": "Aquecimento",
+      "enunciado": "Se (5, x, 17) é uma PA, então x vale",
       "opcoes": [
-        "9/2",
-        "6",
-        "3",
-        "1"
+        "10",
+        "11",
+        "12",
+        "22"
       ],
-      "correta": 0,
-      "explicacao": "a₁=3 e q=1/3; S=3/(2/3)=9/2."
+      "correta": 1,
+      "explicacao": "x = (5 + 17)/2 = 11."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em uma PA com 10 termos, a₁ + a₁₀ = 30. Então a₄ + a₇ vale",
+      "opcoes": [
+        "15",
+        "30",
+        "60",
+        "não dá para saber"
+      ],
+      "correta": 1,
+      "explicacao": "Termos equidistantes dos extremos têm a mesma soma."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "A série 1+2+4+8+...:",
+      "enunciado": "Ao interpolar 3 meios aritméticos entre 2 e 18, a razão é",
       "opcoes": [
-        "Converge para 2",
-        "Converge para 1",
-        "Diverge",
-        "Tem soma 0"
+        "3",
+        "4",
+        "5",
+        "16/3"
+      ],
+      "correta": 1,
+      "explicacao": "São 5 termos: 18 = 2 + 4r ⇒ r = 4."
+    },
+    {
+      "nivel": "Desafio",
+      "enunciado": "Três números em PA têm soma 15 e produto 80. O maior deles é",
+      "opcoes": [
+        "6",
+        "7",
+        "8",
+        "10"
       ],
       "correta": 2,
-      "explicacao": "|q|=2>1, portanto a soma não converge."
+      "explicacao": "x − r, x, x + r: 3x = 15 ⇒ x = 5; 5(25 − r²) = 80 ⇒ r² = 9. Os números são 2, 5 e 8."
     }
   ],
   "exercicios": [],

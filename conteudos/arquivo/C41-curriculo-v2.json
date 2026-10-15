@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Seno e cosseno geram ondas periódicas. Em y=A sen(Bx+C)+D, amplitude |A|, período 2π/|B| e eixo médio y=D, desde que A e B não sejam zero."
+      ],
+      "formulas": [
+        "T=\\frac{2\\pi}{|B|},\\quad \\text{amplitude}=|A|"
+      ],
+      "dica": "O deslocamento vertical não muda amplitude.",
+      "erroComum": "A amplitude é metade da diferença entre máximo e mínimo, não a diferença inteira."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Para y=3sen(2x)+1, ache amplitude e período.",
+        "passos": [
+          "Amplitude 3.",
+          "Período 2π/2=π.",
+          "Linha média y=1."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Período de sen(3x) =",
+      "opcoes": [
+        "π/3",
+        "2π/3",
+        "π",
+        "6π"
+      ],
+      "correta": 1,
+      "explicacao": "2π/3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Amplitude de −4cosx+2 =",
+      "opcoes": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "|−4|=4."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

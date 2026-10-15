@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Retas não verticais paralelas têm o mesmo coeficiente angular. Para retas não verticais e não horizontais perpendiculares, m₁m₂=−1; retas horizontal e vertical também são perpendiculares."
+      ],
+      "formulas": [
+        "m_1m_2=-1\\quad(\\text{quando ambos existem})"
+      ],
+      "dica": "Antes de multiplicar coeficientes, verifique se alguma reta é vertical.",
+      "erroComum": "Paralelas distintas não têm pontos de interseção."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Se uma reta tem inclinação 2, qual inclinação da perpendicular?",
+        "passos": [
+          "m₂=−1/m₁.",
+          "m₂=−1/2."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Inclinação da perpendicular a m=−3:",
+      "opcoes": [
+        "3",
+        "−1/3",
+        "1/3",
+        "−3"
+      ],
+      "correta": 2,
+      "explicacao": "m₂=−1/(−3)=1/3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "As retas y=2x+1 e y=2x−4 são:",
+      "opcoes": [
+        "Coincidentes",
+        "Paralelas distintas",
+        "Perpendiculares",
+        "Concorrentes oblíquas"
+      ],
+      "correta": 1,
+      "explicacao": "Mesmo m, interceptos diferentes."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

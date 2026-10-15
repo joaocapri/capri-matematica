@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender geometria de posição espacial i",
+    "Compreender comprimento da circunferência",
     "Resolver um exemplo geométrico passo a passo",
     "Evitar armadilhas de interpretação do desenho"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Desenhe antes de calcular",
       "paragrafos": [
-        "No espaço, duas retas podem ser concorrentes, paralelas ou reversas. Reversas não estão no mesmo plano e não se encontram; a ideia exige imaginar três dimensões."
+        "O comprimento de uma circunferência depende linearmente do raio: dobrar o raio dobra o comprimento. O número π é a razão constante entre circunferência e diâmetro."
       ],
       "formulas": [
-        "\\text{retas reversas}\\Rightarrow\\text{n\\~ao coplanares}"
+        "C=2\\pi r=\\pi d"
       ],
-      "dica": "A ausência de cruzamento no desenho não prova, sozinha, que as retas são reversas.",
-      "erroComum": "Retas paralelas, por definição espacial, são coplanares."
+      "dica": "Se o enunciado falar em diâmetro, use diretamente C=πd.",
+      "erroComum": "Não confunda comprimento (unidade linear) com área (unidade quadrada)."
     },
     {
       "titulo": "Resolução com raciocínio",
@@ -25,11 +25,10 @@
         "A ideia é enxergar a propriedade na figura e só depois colocar números."
       ],
       "exemplo": {
-        "enunciado": "Pense nas arestas de um cubo: duas arestas em direções diferentes, sem vértice comum e fora de um mesmo plano.",
+        "enunciado": "Uma roda tem raio 0,5 m. Qual distância percorre em 10 voltas sem deslizar?",
         "passos": [
-          "Elas não têm ponto comum.",
-          "Não são paralelas coplanares.",
-          "Portanto, são reversas."
+          "Cada volta percorre C=2π·0,5=π m.",
+          "Em 10 voltas: 10π m."
         ]
       }
     }
@@ -37,27 +36,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Duas retas reversas:",
+      "enunciado": "Um círculo de raio 3 tem comprimento:",
       "opcoes": [
-        "Sempre se cruzam",
-        "São coplanares",
-        "Não são coplanares",
-        "São necessariamente perpendiculares"
+        "3π",
+        "6π",
+        "9π",
+        "12π"
       ],
-      "correta": 2,
-      "explicacao": "A propriedade fundamental é não pertencer a um mesmo plano."
+      "correta": 1,
+      "explicacao": "2π·3=6π."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Duas retas distintas que se cruzam são:",
+      "enunciado": "Se o diâmetro é 10, o comprimento é:",
       "opcoes": [
-        "Reversas",
-        "Concorrentes",
-        "Paralelas",
-        "Coincidentes"
+        "5π",
+        "10π",
+        "20π",
+        "100π"
       ],
       "correta": 1,
-      "explicacao": "Compartilham um ponto."
+      "explicacao": "C=πd=10π."
     }
   ],
   "videos": [

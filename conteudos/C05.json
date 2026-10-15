@@ -1,60 +1,100 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Entender fração como parte de um todo e como divisão",
+    "Encontrar frações equivalentes e simplificar",
+    "Comparar frações"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "O que é uma fração",
       "paragrafos": [
-        "Grandezas diretamente proporcionais têm razão constante; inversamente proporcionais têm produto constante. A distinção depende da situação: mais pessoas fazendo o mesmo trabalho pode significar menos tempo."
+        "A fração a/b representa a partes de um todo dividido em b partes iguais. Também é a divisão de a por b. O de cima é o numerador; o de baixo, o denominador."
       ],
       "formulas": [
-        "y=kx\\quad\\text{ou}\\quad xy=k"
-      ],
-      "dica": "Identifique o que permanece fixo: mesmo tanque, mesma vazão por torneira.",
-      "erroComum": "Não classifique como proporcional qualquer grandeza que aumenta quando outra aumenta."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "\\dfrac{a}{b}=a\\div b"
       ],
       "exemplo": {
-        "enunciado": "Se 4 torneiras iguais enchem um tanque em 6 h, 8 torneiras iguais levam quanto?",
+        "enunciado": "Quanto é 3/4 de 60?",
         "passos": [
-          "Dobrou o número de torneiras.",
-          "Tempo reduz pela metade: 3 h."
+          "Divida 60 em 4 partes: 15.",
+          "Pegue 3 partes: 45."
         ]
       }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Dobrar velocidade numa viagem de distância fixa reduz tempo para:",
-      "opcoes": [
-        "Dobro",
-        "Metade",
-        "Mesmo",
-        "Quádruplo"
-      ],
-      "correta": 1,
-      "explicacao": "Tempo é inversamente proporcional à velocidade."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Se y=3x, a razão y/x é:",
-      "opcoes": [
-        "x",
-        "3",
-        "1/3",
-        "9"
+      "titulo": "Equivalência e comparação",
+      "paragrafos": [
+        "Multiplicando ou dividindo numerador e denominador pelo mesmo número, a fração não muda. Simplificar é dividir os dois pelo maior divisor comum. Para comparar, deixe as frações com o mesmo denominador."
       ],
-      "correta": 1,
-      "explicacao": "Para x≠0, y/x=3 constante."
+      "formulas": [
+        "\\dfrac{a}{b}=\\dfrac{a\\cdot k}{b\\cdot k}"
+      ],
+      "exemplo": {
+        "enunciado": "Qual é maior, 3/5 ou 2/3?",
+        "passos": [
+          "Denominador comum 15: 9/15 e 10/15.",
+          "2/3 é maior."
+        ]
+      },
+      "dica": "Com o mesmo numerador, é maior a fração de menor denominador: 1/3 > 1/5.",
+      "erroComum": "Achar que 2/7 > 2/5 porque 7 > 5."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "2/5 de 40 é",
+      "opcoes": [
+        "8",
+        "16",
+        "20",
+        "80"
+      ],
+      "correta": 1,
+      "explicacao": "40 ÷ 5 · 2."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "A forma simplificada de 18/24 é",
+      "opcoes": [
+        "3/4",
+        "2/3",
+        "9/12",
+        "6/8"
+      ],
+      "correta": 0,
+      "explicacao": "Divida por 6."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Qual fração é equivalente a 5/8?",
+      "opcoes": [
+        "10/12",
+        "15/24",
+        "20/40",
+        "25/30"
+      ],
+      "correta": 1,
+      "explicacao": "5 · 3 / 8 · 3."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Qual a ordem crescente de 1/2, 3/8 e 2/3?",
+      "opcoes": [
+        "3/8, 1/2, 2/3",
+        "1/2, 3/8, 2/3",
+        "2/3, 1/2, 3/8",
+        "3/8, 2/3, 1/2"
+      ],
+      "correta": 0,
+      "explicacao": "Com denominador 24: 12, 9 e 16."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

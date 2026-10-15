@@ -1,0 +1,59 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Determinantes permitem testar invertibilidade e áreas orientadas. Expandir por cofatores (Laplace) utiliza menores e sinais alternados; propriedades podem simplificar antes de expandir."
+      ],
+      "formulas": [
+        "\\det(AB)=\\det A\\det B"
+      ],
+      "dica": "Uma linha inteira de zeros zera o determinante.",
+      "erroComum": "Trocar duas linhas inverte o sinal do determinante."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Se detA=2 e detB=−3, calcule det(AB).",
+        "passos": [
+          "Pela propriedade de Binet: 2·(−3)=−6."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Ao trocar duas linhas de matriz, o determinante:",
+      "opcoes": [
+        "Duplica",
+        "Troca o sinal",
+        "Permanece igual sempre",
+        "Zera sempre"
+      ],
+      "correta": 1,
+      "explicacao": "Alternância dos determinantes."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Det da matriz identidade 3×3:",
+      "opcoes": [
+        "0",
+        "1",
+        "3",
+        "6"
+      ],
+      "correta": 1,
+      "explicacao": "Identidade tem determinante 1."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

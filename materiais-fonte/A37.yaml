@@ -1,247 +1,250 @@
-# Fonte das listas em PDF da aula A37 — Função Logarítmica
+# Fonte das listas em PDF da aula A37 — Propriedades operatórias
 aula: A37
 
 fixacao:
-  intro: Resolva na ordem — do aquecimento ao desafio. $f(x)=\log_a x$ tem domínio $]0,+\infty[$ e imagem $\mathbb{R}$; é a inversa de $a^x$, e os gráficos são simétricos em relação à reta $y=x$.
+  intro: Resolva na ordem — do aquecimento ao desafio. Use, quando necessário, $\log2=0{,}301$ e $\log3=0{,}477$. Produto vira soma, quociente vira diferença e o expoente "dá um peteleco" para a frente.
   secoes:
     - nome: Aquecimento
       questoes:
-        - enunciado: Dada $f(x)=\log_2 x$, calcule $f(1)$, $f(2)$, $f(8)$ e $f\!\left(\tfrac12\right)$.
-          resolucao: |
-            $0$; \ $1$; \ $3$; \ $-1$. Esses pontos ajudam a esboçar o gráfico.
-          resposta: '$0$; \ $1$; \ $3$; \ $-1$'
-
-        - enunciado: Determine o domínio de cada função.
+        - enunciado: Usando $\log2=0{,}301$ e $\log3=0{,}477$, calcule.
           itens:
-            - $f(x)=\log_2(x-3)$
-            - $f(x)=\log(5-x)$
-            - $f(x)=\log_3(2x+4)$
+            - $\log6$
+            - $\log12$
+            - $\log1{,}5$
           resolucao: |
-            Logaritmando positivo. (a) $x>3$. (b) $x<5$. (c) $2x+4>0\Rightarrow x>-2$.
-          resposta: '(a) $x>3$ \quad (b) $x<5$ \quad (c) $x>-2$'
+            (a) $\log2+\log3=0{,}778$. (b) $2\log2+\log3=1{,}079$. (c) $\log\tfrac32=0{,}477-0{,}301=0{,}176$.
+          resposta: '(a) $0{,}778$ \quad (b) $1{,}079$ \quad (c) $0{,}176$'
 
-        - enunciado: Classifique cada função como crescente ou decrescente.
+        - enunciado: Usando os mesmos valores, calcule.
           itens:
-            - $f(x)=\log_3 x$
-            - $f(x)=\log_{1/2}x$
-            - $f(x)=\log_{0{,}9}x$
+            - $\log5$
+            - $\log8$
+            - $\log\sqrt3$
           resolucao: |
-            Base maior que $1$: crescente; entre $0$ e $1$: decrescente.
-          resposta: '(a) cresc. \quad (b) decresc. \quad (c) decresc.'
+            (a) $\log\tfrac{10}2=1-0{,}301=0{,}699$. (b) $3\log2=0{,}903$. (c) $\tfrac12\log3\approx0{,}2385$.
+          resposta: '(a) $0{,}699$ \quad (b) $0{,}903$ \quad (c) $0{,}2385$'
 
-        - enunciado: Complete com $>$ ou $<$.
+        - enunciado: Calcule.
           itens:
-            - $\log_2 5\ \_\_\ \log_2 7$
-            - $\log_{1/3}5\ \_\_\ \log_{1/3}7$
+            - $\log_2 12+\log_2\tfrac23$
+            - $\log_3 54-\log_3 2$
           resolucao: |
-            (a) Base $>1$, crescente: $<$. (b) Base entre $0$ e $1$, decrescente: $>$.
-          resposta: '(a) $<$ \quad (b) $>$'
+            (a) $\log_2\left(12\cdot\tfrac23\right)=\log_2 8=3$. (b) $\log_3\tfrac{54}2=\log_3 27=3$.
+          resposta: '(a) $3$ \quad (b) $3$'
 
-        - enunciado: Qual é a função inversa de $f(x)=2^x$? Dê o domínio e a imagem de cada uma.
+        - enunciado: Calcule $\log25+\log4$.
           resolucao: |
-            $f^{-1}(x)=\log_2 x$. \ $2^x$: $D=\mathbb{R}$, $Im=]0,+\infty[$. \ $\log_2 x$: $D=]0,+\infty[$, $Im=\mathbb{R}$ (eles trocam de papel).
-          resposta: '$\log_2 x$; domínio e imagem se trocam'
+            $\log(25\cdot4)=\log100=2$.
+          resposta: '$2$'
 
-        - enunciado: Determine o zero de $f(x)=\log_3(x-2)$.
+        - enunciado: Calcule $2\log_5 10-\log_5 4$.
           resolucao: |
-            $\log_3(x-2)=0\Rightarrow x-2=1\Rightarrow x=3$.
-          resposta: '$x=3$'
+            $\log_5 100-\log_5 4=\log_5 25=2$.
+          resposta: '$2$'
 
-        - enunciado: O gráfico de $f(x)=\log_b x$ passa pelo ponto $(9,\,2)$. Determine $b$ e $f(27)$.
+        - enunciado: Calcule $\log_2\sqrt8$.
           resolucao: |
-            $b^2=9\Rightarrow b=3$. Então $f(27)=3$.
-          resposta: '$b=3$; \ $f(27)=3$'
+            $\log_2 2^{3/2}=\tfrac32$.
+          resposta: '$\tfrac32$'
+
+        - enunciado: Sabendo que $\log_a x=2$ e $\log_a y=3$, calcule
+          itens:
+            - $\log_a(x^2y)$
+            - $\log_a\dfrac x{y^3}$
+            - $\log_a\sqrt{xy}$
+          resolucao: |
+            (a) $2\cdot2+3=7$. (b) $2-3\cdot3=-7$. (c) $\tfrac12(2+3)=\tfrac52$.
+          resposta: '(a) $7$ \quad (b) $-7$ \quad (c) $\tfrac52$'
 
     - nome: Treino
       questoes:
-        - enunciado: Determine o domínio de $f(x)=\log(x^2-4)$.
+        - enunciado: Usando $\log2=0{,}301$ e $\log3=0{,}477$, calcule $\log18$ e $\log72$.
           resolucao: |
-            $x^2-4>0\Rightarrow x<-2$ ou $x>2$.
-          resposta: '$]-\infty,-2[\ \cup\ ]2,+\infty[$'
+            $\log18=\log2+2\log3=1{,}255$. \ $\log72=3\log2+2\log3=1{,}857$.
+          resposta: '$1{,}255$ e $1{,}857$'
 
-        - enunciado: Determine o domínio de $f(x)=\log(5-x)+\log(x+1)$.
+        - enunciado: Calcule $\log0{,}6$ e $\log2{,}4$.
           resolucao: |
-            $5-x>0$ e $x+1>0$: $-1<x<5$.
-          resposta: '$]-1,\,5[$'
+            $\log0{,}6=\log6-\log10=0{,}778-1=-0{,}222$.
+            $\log2{,}4=\log24-1=(3\log2+\log3)-1=0{,}380$.
+          resposta: '$-0{,}222$ e $0{,}380$'
 
-        - enunciado: Determine o domínio de $f(x)=\log_{x-1}(7-x)$.
+        - enunciado: Escreva como um único logaritmo $2\log x+\log y-\tfrac12\log z$.
           resolucao: |
-            $7-x>0\Rightarrow x<7$; base $x-1>0$ e $x-1\neq1$: $x>1$ e $x\neq2$.
-          resposta: '$]1,\,2[\ \cup\ ]2,\,7[$'
+            $\log x^2+\log y-\log\sqrt z=\log\dfrac{x^2y}{\sqrt z}$.
+          resposta: '$\log\dfrac{x^2y}{\sqrt z}$'
 
-        - enunciado: A função $f(x)=a+\log_2 x$ satisfaz $f(4)=5$. Determine $a$ e $f(\tfrac18)$.
+        - enunciado: Desenvolva $\log\dfrac{100a^3}{b}$ em função de $\log a$ e $\log b$.
           resolucao: |
-            $a+2=5\Rightarrow a=3$. Então $f\!\left(\tfrac18\right)=3-3=0$.
-          resposta: '$a=3$; \ $0$'
+            $\log100+3\log a-\log b=2+3\log a-\log b$.
+          resposta: '$2+3\log a-\log b$'
 
-        - enunciado: Determine a inversa de $f(x)=\log_3(x-1)$.
+        - enunciado: Resolva $\log_2 x+\log_2(x-2)=3$.
           resolucao: |
-            $y=\log_3(x-1)\Rightarrow x-1=3^y\Rightarrow x=3^y+1$. Trocando as letras: $f^{-1}(x)=3^x+1$.
-          resposta: '$f^{-1}(x)=3^x+1$'
+            Condições: $x>2$. \ $\log_2[x(x-2)]=3\Rightarrow x^2-2x-8=0\Rightarrow x=4$ ou $x=-2$ (não serve).
+          resposta: '$x=4$'
 
-        - enunciado: Qual é a assíntota vertical do gráfico de $f(x)=\log_2(x+3)$? Em que ponto ele corta o eixo $x$?
+        - enunciado: Resolva $\log(x+1)-\log(x-1)=\log3$.
           resolucao: |
-            O logaritmando zera em $x=-3$: assíntota $x=-3$.
-            Zero: $x+3=1\Rightarrow x=-2$, ponto $(-2,0)$.
-          resposta: 'assíntota $x=-3$; corta o eixo $x$ em $(-2,0)$'
+            Condição: $x>1$. \ $\dfrac{x+1}{x-1}=3\Rightarrow x+1=3x-3\Rightarrow x=2$.
+          resposta: '$x=2$'
 
-        - enunciado: Determine a imagem de $f(x)=\log_2 x$ restrita ao intervalo $[1,\,16]$.
+        - enunciado: Resolva $\log_3 x+\log_3(x+6)=3$.
           resolucao: |
-            $f$ é crescente: $f(1)=0$ e $f(16)=4$.
-          resposta: '$[0,\,4]$'
+            $x(x+6)=27\Rightarrow x^2+6x-27=0\Rightarrow x=3$ ou $x=-9$ (não serve, pois $x>0$).
+          resposta: '$x=3$'
 
-        - enunciado: O gráfico de $f(x)=\log_2(x+k)$ passa pelo ponto $(0,\,2)$. Determine $k$.
+        - enunciado: Sendo $a=\log2$, escreva $\log12{,}5$ em função de $a$.
           resolucao: |
-            $\log_2 k=2\Rightarrow k=4$.
-          resposta: '$k=4$'
+            $12{,}5=\dfrac{100}8$: $\log100-\log8=2-3a$.
+          resposta: '$2-3a$'
 
     - nome: Desafio
       questoes:
-        - enunciado: Quantos números inteiros pertencem ao domínio de $f(x)=\log(x-1)+\log(8-x)$?
+        - enunciado: Quantos algarismos tem o número $2^{50}$? (Use $\log2=0{,}301$.)
           resolucao: |
-            $1<x<8$: inteiros de $2$ a $7$, ou seja, $6$.
-          resposta: '$6$'
+            $\log2^{50}=50\cdot0{,}301=15{,}05$, então $10^{15}<2^{50}<10^{16}$: o número tem $16$ algarismos.
+          resposta: '$16$'
 
-        - enunciado: Mostre que o gráfico de $y=\log_2 x$ corta a reta $y=3-x$ no ponto $(2,\,1)$.
+        - enunciado: Calcule $\log_2 3\cdot\log_3 4\cdot\log_4 8$ escrevendo cada fator como quociente de logaritmos decimais.
           resolucao: |
-            $\log_2 2=1$ e $3-2=1$: o ponto pertence às duas curvas.
-            (É o único: uma função é crescente e a outra, decrescente.)
-          resposta: 'em $x=2$, ambos valem $1$'
+            $\dfrac{\log3}{\log2}\cdot\dfrac{\log4}{\log3}\cdot\dfrac{\log8}{\log4}=\dfrac{\log8}{\log2}=\dfrac{3\log2}{\log2}=3$.
+          resposta: '$3$'
 
-        - enunciado: Sendo $f(x)=\log x$, mostre que $f(ab)=f(a)+f(b)$ e calcule $f(ab)$ sabendo que $f(a)=2$ e $f(b)=3$.
+        - enunciado: Resolva $\log(x-3)+\log x=1$.
           resolucao: |
-            $\log(ab)=\log a+\log b=5$. (De fato, $a=100$, $b=1000$ e $ab=10^5$.)
-          resposta: '$f(ab)=5$'
+            Condição $x>3$. \ $x(x-3)=10\Rightarrow x^2-3x-10=0\Rightarrow x=5$ ou $x=-2$ (não serve).
+          resposta: '$x=5$'
 
-        - enunciado: Determine a inversa de $f(x)=2^x-1$ e o domínio dessa inversa.
+        - enunciado: Sabendo que $\log a=0{,}4$ e $\log b=0{,}3$, calcule $\log\dfrac{a^2}{\sqrt b}$ e $\log(10ab)$.
           resolucao: |
-            $y=2^x-1\Rightarrow 2^x=y+1\Rightarrow x=\log_2(y+1)$. Então $f^{-1}(x)=\log_2(x+1)$, com domínio $x>-1$ (que é a imagem de $f$).
-          resposta: '$f^{-1}(x)=\log_2(x+1)$; \ $x>-1$'
+            $2\cdot0{,}4-\tfrac12\cdot0{,}3=0{,}65$. \ $1+0{,}4+0{,}3=1{,}7$.
+          resposta: '$0{,}65$ e $1{,}7$'
 
-        - enunciado: O pH é $\text{pH}=-\log[\text{H}^+]$. Se a concentração $[\text{H}^+]$ for multiplicada por $10$, o que acontece com o pH? E se for multiplicada por $100$?
+        - enunciado: Simplifique $\log_2 4+\log_2 8+\log_2 16+\cdots+\log_2 1024$.
           resolucao: |
-            $-\log(10c)=-\log c-1$: o pH diminui $1$. Com $100$, diminui $2$.
-          resposta: 'diminui $1$; diminui $2$'
+            $2+3+4+\cdots+10=\dfrac{(2+10)\cdot9}{2}=54$.
+          resposta: '$54$'
 
 vestibular:
-  intro: Questões autorais no estilo dos principais vestibulares. Quando necessário, use $\log2=0{,}301$.
+  intro: Questões autorais no estilo dos principais vestibulares. Quando necessário, use $\log2=0{,}301$ e $\log3=0{,}477$.
   questoes:
-    - enunciado: O domínio de $f(x)=\log(2x-6)$ é
-      opcoes: ['$x>6$', '$x>3$', '$x\ge3$', '$x<3$', '$x>-3$']
+    - enunciado: O valor de $\log20$ é
+      opcoes: ['$0{,}602$', '$1{,}301$', '$2{,}301$', '$3{,}01$', '$0{,}699$']
       correta: B
       resolucao: |
-        $2x-6>0\Rightarrow x>3$.
+        $\log(2\cdot10)=0{,}301+1=1{,}301$.
 
-    - enunciado: Sendo $f(x)=\log_3 x$, o valor de $f(27)-f\!\left(\tfrac13\right)$ é
-      opcoes: ['$2$', '$3$', '$4$', '$9$', '$26$']
-      correta: C
-      resolucao: |
-        $3-(-1)=4$.
-
-    - enunciado: A função inversa de $f(x)=10^x$ é
-      opcoes: ['$\log x$', '$\dfrac1{10^x}$', '$x^{10}$', '$10^{-x}$', '$\sqrt[10]{x}$']
+    - enunciado: O valor de $\log0{,}5$ é
+      opcoes: ['$-0{,}301$', '$0{,}699$', '$-0{,}699$', '$0{,}301$', '$0{,}150$']
       correta: A
       resolucao: |
-        Logaritmo e exponencial de mesma base são inversas.
+        $\log\tfrac12=-\log2=-0{,}301$.
 
-    - enunciado: Pertence ao gráfico de $f(x)=\log_2 x$ o ponto
-      opcoes: ['$(3,\,8)$', '$(0,\,1)$', '$(2,\,4)$', '$(1,\,1)$', '$(8,\,3)$']
+    - enunciado: O valor de $\log60$ é
+      opcoes: ['$0{,}778$', '$1{,}477$', '$7{,}78$', '$1{,}903$', '$1{,}778$']
       correta: E
       resolucao: |
-        $\log_2 8=3$. Note que $(0,1)$ é ponto de $2^x$, não de $\log_2 x$.
+        $\log6+\log10=0{,}778+1=1{,}778$.
 
-    - enunciado: A função $f(x)=\log_a x$ é decrescente se, e somente se,
-      opcoes: ['$a<0$', '$0<a<1$', '$a>1$', '$a<1$', '$a\neq1$']
-      correta: B
-      resolucao: |
-        Com base entre $0$ e $1$, o logaritmo decresce.
-
-    - enunciado: O zero da função $f(x)=\log_2(x-1)$ é
-      opcoes: ['$0$', '$1$', '$2$', '$3$', '$\dfrac12$']
-      correta: C
-      resolucao: |
-        $x-1=1\Rightarrow x=2$.
-
-    - enunciado: A assíntota vertical do gráfico de $y=\log_2(x+3)$ é a reta
-      opcoes: ['$x=3$', '$y=-3$', '$x=0$', '$x=-3$', '$y=0$']
+    - enunciado: O valor de $\log_2 40-\log_2 5$ é
+      opcoes: ['$2$', '$8$', '$35$', '$3$', '$\log_2 35$']
       correta: D
       resolucao: |
-        O logaritmando se anula em $x=-3$.
+        $\log_2\tfrac{40}5=\log_2 8=3$.
 
-    - enunciado: O domínio de $f(x)=\log(x^2-9)$ é
-      opcoes: ['$x>3$', '$]-3,\,3[$', '$x<-3$ ou $x>3$', '$\mathbb{R}-\{3\}$', '$x>9$']
-      correta: C
-      resolucao: |
-        $x^2-9>0\Rightarrow|x|>3$.
-
-    - enunciado: A imagem de $f(x)=\log_2 x$, com $x\in[1,\,8]$, é
-      opcoes: ['$[0,\,3]$', '$[1,\,8]$', '$[0,\,8]$', '$[1,\,3]$', '$\mathbb{R}$']
-      correta: A
-      resolucao: |
-        $f(1)=0$ e $f(8)=3$, com $f$ crescente.
-
-    - enunciado: O gráfico de $f(x)=\log_b x$ passa pelo ponto $\left(\tfrac14,\,2\right)$. O valor de $b$ é
-      opcoes: ['$4$', '$2$', '$\dfrac14$', '$\dfrac1{16}$', '$\dfrac12$']
+    - enunciado: O valor de $\log_3 18+\log_3\tfrac12$ é
+      opcoes: ['$1$', '$9$', '$3$', '$\log_3 18{,}5$', '$2$']
       correta: E
       resolucao: |
-        $b^2=\tfrac14$, com $b>0$: $b=\tfrac12$.
+        $\log_3 9=2$.
 
-    - enunciado: A inversa de $f(x)=2^x+1$ é
-      opcoes: ['$\log_2 x+1$', '$\log_2(x-1)$', '$\log_2(x+1)$', '$2^{-x}-1$', '$\log_2 x-1$']
+    - enunciado: O valor de $\log50+\log2$ é
+      opcoes: ['$1$', '$\log52$', '$2$', '$10$', '$100$']
+      correta: C
+      resolucao: |
+        $\log100=2$.
+
+    - enunciado: Se $\log x=2\log3-\log2$, então $x$ vale
+      opcoes: ['$4$', '$\dfrac92$', '$6$', '$\dfrac32$', '$3$']
       correta: B
       resolucao: |
-        $y-1=2^x\Rightarrow x=\log_2(y-1)$.
+        $\log x=\log9-\log2=\log\tfrac92$.
 
-    - enunciado: 'Sendo $a=\log_2 3$, $b=\log_2 5$ e $c=\log_{1/2}3$, a ordem correta é'
-      opcoes: ['$a<b<c$', '$c<b<a$', '$b<a<c$', '$c<a<b$', '$a<c<b$']
-      correta: D
-      resolucao: |
-        $c=-\log_2 3<0$, e $0<a<b$ porque $\log_2$ é crescente.
-
-    - enunciado: A função $f(x)=k+\log_3 x$ satisfaz $f(9)=5$. O valor de $f(1)$ é
-      opcoes: ['$0$', '$2$', '$3$', '$5$', '$7$']
+    - enunciado: O valor de $\log\sqrt{1000}$ é
+      opcoes: ['$\sqrt3$', '$3$', '$1{,}5$', '$30$', '$0{,}5$']
       correta: C
       resolucao: |
-        $k+2=5\Rightarrow k=3$, e $f(1)=3+0=3$.
+        $\tfrac12\log1000=\tfrac32$.
 
-    - enunciado: Sendo $f(x)=\log_2 x$ e $g(x)=\log_4 x$, o valor de $f(16)-g(16)$ é
-      opcoes: ['$2$', '$0$', '$4$', '$8$', '$12$']
-      correta: A
-      resolucao: |
-        $4-2=2$.
-
-    - enunciado: O domínio de $f(x)=\log_{x-1}(3-x)$ é
-      opcoes: ['$1<x<3$', '$x>1$', '$x<3$', '$]1,\,2[\ \cup\ ]2,\,3[$', '$]1,\,3]$']
+    - enunciado: O valor de $\log_a\left(a^3\sqrt a\right)$ é
+      opcoes: ['$3$', '$1{,}5$', '$4$', '$3{,}5$', '$a^{3{,}5}$']
       correta: D
       resolucao: |
-        $3-x>0$, $x-1>0$ e $x-1\neq1$.
+        $a^3\cdot a^{1/2}=a^{7/2}$: $\tfrac72=3{,}5$.
 
-    - enunciado: A quantidade de números inteiros no domínio de $f(x)=\log(x+2)+\log(5-x)$ é
-      opcoes: ['$4$', '$5$', '$6$', '$7$', '$8$']
+    - enunciado: Se $\log a=0{,}4$ e $\log b=0{,}3$, então $\log(a^2b)$ vale
+      opcoes: ['$0{,}7$', '$0{,}048$', '$1{,}1$', '$0{,}11$', '$1{,}4$']
       correta: C
       resolucao: |
-        $-2<x<5$: inteiros de $-1$ a $4$.
+        $2\cdot0{,}4+0{,}3=1{,}1$.
 
-    - enunciado: Sendo $f(x)=\log x$, com $f(a)=2$ e $f(b)=3$, o valor de $f(ab)$ é
-      opcoes: ['$6$', '$1$', '$\dfrac23$', '$8$', '$5$']
+    - enunciado: O número $3^{20}$ tem
+      opcoes: ['$9$ algarismos', '$10$ algarismos', '$11$ algarismos', '$20$ algarismos', '$60$ algarismos']
+      correta: B
+      resolucao: |
+        $\log3^{20}=20\cdot0{,}477=9{,}54$: o número está entre $10^9$ e $10^{10}$, com $10$ algarismos.
+
+    - enunciado: A solução de $\log_2 x+\log_2 x^2=6$ é
+      opcoes: ['$2$', '$\sqrt2$', '$8$', '$64$', '$4$']
       correta: E
       resolucao: |
-        $\log(ab)=\log a+\log b=5$.
+        $3\log_2 x=6\Rightarrow\log_2 x=2\Rightarrow x=4$.
 
-    - enunciado: Uma solução tem concentração $[\text{H}^+]=2\cdot10^{-4}$ mol/L. Sendo $\text{pH}=-\log[\text{H}^+]$, seu pH é, aproximadamente,
-      opcoes: ['$3{,}7$', '$4{,}3$', '$4{,}0$', '$2{,}0$', '$8{,}0$']
+    - enunciado: O valor de $\log\tfrac18$ é
+      opcoes: ['$-0{,}903$', '$0{,}903$', '$-0{,}125$', '$-0{,}301$', '$0{,}097$']
       correta: A
       resolucao: |
-        $-(\log2-4)=4-0{,}301\approx3{,}7$.
+        $-\log8=-3\log2=-0{,}903$.
 
-    - enunciado: Em decibéis, $N=10\log\dfrac I{I_0}$. Se a intensidade de um som dobra, o nível sonoro aumenta, aproximadamente,
-      opcoes: ['$2$ dB', '$0{,}3$ dB', '$10$ dB', '$3$ dB', '$20$ dB']
-      correta: D
-      resolucao: |
-        $10\log(2I/I_0)-10\log(I/I_0)=10\log2\approx3$ dB.
-
-    - enunciado: Os gráficos de $y=\log_2 x$ e $y=3-x$ se cortam no ponto
-      opcoes: ['$(1,\,0)$', '$(2,\,1)$', '$(3,\,0)$', '$(4,\,2)$', '$(8,\,3)$']
+    - enunciado: A solução de $\log(x-3)+\log x=1$ é
+      opcoes: ['$-2$', '$5$', '$-2$ e $5$', '$10$', '$13$']
       correta: B
       resolucao: |
-        Em $x=2$: $\log_2 2=1$ e $3-2=1$.
+        $x^2-3x-10=0\Rightarrow x=5$ ou $x=-2$; só $x=5$ satisfaz $x>3$.
+
+    - enunciado: Sendo $a=\log2$, o valor de $\log12{,}5$ é
+      opcoes: ['$1+a$', '$2a-3$', '$3a-2$', '$2-3a$', '$\dfrac{12}{5}a$']
+      correta: D
+      resolucao: |
+        $12{,}5=\tfrac{100}8$: $2-3a$.
+
+    - enunciado: A solução de $\log_2(x+2)-\log_2(x-1)=2$ é
+      opcoes: ['$1$', '$3$', '$2$', '$4$', '$6$']
+      correta: C
+      resolucao: |
+        $\dfrac{x+2}{x-1}=4\Rightarrow x+2=4x-4\Rightarrow x=2$.
+
+    - enunciado: O valor de $\log2+\log3+\log5$ é, aproximadamente,
+      opcoes: ['$1{,}076$', '$1{,}301$', '$1{,}000$', '$1{,}477$', '$0{,}301$']
+      correta: D
+      resolucao: |
+        $\log(2\cdot3\cdot5)=\log30=\log3+1=1{,}477$.
+
+    - enunciado: O valor de $\log72$ é
+      opcoes: ['$1{,}857$', '$1{,}556$', '$1{,}954$', '$0{,}857$', '$2{,}857$']
+      correta: A
+      resolucao: |
+        $72=2^3\cdot3^2$: $0{,}903+0{,}954=1{,}857$.
+
+    - enunciado: Se $\log_a x=2$ e $\log_a y=3$, então $\log_a\dfrac{x^3}{y^2}$ vale
+      opcoes: ['$0$', '$12$', '$1$', '$\dfrac23$', '$-1$']
+      correta: A
+      resolucao: |
+        $3\cdot2-2\cdot3=0$.
+
+    - enunciado: O valor de $\log4+\log25-\log10$ é
+      opcoes: ['$0$', '$2$', '$10$', '$\log19$', '$1$']
+      correta: E
+      resolucao: |
+        $\log\dfrac{4\cdot25}{10}=\log10=1$.

@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Probabilidade total divide um evento em caminhos possíveis; Bayes inverte uma condição usando a probabilidade do caminho e seu peso no total. Desenhar árvore evita confusões."
+      ],
+      "formulas": [
+        "P(A\\mid B)=\\frac{P(B\\mid A)P(A)}{P(B)}"
+      ],
+      "dica": "Em árvores, multiplique ao longo do ramo e some ramos alternativos.",
+      "erroComum": "A taxa de defeito dentro de uma fábrica não é a taxa de participação dessa fábrica."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Duas fábricas produzem 70% e 30% de peças; defeitos são 2% e 5%, respectivamente. Chance de defeito?",
+        "passos": [
+          "Fábrica 1: 0,7·0,02=0,014.",
+          "Fábrica 2: 0,3·0,05=0,015.",
+          "Total 0,029=2,9%."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se P(A)=0,4, P(B|A)=0,5, P(A∩B) =",
+      "opcoes": [
+        "0,1",
+        "0,2",
+        "0,4",
+        "0,9"
+      ],
+      "correta": 1,
+      "explicacao": "P(A∩B)=0,4·0,5=0,2."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Uma urna A é escolhida com chance 1/2 e contém 2/3 de bolas azuis. Chance do ramo 'A e azul':",
+      "opcoes": [
+        "1/6",
+        "1/3",
+        "1/2",
+        "2/3"
+      ],
+      "correta": 1,
+      "explicacao": "(1/2)(2/3)=1/3."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

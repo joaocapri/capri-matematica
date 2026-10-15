@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Amostra é parte da população usada para inferir características. Correlação mede associação, não prova causalidade. Uma pesquisa enviesada pode produzir conclusões ruins mesmo com muitos respondentes."
+      ],
+      "formulas": [
+        "-1\\leq r\\leq 1\\quad\\text{(correla\\c c\\~ao de Pearson)}"
+      ],
+      "dica": "Pergunte como a amostra foi selecionada antes de avaliar resultados.",
+      "erroComum": "Correlação positiva não prova que uma variável causou a outra."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Uma pesquisa sobre hábitos de estudo entrevista apenas frequentadores de uma biblioteca. Qual cuidado?",
+        "passos": [
+          "A amostra privilegia quem frequenta biblioteca.",
+          "Não representa necessariamente todos os estudantes.",
+          "Seria melhor incluir diferentes perfis."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Amostra aleatória simples significa:",
+      "opcoes": [
+        "Escolher só amigos",
+        "Chance igual para cada elemento em seleção individual",
+        "Escolher quem está disponível",
+        "Entrevistar só voluntários"
+      ],
+      "correta": 1,
+      "explicacao": "Cada elemento deve ter chance igual no sorteio simples."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Correlação r próxima de 0 indica:",
+      "opcoes": [
+        "Sempre independência",
+        "Pouca associação linear",
+        "Causalidade negativa",
+        "Erro matemático"
+      ],
+      "correta": 1,
+      "explicacao": "r≈0 aponta associação linear fraca; pode haver associação não linear."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

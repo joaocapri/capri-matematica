@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender razão entre áreas",
+    "Compreender relações métricas na circunferência",
     "Resolver um exemplo geométrico passo a passo",
     "Evitar armadilhas de interpretação do desenho"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Desenhe antes de calcular",
       "paragrafos": [
-        "Quando figuras são semelhantes, seus comprimentos escalam por k, áreas por k² e volumes por k³. Isso explica por que ampliar uma figura é mais impactante do que parece."
+        "Em uma circunferência, relações de produtos surgem da semelhança de triângulos. Para duas cordas cruzando num ponto interno, o produto dos segmentos de uma é igual ao da outra."
       ],
       "formulas": [
-        "\\frac{A_2}{A_1}=k^2"
+        "PA\\cdot PB=PC\\cdot PD"
       ],
-      "dica": "Compare grandezas da mesma dimensão antes de elevar a razão.",
-      "erroComum": "Triplicar lado não triplica área: multiplica por 9."
+      "dica": "Tangente ao quadrado equivale ao produto da secante inteira pela parte externa.",
+      "erroComum": "Em secantes, use segmento externo × secante inteira, não apenas partes internas."
     },
     {
       "titulo": "Resolução com raciocínio",
@@ -25,10 +25,10 @@
         "A ideia é enxergar a propriedade na figura e só depois colocar números."
       ],
       "exemplo": {
-        "enunciado": "Dois quadrados semelhantes têm lados 3 e 9. Qual razão entre áreas (maior/menor)?",
+        "enunciado": "Cordas se cruzam no ponto P: uma fica dividida em 2 e 6; a outra em 3 e x. Ache x.",
         "passos": [
-          "Razão linear k=9/3=3.",
-          "Razão de áreas k²=9."
+          "Aplique o produto dos segmentos.",
+          "2·6=3x ⇒ x=4."
         ]
       }
     }
@@ -36,27 +36,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Lados na razão 2:1 produzem áreas na razão:",
+      "enunciado": "Para segmentos 4 e 5 de uma corda, e 2 e x da outra, x é:",
       "opcoes": [
-        "2:1",
-        "3:1",
-        "4:1",
-        "8:1"
+        "5",
+        "8",
+        "10",
+        "20"
       ],
       "correta": 2,
-      "explicacao": "2²=4."
+      "explicacao": "4·5=2x ⇒ x=10."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se área dobra, a razão linear é:",
+      "enunciado": "Uma tangente de comprimento 6 tem potência de ponto:",
       "opcoes": [
-        "2",
-        "√2",
-        "4",
-        "1/2"
+        "3",
+        "6",
+        "12",
+        "36"
       ],
-      "correta": 1,
-      "explicacao": "k²=2 ⇒ k=√2."
+      "correta": 3,
+      "explicacao": "Potência por tangente é 6²=36."
     }
   ],
   "videos": [

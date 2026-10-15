@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Reconhecer o conceito central de inequações logarítmicas e aplicações",
+    "Reconhecer o conceito central de função logarítmica",
     "Resolver um exemplo completo e justificar cada etapa",
     "Identificar armadilhas comuns de prova"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Entenda a lógica",
       "paragrafos": [
-        "Nas inequações logarítmicas, primeiro garanta argumentos positivos. Com base>1, a comparação entre argumentos mantém o sinal; com base entre 0 e 1, inverte."
+        "A função logarítmica é inversa da exponencial de mesma base. Só recebe entradas positivas; sua imagem são todos os reais. O gráfico atravessa (1,0) e tem assíntota vertical x=0."
       ],
       "formulas": [
-        "\\log_a u>\\log_a v\\Longleftrightarrow u>v\\quad(a>1;\\ u,v>0)"
+        "f(x)=\\log_a x,\\quad x>0,\\ a>0,\\ a\\neq1"
       ],
-      "dica": "A resposta final deve ser a interseção entre domínio e inequação.",
-      "erroComum": "Não use monotonicidade crescente quando 0<a<1."
+      "dica": "Repare no ponto fixo (1,0) e na ausência de gráfico para x≤0.",
+      "erroComum": "Não confunda domínio (0,+∞) com imagem R."
     },
     {
       "titulo": "Na prática, sem enrolação",
@@ -25,11 +25,11 @@
         "Vamos sair da teoria e aplicar a ideia a um caso de prova."
       ],
       "exemplo": {
-        "enunciado": "Resolva log₁/₂(x−1)>log₁/₂3.",
+        "enunciado": "Compare log₂1 e log₂8.",
         "passos": [
-          "Domínio: x−1>0 ⇒ x>1.",
-          "Base 1/2 é decrescente: x−1<3.",
-          "Conclusão: 1<x<4."
+          "2⁰=1 ⇒ log₂1=0.",
+          "2³=8 ⇒ log₂8=3.",
+          "A função com base 2 é crescente."
         ]
       }
     }
@@ -45,27 +45,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "log₂x>3 vale para:",
+      "enunciado": "O domínio de log₅(x−2) é:",
       "opcoes": [
-        "x>8",
-        "x<8",
-        "x>3",
-        "0<x<3"
+        "x≥2",
+        "x>2",
+        "x<2",
+        "Todos os reais"
       ],
-      "correta": 0,
-      "explicacao": "Base 2 crescente: x>2³=8."
+      "correta": 1,
+      "explicacao": "O argumento precisa satisfazer x−2>0."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "log₁/₃x>0 equivale a:",
+      "enunciado": "O gráfico de log₂x passa por:",
       "opcoes": [
-        "x>1",
-        "0<x<1",
-        "x<0",
-        "x=1"
+        "(0,1)",
+        "(1,0)",
+        "(0,0)",
+        "(−1,0)"
       ],
       "correta": 1,
-      "explicacao": "Base 1/3 decrescente, e log₁/₃1=0."
+      "explicacao": "log₂1=0."
     }
   ],
   "exercicios": [],

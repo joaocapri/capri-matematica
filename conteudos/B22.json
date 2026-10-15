@@ -1,29 +1,35 @@
 {
-  "status": "publicado",
+  "status": "rascunho-para-revisao",
   "versao": "1.0",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Compreender geometria de posição espacial i",
+    "Resolver um exemplo geométrico passo a passo",
+    "Evitar armadilhas de interpretação do desenho"
+  ],
   "teoria": [
     {
-      "titulo": "Pegue a ideia",
+      "titulo": "Desenhe antes de calcular",
       "paragrafos": [
-        "Uma pirâmide ocupa um terço do volume do prisma de mesma base e altura. Troncos de pirâmide surgem ao cortar o sólido por um plano paralelo à base; os comprimentos variam proporcionalmente."
+        "No espaço, duas retas podem ser concorrentes, paralelas ou reversas. Reversas não estão no mesmo plano e não se encontram; a ideia exige imaginar três dimensões."
       ],
       "formulas": [
-        "V=\\frac{A_bh}{3}"
+        "\\text{retas reversas}\\Rightarrow\\text{n\\~ao coplanares}"
       ],
-      "dica": "O fator 1/3 é obrigatório mesmo se a pirâmide for oblíqua.",
-      "erroComum": "Não use área lateral no lugar da área da base para calcular volume."
+      "dica": "A ausência de cruzamento no desenho não prova, sozinha, que as retas são reversas.",
+      "erroComum": "Retas paralelas, por definição espacial, são coplanares."
     },
     {
-      "titulo": "Na prática",
+      "titulo": "Resolução com raciocínio",
       "paragrafos": [
-        "Agora aplique o conceito em um exemplo resolvido."
+        "A ideia é enxergar a propriedade na figura e só depois colocar números."
       ],
       "exemplo": {
-        "enunciado": "Pirâmide com área da base 18 cm² e altura 9 cm: volume?",
+        "enunciado": "Pense nas arestas de um cubo: duas arestas em direções diferentes, sem vértice comum e fora de um mesmo plano.",
         "passos": [
-          "V=18·9/3.",
-          "Volume 54 cm³."
+          "Elas não têm ponto comum.",
+          "Não são paralelas coplanares.",
+          "Portanto, são reversas."
         ]
       }
     }
@@ -31,30 +37,41 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "V de pirâmide com A_b=30 e h=6:",
+      "enunciado": "Duas retas reversas:",
       "opcoes": [
-        "30",
-        "60",
-        "90",
-        "180"
+        "Sempre se cruzam",
+        "São coplanares",
+        "Não são coplanares",
+        "São necessariamente perpendiculares"
       ],
-      "correta": 1,
-      "explicacao": "30·6/3=60."
+      "correta": 2,
+      "explicacao": "A propriedade fundamental é não pertencer a um mesmo plano."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Cortar uma pirâmide paralelamente à base gera uma secção:",
+      "enunciado": "Duas retas distintas que se cruzam são:",
       "opcoes": [
-        "Congruente à base",
-        "Semelhante à base",
-        "Sempre quadrada",
-        "De mesma área"
+        "Reversas",
+        "Concorrentes",
+        "Paralelas",
+        "Coincidentes"
       ],
       "correta": 1,
-      "explicacao": "A secção é semelhante à base; escala menor."
+      "explicacao": "Compartilham um ponto."
     }
   ],
-  "videos": [],
+  "videos": [
+    {
+      "titulo": "Geometria: áreas e círculos",
+      "canal": "Khan Academy Brasil · biblioteca",
+      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "url": "https://pt.khanacademy.org/math/geometry"
+    }
+  ],
   "arquivos": [],
-  "exercicios": []
+  "exercicios": [],
+  "revisao": {
+    "status": "rascunho-pedagogico",
+    "notas": "Material autoral criado com apoio de IA. Revisão final do professor recomendada antes de uso avaliativo."
+  }
 }

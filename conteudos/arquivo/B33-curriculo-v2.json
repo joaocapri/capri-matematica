@@ -1,0 +1,60 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "Pegue a ideia",
+      "paragrafos": [
+        "Pontos têm coordenadas (x,y). A distância vem de Pitágoras, o ponto médio é a média das coordenadas e o baricentro é a média dos vértices de um triângulo."
+      ],
+      "formulas": [
+        "d=\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}"
+      ],
+      "dica": "Distância nunca é negativa e a ordem dos pontos não altera o resultado.",
+      "erroComum": "A média das coordenadas dá o ponto médio, não a distância."
+    },
+    {
+      "titulo": "Na prática",
+      "paragrafos": [
+        "Agora aplique o conceito em um exemplo resolvido."
+      ],
+      "exemplo": {
+        "enunciado": "Ache distância entre A=(1,2) e B=(4,6).",
+        "passos": [
+          "Diferenças: 3 e 4.",
+          "d=√(9+16)=5."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Distância de (0,0) a (3,4):",
+      "opcoes": [
+        "3",
+        "4",
+        "5",
+        "7"
+      ],
+      "correta": 2,
+      "explicacao": "√(3²+4²)=5."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Ponto médio entre (2,6) e (4,8):",
+      "opcoes": [
+        "(3,7)",
+        "(6,14)",
+        "(1,1)",
+        "(2,7)"
+      ],
+      "correta": 0,
+      "explicacao": "((2+4)/2,(6+8)/2)=(3,7)."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

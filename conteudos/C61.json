@@ -1,0 +1,95 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "idioma": "pt-BR",
+  "formato": "capri-mat-v1",
+  "objetivos": [
+    "Definir seno, cosseno e tangente de um ângulo agudo",
+    "Identificar cateto oposto e adjacente",
+    "Calcular lados com as razões"
+  ],
+  "teoria": [
+    {
+      "titulo": "As três razões",
+      "paragrafos": [
+        "Num triângulo retângulo, para um ângulo agudo α: o seno é o cateto oposto sobre a hipotenusa; o cosseno é o cateto adjacente sobre a hipotenusa; a tangente é o oposto sobre o adjacente."
+      ],
+      "formulas": [
+        "\\operatorname{sen}\\alpha=\\dfrac{CO}{H}",
+        "\\cos\\alpha=\\dfrac{CA}{H}",
+        "\\operatorname{tg}\\alpha=\\dfrac{CO}{CA}"
+      ],
+      "exemplo": {
+        "enunciado": "Num triângulo de catetos 3 e 4 e hipotenusa 5, calcule as razões do ângulo oposto ao lado 3.",
+        "passos": [
+          "sen α = 3/5.",
+          "cos α = 4/5.",
+          "tg α = 3/4."
+        ]
+      },
+      "erroComum": "Trocar oposto por adjacente. O oposto fica do outro lado do ângulo; o adjacente encosta nele."
+    },
+    {
+      "titulo": "Ângulos complementares",
+      "paragrafos": [
+        "Nos dois ângulos agudos de um triângulo retângulo, o seno de um é o cosseno do outro."
+      ],
+      "formulas": [
+        "\\operatorname{sen}\\alpha=\\cos(90^\\circ-\\alpha)"
+      ]
+    }
+  ],
+  "videos": [],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "O seno de um ângulo agudo é",
+      "opcoes": [
+        "oposto/adjacente",
+        "oposto/hipotenusa",
+        "adjacente/hipotenusa",
+        "hipotenusa/oposto"
+      ],
+      "correta": 1,
+      "explicacao": "Definição."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Num triângulo retângulo de hipotenusa 13 e catetos 5 e 12, o cosseno do ângulo oposto ao cateto 5 é",
+      "opcoes": [
+        "5/13",
+        "12/13",
+        "5/12",
+        "12/5"
+      ],
+      "correta": 1,
+      "explicacao": "O adjacente é 12."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Se sen α = 0,6 e a hipotenusa mede 10, o cateto oposto mede",
+      "opcoes": [
+        "6",
+        "8",
+        "0,06",
+        "16"
+      ],
+      "correta": 0,
+      "explicacao": "0,6 · 10."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Se sen 40° ≈ 0,64, então cos 50° é aproximadamente",
+      "opcoes": [
+        "0,36",
+        "0,64",
+        "0,77",
+        "1,64"
+      ],
+      "correta": 1,
+      "explicacao": "Ângulos complementares."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
+}

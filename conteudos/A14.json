@@ -1,71 +1,94 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Entender o conceito central de domínio, imagem e estudo gráfico",
-    "Aplicar o procedimento em um exemplo resolvido",
-    "Reconhecer erros frequentes antes de enfrentar uma questão"
+    "Montar o quadro de sinais",
+    "Resolver inequações produto e quociente",
+    "Excluir do conjunto solução os zeros do denominador"
   ],
   "teoria": [
     {
-      "titulo": "A ideia que destrava",
+      "titulo": "O quadro de sinais",
       "paragrafos": [
-        "Domínio indica entradas permitidas; imagem reúne as saídas efetivamente alcançadas. Frações proibem denominador zero, e raízes de índice par exigem radicando não negativo no conjunto dos reais."
-      ],
-      "formulas": [
-        "\\frac1{g(x)}:\\ g(x)\\neq0\\quad\\sqrt{h(x)}:\\ h(x)\\geq0"
-      ],
-      "dica": "Para estudar o sinal graficamente, olhe se o traço está acima ou abaixo do eixo x.",
-      "erroComum": "Uma função pode ter imagem diferente do contradomínio anunciado."
-    },
-    {
-      "titulo": "Vamos fazer uma juntos",
-      "paragrafos": [
-        "Veja como reconhecer o caminho de resolução sem decorar passos desconectados."
+        "Em (x − 1)(x + 2) > 0 não adianta resolver cada fator separado. Estude o sinal de cada fator, coloque tudo num quadro e multiplique os sinais coluna por coluna."
       ],
       "exemplo": {
-        "enunciado": "Encontre o domínio real de f(x)=√(x−2).",
+        "enunciado": "Resolva (x − 1)(x + 2) > 0.",
         "passos": [
-          "É raiz quadrada; imponha x−2≥0.",
-          "Logo, x≥2.",
-          "Domínio: [2,+∞)."
+          "Zeros: x = 1 e x = −2.",
+          "Para x < −2: (−)(−) = +. Entre −2 e 1: (−)(+) = −. Para x > 1: (+)(+) = +.",
+          "S = ]−∞, −2[ ∪ ]1, +∞[."
         ]
-      }
+      },
+      "dica": "Ordene todos os zeros na reta antes de começar o quadro."
+    },
+    {
+      "titulo": "Inequação quociente",
+      "paragrafos": [
+        "O quociente tem a mesma regra de sinais do produto. A diferença: os zeros do denominador nunca entram na solução, mesmo com ≥ ou ≤."
+      ],
+      "exemplo": {
+        "enunciado": "Resolva (x + 3)/(x − 1) ≤ 0.",
+        "passos": [
+          "Zeros: −3 (numerador) e 1 (denominador).",
+          "O quociente é negativo entre −3 e 1 e vale zero em −3.",
+          "S = [−3, 1[. O 1 fica de fora."
+        ]
+      },
+      "erroComum": "Passar o denominador multiplicando para o outro lado. Como o sinal dele muda, isso estraga a desigualdade."
     }
   ],
+  "videos": [],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "O domínio real de 1/(x−5) exclui:",
+      "nivel": "Aquecimento",
+      "enunciado": "O conjunto solução de (x − 2)(x + 5) < 0 é",
       "opcoes": [
-        "0",
-        "1",
-        "5",
-        "−5"
+        "−5 < x < 2",
+        "x < −5 ou x > 2",
+        "−2 < x < 5",
+        "x > 2"
       ],
-      "correta": 2,
-      "explicacao": "Em x=5 o denominador zera."
+      "correta": 0,
+      "explicacao": "O produto é negativo entre os zeros −5 e 2."
+    },
+    {
+      "nivel": "Conceito",
+      "enunciado": "Em (x − 4)/(x + 1) ≥ 0, o valor x = −1",
+      "opcoes": [
+        "entra na solução",
+        "não entra, pois zera o denominador",
+        "entra só se for inteiro",
+        "é a única solução"
+      ],
+      "correta": 1,
+      "explicacao": "Divisão por zero não existe."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "A imagem de f(x)=x², com domínio R, é:",
+      "enunciado": "O conjunto solução de (2 − x)/(x + 4) > 0 é",
       "opcoes": [
-        "R",
-        "(−∞,0]",
-        "[0,+∞)",
-        "(0,+∞)"
+        "−4 < x < 2",
+        "x < −4 ou x > 2",
+        "x > 2",
+        "−2 < x < 4"
       ],
-      "correta": 2,
-      "explicacao": "Quadrados reais são não negativos e todo valor não negativo é atingido."
-    }
-  ],
-  "videos": [
+      "correta": 0,
+      "explicacao": "Numerador positivo para x < 2 e denominador positivo para x > −4. Mesmo sinal entre −4 e 2."
+    },
     {
-      "titulo": "Vídeos e prática: funções",
-      "canal": "Khan Academy Brasil · unidade de estudos",
-      "descricao": "Material de apoio sobre funções, domínio e composição.",
-      "url": "https://pt.khanacademy.org/math/algebra-home/alg-functions"
+      "nivel": "Desafio",
+      "enunciado": "A quantidade de inteiros que satisfazem (x + 4)/(3 − x) ≥ 0 é",
+      "opcoes": [
+        "6",
+        "7",
+        "8",
+        "infinita"
+      ],
+      "correta": 1,
+      "explicacao": "S = [−4, 3[: inteiros −4, −3, −2, −1, 0, 1, 2. São 7."
     }
   ],
   "exercicios": [],

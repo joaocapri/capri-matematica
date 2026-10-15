@@ -1,0 +1,61 @@
+{
+  "status": "publicado",
+  "versao": "1.0",
+  "formato": "capri-mat-v1",
+  "teoria": [
+    {
+      "titulo": "A ideia central",
+      "paragrafos": [
+        "Duas turmas podem ter a mesma média e consistência diferente. Desvio padrão menor indica menor dispersão na mesma escala; coeficiente de variação compara dispersão relativa entre médias positivas e não nulas."
+      ],
+      "formulas": [
+        "CV=\\frac\\sigma{\\mu}\\times100\\%\\quad(\\mu>0)"
+      ],
+      "dica": "Coeficiente de variação faz mais sentido para variáveis de razão e média diferente de zero.",
+      "erroComum": "Menor desvio padrão absoluto não garante menor dispersão relativa quando médias diferem."
+    },
+    {
+      "titulo": "Veja funcionando",
+      "paragrafos": [
+        "Vamos aplicar o conceito sem pular etapas."
+      ],
+      "exemplo": {
+        "enunciado": "Turma A tem média 10 e desvio 2; turma B, média 20 e desvio 2. CV?",
+        "passos": [
+          "CV_A=2/10=20%.",
+          "CV_B=2/20=10%.",
+          "B tem menor dispersão relativa."
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "nivel": "Conceito",
+      "enunciado": "Média 50, desvio 5: CV =",
+      "opcoes": [
+        "1%",
+        "5%",
+        "10%",
+        "20%"
+      ],
+      "correta": 2,
+      "explicacao": "5/50=0,1=10%."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "Mesma média, qual turma é mais homogênea?",
+      "opcoes": [
+        "Maior desvio padrão",
+        "Menor desvio padrão",
+        "Maior amplitude sempre",
+        "Maior nota máxima"
+      ],
+      "correta": 1,
+      "explicacao": "Menor desvio padrão indica menor dispersão."
+    }
+  ],
+  "videos": [],
+  "arquivos": [],
+  "exercicios": []
+}

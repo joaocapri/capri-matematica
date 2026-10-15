@@ -3,7 +3,7 @@
   "versao": "1.0",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Compreender comprimento da circunferência",
+    "Compreender quadriláteros notáveis",
     "Resolver um exemplo geométrico passo a passo",
     "Evitar armadilhas de interpretação do desenho"
   ],
@@ -11,13 +11,13 @@
     {
       "titulo": "Desenhe antes de calcular",
       "paragrafos": [
-        "O comprimento de uma circunferência depende linearmente do raio: dobrar o raio dobra o comprimento. O número π é a razão constante entre circunferência e diâmetro."
+        "Paralelogramos têm lados opostos paralelos e diagonais que se cortam ao meio. Retângulo tem ângulos retos; losango, quatro lados iguais; quadrado possui as duas características."
       ],
       "formulas": [
-        "C=2\\pi r=\\pi d"
+        "A_{\\text{trap\\acute ezio}}=\\frac{(B+b)h}2"
       ],
-      "dica": "Se o enunciado falar em diâmetro, use diretamente C=πd.",
-      "erroComum": "Não confunda comprimento (unidade linear) com área (unidade quadrada)."
+      "dica": "Use diagonais para reconhecer retângulo ou losango.",
+      "erroComum": "Diagonais iguais não bastam, sozinhas, para caracterizar todo quadrado."
     },
     {
       "titulo": "Resolução com raciocínio",
@@ -25,10 +25,11 @@
         "A ideia é enxergar a propriedade na figura e só depois colocar números."
       ],
       "exemplo": {
-        "enunciado": "Uma roda tem raio 0,5 m. Qual distância percorre em 10 voltas sem deslizar?",
+        "enunciado": "Um trapézio tem bases 12 e 8, altura 5. Qual a área?",
         "passos": [
-          "Cada volta percorre C=2π·0,5=π m.",
-          "Em 10 voltas: 10π m."
+          "Some as bases: 20.",
+          "Multiplique pela altura e divida por 2.",
+          "A=50 unidades²."
         ]
       }
     }
@@ -36,34 +37,34 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Um círculo de raio 3 tem comprimento:",
+      "enunciado": "Um quadrado é necessariamente:",
       "opcoes": [
-        "3π",
-        "6π",
-        "9π",
-        "12π"
+        "Retângulo e losango",
+        "Trapézio sem lados paralelos",
+        "Triângulo",
+        "Romboide sem ângulos retos"
       ],
-      "correta": 1,
-      "explicacao": "2π·3=6π."
+      "correta": 0,
+      "explicacao": "Tem quatro lados iguais e quatro ângulos retos."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se o diâmetro é 10, o comprimento é:",
+      "enunciado": "Área do paralelogramo com base 7 e altura 4:",
       "opcoes": [
-        "5π",
-        "10π",
-        "20π",
-        "100π"
+        "11",
+        "14",
+        "28",
+        "49"
       ],
-      "correta": 1,
-      "explicacao": "C=πd=10π."
+      "correta": 2,
+      "explicacao": "A=b·h=28."
     }
   ],
   "videos": [
     {
-      "titulo": "Geometria: áreas e círculos",
+      "titulo": "Geometria: retas, ângulos e triângulos",
       "canal": "Khan Academy Brasil · biblioteca",
-      "descricao": "Áreas, medidas e problemas geométricos com animações.",
+      "descricao": "Videoaulas e atividades para visualizar os fundamentos da geometria.",
       "url": "https://pt.khanacademy.org/math/geometry"
     }
   ],

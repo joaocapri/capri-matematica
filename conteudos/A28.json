@@ -4,126 +4,99 @@
   "idioma": "pt-BR",
   "formato": "capri-mat-v1",
   "objetivos": [
-    "Saber quando a inversa existe",
-    "Obter a lei de f⁻¹ trocando x e y",
-    "Relacionar os gráficos de f e f⁻¹"
+    "Entender o módulo como distância até o zero",
+    "Calcular módulos usando a definição por casos",
+    "Usar as propriedades do módulo"
   ],
   "teoria": [
     {
-      "titulo": "Quando existe a inversa",
+      "titulo": "Módulo é distância",
       "paragrafos": [
-        "A inversa desfaz o que a função fez: se f leva 2 em 7, f⁻¹ leva 7 de volta em 2. Isso só funciona se a função for bijetora; caso contrário, alguma saída teria duas voltas possíveis ou nenhuma."
+        "O módulo de um número é a sua distância até o zero na reta. Como distância nunca é negativa, o módulo é sempre maior ou igual a zero.",
+        "Da mesma forma, |a − b| é a distância entre a e b."
       ],
       "formulas": [
-        "f(a)=b\\;\\Leftrightarrow\\;f^{-1}(b)=a"
-      ],
-      "dica": "Domínio de f⁻¹ é a imagem de f, e imagem de f⁻¹ é o domínio de f."
-    },
-    {
-      "titulo": "Como obter a lei",
-      "paragrafos": [
-        "Escreva y = f(x), troque x por y e y por x e isole o novo y."
-      ],
-      "formulas": [
-        "f(f^{-1}(x))=x"
+        "|x|=\\begin{cases}x,&x\\ge0\\\\-x,&x<0\\end{cases}"
       ],
       "exemplo": {
-        "enunciado": "Determine a inversa de f(x) = 3x − 6.",
+        "enunciado": "Calcule |√3 − 2|.",
         "passos": [
-          "y = 3x − 6.",
-          "Trocando: x = 3y − 6.",
-          "3y = x + 6, logo f⁻¹(x) = (x + 6)/3."
+          "√3 ≈ 1,73, então √3 − 2 é negativo.",
+          "Pela definição, o módulo troca o sinal: |√3 − 2| = 2 − √3."
         ]
       },
-      "erroComum": "f⁻¹(x) não é 1/f(x). O expoente −1 aqui indica a função inversa, não o inverso do número."
+      "dica": "Para tirar o módulo, pergunte primeiro: o que está dentro é positivo ou negativo?",
+      "erroComum": "Achar que −x é sempre negativo. Se x < 0, então −x é positivo, e é por isso que |x| = −x nesse caso."
     },
     {
-      "titulo": "O gráfico espelhado",
+      "titulo": "Propriedades úteis",
       "paragrafos": [
-        "O gráfico de f⁻¹ é o reflexo do gráfico de f em relação à reta y = x. É assim, por exemplo, que a exponencial e o logaritmo se relacionam."
+        "O módulo do produto é o produto dos módulos. Já para a soma vale só uma desigualdade."
       ],
-      "exemplo": {
-        "enunciado": "Se o ponto (1, 4) está no gráfico de f, que ponto está no gráfico de f⁻¹?",
-        "passos": [
-          "A inversa troca entrada e saída.",
-          "O ponto (4, 1) está no gráfico de f⁻¹."
-        ]
-      }
+      "formulas": [
+        "|ab|=|a|\\,|b|",
+        "\\sqrt{x^2}=|x|",
+        "|a+b|\\le|a|+|b|"
+      ],
+      "erroComum": "Escrever √(x²) = x. O correto é |x|."
     }
   ],
-  "videos": [],
+  "videos": [
+    {
+      "titulo": "Introdução a equações e gráficos de valores absolutos",
+      "canal": "Khan Academy Brasil · vídeo",
+      "descricao": "Exemplos de equações modulares e como separar os casos.",
+      "url": "https://pt.khanacademy.org/math/algebra-home/alg-absolute-value/alg-absolute-value-equations/v/absolute-value-equations"
+    }
+  ],
   "quiz": [
     {
-      "nivel": "Conceito",
-      "enunciado": "Uma função admite inversa quando é",
-      "opcoes": [
-        "par",
-        "injetora apenas",
-        "bijetora",
-        "crescente apenas"
-      ],
-      "correta": 2,
-      "explicacao": "É preciso ser bijetora."
-    },
-    {
       "nivel": "Aquecimento",
-      "enunciado": "A inversa de f(x) = x + 5 é",
+      "enunciado": "O valor de |−7| + |3| é",
       "opcoes": [
-        "f⁻¹(x) = x − 5",
-        "f⁻¹(x) = 5 − x",
-        "f⁻¹(x) = 1/(x + 5)",
-        "f⁻¹(x) = −x − 5"
-      ],
-      "correta": 0,
-      "explicacao": "Trocando: x = y + 5 ⇒ y = x − 5."
-    },
-    {
-      "nivel": "Aplicação",
-      "enunciado": "A inversa de f(x) = (2x − 1)/3 é",
-      "opcoes": [
-        "(3x + 1)/2",
-        "(3x − 1)/2",
-        "3/(2x − 1)",
-        "(2x + 1)/3"
-      ],
-      "correta": 0,
-      "explicacao": "x = (2y − 1)/3 ⇒ 3x = 2y − 1 ⇒ y = (3x + 1)/2."
-    },
-    {
-      "nivel": "Aplicação",
-      "enunciado": "Se f(4) = 10, então f⁻¹(10) vale",
-      "opcoes": [
-        "1/10",
+        "−4",
         "4",
         "10",
-        "40"
+        "−10"
       ],
-      "correta": 1,
-      "explicacao": "A inversa desfaz: f⁻¹(10) = 4."
+      "correta": 2,
+      "explicacao": "7 + 3 = 10."
     },
     {
       "nivel": "Conceito",
-      "enunciado": "Os gráficos de f e f⁻¹ são simétricos em relação",
+      "enunciado": "Para x < 0, |x| é igual a",
       "opcoes": [
-        "ao eixo x",
-        "ao eixo y",
-        "à origem",
-        "à reta y = x"
-      ],
-      "correta": 3,
-      "explicacao": "A inversa troca x e y."
-    },
-    {
-      "nivel": "Desafio",
-      "enunciado": "Para f(x) = 2x + 3, o valor de f(f⁻¹(7)) é",
-      "opcoes": [
-        "3",
-        "7",
-        "17",
-        "2"
+        "x",
+        "−x",
+        "0",
+        "1/x"
       ],
       "correta": 1,
-      "explicacao": "f(f⁻¹(x)) = x para todo x da imagem."
+      "explicacao": "Pela definição, se x < 0, |x| = −x."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "O número |√3 − 2| é igual a",
+      "opcoes": [
+        "√3 − 2",
+        "2 − √3",
+        "√3 + 2",
+        "−√3 − 2"
+      ],
+      "correta": 1,
+      "explicacao": "√3 − 2 é negativo, então o módulo troca o sinal."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A distância entre os números −3 e 5 na reta é",
+      "opcoes": [
+        "2",
+        "5",
+        "8",
+        "−8"
+      ],
+      "correta": 2,
+      "explicacao": "|5 − (−3)| = 8."
     }
   ],
   "exercicios": [],

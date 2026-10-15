@@ -1,60 +1,97 @@
 {
   "status": "publicado",
   "versao": "1.0",
+  "idioma": "pt-BR",
   "formato": "capri-mat-v1",
+  "objetivos": [
+    "Escrever números em notação científica",
+    "Operar com números em notação científica",
+    "Estimar a ordem de grandeza"
+  ],
   "teoria": [
     {
-      "titulo": "Entenda sem decorar",
+      "titulo": "O formato",
       "paragrafos": [
-        "Juros simples crescem linearmente: a taxa incide sempre sobre o capital inicial. Montante é capital mais juros acumulados."
+        "Em notação científica, o número é escrito como a · 10ⁿ, com 1 ≤ a < 10 e n inteiro. Números grandes têm n positivo; números pequenos, n negativo."
       ],
       "formulas": [
-        "J=Cit,\\qquad M=C(1+it)"
-      ],
-      "dica": "Taxa e tempo precisam estar na mesma unidade.",
-      "erroComum": "Em juros simples, o juro não rende juro adicional."
-    },
-    {
-      "titulo": "Hora de ver funcionar",
-      "paragrafos": [
-        "Vamos transformar a ideia em um exemplo resolvido."
+        "a\\cdot10^n,\\quad1\\le a<10"
       ],
       "exemplo": {
-        "enunciado": "Aplique R$ 1000 a 2% ao mês por 5 meses em juros simples.",
+        "enunciado": "Escreva 0,00045 e 320 000 em notação científica.",
         "passos": [
-          "J=1000·0,02·5=100.",
-          "Montante M=1100."
+          "0,00045 = 4,5 · 10⁻⁴.",
+          "320 000 = 3,2 · 10⁵."
         ]
-      }
-    }
-  ],
-  "quiz": [
-    {
-      "nivel": "Conceito",
-      "enunciado": "Capital 500, taxa 1% mensal por 4 meses: juros =",
-      "opcoes": [
-        "5",
-        "10",
-        "20",
-        "40"
-      ],
-      "correta": 2,
-      "explicacao": "500·0,01·4=20."
+      },
+      "dica": "Conte quantas casas a vírgula andou: para a esquerda o expoente é positivo; para a direita, negativo."
     },
     {
-      "nivel": "Aplicação",
-      "enunciado": "Montante de 1000 a 10% simples por 2 anos é:",
-      "opcoes": [
-        "1100",
-        "1200",
-        "1210",
-        "2000"
+      "titulo": "Contas e ordem de grandeza",
+      "paragrafos": [
+        "Para multiplicar, multiplique os números e some os expoentes de 10; depois ajuste para que a fique entre 1 e 10. A ordem de grandeza é a potência de 10 mais próxima do número."
       ],
-      "correta": 1,
-      "explicacao": "1000(1+0,1·2)=1200."
+      "exemplo": {
+        "enunciado": "Calcule (3 · 10⁵) · (4 · 10⁻²).",
+        "passos": [
+          "3 · 4 = 12 e 10⁵ · 10⁻² = 10³.",
+          "12 · 10³ = 1,2 · 10⁴."
+        ]
+      },
+      "erroComum": "Deixar a resposta como 12 · 10³. O número da frente precisa ficar entre 1 e 10."
     }
   ],
   "videos": [],
-  "arquivos": [],
-  "exercicios": []
+  "quiz": [
+    {
+      "nivel": "Aquecimento",
+      "enunciado": "0,0072 em notação científica é",
+      "opcoes": [
+        "7,2 · 10⁻³",
+        "72 · 10⁻⁴",
+        "7,2 · 10³",
+        "0,72 · 10⁻²"
+      ],
+      "correta": 0,
+      "explicacao": "A vírgula anda 3 casas para a direita."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "(2 · 10⁴) · (5 · 10³) é",
+      "opcoes": [
+        "1 · 10⁸",
+        "10 · 10⁷",
+        "7 · 10⁷",
+        "1 · 10⁷"
+      ],
+      "correta": 0,
+      "explicacao": "10 · 10⁷ = 10⁸."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "(6 · 10⁸) ÷ (3 · 10²) é",
+      "opcoes": [
+        "2 · 10⁶",
+        "2 · 10⁴",
+        "3 · 10⁶",
+        "18 · 10¹⁰"
+      ],
+      "correta": 0,
+      "explicacao": "6 ÷ 3 = 2 e 10⁸⁻² = 10⁶."
+    },
+    {
+      "nivel": "Aplicação",
+      "enunciado": "A massa de um próton é cerca de 1,67 · 10⁻²⁷ kg. A massa de 1000 prótons é cerca de",
+      "opcoes": [
+        "1,67 · 10⁻³⁰ kg",
+        "1,67 · 10⁻²⁴ kg",
+        "1,67 · 10⁻²⁴ g",
+        "1,67 · 10³ kg"
+      ],
+      "correta": 1,
+      "explicacao": "Multiplicar por 10³ soma 3 ao expoente."
+    }
+  ],
+  "exercicios": [],
+  "arquivos": []
 }

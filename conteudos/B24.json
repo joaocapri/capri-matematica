@@ -6,13 +6,13 @@
     {
       "titulo": "Pegue a ideia",
       "paragrafos": [
-        "Cone reto tem base circular e vértice. A geratriz g liga vértice à borda e forma triângulo retângulo com raio e altura. Seu volume é um terço do cilindro correspondente."
+        "Poliedros são sólidos limitados por faces poligonais. Nos poliedros convexos vale a relação de Euler: vértices menos arestas mais faces é igual a 2."
       ],
       "formulas": [
-        "g^2=r^2+h^2,\\quad V=\\frac{\\pi r^2h}{3}"
+        "V-A+F=2"
       ],
-      "dica": "Use Pitágoras para encontrar o terceiro elemento entre r,h,g.",
-      "erroComum": "Geratriz não é altura vertical."
+      "dica": "Confira se o sólido é convexo antes de usar Euler sem ressalvas.",
+      "erroComum": "Corpos redondos, como esfera, não são poliedros."
     },
     {
       "titulo": "Na prática",
@@ -20,10 +20,10 @@
         "Agora aplique o conceito em um exemplo resolvido."
       ],
       "exemplo": {
-        "enunciado": "Cone com raio 3 e altura 4: geratriz e volume?",
+        "enunciado": "Um poliedro convexo tem 8 vértices e 6 faces. Quantas arestas?",
         "passos": [
-          "g=√(9+16)=5.",
-          "V=π·9·4/3=12π."
+          "Euler: 8−A+6=2.",
+          "A=12 arestas."
         ]
       }
     }
@@ -31,27 +31,27 @@
   "quiz": [
     {
       "nivel": "Conceito",
-      "enunciado": "Cone r=2,h=6 tem volume:",
+      "enunciado": "Um cubo tem quantas arestas?",
       "opcoes": [
-        "4π",
-        "8π",
-        "12π",
-        "24π"
+        "6",
+        "8",
+        "12",
+        "16"
       ],
-      "correta": 1,
-      "explicacao": "π·4·6/3=8π."
+      "correta": 2,
+      "explicacao": "São 12 arestas."
     },
     {
       "nivel": "Aplicação",
-      "enunciado": "Se r=5 e h=12, g vale:",
+      "enunciado": "Se V=6 e F=5, A é:",
       "opcoes": [
-        "7",
-        "13",
-        "17",
-        "60"
+        "9",
+        "10",
+        "11",
+        "12"
       ],
-      "correta": 1,
-      "explicacao": "√(25+144)=13."
+      "correta": 0,
+      "explicacao": "6−A+5=2 ⇒ A=9."
     }
   ],
   "videos": [],
