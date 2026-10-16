@@ -52,6 +52,12 @@ PREAMBULO = r"""
 \color{ink}
 \usepackage{tikz}
 \usetikzlibrary{calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18,every axis/.append style={font=\scriptsize,axis lines=middle,axis line style={-latex,ink!70},tick style={ink!50},grid style={roxo!10}}}
+\usepackage{colortbl}
+\usepackage{array}
+\newcommand{\apoio}[1]{\leavevmode{\color{ink!85}#1}\par\vspace{2pt}}
+\newenvironment{figurinha}{\par\vspace{3pt}\centering}{\par\vspace{3pt}}
 \usepackage{multicol}
 \setlength{\columnsep}{8mm}
 \setlength{\columnseprule}{0.4pt}
@@ -200,8 +206,33 @@ def bloco(texto):
     return r"\par ".join(linhas)
 
 
+def tabela_tex(t):
+    """Tabela de apoio: {cabecalho: [...], linhas: [[...], ...], legenda?}."""
+    n = len(t["cabecalho"])
+    cols = "|".join(["c"] * n)
+    cab = " & ".join(r"\textbf{%s}" % c for c in t["cabecalho"])
+    linhas = r" \\ ".join(" & ".join(str(c) for c in l) for l in t["linhas"])
+    leg = r"\par\vspace{1pt}{\scriptsize\color{mudo}%s}" % t["legenda"] if t.get("legenda") else ""
+    return (r"\begin{figurinha}\small\renewcommand{\arraystretch}{1.25}\arrayrulecolor{roxo!25}"
+            r"\begin{tabular}{%s}\rowcolor{suave}%s \\ \hline %s\end{tabular}%s\end{figurinha}" % (cols, cab, linhas, leg))
+
+
+def figura_tex(f):
+    """Figura de apoio em TikZ/pgfplots: {tikz: '...', legenda?} ou o código direto."""
+    cod = f["tikz"] if isinstance(f, dict) else f
+    leg = r"\par\vspace{1pt}{\scriptsize\color{mudo}%s}" % f["legenda"] if isinstance(f, dict) and f.get("legenda") else ""
+    return r"\begin{figurinha}\begin{tikzpicture}%s\end{tikzpicture}%s\end{figurinha}" % (cod, leg)
+
+
 def enunciado_tex(q):
-    tex = bloco(q["enunciado"])
+    tex = ""
+    if q.get("texto"):
+        tex += r"\apoio{%s}" % bloco(q["texto"])
+    if q.get("tabela"):
+        tex += tabela_tex(q["tabela"])
+    if q.get("figura"):
+        tex += figura_tex(q["figura"])
+    tex += bloco(q["enunciado"])
     if q.get("itens"):
         tex += r"\begin{itens}" + "".join(r"\item " + i for i in q["itens"]) + r"\end{itens}"
     if q.get("opcoes"):
@@ -286,6 +317,11 @@ def validar(codigo, fonte):
         if not q.get("resolucao"):
             erros.append(f"vestibular {i}: falta resolucao")
         cont[q.get("correta")] = cont.get(q.get("correta"), 0) + 1
+    contexto = [q for q in qv if q.get("tabela") or q.get("figura") or len(str(q.get("texto", ""))) >= 120]
+    if qv and len(contexto) < 10:
+        erros.append(f"vestibular tem {len(contexto)} questões com contexto (mínimo 10: texto de apoio, tabela ou figura)")
+    if qv and sum(1 for q in qv if q.get("tabela") or q.get("figura")) < 3:
+        erros.append("vestibular precisa de pelo menos 3 questões com tabela ou figura")
     if qv and any(not 3 <= cont.get(l, 0) <= 5 for l in "ABCDE"):
         erros.append(f"gabarito desequilibrado: {cont} (cada letra deve aparecer de 3 a 5 vezes)")
     if erros:
@@ -313,7 +349,7 @@ def ajustar(x):
     if isinstance(x, list):
         return [ajustar(i) for i in x]
     if isinstance(x, dict):
-        return {k: ajustar(v) for k, v in x.items()}
+        return {k: (v if k == "figura" else ajustar(v)) for k, v in x.items()}
     return x
 
 
