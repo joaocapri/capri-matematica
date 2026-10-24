@@ -1,0 +1,35 @@
+{
+  "id": "kit-matmatmat-4",
+  "name": "Coleção MAT MAT MAT! — 4 volumes",
+  "format": "4 volumes • A5 • wire-o",
+  "authors": "Prof. Marco Capri e Prof. João Capri",
+  "price": null,
+  "phone": "5543991853868",
+  "status": "Pré-venda sob consulta",
+  "volumes": [
+    {
+      "id": 1,
+      "name": "Números",
+      "color": "#D7E75B",
+      "themes": "Base e ENEM · Conjuntos e conjuntos numéricos · PA e PG · Combinatória · Binômio de Newton · Probabilidade · Estatística"
+    },
+    {
+      "id": 2,
+      "name": "Funções",
+      "color": "#3558D7",
+      "themes": "Afim · Quadrática · Modular · Composta e inversa · Inequações · Exponencial · Logaritmos · Trigonometria"
+    },
+    {
+      "id": 3,
+      "name": "Álgebra",
+      "color": "#087B72",
+      "themes": "Matrizes · Determinantes · Sistemas · Geometria analítica · Números complexos · Polinômios · Equações algébricas"
+    },
+    {
+      "id": 4,
+      "name": "Geometria",
+      "color": "#EF8565",
+      "themes": "Geometria plana · Geometria espacial"
+    }
+  ]
+}
