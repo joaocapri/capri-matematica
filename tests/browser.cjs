@@ -138,6 +138,17 @@ async function checkWidth(page,label){
   await checkWidth(page,config.name+' sugestões da busca');
   await page.locator('#hero-search').press('Enter');
   await page.waitForURL('**/aulas/A29/');
+  await page.goto(BASE+'/turmas/',{waitUntil:'domcontentloaded'});
+  await page.locator('.turmas-directory-card').first().waitFor();
+  assert.equal(await page.locator('.turmas-directory-card').count(),12);
+  assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex,nofollow,noarchive,nosnippet');
+  await checkWidth(page,config.name+' índice de turmas');
+  await page.screenshot({path:'screenshots/'+config.name+'-turmas-indice.png',fullPage:true});
+  await page.locator('a[href="/turmas/maxi/2p2/"]').click();
+  await page.locator('.class-hero h1').waitFor();
+  assert.equal(await page.locator('.class-hero h1').textContent(),'2P2');
+  await checkWidth(page,config.name+' turma Maxi 2P2');
+  await page.screenshot({path:'screenshots/'+config.name+'-turma-maxi-2p2.png',fullPage:true});
   await page.goto(BASE+'/turmas/maxi/1p1/',{waitUntil:'domcontentloaded'});
   await page.locator('.class-hero h1').waitFor();
   assert.equal(await page.locator('.class-hero h1').textContent(),'1P1');

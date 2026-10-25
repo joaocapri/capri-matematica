@@ -121,3 +121,7 @@ Nos dados, cada assunto é um bloco de `data/aulas.json`. Os conteúdos das aula
 ## Currículo v2 (outubro de 2026)
 
 A frente A foi reordenada: fundamentos → produtos notáveis (A07) e fatoração (A08) → equações do 1º grau (A09), do 2º grau (A10) e problemas (A11) → introdução a funções (A12–A14) → função afim (A15–A18) → quadrática (A19–A24) → função par e ímpar (A25), injetora/sobrejetora/bijetora (A26), composta (A27), inversa (A28) → modular, exponencial e logaritmos, sequências, complexos e polinômios. Na frente C, Unidades de Medida virou C07, Binômio de Newton virou C20 (entre combinatória e probabilidade) e sistemas 2x2 virou C48, depois de matrizes e determinantes (discussão de sistemas é C49). A antiga aula A10 (classificação de funções numa aula só) foi arquivada em `conteudos/arquivo/` e `materiais-fonte/arquivo/`. O progresso salvo no navegador é migrado uma vez pelo bloco `matmat-curriculo` em `assets/site.js`.
+
+
+## Diretório de turmas (acesso por link direto)
+Acesse `/turmas/` para escolher uma das **12 turmas** Maxi ou Integral. Este índice é para o professor e para revisão visual, não está no menu público e tem diretiva noindex. As páginas individuais permanecem compartilháveis diretamente com os alunos. A turma Maxi **2P2** foi confirmada como distinta de 2P1 e tem seus próprios dados em `data/turmas/maxi-2p2.json`. *Links não listados não são privados*: nunca publicar dados pessoais ou materiais confidenciais sem autenticação.

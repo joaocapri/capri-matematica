@@ -157,3 +157,50 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
  .class-footer .class-container{flex-direction:column;align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.class-filters button{transition:none}}
+
+
+/* Diretório não listado para revisão e distribuição dos links */
+.turmas-directory-hero{background:#351c76;color:#fff;padding:57px 0 63px}
+.turmas-directory-hero h1{font:800 clamp(48px,6.8vw,85px)/1.04 'Space Grotesk',sans-serif;letter-spacing:-3.6px;margin:18px 0 17px}
+.turmas-directory-hero h1 em{font-style:normal;color:#d7fa75}
+.turmas-directory-hero p{font-size:14px;color:#e3d9f3;line-height:1.7;max-width:590px;margin:0}
+.turmas-directory-stats{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}
+.turmas-directory-stats span{background:#ffffff19;border:1px solid #ffffff3c;color:#f9f5ff;font-size:10px;font-weight:900;padding:9px 13px;border-radius:99px}
+.turmas-directory-main{padding-top:15px}
+.turmas-directory-group{padding:57px 0 14px}
+.turmas-directory-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:21px}
+.turmas-directory-heading h2{font:750 clamp(25px,4vw,38px)/1.16 'Space Grotesk',sans-serif;letter-spacing:-1px;margin:10px 0 5px}
+.turmas-directory-heading p{font-size:12px;color:#80738a;margin:0;line-height:1.55}
+.turmas-directory-heading>span{border:1px solid #e2d8eb;padding:8px 12px;border-radius:99px;font-size:11px;font-weight:900;color:#6243a3;white-space:nowrap}
+.turmas-directory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.turmas-directory-card{display:flex;align-items:center;gap:11px;min-height:98px;padding:18px 15px;border:1.5px solid #ded4e8;background:#fffefa;border-radius:16px;box-shadow:3px 4px 0 #e6ddec;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.turmas-directory-card:hover{transform:translateY(-3px);box-shadow:4px 6px 0 #d8c7e8;border-color:#643ac1}
+.turmas-directory-icon{display:grid;place-items:center;background:#d7fa75;border:1.5px solid #2c194f;border-radius:10px;width:40px;height:40px;flex-shrink:0;font:900 14px 'Space Grotesk',sans-serif}
+.turmas-directory-group:nth-of-type(2) .turmas-directory-icon{background:#dac6fa}
+.turmas-directory-label{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.turmas-directory-label strong{font:800 20px 'Space Grotesk',sans-serif;letter-spacing:-.45px}
+.turmas-directory-label small{font-size:10px;color:#786b85}
+.turmas-directory-arrow{font-size:17px;color:#5f33b1;flex-shrink:0}
+.turmas-directory-helper{display:flex;align-items:center;justify-content:space-between;gap:26px;border:1px solid #dacde9;background:#f0e9fa;border-radius:19px;padding:25px;margin:59px 0 80px}
+.turmas-directory-helper>div{max-width:610px}
+.turmas-directory-helper>div>span{font-size:10px;font-weight:900;letter-spacing:1.2px;color:#673bb4}
+.turmas-directory-helper h2{font:750 25px 'Space Grotesk',sans-serif;letter-spacing:-.6px;margin:8px 0}
+.turmas-directory-helper h2 em{color:#6936c0;font-style:normal}
+.turmas-directory-helper p{color:#716583;font-size:12px;line-height:1.65;margin:9px 0}
+.turmas-directory-helper>a{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;text-align:center;background:#d7fa75;border:1.5px solid #30214e;border-radius:11px;padding:14px 18px;font-size:11px;font-weight:900;box-shadow:3px 4px 0 #30214e}
+@media(max-width:900px){.turmas-directory-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:680px){
+ .turmas-directory-hero{padding:41px 0 44px}
+ .turmas-directory-hero h1{font-size:47px;letter-spacing:-2px}
+ .turmas-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .turmas-directory-card{min-height:81px;padding:12px 10px;gap:8px}
+ .turmas-directory-icon{width:33px;height:33px;font-size:12px}
+ .turmas-directory-label strong{font-size:17px}
+ .turmas-directory-label small{font-size:9px}
+ .turmas-directory-arrow{font-size:14px}
+ .turmas-directory-group{padding-top:42px}
+ .turmas-directory-helper{flex-direction:column;align-items:start;margin-top:45px;padding:21px}
+ .turmas-directory-helper>a{width:100%}
+}
+@media(max-width:350px){.turmas-directory-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.turmas-directory-card{transition:none}}

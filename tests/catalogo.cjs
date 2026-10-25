@@ -6,8 +6,13 @@ const materials=JSON.parse(readFileSync('data/materiais.json','utf8'));
 const diagnostic=JSON.parse(readFileSync('data/diagnostico.json','utf8'));
 const app=readFileSync('assets/site.js','utf8');
 const classJS=readFileSync('assets/turmas.js','utf8');
-const expectedClasses=['maxi-1p1','maxi-1p2','maxi-2p1','maxi-3p1','maxi-3p2','maxi-fera','maxi-med','integral-3a','integral-3b','integral-3c','integral-semi'];
-assert.equal(expectedClasses.length,11);
+const expectedClasses=['maxi-1p1','maxi-1p2','maxi-2p1','maxi-2p2','maxi-3p1','maxi-3p2','maxi-fera','maxi-med','integral-3a','integral-3b','integral-3c','integral-semi'];
+assert.equal(expectedClasses.length,12);
+const turmasIndex=readFileSync('turmas/index.html','utf8');
+assert.match(turmasIndex,/<meta name="robots" content="noindex,nofollow/);
+assert.match(turmasIndex,/href="\/turmas\/maxi\/2p2\/"/);
+assert.match(turmasIndex,/href="\/turmas\/integral\/semi\/"/);
+assert.equal((turmasIndex.match(/class="turmas-directory-card"/g)||[]).length,12);
 for(const id of expectedClasses){
  const data=JSON.parse(readFileSync('data/turmas/'+id+'.json','utf8'));
  assert.equal(data.id,id);

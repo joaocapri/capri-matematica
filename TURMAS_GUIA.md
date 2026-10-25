@@ -1,23 +1,26 @@
 # MAT MAT MAT! — Área de turmas
 **Gestão editorial pelo GitHub; URLs compartilháveis apenas com os alunos.**
 
+Existe um índice não listado em `/turmas/`, para facilitar a navegação do professor. Nenhuma dessas páginas aparece na home pública.
+
 Estas páginas são *não listadas* — não aparecem na home, no menu, nos resultados da busca nem em páginas públicas. Os endereços têm `noindex` e são desencorajados aos buscadores. **Isso não constitui autenticação ou privacidade real**: qualquer pessoa com a URL pode abrir a página, ver os arquivos e compartilhá-la. Não publicar notas individuais, listas de presença, dados pessoais, contatos de alunos, avaliações privadas ou conteúdo que exija controle de acesso. Para acesso privado real, será necessário login/autorização no servidor.
 
 ## Links das turmas (enviar o endereço direto aos alunos)
 - **Maxi 1P1** — `/turmas/maxi/1p1/`
 - **Maxi 1P2** — `/turmas/maxi/1p2/`
 - **Maxi 2P1** — `/turmas/maxi/2p1/`
+- **Maxi 2P2** — `/turmas/maxi/2p2/`
 - **Maxi 3P1** — `/turmas/maxi/3p1/`
 - **Maxi 3P2** — `/turmas/maxi/3p2/`
-- **Maxi Maxi Fera** — `/turmas/maxi/fera/`
-- **Maxi Maxi Med** — `/turmas/maxi/med/`
+- **Maxi Fera** — `/turmas/maxi/fera/`
+- **Maxi Med** — `/turmas/maxi/med/`
 - **Integral 3A** — `/turmas/integral/3a/`
 - **Integral 3B** — `/turmas/integral/3b/`
 - **Integral 3C** — `/turmas/integral/3c/`
 - **Integral Semi** — `/turmas/integral/semi/`
 
-### Conferência importante
-A solicitação original trouxe `2P1` **duas vezes**. Mantivemos uma única turma `maxi/2p1`, sem presumir que a segunda fosse `2P2`. Caso seja `2P2`, criar outro JSON e página com slug `2p2`.
+### Atualização
+Confirmado: a segunda turma do 2º ano é **Maxi 2P2**. Os links `/turmas/maxi/2p1/` e `/turmas/maxi/2p2/` são separados.
 
 ## Como publicar um aviso, PDF, teoria ou roteiro
 1. Abra o arquivo JSON específico em `data/turmas/` no GitHub (por exemplo, `data/turmas/maxi-1p1.json`).

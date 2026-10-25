@@ -4,7 +4,7 @@
 const root=document.getElementById('class-app');
 if(!root)return;
 const id=document.body.getAttribute('data-turma')||'';
-const supported=['maxi-1p1','maxi-1p2','maxi-2p1','maxi-3p1','maxi-3p2','maxi-fera','maxi-med','integral-3a','integral-3b','integral-3c','integral-semi'];
+const supported=['maxi-1p1','maxi-1p2','maxi-2p1','maxi-2p2','maxi-3p1','maxi-3p2','maxi-fera','maxi-med','integral-3a','integral-3b','integral-3c','integral-semi'];
 if(!supported.includes(id)){root.textContent='Turma não encontrada.';return}
 const logo='<img src="/assets/logo-mat-256.png" width="66" height="66" alt="MAT MAT MAT!" loading="eager">';
 const icons={
