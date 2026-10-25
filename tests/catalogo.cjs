@@ -5,6 +5,21 @@ const curriculum=JSON.parse(readFileSync('data/aulas.json','utf8'));
 const materials=JSON.parse(readFileSync('data/materiais.json','utf8'));
 const diagnostic=JSON.parse(readFileSync('data/diagnostico.json','utf8'));
 const app=readFileSync('assets/site.js','utf8');
+const classJS=readFileSync('assets/turmas.js','utf8');
+const expectedClasses=['maxi-1p1','maxi-1p2','maxi-2p1','maxi-3p1','maxi-3p2','maxi-fera','maxi-med','integral-3a','integral-3b','integral-3c','integral-semi'];
+assert.equal(expectedClasses.length,11);
+for(const id of expectedClasses){
+ const data=JSON.parse(readFileSync('data/turmas/'+id+'.json','utf8'));
+ assert.equal(data.id,id);
+ assert.ok(Array.isArray(data.notices)&&Array.isArray(data.materials)&&Array.isArray(data.studyPlan));
+ const [school,slug]=id.split('-');
+ const html=readFileSync('turmas/'+school+'/'+slug+'/index.html','utf8');
+ assert.ok(html.includes('data-turma="'+id+'"'));
+ assert.match(html,/noindex,nofollow/);
+}
+assert.ok(!app.includes('/turmas/maxi/1p1/'),'Turmas não aparecem no app público');
+assert.ok(!classJS.includes('document.cookie'),'Páginas sem login e cookies');
+
 const wait=()=>new Promise(r=>setTimeout(r,12));
 async function boot(url='https://matmatmat.test/'){
  const {pathname}=new URL(url);

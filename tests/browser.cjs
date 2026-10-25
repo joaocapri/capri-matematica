@@ -138,6 +138,20 @@ async function checkWidth(page,label){
   await checkWidth(page,config.name+' sugestões da busca');
   await page.locator('#hero-search').press('Enter');
   await page.waitForURL('**/aulas/A29/');
+  await page.goto(BASE+'/turmas/maxi/1p1/',{waitUntil:'domcontentloaded'});
+  await page.locator('.class-hero h1').waitFor();
+  assert.equal(await page.locator('.class-hero h1').textContent(),'1P1');
+  assert.equal(await page.locator('.class-notice').count(),1);
+  assert.equal(await page.locator('#class-empty-materials').count(),1);
+  assert.equal(await page.locator('.class-filters button').count(),5);
+  assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex,nofollow,noarchive,nosnippet');
+  await checkWidth(page,config.name+' turma Maxi 1P1');
+  await page.screenshot({path:'screenshots/'+config.name+'-turma-maxi-1p1.png',fullPage:true});
+  await page.goto(BASE+'/turmas/integral/3a/',{waitUntil:'domcontentloaded'});
+  await page.locator('.class-hero h1').waitFor();
+  assert.equal(await page.locator('.class-hero h1').textContent(),'3A');
+  await checkWidth(page,config.name+' turma Integral 3A');
+  await page.screenshot({path:'screenshots/'+config.name+'-turma-integral-3a.png',fullPage:true});
   await page.close();
  }
  await browser.close();
