@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "id": "maxi-1p2",
+  "school": "Maxi",
+  "className": "1P2",
+  "teacher": "Prof. João Capri",
+  "description": "Seu espaço de materiais, avisos e acompanhamento das aulas de Matemática.",
+  "updatedAt": null,
+  "notices": [
+    {
+      "id": "boas-vindas",
+      "title": "Bem-vindos ao espaço da turma!",
+      "text": "Aqui serão publicados os avisos e materiais específicos da turma. Guarde este link para acompanhar as atualizações.",
+      "date": null,
+      "pinned": true
+    }
+  ],
+  "studyPlan": [],
+  "materials": [],
+  "relatedLessons": []
+}
