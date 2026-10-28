@@ -1018,9 +1018,16 @@ async function lessonPage(){
   document.querySelectorAll('[data-level]').forEach(function(b){b.addEventListener('click',function(){level=Number(b.dataset.level);drawLevel()})});
   drawLevel();
  }
+ function apoioHtml(q){
+  var h='';
+  if(q.texto&&q.texto.length)h+=q.texto.map(function(t){return '<p class="aula-apoio">'+esc(t)+'</p>'}).join('');
+  if(q.tabela)h+='<div class="aula-tab-wrap"><table class="aula-tab"><thead><tr>'+q.tabela.cabecalho.map(function(c){return '<th>'+esc(c)+'</th>'}).join('')+'</tr></thead><tbody>'+q.tabela.linhas.map(function(l){return '<tr>'+l.map(function(c){return '<td>'+esc(c)+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>'+(q.tabela.legenda?'<p class="aula-legenda">'+esc(q.tabela.legenda)+'</p>':'')+'</div>';
+  if(q.figura)h+='<figure class="aula-fig"><img src="'+esc(q.figura)+'" alt="Figura da questão '+q.n+'" loading="lazy">'+(q.legenda?'<figcaption>'+esc(q.legenda)+'</figcaption>':'')+'</figure>';
+  return h;
+ }
  function exCard(q){
   var s=st.fix[q.n]||'';
-  return '<article class="aula-ex'+(s?' is-'+s:'')+'" data-ex="'+q.n+'"><div class="aula-ex-q"><span class="aula-ex-n">'+q.n+'</span><div class="aula-ex-body"><p>'+esc(q.enunciado)+'</p>'+(q.itens&&q.itens.length?'<ol class="aula-itens">'+q.itens.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ol>':'')+'</div><span class="aula-ex-badge" aria-hidden="true"></span></div>'
+  return '<article class="aula-ex'+(s?' is-'+s:'')+'" data-ex="'+q.n+'"><div class="aula-ex-q"><span class="aula-ex-n">'+q.n+'</span><div class="aula-ex-body">'+apoioHtml(q)+'<p>'+esc(q.enunciado)+'</p>'+(q.itens&&q.itens.length?'<ol class="aula-itens">'+q.itens.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ol>':'')+'</div><span class="aula-ex-badge" aria-hidden="true"></span></div>'
    +'<button type="button" class="aula-ex-ver" aria-expanded="false">'+(q.resolucao.length?'Ver resolução':'Ver resposta')+'</button>'
    +'<div class="aula-ex-sol" hidden>'+q.resolucao.map(function(r){return '<p>'+esc(r)+'</p>'}).join('')+(q.resposta?'<p class="aula-ex-resp"><b>Resposta</b><span>'+esc(q.resposta)+'</span></p>':'')
    +'<div class="aula-ex-check"><span>Como foi?</span><button type="button" class="aula-mark" data-mark="ok" aria-pressed="'+(s==='ok')+'">Acertei</button><button type="button" class="aula-mark" data-mark="erro" aria-pressed="'+(s==='erro')+'">Errei</button></div></div></article>';
@@ -1063,7 +1070,7 @@ async function lessonPage(){
    var dots=prova.order.map(function(k,pos){var a=prova.answers[k];return '<span class="aula-dot'+(pos===prova.i?' is-now':'')+(a!=null?(a===vestQs[k].correta?' is-right':' is-wrong'):'')+'"></span>'}).join('');
    var acertos=prova.order.filter(function(k){return prova.answers[k]===vestQs[k].correta}).length;
    provaRoot.innerHTML='<div class="aula-prova-bar"><span>Questão <b>'+(prova.i+1)+'</b> de '+prova.order.length+'</span><span class="aula-dots" aria-hidden="true">'+dots+'</span><span>'+plural(acertos,'acerto','acertos')+'</span></div>'
-    +'<div class="aula-prova-q"><p class="aula-prova-enun"><span class="aula-mcq-n">'+q.n+'</span><span>'+esc(q.enunciado)+'</span></p><div class="aula-opts aula-opts-big'+optsClass(q.opcoes)+'">'+q.opcoes.map(function(o,j){var cls='';if(ans!=null){if(j===q.correta)cls=' is-right';else if(j===ans)cls=' is-wrong'}return '<button type="button" class="aula-opt'+cls+'" data-popt="'+j+'"'+(ans!=null?' disabled':'')+'><span class="aula-opt-l">'+letter(j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></button>'}).join('')+'</div>'
+    +'<div class="aula-prova-q"><div class="aula-prova-enun"><span class="aula-mcq-n">'+q.n+'</span><div class="aula-prova-txt">'+apoioHtml(q)+'<p>'+esc(q.enunciado)+'</p></div></div><div class="aula-opts aula-opts-big'+optsClass(q.opcoes)+'">'+q.opcoes.map(function(o,j){var cls='';if(ans!=null){if(j===q.correta)cls=' is-right';else if(j===ans)cls=' is-wrong'}return '<button type="button" class="aula-opt'+cls+'" data-popt="'+j+'"'+(ans!=null?' disabled':'')+'><span class="aula-opt-l">'+letter(j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></button>'}).join('')+'</div>'
     +'<div id="quiz-feedback" class="aula-fb" aria-live="polite">'+(ans!=null?provaFeedback(q,ans):'<p class="aula-kbd-hint">Dica: dá para responder com as teclas A a E.</p>')+'</div></div>';
    provaRoot.querySelectorAll('[data-popt]').forEach(function(b){b.addEventListener('click',function(){answer(Number(b.dataset.popt))})});
    var nx=provaRoot.querySelector('#prova-next');if(nx){nx.addEventListener('click',nextQ);nx.focus({preventScroll:true})}
@@ -1094,7 +1101,7 @@ async function lessonPage(){
   var box=provaRoot.querySelector('#prova-review');if(!box)return;
   if(prova.review==null){box.innerHTML='';return}
   var q=vestQs[prova.review],a=prova.answers[prova.review];
-  box.innerHTML='<div class="aula-prova-q aula-review"><p class="aula-prova-enun"><span class="aula-mcq-n">'+q.n+'</span><span>'+esc(q.enunciado)+'</span></p><div class="aula-opts">'+q.opcoes.map(function(o,j){return '<div class="aula-opt'+(j===q.correta?' is-right':j===a?' is-wrong':'')+'"><span class="aula-opt-l">'+letter(j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></div>'}).join('')+'</div><div class="aula-fb-box '+(a===q.correta?'is-right':'is-wrong')+'"><b>Resolução</b>'+q.resolucao.map(function(r){return '<p>'+esc(r)+'</p>'}).join('')+'</div></div>';
+  box.innerHTML='<div class="aula-prova-q aula-review"><div class="aula-prova-enun"><span class="aula-mcq-n">'+q.n+'</span><div class="aula-prova-txt">'+apoioHtml(q)+'<p>'+esc(q.enunciado)+'</p></div></div><div class="aula-opts">'+q.opcoes.map(function(o,j){return '<div class="aula-opt'+(j===q.correta?' is-right':j===a?' is-wrong':'')+'"><span class="aula-opt-l">'+letter(j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></div>'}).join('')+'</div><div class="aula-fb-box '+(a===q.correta?'is-right':'is-wrong')+'"><b>Resolução</b>'+q.resolucao.map(function(r){return '<p>'+esc(r)+'</p>'}).join('')+'</div></div>';
   tex(box);
  }
  function startProva(order){prova={state:'run',order:order,i:0,answers:{},review:null};drawProva();provaRoot.focus({preventScroll:true});goTo('prova')}

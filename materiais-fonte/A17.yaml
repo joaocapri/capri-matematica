@@ -1,5 +1,6 @@
 # Fonte das listas em PDF da aula A17 — Raízes, discriminante, soma e produto
 # Matemática em LaTeX. Todas as respostas foram conferidas por cálculo independente.
+# Padrão v2 (out/2026): vestibular com pelo menos 10 questões contextualizadas e 3 com tabela ou figura.
 aula: A17
 
 fixacao:
@@ -151,134 +152,186 @@ fixacao:
             Raízes $3$ e $4$: $p=S=7$. Raízes $-4$ e $-3$: $p=S=-7$.
           resposta: '$p=7$ ou $p=-7$'
 vestibular:
-  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  intro: Questões autorais no estilo dos principais vestibulares e do Enem, das mais diretas às mais contextualizadas. Assinale uma única alternativa.
   questoes:
     - enunciado: O conjunto solução, em $\mathbb{R}$, da equação $x^2-3x-10=0$ é
       opcoes: ['$\{-5,\,2\}$', '$\{-2,\,5\}$', '$\{2,\,5\}$', '$\{-5,\,-2\}$', '$\{-10,\,1\}$']
       correta: B
       resolucao: |
-        $S=3$ e $P=-10$: os números são $5$ e $-2$.
+        Procuramos dois números com soma $3$ e produto $-10$: $5$ e $-2$.
+        Logo, $S=\{-2,\,5\}$.
 
-    - enunciado: A soma dos quadrados das raízes da equação $x^2-4x+1=0$ é igual a
-      opcoes: ['$4$', '$8$', '$10$', '$12$', '$14$']
+    - texto: |
+        Em uma aula sobre funções, o professor projetou o gráfico de uma função quadrática $f(x)=x^2+bx+c$ e destacou os pontos em que a curva cruza os eixos coordenados.
+      figura:
+        tikz: |
+          \begin{axis}[width=5.6cm,height=4.8cm,xmin=-2.6,xmax=4.6,ymin=-4.9,ymax=5.4,xtick={-1,3},ytick={-3},xlabel={$x$},ylabel={$y$}]
+          \addplot[roxo,thick,domain=-2.2:4.2,samples=80]{x^2-2*x-3};
+          \addplot[only marks,mark=*,mark size=1.7pt,ink] coordinates {(-1,0)(3,0)(0,-3)};
+          \end{axis}
+      enunciado: A lei da função representada é
+      opcoes: ['$f(x)=x^2+2x-3$', '$f(x)=x^2-3x-2$', '$f(x)=x^2+3x+2$', '$f(x)=x^2-2x+3$', '$f(x)=x^2-2x-3$']
       correta: E
       resolucao: |
-        $r^2+s^2=(r+s)^2-2rs=4^2-2\cdot1=14$.
+        Os zeros são $-1$ e $3$, então $f(x)=(x+1)(x-3)=x^2-2x-3$.
+        Conferindo o corte no eixo $y$: $f(0)=-3$.
 
-    - enunciado: Uma bola é chutada verticalmente para cima, e sua altura, em metros, $t$ segundos após o chute é $h(t)=-5t^2+20t$. A bola volta ao chão após
+    - texto: |
+        Em um treino de goleiros, uma máquina lança bolas verticalmente para cima. Um sensor registra que a altura $h$ da bola, em metros, $t$ segundos após o lançamento, é dada por $h(t)=-5t^2+20t$, até a bola tocar o gramado.
+      enunciado: A bola volta a tocar o gramado após
       opcoes: ['$2$ s', '$3$ s', '$4$ s', '$5$ s', '$10$ s']
       correta: C
       resolucao: |
-        $h(t)=0\Rightarrow -5t(t-4)=0\Rightarrow t=0$ (chute) ou $t=4$ (chegada ao chão).
+        A bola está no gramado quando $h(t)=0$: $-5t(t-4)=0$, logo $t=0$ (lançamento) ou $t=4$.
+        Ela volta ao gramado após $4$ segundos.
 
     - enunciado: O valor de $k$ para o qual a equação $2x^2-8x+k=0$ admite duas raízes reais iguais é
       opcoes: ['$8$', '$12$', '$16$', '$24$', '$32$']
       correta: A
       resolucao: |
-        $\Delta=0\Rightarrow 64-8k=0\Rightarrow k=8$.
+        Raiz dupla exige $\Delta=0$: $64-8k=0$, logo $k=8$.
 
-    - enunciado: Uma equação do 2º grau cujas raízes são $3-\sqrt2$ e $3+\sqrt2$ é
-      opcoes: ['$x^2+6x+7=0$', '$x^2-6x-7=0$', '$x^2+6x-7=0$', '$x^2-6x+7=0$', '$x^2-6x+11=0$']
+    - texto: |
+        Uma estudante testou uma função quadrática $f(x)=ax^2+bx+c$ em uma planilha e anotou alguns valores, mas esqueceu de registrar a lei da função.
+      tabela:
+        cabecalho: ['$x$', '$0$', '$1$', '$4$']
+        linhas:
+          - ['$f(x)$', '$6$', '$2$', '$2$']
+      enunciado: Os zeros dessa função são
+      opcoes: ['$-3$ e $-2$', '$-1$ e $6$', '$1$ e $6$', '$2$ e $3$', '$3$ e $4$']
       correta: D
       resolucao: |
-        $S=6$ e $P=(3-\sqrt2)(3+\sqrt2)=9-2=7$. Logo, $x^2-6x+7=0$.
+        $f(0)=c=6$. Com $f(1)=2$ e $f(4)=2$: $a+b=-4$ e $16a+4b=-4$, ou seja, $4a+b=-1$.
+        Subtraindo, $3a=3$: $a=1$ e $b=-5$. Então $f(x)=x^2-5x+6$, com zeros $2$ e $3$.
 
-    - enunciado: Um grupo de amigos dividiu igualmente uma conta de R\$\,360,00. Se houvesse $2$ pessoas a menos no grupo, cada uma pagaria R\$\,6,00 a mais. O número de amigos é
+    - texto: |
+        Um grupo de amigos alugou uma chácara para um fim de semana por R\$\,360,00, valor que seria dividido igualmente. Na véspera, duas pessoas desistiram, e cada um dos que foram precisou pagar R\$\,6,00 a mais.
+      enunciado: Quantos amigos havia no grupo inicialmente?
       opcoes: ['$8$', '$10$', '$12$', '$15$', '$18$']
       correta: C
       resolucao: |
-        Com $n$ amigos: $\dfrac{360}{n-2}-\dfrac{360}{n}=6\Rightarrow 720=6n(n-2)$, ou seja, $n^2-2n-120=0$.
-        Raízes $12$ e $-10$; logo $n=12$.
+        Com $n$ amigos: $\dfrac{360}{n-2}=\dfrac{360}{n}+6$.
+        Multiplicando por $n(n-2)$: $360n=360(n-2)+6n(n-2)$, isto é, $n^2-2n-120=0$.
+        Logo, $n=12$ (a outra raiz, $-10$, não serve).
 
-    - enunciado: Sendo $x_1$ e $x_2$ as raízes de $2x^2-6x-5=0$, o valor de $x_1^2x_2+x_1x_2^2$ é
-      opcoes: ['$-\dfrac{15}{2}$', '$-\dfrac{5}{2}$', '$-\dfrac{3}{2}$', '$\dfrac{5}{2}$', '$\dfrac{15}{2}$']
-      correta: A
-      resolucao: |
-        Fatorando, $x_1x_2(x_1+x_2)=P\cdot S=\left(-\dfrac52\right)\cdot 3=-\dfrac{15}{2}$.
-
-    - enunciado: A equação $mx^2+2x+1=0$, na incógnita $x$, é do 2º grau e tem duas raízes reais distintas se, e somente se,
-      opcoes: ['$m>1$', '$m\ge1$', '$m\le1$', '$m<1$', '$m<1$ e $m\neq0$']
+    - enunciado: A soma dos quadrados das raízes da equação $x^2-4x+1=0$ é igual a
+      opcoes: ['$4$', '$8$', '$10$', '$12$', '$14$']
       correta: E
       resolucao: |
-        É preciso $m\neq0$ (para ser do 2º grau) e $\Delta=4-4m>0$, isto é, $m<1$.
-        A alternativa D esquece a condição $m\neq0$.
+        $S=4$ e $P=1$. Como $x_1^2+x_2^2=S^2-2P$, temos $16-2=14$.
 
-    - enunciado: Um terreno retangular tem perímetro $46$ m e área $120\ \text{m}^2$. A diagonal desse terreno mede
+    - texto: |
+        Uma pequena fábrica de bonés estima que, produzindo $x$ centenas de unidades por mês, seu lucro mensal, em milhares de reais, é $L(x)=-x^2+14x-40$. O gerente quer saber em que níveis de produção a fábrica não tem lucro nem prejuízo.
+      enunciado: O lucro é nulo quando a produção mensal é de
+      opcoes: ['$200$ ou $2000$ bonés', '$400$ ou $1000$ bonés', '$500$ ou $800$ bonés', '$400$ ou $1400$ bonés', '$1000$ ou $1400$ bonés']
+      correta: B
+      resolucao: |
+        $-x^2+14x-40=0\iff x^2-14x+40=0$: soma $14$ e produto $40$, logo $x=4$ ou $x=10$.
+        Como $x$ está em centenas, são $400$ ou $1000$ bonés.
+
+    - texto: |
+        Um terreno retangular será cercado com $46$ m de tela, exatamente o seu perímetro. A prefeitura informou que a área do terreno é de $120\ \text{m}^2$, e o dono quer instalar um cano reto ligando dois cantos opostos.
+      enunciado: O comprimento desse cano, igual à diagonal do terreno, é
       opcoes: ['$13$ m', '$15$ m', '$16$ m', '$17$ m', '$19$ m']
       correta: D
       resolucao: |
-        Os lados somam $23$ e têm produto $120$: são raízes de $x^2-23x+120=0$, isto é, $8$ e $15$.
-        Diagonal: $\sqrt{8^2+15^2}=\sqrt{289}=17$.
+        Os lados têm soma $23$ e produto $120$: são $8$ e $15$.
+        A diagonal é $\sqrt{8^2+15^2}=\sqrt{289}=17$ m.
 
     - enunciado: Na equação $x^2-bx+12=0$, com $b>0$, uma das raízes é o triplo da outra. O valor de $b$ é
       opcoes: ['$6$', '$8$', '$9$', '$12$', '$15$']
       correta: B
       resolucao: |
-        Raízes $r$ e $3r$: $3r^2=12\Rightarrow r=\pm2$. Como $b=4r>0$, $r=2$ e as raízes são $2$ e $6$; logo $b=8$.
+        Raízes $r$ e $3r$: produto $3r^2=12$, logo $r=2$ (com $b>0$, as raízes são positivas).
+        As raízes são $2$ e $6$, e $b$ é a soma: $8$.
 
-    - enunciado: O lucro mensal de uma pequena fábrica, em milhares de reais, é $L(x)=-x^2+14x-40$, em que $x$ é a quantidade produzida, em centenas de unidades. O lucro é nulo quando $x$ vale
-      opcoes: ['$2$ ou $20$', '$-4$ ou $-10$', '$5$ ou $8$', '$4$ ou $14$', '$4$ ou $10$']
-      correta: E
-      resolucao: |
-        $L(x)=0\Leftrightarrow x^2-14x+40=0$: $S=14$ e $P=40$, logo $x=4$ ou $x=10$.
-
-    - enunciado: A equação $x^2+(m-2)x+1=0$ admite raiz dupla. A soma dos possíveis valores de $m$ é
-      opcoes: ['$0$', '$2$', '$4$', '$6$', '$8$']
+    - texto: |
+        A entrada de um túnel tem o formato de um arco de parábola. Com o eixo $x$ sobre o chão e o eixo $y$ passando pelo ponto mais alto do arco, o contorno da entrada é descrito por $y=-\tfrac{x^2}{4}+4$, com $x$ e $y$ em metros.
+      figura:
+        tikz: |
+          \begin{axis}[width=6cm,height=4.2cm,xmin=-5.6,xmax=5.6,ymin=-0.6,ymax=5.3,xtick=\empty,ytick={4},yticklabels={$4$},xlabel={$x$},ylabel={$y$}]
+          \addplot[roxo,thick,fill=suave,domain=-4:4,samples=80]{-x^2/4+4} \closedcycle;
+          \end{axis}
+      enunciado: A largura da entrada do túnel, medida no chão, é
+      opcoes: ['$4$ m', '$6$ m', '$8$ m', '$10$ m', '$16$ m']
       correta: C
       resolucao: |
-        $\Delta=(m-2)^2-4=0\Rightarrow m-2=\pm2\Rightarrow m=0$ ou $m=4$. Soma: $4$.
+        No chão, $y=0$: $\dfrac{x^2}{4}=4\Rightarrow x=\pm4$.
+        A largura é a distância entre os zeros: $4-(-4)=8$ m.
 
-    - enunciado: Se $r$ e $s$ são as raízes de $x^2-7x+3=0$, então $\frac rs+\frac sr$ vale
+    - texto: |
+        Em uma cobrança de falta, a bola sai do chão e descreve uma trajetória parabólica. Tomando o ponto do chute como origem, a altura da bola, em metros, em função da distância horizontal $x$ percorrida, também em metros, é $y=-0{,}02x^2+0{,}6x$. Nenhum jogador toca a bola até que ela volte ao gramado.
+      enunciado: A bola toca o gramado a que distância horizontal do ponto do chute?
+      opcoes: ['$15$ m', '$20$ m', '$25$ m', '$30$ m', '$60$ m']
+      correta: D
+      resolucao: |
+        $y=0\iff x(-0{,}02x+0{,}6)=0$, logo $x=0$ ou $x=\dfrac{0{,}6}{0{,}02}=30$.
+        A bola toca o gramado a $30$ m do ponto do chute.
+
+    - enunciado: Se $r$ e $s$ são as raízes de $x^2-7x+3=0$, então $\dfrac{r}{s}+\dfrac{s}{r}$ vale
       opcoes: ['$\dfrac{43}{3}$', '$\dfrac{46}{3}$', '$\dfrac{49}{3}$', '$\dfrac{52}{3}$', '$\dfrac{55}{3}$']
       correta: A
       resolucao: |
-        $\dfrac rs+\dfrac sr=\dfrac{r^2+s^2}{rs}=\dfrac{(r+s)^2-2rs}{rs}$
-        $=\dfrac{49-6}{3}=\dfrac{43}{3}$.
+        $\dfrac rs+\dfrac sr=\dfrac{r^2+s^2}{rs}=\dfrac{S^2-2P}{P}=\dfrac{49-6}{3}=\dfrac{43}{3}$.
 
-    - enunciado: Assinale o conjunto solução, em $\mathbb{R}$, da equação \[\dfrac{1}{x-1}+\dfrac{2}{x+1}=1\]
-      opcoes: ['$\{3\}$', '$\{-3,\,0\}$', '$\{1,\,3\}$', '$\{0,\,3\}$', '$\{-1,\,3\}$']
-      correta: D
-      resolucao: |
-        Para $x\neq\pm1$, multiplique por $(x-1)(x+1)$: $(x+1)+2(x-1)=x^2-1$.
-        Então $x^2-3x=0\Rightarrow x=0$ ou $x=3$, ambos válidos.
-
-    - enunciado: O produto da idade atual de Ana pela idade que ela terá daqui a $4$ anos é $192$. Hoje, Ana tem
+    - texto: |
+        Ana gosta de propor desafios aos amigos. Perguntada sobre a própria idade, respondeu: “Se você multiplicar a idade que eu tenho hoje pela idade que terei daqui a $4$ anos, vai obter $192$”.
+      enunciado: Hoje, Ana tem
       opcoes: ['$10$ anos', '$12$ anos', '$14$ anos', '$16$ anos', '$18$ anos']
       correta: B
       resolucao: |
-        $x(x+4)=192\Rightarrow x^2+4x-192=0$. $\Delta=784$, $\sqrt{784}=28$ e $x=\dfrac{-4+28}{2}=12$ (a outra raiz, $-16$, não serve).
+        $x(x+4)=192\iff x^2+4x-192=0$, com raízes $12$ e $-16$.
+        Como idade é positiva, Ana tem $12$ anos.
+
+    - texto: |
+        Uma gráfica produz caixas sem tampa a partir de folhas quadradas de papelão: de cada canto da folha recorta-se um quadrado de $3$ cm de lado e, em seguida, dobram-se as abas para cima. Um cliente encomendou caixas com volume de $300\ \text{cm}^3$.
+      enunciado: O lado da folha quadrada usada deve medir
+      opcoes: ['$16$ cm', '$18$ cm', '$20$ cm', '$22$ cm', '$26$ cm']
+      correta: A
+      resolucao: |
+        Com folha de lado $L$, a base da caixa é um quadrado de lado $L-6$ e a altura é $3$.
+        $3(L-6)^2=300\Rightarrow (L-6)^2=100\Rightarrow L-6=10$, logo $L=16$ cm.
 
     - enunciado: As raízes da equação $x^2-10x+c=0$ diferem em $4$ unidades. O valor de $c$ é
       opcoes: ['$6$', '$9$', '$16$', '$19$', '$21$']
       correta: E
       resolucao: |
-        $r+s=10$ e $r-s=4$ dão $r=7$ e $s=3$. Logo, $c=rs=21$.
+        Raízes $r$ e $r+4$ com soma $10$: $r=3$. As raízes são $3$ e $7$, e $c=3\cdot7=21$.
 
-    - enunciado: O produto das raízes reais da equação $x^4-13x^2+36=0$ é
-      opcoes: ['$-36$', '$0$', '$13$', '$36$', '$72$']
+    - texto: |
+        O dono de uma lanchonete percebeu que o número de lanches vendidos por dia depende do preço $p$, em reais. Ele anotou os dados abaixo e concluiu que as vendas seguem a lei $V(p)=100-5p$.
+      tabela:
+        cabecalho: ['Preço (R\$)', '$4$', '$8$', '$12$']
+        linhas:
+          - ['Lanches vendidos', '$80$', '$60$', '$40$']
+      enunciado: A receita diária é o produto do preço pelo número de lanches vendidos. A receita é de R\$\,480,00 quando o preço do lanche é de
+      opcoes: ['R\$\,4,00 ou R\$\,16,00', 'R\$\,6,00 ou R\$\,14,00', 'R\$\,8,00 ou R\$\,12,00', 'R\$\,10,00, apenas', 'R\$\,12,00 ou R\$\,20,00']
+      correta: C
+      resolucao: |
+        $p(100-5p)=480\iff 5p^2-100p+480=0\iff p^2-20p+96=0$.
+        Soma $20$ e produto $96$: $p=8$ ou $p=12$.
+
+    - texto: |
+        O número $d$ de diagonais de um polígono convexo de $n$ lados é dado por $d=\tfrac{n(n-3)}{2}$. Um arquiteto projetou um piso em forma de polígono convexo e contou $35$ diagonais no desenho.
+      enunciado: O número de lados desse polígono é
+      opcoes: ['$5$', '$7$', '$9$', '$10$', '$14$']
       correta: D
       resolucao: |
-        Com $y=x^2$: $y^2-13y+36=0\Rightarrow y=4$ ou $y=9$. Assim, $x=\pm2$ ou $x=\pm3$.
-        Produto: $(2)(-2)(3)(-3)=36$.
+        $\dfrac{n(n-3)}{2}=35\iff n^2-3n-70=0$, com raízes $10$ e $-7$.
+        O polígono tem $10$ lados.
 
     - enunciado: A soma de todas as raízes reais da equação $(x^2-5x)^2-2(x^2-5x)-24=0$ é
       opcoes: ['$5$', '$8$', '$10$', '$12$', '$20$']
       correta: C
       resolucao: |
-        Com $y=x^2-5x$: $y^2-2y-24=0\Rightarrow y=6$ ou $y=-4$.
-        $x^2-5x-6=0$ dá $6$ e $-1$; $x^2-5x+4=0$ dá $1$ e $4$. Soma: $6-1+1+4=10$.
-
-    - enunciado: De uma folha quadrada de papelão, recortam-se quadrados de $3$ cm de lado nos quatro cantos e dobram-se as abas, formando uma caixa sem tampa com volume $300\ \text{cm}^3$. O lado da folha original mede
-      opcoes: ['$16$ cm', '$18$ cm', '$20$ cm', '$22$ cm', '$26$ cm']
-      correta: A
-      resolucao: |
-        Lado $L$: a base da caixa tem lado $L-6$ e a altura é $3$.
-        $3(L-6)^2=300\Rightarrow (L-6)^2=100\Rightarrow L-6=10\Rightarrow L=16$.
+        Com $y=x^2-5x$: $y^2-2y-24=0$, logo $y=6$ ou $y=-4$.
+        $x^2-5x-6=0$ dá $x=6$ ou $x=-1$; $x^2-5x+4=0$ dá $x=1$ ou $x=4$.
+        Soma: $6-1+1+4=10$.
 
     - enunciado: Na equação $x^2-(k+3)x+2k+2=0$, uma das raízes é o dobro da outra. A soma dos possíveis valores de $k$ é
       opcoes: ['$0$', '$3$', '$6$', '$9$', '$12$']
       correta: B
       resolucao: |
-        Raízes $r$ e $2r$: $3r=k+3$ e $2r^2=2k+2$, ou seja, $r^2=k+1$.
-        Então $\dfrac{(k+3)^2}{9}=k+1\Rightarrow k^2-3k=0\Rightarrow k=0$ ou $k=3$. Soma: $3$.
-        (Confira: $k=0$ dá raízes $1$ e $2$; $k=3$ dá $2$ e $4$.)
+        Raízes $r$ e $2r$: soma $3r=k+3$ e produto $2r^2=2k+2$, ou seja, $r^2=k+1$.
+        Com $r=\dfrac{k+3}{3}$: $\dfrac{(k+3)^2}{9}=k+1\iff k^2-3k=0$, logo $k=0$ ou $k=3$.
+        A soma dos valores é $3$.
