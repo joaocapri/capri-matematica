@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Gera as listas em PDF (fixação e vestibular) de cada aula do MAT MAT MAT!.
 
-Fonte: materiais-fonte/A17.yaml (uma por aula), com a matemática em LaTeX.
-Saída: pdfs/fixacao-A17.pdf e pdfs/vestibular-A17.pdf
+Fonte: materiais-fonte/2.3.2.yaml (uma por aula, código do livro), com a matemática em LaTeX.
+Saída: pdfs/fixacao-2.3.2.pdf e pdfs/vestibular-2.3.2.pdf
 
-Uso:  python3 scripts/gerar_listas.py A17 [B05 ...] [--publicar]
+Uso:  python3 scripts/gerar_listas.py 2.3.2 [4.1.1 ...] [--publicar]
       --publicar registra os PDFs na biblioteca (data/materiais.json).
       python3 scripts/gerar_listas.py --proximo   mostra o próximo lote pendente.
 Requer XeLaTeX (TeX Live), as fontes Inter e PyYAML.
@@ -52,6 +52,12 @@ PREAMBULO = r"""
 \color{ink}
 \usepackage{tikz}
 \usetikzlibrary{calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18,every axis/.append style={font=\scriptsize,axis lines=middle,axis line style={-latex,ink!70},tick style={ink!50},grid style={roxo!10}}}
+\usepackage{colortbl}
+\usepackage{array}
+\newcommand{\apoio}[1]{\leavevmode{\color{ink!85}#1}\par\vspace{2pt}}
+\newenvironment{figurinha}{\par\vspace{3pt}\centering}{\par\vspace{3pt}}
 \usepackage{multicol}
 \setlength{\columnsep}{8mm}
 \setlength{\columnseprule}{0.4pt}
@@ -101,6 +107,9 @@ PREAMBULO = r"""
 \newcommand{\questao}[3][\espacoq]{%
   \par\noindent\makebox[\badgew][l]{\qbadge{#2}}%
   \parbox[t]{\linewidth-\badgew}{\RaggedRight\setlength{\parskip}{3pt}#3}\par\vspace{#1}}
+\newcommand{\questaosel}[4]{% número, nível (1-3), nome do nível, texto
+  \par\noindent\makebox[\badgew][l]{\qbadge{#1}}%
+  \parbox[t]{\linewidth-\badgew}{\RaggedRight\setlength{\parskip}{3pt}\selo{#2}{#3}\par\vspace{1.2mm}#4}\par\vspace{\espacoq}}
 \NewDocumentCommand{\letra}{m}{\tikz[baseline=(l.base)]\node[circle,draw=roxo,line width=.7pt,inner sep=0pt,minimum size=4.6mm,font=\scriptsize\bfseries,text=roxo](l){#1};}
 \newlist{itens}{enumerate}{1}
 \setlist[itens]{label={\color{roxo}\bfseries(\alph*)},leftmargin=7mm,labelsep=2mm,topsep=3pt,itemsep=3.5pt,parsep=0pt}
@@ -122,10 +131,15 @@ PREAMBULO = r"""
   \else\umacol{A}{#1}\umacol{B}{#2}\umacol{C}{#3}\umacol{D}{#4}\umacol{E}{#5}\par\fi}
 \newlist{alts}{itemize}{1}
 \setlist[alts]{leftmargin=7mm,labelsep=2mm,topsep=4pt,itemsep=3pt,parsep=0pt}
-\newcommand{\nivel}[2]{%
+\definecolor{nfacil}{HTML}{D3FC61}
+\definecolor{nmedio}{HTML}{FFD66B}
+\definecolor{ndificil}{HTML}{FF7956}
+\newcommand{\corsel}[1]{\ifcase#1\or nfacil\or nmedio\or ndificil\fi}
+\newcommand{\selo}[2]{\tikz[baseline=(s.base)]\node[fill=\corsel{#1},text=ink,rounded corners=6pt,inner xsep=4pt,inner ysep=1.6pt,font=\fontsize{6.4}{7}\selectfont\bfseries](s){\MakeUppercase{#2}};}
+\newcommand{\nivel}[3]{%
   \par\penalty-200\vspace{1mm}\noindent
   \begin{tikzpicture}
-    \node[fill=lima,text=ink,rounded corners=2pt,inner xsep=6pt,inner ysep=3.5pt,font=\scriptsize\bfseries,anchor=west](t) at (0,0){\MakeUppercase{#1}};
+    \node[fill=\corsel{#3},text=ink,rounded corners=7pt,inner xsep=7pt,inner ysep=3.5pt,font=\scriptsize\bfseries,anchor=west](t) at (0,0){\MakeUppercase{#1}};
     \node[font=\scriptsize,text=mudo,anchor=west] at ($(t.east)+(4pt,0)$) {#2};
   \end{tikzpicture}\par\nopagebreak\vspace{4mm}}
 
@@ -200,8 +214,50 @@ def bloco(texto):
     return r"\par ".join(linhas)
 
 
+NIVEIS = {"facil": (1, "Fácil"), "medio": (2, "Médio"), "dificil": (3, "Difícil")}
+LEGADO = {"aquecimento": "facil", "treino": "medio", "desafio": "dificil"}
+
+
+def chave_nivel(nome):
+    import unicodedata
+    k = unicodedata.normalize("NFKD", str(nome)).encode("ascii", "ignore").decode().lower().strip()
+    return LEGADO.get(k, k)
+
+
+def nivel_vest(q, i):
+    """Nível da questão de vestibular: o campo `nivel` ou, sem ele, pela posição (1–7, 8–14, 15–20)."""
+    if q.get("nivel"):
+        return chave_nivel(q["nivel"])
+    return "facil" if i <= 7 else "medio" if i <= 14 else "dificil"
+
+
+def tabela_tex(t):
+    """Tabela de apoio: {cabecalho: [...], linhas: [[...], ...], legenda?}."""
+    n = len(t["cabecalho"])
+    cols = "|".join(["c"] * n)
+    cab = " & ".join(r"\textbf{%s}" % c for c in t["cabecalho"])
+    linhas = r" \\ ".join(" & ".join(str(c) for c in l) for l in t["linhas"])
+    leg = r"\par\vspace{1pt}{\scriptsize\color{mudo}%s}" % t["legenda"] if t.get("legenda") else ""
+    return (r"\begin{figurinha}\small\renewcommand{\arraystretch}{1.25}\arrayrulecolor{roxo!25}"
+            r"\begin{tabular}{%s}\rowcolor{suave}%s \\ \hline %s\end{tabular}%s\end{figurinha}" % (cols, cab, linhas, leg))
+
+
+def figura_tex(f):
+    """Figura de apoio em TikZ/pgfplots: {tikz: '...', legenda?} ou o código direto."""
+    cod = f["tikz"] if isinstance(f, dict) else f
+    leg = r"\par\vspace{1pt}{\scriptsize\color{mudo}%s}" % f["legenda"] if isinstance(f, dict) and f.get("legenda") else ""
+    return r"\begin{figurinha}\begin{tikzpicture}%s\end{tikzpicture}%s\end{figurinha}" % (cod, leg)
+
+
 def enunciado_tex(q):
-    tex = bloco(q["enunciado"])
+    tex = ""
+    if q.get("texto"):
+        tex += r"\apoio{%s}" % bloco(q["texto"])
+    if q.get("tabela"):
+        tex += tabela_tex(q["tabela"])
+    if q.get("figura"):
+        tex += figura_tex(q["figura"])
+    tex += bloco(q["enunciado"])
     if q.get("itens"):
         tex += r"\begin{itens}" + "".join(r"\item " + i for i in q["itens"]) + r"\end{itens}"
     if q.get("opcoes"):
@@ -218,7 +274,8 @@ def documento(aula, tipo, dados):
     tex = tex.replace("<<CABECALHO>>", f"Aula {aula['id']} \\,·\\, " + re.sub(r"\s+-\s+", " — ", aula["title"]))
     tex = tex.replace("<<TIPOCURTO>>", nome_tipo.upper())
     corpo = CAPA
-    corpo = corpo.replace("<<CHIP>>", f"AULA {aula['id']} \\,·\\, FRENTE {aula['front']} \\,·\\, BLOCO {aula['block']}")
+    vol, mod = aula["block"].split(".")
+    corpo = corpo.replace("<<CHIP>>", f"VOLUME {vol} \\,·\\, MÓDULO {mod.upper()} \\,·\\, AULA {aula['id'].upper()}")
     corpo = corpo.replace("<<TITULO>>", re.sub(r"\s+-\s+", " — ", aula["title"]))
     corpo = corpo.replace("<<SUBTITULO>>", f"{nome_tipo} \\,·\\, {total} questões \\,·\\, gabarito resolvido")
     corpo = corpo.replace("<<INTRO>>", dados.get("intro", ""))
@@ -229,7 +286,8 @@ def documento(aula, tipo, dados):
         for s in dados["secoes"]:
             ini = n + 1
             n += len(s["questoes"])
-            corpo += r"\nivel{%s}{questões %d a %d}" % (s["nome"], ini, n) + "\n"
+            num, nome = NIVEIS[chave_nivel(s["nome"])]
+            corpo += r"\nivel{%s}{questões %d a %d}{%d}" % (nome, ini, n, num) + "\n"
             for q in s["questoes"]:
                 questoes.append(q)
                 espaco = 16 + 7 * len(q.get("itens", []))  # mm para o aluno resolver
@@ -237,7 +295,8 @@ def documento(aula, tipo, dados):
     else:
         for q in dados["questoes"]:
             questoes.append(q)
-            corpo += r"\questao{%d}{%s}" % (len(questoes), enunciado_tex(q)) + "\n"
+            num, nome = NIVEIS[nivel_vest(q, len(questoes))]
+            corpo += r"\questaosel{%d}{%d}{%s}{%s}" % (len(questoes), num, nome, enunciado_tex(q)) + "\n"
     corpo += r"\end{multicols}" + "\n\\clearpage\n"
 
     # Gabarito
@@ -286,16 +345,40 @@ def validar(codigo, fonte):
         if not q.get("resolucao"):
             erros.append(f"vestibular {i}: falta resolucao")
         cont[q.get("correta")] = cont.get(q.get("correta"), 0) + 1
+    if fonte.get("padrao", 1) < 2:
+        qv_ctx = []
+    else:
+        qv_ctx = qv
+    contexto = [q for q in qv_ctx if q.get("tabela") or q.get("figura") or len(str(q.get("texto", ""))) >= 120]
+    for sec in fix.get("secoes", []):
+        if chave_nivel(sec.get("nome", "")) not in NIVEIS:
+            erros.append(f"fixação: nível desconhecido '{sec.get('nome')}' (use Fácil, Médio ou Difícil)")
+    for i, q in enumerate(qv, 1):
+        if q.get("nivel") and chave_nivel(q["nivel"]) not in NIVEIS:
+            erros.append(f"vestibular {i}: nível desconhecido '{q['nivel']}'")
+    if qv_ctx and len(contexto) < 10:
+        erros.append(f"vestibular tem {len(contexto)} questões com contexto (mínimo 10: texto de apoio, tabela ou figura)")
+    if qv_ctx and sum(1 for q in qv if q.get("tabela") or q.get("figura")) < 3:
+        erros.append("vestibular precisa de pelo menos 3 questões com tabela ou figura")
     if qv and any(not 3 <= cont.get(l, 0) <= 5 for l in "ABCDE"):
         erros.append(f"gabarito desequilibrado: {cont} (cada letra deve aparecer de 3 a 5 vezes)")
     if erros:
         sys.exit(f"{codigo}: fonte inválida\n  - " + "\n  - ".join(erros))
 
 
+def padrao_fonte(codigo):
+    """0 = sem fonte; 1 = lista antiga (aproveitar e revisar); 2 = padrão atual."""
+    f = FONTE / f"{codigo}.yaml"
+    if not f.exists():
+        return 0
+    return (yaml.safe_load(f.read_text(encoding="utf-8")) or {}).get("padrao", 1)
+
+
 def proximo_lote(tamanho=6):
-    """Próximas aulas sem fonte, na ordem do site, sem atravessar a fronteira de um bloco."""
+    """Próximas aulas sem lista no padrão atual (sem fonte, ou fonte antiga a revisar),
+    na ordem do livro, sem atravessar a fronteira de um módulo."""
     aulas = json.loads((ROOT / "data" / "aulas.json").read_text(encoding="utf-8"))["lessons"]
-    pendentes = [a for a in aulas if not (FONTE / f"{a['id']}.yaml").exists()]
+    pendentes = [a for a in aulas if padrao_fonte(a["id"]) < 2]
     if not pendentes:
         return []
     bloco = pendentes[0]["block"]
@@ -313,7 +396,7 @@ def ajustar(x):
     if isinstance(x, list):
         return [ajustar(i) for i in x]
     if isinstance(x, dict):
-        return {k: ajustar(v) for k, v in x.items()}
+        return {k: (v if k == "figura" else ajustar(v)) for k, v in x.items()}
     return x
 
 
@@ -372,20 +455,23 @@ def publicar(codigo, pdfs):
 if __name__ == "__main__":
     if "--proximo" in sys.argv:
         lote = proximo_lote()
-        feitas = len(list(FONTE.glob("[ABC][0-9][0-9].yaml")))
-        total = len(json.loads((ROOT / "data" / "aulas.json").read_text(encoding="utf-8"))["lessons"])
-        print(f"Aulas com listas: {feitas}/{total}")
-        print("Próximo lote:" if lote else "Todas as aulas têm listas.")
+        ids = [a["id"] for a in json.loads((ROOT / "data" / "aulas.json").read_text(encoding="utf-8"))["lessons"]]
+        nivel = {c: padrao_fonte(c) for c in ids}
+        novas = sum(1 for v in nivel.values() if v >= 2)
+        antigas = sum(1 for v in nivel.values() if v == 1)
+        print(f"Aulas com listas no padrão atual: {novas}/{len(ids)} (mais {antigas} antigas a revisar)")
+        print("Próximo lote:" if lote else "Todas as aulas têm listas no padrão atual.")
         for a in lote:
-            print(f"  {a['id']} (bloco {a['block']}) {a['title']} — {a['summary']}")
+            marca = "  [revisar lista antiga]" if nivel[a["id"]] == 1 else ""
+            print(f"  {a['id']} (módulo {a['block']}) {a['title']} — {a['summary']}{marca}")
         sys.exit(0)
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    for c in args or ["A17"]:
-        pdfs = gerar(c.upper())
+    for c in args or ["2.3.2"]:
+        pdfs = gerar(c)
         for s in pdfs:
             print("gerado:", s.relative_to(ROOT))
         from exportar_listas import exportar  # questões interativas e capas para a página da aula
-        print("exportado:", exportar(c.upper()).relative_to(ROOT))
+        print("exportado:", exportar(c).relative_to(ROOT))
         if "--publicar" in sys.argv:
-            publicar(c.upper(), pdfs)
-            print("publicado em data/materiais.json:", c.upper())
+            publicar(c, pdfs)
+            print("publicado em data/materiais.json:", c)

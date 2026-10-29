@@ -1,13 +1,21 @@
 # MAT MAT MAT ✳
 
-Portal gratuito de matemática MAT MAT MAT, por Prof. João Capri. Uma página por aula, com códigos A01–A79, B01–B59 e C01–C77 (numeração na ordem de estudo; ver "Currículo v3" abaixo).
+Portal gratuito de matemática MAT MAT MAT!, do Prof. João Capri. O site segue a numeração da coleção física em 4 volumes: **Volume → Módulo → Aula**, com códigos `V.M.a` (ex.: `2.3.2` = Volume 2, módulo 3, aula 2).
 
 ## Estrutura
-- **215 páginas** em \`aulas/A01/index.html\` até \`aulas/C77/index.html\`.
-- **Currículo** em \`data/aulas.json\`, a partir da divisão do professor em Google Docs.
-- **CSS e JavaScript** em \`assets/\`.
-- **Materiais de cada aula** em \`conteudos/A01.json\`, \`conteudos/A02.json\` etc. O arquivo é opcional até haver conteúdo.
-- **PDFs** em \`pdfs/\`, depois referenciados nos arquivos de conteúdo.
+- **Volumes** em `/1/` a `/4/`; **módulos** em `/V/M/` (é para onde aponta o QR code de cada módulo do livro); **aulas** em `/V/M/a/`. Módulos extras, fora do livro, usam `x1`, `x2` (ex.: `/1/x1/`, matemática financeira).
+- **Catálogo** em `data/aulas.json`: `fronts` = volumes, `blocks` = módulos (com parte, página e tipos de questão do livro), `lessons` = 215 aulas.
+- As páginas estáticas são geradas por `python3 scripts/gerar_paginas.py`. O conteúdo é montado por `assets/site.js`.
+- **Listas**: `materiais-fonte/V.M.a.yaml` → PDFs em `pdfs/` e questões da página em `data/listas/`. Processo em `PROCESSO_LISTAS.md`.
+- Endereços antigos (`/aulas/A17/` etc.) redirecionam para os novos por `_redirects`.
+
+## Coleção física e ofertas
+- **Loja** em `/livros/` (`assets/loja.js`, `assets/loja.css`, dados em `data/livros.json`): capas, páginas reais em `livros/amostras/`, coleção completa e volumes avulsos no carrinho, pedido pronto pelo WhatsApp. Nada é cobrado no site. `?volume=2` destaca o volume de quem veio de uma aula.
+- **Ofertas no site** (`assets/ofertas.js`, `assets/ofertas.css`): avisos (toasts), um modal de cupom e um selo fixo do cupom. Disparam por contexto: 20 s numa aula ou módulo, 5 questões marcadas, fim do modo prova, download de PDF, 90 s de estudo com rolagem, intenção de saída (computador) e visitante que volta pela 3ª vez.
+  - Limites: até 3 avisos por sessão, 60 s entre eles, param se a pessoa fechar 2; 1 modal por sessão; "Agora não" silencia modais por 3 dias, clicar na oferta por 7 dias.
+  - Nada aparece na loja, nas turmas, na impressão ou enquanto a pessoa digita. Sem prova social inventada e sem contagem regressiva.
+  - **Cupom**: `data/livros.json` → `oferta` (`ativo`, `cupom`, `desconto`, `texto`, `observacao`). Com `"ativo": false`, o modal e as menções ao cupom somem.
+  - Revisão manual: `?ofertas=on` (tempos curtos) e `?ofertas=reset` (zera o histórico). Testes automatizados não veem ofertas.
 
 ## Publicação no Cloudflare Pages
 1. Vincule este repositório a Pages com produção na branch \`main\`.
@@ -37,6 +45,9 @@ Crie \`conteudos/A17.json\` com o formato:
 \`\`\`
 
 Suba os arquivos PDF para a pasta \`pdfs/\` e adicione as referências acima. O site identifica o material pela URL da aula.
+
+## Histórico
+As seções abaixo registram versões anteriores do site (códigos A/B/C, áreas e assuntos). A organização atual é a descrita acima.
 
 ## Funcionalidades
 - Busca instantânea por título, assunto, descrição, código, bloco e frente.

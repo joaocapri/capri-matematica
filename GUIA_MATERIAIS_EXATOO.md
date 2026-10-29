@@ -6,7 +6,7 @@ O Capri mantém uma única busca, seguida da exploração por 9 áreas, 51 assun
 
 Fonte de verdade: data/materiais.json. Use uma das chaves abaixo (e apenas uma):
 
-- Aula: tipo=aula, aula=A17, arquivos=[{titulo, tipo, url}].
+- Aula: tipo=aula, aula=2.3.2, arquivos=[{titulo, tipo, url}].
 - Assunto: tipo=assunto, assunto=fu-quadratica, arquivos=[{titulo, tipo, url}].
 - Grande área: tipo=area, area=funcoes, arquivos=[{titulo, tipo, url}].
 
@@ -32,7 +32,7 @@ Na home, a busca mostra PDFs associados à aula, ao assunto e à grande área. A
 - Nenhum resultado na busca → convite discreto para ajuda personalizada.
 
 Links de origem genéricos: exatoo.com. Links de ferramenta: app.exatoo.com.
-Parâmetros enviados: utm_source=capri-matematica, utm_medium=referral, utm_campaign (intenção), capri_aula (código A17 etc.) e capri_assunto (código como fu-quadratica). Não enviamos respostas do quiz ou informações pessoais.
+Parâmetros enviados: utm_source=capri-matematica, utm_medium=referral, utm_campaign (intenção), capri_aula (código 2.3.2 etc.) e capri_assunto (código como fu-quadratica). Não enviamos respostas do quiz ou informações pessoais.
 
 IMPORTANTE: o Exatoo ainda precisa implementar um receptor para ler e traduzir esses parâmetros. Por enquanto os links levam ao site/app, sem pré-selecionar automaticamente a ferramenta nem a aula.
 

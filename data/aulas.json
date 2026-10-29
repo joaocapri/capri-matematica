@@ -1,2474 +1,3417 @@
 {
-  "source": "Currículo de matemática do Prof. João Capri",
+  "source": "Coleção MAT MAT MAT! (4 volumes): o site segue a numeração do livro",
   "fronts": [
     {
-      "id": "A",
-      "name": "Funções e Álgebra"
+      "id": "1",
+      "name": "Números",
+      "volume": 1,
+      "description": "Matemática básica, conjuntos, progressões, combinatória, probabilidade e estatística",
+      "paginas": 300
     },
     {
-      "id": "B",
-      "name": "Geometria"
+      "id": "2",
+      "name": "Funções",
+      "volume": 2,
+      "description": "Afim, quadrática, modular, exponencial, logaritmos e trigonometria",
+      "paginas": 261
     },
     {
-      "id": "C",
-      "name": "Matemática Básica, Contagem, Estatística e Trigonometria"
+      "id": "3",
+      "name": "Álgebra",
+      "volume": 3,
+      "description": "Matrizes, determinantes, sistemas, geometria analítica, complexos e polinômios",
+      "paginas": 183
+    },
+    {
+      "id": "4",
+      "name": "Geometria",
+      "volume": 4,
+      "description": "Geometria plana e geometria espacial",
+      "paginas": 239
     }
   ],
   "blocks": [
     {
-      "id": "A1",
-      "title": "Conjuntos",
-      "front": "A",
-      "description": "Conjuntos, operações, Venn, números e intervalos."
+      "id": "1.1",
+      "front": "1",
+      "numero": "1",
+      "title": "Aritmética básica",
+      "parte": "Matemática básica",
+      "pagina": 7,
+      "description": "MMC e MDC: o cálculo; Fatoração e número de divisores; MMC: quando os eventos voltam a coincidir; MDC: o maior pedaço possível; Divisibilidade, primos e restos.",
+      "tipos": [
+        "MMC e MDC: o cálculo",
+        "Fatoração e número de divisores",
+        "MMC: quando os eventos voltam a coincidir",
+        "MDC: o maior pedaço possível",
+        "Divisibilidade, primos e restos"
+      ],
+      "extra": false
     },
     {
-      "id": "A2",
-      "title": "O que é uma função?",
-      "front": "A",
-      "description": "Plano cartesiano, conceito, domínio, imagem e gráficos."
+      "id": "1.2",
+      "front": "1",
+      "numero": "2",
+      "title": "Potenciação",
+      "parte": "Matemática básica",
+      "pagina": 19,
+      "description": "Calcular: sinal, expoente zero e negativo; Propriedades: tudo na mesma base; Potências de 10 e notação científica; Comparar e estimar potências; Padrões: último algarismo e sequências.",
+      "tipos": [
+        "Calcular: sinal, expoente zero e negativo",
+        "Propriedades: tudo na mesma base",
+        "Potências de 10 e notação científica",
+        "Comparar e estimar potências",
+        "Padrões: último algarismo e sequências"
+      ],
+      "extra": false
     },
     {
-      "id": "A3",
-      "title": "Função do 1º grau",
-      "front": "A",
-      "description": "Retas, sinal, inequações e modelos."
+      "id": "1.3",
+      "front": "1",
+      "numero": "3",
+      "title": "Radiciação",
+      "parte": "Matemática básica",
+      "pagina": 31,
+      "description": "Calcular e simplificar radicais; Expoente fracionário e mesmo índice; Racionalizar denominadores; Radicais em fórmulas e problemas.",
+      "tipos": [
+        "Calcular e simplificar radicais",
+        "Expoente fracionário e mesmo índice",
+        "Racionalizar denominadores",
+        "Radicais em fórmulas e problemas"
+      ],
+      "extra": false
     },
     {
-      "id": "A4",
-      "title": "Função quadrática",
-      "front": "A",
-      "description": "Raízes, vértice, gráficos, otimização e inequações."
+      "id": "1.4",
+      "front": "1",
+      "numero": "4",
+      "title": "Fatoração e produtos notáveis",
+      "parte": "Matemática básica",
+      "pagina": 41,
+      "description": "Desenvolver produtos notáveis; Fatorar: os quatro casos; Simplificar frações algébricas; Produtos notáveis como atalho.",
+      "tipos": [
+        "Desenvolver produtos notáveis",
+        "Fatorar: os quatro casos",
+        "Simplificar frações algébricas",
+        "Produtos notáveis como atalho"
+      ],
+      "extra": false
     },
     {
-      "id": "A5",
-      "title": "Tipos de função",
-      "front": "A",
-      "description": "Par e ímpar, injetora, composta e inversa."
+      "id": "1.5",
+      "front": "1",
+      "numero": "5",
+      "title": "Equações do 1º grau, inequações e sistemas",
+      "parte": "Matemática básica",
+      "pagina": 51,
+      "description": "Resolver equações do 1º grau; Inequações e sistemas de inequações; Sistemas de equações; Equações-produto e com denominador.",
+      "tipos": [
+        "Resolver equações do 1º grau",
+        "Inequações e sistemas de inequações",
+        "Sistemas de equações",
+        "Equações-produto e com denominador"
+      ],
+      "extra": false
     },
     {
-      "id": "A6",
-      "title": "Função modular",
-      "front": "A",
-      "description": "Módulo, gráficos, equações e inequações."
+      "id": "1.6",
+      "front": "1",
+      "numero": "6",
+      "title": "Problemas com equações do 1º grau",
+      "parte": "Matemática básica",
+      "pagina": 61,
+      "description": "Idades e números: uma incógnita; Frações do todo e do restante; Valor fixo mais valor por unidade; Duas incógnitas: monte o sistema; Soluções inteiras: notas, cédulas e algarismos.",
+      "tipos": [
+        "Idades e números: uma incógnita",
+        "Frações do todo e do restante",
+        "Valor fixo mais valor por unidade",
+        "Duas incógnitas: monte o sistema",
+        "Soluções inteiras: notas, cédulas e algarismos"
+      ],
+      "extra": false
     },
     {
-      "id": "A7",
-      "title": "Função exponencial",
-      "front": "A",
-      "description": "Crescimento, equações e inequações."
+      "id": "1.7",
+      "front": "1",
+      "numero": "7",
+      "title": "Equações do 2º grau",
+      "parte": "Matemática básica",
+      "pagina": 73,
+      "description": "Resolver: incompletas e Bhaskara; O discriminante decide quantas raízes; Soma e produto das raízes; Biquadradas, irracionais e fracionárias; Problemas do 2º grau.",
+      "tipos": [
+        "Resolver: incompletas e Bhaskara",
+        "O discriminante decide quantas raízes",
+        "Soma e produto das raízes",
+        "Biquadradas, irracionais e fracionárias",
+        "Problemas do 2º grau"
+      ],
+      "extra": false
     },
     {
-      "id": "A8",
-      "title": "Logaritmos",
-      "front": "A",
-      "description": "Propriedades, função, equações e aplicações."
+      "id": "1.8",
+      "front": "1",
+      "numero": "8",
+      "title": "Razão e proporção",
+      "parte": "Matemática básica",
+      "pagina": 83,
+      "description": "Razões e escalas; Proporção: a constante k; Divisão proporcional; Direta ou inversa: a lei entre as grandezas.",
+      "tipos": [
+        "Razões e escalas",
+        "Proporção: a constante k",
+        "Divisão proporcional",
+        "Direta ou inversa: a lei entre as grandezas"
+      ],
+      "extra": false
     },
     {
-      "id": "A9",
-      "title": "Sequências, PA e PG",
-      "front": "A",
-      "description": "Padrões, PA, PG e somas."
+      "id": "1.9",
+      "front": "1",
+      "numero": "9",
+      "title": "Regra de três",
+      "parte": "Matemática básica",
+      "pagina": 99,
+      "description": "Simples e direta; Simples e inversa; Regra de três composta; Proporção escondida: áreas, ângulos e concentrações.",
+      "tipos": [
+        "Simples e direta",
+        "Simples e inversa",
+        "Regra de três composta",
+        "Proporção escondida: áreas, ângulos e concentrações"
+      ],
+      "extra": false
     },
     {
-      "id": "A10",
-      "title": "Matrizes",
-      "front": "A",
-      "description": "Tipos, operações, produto e inversa."
-    },
-    {
-      "id": "A11",
-      "title": "Determinantes",
-      "front": "A",
-      "description": "Sarrus, propriedades, Laplace e Binet."
-    },
-    {
-      "id": "A12",
-      "title": "Sistemas lineares",
-      "front": "A",
-      "description": "Do 2×2 ao escalonamento e à discussão."
-    },
-    {
-      "id": "A13",
-      "title": "Números complexos",
-      "front": "A",
-      "description": "Forma algébrica, potências de i e forma trigonométrica."
-    },
-    {
-      "id": "A14",
-      "title": "Polinômios",
-      "front": "A",
-      "description": "Operações, divisão, raízes e Girard."
-    },
-    {
-      "id": "B1",
-      "title": "Ângulos",
-      "front": "B",
-      "description": "Ângulos e retas paralelas."
-    },
-    {
-      "id": "B2",
-      "title": "Triângulos",
-      "front": "B",
-      "description": "Congruência, Tales, semelhança e Pitágoras."
-    },
-    {
-      "id": "B3",
-      "title": "Polígonos",
-      "front": "B",
-      "description": "Ângulos, diagonais, quadriláteros e apótemas."
-    },
-    {
-      "id": "B4",
-      "title": "Circunferência",
-      "front": "B",
-      "description": "Tangentes, ângulos, potência de ponto e comprimento."
-    },
-    {
-      "id": "B5",
-      "title": "Áreas",
-      "front": "B",
-      "description": "Quadriláteros, triângulos, círculos e figuras compostas."
-    },
-    {
-      "id": "B6",
-      "title": "Posições no espaço",
-      "front": "B",
-      "description": "Retas, planos e projeções ortogonais."
-    },
-    {
-      "id": "B7",
-      "title": "Poliedros",
-      "front": "B",
-      "description": "Relação de Euler, planificações e vistas."
-    },
-    {
-      "id": "B8",
-      "title": "Prismas",
-      "front": "B",
-      "description": "Áreas, volumes, cubo e paralelepípedo."
-    },
-    {
-      "id": "B9",
-      "title": "Pirâmides",
-      "front": "B",
-      "description": "Áreas, volume e tronco."
-    },
-    {
-      "id": "B10",
-      "title": "Cilindros e cones",
-      "front": "B",
-      "description": "Cilindro, cone e tronco de cone."
-    },
-    {
-      "id": "B11",
-      "title": "Esferas",
-      "front": "B",
-      "description": "Área, volume, fuso, cunha e calota."
-    },
-    {
-      "id": "B12",
-      "title": "Sólidos combinados",
-      "front": "B",
-      "description": "Inscrição, revolução e semelhança."
-    },
-    {
-      "id": "B13",
-      "title": "O ponto",
-      "front": "B",
-      "description": "Distância, ponto médio, baricentro e área."
-    },
-    {
-      "id": "B14",
-      "title": "A reta",
-      "front": "B",
-      "description": "Equações, posições, ângulos, distâncias e regiões."
-    },
-    {
-      "id": "B15",
-      "title": "Circunferência no plano",
-      "front": "B",
-      "description": "Equações e posições relativas."
-    },
-    {
-      "id": "B16",
-      "title": "Cônicas",
-      "front": "B",
-      "description": "Elipse, hipérbole e parábola."
-    },
-    {
-      "id": "B17",
-      "title": "Espaço e lugares geométricos",
-      "front": "B",
-      "description": "Coordenadas no espaço e lugares geométricos."
-    },
-    {
-      "id": "C1",
-      "title": "Números e operações",
-      "front": "C",
-      "description": "Inteiros, sinais, expressões, primos, MMC e MDC."
-    },
-    {
-      "id": "C2",
-      "title": "Frações e decimais",
-      "front": "C",
-      "description": "Frações, decimais e dízimas periódicas."
-    },
-    {
-      "id": "C3",
-      "title": "Potências e raízes",
-      "front": "C",
-      "description": "Potenciação, notação científica e radiciação."
-    },
-    {
-      "id": "C4",
-      "title": "Expressões algébricas",
-      "front": "C",
-      "description": "Expressões, produtos notáveis, fatoração e frações algébricas."
-    },
-    {
-      "id": "C5",
-      "title": "Equações e problemas",
-      "front": "C",
-      "description": "Equações do 1º e do 2º grau e problemas."
-    },
-    {
-      "id": "C6",
-      "title": "Razões e proporções",
-      "front": "C",
-      "description": "Razão, proporção, escalas e regra de três."
-    },
-    {
-      "id": "C7",
-      "title": "Unidades de medida",
-      "front": "C",
-      "description": "Conversões de comprimento, área, volume, tempo e massa."
-    },
-    {
-      "id": "C8",
+      "id": "1.10",
+      "front": "1",
+      "numero": "10",
       "title": "Porcentagem",
-      "front": "C",
-      "description": "Porcentagem, aumentos, descontos e variações."
+      "parte": "Matemática básica",
+      "pagina": 109,
+      "description": "Calcular: parte, taxa e todo; Variação percentual: quanto aumentou ou diminuiu; Aumentos e descontos sucessivos: o fator; Porcentagens de grupos e misturas.",
+      "tipos": [
+        "Calcular: parte, taxa e todo",
+        "Variação percentual: quanto aumentou ou diminuiu",
+        "Aumentos e descontos sucessivos: o fator",
+        "Porcentagens de grupos e misturas"
+      ],
+      "extra": false
     },
     {
-      "id": "C9",
+      "id": "1.x1",
+      "front": "1",
+      "numero": "x1",
       "title": "Matemática financeira",
-      "front": "C",
-      "description": "Juros simples e compostos, valor presente e amortização."
+      "parte": "Matemática básica",
+      "description": "Juros simples e compostos, valor presente e sistemas de amortização.",
+      "tipos": [],
+      "extra": true
     },
     {
-      "id": "C10",
-      "title": "Contagem e permutações",
-      "front": "C",
-      "description": "PFC, fatorial, permutações e arranjos."
+      "id": "1.11",
+      "front": "1",
+      "numero": "11",
+      "title": "Transformações de unidades",
+      "parte": "Matemática básica",
+      "pagina": 125,
+      "description": "Comprimento: de 10 em 10; Área: de 100 em 100; Volume e capacidade: de 1000 em 1000 e o litro; Tempo e outras unidades.",
+      "tipos": [
+        "Comprimento: de 10 em 10",
+        "Área: de 100 em 100",
+        "Volume e capacidade: de 1000 em 1000 e o litro",
+        "Tempo e outras unidades"
+      ],
+      "extra": false
     },
     {
-      "id": "C11",
-      "title": "Combinações",
-      "front": "C",
-      "description": "Combinações, restrições e gavetas."
+      "id": "1.12",
+      "front": "1",
+      "numero": "12",
+      "title": "Conjuntos",
+      "parte": "Conjuntos e progressões",
+      "pagina": 137,
+      "description": "Pertinência, inclusão e subconjuntos; Operações: união, interseção e diferença; Contagem com dois conjuntos; Contagem com três conjuntos.",
+      "tipos": [
+        "Pertinência, inclusão e subconjuntos",
+        "Operações: união, interseção e diferença",
+        "Contagem com dois conjuntos",
+        "Contagem com três conjuntos"
+      ],
+      "extra": false
     },
     {
-      "id": "C12",
+      "id": "1.13",
+      "front": "1",
+      "numero": "13",
+      "title": "Conjuntos numéricos",
+      "parte": "Conjuntos e progressões",
+      "pagina": 151,
+      "description": "Classificar: natural, inteiro, racional ou irracional; Dízimas periódicas e fração geratriz; Intervalos: união, interseção e diferença; Comparar e julgar afirmações sobre os reais.",
+      "tipos": [
+        "Classificar: natural, inteiro, racional ou irracional",
+        "Dízimas periódicas e fração geratriz",
+        "Intervalos: união, interseção e diferença",
+        "Comparar e julgar afirmações sobre os reais"
+      ],
+      "extra": false
+    },
+    {
+      "id": "1.14",
+      "front": "1",
+      "numero": "14",
+      "title": "Progressões aritméticas",
+      "parte": "Conjuntos e progressões",
+      "pagina": 163,
+      "description": "Termo geral: termo, razão ou número de termos; Três termos em PA; Soma dos termos; Interpolação e um termo a partir de outro.",
+      "tipos": [
+        "Termo geral: termo, razão ou número de termos",
+        "Três termos em PA",
+        "Soma dos termos",
+        "Interpolação e um termo a partir de outro"
+      ],
+      "extra": false
+    },
+    {
+      "id": "1.15",
+      "front": "1",
+      "numero": "15",
+      "title": "Progressões geométricas",
+      "parte": "Conjuntos e progressões",
+      "pagina": 177,
+      "description": "Termo geral: crescimento que multiplica; Três termos em PG; Soma dos termos de uma PG finita; Soma infinita: quando a razão está entre −1 e 1.",
+      "tipos": [
+        "Termo geral: crescimento que multiplica",
+        "Três termos em PG",
+        "Soma dos termos de uma PG finita",
+        "Soma infinita: quando a razão está entre −1 e 1"
+      ],
+      "extra": false
+    },
+    {
+      "id": "1.16",
+      "front": "1",
+      "numero": "16",
+      "title": "Análise combinatória I: fatorial e princípio fundamental",
+      "parte": "Combinatória, probabilidade e estatística",
+      "pagina": 191,
+      "description": "Fatorial: simplificar e resolver equações; Formar números com algarismos; Escolhas independentes: senhas, placas e códigos; Lugares e posições com restrição.",
+      "tipos": [
+        "Fatorial: simplificar e resolver equações",
+        "Formar números com algarismos",
+        "Escolhas independentes: senhas, placas e códigos",
+        "Lugares e posições com restrição"
+      ],
+      "extra": false
+    },
+    {
+      "id": "1.17",
+      "front": "1",
+      "numero": "17",
+      "title": "Análise combinatória II: permutações",
+      "parte": "Combinatória, probabilidade e estatística",
+      "pagina": 203,
+      "description": "Filas e anagramas: juntos, separados e circulares; Permutações com elementos repetidos; Posição em ordem crescente ou alfabética; Caminhos na malha e escolhas com repetição.",
+      "tipos": [
+        "Filas e anagramas: juntos, separados e circulares",
+        "Permutações com elementos repetidos",
+        "Posição em ordem crescente ou alfabética",
+        "Caminhos na malha e escolhas com repetição"
+      ],
+      "extra": false
+    },
+    {
+      "id": "1.18",
+      "front": "1",
+      "numero": "18",
+      "title": "Análise combinatória III: arranjos e combinações",
+      "parte": "Combinatória, probabilidade e estatística",
+      "pagina": 217,
+      "description": "A ordem importa: arranjos; A ordem não importa: combinações; Combinações com condição: pelo menos, juntos, separados; Pontos, cordas e triângulos.",
+      "tipos": [
+        "A ordem importa: arranjos",
+        "A ordem não importa: combinações",
+        "Combinações com condição: pelo menos, juntos, separados",
+        "Pontos, cordas e triângulos"
+      ],
+      "extra": false
+    },
+    {
+      "id": "1.19",
+      "front": "1",
+      "numero": "19",
+      "title": "Números binomiais e triângulo de Pascal",
+      "parte": "Combinatória, probabilidade e estatística",
+      "pagina": 233,
+      "description": "Calcular e usar binomiais complementares; Stifel e as somas do triângulo de Pascal; Equações com a fórmula do binomial.",
+      "tipos": [
+        "Calcular e usar binomiais complementares",
+        "Stifel e as somas do triângulo de Pascal",
+        "Equações com a fórmula do binomial"
+      ],
+      "extra": false
+    },
+    {
+      "id": "1.20",
+      "front": "1",
+      "numero": "20",
       "title": "Binômio de Newton",
-      "front": "C",
-      "description": "Números binomiais, Pascal e binômio de Newton."
+      "parte": "Combinatória, probabilidade e estatística",
+      "pagina": 243,
+      "description": "Desenvolver ou reconhecer um binômio; Soma dos coeficientes e número de termos; Termo geral: um termo ou um coeficiente; Termo independente de x.",
+      "tipos": [
+        "Desenvolver ou reconhecer um binômio",
+        "Soma dos coeficientes e número de termos",
+        "Termo geral: um termo ou um coeficiente",
+        "Termo independente de x"
+      ],
+      "extra": false
     },
     {
-      "id": "C13",
-      "title": "Probabilidade",
-      "front": "C",
-      "description": "Eventos, condicional, binomial e Bayes."
+      "id": "1.21",
+      "front": "1",
+      "numero": "21",
+      "title": "Probabilidades",
+      "parte": "Combinatória, probabilidade e estatística",
+      "pagina": 253,
+      "description": "Casos favoráveis sobre casos possíveis; Sorteio de grupos: combinações em cima e embaixo; Eventos sucessivos: produto e complementar; União de eventos: “ou”; Probabilidade condicional: “sabendo que”.",
+      "tipos": [
+        "Casos favoráveis sobre casos possíveis",
+        "Sorteio de grupos: combinações em cima e embaixo",
+        "Eventos sucessivos: produto e complementar",
+        "União de eventos: “ou”",
+        "Probabilidade condicional: “sabendo que”"
+      ],
+      "extra": false
     },
     {
-      "id": "C14",
-      "title": "Leitura de dados",
-      "front": "C",
-      "description": "Tabelas, gráficos e frequências."
+      "id": "1.22",
+      "front": "1",
+      "numero": "22",
+      "title": "Estatística I: média, mediana e moda",
+      "parte": "Combinatória, probabilidade e estatística",
+      "pagina": 273,
+      "description": "Média aritmética: calcular, completar, trocar valores; Média ponderada: pesos, preços e grupos; Mediana e moda; Medidas a partir de uma tabela de frequências.",
+      "tipos": [
+        "Média aritmética: calcular, completar, trocar valores",
+        "Média ponderada: pesos, preços e grupos",
+        "Mediana e moda",
+        "Medidas a partir de uma tabela de frequências"
+      ],
+      "extra": false
     },
     {
-      "id": "C15",
-      "title": "Medidas de tendência central",
-      "front": "C",
-      "description": "Média, mediana e moda."
+      "id": "1.23",
+      "front": "1",
+      "numero": "23",
+      "title": "Estatística II: dispersão, gráficos e tabelas",
+      "parte": "Combinatória, probabilidade e estatística",
+      "pagina": 283,
+      "description": "Calcular amplitude, variância e desvio padrão; Regularidade: comparar dispersões; Dados transformados: o que acontece com média e desvio; Ler gráficos e tabelas.",
+      "tipos": [
+        "Calcular amplitude, variância e desvio padrão",
+        "Regularidade: comparar dispersões",
+        "Dados transformados: o que acontece com média e desvio",
+        "Ler gráficos e tabelas"
+      ],
+      "extra": false
     },
     {
-      "id": "C16",
-      "title": "Dispersão e análise",
-      "front": "C",
-      "description": "Desvio padrão, variação e correlação."
+      "id": "2.1",
+      "front": "2",
+      "numero": "1",
+      "title": "Introdução às funções",
+      "parte": "Funções",
+      "pagina": 5,
+      "description": "É função? Domínio e imagem; Valor numérico e equações com f; A lei dada: descubra o que falta; Ler o gráfico; Função definida por uma propriedade.",
+      "tipos": [
+        "É função? Domínio e imagem",
+        "Valor numérico e equações com f",
+        "A lei dada: descubra o que falta",
+        "Ler o gráfico",
+        "Função definida por uma propriedade"
+      ],
+      "extra": false
     },
     {
-      "id": "C17",
-      "title": "Trigonometria nos triângulos",
-      "front": "C",
-      "description": "Triângulo retângulo, leis dos senos e cossenos."
+      "id": "2.2",
+      "front": "2",
+      "numero": "2",
+      "title": "Função afim",
+      "parte": "Funções",
+      "pagina": 19,
+      "description": "Achar a lei: dois pontos bastam; Parte fixa mais parte variável; Taxa constante: modelar e prever; Duas retas: o ponto de encontro; Qual gráfico representa a situação?.",
+      "tipos": [
+        "Achar a lei: dois pontos bastam",
+        "Parte fixa mais parte variável",
+        "Taxa constante: modelar e prever",
+        "Duas retas: o ponto de encontro",
+        "Qual gráfico representa a situação?"
+      ],
+      "extra": false
     },
     {
-      "id": "C18",
-      "title": "Ciclo trigonométrico",
-      "front": "C",
-      "description": "Radianos, ciclo, quadrantes e identidades."
+      "id": "2.3",
+      "front": "2",
+      "numero": "3",
+      "title": "Função quadrática",
+      "parte": "Funções",
+      "pagina": 35,
+      "description": "Da lei ao gráfico: raízes, vértice e imagem; Do gráfico (ou dos pontos) à lei; O vértice dá o máximo ou o mínimo; Monte a função e otimize.",
+      "tipos": [
+        "Da lei ao gráfico: raízes, vértice e imagem",
+        "Do gráfico (ou dos pontos) à lei",
+        "O vértice dá o máximo ou o mínimo",
+        "Monte a função e otimize"
+      ],
+      "extra": false
     },
     {
-      "id": "C19",
-      "title": "Fórmulas trigonométricas",
-      "front": "C",
-      "description": "Adição, arco duplo e transformações."
+      "id": "2.4",
+      "front": "2",
+      "numero": "4",
+      "title": "Inequações e domínio de funções",
+      "parte": "Funções",
+      "pagina": 51,
+      "description": "Sinal e inequação do 1º e do 2º grau; Sistemas: a intersecção; Produto e quociente: o quadro de sinais; Domínio: as condições de existência; Quantas soluções inteiras?.",
+      "tipos": [
+        "Sinal e inequação do 1º e do 2º grau",
+        "Sistemas: a intersecção",
+        "Produto e quociente: o quadro de sinais",
+        "Domínio: as condições de existência",
+        "Quantas soluções inteiras?"
+      ],
+      "extra": false
     },
     {
-      "id": "C20",
-      "title": "Funções e equações",
-      "front": "C",
-      "description": "Gráficos, período, equações e inequações."
+      "id": "2.5",
+      "front": "2",
+      "numero": "5",
+      "title": "Função composta e classificação das funções",
+      "parte": "Funções",
+      "pagina": 61,
+      "description": "Calcular a composta; A composta ao contrário: achar f ou g; Par, ímpar ou nenhuma; Injetora, sobrejetora, bijetora; Função inversa.",
+      "tipos": [
+        "Calcular a composta",
+        "A composta ao contrário: achar f ou g",
+        "Par, ímpar ou nenhuma",
+        "Injetora, sobrejetora, bijetora",
+        "Função inversa"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.6",
+      "front": "2",
+      "numero": "6",
+      "title": "Função modular",
+      "parte": "Funções",
+      "pagina": 73,
+      "description": "Tirar o módulo: o sinal de dentro manda; Equação modular; Inequação modular; O gráfico: imagem, área e esboço.",
+      "tipos": [
+        "Tirar o módulo: o sinal de dentro manda",
+        "Equação modular",
+        "Inequação modular",
+        "O gráfico: imagem, área e esboço"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.7",
+      "front": "2",
+      "numero": "7",
+      "title": "Função exponencial",
+      "parte": "Funções",
+      "pagina": 83,
+      "description": "Equação: mesma base dos dois lados; Equação: evidência ou troca de variável; Inequação exponencial; Gráfico e propriedades; Crescimento e decaimento.",
+      "tipos": [
+        "Equação: mesma base dos dois lados",
+        "Equação: evidência ou troca de variável",
+        "Inequação exponencial",
+        "Gráfico e propriedades",
+        "Crescimento e decaimento"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.8",
+      "front": "2",
+      "numero": "8",
+      "title": "Logaritmos: definição",
+      "parte": "Funções",
+      "pagina": 95,
+      "description": "Calcular pela definição; Condição de existência; Equação pela definição; Logaritmo nas aplicações.",
+      "tipos": [
+        "Calcular pela definição",
+        "Condição de existência",
+        "Equação pela definição",
+        "Logaritmo nas aplicações"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.9",
+      "front": "2",
+      "numero": "9",
+      "title": "Logaritmos: propriedades",
+      "parte": "Funções",
+      "pagina": 105,
+      "description": "Abrir e fechar: produto, quociente e potência; Calcular com log 2 e log 3 dados; Mudança de base; Quanto tempo para dobrar?.",
+      "tipos": [
+        "Abrir e fechar: produto, quociente e potência",
+        "Calcular com log 2 e log 3 dados",
+        "Mudança de base",
+        "Quanto tempo para dobrar?"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.10",
+      "front": "2",
+      "numero": "10",
+      "title": "Equações logarítmicas",
+      "parte": "Funções",
+      "pagina": 115,
+      "description": "Mesma base: junte num log só e iguale; Log igual a número: use a definição; Troca de variável: log x = t; Inequação logarítmica; Sistemas com logaritmos.",
+      "tipos": [
+        "Mesma base: junte num log só e iguale",
+        "Log igual a número: use a definição",
+        "Troca de variável: log x = t",
+        "Inequação logarítmica",
+        "Sistemas com logaritmos"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.11",
+      "front": "2",
+      "numero": "11",
+      "title": "Funções logarítmicas",
+      "parte": "Funções",
+      "pagina": 125,
+      "description": "Ler o gráfico: base e parâmetros; Inversa: log e exponencial; Domínio e propriedades; Modelos: quanto tempo, quanto vale.",
+      "tipos": [
+        "Ler o gráfico: base e parâmetros",
+        "Inversa: log e exponencial",
+        "Domínio e propriedades",
+        "Modelos: quanto tempo, quanto vale"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.12",
+      "front": "2",
+      "numero": "12",
+      "title": "Trigonometria no triângulo retângulo",
+      "parte": "Trigonometria",
+      "pagina": 139,
+      "description": "Achar um lado: escolha a razão certa; Uma razão leva às outras; Inclinação em porcentagem; O ângulo pela tabela; Duas observações, uma altura.",
+      "tipos": [
+        "Achar um lado: escolha a razão certa",
+        "Uma razão leva às outras",
+        "Inclinação em porcentagem",
+        "O ângulo pela tabela",
+        "Duas observações, uma altura"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.13",
+      "front": "2",
+      "numero": "13",
+      "title": "Lei dos senos e lei dos cossenos",
+      "parte": "Trigonometria",
+      "pagina": 159,
+      "description": "Lei dos senos: lado de frente para ângulo; O raio da circunferência circunscrita; Lei dos cossenos: o lado que falta; Lei dos cossenos ao contrário: o ângulo; Lados desconhecidos: monte a equação.",
+      "tipos": [
+        "Lei dos senos: lado de frente para ângulo",
+        "O raio da circunferência circunscrita",
+        "Lei dos cossenos: o lado que falta",
+        "Lei dos cossenos ao contrário: o ângulo",
+        "Lados desconhecidos: monte a equação"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.14",
+      "front": "2",
+      "numero": "14",
+      "title": "Trigonometria na circunferência",
+      "parte": "Trigonometria",
+      "pagina": 173,
+      "description": "Graus e radianos: converta; Comprimento de arco; Arcos côngruos e quadrante; O ângulo entre os ponteiros; Arcos na Terra: latitude e distância.",
+      "tipos": [
+        "Graus e radianos: converta",
+        "Comprimento de arco",
+        "Arcos côngruos e quadrante",
+        "O ângulo entre os ponteiros",
+        "Arcos na Terra: latitude e distância"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.15",
+      "front": "2",
+      "numero": "15",
+      "title": "Razões trigonométricas na circunferência",
+      "parte": "Trigonometria",
+      "pagina": 187,
+      "description": "Ler no ciclo: coordenadas e segmentos; Reduzir ao 1º quadrante; Expressões com arcos notáveis; Sinal e comparação; Secante, cossecante e cotangente.",
+      "tipos": [
+        "Ler no ciclo: coordenadas e segmentos",
+        "Reduzir ao 1º quadrante",
+        "Expressões com arcos notáveis",
+        "Sinal e comparação",
+        "Secante, cossecante e cotangente"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.16",
+      "front": "2",
+      "numero": "16",
+      "title": "Relações trigonométricas",
+      "parte": "Trigonometria",
+      "pagina": 199,
+      "description": "Do seno ao cosseno: o quadrante decide o sinal; Tangente e secante: 1 + tg² x = sec² x; Simplificar expressões; Soma, produto e parâmetros.",
+      "tipos": [
+        "Do seno ao cosseno: o quadrante decide o sinal",
+        "Tangente e secante: 1 + tg² x = sec² x",
+        "Simplificar expressões",
+        "Soma, produto e parâmetros"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.17",
+      "front": "2",
+      "numero": "17",
+      "title": "Operações com arcos",
+      "parte": "Trigonometria",
+      "pagina": 209,
+      "description": "Arcos notáveis: soma e diferença; Soma de arcos com dados; Arco duplo e arco metade; Ângulo na figura: tangente da diferença; Soma em produto (prostaférese).",
+      "tipos": [
+        "Arcos notáveis: soma e diferença",
+        "Soma de arcos com dados",
+        "Arco duplo e arco metade",
+        "Ângulo na figura: tangente da diferença",
+        "Soma em produto (prostaférese)"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.18",
+      "front": "2",
+      "numero": "18",
+      "title": "Equações trigonométricas",
+      "parte": "Trigonometria",
+      "pagina": 223,
+      "description": "Equação imediata: uma razão igual a um número; Arco composto: sen 2x, cos(3x − a)…; Equação do 2º grau em seno ou cosseno; Arcos diferentes: fórmula e fatoração.",
+      "tipos": [
+        "Equação imediata: uma razão igual a um número",
+        "Arco composto: sen 2x, cos(3x − a)…",
+        "Equação do 2º grau em seno ou cosseno",
+        "Arcos diferentes: fórmula e fatoração"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.19",
+      "front": "2",
+      "numero": "19",
+      "title": "Inequações trigonométricas",
+      "parte": "Trigonometria",
+      "pagina": 233,
+      "description": "Seno ou cosseno contra um número; Tangente contra um número; Arco composto e solução geral; Produto, quociente, 2º grau e domínio.",
+      "tipos": [
+        "Seno ou cosseno contra um número",
+        "Tangente contra um número",
+        "Arco composto e solução geral",
+        "Produto, quociente, 2º grau e domínio"
+      ],
+      "extra": false
+    },
+    {
+      "id": "2.20",
+      "front": "2",
+      "numero": "20",
+      "title": "Funções trigonométricas",
+      "parte": "Trigonometria",
+      "pagina": 243,
+      "description": "Imagem, máximo e mínimo; Período e amplitude; Modelos periódicos: valor ou instante; Do gráfico para a lei; Da lei para o gráfico.",
+      "tipos": [
+        "Imagem, máximo e mínimo",
+        "Período e amplitude",
+        "Modelos periódicos: valor ou instante",
+        "Do gráfico para a lei",
+        "Da lei para o gráfico"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.1",
+      "front": "3",
+      "numero": "1",
+      "title": "Matrizes I",
+      "parte": "Matrizes, determinantes e sistemas",
+      "pagina": 5,
+      "description": "Montar a matriz e ler seus elementos; Igualdade e transposta: achar as incógnitas; Simétrica e antissimétrica; Operações e equações matriciais; Matrizes que organizam dados.",
+      "tipos": [
+        "Montar a matriz e ler seus elementos",
+        "Igualdade e transposta: achar as incógnitas",
+        "Simétrica e antissimétrica",
+        "Operações e equações matriciais",
+        "Matrizes que organizam dados"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.2",
+      "front": "3",
+      "numero": "2",
+      "title": "Matrizes II: produto",
+      "parte": "Matrizes, determinantes e sistemas",
+      "pagina": 19,
+      "description": "Existe o produto? A ordem do resultado; Calcular o produto: linha por coluna; Equações com produto: achar as incógnitas; Propriedades e potências; O produto que organiza dados.",
+      "tipos": [
+        "Existe o produto? A ordem do resultado",
+        "Calcular o produto: linha por coluna",
+        "Equações com produto: achar as incógnitas",
+        "Propriedades e potências",
+        "O produto que organiza dados"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.3",
+      "front": "3",
+      "numero": "3",
+      "title": "Determinantes I",
+      "parte": "Matrizes, determinantes e sistemas",
+      "pagina": 33,
+      "description": "Calcular: ordem 2 e regra de Sarrus; Equações e inequações com determinante; Autovalores e polinômio característico; Determinante de produtos e de matrizes dadas por lei.",
+      "tipos": [
+        "Calcular: ordem 2 e regra de Sarrus",
+        "Equações e inequações com determinante",
+        "Autovalores e polinômio característico",
+        "Determinante de produtos e de matrizes dadas por lei"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.4",
+      "front": "3",
+      "numero": "4",
+      "title": "Determinantes II",
+      "parte": "Matrizes, determinantes e sistemas",
+      "pagina": 45,
+      "description": "Quando o determinante é nulo: afirmações; Uma fila mexida: multiplicada, trocada, transposta; Teorema de Binet: det(AB) = det A · det B; Ordem 4 ou mais: Laplace e matriz triangular.",
+      "tipos": [
+        "Quando o determinante é nulo: afirmações",
+        "Uma fila mexida: multiplicada, trocada, transposta",
+        "Teorema de Binet: det(AB) = det A · det B",
+        "Ordem 4 ou mais: Laplace e matriz triangular"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.5",
+      "front": "3",
+      "numero": "5",
+      "title": "Matriz inversa",
+      "parte": "Matrizes, determinantes e sistemas",
+      "pagina": 57,
+      "description": "Calcular a inversa; Existe a inversa? O determinante decide; Determinante da inversa; Equações matriciais e mensagens codificadas.",
+      "tipos": [
+        "Calcular a inversa",
+        "Existe a inversa? O determinante decide",
+        "Determinante da inversa",
+        "Equações matriciais e mensagens codificadas"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.6",
+      "front": "3",
+      "numero": "6",
+      "title": "Sistemas lineares",
+      "parte": "Matrizes, determinantes e sistemas",
+      "pagina": 71,
+      "description": "Resolver: Cramer e escalonamento; Problemas: montar o sistema; Discutir: SPD, SPI ou SI conforme o parâmetro; Sistemas homogêneos.",
+      "tipos": [
+        "Resolver: Cramer e escalonamento",
+        "Problemas: montar o sistema",
+        "Discutir: SPD, SPI ou SI conforme o parâmetro",
+        "Sistemas homogêneos"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.7",
+      "front": "3",
+      "numero": "7",
+      "title": "Geometria analítica: o ponto",
+      "parte": "Geometria analítica",
+      "pagina": 87,
+      "description": "Distância entre dois pontos; Ponto médio, divisão do segmento e baricentro; Área de polígonos e alinhamento; Quadrantes, bissetrizes e figuras no plano.",
+      "tipos": [
+        "Distância entre dois pontos",
+        "Ponto médio, divisão do segmento e baricentro",
+        "Área de polígonos e alinhamento",
+        "Quadrantes, bissetrizes e figuras no plano"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.8",
+      "front": "3",
+      "numero": "8",
+      "title": "Geometria analítica: a reta",
+      "parte": "Geometria analítica",
+      "pagina": 99,
+      "description": "Achar a equação da reta; Ler a reta: coeficientes angular e linear; Interseções: com os eixos e entre retas; Modelos lineares: a reta no problema.",
+      "tipos": [
+        "Achar a equação da reta",
+        "Ler a reta: coeficientes angular e linear",
+        "Interseções: com os eixos e entre retas",
+        "Modelos lineares: a reta no problema"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.9",
+      "front": "3",
+      "numero": "9",
+      "title": "Posições entre retas e distância",
+      "parte": "Geometria analítica",
+      "pagina": 113,
+      "description": "Paralelas, concorrentes ou perpendiculares?; Reta paralela ou perpendicular por um ponto; Distância de ponto a reta.",
+      "tipos": [
+        "Paralelas, concorrentes ou perpendiculares?",
+        "Reta paralela ou perpendicular por um ponto",
+        "Distância de ponto a reta"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.10",
+      "front": "3",
+      "numero": "10",
+      "title": "Geometria analítica: a circunferência",
+      "parte": "Geometria analítica",
+      "pagina": 125,
+      "description": "Centro e raio: da equação e para a equação; Reta e circunferência: tangente, secante e corda; Ponto e circunferência; duas circunferências; Áreas e regiões.",
+      "tipos": [
+        "Centro e raio: da equação e para a equação",
+        "Reta e circunferência: tangente, secante e corda",
+        "Ponto e circunferência; duas circunferências",
+        "Áreas e regiões"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.x1",
+      "front": "3",
+      "numero": "x1",
+      "title": "Cônicas",
+      "parte": "Geometria analítica",
+      "description": "Elipse, hipérbole, parábola e o reconhecimento das cônicas.",
+      "tipos": [],
+      "extra": true
+    },
+    {
+      "id": "3.x2",
+      "front": "3",
+      "numero": "x2",
+      "title": "Espaço e lugares geométricos",
+      "parte": "Geometria analítica",
+      "description": "Coordenadas no espaço e lugares geométricos.",
+      "tipos": [],
+      "extra": true
+    },
+    {
+      "id": "3.11",
+      "front": "3",
+      "numero": "11",
+      "title": "Números complexos I: forma algébrica",
+      "parte": "Números complexos e polinômios",
+      "pagina": 137,
+      "description": "Real, imaginário puro e igualdade; Operações: soma, produto e divisão; Conjugado e módulo: equações com z e z̄; Equações do 2º grau com raízes complexas.",
+      "tipos": [
+        "Real, imaginário puro e igualdade",
+        "Operações: soma, produto e divisão",
+        "Conjugado e módulo: equações com z e z̄",
+        "Equações do 2º grau com raízes complexas"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.12",
+      "front": "3",
+      "numero": "12",
+      "title": "Números complexos II: forma trigonométrica",
+      "parte": "Números complexos e polinômios",
+      "pagina": 147,
+      "description": "Potências de i; Módulo, argumento e forma trigonométrica; Produto, quociente e potência (Moivre); Raízes e figuras no plano complexo.",
+      "tipos": [
+        "Potências de i",
+        "Módulo, argumento e forma trigonométrica",
+        "Produto, quociente e potência (Moivre)",
+        "Raízes e figuras no plano complexo"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.13",
+      "front": "3",
+      "numero": "13",
+      "title": "Polinômios",
+      "parte": "Números complexos e polinômios",
+      "pagina": 159,
+      "description": "Valor numérico e grau; Identidade de polinômios; Divisão: chave, Descartes e Briot-Ruffini; Teorema do resto e de D’Alembert.",
+      "tipos": [
+        "Valor numérico e grau",
+        "Identidade de polinômios",
+        "Divisão: chave, Descartes e Briot-Ruffini",
+        "Teorema do resto e de D’Alembert"
+      ],
+      "extra": false
+    },
+    {
+      "id": "3.14",
+      "front": "3",
+      "numero": "14",
+      "title": "Equações algébricas",
+      "parte": "Números complexos e polinômios",
+      "pagina": 169,
+      "description": "Achar uma raiz e abaixar o grau; Raízes complexas e multiplicidade; Relações de Girard; Raízes em PA ou em PG.",
+      "tipos": [
+        "Achar uma raiz e abaixar o grau",
+        "Raízes complexas e multiplicidade",
+        "Relações de Girard",
+        "Raízes em PA ou em PG"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.1",
+      "front": "4",
+      "numero": "1",
+      "title": "Ângulos",
+      "parte": "Geometria plana",
+      "pagina": 5,
+      "description": "Graus, minutos e segundos; Complemento e suplemento: monte a equação; Paralelas, transversal e opostos pelo vértice; O bico entre paralelas.",
+      "tipos": [
+        "Graus, minutos e segundos",
+        "Complemento e suplemento: monte a equação",
+        "Paralelas, transversal e opostos pelo vértice",
+        "O bico entre paralelas"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.2",
+      "front": "4",
+      "numero": "2",
+      "title": "Triângulos",
+      "parte": "Geometria plana",
+      "pagina": 17,
+      "description": "Soma dos ângulos e ângulo externo; Isósceles em cadeia; Condição de existência; Pontos notáveis.",
+      "tipos": [
+        "Soma dos ângulos e ângulo externo",
+        "Isósceles em cadeia",
+        "Condição de existência",
+        "Pontos notáveis"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.3",
+      "front": "4",
+      "numero": "3",
+      "title": "Tales, bissetrizes e semelhança",
+      "parte": "Geometria plana",
+      "pagina": 29,
+      "description": "Feixe de paralelas: Teorema de Tales; Teorema da bissetriz interna; Semelhança: ache os triângulos parecidos; Figura inscrita no triângulo; Sombras e situações reais.",
+      "tipos": [
+        "Feixe de paralelas: Teorema de Tales",
+        "Teorema da bissetriz interna",
+        "Semelhança: ache os triângulos parecidos",
+        "Figura inscrita no triângulo",
+        "Sombras e situações reais"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.4",
+      "front": "4",
+      "numero": "4",
+      "title": "Relações métricas no triângulo retângulo",
+      "parte": "Geometria plana",
+      "pagina": 45,
+      "description": "Pitágoras direto: o lado que falta; Diagonal do quadrado e altura do equilátero; Altura e projeções; Pitágoras com incógnita: monte a equação; Circunferências tangentes.",
+      "tipos": [
+        "Pitágoras direto: o lado que falta",
+        "Diagonal do quadrado e altura do equilátero",
+        "Altura e projeções",
+        "Pitágoras com incógnita: monte a equação",
+        "Circunferências tangentes"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.5",
+      "front": "4",
+      "numero": "5",
+      "title": "Polígonos convexos",
+      "parte": "Geometria plana",
+      "pagina": 61,
+      "description": "Número de diagonais; Soma dos ângulos internos; Polígono regular: ângulo interno, externo e central; Ângulos em figuras com polígonos regulares.",
+      "tipos": [
+        "Número de diagonais",
+        "Soma dos ângulos internos",
+        "Polígono regular: ângulo interno, externo e central",
+        "Ângulos em figuras com polígonos regulares"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.6",
+      "front": "4",
+      "numero": "6",
+      "title": "Polígonos regulares",
+      "parte": "Geometria plana",
+      "pagina": 73,
+      "description": "Triângulo equilátero: altura, raios e área; Quadrado: diagonal, raios e apótema; Hexágono regular: o lado é o raio; Octógono e cantos recortados.",
+      "tipos": [
+        "Triângulo equilátero: altura, raios e área",
+        "Quadrado: diagonal, raios e apótema",
+        "Hexágono regular: o lado é o raio",
+        "Octógono e cantos recortados"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.7",
+      "front": "4",
+      "numero": "7",
+      "title": "Áreas de figuras planas",
+      "parte": "Geometria plana",
+      "pagina": 85,
+      "description": "Quadriláteros: retângulo, trapézio, losango; Triângulos: escolha a fórmula certa; Círculo, setor e coroa; Região sombreada: some e subtraia.",
+      "tipos": [
+        "Quadriláteros: retângulo, trapézio, losango",
+        "Triângulos: escolha a fórmula certa",
+        "Círculo, setor e coroa",
+        "Região sombreada: some e subtraia"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.8",
+      "front": "4",
+      "numero": "8",
+      "title": "Ângulos e relações na circunferência",
+      "parte": "Geometria plana",
+      "pagina": 101,
+      "description": "Ângulo inscrito e ângulo central; Tangente e quadrilátero inscrito; Vértice dentro ou fora: ângulos excêntricos; Potência de ponto: cordas, secantes e tangentes.",
+      "tipos": [
+        "Ângulo inscrito e ângulo central",
+        "Tangente e quadrilátero inscrito",
+        "Vértice dentro ou fora: ângulos excêntricos",
+        "Potência de ponto: cordas, secantes e tangentes"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.9",
+      "front": "4",
+      "numero": "9",
+      "title": "Geometria de posição I",
+      "parte": "Geometria espacial",
+      "pagina": 115,
+      "description": "Postulados: o que determina um plano; Posições entre duas retas; Reta e plano, plano e plano; Arestas de um sólido.",
+      "tipos": [
+        "Postulados: o que determina um plano",
+        "Posições entre duas retas",
+        "Reta e plano, plano e plano",
+        "Arestas de um sólido"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.10",
+      "front": "4",
+      "numero": "10",
+      "title": "Geometria de posição II",
+      "parte": "Geometria espacial",
+      "pagina": 129,
+      "description": "Determinação e paralelismo; Perpendicularismo: reta e plano, plano e plano; Projeção ortogonal; Posições num sólido.",
+      "tipos": [
+        "Determinação e paralelismo",
+        "Perpendicularismo: reta e plano, plano e plano",
+        "Projeção ortogonal",
+        "Posições num sólido"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.11",
+      "front": "4",
+      "numero": "11",
+      "title": "Poliedros",
+      "parte": "Geometria espacial",
+      "pagina": 145,
+      "description": "Euler pelas faces; Euler pelos vértices; Soma dos ângulos das faces; Poliedros regulares, cortes e planificações.",
+      "tipos": [
+        "Euler pelas faces",
+        "Euler pelos vértices",
+        "Soma dos ângulos das faces",
+        "Poliedros regulares, cortes e planificações"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.12",
+      "front": "4",
+      "numero": "12",
+      "title": "Prismas",
+      "parte": "Geometria espacial",
+      "pagina": 155,
+      "description": "Bloco retangular e cubo; Prisma de base triangular ou hexagonal; Caixas de papelão: recortes e planificações; Capacidade: litros, vazão e água.",
+      "tipos": [
+        "Bloco retangular e cubo",
+        "Prisma de base triangular ou hexagonal",
+        "Caixas de papelão: recortes e planificações",
+        "Capacidade: litros, vazão e água"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.13",
+      "front": "4",
+      "numero": "13",
+      "title": "Pirâmides",
+      "parte": "Geometria espacial",
+      "pagina": 169,
+      "description": "Volume: pirâmides em cubos e blocos; Pirâmide regular: altura, apótema e aresta; Área lateral e área total; Tetraedro e octaedro regulares.",
+      "tipos": [
+        "Volume: pirâmides em cubos e blocos",
+        "Pirâmide regular: altura, apótema e aresta",
+        "Área lateral e área total",
+        "Tetraedro e octaedro regulares"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.14",
+      "front": "4",
+      "numero": "14",
+      "title": "Cilindros",
+      "parte": "Geometria espacial",
+      "pagina": 181,
+      "description": "Volume, área e capacidade; Planificação, secções e rotação; O que muda quando o raio ou a altura mudam; Cilindro deitado e partes do cilindro.",
+      "tipos": [
+        "Volume, área e capacidade",
+        "Planificação, secções e rotação",
+        "O que muda quando o raio ou a altura mudam",
+        "Cilindro deitado e partes do cilindro"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.15",
+      "front": "4",
+      "numero": "15",
+      "title": "Cones",
+      "parte": "Geometria espacial",
+      "pagina": 195,
+      "description": "Elementos, área e volume; Planificação: o setor circular; Rotação e secção meridiana; Cone junto com outros sólidos.",
+      "tipos": [
+        "Elementos, área e volume",
+        "Planificação: o setor circular",
+        "Rotação e secção meridiana",
+        "Cone junto com outros sólidos"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.16",
+      "front": "4",
+      "numero": "16",
+      "title": "Troncos e semelhança entre sólidos",
+      "parte": "Geometria espacial",
+      "pagina": 209,
+      "description": "Secção paralela à base: razões k, k², k³; Líquido num cone (ou pirâmide) de vértice para baixo; Volume do tronco; Elementos e áreas do tronco.",
+      "tipos": [
+        "Secção paralela à base: razões k, k², k³",
+        "Líquido num cone (ou pirâmide) de vértice para baixo",
+        "Volume do tronco",
+        "Elementos e áreas do tronco"
+      ],
+      "extra": false
+    },
+    {
+      "id": "4.17",
+      "front": "4",
+      "numero": "17",
+      "title": "Esfera",
+      "parte": "Geometria espacial",
+      "pagina": 223,
+      "description": "Área e volume da esfera; Secção, fuso e cunha; O raio muda: proporções e água deslocada; Esfera junto com outros sólidos.",
+      "tipos": [
+        "Área e volume da esfera",
+        "Secção, fuso e cunha",
+        "O raio muda: proporções e água deslocada",
+        "Esfera junto com outros sólidos"
+      ],
+      "extra": false
     }
   ],
   "lessons": [
     {
-      "id": "A01",
-      "title": "Conjuntos: linguagem e representação",
-      "front": "A",
-      "block": "A1",
-      "summary": "Elementos, pertinência, inclusão, subconjuntos e conjunto das partes.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A02",
-      "title": "Operações com conjuntos",
-      "front": "A",
-      "block": "A1",
-      "summary": "União, interseção, diferença e complementar, com diagramas.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A03",
-      "title": "Problemas com diagramas de Venn",
-      "front": "A",
-      "block": "A1",
-      "summary": "Contagem com dois e três conjuntos: pesquisas, preferências e o número de elementos da união.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A04",
-      "title": "Conjuntos numéricos",
-      "front": "A",
-      "block": "A1",
-      "summary": "Naturais, inteiros, racionais, irracionais e reais: o que cada um acrescenta.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A05",
-      "title": "Intervalos reais",
-      "front": "A",
-      "block": "A1",
-      "summary": "Notação de colchetes, representação na reta e operações com intervalos.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A06",
-      "title": "Plano cartesiano e produto cartesiano",
-      "front": "A",
-      "block": "A2",
-      "summary": "Pares ordenados, quadrantes, produto cartesiano e relações.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A07",
-      "title": "O conceito de função",
-      "front": "A",
-      "block": "A2",
-      "summary": "Domínio, contradomínio e lei de correspondência. Quando uma relação é função.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A08",
-      "title": "Domínio e imagem",
-      "front": "A",
-      "block": "A2",
-      "summary": "Domínio algébrico (denominador e raiz par) e imagem a partir da lei.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A09",
-      "title": "Leitura e análise de gráficos",
-      "front": "A",
-      "block": "A2",
-      "summary": "Crescimento, sinais, máximos e mínimos lidos direto no gráfico, como o ENEM cobra.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A10",
-      "title": "Função afim: definição e taxa de variação",
-      "front": "A",
-      "block": "A3",
-      "summary": "Lei y = ax + b, taxa de variação e valor inicial. Função linear e constante.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A11",
-      "title": "Gráfico e coeficientes",
-      "front": "A",
-      "block": "A3",
-      "summary": "A reta, os coeficientes angular e linear e como obter a lei a partir de dois pontos.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A12",
-      "title": "Zero e estudo do sinal",
-      "front": "A",
-      "block": "A3",
-      "summary": "Onde a reta corta o eixo x e onde a função é positiva ou negativa.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A13",
-      "title": "Inequações do 1º grau",
-      "front": "A",
-      "block": "A3",
-      "summary": "Inequações simples e simultâneas, com a troca de sinal ao multiplicar por negativo.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A14",
-      "title": "Inequações produto e quociente",
-      "front": "A",
-      "block": "A3",
-      "summary": "O quadro de sinais e o cuidado com o denominador.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A15",
-      "title": "Modelagem com função afim",
-      "front": "A",
-      "block": "A3",
-      "summary": "Custo, receita e lucro, tarifas de táxi, planos de celular.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A16",
-      "title": "Função quadrática: definição e concavidade",
-      "front": "A",
-      "block": "A4",
-      "summary": "A parábola, os coeficientes e o sentido da concavidade.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A17",
-      "title": "Raízes, discriminante, soma e produto",
-      "front": "A",
-      "block": "A4",
-      "summary": "Zeros da função, papel do Δ e relações de soma e produto.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A18",
-      "title": "Vértice e eixo de simetria",
-      "front": "A",
-      "block": "A4",
-      "summary": "Coordenadas do vértice, eixo de simetria e imagem.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A19",
-      "title": "Leitura completa do gráfico",
-      "front": "A",
-      "block": "A4",
-      "summary": "Sinais de a, b, c e Δ a partir do desenho da parábola.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A20",
-      "title": "Máximos e mínimos",
-      "front": "A",
-      "block": "A4",
-      "summary": "Problemas de otimização: área máxima, lucro máximo, altura máxima.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A21",
-      "title": "Estudo do sinal da quadrática",
-      "front": "A",
-      "block": "A4",
-      "summary": "Onde a parábola fica acima ou abaixo do eixo x.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A22",
-      "title": "Inequações do 2º grau",
-      "front": "A",
-      "block": "A4",
-      "summary": "Inequações quadráticas, produto e quociente envolvendo parábolas.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A23",
-      "title": "Formas fatorada e canônica",
-      "front": "A",
-      "block": "A4",
-      "summary": "Escrever a lei a partir das raízes ou do vértice.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A24",
-      "title": "Função par e função ímpar",
-      "front": "A",
-      "block": "A5",
-      "summary": "Simetria em relação ao eixo y e à origem. O teste com f(−x).",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A25",
-      "title": "Injetora, sobrejetora e bijetora",
-      "front": "A",
-      "block": "A5",
-      "summary": "Diagramas de flechas, teste da reta horizontal e restrição de domínio.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A26",
-      "title": "Função composta",
-      "front": "A",
-      "block": "A5",
-      "summary": "f(g(x)), a ordem da composição e como descobrir uma das funções.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A27",
-      "title": "Função inversa",
-      "front": "A",
-      "block": "A5",
-      "summary": "Quando existe, como obter f⁻¹ e a simetria com a reta y = x.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A28",
-      "title": "Módulo de um número real",
-      "front": "A",
-      "block": "A6",
-      "summary": "Módulo como distância, definição por casos e propriedades.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A29",
-      "title": "Função modular e gráficos",
-      "front": "A",
-      "block": "A6",
-      "summary": "O gráfico em V, translações e funções definidas por partes.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A30",
-      "title": "Equações modulares",
-      "front": "A",
-      "block": "A6",
-      "summary": "|x| = a, |f(x)| = |g(x)| e equações com módulo e variável fora dele.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A31",
-      "title": "Inequações modulares",
-      "front": "A",
-      "block": "A6",
-      "summary": "|x| < a (miolo) e |x| > a (caudas), com interpretação na reta.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A32",
-      "title": "Gráficos com módulo",
-      "front": "A",
-      "block": "A6",
-      "summary": "Gráficos de |f(x)| e f(|x|): rebater e espelhar.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A33",
-      "title": "Função exponencial e modelos de crescimento",
-      "front": "A",
-      "block": "A7",
-      "summary": "Gráfico, base maior ou menor que 1, crescimento populacional e meia-vida.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A34",
-      "title": "Equações exponenciais",
-      "front": "A",
-      "block": "A7",
-      "summary": "Reduzir à mesma base, mudança de variável e uso de logaritmo quando não dá.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A35",
-      "title": "Inequações exponenciais",
-      "front": "A",
-      "block": "A7",
-      "summary": "Comparar expoentes e inverter a desigualdade quando a base é menor que 1.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A36",
-      "title": "Logaritmo: definição e condição de existência",
-      "front": "A",
-      "block": "A8",
-      "summary": "O logaritmo como expoente e as restrições de base e logaritmando.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A37",
-      "title": "Propriedades operatórias",
-      "front": "A",
-      "block": "A8",
-      "summary": "Produto, quociente e potência.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A38",
-      "title": "Mudança de base",
-      "front": "A",
-      "block": "A8",
-      "summary": "A fórmula e suas consequências.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A39",
-      "title": "Função logarítmica",
-      "front": "A",
-      "block": "A8",
-      "summary": "Gráfico, domínio, imagem e a simetria com a exponencial.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A40",
-      "title": "Equações logarítmicas",
-      "front": "A",
-      "block": "A8",
-      "summary": "Resolução e a verificação das condições de existência.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A41",
-      "title": "Inequações logarítmicas",
-      "front": "A",
-      "block": "A8",
-      "summary": "Base maior que 1 ou entre 0 e 1, sempre com o domínio.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A42",
-      "title": "Aplicações dos logaritmos",
-      "front": "A",
-      "block": "A8",
-      "summary": "pH, escala Richter, decibéis e tempo em juros compostos.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A43",
-      "title": "Sequências e lei de formação",
-      "front": "A",
-      "block": "A9",
-      "summary": "Termo geral e lei de recorrência.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A44",
-      "title": "PA: termo geral",
-      "front": "A",
-      "block": "A9",
-      "summary": "Razão e fórmula do termo geral.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A45",
-      "title": "PA: propriedades e interpolação",
-      "front": "A",
-      "block": "A9",
-      "summary": "Média dos vizinhos, termos equidistantes e interpolação aritmética.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A46",
-      "title": "Soma da PA",
-      "front": "A",
-      "block": "A9",
-      "summary": "A ideia de Gauss e a fórmula da soma.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A47",
-      "title": "PG: termo geral",
-      "front": "A",
-      "block": "A9",
-      "summary": "Razão e fórmula do termo geral. Crescimento exponencial discreto.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A48",
-      "title": "PG: propriedades e interpolação",
-      "front": "A",
-      "block": "A9",
-      "summary": "Média geométrica dos vizinhos e interpolação geométrica.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A49",
-      "title": "Soma da PG finita",
-      "front": "A",
-      "block": "A9",
-      "summary": "A fórmula da soma e aplicações financeiras.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A50",
-      "title": "PG infinita",
-      "front": "A",
-      "block": "A9",
-      "summary": "Quando a soma converge e quanto vale.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A51",
-      "title": "Problemas com PA e PG",
-      "front": "A",
-      "block": "A9",
-      "summary": "Questões que misturam as duas progressões.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A52",
-      "title": "Matrizes: definição e tipos",
-      "front": "A",
-      "block": "A10",
-      "summary": "Notação aᵢⱼ, lei de formação e matrizes especiais.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A53",
-      "title": "Adição, multiplicação por número e transposta",
-      "front": "A",
-      "block": "A10",
-      "summary": "Operações elemento a elemento, igualdade e transposta.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A54",
-      "title": "Multiplicação de matrizes",
-      "front": "A",
-      "block": "A10",
-      "summary": "Linha por coluna, quando o produto existe e por que AB ≠ BA.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A55",
-      "title": "Matriz inversa",
-      "front": "A",
-      "block": "A10",
-      "summary": "Definição, cálculo por sistema e quando a inversa existe.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A56",
-      "title": "Determinantes de ordem 2 e 3",
-      "front": "A",
-      "block": "A11",
-      "summary": "Regra direta e regra de Sarrus.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A57",
-      "title": "Propriedades dos determinantes",
-      "front": "A",
-      "block": "A11",
-      "summary": "Fila nula, filas iguais ou proporcionais, troca de filas e multiplicação por número.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A58",
-      "title": "Teorema de Laplace e regra de Chió",
-      "front": "A",
-      "block": "A11",
-      "summary": "Cofatores e abaixamento de ordem.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A59",
-      "title": "Teorema de Binet e determinante da inversa",
-      "front": "A",
-      "block": "A11",
-      "summary": "det(AB) = det A · det B e suas consequências.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A60",
-      "title": "Sistemas lineares 2×2",
-      "front": "A",
-      "block": "A12",
-      "summary": "Substituição, adição e a leitura geométrica com duas retas.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A61",
-      "title": "Sistemas lineares: classificação",
-      "front": "A",
-      "block": "A12",
-      "summary": "Equação linear, solução e as classificações SPD, SPI e SI.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A62",
-      "title": "Regra de Cramer",
-      "front": "A",
-      "block": "A12",
-      "summary": "Resolver com determinantes.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A63",
-      "title": "Escalonamento",
-      "front": "A",
-      "block": "A12",
-      "summary": "O método de Gauss passo a passo.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A64",
-      "title": "Discussão de sistemas",
-      "front": "A",
-      "block": "A12",
-      "summary": "Sistemas com parâmetro: quando é SPD, SPI ou SI.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A65",
-      "title": "Complexos: forma algébrica",
-      "front": "A",
-      "block": "A13",
-      "summary": "A unidade imaginária, parte real e imaginária e igualdade de complexos.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A66",
-      "title": "Operações na forma algébrica",
-      "front": "A",
-      "block": "A13",
-      "summary": "Soma, produto, conjugado e divisão.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A67",
-      "title": "Potências de i",
-      "front": "A",
-      "block": "A13",
-      "summary": "O ciclo de 4 e potências grandes.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A68",
-      "title": "Plano de Argand-Gauss, módulo e argumento",
-      "front": "A",
-      "block": "A13",
-      "summary": "Representação geométrica, módulo como distância e argumento.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A69",
-      "title": "Forma trigonométrica",
-      "front": "A",
-      "block": "A13",
-      "summary": "Conversão entre as formas algébrica e trigonométrica.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A70",
-      "title": "Operações na forma trigonométrica",
-      "front": "A",
-      "block": "A13",
-      "summary": "Multiplicação, divisão e potência (Moivre).",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A71",
-      "title": "Polinômios: definição e identidade",
-      "front": "A",
-      "block": "A14",
-      "summary": "Grau, valor numérico e polinômios idênticos.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A72",
-      "title": "Operações com polinômios",
-      "front": "A",
-      "block": "A14",
-      "summary": "Soma, subtração e multiplicação, com atenção ao grau.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A73",
-      "title": "Divisão de polinômios: método da chave",
-      "front": "A",
-      "block": "A14",
-      "summary": "Quociente e resto pelo algoritmo da divisão.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A74",
-      "title": "Dispositivo de Briot-Ruffini",
-      "front": "A",
-      "block": "A14",
-      "summary": "Divisão rápida por x − a.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A75",
-      "title": "Teorema do resto e de D'Alembert",
-      "front": "A",
-      "block": "A14",
-      "summary": "Resto sem dividir e condição de divisibilidade.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A76",
-      "title": "Equações polinomiais",
-      "front": "A",
-      "block": "A14",
-      "summary": "Teorema fundamental da álgebra e decomposição em fatores.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A77",
-      "title": "Multiplicidade de raízes",
-      "front": "A",
-      "block": "A14",
-      "summary": "Raízes repetidas e o que acontece no gráfico.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A78",
-      "title": "Relações de Girard",
-      "front": "A",
-      "block": "A14",
-      "summary": "Soma, produto e somas duplas das raízes.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "A79",
-      "title": "Raízes complexas e raízes racionais",
-      "front": "A",
-      "block": "A14",
-      "summary": "Raízes conjugadas e pesquisa de raízes racionais.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B01",
-      "title": "Conceitos primitivos e ângulos",
-      "front": "B",
-      "block": "B1",
-      "summary": "Ponto, reta, plano, classificação de ângulos, complementares e suplementares.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B02",
-      "title": "Retas paralelas e transversais",
-      "front": "B",
-      "block": "B1",
-      "summary": "Ângulos alternos, correspondentes e colaterais.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B03",
-      "title": "Triângulos: classificação e ângulos",
-      "front": "B",
-      "block": "B2",
-      "summary": "Soma dos ângulos internos, ângulo externo e desigualdade triangular.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B04",
-      "title": "Cevianas e pontos notáveis",
-      "front": "B",
-      "block": "B2",
-      "summary": "Mediana, bissetriz e altura. Baricentro, incentro, circuncentro e ortocentro.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B05",
-      "title": "Congruência de triângulos",
-      "front": "B",
-      "block": "B2",
-      "summary": "Os casos LAL, ALA, LLL e LAAo.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B06",
-      "title": "Teorema de Tales",
-      "front": "B",
-      "block": "B2",
-      "summary": "Feixe de paralelas e teorema da bissetriz interna.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B07",
-      "title": "Semelhança de triângulos",
-      "front": "B",
-      "block": "B2",
-      "summary": "Casos de semelhança e razão de semelhança.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B08",
-      "title": "Teorema de Pitágoras",
-      "front": "B",
-      "block": "B2",
-      "summary": "Enunciado, demonstração e aplicações.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B09",
-      "title": "Relações métricas no triângulo retângulo",
-      "front": "B",
-      "block": "B2",
-      "summary": "Projeções, altura relativa à hipotenusa e as relações.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B10",
-      "title": "Polígonos: ângulos e diagonais",
-      "front": "B",
-      "block": "B3",
-      "summary": "Soma dos ângulos internos e externos e número de diagonais.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B11",
-      "title": "Quadriláteros notáveis",
-      "front": "B",
-      "block": "B3",
-      "summary": "Trapézio, paralelogramo, retângulo, losango e quadrado.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B12",
-      "title": "Polígonos regulares inscritos e circunscritos",
-      "front": "B",
-      "block": "B3",
-      "summary": "Triângulo, quadrado e hexágono regulares e o apótema.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B13",
-      "title": "Circunferência: elementos e tangência",
-      "front": "B",
-      "block": "B4",
-      "summary": "Raio, corda, diâmetro e a reta tangente perpendicular ao raio.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B14",
-      "title": "Ângulos na circunferência",
-      "front": "B",
-      "block": "B4",
-      "summary": "Ângulo central, inscrito, de segmento e arco capaz.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B15",
-      "title": "Potência de ponto",
-      "front": "B",
-      "block": "B4",
-      "summary": "Cordas, secantes e tangentes.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B16",
-      "title": "Comprimento da circunferência e de arcos",
-      "front": "B",
-      "block": "B4",
-      "summary": "O número π e o comprimento de um arco.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B17",
-      "title": "Áreas de quadriláteros",
-      "front": "B",
-      "block": "B5",
-      "summary": "Retângulo, paralelogramo, trapézio e losango.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B18",
-      "title": "Áreas de triângulos",
-      "front": "B",
-      "block": "B5",
-      "summary": "Base e altura, fórmula do seno, Heron e raios inscrito e circunscrito.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B19",
-      "title": "Área do círculo e de suas partes",
-      "front": "B",
-      "block": "B5",
-      "summary": "Setor, coroa e segmento circular.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B20",
-      "title": "Razão entre áreas",
-      "front": "B",
-      "block": "B5",
-      "summary": "Figuras semelhantes e escalas de área.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B21",
-      "title": "Áreas de figuras compostas",
-      "front": "B",
-      "block": "B5",
-      "summary": "Decompor, completar e subtrair regiões.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B22",
-      "title": "Geometria de posição",
-      "front": "B",
-      "block": "B6",
-      "summary": "Postulados e posições relativas de retas e planos.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B23",
-      "title": "Perpendicularidade e projeções",
-      "front": "B",
-      "block": "B6",
-      "summary": "Reta perpendicular a plano e projeção ortogonal.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B24",
-      "title": "Poliedros e relação de Euler",
-      "front": "B",
-      "block": "B7",
-      "summary": "Faces, arestas, vértices e poliedros de Platão.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B25",
-      "title": "Planificações e vistas",
-      "front": "B",
-      "block": "B7",
-      "summary": "Planificar sólidos e reconhecer vistas frontal, lateral e superior.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B26",
-      "title": "Prismas: elementos e áreas",
-      "front": "B",
-      "block": "B8",
-      "summary": "Classificação, área lateral e área total.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B27",
-      "title": "Volume de prismas",
-      "front": "B",
-      "block": "B8",
-      "summary": "Princípio de Cavalieri, paralelepípedo, cubo e diagonais.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B28",
-      "title": "Pirâmides: elementos e áreas",
-      "front": "B",
-      "block": "B9",
-      "summary": "Apótema da pirâmide e da base, áreas lateral e total.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B29",
-      "title": "Volume da pirâmide",
-      "front": "B",
-      "block": "B9",
-      "summary": "Um terço da área da base vezes a altura.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B30",
-      "title": "Tronco de pirâmide",
-      "front": "B",
-      "block": "B9",
-      "summary": "Semelhança e volume do tronco.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B31",
-      "title": "Cilindro",
-      "front": "B",
-      "block": "B10",
-      "summary": "Elementos, secção meridiana, áreas e volume.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B32",
-      "title": "Cone: elementos e áreas",
-      "front": "B",
-      "block": "B10",
-      "summary": "Geratriz, planificação em setor circular e área lateral.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B33",
-      "title": "Volume do cone",
-      "front": "B",
-      "block": "B10",
-      "summary": "Volume e cone equilátero.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B34",
-      "title": "Tronco de cone",
-      "front": "B",
-      "block": "B10",
-      "summary": "Volume do tronco e planificação.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B35",
-      "title": "Esfera: área e volume",
-      "front": "B",
-      "block": "B11",
-      "summary": "Superfície esférica, secção e volume.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B36",
-      "title": "Partes da esfera",
-      "front": "B",
-      "block": "B11",
-      "summary": "Fuso, cunha e calota.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B37",
-      "title": "Inscrição e circunscrição I",
-      "front": "B",
-      "block": "B12",
-      "summary": "Esfera inscrita e circunscrita ao cubo e ao prisma.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B38",
-      "title": "Inscrição e circunscrição II",
-      "front": "B",
-      "block": "B12",
-      "summary": "Cilindro, cone e esfera combinados.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B39",
-      "title": "Sólidos de revolução",
-      "front": "B",
-      "block": "B12",
-      "summary": "Girar figuras planas em torno de um eixo.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B40",
-      "title": "Semelhança de sólidos",
-      "front": "B",
-      "block": "B12",
-      "summary": "Razão entre áreas e volumes de sólidos semelhantes.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B41",
-      "title": "Distância entre dois pontos",
-      "front": "B",
-      "block": "B13",
-      "summary": "Coordenadas e a fórmula da distância.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B42",
-      "title": "Ponto médio e baricentro",
-      "front": "B",
-      "block": "B13",
-      "summary": "Ponto médio, baricentro e divisão de segmento em razão dada.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B43",
-      "title": "Alinhamento e área do triângulo",
-      "front": "B",
-      "block": "B13",
-      "summary": "Condição de alinhamento e área pelo determinante.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B44",
-      "title": "Coeficiente angular e equação da reta",
-      "front": "B",
-      "block": "B14",
-      "summary": "Inclinação, coeficiente angular e y − y₀ = m(x − x₀).",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B45",
-      "title": "Formas da equação da reta",
-      "front": "B",
-      "block": "B14",
-      "summary": "Geral, reduzida, segmentária e paramétrica.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B46",
-      "title": "Retas paralelas e concorrentes",
-      "front": "B",
-      "block": "B14",
-      "summary": "Posição relativa e ponto de interseção.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B47",
-      "title": "Retas perpendiculares",
-      "front": "B",
-      "block": "B14",
-      "summary": "Condição m₁ · m₂ = −1 e mediatriz.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B48",
-      "title": "Ângulo entre retas",
-      "front": "B",
-      "block": "B14",
-      "summary": "A fórmula da tangente do ângulo entre duas retas.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B49",
-      "title": "Distância de ponto a reta",
-      "front": "B",
-      "block": "B14",
-      "summary": "A fórmula e a distância entre retas paralelas.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B50",
-      "title": "Inequações e regiões do plano",
-      "front": "B",
-      "block": "B14",
-      "summary": "Semiplanos e regiões limitadas por retas.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B51",
-      "title": "Equação da circunferência",
-      "front": "B",
-      "block": "B15",
-      "summary": "Equações reduzida e geral e o completar quadrados.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B52",
-      "title": "Ponto e reta em relação à circunferência",
-      "front": "B",
-      "block": "B15",
-      "summary": "Posições relativas pela distância ao centro.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B53",
-      "title": "Circunferências e retas tangentes",
-      "front": "B",
-      "block": "B15",
-      "summary": "Posição entre duas circunferências e equação da tangente.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B54",
-      "title": "Elipse",
-      "front": "B",
-      "block": "B16",
-      "summary": "Definição, focos, eixos, excentricidade e equação reduzida.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B55",
-      "title": "Hipérbole",
-      "front": "B",
-      "block": "B16",
-      "summary": "Definição, assíntotas e equação reduzida.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B56",
-      "title": "Parábola",
-      "front": "B",
-      "block": "B16",
-      "summary": "Foco, diretriz e equação reduzida.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B57",
-      "title": "Reconhecimento de cônicas",
-      "front": "B",
-      "block": "B16",
-      "summary": "Identificar a curva pela equação e translação de eixos.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B58",
-      "title": "Coordenadas no espaço",
-      "front": "B",
-      "block": "B17",
-      "summary": "Ponto em x, y, z, distância e esfera no espaço.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "B59",
-      "title": "Lugares geométricos",
-      "front": "B",
-      "block": "B17",
-      "summary": "Encontrar o lugar dos pontos que satisfazem uma condição.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "C01",
+      "id": "1.1.1",
       "title": "Números naturais e inteiros",
-      "front": "C",
-      "block": "C1",
+      "front": "1",
+      "block": "1.1",
       "summary": "As quatro operações e a regra de sinais.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C02",
+      "id": "1.1.2",
       "title": "Expressões numéricas",
-      "front": "C",
-      "block": "C1",
+      "front": "1",
+      "block": "1.1",
       "summary": "Ordem das operações, parênteses, colchetes e chaves.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C03",
-      "title": "Divisibilidade e números primos",
-      "front": "C",
-      "block": "C1",
-      "summary": "Critérios de divisibilidade, primos e decomposição em fatores primos.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "C04",
-      "title": "MMC e MDC",
-      "front": "C",
-      "block": "C1",
-      "summary": "Cálculo e problemas de encontro e de divisão em partes iguais.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "C05",
+      "id": "1.1.3",
       "title": "Frações: conceito e equivalência",
-      "front": "C",
-      "block": "C2",
+      "front": "1",
+      "block": "1.1",
       "summary": "Parte e todo, frações equivalentes, simplificação e comparação.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C06",
+      "id": "1.1.4",
       "title": "Operações com frações",
-      "front": "C",
-      "block": "C2",
+      "front": "1",
+      "block": "1.1",
       "summary": "Soma, subtração, multiplicação, divisão e fração de fração.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C07",
+      "id": "1.1.5",
       "title": "Números decimais",
-      "front": "C",
-      "block": "C2",
+      "front": "1",
+      "block": "1.1",
       "summary": "Leitura, operações e conversão entre decimal e fração.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C08",
-      "title": "Dízimas periódicas",
-      "front": "C",
-      "block": "C2",
-      "summary": "Fração geratriz de dízimas simples e compostas.",
+      "id": "1.1.6",
+      "title": "Divisibilidade e números primos",
+      "front": "1",
+      "block": "1.1",
+      "summary": "Critérios de divisibilidade, primos e decomposição em fatores primos.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C09",
+      "id": "1.1.7",
+      "title": "MMC e MDC",
+      "front": "1",
+      "block": "1.1",
+      "summary": "Cálculo e problemas de encontro e de divisão em partes iguais.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.2.1",
       "title": "Potenciação",
-      "front": "C",
-      "block": "C3",
+      "front": "1",
+      "block": "1.2",
       "summary": "Propriedades, expoente zero, negativo e fracionário.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C10",
+      "id": "1.2.2",
       "title": "Notação científica e ordem de grandeza",
-      "front": "C",
-      "block": "C3",
+      "front": "1",
+      "block": "1.2",
       "summary": "Escrever, operar e comparar números muito grandes ou muito pequenos.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C11",
+      "id": "1.3.1",
       "title": "Radiciação",
-      "front": "C",
-      "block": "C3",
+      "front": "1",
+      "block": "1.3",
       "summary": "Propriedades das raízes e simplificação de radicais.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C12",
+      "id": "1.3.2",
       "title": "Racionalização de denominadores",
-      "front": "C",
-      "block": "C3",
+      "front": "1",
+      "block": "1.3",
       "summary": "Casos simples e com o conjugado.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C13",
+      "id": "1.4.1",
       "title": "Expressões algébricas e valor numérico",
-      "front": "C",
-      "block": "C4",
+      "front": "1",
+      "block": "1.4",
       "summary": "Termos semelhantes, monômios e operações básicas.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C14",
+      "id": "1.4.2",
       "title": "Produtos notáveis",
-      "front": "C",
-      "block": "C4",
+      "front": "1",
+      "block": "1.4",
       "summary": "Quadrado da soma e da diferença, produto da soma pela diferença e cubos.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C15",
+      "id": "1.4.3",
       "title": "Fatoração",
-      "front": "C",
-      "block": "C4",
+      "front": "1",
+      "block": "1.4",
       "summary": "Fator comum, agrupamento, diferença de quadrados e trinômio quadrado perfeito.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C16",
+      "id": "1.4.4",
       "title": "Frações algébricas",
-      "front": "C",
-      "block": "C4",
+      "front": "1",
+      "block": "1.4",
       "summary": "Simplificação e operações com frações algébricas.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C17",
+      "id": "1.5.1",
       "title": "Equações do 1º grau",
-      "front": "C",
-      "block": "C5",
+      "front": "1",
+      "block": "1.5",
       "summary": "Princípios de equivalência, parênteses, frações e equações literais.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C18",
+      "id": "1.5.2",
+      "title": "Inequações do 1º grau",
+      "front": "1",
+      "block": "1.5",
+      "summary": "Inequações simples e simultâneas, com a troca de sinal ao multiplicar por negativo.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.5.3",
+      "title": "Sistemas lineares 2×2",
+      "front": "1",
+      "block": "1.5",
+      "summary": "Substituição, adição e a leitura geométrica com duas retas.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.6.1",
       "title": "Problemas com equações do 1º grau",
-      "front": "C",
-      "block": "C5",
+      "front": "1",
+      "block": "1.6",
       "summary": "Traduzir enunciados: idades, dinheiro, números consecutivos.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C19",
+      "id": "1.7.1",
       "title": "Equações do 2º grau",
-      "front": "C",
-      "block": "C5",
+      "front": "1",
+      "block": "1.7",
       "summary": "Incompletas, completar quadrados e fórmula resolutiva.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C20",
+      "id": "1.7.2",
       "title": "Soma, produto e equações redutíveis",
-      "front": "C",
-      "block": "C5",
+      "front": "1",
+      "block": "1.7",
       "summary": "Soma e produto das raízes, biquadradas e equações irracionais.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C21",
+      "id": "1.7.3",
       "title": "Problemas com equações do 2º grau",
-      "front": "C",
-      "block": "C5",
+      "front": "1",
+      "block": "1.7",
       "summary": "Áreas, produtos e movimento, descartando o que não faz sentido.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C22",
+      "id": "1.8.1",
       "title": "Razão e proporção",
-      "front": "C",
-      "block": "C6",
+      "front": "1",
+      "block": "1.8",
       "summary": "Propriedade fundamental e propriedades das proporções.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C23",
+      "id": "1.8.2",
       "title": "Escalas e razões especiais",
-      "front": "C",
-      "block": "C6",
+      "front": "1",
+      "block": "1.8",
       "summary": "Escala, velocidade média, densidade demográfica.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C24",
+      "id": "1.8.3",
       "title": "Grandezas proporcionais",
-      "front": "C",
-      "block": "C6",
+      "front": "1",
+      "block": "1.8",
       "summary": "Direta e inversamente proporcionais e divisão proporcional.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C25",
+      "id": "1.9.1",
       "title": "Regra de três simples",
-      "front": "C",
-      "block": "C6",
+      "front": "1",
+      "block": "1.9",
       "summary": "Montar a proporção certa, direta ou inversa.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C26",
+      "id": "1.9.2",
       "title": "Regra de três composta",
-      "front": "C",
-      "block": "C6",
+      "front": "1",
+      "block": "1.9",
       "summary": "Várias grandezas ao mesmo tempo: operários, tempo e obra.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C27",
-      "title": "Comprimento, área, volume e capacidade",
-      "front": "C",
-      "block": "C7",
-      "summary": "Conversões e a relação entre litro e decímetro cúbico.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "C28",
-      "title": "Tempo, massa e grandezas compostas",
-      "front": "C",
-      "block": "C7",
-      "summary": "Horas e minutos, toneladas e gramas, velocidade e vazão.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "C29",
+      "id": "1.10.1",
       "title": "Porcentagem",
-      "front": "C",
-      "block": "C8",
+      "front": "1",
+      "block": "1.10",
       "summary": "Formas de representar, cálculo mental e porcentagem de porcentagem.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C30",
+      "id": "1.10.2",
       "title": "Aumentos e descontos",
-      "front": "C",
-      "block": "C8",
+      "front": "1",
+      "block": "1.10",
       "summary": "O fator multiplicativo.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C31",
+      "id": "1.10.3",
       "title": "Variações sucessivas e índices",
-      "front": "C",
-      "block": "C8",
+      "front": "1",
+      "block": "1.10",
       "summary": "Aumentos e descontos em sequência, inflação acumulada, lucro sobre custo e sobre venda.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C32",
+      "id": "1.x1.1",
       "title": "Juros simples",
-      "front": "C",
-      "block": "C9",
+      "front": "1",
+      "block": "1.x1",
       "summary": "Capital, taxa, tempo e montante.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C33",
+      "id": "1.x1.2",
       "title": "Juros compostos",
-      "front": "C",
-      "block": "C9",
+      "front": "1",
+      "block": "1.x1",
       "summary": "Montante composto e crescimento exponencial do dinheiro.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C34",
+      "id": "1.x1.3",
       "title": "Valor presente e equivalência de capitais",
-      "front": "C",
-      "block": "C9",
+      "front": "1",
+      "block": "1.x1",
       "summary": "Trazer valores para a mesma data e comparar propostas.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C35",
+      "id": "1.x1.4",
       "title": "Sistemas de amortização",
-      "front": "C",
-      "block": "C9",
+      "front": "1",
+      "block": "1.x1",
       "summary": "SAC e Price.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C36",
+      "id": "1.11.1",
+      "title": "Comprimento, área, volume e capacidade",
+      "front": "1",
+      "block": "1.11",
+      "summary": "Conversões e a relação entre litro e decímetro cúbico.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.11.2",
+      "title": "Tempo, massa e grandezas compostas",
+      "front": "1",
+      "block": "1.11",
+      "summary": "Horas e minutos, toneladas e gramas, velocidade e vazão.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.12.1",
+      "title": "Conjuntos: linguagem e representação",
+      "front": "1",
+      "block": "1.12",
+      "summary": "Elementos, pertinência, inclusão, subconjuntos e conjunto das partes.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.12.2",
+      "title": "Operações com conjuntos",
+      "front": "1",
+      "block": "1.12",
+      "summary": "União, interseção, diferença e complementar, com diagramas.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.12.3",
+      "title": "Problemas com diagramas de Venn",
+      "front": "1",
+      "block": "1.12",
+      "summary": "Contagem com dois e três conjuntos: pesquisas, preferências e o número de elementos da união.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.13.1",
+      "title": "Conjuntos numéricos",
+      "front": "1",
+      "block": "1.13",
+      "summary": "Naturais, inteiros, racionais, irracionais e reais: o que cada um acrescenta.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.13.2",
+      "title": "Dízimas periódicas",
+      "front": "1",
+      "block": "1.13",
+      "summary": "Fração geratriz de dízimas simples e compostas.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.13.3",
+      "title": "Intervalos reais",
+      "front": "1",
+      "block": "1.13",
+      "summary": "Notação de colchetes, representação na reta e operações com intervalos.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.14.1",
+      "title": "Sequências e lei de formação",
+      "front": "1",
+      "block": "1.14",
+      "summary": "Termo geral e lei de recorrência.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.14.2",
+      "title": "PA: termo geral",
+      "front": "1",
+      "block": "1.14",
+      "summary": "Razão e fórmula do termo geral.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.14.3",
+      "title": "PA: propriedades e interpolação",
+      "front": "1",
+      "block": "1.14",
+      "summary": "Média dos vizinhos, termos equidistantes e interpolação aritmética.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.14.4",
+      "title": "Soma da PA",
+      "front": "1",
+      "block": "1.14",
+      "summary": "A ideia de Gauss e a fórmula da soma.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.15.1",
+      "title": "PG: termo geral",
+      "front": "1",
+      "block": "1.15",
+      "summary": "Razão e fórmula do termo geral. Crescimento exponencial discreto.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.15.2",
+      "title": "PG: propriedades e interpolação",
+      "front": "1",
+      "block": "1.15",
+      "summary": "Média geométrica dos vizinhos e interpolação geométrica.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.15.3",
+      "title": "Soma da PG finita",
+      "front": "1",
+      "block": "1.15",
+      "summary": "A fórmula da soma e aplicações financeiras.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.15.4",
+      "title": "PG infinita",
+      "front": "1",
+      "block": "1.15",
+      "summary": "Quando a soma converge e quanto vale.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.15.5",
+      "title": "Problemas com PA e PG",
+      "front": "1",
+      "block": "1.15",
+      "summary": "Questões que misturam as duas progressões.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.16.1",
       "title": "Princípio fundamental da contagem",
-      "front": "C",
-      "block": "C10",
+      "front": "1",
+      "block": "1.16",
       "summary": "Princípio multiplicativo e árvore de possibilidades.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C37",
+      "id": "1.16.2",
       "title": "Fatorial e permutação simples",
-      "front": "C",
-      "block": "C10",
+      "front": "1",
+      "block": "1.16",
       "summary": "Fatorial, filas e anagramas sem repetição.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C38",
+      "id": "1.17.1",
       "title": "Permutação com repetição",
-      "front": "C",
-      "block": "C10",
+      "front": "1",
+      "block": "1.17",
       "summary": "Anagramas com letras repetidas e caminhos em malhas.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C39",
+      "id": "1.17.2",
       "title": "Permutação circular",
-      "front": "C",
-      "block": "C10",
+      "front": "1",
+      "block": "1.17",
       "summary": "Rodas, mesas redondas e cirandas.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C40",
+      "id": "1.18.1",
       "title": "Arranjo simples",
-      "front": "C",
-      "block": "C10",
+      "front": "1",
+      "block": "1.18",
       "summary": "Quando a ordem importa: pódios, senhas e cargos.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C41",
+      "id": "1.18.2",
       "title": "Combinação simples",
-      "front": "C",
-      "block": "C11",
+      "front": "1",
+      "block": "1.18",
       "summary": "Quando a ordem não importa: comissões e equipes.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C42",
+      "id": "1.18.3",
       "title": "Combinações com restrições",
-      "front": "C",
-      "block": "C11",
+      "front": "1",
+      "block": "1.18",
       "summary": "Pelo menos, no máximo e o método destrutivo.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C43",
+      "id": "1.18.4",
       "title": "Combinação completa",
-      "front": "C",
-      "block": "C11",
+      "front": "1",
+      "block": "1.18",
       "summary": "Traços e bolas e soluções inteiras de equações.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C44",
+      "id": "1.18.5",
       "title": "Princípio das gavetas",
-      "front": "C",
-      "block": "C11",
+      "front": "1",
+      "block": "1.18",
       "summary": "Casa dos pombos: garantir que algo aconteça.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C45",
+      "id": "1.19.1",
       "title": "Números binomiais e triângulo de Pascal",
-      "front": "C",
-      "block": "C12",
+      "front": "1",
+      "block": "1.19",
       "summary": "Números binomiais, propriedades e somas de linhas.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C46",
+      "id": "1.20.1",
       "title": "Binômio de Newton",
-      "front": "C",
-      "block": "C12",
+      "front": "1",
+      "block": "1.20",
       "summary": "Desenvolvimento e termo geral.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C47",
+      "id": "1.21.1",
       "title": "Probabilidade: definição",
-      "front": "C",
-      "block": "C13",
+      "front": "1",
+      "block": "1.21",
       "summary": "Espaço amostral, evento e a razão favoráveis sobre possíveis.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C48",
+      "id": "1.21.2",
       "title": "União e evento complementar",
-      "front": "C",
-      "block": "C13",
+      "front": "1",
+      "block": "1.21",
       "summary": "A regra do ou e o complementar.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C49",
+      "id": "1.21.3",
       "title": "Probabilidade condicional",
-      "front": "C",
-      "block": "C13",
+      "front": "1",
+      "block": "1.21",
       "summary": "Dado que: redução do espaço amostral e tabelas de dupla entrada.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C50",
+      "id": "1.21.4",
       "title": "Eventos independentes",
-      "front": "C",
-      "block": "C13",
+      "front": "1",
+      "block": "1.21",
       "summary": "A regra do e, com e sem reposição.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C51",
+      "id": "1.21.5",
       "title": "Distribuição binomial",
-      "front": "C",
-      "block": "C13",
+      "front": "1",
+      "block": "1.21",
       "summary": "Probabilidade de k sucessos em n tentativas.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C52",
+      "id": "1.21.6",
       "title": "Probabilidade total e Bayes",
-      "front": "C",
-      "block": "C13",
+      "front": "1",
+      "block": "1.21",
       "summary": "Árvore de probabilidades e a inversão da condicional.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C53",
-      "title": "Tabelas e gráficos",
-      "front": "C",
-      "block": "C14",
-      "summary": "Barras, colunas, linhas, setores e pictogramas.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "C54",
-      "title": "Distribuição de frequências",
-      "front": "C",
-      "block": "C14",
-      "summary": "Frequência absoluta e relativa, classes e histogramas.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "C55",
+      "id": "1.22.1",
       "title": "Média aritmética",
-      "front": "C",
-      "block": "C15",
+      "front": "1",
+      "block": "1.22",
       "summary": "Média simples e ponderada e suas propriedades.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C56",
+      "id": "1.22.2",
       "title": "Mediana e moda",
-      "front": "C",
-      "block": "C15",
+      "front": "1",
+      "block": "1.22",
       "summary": "Dados brutos e agrupados.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C57",
+      "id": "1.22.3",
       "title": "Comparando média, mediana e moda",
-      "front": "C",
-      "block": "C15",
+      "front": "1",
+      "block": "1.22",
       "summary": "Qual medida usar e o efeito dos valores extremos.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C58",
+      "id": "1.23.1",
+      "title": "Tabelas e gráficos",
+      "front": "1",
+      "block": "1.23",
+      "summary": "Barras, colunas, linhas, setores e pictogramas.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.23.2",
+      "title": "Distribuição de frequências",
+      "front": "1",
+      "block": "1.23",
+      "summary": "Frequência absoluta e relativa, classes e histogramas.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "1.23.3",
       "title": "Variância e desvio padrão",
-      "front": "C",
-      "block": "C16",
+      "front": "1",
+      "block": "1.23",
       "summary": "Amplitude, variância e desvio padrão.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C59",
+      "id": "1.23.4",
       "title": "Coeficiente de variação e regularidade",
-      "front": "C",
-      "block": "C16",
+      "front": "1",
+      "block": "1.23",
       "summary": "Comparar a regularidade de conjuntos diferentes.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C60",
+      "id": "1.23.5",
       "title": "Amostragem e correlação",
-      "front": "C",
-      "block": "C16",
+      "front": "1",
+      "block": "1.23",
       "summary": "Amostra e população, gráficos de dispersão e correlação.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C61",
+      "id": "2.1.1",
+      "title": "Plano cartesiano e produto cartesiano",
+      "front": "2",
+      "block": "2.1",
+      "summary": "Pares ordenados, quadrantes, produto cartesiano e relações.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.1.2",
+      "title": "O conceito de função",
+      "front": "2",
+      "block": "2.1",
+      "summary": "Domínio, contradomínio e lei de correspondência. Quando uma relação é função.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.1.3",
+      "title": "Domínio e imagem",
+      "front": "2",
+      "block": "2.1",
+      "summary": "Domínio algébrico (denominador e raiz par) e imagem a partir da lei.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.1.4",
+      "title": "Leitura e análise de gráficos",
+      "front": "2",
+      "block": "2.1",
+      "summary": "Crescimento, sinais, máximos e mínimos lidos direto no gráfico, como o ENEM cobra.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.2.1",
+      "title": "Função afim: definição e taxa de variação",
+      "front": "2",
+      "block": "2.2",
+      "summary": "Lei y = ax + b, taxa de variação e valor inicial. Função linear e constante.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.2.2",
+      "title": "Gráfico e coeficientes",
+      "front": "2",
+      "block": "2.2",
+      "summary": "A reta, os coeficientes angular e linear e como obter a lei a partir de dois pontos.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.2.3",
+      "title": "Zero e estudo do sinal",
+      "front": "2",
+      "block": "2.2",
+      "summary": "Onde a reta corta o eixo x e onde a função é positiva ou negativa.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.2.4",
+      "title": "Modelagem com função afim",
+      "front": "2",
+      "block": "2.2",
+      "summary": "Custo, receita e lucro, tarifas de táxi, planos de celular.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.3.1",
+      "title": "Função quadrática: definição e concavidade",
+      "front": "2",
+      "block": "2.3",
+      "summary": "A parábola, os coeficientes e o sentido da concavidade.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.3.2",
+      "title": "Raízes, discriminante, soma e produto",
+      "front": "2",
+      "block": "2.3",
+      "summary": "Zeros da função, papel do Δ e relações de soma e produto.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.3.3",
+      "title": "Vértice e eixo de simetria",
+      "front": "2",
+      "block": "2.3",
+      "summary": "Coordenadas do vértice, eixo de simetria e imagem.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.3.4",
+      "title": "Leitura completa do gráfico",
+      "front": "2",
+      "block": "2.3",
+      "summary": "Sinais de a, b, c e Δ a partir do desenho da parábola.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.3.5",
+      "title": "Máximos e mínimos",
+      "front": "2",
+      "block": "2.3",
+      "summary": "Problemas de otimização: área máxima, lucro máximo, altura máxima.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.3.6",
+      "title": "Formas fatorada e canônica",
+      "front": "2",
+      "block": "2.3",
+      "summary": "Escrever a lei a partir das raízes ou do vértice.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.4.1",
+      "title": "Inequações produto e quociente",
+      "front": "2",
+      "block": "2.4",
+      "summary": "O quadro de sinais e o cuidado com o denominador.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.4.2",
+      "title": "Estudo do sinal da quadrática",
+      "front": "2",
+      "block": "2.4",
+      "summary": "Onde a parábola fica acima ou abaixo do eixo x.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.4.3",
+      "title": "Inequações do 2º grau",
+      "front": "2",
+      "block": "2.4",
+      "summary": "Inequações quadráticas, produto e quociente envolvendo parábolas.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.5.1",
+      "title": "Função par e função ímpar",
+      "front": "2",
+      "block": "2.5",
+      "summary": "Simetria em relação ao eixo y e à origem. O teste com f(−x).",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.5.2",
+      "title": "Injetora, sobrejetora e bijetora",
+      "front": "2",
+      "block": "2.5",
+      "summary": "Diagramas de flechas, teste da reta horizontal e restrição de domínio.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.5.3",
+      "title": "Função composta",
+      "front": "2",
+      "block": "2.5",
+      "summary": "f(g(x)), a ordem da composição e como descobrir uma das funções.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.5.4",
+      "title": "Função inversa",
+      "front": "2",
+      "block": "2.5",
+      "summary": "Quando existe, como obter f⁻¹ e a simetria com a reta y = x.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.6.1",
+      "title": "Módulo de um número real",
+      "front": "2",
+      "block": "2.6",
+      "summary": "Módulo como distância, definição por casos e propriedades.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.6.2",
+      "title": "Função modular e gráficos",
+      "front": "2",
+      "block": "2.6",
+      "summary": "O gráfico em V, translações e funções definidas por partes.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.6.3",
+      "title": "Equações modulares",
+      "front": "2",
+      "block": "2.6",
+      "summary": "|x| = a, |f(x)| = |g(x)| e equações com módulo e variável fora dele.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.6.4",
+      "title": "Inequações modulares",
+      "front": "2",
+      "block": "2.6",
+      "summary": "|x| < a (miolo) e |x| > a (caudas), com interpretação na reta.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.6.5",
+      "title": "Gráficos com módulo",
+      "front": "2",
+      "block": "2.6",
+      "summary": "Gráficos de |f(x)| e f(|x|): rebater e espelhar.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.7.1",
+      "title": "Função exponencial e modelos de crescimento",
+      "front": "2",
+      "block": "2.7",
+      "summary": "Gráfico, base maior ou menor que 1, crescimento populacional e meia-vida.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.7.2",
+      "title": "Equações exponenciais",
+      "front": "2",
+      "block": "2.7",
+      "summary": "Reduzir à mesma base, mudança de variável e uso de logaritmo quando não dá.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.7.3",
+      "title": "Inequações exponenciais",
+      "front": "2",
+      "block": "2.7",
+      "summary": "Comparar expoentes e inverter a desigualdade quando a base é menor que 1.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.8.1",
+      "title": "Logaritmo: definição e condição de existência",
+      "front": "2",
+      "block": "2.8",
+      "summary": "O logaritmo como expoente e as restrições de base e logaritmando.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.9.1",
+      "title": "Propriedades operatórias",
+      "front": "2",
+      "block": "2.9",
+      "summary": "Produto, quociente e potência.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.9.2",
+      "title": "Mudança de base",
+      "front": "2",
+      "block": "2.9",
+      "summary": "A fórmula e suas consequências.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.10.1",
+      "title": "Equações logarítmicas",
+      "front": "2",
+      "block": "2.10",
+      "summary": "Resolução e a verificação das condições de existência.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.10.2",
+      "title": "Inequações logarítmicas",
+      "front": "2",
+      "block": "2.10",
+      "summary": "Base maior que 1 ou entre 0 e 1, sempre com o domínio.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.11.1",
+      "title": "Função logarítmica",
+      "front": "2",
+      "block": "2.11",
+      "summary": "Gráfico, domínio, imagem e a simetria com a exponencial.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.11.2",
+      "title": "Aplicações dos logaritmos",
+      "front": "2",
+      "block": "2.11",
+      "summary": "pH, escala Richter, decibéis e tempo em juros compostos.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.12.1",
       "title": "Razões trigonométricas no triângulo retângulo",
-      "front": "C",
-      "block": "C17",
+      "front": "2",
+      "block": "2.12",
       "summary": "Seno, cosseno e tangente de um ângulo agudo.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C62",
+      "id": "2.12.2",
       "title": "Ângulos notáveis e aplicações",
-      "front": "C",
-      "block": "C17",
+      "front": "2",
+      "block": "2.12",
       "summary": "30°, 45° e 60° em problemas de altura e distância.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C63",
+      "id": "2.13.1",
       "title": "Lei dos senos",
-      "front": "C",
-      "block": "C17",
+      "front": "2",
+      "block": "2.13",
       "summary": "A lei e o raio da circunferência circunscrita.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C64",
+      "id": "2.13.2",
       "title": "Lei dos cossenos",
-      "front": "C",
-      "block": "C17",
+      "front": "2",
+      "block": "2.13",
       "summary": "A lei e a área do triângulo pelo seno.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C65",
+      "id": "2.14.1",
       "title": "Arcos e ângulos",
-      "front": "C",
-      "block": "C18",
+      "front": "2",
+      "block": "2.14",
       "summary": "Graus e radianos, comprimento de arco.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C66",
+      "id": "2.14.2",
       "title": "Ciclo trigonométrico e arcos côngruos",
-      "front": "C",
-      "block": "C18",
+      "front": "2",
+      "block": "2.14",
       "summary": "A circunferência unitária e a primeira determinação positiva.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C67",
+      "id": "2.15.1",
       "title": "Seno e cosseno no ciclo",
-      "front": "C",
-      "block": "C18",
+      "front": "2",
+      "block": "2.15",
       "summary": "Os eixos, os sinais nos quadrantes e os arcos notáveis.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C68",
+      "id": "2.15.2",
       "title": "Redução ao 1º quadrante",
-      "front": "C",
-      "block": "C18",
+      "front": "2",
+      "block": "2.15",
       "summary": "Simetrias no ciclo para calcular qualquer arco.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C69",
+      "id": "2.15.3",
       "title": "Tangente e demais razões",
-      "front": "C",
-      "block": "C18",
+      "front": "2",
+      "block": "2.15",
       "summary": "Eixo das tangentes, secante, cossecante e cotangente.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C70",
+      "id": "2.16.1",
       "title": "Relação fundamental e identidades",
-      "front": "C",
-      "block": "C18",
+      "front": "2",
+      "block": "2.16",
       "summary": "sen² + cos² = 1 e as relações derivadas.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C71",
+      "id": "2.17.1",
       "title": "Adição e subtração de arcos",
-      "front": "C",
-      "block": "C19",
+      "front": "2",
+      "block": "2.17",
       "summary": "Seno, cosseno e tangente da soma e da diferença.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C72",
+      "id": "2.17.2",
       "title": "Arco duplo e arco metade",
-      "front": "C",
-      "block": "C19",
+      "front": "2",
+      "block": "2.17",
       "summary": "As fórmulas e quando usar cada uma.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C73",
+      "id": "2.17.3",
       "title": "Transformação em produto",
-      "front": "C",
-      "block": "C19",
+      "front": "2",
+      "block": "2.17",
       "summary": "Soma de senos e cossenos em produto.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C74",
-      "title": "Funções seno e cosseno",
-      "front": "C",
-      "block": "C20",
-      "summary": "Gráficos, domínio, imagem e período.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "C75",
-      "title": "Período, amplitude e fenômenos periódicos",
-      "front": "C",
-      "block": "C20",
-      "summary": "Transformações do gráfico e modelagem de marés, temperaturas e rodas-gigantes.",
-      "notes": [],
-      "files": [],
-      "published": true
-    },
-    {
-      "id": "C76",
+      "id": "2.18.1",
       "title": "Equações trigonométricas",
-      "front": "C",
-      "block": "C20",
+      "front": "2",
+      "block": "2.18",
       "summary": "Soluções no ciclo e solução geral.",
       "notes": [],
       "files": [],
       "published": true
     },
     {
-      "id": "C77",
+      "id": "2.19.1",
       "title": "Inequações trigonométricas",
-      "front": "C",
-      "block": "C20",
+      "front": "2",
+      "block": "2.19",
       "summary": "Intervalos de solução lidos no ciclo.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.20.1",
+      "title": "Funções seno e cosseno",
+      "front": "2",
+      "block": "2.20",
+      "summary": "Gráficos, domínio, imagem e período.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "2.20.2",
+      "title": "Período, amplitude e fenômenos periódicos",
+      "front": "2",
+      "block": "2.20",
+      "summary": "Transformações do gráfico e modelagem de marés, temperaturas e rodas-gigantes.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.1.1",
+      "title": "Matrizes: definição e tipos",
+      "front": "3",
+      "block": "3.1",
+      "summary": "Notação aᵢⱼ, lei de formação e matrizes especiais.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.1.2",
+      "title": "Adição, multiplicação por número e transposta",
+      "front": "3",
+      "block": "3.1",
+      "summary": "Operações elemento a elemento, igualdade e transposta.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.2.1",
+      "title": "Multiplicação de matrizes",
+      "front": "3",
+      "block": "3.2",
+      "summary": "Linha por coluna, quando o produto existe e por que AB ≠ BA.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.3.1",
+      "title": "Determinantes de ordem 2 e 3",
+      "front": "3",
+      "block": "3.3",
+      "summary": "Regra direta e regra de Sarrus.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.4.1",
+      "title": "Propriedades dos determinantes",
+      "front": "3",
+      "block": "3.4",
+      "summary": "Fila nula, filas iguais ou proporcionais, troca de filas e multiplicação por número.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.4.2",
+      "title": "Teorema de Laplace e regra de Chió",
+      "front": "3",
+      "block": "3.4",
+      "summary": "Cofatores e abaixamento de ordem.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.4.3",
+      "title": "Teorema de Binet e determinante da inversa",
+      "front": "3",
+      "block": "3.4",
+      "summary": "det(AB) = det A · det B e suas consequências.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.5.1",
+      "title": "Matriz inversa",
+      "front": "3",
+      "block": "3.5",
+      "summary": "Definição, cálculo por sistema e quando a inversa existe.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.6.1",
+      "title": "Sistemas lineares: classificação",
+      "front": "3",
+      "block": "3.6",
+      "summary": "Equação linear, solução e as classificações SPD, SPI e SI.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.6.2",
+      "title": "Regra de Cramer",
+      "front": "3",
+      "block": "3.6",
+      "summary": "Resolver com determinantes.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.6.3",
+      "title": "Escalonamento",
+      "front": "3",
+      "block": "3.6",
+      "summary": "O método de Gauss passo a passo.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.6.4",
+      "title": "Discussão de sistemas",
+      "front": "3",
+      "block": "3.6",
+      "summary": "Sistemas com parâmetro: quando é SPD, SPI ou SI.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.7.1",
+      "title": "Distância entre dois pontos",
+      "front": "3",
+      "block": "3.7",
+      "summary": "Coordenadas e a fórmula da distância.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.7.2",
+      "title": "Ponto médio e baricentro",
+      "front": "3",
+      "block": "3.7",
+      "summary": "Ponto médio, baricentro e divisão de segmento em razão dada.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.7.3",
+      "title": "Alinhamento e área do triângulo",
+      "front": "3",
+      "block": "3.7",
+      "summary": "Condição de alinhamento e área pelo determinante.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.8.1",
+      "title": "Coeficiente angular e equação da reta",
+      "front": "3",
+      "block": "3.8",
+      "summary": "Inclinação, coeficiente angular e y − y₀ = m(x − x₀).",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.8.2",
+      "title": "Formas da equação da reta",
+      "front": "3",
+      "block": "3.8",
+      "summary": "Geral, reduzida, segmentária e paramétrica.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.9.1",
+      "title": "Retas paralelas e concorrentes",
+      "front": "3",
+      "block": "3.9",
+      "summary": "Posição relativa e ponto de interseção.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.9.2",
+      "title": "Retas perpendiculares",
+      "front": "3",
+      "block": "3.9",
+      "summary": "Condição m₁ · m₂ = −1 e mediatriz.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.9.3",
+      "title": "Ângulo entre retas",
+      "front": "3",
+      "block": "3.9",
+      "summary": "A fórmula da tangente do ângulo entre duas retas.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.9.4",
+      "title": "Distância de ponto a reta",
+      "front": "3",
+      "block": "3.9",
+      "summary": "A fórmula e a distância entre retas paralelas.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.9.5",
+      "title": "Inequações e regiões do plano",
+      "front": "3",
+      "block": "3.9",
+      "summary": "Semiplanos e regiões limitadas por retas.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.10.1",
+      "title": "Equação da circunferência",
+      "front": "3",
+      "block": "3.10",
+      "summary": "Equações reduzida e geral e o completar quadrados.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.10.2",
+      "title": "Ponto e reta em relação à circunferência",
+      "front": "3",
+      "block": "3.10",
+      "summary": "Posições relativas pela distância ao centro.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.10.3",
+      "title": "Circunferências e retas tangentes",
+      "front": "3",
+      "block": "3.10",
+      "summary": "Posição entre duas circunferências e equação da tangente.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.x1.1",
+      "title": "Elipse",
+      "front": "3",
+      "block": "3.x1",
+      "summary": "Definição, focos, eixos, excentricidade e equação reduzida.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.x1.2",
+      "title": "Hipérbole",
+      "front": "3",
+      "block": "3.x1",
+      "summary": "Definição, assíntotas e equação reduzida.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.x1.3",
+      "title": "Parábola",
+      "front": "3",
+      "block": "3.x1",
+      "summary": "Foco, diretriz e equação reduzida.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.x1.4",
+      "title": "Reconhecimento de cônicas",
+      "front": "3",
+      "block": "3.x1",
+      "summary": "Identificar a curva pela equação e translação de eixos.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.x2.1",
+      "title": "Coordenadas no espaço",
+      "front": "3",
+      "block": "3.x2",
+      "summary": "Ponto em x, y, z, distância e esfera no espaço.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.x2.2",
+      "title": "Lugares geométricos",
+      "front": "3",
+      "block": "3.x2",
+      "summary": "Encontrar o lugar dos pontos que satisfazem uma condição.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.11.1",
+      "title": "Complexos: forma algébrica",
+      "front": "3",
+      "block": "3.11",
+      "summary": "A unidade imaginária, parte real e imaginária e igualdade de complexos.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.11.2",
+      "title": "Operações na forma algébrica",
+      "front": "3",
+      "block": "3.11",
+      "summary": "Soma, produto, conjugado e divisão.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.12.1",
+      "title": "Potências de i",
+      "front": "3",
+      "block": "3.12",
+      "summary": "O ciclo de 4 e potências grandes.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.12.2",
+      "title": "Plano de Argand-Gauss, módulo e argumento",
+      "front": "3",
+      "block": "3.12",
+      "summary": "Representação geométrica, módulo como distância e argumento.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.12.3",
+      "title": "Forma trigonométrica",
+      "front": "3",
+      "block": "3.12",
+      "summary": "Conversão entre as formas algébrica e trigonométrica.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.12.4",
+      "title": "Operações na forma trigonométrica",
+      "front": "3",
+      "block": "3.12",
+      "summary": "Multiplicação, divisão e potência (Moivre).",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.13.1",
+      "title": "Polinômios: definição e identidade",
+      "front": "3",
+      "block": "3.13",
+      "summary": "Grau, valor numérico e polinômios idênticos.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.13.2",
+      "title": "Operações com polinômios",
+      "front": "3",
+      "block": "3.13",
+      "summary": "Soma, subtração e multiplicação, com atenção ao grau.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.13.3",
+      "title": "Divisão de polinômios: método da chave",
+      "front": "3",
+      "block": "3.13",
+      "summary": "Quociente e resto pelo algoritmo da divisão.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.13.4",
+      "title": "Dispositivo de Briot-Ruffini",
+      "front": "3",
+      "block": "3.13",
+      "summary": "Divisão rápida por x − a.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.13.5",
+      "title": "Teorema do resto e de D'Alembert",
+      "front": "3",
+      "block": "3.13",
+      "summary": "Resto sem dividir e condição de divisibilidade.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.14.1",
+      "title": "Equações polinomiais",
+      "front": "3",
+      "block": "3.14",
+      "summary": "Teorema fundamental da álgebra e decomposição em fatores.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.14.2",
+      "title": "Multiplicidade de raízes",
+      "front": "3",
+      "block": "3.14",
+      "summary": "Raízes repetidas e o que acontece no gráfico.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.14.3",
+      "title": "Relações de Girard",
+      "front": "3",
+      "block": "3.14",
+      "summary": "Soma, produto e somas duplas das raízes.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "3.14.4",
+      "title": "Raízes complexas e raízes racionais",
+      "front": "3",
+      "block": "3.14",
+      "summary": "Raízes conjugadas e pesquisa de raízes racionais.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.1.1",
+      "title": "Conceitos primitivos e ângulos",
+      "front": "4",
+      "block": "4.1",
+      "summary": "Ponto, reta, plano, classificação de ângulos, complementares e suplementares.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.1.2",
+      "title": "Retas paralelas e transversais",
+      "front": "4",
+      "block": "4.1",
+      "summary": "Ângulos alternos, correspondentes e colaterais.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.2.1",
+      "title": "Triângulos: classificação e ângulos",
+      "front": "4",
+      "block": "4.2",
+      "summary": "Soma dos ângulos internos, ângulo externo e desigualdade triangular.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.2.2",
+      "title": "Cevianas e pontos notáveis",
+      "front": "4",
+      "block": "4.2",
+      "summary": "Mediana, bissetriz e altura. Baricentro, incentro, circuncentro e ortocentro.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.3.1",
+      "title": "Congruência de triângulos",
+      "front": "4",
+      "block": "4.3",
+      "summary": "Os casos LAL, ALA, LLL e LAAo.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.3.2",
+      "title": "Teorema de Tales",
+      "front": "4",
+      "block": "4.3",
+      "summary": "Feixe de paralelas e teorema da bissetriz interna.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.3.3",
+      "title": "Semelhança de triângulos",
+      "front": "4",
+      "block": "4.3",
+      "summary": "Casos de semelhança e razão de semelhança.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.4.1",
+      "title": "Teorema de Pitágoras",
+      "front": "4",
+      "block": "4.4",
+      "summary": "Enunciado, demonstração e aplicações.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.4.2",
+      "title": "Relações métricas no triângulo retângulo",
+      "front": "4",
+      "block": "4.4",
+      "summary": "Projeções, altura relativa à hipotenusa e as relações.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.5.1",
+      "title": "Polígonos: ângulos e diagonais",
+      "front": "4",
+      "block": "4.5",
+      "summary": "Soma dos ângulos internos e externos e número de diagonais.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.5.2",
+      "title": "Quadriláteros notáveis",
+      "front": "4",
+      "block": "4.5",
+      "summary": "Trapézio, paralelogramo, retângulo, losango e quadrado.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.6.1",
+      "title": "Polígonos regulares inscritos e circunscritos",
+      "front": "4",
+      "block": "4.6",
+      "summary": "Triângulo, quadrado e hexágono regulares e o apótema.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.7.1",
+      "title": "Áreas de quadriláteros",
+      "front": "4",
+      "block": "4.7",
+      "summary": "Retângulo, paralelogramo, trapézio e losango.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.7.2",
+      "title": "Áreas de triângulos",
+      "front": "4",
+      "block": "4.7",
+      "summary": "Base e altura, fórmula do seno, Heron e raios inscrito e circunscrito.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.7.3",
+      "title": "Área do círculo e de suas partes",
+      "front": "4",
+      "block": "4.7",
+      "summary": "Setor, coroa e segmento circular.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.7.4",
+      "title": "Razão entre áreas",
+      "front": "4",
+      "block": "4.7",
+      "summary": "Figuras semelhantes e escalas de área.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.7.5",
+      "title": "Áreas de figuras compostas",
+      "front": "4",
+      "block": "4.7",
+      "summary": "Decompor, completar e subtrair regiões.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.8.1",
+      "title": "Circunferência: elementos e tangência",
+      "front": "4",
+      "block": "4.8",
+      "summary": "Raio, corda, diâmetro e a reta tangente perpendicular ao raio.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.8.2",
+      "title": "Ângulos na circunferência",
+      "front": "4",
+      "block": "4.8",
+      "summary": "Ângulo central, inscrito, de segmento e arco capaz.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.8.3",
+      "title": "Potência de ponto",
+      "front": "4",
+      "block": "4.8",
+      "summary": "Cordas, secantes e tangentes.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.8.4",
+      "title": "Comprimento da circunferência e de arcos",
+      "front": "4",
+      "block": "4.8",
+      "summary": "O número π e o comprimento de um arco.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.9.1",
+      "title": "Geometria de posição",
+      "front": "4",
+      "block": "4.9",
+      "summary": "Postulados e posições relativas de retas e planos.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.10.1",
+      "title": "Perpendicularidade e projeções",
+      "front": "4",
+      "block": "4.10",
+      "summary": "Reta perpendicular a plano e projeção ortogonal.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.11.1",
+      "title": "Poliedros e relação de Euler",
+      "front": "4",
+      "block": "4.11",
+      "summary": "Faces, arestas, vértices e poliedros de Platão.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.11.2",
+      "title": "Planificações e vistas",
+      "front": "4",
+      "block": "4.11",
+      "summary": "Planificar sólidos e reconhecer vistas frontal, lateral e superior.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.12.1",
+      "title": "Prismas: elementos e áreas",
+      "front": "4",
+      "block": "4.12",
+      "summary": "Classificação, área lateral e área total.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.12.2",
+      "title": "Volume de prismas",
+      "front": "4",
+      "block": "4.12",
+      "summary": "Princípio de Cavalieri, paralelepípedo, cubo e diagonais.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.13.1",
+      "title": "Pirâmides: elementos e áreas",
+      "front": "4",
+      "block": "4.13",
+      "summary": "Apótema da pirâmide e da base, áreas lateral e total.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.13.2",
+      "title": "Volume da pirâmide",
+      "front": "4",
+      "block": "4.13",
+      "summary": "Um terço da área da base vezes a altura.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.14.1",
+      "title": "Cilindro",
+      "front": "4",
+      "block": "4.14",
+      "summary": "Elementos, secção meridiana, áreas e volume.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.14.2",
+      "title": "Sólidos de revolução",
+      "front": "4",
+      "block": "4.14",
+      "summary": "Girar figuras planas em torno de um eixo.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.15.1",
+      "title": "Cone: elementos e áreas",
+      "front": "4",
+      "block": "4.15",
+      "summary": "Geratriz, planificação em setor circular e área lateral.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.15.2",
+      "title": "Volume do cone",
+      "front": "4",
+      "block": "4.15",
+      "summary": "Volume e cone equilátero.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.16.1",
+      "title": "Tronco de pirâmide",
+      "front": "4",
+      "block": "4.16",
+      "summary": "Semelhança e volume do tronco.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.16.2",
+      "title": "Tronco de cone",
+      "front": "4",
+      "block": "4.16",
+      "summary": "Volume do tronco e planificação.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.16.3",
+      "title": "Semelhança de sólidos",
+      "front": "4",
+      "block": "4.16",
+      "summary": "Razão entre áreas e volumes de sólidos semelhantes.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.17.1",
+      "title": "Esfera: área e volume",
+      "front": "4",
+      "block": "4.17",
+      "summary": "Superfície esférica, secção e volume.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.17.2",
+      "title": "Partes da esfera",
+      "front": "4",
+      "block": "4.17",
+      "summary": "Fuso, cunha e calota.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.17.3",
+      "title": "Inscrição e circunscrição I",
+      "front": "4",
+      "block": "4.17",
+      "summary": "Esfera inscrita e circunscrita ao cubo e ao prisma.",
+      "notes": [],
+      "files": [],
+      "published": true
+    },
+    {
+      "id": "4.17.4",
+      "title": "Inscrição e circunscrição II",
+      "front": "4",
+      "block": "4.17",
+      "summary": "Cilindro, cone e esfera combinados.",
       "notes": [],
       "files": [],
       "published": true

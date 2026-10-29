@@ -90,6 +90,53 @@ def capa(pdf, destino, largura=520):
         im.resize((largura, alt), Image.LANCZOS).save(destino, "WEBP", quality=78, method=6)
 
 
+FIG_PRE = r"""\documentclass[border=2pt]{standalone}
+\usepackage{fontspec}\usepackage{amsmath,amssymb}\usepackage{unicode-math}
+\setmainfont{Inter}\setmathfont{Latin Modern Math}[Scale=MatchLowercase]
+\usepackage{xcolor}
+\definecolor{ink}{HTML}{211946}\definecolor{roxo}{HTML}{4A27B7}\definecolor{lima}{HTML}{D3FC61}
+\definecolor{laranja}{HTML}{FF7956}\definecolor{suave}{HTML}{F1EDFC}\definecolor{mudo}{HTML}{746B83}
+\usepackage{tikz}\usetikzlibrary{calc}\usepackage{pgfplots}
+\pgfplotsset{compat=1.18,every axis/.append style={font=\scriptsize,axis lines=middle,axis line style={-latex,ink!70},tick style={ink!50},grid style={roxo!10}}}
+\begin{document}\color{ink}\begin{tikzpicture}%s\end{tikzpicture}\end{document}
+"""
+
+
+def figura_svg(codigo, nome, fig):
+    """Desenha a figura de apoio em SVG para o site (pdfs/figuras/XNN-nome.svg)."""
+    cod = fig["tikz"] if isinstance(fig, dict) else fig
+    destino = ROOT / "pdfs" / "figuras" / f"{codigo}-{nome}.svg"
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        (Path(tmp) / "f.tex").write_text(FIG_PRE % cod, encoding="utf-8")
+        r = subprocess.run(["xelatex", "-interaction=nonstopmode", "-halt-on-error", "f.tex"], cwd=tmp, capture_output=True, text=True)
+        if r.returncode:
+            sys.exit(f"Erro na figura {codigo}-{nome}:\n" + r.stdout[-1500:])
+        subprocess.run(["pdftocairo", "-svg", "f.pdf", str(destino)], cwd=tmp, check=True)
+    return f"/pdfs/figuras/{destino.name}"
+
+
+def apoio(codigo, nome, q):
+    """Texto de apoio, tabela e figura de uma questão, no formato do site."""
+    extra = {}
+    if q.get("texto"):
+        extra["texto"] = linhas(q["texto"])
+    if q.get("tabela"):
+        t = q["tabela"]
+        extra["tabela"] = {"cabecalho": [tex_web(c) for c in t["cabecalho"]],
+                           "linhas": [[tex_web(c) for c in l] for l in t["linhas"]],
+                           "legenda": tex_web(t.get("legenda", ""))}
+    if q.get("figura"):
+        extra["figura"] = figura_svg(codigo, nome, q["figura"])
+        if isinstance(q["figura"], dict) and q["figura"].get("legenda"):
+            extra["legenda"] = tex_web(q["figura"]["legenda"])
+    return extra
+
+
+from gerar_listas import chave_nivel, nivel_vest, NIVEIS
+NOME_NIVEL = {k: v[1] for k, v in NIVEIS.items()}
+
+
 def exportar(codigo):
     fonte = yaml.safe_load((FONTE / f"{codigo}.yaml").read_text(encoding="utf-8"))
     dados = {"aula": codigo, "versao": 1}
@@ -106,8 +153,9 @@ def exportar(codigo):
                     "itens": [tex_web(i) for i in q.get("itens", [])],
                     "resolucao": linhas(q.get("resolucao")),
                     "resposta": tex_web(q.get("resposta", "")),
+                    **apoio(codigo, f"f{n}", q),
                 })
-            secoes.append({"nome": sec["nome"], "questoes": qs})
+            secoes.append({"nome": NOME_NIVEL[chave_nivel(sec["nome"])], "questoes": qs})
         dados["fixacao"] = {"intro": tex_web(fonte["fixacao"].get("intro", "")), "secoes": secoes}
     if "vestibular" in fonte:
         dados["vestibular"] = {
@@ -118,6 +166,8 @@ def exportar(codigo):
                 "opcoes": [tex_web(o) for o in q["opcoes"]],
                 "correta": "ABCDE".index(q["correta"]),
                 "resolucao": linhas(q.get("resolucao")),
+                "nivel": NOME_NIVEL[nivel_vest(q, k)],
+                **apoio(codigo, f"v{k}", q),
             } for k, q in enumerate(fonte["vestibular"]["questoes"], 1)],
         }
     pdfs = {}
@@ -135,6 +185,6 @@ def exportar(codigo):
 
 
 if __name__ == "__main__":
-    codigos = [c.upper() for c in sys.argv[1:]] or sorted(p.stem for p in FONTE.glob("[ABC][0-9][0-9].yaml"))
+    codigos = sys.argv[1:] or sorted(p.stem for p in FONTE.glob("*.yaml") if re.fullmatch(r"\d\.(\d+|x\d)\.\d+", p.stem))
     for c in codigos:
         print("exportado:", exportar(c).relative_to(ROOT))

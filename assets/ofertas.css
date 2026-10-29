@@ -1,0 +1,96 @@
+/* MAT MAT MAT! • ofertas (toast, modal de cupom, selo fixo). Usa as cores do site. */
+.of-pilha,.of-fundo,.of-pilula{--of-ink:#211946;--of-roxo:#4a27b7;--of-lima:#d3fc61;--of-laranja:#ff7956;--of-papel:#fffefa;--of-creme:#f9f7ef;font-family:'DM Sans',system-ui,sans-serif;color:var(--of-ink)}
+.of-pilha{position:fixed;left:22px;bottom:22px;z-index:80;width:min(392px,calc(100vw - 44px));pointer-events:none}
+.of-toast{pointer-events:auto;position:relative;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--of-papel);border:2px solid var(--of-ink);border-radius:18px;padding:16px 40px 18px 16px;box-shadow:6px 6px 0 var(--of-ink);overflow:hidden;opacity:0;transform:translateY(26px) rotate(-1.5deg);transition:transform .38s cubic-bezier(.2,1.5,.4,1),opacity .2s}
+.of-toast.of-entra{opacity:1;transform:none}
+.of-toast.of-saindo{opacity:0;transform:translateY(16px);transition:transform .22s ease-in,opacity .22s}
+.of-toast.of-roxo{background:var(--of-roxo);color:#fff}
+.of-toast.of-roxo p{color:#e6e0fa}.of-toast.of-roxo .of-x{color:#fff}
+.of-toast.of-lima{background:var(--of-lima)}
+.of-toast-corpo{min-width:0}
+.of-toast strong{display:block;font:700 17px/1.18 'Space Grotesk',sans-serif;letter-spacing:-.4px;margin:1px 0 6px}
+.of-toast p{margin:0 0 12px;font-size:13.5px;line-height:1.5;color:#4b4560}
+.of-toast p b{font-weight:800;background:var(--of-lima);color:var(--of-ink);padding:0 4px;border-radius:4px;white-space:nowrap}
+.of-toast.of-lima p b{background:var(--of-papel)}
+.of-tempo{position:absolute;left:0;bottom:0;height:4px;width:100%;background:var(--of-laranja);transform-origin:left}
+.of-x{position:absolute;top:8px;right:9px;width:30px;height:30px;border:0;background:none;border-radius:50%;font-size:22px;line-height:1;color:var(--of-ink);cursor:pointer;display:grid;place-items:center}
+.of-x:hover{background:rgba(33,25,70,.09)}
+.of-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--of-ink);color:var(--of-lima)!important;border:2px solid var(--of-ink);border-radius:11px;padding:9px 14px;font-weight:800;font-size:13.5px;text-decoration:none;box-shadow:3px 3px 0 var(--of-laranja);transition:transform .15s,box-shadow .15s}
+.of-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--of-laranja)}
+.of-toast.of-roxo .of-btn{background:var(--of-lima);color:var(--of-ink)!important;border-color:var(--of-ink)}
+.of-btn:focus-visible,.of-x:focus-visible,.of-depois:focus-visible,.of-copiar:focus-visible,.of-pilula a:focus-visible,.of-pilula button:focus-visible{outline:3px solid var(--of-laranja);outline-offset:3px}
+
+/* capa em miniatura do volume */
+.of-capa{position:relative;display:flex;flex-direction:column;justify-content:flex-end;width:50px;height:70px;border:2px solid var(--of-ink);border-radius:5px 8px 8px 5px;background:linear-gradient(var(--of-creme) 0 34%,var(--c) 34%);color:var(--t);padding:4px 5px;box-shadow:3px 3px 0 var(--of-ink);transform:rotate(-6deg);flex-shrink:0;overflow:hidden}
+.of-capa:before{content:"MAT";position:absolute;top:4px;left:5px;font:800 8px 'Space Grotesk',sans-serif;color:var(--of-ink);letter-spacing:.2px}
+.of-capa b{font:800 22px/1 'Space Grotesk',sans-serif}
+.of-capa small{font-size:7px;font-weight:800;line-height:1.1;margin-top:2px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.of-capa-colecao{flex-direction:row;align-items:stretch;gap:2px;padding:4px;background:var(--of-creme);transform:rotate(-6deg)}
+.of-capa-colecao:before{display:none}
+.of-capa-colecao i{flex:1;border:1.5px solid var(--of-ink);border-radius:2px}
+
+/* modal */
+html.of-travado{overflow:hidden}
+.of-fundo{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:24px 16px;background:rgba(33,25,70,.58);backdrop-filter:blur(3px);opacity:0;transition:opacity .2s;overflow-y:auto}
+.of-fundo.of-entra{opacity:1}.of-fundo.of-saindo{opacity:0}
+.of-modal{outline:none;position:relative;width:min(448px,100%);background:var(--of-papel);border:2.5px solid var(--of-ink);border-radius:26px;box-shadow:9px 9px 0 var(--of-ink);transform:scale(.86) rotate(2deg);transition:transform .42s cubic-bezier(.2,1.6,.4,1)}
+.of-fundo.of-entra .of-modal{transform:none}
+.of-modal-topo{background:var(--of-roxo);color:#fff;border-radius:23px 23px 0 0;padding:30px 120px 26px 28px;display:flex;flex-direction:column;align-items:flex-start;gap:16px;border-bottom:2.5px solid var(--of-ink)}
+.of-modal-topo h2{margin:0;font:700 clamp(25px,6vw,31px)/1.05 'Space Grotesk',sans-serif;letter-spacing:-1.2px}
+.of-placar{display:inline-block;background:var(--of-lima);color:var(--of-ink);border:2px solid var(--of-ink);border-radius:12px;padding:5px 12px;font:800 24px/1 'Space Grotesk',sans-serif;box-shadow:3px 3px 0 var(--of-ink);transform:rotate(-4deg)}
+.of-modal-corpo{padding:22px 28px 24px;display:flex;flex-direction:column}
+.of-modal-corpo>p{margin:0 0 18px;font-size:15px;line-height:1.6;color:#4b4560}
+.of-btn-grande{font-size:15.5px;padding:14px 18px;border-radius:14px;margin-top:18px}
+.of-depois{align-self:center;margin-top:12px;border:0;background:none;color:#6f6884;font-weight:700;font-size:13.5px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px 10px}
+.of-nota{display:block;text-align:center;font-size:11.5px;color:#8b8598;margin-top:6px;line-height:1.45}
+.of-x-modal{top:12px;right:12px;color:#fff;background:rgba(255,255,255,.12)}
+.of-x-modal:hover{background:rgba(255,255,255,.24)}
+
+/* selo de desconto */
+.of-selo{position:absolute;top:44px;right:-34px;width:116px;height:116px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--of-ink);transform:rotate(12deg);z-index:2;animation:of-gira 1s cubic-bezier(.2,1.6,.4,1) .15s both}
+.of-selo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(4px 4px 0 var(--of-ink))}
+.of-selo polygon{fill:var(--of-laranja);stroke:var(--of-ink);stroke-width:2.5;stroke-linejoin:round}
+.of-selo b{position:relative;font:800 31px/1 'Space Grotesk',sans-serif;letter-spacing:-1.5px}
+.of-selo small{position:relative;font:800 14px/1 'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+@keyframes of-gira{from{transform:rotate(-40deg) scale(.3);opacity:0}to{transform:rotate(12deg) scale(1);opacity:1}}
+
+/* cupom em formato de ticket picotado */
+.of-ticket{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--of-lima);border:2px solid var(--of-ink);border-radius:14px;padding:14px 16px 14px 20px}
+.of-ticket:before,.of-ticket:after{content:"";position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;background:var(--of-papel);border:2px solid var(--of-ink)}
+.of-ticket:before{left:-11px;clip-path:inset(0 0 0 50%)}.of-ticket:after{right:-11px;clip-path:inset(0 50% 0 0)}
+.of-ticket>div{display:flex;flex-direction:column;min-width:0;border-right:2px dashed rgba(33,25,70,.45);padding-right:14px;flex:1}
+.of-ticket small{font-size:11.5px;font-weight:700;color:#4b4560}
+.of-ticket strong{font:700 27px/1.1 'Space Grotesk',sans-serif;letter-spacing:1.5px;color:var(--of-ink)}
+.of-ticket span{font-size:12.5px;color:#3d3752;line-height:1.35}
+.of-copiar{flex-shrink:0;border:2px solid var(--of-ink);background:var(--of-papel);color:var(--of-ink);border-radius:10px;padding:9px 12px;font-weight:800;font-size:13px;cursor:pointer;box-shadow:2px 2px 0 var(--of-ink)}
+.of-copiar.ok{background:var(--of-ink);color:var(--of-lima)}
+
+/* selo fixo do cupom */
+.of-pilula{position:fixed;right:20px;bottom:20px;z-index:70;display:flex;align-items:center;background:var(--of-ink);border:2px solid var(--of-ink);border-radius:999px;box-shadow:4px 4px 0 var(--of-laranja);animation:of-sobe .5s cubic-bezier(.2,1.5,.4,1) both}
+.of-pilula a{display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-size:13px;padding:6px 4px 6px 6px}
+.of-pilula a b{color:var(--of-lima);letter-spacing:.6px}
+.of-pilula-ic{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--of-laranja);color:var(--of-ink);font:800 15px 'Space Grotesk',sans-serif}
+.of-pilula button{border:0;background:none;color:#bdb6d6;font-size:18px;width:32px;height:32px;border-radius:50%;cursor:pointer}
+.of-pilula button:hover{color:#fff}
+@keyframes of-sobe{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+body:has(.of-toast) .of-pilula{opacity:0;pointer-events:none}
+
+@media (max-width:620px){
+ .of-pilha{left:10px;right:10px;bottom:10px;width:auto}
+ .of-toast{padding:14px 38px 16px 14px;gap:12px;box-shadow:4px 4px 0 var(--of-ink)}
+ .of-capa{width:42px;height:60px}.of-capa b{font-size:18px}
+ .of-fundo{align-items:end;padding:10px}
+ .of-modal{border-radius:24px;box-shadow:5px 5px 0 var(--of-ink)}
+ .of-modal-topo{padding:26px 104px 22px 22px}
+ .of-modal-corpo{padding:18px 20px 18px}
+ .of-selo{width:90px;height:90px;top:48px;right:-6px}.of-selo b{font-size:26px}.of-selo small{font-size:12px}
+ .of-ticket strong{font-size:23px}
+ .of-pilula{right:12px;bottom:12px}
+ .of-pilula a{font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){
+ .of-toast,.of-modal,.of-fundo,.of-btn{transition:none!important}
+ .of-selo,.of-pilula{animation:none}
+ .of-toast{transform:none}.of-modal{transform:none}
+ .of-tempo{display:none}
+}
