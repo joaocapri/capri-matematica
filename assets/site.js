@@ -15,7 +15,7 @@
 }catch(e){}})();
 /* Out/2026 (currículo v3): assuntos divididos com mais calma. Mesma migração, uma vez só. */
 (function(){try{
- if(localStorage.getItem('matmat-curriculo')==='3')return;
+ var cv=localStorage.getItem('matmat-curriculo');if(cv==='3'||cv==='4')return;
  var M={"A03":"A04","A04":"A05","A05":"C09","A06":"C11","A07":"C14","A08":"C15","A09":"C17","A10":"C19","A11":"C18","A12":"A06","A13":"A07","A14":"A08","A15":"A10","A16":"A11","A17":"A12","A18":"A15","A19":"A16","A20":"A17","A21":"A18","A22":"A20","A23":"A21","A24":"A23","A25":"A24","A26":"A25","A27":"A26","A28":"A27","A29":"A28","A32":"A33","A33":"A34","A34":"A36","A35":"A37","A36":"A38","A37":"A39","A38":"A40","A39":"A41","A40":"A43","A41":"A44","A42":"A46","A43":"A47","A44":"A49","A45":"A50","A46":"A65","A47":"A68","A48":"A69","A49":"A70","A50":"A71","A51":"A73","A52":"A75","A53":"A76","A54":"A78","A55":"A79","B02":"B03","B03":"B04","B04":"B05","B05":"B08","B06":"B10","B07":"B11","B08":"B12","B09":"B14","B10":"B15","B11":"B16","B12":"B17","B13":"B18","B14":"B19","B15":"B20","B16":"B22","B17":"B23","B18":"B24","B19":"B26","B20":"B27","B21":"B28","B22":"B29","B23":"B31","B24":"B32","B25":"B34","B26":"B35","B27":"B36","B28":"B37","B29":"B38","B30":"B39","B31":"B40","B32":null,"B33":"B41","B34":"B44","B35":"B46","B36":"B43","B37":"B51","B38":"B52","B39":"B54","B40":"B55","B41":"B56","B42":"B57","B43":null,"B44":null,"B45":null,"B46":"B58","B47":"B59","B48":null,"C01":"C03","C02":"C04","C03":"C05","C04":"C22","C05":"C24","C06":"C25","C07":"C27","C08":"C29","C09":"C30","C10":"C32","C11":"C33","C12":"C35","C13":"C36","C14":"C37","C15":"C37","C16":"C38","C17":"C41","C18":"C43","C19":"C42","C20":"C45","C21":"C47","C22":"C48","C23":"C49","C24":"C50","C25":"C51","C26":"C52","C27":"C53","C28":"C55","C29":"C56","C30":"C58","C31":"C59","C32":"C60","C33":"C61","C34":"C65","C35":"C66","C36":"C67","C37":"C69","C38":"C71","C39":"C72","C40":"C73","C41":"C74","C42":"C76","C43":"C77","C44":"C63","C45":"A52","C46":"A55","C47":"A57","C48":"A60","C49":"A62"};
  function to(id){return Object.prototype.hasOwnProperty.call(M,id)?M[id]:id}
  ['capri-estudadas','capri-favoritos'].forEach(function(k){var v=localStorage.getItem(k);if(!v)return;var a=JSON.parse(v)||[];localStorage.setItem(k,JSON.stringify(a.map(to).filter(Boolean)))});
@@ -25,12 +25,24 @@
  var u=localStorage.getItem('matmat-ultima-aula');if(u){var n=to(u);if(n)localStorage.setItem('matmat-ultima-aula',n);else localStorage.removeItem('matmat-ultima-aula')}
  localStorage.setItem('matmat-curriculo','3');
 }catch(e){}})();
+/* Out/2026 (currículo v4): o site passa a seguir a numeração do livro. Mesma migração, uma vez só. */
+(function(){try{
+ if(localStorage.getItem('matmat-curriculo')==='4')return;
+ var M={"C01":"1.1.1","C02":"1.1.2","C05":"1.1.3","C06":"1.1.4","C07":"1.1.5","C03":"1.1.6","C04":"1.1.7","C09":"1.2.1","C10":"1.2.2","C11":"1.3.1","C12":"1.3.2","C13":"1.4.1","C14":"1.4.2","C15":"1.4.3","C16":"1.4.4","C17":"1.5.1","A13":"1.5.2","A60":"1.5.3","C18":"1.6.1","C19":"1.7.1","C20":"1.7.2","C21":"1.7.3","C22":"1.8.1","C23":"1.8.2","C24":"1.8.3","C25":"1.9.1","C26":"1.9.2","C29":"1.10.1","C30":"1.10.2","C31":"1.10.3","C32":"1.x1.1","C33":"1.x1.2","C34":"1.x1.3","C35":"1.x1.4","C27":"1.11.1","C28":"1.11.2","A01":"1.12.1","A02":"1.12.2","A03":"1.12.3","A04":"1.13.1","C08":"1.13.2","A05":"1.13.3","A43":"1.14.1","A44":"1.14.2","A45":"1.14.3","A46":"1.14.4","A47":"1.15.1","A48":"1.15.2","A49":"1.15.3","A50":"1.15.4","A51":"1.15.5","C36":"1.16.1","C37":"1.16.2","C38":"1.17.1","C39":"1.17.2","C40":"1.18.1","C41":"1.18.2","C42":"1.18.3","C43":"1.18.4","C44":"1.18.5","C45":"1.19.1","C46":"1.20.1","C47":"1.21.1","C48":"1.21.2","C49":"1.21.3","C50":"1.21.4","C51":"1.21.5","C52":"1.21.6","C55":"1.22.1","C56":"1.22.2","C57":"1.22.3","C53":"1.23.1","C54":"1.23.2","C58":"1.23.3","C59":"1.23.4","C60":"1.23.5","A06":"2.1.1","A07":"2.1.2","A08":"2.1.3","A09":"2.1.4","A10":"2.2.1","A11":"2.2.2","A12":"2.2.3","A15":"2.2.4","A16":"2.3.1","A17":"2.3.2","A18":"2.3.3","A19":"2.3.4","A20":"2.3.5","A23":"2.3.6","A14":"2.4.1","A21":"2.4.2","A22":"2.4.3","A24":"2.5.1","A25":"2.5.2","A26":"2.5.3","A27":"2.5.4","A28":"2.6.1","A29":"2.6.2","A30":"2.6.3","A31":"2.6.4","A32":"2.6.5","A33":"2.7.1","A34":"2.7.2","A35":"2.7.3","A36":"2.8.1","A37":"2.9.1","A38":"2.9.2","A40":"2.10.1","A41":"2.10.2","A39":"2.11.1","A42":"2.11.2","C61":"2.12.1","C62":"2.12.2","C63":"2.13.1","C64":"2.13.2","C65":"2.14.1","C66":"2.14.2","C67":"2.15.1","C68":"2.15.2","C69":"2.15.3","C70":"2.16.1","C71":"2.17.1","C72":"2.17.2","C73":"2.17.3","C76":"2.18.1","C77":"2.19.1","C74":"2.20.1","C75":"2.20.2","A52":"3.1.1","A53":"3.1.2","A54":"3.2.1","A56":"3.3.1","A57":"3.4.1","A58":"3.4.2","A59":"3.4.3","A55":"3.5.1","A61":"3.6.1","A62":"3.6.2","A63":"3.6.3","A64":"3.6.4","B41":"3.7.1","B42":"3.7.2","B43":"3.7.3","B44":"3.8.1","B45":"3.8.2","B46":"3.9.1","B47":"3.9.2","B48":"3.9.3","B49":"3.9.4","B50":"3.9.5","B51":"3.10.1","B52":"3.10.2","B53":"3.10.3","B54":"3.x1.1","B55":"3.x1.2","B56":"3.x1.3","B57":"3.x1.4","B58":"3.x2.1","B59":"3.x2.2","A65":"3.11.1","A66":"3.11.2","A67":"3.12.1","A68":"3.12.2","A69":"3.12.3","A70":"3.12.4","A71":"3.13.1","A72":"3.13.2","A73":"3.13.3","A74":"3.13.4","A75":"3.13.5","A76":"3.14.1","A77":"3.14.2","A78":"3.14.3","A79":"3.14.4","B01":"4.1.1","B02":"4.1.2","B03":"4.2.1","B04":"4.2.2","B05":"4.3.1","B06":"4.3.2","B07":"4.3.3","B08":"4.4.1","B09":"4.4.2","B10":"4.5.1","B11":"4.5.2","B12":"4.6.1","B17":"4.7.1","B18":"4.7.2","B19":"4.7.3","B20":"4.7.4","B21":"4.7.5","B13":"4.8.1","B14":"4.8.2","B15":"4.8.3","B16":"4.8.4","B22":"4.9.1","B23":"4.10.1","B24":"4.11.1","B25":"4.11.2","B26":"4.12.1","B27":"4.12.2","B28":"4.13.1","B29":"4.13.2","B31":"4.14.1","B39":"4.14.2","B32":"4.15.1","B33":"4.15.2","B30":"4.16.1","B34":"4.16.2","B40":"4.16.3","B35":"4.17.1","B36":"4.17.2","B37":"4.17.3","B38":"4.17.4"};
+ function to(id){return Object.prototype.hasOwnProperty.call(M,id)?M[id]:id}
+ ['capri-estudadas','capri-favoritos'].forEach(function(k){var v=localStorage.getItem(k);if(!v)return;var a=JSON.parse(v)||[];localStorage.setItem(k,JSON.stringify(a.map(to).filter(Boolean)))});
+ var st={},keys=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(/^matmat-aula-[ABC]\d\d$/.test(k))keys.push(k)}
+ keys.forEach(function(k){st[k.slice(12)]=localStorage.getItem(k);localStorage.removeItem(k)});
+ Object.keys(st).forEach(function(id){var n=to(id);if(n)localStorage.setItem('matmat-aula-'+n,st[id])});
+ var u=localStorage.getItem('matmat-ultima-aula');if(u){var n=to(u);if(n)localStorage.setItem('matmat-ultima-aula',n);else localStorage.removeItem('matmat-ultima-aula')}
+ localStorage.setItem('matmat-curriculo','4');
+}catch(e){}})();
 var ROOT='/';var data=null;var materialIndex=[];var saved=new Set(safeRead('capri-favoritos'));var done=new Set(safeRead('capri-estudadas'));
 function safeRead(key){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch(e){return []}}
 function store(key,set){try{localStorage.setItem(key,JSON.stringify(Array.from(set)))}catch(e){}}
 function esc(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
 function norm(v){return String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}
-function href(l){return '/aulas/'+encodeURIComponent(l.id)+'/'}
+function href(l){return '/'+l.id.split('.').join('/')+'/'}
 function frontBy(id){return data.fronts.find(function(x){return x.id===id})}
 function blockBy(id){return data.blocks.find(function(x){return x.id===id})}
 function short(v,n){var s=String(v||'');return s.length>n?s.slice(0,n).trim()+'…':s}
@@ -41,12 +53,23 @@ function header(){return '<header class="topbar"><div class="shell"><a href="/" 
 function footer(){return '<footer class="footer"><div class="shell"><div class="mat-footer-mark"><a href="/" class="brand-mat brand-mat-footer" aria-label="MAT MAT MAT! — início">'+brandLogo()+'</a><div><strong>MAT MAT MAT!</strong><p>Matemática gratuita para o ensino médio e vestibulares. Conteúdo do Prof. João Capri.</p></div></div><p>Álgebra · Geometria · Aritmética · Estatística · Trigonometria <a href="/livros/">Conheça os livros ↗</a></p></div></footer>'}
 function card(l){return '<a class="lesson-card" href="'+href(l)+'"><span class="mini">Aula '+esc(l.id)+' · '+esc(frontBy(l.front).name)+'</span><h4>'+esc(l.title)+'</h4><p>'+esc(l.summary||'Abra a aula e explore seu roteiro de estudos.')+'</p><div class="card-bottom"><span class="badge '+(done.has(l.id)?'checkdone':'')+'">'+(done.has(l.id)?'✓ Estudada':'Ver aula')+'</span><span class="arrow">↗</span></div></a>'}
 
-var SUBJECT_AREAS = [{"id":"fundamentos","name":"Fundamentos","icon":"123","tone":"mint","description":"Números, frações, potências, álgebra básica, equações, proporções e porcentagem.","ranges":[["C",1,35]]},{"id":"funcoes","name":"Funções & gráficos","icon":"f(x)","tone":"violet","description":"De conjuntos a logaritmos, com gráficos e aplicações.","ranges":[["A",1,42]]},{"id":"algebra","name":"Álgebra & sequências","icon":"x²","tone":"pink","description":"PA e PG, matrizes, determinantes, sistemas, complexos e polinômios.","ranges":[["A",43,79]]},{"id":"geometria-plana","name":"Geometria plana","icon":"△","tone":"peach","description":"Ângulos, triângulos, áreas e circunferências.","ranges":[["B",1,21]]},{"id":"geometria-espacial","name":"Geometria espacial","icon":"⬡","tone":"sky","description":"Posições no espaço, prismas, cones, pirâmides e esferas.","ranges":[["B",22,40]]},{"id":"geometria-analitica","name":"Geometria analítica","icon":"⌖","tone":"lilac","description":"Coordenadas, retas, circunferências e cônicas.","ranges":[["B",41,59]]},{"id":"combinatoria","name":"Combinatória & probabilidade","icon":"?!","tone":"yellow","description":"Contagem, possibilidades, probabilidades e binômio.","ranges":[["C",36,52]]},{"id":"estatistica","name":"Estatística","icon":"▥","tone":"cream","description":"Gráficos, médias, mediana, desvio e análise de dados.","ranges":[["C",53,60]]},{"id":"trigonometria","name":"Trigonometria","icon":"θ","tone":"lime","description":"Triângulos, ciclo trigonométrico e equações.","ranges":[["C",61,77]]}];
-var SUBJECT_TOPIC_ICONS={"A1":"⊂","A2":"f(x)","A3":"↗","A4":"x²","A5":"f⁻¹","A6":"|x|","A7":"2ˣ","A8":"log","A9":"∞","A10":"[ ]","A11":"|A|","A12":"{ }","A13":"i","A14":"P(x)","B1":"∠","B2":"△","B3":"⬡","B4":"◉","B5":"▱","B6":"⊥","B7":"◇","B8":"▭","B9":"△","B10":"◭","B11":"◉","B12":"⬢","B13":"⌖","B14":"╱","B15":"○","B16":"∩","B17":"◎","C1":"123","C2":"½","C3":"√","C4":"(a+b)²","C5":"x=?","C6":"↔","C7":"m³","C8":"%","C9":"R$","C10":"n!","C11":"C(n,p)","C12":"(a+b)ⁿ","C13":"?!","C14":"▥","C15":"x̄","C16":"σ","C17":"◺","C18":"θ","C19":"sin","C20":"∿"};
-function subjectContains(area,lesson){var n=Number(lesson.id.slice(1));return area.ranges.some(function(r){return lesson.front===r[0]&&n>=r[1]&&n<=r[2]})}
+var SUBJECT_AREAS=[];
+var SUBJECT_TOPIC_ICONS={};
+var MODULE_ICONS={"1.1":"123","1.2":"√","1.3":"√","1.4":"(a+b)²","1.5":"x=?","1.6":"x=?","1.7":"x=?","1.8":"↔","1.9":"↔","1.10":"%","1.x1":"R$","1.11":"m³","1.12":"⊂","1.13":"⊂","1.14":"∞","1.15":"∞","1.16":"n!","1.17":"n!","1.18":"n!","1.19":"(a+b)ⁿ","1.20":"(a+b)ⁿ","1.21":"?!","1.22":"x̄","1.23":"▥","2.1":"f(x)","2.2":"↗","2.3":"x²","2.4":"↗","2.5":"f⁻¹","2.6":"|x|","2.7":"2ˣ","2.8":"log","2.9":"log","2.10":"log","2.11":"log","2.12":"◺","2.13":"◺","2.14":"θ","2.15":"θ","2.16":"θ","2.17":"sin","2.18":"∿","2.19":"∿","2.20":"∿","3.1":"[ ]","3.2":"[ ]","3.3":"|A|","3.4":"|A|","3.5":"[ ]","3.6":"{ }","3.7":"⌖","3.8":"╱","3.9":"╱","3.10":"○","3.x1":"∩","3.x2":"◎","3.11":"i","3.12":"i","3.13":"P(x)","3.14":"P(x)","4.1":"∠","4.2":"△","4.3":"△","4.4":"△","4.5":"⬡","4.6":"⬡","4.7":"▱","4.8":"◉","4.9":"⊥","4.10":"⊥","4.11":"◇","4.12":"▭","4.13":"△","4.14":"◭","4.15":"◭","4.16":"△","4.17":"◉"};
+var VOL_META={"1":["123","lime"],"2":["f(x)","sky"],"3":["x²","mint"],"4":["△","peach"]};
+/* Os volumes e módulos do site são os mesmos da coleção impressa (o QR code do livro abre /volume/módulo/). */
+function buildCatalog(){
+ SUBJECT_AREAS=data.fronts.map(function(f){var m=VOL_META[f.id]||['∑','mint'];return {id:'v'+f.id,vol:f.id,name:f.name,label:'Volume '+f.id,icon:m[0],tone:m[1],description:f.description,paginas:f.paginas}});
+ SUBJECT_TOPICS=data.blocks.map(function(b){return {id:b.id,area:'v'+b.front,title:b.title,description:b.extra?b.description:(b.tipos.length+' tipos de questão no livro: '+b.tipos.join('; ')+'.'),icon:MODULE_ICONS[b.id]||'∑',numero:b.numero,parte:b.parte,tipos:b.tipos,extra:!!b.extra}});
+ SUBJECT_TOPIC_ICONS={};SUBJECT_TOPICS.forEach(function(t){SUBJECT_TOPIC_ICONS[t.id]=t.icon});
+}
+function volHref(a){return '/'+a.vol+'/'}
+function topicHref(t){return '/'+t.id.replace('.','/')+'/'}
+function moduleLabel(t){return t.extra?'Extra do site':'Módulo '+t.numero}
+function subjectContains(area,lesson){return lesson.front===area.vol}
 function areaForLesson(lesson){return SUBJECT_AREAS.find(function(a){return subjectContains(a,lesson)})}
-var SUBJECT_TOPICS=[{"id":"f-numeros","area":"fundamentos","title":"Números e operações","description":"Inteiros, sinais, expressões, primos, MMC e MDC.","icon":"123","ranges":[["C",1,4]]},{"id":"f-fracoes","area":"fundamentos","title":"Frações e decimais","description":"Frações, decimais e dízimas periódicas.","icon":"½","ranges":[["C",5,8]]},{"id":"f-potencias","area":"fundamentos","title":"Potências e raízes","description":"Potenciação, notação científica e radiciação.","icon":"√","ranges":[["C",9,12]]},{"id":"f-algebra","area":"fundamentos","title":"Expressões algébricas","description":"Expressões, produtos notáveis, fatoração e frações algébricas.","icon":"(a+b)²","ranges":[["C",13,16]]},{"id":"f-equacoes","area":"fundamentos","title":"Equações e problemas","description":"Equações do 1º e do 2º grau e problemas.","icon":"x=?","ranges":[["C",17,21]]},{"id":"f-proporcoes","area":"fundamentos","title":"Razões e proporções","description":"Razão, proporção, escalas e regra de três.","icon":"↔","ranges":[["C",22,26]]},{"id":"f-medidas","area":"fundamentos","title":"Unidades de medida","description":"Conversões de comprimento, área, volume, tempo e massa.","icon":"m³","ranges":[["C",27,28]]},{"id":"f-porcentagem","area":"fundamentos","title":"Porcentagem","description":"Porcentagem, aumentos, descontos e variações.","icon":"%","ranges":[["C",29,31]]},{"id":"f-financeira","area":"fundamentos","title":"Matemática financeira","description":"Juros simples e compostos, valor presente e amortização.","icon":"R$","ranges":[["C",32,35]]},{"id":"fu-conjuntos","area":"funcoes","title":"Conjuntos","description":"Conjuntos, operações, Venn, números e intervalos.","icon":"⊂","ranges":[["A",1,5]]},{"id":"fu-inicio","area":"funcoes","title":"O que é uma função?","description":"Plano cartesiano, conceito, domínio, imagem e gráficos.","icon":"f(x)","ranges":[["A",6,9]]},{"id":"fu-afim","area":"funcoes","title":"Função do 1º grau","description":"Retas, sinal, inequações e modelos.","icon":"↗","ranges":[["A",10,15]]},{"id":"fu-quadratica","area":"funcoes","title":"Função quadrática","description":"Raízes, vértice, gráficos, otimização e inequações.","icon":"x²","ranges":[["A",16,23]]},{"id":"fu-propriedades","area":"funcoes","title":"Tipos de função","description":"Par e ímpar, injetora, composta e inversa.","icon":"f⁻¹","ranges":[["A",24,27]]},{"id":"fu-modulo","area":"funcoes","title":"Função modular","description":"Módulo, gráficos, equações e inequações.","icon":"|x|","ranges":[["A",28,32]]},{"id":"fu-exponencial","area":"funcoes","title":"Função exponencial","description":"Crescimento, equações e inequações.","icon":"2ˣ","ranges":[["A",33,35]]},{"id":"fu-logs","area":"funcoes","title":"Logaritmos","description":"Propriedades, função, equações e aplicações.","icon":"log","ranges":[["A",36,42]]},{"id":"al-sequencias","area":"algebra","title":"Sequências, PA e PG","description":"Padrões, PA, PG e somas.","icon":"∞","ranges":[["A",43,51]]},{"id":"al-matrizes","area":"algebra","title":"Matrizes","description":"Tipos, operações, produto e inversa.","icon":"[ ]","ranges":[["A",52,55]]},{"id":"al-determinantes","area":"algebra","title":"Determinantes","description":"Sarrus, propriedades, Laplace e Binet.","icon":"|A|","ranges":[["A",56,59]]},{"id":"al-sistemas","area":"algebra","title":"Sistemas lineares","description":"Do 2×2 ao escalonamento e à discussão.","icon":"{ }","ranges":[["A",60,64]]},{"id":"al-complexos","area":"algebra","title":"Números complexos","description":"Forma algébrica, potências de i e forma trigonométrica.","icon":"i","ranges":[["A",65,70]]},{"id":"al-polinomios","area":"algebra","title":"Polinômios","description":"Operações, divisão, raízes e Girard.","icon":"P(x)","ranges":[["A",71,79]]},{"id":"gp-angulos","area":"geometria-plana","title":"Ângulos","description":"Ângulos e retas paralelas.","icon":"∠","ranges":[["B",1,2]]},{"id":"gp-triangulos","area":"geometria-plana","title":"Triângulos","description":"Congruência, Tales, semelhança e Pitágoras.","icon":"△","ranges":[["B",3,9]]},{"id":"gp-poligonos","area":"geometria-plana","title":"Polígonos","description":"Ângulos, diagonais, quadriláteros e apótemas.","icon":"⬡","ranges":[["B",10,12]]},{"id":"gp-circulo","area":"geometria-plana","title":"Circunferência","description":"Tangentes, ângulos, potência de ponto e comprimento.","icon":"◉","ranges":[["B",13,16]]},{"id":"gp-areas","area":"geometria-plana","title":"Áreas","description":"Quadriláteros, triângulos, círculos e figuras compostas.","icon":"▱","ranges":[["B",17,21]]},{"id":"ge-posicao","area":"geometria-espacial","title":"Posições no espaço","description":"Retas, planos e projeções ortogonais.","icon":"⊥","ranges":[["B",22,23]]},{"id":"ge-poliedros","area":"geometria-espacial","title":"Poliedros","description":"Relação de Euler, planificações e vistas.","icon":"◇","ranges":[["B",24,25]]},{"id":"ge-prismas","area":"geometria-espacial","title":"Prismas","description":"Áreas, volumes, cubo e paralelepípedo.","icon":"▭","ranges":[["B",26,27]]},{"id":"ge-piramides","area":"geometria-espacial","title":"Pirâmides","description":"Áreas, volume e tronco.","icon":"△","ranges":[["B",28,30]]},{"id":"ge-cilindro-cone","area":"geometria-espacial","title":"Cilindros e cones","description":"Cilindro, cone e tronco de cone.","icon":"◭","ranges":[["B",31,34]]},{"id":"ge-esfera","area":"geometria-espacial","title":"Esferas","description":"Área, volume, fuso, cunha e calota.","icon":"◉","ranges":[["B",35,36]]},{"id":"ge-relacoes","area":"geometria-espacial","title":"Sólidos combinados","description":"Inscrição, revolução e semelhança.","icon":"⬢","ranges":[["B",37,40]]},{"id":"ga-ponto","area":"geometria-analitica","title":"O ponto","description":"Distância, ponto médio, baricentro e área.","icon":"⌖","ranges":[["B",41,43]]},{"id":"ga-retas","area":"geometria-analitica","title":"A reta","description":"Equações, posições, ângulos, distâncias e regiões.","icon":"╱","ranges":[["B",44,50]]},{"id":"ga-circunferencia","area":"geometria-analitica","title":"Circunferência no plano","description":"Equações e posições relativas.","icon":"○","ranges":[["B",51,53]]},{"id":"ga-conicas","area":"geometria-analitica","title":"Cônicas","description":"Elipse, hipérbole e parábola.","icon":"∩","ranges":[["B",54,57]]},{"id":"ga-espaco","area":"geometria-analitica","title":"Espaço e lugares geométricos","description":"Coordenadas no espaço e lugares geométricos.","icon":"◎","ranges":[["B",58,59]]},{"id":"cp-contagem","area":"combinatoria","title":"Contagem e permutações","description":"PFC, fatorial, permutações e arranjos.","icon":"n!","ranges":[["C",36,40]]},{"id":"cp-combinacoes","area":"combinatoria","title":"Combinações","description":"Combinações, restrições e gavetas.","icon":"C(n,p)","ranges":[["C",41,44]]},{"id":"cp-binomio","area":"combinatoria","title":"Binômio de Newton","description":"Números binomiais, Pascal e binômio de Newton.","icon":"(a+b)ⁿ","ranges":[["C",45,46]]},{"id":"cp-probabilidade","area":"combinatoria","title":"Probabilidade","description":"Eventos, condicional, binomial e Bayes.","icon":"?!","ranges":[["C",47,52]]},{"id":"es-dados","area":"estatistica","title":"Leitura de dados","description":"Tabelas, gráficos e frequências.","icon":"▥","ranges":[["C",53,54]]},{"id":"es-centrais","area":"estatistica","title":"Medidas de tendência central","description":"Média, mediana e moda.","icon":"x̄","ranges":[["C",55,57]]},{"id":"es-dispersao","area":"estatistica","title":"Dispersão e análise","description":"Desvio padrão, variação e correlação.","icon":"σ","ranges":[["C",58,60]]},{"id":"tr-triangulos","area":"trigonometria","title":"Trigonometria nos triângulos","description":"Triângulo retângulo, leis dos senos e cossenos.","icon":"◺","ranges":[["C",61,64]]},{"id":"tr-ciclo","area":"trigonometria","title":"Ciclo trigonométrico","description":"Radianos, ciclo, quadrantes e identidades.","icon":"θ","ranges":[["C",65,70]]},{"id":"tr-identidades","area":"trigonometria","title":"Fórmulas trigonométricas","description":"Adição, arco duplo e transformações.","icon":"sin","ranges":[["C",71,73]]},{"id":"tr-funcoes","area":"trigonometria","title":"Funções e equações","description":"Gráficos, período, equações e inequações.","icon":"∿","ranges":[["C",74,77]]}];
-function subjectTopic(lesson,area){var n=Number(lesson.id.slice(1));var t=SUBJECT_TOPICS.find(function(x){return x.area===area.id&&x.ranges.some(function(r){return lesson.front===r[0]&&n>=r[1]&&n<=r[2]})});return t?t.id:lesson.block}
+var SUBJECT_TOPICS=[];
+function subjectTopic(lesson,area){return lesson.block}
 function topicInfo(topic){return SUBJECT_TOPICS.find(function(x){return x.id===topic})||blockBy(topic)}
 
 
@@ -54,8 +77,8 @@ function topicInfo(topic){return SUBJECT_TOPICS.find(function(x){return x.id===t
 /* Catálogo de PDFs: aula, assunto (tema) ou grande área. */
 function materialOwner(item){
  if(item.aula){var l=data.lessons.find(function(x){return x.id===item.aula});if(!l)return null;var a=areaForLesson(l);return {kind:'aula',id:l.id,title:l.title,description:topicInfo(subjectTopic(l,a)).title,href:href(l)+'?tab=arquivos',lesson:l}}
- if(item.assunto){var t=SUBJECT_TOPICS.find(function(x){return x.id===item.assunto});if(!t)return null;var a=SUBJECT_AREAS.find(function(x){return x.id===t.area});return {kind:'assunto',id:t.id,title:t.title,description:a.name,href:'/explorar/?area='+encodeURIComponent(a.id)+'&assunto='+encodeURIComponent(t.id),topic:t}}
- if(item.area){var a=SUBJECT_AREAS.find(function(x){return x.id===item.area});if(!a)return null;return {kind:'area',id:a.id,title:a.name,description:'Material geral da área',href:'/explorar/?area='+encodeURIComponent(a.id),area:a}}
+ if(item.assunto){var t=SUBJECT_TOPICS.find(function(x){return x.id===item.assunto});if(!t)return null;var a=SUBJECT_AREAS.find(function(x){return x.id===t.area});return {kind:'assunto',id:t.id,title:t.title,description:a.name,href:topicHref(t),topic:t}}
+ if(item.area){var a=SUBJECT_AREAS.find(function(x){return x.id===item.area});if(!a)return null;return {kind:'area',id:a.id,title:a.name,description:'Material geral do volume',href:volHref(a),area:a}}
  return null;
 }
 function publishedMaterials(){return materialIndex.map(function(item){var owner=materialOwner(item);return owner&&item.arquivos&&item.arquivos.length?{owner:owner,item:item}:null}).filter(Boolean)}
@@ -77,60 +100,86 @@ function exatooCard(intent,lesson,topic){
 /* ================= Busca v2: entende sinônimos, erros de digitação e leva direto à aula ================= */
 /* Outros nomes que os alunos usam. Aliases do assunto valem para todas as aulas dele; os da aula decidem qual aula abrir. */
 var BUSCA_ASSUNTO={
- 'fu-conjuntos':'conjuntos;teoria dos conjuntos;uniao;intersecao;interseccao;diagrama de venn;venn;conjuntos numericos;intervalos;numeros reais;numeros irracionais',
- 'fu-inicio':'funcao;funcoes;dominio;imagem;contradominio;produto cartesiano;relacao;analise de graficos',
- 'fu-afim':'funcao afim;funcao linear;funcao do primeiro grau;reta;coeficiente angular;coeficiente linear;inequacao do primeiro grau;estudo do sinal',
- 'fu-quadratica':'funcao quadratica;funcao do segundo grau;parabola;bhaskara;baskara;delta;discriminante;raizes;vertice;maximo;minimo;soma e produto;inequacao do segundo grau',
- 'fu-propriedades':'funcao par;funcao impar;injetora;sobrejetora;bijetora;funcao composta;funcao inversa;inversa',
- 'fu-modulo':'modulo;valor absoluto;funcao modular;equacao modular;inequacao modular',
- 'fu-exponencial':'exponencial;funcao exponencial;equacao exponencial;inequacao exponencial;crescimento exponencial',
- 'fu-logs':'logaritmo;logaritmos;log;ln;funcao logaritmica;equacao logaritmica;inequacao logaritmica;mudanca de base;propriedades dos logaritmos',
- 'al-sequencias':'sequencia;sequencias;progressao;progressoes;pa;progressao aritmetica;pg;progressao geometrica;termo geral;recorrencia;fibonacci',
- 'al-matrizes':'matriz;matrizes;matriz inversa;matriz transposta;multiplicacao de matrizes;matriz identidade',
- 'al-determinantes':'determinante;determinantes;sarrus;laplace;chio;binet;cofator',
- 'al-sistemas':'sistema 2x2;sistema de equacoes;sistema linear;sistemas lineares;escalonamento;cramer;discussao de sistemas;spd;spi',
- 'al-complexos':'numeros complexos;complexo;complexos;imaginario;unidade imaginaria;argand gauss;forma trigonometrica;moivre',
- 'al-polinomios':'polinomio;polinomios;divisao de polinomios;briot ruffini;teorema do resto;dalembert;equacao polinomial;equacao algebrica;girard',
- 'gp-angulos':'angulo;angulos;complementares;suplementares;opostos pelo vertice;retas paralelas;transversal;alternos;colaterais',
- 'gp-triangulos':'triangulo;triangulos;congruencia;semelhanca;semelhanca de triangulos;pitagoras;teorema de pitagoras;tales;teorema de tales;relacoes metricas;baricentro;incentro;ortocentro;circuncentro',
- 'gp-poligonos':'poligono;poligonos;diagonais;quadrilateros;trapezio;losango;paralelogramo;hexagono;apotema',
- 'gp-circulo':'circunferencia;circulo;tangente;angulo inscrito;angulo central;potencia de ponto;comprimento da circunferencia;pi',
- 'gp-areas':'area;areas;area do triangulo;area do circulo;area do trapezio;area do quadrado;area do retangulo;setor circular;coroa circular;heron',
- 'ge-posicao':'geometria de posicao;retas reversas;planos;projecao ortogonal',
- 'ge-poliedros':'poliedro;poliedros;euler;relacao de euler;planificacao;vistas;vista frontal;vista superior',
- 'ge-prismas':'prisma;prismas;cubo;paralelepipedo;volume do prisma;cavalieri',
- 'ge-piramides':'piramide;piramides;tronco de piramide;volume da piramide',
- 'ge-cilindro-cone':'cilindro;cone;tronco de cone;volume do cilindro;volume do cone;geratriz',
- 'ge-esfera':'esfera;volume da esfera;area da esfera;calota;fuso;cunha',
- 'ge-relacoes':'inscricao;circunscricao;solidos de revolucao;semelhanca de solidos',
- 'ga-ponto':'geometria analitica;plano cartesiano;distancia entre pontos;ponto medio;baricentro;alinhamento;area do triangulo',
- 'ga-retas':'equacao da reta;coeficiente angular;retas paralelas;retas perpendiculares;angulo entre retas;distancia de ponto a reta;mediatriz;inequacoes no plano',
- 'ga-circunferencia':'equacao da circunferencia;centro e raio;posicao relativa;reta tangente',
- 'ga-conicas':'conicas;conica;elipse;hiperbole;parabola;focos;excentricidade',
- 'ga-espaco':'lugar geometrico;geometria analitica no espaco;coordenadas no espaco',
- 'f-numeros':'numeros inteiros;numeros naturais;regra de sinais;jogo de sinais;expressoes numericas;ordem das operacoes;numeros primos;divisibilidade;mmc;mdc;minimo multiplo comum;maximo divisor comum',
- 'f-fracoes':'fracao;fracoes;numeros decimais;decimal;dizima periodica;dizimas;fracao geratriz',
- 'f-potencias':'potencia;potencias;potenciacao;expoente;radiciacao;raiz;raiz quadrada;radicais;racionalizacao;notacao cientifica;ordem de grandeza',
- 'f-algebra':'expressoes algebricas;valor numerico;monomio;produtos notaveis;fatoracao;fatorar;diferenca de quadrados;trinomio quadrado perfeito;fracoes algebricas;algebra',
- 'f-equacoes':'equacao;equacoes;equacao do primeiro grau;equacao do segundo grau;problemas com equacoes;biquadrada;equacao irracional',
- 'f-proporcoes':'razao;proporcao;escala;regra de tres;regra de 3;grandezas proporcionais;diretamente proporcional;inversamente proporcional;velocidade media;densidade',
- 'f-medidas':'unidades de medida;conversao de unidades;litro;metro cubico;capacidade;horas e minutos;km/h;m/s',
- 'f-porcentagem':'porcentagem;percentual;aumento;desconto;aumentos sucessivos;descontos sucessivos;variacao percentual;inflacao;lucro',
- 'f-financeira':'juros;juros simples;juros compostos;matematica financeira;financeira;valor presente;amortizacao;sac;price',
- 'cp-contagem':'contagem;principio fundamental da contagem;pfc;fatorial;arranjo;arranjos;permutacao;permutacoes;anagrama;anagramas;analise combinatoria;combinatoria',
- 'cp-combinacoes':'combinacao;combinacoes;combinacao completa;principio das gavetas;analise combinatoria;combinatoria',
- 'cp-binomio':'binomio de newton;triangulo de pascal;numeros binomiais;termo geral do binomio',
- 'cp-probabilidade':'probabilidade;probabilidades;chance;evento;espaco amostral;probabilidade condicional;bayes;binomial',
- 'es-dados':'estatistica;graficos;tabelas;frequencia;histograma;grafico de setores',
- 'es-centrais':'media;mediana;moda;media ponderada;boxplot;quartis',
- 'es-dispersao':'desvio padrao;variancia;dispersao;coeficiente de variacao;amostra;populacao;correlacao',
- 'tr-triangulos':'trigonometria;seno;cosseno;tangente;triangulo retangulo;angulos notaveis;lei dos senos;lei dos cossenos',
- 'tr-ciclo':'trigonometria;ciclo trigonometrico;circulo trigonometrico;radiano;radianos;arcos;quadrantes;relacao fundamental',
- 'tr-identidades':'trigonometria;arco duplo;adicao de arcos;soma de arcos;identidades trigonometricas;prostaferese',
- 'tr-funcoes':'trigonometria;funcao seno;funcao cosseno;graficos trigonometricos;periodo;equacao trigonometrica;inequacao trigonometrica'
+ '1.1':'numeros inteiros;numeros naturais;regra de sinais;jogo de sinais;expressoes numericas;ordem das operacoes;numeros primos;divisibilidade;mmc;mdc;minimo multiplo comum;maximo divisor comum',
+ '1.2':'potencia;potencias;potenciacao;expoente;radiciacao;raiz;raiz quadrada;radicais;racionalizacao;notacao cientifica;ordem de grandeza',
+ '1.3':'potencia;potencias;potenciacao;expoente;radiciacao;raiz;raiz quadrada;radicais;racionalizacao;notacao cientifica;ordem de grandeza',
+ '1.4':'expressoes algebricas;valor numerico;monomio;produtos notaveis;fatoracao;fatorar;diferenca de quadrados;trinomio quadrado perfeito;fracoes algebricas;algebra',
+ '1.5':'equacao;equacoes;equacao do primeiro grau;equacao do segundo grau;problemas com equacoes;biquadrada;equacao irracional',
+ '1.6':'equacao;equacoes;equacao do primeiro grau;equacao do segundo grau;problemas com equacoes;biquadrada;equacao irracional',
+ '1.7':'equacao;equacoes;equacao do primeiro grau;equacao do segundo grau;problemas com equacoes;biquadrada;equacao irracional',
+ '1.8':'razao;proporcao;escala;regra de tres;regra de 3;grandezas proporcionais;diretamente proporcional;inversamente proporcional;velocidade media;densidade',
+ '1.9':'razao;proporcao;escala;regra de tres;regra de 3;grandezas proporcionais;diretamente proporcional;inversamente proporcional;velocidade media;densidade',
+ '1.10':'porcentagem;percentual;aumento;desconto;aumentos sucessivos;descontos sucessivos;variacao percentual;inflacao;lucro',
+ '1.x1':'juros;juros simples;juros compostos;matematica financeira;financeira;valor presente;amortizacao;sac;price',
+ '1.11':'unidades de medida;conversao de unidades;litro;metro cubico;capacidade;horas e minutos;km/h;m/s',
+ '1.12':'conjuntos;teoria dos conjuntos;uniao;intersecao;interseccao;diagrama de venn;venn;conjuntos numericos;intervalos;numeros reais;numeros irracionais',
+ '1.13':'conjuntos;teoria dos conjuntos;uniao;intersecao;interseccao;diagrama de venn;venn;conjuntos numericos;intervalos;numeros reais;numeros irracionais',
+ '1.14':'sequencia;sequencias;progressao;progressoes;pa;progressao aritmetica;pg;progressao geometrica;termo geral;recorrencia;fibonacci',
+ '1.15':'sequencia;sequencias;progressao;progressoes;pa;progressao aritmetica;pg;progressao geometrica;termo geral;recorrencia;fibonacci',
+ '1.16':'contagem;principio fundamental da contagem;pfc;fatorial;arranjo;arranjos;permutacao;permutacoes;anagrama;anagramas;analise combinatoria;combinatoria',
+ '1.17':'contagem;principio fundamental da contagem;pfc;fatorial;arranjo;arranjos;permutacao;permutacoes;anagrama;anagramas;analise combinatoria;combinatoria',
+ '1.18':'contagem;principio fundamental da contagem;pfc;fatorial;arranjo;arranjos;permutacao;permutacoes;anagrama;anagramas;analise combinatoria;combinatoria',
+ '1.19':'binomio de newton;triangulo de pascal;numeros binomiais;termo geral do binomio',
+ '1.20':'binomio de newton;triangulo de pascal;numeros binomiais;termo geral do binomio',
+ '1.21':'probabilidade;probabilidades;chance;evento;espaco amostral;probabilidade condicional;bayes;binomial',
+ '1.22':'media;mediana;moda;media ponderada;boxplot;quartis',
+ '1.23':'estatistica;graficos;tabelas;frequencia;histograma;grafico de setores',
+ '2.1':'funcao;funcoes;dominio;imagem;contradominio;produto cartesiano;relacao;analise de graficos',
+ '2.2':'funcao afim;funcao linear;funcao do primeiro grau;reta;coeficiente angular;coeficiente linear;inequacao do primeiro grau;estudo do sinal',
+ '2.3':'funcao quadratica;funcao do segundo grau;parabola;bhaskara;baskara;delta;discriminante;raizes;vertice;maximo;minimo;soma e produto;inequacao do segundo grau',
+ '2.4':'funcao afim;funcao linear;funcao do primeiro grau;reta;coeficiente angular;coeficiente linear;inequacao do primeiro grau;estudo do sinal',
+ '2.5':'funcao par;funcao impar;injetora;sobrejetora;bijetora;funcao composta;funcao inversa;inversa',
+ '2.6':'modulo;valor absoluto;funcao modular;equacao modular;inequacao modular',
+ '2.7':'exponencial;funcao exponencial;equacao exponencial;inequacao exponencial;crescimento exponencial',
+ '2.8':'logaritmo;logaritmos;log;ln;funcao logaritmica;equacao logaritmica;inequacao logaritmica;mudanca de base;propriedades dos logaritmos',
+ '2.9':'logaritmo;logaritmos;log;ln;funcao logaritmica;equacao logaritmica;inequacao logaritmica;mudanca de base;propriedades dos logaritmos',
+ '2.10':'logaritmo;logaritmos;log;ln;funcao logaritmica;equacao logaritmica;inequacao logaritmica;mudanca de base;propriedades dos logaritmos',
+ '2.11':'logaritmo;logaritmos;log;ln;funcao logaritmica;equacao logaritmica;inequacao logaritmica;mudanca de base;propriedades dos logaritmos',
+ '2.12':'trigonometria;seno;cosseno;tangente;triangulo retangulo;angulos notaveis;lei dos senos;lei dos cossenos',
+ '2.13':'trigonometria;seno;cosseno;tangente;triangulo retangulo;angulos notaveis;lei dos senos;lei dos cossenos',
+ '2.14':'trigonometria;ciclo trigonometrico;circulo trigonometrico;radiano;radianos;arcos;quadrantes;relacao fundamental',
+ '2.15':'trigonometria;ciclo trigonometrico;circulo trigonometrico;radiano;radianos;arcos;quadrantes;relacao fundamental',
+ '2.16':'trigonometria;ciclo trigonometrico;circulo trigonometrico;radiano;radianos;arcos;quadrantes;relacao fundamental',
+ '2.17':'trigonometria;arco duplo;adicao de arcos;soma de arcos;identidades trigonometricas;prostaferese',
+ '2.18':'trigonometria;funcao seno;funcao cosseno;graficos trigonometricos;periodo;equacao trigonometrica;inequacao trigonometrica',
+ '2.19':'trigonometria;funcao seno;funcao cosseno;graficos trigonometricos;periodo;equacao trigonometrica;inequacao trigonometrica',
+ '2.20':'trigonometria;funcao seno;funcao cosseno;graficos trigonometricos;periodo;equacao trigonometrica;inequacao trigonometrica',
+ '3.1':'matriz;matrizes;matriz inversa;matriz transposta;multiplicacao de matrizes;matriz identidade',
+ '3.2':'matriz;matrizes;matriz inversa;matriz transposta;multiplicacao de matrizes;matriz identidade',
+ '3.3':'determinante;determinantes;sarrus;laplace;chio;binet;cofator',
+ '3.4':'determinante;determinantes;sarrus;laplace;chio;binet;cofator',
+ '3.5':'matriz;matrizes;matriz inversa;matriz transposta;multiplicacao de matrizes;matriz identidade',
+ '3.6':'sistema 2x2;sistema de equacoes;sistema linear;sistemas lineares;escalonamento;cramer;discussao de sistemas;spd;spi',
+ '3.7':'geometria analitica;plano cartesiano;distancia entre pontos;ponto medio;baricentro;alinhamento;area do triangulo',
+ '3.8':'equacao da reta;coeficiente angular;retas paralelas;retas perpendiculares;angulo entre retas;distancia de ponto a reta;mediatriz;inequacoes no plano',
+ '3.9':'equacao da reta;coeficiente angular;retas paralelas;retas perpendiculares;angulo entre retas;distancia de ponto a reta;mediatriz;inequacoes no plano',
+ '3.10':'equacao da circunferencia;centro e raio;posicao relativa;reta tangente',
+ '3.x1':'conicas;conica;elipse;hiperbole;parabola;focos;excentricidade',
+ '3.x2':'lugar geometrico;geometria analitica no espaco;coordenadas no espaco',
+ '3.11':'numeros complexos;complexo;complexos;imaginario;unidade imaginaria;argand gauss;forma trigonometrica;moivre',
+ '3.12':'numeros complexos;complexo;complexos;imaginario;unidade imaginaria;argand gauss;forma trigonometrica;moivre',
+ '3.13':'polinomio;polinomios;divisao de polinomios;briot ruffini;teorema do resto;dalembert;equacao polinomial;equacao algebrica;girard',
+ '3.14':'polinomio;polinomios;divisao de polinomios;briot ruffini;teorema do resto;dalembert;equacao polinomial;equacao algebrica;girard',
+ '4.1':'angulo;angulos;complementares;suplementares;opostos pelo vertice;retas paralelas;transversal;alternos;colaterais',
+ '4.2':'triangulo;triangulos;congruencia;semelhanca;semelhanca de triangulos;pitagoras;teorema de pitagoras;tales;teorema de tales;relacoes metricas;baricentro;incentro;ortocentro;circuncentro',
+ '4.3':'triangulo;triangulos;congruencia;semelhanca;semelhanca de triangulos;pitagoras;teorema de pitagoras;tales;teorema de tales;relacoes metricas;baricentro;incentro;ortocentro;circuncentro',
+ '4.4':'triangulo;triangulos;congruencia;semelhanca;semelhanca de triangulos;pitagoras;teorema de pitagoras;tales;teorema de tales;relacoes metricas;baricentro;incentro;ortocentro;circuncentro',
+ '4.5':'poligono;poligonos;diagonais;quadrilateros;trapezio;losango;paralelogramo;hexagono;apotema',
+ '4.6':'poligono;poligonos;diagonais;quadrilateros;trapezio;losango;paralelogramo;hexagono;apotema',
+ '4.7':'area;areas;area do triangulo;area do circulo;area do trapezio;area do quadrado;area do retangulo;setor circular;coroa circular;heron',
+ '4.8':'circunferencia;circulo;tangente;angulo inscrito;angulo central;potencia de ponto;comprimento da circunferencia;pi',
+ '4.9':'geometria de posicao;retas reversas;planos;projecao ortogonal',
+ '4.10':'geometria de posicao;retas reversas;planos;projecao ortogonal',
+ '4.11':'poliedro;poliedros;euler;relacao de euler;planificacao;vistas;vista frontal;vista superior',
+ '4.12':'prisma;prismas;cubo;paralelepipedo;volume do prisma;cavalieri',
+ '4.13':'piramide;piramides;tronco de piramide;volume da piramide',
+ '4.14':'cilindro;cone;tronco de cone;volume do cilindro;volume do cone;geratriz',
+ '4.15':'cilindro;cone;tronco de cone;volume do cilindro;volume do cone;geratriz',
+ '4.16':'piramide;piramides;tronco de piramide;volume da piramide',
+ '4.17':'esfera;volume da esfera;area da esfera;calota;fuso;cunha'
 };
 var BUSCA_AULA={
- A01:'teoria dos conjuntos;conjuntos;pertinencia;inclusao;subconjunto',A02:'uniao;intersecao;diferenca de conjuntos;complementar;operacoes com conjuntos',A03:'diagrama de venn;venn;problemas com conjuntos;pesquisa',A04:'conjuntos numericos;numeros reais;numeros irracionais',A05:'intervalos;intervalos reais',A06:'produto cartesiano;plano cartesiano;relacao',A07:'funcao;definicao de funcao;conceito de funcao',A08:'dominio;imagem;contradominio;dominio de funcao',A09:'grafico de funcao;analise de graficos;leitura de graficos;crescente;decrescente',A10:'funcao afim;funcao linear;funcao do primeiro grau',A11:'grafico da funcao afim;coeficiente angular;coeficiente linear;grafico da reta',A12:'zero da funcao;estudo do sinal;raiz da funcao afim',A13:'inequacao do primeiro grau;inequacao simultanea',A14:'inequacao produto;inequacao quociente;quadro de sinais',A15:'modelagem;funcao custo;funcao lucro',A16:'funcao quadratica;funcao do segundo grau;parabola;concavidade',A17:'bhaskara;baskara;bascara;formula de bhaskara;formula resolutiva;delta;discriminante;soma e produto;raizes da equacao',A18:'vertice;vertice da parabola;xv;yv',A19:'grafico da parabola;sinal dos coeficientes;coeficientes da parabola',A20:'maximo e minimo;otimizacao;valor maximo;valor minimo',A21:'estudo do sinal da quadratica;sinal da parabola',A22:'inequacao do segundo grau;inequacao quadratica',A23:'forma canonica;forma fatorada',A24:'funcao par;funcao impar;par e impar;paridade;simetria',A25:'injetora;sobrejetora;bijetora;funcao injetora;funcao sobrejetora;funcao bijetora',A26:'funcao composta;composicao de funcoes;fog;gof',A27:'funcao inversa;inversa;f inversa',A28:'modulo;valor absoluto;modulo de um numero',A29:'funcao modular;grafico do modulo',A30:'equacao modular',A31:'inequacao modular',A32:'grafico com modulo;modulo de funcao',A33:'funcao exponencial;exponencial',A34:'equacao exponencial',A35:'inequacao exponencial',A36:'logaritmo;log;definicao de logaritmo',A37:'propriedades dos logaritmos;propriedades do log',A38:'mudanca de base',A39:'funcao logaritmica;grafico do log',A40:'equacao logaritmica',A41:'inequacao logaritmica',A42:'ph;richter;decibel;aplicacoes do logaritmo',A43:'sequencia;lei de recorrencia;fibonacci',A44:'pa;progressao aritmetica;termo geral da pa',A45:'interpolacao aritmetica;propriedades da pa;media aritmetica',A46:'soma da pa;soma dos termos da pa;gauss',A47:'pg;progressao geometrica;termo geral da pg',A48:'interpolacao geometrica;propriedades da pg;media geometrica',A49:'soma da pg;produto da pg',A50:'pg infinita;soma infinita;serie',A51:'problemas com pa e pg',A52:'matriz;matrizes;tipos de matrizes;matriz identidade',A53:'soma de matrizes;matriz transposta;transposta',A54:'multiplicacao de matrizes;produto de matrizes',A55:'matriz inversa',A56:'determinante;sarrus;regra de sarrus',A57:'propriedades dos determinantes',A58:'laplace;teorema de laplace;cofator;chio',A59:'binet;teorema de binet;determinante da inversa',A60:'sistema 2x2;sistema de equacoes;metodo da substituicao;metodo da adicao',A61:'sistema linear;sistemas lineares;spd;spi;classificacao de sistemas',A62:'cramer;regra de cramer',A63:'escalonamento;metodo de gauss',A64:'discussao de sistemas;sistema com parametro',A65:'numeros complexos;unidade imaginaria;forma algebrica',A66:'operacoes com complexos;conjugado;divisao de complexos',A67:'potencias de i',A68:'argand gauss;modulo do complexo',A69:'forma trigonometrica;forma polar',A70:'moivre',A71:'polinomio;polinomios;grau do polinomio;valor numerico',A72:'operacoes com polinomios;multiplicacao de polinomios',A73:'divisao de polinomios;metodo da chave',A74:'briot ruffini;briot',A75:'teorema do resto;dalembert',A76:'equacao polinomial;teorema fundamental da algebra',A77:'multiplicidade;raiz dupla;raiz tripla',A78:'relacoes de girard;girard',A79:'raizes complexas;raizes racionais',B01:'angulos;angulo agudo;angulo obtuso;complementares;suplementares',B02:'retas paralelas;transversal;alternos internos;colaterais',B03:'triangulos;soma dos angulos do triangulo',B04:'baricentro;incentro;circuncentro;ortocentro;pontos notaveis',B05:'congruencia;congruencia de triangulos',B06:'tales;teorema de tales;bissetriz interna',B07:'semelhanca;semelhanca de triangulos',B08:'pitagoras;teorema de pitagoras',B09:'relacoes metricas;triangulo retangulo;projecoes',B10:'poligonos;diagonais;soma dos angulos internos',B11:'quadrilateros;trapezio;losango;paralelogramo',B12:'poligonos regulares;apotema;hexagono',B13:'circunferencia;tangente a circunferencia;corda;diametro',B14:'angulo inscrito;angulo central;arco capaz',B15:'potencia de ponto;secante;tangente a circunferencia',B16:'comprimento da circunferencia;pi',B17:'area;area do quadrado;area do retangulo;area do trapezio;area do losango;area do paralelogramo',B18:'area do triangulo;heron;formula de heron',B19:'area do circulo;setor circular;coroa circular',B20:'razao entre areas',B21:'area de figuras compostas;regiao sombreada',B22:'geometria espacial;retas reversas;posicoes relativas',B23:'projecao ortogonal',B24:'poliedros;euler;relacao de euler',B25:'planificacao;vistas;vista frontal;vista superior',B26:'prisma;prismas;area do prisma',B27:'volume do prisma;paralelepipedo;cubo;cavalieri',B28:'piramide;area da piramide',B29:'volume da piramide',B30:'tronco de piramide',B31:'cilindro;volume do cilindro',B32:'cone;area do cone;geratriz',B33:'volume do cone',B34:'tronco de cone;planificacao',B35:'area da esfera;superficie esferica',B36:'volume da esfera;calota;cunha',B37:'esfera inscrita;esfera circunscrita',B38:'cilindro inscrito;cone inscrito',B39:'solidos de revolucao',B40:'semelhanca de solidos',B41:'distancia entre dois pontos;plano cartesiano',B42:'ponto medio;baricentro',B43:'alinhamento de tres pontos;area do triangulo analitica',B44:'coeficiente angular;equacao da reta',B45:'equacao geral da reta;equacao reduzida da reta;equacao segmentaria',B46:'retas paralelas;posicao relativa entre retas;intersecao de retas',B47:'retas perpendiculares;mediatriz',B48:'angulo entre retas',B49:'distancia de ponto a reta',B50:'inequacoes no plano;semiplano;programacao linear',B51:'equacao da circunferencia;circunferencia',B52:'posicao relativa;reta e circunferencia',B53:'reta tangente;circunferencias tangentes',B54:'elipse',B55:'hiperbole',B56:'parabola foco e diretriz',B57:'reconhecimento de conicas',B58:'geometria analitica no espaco',B59:'lugar geometrico',C01:'numeros inteiros;regra de sinais;jogo de sinais',C02:'expressoes numericas;ordem das operacoes',C03:'numeros primos;divisibilidade;criterios de divisibilidade',C04:'mmc;mdc;minimo multiplo comum;maximo divisor comum',C05:'fracao;fracoes;fracoes equivalentes;simplificar fracao',C06:'operacoes com fracoes;soma de fracoes;divisao de fracoes',C07:'numeros decimais;decimal',C08:'dizima periodica;fracao geratriz',C09:'potencia;potenciacao;propriedades das potencias',C10:'notacao cientifica;ordem de grandeza',C11:'raiz;radiciacao;raiz quadrada;simplificar radicais',C12:'racionalizacao;racionalizar',C13:'expressoes algebricas;valor numerico;monomio',C14:'produtos notaveis;quadrado da soma;quadrado da diferenca;produto da soma pela diferenca;cubo da soma',C15:'fatoracao;fatorar;fator comum;agrupamento;diferenca de quadrados;trinomio quadrado perfeito',C16:'fracoes algebricas;simplificar fracao algebrica',C17:'equacao do primeiro grau;equacao de primeiro grau;equacoes do primeiro grau;resolver equacao',C18:'problemas do primeiro grau;problemas de idade;problemas com equacoes',C19:'equacao do segundo grau;equacao de segundo grau;equacoes do segundo grau;completar quadrados;equacao incompleta',C20:'soma e produto das raizes;biquadrada;equacao biquadrada;equacao irracional',C21:'problemas do segundo grau',C22:'razao;proporcao',C23:'escala;velocidade media;densidade demografica',C24:'grandezas proporcionais;diretamente proporcional;inversamente proporcional',C25:'regra de tres;regra de 3;regra de tres simples',C26:'regra de tres composta',C27:'unidades de medida;conversao de unidades;litro;metro cubico',C28:'horas e minutos;km/h para m/s;vazao',C29:'porcentagem;percentual',C30:'aumento;desconto;fator multiplicativo',C31:'aumentos e descontos sucessivos;inflacao acumulada;lucro sobre o custo;lucro sobre a venda',C32:'juros simples',C33:'juros compostos',C34:'valor presente;equivalencia de capitais;a vista ou a prazo',C35:'amortizacao;sac;price;financiamento',C36:'pfc;principio fundamental da contagem;principio multiplicativo',C37:'fatorial;permutacao;permutacao simples;anagrama',C38:'permutacao com repeticao;anagramas com repeticao',C39:'permutacao circular;mesa redonda',C40:'arranjo;arranjos;arranjo simples',C41:'combinacao;combinacao simples',C42:'combinacao com restricao;pelo menos;metodo destrutivo',C43:'combinacao completa;combinacao com repeticao',C44:'principio das gavetas;casa dos pombos',C45:'numeros binomiais;triangulo de pascal',C46:'binomio de newton;termo geral do binomio',C47:'probabilidade',C48:'probabilidade da uniao',C49:'probabilidade condicional',C50:'eventos independentes',C51:'distribuicao binomial',C52:'bayes;probabilidade total',C53:'graficos;tabelas;grafico de setores',C54:'frequencia;distribuicao de frequencias;histograma',C55:'media;media aritmetica;media ponderada',C56:'mediana;moda',C57:'media mediana e moda;boxplot;quartis',C58:'desvio padrao;variancia',C59:'coeficiente de variacao',C60:'amostra;correlacao',C61:'seno;cosseno;tangente;triangulo retangulo;razoes trigonometricas',C62:'angulos notaveis;angulo de elevacao',C63:'lei dos senos',C64:'lei dos cossenos',C65:'radiano;radianos;arcos',C66:'ciclo trigonometrico;circulo trigonometrico;arcos congruos',C67:'seno e cosseno;quadrantes;sinais',C68:'reducao ao primeiro quadrante',C69:'tangente;secante;cossecante;cotangente',C70:'relacao fundamental;identidades trigonometricas',C71:'soma de arcos;adicao de arcos',C72:'arco duplo',C73:'prostaferese',C74:'funcao seno;funcao cosseno;grafico do seno',C75:'periodo;amplitude;fenomenos periodicos',C76:'equacao trigonometrica',C77:'inequacao trigonometrica'
+ '1.12.1':'teoria dos conjuntos;conjuntos;pertinencia;inclusao;subconjunto','1.12.2':'uniao;intersecao;diferenca de conjuntos;complementar;operacoes com conjuntos','1.12.3':'diagrama de venn;venn;problemas com conjuntos;pesquisa','1.13.1':'conjuntos numericos;numeros reais;numeros irracionais','1.13.3':'intervalos;intervalos reais','2.1.1':'produto cartesiano;plano cartesiano;relacao','2.1.2':'funcao;definicao de funcao;conceito de funcao','2.1.3':'dominio;imagem;contradominio;dominio de funcao','2.1.4':'grafico de funcao;analise de graficos;leitura de graficos;crescente;decrescente','2.2.1':'funcao afim;funcao linear;funcao do primeiro grau','2.2.2':'grafico da funcao afim;coeficiente angular;coeficiente linear;grafico da reta','2.2.3':'zero da funcao;estudo do sinal;raiz da funcao afim','1.5.2':'inequacao do primeiro grau;inequacao simultanea','2.4.1':'inequacao produto;inequacao quociente;quadro de sinais','2.2.4':'modelagem;funcao custo;funcao lucro','2.3.1':'funcao quadratica;funcao do segundo grau;parabola;concavidade','2.3.2':'bhaskara;baskara;bascara;formula de bhaskara;formula resolutiva;delta;discriminante;soma e produto;raizes da equacao','2.3.3':'vertice;vertice da parabola;xv;yv','2.3.4':'grafico da parabola;sinal dos coeficientes;coeficientes da parabola','2.3.5':'maximo e minimo;otimizacao;valor maximo;valor minimo','2.4.2':'estudo do sinal da quadratica;sinal da parabola','2.4.3':'inequacao do segundo grau;inequacao quadratica','2.3.6':'forma canonica;forma fatorada','2.5.1':'funcao par;funcao impar;par e impar;paridade;simetria','2.5.2':'injetora;sobrejetora;bijetora;funcao injetora;funcao sobrejetora;funcao bijetora','2.5.3':'funcao composta;composicao de funcoes;fog;gof','2.5.4':'funcao inversa;inversa;f inversa','2.6.1':'modulo;valor absoluto;modulo de um numero','2.6.2':'funcao modular;grafico do modulo','2.6.3':'equacao modular','2.6.4':'inequacao modular','2.6.5':'grafico com modulo;modulo de funcao','2.7.1':'funcao exponencial;exponencial','2.7.2':'equacao exponencial','2.7.3':'inequacao exponencial','2.8.1':'logaritmo;log;definicao de logaritmo','2.9.1':'propriedades dos logaritmos;propriedades do log','2.9.2':'mudanca de base','2.11.1':'funcao logaritmica;grafico do log','2.10.1':'equacao logaritmica','2.10.2':'inequacao logaritmica','2.11.2':'ph;richter;decibel;aplicacoes do logaritmo','1.14.1':'sequencia;lei de recorrencia;fibonacci','1.14.2':'pa;progressao aritmetica;termo geral da pa','1.14.3':'interpolacao aritmetica;propriedades da pa;media aritmetica','1.14.4':'soma da pa;soma dos termos da pa;gauss','1.15.1':'pg;progressao geometrica;termo geral da pg','1.15.2':'interpolacao geometrica;propriedades da pg;media geometrica','1.15.3':'soma da pg;produto da pg','1.15.4':'pg infinita;soma infinita;serie','1.15.5':'problemas com pa e pg','3.1.1':'matriz;matrizes;tipos de matrizes;matriz identidade','3.1.2':'soma de matrizes;matriz transposta;transposta','3.2.1':'multiplicacao de matrizes;produto de matrizes','3.5.1':'matriz inversa','3.3.1':'determinante;sarrus;regra de sarrus','3.4.1':'propriedades dos determinantes','3.4.2':'laplace;teorema de laplace;cofator;chio','3.4.3':'binet;teorema de binet;determinante da inversa','1.5.3':'sistema 2x2;sistema de equacoes;metodo da substituicao;metodo da adicao','3.6.1':'sistema linear;sistemas lineares;spd;spi;classificacao de sistemas','3.6.2':'cramer;regra de cramer','3.6.3':'escalonamento;metodo de gauss','3.6.4':'discussao de sistemas;sistema com parametro','3.11.1':'numeros complexos;unidade imaginaria;forma algebrica','3.11.2':'operacoes com complexos;conjugado;divisao de complexos','3.12.1':'potencias de i','3.12.2':'argand gauss;modulo do complexo','3.12.3':'forma trigonometrica;forma polar','3.12.4':'moivre','3.13.1':'polinomio;polinomios;grau do polinomio;valor numerico','3.13.2':'operacoes com polinomios;multiplicacao de polinomios','3.13.3':'divisao de polinomios;metodo da chave','3.13.4':'briot ruffini;briot','3.13.5':'teorema do resto;dalembert','3.14.1':'equacao polinomial;teorema fundamental da algebra','3.14.2':'multiplicidade;raiz dupla;raiz tripla','3.14.3':'relacoes de girard;girard','3.14.4':'raizes complexas;raizes racionais','4.1.1':'angulos;angulo agudo;angulo obtuso;complementares;suplementares','4.1.2':'retas paralelas;transversal;alternos internos;colaterais','4.2.1':'triangulos;soma dos angulos do triangulo','4.2.2':'baricentro;incentro;circuncentro;ortocentro;pontos notaveis','4.3.1':'congruencia;congruencia de triangulos','4.3.2':'tales;teorema de tales;bissetriz interna','4.3.3':'semelhanca;semelhanca de triangulos','4.4.1':'pitagoras;teorema de pitagoras','4.4.2':'relacoes metricas;triangulo retangulo;projecoes','4.5.1':'poligonos;diagonais;soma dos angulos internos','4.5.2':'quadrilateros;trapezio;losango;paralelogramo','4.6.1':'poligonos regulares;apotema;hexagono','4.8.1':'circunferencia;tangente a circunferencia;corda;diametro','4.8.2':'angulo inscrito;angulo central;arco capaz','4.8.3':'potencia de ponto;secante;tangente a circunferencia','4.8.4':'comprimento da circunferencia;pi','4.7.1':'area;area do quadrado;area do retangulo;area do trapezio;area do losango;area do paralelogramo','4.7.2':'area do triangulo;heron;formula de heron','4.7.3':'area do circulo;setor circular;coroa circular','4.7.4':'razao entre areas','4.7.5':'area de figuras compostas;regiao sombreada','4.9.1':'geometria espacial;retas reversas;posicoes relativas','4.10.1':'projecao ortogonal','4.11.1':'poliedros;euler;relacao de euler','4.11.2':'planificacao;vistas;vista frontal;vista superior','4.12.1':'prisma;prismas;area do prisma','4.12.2':'volume do prisma;paralelepipedo;cubo;cavalieri','4.13.1':'piramide;area da piramide','4.13.2':'volume da piramide','4.16.1':'tronco de piramide','4.14.1':'cilindro;volume do cilindro','4.15.1':'cone;area do cone;geratriz','4.15.2':'volume do cone','4.16.2':'tronco de cone;planificacao','4.17.1':'area da esfera;superficie esferica','4.17.2':'volume da esfera;calota;cunha','4.17.3':'esfera inscrita;esfera circunscrita','4.17.4':'cilindro inscrito;cone inscrito','4.14.2':'solidos de revolucao','4.16.3':'semelhanca de solidos','3.7.1':'distancia entre dois pontos;plano cartesiano','3.7.2':'ponto medio;baricentro','3.7.3':'alinhamento de tres pontos;area do triangulo analitica','3.8.1':'coeficiente angular;equacao da reta','3.8.2':'equacao geral da reta;equacao reduzida da reta;equacao segmentaria','3.9.1':'retas paralelas;posicao relativa entre retas;intersecao de retas','3.9.2':'retas perpendiculares;mediatriz','3.9.3':'angulo entre retas','3.9.4':'distancia de ponto a reta','3.9.5':'inequacoes no plano;semiplano;programacao linear','3.10.1':'equacao da circunferencia;circunferencia','3.10.2':'posicao relativa;reta e circunferencia','3.10.3':'reta tangente;circunferencias tangentes','3.x1.1':'elipse','3.x1.2':'hiperbole','3.x1.3':'parabola foco e diretriz','3.x1.4':'reconhecimento de conicas','3.x2.1':'geometria analitica no espaco','3.x2.2':'lugar geometrico','1.1.1':'numeros inteiros;regra de sinais;jogo de sinais','1.1.2':'expressoes numericas;ordem das operacoes','1.1.6':'numeros primos;divisibilidade;criterios de divisibilidade','1.1.7':'mmc;mdc;minimo multiplo comum;maximo divisor comum','1.1.3':'fracao;fracoes;fracoes equivalentes;simplificar fracao','1.1.4':'operacoes com fracoes;soma de fracoes;divisao de fracoes','1.1.5':'numeros decimais;decimal','1.13.2':'dizima periodica;fracao geratriz','1.2.1':'potencia;potenciacao;propriedades das potencias','1.2.2':'notacao cientifica;ordem de grandeza','1.3.1':'raiz;radiciacao;raiz quadrada;simplificar radicais','1.3.2':'racionalizacao;racionalizar','1.4.1':'expressoes algebricas;valor numerico;monomio','1.4.2':'produtos notaveis;quadrado da soma;quadrado da diferenca;produto da soma pela diferenca;cubo da soma','1.4.3':'fatoracao;fatorar;fator comum;agrupamento;diferenca de quadrados;trinomio quadrado perfeito','1.4.4':'fracoes algebricas;simplificar fracao algebrica','1.5.1':'equacao do primeiro grau;equacao de primeiro grau;equacoes do primeiro grau;resolver equacao','1.6.1':'problemas do primeiro grau;problemas de idade;problemas com equacoes','1.7.1':'equacao do segundo grau;equacao de segundo grau;equacoes do segundo grau;completar quadrados;equacao incompleta','1.7.2':'soma e produto das raizes;biquadrada;equacao biquadrada;equacao irracional','1.7.3':'problemas do segundo grau','1.8.1':'razao;proporcao','1.8.2':'escala;velocidade media;densidade demografica','1.8.3':'grandezas proporcionais;diretamente proporcional;inversamente proporcional','1.9.1':'regra de tres;regra de 3;regra de tres simples','1.9.2':'regra de tres composta','1.11.1':'unidades de medida;conversao de unidades;litro;metro cubico','1.11.2':'horas e minutos;km/h para m/s;vazao','1.10.1':'porcentagem;percentual','1.10.2':'aumento;desconto;fator multiplicativo','1.10.3':'aumentos e descontos sucessivos;inflacao acumulada;lucro sobre o custo;lucro sobre a venda','1.x1.1':'juros simples','1.x1.2':'juros compostos','1.x1.3':'valor presente;equivalencia de capitais;a vista ou a prazo','1.x1.4':'amortizacao;sac;price;financiamento','1.16.1':'pfc;principio fundamental da contagem;principio multiplicativo','1.16.2':'fatorial;permutacao;permutacao simples;anagrama','1.17.1':'permutacao com repeticao;anagramas com repeticao','1.17.2':'permutacao circular;mesa redonda','1.18.1':'arranjo;arranjos;arranjo simples','1.18.2':'combinacao;combinacao simples','1.18.3':'combinacao com restricao;pelo menos;metodo destrutivo','1.18.4':'combinacao completa;combinacao com repeticao','1.18.5':'principio das gavetas;casa dos pombos','1.19.1':'numeros binomiais;triangulo de pascal','1.20.1':'binomio de newton;termo geral do binomio','1.21.1':'probabilidade','1.21.2':'probabilidade da uniao','1.21.3':'probabilidade condicional','1.21.4':'eventos independentes','1.21.5':'distribuicao binomial','1.21.6':'bayes;probabilidade total','1.23.1':'graficos;tabelas;grafico de setores','1.23.2':'frequencia;distribuicao de frequencias;histograma','1.22.1':'media;media aritmetica;media ponderada','1.22.2':'mediana;moda','1.22.3':'media mediana e moda;boxplot;quartis','1.23.3':'desvio padrao;variancia','1.23.4':'coeficiente de variacao','1.23.5':'amostra;correlacao','2.12.1':'seno;cosseno;tangente;triangulo retangulo;razoes trigonometricas','2.12.2':'angulos notaveis;angulo de elevacao','2.13.1':'lei dos senos','2.13.2':'lei dos cossenos','2.14.1':'radiano;radianos;arcos','2.14.2':'ciclo trigonometrico;circulo trigonometrico;arcos congruos','2.15.1':'seno e cosseno;quadrantes;sinais','2.15.2':'reducao ao primeiro quadrante','2.15.3':'tangente;secante;cossecante;cotangente','2.16.1':'relacao fundamental;identidades trigonometricas','2.17.1':'soma de arcos;adicao de arcos','2.17.2':'arco duplo','2.17.3':'prostaferese','2.20.1':'funcao seno;funcao cosseno;grafico do seno','2.20.2':'periodo;amplitude;fenomenos periodicos','2.18.1':'equacao trigonometrica','2.19.1':'inequacao trigonometrica'
 };
 var BUSCA_STOP=new Set('de da do das dos e a o as os um uma uns umas para pra pro com em no na nos nas por pelo pela sobre como que qual quais aula aulas materia conteudo conteudos assunto assuntos estudar quero aprender'.split(' '));
 var BUSCA_INTENT={lista:'levar',pdf:'levar',gabarito:'levar',apostila:'levar',material:'levar',baixar:'levar',download:'levar',imprimir:'levar',video:'levar',videoaula:'levar',
@@ -211,8 +260,8 @@ function bQuery(q){
   V.forEach(function(c,v){if(Math.abs(v.length-t.length)>max)return;var d=bLev(t,v,max);if(d<=max&&(d<bd||(d===bd&&c>bc))){best=v;bd=d;bc=c}});
   if(best){fixed.push(best);return best}return t;
  });
- var code=null,m=n.replace(/\s+/g,'').match(/^([abc])0?(\d{1,2})$/);
- if(m){var id=m[1].toUpperCase()+('0'+m[2]).slice(-2);if(data.lessons.some(function(l){return l.id===id}))code=id}
+ var code=null,m=n.match(/^([1-4]) (\d{1,2}|x\d) (\d{1,2})$/);
+ if(m){var id=m[1]+'.'+m[2]+'.'+Number(m[3]);if(data.lessons.some(function(l){return l.id===id}))code=id}
  return {raw:q,n:n,toks:toks,soft:soft,intent:intent,phrase:toks.join(' '),code:code,fixed:fixed.length?toks.join(' '):null};
 }
 function bScore(doc,Q){
@@ -279,7 +328,23 @@ function hvContinue(){
  var l=id&&data.lessons.find(function(x){return x.id===id});if(!l)return '';
  return '<a class="hv-continue" href="'+href(l)+'"><span class="hv-continue-k">Continuar de onde parou</span><span class="aula-id">'+esc(l.id)+'</span><span class="hv-continue-t">'+esc(l.title)+'</span></a>';
 }
-function shopPromo(lesson){return '<aside class="book-promo'+(lesson?' book-promo-lesson':'')+'"><div><span>✳ A MATEMÁTICA NO PAPEL</span><h2>Conheça a coleção física MAT MAT MAT!</h2><p>Quatro volumes A5 para acompanhar seus estudos. O conteúdo digital continua gratuito.</p></div><a href="/livros/">Conhecer os 4 volumes ↗</a></aside>'}
+function matEvt(n,d){try{document.dispatchEvent(new CustomEvent('mat:'+n,{detail:d||{}}))}catch(e){}}
+/* Chamada da coleção: no contexto de um módulo, mostra o que o livro tem daquele módulo. */
+function shopPromo(ctx){
+ var t=ctx&&ctx.block?topicInfo(ctx.block):ctx&&ctx.tipos?ctx:null;
+ if(t&&!t.extra){
+  var a=SUBJECT_AREAS.find(function(x){return x.id===t.area});
+  return '<aside class="bk-promo" data-promo="modulo"><div class="bk-promo-tag">NO LIVRO · VOLUME '+a.vol+' · MÓDULO '+esc(t.numero)+'</div>'
+   +'<div class="bk-promo-grid"><div><h2>'+esc(t.title)+' em <em>'+plural(t.tipos.length,'tipo','tipos')+' de questão</em></h2>'
+   +'<p>Cada tipo vem com como reconhecer, o caminho em passos, um modelo resolvido e questões de vestibular, da mais simples à mais trabalhosa. Tem espaço para resolver no próprio livro.</p>'
+   +'<div class="bk-promo-cta"><a class="bk-btn" href="/livros/?volume='+a.vol+'" data-oferta="modulo">Quero o Volume '+a.vol+'</a><a class="bk-link" href="/livros/">Ver a coleção</a></div></div>'
+   +'<ol class="bk-tipos">'+t.tipos.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ol></div></aside>';
+ }
+ return '<aside class="bk-promo bk-promo-geral" data-promo="colecao"><div class="bk-promo-tag">COLEÇÃO MAT MAT MAT! · 4 VOLUMES</div><div class="bk-promo-grid"><div><h2>Toda a matemática do ensino médio <em>no papel.</em></h2>'
+  +'<p>74 módulos e 315 tipos de questão, cada um com o caminho em passos e questões de vestibular. As listas do site continuam grátis.</p>'
+  +'<div class="bk-promo-cta"><a class="bk-btn" href="/livros/" data-oferta="colecao">Quero a coleção</a><a class="bk-link" href="/livros/">Conhecer os 4 volumes</a></div></div>'
+  +'<ul class="bk-vols">'+SUBJECT_AREAS.map(function(a){return '<li class="tone-'+a.tone+'"><b>'+a.vol+'</b><span>'+esc(a.name)+'</span></li>'}).join('')+'</ul></div></aside>';
+}
 function home(){
  title('Aulas, listas e PDFs gratuitos');
  // Links antigos continuam funcionando, agora no catálogo dedicado.
@@ -301,8 +366,9 @@ function home(){
  '<div class="shell">'+
  '<section class="home-search-results" id="resultados" hidden aria-live="polite"><div class="home-results-head"><div><span class="home-section-label">SUA PESQUISA</span><h2 id="search-title">Resultados</h2></div><button id="return-home" class="home-back-button" type="button">← Voltar à exploração</button></div><div id="search-scope" class="home-search-scopes" role="group" aria-label="Filtrar resultados"></div><div id="search-output"></div></section>'+
  '<div id="home-discover">'+
- '<section id="explorar" class="home-explore hv-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="hv-kicker">'+SUBJECT_AREAS.length+' áreas, '+SUBJECT_TOPICS.length+' assuntos e '+data.lessons.length+' aulas</span><h2 id="explore-title">Encontre seu material.</h2></div></div><div id="explore-content"></div></section>'+
+ '<section id="explorar" class="home-explore hv-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="hv-kicker">'+SUBJECT_AREAS.length+' volumes, '+SUBJECT_TOPICS.length+' módulos e '+data.lessons.length+' aulas</span><h2 id="explore-title">Encontre seu material.</h2></div></div><div id="explore-content"></div></section>'+
  '</div></div>'+ '<div class="shell">'+shopPromo(false)+'</div></main>'+footer();
+ matEvt('pagina',{tipo:'home'});
 
  var input=document.getElementById('hero-search');
  var clearBtn=document.getElementById('clear-search');
@@ -323,17 +389,18 @@ function home(){
   var hasMaterial=materialByCode.has(l.id);
   return '<a class="browse-lesson-row" href="'+href(l)+'"><span class="browse-lesson-number">'+esc(l.id)+'</span><span class="browse-lesson-copy"><strong>'+esc(l.title)+'</strong><small>'+esc(l.summary||'Abra a aula para começar.')+'</small>'+(areaLabel?'<span class="browse-lesson-meta">'+esc(area.name)+' · '+esc(subTopic(l,area).title)+'</span>':'')+'</span><span class="browse-lesson-right">'+(done.has(l.id)?'<span class="browse-studied">✓ Estudada</span>':hasMaterial?'<span class="browse-material-tag">PDF</span>':'<span class="browse-enter">↗</span>')+'</span></a>'
  }
- function crumbs(parts){return '<nav class="browser-crumbs" aria-label="Caminho"><button data-catalog="areas" type="button">Todas as áreas</button>'+parts.map(function(p){return '<span class="crumb-chevron">›</span>'+(p.action?'<button type="button" data-catalog="'+p.action+'" data-id="'+esc(p.id||'')+'">'+esc(p.label)+'</button>':'<strong>'+esc(p.label)+'</strong>')}).join('')+'</nav>'}
+ function crumbs(parts){return '<nav class="browser-crumbs" aria-label="Caminho"><button data-catalog="areas" type="button">Todos os volumes</button>'+parts.map(function(p){return '<span class="crumb-chevron">›</span>'+(p.action?'<button type="button" data-catalog="'+p.action+'" data-id="'+esc(p.id||'')+'">'+esc(p.label)+'</button>':'<strong>'+esc(p.label)+'</strong>')}).join('')+'</nav>'}
+ function partes(ts){var out=[];ts.forEach(function(t){var p=out.find(function(x){return x.nome===t.parte});if(!p){p={nome:t.parte,k:out.length+1,mods:[]};out.push(p)}p.mods.push(t)});return out}
  function tile(area){
   var ls=areaLessons(area),n=ls.filter(function(l){return done.has(l.id)}).length;
   var ts=SUBJECT_TOPICS.filter(function(t){return t.area===area.id});
   var lists=ls.filter(function(l){return materialByCode.has(l.id)}).length;
   var deco=ts.filter(function(t){return t.icon!==area.icon}).slice(0,4).map(function(t,k){return '<span class="hv-deco hv-deco-'+k+'">'+esc(t.icon)+'</span>'}).join('');
   return '<article class="hv-area">'
-   +'<a class="area-tile" href="/explorar/?area='+encodeURIComponent(area.id)+'"><span class="hv-cover tone-'+area.tone+'" aria-hidden="true"><span class="hv-icon">'+esc(area.icon)+'</span>'+deco+'</span>'
-   +'<span class="hv-body"><span class="hv-name">'+esc(area.name)+'</span><span class="hv-desc">'+esc(area.description)+'</span></span></a>'
-   +'<ul class="hv-topics" aria-label="Assuntos de '+esc(area.name)+'">'+ts.map(function(t){return '<li><a href="/explorar/?area='+encodeURIComponent(area.id)+'&assunto='+encodeURIComponent(t.id)+'"><span class="hv-ti" aria-hidden="true">'+esc(t.icon)+'</span>'+esc(t.title)+'</a></li>'}).join('')+'</ul>'
-   +'<div class="hv-foot"><span><b>'+ls.length+' aulas</b> em '+ts.length+' assuntos</span>'+(n?'<span class="hv-done">'+n+' estudadas</span>':lists?'<span class="hv-lists">'+(lists===ls.length?'Todas com listas em PDF':plural(lists,'aula com listas','aulas com listas')+' em PDF')+'</span>':'')+'</div>'
+   +'<a class="area-tile" href="'+volHref(area)+'"><span class="hv-cover tone-'+area.tone+'" aria-hidden="true"><span class="hv-icon">'+esc(area.icon)+'</span>'+deco+'</span>'
+   +'<span class="hv-body"><span class="hv-vol">Volume '+area.vol+'</span><span class="hv-name">'+esc(area.name)+'</span><span class="hv-desc">'+esc(area.description)+'</span></span></a>'
+   +'<ul class="hv-partes" aria-label="Partes do Volume '+area.vol+'">'+partes(ts).map(function(p){return '<li><a href="'+volHref(area)+'#parte-'+p.k+'"><b>'+esc(p.nome)+'</b><span>'+esc(p.mods.slice(0,3).map(function(t){return t.title.replace(/:.*$/,'')}).join(', '))+(p.mods.length>3?' e mais '+(p.mods.length-3):'')+'</span></a></li>'}).join('')+'</ul>'
+   +'<div class="hv-foot"><span><b>'+ls.length+' aulas</b> em '+ts.length+' módulos</span>'+(n?'<span class="hv-done">'+n+' estudadas</span>':lists?'<span class="hv-lists">'+(lists===ls.length?'Todas com listas em PDF':plural(lists,'aula com listas','aulas com listas')+' em PDF')+'</span>':'')+'</div>'
    +(n?'<div class="tr-meter hv-meter" role="img" aria-label="'+n+' de '+ls.length+' aulas estudadas"><span style="width:'+Math.round(n*100/ls.length)+'%"></span></div>':'')
    +'</article>';
  }
@@ -353,7 +420,7 @@ function home(){
    var topic=SUBJECT_TOPICS.find(function(t){return t.id===state.topic&&t.area===area.id});
    if(!topic){state.view='topics';return renderBrowse()}
    var group=areaLessons(area).filter(function(l){return subjectTopic(l,area)===topic.id});
-   html=crumbs([{label:area.name,action:'area',id:area.id},{label:topic.title}])+'<div class="browse-section-head"><span class="browse-kicker">AGORA ESCOLHA A AULA</span><h3>'+esc(topic.title)+'</h3><p>'+esc(topic.description)+'</p></div>'+topicPdfPanel('assunto',topic.id,'Lista geral de '+topic.title)+list(group,'Aulas deste assunto',false)
+   html=crumbs([{label:area.name,action:'area',id:area.id},{label:topic.title}])+'<div class="browse-section-head"><span class="browse-kicker">AGORA ESCOLHA A AULA</span><h3>'+esc(topic.title)+'</h3><p>'+esc(topic.description)+'</p></div>'+topicPdfPanel('assunto',topic.id,'Lista geral de '+topic.title)+list(group,'Aulas deste módulo',false)
   }else{
    state.view='areas';
    html='<div class="area-grid">'+SUBJECT_AREAS.map(tile).join('')+'</div>';
@@ -396,8 +463,8 @@ function home(){
   active=i;hits.forEach(function(h,k){h.classList.toggle('is-active',k===i);h.setAttribute('aria-selected',String(k===i))});
   if(hits[i]){input.setAttribute('aria-activedescendant',hits[i].id);hits[i].scrollIntoView({block:'nearest'})}else input.removeAttribute('aria-activedescendant');
  }
- function topicUrl(t){return '/explorar/?area='+encodeURIComponent(t.area)+'&assunto='+encodeURIComponent(t.id)}
- function areaUrl(a){return '/explorar/?area='+encodeURIComponent(a.id)}
+ function topicUrl(t){return topicHref(t)}
+ function areaUrl(a){return volHref(a)}
  function qRow(o){
   return '<a class="home-quick-row hq-row'+(o.best?' is-best':'')+'" role="option" href="'+esc(o.href)+'"'+(o.download?' download':'')+'><span class="hq-code'+(o.codeClass?' '+o.codeClass:'')+'">'+o.code+'</span><span class="hq-t"><b>'+o.title+'</b><small>'+(o.best?'<span class="hq-tag">Melhor resultado</span>':'')+o.sub+'</small></span><kbd class="hq-enter" aria-hidden="true">Enter</kbd></a>';
  }
@@ -418,19 +485,19 @@ function home(){
    rows.push(qRow({best:R.confident,href:bLessonHref(l,Q.intent),code:esc(l.id),title:bMark(l.title,Q),sub:esc(R.best.d.topic.title)+(Q.intent==='levar'&&trHasLists(l.id)?', listas em PDF':Q.intent==='pratique'&&trHasLists(l.id)?', exercícios':Q.intent==='prova'&&trHasLists(l.id)?', modo prova':'')}));
   }else if(R.best&&R.best.kind==='area'){
    var a=R.best.d.a;
-   rows.push(qRow({best:true,href:areaUrl(a),code:esc(a.icon),codeClass:'tone-'+a.tone,title:bMark(a.name,Q),sub:'Área com '+plural(SUBJECT_TOPICS.filter(function(t){return t.area===a.id}).length,'assunto','assuntos')}));
+   rows.push(qRow({best:true,href:areaUrl(a),code:esc(a.icon),codeClass:'tone-'+a.tone,title:bMark(a.name,Q),sub:'Volume com '+plural(SUBJECT_TOPICS.filter(function(t){return t.area===a.id}).length,'módulo','módulos')}));
   }else if(R.best&&R.best.kind==='areas'){
-   R.best.list.forEach(function(d){rows.push(qRow({href:areaUrl(d.a),code:esc(d.a.icon),codeClass:'tone-'+d.a.tone,title:bMark(d.a.name,Q),sub:'Área'}))});
+   R.best.list.forEach(function(d){rows.push(qRow({href:areaUrl(d.a),code:esc(d.a.icon),codeClass:'tone-'+d.a.tone,title:bMark(d.a.name,Q),sub:'Volume'}))});
   }
   R.lessons.filter(function(x){return !used[x.d.l.id]}).slice(0,R.best?3:5).forEach(function(x){var l=x.d.l;used[l.id]=1;rows.push(qRow({href:bLessonHref(l,Q.intent),code:esc(l.id),title:bMark(l.title,Q),sub:esc(x.d.topic.title)}))});
   var tp=R.topics[0];
-  if(tp&&tp.s>=8&&!(R.best&&R.best.kind!=='aula')){var n=data.lessons.filter(function(l){return subjectTopic(l,areaForLesson(l))===tp.d.t.id}).length;rows.push(qRow({href:topicUrl(tp.d.t),code:esc(tp.d.t.icon),codeClass:'is-topic',title:'Todas as aulas de '+bMark(tp.d.t.title,Q),sub:'Assunto com '+plural(n,'aula','aulas')}))}
+  if(tp&&tp.s>=8&&!(R.best&&R.best.kind!=='aula')){var n=data.lessons.filter(function(l){return subjectTopic(l,areaForLesson(l))===tp.d.t.id}).length;rows.push(qRow({href:topicUrl(tp.d.t),code:esc(tp.d.t.icon),codeClass:'is-topic',title:'Todas as aulas de '+bMark(tp.d.t.title,Q),sub:'Módulo com '+plural(n,'aula','aulas')}))}
   if(R.best&&R.best.kind==='aula'&&Q.intent==='levar')bListFiles(R.best.d.l.id).forEach(function(f){rows.push(qRow({href:f.url,download:true,code:'PDF',codeClass:'is-pdf',title:esc(f.titulo),sub:'Baixar o PDF'}))});
   var head=Q.fixed&&rows.length?'<div class="hq-fixed">Mostrando resultados para <b>'+esc(Q.fixed)+'</b></div>':'';
   if(!rows.length){
    var sug=bSuggest(q);
    head='<div class="hq-empty"><b>Nenhuma aula com “'+esc(q)+'”.</b>'+(sug.length?' Você quis dizer:':' Tente outra palavra ou um código, como A17.')+'</div>';
-   sug.forEach(function(d){rows.push(d.kind==='aula'?qRow({href:href(d.l),code:esc(d.l.id),title:esc(d.l.title),sub:esc(d.topic.title)}):qRow({href:topicUrl(d.t),code:esc(d.t.icon),codeClass:'is-topic',title:esc(d.t.title),sub:'Assunto'}))});
+   sug.forEach(function(d){rows.push(d.kind==='aula'?qRow({href:href(d.l),code:esc(d.l.id),title:esc(d.l.title),sub:esc(d.topic.title)}):qRow({href:topicUrl(d.t),code:esc(d.t.icon),codeClass:'is-topic',title:esc(d.t.title),sub:'Módulo'}))});
   }
   quick.innerHTML=head+'<div role="listbox" aria-label="Sugestões">'+rows.join('')+'</div>'+(R.lessons.length+R.topics.length>rows.length||R.listas?'<button type="button" class="home-quick-all" id="quick-all">Ver todos os resultados</button>':'');
   hits=[].slice.call(quick.querySelectorAll('.hq-row'));hits.forEach(function(h,k){h.id='hq-'+k});
@@ -463,10 +530,10 @@ function home(){
   }
   if(b.kind==='area'){
    var a=b.d.a,ts=SUBJECT_TOPICS.filter(function(t){return t.area===a.id});
-   return '<article class="hs-best hs-best-area"><p class="hs-best-k"><span class="hs-tag">Melhor resultado</span><span>Área</span></p><div class="hs-area-top"><span class="hv-icon-sm tone-'+a.tone+'">'+esc(a.icon)+'</span><div><h3><a href="'+areaUrl(a)+'">'+esc(a.name)+'</a></h3><p class="tr-lesson-sum">'+esc(a.description)+'</p></div></div>'
-    +'<ul class="hv-topics">'+ts.map(function(t){return '<li><a href="'+topicUrl(t)+'"><span class="hv-ti" aria-hidden="true">'+esc(t.icon)+'</span>'+esc(t.title)+'</a></li>'}).join('')+'</ul><a class="aula-btn aula-btn-lime hs-open" href="'+areaUrl(a)+'">Abrir a área</a></article>';
+   return '<article class="hs-best hs-best-area"><p class="hs-best-k"><span class="hs-tag">Melhor resultado</span><span>Volume</span></p><div class="hs-area-top"><span class="hv-icon-sm tone-'+a.tone+'">'+esc(a.icon)+'</span><div><h3><a href="'+areaUrl(a)+'">'+esc(a.name)+'</a></h3><p class="tr-lesson-sum">'+esc(a.description)+'</p></div></div>'
+    +'<ul class="hv-topics">'+ts.map(function(t){return '<li><a href="'+topicUrl(t)+'"><span class="hv-ti" aria-hidden="true">'+esc(t.icon)+'</span>'+esc(t.title)+'</a></li>'}).join('')+'</ul><a class="aula-btn aula-btn-lime hs-open" href="'+areaUrl(a)+'">Abrir o volume</a></article>';
   }
-  return '<section class="hs-group"><h3>Áreas</h3><div class="hs-areas">'+b.list.map(function(d){return '<a class="hs-area" href="'+areaUrl(d.a)+'"><span class="hv-icon-sm tone-'+d.a.tone+'">'+esc(d.a.icon)+'</span><b>'+esc(d.a.name)+'</b></a>'}).join('')+'</div></section>';
+  return '<section class="hs-group"><h3>Volumes</h3><div class="hs-areas">'+b.list.map(function(d){return '<a class="hs-area" href="'+areaUrl(d.a)+'"><span class="hv-icon-sm tone-'+d.a.tone+'">'+esc(d.a.icon)+'</span><b>'+esc(d.a.name)+'</b></a>'}).join('')+'</div></section>';
  }
  function listsView(){
   var ls=data.lessons.filter(function(l){return trHasLists(l.id)}),html='<p class="hs-lead">'+plural(ls.length,'aula já tem','aulas já têm')+' listas de fixação e de vestibular em PDF, com gabarito resolvido.</p>';
@@ -488,10 +555,10 @@ function home(){
   var others=R.lessons.filter(function(x){return !shownIds[x.d.l.id]});
   if(others.length)html+='<section class="hs-group"><h3>'+(R.best&&R.best.kind==='aula'?'Outras aulas que combinam':'Aulas que combinam')+'</h3><ol class="tr-rows">'+others.slice(0,search.shown).map(function(x){return trRow(x.d.l,true)}).join('')+'</ol>'+(others.length>search.shown?'<button type="button" class="aula-btn aula-btn-soft hs-more" data-more-search>Ver mais '+(others.length-search.shown)+'</button>':'')+'</section>';
   var bt=R.best&&R.best.kind==='aula'?R.best.d.topic.id:null,ts=R.topics.filter(function(x){return x.d.t.id!==bt}).slice(0,6);
-  if(ts.length)html+='<section class="hs-group"><h3>Assuntos</h3><ul class="hv-topics hs-topics">'+ts.map(function(x){return '<li><a href="'+topicUrl(x.d.t)+'"><span class="hv-ti" aria-hidden="true">'+esc(x.d.t.icon)+'</span>'+esc(x.d.t.title)+'</a></li>'}).join('')+'</ul></section>';
+  if(ts.length)html+='<section class="hs-group"><h3>Módulos</h3><ul class="hv-topics hs-topics">'+ts.map(function(x){return '<li><a href="'+topicUrl(x.d.t)+'"><span class="hv-ti" aria-hidden="true">'+esc(x.d.t.icon)+'</span>'+esc(x.d.t.title)+'</a></li>'}).join('')+'</ul></section>';
   if(!html){
    var sug=bSuggest(q);
-   html='<div class="hs-none"><b>Nenhuma aula encontrada para “'+esc(q)+'”.</b><p>'+(sug.length?'Talvez você esteja procurando:':'Tente outra palavra, um código de aula (como A17) ou escolha uma área.')+'</p>'+(sug.length?'<ul class="hv-topics hs-topics">'+sug.map(function(d){return d.kind==='aula'?'<li><a href="'+href(d.l)+'"><span class="hv-ti">'+d.l.id+'</span>'+esc(d.l.title)+'</a></li>':'<li><a href="'+topicUrl(d.t)+'"><span class="hv-ti">'+esc(d.t.icon)+'</span>'+esc(d.t.title)+'</a></li>'}).join('')+'</ul>':'')+'<button type="button" class="aula-btn aula-btn-ink" id="search-reset">Ver todas as áreas</button></div>'+exatooCard('busca');
+   html='<div class="hs-none"><b>Nenhuma aula encontrada para “'+esc(q)+'”.</b><p>'+(sug.length?'Talvez você esteja procurando:':'Tente outra palavra, um código de aula (como 2.3.2) ou escolha um volume.')+'</p>'+(sug.length?'<ul class="hv-topics hs-topics">'+sug.map(function(d){return d.kind==='aula'?'<li><a href="'+href(d.l)+'"><span class="hv-ti">'+d.l.id+'</span>'+esc(d.l.title)+'</a></li>':'<li><a href="'+topicUrl(d.t)+'"><span class="hv-ti">'+esc(d.t.icon)+'</span>'+esc(d.t.title)+'</a></li>'}).join('')+'</ul>':'')+'<button type="button" class="aula-btn aula-btn-ink" id="search-reset">Ver todos os volumes</button></div>'+exatooCard('busca');
   }
   resultOutput.innerHTML=html;
   trFormulas(resultOutput);
@@ -556,9 +623,9 @@ var TR_SVG={
 function trAreaLessons(area){return data.lessons.filter(function(l){return subjectContains(area,l)})}
 function trTopics(area){return SUBJECT_TOPICS.filter(function(t){return t.area===area.id})}
 function trTopicLessons(area,topic){return trAreaLessons(area).filter(function(l){return subjectTopic(l,area)===topic.id})}
-function trAreaUrl(area){return '/explorar/?area='+encodeURIComponent(area.id)}
-function trTopicUrl(area,topic){return trAreaUrl(area)+'&assunto='+encodeURIComponent(topic.id)}
-function trHasLists(id){return materialsAt('aula',id).some(function(x){return (x.item.arquivos||[]).some(function(f){return /\/(fixacao|vestibular)-[ABC]\d\d\.pdf$/.test(f.url||'')})})}
+function trAreaUrl(area){return volHref(area)}
+function trTopicUrl(area,topic){return topicHref(topic)}
+function trHasLists(id){return materialsAt('aula',id).some(function(x){return (x.item.arquivos||[]).some(function(f){return /\/(fixacao|vestibular)-[\w.]+\.pdf$/.test(f.url||'')})})}
 function trDone(ls){return ls.filter(function(l){return done.has(l.id)}).length}
 function trNext(ls){return ls.find(function(l){return !done.has(l.id)})||null}
 function trProgress(l){
@@ -594,7 +661,7 @@ function trSticker(center,tone,orbit,caption){
 }
 function trCrumbs(items){return '<nav class="aula-crumbs" aria-label="Caminho"><a href="/">Início</a>'+items.map(function(it){return '<span aria-hidden="true">/</span>'+(it.url?'<a href="'+it.url+'">'+esc(it.name)+'</a>':'<span aria-current="page">'+esc(it.name)+'</span>')}).join('')+'</nav>'}
 function trAreaSwitch(current){
- return '<nav class="tr-areas" aria-label="Outras áreas"><ol>'+SUBJECT_AREAS.map(function(a){var cur=current&&a.id===current.id;var ls=trAreaLessons(a),d=trDone(ls);return '<li><a href="'+trAreaUrl(a)+'" class="'+(cur?'is-current':'')+'"'+(cur?' aria-current="page"':'')+'><span class="tr-areas-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="tr-areas-name">'+esc(a.name)+'</span>'+(d?'<span class="tr-areas-done">'+d+'/'+ls.length+'</span>':'')+'</a></li>'}).join('')+'</ol></nav>';
+ return '<nav class="tr-areas" aria-label="Outros volumes"><ol>'+SUBJECT_AREAS.map(function(a){var cur=current&&a.id===current.id;var ls=trAreaLessons(a),d=trDone(ls);return '<li><a href="'+trAreaUrl(a)+'" class="'+(cur?'is-current':'')+'"'+(cur?' aria-current="page"':'')+'><span class="tr-areas-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="tr-areas-name">'+esc(a.name)+'</span>'+(d?'<span class="tr-areas-done">'+d+'/'+ls.length+'</span>':'')+'</a></li>'}).join('')+'</ol></nav>';
 }
 function trRow(l,showTopic){
  var a=areaForLesson(l),p=trProgress(l),fav=saved.has(l.id);
@@ -607,17 +674,20 @@ function trPdfPanel(kind,id,label){
  return '<section class="tr-pdfs"><h2>'+esc(label)+'</h2><div class="tr-pdfs-list">'+files.map(function(f){var u=String(f.url||'');return /^\/(?!\/)/.test(u)||/^https:\/\//.test(u)?'<a class="aula-file" href="'+esc(u)+'" target="_blank" rel="noopener">'+AULA_SVG.down+'<span>'+esc(f.titulo||'Material em PDF')+'</span></a>':''}).join('')+'</div></section>';
 }
 
+var AREA_ANTIGA={fundamentos:'v1',combinatoria:'v1',estatistica:'v1',funcoes:'v2',trigonometria:'v2',algebra:'v3','geometria-analitica':'v3','geometria-plana':'v4','geometria-espacial':'v4'};
 function explorePage(){
- var q=new URLSearchParams(location.search);
- var area=SUBJECT_AREAS.find(function(a){return a.id===q.get('area')});
- var topic=area&&SUBJECT_TOPICS.find(function(t){return t.id===q.get('assunto')&&t.area===area.id});
+ var q=new URLSearchParams(location.search),b=document.body.dataset;
+ var aid=b.volume?'v'+b.volume:(AREA_ANTIGA[q.get('area')]||q.get('area'));
+ var area=SUBJECT_AREAS.find(function(a){return a.id===aid});
+ var topic=area&&SUBJECT_TOPICS.find(function(t){return t.id===(b.modulo||q.get('assunto'))&&t.area===area.id});
  var app=document.getElementById('app'),html;
  if(q.has('favoritos')||q.has('todas'))html=trListPage(q.has('favoritos'));
  else if(topic)html=trTopicPage(area,topic);
  else if(area)html=trAreaPage(area);
  else html=trAreasPage();
- app.innerHTML=header()+'<main class="aula trilha" id="conteudo">'+html+'</main>'+footer();
+ app.innerHTML=header()+'<main class="aula trilha" id="conteudo">'+html+(topic||area?'<div class="shell">'+shopPromo(topic||null)+'</div>':'')+'</main>'+footer();
  trFormulas(document.querySelector('main'));
+ matEvt('pagina',{tipo:topic?'modulo':area?'volume':'catalogo',volume:area?area.vol:null,modulo:topic?topic.id:null});
  var cur=document.querySelector('.aula-trail .is-current,.tr-areas .is-current');
  if(cur){var ol=cur.closest('ol');if(ol&&ol.scrollWidth>ol.clientWidth+2){var r=cur.getBoundingClientRect(),o=ol.getBoundingClientRect();if(r.right>o.right||r.left<o.left)ol.scrollLeft+=r.left-o.left-24}}
  if(location.hash){var t=document.getElementById(location.hash.slice(1));if(t)setTimeout(function(){t.scrollIntoView({block:'start'})},80)}
@@ -625,22 +695,22 @@ function explorePage(){
 
 /* /explorar/ — escolha da área */
 function trAreasPage(){
- title('Explorar assuntos');
+ title('Volumes e módulos');
  var total=data.lessons.length,d=trDone(data.lessons);
- var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Assuntos'}])
+ var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Volumes'}])
   +'<div class="aula-hero-grid"><div>'
-  +'<p class="aula-kicker">'+SUBJECT_AREAS.length+' áreas, '+SUBJECT_TOPICS.length+' assuntos e '+total+' aulas</p>'
-  +'<h1 id="tr-titulo">Escolha uma área</h1>'
-  +'<p class="aula-summary">Cada área é uma trilha de assuntos, na ordem em que costumam ser estudados. Dentro de cada assunto, as aulas trazem teoria, exercícios resolvidos e modo prova.</p>'
+  +'<p class="aula-kicker">'+SUBJECT_AREAS.length+' volumes, '+SUBJECT_TOPICS.length+' módulos e '+total+' aulas</p>'
+  +'<h1 id="tr-titulo">Escolha um volume</h1>'
+  +'<p class="aula-summary">São os mesmos 4 volumes e módulos da coleção impressa MAT MAT MAT!. Em cada módulo, as aulas têm listas de fixação e de vestibular gratuitas, com gabarito resolvido.</p>'
   +'<div class="aula-hero-cta"><a class="aula-btn aula-btn-lime" href="/teste-seu-nivel/">Descobrir por onde começar</a><a class="aula-btn aula-btn-ghost" href="/explorar/?todas=1">Ver todas as aulas</a></div>'
   +(d?'<div class="tr-hero-progress">'+trMeter(d,total,d+' de '+total+' aulas estudadas')+'<span>Você já estudou <b>'+plural(d,'aula','aulas')+'</b> de '+total+'.</span></div>':'')
   +(saved.size?'<a class="tr-hero-link" href="/explorar/?favoritos=1">'+TR_SVG.heart+'Suas favoritas ('+saved.size+')</a>':'')
   +'</div>'+trSticker('∑','mint',SUBJECT_AREAS.map(function(a){return {icon:a.icon,tone:a.tone}}),'Toda a matemática do ensino médio')+'</div></div></section>';
- var tiles='<section class="shell tr-body"><header class="tr-head"><h2>As 9 áreas</h2><p>Toque em uma área para ver os assuntos dela.</p></header><div class="area-grid tr-area-grid">'+SUBJECT_AREAS.map(function(a){
+ var tiles='<section class="shell tr-body"><header class="tr-head"><h2>Os 4 volumes</h2><p>Toque em um volume para ver os módulos, na ordem do livro.</p></header><div class="area-grid tr-area-grid">'+SUBJECT_AREAS.map(function(a){
   var ls=trAreaLessons(a),n=trDone(ls),ts=trTopics(a).length;
   return '<a class="area-tile" href="'+trAreaUrl(a)+'"><span class="area-tile-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="area-tile-name">'+esc(a.name)+'</span><span class="area-tile-subtitle">'+esc(a.description)+'</span>'
    +(n?trMeter(n,ls.length,n+' de '+ls.length+' aulas estudadas'):'')
-   +'<span class="area-tile-foot"><span>'+plural(ts,'assunto','assuntos')+', '+ls.length+' aulas'+(n?' ('+n+' estudadas)':'')+'</span><span class="area-tile-go" aria-hidden="true">↗</span></span></a>'
+   +'<span class="area-tile-foot"><span>'+plural(ts,'módulo','módulos')+', '+ls.length+' aulas'+(n?' ('+n+' estudadas)':'')+'</span><span class="area-tile-go" aria-hidden="true">↗</span></span></a>'
  }).join('')+'</div></section>';
  return hero+tiles;
 }
@@ -651,25 +721,27 @@ function trAreaPage(area){
  var topics=trTopics(area),ls=trAreaLessons(area),d=trDone(ls),next=trNext(ls);
  var withLists=ls.filter(function(l){return trHasLists(l.id)}).length;
  var cta=next?(d?'<a class="aula-btn aula-btn-lime" href="'+href(next)+'">Continuar na '+next.id+'</a>':'<a class="aula-btn aula-btn-lime" href="'+href(next)+'">Começar pela primeira aula</a>'):'<a class="aula-btn aula-btn-lime" href="'+href(ls[0])+'">Revisar desde o início</a>';
- var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Assuntos',url:'/explorar/'},{name:area.name}])
+ var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Volumes',url:'/explorar/'},{name:area.name}])
   +'<div class="aula-hero-grid"><div>'
-  +'<p class="aula-kicker"><span class="aula-id">'+esc(area.icon)+'</span>'+plural(topics.length,'assunto','assuntos')+' e '+ls.length+' aulas</p>'
-  +'<h1 id="tr-titulo">'+esc(area.name)+'</h1>'
+  +'<p class="aula-kicker"><span class="aula-id">'+esc(area.icon)+'</span>'+plural(topics.length,'módulo','módulos')+' e '+ls.length+' aulas</p>'
+  +'<h1 id="tr-titulo"><span class="tr-vol">Volume '+area.vol+'</span>'+esc(area.name)+'</h1>'
   +'<p class="aula-summary">'+esc(area.description)+'</p>'
-  +'<div class="aula-hero-cta">'+cta+'<a class="aula-btn aula-btn-ghost" href="#trilha">Ver os assuntos</a></div>'
-  +'<div class="tr-hero-progress">'+(d?trMeter(d,ls.length,d+' de '+ls.length+' aulas estudadas'):'')+'<span>'+(d?'<b>'+d+' de '+ls.length+'</b> aulas estudadas'+(next?'. A próxima é a '+next.id+', '+esc(next.title)+'.':'. Área completa!'):(withLists?withLists===ls.length?'Todas as aulas têm listas em PDF com gabarito resolvido.':withLists+' das '+ls.length+' aulas já têm listas em PDF com gabarito.':'Marque as aulas como estudadas e acompanhe seu avanço aqui.'))+'</span></div>'
+  +'<div class="aula-hero-cta">'+cta+'<a class="aula-btn aula-btn-ghost" href="#trilha">Ver os módulos</a></div>'
+  +'<div class="tr-hero-progress">'+(d?trMeter(d,ls.length,d+' de '+ls.length+' aulas estudadas'):'')+'<span>'+(d?'<b>'+d+' de '+ls.length+'</b> aulas estudadas'+(next?'. A próxima é a '+next.id+', '+esc(next.title)+'.':'. Volume completo!'):(withLists?withLists===ls.length?'Todas as aulas têm listas em PDF com gabarito resolvido.':withLists+' das '+ls.length+' aulas já têm listas em PDF com gabarito.':'Marque as aulas como estudadas e acompanhe seu avanço aqui.'))+'</span></div>'
   +'</div>'+trSticker(area.icon,area.tone,topics.map(function(t){return {icon:t.icon,tone:'paper'}}),area.name)+'</div>'
   +trAreaSwitch(area)+'</div></section>';
- var route='<section class="shell tr-body" id="trilha"><header class="tr-head"><h2>Os assuntos, em ordem</h2><p>Siga a trilha do começo ou vá direto ao assunto que você precisa. Cada aula abre direto pelo código.</p></header><ol class="tr-route">'+topics.map(function(t,k){
+ var partesVistas=[];
+ var route='<section class="shell tr-body" id="trilha"><header class="tr-head"><h2>Os módulos, na ordem do livro</h2><p>Siga a trilha do começo ou vá direto ao módulo que você precisa. Cada aula abre direto pelo código.</p></header><ol class="tr-route">'+topics.map(function(t,k){
   var tl=trTopicLessons(area,t),td=trDone(tl),tn=trNext(tl);
   var state=tl.length&&td===tl.length?'is-done':(td||tl.some(function(l){return trProgress(l).started}))?'is-started':'';
   var lists=tl.filter(function(l){return trHasLists(l.id)}).length;
-  return '<li class="tr-stop '+state+'" id="assunto-'+t.id+'"><span class="tr-stop-n" aria-hidden="true">'+(state==='is-done'?TR_SVG.check:(k+1))+'</span>'
-   +'<article class="tr-topic"><div class="tr-topic-top"><span class="tr-topic-icon tone-'+area.tone+'" aria-hidden="true">'+esc(t.icon)+'</span><div class="tr-topic-copy"><h3><a href="'+trTopicUrl(area,t)+'">'+esc(t.title)+'</a></h3><p>'+esc(t.description)+'</p></div>'
+  var pi=partesVistas.indexOf(t.parte),head='';if(pi<0){partesVistas.push(t.parte);head='<li class="tr-parte" id="parte-'+partesVistas.length+'"><span>Parte '+partesVistas.length+'</span><h3>'+esc(t.parte)+'</h3></li>'}
+  return head+'<li class="tr-stop '+state+(t.extra?' is-extra':'')+'" id="modulo-'+t.id.replace('.','-')+'"><span class="tr-stop-n" aria-hidden="true">'+(state==='is-done'?TR_SVG.check:(t.extra?'+':t.numero))+'</span>'
+   +'<article class="tr-topic"><div class="tr-topic-top"><span class="tr-topic-icon tone-'+area.tone+'" aria-hidden="true">'+esc(t.icon)+'</span><div class="tr-topic-copy"><h3><a href="'+trTopicUrl(area,t)+'">'+esc(t.title)+'</a>'+(t.extra?' <span class="tr-extra">Extra do site</span>':'')+'</h3><p>'+esc(t.description)+'</p></div>'
    +(tl[0]?'<div class="tr-formula" aria-hidden="true"><div class="tr-formula-math" data-formula="'+tl[0].id+'" data-mini></div></div>':'')+'</div>'
    +'<ul class="tr-chips" aria-label="Aulas de '+esc(t.title)+'">'+tl.map(function(l){var dn=done.has(l.id);return '<li><a class="tr-chip'+(dn?' is-done':'')+(tn&&tn.id===l.id&&td?' is-next':'')+'" href="'+href(l)+'"><b>'+l.id+'</b><span>'+esc(l.title)+'</span>'+(dn?'<span class="sr-only">, estudada</span>':'')+'</a></li>'}).join('')+'</ul>'
    +'<div class="tr-topic-foot"><div class="tr-topic-meta"><span>'+plural(tl.length,'aula','aulas')+'</span>'+(lists?'<span>'+TR_SVG.doc+(lists===tl.length?'Todas com listas em PDF':plural(lists,'aula com listas','aulas com listas')+' em PDF')+'</span>':'')+(td?'<span class="tr-topic-done">'+td+' de '+tl.length+' estudadas</span>':'')+'</div>'
-   +'<a class="aula-btn aula-btn-soft tr-topic-go" href="'+trTopicUrl(area,t)+'">Abrir o assunto</a></div></article></li>';
+   +'<a class="aula-btn aula-btn-soft tr-topic-go" href="'+trTopicUrl(area,t)+'">Abrir o módulo</a></div></article></li>';
  }).join('')+'</ol>'
   +trPdfPanel('area',area.id,'Materiais gerais de '+area.name)
   +'<aside class="tr-nudge"><div><b>Não sabe em que ponto está?</b><p>O teste de nível mostra quais assuntos revisar primeiro.</p></div><a class="aula-btn aula-btn-ink" href="/teste-seu-nivel/">Fazer o teste de nível</a></aside></section>';
@@ -683,15 +755,15 @@ function trTopicPage(area,topic){
  var ls=trTopicLessons(area,topic),d=trDone(ls),next=trNext(ls);
  var anyLists=ls.some(function(l){return trHasLists(l.id)});
  var cta=next?'<a class="aula-btn aula-btn-lime" href="'+href(next)+'">'+(d?'Continuar na ':'Começar pela ')+next.id+'</a>':(ls[0]?'<a class="aula-btn aula-btn-lime" href="'+href(ls[0])+'#prova">Revisar com o modo prova</a>':'');
- var trail='<ol class="aula-trail" aria-label="Assuntos de '+esc(area.name)+'">'+topics.map(function(t){var cur=t.id===topic.id,tl=trTopicLessons(area,t),all=tl.length&&trDone(tl)===tl.length;return '<li class="'+(cur?'is-current ':'')+(all?'is-done':'')+'"><a href="'+trTopicUrl(area,t)+'"'+(cur?' aria-current="page"':'')+'><span class="aula-trail-dot" aria-hidden="true"></span><span class="aula-trail-id">'+esc(t.icon)+'</span><span class="aula-trail-name">'+esc(t.title)+'</span></a></li>'}).join('')+'</ol>';
+ var trail='<ol class="aula-trail" aria-label="Módulos de '+esc(area.name)+'">'+topics.map(function(t){var cur=t.id===topic.id,tl=trTopicLessons(area,t),all=tl.length&&trDone(tl)===tl.length;return '<li class="'+(cur?'is-current ':'')+(all?'is-done':'')+'"><a href="'+trTopicUrl(area,t)+'"'+(cur?' aria-current="page"':'')+'><span class="aula-trail-dot" aria-hidden="true"></span><span class="aula-trail-id">'+esc(t.icon)+'</span><span class="aula-trail-name">'+esc(t.title)+'</span></a></li>'}).join('')+'</ol>';
  var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:area.name,url:trAreaUrl(area)},{name:topic.title}])
   +'<div class="aula-hero-grid"><div>'
-  +'<p class="aula-kicker"><span class="aula-id">'+esc(topic.icon)+'</span>Assunto '+(ti+1)+' de '+topics.length+' em '+esc(area.name)+'</p>'
+  +'<p class="aula-kicker"><span class="aula-id">'+esc(topic.icon)+'</span>Volume '+area.vol+' · '+moduleLabel(topic)+(topic.extra?'':' de '+topics.filter(function(t){return !t.extra}).length)+'</p>'
   +'<h1 id="tr-titulo">'+esc(topic.title)+'</h1>'
   +'<p class="aula-summary">'+esc(topic.description)+' '+plural(ls.length,'aula','aulas')+(anyLists?', cada uma com teoria, exercícios resolvidos e modo prova.':', com teoria e exemplos resolvidos.')+'</p>'
   +'<div class="aula-hero-cta">'+cta+'<a class="aula-btn aula-btn-ghost" href="#aulas">Ver as aulas</a></div>'
-  +(d?'<div class="tr-hero-progress">'+trMeter(d,ls.length,d+' de '+ls.length+' aulas estudadas')+'<span>'+(d===ls.length?'<b>Assunto completo.</b> Todas as aulas estão marcadas como estudadas.':'<b>'+d+' de '+ls.length+'</b> aulas estudadas.')+'</span></div>':'')
-  +'</div>'+(ls[0]?'<figure class="aula-formula"><div class="aula-formula-card"><div class="aula-formula-math tr-hero-formula" id="aula-formula-math" data-formula="'+ls.map(function(l){return l.id}).join(',')+'" data-mini></div></div><figcaption>A fórmula-chave do assunto</figcaption></figure>':'')+'</div>'
+  +(d?'<div class="tr-hero-progress">'+trMeter(d,ls.length,d+' de '+ls.length+' aulas estudadas')+'<span>'+(d===ls.length?'<b>Módulo completo.</b> Todas as aulas estão marcadas como estudadas.':'<b>'+d+' de '+ls.length+'</b> aulas estudadas.')+'</span></div>':'')
+  +'</div>'+(ls[0]?'<figure class="aula-formula"><div class="aula-formula-card"><div class="aula-formula-math tr-hero-formula" id="aula-formula-math" data-formula="'+ls.map(function(l){return l.id}).join(',')+'" data-mini></div></div><figcaption>A fórmula-chave do módulo</figcaption></figure>':'')+'</div>'
   +(topics.length>1?trail:'')+'</div></section>';
  var list='<section class="shell tr-body" id="aulas"><header class="tr-head"><h2>As aulas, em ordem</h2><p>'+(anyLists?'Toque no título para abrir a aula, ou vá direto à etapa que você quer: teoria, exercícios, modo prova ou PDFs.':'Toque no título para abrir a aula.')+'</p></header><ol class="tr-route tr-lessons">'+ls.map(function(l,k){
   var p=trProgress(l),lists=trHasLists(l.id),u=href(l);
@@ -709,9 +781,9 @@ function trTopicPage(area,topic){
   +trPdfPanel('assunto',topic.id,'Listas gerais de '+topic.title);
  var prevT=topics[ti-1],nextT=topics[ti+1];
  if(!nextT){var ai=SUBJECT_AREAS.findIndex(function(a){return a.id===area.id}),na=SUBJECT_AREAS[ai+1];if(na)nextT={next:true,area:na,t:trTopics(na)[0]}}
- list+='<nav class="aula-seq tr-seq" aria-label="Outros assuntos">'
-  +(prevT?'<a class="aula-seq-prev" href="'+trTopicUrl(area,prevT)+'"><small>Assunto anterior</small><b>'+esc(prevT.title)+'</b></a>':'<a class="aula-seq-prev" href="'+trAreaUrl(area)+'"><small>Voltar para a área</small><b>'+esc(area.name)+'</b></a>')
-  +(nextT?(nextT.next?'<a class="aula-seq-next" href="'+trTopicUrl(nextT.area,nextT.t)+'"><small>Próxima área, '+esc(nextT.area.name)+'</small><b>'+esc(nextT.t.title)+'</b></a>':'<a class="aula-seq-next" href="'+trTopicUrl(area,nextT)+'"><small>Próximo assunto</small><b>'+esc(nextT.title)+'</b></a>'):'')
+ list+='<nav class="aula-seq tr-seq" aria-label="Outros módulos">'
+  +(prevT?'<a class="aula-seq-prev" href="'+trTopicUrl(area,prevT)+'"><small>Módulo anterior</small><b>'+esc(prevT.title)+'</b></a>':'<a class="aula-seq-prev" href="'+trAreaUrl(area)+'"><small>Voltar para o volume</small><b>'+esc(area.name)+'</b></a>')
+  +(nextT?(nextT.next?'<a class="aula-seq-next" href="'+trTopicUrl(nextT.area,nextT.t)+'"><small>Próximo volume, '+esc(nextT.area.name)+'</small><b>'+esc(nextT.t.title)+'</b></a>':'<a class="aula-seq-next" href="'+trTopicUrl(area,nextT)+'"><small>Próximo módulo</small><b>'+esc(nextT.title)+'</b></a>'):'')
   +'</nav></section>';
  return hero+list;
 }
@@ -719,14 +791,14 @@ function trTopicPage(area,topic){
 /* /explorar/?todas=1 e ?favoritos=1 */
 function trListPage(favs){
  title(favs?'Suas favoritas':'Todas as aulas');
- var hero='<section class="aula-hero tr-hero tr-hero-small" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Assuntos',url:'/explorar/'},{name:favs?'Favoritas':'Todas as aulas'}])
-  +'<div class="tr-hero-solo"><p class="aula-kicker">'+(favs?plural(saved.size,'aula salva','aulas salvas'):data.lessons.length+' aulas em '+SUBJECT_AREAS.length+' áreas')+'</p><h1 id="tr-titulo">'+(favs?'Suas favoritas':'Todas as aulas')+'</h1>'
-  +'<p class="aula-summary">'+(favs?'As aulas que você favoritou ficam guardadas neste navegador.':'O catálogo completo, organizado por área e assunto.')+'</p></div>'
+ var hero='<section class="aula-hero tr-hero tr-hero-small" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Volumes',url:'/explorar/'},{name:favs?'Favoritas':'Todas as aulas'}])
+  +'<div class="tr-hero-solo"><p class="aula-kicker">'+(favs?plural(saved.size,'aula salva','aulas salvas'):data.lessons.length+' aulas em '+SUBJECT_AREAS.length+' volumes')+'</p><h1 id="tr-titulo">'+(favs?'Suas favoritas':'Todas as aulas')+'</h1>'
+  +'<p class="aula-summary">'+(favs?'As aulas que você favoritou ficam guardadas neste navegador.':'O catálogo completo, organizado por volume e módulo, como no livro.')+'</p></div>'
   +(favs?'':trAreaSwitch(null).replace(/href="\/explorar\/\?area=([^"]+)"/g,'href="#area-$1"'))+'</div></section>';
  var body='<section class="shell tr-body tr-catalog">';
  if(favs){
   var ls=data.lessons.filter(function(l){return saved.has(l.id)});
-  if(!ls.length)body+='<div class="tr-empty"><b>Nenhuma aula favoritada ainda.</b><p>Na página de qualquer aula, toque em Favoritar para guardá-la aqui.</p><a class="aula-btn aula-btn-ink" href="/explorar/">Escolher uma área</a></div>';
+  if(!ls.length)body+='<div class="tr-empty"><b>Nenhuma aula favoritada ainda.</b><p>Na página de qualquer aula, toque em Favoritar para guardá-la aqui.</p><a class="aula-btn aula-btn-ink" href="/explorar/">Escolher um volume</a></div>';
   else SUBJECT_AREAS.forEach(function(a){var g=ls.filter(function(l){return subjectContains(a,l)});if(g.length)body+='<section class="tr-group"><h2><span class="tr-areas-icon tone-'+a.tone+'" aria-hidden="true">'+esc(a.icon)+'</span><a href="'+trAreaUrl(a)+'">'+esc(a.name)+'</a></h2><ol class="tr-rows">'+g.map(function(l){return trRow(l,true)}).join('')+'</ol></section>'});
  }else{
   SUBJECT_AREAS.forEach(function(a){
@@ -855,7 +927,7 @@ async function lessonPage(){
  var gi=data.lessons.findIndex(function(x){return x.id===id}),prev=data.lessons[gi-1],next=data.lessons[gi+1];
  title(l.title);
  try{localStorage.setItem('matmat-ultima-aula',id)}catch(e){}
- var temLista=materialsAt('aula',id).some(function(x){return (x.item.arquivos||[]).some(function(f){return /\/(fixacao|vestibular)-[ABC]\d\d\.pdf$/.test(f.url||'')})});
+ var temLista=materialsAt('aula',id).some(function(x){return (x.item.arquivos||[]).some(function(f){return /\/(fixacao|vestibular)-[\w.]+\.pdf$/.test(f.url||'')})});
  var loaded=await Promise.all([fetchJson('/conteudos/'+id+'.json'),temLista?fetchJson('/data/listas/'+id+'.json'):Promise.resolve(null)]);
  var content=loaded[0],lista=loaded[1];
  var store=aulaStore(id),st=store.st;
@@ -871,7 +943,7 @@ async function lessonPage(){
  var listaUrls=Object.keys(listaPdfs).map(function(k){return listaPdfs[k].url});
  var allFiles=lessonPdfFiles();
  var otherFiles=allFiles.filter(function(f){return listaUrls.indexOf(f.url)<0});
- var steps=[{id:'entenda',nome:'Entenda'}];
+ var steps=[{id:'entenda',nome:'Resumo'}];
  if(fixQs.length)steps.push({id:'pratique',nome:'Pratique'});
  if(vestQs.length)steps.push({id:'prova',nome:'Modo prova'});
  steps.push({id:'levar',nome:'Leve pra casa'});
@@ -896,12 +968,12 @@ async function lessonPage(){
  var trail=near.length>1?'<ol class="aula-trail" aria-label="Aulas de '+esc(topic.title)+'">'+near.map(function(x){var cur=x.id===id;return '<li class="'+(cur?'is-current ':'')+(done.has(x.id)?'is-done':'')+'"><a href="'+href(x)+'"'+(cur?' aria-current="page"':'')+'><span class="aula-trail-dot" aria-hidden="true"></span><span class="aula-trail-id">'+x.id+'</span><span class="aula-trail-name">'+esc(x.title)+'</span></a></li>'}).join('')+'</ol>':'';
  var hasPdfs=listaUrls.length||allFiles.length;
  var hero='<section class="aula-hero" aria-labelledby="aula-titulo"><div class="shell aula-hero-in">'
-  +'<nav class="aula-crumbs" aria-label="Caminho"><a href="/">Início</a><span aria-hidden="true">/</span><a href="/explorar/?area='+subjectArea.id+'">'+esc(subjectArea.name)+'</a><span aria-hidden="true">/</span><a href="/explorar/?area='+subjectArea.id+'&assunto='+topicId+'">'+esc(topic.title)+'</a></nav>'
+  +'<nav class="aula-crumbs" aria-label="Caminho"><a href="/">Início</a><span aria-hidden="true">/</span><a href="'+volHref(subjectArea)+'">Volume '+subjectArea.vol+' · '+esc(subjectArea.name)+'</a><span aria-hidden="true">/</span><a href="'+topicHref(topic)+'">'+esc(topic.title)+'</a></nav>'
   +'<div class="aula-hero-grid"><div class="aula-hero-copy">'
   +'<p class="aula-kicker"><span class="aula-id">'+id+'</span>'+(near.length>1?'Aula '+(nearIndex+1)+' de '+near.length+' em '+esc(topic.title):esc(topic.title))+'</p>'
   +'<h1 id="aula-titulo">'+esc(l.title)+'</h1>'
   +'<p class="aula-summary">'+esc(l.summary||'Teoria, exemplos e treino desta aula.')+'</p>'
-  +'<div class="aula-hero-cta"><a class="aula-btn aula-btn-lime" href="#entenda" data-goto="entenda">Começar a aula</a>'+(hasPdfs?'<a class="aula-btn aula-btn-ghost" href="#levar" data-goto="levar">'+AULA_SVG.down+'Baixar as listas</a>':'')+'</div>'
+  +'<div class="aula-hero-cta"><a class="aula-btn aula-btn-lime" href="#'+(fixQs.length?'pratique':'entenda')+'" data-goto="'+(fixQs.length?'pratique':'entenda')+'">'+(fixQs.length?'Começar a lista':'Ver o resumo')+'</a>'+(hasPdfs?'<a class="aula-btn aula-btn-ghost" href="#levar" data-goto="levar">'+AULA_SVG.down+'Baixar as listas</a>':'')+'</div>'
   +tools+'</div>'+heroArt+'</div>'+trail+'</div></section>';
 
  var rail='<nav class="aula-rail" aria-label="Roteiro da aula"><p class="aula-rail-title">Seu roteiro</p><ol>'+steps.map(function(s,k){return '<li><a href="#'+s.id+'" data-goto="'+s.id+'" data-rail="'+s.id+'"><span class="aula-rail-n">'+(k+1)+'</span><span class="aula-rail-txt"><b>'+s.nome+'</b><small id="rail-'+s.id+'"></small></span></a></li>'}).join('')+'</ol><div class="aula-rail-meter" aria-hidden="true"><span id="rail-meter"></span></div><p class="aula-rail-sum" id="rail-sum"></p></nav>';
@@ -909,31 +981,30 @@ async function lessonPage(){
  function head(sid,titulo,desc){return '<header class="aula-step-head"><span class="aula-step-n" aria-hidden="true">'+stepNum(sid)+'</span><div><h2 id="h-'+sid+'">'+titulo+'</h2><p>'+desc+'</p></div></header>'}
 
  function teoriaHtml(){
-  if(!teoria.length)return empty('A explicação vem aí','A teoria desta aula ainda não foi publicada. Enquanto isso, use as listas e o quiz.');
-  return teoria.map(function(s,j){
-   var h='<article class="aula-teoria"><h3>'+esc(s.titulo||'Conceito')+'</h3>';
-   (s.paragrafos||[]).forEach(function(p){h+='<p>'+esc(p)+'</p>'});
-   (s.formulas||[]).forEach(function(f){h+='<div class="aula-formula-bloco">\\['+esc(f)+'\\]</div>'});
-   if(s.exemplo){var ps=s.exemplo.passos||[];h+='<div class="aula-exemplo"><p class="aula-exemplo-tag">Exemplo resolvido</p><p class="aula-exemplo-q">'+esc(s.exemplo.enunciado)+'</p>'+(ps.length?'<ol class="aula-passos">'+ps.map(function(p){return '<li hidden><span>'+esc(p)+'</span></li>'}).join('')+'</ol><button type="button" class="aula-btn aula-btn-soft aula-passo-btn" data-total="'+ps.length+'">Mostrar o 1º passo de '+ps.length+'</button>':'')+'</div>'}
-   if(s.dica)h+='<p class="aula-callout aula-macete"><b>Macete</b>'+esc(s.dica)+'</p>';
-   if(s.erroComum)h+='<p class="aula-callout aula-armadilha"><b>Armadilha de prova</b>'+esc(s.erroComum)+'</p>';
+  if(!teoria.length)return empty('Resumo a caminho','O resumo desta aula ainda não foi publicado. As listas já ajudam a treinar.');
+  var cards=teoria.map(function(s){
+   var fs=(s.formulas||[]).slice(0,3),h='<article class="aula-resumo-item"><h3>'+esc(s.titulo||'Conceito')+'</h3>';
+   if(fs.length)h+=fs.map(function(f){return '<div class="aula-formula-bloco">\\['+esc(f)+'\\]</div>'}).join('');
+   else if(s.paragrafos&&s.paragrafos[0])h+='<p>'+esc(short(s.paragrafos[0],220))+'</p>';
    return h+'</article>';
   }).join('');
+  var avisos=teoria.filter(function(s){return s.erroComum}).slice(0,2).map(function(s){return '<p class="aula-callout aula-armadilha"><b>Armadilha de prova</b>'+esc(s.erroComum)+'</p>'}).join('');
+  return '<div class="aula-resumo">'+cards+'</div>'+avisos;
  }
  function optsClass(opts){return opts.every(function(o){return String(o).length<=34&&String(o).indexOf('\\[')<0})?' aula-opts-2':''}
  function checkHtml(){
-  if(!quiz.length)return '';
+  return '';
   return '<div class="aula-check" id="check-root"><div class="aula-check-top"><div><h3>Checagem rápida</h3><p class="aula-check-sub">'+plural(quiz.length,'pergunta','perguntas')+' para ver se a ideia ficou.</p></div><span class="aula-check-count" id="check-count" aria-live="polite">1 de '+quiz.length+'</span></div>'
    +'<div class="aula-dots aula-check-dots" aria-hidden="true">'+quiz.map(function(q,k){return '<span class="aula-dot'+(k?'':' is-now')+'"></span>'}).join('')+'</div>'
    +quiz.map(function(q,k){return '<div class="aula-mcq" data-check="'+k+'"'+(k?' hidden':'')+'><p class="aula-mcq-q"><span class="aula-mcq-n">'+(k+1)+'</span><span>'+esc(q.enunciado)+'</span></p><div class="aula-opts'+optsClass(q.opcoes)+'">'+q.opcoes.map(function(o,j){return '<button type="button" class="aula-opt" data-opt="'+j+'"><span class="aula-opt-l">'+String.fromCharCode(65+j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></button>'}).join('')+'</div><div class="aula-fb" aria-live="polite"></div></div>'}).join('')
    +'<div class="aula-check-end" id="check-end" hidden></div></div>';
  }
- var okLabel=fixQs.length?'Entendi, bora praticar':vestQs.length?'Entendi, bora para a prova':'Entendi a teoria';
- var secEntenda='<section class="aula-step" id="entenda" data-step="entenda" aria-labelledby="h-entenda">'+head('entenda','Entenda','A ideia central, as fórmulas e exemplos resolvidos passo a passo.')+teoriaHtml()+checkHtml()
-  +'<div class="aula-step-end"><button type="button" class="aula-btn aula-btn-ink" id="entenda-ok" aria-pressed="'+(!!st.entenda)+'">'+(st.entenda?'Teoria concluída':okLabel)+'</button></div></section>';
+ var okLabel=fixQs.length?'Ir para a lista de fixação':vestQs.length?'Ir para o modo prova':'Marcar resumo como lido';
+ var secEntenda='<section class="aula-step" id="entenda" data-step="entenda" aria-labelledby="h-entenda">'+head('entenda','Resumo','As fórmulas e as armadilhas da aula, direto ao ponto. A teoria completa, com os tipos de questão, está no livro.')+teoriaHtml()+checkHtml()
+  +'<div class="aula-step-end"><button type="button" class="aula-btn aula-btn-ink" id="entenda-ok" aria-pressed="'+(!!st.entenda)+'">'+(st.entenda?'Resumo lido':okLabel)+'</button></div></section>';
 
  var secPratique=fixQs.length?'<section class="aula-step" id="pratique" data-step="pratique" aria-labelledby="h-pratique">'+head('pratique','Pratique',(lista&&lista.fixacao?plural(fixQs.length,'exercício','exercícios')+' em '+plural(fixSecoes.length,'nível','níveis')+'. Resolva no caderno e depois confira a resolução.':'Exercícios curtos para fixar a ideia.'))
-  +'<div class="aula-prat-top"><div class="aula-levels" role="tablist" aria-label="Níveis">'+fixSecoes.map(function(s,k){return '<button type="button" role="tab" class="aula-level" data-level="'+k+'" aria-selected="false"><b>'+esc(s.nome)+'</b><small data-level-count="'+k+'"></small></button>'}).join('')+'</div>'
+  +'<div class="aula-prat-top"><div class="aula-levels" role="tablist" aria-label="Níveis">'+fixSecoes.map(function(s,k){return '<button type="button" role="tab" class="aula-level lvl-'+nivelClasse(s.nome)+'" data-level="'+k+'" aria-selected="false"><b>'+esc(s.nome)+'</b><small data-level-count="'+k+'"></small></button>'}).join('')+'</div>'
   +'<div class="aula-prat-meter"><span class="aula-meter" aria-hidden="true"><span id="prat-meter"></span></span><span id="prat-sum"></span></div></div><div class="aula-ex-list" id="ex-list" role="tabpanel"></div></section>':'';
 
  var secProva=vestQs.length?'<section class="aula-step" id="prova" data-step="prova" aria-labelledby="h-prova">'+head('prova','Modo prova',plural(vestQs.length,'questão','questões')+' no estilo vestibular, corrigidas na hora.')+'<div class="aula-prova" id="prova-root" tabindex="-1"></div></section>':'';
@@ -947,14 +1018,15 @@ async function lessonPage(){
  }
  var pdfGrid=listaUrls.length?'<div class="aula-pdfs">'+pdfCard('fixacao')+pdfCard('vestibular')+'</div>':'';
  var otherHtml=otherFiles.length?'<div class="aula-files"><h3>'+(listaUrls.length?'Outros materiais':'Materiais para baixar')+'</h3>'+otherFiles.map(function(f){return '<a class="aula-file" href="'+esc(f.url)+'" target="_blank" rel="noopener" data-pdf="outro">'+AULA_SVG.down+'<span>'+esc(f.titulo||'Material')+'</span></a>'}).join('')+'</div>':'';
- var videosHtml='<div class="aula-videos"><h3>Para ver em vídeo</h3>'+videos.map(function(v){var u=safeUrl(v.url);return u?'<a class="aula-video" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>'+esc(v.titulo)+'</b><small>'+esc(v.canal||'')+'</small></span></a>':''}).join('')+'<a class="aula-video aula-video-search" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query='+encodeURIComponent(l.title+' matemática videoaula')+'"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>Procurar videoaulas sobre '+esc(l.title)+'</b><small>Busca no YouTube</small></span></a></div>';
+ var videosHtml='';var videosHtmlAntigo='<div class="aula-videos"><h3>Para ver em vídeo</h3>'+videos.map(function(v){var u=safeUrl(v.url);return u?'<a class="aula-video" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>'+esc(v.titulo)+'</b><small>'+esc(v.canal||'')+'</small></span></a>':''}).join('')+'<a class="aula-video aula-video-search" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query='+encodeURIComponent(l.title+' matemática videoaula')+'"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>Procurar videoaulas sobre '+esc(l.title)+'</b><small>Busca no YouTube</small></span></a></div>';
  var secLevar='<section class="aula-step" id="levar" data-step="levar" aria-labelledby="h-levar">'+head('levar','Leve pra casa',listaUrls.length?'As listas em PDF para imprimir, com gabarito resolvido no final.':'Materiais para estudar fora da tela.')
   +(pdfGrid||otherHtml?pdfGrid+otherHtml:empty('Listas a caminho','As listas em PDF desta aula ainda vão ser publicadas.')+exatooCard('treino',l))+videosHtml+'</section>';
 
  var seq='<nav class="aula-seq" aria-label="Outras aulas">'+(prev?'<a class="aula-seq-prev" href="'+href(prev)+'"><small>Aula anterior</small><b>'+esc(prev.title)+'</b></a>':'<span></span>')+(next?'<a class="aula-seq-next" href="'+href(next)+'"><small>Próxima aula, '+next.id+'</small><b>'+esc(next.title)+'</b></a>':'')+'</nav>';
 
  var app=document.getElementById('app');
- app.innerHTML=header()+'<main class="aula" id="conteudo">'+hero+'<div class="shell aula-body">'+rail+'<div class="aula-main">'+secEntenda+secPratique+secProva+secLevar+shopPromo(true)+seq+'</div></div></main>'+footer();
+ app.innerHTML=header()+'<main class="aula" id="conteudo">'+hero+'<div class="shell aula-body">'+rail+'<div class="aula-main">'+secEntenda+secPratique+secProva+secLevar+shopPromo(l)+seq+'</div></div></main>'+footer();
+ matEvt('pagina',{tipo:'aula',aula:id,volume:l.front,modulo:l.block,listas:fixQs.length>0||vestQs.length>0});
 
  /* ---------- Progresso ---------- */
  function fixDone(){return fixQs.filter(function(q){return st.fix[q.n]==='ok'||st.fix[q.n]==='erro'}).length}
@@ -966,7 +1038,7 @@ async function lessonPage(){
   if(sid==='levar')return !!st.pdf;
  }
  function updateProgress(){
-  var txt={entenda:st.entenda?'Concluída':'Teoria e exemplos',pratique:fixDone()+' de '+fixQs.length+' conferidos',prova:st.prova.best!=null?'Melhor nota: '+st.prova.best+' de '+vestQs.length:plural(vestQs.length,'questão','questões'),levar:listaUrls.length?plural(listaUrls.length,'PDF','PDFs')+' e vídeos':'Materiais e vídeos'};
+  var txt={entenda:st.entenda?'Lido':'Fórmulas e armadilhas',pratique:fixDone()+' de '+fixQs.length+' conferidos',prova:st.prova.best!=null?'Melhor nota: '+st.prova.best+' de '+vestQs.length:plural(vestQs.length,'questão','questões'),levar:listaUrls.length?plural(listaUrls.length,'PDF','PDFs')+' para imprimir':'Materiais'};
   var n=0;steps.forEach(function(s){var el=document.getElementById('rail-'+s.id);if(el)el.textContent=txt[s.id];var a=document.querySelector('[data-rail="'+s.id+'"]');var ok=stepIsDone(s.id);if(a)a.classList.toggle('is-done',ok);if(ok)n++});
   var m=document.getElementById('rail-meter');if(m)m.style.width=(n*100/steps.length)+'%';
   var sum=document.getElementById('rail-sum');if(sum)sum.textContent=n===steps.length?'Aula completa!':n+' de '+steps.length+' etapas';
@@ -1025,9 +1097,11 @@ async function lessonPage(){
   if(q.figura)h+='<figure class="aula-fig"><img src="'+esc(q.figura)+'" alt="Figura da questão '+q.n+'" loading="lazy">'+(q.legenda?'<figcaption>'+esc(q.legenda)+'</figcaption>':'')+'</figure>';
   return h;
  }
+ function nivelClasse(n){var k=norm(n||'');return /facil|aquec/.test(k)?'facil':/dific|desaf/.test(k)?'dificil':'medio'}
+ function selo(n){return n?'<span class="selo selo-'+nivelClasse(n)+'">'+esc(/aquec/i.test(n)?'Fácil':/trein/i.test(n)?'Médio':/desaf/i.test(n)?'Difícil':n)+'</span>':''}
  function exCard(q){
   var s=st.fix[q.n]||'';
-  return '<article class="aula-ex'+(s?' is-'+s:'')+'" data-ex="'+q.n+'"><div class="aula-ex-q"><span class="aula-ex-n">'+q.n+'</span><div class="aula-ex-body">'+apoioHtml(q)+'<p>'+esc(q.enunciado)+'</p>'+(q.itens&&q.itens.length?'<ol class="aula-itens">'+q.itens.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ol>':'')+'</div><span class="aula-ex-badge" aria-hidden="true"></span></div>'
+  return '<article class="aula-ex'+(s?' is-'+s:'')+'" data-ex="'+q.n+'"><div class="aula-ex-q"><span class="aula-ex-n">'+q.n+'</span><div class="aula-ex-body">'+selo(q.nivel)+apoioHtml(q)+'<p>'+esc(q.enunciado)+'</p>'+(q.itens&&q.itens.length?'<ol class="aula-itens">'+q.itens.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ol>':'')+'</div><span class="aula-ex-badge" aria-hidden="true"></span></div>'
    +'<button type="button" class="aula-ex-ver" aria-expanded="false">'+(q.resolucao.length?'Ver resolução':'Ver resposta')+'</button>'
    +'<div class="aula-ex-sol" hidden>'+q.resolucao.map(function(r){return '<p>'+esc(r)+'</p>'}).join('')+(q.resposta?'<p class="aula-ex-resp"><b>Resposta</b><span>'+esc(q.resposta)+'</span></p>':'')
    +'<div class="aula-ex-check"><span>Como foi?</span><button type="button" class="aula-mark" data-mark="ok" aria-pressed="'+(s==='ok')+'">Acertei</button><button type="button" class="aula-mark" data-mark="erro" aria-pressed="'+(s==='erro')+'">Errei</button></div></div></article>';
@@ -1041,7 +1115,7 @@ async function lessonPage(){
    var n=Number(card.dataset.ex),btn=card.querySelector('.aula-ex-ver'),sol=card.querySelector('.aula-ex-sol');
    btn.addEventListener('click',function(){var open=sol.hidden;sol.hidden=!open;btn.setAttribute('aria-expanded',String(open));btn.textContent=open?'Esconder resolução':(btn.textContent.indexOf('resposta')>0?'Ver resposta':'Ver resolução');if(open){if(!st.fix[n]){st.fix[n]='visto';store.save()}tex(sol)}});
    card.querySelectorAll('[data-mark]').forEach(function(m){m.addEventListener('click',function(){
-    st.fix[n]=st.fix[n]===m.dataset.mark?'visto':m.dataset.mark;store.save();
+    st.fix[n]=st.fix[n]===m.dataset.mark?'visto':m.dataset.mark;store.save();matEvt('exercicio',{aula:id,modulo:l.block,volume:l.front,marca:st.fix[n],feitos:fixDone()});
     card.classList.remove('is-ok','is-erro','is-visto');card.classList.add('is-'+st.fix[n]);
     card.querySelectorAll('[data-mark]').forEach(function(x){x.setAttribute('aria-pressed',String(st.fix[n]===x.dataset.mark))});
     updateProgress();
@@ -1070,7 +1144,7 @@ async function lessonPage(){
    var dots=prova.order.map(function(k,pos){var a=prova.answers[k];return '<span class="aula-dot'+(pos===prova.i?' is-now':'')+(a!=null?(a===vestQs[k].correta?' is-right':' is-wrong'):'')+'"></span>'}).join('');
    var acertos=prova.order.filter(function(k){return prova.answers[k]===vestQs[k].correta}).length;
    provaRoot.innerHTML='<div class="aula-prova-bar"><span>Questão <b>'+(prova.i+1)+'</b> de '+prova.order.length+'</span><span class="aula-dots" aria-hidden="true">'+dots+'</span><span>'+plural(acertos,'acerto','acertos')+'</span></div>'
-    +'<div class="aula-prova-q"><div class="aula-prova-enun"><span class="aula-mcq-n">'+q.n+'</span><div class="aula-prova-txt">'+apoioHtml(q)+'<p>'+esc(q.enunciado)+'</p></div></div><div class="aula-opts aula-opts-big'+optsClass(q.opcoes)+'">'+q.opcoes.map(function(o,j){var cls='';if(ans!=null){if(j===q.correta)cls=' is-right';else if(j===ans)cls=' is-wrong'}return '<button type="button" class="aula-opt'+cls+'" data-popt="'+j+'"'+(ans!=null?' disabled':'')+'><span class="aula-opt-l">'+letter(j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></button>'}).join('')+'</div>'
+    +'<div class="aula-prova-q"><div class="aula-prova-enun"><span class="aula-mcq-n">'+q.n+'</span><div class="aula-prova-txt">'+selo(q.nivel)+apoioHtml(q)+'<p>'+esc(q.enunciado)+'</p></div></div><div class="aula-opts aula-opts-big'+optsClass(q.opcoes)+'">'+q.opcoes.map(function(o,j){var cls='';if(ans!=null){if(j===q.correta)cls=' is-right';else if(j===ans)cls=' is-wrong'}return '<button type="button" class="aula-opt'+cls+'" data-popt="'+j+'"'+(ans!=null?' disabled':'')+'><span class="aula-opt-l">'+letter(j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></button>'}).join('')+'</div>'
     +'<div id="quiz-feedback" class="aula-fb" aria-live="polite">'+(ans!=null?provaFeedback(q,ans):'<p class="aula-kbd-hint">Dica: dá para responder com as teclas A a E.</p>')+'</div></div>';
    provaRoot.querySelectorAll('[data-popt]').forEach(function(b){b.addEventListener('click',function(){answer(Number(b.dataset.popt))})});
    var nx=provaRoot.querySelector('#prova-next');if(nx){nx.addEventListener('click',nextQ);nx.focus({preventScroll:true})}
@@ -1113,7 +1187,7 @@ async function lessonPage(){
  function nextQ(){
   if(prova.i<prova.order.length-1){prova.i++;drawProva();var top=provaRoot.getBoundingClientRect().top;if(top<0)goTo('prova');return}
   if(prova.order.length===vestQs.length){var sc=prova.order.filter(function(k){return prova.answers[k]===vestQs[k].correta}).length;if(st.prova.best==null||sc>st.prova.best)st.prova.best=sc;st.prova.last=sc;store.save();updateProgress()}
-  prova.state='end';drawProva();
+  prova.state='end';drawProva();matEvt('prova-fim',{aula:id,modulo:l.block,volume:l.front,acertos:prova.order.filter(function(k){return prova.answers[k]===vestQs[k].correta}).length,total:prova.order.length});
  }
  document.addEventListener('keydown',function(e){
   if(!provaRoot||prova.state!=='run'||e.altKey||e.ctrlKey||e.metaKey)return;
@@ -1127,7 +1201,7 @@ async function lessonPage(){
  drawProva();
 
  /* ---------- Leve pra casa ---------- */
- document.querySelectorAll('[data-pdf]').forEach(function(a){a.addEventListener('click',function(){st.pdf=true;store.save();updateProgress()})});
+ document.querySelectorAll('[data-pdf]').forEach(function(a){a.addEventListener('click',function(){st.pdf=true;store.save();updateProgress();matEvt('pdf',{aula:id,modulo:l.block,volume:l.front})})});
 
  /* ---------- Navegação ---------- */
  function topOffset(){var tb=document.querySelector('.topbar'),h=tb?tb.offsetHeight:0;var main=document.querySelector('main.aula');if(main)main.style.setProperty('--a-top',h+'px');var rail=document.querySelector('.aula-rail');var extra=window.innerWidth<=1000&&rail?rail.offsetHeight:0;return h+extra+16}
@@ -1172,6 +1246,6 @@ async function lessonPage(){
 }
 
 function safeUrl(url){try{var x=new URL(url);return (x.protocol==='https:'||x.protocol==='http:')?x.toString():null}catch(e){return null}}
-async function init(){try{var r=await fetch('/data/aulas.json');if(!r.ok)throw Error('Catálogo não encontrado');data=await r.json();try{var m=await fetch('/data/materiais.json');if(m.ok)materialIndex=await m.json()}catch(e){materialIndex=[]}if(document.body.dataset.view==='loja'){document.getElementById('app').innerHTML=header()+'<main class="bookshop" id="shop-root"></main>'+footer();if(window.MatShop)await window.MatShop.init(document.getElementById('shop-root'));else throw Error('Módulo da loja indisponível')}else if(document.body.dataset.lesson)await lessonPage();else if(document.body.dataset.view==='explorar')explorePage();else if(document.body.dataset.view==='diagnostico')await diagnosisPage();else home()}catch(e){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Não foi possível carregar o catálogo','Recarregue a página para tentar novamente.')+'</main>'+footer();console.error(e)}}
+async function init(){try{var r=await fetch('/data/aulas.json');if(!r.ok)throw Error('Catálogo não encontrado');data=await r.json();buildCatalog();try{var m=await fetch('/data/materiais.json');if(m.ok)materialIndex=await m.json()}catch(e){materialIndex=[]}if(document.body.dataset.view==='loja'){document.getElementById('app').innerHTML=header()+'<main class="bookshop" id="shop-root"></main>'+footer();if(window.MatShop)await window.MatShop.init(document.getElementById('shop-root'));else throw Error('Módulo da loja indisponível')}else if(document.body.dataset.lesson)await lessonPage();else if(document.body.dataset.view==='explorar')explorePage();else if(document.body.dataset.view==='diagnostico')await diagnosisPage();else home()}catch(e){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Não foi possível carregar o catálogo','Recarregue a página para tentar novamente.')+'</main>'+footer();console.error(e)}}
 init();
 })();

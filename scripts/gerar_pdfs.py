@@ -179,7 +179,7 @@ def main():
     total = 0
     for file in candidates:
         code = file.stem
-        if not re.fullmatch(r"[ABC]\d{2}", code):
+        if not re.fullmatch(r"\d\.(\d+|x\d)\.\d+", code):
             continue
         if code not in lessons:
             raise ValueError(f"Aula desconhecida: {code}")

@@ -1,0 +1,272 @@
+# Fonte das listas em PDF da aula 1.13.3 — Intervalos reais
+aula: '1.13.3'
+
+fixacao:
+  intro: Resolva na ordem — do fácil ao difícil. Ao multiplicar ou dividir uma inequação por número negativo, inverta o sinal.
+  secoes:
+    - nome: Aquecimento
+      questoes:
+        - enunciado: Escreva cada conjunto na notação de intervalo.
+          itens:
+            - $\{x\in\mathbb{R}\mid 2\le x<7\}$
+            - $\{x\in\mathbb{R}\mid x>-1\}$
+            - $\{x\in\mathbb{R}\mid x\le 3\}$
+          resolucao: |
+            Colchete voltado para o número indica extremo incluído; voltado para fora, excluído.
+            (a) $[2,\,7[$. (b) $]-1,\,+\infty[$. (c) $]-\infty,\,3]$.
+          resposta: '(a) $[2,7[$ \quad (b) $]-1,+\infty[$ \quad (c) $]-\infty,3]$'
+
+        - enunciado: Escreva cada intervalo na notação de conjunto.
+          itens:
+            - $]-3,\,5]$
+            - $[0,\,+\infty[$
+            - $]-\infty,\,-2[$
+          resolucao: |
+            (a) $\{x\in\mathbb{R}\mid -3<x\le5\}$. (b) $\{x\in\mathbb{R}\mid x\ge0\}$. (c) $\{x\in\mathbb{R}\mid x<-2\}$.
+          resposta: '(a) $-3<x\le5$ \quad (b) $x\ge0$ \quad (c) $x<-2$'
+
+        - enunciado: Classifique em V ou F.
+          itens:
+            - $5\in[2,\,5[$
+            - $2\in[2,\,5[$
+            - $\pi\in\,]3,\,4[$
+            - $-1\in\,]-\infty,\,-1[$
+          resolucao: |
+            (a) F: $5$ está excluído. (b) V. (c) V: $\pi\approx3{,}14$. (d) F: $-1$ está excluído.
+          resposta: '(a) F \quad (b) V \quad (c) V \quad (d) F'
+
+        - enunciado: Resolva em $\mathbb{R}$ e escreva a solução como intervalo.
+          itens:
+            - $2x-3>7$
+            - $5-x\le 2$
+            - $3x+1<x+9$
+          resolucao: |
+            (a) $2x>10\Rightarrow x>5$: $]5,+\infty[$.
+            (b) $-x\le-3\Rightarrow x\ge3$ (o sinal inverte): $[3,+\infty[$.
+            (c) $2x<8\Rightarrow x<4$: $]-\infty,4[$.
+          resposta: '(a) $]5,+\infty[$ \quad (b) $[3,+\infty[$ \quad (c) $]-\infty,4[$'
+
+        - enunciado: 'Sendo $A=[1,\,6]$ e $B=\,]4,\,9[$, determine $A\cap B$ e $A\cup B$.'
+          resolucao: |
+            Na reta, a parte comum vai de $4$ (excluído) a $6$ (incluído): $A\cap B=\,]4,6]$.
+            Juntando tudo, de $1$ (incluído) a $9$ (excluído): $A\cup B=[1,9[$.
+          resposta: '$A\cap B=\,]4,6]$; \ $A\cup B=[1,9[$'
+
+        - enunciado: Quantos números inteiros pertencem a cada intervalo?
+          itens:
+            - $[-2,\,3[$
+            - $]-4,\,4]$
+          resolucao: |
+            (a) $-2,-1,0,1,2$: $5$ inteiros. (b) $-3,-2,\ldots,4$: $8$ inteiros.
+          resposta: '(a) $5$ \quad (b) $8$'
+
+        - enunciado: Resolva $-2x+6\ge0$.
+          resolucao: |
+            $-2x\ge-6\Rightarrow x\le3$ (dividimos por $-2$ e invertemos o sinal).
+          resposta: '$S=\,]-\infty,\,3]$'
+
+    - nome: Treino
+      questoes:
+        - enunciado: Resolva em $\mathbb{R}$.
+          itens:
+            - $3(x-2)-(x+4)<2x-1$
+            - $2(x+1)>2x+5$
+          resolucao: |
+            (a) $2x-10<2x-1\Rightarrow -10<-1$, que é sempre verdade: $S=\mathbb{R}$.
+            (b) $2x+2>2x+5\Rightarrow 2>5$, que é sempre falso: $S=\varnothing$.
+          resposta: '(a) $\mathbb{R}$ \quad (b) $\varnothing$'
+
+        - enunciado: Resolva $\dfrac x2-\dfrac{x-1}3\le1$.
+          resolucao: |
+            Multiplicando por $6$: $3x-2(x-1)\le6\Rightarrow x+2\le6\Rightarrow x\le4$.
+          resposta: '$S=\,]-\infty,\,4]$'
+
+        - enunciado: Resolva a inequação dupla $-3<2x+1\le7$.
+          resolucao: |
+            Subtraindo $1$ de todos os membros: $-4<2x\le6$. Dividindo por $2$: $-2<x\le3$.
+          resposta: '$S=\,]-2,\,3]$'
+
+        - enunciado: 'Sendo $A=\,]-\infty,\,2]$ e $B=[-1,\,5[$, determine'
+          itens:
+            - $A\cap B$
+            - $A\cup B$
+            - $A-B$
+            - $B-A$
+          resolucao: |
+            (a) $[-1,2]$. (b) $]-\infty,5[$.
+            (c) Parte de $A$ antes de $-1$: $]-\infty,-1[$. (d) Parte de $B$ depois de $2$: $]2,5[$.
+          resposta: '(a) $[-1,2]$ \quad (b) $]-\infty,5[$ \quad (c) $]-\infty,-1[$ \quad (d) $]2,5[$'
+
+        - enunciado: Qual é o maior número inteiro que satisfaz $4x-7<2x+6$?
+          resolucao: |
+            $2x<13\Rightarrow x<6{,}5$. O maior inteiro é $6$.
+          resposta: '$6$'
+
+        - enunciado: Qual é o menor número inteiro que satisfaz $5-3x<2x-8$?
+          resolucao: |
+            $13<5x\Rightarrow x>2{,}6$. O menor inteiro é $3$.
+          resposta: '$3$'
+
+        - enunciado: Determine o complementar de $[-2,\,4[$ em relação a $\mathbb{R}$.
+          resolucao: |
+            Tudo que fica fora: antes de $-2$ e a partir de $4$ (incluído, pois $4$ não pertencia ao intervalo).
+          resposta: '$]-\infty,-2[\ \cup\ [4,+\infty[$'
+
+        - enunciado: Um plano de celular A cobra R\$\,50{,}00 fixos mais R\$\,0{,}20 por minuto. O plano B cobra R\$\,30{,}00 fixos mais R\$\,0{,}40 por minuto. A partir de quantos minutos o plano A fica mais barato?
+          resolucao: |
+            $50+0{,}2m<30+0{,}4m\Rightarrow 20<0{,}2m\Rightarrow m>100$.
+            Com exatamente $100$ minutos, os dois custam R\$\,70{,}00.
+          resposta: 'para mais de $100$ minutos'
+
+    - nome: Desafio
+      questoes:
+        - enunciado: 'Resolva o sistema de inequações $\begin{cases}2x-1>3\\ 3x-2\le x+8\end{cases}$'
+          resolucao: |
+            Primeira: $2x>4\Rightarrow x>2$. Segunda: $2x\le10\Rightarrow x\le5$.
+            As duas valem juntas em $2<x\le5$.
+          resposta: '$S=\,]2,\,5]$'
+
+        - enunciado: Determine os valores reais de $m$ para os quais $2m-3\in[1,\,7]$.
+          resolucao: |
+            $1\le2m-3\le7\Rightarrow 4\le2m\le10\Rightarrow 2\le m\le5$.
+          resposta: '$m\in[2,\,5]$'
+
+        - enunciado: Em uma cidade, a corrida de táxi custa R\$\,5{,}50 de bandeirada mais R\$\,2{,}50 por quilômetro. Com R\$\,40{,}00, qual é a maior distância que se pode percorrer?
+          resolucao: |
+            $5{,}5+2{,}5d\le40\Rightarrow 2{,}5d\le34{,}5\Rightarrow d\le13{,}8$.
+          resposta: '$13{,}8$ km'
+
+        - enunciado: 'Sendo $A=[-3,\,5]$, $B=\,]1,\,8]$ e $C=\,]-\infty,\,2[$, determine $(A\cap B)\cup C$.'
+          resolucao: |
+            $A\cap B=\,]1,5]$. Unindo com $C=\,]-\infty,2[$, que já cobre tudo até $2$, obtemos $]-\infty,5]$.
+          resposta: '$]-\infty,\,5]$'
+
+        - enunciado: Quantos números inteiros satisfazem, ao mesmo tempo, $\dfrac x3-1<2$ e $2-x\le5$?
+          resolucao: |
+            Primeira: $\tfrac x3<3\Rightarrow x<9$. Segunda: $-x\le3\Rightarrow x\ge-3$.
+            Inteiros de $-3$ a $8$: $12$ números.
+          resposta: '$12$'
+
+vestibular:
+  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  questoes:
+    - enunciado: A quantidade de números inteiros que pertencem ao intervalo $[-2,\,5[$ é
+      opcoes: ['$5$', '$6$', '$7$', '$8$', '$9$']
+      correta: C
+      resolucao: |
+        De $-2$ a $4$ (o $5$ está excluído): $7$ inteiros.
+
+    - enunciado: O conjunto solução de $3x-4\ge2x+1$ é
+      opcoes: ['$]5,\,+\infty[$', '$[5,\,+\infty[$', '$]-\infty,\,5]$', '$]-\infty,\,5[$', '$[-5,\,+\infty[$']
+      correta: B
+      resolucao: |
+        $x\ge5$. Como a desigualdade é "maior ou igual", o $5$ está incluído.
+
+    - enunciado: 'Sendo $A=\,]-1,\,4]$ e $B=[2,\,6[$, o conjunto $A\cap B$ é'
+      opcoes: ['$[2,\,4]$', '$]2,\,4[$', '$]-1,\,6[$', '$[2,\,4[$', '$]-1,\,2[$']
+      correta: A
+      resolucao: |
+        A parte comum vai de $2$ (incluído em $B$) até $4$ (incluído em $A$).
+
+    - enunciado: 'Sendo $A=\,]-1,\,4]$ e $B=[2,\,6[$, o conjunto $A\cup B$ é'
+      opcoes: ['$[2,\,4]$', '$]-1,\,2[$', '$[-1,\,6]$', '$]-1,\,6[$', '$]-1,\,6]$']
+      correta: D
+      resolucao: |
+        Da extremidade esquerda de $A$ ($-1$, excluído) à direita de $B$ ($6$, excluído).
+
+    - enunciado: As soluções reais da inequação $-2x+5>11$ são os números $x$ tais que
+      opcoes: ['$x>3$', '$x<3$', '$x>-3$', '$x<-8$', '$x<-3$']
+      correta: E
+      resolucao: |
+        $-2x>6\Rightarrow x<-3$. Ao dividir por $-2$, o sinal se inverte.
+
+    - enunciado: Uma academia oferece dois planos. No plano X, paga-se R\$\,120{,}00 de matrícula e R\$\,80{,}00 por mês; no plano Y, não há matrícula e paga-se R\$\,100{,}00 por mês. O plano X passa a ser mais vantajoso, no total pago, a partir de
+      opcoes: ['$5$ meses', '$6$ meses', '$7$ meses', '$8$ meses', '$12$ meses']
+      correta: C
+      resolucao: |
+        $120+80n<100n\Rightarrow 120<20n\Rightarrow n>6$. Em $6$ meses os totais empatam (R\$\,600{,}00); com $7$, X é mais barato.
+
+    - enunciado: O conjunto solução de $-1\le\dfrac{2x-3}{5}<1$ é
+      opcoes: ['$[-1,\,1[$', '$]-1,\,4]$', '$[-1,\,4]$', '$[-1,\,4[$', '$[-2,\,4[$']
+      correta: D
+      resolucao: |
+        Multiplicando por $5$: $-5\le2x-3<5$. Somando $3$: $-2\le2x<8$. Dividindo por $2$: $-1\le x<4$.
+
+    - enunciado: O maior número inteiro que satisfaz $\dfrac{x-1}{2}-\dfrac{x+2}{3}<1$ é
+      opcoes: ['$11$', '$12$', '$13$', '$14$', '$15$']
+      correta: B
+      resolucao: |
+        Multiplicando por $6$: $3(x-1)-2(x+2)<6\Rightarrow x-7<6\Rightarrow x<13$. O maior inteiro é $12$.
+
+    - enunciado: O complementar, em $\mathbb{R}$, do intervalo $]-\infty,\,3]$ é
+      opcoes: ['$]-\infty,\,3[$', '$[3,\,+\infty[$', '$]-3,\,+\infty[$', '$]-\infty,\,-3]$', '$]3,\,+\infty[$']
+      correta: E
+      resolucao: |
+        Ficam de fora os números maiores que $3$; o próprio $3$ pertence ao intervalo dado, então é excluído do complementar.
+
+    - enunciado: A quantidade de números inteiros que satisfazem simultaneamente $2x+3>-5$ e $x-1\le4$ é
+      opcoes: ['$9$', '$10$', '$11$', '$12$', '$13$']
+      correta: A
+      resolucao: |
+        $2x>-8\Rightarrow x>-4$ e $x\le5$. Inteiros de $-3$ a $5$: $9$.
+
+    - enunciado: Uma pequena empresa tem custo $C(x)=2000+15x$ e receita $R(x)=40x$, em reais, para $x$ unidades vendidas. Ela tem lucro positivo exatamente quando
+      opcoes: ['$x>50$', '$x>80$', '$x\ge80$', '$x>100$', '$x>133$']
+      correta: B
+      resolucao: |
+        $40x>2000+15x\Rightarrow 25x>2000\Rightarrow x>80$. Com $x=80$, o lucro é zero (não é positivo).
+
+    - enunciado: Das inequações abaixo, a única que não tem solução real é
+      opcoes: ['$2x+1>2x$', '$x>-x$', '$x+1\ge x$', '$2x<x$', '$3x-2>3x+1$']
+      correta: E
+      resolucao: |
+        $3x-2>3x+1\Rightarrow -2>1$: falso para todo $x$. As outras têm soluções: todos os reais (A e C), $x>0$ (B) e $x<0$ (D).
+
+    - enunciado: 'Sendo $A=[1,\,5]$ e $B=\,]3,\,7]$, o conjunto $A-B$ é'
+      opcoes: ['$[1,\,3]$', '$[1,\,3[$', '$]5,\,7]$', '$[1,\,5]$', '$]3,\,5]$']
+      correta: A
+      resolucao: |
+        Retiramos de $A$ a parte que está em $B$, isto é, $]3,5]$. Sobra $[1,3]$; o $3$ fica, pois $3\notin B$.
+
+    - enunciado: Se $2\le x\le6$, então o número $3-2x$ pertence ao intervalo
+      opcoes: ['$[-1,\,9]$', '$[1,\,9]$', '$[-12,\,-4]$', '$[-9,\,-1]$', '$[-9,\,1]$']
+      correta: D
+      resolucao: |
+        Multiplicando por $-2$ (invertendo): $-12\le-2x\le-4$. Somando $3$: $-9\le3-2x\le-1$.
+
+    - enunciado: A conta de luz de uma família é calculada como R\$\,18{,}00 de taxa fixa mais R\$\,0{,}80 por kWh consumido. Para pagar no máximo R\$\,150{,}00, o consumo máximo deve ser de
+      opcoes: ['$145$ kWh', '$150$ kWh', '$165$ kWh', '$180$ kWh', '$187{,}5$ kWh']
+      correta: C
+      resolucao: |
+        $18+0{,}8k\le150\Rightarrow 0{,}8k\le132\Rightarrow k\le165$.
+
+    - enunciado: Sendo $a$ e $b$ números reais com $a<b<0$, é correto afirmar que
+      opcoes: ['$a^2<b^2$', '$-a<-b$', '$ab<0$', '$a+b>0$', '$\dfrac1a>\dfrac1b$']
+      correta: E
+      resolucao: |
+        Teste com $a=-3$ e $b=-1$: $\tfrac1a=-\tfrac13>-1=\tfrac1b$. As outras falham: $9>1$, $3>1$, $ab=3>0$ e $a+b=-4<0$.
+        Em geral, dividindo $a<b$ por $ab>0$, obtemos $\tfrac1b<\tfrac1a$.
+
+    - enunciado: 'Considere $A=\{x\in\mathbb{R}\mid -2<x\le4\}$ e $B=\{x\in\mathbb{Z}\mid -2<x\le4\}$. O número de elementos de $B$ é'
+      opcoes: ['$5$', '$6$', '$7$', '$8$', 'infinito, assim como o de $A$']
+      correta: B
+      resolucao: |
+        $B=\{-1,0,1,2,3,4\}$: $6$ elementos. Já $A$ é um intervalo real, com infinitos elementos.
+
+    - enunciado: 'Sendo $A=[0,\,2]$, $B=[3,\,5]$ e $C=[1,\,4]$, o conjunto $(A\cup B)\cap C$ é'
+      opcoes: ['$[1,\,4]$', '$[0,\,5]$', '$[2,\,3]$', '$[1,\,2]\cup[3,\,4]$', '$[1,\,2[\,\cup\,]3,\,4]$']
+      correta: D
+      resolucao: |
+        $A\cap C=[1,2]$ e $B\cap C=[3,4]$. A interseção de $C$ com a união é a união dessas partes; os extremos são todos incluídos.
+
+    - enunciado: 'A inequação $2x-k\le x+1$, na incógnita $x$, tem conjunto solução $]-\infty,\,4]$. O valor de $k$ é'
+      opcoes: ['$1$', '$2$', '$3$', '$4$', '$5$']
+      correta: C
+      resolucao: |
+        $x\le k+1$. Para que a solução seja $x\le4$: $k+1=4\Rightarrow k=3$.
+
+    - enunciado: Ana tem R\$\,300{,}00 e economiza R\$\,50{,}00 por mês. Bia tem R\$\,800{,}00 e gasta R\$\,30{,}00 por mês de suas economias. Ana passará a ter mais dinheiro que Bia a partir de
+      opcoes: ['$7$ meses', '$8$ meses', '$9$ meses', '$10$ meses', '$12$ meses']
+      correta: A
+      resolucao: |
+        $300+50n>800-30n\Rightarrow 80n>500\Rightarrow n>6{,}25$. O primeiro mês completo é o $7$º.

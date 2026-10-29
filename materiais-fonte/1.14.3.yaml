@@ -1,0 +1,266 @@
+# Fonte das listas em PDF da aula 1.14.3 — PA: propriedades e interpolação
+# Matemática em LaTeX. Todas as respostas foram conferidas por cálculo independente.
+aula: '1.14.3'
+
+fixacao:
+  intro: Resolva na ordem — do fácil ao difícil. Na P.A. somamos sempre a mesma razão $r$; do $1^\circ$ ao $n$-ésimo termo são $n-1$ saltos, por isso $a_n=a_1+(n-1)r$.
+  secoes:
+    - nome: Aquecimento
+      questoes:
+        - enunciado: Dê a razão de cada P.A. e classifique-a em crescente, decrescente ou constante.
+          itens:
+            - $(3,\ 7,\ 11,\ 15,\ \dots)$
+            - $(20,\ 14,\ 8,\ 2,\ \dots)$
+            - $(5,\ 5,\ 5,\ \dots)$
+            - $\left(-2,\ -\tfrac12,\ 1,\ \tfrac52,\ \dots\right)$
+          resolucao: |
+            A razão é a diferença entre um termo e o anterior.
+            (a) $r=4$, crescente. \ (b) $r=-6$, decrescente.
+            (c) $r=0$, constante. \ (d) $r=\tfrac32$, crescente.
+          resposta: '(a) $4$, cresc. \quad (b) $-6$, decresc. \quad (c) $0$, const. \quad (d) $\tfrac32$, cresc.'
+
+        - enunciado: Calcule o $20^\circ$ termo da P.A. $(2,\ 5,\ 8,\ \dots)$.
+          resolucao: |
+            $a_1=2$ e $r=3$: $a_{20}=2+19\cdot3=59$.
+          resposta: '$a_{20}=59$'
+
+        - enunciado: Em uma P.A., $a_1=10$ e $r=-3$. Calcule $a_{15}$.
+          resolucao: |
+            $a_{15}=10+14\cdot(-3)=10-42=-32$.
+          resposta: '$a_{15}=-32$'
+
+        - enunciado: Escreva o termo geral da P.A. $(7,\ 11,\ 15,\ \dots)$.
+          resolucao: |
+            $a_n=7+(n-1)\cdot4=4n+3$.
+          resposta: '$a_n=4n+3$'
+
+        - enunciado: Em uma P.A., $a_1=4$ e $a_9=36$. Calcule a razão.
+          resolucao: |
+            Do $1^\circ$ ao $9^\circ$ termo são $8$ saltos: $8r=36-4=32\Rightarrow r=4$.
+          resposta: '$r=4$'
+
+        - enunciado: Determine $x$ para que $(x,\ 2x+1,\ 5x-4)$ seja uma P.A. e escreva seus termos.
+          resolucao: |
+            Na P.A., o termo do meio é a média dos vizinhos: $2(2x+1)=x+(5x-4)$.
+            $4x+2=6x-4\Rightarrow x=3$. A P.A. é $(3,\ 7,\ 11)$.
+          resposta: '$x=3$; \ $(3,\ 7,\ 11)$'
+
+        - enunciado: Qual é a posição do termo $101$ na P.A. $(5,\ 9,\ 13,\ \dots)$?
+          resolucao: |
+            $5+(n-1)\cdot4=101\Rightarrow n-1=24\Rightarrow n=25$.
+          resposta: '$25^\circ$ termo'
+
+    - nome: Treino
+      questoes:
+        - enunciado: Em uma P.A., $a_3=10$ e $a_8=30$. Calcule a razão e o primeiro termo.
+          resolucao: |
+            Do $3^\circ$ ao $8^\circ$ termo são $5$ saltos: $5r=20\Rightarrow r=4$.
+            $a_1=a_3-2r=10-8=2$.
+          resposta: '$r=4$; \ $a_1=2$'
+
+        - enunciado: Quantos múltiplos de $7$ existem entre $100$ e $500$?
+          resolucao: |
+            O primeiro é $105=7\cdot15$ e o último é $497=7\cdot71$.
+            É uma P.A. de razão $7$: $497=105+(n-1)\cdot7\Rightarrow n=57$.
+          resposta: '$57$ múltiplos'
+
+        - enunciado: Interpole $4$ meios aritméticos entre $3$ e $23$.
+          resolucao: |
+            A P.A. terá $6$ termos, com $a_1=3$ e $a_6=23$: $5r=20\Rightarrow r=4$.
+            $(3,\ 7,\ 11,\ 15,\ 19,\ 23)$.
+          resposta: '$7,\ 11,\ 15,\ 19$'
+
+        - enunciado: Três números em P.A. têm soma $21$ e produto $231$. Determine esses números.
+          resolucao: |
+            Escreva-os como $x-r$, $x$, $x+r$. Soma: $3x=21\Rightarrow x=7$.
+            Produto: $(7-r)\cdot7\cdot(7+r)=231\Rightarrow 49-r^2=33\Rightarrow r=\pm4$.
+            Os números são $3$, $7$ e $11$.
+          resposta: '$3,\ 7$ e $11$'
+
+        - enunciado: Em uma P.A. de razão $5$, o $10^\circ$ termo é $48$. Calcule $a_1$ e $a_{30}$.
+          resolucao: |
+            $a_1=48-9\cdot5=3$.
+            $a_{30}=a_{10}+20\cdot5=148$.
+          resposta: '$a_1=3$; \ $a_{30}=148$'
+
+        - enunciado: A P.A. $(50,\ 47,\ 44,\ \dots)$ é decrescente. Qual é o seu primeiro termo negativo e que posição ele ocupa?
+          resolucao: |
+            $50-3(n-1)<0\Rightarrow n-1>\tfrac{50}3\approx16{,}7\Rightarrow n-1\ge17$.
+            Para $n=18$: $a_{18}=50-51=-1$.
+          resposta: '$a_{18}=-1$'
+
+        - enunciado: Um táxi cobra bandeirada de R\$ 5,50 e mais R\$ 2,80 por quilômetro rodado. Os valores para $1,2,3,\dots$ km formam uma P.A.
+          itens:
+            - Escreva o valor $a_n$ de uma corrida de $n$ km.
+            - Quanto custa uma corrida de $12$ km?
+          resolucao: |
+            (a) $a_n=5{,}50+2{,}80n$ (P.A. de razão $2{,}80$).
+            (b) $a_{12}=5{,}50+33{,}60=39{,}10$.
+          resposta: '(a) $a_n=5{,}50+2{,}80n$ \quad (b) R\$ 39,10'
+
+        - enunciado: Os ângulos internos de um triângulo estão em P.A. e o menor deles mede $30^\circ$. Calcule os outros dois.
+          resolucao: |
+            Ângulos $x-r$, $x$, $x+r$: a soma é $3x=180^\circ\Rightarrow x=60^\circ$.
+            Como $x-r=30^\circ$, $r=30^\circ$ e o maior é $90^\circ$.
+          resposta: '$60^\circ$ e $90^\circ$'
+
+    - nome: Desafio
+      questoes:
+        - enunciado: Em uma P.A., $a_2+a_7=30$ e $a_4+a_{10}=50$. Determine $a_1$ e $r$.
+          resolucao: |
+            $(a_1+r)+(a_1+6r)=30\Rightarrow 2a_1+7r=30$.
+            $(a_1+3r)+(a_1+9r)=50\Rightarrow 2a_1+12r=50$.
+            Subtraindo: $5r=20\Rightarrow r=4$ e $2a_1=30-28\Rightarrow a_1=1$.
+          resposta: '$a_1=1$; \ $r=4$'
+
+        - enunciado: Os lados de um triângulo retângulo estão em P.A. de razão $3$. Calcule os três lados.
+          resolucao: |
+            Lados $x-3$, $x$, $x+3$, com $x+3$ a hipotenusa.
+            $(x-3)^2+x^2=(x+3)^2\Rightarrow x^2-12x=0\Rightarrow x=12$.
+          resposta: '$9,\ 12$ e $15$'
+
+        - enunciado: Quantos números inteiros de $1$ a $1000$ deixam resto $3$ na divisão por $8$?
+          resolucao: |
+            São $3,\ 11,\ 19,\ \dots$, P.A. de razão $8$. O maior é $995=8\cdot124+3$.
+            $995=3+(n-1)\cdot8\Rightarrow n=125$.
+          resposta: '$125$ números'
+
+        - enunciado: Em uma P.A., $a_m=n$ e $a_n=m$, com $m\neq n$. Mostre que $r=-1$ e calcule $a_{m+n}$.
+          resolucao: |
+            $a_m-a_n=(m-n)r$, ou seja, $n-m=(m-n)r\Rightarrow r=-1$.
+            $a_{m+n}=a_m+n\cdot r=n-n=0$.
+          resposta: '$r=-1$; \ $a_{m+n}=0$'
+
+        - enunciado: Um ônibus passa por um ponto às 6h10 e, depois, a cada $25$ minutos.
+          itens:
+            - Em que horário ocorre a $20^{\text{a}}$ passagem?
+            - Algum ônibus passa exatamente às 12h00? Se sim, qual passagem?
+          resolucao: |
+            Os horários, em minutos depois das 6h10, formam a P.A. $0,\ 25,\ 50,\ \dots$, com $a_n=25(n-1)$.
+            (a) $a_{20}=25\cdot19=475$ min, ou seja, 7 h 55 min depois das 6h10: 14h05.
+            (b) De 6h10 a 12h00 são $350$ min: $25(n-1)=350\Rightarrow n=15$. Sim, a $15^{\text{a}}$ passagem.
+          resposta: '(a) 14h05 \quad (b) sim, a $15^{\text{a}}$'
+
+vestibular:
+  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  questoes:
+    - enunciado: O $15^\circ$ termo da P.A. $(4,\ 7,\ 10,\ \dots)$ é
+      opcoes: ['$46$', '$49$', '$52$', '$55$', '$60$']
+      correta: A
+      resolucao: |
+        $a_{15}=4+14\cdot3=46$.
+
+    - enunciado: A razão da P.A. em que $a_1=-5$ e $a_{11}=25$ é
+      opcoes: ['$2$', '$\tfrac{30}{11}$', '$3$', '$\tfrac{10}3$', '$5$']
+      correta: C
+      resolucao: |
+        Do $1^\circ$ ao $11^\circ$ termo são $10$ saltos: $10r=30\Rightarrow r=3$.
+
+    - enunciado: O termo geral da P.A. $(-3,\ 1,\ 5,\ 9,\ \dots)$ é
+      opcoes: ['$a_n=4n-7$', '$a_n=4n-3$', '$a_n=4n+1$', '$a_n=-3n+4$', '$a_n=n-4$']
+      correta: A
+      resolucao: |
+        $a_n=-3+(n-1)\cdot4=4n-7$.
+
+    - enunciado: A quantidade de múltiplos de $6$ entre $50$ e $500$ é
+      opcoes: ['$72$', '$73$', '$74$', '$75$', '$76$']
+      correta: D
+      resolucao: |
+        O primeiro é $54=6\cdot9$ e o último é $498=6\cdot83$: são $83-9+1=75$.
+
+    - enunciado: Se $(x+1,\ 3x,\ 4x+2)$ é uma P.A., então $x$ vale
+      opcoes: ['$-3$', '$-1$', '$1$', '$2$', '$3$']
+      correta: E
+      resolucao: |
+        $2\cdot3x=(x+1)+(4x+2)\Rightarrow 6x=5x+3\Rightarrow x=3$.
+
+    - enunciado: Em uma P.A., $a_5=18$ e $a_{12}=46$. O primeiro termo é
+      opcoes: ['$2$', '$4$', '$6$', '$14$', '$18$']
+      correta: A
+      resolucao: |
+        $7r=46-18=28\Rightarrow r=4$; \ $a_1=a_5-4r=18-16=2$.
+
+    - enunciado: O primeiro termo negativo da P.A. $(100,\ 93,\ 86,\ \dots)$ é
+      opcoes: ['$-7$', '$-5$', '$-3$', '$-2$', '$-1$']
+      correta: B
+      resolucao: |
+        $100-7(n-1)<0\Rightarrow n-1\ge15$. Para $n=16$: $a_{16}=100-105=-5$.
+
+    - enunciado: Ao interpolar $6$ meios aritméticos entre $5$ e $40$, obtém-se uma P.A. de razão
+      opcoes: ['$\tfrac{35}8$', '$5$', '$\tfrac{35}6$', '$6$', '$7$']
+      correta: B
+      resolucao: |
+        A P.A. tem $8$ termos, com $7$ saltos: $7r=35\Rightarrow r=5$.
+
+    - enunciado: Três números em P.A. têm soma $15$ e produto $105$. O maior deles é
+      opcoes: ['$5$', '$6$', '$7$', '$9$', '$11$']
+      correta: C
+      resolucao: |
+        $x-r$, $x$, $x+r$: $3x=15\Rightarrow x=5$; \ $5(25-r^2)=105\Rightarrow r^2=4$.
+        Os números são $3$, $5$ e $7$.
+
+    - enunciado: Um táxi cobra bandeirada de R\$ 4,80 e mais R\$ 2,50 por quilômetro rodado. Uma corrida de $18$ km custa
+      opcoes: ['R\$ 45,00', 'R\$ 47,30', 'R\$ 48,10', 'R\$ 49,80', 'R\$ 52,30']
+      correta: D
+      resolucao: |
+        $4{,}80+18\cdot2{,}50=4{,}80+45{,}00=49{,}80$.
+
+    - enunciado: Os ângulos internos de um quadrilátero estão em P.A. e o menor deles mede $60^\circ$. O maior ângulo mede
+      opcoes: ['$90^\circ$', '$100^\circ$', '$105^\circ$', '$110^\circ$', '$120^\circ$']
+      correta: E
+      resolucao: |
+        Soma: $4\cdot60^\circ+6r=360^\circ\Rightarrow r=20^\circ$. O maior é $60^\circ+3\cdot20^\circ=120^\circ$.
+
+    - enunciado: O primeiro ônibus de uma linha sai às 5h40 e os seguintes saem a cada $18$ minutos. O $11^\circ$ ônibus sai às
+      opcoes: ['8h22', '8h30', '8h36', '8h40', '8h58']
+      correta: D
+      resolucao: |
+        Do $1^\circ$ ao $11^\circ$ ônibus são $10$ intervalos de $18$ min, ou seja, $180$ min (3 h) depois das 5h40: 8h40.
+
+    - enunciado: O número de termos da P.A. $(7,\ 12,\ 17,\ \dots,\ 497)$ é
+      opcoes: ['$98$', '$99$', '$100$', '$101$', '$102$']
+      correta: B
+      resolucao: |
+        $497=7+(n-1)\cdot5\Rightarrow n-1=98\Rightarrow n=99$.
+
+    - enunciado: Os lados de um triângulo retângulo estão em P.A. de razão $4$. O perímetro desse triângulo é
+      opcoes: ['$24$', '$30$', '$36$', '$40$', '$48$']
+      correta: E
+      resolucao: |
+        $(x-4)^2+x^2=(x+4)^2\Rightarrow x=16$. Lados $12$, $16$ e $20$: perímetro $48$.
+
+    - enunciado: Em uma P.A., $a_4+a_9=50$ e $a_6=22$. O primeiro termo é
+      opcoes: ['$-10$', '$-9$', '$-8$', '$-6$', '$2$']
+      correta: C
+      resolucao: |
+        $2a_1+11r=50$ e $a_1+5r=22\Rightarrow 2a_1+10r=44$. Subtraindo: $r=6$; \ $a_1=22-30=-8$.
+
+    - enunciado: Os números naturais que deixam resto $2$ na divisão por $5$, em ordem crescente, formam a sequência $(2,\ 7,\ 12,\ \dots)$. O $100^\circ$ termo é
+      opcoes: ['$497$', '$498$', '$500$', '$502$', '$505$']
+      correta: A
+      resolucao: |
+        $a_{100}=2+99\cdot5=497$.
+
+    - enunciado: Em uma escada, o primeiro degrau está a $20$ cm do chão e cada degrau seguinte fica $17$ cm acima do anterior. O $15^\circ$ degrau está a uma altura de
+      opcoes: ['$238$ cm', '$245$ cm', '$255$ cm', '$258$ cm', '$275$ cm']
+      correta: D
+      resolucao: |
+        $a_{15}=20+14\cdot17=258$ cm.
+
+    - enunciado: Em uma P.A. com $a_1=2$, o $10^\circ$ termo é o triplo do $3^\circ$. A razão é
+      opcoes: ['$1$', '$\tfrac43$', '$\tfrac32$', '$2$', '$3$']
+      correta: B
+      resolucao: |
+        $2+9r=3(2+2r)\Rightarrow 3r=4\Rightarrow r=\tfrac43$.
+
+    - enunciado: Um corredor treina $3$ km no primeiro dia e aumenta $0{,}5$ km por dia. Ele corre $12$ km pela primeira vez no
+      opcoes: ['$15^\circ$ dia', '$16^\circ$ dia', '$17^\circ$ dia', '$18^\circ$ dia', '$19^\circ$ dia']
+      correta: E
+      resolucao: |
+        $3+0{,}5(n-1)=12\Rightarrow n-1=18\Rightarrow n=19$.
+
+    - enunciado: Em uma P.A., $a_m=n$ e $a_n=m$, com $m\neq n$. Então $a_{m+n}$ vale
+      opcoes: ['$-(m+n)$', '$-1$', '$0$', '$1$', '$m+n$']
+      correta: C
+      resolucao: |
+        $(m-n)r=a_m-a_n=n-m\Rightarrow r=-1$. Logo $a_{m+n}=a_m+nr=n-n=0$.

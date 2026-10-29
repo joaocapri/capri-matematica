@@ -23,7 +23,7 @@ async function checkWidth(page,label){
   assert.equal(await page.locator('.home-explore .home-section-intro p').count(),0);
   assert.equal(await page.locator('.home-explore .browser-toolbar').count(),0);
   assert.equal(await page.locator('.home-explore .browser-shortcuts').count(),0);
-  assert.equal(await page.locator('#explore-content .area-tile').count(),9);
+  assert.equal(await page.locator('#explore-content .area-tile').count(),4);
   assert.equal(await page.locator('.discovery-preview').count(),0);
   assert.equal(await page.locator('.home-hero-art').count(),0);
   assert.equal(await page.locator('[data-preview]').count(),0);
@@ -39,24 +39,24 @@ async function checkWidth(page,label){
   await checkWidth(page,config.name+' home');
   await page.screenshot({path:'screenshots/'+config.name+'-home.png',fullPage:true});
   await page.locator('#hero-search').fill('Bhaskara');
-  await page.locator('#search-output a[href="/aulas/A17/"]').first().waitFor();
+  await page.locator('#search-output a[href="/2/3/2/"]').first().waitFor();
   await checkWidth(page,config.name+' pesquisa');
   await page.screenshot({path:'screenshots/'+config.name+'-search.png',fullPage:true});
   await page.locator('#clear-search').click();
-  await page.locator('a.area-tile[href="/explorar/?area=funcoes"]').click();
-  await page.locator('.tr-topic h3 a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]').waitFor();
-  assert.equal(await page.locator('.tr-route > .tr-stop').count(),8);
+  await page.locator('a.area-tile[href="/2/"]').click();
+  await page.locator('.tr-topic h3 a[href="/2/3/"]').waitFor();
+  assert.equal(await page.locator('.tr-route > .tr-stop').count(),20);
   assert.equal(await page.locator('input[type=search]').count(),0,'explorador sem busca duplicada');
   assert.equal(await page.locator('.explorer-search-link').count(),0,'Sem botão Pesquisar nas páginas de área');
   await checkWidth(page,config.name+' assuntos');
   await page.screenshot({path:'screenshots/'+config.name+'-subjects.png',fullPage:true});
-  await page.locator('.tr-topic h3 a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]').click();
+  await page.locator('.tr-topic h3 a[href="/2/3/"]').click();
   await page.locator('.tr-lesson').first().waitFor();
-  assert.equal(await page.locator('.tr-lesson').count(),8);
+  assert.equal(await page.locator('.tr-lesson').count(),6);
   await checkWidth(page,config.name+' aulas do assunto');
   await page.screenshot({path:'screenshots/'+config.name+'-topic.png',fullPage:true});
-  await page.locator('.tr-lesson h3 a[href="/aulas/A17/"]').click();
-  await page.waitForURL('**/aulas/A17/');
+  await page.locator('.tr-lesson h3 a[href="/2/3/2/"]').click();
+  await page.waitForURL('**/2/3/2/');
   await page.locator('.aula-step').first().waitFor();
   assert.equal(await page.locator('.aula-step').count(),4);
   assert.equal(await page.locator('.aula-rail [data-rail]').count(),4);
@@ -88,7 +88,7 @@ async function checkWidth(page,label){
   });
   await page.locator('#btn-share').click();
   const sharePayload=await page.evaluate(()=>window.__lastSharePayload);
-  assert.equal(sharePayload.url,BASE+'/aulas/A17/');
+  assert.equal(sharePayload.url,BASE+'/2/3/2/');
   assert.match(sharePayload.title,/MAT MAT MAT!/);
   assert.match(sharePayload.text,/Olha essa aula de matemática/);
 
@@ -129,15 +129,25 @@ async function checkWidth(page,label){
   assert.equal(await page.locator('.diag-review-item').count(),12);
   await checkWidth(page,config.name+' relatório diagnóstico');
   await page.screenshot({path:'screenshots/'+config.name+'-diagnostic-result.png',fullPage:true});
+  // Loja: vinda de uma aula do Volume 2, cupom visível, páginas reais e carrinho com volume avulso.
+  await page.goto(BASE+'/livros/?volume=2',{waitUntil:'domcontentloaded'});
+  await page.locator('.shop-origem').waitFor();
+  assert.match(await page.locator('.shop-origem').innerText(),/Volume 2/);
+  assert.equal(await page.locator('.shop-page img').count(),5);
+  await page.locator('.shop-main-actions [data-add="v2"]').click();
+  await page.locator('#shop-cart .shop-cart-item').waitFor();
+  assert.match(await page.locator('#shop-cart').innerText(),/Volume 2/);
+  await checkWidth(page,config.name+' loja');
+  await page.screenshot({path:'screenshots/'+config.name+'-loja.png',fullPage:true});
   // Busca: Enter abre a melhor aula direto.
   await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
   await page.locator('.area-tile').first().waitFor();
   await page.locator('#hero-search').fill('função modular');
   await page.locator('#quick-hits .hq-row.is-best').waitFor();
-  assert.match(await page.locator('#quick-hits .hq-row.is-best').getAttribute('href'),/\/aulas\/A29\/$/);
+  assert.match(await page.locator('#quick-hits .hq-row.is-best').getAttribute('href'),/\/2\/6\/2\/$/);
   await checkWidth(page,config.name+' sugestões da busca');
   await page.locator('#hero-search').press('Enter');
-  await page.waitForURL('**/aulas/A29/');
+  await page.waitForURL('**/2/6/2/');
   await page.goto(BASE+'/turmas/',{waitUntil:'domcontentloaded'});
   await page.locator('.turmas-directory-card').first().waitFor();
   assert.equal(await page.locator('.turmas-directory-card').count(),12);

@@ -30,8 +30,10 @@ async function boot(url='https://matmatmat.test/'){
  const {pathname}=new URL(url);
  const dom=new JSDOM('<!doctype html><html><body><div id="app"></div></body></html>',{url,runScripts:'outside-only',pretendToBeVisual:true});
  const w=dom.window,d=w.document;
- const id=pathname.match(/^\/aulas\/([ABC]\d{2})\/?$/)?.[1];
+ const aula=pathname.match(/^\/(\d)\/(\d+|x\d)\/(\d+)\/?$/),livro=pathname.match(/^\/(\d)\/(?:(\d+|x\d)\/)?$/);
+ const id=aula?aula.slice(1,4).join('.'):null;
  if(id)d.body.dataset.lesson=id;
+ else if(livro){d.body.dataset.view='explorar';d.body.dataset.volume=livro[1];if(livro[2])d.body.dataset.modulo=livro[1]+'.'+livro[2]}
  else if(pathname.startsWith('/explorar'))d.body.dataset.view='explorar';
  else if(pathname.startsWith('/teste-seu-nivel'))d.body.dataset.view='diagnostico';
  w.HTMLElement.prototype.scrollIntoView=function(){};
@@ -46,7 +48,7 @@ async function boot(url='https://matmatmat.test/'){
  w.scrollTo=function(...a){w.__scrolled=a};
  w.eval(app);
  for(let i=0;i<65;i++){
-  if(id?d.querySelector('.aula-step'):pathname.startsWith('/explorar')?d.querySelector('main.trilha .aula-hero'):pathname.startsWith('/teste-seu-nivel')?d.querySelector('.diag-track-card'):d.querySelector('.home-hero .area-tile, .home-hero'))break;
+  if(id?d.querySelector('.aula-step'):(livro||pathname.startsWith('/explorar'))?d.querySelector('main.trilha .aula-hero'):pathname.startsWith('/teste-seu-nivel')?d.querySelector('.diag-track-card'):d.querySelector('.home-hero .area-tile, .home-hero'))break;
   await wait();
  }
  return{w,d,dom};
@@ -81,23 +83,38 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
   }
  }
  for(const l of curriculum.lessons){
-  const html=readFileSync('aulas/'+l.id+'/index.html','utf8');
+  const html=readFileSync(l.id.split('.').join('/')+'/index.html','utf8');
   assert.ok(html.includes('data-lesson="'+l.id+'"'));
   assert.ok(html.includes('MAT MAT MAT!'));
  }
+ for(const b of curriculum.blocks){
+  const html=readFileSync(b.id.replace('.','/')+'/index.html','utf8');
+  assert.ok(html.includes('data-modulo="'+b.id+'"'),'Página do módulo (QR code do livro): '+b.id);
+ }
+ // Ofertas da coleção: em todas as páginas públicas, nunca nas turmas.
+ for(const p of ['index.html','explorar/index.html','teste-seu-nivel/index.html','livros/index.html','2/index.html','2/3/index.html','2/3/2/index.html'])
+  assert.ok(readFileSync(p,'utf8').includes('/assets/ofertas.js'),'ofertas.js em '+p);
+ assert.ok(!turmasIndex.includes('ofertas.js'),'Turmas sem ofertas');
+ const livros=JSON.parse(readFileSync('data/livros.json','utf8'));
+ assert.equal(livros.volumes.reduce((n,v)=>n+v.modulos,0),curriculum.blocks.filter(b=>!b.extra).length,'Módulos do livro batem com o site');
+ assert.equal(livros.volumes.reduce((n,v)=>n+v.paginas,0),983);
+ for(const v of livros.volumes)for(const a of v.amostras)readFileSync(a.src.slice(1));
+ assert.ok(livros.oferta&&typeof livros.oferta.ativo==='boolean');
+ const ofertas=readFileSync('assets/ofertas.js','utf8').replace(/\/\*[\s\S]*?\*\//g,'');
+ assert.ok(!/comprou|acabou de|restam|expira em/i.test(ofertas),'Sem prova social falsa nem contagem regressiva');
  assert.match(readFileSync('explorar/index.html','utf8'),/data-view="explorar"/);
  assert.match(readFileSync('teste-seu-nivel/index.html','utf8'),/data-view="diagnostico"/);
  let {w,d,dom}=await boot();
  assert.match(d.querySelector('#hero-title').textContent,/O que você quer estudar hoje/);
  assert.equal(d.querySelectorAll('input[type=search]').length,1);
- assert.equal(d.querySelectorAll('.area-tile').length,9);
+ assert.equal(d.querySelectorAll('.area-tile').length,4,'Quatro volumes do livro');
  assert.equal(d.querySelectorAll('.home-explore-decoration').length,0,'Sem seta decorativa gigante');
  assert.equal(d.querySelectorAll('.home-explore .home-section-intro p').length,0,'Sem texto Prefere navegar');
  assert.equal(d.querySelectorAll('.home-explore .browser-toolbar').length,0,'Sem Escolha uma área para começar');
  assert.equal(d.querySelectorAll('.home-explore .browser-shortcuts').length,0,'Sem Favoritas nem Todas as 215 na home');
- assert.equal(d.querySelector('#explore-content .area-grid').children.length,9,'Cartões seguem diretamente o título');
- assert.equal(d.querySelectorAll('#explore-content .hv-topics a').length,51,'Os 51 assuntos acessíveis direto da página inicial');
- assert.ok(d.querySelector('.hv-topics a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
+ assert.equal(d.querySelector('#explore-content .area-grid').children.length,4,'Cartões seguem diretamente o título');
+ assert.equal(d.querySelectorAll('#explore-content .hv-partes').length,4,'Cada volume mostra as partes do livro');
+ assert.deepEqual([...d.querySelectorAll('a.area-tile')].map(a=>a.getAttribute('href')),['/1/','/2/','/3/','/4/']);
  assert.equal(d.querySelector('.hv-continue'),null,'Sem atalho de continuar para quem ainda não abriu aulas');
  assert.equal(d.querySelectorAll('.discovery-preview').length,0,'Sem vitrine de exemplos');
  assert.equal(d.querySelectorAll('.home-hero-art').length,0,'Sem ilustração debaixo da busca');
@@ -105,41 +122,39 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelector('.home-hero-copy>p').textContent,'Listas de Exercícios e Teoria grátis. Simples assim');
  assert.equal(d.querySelectorAll('img.mat-logo-img').length,2,'Logo em ambas as marcas visíveis');
  assert.equal(d.querySelector('.brand-mat').getAttribute('aria-label'),'MAT MAT MAT! — página inicial');
- assert.ok(d.querySelector('a.area-tile[href="/explorar/?area=funcoes"]'));
+ assert.ok(d.querySelector('a.area-tile[href="/2/"]'));
  assert.ok(d.querySelector('a.nav-cta[href="/teste-seu-nivel/"]'));
  assert.ok(!d.querySelector('#explore-content .browse-topic'));
  assert.equal(d.querySelectorAll('img.mat-logo-img[src="/assets/logo-mat-256.png"]').length,2,'Logo em imagem no topo e no rodapé');
  type(w,d.querySelector('#hero-search'),'Bhaskara');
  assert.equal(d.querySelectorAll('.home-hero-art').length,0,'Busca continua sem ilustração');
- assert.ok(d.querySelector('#search-output a[href="/aulas/A17/"]'));
- assert.ok(d.querySelector('#search-output .hs-best .hs-file[href="/pdfs/fixacao-A17.pdf"]'),'Melhor resultado já oferece as listas');
+ assert.ok(d.querySelector('#search-output a[href="/2/3/2/"]'));
+ assert.ok(d.querySelector('#search-output .hs-best .hs-file[href="/pdfs/fixacao-2.3.2.pdf"]'),'Melhor resultado já oferece as listas');
  // Busca: o aluno digita o nome do assunto e cai na aula certa, mesmo com erro de digitação.
  const melhor=q=>{type(w,d.querySelector('#hero-search'),q);const a=d.querySelector('#search-output .hs-best h3 a');return a&&a.getAttribute('href')};
- assert.equal(melhor('FUNÇÃO AFIM'),'/aulas/A10/');
- assert.equal(melhor('funcao modular'),'/aulas/A29/');
- assert.equal(melhor('equação do 2º grau'),'/aulas/C19/');
- assert.equal(melhor('bascara'),'/aulas/A17/');
- assert.equal(melhor('pa'),'/aulas/A44/');
- assert.equal(melhor('a40'),'/aulas/A40/');
- assert.equal(melhor('matriz inversa'),'/aulas/A55/');
- assert.equal(melhor('potencias de i'),'/aulas/A67/');
- assert.equal(melhor('dizima periodica'),'/aulas/C08/');
- assert.equal(melhor('lei dos cossenos'),'/aulas/C64/');
- assert.equal(melhor('conjuntos'),'/aulas/A01/');
- assert.equal(melhor('lista de juros compostos'),'/aulas/C33/');
- assert.equal(melhor('produtos notáveis'),'/aulas/C14/');
- assert.equal(melhor('fatoração'),'/aulas/C15/');
- assert.equal(melhor('função inversa'),'/aulas/A27/');
- assert.equal(melhor('função par'),'/aulas/A24/');
- assert.equal(melhor('bijetora'),'/aulas/A25/');
- assert.equal(melhor('sistema 2x2'),'/aulas/A60/');
- assert.equal(melhor('binomio de newton'),'/aulas/C46/');
- assert.equal(melhor('logaritimo'),'/aulas/A36/');
+ assert.equal(melhor('FUNÇÃO AFIM'),'/2/2/1/');
+ assert.equal(melhor('funcao modular'),'/2/6/2/');
+ assert.equal(melhor('equação do 2º grau'),'/1/7/1/');
+ assert.equal(melhor('bascara'),'/2/3/2/');
+ assert.equal(melhor('pa'),'/1/14/2/');
+ assert.equal(melhor('2.3.2'),'/2/3/2/','Código do livro leva à aula');
+ assert.equal(melhor('matriz inversa'),'/3/5/1/');
+ assert.equal(melhor('potencias de i'),'/3/12/1/');
+ assert.equal(melhor('dizima periodica'),'/1/13/2/');
+ assert.equal(melhor('lei dos cossenos'),'/2/13/2/');
+ assert.equal(melhor('conjuntos'),'/1/12/1/');
+ assert.equal(melhor('lista de juros compostos'),'/1/x1/2/');
+ assert.equal(melhor('produtos notáveis'),'/1/4/2/');
+ assert.equal(melhor('fatoração'),'/1/4/3/');
+ assert.equal(melhor('função inversa'),'/2/5/4/');
+ assert.equal(melhor('função par'),'/2/5/1/');
+ assert.equal(melhor('bijetora'),'/2/5/2/');
+ assert.equal(melhor('sistema 2x2'),'/1/5/3/');
+ assert.equal(melhor('binomio de newton'),'/1/20/1/');
+ assert.equal(melhor('logaritimo'),'/2/8/1/');
  assert.ok(d.querySelector('#search-output .hs-fixed'),'Avisa a correção de digitação');
- assert.equal(melhor('exercícios de bhaskara'),'/aulas/A17/#pratique','Intenção leva direto à etapa da aula');
- assert.equal(melhor('trigonometria'),'/explorar/?area=trigonometria','Nome de área leva à área');
- type(w,d.querySelector('#hero-search'),'geometria');
- assert.equal(d.querySelectorAll('#search-output .hs-area').length,3);
+ assert.equal(melhor('exercícios de bhaskara'),'/2/3/2/#pratique','Intenção leva direto à etapa da aula');
+ assert.equal(melhor('geometria'),'/4/','Nome do volume leva ao volume');
  type(w,d.querySelector('#hero-search'),'PDF');
  assert.equal(d.querySelectorAll('#search-output .hs-pdfrow').length,new Set(materials.filter(m=>m.aula).map(m=>m.aula)).size,'Listas e PDFs mostra todas as aulas com listas');
  type(w,d.querySelector('#hero-search'),'xyzw');
@@ -148,46 +163,46 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelector('#home-discover').hidden,true,'exploração oculta ao pesquisar');
  dom.window.close();
 
- // Trilha: todas as áreas → área → assunto → aula.
+ // Trilha do livro: volumes → volume (/2/) → módulo (/2/3/, endereço do QR code) → aula (/2/3/2/).
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/'));
- assert.equal(d.querySelectorAll('.area-tile').length,9);
+ assert.equal(d.querySelectorAll('.area-tile').length,4);
  assert.equal(d.querySelectorAll('input[type=search]').length,0,'sem caixa de busca repetida');
  assert.ok(d.querySelector('.aula-crumbs a[href="/"]'));
- assert.ok(d.querySelector('a.area-tile[href="/explorar/?area=funcoes"]'));
+ assert.ok(d.querySelector('a.area-tile[href="/2/"]'));
  assert.equal(d.querySelector('.explorer-search-link'),null,'Sem botão extra Pesquisar na biblioteca');
  dom.window.close();
- ({w,d,dom}=await boot('https://matmatmat.test/explorar/?area=funcoes'));
- assert.equal(d.querySelectorAll('.tr-route > .tr-stop').length,8,'Oito assuntos na trilha da área');
- assert.ok(d.querySelector('.tr-topic h3 a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
- assert.ok(d.querySelector('a.tr-chip[href="/aulas/A17/"]'),'Aula acessível direto da página da área');
- assert.equal(d.querySelectorAll('.tr-chip').length,42);
- assert.ok(d.querySelector('.tr-areas a.is-current[href="/explorar/?area=funcoes"]'));
- assert.equal(d.querySelectorAll('.tr-areas a').length,9);
+ ({w,d,dom}=await boot('https://matmatmat.test/2/'));
+ assert.equal(d.querySelectorAll('.tr-route > .tr-stop').length,20,'Os 20 módulos do Volume 2 na trilha');
+ assert.ok(d.querySelector('.tr-topic h3 a[href="/2/3/"]'));
+ assert.ok(d.querySelector('a.tr-chip[href="/2/3/2/"]'),'Aula acessível direto da página da área');
+ assert.equal(d.querySelectorAll('.tr-chip').length,53);
+ assert.ok(d.querySelector('.tr-areas a.is-current[href="/2/"]'));
+ assert.equal(d.querySelectorAll('.tr-areas a').length,4);
  assert.ok(d.querySelector('.aula-crumbs a[href="/explorar/"]'));
- assert.equal(d.querySelector('.aula-hero-cta .aula-btn-lime').getAttribute('href'),'/aulas/A01/');
+ assert.equal(d.querySelector('.aula-hero-cta .aula-btn-lime').getAttribute('href'),'/2/1/1/');
  assert.equal(d.querySelector('.explorer-search-link'),null,'Sem botão Pesquisar ao abrir Fundamentos ou Funções');
  dom.window.close();
- ({w,d,dom}=await boot('https://matmatmat.test/explorar/?area=funcoes&assunto=fu-quadratica'));
- assert.equal(d.querySelectorAll('.tr-lesson').length,8);
- assert.ok(d.querySelector('.tr-lesson h3 a[href="/aulas/A17/"]'));
- assert.ok(d.querySelector('.tr-steps a[href="/aulas/A17/#prova"]'),'Atalho direto para o modo prova');
- assert.ok(d.querySelector('.aula-crumbs a[href="/explorar/?area=funcoes"]'));
+ ({w,d,dom}=await boot('https://matmatmat.test/2/3/'));
+ assert.equal(d.querySelectorAll('.tr-lesson').length,6);
+ assert.ok(d.querySelector('.tr-lesson h3 a[href="/2/3/2/"]'));
+ assert.ok(d.querySelector('.tr-steps a[href="/2/3/2/#prova"]'),'Atalho direto para o modo prova');
+ assert.ok(d.querySelector('.aula-crumbs a[href="/2/"]'));
  assert.ok(d.querySelector('.aula-trail .is-current a[aria-current="page"]'));
- assert.equal(d.querySelector('.aula-seq-next').getAttribute('href'),'/explorar/?area=funcoes&assunto=fu-propriedades');
- assert.equal(d.querySelector('.aula-hero-cta .aula-btn-lime').getAttribute('href'),'/aulas/A16/');
+ assert.equal(d.querySelector('.aula-seq-next').getAttribute('href'),'/2/4/');
+ assert.equal(d.querySelector('.aula-hero-cta .aula-btn-lime').getAttribute('href'),'/2/3/1/');
  await new Promise(r=>setTimeout(r,60));
  assert.match(d.querySelector('#aula-formula-math').innerHTML,/\\frac\{-b/,'Fórmula-chave do assunto: Bhaskara');
- assert.equal(d.querySelectorAll('.tr-lesson [data-formula]').length,8);
+ assert.equal(d.querySelectorAll('.tr-lesson [data-formula]').length,6);
  dom.window.close();
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/?todas=1'));
  assert.equal(d.querySelectorAll('.tr-row').length,215);
- assert.equal(d.querySelectorAll('.tr-group').length,9);
+ assert.equal(d.querySelectorAll('.tr-group').length,4);
  dom.window.close();
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/?favoritos=1'));
  assert.ok(d.querySelector('.tr-empty a[href="/explorar/"]'),'Favoritas vazias orientam o próximo passo');
  dom.window.close();
 
- ({w,d,dom}=await boot('https://matmatmat.test/aulas/A17/'));
+ ({w,d,dom}=await boot('https://matmatmat.test/2/3/2/'));
  assert.equal(d.querySelector('#btn-share').textContent,'Compartilhar');
  assert.equal(d.querySelector('#btn-share').getAttribute('aria-label'),'Compartilhe essa aula');
  assert.equal(d.querySelectorAll('.lesson-tools .lesson-tool').length,3,'Uma barra compacta de três ações');
@@ -215,7 +230,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  var whatsapp=new URL(d.querySelector('#share-whatsapp').href);
  assert.equal(whatsapp.hostname,'wa.me');
  assert.match(whatsapp.searchParams.get('text'),/Raízes, discriminante, soma e produto/);
- assert.match(whatsapp.searchParams.get('text'),/https:\/\/matmatmat\.test\/aulas\/A17\//);
+ assert.match(whatsapp.searchParams.get('text'),/https:\/\/matmatmat\.test\/2\/3\/2\//);
  click(w,d.querySelector('#share-close'));
  assert.ok(d.querySelector('#lesson-share-options').hidden);
  var nativeSharePayload;
@@ -223,27 +238,23 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  click(w,d.querySelector('#btn-share'));
  assert.equal(nativeSharePayload.title,'Raízes, discriminante, soma e produto | MAT MAT MAT!');
  assert.match(nativeSharePayload.text,/Olha essa aula de matemática/);
- assert.equal(nativeSharePayload.url,'https://matmatmat.test/aulas/A17/');
+ assert.equal(nativeSharePayload.url,'https://matmatmat.test/2/3/2/');
  assert.equal(d.querySelector('#lesson-share-options').hidden,true);
  // Página da aula: roteiro em quatro etapas com teoria, exercícios, modo prova e PDFs.
  assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['entenda','pratique','prova','levar']);
  assert.equal(d.querySelectorAll('.aula-rail [data-rail]').length,4);
- assert.ok(d.querySelector('a[href="/explorar/?area=funcoes&assunto=fu-quadratica"]'));
+ assert.ok(d.querySelector('a[href="/2/3/"]'));
  assert.match(d.querySelector('#aula-formula-math').textContent,/\\frac\{-b/,'Fórmula da aula no destaque');
  assert.ok(d.querySelector('.aula-trail .is-current a[aria-current="page"]'));
  assert.equal(d.querySelectorAll('.aula-pdf').length,2,'Vitrine com as duas listas');
- assert.ok(d.querySelector('.aula-pdf[href="/pdfs/fixacao-A17.pdf"] img[src="/pdfs/capas/fixacao-A17.webp"]'));
- // Checagem rápida: uma pergunta por vez, com o Exatoo quando erra.
- const q=JSON.parse(readFileSync('conteudos/A17.json','utf8')).quiz[0];
- assert.equal(d.querySelector('[data-check="1"]').hidden,true);
- click(w,d.querySelector('[data-check="0"] [data-opt="'+((q.correta+1)%q.opcoes.length)+'"]'));
- assert.ok(d.querySelector('[data-check="0"] .aula-fb a[href*="app.exatoo.com"]'));
- assert.ok(d.querySelector('[data-check="0"] [data-opt="'+q.correta+'"]').classList.contains('is-right'));
- click(w,d.querySelector('[data-check="0"] [data-check-next]'));
- assert.equal(d.querySelector('[data-check="0"]').hidden,true);
- assert.equal(d.querySelector('[data-check="1"]').hidden,false);
+ assert.ok(d.querySelector('.aula-pdf[href="/pdfs/fixacao-2.3.2.pdf"] img[src="/pdfs/capas/fixacao-2.3.2.webp"]'));
+ // Resumo curto no lugar da teoria longa; níveis com selos Fácil, Médio e Difícil.
+ assert.ok(d.querySelector('#entenda .aula-resumo'),'Resumo curto da aula');
+ assert.equal(d.querySelectorAll('[data-check]').length,0,'Sem checagem rápida');
+ assert.deepEqual([...d.querySelectorAll('[data-level]')].map(b=>b.className.match(/lvl-(\w+)/)[1]),['facil','medio','dificil']);
+ assert.ok(d.querySelector('.bk-promo[data-promo="modulo"] a[href="/livros/?volume=2"]'),'Oferta do Volume 2 na aula');
  // Pratique: resolução sob demanda e autoavaliação que alimenta o progresso.
- const lista=JSON.parse(readFileSync('data/listas/A17.json','utf8'));
+ const lista=JSON.parse(readFileSync('data/listas/2.3.2.json','utf8'));
  assert.equal(d.querySelectorAll('#ex-list .aula-ex').length,lista.fixacao.secoes[0].questoes.length);
  const ex=d.querySelector('#ex-list .aula-ex');
  assert.equal(ex.querySelector('.aula-ex-sol').hidden,true);
@@ -252,7 +263,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  click(w,ex.querySelector('[data-mark="ok"]'));
  assert.ok(ex.classList.contains('is-ok'));
  assert.match(d.querySelector('#prat-sum').textContent,/^1 de 20 conferidos, 1 certo$/);
- assert.equal(JSON.parse(w.localStorage.getItem('matmat-aula-A17')).fix['1'],'ok');
+ assert.equal(JSON.parse(w.localStorage.getItem('matmat-aula-2.3.2')).fix['1'],'ok');
  click(w,d.querySelector('[data-level="2"]'));
  assert.equal(d.querySelectorAll('#ex-list .aula-ex').length,lista.fixacao.secoes[2].questoes.length);
  // Modo prova: 20 questões corrigidas na hora, nota e revisão das erradas.
@@ -263,16 +274,16 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
   assert.ok(d.querySelector('#quiz-feedback .aula-fb-box'));
   click(w,d.querySelector('#prova-next'));
  });
- assert.equal(d.querySelector('.aula-score-n').textContent,'19');
+ assert.equal(d.querySelector('.aula-score-n').textContent,String(vest.length-1));
  assert.equal(d.querySelectorAll('.aula-grid .aula-cell.is-wrong').length,1);
- assert.match(d.querySelector('#rail-prova').textContent,/Melhor nota: 19 de 20/);
+ assert.match(d.querySelector('#rail-prova').textContent,new RegExp('Melhor nota: '+(vest.length-1)+' de '+vest.length));
  assert.ok(d.querySelector('#prova-root a[href*="app.exatoo.com"]'));
  click(w,d.querySelector('#prova-wrong'));
  assert.match(d.querySelector('.aula-prova-bar').textContent,/Questão 1 de 1/);
  assert.equal(d.querySelectorAll('.aula-seq a').length,2);
  dom.window.close();
  // Aula sem listas publicadas: teoria e materiais, sem etapas vazias; ?tab= antigo ainda leva à etapa.
- ({w,d,dom}=await boot('https://matmatmat.test/aulas/B25/?tab=resumo'));
+ ({w,d,dom}=await boot('https://matmatmat.test/4/11/2/?tab=resumo'));
  assert.ok(d.querySelector('#entenda'));
  assert.equal(d.querySelector('#prova'),null);
  assert.ok(d.querySelector('#levar'));
@@ -316,7 +327,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.match(d.querySelector('.diag-score-main').textContent,/9\s*\/12/,'Resultado com 9 acertos');
  assert.equal(d.querySelectorAll('.diagnosis-domain').length,4);
  assert.equal(d.querySelectorAll('.diag-complexity>div').length,3);
- assert.ok(d.querySelector('.diagnosis-recs a[href^="/aulas/"]'),'Recomendações de revisão por conteúdo');
+ assert.ok(d.querySelector('.diagnosis-recs a[href^="/"]'),'Recomendações de revisão por conteúdo');
  assert.equal(d.querySelectorAll('.diag-review-item').length,12,'Correção comentada');
  assert.ok(d.querySelector('.diag-result-exatoo a[href^="https://app.exatoo.com/"]'));
  click(w,d.querySelector('#diag-change'));

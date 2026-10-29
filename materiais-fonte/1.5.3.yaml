@@ -1,0 +1,246 @@
+# Fonte das listas em PDF da aula 1.5.3 — Sistemas lineares 2×2
+aula: '1.5.3'
+
+fixacao:
+  intro: Resolva na ordem — do fácil ao difícil. Cada equação do sistema é uma reta; resolver o sistema é encontrar onde as retas se encontram.
+  secoes:
+    - nome: Aquecimento
+      questoes:
+        - enunciado: 'Resolva por substituição: $\begin{cases}x+y=10\\ x-y=4\end{cases}$'
+          resolucao: |
+            Da segunda: $x=y+4$. Na primeira: $2y+4=10\Rightarrow y=3$ e $x=7$.
+          resposta: '$(7,\,3)$'
+
+        - enunciado: 'Resolva por adição: $\begin{cases}2x+3y=12\\ 4x-3y=6\end{cases}$'
+          resolucao: |
+            Somando: $6x=18\Rightarrow x=3$. Então $6+3y=12\Rightarrow y=2$.
+          resposta: '$(3,\,2)$'
+
+        - enunciado: 'Resolva o sistema $\begin{cases}y=2x-1\\ 3x+y=14\end{cases}$'
+          resolucao: |
+            Substituindo: $3x+2x-1=14\Rightarrow x=3$ e $y=5$.
+          resposta: '$(3,\,5)$'
+
+        - enunciado: 'Verifique se o par $(2,\,-1)$ é solução do sistema $\begin{cases}3x+2y=4\\ x-y=3\end{cases}$'
+          resolucao: |
+            $3\cdot2+2\cdot(-1)=4$ $\checkmark$ e $2-(-1)=3$ $\checkmark$. Satisfaz as duas equações, então é solução.
+          resposta: 'sim'
+
+        - enunciado: Classifique cada sistema como possível e determinado (SPD), possível e indeterminado (SPI) ou impossível (SI).
+          itens:
+            - '$\begin{cases}x+y=3\\ 2x+2y=6\end{cases}$'
+            - '$\begin{cases}x+y=3\\ x+y=5\end{cases}$'
+            - '$\begin{cases}x+y=3\\ x-y=1\end{cases}$'
+          resolucao: |
+            (a) A $2^{\text a}$ equação é o dobro da $1^{\text a}$: retas coincidentes, SPI.
+            (b) Mesma soma $x+y$ com resultados diferentes: retas paralelas, SI.
+            (c) Retas concorrentes: SPD, com solução $(2,1)$.
+          resposta: '(a) SPI \quad (b) SI \quad (c) SPD, $(2,1)$'
+
+        - enunciado: Em um estacionamento há carros e motos, num total de $30$ veículos e $100$ rodas. Quantos são os carros e quantas são as motos?
+          resolucao: |
+            $c+m=30$ e $4c+2m=100$. Da primeira, $2c+2m=60$; subtraindo: $2c=40\Rightarrow c=20$ e $m=10$.
+          resposta: '$20$ carros e $10$ motos'
+
+        - enunciado: A soma de dois números é $45$ e a diferença entre eles é $11$. Quais são os números?
+          resolucao: |
+            $x+y=45$ e $x-y=11$. Somando: $2x=56\Rightarrow x=28$ e $y=17$.
+          resposta: '$28$ e $17$'
+
+    - nome: Treino
+      questoes:
+        - enunciado: 'Resolva $\begin{cases}\dfrac x2+\dfrac y3=4\\ x-y=3\end{cases}$'
+          resolucao: |
+            Multiplicando a $1^{\text a}$ por $6$: $3x+2y=24$. Com $x=y+3$: $3y+9+2y=24\Rightarrow y=3$ e $x=6$.
+          resposta: '$(6,\,3)$'
+
+        - enunciado: Determine o ponto de interseção das retas $2x-y=1$ e $x+y=5$ e interprete geometricamente.
+          resolucao: |
+            Somando: $3x=6\Rightarrow x=2$ e $y=3$. As retas são concorrentes no ponto $(2,3)$, e o sistema é SPD.
+          resposta: '$(2,\,3)$'
+
+        - enunciado: 'Para que valor de $k$ o sistema $\begin{cases}x+2y=5\\ 3x+ky=7\end{cases}$ é impossível?'
+          resolucao: |
+            É impossível quando os coeficientes de $x$ e $y$ são proporcionais e os termos independentes não: $\tfrac31=\tfrac k2\Rightarrow k=6$.
+            Com $k=6$: $3x+6y=15$ contradiz $3x+6y=7$.
+          resposta: '$k=6$'
+
+        - enunciado: 'Determine $a$ e $b$ para que $\begin{cases}2x+y=3\\ 4x+ay=b\end{cases}$ seja possível e indeterminado.'
+          resolucao: |
+            A $2^{\text a}$ equação deve ser o dobro da $1^{\text a}$: $a=2$ e $b=6$.
+          resposta: '$a=2$, \ $b=6$'
+
+        - enunciado: Um show vendeu $50$ ingressos, alguns inteiros a R\$\,40{,}00 e outros meias a R\$\,20{,}00, arrecadando R\$\,1\,600{,}00. Quantos de cada tipo foram vendidos?
+          resolucao: |
+            $x+y=50$ e $40x+20y=1600\Rightarrow 2x+y=80$. Subtraindo: $x=30$ e $y=20$.
+          resposta: '$30$ inteiras e $20$ meias'
+
+        - enunciado: Hoje, um pai tem o triplo da idade do filho. Daqui a $10$ anos, terá o dobro. Quais são as idades atuais?
+          resolucao: |
+            $P=3F$ e $P+10=2(F+10)$. Então $3F+10=2F+20\Rightarrow F=10$ e $P=30$.
+          resposta: 'filho $10$ anos; pai $30$ anos'
+
+        - enunciado: 'Classifique o sistema $\begin{cases}3x-2y=4\\ 6x-4y=8\end{cases}$ e dê duas de suas soluções.'
+          resolucao: |
+            A $2^{\text a}$ é o dobro da $1^{\text a}$: SPI. Soluções: todos os pares com $3x-2y=4$.
+            Por exemplo, $(0,-2)$ e $(2,1)$.
+          resposta: 'SPI; por exemplo, $(0,-2)$ e $(2,1)$'
+
+        - enunciado: Um comerciante mistura café de R\$\,30{,}00/kg com café de R\$\,45{,}00/kg para obter $15$ kg de uma mistura que vale R\$\,36{,}00/kg. Quantos quilos de cada tipo usa?
+          resolucao: |
+            $x+y=15$ e $30x+45y=36\cdot15=540$. Com $y=15-x$: $30x+675-45x=540\Rightarrow x=9$ e $y=6$.
+          resposta: '$9$ kg do mais barato e $6$ kg do mais caro'
+
+    - nome: Desafio
+      questoes:
+        - enunciado: 'Resolva $\begin{cases}\dfrac1x+\dfrac1y=\dfrac56\\[10pt] \dfrac1x-\dfrac1y=\dfrac16\end{cases}$'
+          resolucao: |
+            Somando: $\tfrac2x=1\Rightarrow x=2$. Então $\tfrac1y=\tfrac56-\tfrac12=\tfrac13\Rightarrow y=3$.
+          resposta: '$(2,\,3)$'
+
+        - enunciado: 'Discuta o sistema $\begin{cases}mx+y=2\\ x+my=2\end{cases}$ conforme os valores de $m$.'
+          resolucao: |
+            É SPD quando os coeficientes não são proporcionais: $\tfrac m1\neq\tfrac1m\Leftrightarrow m^2\neq1$.
+            $m=1$: as duas equações viram $x+y=2$, SPI.
+            $m=-1$: $-x+y=2$ e $x-y=2$; somando, $0=4$, SI.
+          resposta: 'SPD se $m\neq\pm1$; SPI se $m=1$; SI se $m=-1$'
+
+        - enunciado: Um número de dois algarismos tem soma dos algarismos igual a $11$. Invertendo a ordem dos algarismos, o número aumenta $27$. Qual é o número?
+          resolucao: |
+            Número $10a+b$, com $a+b=11$ e $10b+a=10a+b+27\Rightarrow 9(b-a)=27\Rightarrow b-a=3$.
+            Então $a=4$ e $b=7$: o número é $47$ (e $74-47=27$).
+          resposta: '$47$'
+
+        - enunciado: Um barco percorre $60$ km rio abaixo em $2$ h e os mesmos $60$ km rio acima em $3$ h. Determine a velocidade do barco em água parada e a da correnteza.
+          resolucao: |
+            Rio abaixo: $v+c=30$. Rio acima: $v-c=20$. Então $v=25$ km/h e $c=5$ km/h.
+          resposta: 'barco $25$ km/h; correnteza $5$ km/h'
+
+        - enunciado: As retas $y=2x+1$, $y=-x+7$ e $y=ax-3$ passam pelo mesmo ponto. Determine $a$.
+          resolucao: |
+            As duas primeiras se cortam em $2x+1=-x+7\Rightarrow x=2$, $y=5$. Na terceira: $5=2a-3\Rightarrow a=4$.
+          resposta: '$a=4$'
+
+vestibular:
+  intro: Questões autorais no estilo dos principais vestibulares. Assinale uma única alternativa.
+  questoes:
+    - enunciado: 'A solução do sistema $\begin{cases}x+y=8\\ x-y=2\end{cases}$ é'
+      opcoes: ['$(5,\,3)$', '$(3,\,5)$', '$(6,\,2)$', '$(4,\,4)$', '$(5,\,-3)$']
+      correta: A
+      resolucao: |
+        Somando: $2x=10\Rightarrow x=5$ e $y=3$.
+
+    - enunciado: 'Se $(x,\,y)$ é a solução de $\begin{cases}2x+y=7\\ x-y=2\end{cases}$, então $x\cdot y$ vale'
+      opcoes: ['$1$', '$2$', '$3$', '$4$', '$6$']
+      correta: C
+      resolucao: |
+        Somando: $3x=9\Rightarrow x=3$ e $y=1$. Produto: $3$.
+
+    - enunciado: 'O sistema $\begin{cases}2x-y=3\\ 4x-2y=6\end{cases}$ é'
+      opcoes: ['possível e determinado', 'possível e indeterminado', 'impossível', 'possível e determinado, com solução $(0,\,0)$', 'impossível, pois as retas são concorrentes']
+      correta: B
+      resolucao: |
+        A $2^{\text a}$ equação é o dobro da $1^{\text a}$: as retas coincidem e há infinitas soluções.
+
+    - enunciado: Se as retas que representam as equações de um sistema linear $2\times2$ são paralelas distintas, então o sistema
+      opcoes: ['é possível e determinado', 'é possível e indeterminado', 'tem exatamente duas soluções', 'tem infinitas soluções', 'é impossível']
+      correta: E
+      resolucao: |
+        Retas paralelas distintas não têm ponto comum: não há solução.
+
+    - enunciado: Um cinema vendeu $80$ ingressos, entre inteiras a R\$\,30{,}00 e meias a R\$\,15{,}00, e arrecadou R\$\,1\,650{,}00. O número de inteiras vendidas foi
+      opcoes: ['$20$', '$25$', '$28$', '$30$', '$50$']
+      correta: D
+      resolucao: |
+        $x+y=80$ e $30x+15y=1650\Rightarrow 2x+y=110$. Subtraindo: $x=30$ (e $50$ meias).
+
+    - enunciado: 'O sistema $\begin{cases}x+3y=4\\ 2x+ky=5\end{cases}$ é impossível quando $k$ vale'
+      opcoes: ['$3$', '$6$', '$8$', '$9$', '$12$']
+      correta: B
+      resolucao: |
+        Coeficientes proporcionais: $\tfrac21=\tfrac k3\Rightarrow k=6$. Aí $2x+6y=8$ contradiz $2x+6y=5$.
+
+    - enunciado: Em um estacionamento há $40$ veículos, entre carros e motos, totalizando $130$ rodas. O número de motos é
+      opcoes: ['$15$', '$20$', '$25$', '$30$', '$35$']
+      correta: A
+      resolucao: |
+        $c+m=40$ e $4c+2m=130$. Então $2c=130-80=50\Rightarrow c=25$ e $m=15$.
+
+    - enunciado: Ana tem $8$ anos a mais que Beto, e a soma de suas idades é $50$ anos. A idade de Ana é
+      opcoes: ['$21$ anos', '$25$ anos', '$27$ anos', '$29$ anos', '$42$ anos']
+      correta: D
+      resolucao: |
+        $A=B+8$ e $A+B=50\Rightarrow 2B+8=50\Rightarrow B=21$ e $A=29$.
+
+    - enunciado: 'Se $(x,\,y)$ é a solução de $\begin{cases}3x+2y=12\\ x-2y=-4\end{cases}$, então $x+y$ vale'
+      opcoes: ['$3$', '$4$', '$5$', '$6$', '$7$']
+      correta: C
+      resolucao: |
+        Somando: $4x=8\Rightarrow x=2$; então $2-2y=-4\Rightarrow y=3$. Soma: $5$.
+
+    - enunciado: 'O sistema $\begin{cases}x-2y=3\\ 2x+ay=b\end{cases}$ é possível e indeterminado. O valor de $a+b$ é'
+      opcoes: ['$-10$', '$-4$', '$0$', '$1$', '$2$']
+      correta: E
+      resolucao: |
+        A $2^{\text a}$ equação deve ser o dobro da $1^{\text a}$: $2x-4y=6$. Então $a=-4$, $b=6$ e $a+b=2$.
+
+    - enunciado: As retas $2x+y=8$ e $x-y=1$ se cortam no ponto
+      opcoes: ['$(3,\,2)$', '$(2,\,3)$', '$(4,\,0)$', '$(1,\,0)$', '$(3,\,-2)$']
+      correta: A
+      resolucao: |
+        Somando: $3x=9\Rightarrow x=3$ e $y=2$.
+
+    - enunciado: Em uma loja, $3$ camisetas e $2$ bonés custam R\$\,160{,}00, e $2$ camisetas e $3$ bonés custam R\$\,140{,}00. Uma camiseta e um boné custam juntos
+      opcoes: ['R\$\,50{,}00', 'R\$\,55{,}00', 'R\$\,60{,}00', 'R\$\,65{,}00', 'R\$\,70{,}00']
+      correta: C
+      resolucao: |
+        Somando as equações: $5c+5b=300\Rightarrow c+b=60$. Nem é preciso achar cada preço!
+
+    - enunciado: 'O valor de $m$ para o qual o sistema $\begin{cases}mx+2y=1\\ 2x+my=1\end{cases}$ é impossível é'
+      opcoes: ['$4$', '$2$', '$1$', '$0$', '$-2$']
+      correta: E
+      resolucao: |
+        Coeficientes proporcionais: $\tfrac m2=\tfrac2m\Rightarrow m=\pm2$.
+        Com $m=2$, as equações coincidem (SPI). Com $m=-2$: $-2x+2y=1$ e $2x-2y=1$; somando, $0=2$ (SI).
+
+    - enunciado: Um barco percorre $36$ km rio abaixo em $2$ h e a mesma distância rio acima em $3$ h. A velocidade da correnteza é
+      opcoes: ['$2$ km/h', '$3$ km/h', '$5$ km/h', '$6$ km/h', '$15$ km/h']
+      correta: B
+      resolucao: |
+        $v+c=18$ e $v-c=12$. Subtraindo: $2c=6\Rightarrow c=3$ km/h.
+
+    - enunciado: Um número de dois algarismos tem soma dos algarismos igual a $9$. Invertendo a ordem dos algarismos, obtém-se um número $45$ unidades menor. O número original é
+      opcoes: ['$27$', '$36$', '$54$', '$72$', '$81$']
+      correta: D
+      resolucao: |
+        $10a+b-45=10b+a\Rightarrow a-b=5$ e $a+b=9$: $a=7$, $b=2$. Confira: $72-27=45$.
+
+    - enunciado: Deseja-se obter $30$ L de uma solução com $20\%$ de álcool misturando uma solução com $10\%$ e outra com $40\%$ de álcool. A quantidade necessária da solução a $10\%$ é
+      opcoes: ['$5$ L', '$10$ L', '$12$ L', '$15$ L', '$20$ L']
+      correta: E
+      resolucao: |
+        $x+y=30$ e $0{,}1x+0{,}4y=0{,}2\cdot30=6\Rightarrow x+4y=60$. Subtraindo: $3y=30\Rightarrow y=10$ e $x=20$.
+
+    - enunciado: 'Se $(x,\,y)$ satisfaz $\dfrac1x+\dfrac1y=\dfrac7{12}$ e $\dfrac1x-\dfrac1y=\dfrac1{12}$, então $x+y$ vale'
+      opcoes: ['$7$', '$8$', '$10$', '$12$', '$14$']
+      correta: A
+      resolucao: |
+        Somando: $\tfrac2x=\tfrac8{12}\Rightarrow x=3$. Então $\tfrac1y=\tfrac7{12}-\tfrac4{12}=\tfrac14\Rightarrow y=4$. Soma: $7$.
+
+    - enunciado: Hoje, a idade de um pai é o quádruplo da idade do filho. Daqui a $20$ anos, será o dobro. Hoje, o pai tem
+      opcoes: ['$30$ anos', '$36$ anos', '$40$ anos', '$44$ anos', '$50$ anos']
+      correta: C
+      resolucao: |
+        $4F+20=2(F+20)\Rightarrow 2F=20\Rightarrow F=10$. O pai tem $40$ anos.
+
+    - enunciado: As retas $y=x+1$, $y=-2x+7$ e $y=kx-4$ passam por um mesmo ponto. O valor de $k$ é
+      opcoes: ['$3$', '$\dfrac72$', '$4$', '$\dfrac92$', '$5$']
+      correta: B
+      resolucao: |
+        As duas primeiras se cortam em $x+1=-2x+7\Rightarrow x=2$, $y=3$. Então $3=2k-4\Rightarrow k=\tfrac72$.
+
+    - enunciado: Um retângulo tem perímetro de $54$ cm, e seu comprimento é $3$ cm menor que o dobro da largura. A área desse retângulo é
+      opcoes: ['$140\ \text{cm}^2$', '$150\ \text{cm}^2$', '$162\ \text{cm}^2$', '$170\ \text{cm}^2$', '$180\ \text{cm}^2$']
+      correta: D
+      resolucao: |
+        $c+\ell=27$ e $c=2\ell-3\Rightarrow 3\ell=30\Rightarrow \ell=10$ e $c=17$. Área: $170\ \text{cm}^2$.

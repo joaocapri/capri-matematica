@@ -133,6 +133,10 @@ def apoio(codigo, nome, q):
     return extra
 
 
+from gerar_listas import chave_nivel, nivel_vest, NIVEIS
+NOME_NIVEL = {k: v[1] for k, v in NIVEIS.items()}
+
+
 def exportar(codigo):
     fonte = yaml.safe_load((FONTE / f"{codigo}.yaml").read_text(encoding="utf-8"))
     dados = {"aula": codigo, "versao": 1}
@@ -151,7 +155,7 @@ def exportar(codigo):
                     "resposta": tex_web(q.get("resposta", "")),
                     **apoio(codigo, f"f{n}", q),
                 })
-            secoes.append({"nome": sec["nome"], "questoes": qs})
+            secoes.append({"nome": NOME_NIVEL[chave_nivel(sec["nome"])], "questoes": qs})
         dados["fixacao"] = {"intro": tex_web(fonte["fixacao"].get("intro", "")), "secoes": secoes}
     if "vestibular" in fonte:
         dados["vestibular"] = {
@@ -162,6 +166,7 @@ def exportar(codigo):
                 "opcoes": [tex_web(o) for o in q["opcoes"]],
                 "correta": "ABCDE".index(q["correta"]),
                 "resolucao": linhas(q.get("resolucao")),
+                "nivel": NOME_NIVEL[nivel_vest(q, k)],
                 **apoio(codigo, f"v{k}", q),
             } for k, q in enumerate(fonte["vestibular"]["questoes"], 1)],
         }
@@ -180,6 +185,6 @@ def exportar(codigo):
 
 
 if __name__ == "__main__":
-    codigos = [c.upper() for c in sys.argv[1:]] or sorted(p.stem for p in FONTE.glob("[ABC][0-9][0-9].yaml"))
+    codigos = sys.argv[1:] or sorted(p.stem for p in FONTE.glob("*.yaml") if re.fullmatch(r"\d\.(\d+|x\d)\.\d+", p.stem))
     for c in codigos:
         print("exportado:", exportar(c).relative_to(ROOT))

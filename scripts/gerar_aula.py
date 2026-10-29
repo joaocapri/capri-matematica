@@ -298,12 +298,9 @@ def documento(aula, fonte):
 def info_aula(codigo):
     dados = json.loads((ROOT / "data" / "aulas.json").read_text(encoding="utf-8"))
     aula = next(a for a in dados["lessons"] if a["id"] == codigo)
-    bloco = next(b for b in dados["blocks"] if b["id"] == aula["block"])
-    js = (ROOT / "assets" / "site.js").read_text(encoding="utf-8")
-    areas = json.loads(re.search(r"var SUBJECT_AREAS = (\[.*?\]);", js).group(1))
-    n = int(codigo[1:])
-    area = next(a["name"] for a in areas if any(r[0] == aula["front"] and r[1] <= n <= r[2] for r in a["ranges"]))
-    return dict(aula, topico=bloco["title"], area=area.replace("&", r"\&"))
+    mod = next(b for b in dados["blocks"] if b["id"] == aula["block"])
+    vol = next(f for f in dados["fronts"] if f["id"] == aula["front"])
+    return dict(aula, topico=f"Módulo {mod['numero'].upper()} \\,·\\, {mod['title']}", area=f"Volume {vol['id']} \\,·\\, {vol['name']}")
 
 
 def gerar(codigo):
@@ -326,5 +323,5 @@ def gerar(codigo):
 
 
 if __name__ == "__main__":
-    for c in [a.upper() for a in sys.argv[1:] if not a.startswith("--")] or ["A17"]:
+    for c in [a for a in sys.argv[1:] if not a.startswith("--")] or ["2.3.2"]:
         print("gerado:", gerar(c).relative_to(ROOT))

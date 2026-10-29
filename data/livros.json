@@ -11,25 +11,133 @@
       "id": 1,
       "name": "Números",
       "color": "#D7E75B",
-      "themes": "Base e ENEM · Conjuntos e conjuntos numéricos · PA e PG · Combinatória · Binômio de Newton · Probabilidade · Estatística"
+      "themes": "Matemática básica · Porcentagem e proporção · Conjuntos · PA e PG · Combinatória · Probabilidade · Estatística",
+      "modulos": 23,
+      "tipos": 96,
+      "paginas": 300,
+      "amostras": [
+        {
+          "src": "/livros/amostras/v1-1.webp",
+          "legenda": "Página de rosto"
+        },
+        {
+          "src": "/livros/amostras/v1-2.webp",
+          "legenda": "Sumário"
+        },
+        {
+          "src": "/livros/amostras/v1-3.webp",
+          "legenda": "Abertura do módulo"
+        },
+        {
+          "src": "/livros/amostras/v1-4.webp",
+          "legenda": "Um tipo de questão"
+        },
+        {
+          "src": "/livros/amostras/v1-5.webp",
+          "legenda": "Misturadas"
+        }
+      ]
     },
     {
       "id": 2,
       "name": "Funções",
       "color": "#3558D7",
-      "themes": "Afim · Quadrática · Modular · Composta e inversa · Inequações · Exponencial · Logaritmos · Trigonometria"
+      "themes": "Afim · Quadrática · Modular · Composta e inversa · Inequações · Exponencial · Logaritmos · Trigonometria",
+      "modulos": 20,
+      "tipos": 92,
+      "paginas": 261,
+      "amostras": [
+        {
+          "src": "/livros/amostras/v2-1.webp",
+          "legenda": "Página de rosto"
+        },
+        {
+          "src": "/livros/amostras/v2-2.webp",
+          "legenda": "Sumário"
+        },
+        {
+          "src": "/livros/amostras/v2-3.webp",
+          "legenda": "Abertura do módulo"
+        },
+        {
+          "src": "/livros/amostras/v2-4.webp",
+          "legenda": "Um tipo de questão"
+        },
+        {
+          "src": "/livros/amostras/v2-5.webp",
+          "legenda": "Misturadas"
+        }
+      ]
     },
     {
       "id": 3,
       "name": "Álgebra",
       "color": "#087B72",
-      "themes": "Matrizes · Determinantes · Sistemas · Geometria analítica · Números complexos · Polinômios · Equações algébricas"
+      "themes": "Matrizes · Determinantes · Sistemas · Geometria analítica · Números complexos · Polinômios · Equações algébricas",
+      "modulos": 14,
+      "tipos": 57,
+      "paginas": 183,
+      "amostras": [
+        {
+          "src": "/livros/amostras/v3-1.webp",
+          "legenda": "Página de rosto"
+        },
+        {
+          "src": "/livros/amostras/v3-2.webp",
+          "legenda": "Sumário"
+        },
+        {
+          "src": "/livros/amostras/v3-3.webp",
+          "legenda": "Abertura do módulo"
+        },
+        {
+          "src": "/livros/amostras/v3-4.webp",
+          "legenda": "Um tipo de questão"
+        },
+        {
+          "src": "/livros/amostras/v3-5.webp",
+          "legenda": "Misturadas"
+        }
+      ]
     },
     {
       "id": 4,
       "name": "Geometria",
       "color": "#EF8565",
-      "themes": "Geometria plana · Geometria espacial"
+      "themes": "Ângulos e triângulos · Semelhança · Relações métricas · Polígonos e áreas · Circunferência · Poliedros · Prismas e pirâmides · Cilindros, cones e esfera",
+      "modulos": 17,
+      "tipos": 70,
+      "paginas": 239,
+      "amostras": [
+        {
+          "src": "/livros/amostras/v4-1.webp",
+          "legenda": "Página de rosto"
+        },
+        {
+          "src": "/livros/amostras/v4-2.webp",
+          "legenda": "Sumário"
+        },
+        {
+          "src": "/livros/amostras/v4-3.webp",
+          "legenda": "Abertura do módulo"
+        },
+        {
+          "src": "/livros/amostras/v4-4.webp",
+          "legenda": "Um tipo de questão"
+        },
+        {
+          "src": "/livros/amostras/v4-5.webp",
+          "legenda": "Misturadas"
+        }
+      ]
     }
-  ]
+  ],
+  "oferta": {
+    "ativo": true,
+    "cupom": "MATMAT10",
+    "desconto": "10%",
+    "texto": "10% de desconto na coleção completa",
+    "observacao": "O desconto é aplicado no atendimento pelo WhatsApp."
+  },
+  "avulso": true
 }

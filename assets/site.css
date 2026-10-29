@@ -1559,3 +1559,54 @@ button.aula-opt:hover:not(:disabled){border-color:var(--a-purple);background:#fb
 .aula-tab th{background:#f1edfc;font-weight:800}
 .aula-legenda,.aula-fig figcaption{margin:6px 0 0;font-size:12px;font-weight:500;color:#746b83}
 .aula-fig{margin:4px 0 14px}.aula-fig img{display:block;width:min(100%,340px);height:auto}
+
+/* ===== Currículo v4: volumes e módulos do livro ===== */
+.hv-explore .area-grid,.tr-area-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.hv-vol{display:block;font:700 12px/1 'DM Sans',system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--a-purple);margin-bottom:6px}
+.hv-partes{list-style:none;margin:12px 20px 4px;padding:0;display:grid;gap:6px}
+.hv-partes a{display:block;padding:9px 12px;border-radius:12px;background:var(--a-lilac);color:var(--a-ink);line-height:1.35}
+.hv-partes a:hover{background:#e3dafa}
+.hv-partes b{display:block;font:700 14.5px 'Space Grotesk',system-ui,sans-serif}
+.hv-partes span{display:block;font-size:13px;color:var(--a-mute)}
+.tr-vol{display:block;font:700 15px 'DM Sans',system-ui,sans-serif;letter-spacing:.04em;color:var(--a-lime);margin-bottom:4px}
+.tr-route .tr-parte{list-style:none;margin:26px 0 10px;padding:0}
+.tr-route .tr-parte:first-child{margin-top:0}
+.tr-parte span{display:inline-block;font:700 12px 'DM Sans',system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--a-purple)}
+.tr-parte h3{margin:2px 0 0;font:700 24px/1.15 'Space Grotesk',system-ui,sans-serif;color:var(--a-ink)}
+.tr-extra{display:inline-block;vertical-align:middle;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--a-lilac);color:var(--a-purple);font:700 11.5px 'DM Sans',system-ui,sans-serif}
+.tr-stop.is-extra .tr-stop-n{background:var(--a-lilac)}
+
+/* selos de nível */
+.selo{display:inline-block;margin:0 0 8px;padding:3px 10px;border-radius:999px;border:1.5px solid var(--a-ink);font:800 11px/1.2 'DM Sans',system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--a-ink)}
+.selo-facil{background:#d3fc61}.selo-medio{background:#ffd66b}.selo-dificil{background:#ff7956}
+.aula-level.lvl-facil b::before,.aula-level.lvl-medio b::before,.aula-level.lvl-dificil b::before{content:"";display:inline-block;width:9px;height:9px;margin-right:7px;border-radius:50%;border:1.5px solid var(--a-ink);vertical-align:1px}
+.aula-level.lvl-facil b::before{background:#d3fc61}.aula-level.lvl-medio b::before{background:#ffd66b}.aula-level.lvl-dificil b::before{background:#ff7956}
+
+/* resumo curto da aula */
+.aula-resumo{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.aula-resumo-item{min-width:0;padding:16px 18px;border:1.5px solid var(--a-line);border-radius:16px;background:var(--a-card)}
+.aula-resumo-item h3{margin:0 0 8px;font:700 17px/1.25 'Space Grotesk',system-ui,sans-serif}
+.aula-resumo-item p{margin:0;font-size:14.5px;line-height:1.55;color:var(--a-mute)}
+.aula-resumo-item .aula-formula-bloco{margin:6px 0;overflow-x:auto}
+
+/* chamada do livro no contexto do módulo */
+.bk-promo{position:relative;margin:34px 0;padding:26px 28px;border:2.5px solid var(--a-ink);border-radius:26px;background:#d3fc61;box-shadow:6px 6px 0 var(--a-ink);color:var(--a-ink);overflow:hidden}
+.bk-promo::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(74,39,183,.12)}
+.bk-promo-tag{display:inline-block;padding:5px 12px;border-radius:999px;background:var(--a-ink);color:#d3fc61;font:800 11.5px 'DM Sans',system-ui,sans-serif;letter-spacing:.07em}
+.bk-promo-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:22px;align-items:start;margin-top:14px}
+.bk-promo h2{margin:0;font:700 clamp(26px,3.2vw,36px)/1.05 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.025em;text-wrap:balance}
+.bk-promo h2 em{font-style:normal;color:var(--a-purple)}
+.bk-promo p{margin:12px 0 0;max-width:52ch;font-size:15px;line-height:1.55}
+.bk-promo-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:18px}
+.bk-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border:2px solid var(--a-ink);border-radius:14px;background:var(--a-ink);color:#fff;font:800 15px 'DM Sans',system-ui,sans-serif;box-shadow:4px 4px 0 var(--a-purple);transition:transform .15s,box-shadow .15s}
+.bk-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--a-purple)}
+.bk-btn:focus-visible,.bk-link:focus-visible{outline:3px solid var(--a-purple);outline-offset:3px}
+.bk-link{font:700 14.5px 'DM Sans',system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px}
+.bk-tipos{margin:0;padding:14px 16px 14px 34px;border:2px solid var(--a-ink);border-radius:16px;background:#fffefa;font-size:14px;line-height:1.4;display:grid;gap:6px}
+.bk-tipos li::marker{font:800 13px 'Space Grotesk',system-ui,sans-serif;color:var(--a-purple)}
+.bk-vols{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bk-vols li{display:flex;flex-direction:column;justify-content:space-between;min-height:110px;padding:12px;border:2px solid var(--a-ink);border-radius:14px;transform:rotate(-1.5deg)}
+.bk-vols li:nth-child(even){transform:rotate(1.5deg)}
+.bk-vols b{font:700 34px/1 'Space Grotesk',system-ui,sans-serif}
+.bk-vols span{font:700 15px 'Space Grotesk',system-ui,sans-serif}
+@media(max-width:760px){.bk-promo{padding:20px 18px;border-radius:20px}.bk-promo-grid{grid-template-columns:1fr}.hv-explore .area-grid,.tr-area-grid{grid-template-columns:1fr}}
