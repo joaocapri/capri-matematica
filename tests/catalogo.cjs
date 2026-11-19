@@ -108,7 +108,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  let {w,d,dom}=await boot();
  assert.match(d.querySelector('#hero-title').textContent,/O que você quer estudar hoje/);
  assert.equal(d.querySelectorAll('input[type=search]').length,1);
- assert.equal(d.querySelectorAll('.as-tile').length,20,'Vinte assuntos na entrada');
+ assert.equal(d.querySelectorAll('.as-tile').length,25,'Assuntos na entrada');
  assert.equal(d.querySelectorAll('.as-fam').length,4,'Assuntos agrupados em 4 famílias');
  assert.ok(d.querySelector('a.as-tile[href="/combinatoria/"]'),'Combinatória direto na página inicial');
  assert.ok(d.querySelector('form[data-livro-atalho]'),'Atalho para quem tem o livro');
@@ -135,7 +135,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.ok(d.querySelector('#search-output .hs-best .hs-file[href="/pdfs/fixacao-2.3.2.pdf"]'),'Melhor resultado já oferece as listas');
  // Busca: o aluno digita o nome do assunto e cai na aula certa, mesmo com erro de digitação.
  const melhor=q=>{type(w,d.querySelector('#hero-search'),q);const a=d.querySelector('#search-output .hs-best h3 a');return a&&a.getAttribute('href')};
- assert.equal(melhor('FUNÇÃO AFIM'),'/2/2/1/');
+ assert.equal(melhor('FUNÇÃO AFIM'),'/funcao-afim/');
  assert.equal(melhor('funcao modular'),'/funcao-modular/','Nome exato do assunto abre o assunto');
  assert.equal(melhor('equação do 2º grau'),'/1/7/1/');
  assert.equal(melhor('bascara'),'/2/3/2/');
@@ -171,7 +171,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
 
  // Trilha do livro: volumes → volume (/2/) → módulo (/2/3/, endereço do QR code) → aula (/2/3/2/).
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/'));
- assert.equal(d.querySelectorAll('.as-tile').length,20,'Assuntos primeiro');
+ assert.equal(d.querySelectorAll('.as-tile').length,25,'Assuntos primeiro');
  assert.equal(d.querySelectorAll('.area-tile').length,4,'Depois, os volumes do livro');
  assert.equal(d.querySelectorAll('input[type=search]').length,0,'sem caixa de busca repetida');
  assert.ok(d.querySelector('.aula-crumbs a[href="/"]'));
@@ -193,7 +193,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelectorAll('.tr-lesson').length,6);
  assert.ok(d.querySelector('.tr-lesson h3 a[href="/2/3/2/"]'));
  assert.ok(d.querySelector('.tr-steps a[href="/2/3/2/#prova"]'),'Atalho direto para o modo prova');
- assert.ok(d.querySelector('.aula-crumbs a[href="/funcoes/"]'),'Módulo do QR code aponta para o assunto');
+ assert.ok(d.querySelector('.aula-crumbs a[href="/funcao-quadratica/"]'),'Módulo do QR code aponta para o assunto');
  assert.ok(d.querySelector('.aula-trail .is-current a[aria-current="page"]'));
  assert.equal(d.querySelector('.aula-seq-next').getAttribute('href'),'/2/4/');
  assert.equal(d.querySelector('.aula-hero-cta .aula-btn-lime').getAttribute('href'),'/2/3/1/');
@@ -211,7 +211,9 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelector('.aula-seq-next').getAttribute('href'),'/probabilidade/');
  assert.ok(d.querySelector('.bk-promo a[href="/livros/?volume=1"]'),'Oferta do Volume 1 no assunto');
  for(const a of curriculum.assuntos)assert.ok(readFileSync(a.id+'/index.html','utf8').includes('data-assunto="'+a.id+'"'),'Página do assunto '+a.id);
- assert.equal(curriculum.assuntos.reduce((n,a)=>n+a.modulos.length,0),curriculum.blocks.length,'Todo módulo está em um assunto');
+ for(const l of curriculum.lessons)assert.equal(curriculum.assuntos.filter(a=>a.aulas?a.aulas.includes(l.id):a.modulos.includes(l.block)).length,1,'Aula '+l.id+' em exatamente um assunto');
+ ({w,d,dom}=await boot('https://matmatmat.test/composta-e-inversa/'));
+ assert.deepEqual([...d.querySelectorAll('.as-row')].map(a=>a.getAttribute('href')),['/2/5/3/','/2/5/4/'],'Assunto com parte de um módulo');
  dom.window.close();
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/?todas=1'));
  assert.equal(d.querySelectorAll('.tr-row').length,215);
@@ -262,8 +264,8 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  // Página da aula: roteiro em quatro etapas com teoria, exercícios, modo prova e PDFs.
  assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['entenda','pratique','prova','levar']);
  assert.equal(d.querySelectorAll('.aula-rail [data-rail]').length,4);
- assert.ok(d.querySelector('.aula-crumbs a[href="/funcoes/"]'),'Aula volta para o assunto');
- assert.match(d.querySelector('.aula-kicker').textContent,/Aula 10 de 21 em Funções/);
+ assert.ok(d.querySelector('.aula-crumbs a[href="/funcao-quadratica/"]'),'Aula volta para o assunto');
+ assert.match(d.querySelector('.aula-kicker').textContent,/Aula 2 de 6 em Função quadrática/);
  assert.match(d.querySelector('#aula-formula-math').textContent,/\\frac\{-b/,'Fórmula da aula no destaque');
  assert.ok(d.querySelector('.aula-trail .is-current a[aria-current="page"]'));
  assert.equal(d.querySelectorAll('.aula-pdf').length,2,'Vitrine com as duas listas');

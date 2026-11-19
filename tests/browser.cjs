@@ -23,7 +23,7 @@ async function checkWidth(page,label){
   assert.equal(await page.locator('.home-explore .home-section-intro p').count(),0);
   assert.equal(await page.locator('.home-explore .browser-toolbar').count(),0);
   assert.equal(await page.locator('.home-explore .browser-shortcuts').count(),0);
-  assert.equal(await page.locator('#explore-content .as-tile').count(),20);
+  assert.equal(await page.locator('#explore-content .as-tile').count(),25);
   assert.equal(await page.locator('.discovery-preview').count(),0);
   assert.equal(await page.locator('.home-hero-art').count(),0);
   assert.equal(await page.locator('[data-preview]').count(),0);
@@ -44,9 +44,9 @@ async function checkWidth(page,label){
   await page.screenshot({path:'screenshots/'+config.name+'-search.png',fullPage:true});
   await page.locator('#clear-search').click();
   // Caminho do aluno: assunto → aula, em dois toques.
-  await page.locator('a.as-tile[href="/funcoes/"]').click();
+  await page.locator('a.as-tile[href="/funcao-quadratica/"]').click();
   await page.locator('.as-row').first().waitFor();
-  assert.equal(await page.locator('.as-row').count(),21);
+  assert.equal(await page.locator('.as-row').count(),6);
   await checkWidth(page,config.name+' assunto');
   await page.screenshot({path:'screenshots/'+config.name+'-assunto.png',fullPage:true});
   // Caminho de quem tem o livro: volume → módulo (QR code) → aula.

@@ -64,15 +64,15 @@ function buildCatalog(){
  SUBJECT_TOPIC_ICONS={};SUBJECT_TOPICS.forEach(function(t){SUBJECT_TOPIC_ICONS[t.id]=t.icon});
 }
 /* Assuntos: a porta de entrada do aluno (Combinatória, Funções…). Cada assunto junta módulos de um volume do livro. */
-var ASSUNTOS=[],FAMILIAS=[],ASSUNTO_DO_MODULO={},FAMILIA_TOM={numeros:'lime',funcoes:'sky',algebra:'mint',geometria:'peach'};
+var ASSUNTOS=[],FAMILIAS=[],ASSUNTO_DO_MODULO={},ASSUNTO_DA_AULA={},FAMILIA_TOM={numeros:'lime',funcoes:'sky',algebra:'mint',geometria:'peach'};
 function buildAssuntos(){
- FAMILIAS=data.familias||[];ASSUNTO_DO_MODULO={};
- ASSUNTOS=(data.assuntos||[]).map(function(s){var o={id:s.id,name:s.nome,icon:s.icone,familia:s.familia,tone:FAMILIA_TOM[s.familia]||'mint',description:s.descricao,modulos:s.modulos,vol:String(s.modulos[0]).split('.')[0]};s.modulos.forEach(function(m){ASSUNTO_DO_MODULO[m]=o});return o});
+ FAMILIAS=data.familias||[];ASSUNTO_DO_MODULO={};ASSUNTO_DA_AULA={};
+ ASSUNTOS=(data.assuntos||[]).map(function(s){var o={id:s.id,name:s.nome,icon:s.icone,familia:s.familia,tone:FAMILIA_TOM[s.familia]||'mint',description:s.descricao,modulos:s.modulos,vol:String(s.modulos[0]).split('.')[0]};s.modulos.forEach(function(m){if(!ASSUNTO_DO_MODULO[m])ASSUNTO_DO_MODULO[m]=o});(s.aulas||[]).forEach(function(id){ASSUNTO_DA_AULA[id]=o});return o});
 }
 function modTitulo(t){var x=String(t).replace(/^[^:]*\s[IVX]+:\s/,'').replace(/^Geometria analítica:\s/,'');return x.charAt(0).toUpperCase()+x.slice(1)}
 function assuntoHref(s){return '/'+s.id+'/'}
-function assuntoDaAula(l){return ASSUNTO_DO_MODULO[l.block]||null}
-function assuntoAulas(s){return data.lessons.filter(function(l){return ASSUNTO_DO_MODULO[l.block]===s})}
+function assuntoDaAula(l){return ASSUNTO_DA_AULA[l.id]||ASSUNTO_DO_MODULO[l.block]||null}
+function assuntoAulas(s){return data.lessons.filter(function(l){return assuntoDaAula(l)===s})}
 function assuntoTile(s){
  var ls=assuntoAulas(s),n=ls.filter(function(l){return done.has(l.id)}).length;
  return '<a class="as-tile" href="'+assuntoHref(s)+'"><span class="as-ic tone-'+s.tone+'" aria-hidden="true">'+esc(s.icon)+'</span><span class="as-tx"><b>'+esc(s.name)+'</b><small>'+(n?n+' de '+ls.length+' aulas estudadas':plural(ls.length,'aula','aulas'))+'</small></span>'+(n?'<span class="as-bar" aria-hidden="true"><i style="width:'+Math.round(n*100/ls.length)+'%"></i></span>':'')+'</a>';

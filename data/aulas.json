@@ -156,16 +156,70 @@
     },
     {
       "id": "funcoes",
-      "nome": "Funções",
+      "nome": "Introdução às funções",
       "icone": "f(x)",
       "familia": "funcoes",
-      "descricao": "Conceito de função, função afim, quadrática, inequações e composta.",
+      "descricao": "Plano cartesiano, conceito de função, domínio, imagem e leitura de gráficos.",
       "modulos": [
-        "2.1",
-        "2.2",
-        "2.3",
-        "2.4",
+        "2.1"
+      ]
+    },
+    {
+      "id": "funcao-afim",
+      "nome": "Função afim",
+      "icone": "ax+b",
+      "familia": "funcoes",
+      "descricao": "A reta: taxa de variação, gráfico, zero, estudo do sinal e modelagem.",
+      "modulos": [
+        "2.2"
+      ]
+    },
+    {
+      "id": "funcao-quadratica",
+      "nome": "Função quadrática",
+      "icone": "x²",
+      "familia": "funcoes",
+      "descricao": "A parábola: raízes, vértice, gráfico, máximos e mínimos.",
+      "modulos": [
+        "2.3"
+      ]
+    },
+    {
+      "id": "inequacoes",
+      "nome": "Inequações",
+      "icone": "≥",
+      "familia": "funcoes",
+      "descricao": "Estudo do sinal, inequações do 2º grau, produto e quociente.",
+      "modulos": [
+        "2.4"
+      ]
+    },
+    {
+      "id": "classificacao-de-funcoes",
+      "nome": "Classificação de funções",
+      "icone": "⇄",
+      "familia": "funcoes",
+      "descricao": "Função par e ímpar; injetora, sobrejetora e bijetora.",
+      "modulos": [
         "2.5"
+      ],
+      "aulas": [
+        "2.5.1",
+        "2.5.2"
+      ]
+    },
+    {
+      "id": "composta-e-inversa",
+      "nome": "Função composta e inversa",
+      "icone": "f⁻¹",
+      "familia": "funcoes",
+      "descricao": "f(g(x)), como descobrir uma das funções e como obter a inversa.",
+      "modulos": [
+        "2.5"
+      ],
+      "aulas": [
+        "2.5.3",
+        "2.5.4"
       ]
     },
     {
