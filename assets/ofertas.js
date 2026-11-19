@@ -137,6 +137,7 @@ function cupomFrase(){var o=oferta();return o?' Com o cupom <b>'+esc(o.cupom)+'<
 function msgContexto(){
  var m=infoModulo(ctx.modulo);if(!m||m.extra)return null;
  var v=vols[m.volume];if(!v)return null;
+ if(ctx.tipo==='assunto'&&ctx.assunto)return {volume:m.volume,titulo:esc(ctx.assunto)+' está no Volume '+m.volume,texto:'No livro, cada tipo de questão vem com modelo resolvido, aquecimento e vestibular. Tudo no papel, com espaço pra resolver.',cta:'Ver o Volume '+m.volume,href:lojaHref(m.volume)};
  return {volume:m.volume,titulo:esc(m.titulo)+' está no Volume '+m.volume,
   texto:'No livro, esse módulo tem '+(m.tipos?m.tipos+' tipos de questão, cada um ':'os tipos de questão ')+'com modelo resolvido, aquecimento e vestibular. Tudo no papel.',
   cta:'Ver o Volume '+m.volume,href:lojaHref(m.volume)};
@@ -154,7 +155,7 @@ function aoPagina(d){
     cta:'Conhecer a coleção',href:lojaHref()});
   },forcar?1500:6e3);
  }
- if((ctx.tipo==='aula'||ctx.tipo==='modulo')&&ctx.modulo){
+ if((ctx.tipo==='aula'||ctx.tipo==='modulo'||ctx.tipo==='assunto')&&ctx.modulo){
   var chave=ctx.modulo;L.vistos=L.vistos||{};
   if(L.vistos[chave]&&Date.now()-L.vistos[chave]<DIA)return;
   var mod=ctx.modulo;
@@ -202,7 +203,7 @@ function ativoMs(){return (S.ativo||0)+(visivelDesde?Date.now()-visivelDesde:0)}
 setInterval(function(){
  if(!pronto||S.modal||desligado)return;
  if(ativoMs()<T.engaja||rolou<.5||Date.now()-inicioPagina<(forcar?2e3:25e3))return;
- if(!/^(aula|modulo|volume|catalogo|home)$/.test(ctx.tipo))return;
+ if(!/^(aula|modulo|assunto|volume|catalogo|home)$/.test(ctx.tipo))return;
  var m=infoModulo(ctx.modulo),noLivro=m&&!m.extra;
  modal({volume:noLivro?m.volume:null,titulo:'Estudando firme? Leva o MAT pro papel.',
   texto:'A coleção tem 4 volumes na mesma ordem do site, com teoria direta, modelo resolvido e muita questão de vestibular.',

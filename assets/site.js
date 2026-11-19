@@ -63,6 +63,33 @@ function buildCatalog(){
  SUBJECT_TOPICS=data.blocks.map(function(b){return {id:b.id,area:'v'+b.front,title:b.title,description:b.extra?b.description:(b.tipos.length+' tipos de questão no livro: '+b.tipos.join('; ')+'.'),icon:MODULE_ICONS[b.id]||'∑',numero:b.numero,parte:b.parte,tipos:b.tipos,extra:!!b.extra}});
  SUBJECT_TOPIC_ICONS={};SUBJECT_TOPICS.forEach(function(t){SUBJECT_TOPIC_ICONS[t.id]=t.icon});
 }
+/* Assuntos: a porta de entrada do aluno (Combinatória, Funções…). Cada assunto junta módulos de um volume do livro. */
+var ASSUNTOS=[],FAMILIAS=[],ASSUNTO_DO_MODULO={},FAMILIA_TOM={numeros:'lime',funcoes:'sky',algebra:'mint',geometria:'peach'};
+function buildAssuntos(){
+ FAMILIAS=data.familias||[];ASSUNTO_DO_MODULO={};
+ ASSUNTOS=(data.assuntos||[]).map(function(s){var o={id:s.id,name:s.nome,icon:s.icone,familia:s.familia,tone:FAMILIA_TOM[s.familia]||'mint',description:s.descricao,modulos:s.modulos,vol:String(s.modulos[0]).split('.')[0]};s.modulos.forEach(function(m){ASSUNTO_DO_MODULO[m]=o});return o});
+}
+function modTitulo(t){var x=String(t).replace(/^[^:]*\s[IVX]+:\s/,'').replace(/^Geometria analítica:\s/,'');return x.charAt(0).toUpperCase()+x.slice(1)}
+function assuntoHref(s){return '/'+s.id+'/'}
+function assuntoDaAula(l){return ASSUNTO_DO_MODULO[l.block]||null}
+function assuntoAulas(s){return data.lessons.filter(function(l){return ASSUNTO_DO_MODULO[l.block]===s})}
+function assuntoTile(s){
+ var ls=assuntoAulas(s),n=ls.filter(function(l){return done.has(l.id)}).length;
+ return '<a class="as-tile" href="'+assuntoHref(s)+'"><span class="as-ic tone-'+s.tone+'" aria-hidden="true">'+esc(s.icon)+'</span><span class="as-tx"><b>'+esc(s.name)+'</b><small>'+(n?n+' de '+ls.length+' aulas estudadas':plural(ls.length,'aula','aulas'))+'</small></span>'+(n?'<span class="as-bar" aria-hidden="true"><i style="width:'+Math.round(n*100/ls.length)+'%"></i></span>':'')+'</a>';
+}
+function assuntoGrid(){
+ return '<div class="as-fams">'+FAMILIAS.map(function(f){var ss=ASSUNTOS.filter(function(s){return s.familia===f.id});return '<section class="as-fam as-fam-'+f.id+'" aria-label="'+esc(f.nome)+'"><h3 class="as-fam-t">'+esc(f.nome)+'</h3><div class="as-grid">'+ss.map(assuntoTile).join('')+'</div></section>'}).join('')+'</div>';
+}
+function livroAtalho(){
+ return '<form class="as-livro" data-livro-atalho><div class="as-livro-tx"><b>Estuda pelo livro MAT MAT MAT!?</b><span>Digite o número do módulo que aparece no livro, como <i>2.3</i>, ou <a href="/explorar/">veja tudo na ordem do livro</a>.</span></div><div class="as-livro-in"><label class="sr-only" for="as-livro-n">Número do módulo</label><input id="as-livro-n" name="modulo" inputmode="decimal" autocomplete="off" placeholder="2.3" maxlength="6"><button type="submit">Abrir</button></div><p class="as-livro-msg" role="status" aria-live="polite"></p></form>';
+}
+document.addEventListener('submit',function(e){
+ var f=e.target.closest&&e.target.closest('[data-livro-atalho]');if(!f)return;e.preventDefault();
+ var v=String(f.elements.modulo.value||'').trim().replace(/\s*[,\s\/-]\s*/g,'.').replace(/^v(ol(ume)?)?\.?/i,'');
+ var m=v.match(/^(\d)\.(\d{1,2})$/),b=m&&blockBy(m[1]+'.'+Number(m[2]));
+ if(b){location.assign('/'+b.id.replace('.','/')+'/');return}
+ f.querySelector('.as-livro-msg').textContent=v?'Não achamos o módulo '+v+'. Use volume e módulo, como 2.3 (Volume 2, módulo 3).':'Digite volume e módulo, como 2.3.';
+});
 function volHref(a){return '/'+a.vol+'/'}
 function topicHref(t){return '/'+t.id.replace('.','/')+'/'}
 function moduleLabel(t){return t.extra?'Extra do site':'Módulo '+t.numero}
@@ -236,14 +263,14 @@ function bBuild(){
  data.lessons.forEach(function(l,k){
   var a=areaForLesson(l),t=topicInfo(subjectTopic(l,a)),tAl=split(BUSCA_ASSUNTO[t.id]),lAl=split(BUSCA_AULA[l.id]);
   lessons.push({kind:'aula',l:l,area:a,topic:t,order:k,
-   fields:[{w:6,t:bToks(lAl.join(' '))},{w:5,t:bToks(l.title)},{w:3,t:bToks(t.title+' '+tAl.join(' '))},{w:1.5,t:bToks(l.summary)},{w:1,t:bToks(a.name)}],
+   fields:[{w:6,t:bToks(lAl.join(' '))},{w:5,t:bToks(l.title)},{w:3,t:bToks(t.title+' '+tAl.join(' '))},{w:1.5,t:bToks(l.summary)},{w:1,t:bToks(a.name)},{w:2,t:bToks((assuntoDaAula(l)||{}).name)}],
    aliases:lAl.map(bPhrase),topicAliases:[bPhrase(t.title)].concat(tAl.map(bPhrase)),title:bPhrase(l.title),topicTitle:bPhrase(t.title)});
  });
  SUBJECT_TOPICS.forEach(function(t,k){
   var a=SUBJECT_AREAS.find(function(x){return x.id===t.area}),al=split(BUSCA_ASSUNTO[t.id]);
   topics.push({kind:'assunto',t:t,area:a,order:k,fields:[{w:5,t:bToks(t.title)},{w:4,t:bToks(al.join(' '))},{w:1.5,t:bToks(t.description)},{w:1,t:bToks(a.name)}],aliases:[bPhrase(t.title)].concat(al.map(bPhrase)),title:bPhrase(t.title)});
  });
- SUBJECT_AREAS.forEach(function(a,k){areas.push({kind:'area',a:a,order:k,fields:[{w:5,t:bToks(a.name)},{w:1.5,t:bToks(a.description)}],aliases:[bPhrase(a.name)],title:bPhrase(a.name)})});
+ ASSUNTOS.forEach(function(a,k){var al=[bPhrase(a.name),bPhrase(a.id.replace(/-/g,' '))];areas.push({kind:'area',a:a,order:k,fields:[{w:5,t:bToks(a.name)},{w:1.5,t:bToks(a.description)}],aliases:al,title:bPhrase(a.name)})});
  var vocab=new Map();
  lessons.concat(topics,areas).forEach(function(d){d.fields.forEach(function(f){f.t.forEach(function(t){vocab.set(t,(vocab.get(t)||0)+f.w)})})});
  bIndex={lessons:lessons,topics:topics,areas:areas,vocab:vocab};
@@ -331,6 +358,14 @@ function hvContinue(){
 function matEvt(n,d){try{document.dispatchEvent(new CustomEvent('mat:'+n,{detail:d||{}}))}catch(e){}}
 /* Chamada da coleção: no contexto de um módulo, mostra o que o livro tem daquele módulo. */
 function shopPromo(ctx){
+ if(ctx&&ctx.assunto){
+  var sa=ctx.assunto,ms=sa.modulos.map(topicInfo).filter(function(t){return t&&!t.extra}),nt=ms.reduce(function(n,t){return n+t.tipos.length},0);
+  if(ms.length)return '<aside class="bk-promo" data-promo="modulo"><div class="bk-promo-tag">NO LIVRO · VOLUME '+sa.vol+'</div>'
+   +'<div class="bk-promo-grid"><div><h2>'+esc(sa.name)+' em <em>'+plural(nt,'tipo','tipos')+' de questão</em></h2>'
+   +'<p>No livro, cada tipo vem com como reconhecer, o caminho em passos, um modelo resolvido e questões de vestibular. Tem espaço para resolver no próprio livro.</p>'
+   +'<div class="bk-promo-cta"><a class="bk-btn" href="/livros/?volume='+sa.vol+'" data-oferta="modulo">Quero o Volume '+sa.vol+'</a><a class="bk-link" href="/livros/">Ver a coleção</a></div></div>'
+   +'<ol class="bk-tipos">'+ms.map(function(t){return '<li>'+esc(t.title)+'</li>'}).join('')+'</ol></div></aside>';
+ }
  var t=ctx&&ctx.block?topicInfo(ctx.block):ctx&&ctx.tipos?ctx:null;
  if(t&&!t.extra){
   var a=SUBJECT_AREAS.find(function(x){return x.id===t.area});
@@ -366,7 +401,7 @@ function home(){
  '<div class="shell">'+
  '<section class="home-search-results" id="resultados" hidden aria-live="polite"><div class="home-results-head"><div><span class="home-section-label">SUA PESQUISA</span><h2 id="search-title">Resultados</h2></div><button id="return-home" class="home-back-button" type="button">← Voltar à exploração</button></div><div id="search-scope" class="home-search-scopes" role="group" aria-label="Filtrar resultados"></div><div id="search-output"></div></section>'+
  '<div id="home-discover">'+
- '<section id="explorar" class="home-explore hv-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="hv-kicker">'+SUBJECT_AREAS.length+' volumes, '+SUBJECT_TOPICS.length+' módulos e '+data.lessons.length+' aulas</span><h2 id="explore-title">Encontre seu material.</h2></div></div><div id="explore-content"></div></section>'+
+ '<section id="explorar" class="home-explore hv-explore" aria-labelledby="explore-title"><div class="home-section-intro"><div><span class="hv-kicker">'+ASSUNTOS.length+' assuntos e '+data.lessons.length+' aulas grátis</span><h2 id="explore-title">Escolha o assunto.</h2></div></div><div id="explore-content"></div></section>'+
  '</div></div>'+ '<div class="shell">'+shopPromo(false)+'</div></main>'+footer();
  matEvt('pagina',{tipo:'home'});
 
@@ -423,7 +458,7 @@ function home(){
    html=crumbs([{label:area.name,action:'area',id:area.id},{label:topic.title}])+'<div class="browse-section-head"><span class="browse-kicker">AGORA ESCOLHA A AULA</span><h3>'+esc(topic.title)+'</h3><p>'+esc(topic.description)+'</p></div>'+topicPdfPanel('assunto',topic.id,'Lista geral de '+topic.title)+list(group,'Aulas deste módulo',false)
   }else{
    state.view='areas';
-   html='<div class="area-grid">'+SUBJECT_AREAS.map(tile).join('')+'</div>';
+   html=assuntoGrid()+livroAtalho();
   }
   browser.innerHTML=html;
  }
@@ -464,7 +499,7 @@ function home(){
   if(hits[i]){input.setAttribute('aria-activedescendant',hits[i].id);hits[i].scrollIntoView({block:'nearest'})}else input.removeAttribute('aria-activedescendant');
  }
  function topicUrl(t){return topicHref(t)}
- function areaUrl(a){return volHref(a)}
+ function areaUrl(a){return a.modulos?assuntoHref(a):volHref(a)}
  function qRow(o){
   return '<a class="home-quick-row hq-row'+(o.best?' is-best':'')+'" role="option" href="'+esc(o.href)+'"'+(o.download?' download':'')+'><span class="hq-code'+(o.codeClass?' '+o.codeClass:'')+'">'+o.code+'</span><span class="hq-t"><b>'+o.title+'</b><small>'+(o.best?'<span class="hq-tag">Melhor resultado</span>':'')+o.sub+'</small></span><kbd class="hq-enter" aria-hidden="true">Enter</kbd></a>';
  }
@@ -485,9 +520,9 @@ function home(){
    rows.push(qRow({best:R.confident,href:bLessonHref(l,Q.intent),code:esc(l.id),title:bMark(l.title,Q),sub:esc(R.best.d.topic.title)+(Q.intent==='levar'&&trHasLists(l.id)?', listas em PDF':Q.intent==='pratique'&&trHasLists(l.id)?', exercícios':Q.intent==='prova'&&trHasLists(l.id)?', modo prova':'')}));
   }else if(R.best&&R.best.kind==='area'){
    var a=R.best.d.a;
-   rows.push(qRow({best:true,href:areaUrl(a),code:esc(a.icon),codeClass:'tone-'+a.tone,title:bMark(a.name,Q),sub:'Volume com '+plural(SUBJECT_TOPICS.filter(function(t){return t.area===a.id}).length,'módulo','módulos')}));
+   rows.push(qRow({best:true,href:areaUrl(a),code:esc(a.icon),codeClass:'tone-'+a.tone,title:bMark(a.name,Q),sub:'Assunto com '+plural(assuntoAulas(a).length,'aula','aulas')}));
   }else if(R.best&&R.best.kind==='areas'){
-   R.best.list.forEach(function(d){rows.push(qRow({href:areaUrl(d.a),code:esc(d.a.icon),codeClass:'tone-'+d.a.tone,title:bMark(d.a.name,Q),sub:'Volume'}))});
+   R.best.list.forEach(function(d){rows.push(qRow({href:areaUrl(d.a),code:esc(d.a.icon),codeClass:'tone-'+d.a.tone,title:bMark(d.a.name,Q),sub:'Assunto'}))});
   }
   R.lessons.filter(function(x){return !used[x.d.l.id]}).slice(0,R.best?3:5).forEach(function(x){var l=x.d.l;used[l.id]=1;rows.push(qRow({href:bLessonHref(l,Q.intent),code:esc(l.id),title:bMark(l.title,Q),sub:esc(x.d.topic.title)}))});
   var tp=R.topics[0];
@@ -522,18 +557,18 @@ function home(){
   var Q=R.Q,b=R.best;
   if(b.kind==='aula'){
    var d=b.d,l=d.l;
-   return '<article class="hs-best"><p class="hs-best-k"><span class="hs-tag">'+(R.confident?'Melhor resultado':'Resultado mais próximo')+'</span><span>em <a href="'+topicUrl(d.topic)+'">'+esc(d.topic.title)+'</a>, <a href="'+areaUrl(d.area)+'">'+esc(d.area.name)+'</a></span></p>'
+   return '<article class="hs-best"><p class="hs-best-k"><span class="hs-tag">'+(R.confident?'Melhor resultado':'Resultado mais próximo')+'</span><span>em <a href="'+assuntoHref(assuntoDaAula(l))+'">'+esc(assuntoDaAula(l).name)+'</a></span></p>'
     +'<div class="hs-best-grid"><div class="hs-best-main"><p class="tr-lesson-kicker"><span class="aula-id">'+l.id+'</span>'+(done.has(l.id)?'<span class="tr-tag tr-tag-done">'+TR_SVG.check+'Estudada</span>':'')+'</p><h3><a href="'+bLessonHref(l,Q.intent)+'">'+bMark(l.title,Q)+'</a></h3><p class="tr-lesson-sum">'+esc(l.summary||'')+'</p>'
     +steps(l,Q.intent)+files(l.id)+'</div>'
     +'<a class="tr-formula hs-formula" href="'+href(l)+'" aria-label="Abrir a aula '+l.id+'"><div class="tr-formula-math" data-formula="'+l.id+'" data-mini></div></a></div>'
     +'<a class="aula-btn aula-btn-lime hs-open" href="'+bLessonHref(l,Q.intent)+'">Abrir a aula '+l.id+'</a></article>';
   }
   if(b.kind==='area'){
-   var a=b.d.a,ts=SUBJECT_TOPICS.filter(function(t){return t.area===a.id});
-   return '<article class="hs-best hs-best-area"><p class="hs-best-k"><span class="hs-tag">Melhor resultado</span><span>Volume</span></p><div class="hs-area-top"><span class="hv-icon-sm tone-'+a.tone+'">'+esc(a.icon)+'</span><div><h3><a href="'+areaUrl(a)+'">'+esc(a.name)+'</a></h3><p class="tr-lesson-sum">'+esc(a.description)+'</p></div></div>'
-    +'<ul class="hv-topics">'+ts.map(function(t){return '<li><a href="'+topicUrl(t)+'"><span class="hv-ti" aria-hidden="true">'+esc(t.icon)+'</span>'+esc(t.title)+'</a></li>'}).join('')+'</ul><a class="aula-btn aula-btn-lime hs-open" href="'+areaUrl(a)+'">Abrir o volume</a></article>';
+   var a=b.d.a,als=assuntoAulas(a);
+   return '<article class="hs-best hs-best-area"><p class="hs-best-k"><span class="hs-tag">Melhor resultado</span><span>Assunto</span></p><div class="hs-area-top"><span class="hv-icon-sm tone-'+a.tone+'">'+esc(a.icon)+'</span><div><h3><a href="'+areaUrl(a)+'">'+esc(a.name)+'</a></h3><p class="tr-lesson-sum">'+esc(a.description)+'</p></div></div>'
+    +'<ol class="hs-aulas">'+als.slice(0,6).map(function(l){return '<li><a href="'+href(l)+'">'+esc(l.title)+'</a></li>'}).join('')+(als.length>6?'<li class="hs-mais"><a href="'+areaUrl(a)+'">e mais '+plural(als.length-6,'aula','aulas')+'</a></li>':'')+'</ol><a class="aula-btn aula-btn-lime hs-open" href="'+areaUrl(a)+'">Ver as '+plural(als.length,'aula','aulas')+' de '+esc(a.name)+'</a></article>';
   }
-  return '<section class="hs-group"><h3>Volumes</h3><div class="hs-areas">'+b.list.map(function(d){return '<a class="hs-area" href="'+areaUrl(d.a)+'"><span class="hv-icon-sm tone-'+d.a.tone+'">'+esc(d.a.icon)+'</span><b>'+esc(d.a.name)+'</b></a>'}).join('')+'</div></section>';
+  return '<section class="hs-group"><h3>Assuntos</h3><div class="hs-areas">'+b.list.map(function(d){return '<a class="hs-area" href="'+areaUrl(d.a)+'"><span class="hv-icon-sm tone-'+d.a.tone+'">'+esc(d.a.icon)+'</span><b>'+esc(d.a.name)+'</b></a>'}).join('')+'</div></section>';
  }
  function listsView(){
   var ls=data.lessons.filter(function(l){return trHasLists(l.id)}),html='<p class="hs-lead">'+plural(ls.length,'aula já tem','aulas já têm')+' listas de fixação e de vestibular em PDF, com gabarito resolvido.</p>';
@@ -674,10 +709,11 @@ function trPdfPanel(kind,id,label){
  return '<section class="tr-pdfs"><h2>'+esc(label)+'</h2><div class="tr-pdfs-list">'+files.map(function(f){var u=String(f.url||'');return /^\/(?!\/)/.test(u)||/^https:\/\//.test(u)?'<a class="aula-file" href="'+esc(u)+'" target="_blank" rel="noopener">'+AULA_SVG.down+'<span>'+esc(f.titulo||'Material em PDF')+'</span></a>':''}).join('')+'</div></section>';
 }
 
-var AREA_ANTIGA={fundamentos:'v1',combinatoria:'v1',estatistica:'v1',funcoes:'v2',trigonometria:'v2',algebra:'v3','geometria-analitica':'v3','geometria-plana':'v4','geometria-espacial':'v4'};
+var AREA_ANTIGA={fundamentos:'matematica-basica',combinatoria:'combinatoria',estatistica:'estatistica',funcoes:'funcoes',trigonometria:'trigonometria',algebra:'matrizes','geometria-analitica':'geometria-analitica','geometria-plana':'geometria-plana','geometria-espacial':'geometria-espacial'};
 function explorePage(){
  var q=new URLSearchParams(location.search),b=document.body.dataset;
- var aid=b.volume?'v'+b.volume:(AREA_ANTIGA[q.get('area')]||q.get('area'));
+ if(!b.volume&&q.get('area')){var antigo=ASSUNTOS.find(function(x){return x.id===(AREA_ANTIGA[q.get('area')]||q.get('area'))});if(antigo){location.replace(assuntoHref(antigo));return}}
+ var aid=b.volume?'v'+b.volume:q.get('area');
  var area=SUBJECT_AREAS.find(function(a){return a.id===aid});
  var topic=area&&SUBJECT_TOPICS.find(function(t){return t.id===(b.modulo||q.get('assunto'))&&t.area===area.id});
  var app=document.getElementById('app'),html;
@@ -693,20 +729,51 @@ function explorePage(){
  if(location.hash){var t=document.getElementById(location.hash.slice(1));if(t)setTimeout(function(){t.scrollIntoView({block:'start'})},80)}
 }
 
-/* /explorar/ — escolha da área */
-function trAreasPage(){
- title('Volumes e módulos');
- var total=data.lessons.length,d=trDone(data.lessons);
- var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Volumes'}])
+/* /combinatoria/, /funcoes/… — todas as aulas do assunto numa lista só */
+function assuntoPage(){
+ var s=ASSUNTOS.find(function(x){return x.id===document.body.dataset.assunto}),app=document.getElementById('app');
+ if(!s){app.innerHTML=header()+'<main class="shell">'+empty('Assunto não encontrado','Volte ao início e escolha outro assunto.')+'</main>'+footer();return}
+ title(s.name);
+ var ls=assuntoAulas(s),d=trDone(ls),next=trNext(ls),k=0,mods=s.modulos.map(topicInfo);
+ var lists=ls.filter(function(l){return trHasLists(l.id)}).length;
+ var cta=next?'<a class="aula-btn aula-btn-lime" href="'+href(next)+'">'+(d?'Continuar: '+esc(short(next.title,40)):'Começar pela primeira aula')+'</a>':'<a class="aula-btn aula-btn-lime" href="'+href(ls[0])+'">Revisar desde o começo</a>';
+ var hero='<section class="aula-hero tr-hero as-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Assuntos',url:'/#explorar'},{name:s.name}])
   +'<div class="aula-hero-grid"><div>'
-  +'<p class="aula-kicker">'+SUBJECT_AREAS.length+' volumes, '+SUBJECT_TOPICS.length+' módulos e '+total+' aulas</p>'
-  +'<h1 id="tr-titulo">Escolha um volume</h1>'
-  +'<p class="aula-summary">São os mesmos 4 volumes e módulos da coleção impressa MAT MAT MAT!. Em cada módulo, as aulas têm listas de fixação e de vestibular gratuitas, com gabarito resolvido.</p>'
+  +'<p class="aula-kicker"><span class="aula-id">'+esc(s.icon)+'</span>'+plural(ls.length,'aula','aulas')+(lists?(lists===ls.length?', todas com listas em PDF':', '+lists+' com listas em PDF'):'')+'</p>'
+  +'<h1 id="tr-titulo">'+esc(s.name)+'</h1><p class="aula-summary">'+esc(s.description)+'</p>'
+  +'<div class="aula-hero-cta">'+cta+'</div>'
+  +(d?'<div class="tr-hero-progress">'+trMeter(d,ls.length,d+' de '+ls.length+' aulas estudadas')+'<span>'+(d===ls.length?'<b>Assunto completo.</b> Todas as aulas estão marcadas como estudadas.':'<b>'+d+' de '+ls.length+'</b> aulas estudadas.')+'</span></div>':'')
+  +'</div>'+trSticker(s.icon,s.tone,mods.map(function(t){return {icon:t.icon,tone:'paper'}}),s.name)+'</div></div></section>';
+ function row(l){
+  k++;var p=trProgress(l),tem=trHasLists(l.id);
+  var st=p.done?'<span class="as-st as-st-ok">'+TR_SVG.check+'Estudada</span>':p.best!=null?'<span class="as-st">Vestibular: '+p.best+'/20</span>':p.started?'<span class="as-st">Em andamento</span>':'';
+  return '<li><a class="as-row'+(p.done?' is-done':'')+'" href="'+href(l)+'"><span class="as-n" aria-hidden="true">'+k+'</span><span class="as-row-t"><b>'+esc(l.title)+'</b><small>'+esc(l.summary||'')+'</small></span><span class="as-row-s">'+st+(tem&&!p.done?'<span class="as-tag" title="Listas de fixação e de vestibular">Listas</span>':'')+'</span></a></li>';
+ }
+ var body='<section class="shell tr-body as-body" id="aulas"><header class="tr-head"><h2>As aulas, em ordem</h2><p>Comece pela primeira ou vá direto à que você precisa. Cada aula tem um resumo curto, a lista de fixação e a lista de vestibular.</p></header>'
+  +mods.map(function(t){var tl=ls.filter(function(l){return l.block===t.id});return '<section class="as-mod">'+(mods.length>1&&!(tl.length===1&&tl[0].title===t.title)?'<h3 class="as-mod-t">'+esc(modTitulo(t.title))+'</h3>':'')+'<ol class="as-list">'+tl.map(row).join('')+'</ol></section>'}).join('');
+ var i=ASSUNTOS.indexOf(s),ant=ASSUNTOS[i-1],prox=ASSUNTOS[i+1];
+ body+='<nav class="aula-seq tr-seq" aria-label="Outros assuntos">'
+  +(ant?'<a class="aula-seq-prev" href="'+assuntoHref(ant)+'"><small>Assunto anterior</small><b>'+esc(ant.name)+'</b></a>':'<a class="aula-seq-prev" href="/#explorar"><small>Todos os assuntos</small><b>Voltar ao início</b></a>')
+  +(prox?'<a class="aula-seq-next" href="'+assuntoHref(prox)+'"><small>Próximo assunto</small><b>'+esc(prox.name)+'</b></a>':'')
+  +'</nav></section>';
+ app.innerHTML=header()+'<main class="aula trilha" id="conteudo">'+hero+body+'<div class="shell">'+shopPromo({assunto:s})+'</div></main>'+footer();
+ matEvt('pagina',{tipo:'assunto',assunto:s.name,volume:s.vol,modulo:s.modulos[0]});
+}
+
+/* /explorar/ — todos os assuntos e, para quem tem o livro, os volumes */
+function trAreasPage(){
+ title('Assuntos');
+ var total=data.lessons.length,d=trDone(data.lessons);
+ var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:'Assuntos'}])
+  +'<div class="aula-hero-grid"><div>'
+  +'<p class="aula-kicker">'+ASSUNTOS.length+' assuntos e '+total+' aulas</p>'
+  +'<h1 id="tr-titulo">Escolha o assunto</h1>'
+  +'<p class="aula-summary">Toque no assunto e escolha a aula. Cada aula tem um resumo curto, a lista de fixação e a lista de vestibular, com gabarito resolvido.</p>'
   +'<div class="aula-hero-cta"><a class="aula-btn aula-btn-lime" href="/teste-seu-nivel/">Descobrir por onde começar</a><a class="aula-btn aula-btn-ghost" href="/explorar/?todas=1">Ver todas as aulas</a></div>'
   +(d?'<div class="tr-hero-progress">'+trMeter(d,total,d+' de '+total+' aulas estudadas')+'<span>Você já estudou <b>'+plural(d,'aula','aulas')+'</b> de '+total+'.</span></div>':'')
   +(saved.size?'<a class="tr-hero-link" href="/explorar/?favoritos=1">'+TR_SVG.heart+'Suas favoritas ('+saved.size+')</a>':'')
-  +'</div>'+trSticker('∑','mint',SUBJECT_AREAS.map(function(a){return {icon:a.icon,tone:a.tone}}),'Toda a matemática do ensino médio')+'</div></div></section>';
- var tiles='<section class="shell tr-body"><header class="tr-head"><h2>Os 4 volumes</h2><p>Toque em um volume para ver os módulos, na ordem do livro.</p></header><div class="area-grid tr-area-grid">'+SUBJECT_AREAS.map(function(a){
+  +'</div>'+trSticker('∑','mint',ASSUNTOS.filter(function(x,k){return k%2===0}).map(function(a){return {icon:a.icon,tone:a.tone}}),'Toda a matemática do ensino médio')+'</div></div></section>';
+ var tiles='<section class="shell tr-body">'+assuntoGrid()+'</section><section class="shell tr-body as-livro-sec" id="livro"><header class="tr-head"><h2>Na ordem do livro</h2><p>Para quem estuda com a coleção MAT MAT MAT!: os mesmos 4 volumes e módulos do livro impresso.</p></header>'+livroAtalho()+'<div class="area-grid tr-area-grid">'+SUBJECT_AREAS.map(function(a){
   var ls=trAreaLessons(a),n=trDone(ls),ts=trTopics(a).length;
   return '<a class="area-tile" href="'+trAreaUrl(a)+'"><span class="area-tile-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="area-tile-name">'+esc(a.name)+'</span><span class="area-tile-subtitle">'+esc(a.description)+'</span>'
    +(n?trMeter(n,ls.length,n+' de '+ls.length+' aulas estudadas'):'')
@@ -756,7 +823,7 @@ function trTopicPage(area,topic){
  var anyLists=ls.some(function(l){return trHasLists(l.id)});
  var cta=next?'<a class="aula-btn aula-btn-lime" href="'+href(next)+'">'+(d?'Continuar na ':'Começar pela ')+next.id+'</a>':(ls[0]?'<a class="aula-btn aula-btn-lime" href="'+href(ls[0])+'#prova">Revisar com o modo prova</a>':'');
  var trail='<ol class="aula-trail" aria-label="Módulos de '+esc(area.name)+'">'+topics.map(function(t){var cur=t.id===topic.id,tl=trTopicLessons(area,t),all=tl.length&&trDone(tl)===tl.length;return '<li class="'+(cur?'is-current ':'')+(all?'is-done':'')+'"><a href="'+trTopicUrl(area,t)+'"'+(cur?' aria-current="page"':'')+'><span class="aula-trail-dot" aria-hidden="true"></span><span class="aula-trail-id">'+esc(t.icon)+'</span><span class="aula-trail-name">'+esc(t.title)+'</span></a></li>'}).join('')+'</ol>';
- var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs([{name:area.name,url:trAreaUrl(area)},{name:topic.title}])
+ var hero='<section class="aula-hero tr-hero" aria-labelledby="tr-titulo"><div class="shell">'+trCrumbs(ASSUNTO_DO_MODULO[topic.id]?[{name:ASSUNTO_DO_MODULO[topic.id].name,url:assuntoHref(ASSUNTO_DO_MODULO[topic.id])},{name:topic.title}]:[{name:area.name,url:trAreaUrl(area)},{name:topic.title}])
   +'<div class="aula-hero-grid"><div>'
   +'<p class="aula-kicker"><span class="aula-id">'+esc(topic.icon)+'</span>Volume '+area.vol+' · '+moduleLabel(topic)+(topic.extra?'':' de '+topics.filter(function(t){return !t.extra}).length)+'</p>'
   +'<h1 id="tr-titulo">'+esc(topic.title)+'</h1>'
@@ -922,7 +989,7 @@ async function lessonPage(){
  var id=document.body.dataset.lesson;var l=data.lessons.find(function(x){return x.id===id});
  if(!l){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Aula não encontrada','Volte ao catálogo e tente novamente.')+'</main>'+footer();return}
  var subjectArea=areaForLesson(l),topicId=subjectTopic(l,subjectArea),topic=topicInfo(topicId);
- var near=data.lessons.filter(function(x){return subjectTopic(x,areaForLesson(x))===topicId});
+ var assunto=assuntoDaAula(l),near=assunto?assuntoAulas(assunto):data.lessons.filter(function(x){return x.block===topicId}),grupo=assunto?assunto.name:topic.title;
  var nearIndex=near.findIndex(function(x){return x.id===id});
  var gi=data.lessons.findIndex(function(x){return x.id===id}),prev=data.lessons[gi-1],next=data.lessons[gi+1];
  title(l.title);
@@ -944,9 +1011,9 @@ async function lessonPage(){
  var allFiles=lessonPdfFiles();
  var otherFiles=allFiles.filter(function(f){return listaUrls.indexOf(f.url)<0});
  var steps=[{id:'entenda',nome:'Resumo'}];
- if(fixQs.length)steps.push({id:'pratique',nome:'Pratique'});
- if(vestQs.length)steps.push({id:'prova',nome:'Modo prova'});
- steps.push({id:'levar',nome:'Leve pra casa'});
+ if(fixQs.length)steps.push({id:'pratique',nome:'Lista de fixação'});
+ if(vestQs.length)steps.push({id:'prova',nome:'Lista de vestibular'});
+ steps.push({id:'levar',nome:'PDFs para imprimir'});
  function stepNum(sid){return steps.findIndex(function(s){return s.id===sid})+1}
 
  function lessonPdfFiles(){
@@ -965,18 +1032,18 @@ async function lessonPage(){
   +'<button type="button" class="lesson-tool lesson-tool-fav '+(saved.has(id)?'is-active':'')+'" id="btn-fav" aria-pressed="'+saved.has(id)+'" aria-label="'+(saved.has(id)?'Remover aula dos favoritos':'Favoritar esta aula')+'">'+AULA_SVG.fav+'<span class="lesson-tool-label">'+(saved.has(id)?'Favorita':'Favoritar')+'</span></button>'
   +'<button type="button" class="lesson-tool lesson-tool-share" id="btn-share" aria-label="Compartilhe essa aula" aria-controls="lesson-share-options" aria-expanded="false">'+AULA_SVG.share+'<span class="lesson-tool-label">Compartilhar</span></button></div>'
   +'<div class="lesson-share-options" id="lesson-share-options" hidden><div class="lesson-share-options-head"><strong>Compartilhe com alguém</strong><button type="button" id="share-close" aria-label="Fechar opções de compartilhamento">×</button></div><p>Envie esta aula para sua turma ou para um amigo.</p><div class="lesson-share-links"><a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer">Enviar pelo WhatsApp</a><button id="share-copy" type="button">Copiar mensagem e link</button></div><p class="lesson-share-status" id="share-status" aria-live="polite"></p><textarea id="share-manual" class="share-manual" readonly hidden aria-label="Mensagem para copiar manualmente"></textarea></div>';
- var trail=near.length>1?'<ol class="aula-trail" aria-label="Aulas de '+esc(topic.title)+'">'+near.map(function(x){var cur=x.id===id;return '<li class="'+(cur?'is-current ':'')+(done.has(x.id)?'is-done':'')+'"><a href="'+href(x)+'"'+(cur?' aria-current="page"':'')+'><span class="aula-trail-dot" aria-hidden="true"></span><span class="aula-trail-id">'+x.id+'</span><span class="aula-trail-name">'+esc(x.title)+'</span></a></li>'}).join('')+'</ol>':'';
+ var trail=near.length>1?'<ol class="aula-trail" aria-label="Aulas de '+esc(grupo)+'">'+near.map(function(x,k){var cur=x.id===id;return '<li class="'+(cur?'is-current ':'')+(done.has(x.id)?'is-done':'')+'"><a href="'+href(x)+'"'+(cur?' aria-current="page"':'')+'><span class="aula-trail-dot" aria-hidden="true"></span><span class="aula-trail-id">'+(k+1)+'</span><span class="aula-trail-name">'+esc(x.title)+'</span></a></li>'}).join('')+'</ol>':'';
  var hasPdfs=listaUrls.length||allFiles.length;
  var hero='<section class="aula-hero" aria-labelledby="aula-titulo"><div class="shell aula-hero-in">'
-  +'<nav class="aula-crumbs" aria-label="Caminho"><a href="/">Início</a><span aria-hidden="true">/</span><a href="'+volHref(subjectArea)+'">Volume '+subjectArea.vol+' · '+esc(subjectArea.name)+'</a><span aria-hidden="true">/</span><a href="'+topicHref(topic)+'">'+esc(topic.title)+'</a></nav>'
+  +'<nav class="aula-crumbs" aria-label="Caminho"><a href="/">Início</a><span aria-hidden="true">/</span>'+(assunto?'<a href="'+assuntoHref(assunto)+'">'+esc(assunto.name)+'</a>':'<a href="'+topicHref(topic)+'">'+esc(topic.title)+'</a>')+'</nav>'
   +'<div class="aula-hero-grid"><div class="aula-hero-copy">'
-  +'<p class="aula-kicker"><span class="aula-id">'+id+'</span>'+(near.length>1?'Aula '+(nearIndex+1)+' de '+near.length+' em '+esc(topic.title):esc(topic.title))+'</p>'
+  +'<p class="aula-kicker"><span class="aula-id">'+id+'</span>'+(near.length>1?'Aula '+(nearIndex+1)+' de '+near.length+' em '+esc(grupo):esc(grupo))+'</p>'
   +'<h1 id="aula-titulo">'+esc(l.title)+'</h1>'
   +'<p class="aula-summary">'+esc(l.summary||'Teoria, exemplos e treino desta aula.')+'</p>'
   +'<div class="aula-hero-cta"><a class="aula-btn aula-btn-lime" href="#'+(fixQs.length?'pratique':'entenda')+'" data-goto="'+(fixQs.length?'pratique':'entenda')+'">'+(fixQs.length?'Começar a lista':'Ver o resumo')+'</a>'+(hasPdfs?'<a class="aula-btn aula-btn-ghost" href="#levar" data-goto="levar">'+AULA_SVG.down+'Baixar as listas</a>':'')+'</div>'
   +tools+'</div>'+heroArt+'</div>'+trail+'</div></section>';
 
- var rail='<nav class="aula-rail" aria-label="Roteiro da aula"><p class="aula-rail-title">Seu roteiro</p><ol>'+steps.map(function(s,k){return '<li><a href="#'+s.id+'" data-goto="'+s.id+'" data-rail="'+s.id+'"><span class="aula-rail-n">'+(k+1)+'</span><span class="aula-rail-txt"><b>'+s.nome+'</b><small id="rail-'+s.id+'"></small></span></a></li>'}).join('')+'</ol><div class="aula-rail-meter" aria-hidden="true"><span id="rail-meter"></span></div><p class="aula-rail-sum" id="rail-sum"></p></nav>';
+ var rail='<nav class="aula-rail" aria-label="Roteiro da aula"><p class="aula-rail-title">Nesta aula</p><ol>'+steps.map(function(s,k){return '<li><a href="#'+s.id+'" data-goto="'+s.id+'" data-rail="'+s.id+'"><span class="aula-rail-n">'+(k+1)+'</span><span class="aula-rail-txt"><b>'+s.nome+'</b><small id="rail-'+s.id+'"></small></span></a></li>'}).join('')+'</ol><div class="aula-rail-meter" aria-hidden="true"><span id="rail-meter"></span></div><p class="aula-rail-sum" id="rail-sum"></p></nav>';
 
  function head(sid,titulo,desc){return '<header class="aula-step-head"><span class="aula-step-n" aria-hidden="true">'+stepNum(sid)+'</span><div><h2 id="h-'+sid+'">'+titulo+'</h2><p>'+desc+'</p></div></header>'}
 
@@ -1003,11 +1070,11 @@ async function lessonPage(){
  var secEntenda='<section class="aula-step" id="entenda" data-step="entenda" aria-labelledby="h-entenda">'+head('entenda','Resumo','As fórmulas e as armadilhas da aula, direto ao ponto. A teoria completa, com os tipos de questão, está no livro.')+teoriaHtml()+checkHtml()
   +'<div class="aula-step-end"><button type="button" class="aula-btn aula-btn-ink" id="entenda-ok" aria-pressed="'+(!!st.entenda)+'">'+(st.entenda?'Resumo lido':okLabel)+'</button></div></section>';
 
- var secPratique=fixQs.length?'<section class="aula-step" id="pratique" data-step="pratique" aria-labelledby="h-pratique">'+head('pratique','Pratique',(lista&&lista.fixacao?plural(fixQs.length,'exercício','exercícios')+' em '+plural(fixSecoes.length,'nível','níveis')+'. Resolva no caderno e depois confira a resolução.':'Exercícios curtos para fixar a ideia.'))
+ var secPratique=fixQs.length?'<section class="aula-step" id="pratique" data-step="pratique" aria-labelledby="h-pratique">'+head('pratique','Lista de fixação',(lista&&lista.fixacao?plural(fixQs.length,'exercício','exercícios')+' em '+plural(fixSecoes.length,'nível','níveis')+'. Resolva no caderno e depois confira a resolução.':'Exercícios curtos para fixar a ideia.'))
   +'<div class="aula-prat-top"><div class="aula-levels" role="tablist" aria-label="Níveis">'+fixSecoes.map(function(s,k){return '<button type="button" role="tab" class="aula-level lvl-'+nivelClasse(s.nome)+'" data-level="'+k+'" aria-selected="false"><b>'+esc(s.nome)+'</b><small data-level-count="'+k+'"></small></button>'}).join('')+'</div>'
   +'<div class="aula-prat-meter"><span class="aula-meter" aria-hidden="true"><span id="prat-meter"></span></span><span id="prat-sum"></span></div></div><div class="aula-ex-list" id="ex-list" role="tabpanel"></div></section>':'';
 
- var secProva=vestQs.length?'<section class="aula-step" id="prova" data-step="prova" aria-labelledby="h-prova">'+head('prova','Modo prova',plural(vestQs.length,'questão','questões')+' no estilo vestibular, corrigidas na hora.')+'<div class="aula-prova" id="prova-root" tabindex="-1"></div></section>':'';
+ var secProva=vestQs.length?'<section class="aula-step" id="prova" data-step="prova" aria-labelledby="h-prova">'+head('prova','Lista de vestibular',plural(vestQs.length,'questão','questões')+' de múltipla escolha, das diretas às com mais leitura. Responda e veja a correção na hora.')+'<div class="aula-prova" id="prova-root" tabindex="-1"></div></section>':'';
 
  function pdfCard(tipo){
   var p=listaPdfs[tipo];if(!p)return '';
@@ -1019,7 +1086,7 @@ async function lessonPage(){
  var pdfGrid=listaUrls.length?'<div class="aula-pdfs">'+pdfCard('fixacao')+pdfCard('vestibular')+'</div>':'';
  var otherHtml=otherFiles.length?'<div class="aula-files"><h3>'+(listaUrls.length?'Outros materiais':'Materiais para baixar')+'</h3>'+otherFiles.map(function(f){return '<a class="aula-file" href="'+esc(f.url)+'" target="_blank" rel="noopener" data-pdf="outro">'+AULA_SVG.down+'<span>'+esc(f.titulo||'Material')+'</span></a>'}).join('')+'</div>':'';
  var videosHtml='';var videosHtmlAntigo='<div class="aula-videos"><h3>Para ver em vídeo</h3>'+videos.map(function(v){var u=safeUrl(v.url);return u?'<a class="aula-video" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>'+esc(v.titulo)+'</b><small>'+esc(v.canal||'')+'</small></span></a>':''}).join('')+'<a class="aula-video aula-video-search" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query='+encodeURIComponent(l.title+' matemática videoaula')+'"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>Procurar videoaulas sobre '+esc(l.title)+'</b><small>Busca no YouTube</small></span></a></div>';
- var secLevar='<section class="aula-step" id="levar" data-step="levar" aria-labelledby="h-levar">'+head('levar','Leve pra casa',listaUrls.length?'As listas em PDF para imprimir, com gabarito resolvido no final.':'Materiais para estudar fora da tela.')
+ var secLevar='<section class="aula-step" id="levar" data-step="levar" aria-labelledby="h-levar">'+head('levar','PDFs para imprimir',listaUrls.length?'As listas em PDF para imprimir, com gabarito resolvido no final.':'Materiais para estudar fora da tela.')
   +(pdfGrid||otherHtml?pdfGrid+otherHtml:empty('Listas a caminho','As listas em PDF desta aula ainda vão ser publicadas.')+exatooCard('treino',l))+videosHtml+'</section>';
 
  var seq='<nav class="aula-seq" aria-label="Outras aulas">'+(prev?'<a class="aula-seq-prev" href="'+href(prev)+'"><small>Aula anterior</small><b>'+esc(prev.title)+'</b></a>':'<span></span>')+(next?'<a class="aula-seq-next" href="'+href(next)+'"><small>Próxima aula, '+next.id+'</small><b>'+esc(next.title)+'</b></a>':'')+'</nav>';
@@ -1216,6 +1283,7 @@ async function lessonPage(){
 
  /* ---------- Ações da aula ---------- */
  document.getElementById('btn-fav').addEventListener('click',function(){saveAction(l,this)});
+ (function(){var cur=document.querySelector('.aula-hero .aula-trail .is-current'),ol=cur&&cur.closest('ol');if(ol&&ol.scrollWidth>ol.clientWidth+2)(function(){var r=cur.getBoundingClientRect(),o=ol.getBoundingClientRect();ol.scrollLeft+=r.left-o.left-(o.width-r.width)/2})()})();
  document.getElementById('btn-done').addEventListener('click',function(){finishAction(l,this);var cur=document.querySelector('.aula-trail .is-current');if(cur)cur.classList.toggle('is-done',done.has(id))});
  var shareBtn=document.getElementById('btn-share'),shareOptions=document.getElementById('lesson-share-options'),shareStatus=document.getElementById('share-status'),shareManual=document.getElementById('share-manual');
  var shareUrl=new URL(href(l),location.origin).href,shareText='Olha essa aula de matemática no MAT MAT MAT!: '+l.title,shareMessage=shareText+'\n'+shareUrl;
@@ -1246,6 +1314,6 @@ async function lessonPage(){
 }
 
 function safeUrl(url){try{var x=new URL(url);return (x.protocol==='https:'||x.protocol==='http:')?x.toString():null}catch(e){return null}}
-async function init(){try{var r=await fetch('/data/aulas.json');if(!r.ok)throw Error('Catálogo não encontrado');data=await r.json();buildCatalog();try{var m=await fetch('/data/materiais.json');if(m.ok)materialIndex=await m.json()}catch(e){materialIndex=[]}if(document.body.dataset.view==='loja'){document.getElementById('app').innerHTML=header()+'<main class="bookshop" id="shop-root"></main>'+footer();if(window.MatShop)await window.MatShop.init(document.getElementById('shop-root'));else throw Error('Módulo da loja indisponível')}else if(document.body.dataset.lesson)await lessonPage();else if(document.body.dataset.view==='explorar')explorePage();else if(document.body.dataset.view==='diagnostico')await diagnosisPage();else home()}catch(e){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Não foi possível carregar o catálogo','Recarregue a página para tentar novamente.')+'</main>'+footer();console.error(e)}}
+async function init(){try{var r=await fetch('/data/aulas.json');if(!r.ok)throw Error('Catálogo não encontrado');data=await r.json();buildCatalog();buildAssuntos();try{var m=await fetch('/data/materiais.json');if(m.ok)materialIndex=await m.json()}catch(e){materialIndex=[]}if(document.body.dataset.view==='loja'){document.getElementById('app').innerHTML=header()+'<main class="bookshop" id="shop-root"></main>'+footer();if(window.MatShop)await window.MatShop.init(document.getElementById('shop-root'));else throw Error('Módulo da loja indisponível')}else if(document.body.dataset.lesson)await lessonPage();else if(document.body.dataset.view==='explorar')explorePage();else if(document.body.dataset.view==='assunto')assuntoPage();else if(document.body.dataset.view==='diagnostico')await diagnosisPage();else home()}catch(e){document.getElementById('app').innerHTML=header()+'<main class="shell">'+empty('Não foi possível carregar o catálogo','Recarregue a página para tentar novamente.')+'</main>'+footer();console.error(e)}}
 init();
 })();

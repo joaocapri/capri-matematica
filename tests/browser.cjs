@@ -16,14 +16,14 @@ async function checkWidth(page,label){
   await page.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
   page.on('pageerror',err=>console.log('Page error:',err.message));
   await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
-  await page.locator('.area-tile').first().waitFor();
+  await page.locator('.as-tile').first().waitFor();
   assert.match(await page.locator('#hero-title').textContent(),/O que você quer estudar hoje/);
   assert.equal(await page.locator('input[type=search]').count(),1);
   assert.equal(await page.locator('.home-explore-decoration').count(),0);
   assert.equal(await page.locator('.home-explore .home-section-intro p').count(),0);
   assert.equal(await page.locator('.home-explore .browser-toolbar').count(),0);
   assert.equal(await page.locator('.home-explore .browser-shortcuts').count(),0);
-  assert.equal(await page.locator('#explore-content .area-tile').count(),4);
+  assert.equal(await page.locator('#explore-content .as-tile').count(),20);
   assert.equal(await page.locator('.discovery-preview').count(),0);
   assert.equal(await page.locator('.home-hero-art').count(),0);
   assert.equal(await page.locator('[data-preview]').count(),0);
@@ -43,7 +43,14 @@ async function checkWidth(page,label){
   await checkWidth(page,config.name+' pesquisa');
   await page.screenshot({path:'screenshots/'+config.name+'-search.png',fullPage:true});
   await page.locator('#clear-search').click();
-  await page.locator('a.area-tile[href="/2/"]').click();
+  // Caminho do aluno: assunto → aula, em dois toques.
+  await page.locator('a.as-tile[href="/funcoes/"]').click();
+  await page.locator('.as-row').first().waitFor();
+  assert.equal(await page.locator('.as-row').count(),21);
+  await checkWidth(page,config.name+' assunto');
+  await page.screenshot({path:'screenshots/'+config.name+'-assunto.png',fullPage:true});
+  // Caminho de quem tem o livro: volume → módulo (QR code) → aula.
+  await page.goto(BASE+'/2/',{waitUntil:'domcontentloaded'});
   await page.locator('.tr-topic h3 a[href="/2/3/"]').waitFor();
   assert.equal(await page.locator('.tr-route > .tr-stop').count(),20);
   assert.equal(await page.locator('input[type=search]').count(),0,'explorador sem busca duplicada');
@@ -141,13 +148,14 @@ async function checkWidth(page,label){
   await page.screenshot({path:'screenshots/'+config.name+'-loja.png',fullPage:true});
   // Busca: Enter abre a melhor aula direto.
   await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
-  await page.locator('.area-tile').first().waitFor();
+  await page.locator('.as-tile').first().waitFor();
   await page.locator('#hero-search').fill('função modular');
   await page.locator('#quick-hits .hq-row.is-best').waitFor();
-  assert.match(await page.locator('#quick-hits .hq-row.is-best').getAttribute('href'),/\/2\/6\/2\/$/);
+  assert.match(await page.locator('#quick-hits .hq-row.is-best').getAttribute('href'),/\/funcao-modular\/$/);
   await checkWidth(page,config.name+' sugestões da busca');
   await page.locator('#hero-search').press('Enter');
-  await page.waitForURL('**/2/6/2/');
+  await page.waitForURL('**/funcao-modular/');
+  await page.locator('.as-row').first().waitFor();
   await page.goto(BASE+'/turmas/',{waitUntil:'domcontentloaded'});
   await page.locator('.turmas-directory-card').first().waitFor();
   assert.equal(await page.locator('.turmas-directory-card').count(),12);

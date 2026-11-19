@@ -30,6 +30,283 @@
       "paginas": 239
     }
   ],
+  "familias": [
+    {
+      "id": "numeros",
+      "nome": "Números e contagem"
+    },
+    {
+      "id": "funcoes",
+      "nome": "Funções e trigonometria"
+    },
+    {
+      "id": "algebra",
+      "nome": "Álgebra"
+    },
+    {
+      "id": "geometria",
+      "nome": "Geometria"
+    }
+  ],
+  "assuntos": [
+    {
+      "id": "matematica-basica",
+      "nome": "Matemática básica",
+      "icone": "123",
+      "familia": "numeros",
+      "descricao": "Operações, frações, potências, raízes e fatoração.",
+      "modulos": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4"
+      ]
+    },
+    {
+      "id": "equacoes",
+      "nome": "Equações",
+      "icone": "x=?",
+      "familia": "numeros",
+      "descricao": "Equações do 1º e do 2º grau, inequações e problemas.",
+      "modulos": [
+        "1.5",
+        "1.6",
+        "1.7"
+      ]
+    },
+    {
+      "id": "proporcao-e-porcentagem",
+      "nome": "Proporção e porcentagem",
+      "icone": "%",
+      "familia": "numeros",
+      "descricao": "Razão, proporção, regra de três, porcentagem e unidades.",
+      "modulos": [
+        "1.8",
+        "1.9",
+        "1.10",
+        "1.11"
+      ]
+    },
+    {
+      "id": "matematica-financeira",
+      "nome": "Matemática financeira",
+      "icone": "R$",
+      "familia": "numeros",
+      "descricao": "Juros simples e compostos, descontos e parcelas.",
+      "modulos": [
+        "1.x1"
+      ]
+    },
+    {
+      "id": "conjuntos",
+      "nome": "Conjuntos",
+      "icone": "⊂",
+      "familia": "numeros",
+      "descricao": "Operações com conjuntos e conjuntos numéricos.",
+      "modulos": [
+        "1.12",
+        "1.13"
+      ]
+    },
+    {
+      "id": "progressoes",
+      "nome": "PA e PG",
+      "icone": "aₙ",
+      "familia": "numeros",
+      "descricao": "Progressões aritméticas e geométricas.",
+      "modulos": [
+        "1.14",
+        "1.15"
+      ]
+    },
+    {
+      "id": "combinatoria",
+      "nome": "Análise combinatória",
+      "icone": "n!",
+      "familia": "numeros",
+      "descricao": "Princípio fundamental, permutações, arranjos, combinações e binômio de Newton.",
+      "modulos": [
+        "1.16",
+        "1.17",
+        "1.18",
+        "1.19",
+        "1.20"
+      ]
+    },
+    {
+      "id": "probabilidade",
+      "nome": "Probabilidade",
+      "icone": "P(A)",
+      "familia": "numeros",
+      "descricao": "Probabilidade simples, condicional e de eventos combinados.",
+      "modulos": [
+        "1.21"
+      ]
+    },
+    {
+      "id": "estatistica",
+      "nome": "Estatística",
+      "icone": "x̄",
+      "familia": "numeros",
+      "descricao": "Média, mediana, moda, dispersão, gráficos e tabelas.",
+      "modulos": [
+        "1.22",
+        "1.23"
+      ]
+    },
+    {
+      "id": "funcoes",
+      "nome": "Funções",
+      "icone": "f(x)",
+      "familia": "funcoes",
+      "descricao": "Conceito de função, função afim, quadrática, inequações e composta.",
+      "modulos": [
+        "2.1",
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.5"
+      ]
+    },
+    {
+      "id": "funcao-modular",
+      "nome": "Função modular",
+      "icone": "|x|",
+      "familia": "funcoes",
+      "descricao": "Módulo, equações, inequações e gráficos com módulo.",
+      "modulos": [
+        "2.6"
+      ]
+    },
+    {
+      "id": "exponencial-e-logaritmos",
+      "nome": "Exponencial e logaritmos",
+      "icone": "log",
+      "familia": "funcoes",
+      "descricao": "Função exponencial, logaritmos, propriedades e equações.",
+      "modulos": [
+        "2.7",
+        "2.8",
+        "2.9",
+        "2.10",
+        "2.11"
+      ]
+    },
+    {
+      "id": "trigonometria",
+      "nome": "Trigonometria",
+      "icone": "sen",
+      "familia": "funcoes",
+      "descricao": "Triângulo retângulo, leis dos senos e cossenos, ciclo, equações e funções.",
+      "modulos": [
+        "2.12",
+        "2.13",
+        "2.14",
+        "2.15",
+        "2.16",
+        "2.17",
+        "2.18",
+        "2.19",
+        "2.20"
+      ]
+    },
+    {
+      "id": "matrizes",
+      "nome": "Matrizes e determinantes",
+      "icone": "[ ]",
+      "familia": "algebra",
+      "descricao": "Operações com matrizes, determinantes e matriz inversa.",
+      "modulos": [
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "3.5"
+      ]
+    },
+    {
+      "id": "sistemas-lineares",
+      "nome": "Sistemas lineares",
+      "icone": "{ }",
+      "familia": "algebra",
+      "descricao": "Resolução, escalonamento e discussão de sistemas.",
+      "modulos": [
+        "3.6"
+      ]
+    },
+    {
+      "id": "geometria-analitica",
+      "nome": "Geometria analítica",
+      "icone": "(x,y)",
+      "familia": "algebra",
+      "descricao": "Ponto, reta, distâncias, circunferência e cônicas.",
+      "modulos": [
+        "3.7",
+        "3.8",
+        "3.9",
+        "3.10",
+        "3.x1",
+        "3.x2"
+      ]
+    },
+    {
+      "id": "numeros-complexos",
+      "nome": "Números complexos",
+      "icone": "i",
+      "familia": "algebra",
+      "descricao": "Forma algébrica, potências de i e forma trigonométrica.",
+      "modulos": [
+        "3.11",
+        "3.12"
+      ]
+    },
+    {
+      "id": "polinomios",
+      "nome": "Polinômios",
+      "icone": "P(x)",
+      "familia": "algebra",
+      "descricao": "Operações, divisão, raízes e equações algébricas.",
+      "modulos": [
+        "3.13",
+        "3.14"
+      ]
+    },
+    {
+      "id": "geometria-plana",
+      "nome": "Geometria plana",
+      "icone": "△",
+      "familia": "geometria",
+      "descricao": "Ângulos, triângulos, semelhança, polígonos, áreas e circunferência.",
+      "modulos": [
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4",
+        "4.5",
+        "4.6",
+        "4.7",
+        "4.8"
+      ]
+    },
+    {
+      "id": "geometria-espacial",
+      "nome": "Geometria espacial",
+      "icone": "⬡",
+      "familia": "geometria",
+      "descricao": "Posições no espaço, poliedros, prismas, pirâmides, cilindros, cones e esfera.",
+      "modulos": [
+        "4.9",
+        "4.10",
+        "4.11",
+        "4.12",
+        "4.13",
+        "4.14",
+        "4.15",
+        "4.16",
+        "4.17"
+      ]
+    }
+  ],
   "blocks": [
     {
       "id": "1.1",
