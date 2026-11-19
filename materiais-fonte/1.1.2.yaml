@@ -2,7 +2,7 @@ padrao: 3
 fixacao:
   intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
   secoes:
-    - nome: Fácil
+    - nome: Nível 1
       questoes:
         - enunciado: 'Calcule $18-6:2+4\cdot3$ completando os passos. Primeiro multiplicações e divisões, depois somas e subtrações.'
           itens:
@@ -56,7 +56,7 @@ fixacao:
           resolucao: |
             Gasto: $3\cdot12+2\cdot4=36+8=44$. Troco: $50-(3\cdot12+2\cdot4)=50-44=6$.
           resposta: '$50-(3\cdot12+2\cdot4)=6$ reais'
-    - nome: Médio
+    - nome: Nível 2
       questoes:
         - enunciado: 'Complete a tabela com o valor de cada expressão.'
           tabela:
@@ -111,7 +111,7 @@ fixacao:
           resolucao: |
             $2\cdot(-1)=-2$; $8-(-2)=10$; $-3+10=7$; $2\cdot7=14$.
           resposta: '$14$'
-    - nome: Difícil
+    - nome: Nível 3
       questoes:
         - enunciado: 'Coloque um único par de parênteses na expressão $2+3\cdot4-1\cdot5$ de modo a obter o maior resultado possível. Qual é esse resultado?'
           espaco: 24

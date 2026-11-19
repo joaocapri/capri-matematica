@@ -2,7 +2,7 @@ padrao: 3
 fixacao:
   intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
   secoes:
-  - nome: Fácil
+  - nome: Nível 1
     questoes:
     - enunciado: 'Complete a tabela com os coeficientes de cada equação do 2º grau, escrita na forma $ax^2+bx+c=0$. Atenção às que estão “escondidas”.'
       tabela:
@@ -97,7 +97,7 @@ fixacao:
         (a) $x^2=49$, $x=\pm7$. (b) $5x(x-4)=0$, $x=0$ ou $x=4$.
         (c) $x^2=9$, $x=\pm3$. (d) $x(x+6)=0$, $x=0$ ou $x=-6$.
       resposta: '(a) $\pm7$ (b) $0$ e $4$ (c) $\pm3$ (d) $0$ e $-6$'
-  - nome: Médio
+  - nome: Nível 2
     questoes:
     - enunciado: 'Se $x_1$ e $x_2$ são as raízes, então $S=x_1+x_2=-\tfrac ba$ e $P=x_1\cdot x_2=\tfrac ca$. Complete a tabela e descubra as raízes de cabeça: dois números com essa soma e esse produto.'
       tabela:
@@ -166,7 +166,7 @@ fixacao:
       resolucao: |
         Precisamos de $\Delta>0$: $16-4m>0\iff m<4$.
       resposta: '$m<4$'
-  - nome: Difícil
+  - nome: Nível 3
     questoes:
     - enunciado: 'O número $2$ é raiz de $x^2-7x+c=0$. Determine $c$ e a outra raiz.'
       resolucao: |

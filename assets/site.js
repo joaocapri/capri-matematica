@@ -1074,7 +1074,7 @@ async function lessonPage(){
   +'<div class="aula-step-end"><button type="button" class="aula-btn aula-btn-ink" id="entenda-ok" aria-pressed="'+(!!st.entenda)+'">'+(st.entenda?'Resumo lido':okLabel)+'</button></div></section>';
 
  var secPratique=fixQs.length?'<section class="aula-step" id="pratique" data-step="pratique" aria-labelledby="h-pratique">'+head('pratique','Lista de fixação',(lista&&lista.fixacao?plural(fixQs.length,'exercício','exercícios')+' em '+plural(fixSecoes.length,'nível','níveis')+'. Resolva no caderno e depois confira a resolução.':'Exercícios curtos para fixar a ideia.'))
-  +'<div class="aula-prat-top"><div class="aula-levels" role="tablist" aria-label="Níveis">'+fixSecoes.map(function(s,k){return '<button type="button" role="tab" class="aula-level lvl-'+nivelClasse(s.nome)+'" data-level="'+k+'" aria-selected="false"><b>'+esc(s.nome)+'</b><small data-level-count="'+k+'"></small></button>'}).join('')+'</div>'
+  +'<div class="aula-prat-top"><div class="aula-levels" role="tablist" aria-label="Níveis">'+fixSecoes.map(function(s,k){return '<button type="button" role="tab" class="aula-level lvl-'+nivelClasse(s.nome)+'" data-level="'+k+'" aria-selected="false"><b>'+esc(nivelNome(s.nome))+'</b><small data-level-count="'+k+'"></small></button>'}).join('')+'</div>'
   +'<div class="aula-prat-meter"><span class="aula-meter" aria-hidden="true"><span id="prat-meter"></span></span><span id="prat-sum"></span></div></div><div class="aula-ex-list" id="ex-list" role="tabpanel"></div></section>':'';
 
  var secProva=vestQs.length?'<section class="aula-step" id="prova" data-step="prova" aria-labelledby="h-prova">'+head('prova','Lista de vestibular',plural(vestQs.length,'questão','questões')+' de múltipla escolha, das diretas às com mais leitura. Responda e veja a correção na hora.')+'<div class="aula-prova" id="prova-root" tabindex="-1"></div></section>':'';
@@ -1085,7 +1085,7 @@ async function lessonPage(){
  function pdfCard(tipo){
   var p=listaPdfs[tipo];if(!p)return '';
   var nome={fixacao:'Lista de fixação',vestibular:'Lista de vestibular',aprofundamento:'Lista de aprofundamento'}[tipo];
-  var desc={fixacao:'Do fácil ao difícil, com espaço para resolver',vestibular:'Objetivas e somatórias no estilo das provas',aprofundamento:'Questões mais puxadas, para ir além'}[tipo];
+  var desc={fixacao:'Do nível 1 ao nível 3, com espaço para resolver',vestibular:'Objetivas e somatórias no estilo das provas',aprofundamento:'Questões mais puxadas, para ir além'}[tipo];
   var nq={fixacao:fixQs.length,vestibular:vestQs.length,aprofundamento:aprQs.length}[tipo];
   return '<a class="aula-pdf" href="'+esc(p.url)+'" target="_blank" rel="noopener" data-pdf="'+tipo+'"><span class="aula-pdf-capa"><img src="'+esc(p.capa)+'" alt="" loading="lazy" width="520" height="736"></span><span class="aula-pdf-info"><b>'+nome+'</b><span>'+desc+'. '+plural(nq,'questão','questões')+' com gabarito resolvido'+(p.paginas?', '+plural(p.paginas,'página','páginas'):'')+'.</span><span class="aula-btn aula-btn-ink aula-pdf-btn">'+AULA_SVG.down+'Baixar PDF</span></span></a>';
  }
@@ -1172,8 +1172,10 @@ async function lessonPage(){
   if(q.figura)h+='<figure class="aula-fig"><img src="'+esc(q.figura)+'" alt="Figura da questão '+q.n+'" loading="lazy">'+(q.legenda?'<figcaption>'+esc(q.legenda)+'</figcaption>':'')+'</figure>';
   return h;
  }
- function nivelClasse(n){var k=norm(n||'');return /facil|aquec/.test(k)?'facil':/dific|desaf/.test(k)?'dificil':'medio'}
- function selo(n){return n?'<span class="selo selo-'+nivelClasse(n)+'">'+esc(/aquec/i.test(n)?'Fácil':/trein/i.test(n)?'Médio':/desaf/i.test(n)?'Difícil':n)+'</span>':''}
+ function nivelClasse(n){var k=norm(n||'');return /facil|aquec|nivel 1/.test(k)?'facil':/dific|desaf|nivel 3/.test(k)?'dificil':'medio'}
+ /* níveis: Nível 1, 2 e 3 (listas antigas usavam Fácil/Médio/Difícil ou Aquecimento/Treino/Desafio) */
+ function nivelNome(n){var k=norm(n||'');return /facil|aquec|nivel 1/.test(k)?'Nível 1':/medio|trein|nivel 2/.test(k)?'Nível 2':/dific|desaf|nivel 3/.test(k)?'Nível 3':n}
+ function selo(n){return n?'<span class="selo selo-'+nivelClasse(n)+'">'+esc(nivelNome(n))+'</span>':''}
  function exCard(q){
   var s=st.fix[q.chave||q.n]||'';
   return '<article class="aula-ex'+(s?' is-'+s:'')+'" data-ex="'+(q.chave||q.n)+'"><div class="aula-ex-q"><span class="aula-ex-n">'+q.n+'</span><div class="aula-ex-body">'+selo(q.nivel)+(q.tabelaDepois?'':apoioHtml(q))+'<p>'+esc(q.enunciado)+'</p>'+(q.tabelaDepois?apoioHtml(q):'')+(q.itens&&q.itens.length?'<ol class="aula-itens'+(q.marcador?' aula-itens-livres':'')+'">'+q.itens.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ol>':'')+'</div><span class="aula-ex-badge" aria-hidden="true"></span></div>'
@@ -1185,7 +1187,7 @@ async function lessonPage(){
   document.querySelectorAll('[data-level]').forEach(function(b){var on=Number(b.dataset.level)===level;b.setAttribute('aria-selected',String(on));b.classList.toggle('is-on',on)});
   var list=document.getElementById('ex-list');
   list.innerHTML=fixSecoes[level].questoes.map(function(q){return exCard(Object.assign({nivel:fixSecoes[level].nome},q))}).join('')
-   +(level<fixSecoes.length-1?'<button type="button" class="aula-btn aula-btn-soft aula-next-level" data-next-level>Ir para o nível '+esc(fixSecoes[level+1].nome)+'</button>':(vestQs.length?'<a class="aula-btn aula-btn-soft aula-next-level" href="#prova" data-goto="prova">Encarar o modo prova</a>':''));
+   +(level<fixSecoes.length-1?'<button type="button" class="aula-btn aula-btn-soft aula-next-level" data-next-level>Ir para o '+esc(nivelNome(fixSecoes[level+1].nome).toLowerCase())+'</button>':(vestQs.length?'<a class="aula-btn aula-btn-soft aula-next-level" href="#prova" data-goto="prova">Encarar o modo prova</a>':''));
   bindCards(list);
   var nl=list.querySelector('[data-next-level]');if(nl)nl.addEventListener('click',function(){level++;drawLevel();goTo('pratique')});
   bindGoto(list);

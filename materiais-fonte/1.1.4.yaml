@@ -2,7 +2,7 @@ padrao: 3
 fixacao:
   intro: Resolva no espaço de cada questão, na ordem. Simplifique sempre os resultados. O gabarito resolvido está no final.
   secoes:
-    - nome: Fácil
+    - nome: Nível 1
       questoes:
         - enunciado: 'Com denominadores iguais, some ou subtraia os numeradores e mantenha o denominador. Complete.'
           itens:
@@ -63,7 +63,7 @@ fixacao:
           resolucao: |
             $\tfrac13+\tfrac25=\tfrac5{15}+\tfrac6{15}=\tfrac{11}{15}$. Falta $1-\tfrac{11}{15}=\tfrac4{15}$.
           resposta: 'Leu $\tfrac{11}{15}$; faltam $\tfrac4{15}$'
-    - nome: Médio
+    - nome: Nível 2
       questoes:
         - enunciado: 'Calcule $\tfrac23+\tfrac54-\tfrac16$ completando os passos.'
           itens:
@@ -113,7 +113,7 @@ fixacao:
             Restante: $1-\tfrac25=\tfrac35$. Jardim: $\tfrac13$ de $\tfrac35=\tfrac15$.
             Livre: $1-\tfrac25-\tfrac15=\tfrac25$.
           resposta: 'Jardim $\tfrac15$; livre $\tfrac25$'
-    - nome: Difícil
+    - nome: Nível 3
       questoes:
         - enunciado: 'Calcule $\left[\tfrac12+\tfrac13\cdot\left(\tfrac34-\tfrac12\right)\right]:\tfrac58$.'
           resolucao: |

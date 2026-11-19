@@ -12,8 +12,9 @@ O modelo de referência é a aula **2.3.2** (`materiais-fonte/2.3.2.yaml`, `padr
 
 ## Visual dos PDFs (padrão 3)
 - Fundo branco, leve para imprimir em P&B; cor só em detalhes. A logo **MAT com JOÃO!** (`assets/logo-mat-pdf.png`, versão leve de `assets/logo-mat.png`) vai no topo da capa e, pequena, no cabeçalho das outras páginas. Para trocar a logo, troque esse arquivo.
-- Capa: assunto e “aula N de M” (da página do assunto no site), título, etiqueta da lista (fixação em lima, vestibular em azul, aprofundamento em laranja), “lista N de 3”, a referência ao livro e as linhas de nome, turma e data.
-- Rodapé: Prof. João Capri · @joa.capri · matmatmat.com e “página N de M”.
+- Capa enxuta: logo, assunto e “aula N de M” (da página do assunto no site), título e a etiqueta da lista (fixação em lima, vestibular em azul, aprofundamento em laranja). Sem nome/turma/data, sem contagem de questões e sem texto de introdução.
+- Faixa do livro logo abaixo, discreta: “No livro: Volume V, módulo M · aula V.M.a — Adquira já em matcomjoao.com/livros” (com link). Módulos extras, que não estão no livro, ficam sem faixa.
+- Rodapé: Prof. João Capri · matcomjoao.com (sem Instagram) e “página N de M”. O site do rodapé é a constante `SITE` em `scripts/gerar_listas.py`.
 - Fixação e aprofundamento: duas colunas, cada questão com uma caixa pontilhada para resolver (o gerador calcula a altura; `espaco: 30` força em mm, `espaco: 0` tira).
 
 ## Quando o pedido for "faça o próximo lote"
@@ -27,12 +28,12 @@ O modelo de referência é a aula **2.3.2** (`materiais-fonte/2.3.2.yaml`, `padr
 8. Envie os PDFs do lote ao professor e informe o progresso (`--proximo` mostra "Aulas com listas no padrão atual: N/215").
 
 ## Padrão das questões (padrão 3)
-- **Selos de nível**: **Fácil**, **Médio** e **Difícil**. Aparecem no PDF, na página da aula e no modo prova.
+- **Níveis**: **Nível 1**, **Nível 2** e **Nível 3** (decisão do professor; não use Fácil/Médio/Difícil). Aparecem no PDF, na página da aula e no modo prova.
 - Fique no conteúdo da aula e no nível dela. Não use assuntos de aulas posteriores (ex.: potências antes da aula de potenciação), exceto na lista de aprofundamento, com dica.
 - **Toda resposta é conferida por cálculo independente** (sympy, `fractions`, `decimal` ou script) antes de gerar.
 
 ### Lista 1: fixação (20 questões, `fixacao.secoes`)
-- Seções `Fácil` (cerca de 7), `Médio` (cerca de 8) e `Difícil` (cerca de 5), conduzindo o aluno: do reconhecimento ao uso, do guiado ao autônomo.
+- Seções `nome: Nível 1` (cerca de 7), `Nível 2` (cerca de 8) e `Nível 3` (cerca de 5), conduzindo o aluno: do reconhecimento ao uso, do guiado ao autônomo.
 - **Formatos variados** (o validador exige pelo menos 3 formatos e 5 questões fora do formato aberto):
   - **aberta**: `enunciado` (+ `itens`). Itens lado a lado, cada um com sua caixa: `colunas: 2` e `espaco_item: 14`.
   - **completar**: `{{resposta}}` em qualquer texto vira um traço do tamanho da resposta. Dentro de fração, com espaço: `\dfrac{ {{3}} }{ {{8}} }`.

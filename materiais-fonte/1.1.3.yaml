@@ -2,7 +2,7 @@ padrao: 3
 fixacao:
   intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
   secoes:
-    - nome: Fácil
+    - nome: Nível 1
       questoes:
         - enunciado: 'Que fração de cada figura está pintada?'
           figura:
@@ -69,7 +69,7 @@ fixacao:
           resolucao: |
             $\tfrac{18}{30}$; dividindo por $6$: $\tfrac35$.
           resposta: '$\tfrac35$'
-    - nome: Médio
+    - nome: Nível 2
       questoes:
         - enunciado: 'Complete a tabela.'
           tabela:
@@ -131,7 +131,7 @@ fixacao:
           resolucao: |
             Os denominadores são múltiplos de $4$: $24$ e $28$. Frações: $\tfrac{18}{24}$ e $\tfrac{21}{28}$.
           resposta: '$\tfrac{18}{24}$ e $\tfrac{21}{28}$'
-    - nome: Difícil
+    - nome: Nível 3
       questoes:
         - enunciado: 'Encontre o número que falta.'
           itens: ['$\dfrac{x}{15}=\dfrac{12}{20}$', '$\dfrac{4}{x}=\dfrac{10}{25}$']

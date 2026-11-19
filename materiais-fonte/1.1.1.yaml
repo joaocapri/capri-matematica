@@ -2,7 +2,7 @@ padrao: 3
 fixacao:
   intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
   secoes:
-    - nome: Fácil
+    - nome: Nível 1
       questoes:
         - enunciado: 'Complete a tabela. Lembre: sinais iguais no produto dão resultado positivo; sinais diferentes, negativo.'
           tabela:
@@ -60,7 +60,7 @@ fixacao:
           resolucao: |
             $-4+11=7$ ao meio-dia; $7-9=-2$ à noite.
           resposta: '$-2\ ^\circ\text{C}$'
-    - nome: Médio
+    - nome: Nível 2
       questoes:
         - enunciado: 'Calcule.'
           itens: ['$(-3)\cdot(+4)\cdot(-5)$', '$(-2)\cdot(-3)\cdot(-4)$', '$(-72):(-8)$', '$56:(-7)$']
@@ -121,7 +121,7 @@ fixacao:
             O produto negativo diz que os sinais são diferentes; a soma negativa, que o negativo tem o maior valor absoluto.
             Pares com produto $40$: $1\cdot40$, $2\cdot20$, $4\cdot10$, $5\cdot8$. A diferença $3$ aparece em $5$ e $8$: os números são $5$ e $-8$.
           resposta: '$5$ e $-8$'
-    - nome: Difícil
+    - nome: Nível 3
       questoes:
         - enunciado: 'Num quiz de 20 questões, cada acerto vale $+5$ pontos, cada erro vale $-3$ e questão em branco vale $0$.'
           itens: ['Bia acertou $12$ e errou $6$. Quantos pontos fez?', 'Caio respondeu todas e fez $36$ pontos. Quantas acertou?']

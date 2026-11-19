@@ -2,7 +2,7 @@ padrao: 3
 fixacao:
   intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
   secoes:
-    - nome: Fácil
+    - nome: Nível 1
       questoes:
         - enunciado: 'Complete a tabela com a fração ou o número decimal correspondente.'
           tabela:
@@ -62,7 +62,7 @@ fixacao:
           resolucao: |
             Gasto: $2\cdot8{,}90+3{,}45=17{,}80+3{,}45=21{,}25$. Troco: $25-21{,}25=3{,}75$.
           resposta: 'R\$\,3,75'
-    - nome: Médio
+    - nome: Nível 2
       questoes:
         - enunciado: 'Escreva cada decimal como fração irredutível.'
           itens: ['$0{,}25$', '$0{,}125$', '$2{,}4$', '$0{,}035$']
@@ -108,7 +108,7 @@ fixacao:
           resolucao: |
             $2{,}8:0{,}35=280:35=8$. São $8$ pedaços, sem sobra.
           resposta: '$8$ pedaços, sem sobra'
-    - nome: Difícil
+    - nome: Nível 3
       questoes:
         - enunciado: 'Escreva cada dízima como fração irredutível. Dica: chame a dízima de $x$ e calcule $10x-x$ ou $100x-x$.'
           itens: ['$0{,}444\dots$', '$0{,}121212\dots$']

@@ -2,7 +2,7 @@ padrao: 3
 fixacao:
   intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
   secoes:
-    - nome: Fácil
+    - nome: Nível 1
       questoes:
         - enunciado: 'Use os critérios de divisibilidade e complete a tabela com “sim” ou “não”.'
           tabela:
@@ -61,7 +61,7 @@ fixacao:
           resolucao: |
             São os divisores de $42$ diferentes de $1$ e $42$: $2,3,6,7,14,21$.
           resposta: 'Grupos de $2$, $3$, $6$, $7$, $14$ ou $21$ alunos'
-    - nome: Médio
+    - nome: Nível 2
       questoes:
         - enunciado: 'No número $47\square$, o quadradinho é um algarismo.'
           itens: ['Quais algarismos tornam o número divisível por $3$?', 'E divisível por $6$?']
@@ -118,7 +118,7 @@ fixacao:
           resolucao: |
             Teste os primos: $221$ não é divisível por $2,3,5,7,11$. $221=13\cdot17$.
           resposta: '$13$ e $17$'
-    - nome: Difícil
+    - nome: Nível 3
       questoes:
         - enunciado: 'Qual é o menor número de quatro algarismos divisível por $9$? E o maior?'
           resolucao: |

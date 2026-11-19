@@ -84,9 +84,10 @@ PREAMBULO = r"""
 \renewcommand{\headrulewidth}{0pt}
 \fancyhead[L]{\raisebox{-1.6mm}{\marca{6.2mm}}\hspace{2.5mm}{\footnotesize\color{mudo}<<CABECALHO>>}}
 \fancyhead[R]{\footnotesize\bfseries\color{roxo}<<TIPOCURTO>>}
-\fancyfoot[L]{\footnotesize\color{mudo}Prof. João Capri \,·\, \textcolor{roxo}{@joa.capri} \,·\, matmatmat.com}
+\fancyfoot[L]{\footnotesize\color{mudo}Prof. João Capri \,·\, \textcolor{roxo}{<<SITE>>}}
 \fancyfoot[R]{\footnotesize\color{mudo}página \textbf{\textcolor{ink}{\thepage}} de \pageref*{LastPage}}
 \fancypagestyle{capa}{\fancyhead{}}
+\usepackage[hidelinks]{hyperref}
 
 % ---------- peças das questões ----------
 \newlength{\badgew}\setlength{\badgew}{9mm}
@@ -159,19 +160,13 @@ CAPA = r"""
 \hfill\begin{minipage}[t]{\linewidth-48mm}\vspace{0pt}\raggedleft
   {\small\bfseries\color{roxo}<<KICKER>>}\par\vspace{2mm}
   {\displayfont\fontsize{22}{25}\selectfont <<TITULO>>\par}\vspace{3mm}
-  \tikz[baseline=(t.base)]\node[fill=<<TIPOCOR>>,text=ink,rounded corners=5pt,inner xsep=6pt,inner ysep=2.6pt,font=\footnotesize\bfseries](t){<<TIPO>>};%
-  \hspace{2mm}{\footnotesize\color{mudo}<<SUBTITULO>>}
+  \tikz[baseline=(t.base)]\node[fill=<<TIPOCOR>>,text=ink,rounded corners=5pt,inner xsep=7pt,inner ysep=3pt,font=\small\bfseries](t){<<TIPO>>};
 \end{minipage}
 \par\vspace{5mm}
-\noindent\begin{tikzpicture}\fill[ink] (0,0) rectangle (\linewidth,.9pt);\fill[lima] (0,-.9pt) rectangle (34mm,-3.6pt);
-  \node[anchor=north east,font=\scriptsize,text=mudo,inner sep=0] at (\linewidth,-2.4mm) {<<LIVRO>>};\end{tikzpicture}
-\par\vspace{5mm}
-{\small\bfseries\color{mudo}Nome}\enspace\textcolor{roxo!35}{\rule[-.6ex]{.52\linewidth}{.5pt}}\hfill
-{\small\bfseries\color{mudo}Turma}\enspace\textcolor{roxo!35}{\rule[-.6ex]{.12\linewidth}{.5pt}}\hfill
-{\small\bfseries\color{mudo}Data}\enspace\textcolor{roxo!35}{\rule[-.6ex]{.13\linewidth}{.5pt}}
-\par\vspace{4.5mm}
-{\small\color{mudo}<<INTRO>>}
-\par\vspace{5mm}
+\noindent\begin{tikzpicture}\fill[ink] (0,0) rectangle (\linewidth,.9pt);\fill[lima] (0,-.9pt) rectangle (34mm,-3.6pt);\end{tikzpicture}
+\par\vspace{3mm}
+<<LIVRO>>
+\vspace{5mm}
 """
 
 def letras_visiveis(s):
@@ -189,8 +184,8 @@ def bloco(texto):
 
 
 PADRAO_ATUAL = 3
-NIVEIS = {"facil": (1, "Fácil"), "medio": (2, "Médio"), "dificil": (3, "Difícil")}
-LEGADO = {"aquecimento": "facil", "treino": "medio", "desafio": "dificil"}
+NIVEIS = {"facil": (1, "Nível 1"), "medio": (2, "Nível 2"), "dificil": (3, "Nível 3")}  # nomes exibidos; as chaves seguem as antigas
+LEGADO = {"aquecimento": "facil", "treino": "medio", "desafio": "dificil", "nivel 1": "facil", "nivel 2": "medio", "nivel 3": "dificil"}
 
 
 def chave_nivel(nome):
@@ -360,6 +355,17 @@ def assunto_da_aula(aula):
     return None, None, None
 
 
+SITE = "matcomjoao.com"
+
+
+def faixa_livro(vol, mod, aula_id):
+    """Faixa discreta da capa: onde o conteúdo está no livro e o convite para adquirir."""
+    return (r"\noindent\hfill\href{https://%s/livros/?volume=%s}{\begin{tikzpicture}[baseline]"
+            r"\node[fill=lima!45,draw=ink,line width=.6pt,rounded corners=4pt,inner xsep=8pt,inner ysep=4.5pt,font=\footnotesize,text=ink]"
+            r"{\textbf{No livro:} Volume %s, módulo %s \,·\, aula %s\hspace{4mm}\textbf{\color{roxo}Adquira já em %s/livros}};"
+            r"\end{tikzpicture}}\par" % (SITE, vol, vol, mod, aula_id, SITE))
+
+
 NOMES = {"fixacao": "Lista de fixação", "vestibular": "Lista de vestibular", "aprofundamento": "Lista de aprofundamento"}
 CORES = {"fixacao": "lima", "vestibular": "ceu", "aprofundamento": "ndificil"}
 
@@ -371,7 +377,7 @@ def documento(aula, tipo, dados, n_listas=2):
     total = len(qs_all)
     titulo = re.sub(r"\s+-\s+", " — ", aula["title"])
     assunto, k, n_aulas = assunto_da_aula(aula)
-    tex = PREAMBULO.replace("<<LOGO>>", str(ROOT / "assets" / "logo-mat-pdf.png"))  # versão leve da logo do site
+    tex = PREAMBULO.replace("<<SITE>>", SITE).replace("<<LOGO>>", str(ROOT / "assets" / "logo-mat-pdf.png"))  # versão leve da logo do site
     tex = tex.replace("<<CABECALHO>>", (assunto + r" \,·\, " if assunto else "") + titulo)
     tex = tex.replace("<<TIPOCURTO>>", nome_tipo)
     corpo = CAPA
@@ -379,13 +385,7 @@ def documento(aula, tipo, dados, n_listas=2):
     corpo = corpo.replace("<<KICKER>>", f"{assunto} \\,·\\, aula {k} de {n_aulas}" if assunto else "")
     corpo = corpo.replace("<<TITULO>>", titulo)
     corpo = corpo.replace("<<TIPO>>", nome_tipo).replace("<<TIPOCOR>>", CORES[tipo])
-    extra = " \\,·\\, com espaço para resolver" if fixa else ""
-    ordem = (f"lista {list(NOMES).index(tipo) + 1} de {n_listas} \\,·\\, ") if n_listas == 3 else ""
-    corpo = corpo.replace("<<SUBTITULO>>", f"{ordem}{total} questões{extra} \\,·\\, gabarito resolvido no final")
-    livro = (f"Extra do site \\,·\\, aula {aula['id']}" if "x" in mod else
-             f"No livro MAT MAT MAT!: Volume {vol}, módulo {mod} \\,·\\, aula {aula['id']}")
-    corpo = corpo.replace("<<LIVRO>>", livro)
-    corpo = corpo.replace("<<INTRO>>", dados.get("intro", ""))
+    corpo = corpo.replace("<<LIVRO>>", "" if "x" in mod else faixa_livro(vol, mod, aula["id"]))
 
     questoes, n = [], 0
     if tipo == "aprofundamento":
@@ -461,7 +461,7 @@ def validar(codigo, fonte):
             erros.append(f"fixação {i}: associar precisa de pelo menos 3 itens em cada coluna")
     for sec in fix.get("secoes", []):
         if chave_nivel(sec.get("nome", "")) not in NIVEIS:
-            erros.append(f"fixação: nível desconhecido '{sec.get('nome')}' (use Fácil, Médio ou Difícil)")
+            erros.append(f"fixação: nível desconhecido '{sec.get('nome')}' (use Nível 1, Nível 2 ou Nível 3)")
     qv = fonte.get("vestibular", {}).get("questoes", [])
     if len(qv) != 20:
         erros.append(f"vestibular tem {len(qv)} questões (esperado 20)")

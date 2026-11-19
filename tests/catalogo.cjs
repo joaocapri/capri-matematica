@@ -273,10 +273,11 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.ok(d.querySelector('.aula-trail .is-current a[aria-current="page"]'));
  assert.equal(d.querySelectorAll('.aula-pdf').length,3,'Vitrine com as três listas');
  assert.ok(d.querySelector('.aula-pdf[href="/pdfs/fixacao-2.3.2.pdf"] img[src="/pdfs/capas/fixacao-2.3.2.webp"]'));
- // Resumo curto no lugar da teoria longa; níveis com selos Fácil, Médio e Difícil.
+ // Resumo curto no lugar da teoria longa; níveis Nível 1, Nível 2 e Nível 3.
  assert.ok(d.querySelector('#entenda .aula-resumo'),'Resumo curto da aula');
  assert.equal(d.querySelectorAll('[data-check]').length,0,'Sem checagem rápida');
  assert.deepEqual([...d.querySelectorAll('[data-level]')].map(b=>b.className.match(/lvl-(\w+)/)[1]),['facil','medio','dificil']);
+ assert.deepEqual([...d.querySelectorAll('[data-level] b')].map(b=>b.textContent),['Nível 1','Nível 2','Nível 3']);
  assert.ok(d.querySelector('.bk-promo[data-promo="modulo"] a[href="/livros/?volume=2"]'),'Oferta do Volume 2 na aula');
  // Pratique: resolução sob demanda e autoavaliação que alimenta o progresso.
  const lista=JSON.parse(readFileSync('data/listas/2.3.2.json','utf8'));
