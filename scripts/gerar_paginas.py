@@ -4,6 +4,7 @@
   /V/        volume do livro        (body data-view="explorar" data-volume)
   /V/M/      módulo do livro        (o QR code do livro aponta para cá)
   /V/M/a/    aula do site           (body data-lesson="V.M.a")
+  /assunto/  assunto, a porta de entrada do aluno (body data-view="assunto"), ex.: /combinatoria/
 
 As páginas só carregam o esqueleto; o conteúdo é montado por assets/site.js.
 Rode depois de mudar aulas, módulos ou volumes:  python3 scripts/gerar_paginas.py
@@ -42,6 +43,12 @@ def main():
     for v in '1234':
         if (R / v).exists():
             shutil.rmtree(R / v)
+    reservados = {'assets', 'data', 'pdfs', 'conteudos', 'livros', 'explorar', 'turmas', 'imprimir',
+                  'teste-seu-nivel', 'scripts', 'tests', 'materiais-fonte', 'gravacao', 'aulas'}
+    for a in A.get('assuntos', []):
+        assert a['id'] not in reservados and not a['id'][0].isdigit(), a['id']
+        pagina(R / a['id'], a['nome'], f'{a["nome"]}: {a["descricao"]} Aulas com resumo e listas de exercícios grátis no MAT MAT MAT!.',
+               f'data-view="assunto" data-assunto="{a["id"]}"')
     for f in A['fronts']:
         pagina(R / f['id'], f'Volume {f["id"]}: {f["name"]}',
                f'Listas gratuitas do Volume {f["id"]} ({f["name"]}) da coleção MAT MAT MAT!.',
@@ -55,7 +62,7 @@ def main():
         resumo = (l.get('summary') or '').rstrip('.')
         desc = (resumo + '. ' if resumo else '') + 'Resumo e listas de fixação e vestibular grátis no MAT MAT MAT!.'
         pagina(R / Path(*l['id'].split('.')), l['title'], desc, f'data-lesson="{l["id"]}"')
-    print(len(A['fronts']), 'volumes,', len(A['blocks']), 'módulos,', len(A['lessons']), 'aulas')
+    print(len(A.get('assuntos', [])), 'assuntos,', len(A['fronts']), 'volumes,', len(A['blocks']), 'módulos,', len(A['lessons']), 'aulas')
 
 
 if __name__ == '__main__':

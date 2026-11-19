@@ -1,11 +1,15 @@
 # MAT MAT MAT ✳
 
-Portal gratuito de matemática MAT MAT MAT!, do Prof. João Capri. O site segue a numeração da coleção física em 4 volumes: **Volume → Módulo → Aula**, com códigos `V.M.a` (ex.: `2.3.2` = Volume 2, módulo 3, aula 2).
+Portal gratuito de matemática MAT MAT MAT!, do Prof. João Capri.
+
+- **Para o aluno, a entrada é por assunto**: a página inicial mostra 20 assuntos (Combinatória, Probabilidade, Funções, Trigonometria…) em 4 grupos, e cada assunto abre a lista de todas as suas aulas. Caminho: início → assunto → aula.
+- **Por baixo, a numeração é a do livro** em 4 volumes: **Volume → Módulo → Aula**, com códigos `V.M.a` (ex.: `2.3.2` = Volume 2, módulo 3, aula 2). Quem tem o livro digita o módulo (ex.: 2.3) no atalho da página inicial ou usa o QR code.
 
 ## Estrutura
+- **Assuntos** em `/combinatoria/`, `/funcoes/` etc. (lista em `data/aulas.json` → `assuntos`, agrupados em `familias`; cada assunto junta módulos de um volume). Links antigos `/explorar/?area=…` vão para o assunto.
 - **Volumes** em `/1/` a `/4/`; **módulos** em `/V/M/` (é para onde aponta o QR code de cada módulo do livro); **aulas** em `/V/M/a/`. Módulos extras, fora do livro, usam `x1`, `x2` (ex.: `/1/x1/`, matemática financeira).
-- **Catálogo** em `data/aulas.json`: `fronts` = volumes, `blocks` = módulos (com parte, página e tipos de questão do livro), `lessons` = 215 aulas.
-- As páginas estáticas são geradas por `python3 scripts/gerar_paginas.py`. O conteúdo é montado por `assets/site.js`.
+- **Catálogo** em `data/aulas.json`: `assuntos` = entrada do aluno, `fronts` = volumes, `blocks` = módulos (com parte, página e tipos de questão do livro), `lessons` = 215 aulas.
+- As páginas estáticas (assuntos, volumes, módulos e aulas) são geradas por `python3 scripts/gerar_paginas.py`. O conteúdo é montado por `assets/site.js`.
 - **Listas**: `materiais-fonte/V.M.a.yaml` → PDFs em `pdfs/` e questões da página em `data/listas/`. Processo em `PROCESSO_LISTAS.md`.
 - Endereços antigos (`/aulas/A17/` etc.) redirecionam para os novos por `_redirects`.
 
