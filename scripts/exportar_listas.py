@@ -24,7 +24,7 @@ FONTE = ROOT / "materiais-fonte"
 DEST = ROOT / "data" / "listas"
 CAPAS = ROOT / "pdfs" / "capas"
 
-TEXTO = [("\\quad", " "), ("\\,", " "), ("\\ ", " "), ("{,}", ",")]
+TEXTO = [("\\quad", " "), ("\\,", " "), ("\\ ", " "), ("{,}", ","), ("\\%", "%")]
 
 
 def tex_web(s):
@@ -95,7 +95,7 @@ FIG_PRE = r"""\documentclass[border=2pt]{standalone}
 \setmainfont{Inter}\setmathfont{Latin Modern Math}[Scale=MatchLowercase]
 \usepackage{xcolor}
 \definecolor{ink}{HTML}{211946}\definecolor{roxo}{HTML}{4A27B7}\definecolor{lima}{HTML}{D3FC61}
-\definecolor{laranja}{HTML}{FF7956}\definecolor{suave}{HTML}{F1EDFC}\definecolor{mudo}{HTML}{746B83}
+\definecolor{laranja}{HTML}{FF7956}\definecolor{suave}{HTML}{F1EDFC}\definecolor{mudo}{HTML}{746B83}\definecolor{lilas}{HTML}{C9B6F7}\definecolor{ceu}{HTML}{B7E5FF}
 \usepackage{tikz}\usetikzlibrary{calc}\usepackage{pgfplots}
 \pgfplotsset{compat=1.18,every axis/.append style={font=\scriptsize,axis lines=middle,axis line style={-latex,ink!70},tick style={ink!50},grid style={roxo!10}}}
 \begin{document}\color{ink}\begin{tikzpicture}%s\end{tikzpicture}\end{document}
@@ -135,7 +135,22 @@ def itens_web(q):
     if f == "associar":
         return (["(%d) %s" % (k, tex_web(x)) for k, x in enumerate(q["esquerda"], 1)] +
                 ["( ) " + tex_web(x) for x in q["direita"]])
+    if f == "somatoria":  # aprofundamento: proposições numeradas como na prova
+        return ["%02d) %s" % (SOMA[k], tex_web(x)) for k, x in enumerate(q["proposicoes"])]
+    if f == "objetiva":
+        return extras_banca(q)["afirmativas"] + ["%s) %s" % ("ABCDE"[k], tex_web(o)) for k, o in enumerate(q["opcoes"])]
     return [tex_web(web_lacunas(i)) for i in q.get("itens", [])]
+
+
+def extras_banca(q):
+    """Afirmativas I, II, III (ou a lista de V ou F) e o comando que vem depois delas."""
+    if q.get("afirmativas"):
+        linhas_ = ["%s. %s" % (["I", "II", "III", "IV", "V", "VI"][k], tex_web(a)) for k, a in enumerate(q["afirmativas"])]
+    elif q.get("afirmacoes") and q.get("opcoes"):
+        linhas_ = ["( ) " + tex_web(a) for a in q["afirmacoes"]]
+    else:
+        linhas_ = []
+    return {"afirmativas": linhas_ + ([tex_web(" ".join(str(q["comando"]).split()))] if q.get("comando") else [])}
 
 
 def apoio(codigo, nome, q):
@@ -153,6 +168,19 @@ def apoio(codigo, nome, q):
         if isinstance(q["figura"], dict) and q["figura"].get("legenda"):
             extra["legenda"] = tex_web(q["figura"]["legenda"])
     return extra
+
+
+def juntar(comum, proprio):
+    """Apoio da questão precedido do texto comum (se houver)."""
+    if not comum:
+        return proprio
+    r = dict(comum)
+    if proprio.get("texto"):
+        r["texto"] = comum.get("texto", []) + proprio["texto"]
+    for c in ("tabela", "figura", "legenda"):
+        if proprio.get(c) and not r.get(c):
+            r[c] = proprio[c]
+    return r
 
 
 from gerar_listas import chave_nivel, nivel_vest, NIVEIS, formato, SOMA, soma_correta
@@ -182,6 +210,16 @@ def exportar(codigo):
             secoes.append({"nome": NOME_NIVEL[chave_nivel(sec["nome"])], "questoes": qs})
         dados["fixacao"] = {"intro": tex_web(fonte["fixacao"].get("intro", "")), "secoes": secoes}
     if "vestibular" in fonte:
+        comum = {}  # texto comum a duas ou mais questões: no site, cada uma mostra o texto inteiro
+        for k, q in enumerate(fonte["vestibular"]["questoes"], 1):
+            if q.get("texto_comum"):
+                tc = q["texto_comum"]
+                ult = k + int(tc.get("questoes", 2)) - 1
+                rot = f"Texto para as questões {k} e {ult}" if ult == k + 1 else f"Texto para as questões {k} a {ult}"
+                extra = apoio(codigo, f"t{k}", tc)
+                extra["texto"] = [rot] + extra.get("texto", [])
+                for j in range(k, ult + 1):
+                    comum[j] = extra
         dados["vestibular"] = {
             "intro": tex_web(fonte["vestibular"].get("intro", "")),
             "questoes": [{
@@ -193,7 +231,8 @@ def exportar(codigo):
                    {"opcoes": [tex_web(o) for o in q["opcoes"]], "correta": "ABCDE".index(q["correta"])}),
                 "resolucao": linhas(q.get("resolucao")),
                 "nivel": NOME_NIVEL[nivel_vest(q, k)],
-                **apoio(codigo, f"v{k}", q),
+                **({"afirmativas": extras_banca(q)["afirmativas"]} if extras_banca(q)["afirmativas"] else {}),
+                **juntar(comum.get(k, {}), apoio(codigo, f"v{k}", q)),
             } for k, q in enumerate(fonte["vestibular"]["questoes"], 1)],
         }
     if "aprofundamento" in fonte:
@@ -203,7 +242,7 @@ def exportar(codigo):
                 "n": k,
                 "enunciado": tex_web(web_lacunas(" ".join(str(q["enunciado"]).split("\n")))),
                 "itens": itens_web(q),
-                **({"marcador": True} if formato(q) in ("vf", "associar") else {}),
+                **({"marcador": True} if formato(q) in ("vf", "associar", "objetiva", "somatoria") else {}),
                 "resolucao": linhas(q.get("resolucao")),
                 "resposta": tex_web(q.get("resposta", "")),
                 **apoio(codigo, f"a{k}", q),

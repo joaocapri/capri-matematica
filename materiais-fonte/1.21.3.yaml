@@ -1,6 +1,6 @@
 # Aula 1.21.3 — Probabilidade condicional
-# Padrão 4 (em teste): vestibular e aprofundamento no formato das provas reais.
-# Questões autorais; "estilo X" indica só o formato da banca, nunca a origem.
+# Padrão 4: modelo de referência do vestibular e do aprofundamento no formato das provas reais.
+# Falta a fixação (entra no lote do módulo 1.21). `estilo` é só controle interno: não é impresso.
 padrao: 4
 
 vestibular:

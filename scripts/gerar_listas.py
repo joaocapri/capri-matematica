@@ -146,7 +146,6 @@ PREAMBULO = r"""
   \setlength{\labelsep}{0pt}\setlength{\itemindent}{0pt}\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}\setlength{\parsep}{3pt}\setlength{\listparindent}{0pt}}%
   \relpenalty=10000\interlinepenalty=10000\clubpenalty=10000\widowpenalty=10000\RaggedRight\setlength{\parskip}{3pt}\item[{\makebox[\badgew][l]{\qnum{#1}}}]}%
   {\end{list}\par\vspace{5.5mm}}
-\newcommand{\estilo}[1]{\leavevmode{\footnotesize\bfseries\color{roxo}(#1)}\hspace{1.2mm}}
 \newcommand{\pendura}[2]{\par\vspace{2.6pt}\noindent\makebox[#1][l]{#2}\parbox[t]{\linewidth-#1}{\RaggedRight\relpenalty=10000 \pendurado}\par}
 \newcommand{\afirmativa}[2]{\def\pendurado{#2}\pendura{7mm}{\bfseries #1.}}
 \newcommand{\parenteses}[1]{\def\pendurado{#1}\pendura{8mm}{(\hspace{3.6mm})}}
@@ -196,7 +195,7 @@ def bloco(texto):
     return r"\par ".join(linhas)
 
 
-PADRAO_ATUAL = 3
+PADRAO_ATUAL = 4  # 4: vestibular e aprofundamento no formato das provas reais (1.21.3 é o modelo)
 NIVEIS = {"facil": (1, "Nível 1"), "medio": (2, "Nível 2"), "dificil": (3, "Nível 3")}  # nomes exibidos; as chaves seguem as antigas
 LEGADO = {"aquecimento": "facil", "treino": "medio", "desafio": "dificil", "nivel 1": "facil", "nivel 2": "medio", "nivel 3": "dificil"}
 
@@ -332,7 +331,7 @@ def alternativas_tex(ops, vertical):
 
 
 def enunciado_tex(q, fixa=False, aprof=False, banca=False):
-    tex = r"\estilo{estilo %s}" % q["estilo"] if banca and q.get("estilo") else ""
+    tex = ""  # o campo `estilo` não é impresso: serve só para o validador conferir a variedade de bancas
     if q.get("texto"):
         tex += r"\apoio{%s}" % lacunas(bloco(q["texto"]))
     completar_tab = q.get("tabela") and any("{{" in str(c) for l in q["tabela"]["linhas"] for c in l)
@@ -509,22 +508,11 @@ def validar(codigo, fonte):
     padrao = fonte.get("padrao", 1)
     if padrao >= 4:
         return validar_banca(codigo, fonte)
+    erros += validar_fixacao(fonte) if padrao >= 3 else []
     fix = fonte.get("fixacao", {})
     qf = [q for sec in fix.get("secoes", []) for q in sec["questoes"]]
-    if len(qf) != 20:
-        erros.append(f"fixação tem {len(qf)} questões (esperado 20)")
-    for i, q in enumerate(qf, 1):
-        for campo in ("enunciado", "resolucao", "resposta"):
-            if not q.get(campo):
-                erros.append(f"fixação {i}: falta {campo}")
-        f = formato(q)
-        if f == "vf" and len(q.get("afirmacoes", [])) < 3:
-            erros.append(f"fixação {i}: V ou F precisa de pelo menos 3 afirmações")
-        if f == "associar" and (len(q.get("esquerda", [])) < 3 or len(q.get("direita", [])) < 3):
-            erros.append(f"fixação {i}: associar precisa de pelo menos 3 itens em cada coluna")
-    for sec in fix.get("secoes", []):
-        if chave_nivel(sec.get("nome", "")) not in NIVEIS:
-            erros.append(f"fixação: nível desconhecido '{sec.get('nome')}' (use Nível 1, Nível 2 ou Nível 3)")
+    if padrao < 3:
+        erros += validar_fixacao(fonte, variedade=False)
     qv = fonte.get("vestibular", {}).get("questoes", [])
     if len(qv) != 20:
         erros.append(f"vestibular tem {len(qv)} questões (esperado 20)")
@@ -558,10 +546,6 @@ def validar(codigo, fonte):
             for campo in ("enunciado", "resolucao", "resposta"):
                 if not q.get(campo):
                     erros.append(f"aprofundamento {i}: falta {campo}")
-        formatos = [formato(q) for q in qf]
-        criativas = sum(1 for f, q in zip(formatos, qf) if f in ("vf", "associar", "completar") or q.get("colunas"))
-        if len(set(formatos)) < 3 or criativas < 5:
-            erros.append(f"fixação pouco variada: formatos {sorted(set(formatos))}, {criativas} questões em formato não aberto (mínimo 3 formatos e 5 questões)")
         som = sum(1 for q in qv if formato(q) == "somatoria")
         if not 3 <= som <= 6:
             erros.append(f"vestibular tem {som} somatórias (esperado de 3 a 6)")
@@ -587,12 +571,38 @@ def validar(codigo, fonte):
         sys.exit(f"{codigo}: fonte inválida\n  - " + "\n  - ".join(erros))
 
 
+def validar_fixacao(fonte, variedade=True):
+    erros = []
+    fix = fonte.get("fixacao", {})
+    qf = [q for sec in fix.get("secoes", []) for q in sec["questoes"]]
+    if len(qf) != 20:
+        erros.append(f"fixação tem {len(qf)} questões (esperado 20)")
+    for i, q in enumerate(qf, 1):
+        for campo in ("enunciado", "resolucao", "resposta"):
+            if not q.get(campo):
+                erros.append(f"fixação {i}: falta {campo}")
+        f = formato(q)
+        if f == "vf" and len(q.get("afirmacoes", [])) < 3:
+            erros.append(f"fixação {i}: V ou F precisa de pelo menos 3 afirmações")
+        if f == "associar" and (len(q.get("esquerda", [])) < 3 or len(q.get("direita", [])) < 3):
+            erros.append(f"fixação {i}: associar precisa de pelo menos 3 itens em cada coluna")
+    for sec in fix.get("secoes", []):
+        if chave_nivel(sec.get("nome", "")) not in NIVEIS:
+            erros.append(f"fixação: nível desconhecido '{sec.get('nome')}' (use Nível 1, Nível 2 ou Nível 3)")
+    if variedade and qf:
+        formatos = [formato(q) for q in qf]
+        criativas = sum(1 for f, q in zip(formatos, qf) if f in ("vf", "associar", "completar") or q.get("colunas"))
+        if len(set(formatos)) < 3 or criativas < 5:
+            erros.append(f"fixação pouco variada: formatos {sorted(set(formatos))}, {criativas} questões em formato não aberto (mínimo 3 formatos e 5 questões)")
+    return erros
+
+
 BANCAS_4ALT = ("Unicamp",)
 
 
 def validar_banca(codigo, fonte):
-    """Padrão 4: vestibular e aprofundamento no formato das provas reais."""
-    erros = []
+    """Padrão 4: fixação como no padrão 3; vestibular e aprofundamento no formato das provas reais."""
+    erros = validar_fixacao(fonte) if "fixacao" in fonte else []
     if "{{{" in json.dumps(fonte, ensure_ascii=False):
         erros.append("lacuna colada em chave: escreva \\dfrac{ {{x}} }{ {{y}} }, com espaço")
     qv = fonte.get("vestibular", {}).get("questoes", [])
@@ -666,7 +676,11 @@ def padrao_fonte(codigo):
     f = FONTE / f"{codigo}.yaml"
     if not f.exists():
         return 0
-    return (yaml.safe_load(f.read_text(encoding="utf-8")) or {}).get("padrao", 1)
+    fonte = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
+    p = fonte.get("padrao", 1)
+    if p >= 4 and not all(t in fonte for t in NOMES):
+        return 3  # fonte nova, mas ainda sem as três listas: continua no próximo lote
+    return p
 
 
 def proximo_lote(tamanho=6):
@@ -733,6 +747,8 @@ TITULOS = {
 
 def publicar(codigo, pdfs):
     """Registra os PDFs da aula em data/materiais.json (fonte de verdade da biblioteca)."""
+    if padrao_fonte(codigo) >= 4 and len(pdfs) < 3:
+        sys.exit(f"{codigo}: publique só com as três listas (fixação, vestibular e aprofundamento)")
     idx_path = ROOT / "data" / "materiais.json"
     idx = json.loads(idx_path.read_text(encoding="utf-8"))
     entrada = next((e for e in idx if e.get("tipo") == "aula" and e.get("aula") == codigo), None)

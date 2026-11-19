@@ -1711,3 +1711,9 @@ button.aula-sprop:hover{border-color:var(--a-purple)}
 .aula-pdfs-3{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 @media(max-width:900px){.aula-pdfs-3{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.aula-3listas{grid-template-columns:1fr;gap:8px}.aula-3l{padding:10px 12px}.aula-pdfs-3{grid-template-columns:1fr}}
+
+/* afirmativas I, II, III e sequência V ou F no modo prova */
+.aula-afirm{list-style:none;margin:.4rem 0 .6rem;padding:0;display:grid;gap:.35rem}
+.aula-afirm li{display:grid;grid-template-columns:2.2rem 1fr;align-items:baseline}
+.aula-afirm b{color:var(--a-purple,var(--purple));font-weight:800}
+.aula-apoio-rot{display:inline-block;margin:0 0 .4rem;padding:.15rem .6rem;border-radius:8px;background:var(--soft);color:var(--a-purple,var(--purple));font-weight:800;font-size:.85em}
