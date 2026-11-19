@@ -11,7 +11,7 @@ Cada aula tem o código do livro **V.M.a** (volume, módulo, aula), como `2.3.2`
 O modelo de referência é a aula **2.3.2** (`materiais-fonte/2.3.2.yaml`, `padrao: 3`), e o primeiro lote no padrão é 1.1.1–1.1.6.
 
 ## Visual dos PDFs (padrão 3)
-- Fundo branco, leve para imprimir em P&B; cor só em detalhes. A logo **MAT com JOÃO!** (`assets/logo-mat.png`) vai no topo da capa e, pequena, no cabeçalho das outras páginas. Para trocar a logo, troque esse arquivo.
+- Fundo branco, leve para imprimir em P&B; cor só em detalhes. A logo **MAT com JOÃO!** (`assets/logo-mat-pdf.png`, versão leve de `assets/logo-mat.png`) vai no topo da capa e, pequena, no cabeçalho das outras páginas. Para trocar a logo, troque esse arquivo.
 - Capa: assunto e “aula N de M” (da página do assunto no site), título, etiqueta da lista (fixação em lima, vestibular em azul, aprofundamento em laranja), “lista N de 3”, a referência ao livro e as linhas de nome, turma e data.
 - Rodapé: Prof. João Capri · @joa.capri · matmatmat.com e “página N de M”.
 - Fixação e aprofundamento: duas colunas, cada questão com uma caixa pontilhada para resolver (o gerador calcula a altura; `espaco: 30` força em mm, `espaco: 0` tira).
