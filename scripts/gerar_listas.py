@@ -95,7 +95,7 @@ PREAMBULO = r"""
 \newcommand{\corsel}[1]{\ifcase#1\or nfacil\or nmedio\or ndificil\fi}
 \newcommand{\selo}[2]{\tikz[baseline=(s.base)]\node[fill=\corsel{#1},text=ink,rounded corners=5pt,inner xsep=4.5pt,inner ysep=1.5pt,font=\fontsize{6.6}{7.5}\selectfont\bfseries](s){#2};}
 \newcommand{\nivel}[3]{%
-  \par\penalty-300\vspace{2mm}\noindent
+  \par\needspace{8\baselineskip}\penalty-300\vspace{2mm}\noindent
   \begin{tikzpicture}
     \node[fill=\corsel{#3},text=ink,rounded corners=6pt,inner xsep=7pt,inner ysep=3pt,font=\small\bfseries,anchor=west](t) at (0,0){#1};
     \node[font=\footnotesize,text=mudo,anchor=west](r) at ($(t.east)+(5pt,0)$) {#2};
@@ -112,7 +112,7 @@ PREAMBULO = r"""
 \newcommand{\vf}[1]{\par\vspace{2.6pt}\noindent\hangindent=10mm\hangafter=1\makebox[10mm][l]{\vfbox}#1}
 \newcommand{\rotulo}[1]{{\color{roxo}\bfseries(#1)}\hspace{1.5mm}}
 \newcommand{\codigo}[1]{\tikz[baseline=(c.base)]\node[draw=roxo,line width=.6pt,text=roxo,rounded corners=2pt,inner xsep=2.5pt,inner ysep=1.6pt,font=\scriptsize\bfseries](c){#1};}
-\newcommand{\prop}[2]{\par\vspace{2.4pt}\noindent\hangindent=8.5mm\hangafter=1\makebox[8.5mm][l]{\codigo{#1}}#2}
+\newcommand{\prop}[2]{\def\pendurado{#2}\pendura{8.5mm}{\codigo{#1}}}
 \newcommand{\somacampo}{\par\vspace{4pt}\hfill{\footnotesize\bfseries\color{roxo}Soma:}\hspace{2mm}\tikz[baseline=-.7ex]\node[draw=roxo,line width=.7pt,rounded corners=3pt,minimum width=14mm,minimum height=6mm]{};\par}
 \newcommand{\letra}[1]{\tikz[baseline=(l.base)]\node[circle,draw=roxo,line width=.7pt,inner sep=0pt,minimum size=4.6mm,font=\scriptsize\bfseries,text=roxo](l){#1};}
 \newlist{itens}{enumerate}{1}
@@ -139,6 +139,19 @@ PREAMBULO = r"""
   \else\setlength{\altcel}{0pt}\fi\fi\fi
   \ifdim\altcel>0pt \noindent\cel{A}{#1}\cel{B}{#2}\cel{C}{#3}\cel{D}{#4}\cel{E}{#5}\par
   \else\umacol{A}{#1}\umacol{B}{#2}\umacol{C}{#3}\umacol{D}{#4}\umacol{E}{#5}\par\fi}
+
+% ---------- formatos de banca (padrão 4) ----------
+% questão que pode continuar na outra coluna, como nas provas (o número fica pendurado à esquerda)
+\newenvironment{questaob}[1]{\par\addpenalty{-200}\begin{list}{}{\setlength{\leftmargin}{\badgew}\setlength{\labelwidth}{\badgew}%
+  \setlength{\labelsep}{0pt}\setlength{\itemindent}{0pt}\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}\setlength{\parsep}{3pt}\setlength{\listparindent}{0pt}}%
+  \relpenalty=10000\interlinepenalty=10000\clubpenalty=10000\widowpenalty=10000\RaggedRight\setlength{\parskip}{3pt}\item[{\makebox[\badgew][l]{\qnum{#1}}}]}%
+  {\end{list}\par\vspace{5.5mm}}
+\newcommand{\estilo}[1]{\leavevmode{\footnotesize\bfseries\color{roxo}(#1)}\hspace{1.2mm}}
+\newcommand{\pendura}[2]{\par\vspace{2.6pt}\noindent\makebox[#1][l]{#2}\parbox[t]{\linewidth-#1}{\RaggedRight\relpenalty=10000 \pendurado}\par}
+\newcommand{\afirmativa}[2]{\def\pendurado{#2}\pendura{7mm}{\bfseries #1.}}
+\newcommand{\parenteses}[1]{\def\pendurado{#1}\pendura{8mm}{(\hspace{3.6mm})}}
+\newcommand{\altv}[2]{\def\pendurado{#2}\pendura{7.5mm}{\letra{#1}}\vspace{1.5pt}}
+\newcommand{\textocomum}[2]{\par\vspace{1mm}\noindent\begin{minipage}{\linewidth}\begin{tikzpicture}\node[fill=suave,rounded corners=3pt,inner xsep=6pt,inner ysep=3pt,font=\footnotesize\bfseries,text=roxo]{#1};\end{tikzpicture}\par\vspace{1.5mm}{#2}\end{minipage}\par\vspace{4mm}}
 
 % ---------- gabarito ----------
 \newcommand{\resolucao}[3]{%
@@ -292,12 +305,34 @@ def espaco_mm(q):
 SOMA = [1, 2, 4, 8, 16, 32, 64]
 
 
+def romano(k):
+    return ["I", "II", "III", "IV", "V", "VI"][k - 1]
+
+
 def soma_correta(q):
     return sum(SOMA[i - 1] for i in q["corretas"])
 
 
-def enunciado_tex(q, fixa=False, aprof=False):
-    tex = ""
+def apoio_tex(q):
+    """Texto, tabela e figura de apoio (também usado no texto comum a duas questões)."""
+    tex = r"\apoio{%s}" % lacunas(bloco(q["texto"])) if q.get("texto") else ""
+    if q.get("tabela"):
+        tex += tabela_tex(q["tabela"])
+    if q.get("figura"):
+        tex += figura_tex(q["figura"])
+    return tex
+
+
+def alternativas_tex(ops, vertical):
+    if not vertical:
+        return r"\alternativas" + "".join("{%s}" % o for o in ops)
+    # as alternativas nunca se separam (nem do fim do enunciado)
+    return (r"\par\nopagebreak\vspace{2.5pt}\noindent\begin{minipage}{\linewidth}\lineskiplimit=3pt\lineskip=5pt" +
+            "".join(r"\altv{%s}{%s}" % ("ABCDE"[k], o) for k, o in enumerate(ops)) + r"\end{minipage}\par")
+
+
+def enunciado_tex(q, fixa=False, aprof=False, banca=False):
+    tex = r"\estilo{estilo %s}" % q["estilo"] if banca and q.get("estilo") else ""
     if q.get("texto"):
         tex += r"\apoio{%s}" % lacunas(bloco(q["texto"]))
     completar_tab = q.get("tabela") and any("{{" in str(c) for l in q["tabela"]["linhas"] for c in l)
@@ -314,6 +349,12 @@ def enunciado_tex(q, fixa=False, aprof=False):
     f = formato(q)
     if f == "vf":
         tex += r"\par\vspace{1mm}" + "".join(r"\vf{%s}" % lacunas(a) for a in q["afirmacoes"])
+    if f == "objetiva" and q.get("afirmativas"):  # I, II, III... e alternativas do tipo "Apenas I e II"
+        tex += r"\par\vspace{1mm}" + "".join(r"\afirmativa{%s}{%s}" % (romano(k), a) for k, a in enumerate(q["afirmativas"], 1))
+    if f == "objetiva" and q.get("afirmacoes"):  # ( ) V ou F e alternativas com a sequência
+        tex += r"\par\vspace{1mm}" + "".join(r"\parenteses{%s}" % a for a in q["afirmacoes"])
+    if q.get("comando"):
+        tex += r"\par\vspace{3pt}" + bloco(q["comando"])
     if f == "associar":
         esq = "".join(r"\par\vspace{2.5pt}\noindent\hangindent=7mm\hangafter=1\makebox[7mm][l]{\rotulo{%d}}%s" % (k, x)
                       for k, x in enumerate(q["esquerda"], 1))
@@ -335,7 +376,7 @@ def enunciado_tex(q, fixa=False, aprof=False):
         else:
             tex += r"\begin{itens}" + "".join(r"\item " + lacunas(i) for i in q["itens"]) + r"\end{itens}"
     if f == "objetiva":
-        tex += r"\alternativas" + "".join("{%s}" % o for o in q["opcoes"])
+        tex += alternativas_tex(q["opcoes"], vertical=banca or len(q["opcoes"]) != 5)
     if f == "somatoria":
         tex += r"\par\vspace{1mm}" + "".join(r"\prop{%02d}{%s}" % (SOMA[k], p) for k, p in enumerate(q["proposicoes"]))
         tex += r"\somacampo"
@@ -370,7 +411,8 @@ NOMES = {"fixacao": "Lista de fixação", "vestibular": "Lista de vestibular", "
 CORES = {"fixacao": "lima", "vestibular": "ceu", "aprofundamento": "ndificil"}
 
 
-def documento(aula, tipo, dados, n_listas=2):
+def documento(aula, tipo, dados, n_listas=2, padrao=3):
+    banca = padrao >= 4  # padrão 4: formato de prova real (rótulo de estilo, níveis em faixas, alternativas na vertical)
     fixa = tipo in ("fixacao", "aprofundamento")
     nome_tipo = NOMES[tipo]
     qs_all = [q for s in dados["secoes"] for q in s["questoes"]] if tipo == "fixacao" else dados["questoes"]
@@ -392,7 +434,26 @@ def documento(aula, tipo, dados, n_listas=2):
         corpo += r"\begin{multicols}{2}\raggedcolumns" + "\n"
         for q in dados["questoes"]:
             questoes.append(q)
-            corpo += r"\questao{%d}{%s}" % (len(questoes), enunciado_tex(q, fixa=True, aprof=True)) + "\n"
+            corpo += r"\questao{%d}{%s}" % (len(questoes), enunciado_tex(q, fixa=True, aprof=True, banca=banca)) + "\n"
+        corpo += r"\end{multicols}" + "\n"
+    elif banca:
+        corpo += r"\begin{multicols}{2}\raggedcolumns" + "\n"
+        qs = dados["questoes"]
+        for i, q in enumerate(qs, 1):
+            chave = nivel_vest(q, i)
+            if i == 1 or chave != nivel_vest(qs[i - 2], i - 1):
+                fim = i
+                while fim < len(qs) and nivel_vest(qs[fim], fim + 1) == chave:
+                    fim += 1
+                num, nome = NIVEIS[chave]
+                corpo += r"\nivel{%s}{questões %d a %d}{%d}" % (nome, i, fim, num) + "\n"
+            if q.get("texto_comum"):
+                tc = q["texto_comum"]
+                ult = i + int(tc.get("questoes", 2)) - 1
+                rot = "Texto para as questões %d e %d" % (i, ult) if ult == i + 1 else "Texto para as questões %d a %d" % (i, ult)
+                corpo += r"\textocomum{%s}{%s}" % (rot, apoio_tex(tc)) + "\n"
+            questoes.append(q)
+            corpo += r"\begin{questaob}{%d}%s\end{questaob}" % (i, enunciado_tex(q, banca=True)) + "\n"
         corpo += r"\end{multicols}" + "\n"
     elif fixa:
         corpo += r"\begin{multicols}{2}\raggedcolumns" + "\n"
@@ -446,6 +507,8 @@ def validar(codigo, fonte):
     """Checagens estruturais antes de diagramar."""
     erros = []
     padrao = fonte.get("padrao", 1)
+    if padrao >= 4:
+        return validar_banca(codigo, fonte)
     fix = fonte.get("fixacao", {})
     qf = [q for sec in fix.get("secoes", []) for q in sec["questoes"]]
     if len(qf) != 20:
@@ -524,6 +587,80 @@ def validar(codigo, fonte):
         sys.exit(f"{codigo}: fonte inválida\n  - " + "\n  - ".join(erros))
 
 
+BANCAS_4ALT = ("Unicamp",)
+
+
+def validar_banca(codigo, fonte):
+    """Padrão 4: vestibular e aprofundamento no formato das provas reais."""
+    erros = []
+    if "{{{" in json.dumps(fonte, ensure_ascii=False):
+        erros.append("lacuna colada em chave: escreva \\dfrac{ {{x}} }{ {{y}} }, com espaço")
+    qv = fonte.get("vestibular", {}).get("questoes", [])
+    qa = fonte.get("aprofundamento", {}).get("questoes", [])
+    if "vestibular" in fonte and len(qv) != 20:
+        erros.append(f"vestibular tem {len(qv)} questões (esperado 20)")
+    if "aprofundamento" in fonte and not 8 <= len(qa) <= 12:
+        erros.append(f"aprofundamento tem {len(qa)} questões (esperado de 8 a 12)")
+    cont = {}
+    for nome, lista in (("vestibular", qv), ("aprofundamento", qa)):
+        for i, q in enumerate(lista, 1):
+            tag = f"{nome} {i}"
+            if not q.get("estilo"):
+                erros.append(f"{tag}: falta o estilo da banca (ex.: estilo: Enem)")
+            if not q.get("resolucao"):
+                erros.append(f"{tag}: falta resolucao")
+            if nome == "aprofundamento" and not q.get("resposta"):
+                erros.append(f"{tag}: falta resposta")
+            if q.get("nivel") and chave_nivel(q["nivel"]) not in NIVEIS:
+                erros.append(f"{tag}: nível desconhecido '{q['nivel']}'")
+            f = formato(q)
+            if f == "somatoria":
+                ps, cs = q.get("proposicoes", []), q.get("corretas", [])
+                if not 4 <= len(ps) <= 7:
+                    erros.append(f"{tag}: somatória precisa de 4 a 7 proposições")
+                if not cs or len(cs) == len(ps) or any(not 1 <= c <= len(ps) for c in cs) or len(set(cs)) != len(cs):
+                    erros.append(f"{tag}: corretas da somatória inválidas")
+                if not str(q["enunciado"]).strip().endswith("Assinale o que for correto."):
+                    erros.append(f"{tag}: somatória termina com 'Assinale o que for correto.'")
+            elif f == "objetiva":
+                ops = q["opcoes"]
+                n_ok = (4, 5) if q["estilo"] in BANCAS_4ALT else (5,)
+                if len(ops) not in n_ok or len(set(map(str, ops))) != len(ops):
+                    erros.append(f"{tag}: {len(ops)} alternativas (estilo {q['estilo']} pede {' ou '.join(map(str, n_ok))}, distintas)")
+                if q.get("correta") not in list("ABCDE"[:len(ops)]):
+                    erros.append(f"{tag}: correta inválida")
+                if (q.get("afirmativas") or q.get("afirmacoes")) and not q.get("comando"):
+                    erros.append(f"{tag}: afirmativas pedem um comando depois delas (ex.: 'É correto o que se afirma em')")
+                if nome == "vestibular":
+                    cont[q["correta"]] = cont.get(q["correta"], 0) + 1
+            elif nome == "vestibular":
+                erros.append(f"{tag}: vestibular só tem objetivas e somatórias")
+            elif len(q.get("itens", [])) < 2:
+                erros.append(f"{tag}: discursiva de aprofundamento tem itens a), b)...")
+    if qv:
+        som = sum(1 for q in qv if formato(q) == "somatoria")
+        afirm = sum(1 for q in qv if q.get("afirmativas") or (q.get("afirmacoes") and q.get("opcoes")))
+        longas = sum(1 for q in qv if len(str(q.get("texto", ""))) >= 200 or q.get("texto_comum"))
+        visuais = sum(1 for q in qv if q.get("tabela") or q.get("figura") or (q.get("texto_comum") or {}).get("tabela"))
+        curtas = sum(1 for q in qv if not (q.get("texto") or q.get("tabela") or q.get("figura") or q.get("texto_comum")))
+        bancas = {q.get("estilo") for q in qv}
+        for ok, msg in ((3 <= som <= 5, f"{som} somatórias (de 3 a 5)"),
+                        (afirm >= 2, f"{afirm} questões de afirmativas I/II/III ou sequência V-F (mínimo 2)"),
+                        (longas >= 5, f"{longas} questões com texto longo, de 200+ caracteres (mínimo 5)"),
+                        (visuais >= 4, f"{visuais} questões com tabela, gráfico ou figura (mínimo 4)"),
+                        (curtas >= 4, f"{curtas} questões curtas e diretas (mínimo 4)"),
+                        (len(bancas) >= 5, f"{len(bancas)} estilos de banca (mínimo 5)"),
+                        (all(2 <= cont.get(l, 0) <= 5 for l in "ABCDE"), f"gabarito desequilibrado: {cont}")):
+            if not ok:
+                erros.append("vestibular: " + msg)
+    if qa:
+        disc = sum(1 for q in qa if formato(q) not in ("objetiva", "somatoria"))
+        if not 5 <= disc <= len(qa) - 2:
+            erros.append(f"aprofundamento: {disc} discursivas (pelo menos 5, e pelo menos 2 objetivas ou somatórias)")
+    if erros:
+        sys.exit(f"{codigo}: fonte inválida\n  - " + "\n  - ".join(erros))
+
+
 def padrao_fonte(codigo):
     """0 = sem fonte; 1 = lista antiga (aproveitar e revisar); 2 = padrão atual."""
     f = FONTE / f"{codigo}.yaml"
@@ -570,7 +707,7 @@ def gerar(codigo):
     for tipo in NOMES:
         if tipo not in fonte:
             continue
-        tex = documento(aula, tipo, fonte[tipo], n_listas)
+        tex = documento(aula, tipo, fonte[tipo], n_listas, fonte.get("padrao", 1))
         with tempfile.TemporaryDirectory() as tmp:
             arq = Path(tmp) / "lista.tex"
             arq.write_text(tex, encoding="utf-8")

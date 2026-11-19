@@ -1,0 +1,481 @@
+# Aula 1.21.3 — Probabilidade condicional
+# Padrão 4 (em teste): vestibular e aprofundamento no formato das provas reais.
+# Questões autorais; "estilo X" indica só o formato da banca, nunca a origem.
+padrao: 4
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Para planejar a oferta de atividades esportivas no contraturno, uma escola de ensino médio fez uma pesquisa com seus 400 alunos. Cada aluno informou o turno em que estuda e se pratica, ou não, alguma atividade física com regularidade. O resultado está no quadro.
+    tabela:
+      cabecalho: ['Turno', 'Pratica atividade física', 'Não pratica']
+      linhas:
+      - ['Manhã', '120', '80']
+      - ['Tarde', '90', '110']
+    enunciado: |
+      A coordenação vai sortear, entre os alunos que praticam atividade física, um representante para a comissão de esportes.
+      A probabilidade de o representante sorteado estudar no turno da tarde é
+    opcoes: ['$\dfrac{9}{40}$', '$\dfrac{3}{7}$', '$\dfrac{9}{20}$', '$\dfrac{1}{2}$', '$\dfrac{21}{40}$']
+    correta: B
+    resolucao: |
+      O sorteio é feito só entre os que praticam atividade física: $120+90=210$ alunos (o espaço amostral fica reduzido). Destes, 90 estudam à tarde.
+      $P = \dfrac{90}{210} = \dfrac{3}{7}$. A alternativa $\dfrac{9}{40}$ usa os 400 alunos, e $\dfrac{9}{20}$ divide pelos 200 alunos da tarde.
+
+  - estilo: Fuvest
+    enunciado: |
+      Dois dados honestos, um azul e um vermelho, são lançados. Sabendo que a soma dos pontos obtidos foi 8, a probabilidade de que o dado azul tenha mostrado um número par é
+    opcoes: ['$\dfrac{1}{12}$', '$\dfrac{1}{6}$', '$\dfrac{2}{5}$', '$\dfrac{1}{2}$', '$\dfrac{3}{5}$']
+    correta: E
+    resolucao: |
+      Soma 8 (azul, vermelho): $(2,6), (3,5), (4,4), (5,3), (6,2)$ — 5 casos igualmente prováveis.
+      Azul par em $(2,6), (4,4), (6,2)$: 3 casos. $P = \dfrac{3}{5}$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Uma urna contém cinco bolas numeradas de 1 a 5. Retiram-se duas bolas, sucessivamente e sem reposição. Sabendo que a primeira bola retirada tem número ímpar, a probabilidade de que a segunda também tenha número ímpar é igual a
+    opcoes: ['$3/10$.', '$2/5$.', '$1/2$.', '$3/5$.']
+    correta: C
+    resolucao: |
+      Saiu uma bola ímpar; restam 4 bolas, das quais 2 são ímpares. $P = \dfrac{2}{4} = \dfrac{1}{2}$.
+      $\dfrac{3}{10}$ é a probabilidade de as duas serem ímpares (sem a condição) e $\dfrac{3}{5}$ esquece que a primeira bola saiu da urna.
+
+  - estilo: Enem
+    texto: |
+      Um curso preparatório perguntou aos 40 alunos de uma de suas turmas de quais disciplinas eles mais gostam. Todos responderam, e o levantamento mostrou que 25 alunos gostam de matemática, 18 gostam de física e 8 gostam das duas disciplinas.
+    enunciado: |
+      Um aluno dessa turma que gosta de física será escolhido ao acaso para monitorar o laboratório.
+      Qual é a probabilidade de que o aluno escolhido também goste de matemática?
+    opcoes: ['$\dfrac{4}{9}$', '$\dfrac{9}{20}$', '$\dfrac{5}{9}$', '$\dfrac{5}{8}$', '$\dfrac{18}{25}$']
+    correta: A
+    resolucao: |
+      O espaço amostral são os 18 alunos que gostam de física; 8 deles também gostam de matemática.
+      $P = \dfrac{8}{18} = \dfrac{4}{9}$. ($\dfrac{5}{9}$ seria a probabilidade de gostar só de física.)
+
+  - estilo: UEM
+    enunciado: |
+      Um dado comum, não viciado, com faces numeradas de 1 a 6, é lançado uma vez, e observa-se o número da face voltada para cima. Assinale o que for correto.
+    proposicoes:
+    - 'A probabilidade de sair o número 6, sabendo que saiu um número par, é $\frac{1}{3}$.'
+    - 'A probabilidade de sair um número par, sabendo que saiu um número maior que 3, é $\frac{1}{2}$.'
+    - 'A probabilidade de sair um número primo, sabendo que saiu um número ímpar, é $\frac{2}{3}$.'
+    - 'Se $A$ é o evento “sair número menor que 3” e $B$ é o evento “sair número par”, então $P(A\mid B) = P(B\mid A)$.'
+    - 'Para quaisquer eventos $A$ e $B$ desse experimento, com $P(B) > 0$, tem-se $P(A\mid B) \le P(A)$.'
+    corretas: [1, 3]
+    resolucao: |
+      01) Correta: entre $\{2, 4, 6\}$, só o 6 serve: $\dfrac{1}{3}$.
+      02) Incorreta: entre $\{4, 5, 6\}$, são pares 4 e 6: $\dfrac{2}{3}$.
+      04) Correta: entre $\{1, 3, 5\}$, são primos 3 e 5: $\dfrac{2}{3}$.
+      08) Incorreta: $A\cap B = \{2\}$; $P(A\mid B) = \dfrac{1}{3}$ e $P(B\mid A) = \dfrac{1}{2}$.
+      16) Incorreta: com $A = \{6\}$ e $B$ = par, $P(A\mid B) = \dfrac{1}{3} > \dfrac{1}{6} = P(A)$.
+
+  - estilo: Unesp
+    texto: |
+      Uma fábrica produz a mesma peça em duas máquinas, A e B. Em um dia de produção, o controle de qualidade registrou o número de peças fabricadas por máquina e quantas delas apresentaram defeito.
+    tabela:
+      cabecalho: ['Máquina', 'Peças produzidas', 'Peças com defeito']
+      linhas:
+      - ['A', '700', '35']
+      - ['B', '500', '40']
+    enunciado: |
+      Uma peça produzida nesse dia é escolhida ao acaso e verifica-se que ela tem defeito. A probabilidade de que essa peça tenha sido produzida pela máquina B é
+    opcoes: ['$\dfrac{2}{25}$', '$\dfrac{5}{12}$', '$\dfrac{7}{15}$', '$\dfrac{1}{2}$', '$\dfrac{8}{15}$']
+    correta: E
+    resolucao: |
+      Sabe-se que a peça é defeituosa: o espaço amostral são as $35 + 40 = 75$ peças com defeito, 40 delas da máquina B.
+      $P = \dfrac{40}{75} = \dfrac{8}{15}$. ($\dfrac{2}{25} = \dfrac{40}{500}$ é a taxa de defeito de B, outra condicional.)
+
+  - estilo: Fuvest
+    enunciado: |
+      Um casal tem dois filhos. Admita que nascer menino ou menina seja igualmente provável e que o sexo de um filho não interfira no do outro. Sabendo que pelo menos um dos filhos é menino, a probabilidade de que os dois sejam meninos é
+    opcoes: ['$\dfrac{1}{4}$', '$\dfrac{1}{3}$', '$\dfrac{1}{2}$', '$\dfrac{2}{3}$', '$\dfrac{3}{4}$']
+    correta: B
+    resolucao: |
+      Casos equiprováveis: MM, MF, FM, FF. A condição “pelo menos um menino” elimina FF e sobram 3 casos.
+      Só MM tem dois meninos: $P = \dfrac{1}{3}$ (e não $\dfrac{1}{2}$: MF e FM são casos diferentes).
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      Em um município, 1 000 candidatos prestaram o mesmo vestibular. Uma reportagem sobre o resultado comparou o desempenho dos candidatos que fizeram cursinho preparatório com o dos que não fizeram. O gráfico mostra quantos candidatos de cada grupo foram aprovados.
+    figura:
+      tikz: |
+        \begin{axis}[ybar, bar width=13pt, width=68mm, height=46mm, axis lines=left, axis line style={-,ink!40}, ymin=0, ymax=560, ytick=\empty,
+          symbolic x coords={Fizeram cursinho,Não fizeram cursinho}, xtick=data, x tick label style={font=\scriptsize},
+          enlarge x limits=0.32, nodes near coords, nodes near coords style={font=\tiny\bfseries},
+          legend style={at={(0.5,1.03)}, anchor=south, legend columns=2, font=\tiny, draw=none, /tikz/every even column/.append style={column sep=8pt}},
+          ylabel={candidatos}, ylabel style={font=\scriptsize}]
+        \addplot[fill=roxo, draw=roxo] coordinates {(Fizeram cursinho,180) (Não fizeram cursinho,120)};
+        \addplot[fill=lilas, draw=roxo] coordinates {(Fizeram cursinho,220) (Não fizeram cursinho,480)};
+        \legend{Aprovados, Não aprovados}
+        \end{axis}
+    enunciado: |
+      Para ilustrar a reportagem, um dos candidatos aprovados será escolhido ao acaso para uma entrevista.
+      A probabilidade de que o candidato escolhido não tenha feito cursinho é
+    opcoes: ['12\%.', '20\%.', '40\%.', '45\%.', '60\%.']
+    correta: C
+    resolucao: |
+      Aprovados: $180 + 120 = 300$ (espaço amostral reduzido). Destes, 120 não fizeram cursinho.
+      $P = \dfrac{120}{300} = 40\%$. Distratores: $\dfrac{120}{1000} = 12\%$; $\dfrac{120}{600} = 20\%$ (taxa de aprovação de quem não fez); $\dfrac{180}{300} = 60\%$.
+
+  - estilo: UEL
+    texto: |
+      Um hemocentro classificou os 200 doadores que compareceram em uma semana de acordo com o tipo sanguíneo (sistema ABO) e o fator Rh.
+    tabela:
+      cabecalho: ['Tipo', 'Rh positivo', 'Rh negativo']
+      linhas:
+      - ['A', '68', '12']
+      - ['B', '18', '2']
+      - ['AB', '7', '3']
+      - ['O', '77', '13']
+    enunciado: |
+      Com base nos dados, considere as afirmativas a seguir.
+    afirmativas:
+    - 'Escolhendo-se ao acaso um doador com Rh negativo, a probabilidade de ele ser do tipo O é $\frac{13}{30}$.'
+    - 'Escolhendo-se ao acaso um doador do tipo A, a probabilidade de ele ter Rh positivo é $\frac{68}{170}$.'
+    - 'Entre os doadores do tipo AB, a proporção dos que têm Rh negativo é maior do que essa mesma proporção entre os doadores do tipo B.'
+    - 'Escolhendo-se ao acaso um doador que não é do tipo O, a probabilidade de ele ter Rh negativo é $\frac{17}{110}$.'
+    comando: 'Assinale a alternativa correta.'
+    opcoes:
+    - 'Somente as afirmativas I e II são corretas.'
+    - 'Somente as afirmativas I e IV são corretas.'
+    - 'Somente as afirmativas III e IV são corretas.'
+    - 'Somente as afirmativas I, II e III são corretas.'
+    - 'Somente as afirmativas I, III e IV são corretas.'
+    correta: E
+    resolucao: |
+      I. Correta: Rh negativo $= 12 + 2 + 3 + 13 = 30$; tipo O entre eles: 13.
+      II. Incorreta: o espaço amostral são os 80 doadores do tipo A, então $P = \dfrac{68}{80}$ ($\dfrac{68}{170}$ inverte a condição).
+      III. Correta: $\dfrac{3}{10} > \dfrac{2}{20}$.
+      IV. Correta: fora do tipo O há $200 - 90 = 110$ doadores, dos quais $12 + 2 + 3 = 17$ têm Rh negativo.
+
+  - estilo: UFSC
+    enunciado: |
+      Uma caixa contém 4 bolas vermelhas e 6 bolas azuis, idênticas exceto pela cor. Duas bolas são retiradas ao acaso, sucessivamente e sem reposição. Assinale o que for correto.
+    proposicoes:
+    - 'A probabilidade de a segunda bola ser vermelha, sabendo que a primeira é azul, é $\frac{4}{9}$.'
+    - 'A probabilidade de as duas bolas retiradas serem vermelhas é $\frac{4}{25}$.'
+    - 'A probabilidade de a segunda bola retirada ser vermelha é $\frac{2}{5}$.'
+    - 'Sabendo que pelo menos uma das bolas retiradas é vermelha, a probabilidade de as duas serem vermelhas é $\frac{1}{5}$.'
+    - 'Se as retiradas fossem feitas com reposição, a probabilidade de a segunda bola ser vermelha, sabendo que a primeira é azul, continuaria igual a $\frac{4}{9}$.'
+    corretas: [1, 3, 4]
+    resolucao: |
+      01) Correta: saiu uma azul; restam 9 bolas, 4 vermelhas.
+      02) Incorreta: $\dfrac{4}{10}\cdot\dfrac{3}{9} = \dfrac{2}{15}$ ($\dfrac{4}{25}$ seria com reposição).
+      04) Correta: $\dfrac{4}{10}\cdot\dfrac{3}{9} + \dfrac{6}{10}\cdot\dfrac{4}{9} = \dfrac{36}{90} = \dfrac{2}{5}$.
+      08) Correta: $P(\text{pelo menos uma V}) = 1 - \dfrac{6}{10}\cdot\dfrac{5}{9} = \dfrac{2}{3}$; logo $P = \dfrac{2/15}{2/3} = \dfrac{1}{5}$.
+      16) Incorreta: com reposição a caixa volta a ter 10 bolas e $P = \dfrac{4}{10}$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Um número inteiro é escolhido ao acaso entre 1 e 100, inclusive. Sabendo que o número escolhido é múltiplo de 3, a probabilidade de que ele também seja múltiplo de 5 é igual a
+    opcoes: ['$3/50$.', '$2/11$.', '$1/5$.', '$1/3$.']
+    correta: B
+    resolucao: |
+      Múltiplos de 3 entre 1 e 100: 33. Entre eles, os múltiplos de 5 são os múltiplos de 15: 15, 30, 45, 60, 75, 90 (6 números).
+      $P = \dfrac{6}{33} = \dfrac{2}{11}$. ($\dfrac{3}{50} = \dfrac{6}{100}$ ignora a condição.)
+
+  - estilo: Enem
+    texto: |
+      Na última temporada, um time de futebol disputou 40 partidas. Em 25 delas, o time abriu o placar, isto é, marcou o primeiro gol do jogo. Nas outras 15, o adversário marcou primeiro ou a partida terminou sem gols. O quadro resume os resultados.
+    tabela:
+      cabecalho: ['', 'Vitória', 'Empate', 'Derrota']
+      linhas:
+      - ['Abriu o placar', '17', '5', '3']
+      - ['Não abriu o placar', '3', '6', '6']
+    enunciado: |
+      Um comentarista esportivo quer comparar a probabilidade de vitória do time quando ele abre o placar com a probabilidade de vitória quando ele não abre o placar.
+      Com base nos dados, a primeira dessas probabilidades é, aproximadamente, quantas vezes a segunda?
+    opcoes: ['1,4', '2,0', '2,7', '3,4', '5,7']
+    correta: D
+    resolucao: |
+      $P(\text{vitória}\mid\text{abriu}) = \dfrac{17}{25} = 0{,}68$ e $P(\text{vitória}\mid\text{não abriu}) = \dfrac{3}{15} = 0{,}20$.
+      Razão: $\dfrac{0{,}68}{0{,}20} = 3{,}4$. Quem compara direto as vitórias ($\dfrac{17}{3} \approx 5{,}7$) ignora que os grupos têm tamanhos diferentes.
+
+  - estilo: UFPR
+    enunciado: |
+      Um jogo infantil tem 20 cartas: 10 vermelhas, numeradas de 1 a 10, e 10 pretas, também numeradas de 1 a 10. Uma carta é retirada ao acaso. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'A probabilidade de a carta ter o número 7, sabendo que ela é vermelha, é $\frac{1}{10}$.'
+    - 'A probabilidade de a carta ser vermelha, sabendo que ela tem número par, é $\frac{1}{2}$.'
+    - 'A probabilidade de a carta ter número maior que 8, sabendo que ela tem número par, é $\frac{1}{5}$.'
+    - 'A probabilidade de a carta ser preta e ter o número 1 é igual à probabilidade de ela ser preta, sabendo que tem o número 1.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'V – F – V – F.', 'F – V – V – F.', 'V – V – F – V.', 'F – V – F – V.']
+    correta: A
+    resolucao: |
+      (V) Entre as 10 vermelhas, uma é o 7.
+      (V) Há 10 cartas pares, 5 vermelhas.
+      (V) Entre as 10 pares, só os dois “10” são maiores que 8: $\dfrac{2}{10}$.
+      (F) $P(\text{preta e } 1) = \dfrac{1}{20}$, mas $P(\text{preta}\mid 1) = \dfrac{1}{2}$: a interseção e a condicional são coisas diferentes.
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra um alvo quadrado ABCD, com 2 m de lado, dividido pela diagonal AC. O quadrado Q, de 1 m de lado, tem um vértice em A. Um dardo é lançado e atinge um ponto do alvo ao acaso, de modo que a probabilidade de atingir uma região é proporcional à área dessa região.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1.25]
+        \fill[lilas!45] (0,0) -- (2,0) -- (2,2) -- cycle;
+        \fill[roxo!30] (0,0) -- (1,0) -- (1,1) -- cycle;
+        \draw[roxo, line width=.8pt] (0,0) rectangle (1,1);
+        \draw[ink, line width=.8pt] (0,0) rectangle (2,2);
+        \draw[ink, line width=.8pt] (0,0) -- (2,2);
+        \node[below left, font=\scriptsize] at (0,0) {A};
+        \node[below right, font=\scriptsize] at (2,0) {B};
+        \node[above right, font=\scriptsize] at (2,2) {C};
+        \node[above left, font=\scriptsize] at (0,2) {D};
+        \node[font=\scriptsize\bfseries, text=roxo] at (0.3,0.7) {Q};
+        \node[below, font=\tiny, text=mudo] at (1,0) {2 m};
+        \end{scope}
+    enunciado: |
+      Sabendo que o dardo atingiu o triângulo ABC, a probabilidade de que ele tenha atingido o quadrado Q é
+    opcoes: ['$\dfrac{1}{4}$', '$\dfrac{1}{3}$', '$\dfrac{3}{8}$', '$\dfrac{1}{2}$', '$\dfrac{3}{4}$']
+    correta: A
+    resolucao: |
+      A condição restringe o espaço amostral ao triângulo ABC, de área $\dfrac{2\cdot 2}{2} = 2$ m². A parte de Q dentro desse triângulo é metade de Q: $0{,}5$ m².
+      $P = \dfrac{0{,}5}{2} = \dfrac{1}{4}$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Fuvest
+    enunciado: |
+      Três cartões estão em um saco: um tem as duas faces vermelhas, outro tem as duas faces pretas e o terceiro tem uma face vermelha e a outra preta. Um cartão é retirado ao acaso e colocado sobre a mesa, e a face que fica voltada para cima é vermelha. A probabilidade de que a face voltada para baixo também seja vermelha é
+    opcoes: ['$\dfrac{1}{4}$', '$\dfrac{1}{3}$', '$\dfrac{1}{2}$', '$\dfrac{2}{3}$', '$\dfrac{3}{4}$']
+    correta: D
+    resolucao: |
+      Conte as faces, não os cartões: há 3 faces vermelhas que podem estar para cima, todas igualmente prováveis. Em 2 delas (as duas do cartão vermelho-vermelho) a face de baixo é vermelha.
+      $P = \dfrac{2}{3}$. A resposta $\dfrac{1}{2}$ supõe, sem justificativa, que os dois cartões possíveis são igualmente prováveis.
+
+  - estilo: UEM
+    enunciado: |
+      Dois dados honestos são lançados simultaneamente. Considere os eventos $A$: “a soma dos pontos é 7”; $B$: “os dois dados mostram números diferentes”; $C$: “pelo menos um dos dados mostra o número 6”. Assinale o que for correto.
+    proposicoes:
+    - '$P(A\mid B) = \frac{1}{5}$.'
+    - '$P(B\mid A) = 1$.'
+    - '$P(C\mid A) = \frac{1}{3}$.'
+    - '$P(A\mid C) = \frac{1}{6}$.'
+    - '$P(C\mid B) = \frac{1}{3}$.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      01) Correta: $A \subset B$ (soma 7 nunca tem números iguais); $\dfrac{6}{30} = \dfrac{1}{5}$.
+      02) Correta: todo resultado de $A$ está em $B$.
+      04) Correta: dos 6 pares com soma 7, dois têm o 6: $(1,6)$ e $(6,1)$.
+      08) Incorreta: $C$ tem 11 resultados e só 2 deles têm soma 7: $\dfrac{2}{11}$.
+      16) Correta: $B \cap C$ tem $11 - 1 = 10$ resultados (tira-se o $(6,6)$); $\dfrac{10}{30} = \dfrac{1}{3}$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um laboratório desenvolveu um teste rápido para uma doença e, para avaliá-lo, aplicou o teste em 2 000 pessoas cuja situação já era conhecida por meio de um exame laboratorial completo. Na divulgação, o fabricante destacou que “o teste identifica 95\% dos doentes”. O quadro mostra os resultados.
+      tabela:
+        cabecalho: ['', 'Teste positivo', 'Teste negativo']
+        linhas:
+        - ['Pessoas doentes', '190', '10']
+        - ['Pessoas não doentes', '90', '1 710']
+    enunciado: |
+      Uma pessoa desse grupo recebeu resultado positivo no teste rápido.
+      Com base nos dados do quadro, a probabilidade de que essa pessoa esteja de fato doente é, aproximadamente,
+    opcoes: ['9,5\%.', '14\%.', '68\%.', '90\%.', '95\%.']
+    correta: C
+    resolucao: |
+      A informação “resultado positivo” reduz o espaço amostral a $190 + 90 = 280$ pessoas, das quais 190 estão doentes.
+      $P = \dfrac{190}{280} \approx 0{,}68 = 68\%$. Os 95\% do fabricante são $P(\text{positivo}\mid\text{doente}) = \dfrac{190}{200}$, a condicional invertida.
+
+  - estilo: Unicamp
+    enunciado: |
+      Considerando apenas as pessoas em que o resultado do teste rápido foi errado (doentes com teste negativo ou não doentes com teste positivo), a probabilidade de que uma delas, escolhida ao acaso, esteja doente é igual a
+    opcoes: ['$1/200$.', '$1/20$.', '$1/19$.', '$1/10$.']
+    correta: D
+    resolucao: |
+      Resultados errados: $10$ doentes com teste negativo $+ 90$ não doentes com teste positivo $= 100$ pessoas.
+      Doentes entre elas: 10. $P = \dfrac{10}{100} = \dfrac{1}{10}$.
+
+  - estilo: UFPR
+    enunciado: |
+      Sejam $A$ e $B$ eventos de um mesmo espaço amostral, com $P(A) > 0$ e $P(B) > 0$, e sejam $\overline{A}$ e $\overline{B}$ seus complementares. Considere as afirmações:
+    afirmativas:
+    - 'Se $A \subset B$, então $P(B\mid A) = 1$.'
+    - '$P(A\mid B) + P(\overline{A}\mid B) = 1$.'
+    - '$P(A\mid B) + P(A\mid \overline{B}) = 1$, sempre que $P(\overline{B}) > 0$.'
+    - 'Se $P(A\mid B) = P(B\mid A)$, então $P(A) = P(B)$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I, apenas.', 'I e II, apenas.', 'I e III, apenas.', 'I, II e IV, apenas.', 'II, III e IV, apenas.']
+    correta: B
+    resolucao: |
+      I. Correta: $P(B\mid A) = \dfrac{P(A\cap B)}{P(A)} = \dfrac{P(A)}{P(A)} = 1$.
+      II. Correta: dentro de $B$, ou ocorre $A$ ou ocorre $\overline{A}$.
+      III. Incorreta: num dado, com $A$ = “sair 6” e $B$ = “par”, a soma é $\dfrac{1}{3} + 0$.
+      IV. Incorreta: se $A$ e $B$ são disjuntos, as duas condicionais valem 0 mesmo com $P(A) \ne P(B)$. (A conclusão só vale se $P(A\cap B) > 0$.)
+
+  - estilo: Fuvest
+    enunciado: |
+      Com os algarismos 1, 2, 3, 4 e 5, formam-se todos os números de três algarismos distintos. Um desses números é sorteado ao acaso. Sabendo que o número sorteado é par, a probabilidade de que ele seja maior que 300 é
+    opcoes: ['$\dfrac{3}{8}$', '$\dfrac{2}{5}$', '$\dfrac{1}{2}$', '$\dfrac{3}{5}$', '$\dfrac{5}{8}$']
+    correta: E
+    resolucao: |
+      Pares: termina em 2 ou 4; $2\cdot 4\cdot 3 = 24$ números.
+      Pares maiores que 300: terminando em 2, centena 3, 4 ou 5 (3 opções) e dezena com 3 opções: 9; terminando em 4, centena 3 ou 5 (2 opções) e dezena com 3 opções: 6. Total 15.
+      $P = \dfrac{15}{24} = \dfrac{5}{8}$. ($\dfrac{3}{5}$ é a probabilidade de ser maior que 300 sem a condição.)
+
+aprofundamento:
+  questoes:
+  - estilo: Unicamp
+    texto: |
+      Uma escola entrevistou 250 alunos sobre o principal meio de transporte que usam para chegar às aulas. O quadro mostra o resultado, separado por segmento.
+    tabela:
+      cabecalho: ['', 'Ônibus', 'A pé', 'Carro']
+      linhas:
+      - ['Ensino fundamental', '60', '50', '30']
+      - ['Ensino médio', '40', '30', '40']
+    enunciado: 'Um aluno entrevistado é escolhido ao acaso.'
+    itens:
+    - 'Sabendo que o aluno vai de carro, qual é a probabilidade de ele ser do ensino médio?'
+    - 'Sabendo que o aluno é do ensino fundamental, qual é a probabilidade de ele não ir a pé?'
+    - 'No ano seguinte, $x$ alunos do ensino fundamental que iam de carro passaram a ir de ônibus, e nada mais mudou. Determine $x$ para que, escolhido ao acaso um aluno que vai de ônibus, a probabilidade de ele ser do ensino fundamental seja $\frac{2}{3}$.'
+    resolucao: |
+      a) Vão de carro $30 + 40 = 70$ alunos; 40 são do médio: $\dfrac{40}{70} = \dfrac{4}{7}$.
+      b) Fundamental: $60 + 50 + 30 = 140$ alunos; não vão a pé $60 + 30 = 90$: $\dfrac{90}{140} = \dfrac{9}{14}$.
+      c) Ônibus passa a ter $100 + x$ alunos, $60 + x$ do fundamental: $\dfrac{60 + x}{100 + x} = \dfrac{2}{3} \Rightarrow 180 + 3x = 200 + 2x \Rightarrow x = 20$ (possível, pois $20 \le 30$).
+    resposta: 'a) $\dfrac{4}{7}$; b) $\dfrac{9}{14}$; c) $x = 20$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Uma urna contém $n$ bolas, das quais 3 são brancas e as demais são pretas. Retiram-se duas bolas, sucessivamente e sem reposição.
+    itens:
+    - 'Para $n = 8$, calcule a probabilidade de a segunda bola ser branca, sabendo que a primeira é preta.'
+    - 'Para $n = 8$, sabendo que pelo menos uma das bolas retiradas é branca, calcule a probabilidade de as duas serem brancas.'
+    - 'Mostre que, para todo $n \ge 4$, a probabilidade pedida no item b) é $\frac{1}{n-2}$, e determine $n$ para que ela seja igual a $\frac{1}{10}$.'
+    espaco: 62
+    resolucao: |
+      a) Restam 7 bolas, 3 brancas: $\dfrac{3}{7}$.
+      b) $P(BB) = \dfrac{3}{8}\cdot\dfrac{2}{7} = \dfrac{6}{56}$ e $P(\text{nenhuma branca}) = \dfrac{5}{8}\cdot\dfrac{4}{7} = \dfrac{20}{56}$, logo $P(\text{pelo menos uma}) = \dfrac{36}{56}$ e $P = \dfrac{6}{36} = \dfrac{1}{6}$.
+      c) $P(BB) = \dfrac{6}{n(n-1)}$ e $P(\text{pelo menos uma}) = \dfrac{n(n-1) - (n-3)(n-4)}{n(n-1)} = \dfrac{6n - 12}{n(n-1)}$. Dividindo: $\dfrac{6}{6n-12} = \dfrac{1}{n-2}$. Para $\dfrac{1}{10}$: $n = 12$.
+    resposta: 'a) $\dfrac{3}{7}$; b) $\dfrac{1}{6}$; c) $n = 12$'
+
+  - estilo: ITA
+    enunciado: |
+      Três dados honestos e distinguíveis são lançados. Sabendo que a soma dos pontos obtidos é 10, a probabilidade de que pelo menos um dos dados mostre o número 6 é igual a
+    opcoes: ['$\dfrac{1}{6}$', '$\dfrac{1}{4}$', '$\dfrac{1}{3}$', '$\dfrac{5}{12}$', '$\dfrac{1}{2}$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      Ternos ordenados com soma 10: o número de soluções de $a + b + c = 10$ com $1 \le a, b, c \le 6$ é $\binom{9}{2} - 3\binom{3}{2} = 36 - 9 = 27$.
+      Com um 6, os outros dois somam 4: $(1,3), (2,2), (3,1)$; o 6 pode estar em 3 posições: 9 ternos (dois 6 dariam soma ao menos 13).
+      $P = \dfrac{9}{27} = \dfrac{1}{3}$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    texto: |
+      Um ponto $P = (x, y)$ é escolhido ao acaso no quadrado de vértices $(0, 0)$, $(6, 0)$, $(6, 6)$ e $(0, 6)$, de modo que a probabilidade de $P$ estar em uma região é proporcional à área dessa região. Considere os eventos $A$: “$x + y \le 6$” e $B_k$: “$x \le k$”, com $0 < k \le 6$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.62]
+        \fill[lilas!45] (0,0) -- (6,0) -- (0,6) -- cycle;
+        \fill[roxo!25] (0,0) -- (2,0) -- (2,4) -- (0,6) -- cycle;
+        \draw[ink, line width=.8pt] (0,0) rectangle (6,6);
+        \draw[ink, line width=.8pt] (6,0) -- (0,6);
+        \draw[roxo, dashed, line width=.8pt] (2,0) -- (2,6);
+        \draw[-latex, ink!60] (0,0) -- (6.8,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,0) -- (0,6.8) node[above, font=\scriptsize] {$y$};
+        \node[below, font=\tiny] at (2,0) {$k$};
+        \node[below, font=\tiny] at (6,0) {6};
+        \node[left, font=\tiny] at (0,6) {6};
+        \node[font=\tiny, text=mudo] at (4.6,4.6) {$x + y = 6$};
+        \end{scope}
+      legenda: 'Na figura, $k = 2$.'
+    enunciado: 'Determine:'
+    itens:
+    - '$P(A)$;'
+    - '$P(A\mid B_2)$;'
+    - 'o valor de $k$ para o qual $P(A\mid B_k) = \frac{3}{4}$.'
+    resolucao: |
+      a) $A$ é o triângulo abaixo da diagonal, metade do quadrado: $P(A) = \dfrac{1}{2}$.
+      b) $B_2$ tem área $2\cdot 6 = 12$; $A \cap B_2$ é um trapézio de bases 6 e 4 e altura 2: área 10. $P = \dfrac{10}{12} = \dfrac{5}{6}$.
+      c) $A \cap B_k$ tem área $6k - \dfrac{k^2}{2}$ e $B_k$ tem área $6k$: $P(A\mid B_k) = 1 - \dfrac{k}{12} = \dfrac{3}{4} \Rightarrow k = 3$.
+    resposta: 'a) $\dfrac{1}{2}$; b) $\dfrac{5}{6}$; c) $k = 3$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Uma família tem dois filhos. Admita que cada filho tem a mesma chance de ser menino ou menina e de ter nascido em qualquer um dos sete dias da semana, de forma independente. Sabe-se que pelo menos um dos filhos é um menino nascido em uma terça-feira. Nessas condições, a probabilidade de que os dois filhos sejam meninos é
+    opcoes: ['$\dfrac{1}{3}$', '$\dfrac{13}{27}$', '$\dfrac{1}{2}$', '$\dfrac{14}{27}$', '$\dfrac{2}{3}$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      Cada filho tem $2\cdot 7 = 14$ tipos igualmente prováveis; a família, $14^2 = 196$ casos. Não ter menino de terça: $13^2 = 169$ casos. A condição deixa $196 - 169 = 27$ casos.
+      Dois meninos com pelo menos um de terça: $7^2 - 6^2 = 13$ casos. $P = \dfrac{13}{27}$, bem mais perto de $\dfrac{1}{2}$ do que o $\dfrac{1}{3}$ do problema sem o dia da semana.
+    resposta: 'B'
+
+  - estilo: Unicamp
+    texto: |
+      Em um programa de auditório, há três portas fechadas: atrás de uma delas está um carro e, atrás das outras duas, nada. O participante escolhe uma porta. O apresentador, que sabe onde está o carro, abre sempre uma das portas não escolhidas que não tem o carro (se houver duas assim, escolhe uma ao acaso) e oferece ao participante a chance de trocar de porta.
+    enunciado: ''
+    itens:
+    - 'Qual é a probabilidade de o participante ganhar o carro se ele mantiver a porta escolhida?'
+    - 'Justifique, com base na probabilidade condicional, que trocar de porta dá ao participante probabilidade $\frac{2}{3}$ de ganhar.'
+    - 'Suponha agora que sejam quatro portas, com um único carro. O apresentador abre uma porta vazia, nas mesmas regras, e o participante sempre troca, escolhendo ao acaso uma das duas portas fechadas restantes. Qual é a probabilidade de ele ganhar?'
+    espaco: 62
+    resolucao: |
+      a) A escolha inicial acerta com probabilidade $\dfrac{1}{3}$, e abrir uma porta vazia não muda isso.
+      b) Se a primeira escolha está errada (probabilidade $\dfrac{2}{3}$), o apresentador é obrigado a abrir a outra porta vazia, e a única porta que sobra tem o carro: $P(\text{ganha}\mid\text{errou no início}) = 1$. Se a escolha estava certa, trocar perde. Logo $P(\text{ganha trocando}) = \dfrac{2}{3}\cdot 1 = \dfrac{2}{3}$.
+      c) Ele só pode ganhar se tiver errado no início ($\dfrac{3}{4}$); nesse caso o carro está em uma das duas portas fechadas restantes: $\dfrac{3}{4}\cdot\dfrac{1}{2} = \dfrac{3}{8}$.
+    resposta: 'a) $\dfrac{1}{3}$; b) ver resolução; c) $\dfrac{3}{8}$'
+
+  - estilo: UFSC
+    enunciado: |
+      Sejam $A$ e $B$ eventos de um espaço amostral tais que $P(A) = 0{,}5$, $P(B) = 0{,}4$ e $P(A \cup B) = 0{,}7$. Indique por $\overline{A}$ e $\overline{B}$ os complementares de $A$ e $B$. Assinale o que for correto.
+    proposicoes:
+    - '$P(A\mid B) = 0{,}5$.'
+    - '$P(B\mid A) = P(A\mid B)$.'
+    - '$A$ e $B$ são mutuamente exclusivos.'
+    - '$P(A\mid \overline{B}) = 0{,}5$.'
+    - '$P(\overline{A} \cap \overline{B}) = 0{,}3$.'
+    - '$P(\overline{B}\mid \overline{A}) = 0{,}4$.'
+    - '$P(A\mid A \cup B) = \frac{5}{7}$.'
+    corretas: [1, 4, 5, 7]
+    espaco: 22
+    resolucao: |
+      $P(A\cap B) = 0{,}5 + 0{,}4 - 0{,}7 = 0{,}2$.
+      01) Correta: $\dfrac{0{,}2}{0{,}4}$. 02) Incorreta: $P(B\mid A) = \dfrac{0{,}2}{0{,}5} = 0{,}4$. 04) Incorreta: $P(A\cap B) \ne 0$.
+      08) Correta: $\dfrac{0{,}5 - 0{,}2}{0{,}6}$. 16) Correta: $1 - 0{,}7$. 32) Incorreta: $\dfrac{0{,}3}{0{,}5} = 0{,}6$.
+      64) Correta: $A \subset A\cup B$, então $\dfrac{0{,}5}{0{,}7}$.
+    resposta: 'Soma 89 (01 + 08 + 16 + 64)'
+
+  - estilo: ITA
+    enunciado: |
+      Dois números distintos são escolhidos ao acaso no conjunto $\{1, 2, 3, \ldots, 10\}$. Sabendo que o produto dos números escolhidos é par, a probabilidade de que a soma deles seja ímpar é igual a
+    opcoes: ['$\dfrac{1}{2}$', '$\dfrac{5}{9}$', '$\dfrac{2}{3}$', '$\dfrac{5}{7}$', '$\dfrac{7}{9}$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      Pares de números: $\binom{10}{2} = 45$. Produto ímpar só com dois ímpares: $\binom{5}{2} = 10$; logo produto par em 35 casos.
+      Soma ímpar: um par e um ímpar, $5\cdot 5 = 25$ casos, todos com produto par. $P = \dfrac{25}{35} = \dfrac{5}{7}$. ($\dfrac{5}{9}$ ignora a condição.)
+    resposta: 'D'
+
+  - estilo: Fuvest
+    enunciado: 'Considere todos os anagramas da palavra BANANA.'
+    itens:
+    - 'Quantos são esses anagramas?'
+    - 'Escolhido ao acaso um anagrama que começa pela letra A, qual é a probabilidade de que ele também termine pela letra A?'
+    - 'Escolhido ao acaso um anagrama em que as duas letras N não aparecem juntas, qual é a probabilidade de que as três letras A apareçam juntas?'
+    espaco: 62
+    resolucao: |
+      a) $\dfrac{6!}{3!\,2!} = 60$.
+      b) Começando por A, sobram B, N, N, A, A: $\dfrac{5!}{2!\,2!} = 30$. Começando e terminando por A, o meio é B, N, N, A: $\dfrac{4!}{2!} = 12$. $P = \dfrac{12}{30} = \dfrac{2}{5}$.
+      c) NN juntos (bloco): $\dfrac{5!}{3!} = 20$, logo 40 anagramas sem NN. Com AAA em bloco: $\dfrac{4!}{2!} = 12$, dos quais 6 têm NN juntos ($3! = 6$), sobram 6. $P = \dfrac{6}{40} = \dfrac{3}{20}$.
+    resposta: 'a) 60; b) $\dfrac{2}{5}$; c) $\dfrac{3}{20}$'
+
+  - estilo: Unesp
+    texto: |
+      Ana e Beto jogam um dado honesto alternadamente, começando por Ana. Vence quem tirar o número 6 primeiro, e o jogo termina nesse momento.
+    enunciado: ''
+    itens:
+    - 'Qual é a probabilidade de Ana vencer na sua primeira jogada?'
+    - 'Qual é a probabilidade de o jogo terminar até a 4ª jogada (contando as jogadas dos dois)?'
+    - 'Sabendo que o jogo terminou até a 4ª jogada, qual é a probabilidade de Ana ter vencido?'
+    espaco: 62
+    resolucao: |
+      a) $\dfrac{1}{6}$.
+      b) O jogo só não termina se as 4 primeiras jogadas não derem 6: $1 - \left(\dfrac{5}{6}\right)^4 = \dfrac{671}{1296}$.
+      c) Ana vence até a 4ª jogada na 1ª ou na 3ª: $\dfrac{1}{6} + \left(\dfrac{5}{6}\right)^2\dfrac{1}{6} = \dfrac{61}{216} = \dfrac{366}{1296}$. Logo $P = \dfrac{366}{671} = \dfrac{6}{11}$ (pois $671 = 11\cdot 61$).
+    resposta: 'a) $\dfrac{1}{6}$; b) $\dfrac{671}{1296}$; c) $\dfrac{6}{11}$'
