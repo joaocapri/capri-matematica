@@ -65,8 +65,8 @@ async function checkWidth(page,label){
   await page.locator('.tr-lesson h3 a[href="/2/3/2/"]').click();
   await page.waitForURL('**/2/3/2/');
   await page.locator('.aula-step').first().waitFor();
-  assert.equal(await page.locator('.aula-step').count(),4);
-  assert.equal(await page.locator('.aula-rail [data-rail]').count(),4);
+  assert.equal(await page.locator('.aula-step').count(),5);
+  assert.equal(await page.locator('.aula-rail [data-rail]').count(),5);
   assert.equal(await page.locator('#btn-share').textContent(),'Compartilhar');
   assert.equal(await page.locator('#btn-share').getAttribute('aria-label'),'Compartilhe essa aula');
   assert.equal(await page.locator('.lesson-tools .lesson-tool').count(),3);

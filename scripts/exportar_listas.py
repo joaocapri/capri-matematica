@@ -116,6 +116,28 @@ def figura_svg(codigo, nome, fig):
     return f"/pdfs/figuras/{destino.name}"
 
 
+def web_lacunas(s):
+    """{{resposta}} vira um traço no site (dentro de $...$, um \\underline vazio)."""
+    s, out, i = str(s), [], 0
+    for m in re.finditer(r"\{\{(.*?)\}\}(?!\})", s):
+        em_math = len(re.findall(r"(?<!\\)\$", s[:m.start()])) % 2 == 1
+        out.append(s[i:m.start()] + (r"\underline{\hspace{2.2em}}" if em_math else "______"))
+        i = m.end()
+    out.append(s[i:])
+    return "".join(out)
+
+
+def itens_web(q):
+    """Itens do site para cada formato da fixação (V ou F e associar viram itens com marcador)."""
+    f = formato(q)
+    if f == "vf":
+        return ["( ) " + tex_web(web_lacunas(a)) for a in q["afirmacoes"]]
+    if f == "associar":
+        return (["(%d) %s" % (k, tex_web(x)) for k, x in enumerate(q["esquerda"], 1)] +
+                ["( ) " + tex_web(x) for x in q["direita"]])
+    return [tex_web(web_lacunas(i)) for i in q.get("itens", [])]
+
+
 def apoio(codigo, nome, q):
     """Texto de apoio, tabela e figura de uma questão, no formato do site."""
     extra = {}
@@ -123,8 +145,8 @@ def apoio(codigo, nome, q):
         extra["texto"] = linhas(q["texto"])
     if q.get("tabela"):
         t = q["tabela"]
-        extra["tabela"] = {"cabecalho": [tex_web(c) for c in t["cabecalho"]],
-                           "linhas": [[tex_web(c) for c in l] for l in t["linhas"]],
+        extra["tabela"] = {"cabecalho": [tex_web(c) for c in t.get("cabecalho", [])],
+                           "linhas": [[tex_web(web_lacunas(c)) for c in l] for l in t["linhas"]],
                            "legenda": tex_web(t.get("legenda", ""))}
     if q.get("figura"):
         extra["figura"] = figura_svg(codigo, nome, q["figura"])
@@ -133,7 +155,7 @@ def apoio(codigo, nome, q):
     return extra
 
 
-from gerar_listas import chave_nivel, nivel_vest, NIVEIS
+from gerar_listas import chave_nivel, nivel_vest, NIVEIS, formato, SOMA, soma_correta
 NOME_NIVEL = {k: v[1] for k, v in NIVEIS.items()}
 
 
@@ -149,8 +171,10 @@ def exportar(codigo):
                 n += 1
                 qs.append({
                     "n": n,
-                    "enunciado": tex_web(" ".join(str(q["enunciado"]).split("\n"))),
-                    "itens": [tex_web(i) for i in q.get("itens", [])],
+                    "enunciado": tex_web(web_lacunas(" ".join(str(q["enunciado"]).split("\n")))),
+                    "itens": itens_web(q),
+                    **({"marcador": True} if formato(q) in ("vf", "associar") else {}),
+                    **({"tabelaDepois": True} if q.get("tabela") and any("{{" in str(c) for l in q["tabela"]["linhas"] for c in l) else {}),
                     "resolucao": linhas(q.get("resolucao")),
                     "resposta": tex_web(q.get("resposta", "")),
                     **apoio(codigo, f"f{n}", q),
@@ -163,15 +187,30 @@ def exportar(codigo):
             "questoes": [{
                 "n": k,
                 "enunciado": tex_web(" ".join(str(q["enunciado"]).split("\n"))),
-                "opcoes": [tex_web(o) for o in q["opcoes"]],
-                "correta": "ABCDE".index(q["correta"]),
+                **({"tipo": "somatoria", "proposicoes": [tex_web(p) for p in q["proposicoes"]],
+                    "codigos": SOMA[:len(q["proposicoes"])], "correta": soma_correta(q)}
+                   if formato(q) == "somatoria" else
+                   {"opcoes": [tex_web(o) for o in q["opcoes"]], "correta": "ABCDE".index(q["correta"])}),
                 "resolucao": linhas(q.get("resolucao")),
                 "nivel": NOME_NIVEL[nivel_vest(q, k)],
                 **apoio(codigo, f"v{k}", q),
             } for k, q in enumerate(fonte["vestibular"]["questoes"], 1)],
         }
+    if "aprofundamento" in fonte:
+        dados["aprofundamento"] = {
+            "intro": tex_web(fonte["aprofundamento"].get("intro", "")),
+            "questoes": [{
+                "n": k,
+                "enunciado": tex_web(web_lacunas(" ".join(str(q["enunciado"]).split("\n")))),
+                "itens": itens_web(q),
+                **({"marcador": True} if formato(q) in ("vf", "associar") else {}),
+                "resolucao": linhas(q.get("resolucao")),
+                "resposta": tex_web(q.get("resposta", "")),
+                **apoio(codigo, f"a{k}", q),
+            } for k, q in enumerate(fonte["aprofundamento"]["questoes"], 1)],
+        }
     pdfs = {}
-    for tipo in ("fixacao", "vestibular"):
+    for tipo in ("fixacao", "vestibular", "aprofundamento"):
         pdf = ROOT / "pdfs" / f"{tipo}-{codigo}.pdf"
         if pdf.exists():
             webp = CAPAS / f"{tipo}-{codigo}.webp"

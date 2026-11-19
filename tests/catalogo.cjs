@@ -262,13 +262,16 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(nativeSharePayload.url,'https://matmatmat.test/2/3/2/');
  assert.equal(d.querySelector('#lesson-share-options').hidden,true);
  // Página da aula: roteiro em quatro etapas com teoria, exercícios, modo prova e PDFs.
- assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['entenda','pratique','prova','levar']);
- assert.equal(d.querySelectorAll('.aula-rail [data-rail]').length,4);
+ assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['entenda','pratique','prova','aprofunde','levar']);
+ assert.equal(d.querySelectorAll('.aula-rail [data-rail]').length,5);
+ // As 3 listas ficam claras logo na entrada da aula.
+ assert.deepEqual([...d.querySelectorAll('.aula-3listas .aula-3l b')].map(b=>b.textContent),['Fixação','Vestibular','Aprofundamento']);
+ assert.equal(d.querySelectorAll('#apr-list .aula-ex').length,10,'Lista de aprofundamento com 10 questões');
  assert.ok(d.querySelector('.aula-crumbs a[href="/funcao-quadratica/"]'),'Aula volta para o assunto');
  assert.match(d.querySelector('.aula-kicker').textContent,/Aula 2 de 6 em Função quadrática/);
  assert.match(d.querySelector('#aula-formula-math').textContent,/\\frac\{-b/,'Fórmula da aula no destaque');
  assert.ok(d.querySelector('.aula-trail .is-current a[aria-current="page"]'));
- assert.equal(d.querySelectorAll('.aula-pdf').length,2,'Vitrine com as duas listas');
+ assert.equal(d.querySelectorAll('.aula-pdf').length,3,'Vitrine com as três listas');
  assert.ok(d.querySelector('.aula-pdf[href="/pdfs/fixacao-2.3.2.pdf"] img[src="/pdfs/capas/fixacao-2.3.2.webp"]'));
  // Resumo curto no lugar da teoria longa; níveis com selos Fácil, Médio e Difícil.
  assert.ok(d.querySelector('#entenda .aula-resumo'),'Resumo curto da aula');
@@ -292,7 +295,12 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  click(w,d.querySelector('#prova-start'));
  const vest=lista.vestibular.questoes;
  vest.forEach((qq,k)=>{
-  click(w,d.querySelector('#prova-root [data-popt="'+(k===0?(qq.correta+1)%5:qq.correta)+'"]'));
+  if(qq.tipo==='somatoria'){
+   // somatória: marca as proposições corretas e confere a soma
+   qq.codigos.filter(c=>qq.correta&c).forEach(c=>click(w,d.querySelector('#prova-root [data-sprop="'+c+'"]')));
+   assert.match(d.querySelector('[data-sconf]').textContent,new RegExp('soma '+qq.correta+'$'));
+   click(w,d.querySelector('#prova-root [data-sconf]'));
+  }else click(w,d.querySelector('#prova-root [data-popt="'+(k===0?(qq.correta+1)%5:qq.correta)+'"]'));
   assert.ok(d.querySelector('#quiz-feedback .aula-fb-box'));
   click(w,d.querySelector('#prova-next'));
  });
