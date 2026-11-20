@@ -1,0 +1,441 @@
+# Aula 3.9.4 — Distância de ponto a reta
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# Falta a fixação (entra no lote do módulo 3.9). `estilo` é só controle interno: não é impresso.
+padrao: 4
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      O mapa de um bairro foi desenhado em um plano cartesiano em que cada unidade corresponde a 100 m. Nele, a rodovia que passa ao lado do bairro é representada por uma reta que corta os eixos nos pontos (8, 0) e (0, 6), e uma casa está localizada no ponto C(2, 1), como mostra a figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.52]
+        \draw[step=1, gray!25, very thin] (0,0) grid (9,7);
+        \draw[-latex, ink!60] (0,0) -- (9.6,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,0) -- (0,7.6) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1.4pt] (9,-0.75) -- (-0.5,6.375);
+        \fill[roxo] (8,0) circle (2.4pt) node[below right, font=\tiny] {(8, 0)};
+        \fill[roxo] (0,6) circle (2.4pt) node[left, font=\tiny] {(0, 6)};
+        \fill[ink] (2,1) circle (2.6pt) node[below, font=\tiny] {C};
+        \node[font=\tiny, text=roxo, rotate=-36.87] at (5.6,2.6) {rodovia};
+        \end{scope}
+    enunciado: |
+      A prefeitura vai construir uma passarela retilínea ligando a casa à rodovia, com o menor comprimento possível.
+      O comprimento dessa passarela, em metro, será
+    opcoes: ['56.', '200.', '280.', '539.', '1 400.']
+    correta: C
+    resolucao: |
+      Reta pelos pontos $(8, 0)$ e $(0, 6)$: $\dfrac{x}{8} + \dfrac{y}{6} = 1$, ou seja, $3x + 4y - 24 = 0$.
+      O menor caminho é o perpendicular: $d = \dfrac{|3\cdot 2 + 4\cdot 1 - 24|}{\sqrt{3^2 + 4^2}} = \dfrac{14}{5} = 2{,}8$ unidades, isto é, 280 m.
+      1 400 esquece de dividir por 5; 539 é a distância até o ponto $(0, 6)$, que não é o mais próximo.
+
+  - estilo: Fuvest
+    enunciado: |
+      A distância do ponto $P(3, -1)$ à reta de equação $4x - 3y + 5 = 0$ é
+    opcoes: ['$2{,}8$', '$3$', '$4$', '$5$', '$20$']
+    correta: C
+    resolucao: |
+      $d = \dfrac{|4\cdot 3 - 3\cdot(-1) + 5|}{\sqrt{16 + 9}} = \dfrac{20}{5} = 4$.
+      Quem erra o sinal de $-3\cdot(-1)$ encontra $\dfrac{14}{5} = 2{,}8$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A distância entre as retas paralelas $r\colon y = 2x + 1$ e $s\colon y = 2x - 4$ é igual a
+    opcoes: ['$5$.', '$\sqrt{5}$.', '$5/2$.', '$1$.']
+    correta: B
+    resolucao: |
+      Na forma geral: $2x - y + 1 = 0$ e $2x - y - 4 = 0$. Então $d = \dfrac{|1 - (-4)|}{\sqrt{4 + 1}} = \dfrac{5}{\sqrt{5}} = \sqrt{5}$.
+      O valor 5 é a distância medida na vertical (diferença dos coeficientes lineares), que não é perpendicular às retas.
+
+  - estilo: Enem
+    texto: |
+      Uma operadora de telefonia vai instalar uma torre de transmissão para atender uma rodovia retilínea. Em um sistema de coordenadas com unidade de 1 km, a rodovia passa pelos pontos (−2, 0) e (0, 2). A empresa tem cinco terrenos disponíveis, com as localizações indicadas no quadro.
+    tabela:
+      cabecalho: ['Terreno', 'I', 'II', 'III', 'IV', 'V']
+      linhas:
+      - ['Localização', '(0, 5)', '(3, 3)', '(1, 1)', '(6, 5)', '(5, 6)']
+    enunciado: |
+      Para melhorar o sinal, a torre deve ser instalada no terreno mais próximo da rodovia.
+      O terreno escolhido deve ser o
+    opcoes: ['I.', 'II.', 'III.', 'IV.', 'V.']
+    correta: E
+    resolucao: |
+      A rodovia é $y = x + 2$, ou $x - y + 2 = 0$, e $d = \dfrac{|x_0 - y_0 + 2|}{\sqrt{2}}$.
+      Numeradores: I: 3; II: 2; III: 2; IV: 3; V: $|5 - 6 + 2| = 1$. O menor é o do terreno V ($d = \dfrac{\sqrt{2}}{2} \approx 0{,}7$ km).
+      O terreno III, o mais perto da origem, não é o mais perto da rodovia.
+
+  - estilo: UEM
+    enunciado: |
+      No plano cartesiano, considere a reta $r$ de equação $3x + 4y - 12 = 0$. Assinale o que for correto.
+    proposicoes:
+    - 'A distância da origem à reta $r$ é $\frac{12}{5}$.'
+    - 'O ponto $(0, 4)$ pertence à reta $r$.'
+    - 'O ponto $(1, 1)$ está a uma distância 1 da reta $r$.'
+    - 'A reta $s\colon 3x + 4y + 8 = 0$ é paralela a $r$, e a distância entre elas é 4.'
+    - 'O ponto da reta $r$ mais próximo da origem é $(3, 0)$.'
+    corretas: [1, 3, 4]
+    resolucao: |
+      01) Correta: $\dfrac{|-12|}{5}$.
+      02) Incorreta: $3\cdot 0 + 4\cdot 4 - 12 = 4 \ne 0$; o ponto de $r$ no eixo $y$ é $(0, 3)$.
+      04) Correta: $\dfrac{|3 + 4 - 12|}{5} = 1$.
+      08) Correta: mesmos $a$ e $b$; $d = \dfrac{|-12 - 8|}{5} = 4$.
+      16) Incorreta: o ponto mais próximo é o pé da perpendicular, $\left(\dfrac{36}{25}, \dfrac{48}{25}\right)$; $(3, 0)$ nem pertence a $r$.
+
+  - estilo: Unesp
+    texto: |
+      Em um projeto de paisagismo, um canteiro triangular foi desenhado em um plano cartesiano com unidade de 1 m. Os vértices do canteiro são A(1, 1), B(5, 4) e C(6, −2), e o lado AB será contornado por uma mureta.
+    enunciado: |
+      A distância do vértice C à reta que contém a mureta, isto é, a altura do triângulo relativa ao lado AB, é igual a
+    opcoes: ['2,7 m.', '4,5 m.', '5,0 m.', '5,4 m.', '27 m.']
+    correta: D
+    resolucao: |
+      Reta AB: coeficiente angular $\dfrac{3}{4}$, então $3x - 4y + 1 = 0$ (confira: A e B satisfazem).
+      $d = \dfrac{|3\cdot 6 - 4\cdot(-2) + 1|}{5} = \dfrac{27}{5} = 5{,}4$ m. (Com ela, a área do canteiro é $\dfrac{5\cdot 5{,}4}{2} = 13{,}5$ m².)
+
+  - estilo: Fuvest
+    enunciado: |
+      Os pontos do eixo das abscissas que estão a uma distância 2 da reta $3x - 4y + 6 = 0$ são
+    opcoes: ['$\left(-\frac{4}{3}, 0\right)$ e $\left(\frac{16}{3}, 0\right)$', '$\left(-\frac{4}{3}, 0\right)$ e $\left(-\frac{8}{3}, 0\right)$', '$(-2, 0)$ e $(2, 0)$', '$\left(\frac{4}{3}, 0\right)$ e $\left(\frac{16}{3}, 0\right)$', '$\left(\frac{4}{3}, 0\right)$ e $\left(-\frac{16}{3}, 0\right)$']
+    correta: E
+    resolucao: |
+      Para $P(x, 0)$: $\dfrac{|3x + 6|}{5} = 2 \Rightarrow 3x + 6 = 10$ ou $3x + 6 = -10$, isto é, $x = \dfrac{4}{3}$ ou $x = -\dfrac{16}{3}$.
+      A alternativa B esquece de dividir por 5 ($|3x + 6| = 2$).
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      Duas avenidas retilíneas e paralelas de uma cidade foram representadas em um plano cartesiano, com unidade de 100 m, pelas retas de equações $y = \frac{3}{4}x + 2$ e $y = \frac{3}{4}x - 3$. Um técnico mediu a distância entre as avenidas ao longo de uma rua que coincide com o eixo $y$ e encontrou 500 m. A prefeitura, porém, vai construir um viaduto perpendicular às duas avenidas, ligando uma à outra.
+    enunciado: |
+      O comprimento do viaduto, em metro, será
+    opcoes: ['300.', '400.', '500.', '625.', '2 000.']
+    correta: B
+    resolucao: |
+      Na forma geral: $3x - 4y + 8 = 0$ e $3x - 4y - 12 = 0$. $d = \dfrac{|8 - (-12)|}{5} = 4$ unidades, ou 400 m.
+      Os 500 m do técnico foram medidos na vertical, que não é perpendicular às avenidas, por isso dão um valor maior.
+
+  - estilo: UEL
+    enunciado: |
+      Considere a reta $r$ de equação $x + y - 2 = 0$ e as afirmativas a seguir.
+    afirmativas:
+    - 'A distância da origem à reta $r$ é $\sqrt{2}$.'
+    - 'O ponto $(3, 3)$ está a uma distância $2\sqrt{2}$ da reta $r$.'
+    - 'A reta $x + y + 2 = 0$ está a uma distância 4 da reta $r$.'
+    - 'Todos os pontos da reta $y = x$ estão a uma mesma distância da reta $r$.'
+    comando: 'Assinale a alternativa correta.'
+    opcoes:
+    - 'Somente as afirmativas I e II são corretas.'
+    - 'Somente as afirmativas I e III são corretas.'
+    - 'Somente as afirmativas II e IV são corretas.'
+    - 'Somente as afirmativas I, II e III são corretas.'
+    - 'Somente as afirmativas II, III e IV são corretas.'
+    correta: A
+    resolucao: |
+      I. Correta: $\dfrac{|-2|}{\sqrt{2}} = \sqrt{2}$.
+      II. Correta: $\dfrac{|3 + 3 - 2|}{\sqrt{2}} = \dfrac{4}{\sqrt{2}} = 2\sqrt{2}$.
+      III. Incorreta: $\dfrac{|-2 - 2|}{\sqrt{2}} = 2\sqrt{2}$, não 4.
+      IV. Incorreta: só uma reta paralela a $r$ tem essa propriedade; $y = x$ é perpendicular a $r$ e a corta em $(1, 1)$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o triângulo de vértices $A(-1, 2)$, $B(3, -1)$ e $C(2, 5)$. Assinale o que for correto.
+    proposicoes:
+    - 'A reta $AB$ tem equação $3x + 4y - 5 = 0$.'
+    - 'A altura relativa ao lado $AB$ mede $\frac{21}{5}$.'
+    - 'A área do triângulo $ABC$ é 21.'
+    - 'A distância da origem à reta $AB$ é 1.'
+    - 'A reta que passa por $C$ e é paralela a $AB$ está a uma distância 5 da reta $AB$.'
+    corretas: [1, 2, 4]
+    resolucao: |
+      01) Correta: A e B satisfazem $3x + 4y - 5 = 0$.
+      02) Correta: $d(C, AB) = \dfrac{|6 + 20 - 5|}{5} = \dfrac{21}{5}$.
+      04) Incorreta: $AB = 5$, então a área é $\dfrac{5\cdot \frac{21}{5}}{2} = \dfrac{21}{2}$.
+      08) Correta: $\dfrac{|-5|}{5} = 1$.
+      16) Incorreta: a distância entre as paralelas é a própria altura, $\dfrac{21}{5}$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Os pontos da forma $P(k, 2)$ que estão a uma distância 3 da reta $4x + 3y - 1 = 0$ têm abscissas cuja soma é igual a
+    opcoes: ['$-5/2$.', '$-5/4$.', '$5/2$.', '$5$.']
+    correta: A
+    resolucao: |
+      $\dfrac{|4k + 6 - 1|}{5} = 3 \Rightarrow 4k + 5 = \pm 15 \Rightarrow k = \dfrac{5}{2}$ ou $k = -5$. Soma: $-\dfrac{5}{2}$.
+
+  - estilo: Enem
+    texto: |
+      Para monitorar o tráfego aéreo de uma pequena região, foram instalados cinco sensores. Em um mapa com unidade de 1 km, um drone percorre uma trajetória retilínea descrita pela equação $4x - 3y + 2 = 0$. Cada sensor detecta o drone quando a distância entre o sensor e a trajetória é de, no máximo, 5 km. O quadro mostra a posição dos sensores.
+    tabela:
+      cabecalho: ['Sensor', 'S1', 'S2', 'S3', 'S4', 'S5']
+      linhas:
+      - ['Posição', '(1, 2)', '(5, 1)', '(−3, 6)', '(8, 3)', '(0, 9)']
+    enunciado: |
+      Quantos desses sensores detectarão o drone?
+    opcoes: ['1', '2', '3', '4', '5']
+    correta: D
+    resolucao: |
+      $d = \dfrac{|4x_0 - 3y_0 + 2|}{5}$. S1: 0 (está na trajetória); S2: $\dfrac{19}{5} = 3{,}8$; S3: $\dfrac{28}{5} = 5{,}6$; S4: $\dfrac{25}{5} = 5$; S5: $\dfrac{25}{5} = 5$.
+      Detectam S1, S2, S4 e S5 (distância “de, no máximo, 5 km” inclui o 5): 4 sensores.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'A distância do ponto $(2, -1)$ à reta $x = 5$ é 3.'
+    - 'A distância da origem à reta $y = 2x + 5$ é 5.'
+    - 'A distância entre as retas $2x + y - 1 = 0$ e $4x + 2y + 8 = 0$ é $\sqrt{5}$.'
+    - 'Se a distância de um ponto $P$ a uma reta $r$ é zero, então $P$ pertence a $r$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – F – V – V.', 'V – V – F – V.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.']
+    correta: A
+    resolucao: |
+      (V) A reta $x = 5$ é vertical: $|5 - 2| = 3$.
+      (F) $2x - y + 5 = 0$: $d = \dfrac{5}{\sqrt{5}} = \sqrt{5}$.
+      (V) Dividindo a segunda por 2: $2x + y + 4 = 0$; $d = \dfrac{|-1 - 4|}{\sqrt{5}} = \sqrt{5}$. Sem igualar os coeficientes, a fórmula das paralelas dá errado.
+      (V) Distância zero significa que o ponto satisfaz a equação da reta.
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra o paralelogramo ABCD, com A(0, 0), B(5, 0), C(6, 3) e D(1, 3).
+    figura:
+      tikz: |
+        \begin{scope}[scale=.62]
+        \draw[-latex, ink!60] (-0.4,0) -- (7.4,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,-0.4) -- (0,4.2) node[above, font=\scriptsize] {$y$};
+        \fill[lilas!45] (0,0) -- (5,0) -- (6,3) -- (1,3) -- cycle;
+        \draw[ink, line width=.8pt] (0,0) -- (5,0) -- (6,3) -- (1,3) -- cycle;
+        \draw[roxo, line width=1.2pt] (0,0) -- (1,3);
+        \draw[roxo, line width=1.2pt] (5,0) -- (6,3);
+        \node[below left, font=\tiny] at (0,0) {A};
+        \node[below, font=\tiny] at (5,0) {B};
+        \node[above right, font=\tiny] at (6,3) {C};
+        \node[above left, font=\tiny] at (1,3) {D};
+        \end{scope}
+    enunciado: |
+      A distância entre as retas suportes dos lados AD e BC é
+    opcoes: ['$3$', '$\dfrac{3\sqrt{10}}{2}$', '$5$', '$3\sqrt{10}$', '$15$']
+    correta: B
+    resolucao: |
+      Reta AD: $y = 3x$, ou $3x - y = 0$. Reta BC (paralela, por $B$): $3x - y - 15 = 0$.
+      $d = \dfrac{|0 - (-15)|}{\sqrt{9 + 1}} = \dfrac{15}{\sqrt{10}} = \dfrac{3\sqrt{10}}{2}$.
+      Conferência: área $= AB\cdot 3 = 15 = AD\cdot d = \sqrt{10}\cdot d$. O 3 é a distância entre AB e DC, não entre AD e BC.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Fuvest
+    enunciado: |
+      O conjunto dos pontos do plano equidistantes das retas $3x - 4y + 1 = 0$ e $4x + 3y - 2 = 0$ é formado por duas retas. Uma delas tem equação
+    opcoes: ['$7x + y - 1 = 0$', '$x - 7y + 3 = 0$', '$7x + y + 1 = 0$', '$x + y - 1 = 0$', '$x + 7y - 3 = 0$']
+    correta: E
+    resolucao: |
+      Os dois denominadores valem 5, então $|3x - 4y + 1| = |4x + 3y - 2|$.
+      $3x - 4y + 1 = 4x + 3y - 2 \Rightarrow x + 7y - 3 = 0$; $3x - 4y + 1 = -(4x + 3y - 2) \Rightarrow 7x - y - 1 = 0$.
+      Só a primeira está entre as alternativas (são as bissetrizes dos ângulos formados pelas retas).
+
+  - estilo: UEM
+    enunciado: |
+      Para cada número real $t$, considere o ponto $P = (t, 2t)$ e a reta $r$ de equação $x + y - 6 = 0$. Assinale o que for correto.
+    proposicoes:
+    - 'Para $t = 2$, o ponto $P$ pertence à reta $r$.'
+    - 'Existem exatamente dois valores de $t$ para os quais a distância de $P$ à reta $r$ é $3\sqrt{2}$.'
+    - 'Para $t = 0$, a distância de $P$ à reta $r$ é $3\sqrt{2}$.'
+    - 'A área do triângulo formado pela reta $r$ e pelos eixos coordenados é 18.'
+    - 'Para todo $t$ entre 1 e 3, a distância de $P$ à reta $r$ é menor que $\sqrt{2}$.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      $d(P, r) = \dfrac{|t + 2t - 6|}{\sqrt{2}} = \dfrac{|3t - 6|}{\sqrt{2}}$.
+      01) Correta: $3\cdot 2 - 6 = 0$. 02) Correta: $|3t - 6| = 6 \Rightarrow t = 0$ ou $t = 4$. 04) Correta: $\dfrac{6}{\sqrt{2}} = 3\sqrt{2}$.
+      08) Correta: $r$ corta os eixos em $(6, 0)$ e $(0, 6)$; área $\dfrac{6\cdot 6}{2}$.
+      16) Incorreta: $d < \sqrt{2}$ só para $\dfrac{4}{3} < t < \dfrac{8}{3}$; em $t = 1$, $d = \dfrac{3}{\sqrt{2}} > \sqrt{2}$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Em um mapa quadriculado de uma cidade, com unidade de 1 km, a linha de metrô é retilínea e passa pelas estações E1(0, 2) e E2(6, 10). Uma lei municipal define que um imóvel é “próximo do metrô” quando a distância entre ele e a linha é de, no máximo, 1 km. O quadro indica a localização de cinco imóveis à venda.
+      tabela:
+        cabecalho: ['Imóvel', 'A', 'B', 'C', 'D', 'E']
+        linhas:
+        - ['Localização', '(3, 2)', '(1, 5)', '(6, 6)', '(−2, 3)', '(4, 8)']
+    enunciado: |
+      De acordo com a lei municipal, são próximos do metrô os imóveis
+    opcoes: ['B, apenas.', 'E, apenas.', 'B e E, apenas.', 'A, B e E, apenas.', 'C, D e E, apenas.']
+    correta: C
+    resolucao: |
+      Reta por E1 e E2: coeficiente angular $\dfrac{8}{6} = \dfrac{4}{3}$, então $4x - 3y + 6 = 0$ e $d = \dfrac{|4x_0 - 3y_0 + 6|}{5}$.
+      A: $\dfrac{12}{5}$; B: $\dfrac{5}{5} = 1$; C: $\dfrac{12}{5}$; D: $\dfrac{11}{5}$; E: $\dfrac{2}{5}$.
+      Próximos: B (exatamente 1 km, permitido pelo “no máximo”) e E.
+
+  - estilo: Unicamp
+    enunciado: |
+      A prefeitura planeja uma segunda linha de metrô, também retilínea e paralela à primeira, passando por uma estação E3(9, 2). A distância entre as duas linhas é igual a
+    opcoes: ['$7{,}2$ km.', '$9{,}0$ km.', '$12$ km.', '$36$ km.']
+    correta: A
+    resolucao: |
+      Paralela: $4x - 3y + c = 0$ com $36 - 6 + c = 0$, logo $c = -30$.
+      $d = \dfrac{|6 - (-30)|}{5} = \dfrac{36}{5} = 7{,}2$ km. (9 km é a distância medida no eixo $x$ e 12 km, no eixo $y$.)
+
+  - estilo: UFPR
+    enunciado: |
+      Para cada número real $k$, considere a reta $r_k$ de equação $kx - y + 2 = 0$ e o ponto $P(3, 1)$. Considere as afirmações:
+    afirmativas:
+    - 'A distância de $P$ à reta $r_k$ é $\frac{|3k + 1|}{\sqrt{k^2 + 1}}$.'
+    - 'Para $k = 0$, a distância de $P$ à reta $r_k$ é 1.'
+    - 'Existe $k$ para o qual a distância de $P$ à reta $r_k$ é $\sqrt{10}$.'
+    - 'Existe $k$ para o qual a distância de $P$ à reta $r_k$ é maior que $\sqrt{10}$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'II e IV, apenas.', 'I, II e III, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. Correta: $\dfrac{|3k - 1 + 2|}{\sqrt{k^2 + 1}}$.
+      II. Correta: $r_0$ é $y = 2$, e $|2 - 1| = 1$.
+      III. Correta: todas as retas passam por $Q(0, 2)$, e $PQ = \sqrt{10}$; para $k = 3$, a reta é perpendicular a $PQ$ e $d = \dfrac{10}{\sqrt{10}} = \sqrt{10}$.
+      IV. Incorreta: a distância de $P$ a uma reta que passa por $Q$ nunca supera $PQ = \sqrt{10}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Os vértices $A$ e $B$ de um quadrado $ABCD$ estão sobre a reta $x - 2y + 4 = 0$, e os vértices $C$ e $D$ estão sobre a reta $x - 2y - 6 = 0$. A área desse quadrado é
+    opcoes: ['$10$', '$2\sqrt{5}$', '$20$', '$25$', '$100$']
+    correta: C
+    resolucao: |
+      Os lados $AB$ e $CD$ estão nas duas retas paralelas, então o lado do quadrado é a distância entre elas: $\dfrac{|4 - (-6)|}{\sqrt{1 + 4}} = \dfrac{10}{\sqrt{5}} = 2\sqrt{5}$.
+      Área: $(2\sqrt{5})^2 = 20$.
+
+aprofundamento:
+  questoes:
+  - estilo: Unicamp
+    texto: |
+      Em um sistema de coordenadas com unidade de 1 km, um navio parte da origem e navega em linha reta, sempre na direção do vetor $(4, 3)$. Um farol está no ponto $F(10, 0)$.
+    enunciado: ''
+    itens:
+    - 'Escreva a equação da reta da rota e calcule a menor distância entre o navio e o farol durante a viagem.'
+    - 'Determine o ponto da rota em que essa menor distância ocorre.'
+    - 'A luz do farol é visível a até 10 km de distância. Calcule o comprimento do trecho da rota em que o navio consegue ver o farol.'
+    espaco: 62
+    resolucao: |
+      a) A rota passa pela origem com coeficiente angular $\dfrac{3}{4}$: $3x - 4y = 0$. $d = \dfrac{|30|}{5} = 6$ km.
+      b) É o pé da perpendicular por $F$: resolvendo $3x - 4y = 0$ e $4x + 3y = 40$, obtém-se $\left(\dfrac{32}{5}, \dfrac{24}{5}\right)$.
+      c) Nos extremos do trecho, a distância ao farol é 10; com a perpendicular de 6 km, cada metade do trecho mede $\sqrt{10^2 - 6^2} = 8$ km. Trecho: 16 km.
+    resposta: 'a) $3x - 4y = 0$; 6 km; b) $\left(\frac{32}{5}, \frac{24}{5}\right)$; c) 16 km'
+
+  - estilo: Fuvest
+    enunciado: 'Considere a reta $r\colon 3x + 4y - 7 = 0$.'
+    itens:
+    - 'Determine os pontos do eixo $x$ que estão a uma distância 3 de $r$.'
+    - 'Determine as equações das retas paralelas a $r$ que estão a uma distância 2 de $r$.'
+    - 'Determine as equações de todas as retas que passam pelo ponto $Q(1, 1)$ e estão a uma distância 1 da origem.'
+    espaco: 62
+    resolucao: |
+      a) $\dfrac{|3x - 7|}{5} = 3 \Rightarrow x = \dfrac{22}{3}$ ou $x = -\dfrac{8}{3}$.
+      b) $3x + 4y + c = 0$ com $\dfrac{|c + 7|}{5} = 2$: $c = 3$ ou $c = -17$.
+      c) Não vertical: $mx - y + 1 - m = 0$ e $\dfrac{|1 - m|}{\sqrt{m^2 + 1}} = 1 \Rightarrow m = 0$, a reta $y = 1$. A vertical $x = 1$ também dista 1 da origem. São duas retas: $y = 1$ e $x = 1$ (a vertical escapa de quem só usa coeficiente angular).
+    resposta: 'a) $\left(\frac{22}{3}, 0\right)$ e $\left(-\frac{8}{3}, 0\right)$; b) $3x + 4y + 3 = 0$ e $3x + 4y - 17 = 0$; c) $y = 1$ e $x = 1$'
+
+  - estilo: ITA
+    enunciado: |
+      Entre todas as retas que passam pelo ponto $A(2, 1)$, seja $r$ aquela cuja distância à origem é a maior possível. A distância do ponto $(0, 6)$ à reta $r$ é igual a
+    opcoes: ['$\dfrac{\sqrt{5}}{5}$', '$\dfrac{2\sqrt{5}}{5}$', '$\sqrt{5}$', '$\dfrac{6\sqrt{5}}{5}$', '$\dfrac{11\sqrt{5}}{5}$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      A distância da origem a uma reta por $A$ é no máximo $OA$, com igualdade quando a reta é perpendicular a $OA$. Como $OA$ tem coeficiente angular $\dfrac{1}{2}$, $r$ tem coeficiente $-2$: $2x + y - 5 = 0$.
+      $d = \dfrac{|0 + 6 - 5|}{\sqrt{5}} = \dfrac{\sqrt{5}}{5}$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      A reta $3x + 4y - 12 = 0$ forma, com os eixos coordenados, um triângulo $T$ de vértices $(0, 0)$, $(4, 0)$ e $(0, 3)$.
+    enunciado: ''
+    itens:
+    - 'Calcule a área de $T$ e a distância da origem à reta $3x + 4y - 12 = 0$.'
+    - 'Determine o ponto do interior de $T$ que está à mesma distância dos três lados do triângulo.'
+    - 'Determine o ponto do interior de $T$ cuja distância à reta $3x + 4y - 12 = 0$ é o dobro de sua distância a cada um dos eixos.'
+    espaco: 62
+    resolucao: |
+      a) Área $= \dfrac{4\cdot 3}{2} = 6$; $d = \dfrac{12}{5}$.
+      b) Equidistante dos eixos, no interior: $(s, s)$ com $s > 0$. Distância à hipotenusa: $\dfrac{12 - 7s}{5}$ (o ponto está do lado da origem). $\dfrac{12 - 7s}{5} = s \Rightarrow s = 1$: o ponto é $(1, 1)$ (o incentro).
+      c) $\dfrac{12 - 7s}{5} = 2s \Rightarrow s = \dfrac{12}{17}$: o ponto é $\left(\dfrac{12}{17}, \dfrac{12}{17}\right)$.
+    resposta: 'a) 6 e $\frac{12}{5}$; b) $(1, 1)$; c) $\left(\frac{12}{17}, \frac{12}{17}\right)$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o triângulo de vértices $A(0, 0)$, $B(8, 0)$ e $C(2, 6)$. Assinale o que for correto.
+    proposicoes:
+    - 'A distância do vértice $A$ à reta $BC$ é $4\sqrt{2}$.'
+    - 'A área do triângulo $ABC$ é 48.'
+    - 'A altura relativa ao lado $AC$ mede $\frac{12\sqrt{10}}{5}$.'
+    - 'O ponto da reta $BC$ mais próximo de $A$ é $(4, 4)$.'
+    - 'O ponto $(3, 3)$ é equidistante das retas $AB$ e $AC$.'
+    - 'Os pontos da reta $BC$ que estão a uma distância 2 da reta $AB$ são $(6, 2)$ e $(10, -2)$.'
+    corretas: [1, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      Reta $BC$: $x + y - 8 = 0$; reta $AC$: $3x - y = 0$; reta $AB$: $y = 0$.
+      01) Correta: $\dfrac{8}{\sqrt{2}} = 4\sqrt{2}$. 02) Incorreta: área $\dfrac{8\cdot 6}{2} = 24$.
+      04) Correta: $AC = 2\sqrt{10}$ e $h = \dfrac{2\cdot 24}{2\sqrt{10}} = \dfrac{12\sqrt{10}}{5}$.
+      08) Correta: pé da perpendicular de $A$ em $x + y = 8$ é $(4, 4)$.
+      16) Incorreta: dista 3 de $AB$ e $\dfrac{6}{\sqrt{10}}$ de $AC$.
+      32) Correta: $|y| = 2$ em $x + y = 8$ dá $(6, 2)$ e $(10, -2)$.
+    resposta: 'Soma 45 (01 + 04 + 08 + 32)'
+
+  - estilo: Unicamp
+    texto: |
+      Uma rodovia retilínea é representada, em um sistema com unidade de 1 km, pela reta $y = x$. Dois armazéns, $A(1, 5)$ e $B(4, 8)$, ficam do mesmo lado da rodovia. Uma empresa quer construir um posto de abastecimento $P$ à beira da rodovia e ligar $P$ a cada armazém por estradas retilíneas.
+    enunciado: ''
+    itens:
+    - 'Calcule a distância de cada armazém à rodovia.'
+    - 'Determine o ponto $A^\prime$, simétrico de $A$ em relação à rodovia.'
+    - 'Determine a posição de $P$ que torna mínima a soma $PA + PB$ e calcule essa soma mínima.'
+    espaco: 62
+    resolucao: |
+      a) $x - y = 0$: $d(A) = \dfrac{|1 - 5|}{\sqrt{2}} = 2\sqrt{2}$ km e $d(B) = \dfrac{|4 - 8|}{\sqrt{2}} = 2\sqrt{2}$ km.
+      b) A reflexão em $y = x$ troca as coordenadas: $A^\prime(5, 1)$ (a rodovia é a mediatriz de $AA^\prime$).
+      c) Para $P$ na rodovia, $PA = PA^\prime$; a soma $PA^\prime + PB$ é mínima com $P$ no segmento $A^\prime B$. Reta $A^\prime B$: $y = -7x + 36$; com $y = x$: $P\left(\dfrac{9}{2}, \dfrac{9}{2}\right)$. Soma mínima: $A^\prime B = \sqrt{1 + 49} = 5\sqrt{2}$ km.
+    resposta: 'a) $2\sqrt{2}$ km cada; b) $(5, 1)$; c) $P\left(\frac{9}{2}, \frac{9}{2}\right)$ e $5\sqrt{2}$ km'
+
+  - estilo: ITA
+    enunciado: |
+      A distância entre as retas paralelas $3x + 4y + k = 0$ e $6x + 8y - 5 = 0$ é igual a 2. A soma dos possíveis valores de $k$ é
+    opcoes: ['$-10$', '$-5$', '$-\dfrac{5}{2}$', '$5$', '$10$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      Dividindo a segunda por 2: $3x + 4y - \dfrac{5}{2} = 0$. Então $\dfrac{|k + \frac{5}{2}|}{5} = 2 \Rightarrow k = \dfrac{15}{2}$ ou $k = -\dfrac{25}{2}$. Soma: $-5$.
+      Sem igualar os coeficientes, encontra-se $-10$.
+    resposta: 'B'
+
+  - estilo: Fuvest
+    enunciado: 'No plano cartesiano, considere os pontos $A(0, 0)$, $B(6, 2)$ e $P(t, 4)$, com $t$ real.'
+    itens:
+    - 'Determine a equação da reta $AB$.'
+    - 'Expresse a distância de $P$ à reta $AB$ em função de $t$.'
+    - 'Determine os valores de $t$ para os quais a área do triângulo $ABP$ é 10.'
+    resolucao: |
+      a) $y = \dfrac{x}{3}$, ou $x - 3y = 0$.
+      b) $d = \dfrac{|t - 12|}{\sqrt{10}}$.
+      c) $AB = \sqrt{40} = 2\sqrt{10}$; área $= \dfrac{2\sqrt{10}}{2}\cdot\dfrac{|t - 12|}{\sqrt{10}} = |t - 12| = 10 \Rightarrow t = 2$ ou $t = 22$.
+    resposta: 'a) $x - 3y = 0$; b) $\frac{|t - 12|}{\sqrt{10}}$; c) $t = 2$ ou $t = 22$'
+
+  - estilo: Unesp
+    texto: |
+      Em um mapa com unidade de 1 km, uma estrada é representada pela reta $4x - 3y = 0$ e uma ferrovia, pela reta $y = 3$. Uma norma de segurança proíbe construir passagens de nível em pontos da ferrovia que estejam a mais de 3 km da estrada.
+    enunciado: ''
+    itens:
+    - 'Calcule a distância do ponto $(0, 3)$ da ferrovia à estrada.'
+    - 'Determine os pontos da ferrovia que estão a exatamente 3 km da estrada.'
+    - 'Calcule o comprimento do trecho da ferrovia em que a construção é permitida.'
+    espaco: 58
+    resolucao: |
+      a) $\dfrac{|0 - 9|}{5} = \dfrac{9}{5} = 1{,}8$ km.
+      b) Pontos $(x, 3)$: $\dfrac{|4x - 9|}{5} = 3 \Rightarrow x = 6$ ou $x = -\dfrac{3}{2}$: $(6, 3)$ e $\left(-\dfrac{3}{2}, 3\right)$.
+      c) Permitido onde $|4x - 9| \le 15$, isto é, $-\dfrac{3}{2} \le x \le 6$: trecho de $\dfrac{15}{2} = 7{,}5$ km.
+    resposta: 'a) 1,8 km; b) $(6, 3)$ e $\left(-\frac{3}{2}, 3\right)$; c) 7,5 km'
+
+  - estilo: ITA
+    enunciado: |
+      A soma das abscissas dos pontos do eixo $x$ que são equidistantes das retas $3x - 4y + 1 = 0$ e $4x + 3y - 2 = 0$ é
+    opcoes: ['$\dfrac{1}{7}$', '$3$', '$\dfrac{22}{7}$', '$\dfrac{25}{7}$', '$4$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      Para $(x, 0)$: $|3x + 1| = |4x - 2|$. Então $3x + 1 = 4x - 2 \Rightarrow x = 3$, ou $3x + 1 = -4x + 2 \Rightarrow x = \dfrac{1}{7}$. Soma: $\dfrac{22}{7}$.
+    resposta: 'C'
