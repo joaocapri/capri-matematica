@@ -363,7 +363,7 @@ function shopPromo(ctx){
   if(ms.length)return '<aside class="bk-promo" data-promo="modulo"><div class="bk-promo-tag">NO LIVRO · VOLUME '+sa.vol+'</div>'
    +'<div class="bk-promo-grid"><div><h2>'+esc(sa.name)+' em <em>'+plural(nt,'tipo','tipos')+' de questão</em></h2>'
    +'<p>No livro, cada tipo vem com como reconhecer, o caminho em passos, um modelo resolvido e questões de vestibular. Tem espaço para resolver no próprio livro.</p>'
-   +'<div class="bk-promo-cta"><a class="bk-btn" href="/livros/?volume='+sa.vol+'" data-oferta="modulo">Quero o Volume '+sa.vol+'</a><a class="bk-link" href="/livros/">Ver a coleção</a></div></div>'
+   +'<div class="bk-promo-cta"><a class="bk-btn" href="/livros/?volume='+sa.vol+'" data-oferta="modulo">Quero a coleção</a><a class="bk-link" href="/livros/#por-dentro">Folhear o livro</a></div></div>'
    +'<ol class="bk-tipos">'+ms.map(function(t){return '<li>'+esc(t.title)+'</li>'}).join('')+'</ol></div></aside>';
  }
  var t=ctx&&ctx.block?topicInfo(ctx.block):ctx&&ctx.tipos?ctx:null;
@@ -372,7 +372,7 @@ function shopPromo(ctx){
   return '<aside class="bk-promo" data-promo="modulo"><div class="bk-promo-tag">NO LIVRO · VOLUME '+a.vol+' · MÓDULO '+esc(t.numero)+'</div>'
    +'<div class="bk-promo-grid"><div><h2>'+esc(t.title)+' em <em>'+plural(t.tipos.length,'tipo','tipos')+' de questão</em></h2>'
    +'<p>Cada tipo vem com como reconhecer, o caminho em passos, um modelo resolvido e questões de vestibular, da mais simples à mais trabalhosa. Tem espaço para resolver no próprio livro.</p>'
-   +'<div class="bk-promo-cta"><a class="bk-btn" href="/livros/?volume='+a.vol+'" data-oferta="modulo">Quero o Volume '+a.vol+'</a><a class="bk-link" href="/livros/">Ver a coleção</a></div></div>'
+   +'<div class="bk-promo-cta"><a class="bk-btn" href="/livros/?volume='+a.vol+'" data-oferta="modulo">Quero a coleção</a><a class="bk-link" href="/livros/#por-dentro">Folhear o livro</a></div></div>'
    +'<ol class="bk-tipos">'+t.tipos.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ol></div></aside>';
  }
  return '<aside class="bk-promo bk-promo-geral" data-promo="colecao"><div class="bk-promo-tag">COLEÇÃO MAT MAT MAT! · 4 VOLUMES</div><div class="bk-promo-grid"><div><h2>Toda a matemática do ensino médio <em>no papel.</em></h2>'

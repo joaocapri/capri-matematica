@@ -145,11 +145,18 @@ async function checkWidth(page,label){
   await page.goto(BASE+'/livros/?volume=2',{waitUntil:'domcontentloaded'});
   await page.locator('.shop-origem').waitFor();
   assert.match(await page.locator('.shop-origem').innerText(),/Volume 2/);
-  assert.equal(await page.locator('.shop-page img').count(),5);
+  // Folhear: o livro do volume de origem abre na capa e vira a página.
+  assert.equal(await page.locator('[data-pvol="1"]').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('.fb-folha').count(),config.name==='desktop'?4:8);
+  assert.equal(await page.locator('#fb-leg').innerText(),'Capa');
+  await page.locator('#fb-prox').click();
+  await page.waitForTimeout(900);
+  assert.notEqual(await page.locator('#fb-leg').innerText(),'Capa');
+  assert.equal(await page.locator('[data-add^="v"]').count(),0,'Só a coleção completa à venda');
   assert.equal(await page.locator('#shop-form').isVisible(),false,'Formulário só aparece com algo no pedido');
-  await page.locator('.shop-acoes [data-add="v2"]').click();
+  await page.locator('.shop-acoes [data-add="kit"]').click();
   await page.locator('#shop-cart .shop-cart-item').waitFor();
-  assert.match(await page.locator('#shop-cart').innerText(),/Volume 2/);
+  assert.match(await page.locator('#shop-cart').innerText(),/Coleção completa/);
   assert.equal(await page.locator('#shop-form input').count(),2,'Só nome e CEP para pedir');
   await checkWidth(page,config.name+' loja');
   await page.screenshot({path:'screenshots/'+config.name+'-loja.png',fullPage:true});

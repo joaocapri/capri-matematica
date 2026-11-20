@@ -42,29 +42,14 @@
 .shop-origem span{display:grid;place-items:center;flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--c);color:var(--t);font:800 15px 'Space Grotesk',system-ui,sans-serif;border:1.5px solid var(--sh-ink)}
 
 /* seções */
-.shop-dentro,.shop-volumes,.shop-order,.shop-faq{padding:56px 0 8px;border-top:1.5px solid var(--sh-line)}
+.shop-dentro,.shop-order,.shop-faq{padding:56px 0 8px;border-top:1.5px solid var(--sh-line)}
 .shop-tit{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;margin-bottom:24px}
 .shop-tit h2{font-weight:700;font-size:clamp(28px,3.2vw,38px)}
 .shop-pvols{display:flex;flex-wrap:wrap;gap:8px}
 .shop-pvols button{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border:1.5px solid var(--sh-line);border-radius:999px;background:var(--sh-card);font-weight:600;font-size:14px;cursor:pointer}
 .shop-pvols button::before{content:'';width:11px;height:11px;border-radius:50%;background:var(--c);border:1.5px solid var(--sh-ink)}
 .shop-pvols button.selected{border-color:var(--sh-ink);background:var(--sh-ink);color:#fff}
-.shop-pages{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(190px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 8px 18px 2px;scrollbar-width:thin}
-.shop-page{scroll-snap-align:start;border:0;background:none;padding:0;text-align:left;cursor:zoom-in;color:var(--sh-ink)}
-.shop-page img{display:block;width:100%;height:auto;aspect-ratio:640/909;border:1.5px solid var(--sh-ink);border-radius:6px;background:#fff;box-shadow:4px 4px 0 var(--sh-ink);transition:transform .18s}
-.shop-page:hover img{transform:translate(-2px,-3px)}
-.shop-page span{display:block;margin-top:10px;font-weight:600;font-size:13.5px;color:var(--sh-mute)}
 
-.shop-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.shop-vol{display:flex;flex-direction:column;gap:14px;padding:16px;border:1.5px solid var(--sh-line);border-radius:18px;background:var(--sh-card)}
-.shop-vol.origem{border-color:var(--sh-ink);box-shadow:4px 4px 0 var(--sh-ink)}
-.shop-vol-capa{width:62%;margin:4px auto 0;border:1.5px solid var(--sh-ink);box-shadow:4px 4px 0 var(--sh-ink)}
-.shop-vol-capa svg{display:block;width:100%;height:auto}
-.shop-vol-txt span{font-size:13px;font-weight:700;color:var(--sh-mute)}
-.shop-vol-txt h3{margin-top:2px;font-weight:700;font-size:22px}
-.shop-vol-txt p{margin:4px 0 0;font-size:13.5px;color:var(--sh-mute)}
-.shop-vol button{margin-top:auto;height:44px;border:1.5px solid var(--sh-ink);border-radius:12px;background:var(--sh-card);font-weight:700;font-size:15px;cursor:pointer}
-.shop-vol button:hover{background:var(--sh-lime)}
 
 .shop-order-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
 .shop-basket{padding:8px 20px;border:1.5px solid var(--sh-line);border-radius:18px;background:var(--sh-card)}
@@ -114,7 +99,6 @@
 @media(max-width:980px){
  .shop-hero{grid-template-columns:1fr;gap:28px;padding:24px 0 48px}
  .shop-leque{height:360px;max-width:520px;width:100%;margin:0 auto}
- .shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .shop-order-layout{grid-template-columns:1fr}
 }
 @media(max-width:620px){
@@ -128,13 +112,7 @@
  .shop-fatos li{font-size:15.5px}
  .shop-acoes{flex-direction:column;align-items:stretch}
  .shop-acoes .shop-link{text-align:center}
- .shop-dentro,.shop-volumes,.shop-order,.shop-faq{padding-top:40px}
- .shop-pages{grid-auto-columns:62%}
- .shop-grid{gap:10px}
- .shop-vol{padding:12px;gap:10px}
- .shop-vol-capa{width:70%}
- .shop-vol-txt h3{font-size:18px}
- .shop-vol-txt p{font-size:12.5px}
+ .shop-dentro,.shop-order,.shop-faq{padding-top:40px}
  .shop-fields{grid-template-columns:1fr}
  .shop-bar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:40;align-items:center;justify-content:space-between;gap:12px;background:var(--sh-card);border:2px solid var(--sh-ink);border-radius:16px;padding:8px 8px 8px 16px;box-shadow:4px 4px 0 var(--sh-ink);transform:translateY(140%);transition:transform .2s}
  .shop-bar.show{transform:none}
@@ -159,3 +137,51 @@
  .shop-flash.show{animation:shop-flash-topo 2.6s both}
  @keyframes shop-flash-topo{0%{opacity:0;transform:translate(-50%,-14px)}12%,80%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-8px)}}
 }
+
+/* ===== Folhear: o livro abre na capa e as páginas viram ===== */
+.fb{position:relative;display:flex;justify-content:center;padding:18px 0 26px;perspective:2400px;touch-action:pan-y;-webkit-user-select:none;user-select:none;cursor:grab;outline:0}
+.fb:active{cursor:grabbing}
+.fb:focus-visible .fb-livro{outline:3px solid var(--sh-purple);outline-offset:10px}
+.fb-livro{position:relative;width:var(--pw);height:var(--ph);transform-style:preserve-3d}
+.fb-duplo .fb-livro{width:calc(var(--pw) * 2)}
+.fb-livro::after{content:'';position:absolute;left:4%;right:4%;bottom:-18px;height:24px;border-radius:50%;background:radial-gradient(closest-side,rgba(33,25,70,.28),transparent);transform:translateZ(-1px);pointer-events:none}
+.fb-folha{position:absolute;top:0;left:0;width:var(--pw);height:var(--ph);transform-origin:left center;transform-style:preserve-3d;will-change:transform}
+.fb-duplo .fb-folha{left:var(--pw)}
+.fb-face{position:absolute;inset:0;overflow:hidden;background:#fff;-webkit-backface-visibility:hidden;backface-visibility:hidden;box-shadow:0 0 0 1px rgba(33,25,70,.12)}
+.fb-verso{transform:rotateY(180deg)}
+.fb-frente{border-radius:0 6px 6px 0}
+.fb-verso{border-radius:6px 0 0 6px}
+.fb-face>img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+/* sombra da lombada e luz da página virando */
+.fb-face::before{content:'';position:absolute;top:0;bottom:0;left:0;width:9%;background:linear-gradient(90deg,rgba(33,25,70,.18),rgba(33,25,70,0));pointer-events:none;z-index:1}
+.fb-face::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(90deg,rgba(33,25,70,.28),rgba(33,25,70,.05) 45%,rgba(255,255,255,.25) 80%,rgba(33,25,70,.1));opacity:var(--sombra,0)}
+.fb-virando .fb-face::after{animation:fb-luz .7s ease both}
+@keyframes fb-luz{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+.fb-capa,.fb-capa svg{display:block;width:100%;height:100%}
+.fb-frente:has(.fb-capa)::before{width:4%}
+.fb-guarda{display:flex;flex-direction:column;justify-content:flex-end;gap:4px;height:100%;padding:12%;background:#f6f3ea;color:#3d3660;font-family:'Space Grotesk',system-ui,sans-serif}
+.fb-guarda b{font-size:clamp(14px,2.2vw,20px)}
+.fb-guarda span{font-size:clamp(12px,1.6vw,15px)}
+.fb-guarda small{margin-top:10px;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#7a7590}
+.fb-contra{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;height:100%;padding:14%;background:var(--sh-ink);color:#fff;text-align:center}
+.fb-contra img{width:52%;height:auto}
+.fb-contra p{margin:0;font:700 clamp(15px,2.2vw,22px)/1.2 'Space Grotesk',system-ui,sans-serif}
+.fb-contra small{color:var(--sh-lime);font-weight:700;font-size:13px}
+.fb-branca{height:100%;background:#fbfaf6}
+.fb-nav{display:flex;align-items:center;justify-content:center;gap:16px}
+.fb-seta{display:grid;place-items:center;width:46px;height:46px;border:1.5px solid var(--sh-ink);border-radius:50%;background:var(--sh-card);cursor:pointer}
+.fb-seta svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fb-seta-prox svg{transform:scaleX(-1)}
+.fb-seta:hover:not(:disabled){background:var(--sh-lime)}
+.fb-seta:disabled{opacity:.3;cursor:default}
+.fb-leg{min-width:220px;text-align:center;font-weight:700;font-size:15px}
+.fb-rodape{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 18px;margin-top:12px;min-height:24px}
+.fb-dica{font-size:13.5px;color:var(--sh-mute);opacity:0;transition:opacity .3s}
+.fb-dica.on{opacity:1}
+.fb-ampliar{border:0;background:none;padding:2px 0;color:var(--sh-purple);font-weight:700;font-size:14px;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+@media(max-width:620px){
+ .fb{padding:10px 0 22px}
+ .fb-leg{min-width:0;flex:1;font-size:14px}
+ .fb-nav{gap:10px}
+}
+@media(prefers-reduced-motion:reduce){.fb-virando .fb-face::after{animation:none}.fb-dica{transition:none}}

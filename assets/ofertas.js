@@ -137,10 +137,10 @@ function cupomFrase(){var o=oferta();return o?' Com o cupom <b>'+esc(o.cupom)+'<
 function msgContexto(){
  var m=infoModulo(ctx.modulo);if(!m||m.extra)return null;
  var v=vols[m.volume];if(!v)return null;
- if(ctx.tipo==='assunto'&&ctx.assunto)return {volume:m.volume,titulo:esc(ctx.assunto)+' está no Volume '+m.volume,texto:'No livro, cada tipo de questão vem com modelo resolvido, aquecimento e vestibular. Tudo no papel, com espaço pra resolver.',cta:'Ver o Volume '+m.volume,href:lojaHref(m.volume)};
+ if(ctx.tipo==='assunto'&&ctx.assunto)return {volume:m.volume,titulo:esc(ctx.assunto)+' está no Volume '+m.volume,texto:'No livro, cada tipo de questão vem com modelo resolvido, aquecimento e vestibular. Tudo no papel, com espaço pra resolver.',cta:'Ver o material impresso',href:lojaHref(m.volume)};
  return {volume:m.volume,titulo:esc(m.titulo)+' está no Volume '+m.volume,
   texto:'No livro, esse módulo tem '+(m.tipos?m.tipos+' tipos de questão, cada um ':'os tipos de questão ')+'com modelo resolvido, aquecimento e vestibular. Tudo no papel.',
-  cta:'Ver o Volume '+m.volume,href:lojaHref(m.volume)};
+  cta:'Ver o material impresso',href:lojaHref(m.volume)};
 }
 
 /* ---------- gatilhos ---------- */
@@ -207,7 +207,7 @@ setInterval(function(){
  var m=infoModulo(ctx.modulo),noLivro=m&&!m.extra;
  modal({volume:noLivro?m.volume:null,titulo:'Estudando firme? Leva o MAT pro papel.',
   texto:'A coleção tem 4 volumes na mesma ordem do site, com teoria direta, modelo resolvido e muita questão de vestibular.',
-  cta:noLivro?'Ver o Volume '+m.volume:'Ver a coleção',href:lojaHref(noLivro?m.volume:null)});
+  cta:'Ver o material impresso',href:lojaHref(noLivro?m.volume:null)});
 },4e3);
 
 /* intenção de saída (computador): uma vez por sessão */
@@ -240,7 +240,7 @@ async function carregar(){
 }
 window.MatOfertas={
  /* atalhos para revisão manual no console */
- toast:function(){S.toasts=0;S.fechados=0;S.ultimoToast=0;return toast({volume:2,titulo:'Função quadrática está no Volume 2',texto:'No livro, esse módulo tem 4 tipos de questão, cada um com modelo resolvido, aquecimento e vestibular. Tudo no papel.',cta:'Ver o Volume 2',href:lojaHref(2)})},
+ toast:function(){S.toasts=0;S.fechados=0;S.ultimoToast=0;return toast({volume:2,titulo:'Função quadrática está no Volume 2',texto:'No livro, esse módulo tem 4 tipos de questão, cada um com modelo resolvido, aquecimento e vestibular. Tudo no papel.',cta:'Ver o material impresso',href:lojaHref(2)})},
  modal:function(){S.modal=0;L.modalAte=0;L.clicouAte=0;return aoProva({acertos:8,total:10,volume:'2',modulo:'2.3'})},
  reset:function(){L={};S={};salvar()}
 };
