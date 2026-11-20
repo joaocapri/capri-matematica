@@ -261,9 +261,11 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.match(nativeSharePayload.text,/Olha essa aula de matemática/);
  assert.equal(nativeSharePayload.url,'https://matmatmat.test/2/3/2/');
  assert.equal(d.querySelector('#lesson-share-options').hidden,true);
- // Página da aula: roteiro em quatro etapas com teoria, exercícios, modo prova e PDFs.
- assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['entenda','pratique','prova','aprofunde','levar']);
+ // Página da aula: as listas em primeiro (PDFs, depois as mesmas listas no site); o resumo fica no fim, recolhido.
+ assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['levar','pratique','prova','aprofunde','entenda']);
  assert.equal(d.querySelectorAll('.aula-rail [data-rail]').length,5);
+ assert.equal(d.querySelectorAll('.aula-3listas .aula-3l-pdf').length,3,'Cada lista com o botão do PDF no topo da aula');
+ assert.equal(d.querySelector('#resumo-det').open,false,'Resumo recolhido');
  // As 3 listas ficam claras logo na entrada da aula.
  assert.deepEqual([...d.querySelectorAll('.aula-3listas .aula-3l b')].map(b=>b.textContent),['Fixação','Vestibular','Aprofundamento']);
  assert.equal(d.querySelectorAll('#apr-list .aula-ex').length,10,'Lista de aprofundamento com 10 questões');

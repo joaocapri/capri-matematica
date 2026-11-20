@@ -399,22 +399,38 @@ SITE = "matcomjoao.com"
 
 
 def faixa_livro(vol, mod, aula_id):
-    """Faixa centralizada da capa: onde o assunto está no material impresso e o convite para adquirir."""
-    return (r"\begin{center}\href{https://%(site)s/livros/?volume=%(vol)s}{\begin{tikzpicture}"
-            r"\node[draw=ink,line width=.6pt,fill=lima!20,rounded corners=7pt,minimum width=.9\linewidth,minimum height=14.5mm](f){};"
-            # livro aberto, desenhado
-            r"\begin{scope}[shift={([xshift=11mm]f.west)},scale=.4,line join=round]"
-            r"\fill[roxo] (0,-.75) .. controls (-.7,-.45) and (-1.3,-.5) .. (-1.75,-.62) -- (-1.75,.82) .. controls (-1.3,.95) and (-.7,.9) .. (0,.6) -- cycle;"
-            r"\fill[roxo] (0,-.75) .. controls (.7,-.45) and (1.3,-.5) .. (1.75,-.62) -- (1.75,.82) .. controls (1.3,.95) and (.7,.9) .. (0,.6) -- cycle;"
-            r"\draw[white,line width=.7pt] (0,-.62) -- (0,.55);"
-            r"\draw[white,line width=.45pt] (-1.35,.35) .. controls (-.9,.45) .. (-.35,.25) (-1.35,0) .. controls (-.9,.1) .. (-.35,-.1) (.35,.25) .. controls (.9,.45) .. (1.35,.35) (.35,-.1) .. controls (.9,.1) .. (1.35,0);"
-            r"\end{scope}"
+    """Faixa centralizada da capa: onde o assunto está no material impresso e o convite para adquirir.
+    Módulos extras (com "x") não estão no livro: a faixa vira "Conteúdo exclusivo do site", em outra cor."""
+    extra = "x" in mod
+    fundo, botao = ("ceu!35", "ink") if extra else ("lima!20", "roxo")
+    if extra:
+        icone = (r"\begin{scope}[shift={([xshift=11mm]f.west)},scale=.42]"  # estrela de quatro pontas: bônus
+                 r"\fill[roxo] (0,1.25) .. controls (.18,.18) .. (1.25,0) .. controls (.18,-.18) .. (0,-1.25) .. controls (-.18,-.18) .. (-1.25,0) .. controls (-.18,.18) .. cycle;"
+                 r"\fill[roxo] (1.15,.95) .. controls (1.2,.75) .. (1.4,.7) .. controls (1.2,.65) .. (1.15,.45) .. controls (1.1,.65) .. (.9,.7) .. controls (1.1,.75) .. cycle;"
+                 r"\end{scope}")
+        linha1 = r"Conteúdo \textcolor{roxo}{exclusivo do site}"
+        linha2 = r"Aula extra, além dos 4 volumes do material impresso"
+        botao_txt = r"Conheça o material\\[-.3mm]impresso em %s" % SITE
+        link = "https://%s/livros/" % SITE
+    else:
+        icone = (r"\begin{scope}[shift={([xshift=11mm]f.west)},scale=.4,line join=round]"  # livro aberto
+                 r"\fill[roxo] (0,-.75) .. controls (-.7,-.45) and (-1.3,-.5) .. (-1.75,-.62) -- (-1.75,.82) .. controls (-1.3,.95) and (-.7,.9) .. (0,.6) -- cycle;"
+                 r"\fill[roxo] (0,-.75) .. controls (.7,-.45) and (1.3,-.5) .. (1.75,-.62) -- (1.75,.82) .. controls (1.3,.95) and (.7,.9) .. (0,.6) -- cycle;"
+                 r"\draw[white,line width=.7pt] (0,-.62) -- (0,.55);"
+                 r"\draw[white,line width=.45pt] (-1.35,.35) .. controls (-.9,.45) .. (-.35,.25) (-1.35,0) .. controls (-.9,.1) .. (-.35,-.1) (.35,.25) .. controls (.9,.45) .. (1.35,.35) (.35,-.1) .. controls (.9,.1) .. (1.35,0);"
+                 r"\end{scope}")
+        linha1 = r"Este assunto está no \textcolor{roxo}{Volume %s} do material impresso" % vol
+        linha2 = r"Módulo %s \,·\, aula %s" % (mod, aula_id)
+        botao_txt = r"Adquira já em\\[-.3mm]%s" % SITE
+        link = "https://%s/livros/?volume=%s" % (SITE, vol)
+    return (r"\begin{center}\href{" + link + r"}{\begin{tikzpicture}"
+            r"\node[draw=ink,line width=.6pt,fill=" + fundo + r",rounded corners=7pt,minimum width=.9\linewidth,minimum height=14.5mm](f){};"
+            + icone +
             r"\node[anchor=west,align=left,inner sep=0pt] at ([xshift=20.5mm]f.west)"
-            r"{{\small\bfseries Este assunto está no \textcolor{roxo}{Volume %(vol)s} do material impresso}\\[1.2mm]"
-            r"{\scriptsize\color{mudo}Módulo %(mod)s \,·\, aula %(aula)s}};"
-            r"\node[anchor=east,fill=roxo,text=white,rounded corners=9pt,inner xsep=9pt,inner ysep=5pt,font=\scriptsize\bfseries,align=center]"
-            r" at ([xshift=-4.5mm]f.east) {Adquira já em\\[-.3mm]%(site)s};"
-            r"\end{tikzpicture}}\end{center}" % {"site": SITE, "vol": vol, "mod": mod, "aula": aula_id})
+            r"{{\small\bfseries " + linha1 + r"}\\[1.2mm]{\scriptsize\color{mudo}" + linha2 + r"}};"
+            r"\node[anchor=east,fill=" + botao + r",text=white,rounded corners=9pt,inner xsep=9pt,inner ysep=5pt,font=\scriptsize\bfseries,align=center]"
+            r" at ([xshift=-4.5mm]f.east) {" + botao_txt + r"};"
+            r"\end{tikzpicture}}\end{center}")
 
 
 NOMES = {"fixacao": "Lista de fixação", "vestibular": "Lista de vestibular", "aprofundamento": "Lista de aprofundamento"}
@@ -437,7 +453,7 @@ def documento(aula, tipo, dados, n_listas=2, padrao=3):
     corpo = corpo.replace("<<KICKER>>", f"{assunto} \\,·\\, aula {k} de {n_aulas}" if assunto else "")
     corpo = corpo.replace("<<TITULO>>", titulo)
     corpo = corpo.replace("<<TIPO>>", nome_tipo).replace("<<TIPOCOR>>", CORES[tipo])
-    corpo = corpo.replace("<<LIVRO>>", "" if "x" in mod else faixa_livro(vol, mod, aula["id"]))
+    corpo = corpo.replace("<<LIVRO>>", faixa_livro(vol, mod, aula["id"]))
 
     questoes, n = [], 0
     if tipo == "aprofundamento":

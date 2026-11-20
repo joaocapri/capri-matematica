@@ -1717,3 +1717,26 @@ button.aula-sprop:hover{border-color:var(--a-purple)}
 .aula-afirm li{display:grid;grid-template-columns:2.2rem 1fr;align-items:baseline}
 .aula-afirm b{color:var(--a-purple,var(--purple));font-weight:800}
 .aula-apoio-rot{display:inline-block;margin:0 0 .4rem;padding:.15rem .6rem;border-radius:8px;background:var(--soft);color:var(--a-purple,var(--purple));font-weight:800;font-size:.85em}
+
+/* listas em primeiro plano no herói da aula: cada uma com PDF e versão no site */
+.aula-3listas{max-width:700px;margin-bottom:16px}
+.aula-3l{align-items:flex-start}
+.aula-3l>.aula-3l-txt{display:flex;flex-direction:column;gap:.15rem;min-width:0;flex:1;align-self:stretch}
+.aula-3l-acoes{display:flex;flex-direction:column;gap:.4rem;margin-top:auto;padding-top:.55rem}
+.aula-3l-acoes a{justify-content:center}
+@media(max-width:620px){.aula-3l-acoes{flex-direction:row}.aula-3l-acoes a{flex:1}}
+.aula-3l-acoes a{display:inline-flex;align-items:center;gap:.35rem;padding:.38rem .7rem;border-radius:999px;font-weight:800;font-size:.82rem;text-decoration:none;border:2px solid var(--ink)}
+.aula-3l-pdf{background:var(--lime);color:var(--ink)}
+.aula-3l-pdf svg{width:1em;height:1em}
+.aula-3l-site{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)!important}
+.aula-3l-acoes a.aula-3l-pdf{border-color:var(--lime)}
+.aula-3l-acoes a:hover{transform:translateY(-1px)}
+.aula-3l-acoes a:focus-visible{outline:3px solid var(--a-purple,var(--purple));outline-offset:2px}
+/* resumo recolhido no fim da aula */
+.aula-resumo-det>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border:2px solid var(--ink);border-radius:999px;font-weight:800;background:var(--soft)}
+.aula-resumo-det>summary::-webkit-details-marker{display:none}
+.aula-resumo-det>summary::after{content:'+';font-size:1.15em;line-height:1}
+.aula-resumo-det[open]>summary{margin-bottom:1rem}
+.aula-resumo-det[open]>summary span{font-size:0}
+.aula-resumo-det[open]>summary span::before{content:'Esconder o resumo';font-size:1rem}
+.aula-resumo-det[open]>summary::after{content:'−'}
