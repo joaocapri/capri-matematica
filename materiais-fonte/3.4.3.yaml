@@ -1,0 +1,589 @@
+# Aula 3.4.3 — Teorema de Binet e determinante da inversa
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: det(AB) = det A · det B, det(A^n) = (det A)^n, det(A⁻¹) = 1/det A, existência da inversa
+# (det ≠ 0), combinação com det(kA) = k^n det A e det A^t = det A. O cálculo da inversa fica para a 3.5.1.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'As matrizes $A$ e $B$ são de ordem 3, com $\det A = 3$ e $\det B = -2$. Complete.'
+      itens:
+      - '$\det(AB) = {{-6}}$ $\quad$ $\det(BA) = {{-6}}$'
+      - '$\det(A^2) = {{9}}$ $\quad$ $\det(B^3) = {{-8}}$'
+      - '$\det(A^{-1}) = {{\tfrac{1}{3}}}$'
+      resolucao: |
+        Binet: $\det(AB) = 3 \cdot (-2) = -6$, e $\det(BA)$ é o mesmo produto. $\det(A^2) = 3^2 = 9$; $\det(B^3) = (-2)^3 = -8$.
+        $\det(A^{-1}) = \dfrac{1}{\det A} = \dfrac{1}{3}$.
+      resposta: '$-6$ e $-6$; $9$ e $-8$; $\frac{1}{3}$'
+    - enunciado: 'Considere $A = \begin{pmatrix} 2 & 1 \\ 1 & 3 \end{pmatrix}$ e $B = \begin{pmatrix} 1 & 4 \\ 0 & 2 \end{pmatrix}$.'
+      itens:
+      - 'Calcule $\det A$ e $\det B$.'
+      - 'Calcule $AB$ e $\det(AB)$. O resultado confirma o teorema de Binet?'
+      espaco_item: 18
+      resolucao: |
+        (a) $\det A = 6 - 1 = 5$ e $\det B = 2 - 0 = 2$.
+        (b) $AB = \begin{pmatrix} 2 & 10 \\ 1 & 10 \end{pmatrix}$ e $\det(AB) = 20 - 10 = 10 = 5 \cdot 2$. Confirma.
+      resposta: '(a) $5$ e $2$ (b) $\begin{pmatrix} 2 & 10 \\ 1 & 10 \end{pmatrix}$, $\det = 10 = 5 \cdot 2$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso). As matrizes são quadradas e de mesma ordem.'
+      afirmacoes:
+      - '$\det(AB) = \det A \cdot \det B$.'
+      - '$\det(A + B) = \det A + \det B$.'
+      - 'Se $\det A = 0$, então $A$ não tem inversa.'
+      - 'Se $A$ tem inversa, então $\det(A^{-1}) = -\det A$.'
+      justificar: true
+      espaco: 18
+      resolucao: |
+        (V) É o teorema de Binet. (F) Com $A = B = I_2$: $\det(2I) = 4$, mas $1 + 1 = 2$.
+        (V) De $AA^{-1} = I$ viria $\det A \cdot \det A^{-1} = 1$, impossível com $\det A = 0$. (F) $\det(A^{-1}) = \dfrac{1}{\det A}$.
+      resposta: V, F, V, F
+    - enunciado: 'A matriz $A$ é de ordem 2, com $\det A = 2$. Associe cada determinante ao seu valor (um valor pode ser usado mais de uma vez).'
+      esquerda:
+      - '$\tfrac{1}{2}$'
+      - '$4$'
+      - '$8$'
+      - '$16$'
+      direita:
+      - '$\det(A^{-1})$'
+      - '$\det(A^2)$'
+      - '$\det(2A)$'
+      - '$\det(A^3)$'
+      - '$\det(A^t A^3)$'
+      resolucao: |
+        $\det(A^{-1}) = \tfrac{1}{2}$; $\det(A^2) = 4$; $\det(2A) = 2^2 \cdot 2 = 8$; $\det(A^3) = 8$; $\det(A^tA^3) = 2 \cdot 8 = 16$.
+      resposta: 'De cima para baixo: 1, 2, 3, 3, 4'
+    - enunciado: 'Diga se cada matriz tem inversa, justificando pelo determinante.'
+      itens:
+      - '$\begin{pmatrix} 2 & 3 \\ 4 & 6 \end{pmatrix}$'
+      - '$\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$'
+      - '$\begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix}$'
+      - '$\begin{pmatrix} 5 & 1 \\ 0 & 2 \end{pmatrix}$'
+      colunas: 2
+      espaco_item: 12
+      resolucao: |
+        Uma matriz quadrada tem inversa quando o determinante é diferente de zero.
+        (a) $12 - 12 = 0$: não tem. (b) $4 - 6 = -2$: tem. (c) $0 - 0 = 0$: não tem. (d) $10 - 0 = 10$: tem.
+      resposta: '(a) não (b) sim (c) não (d) sim'
+    - enunciado: 'A matriz $A$ é de ordem 3, com $\det A = 6$. Calcule $\det(2A^{-1})$, completando os passos.'
+      itens:
+      - '$\det(A^{-1}) = {{\tfrac{1}{6}}}$'
+      - 'A matriz $A^{-1}$ tem 3 linhas, todas multiplicadas por 2: fator ${{8}}$'
+      - '$\det(2A^{-1}) = {{\tfrac{4}{3}}}$'
+      resolucao: |
+        $\det(2A^{-1}) = 2^3 \cdot \det(A^{-1}) = 8 \cdot \tfrac{1}{6} = \tfrac{4}{3}$.
+      resposta: '$\frac{1}{6}$; $8$; $\frac{4}{3}$'
+    - texto: |
+        Bruno queria calcular $\det(A + B)$ para $A = B = I_2$ (a identidade de ordem 2) e escreveu:
+        \[ \det(A + B) = \det A + \det B = 1 + 1 = 2. \]
+      enunciado: 'Encontre o erro de Bruno e calcule $\det(A + B)$ corretamente.'
+      espaco: 18
+      resolucao: |
+        O determinante não “distribui” na soma: o teorema de Binet vale para o produto, não para a soma.
+        $A + B = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}$, e $\det(A + B) = 4$.
+      resposta: 'Não vale $\det(A + B) = \det A + \det B$; o certo é 4'
+  - nome: Nível 2
+    questoes:
+    - enunciado: 'As matrizes $A$ e $B$ são de ordem 2, com $\det A = x$ e $\det B = 3$.'
+      itens:
+      - 'Sabendo que $\det(AB) = 12$, determine $x$.'
+      - 'Calcule $\det(A^2B)$.'
+      espaco_item: 14
+      resolucao: |
+        (a) $3x = 12$, logo $x = 4$. (b) $\det(A^2B) = 4^2 \cdot 3 = 48$.
+      resposta: '(a) $x = 4$ (b) $48$'
+    - enunciado: 'Calcule sem multiplicar matrizes.'
+      itens:
+      - '$\det(A^{100})$, para $A = \begin{pmatrix} 1 & 2 \\ 1 & 3 \end{pmatrix}$.'
+      - '$\det(B^{10})$, para $B = \begin{pmatrix} 2 & 1 \\ 0 & 1 \end{pmatrix}$.'
+      espaco_item: 14
+      resolucao: |
+        (a) $\det A = 3 - 2 = 1$, e $\det(A^{100}) = 1^{100} = 1$.
+        (b) $\det B = 2$, e $\det(B^{10}) = 2^{10} = 1024$.
+      resposta: '(a) $1$ (b) $1024$'
+    - enunciado: 'As matrizes $A$ e $B$ são de ordem 2, com $AB = I$ e $\det A = 4$. Complete.'
+      itens:
+      - '$\det(AB) = \det I = {{1}}$'
+      - '$4 \cdot \det B = 1$, logo $\det B = {{\tfrac{1}{4}}}$'
+      - 'A matriz $B$ é a ${{inversa}}$ de $A$.'
+      resolucao: |
+        Pelo teorema de Binet, $\det A \cdot \det B = 1$, então $\det B = \tfrac{1}{4}$. Como $AB = I$, $B$ é a inversa de $A$.
+      resposta: '$1$; $\frac{1}{4}$; inversa'
+    - enunciado: 'Determine os valores reais de $k$ para os quais a matriz $\begin{pmatrix} k & 2 \\ 3 & k + 1 \end{pmatrix}$ tem inversa.'
+      espaco: 20
+      resolucao: |
+        $\det = k(k + 1) - 6 = k^2 + k - 6$, que se anula para $k = 2$ e $k = -3$.
+        A matriz tem inversa para todo $k$ real com $k \neq 2$ e $k \neq -3$.
+      resposta: '$k \neq 2$ e $k \neq -3$'
+    - enunciado: 'As matrizes são quadradas, reais e de mesma ordem. Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Se $\det(AB) = 0$, então $\det A = 0$ ou $\det B = 0$.'
+      - 'Se $AB$ é a matriz nula, então $\det A = 0$ ou $\det B = 0$.'
+      - '$\det(A^tA) \ge 0$.'
+      - 'Se $A^2 = I$, então $\det A = 1$.'
+      justificar: true
+      espaco: 22
+      resolucao: |
+        (V) Um produto de números só é zero se um deles for zero. (V) $\det(AB) = 0$, e vale o item anterior.
+        (V) $\det(A^tA) = \det A \cdot \det A = (\det A)^2$. (F) $(\det A)^2 = 1$ permite $\det A = -1$; por exemplo, $\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.
+      resposta: V, V, V, F
+    - enunciado: 'As matrizes $A$ e $B$ são de ordem 3, com $\det A = 2$ e $\det B = -1$. Complete o quadro.'
+      tabela:
+        cabecalho: ['Matriz', 'Determinante']
+        linhas:
+        - ['$AB^t$', '${{-2}}$']
+        - ['$A^{-1}B$', '${{-\tfrac{1}{2}}}$']
+        - ['$2AB$', '${{-16}}$']
+        - ['$A^3B^2$', '${{8}}$']
+      resolucao: |
+        $2 \cdot (-1) = -2$; $\tfrac{1}{2} \cdot (-1) = -\tfrac{1}{2}$; $2^3 \cdot 2 \cdot (-1) = -16$; $2^3 \cdot (-1)^2 = 8$.
+      resposta: '$-2$; $-\frac{1}{2}$; $-16$; $8$'
+    - enunciado: 'Considere $A = \begin{pmatrix} 3 & 1 \\ 4 & 2 \end{pmatrix}$ e $M = \begin{pmatrix} 1 & -\tfrac{1}{2} \\ -2 & \tfrac{3}{2} \end{pmatrix}$.'
+      itens:
+      - 'Verifique que $AM = I$, isto é, $M = A^{-1}$.'
+      - 'Calcule $\det A$ e $\det M$ e confira que $\det M = \dfrac{1}{\det A}$.'
+      espaco_item: 18
+      resolucao: |
+        (a) $AM = \begin{pmatrix} 3 - 2 & -\tfrac{3}{2} + \tfrac{3}{2} \\ 4 - 4 & -2 + 3 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$.
+        (b) $\det A = 6 - 4 = 2$ e $\det M = \tfrac{3}{2} - 1 = \tfrac{1}{2}$.
+      resposta: '(a) Ver resolução (b) $2$ e $\frac{1}{2}$'
+    - enunciado: 'As matrizes $A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ e $B = \begin{pmatrix} 0 & 1 \\ 2 & 5 \end{pmatrix}$ são dadas, e $X$ é uma matriz de ordem 2 tal que $AX = B$. Calcule $\det X$ sem encontrar $X$.'
+      espaco: 20
+      resolucao: |
+        $\det A \cdot \det X = \det B$. Como $\det A = 4 - 6 = -2$ e $\det B = 0 - 2 = -2$: $\det X = \dfrac{-2}{-2} = 1$.
+      resposta: '$\det X = 1$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Seja $A$ uma matriz quadrada invertível.'
+      itens:
+      - 'A partir de $AA^{-1} = I$ e do teorema de Binet, mostre que $\det(A^{-1}) = \dfrac{1}{\det A}$.'
+      - 'Mostre que $\det(P^{-1}AP) = \det A$ para toda matriz invertível $P$ de mesma ordem.'
+      espaco_item: 22
+      resolucao: |
+        (a) $\det(AA^{-1}) = \det I = 1$, e por Binet $\det A \cdot \det(A^{-1}) = 1$. Como $\det A \neq 0$, $\det(A^{-1}) = \tfrac{1}{\det A}$.
+        (b) $\det(P^{-1}AP) = \det P^{-1} \cdot \det A \cdot \det P = \tfrac{1}{\det P} \cdot \det A \cdot \det P = \det A$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Uma matriz quadrada $A$ satisfaz $A^2 = A$.'
+      itens:
+      - 'Mostre que $\det A = 0$ ou $\det A = 1$.'
+      - 'Dê um exemplo de ordem 2 para cada caso.'
+      espaco_item: 20
+      resolucao: |
+        (a) $(\det A)^2 = \det A$, isto é, $\det A(\det A - 1) = 0$.
+        (b) $\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$ (determinante 0) e $I_2$ (determinante 1); as duas satisfazem $A^2 = A$.
+      resposta: '(a) Ver resolução (b) $\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$ e $I_2$'
+    - enunciado: 'Seja $A$ uma matriz real de ordem 3.'
+      itens:
+      - 'Se $A^3 = 2I$, quanto vale $\det A$?'
+      - 'Mostre que não existe matriz real de ordem 3 com $A^2 = -I$.'
+      espaco_item: 20
+      resolucao: |
+        (a) $(\det A)^3 = \det(2I) = 2^3 = 8$, logo $\det A = 2$.
+        (b) Teríamos $(\det A)^2 = \det(-I) = (-1)^3 = -1$, mas o quadrado de um número real não é negativo.
+      resposta: '(a) $2$ (b) Ver resolução'
+    - enunciado: 'Uma matriz $A$ de ordem 3 tem $\det A \neq 0$ e satisfaz $\det(2A) = \det(A^2)$. Determine $\det A$.'
+      espaco: 18
+      resolucao: |
+        $\det(2A) = 2^3\det A = 8\det A$ e $\det(A^2) = (\det A)^2$. Então $(\det A)^2 = 8\det A$ e, como $\det A \neq 0$, $\det A = 8$.
+      resposta: '$\det A = 8$'
+    - enunciado: 'Uma matriz real $A$ é chamada ortogonal quando $AA^t = I$.'
+      itens:
+      - 'Mostre que toda matriz ortogonal tem $\det A = 1$ ou $\det A = -1$.'
+      - 'Verifique que $\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ e $\begin{pmatrix} \tfrac{3}{5} & -\tfrac{4}{5} \\ \tfrac{4}{5} & \tfrac{3}{5} \end{pmatrix}$ são ortogonais e calcule os seus determinantes.'
+      espaco_item: 22
+      resolucao: |
+        (a) $\det A \cdot \det A^t = (\det A)^2 = \det I = 1$, logo $\det A = \pm 1$.
+        (b) A primeira vezes a sua transposta (ela mesma) dá $I$; determinante $-1$. Na segunda, $\tfrac{9}{25} + \tfrac{16}{25} = 1$ na diagonal e $\tfrac{12}{25} - \tfrac{12}{25} = 0$ fora; determinante $\tfrac{9}{25} + \tfrac{16}{25} = 1$.
+      resposta: '(a) Ver resolução (b) $-1$ e $1$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Em computação gráfica, cada transformação do plano é dada por uma matriz de ordem 2, e uma figura transformada tem a sua área multiplicada pelo valor absoluto do determinante dessa matriz. Quando duas transformações são aplicadas em sequência, a matriz resultante é o produto das matrizes. Um designer aplicou a um logotipo de 5 cm² as transformações $T_1$ e, em seguida, $T_2$, descritas no quadro.
+    tabela:
+      cabecalho: ['Transformação', 'Efeito', 'Determinante']
+      linhas:
+      - ['$T_1$', 'Amplia e inclina', '$3$']
+      - ['$T_2$', 'Estica na horizontal', '$2$']
+    enunciado: |
+      Após as duas transformações, a área do logotipo passou a ser
+    opcoes: ['10 cm².', '11 cm².', '25 cm².', '30 cm².', '36 cm².']
+    correta: D
+    resolucao: |
+      Pelo teorema de Binet, $\det(T_2T_1) = 2 \cdot 3 = 6$. A área fica $5 \cdot 6 = 30$ cm².
+      11 cm² soma o fator 6 à área em vez de multiplicar; 25 cm² multiplica a área pela soma $3 + 2$.
+
+  - estilo: Fuvest
+    enunciado: |
+      As matrizes $A$ e $B$ são de ordem 2, com $\det A = 2$ e $\det B = 5$. O valor de $\det(AB^{-1})$ é
+    opcoes: ['$\tfrac{1}{10}$', '$\tfrac{2}{5}$', '$\tfrac{5}{2}$', '$7$', '$10$']
+    correta: B
+    resolucao: |
+      $\det(AB^{-1}) = \det A \cdot \dfrac{1}{\det B} = \dfrac{2}{5}$. $\tfrac{5}{2}$ inverte a matriz errada; 10 esquece a inversa.
+
+  - estilo: Unicamp
+    enunciado: |
+      Se $A$ é uma matriz de ordem 2 com $\det A = 3$, então $\det(A^{-1})$ é igual a
+    opcoes: ['$-3$.', '$-\tfrac{1}{3}$.', '$\tfrac{1}{3}$.', '$3$.']
+    correta: C
+    resolucao: |
+      $\det(A^{-1}) = \dfrac{1}{\det A} = \dfrac{1}{3}$.
+
+  - estilo: UEM
+    enunciado: |
+      As matrizes $A$ e $B$ são de ordem 2, com $\det A = 3$ e $\det B = -2$. Assinale o que for correto.
+    proposicoes:
+    - '$\det(AB) = -6$.'
+    - '$\det(A + B) = 1$.'
+    - '$\det(A^{-1}) = \tfrac{1}{3}$.'
+    - '$\det(B^2) = 4$.'
+    - '$\det(2A) = 6$.'
+    corretas: [1, 3, 4]
+    resolucao: |
+      01) Correta: Binet. 02) Incorreta: o determinante da soma não é a soma dos determinantes (e nem fica determinado só por eles).
+      04) Correta. 08) Correta: $(-2)^2$. 16) Incorreta: $2^2 \cdot 3 = 12$.
+      Soma: $01 + 04 + 08 = 13$.
+
+  - estilo: Unesp
+    enunciado: |
+      Seja $M = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$. Entre as matrizes $X$ a seguir, a única para a qual $\det(MX) = 4$ é
+    opcoes:
+    - '$\begin{pmatrix} 2 & 0 \\ 0 & 1 \end{pmatrix}$'
+    - '$\begin{pmatrix} 1 & 0 \\ 0 & 4 \end{pmatrix}$'
+    - '$\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$'
+    - '$\begin{pmatrix} 3 & 1 \\ 1 & 1 \end{pmatrix}$'
+    - '$\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$'
+    correta: C
+    resolucao: |
+      $\det M = -2$, então é preciso $\det X = -2$. Os determinantes das alternativas são $2$, $4$, $-2$, $2$ e $-1$.
+      Quem esquece o sinal de $\det M$ procura $\det X = 2$ e fica entre A e D.
+
+  - estilo: UEL
+    enunciado: |
+      Considere matrizes quadradas reais de mesma ordem e as afirmativas a seguir.
+    afirmativas:
+    - '$\det(AB) = \det(BA)$.'
+    - 'Se $A$ é invertível, então $\det A \neq 0$.'
+    - 'Se $A$ é invertível, então $\det(A^{-1}) = \det A$.'
+    - '$\det(A^2) \ge 0$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'II e IV, apenas.', 'III e IV, apenas.', 'I, II e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta: os dois são $\det A \cdot \det B$. II. Correta.
+      III. Incorreta: $\det(A^{-1}) = \tfrac{1}{\det A}$, que só é igual a $\det A$ quando $\det A = \pm 1$.
+      IV. Correta: $\det(A^2) = (\det A)^2$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Seja $A$ uma matriz de ordem 3 com $\det A = 2$. O valor de $\det(2A^{-1})$ é
+    opcoes: ['$\tfrac{1}{4}$', '$1$', '$2$', '$4$', '$16$']
+    correta: D
+    resolucao: |
+      $\det(2A^{-1}) = 2^3 \cdot \tfrac{1}{2} = 4$. Quem usa o fator 2 uma vez só marca 1.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      Um aplicativo de edição de imagens oferece filtros geométricos, cada um dado por uma matriz de ordem 2. Ao aplicar um filtro, a área de uma figura é multiplicada pelo valor absoluto do determinante da matriz, e aplicar vários filtros em sequência corresponde a multiplicar as matrizes. O quadro mostra os filtros disponíveis.
+    tabela:
+      cabecalho: ['Filtro', 'Determinante']
+      linhas:
+      - ['Ampliar', '$4$']
+      - ['Inclinar', '$1$']
+      - ['Espelhar', '$-1$']
+      - ['Reduzir', '$\tfrac{1}{2}$']
+    enunciado: |
+      Uma figura de 6 cm² recebeu os filtros Ampliar, Espelhar e Reduzir. A sua nova área é
+    opcoes: ['3 cm².', '6 cm².', '12 cm².', '24 cm².', '48 cm².']
+    correta: C
+    resolucao: |
+      O determinante do produto é $4 \cdot (-1) \cdot \tfrac{1}{2} = -2$, e a área é multiplicada por $|-2| = 2$: $12$ cm².
+      O sinal negativo indica só que a figura foi espelhada; a área não pode ser negativa.
+
+  - estilo: Unicamp
+    enunciado: |
+      As matrizes $A$ e $B$ são de ordem 2, com $\det A = 4$ e $AB = I$. Então $\det B$ vale
+    opcoes: ['$-4$.', '$\tfrac{1}{4}$.', '$\tfrac{1}{2}$.', '$4$.']
+    correta: B
+    resolucao: |
+      $\det A \cdot \det B = \det I = 1$, então $\det B = \tfrac{1}{4}$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Se $A$ é de ordem 2 com $\det A = 5$, então $\det(A^{-1}) = 0{,}2$.'
+    - 'Se $A$ e $B$ são de ordem 3 com $\det A = 2$ e $\det B = 3$, então $\det(2AB) = 12$.'
+    - 'A matriz $\begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}$ é invertível.'
+    - 'Se $A$ é real, de ordem 3, e $A^3 = I$, então $\det A = 1$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – V – F.', 'F – V – F – V.', 'V – F – F – V.']
+    correta: E
+    resolucao: |
+      (V) $\tfrac{1}{5} = 0{,}2$. (F) $2^3 \cdot 2 \cdot 3 = 48$.
+      (F) O determinante é $4 - 4 = 0$. (V) $(\det A)^3 = 1$, e o único real com cubo 1 é o próprio 1.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $A = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$ e $B = \begin{pmatrix} 3 & 0 \\ 1 & 2 \end{pmatrix}$. Assinale o que for correto.
+    proposicoes:
+    - '$\det(AB) = 6$.'
+    - '$\det(A^{10}) = 1$.'
+    - '$\det(B^{-1}) = \tfrac{1}{6}$.'
+    - '$\det(A + B) = 7$.'
+    - '$\det(2B) = 12$.'
+    - '$\det(A^{-1}BA) = 6$.'
+    corretas: [1, 2, 3, 6]
+    resolucao: |
+      $\det A = 1$ e $\det B = 6$. 01) Correta. 02) Correta: $1^{10}$. 04) Correta.
+      08) Incorreta: $A + B = \begin{pmatrix} 5 & 1 \\ 2 & 3 \end{pmatrix}$, com determinante 13.
+      16) Incorreta: $2^2 \cdot 6 = 24$. 32) Correta: $1 \cdot 6 \cdot 1$.
+      Soma: $01 + 02 + 04 + 32 = 39$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O produto dos valores reais de $k$ para os quais a matriz $\begin{pmatrix} k & 2 \\ 2 & k \end{pmatrix}$ não tem inversa é
+    opcoes: ['$-4$', '$-2$', '$0$', '$2$', '$4$']
+    correta: A
+    resolucao: |
+      $\det = k^2 - 4 = 0$ para $k = 2$ ou $k = -2$, com produto $-4$ (e soma 0).
+
+  - estilo: Unesp
+    texto: |
+      Em um projeto de engenharia, três matrizes $A$, $B$ e $C$, todas de ordem 3, descrevem etapas de uma transformação. O quadro mostra os seus determinantes. O engenheiro precisa do determinante da matriz $AB^{-1}C^2$, que descreve a transformação completa.
+    tabela:
+      cabecalho: ['Matriz', '$A$', '$B$', '$C$']
+      linhas:
+      - ['Determinante', '$2$', '$-3$', '$\tfrac{1}{2}$']
+    enunciado: |
+      O determinante de $AB^{-1}C^2$ é
+    opcoes: ['$-6$', '$-\tfrac{3}{2}$', '$-\tfrac{1}{6}$', '$\tfrac{1}{6}$', '$\tfrac{3}{2}$']
+    correta: C
+    resolucao: |
+      $2 \cdot \left(-\tfrac{1}{3}\right) \cdot \left(\tfrac{1}{2}\right)^2 = 2 \cdot \left(-\tfrac{1}{3}\right) \cdot \tfrac{1}{4} = -\tfrac{1}{6}$.
+      $-6$ usa $\det B$ no lugar de $\det B^{-1}$ e esquece o quadrado.
+
+  - estilo: Enem
+    texto: |
+      Um sistema de mensagens criptografadas usa duas chaves em sequência: primeiro a chave $K_1$, de determinante 3, e depois a chave $K_2$, de determinante 2. A chave combinada é o produto $K = K_2K_1$. Para ler a mensagem, o destinatário precisa da inversa de $K$, e o sistema verifica, antes, o determinante dessa inversa.
+    enunciado: |
+      O determinante da inversa da chave combinada é
+    opcoes: ['$\tfrac{1}{6}$', '$\tfrac{1}{5}$', '$5$', '$6$', '$36$']
+    correta: A
+    resolucao: |
+      $\det K = 2 \cdot 3 = 6$ e $\det K^{-1} = \tfrac{1}{6}$. $\tfrac{1}{5}$ soma os determinantes em vez de multiplicá-los.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Em um software de desenho, uma ampliação de fator $k$ é dada pela matriz $E_k = \begin{pmatrix} k & 0 \\ 0 & k \end{pmatrix}$, de determinante $k^2$. Uma rotação $R$ tem determinante 1, e uma reflexão $S$ tem determinante $-1$. Aplicar transformações em sequência corresponde a multiplicar as matrizes, e a área de uma figura fica multiplicada pelo valor absoluto do determinante do produto.
+    enunciado: |
+      Uma figura de 4 cm² recebeu a transformação $E_3RS$. A área da figura obtida é
+    opcoes: ['12 cm².', '18 cm².', '27 cm².', '36 cm².', '81 cm².']
+    correta: D
+    resolucao: |
+      $\det(E_3RS) = 9 \cdot 1 \cdot (-1) = -9$; a área fica $4 \cdot 9 = 36$ cm².
+      12 cm² usa o fator 3 no lugar de $3^2$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O determinante da matriz $SR^2E_2^{-1}$ é
+    opcoes: ['$-4$.', '$-\tfrac{1}{4}$.', '$\tfrac{1}{4}$.', '$4$.']
+    correta: B
+    resolucao: |
+      $(-1) \cdot 1^2 \cdot \tfrac{1}{4} = -\tfrac{1}{4}$, pois $\det E_2 = 4$ e $\det E_2^{-1} = \tfrac{1}{4}$.
+
+  - estilo: UEM
+    enunciado: |
+      Seja $A$ uma matriz real de ordem 3, com $\det A \neq 0$, tal que $A^2 = 2A$. Assinale o que for correto.
+    proposicoes:
+    - '$\det(A^2) = (\det A)^2$.'
+    - '$\det(2A) = 2\det A$.'
+    - '$\det A = 8$.'
+    - '$A$ é invertível.'
+    - '$\det(A^{-1}) = \tfrac{1}{8}$.'
+    - '$\det A^t = -8$.'
+    corretas: [1, 3, 4, 5]
+    resolucao: |
+      01) Correta: Binet. 02) Incorreta: $\det(2A) = 8\det A$.
+      04) Correta: $(\det A)^2 = 8\det A$ e $\det A \neq 0$ dão $\det A = 8$.
+      08) Correta: o determinante não é nulo. 16) Correta. 32) Incorreta: $\det A^t = \det A = 8$.
+      Soma: $01 + 04 + 08 + 16 = 29$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $A$ é uma matriz real de ordem 3 tal que $A^3 = -8I$, então $\det A$ é igual a
+    opcoes: ['$-8$', '$-2$', '$-\tfrac{1}{2}$', '$2$', '$8$']
+    correta: A
+    resolucao: |
+      $(\det A)^3 = \det(-8I) = (-8)^3$, pois as três linhas de $I$ são multiplicadas por $-8$. O número real cujo cubo é $(-8)^3$ é $-8$.
+      Quem pensa que $\det(-8I) = -8$ marca $-2$.
+
+  - estilo: Enem
+    texto: |
+      Um software de impressão 3D modifica modelos por meio de matrizes de ordem 3. Ao aplicar uma matriz a um modelo, o volume dele fica multiplicado pelo valor absoluto do determinante dessa matriz. O quadro mostra duas matrizes disponíveis. Um técnico aplicou $T$ duas vezes a um modelo de 10 cm³ e, depois, aplicou a inversa de $S$.
+    tabela:
+      cabecalho: ['Matriz', 'Determinante']
+      linhas:
+      - ['$T$', '$2$']
+      - ['$S$', '$4$']
+    enunciado: |
+      O volume final do modelo é
+    opcoes: ['2 cm³.', '5 cm³.', '8 cm³.', '10 cm³.', '20 cm³.']
+    correta: D
+    resolucao: |
+      $\det(S^{-1}T^2) = \tfrac{1}{4} \cdot 2^2 = 1$: o volume não muda e continua 10 cm³.
+      20 cm³ esquece a inversa de $S$ e conta $T$ uma vez só; 5 cm³ aplica $T$ uma vez só.
+
+  - estilo: Fuvest
+    enunciado: |
+      As matrizes $A$ e $B$ são de ordem 2, com $\det(AB) = 12$ e $\det(A^{-1}B) = 3$. O valor de $|\det B|$ é
+    opcoes: ['$1$', '$2$', '$3$', '$4$', '$6$']
+    correta: E
+    resolucao: |
+      $\det A \cdot \det B = 12$ e $\dfrac{\det B}{\det A} = 3$. Multiplicando: $(\det B)^2 = 36$, logo $|\det B| = 6$ (e $|\det A| = 2$).
+      2 é o valor de $|\det A|$.
+
+aprofundamento:
+  questoes:
+  - estilo: Unicamp
+    texto: |
+      Uma matriz $M$ de ordem 2 transforma o quadrado de lado 1, com vértices $(0, 0)$, $(1, 0)$, $(1, 1)$ e $(0, 1)$, em um paralelogramo cuja área é $|\det M|$. Transformações aplicadas em sequência correspondem ao produto das matrizes.
+    enunciado: 'Considere $A = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$ e $B = \begin{pmatrix} 3 & 0 \\ 0 & 2 \end{pmatrix}$.'
+    itens:
+    - 'Qual é a área do paralelogramo obtido com $A$? E com $B$?'
+    - 'Qual é a área obtida aplicando $A$ e depois $B$? Responda sem multiplicar as matrizes.'
+    - 'Para que valores de $k$ a matriz $\begin{pmatrix} k & 1 \\ 1 & k \end{pmatrix}$ “achata” o quadrado (área 0)? Essa matriz tem inversa nesses casos?'
+    espaco: 62
+    resolucao: |
+      a) $\det A = 2 - 1 = 1$: área 1. $\det B = 6$: área 6.
+      b) A matriz da sequência é $BA$, e $\det(BA) = 6 \cdot 1 = 6$: área 6.
+      c) $k^2 - 1 = 0$: $k = 1$ ou $k = -1$. Nesses casos o determinante é 0 e a matriz não tem inversa: não dá para “desfazer” o achatamento.
+    resposta: 'a) 1 e 6; b) 6; c) $k = \pm 1$; não tem inversa'
+
+  - estilo: Fuvest
+    enunciado: 'Sejam $A$ e $P$ matrizes quadradas de mesma ordem, com $P$ invertível.'
+    itens:
+    - 'Mostre que $\det(P^{-1}) = \dfrac{1}{\det P}$.'
+    - 'Mostre que $\det(P^{-1}AP) = \det A$.'
+    - 'Para $A = \begin{pmatrix} 2 & 1 \\ 0 & 3 \end{pmatrix}$ e $P = \begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix}$, sabendo que $P^{-1} = \begin{pmatrix} 2 & -1 \\ -1 & 1 \end{pmatrix}$, calcule $P^{-1}AP$ e confira o item b).'
+    espaco: 62
+    resolucao: |
+      a) $\det P \cdot \det P^{-1} = \det I = 1$.
+      b) $\det(P^{-1}AP) = \tfrac{1}{\det P} \cdot \det A \cdot \det P = \det A$.
+      c) $AP = \begin{pmatrix} 3 & 4 \\ 3 & 6 \end{pmatrix}$ e $P^{-1}AP = \begin{pmatrix} 3 & 2 \\ 0 & 2 \end{pmatrix}$, com determinante $6 = \det A$.
+    resposta: 'a) e b) Ver resolução; c) $\begin{pmatrix} 3 & 2 \\ 0 & 2 \end{pmatrix}$, determinante 6'
+
+  - estilo: ITA
+    enunciado: |
+      Seja $A$ uma matriz real de ordem 3 tal que $A^t = A^{-1}$ e $\det A < 0$. O valor de $\det(2A^tA^2)$ é
+    opcoes: ['$-16$', '$-8$', '$-1$', '$8$', '$16$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $AA^t = I$ dá $(\det A)^2 = 1$; como $\det A < 0$, $\det A = -1$.
+      $\det(2A^tA^2) = 2^3 \cdot \det A^t \cdot (\det A)^2 = 8 \cdot (-1) \cdot 1 = -8$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Uma matriz quadrada $A$ é chamada idempotente quando $A^2 = A$.'
+    itens:
+    - 'Mostre que o determinante de uma matriz idempotente é 0 ou 1.'
+    - 'Determine todos os números reais $a$ e $b$ para os quais $\begin{pmatrix} 1 & a \\ 0 & b \end{pmatrix}$ é idempotente.'
+    - 'Mostre que, se uma matriz idempotente é invertível, então ela é a identidade.'
+    espaco: 62
+    resolucao: |
+      a) $(\det A)^2 = \det A$, logo $\det A = 0$ ou $\det A = 1$.
+      b) $\begin{pmatrix} 1 & a \\ 0 & b \end{pmatrix}^2 = \begin{pmatrix} 1 & a + ab \\ 0 & b^2 \end{pmatrix}$. É preciso $b^2 = b$ e $ab = 0$: $b = 0$ (com $a$ qualquer) ou $b = 1$ e $a = 0$.
+      c) Multiplicando $A^2 = A$ por $A^{-1}$: $A = I$.
+    resposta: 'a) Ver resolução; b) $b = 0$ e $a$ qualquer, ou $a = 0$ e $b = 1$; c) Ver resolução'
+
+  - estilo: UFSC
+    enunciado: |
+      As matrizes $A$ e $B$ são de ordem 3, com $\det A = 2$ e $\det B = -1$. Assinale o que for correto.
+    proposicoes:
+    - '$\det(AB) = -2$.'
+    - '$\det(A^{-1}B^2) = \tfrac{1}{2}$.'
+    - '$\det(3A) = 6$.'
+    - '$\det(A^tB^{-1}) = -2$.'
+    - '$\det(A + A) = 4$.'
+    - '$A$ e $B$ são invertíveis.'
+    - '$\det(ABA^{-1}) = -2$.'
+    corretas: [1, 2, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) Correta. 02) Correta: $\tfrac{1}{2} \cdot 1$. 04) Incorreta: $27 \cdot 2 = 54$.
+      08) Correta: $2 \cdot (-1)$. 16) Incorreta: $\det(2A) = 16$. 32) Correta: os determinantes não são nulos.
+      64) Incorreta: $2 \cdot (-1) \cdot \tfrac{1}{2} = -1$.
+    resposta: 'Soma 43 (01 + 02 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere a equação matricial $A^2 = -I$, com $A$ real.'
+    itens:
+    - 'Mostre que não existe matriz real de ordem 3 que satisfaça a equação.'
+    - 'Mostre que $A = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$ satisfaz a equação.'
+    - 'Mostre que, se existe uma matriz real de ordem $n$ com $A^2 = -I$, então $n$ é par.'
+    espaco: 62
+    resolucao: |
+      a) $(\det A)^2 = \det(-I_3) = (-1)^3 = -1$, impossível para $\det A$ real.
+      b) $A^2 = \begin{pmatrix} 0 - 1 & 0 + 0 \\ 0 + 0 & -1 + 0 \end{pmatrix} = -I$.
+      c) $(\det A)^2 = \det(-I_n) = (-1)^n$. Como o quadrado de um real não é negativo, $(-1)^n = 1$, isto é, $n$ é par.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    texto: |
+      Uma chave de criptografia $K$ é uma matriz de números inteiros. Para que a decodificação também use apenas números inteiros, é conveniente que $\det K = 1$ ou $\det K = -1$.
+    enunciado: 'Considere $K = \begin{pmatrix} 3 & 1 \\ 5 & 2 \end{pmatrix}$ e $M = \begin{pmatrix} 2 & -1 \\ -5 & 3 \end{pmatrix}$.'
+    itens:
+    - 'Calcule $\det K$ e verifique que $KM = I$.'
+    - 'Calcule $\det M$ e confira que $\det M = \dfrac{1}{\det K}$.'
+    - 'Para $K = \begin{pmatrix} 2 & 1 \\ 1 & k \end{pmatrix}$, determine $k$ para que $\det K = 1$ e calcule $\det(K^{-1})$.'
+    espaco: 62
+    resolucao: |
+      a) $\det K = 6 - 5 = 1$. $KM = \begin{pmatrix} 6 - 5 & -3 + 3 \\ 10 - 10 & -5 + 6 \end{pmatrix} = I$.
+      b) $\det M = 6 - 5 = 1 = \tfrac{1}{1}$.
+      c) $2k - 1 = 1$, logo $k = 1$, e $\det(K^{-1}) = 1$.
+    resposta: 'a) 1; b) 1; c) $k = 1$ e $\det(K^{-1}) = 1$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Seja $A$ uma matriz de ordem 2 com $\det A = 3$. O valor de $\det(3A^{-1}A^t)$ é
+    opcoes: ['$1$', '$3$', '$9$', '$27$', '$81$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $3^2 \cdot \tfrac{1}{3} \cdot 3 = 9$. Quem usa o fator 3 uma vez só marca 3.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Uma matriz real $A$ é ortogonal quando $AA^t = I$.'
+    itens:
+    - 'Mostre que toda matriz ortogonal tem determinante $1$ ou $-1$.'
+    - 'Mostre que $R = \begin{pmatrix} \cos\theta & -\operatorname{sen}\theta \\ \operatorname{sen}\theta & \cos\theta \end{pmatrix}$ é ortogonal para todo $\theta$ e calcule o seu determinante.'
+    - 'Dê um exemplo de matriz ortogonal de ordem 2 com determinante $-1$ e verifique.'
+    espaco: 62
+    resolucao: |
+      a) $\det A \cdot \det A^t = (\det A)^2 = 1$.
+      b) $RR^t = \begin{pmatrix} \cos^2\theta + \operatorname{sen}^2\theta & \cos\theta\operatorname{sen}\theta - \operatorname{sen}\theta\cos\theta \\ \operatorname{sen}\theta\cos\theta - \cos\theta\operatorname{sen}\theta & \operatorname{sen}^2\theta + \cos^2\theta \end{pmatrix} = I$, e $\det R = \cos^2\theta + \operatorname{sen}^2\theta = 1$.
+      c) $\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$ (reflexão no eixo $x$): ela vezes ela mesma (que é a sua transposta) dá $I$, e o determinante é $-1$.
+    resposta: 'a) Ver resolução; b) $\det R = 1$; c) $\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $A = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$ e a identidade $I$ de ordem 2.'
+    itens:
+    - 'Determine os valores de $x$ para os quais $A - xI$ não tem inversa.'
+    - 'Verifique que $A^2 = 2A + 3I$.'
+    - 'Usando o item b) e o teorema de Binet, calcule $\det(A^2)$ de duas maneiras e confira o resultado.'
+    espaco: 62
+    resolucao: |
+      a) $\det(A - xI) = (1 - x)^2 - 4 = 0$: $1 - x = \pm 2$, isto é, $x = 3$ ou $x = -1$.
+      b) $A^2 = \begin{pmatrix} 5 & 4 \\ 4 & 5 \end{pmatrix}$ e $2A + 3I = \begin{pmatrix} 5 & 4 \\ 4 & 5 \end{pmatrix}$.
+      c) Por Binet, $\det(A^2) = (\det A)^2 = (-3)^2 = 9$. Diretamente, $\det\begin{pmatrix} 5 & 4 \\ 4 & 5 \end{pmatrix} = 25 - 16 = 9$.
+    resposta: 'a) $x = 3$ ou $x = -1$; b) Ver resolução; c) 9'
