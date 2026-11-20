@@ -147,7 +147,7 @@ async function checkWidth(page,label){
   assert.match(await page.locator('.shop-origem').innerText(),/Volume 2/);
   // Folhear: o livro do volume de origem abre na capa e vira a página.
   assert.equal(await page.locator('[data-pvol="1"]').getAttribute('aria-pressed'),'true');
-  assert.equal(await page.locator('.fb-folha').count(),config.name==='desktop'?4:8);
+  assert.equal(await page.locator('.fb-folha').count(),4,'Livro aberto em duas páginas também no celular');
   assert.equal(await page.locator('#fb-leg').innerText(),'Capa');
   await page.locator('#fb-prox').click();
   await page.waitForTimeout(900);
