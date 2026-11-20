@@ -1,0 +1,585 @@
+# Aula 3.4.2 — Teorema de Laplace e regra de Chió
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: menor complementar, cofator, teorema de Laplace (ordem 3, 4 ou mais), matriz triangular,
+# regra de Chió (com a11 = 1). As propriedades da 3.4.1 podem ser usadas. Binet fica para a 3.4.3.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Considere $A = \begin{pmatrix} 2 & 1 & 3 \\ 0 & 4 & 5 \\ 1 & -1 & 2 \end{pmatrix}$. Complete, lembrando que o cofator é $A_{ij} = (-1)^{i+j} D_{ij}$.'
+      itens:
+      - 'Menor complementar de $a_{11}$: $D_{11} = \begin{vmatrix} 4 & 5 \\ -1 & 2 \end{vmatrix} = {{13}}$, e o cofator é $A_{11} = {{13}}$.'
+      - '$D_{12} = \begin{vmatrix} 0 & 5 \\ 1 & 2 \end{vmatrix} = {{-5}}$, e $A_{12} = {{5}}$.'
+      - '$D_{13} = \begin{vmatrix} 0 & 4 \\ 1 & -1 \end{vmatrix} = {{-4}}$, e $A_{13} = {{-4}}$.'
+      - 'Por Laplace na linha 1: $\det A = 2 \cdot A_{11} + 1 \cdot A_{12} + 3 \cdot A_{13} = {{19}}$'
+      resolucao: |
+        $D_{11} = 8 + 5 = 13$ e o sinal de $(1,1)$ é $+$. $D_{12} = 0 - 5 = -5$, com sinal $-$: $A_{12} = 5$. $D_{13} = 0 - 4 = -4$, com sinal $+$: $A_{13} = -4$.
+        $\det A = 26 + 5 - 12 = 19$ (a regra de Sarrus dá o mesmo: $21 - 2$).
+      resposta: '$13$ e $13$; $-5$ e $5$; $-4$ e $-4$; $19$'
+    - enunciado: 'O sinal $(-1)^{i+j}$ do cofator segue um tabuleiro de xadrez. Complete o tabuleiro de uma matriz de ordem 4.'
+      tabela:
+        linhas:
+        - ['$+$', '${{-}}$', '$+$', '${{-}}$']
+        - ['${{-}}$', '$+$', '${{-}}$', '${{+}}$']
+        - ['${{+}}$', '${{-}}$', '$+$', '${{-}}$']
+        - ['$-$', '${{+}}$', '${{-}}$', '$+$']
+      resolucao: |
+        O sinal é $+$ quando $i + j$ é par e $-$ quando é ímpar: começa com $+$ no canto e alterna em cada linha e em cada coluna.
+      resposta: 'Linhas: $+ - + -$; $- + - +$; $+ - + -$; $- + - +$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'O cofator de $a_{ij}$ é $(-1)^{i+j}$ vezes o menor complementar $D_{ij}$.'
+      - 'Pelo teorema de Laplace, o determinante pode ser calculado por qualquer linha ou coluna.'
+      - 'O cofator de $a_{12}$ é sempre igual ao menor complementar $D_{12}$.'
+      - 'Para aplicar Laplace com menos contas, convém escolher a fila com mais zeros.'
+      justificar: true
+      espaco: 18
+      resolucao: |
+        (V) É a definição. (V) Qualquer fila dá o mesmo resultado.
+        (F) Em $(1, 2)$, $i + j = 3$ é ímpar: $A_{12} = -D_{12}$. (V) Cada zero elimina um cofator inteiro da conta.
+      resposta: V, V, F, V
+    - enunciado: 'Calcule os quatro cofatores da matriz $\begin{pmatrix} 3 & -1 \\ 2 & 5 \end{pmatrix}$.'
+      espaco: 20
+      resolucao: |
+        Em ordem 2, o menor complementar de cada elemento é o elemento “em diagonal” com ele.
+        $A_{11} = +5$; $A_{12} = -2$; $A_{21} = -(-1) = 1$; $A_{22} = +3$.
+      resposta: '$A_{11} = 5$, $A_{12} = -2$, $A_{21} = 1$, $A_{22} = 3$'
+    - enunciado: 'Calcule $\begin{vmatrix} 0 & 2 & 0 \\ 3 & 1 & 4 \\ 0 & 5 & 6 \end{vmatrix}$ por Laplace na coluna 1, completando os passos.'
+      itens:
+      - 'Na coluna 1, só $a_{21} = 3$ não é zero.'
+      - 'Cofator: $A_{21} = (-1)^{2+1}\begin{vmatrix} 2 & 0 \\ 5 & 6 \end{vmatrix} = {{-12}}$'
+      - '$\det = 3 \cdot A_{21} = {{-36}}$'
+      resolucao: |
+        $\begin{vmatrix} 2 & 0 \\ 5 & 6 \end{vmatrix} = 12$, e o sinal de $(2, 1)$ é $-$: $A_{21} = -12$. Então $\det = 3 \cdot (-12) = -36$.
+      resposta: '$-12$; $-36$'
+    - enunciado: 'Calcule os determinantes de ordem 4.'
+      itens:
+      - '$\begin{vmatrix} 1 & 4 & -2 & 7 \\ 0 & 3 & 5 & 1 \\ 0 & 0 & -2 & 8 \\ 0 & 0 & 0 & 5 \end{vmatrix}$'
+      - '$\begin{vmatrix} 2 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & 3 & 0 \\ 0 & 0 & 0 & \tfrac{1}{2} \end{vmatrix}$'
+      colunas: 2
+      espaco_item: 14
+      resolucao: |
+        Desenvolvendo sempre pela primeira coluna (Laplace), sobra o produto da diagonal.
+        (a) $1 \cdot 3 \cdot (-2) \cdot 5 = -30$. (b) $2 \cdot (-1) \cdot 3 \cdot \tfrac{1}{2} = -3$.
+      resposta: '(a) $-30$ (b) $-3$'
+    - enunciado: 'Pela regra de Chió, com $a_{11} = 1$, apaga-se a linha 1 e a coluna 1 e, de cada elemento restante, subtrai-se o produto do elemento da sua linha na coluna 1 pelo da sua coluna na linha 1. Calcule $\begin{vmatrix} 1 & 2 & 3 \\ 2 & 5 & 4 \\ 3 & 1 & 2 \end{vmatrix}$ completando os passos.'
+      itens:
+      - 'Linha 2: $5 - 2 \cdot 2 = {{1}}$ e $4 - 2 \cdot 3 = {{-2}}$'
+      - 'Linha 3: $1 - 3 \cdot 2 = {{-5}}$ e $2 - 3 \cdot 3 = {{-7}}$'
+      - '$\det = \begin{vmatrix} 1 & -2 \\ -5 & -7 \end{vmatrix} = {{-17}}$'
+      resolucao: |
+        A matriz reduzida é $\begin{pmatrix} 1 & -2 \\ -5 & -7 \end{pmatrix}$, com determinante $-7 - 10 = -17$.
+        Conferência por Sarrus: descem $10 + 24 + 6 = 40$; sobem $45 + 4 + 8 = 57$; $40 - 57 = -17$.
+      resposta: '$1$ e $-2$; $-5$ e $-7$; $-17$'
+  - nome: Nível 2
+    questoes:
+    - enunciado: 'Calcule $\begin{vmatrix} 2 & 0 & 1 & 3 \\ 1 & 0 & 0 & 2 \\ 3 & 1 & 4 & 1 \\ 0 & 0 & 2 & 1 \end{vmatrix}$ escolhendo a melhor fila.'
+      espaco: 30
+      resolucao: |
+        Na coluna 2, só $a_{32} = 1$ não é zero. $A_{32} = (-1)^{5}\begin{vmatrix} 2 & 1 & 3 \\ 1 & 0 & 2 \\ 0 & 2 & 1 \end{vmatrix}$.
+        Esse determinante vale: descem $0 + 0 + 6 = 6$; sobem $0 + 8 + 1 = 9$; $-3$. Então $A_{32} = 3$ e $\det = 1 \cdot 3 = 3$.
+      resposta: '$3$'
+    - texto: |
+        Caio desenvolveu o determinante abaixo pela linha 1 e escreveu
+        \[ \begin{vmatrix} 1 & 2 & 0 \\ 3 & 4 & 1 \\ 0 & 5 & 2 \end{vmatrix} = 1 \cdot \begin{vmatrix} 4 & 1 \\ 5 & 2 \end{vmatrix} + 2 \cdot \begin{vmatrix} 3 & 1 \\ 0 & 2 \end{vmatrix} = 3 + 12 = 15. \]
+      enunciado: 'Encontre o erro de Caio e calcule o determinante correto.'
+      espaco: 22
+      resolucao: |
+        Caio usou os menores complementares no lugar dos cofatores: o elemento $a_{12}$ tem sinal $(-1)^{1+2} = -1$.
+        O certo é $1 \cdot 3 - 2 \cdot 6 + 0 = -9$ (Sarrus: $8 - 17 = -9$).
+      resposta: 'Ele esqueceu o sinal do cofator de $a_{12}$; o determinante é $-9$'
+    - enunciado: 'Considere $D(x) = \begin{vmatrix} x & 0 & 0 & 1 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 3 & 0 \\ 1 & 0 & 0 & x \end{vmatrix}$.'
+      itens:
+      - 'Desenvolvendo pela linha 2 e depois pela linha que sobrar com mais zeros, mostre que $D(x) = 6(x^2 - 1)$.'
+      - 'Resolva $D(x) = 18$.'
+      espaco_item: 22
+      resolucao: |
+        (a) Linha 2: $D(x) = 2 \cdot (+1)\begin{vmatrix} x & 0 & 1 \\ 0 & 3 & 0 \\ 1 & 0 & x \end{vmatrix}$. Nesse, pela linha 2: $3 \cdot (+1)\begin{vmatrix} x & 1 \\ 1 & x \end{vmatrix} = 3(x^2 - 1)$. Logo $D(x) = 6(x^2 - 1)$.
+        (b) $6(x^2 - 1) = 18 \Rightarrow x^2 = 4 \Rightarrow x = 2$ ou $x = -2$.
+      resposta: '(a) Ver resolução (b) $x = \pm 2$'
+    - enunciado: 'Calcule $\begin{vmatrix} 1 & 2 & 1 & 0 \\ 2 & 5 & 3 & 1 \\ 1 & 3 & 4 & 2 \\ 0 & 1 & 2 & 3 \end{vmatrix}$ pela regra de Chió.'
+      espaco: 30
+      resolucao: |
+        Linha 2: $5 - 4 = 1$, $3 - 2 = 1$, $1 - 0 = 1$. Linha 3: $3 - 2 = 1$, $4 - 1 = 3$, $2 - 0 = 2$. Linha 4: $1 - 0 = 1$, $2 - 0 = 2$, $3 - 0 = 3$.
+        $\begin{vmatrix} 1 & 1 & 1 \\ 1 & 3 & 2 \\ 1 & 2 & 3 \end{vmatrix}$: descem $9 + 2 + 2 = 13$; sobem $3 + 4 + 3 = 10$; o determinante é $3$.
+      resposta: '$3$'
+    - enunciado: 'Calcule $\begin{vmatrix} 4 & 0 & -1 & 2 \\ 0 & 0 & 3 & 0 \\ 1 & 2 & 5 & 7 \\ 0 & 0 & 6 & 1 \end{vmatrix}$.'
+      espaco: 28
+      resolucao: |
+        Linha 2: só $a_{23} = 3$. $A_{23} = (-1)^5\begin{vmatrix} 4 & 0 & 2 \\ 1 & 2 & 7 \\ 0 & 0 & 1 \end{vmatrix}$.
+        Esse determinante, pela linha 3: $1 \cdot \begin{vmatrix} 4 & 0 \\ 1 & 2 \end{vmatrix} = 8$. Então $A_{23} = -8$ e $\det = 3 \cdot (-8) = -24$.
+      resposta: '$-24$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Desenvolver um determinante pela linha 2 ou pela coluna 3 leva ao mesmo resultado.'
+      - 'A regra de Chió pode ser aplicada diretamente quando $a_{11} = 1$.'
+      - 'Pela regra de Chió, um determinante de ordem 4 vira um de ordem 2.'
+      - 'Na matriz $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$, o cofator de $b$ é $c$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) Laplace vale para qualquer fila. (V) É a condição da regra.
+        (F) Chió abaixa a ordem em uma unidade: de 4 para 3. (F) O cofator de $b$ é $(-1)^{1+2}c = -c$.
+      resposta: V, V, F, F
+    - enunciado: 'Determine $x$ para que o cofator do elemento $a_{12}$ da matriz $\begin{pmatrix} 1 & x & 2 \\ 3 & 0 & 1 \\ x & 2 & 4 \end{pmatrix}$ seja igual a $-10$.'
+      espaco: 20
+      resolucao: |
+        $A_{12} = (-1)^{1+2}\begin{vmatrix} 3 & 1 \\ x & 4 \end{vmatrix} = -(12 - x) = x - 12$.
+        $x - 12 = -10 \Rightarrow x = 2$.
+      resposta: '$x = 2$'
+    - enunciado: 'Na matriz $A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 10 \end{pmatrix}$, complete com os cofatores da linha 2 e o determinante.'
+      itens:
+      - '$A_{21} = -\begin{vmatrix} 2 & 3 \\ 8 & 10 \end{vmatrix} = {{4}}$'
+      - '$A_{22} = \begin{vmatrix} 1 & 3 \\ 7 & 10 \end{vmatrix} = {{-11}}$'
+      - '$A_{23} = -\begin{vmatrix} 1 & 2 \\ 7 & 8 \end{vmatrix} = {{6}}$'
+      - '$\det A = 4 \cdot 4 + 5 \cdot (-11) + 6 \cdot 6 = {{-3}}$'
+      resolucao: |
+        $A_{21} = -(20 - 24) = 4$; $A_{22} = 10 - 21 = -11$; $A_{23} = -(8 - 14) = 6$.
+        $\det A = 16 - 55 + 36 = -3$.
+      resposta: '$4$; $-11$; $6$; $-3$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Resolva, nos reais, a equação $\begin{vmatrix} x & 1 & 0 & 0 \\ 0 & x & 1 & 0 \\ 0 & 0 & x & 1 \\ 1 & 0 & 0 & x \end{vmatrix} = 0$.'
+      espaco: 30
+      resolucao: |
+        Pela coluna 1: $x \cdot \begin{vmatrix} x & 1 & 0 \\ 0 & x & 1 \\ 0 & 0 & x \end{vmatrix} + 1 \cdot (-1)^{4+1}\begin{vmatrix} 1 & 0 & 0 \\ x & 1 & 0 \\ 0 & x & 1 \end{vmatrix} = x \cdot x^3 - 1 \cdot 1 = x^4 - 1$.
+        $x^4 = 1$ dá $x = 1$ ou $x = -1$ (nos reais).
+      resposta: '$x = 1$ ou $x = -1$'
+    - enunciado: 'Na matriz $A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 10 \end{pmatrix}$ da questão 15, os cofatores da linha 2 são $4$, $-11$ e $6$.'
+      itens:
+      - 'Calcule $a_{11}A_{21} + a_{12}A_{22} + a_{13}A_{23}$ (elementos da linha 1 com cofatores da linha 2).'
+      - 'Explique o resultado: ele é o determinante de qual matriz?'
+      espaco_item: 20
+      resolucao: |
+        (a) $1 \cdot 4 + 2 \cdot (-11) + 3 \cdot 6 = 4 - 22 + 18 = 0$.
+        (b) É o desenvolvimento de Laplace, pela linha 2, da matriz em que a linha 2 foi trocada pela linha 1. Essa matriz tem duas linhas iguais, e por isso o resultado é 0.
+      resposta: '(a) $0$ (b) da matriz com a linha 2 trocada pela linha 1'
+    - enunciado: 'Considere $D(k) = \begin{vmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 1 & 1 \\ 1 & 1 & 3 & 1 \\ 1 & 1 & 1 & k \end{vmatrix}$.'
+      itens:
+      - 'Use a regra de Chió para mostrar que $D(k) = 2(k - 1)$.'
+      - 'Para que valor de $k$ temos $D(k) = 10$?'
+      espaco_item: 22
+      resolucao: |
+        (a) Subtraindo, de cada elemento, o produto “1 da coluna 1 vezes 1 da linha 1”: $\begin{vmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & k - 1 \end{vmatrix} = 2(k - 1)$.
+        (b) $2(k - 1) = 10 \Rightarrow k = 6$.
+      resposta: '(a) Ver resolução (b) $k = 6$'
+    - enunciado: 'Calcule $\begin{vmatrix} 2 & 3 & 0 & 0 \\ 1 & 4 & 0 & 0 \\ 0 & 0 & 5 & 1 \\ 0 & 0 & 2 & 3 \end{vmatrix}$ por Laplace e compare com o produto $\begin{vmatrix} 2 & 3 \\ 1 & 4 \end{vmatrix} \cdot \begin{vmatrix} 5 & 1 \\ 2 & 3 \end{vmatrix}$.'
+      espaco: 30
+      resolucao: |
+        Pela linha 1: $2 \cdot \begin{vmatrix} 4 & 0 & 0 \\ 0 & 5 & 1 \\ 0 & 2 & 3 \end{vmatrix} - 3 \cdot \begin{vmatrix} 1 & 0 & 0 \\ 0 & 5 & 1 \\ 0 & 2 & 3 \end{vmatrix} = 2 \cdot 4 \cdot 13 - 3 \cdot 13 = 104 - 39 = 65$.
+        O produto é $5 \cdot 13 = 65$: os dois blocos se multiplicam.
+      resposta: '$65$, igual ao produto $5 \cdot 13$'
+    - enunciado: 'Uma matriz triangular de ordem 5 tem diagonal principal $1, 2, 3, 4$ e $x$, e determinante 48. Determine $x$ e explique, com Laplace, por que o determinante de uma matriz triangular é o produto da diagonal.'
+      espaco: 26
+      resolucao: |
+        $1 \cdot 2 \cdot 3 \cdot 4 \cdot x = 24x = 48$, logo $x = 2$.
+        Desenvolvendo pela primeira coluna de uma triangular inferior (ou pela primeira linha de uma superior), só o primeiro elemento da diagonal não é zero, com sinal $+$; sobra outra matriz triangular, e o processo se repete até o fim.
+      resposta: '$x = 2$; Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Em uma aula sobre o teorema de Laplace, o professor projetou a matriz do quadro e lançou um desafio: quem escolhesse a linha ou a coluna que exige menos cálculos para obter o determinante ganharia um ponto extra. Ele lembrou que cada elemento nulo da fila escolhida elimina um cofator inteiro da conta.
+    tabela:
+      linhas:
+      - ['$2$', '$1$', '$0$', '$5$']
+      - ['$3$', '$0$', '$0$', '$1$']
+      - ['$4$', '$2$', '$0$', '$7$']
+      - ['$1$', '$6$', '$3$', '$2$']
+    enunciado: |
+      Para ganhar o ponto, um aluno deveria desenvolver o determinante pela
+    opcoes: ['linha 1.', 'linha 2.', 'coluna 2.', 'coluna 3.', 'coluna 4.']
+    correta: D
+    resolucao: |
+      A coluna 3 tem três zeros: só sobra o termo $3 \cdot A_{43}$, com um único determinante de ordem 3 para calcular.
+      A linha 2 e a coluna 2 têm só dois zeros.
+
+  - estilo: Fuvest
+    enunciado: |
+      Na matriz $\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}$, o cofator do elemento $a_{23}$ é
+    opcoes: ['$-6$', '$-3$', '$3$', '$6$', '$12$']
+    correta: D
+    resolucao: |
+      $A_{23} = (-1)^{2+3}\begin{vmatrix} 1 & 2 \\ 7 & 8 \end{vmatrix} = -(8 - 14) = 6$.
+      $-6$ é o menor complementar, sem o sinal do cofator.
+
+  - estilo: Unicamp
+    enunciado: |
+      O determinante $\begin{vmatrix} 3 & 0 & 0 & 0 \\ 5 & -1 & 0 & 0 \\ 2 & 7 & 2 & 0 \\ 9 & 4 & 1 & 1 \end{vmatrix}$ é igual a
+    opcoes: ['$-6$.', '$0$.', '$6$.', '$24$.']
+    correta: A
+    resolucao: |
+      A matriz é triangular: $3 \cdot (-1) \cdot 2 \cdot 1 = -6$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere $A = \begin{pmatrix} 2 & 0 & 1 \\ 1 & 3 & 0 \\ 0 & 1 & 4 \end{pmatrix}$ e os cofatores $A_{ij}$ dos seus elementos. Assinale o que for correto.
+    proposicoes:
+    - 'O menor complementar do elemento $a_{11}$ é 12.'
+    - 'O cofator $A_{12}$ é igual a 4.'
+    - 'O cofator $A_{13}$ é igual a 1.'
+    - '$\det A = 25$.'
+    - 'Desenvolvendo pela coluna 2, $\det A = 3A_{22} + 1A_{32}$.'
+    corretas: [1, 3, 4, 5]
+    resolucao: |
+      01) Correta: $\begin{vmatrix} 3 & 0 \\ 1 & 4 \end{vmatrix} = 12$.
+      02) Incorreta: $A_{12} = -\begin{vmatrix} 1 & 0 \\ 0 & 4 \end{vmatrix} = -4$.
+      04) Correta: $\begin{vmatrix} 1 & 3 \\ 0 & 1 \end{vmatrix} = 1$. 08) Correta: $2 \cdot 12 + 0 + 1 \cdot 1 = 25$.
+      16) Correta: o termo de $a_{12} = 0$ desaparece.
+      Soma: $01 + 04 + 08 + 16 = 29$.
+
+  - estilo: Unesp
+    texto: |
+      Para calcular $\begin{vmatrix} 1 & 3 & 2 \\ 2 & 7 & 5 \\ 4 & 1 & 3 \end{vmatrix}$, um estudante usou a regra de Chió: como $a_{11} = 1$, apagou a primeira linha e a primeira coluna e, de cada elemento restante, subtraiu o produto do elemento da sua linha na primeira coluna pelo elemento da sua coluna na primeira linha.
+    enunciado: |
+      A matriz de ordem 2 obtida pelo estudante é
+    opcoes:
+    - '$\begin{pmatrix} 7 & 5 \\ 1 & 3 \end{pmatrix}$'
+    - '$\begin{pmatrix} 1 & -1 \\ -11 & 5 \end{pmatrix}$'
+    - '$\begin{pmatrix} 1 & 1 \\ 11 & 5 \end{pmatrix}$'
+    - '$\begin{pmatrix} 5 & 1 \\ -5 & -11 \end{pmatrix}$'
+    - '$\begin{pmatrix} 1 & 1 \\ -11 & -5 \end{pmatrix}$'
+    correta: E
+    resolucao: |
+      $7 - 2 \cdot 3 = 1$; $5 - 2 \cdot 2 = 1$; $1 - 4 \cdot 3 = -11$; $3 - 4 \cdot 2 = -5$.
+      O determinante é $-5 + 11 = 6$. A alternativa A só apaga a linha e a coluna, sem subtrair.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'O cofator de um elemento pode ser negativo mesmo quando o seu menor complementar é positivo.'
+    - 'O determinante de uma matriz triangular de ordem 4 é o produto dos elementos da diagonal principal.'
+    - 'A regra de Chió só pode ser aplicada a matrizes de ordem 3.'
+    - 'No teorema de Laplace, pode-se escolher qualquer linha ou qualquer coluna.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'II e IV, apenas.', 'III e IV, apenas.', 'I, II e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta: quando $i + j$ é ímpar, o cofator é o oposto do menor.
+      II. Correta. III. Incorreta: Chió vale para qualquer ordem (com $a_{11} = 1$) e abaixa a ordem em 1. IV. Correta.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\begin{vmatrix} 0 & 0 & 0 & 2 \\ 0 & 0 & 3 & 0 \\ 0 & 1 & 0 & 0 \\ 4 & 0 & 0 & 0 \end{vmatrix}$ é
+    opcoes: ['$-24$', '$-12$', '$0$', '$12$', '$24$']
+    correta: E
+    resolucao: |
+      Pela linha 1: $2 \cdot (-1)^{1+4}\begin{vmatrix} 0 & 0 & 3 \\ 0 & 1 & 0 \\ 4 & 0 & 0 \end{vmatrix} = -2 \cdot (-12) = 24$.
+      (Trocando as linhas 1 e 4 e as linhas 2 e 3, a matriz vira diagonal com produto 24; duas trocas não mudam o sinal.)
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      Um programa só resolve um sistema de quatro equações quando o determinante da matriz dos coeficientes é diferente de zero. Para não sobrecarregar o computador, uma estudante calculou à mão o determinante da matriz do quadro, usando o teorema de Laplace e escolhendo sempre filas com muitos zeros.
+    tabela:
+      linhas:
+      - ['$1$', '$0$', '$2$', '$0$']
+      - ['$0$', '$3$', '$0$', '$1$']
+      - ['$2$', '$0$', '$5$', '$0$']
+      - ['$0$', '$1$', '$0$', '$2$']
+    enunciado: |
+      O determinante encontrado foi
+    opcoes: ['$0$', '$1$', '$5$', '$6$', '$30$']
+    correta: C
+    resolucao: |
+      Pela linha 1: $1 \cdot \begin{vmatrix} 3 & 0 & 1 \\ 0 & 5 & 0 \\ 1 & 0 & 2 \end{vmatrix} + 2 \cdot \begin{vmatrix} 0 & 3 & 1 \\ 2 & 0 & 0 \\ 0 & 1 & 2 \end{vmatrix}$.
+      O primeiro vale $5 \cdot (6 - 1) = 25$; o segundo, pela linha 2, vale $-2 \cdot (6 - 1) = -10$. Total: $25 - 20 = 5$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O valor de $\begin{vmatrix} 2 & 1 & 0 & 0 \\ 1 & 2 & 1 & 0 \\ 0 & 1 & 2 & 1 \\ 0 & 0 & 1 & 2 \end{vmatrix}$ é
+    opcoes: ['$4$.', '$5$.', '$8$.', '$16$.']
+    correta: B
+    resolucao: |
+      Pela linha 1: $2 \cdot \begin{vmatrix} 2 & 1 & 0 \\ 1 & 2 & 1 \\ 0 & 1 & 2 \end{vmatrix} - 1 \cdot \begin{vmatrix} 1 & 1 & 0 \\ 0 & 2 & 1 \\ 0 & 1 & 2 \end{vmatrix} = 2 \cdot 4 - 1 \cdot 3 = 5$.
+      16 é o produto da diagonal, que só vale para matrizes triangulares.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Na matriz $\begin{pmatrix} 4 & 1 \\ 3 & 5 \end{pmatrix}$, o cofator do elemento $a_{22}$ é 4.'
+    - 'Na matriz $\begin{pmatrix} 4 & 1 \\ 3 & 5 \end{pmatrix}$, o cofator do elemento $a_{21}$ é 1.'
+    - '$\begin{vmatrix} 1 & 2 & 0 \\ 0 & 3 & 0 \\ 4 & 5 & 2 \end{vmatrix} = 6$.'
+    - 'Desenvolvendo $\begin{vmatrix} 0 & 1 \\ 1 & 0 \end{vmatrix}$ por Laplace pela linha 1, obtém-se 1.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – F – V – F.', 'V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'F – V – V – F.']
+    correta: A
+    resolucao: |
+      (V) $A_{22} = (+1) \cdot 4$. (F) $A_{21} = (-1) \cdot 1 = -1$.
+      (V) Pela coluna 3: $2 \cdot \begin{vmatrix} 1 & 2 \\ 0 & 3 \end{vmatrix} = 6$.
+      (F) $0 \cdot 0 + 1 \cdot (-1)^{1+2} \cdot 1 = -1$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a matriz $M = \begin{pmatrix} 1 & 2 & 0 & 1 \\ 0 & 1 & 3 & 0 \\ 2 & 0 & 1 & 0 \\ 0 & 0 & 2 & 1 \end{pmatrix}$ e os cofatores $M_{ij}$ dos seus elementos. Assinale o que for correto.
+    proposicoes:
+    - '$\det M = 17$.'
+    - 'Pela regra de Chió, $\det M = \begin{vmatrix} 1 & 3 & 0 \\ -4 & 1 & -2 \\ 0 & 2 & 1 \end{vmatrix}$.'
+    - '$M_{44} = 13$.'
+    - '$M_{34} = 2$.'
+    - 'Desenvolvendo pela linha 3, $\det M = 2M_{31} + M_{33}$.'
+    - '$\det M$ é um número par.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      02) Correta: linha 2: $(1 - 0, 3 - 0, 0 - 0)$; linha 3: $(0 - 4, 1 - 0, 0 - 2)$; linha 4: $(0, 2, 1)$.
+      01) Correta: esse determinante vale, pela regra de Sarrus, $(1 + 0 + 0) - (0 - 4 - 12) = 17$.
+      04) Correta: $M_{44} = \begin{vmatrix} 1 & 2 & 0 \\ 0 & 1 & 3 \\ 2 & 0 & 1 \end{vmatrix} = 1 + 12 = 13$.
+      08) Incorreta: $M_{34} = (-1)^7\begin{vmatrix} 1 & 2 & 0 \\ 0 & 1 & 3 \\ 0 & 0 & 2 \end{vmatrix} = -2$.
+      16) Correta: a linha 3 é $(2, 0, 1, 0)$. 32) Incorreta: 17 é ímpar.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Os números reais $x$ tais que $\begin{vmatrix} x & 0 & 0 & 1 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 3 & 0 \\ 1 & 0 & 0 & x \end{vmatrix} = 0$ são
+    opcoes: ['$0$ e $1$.', '$-1$ e $1$.', '$-6$ e $6$.', '$1$ e $6$.', '$-2$ e $2$.']
+    correta: B
+    resolucao: |
+      Pela linha 2 e depois pela linha 2 de novo: $2 \cdot 3 \cdot \begin{vmatrix} x & 1 \\ 1 & x \end{vmatrix} = 6(x^2 - 1) = 0$, logo $x = \pm 1$.
+
+  - estilo: Unesp
+    texto: |
+      Uma planilha guarda, em cada linha, os coeficientes de uma equação de um modelo econômico. Os coeficientes formam a matriz do quadro, que tem apenas zeros acima da diagonal principal. Para conferir se o modelo tem solução única, o analista precisa saber se o determinante dessa matriz é diferente de zero.
+    tabela:
+      linhas:
+      - ['$2$', '$0$', '$0$', '$0$']
+      - ['$7$', '$-1$', '$0$', '$0$']
+      - ['$5$', '$8$', '$3$', '$0$']
+      - ['$-4$', '$6$', '$9$', '$4$']
+    enunciado: |
+      O determinante dessa matriz é
+    opcoes: ['$-24$', '$-12$', '$0$', '$12$', '$24$']
+    correta: A
+    resolucao: |
+      Triangular: $2 \cdot (-1) \cdot 3 \cdot 4 = -24$. Quem esquece o sinal de $-1$ marca 24.
+
+  - estilo: Enem
+    texto: |
+      Um cofre digital pede, como senha, o determinante de uma matriz formada por dígitos que o dono escolheu. Para facilitar, o dono pôs vários zeros na matriz, de modo que a conta pudesse ser feita de cabeça com o teorema de Laplace. A matriz escolhida foi
+      \[ \begin{pmatrix} 5 & 0 & 2 \\ 0 & 3 & 0 \\ 1 & 0 & 4 \end{pmatrix}. \]
+    enunciado: |
+      A senha do cofre é
+    opcoes: ['$18$', '$36$', '$54$', '$60$', '$66$']
+    correta: C
+    resolucao: |
+      Pela linha 2: $3 \cdot (+1)\begin{vmatrix} 5 & 2 \\ 1 & 4 \end{vmatrix} = 3 \cdot 18 = 54$.
+      60 é o produto da diagonal, que não vale aqui (a matriz não é triangular).
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Em física, matrizes tridiagonais aparecem no estudo de molas ligadas em série. Seja $T_n$ a matriz de ordem $n$ com 2 em toda a diagonal principal, 1 nas posições imediatamente acima e abaixo dela, e 0 nas demais. Desenvolvendo o determinante $D_n$ de $T_n$ por Laplace na primeira linha, obtém-se a relação $D_n = 2D_{n-1} - D_{n-2}$, válida para $n \ge 3$, com $D_1 = 2$ e $D_2 = 3$.
+    enunciado: |
+      O valor de $D_3$ é
+    opcoes: ['$3$', '$4$', '$5$', '$6$', '$8$']
+    correta: B
+    resolucao: |
+      $D_3 = 2 \cdot 3 - 2 = 4$. Diretamente: $\begin{vmatrix} 2 & 1 & 0 \\ 1 & 2 & 1 \\ 0 & 1 & 2 \end{vmatrix} = (8 + 0 + 0) - (0 + 2 + 2) = 4$.
+      8 é o produto da diagonal.
+
+  - estilo: Unicamp
+    enunciado: |
+      Usando a relação do texto, o valor de $D_{10}$ é
+    opcoes: ['$10$.', '$11$.', '$12$.', '$20$.']
+    correta: B
+    resolucao: |
+      $D_1 = 2$, $D_2 = 3$, $D_3 = 4$, $D_4 = 5$: cada termo é o anterior mais 1, pois $D_n - D_{n-1} = D_{n-1} - D_{n-2}$. Logo $D_n = n + 1$ e $D_{10} = 11$.
+
+  - estilo: UEM
+    enunciado: |
+      Seja $A$ uma matriz quadrada de ordem $n \ge 3$, com cofatores $A_{ij}$. Assinale o que for correto.
+    proposicoes:
+    - 'Se uma linha de $A$ tem um único elemento não nulo, $\det A$ é esse elemento vezes o seu cofator.'
+    - 'O cofator $A_{11}$ é igual ao menor complementar $D_{11}$.'
+    - 'O cofator $A_{23}$ é igual ao menor complementar $D_{23}$.'
+    - 'A soma dos produtos dos elementos da linha 1 pelos cofatores dos elementos correspondentes da linha 2 é igual a $\det A$.'
+    - 'O determinante de uma matriz triangular de ordem $n$ é o produto dos elementos da diagonal principal.'
+    corretas: [1, 2, 5]
+    resolucao: |
+      01) Correta: é Laplace nessa linha. 02) Correta: $(-1)^2 = 1$.
+      04) Incorreta: $(-1)^5 = -1$, então $A_{23} = -D_{23}$.
+      08) Incorreta: essa soma é o determinante de uma matriz com duas linhas iguais, isto é, 0.
+      16) Correta.
+      Soma: $01 + 02 + 16 = 19$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $k$ para o qual $\begin{vmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 1 & 1 \\ 1 & 1 & 3 & 1 \\ 1 & 1 & 1 & k \end{vmatrix} = 10$ é
+    opcoes: ['$4$', '$5$', '$6$', '$7$', '$11$']
+    correta: C
+    resolucao: |
+      Pela regra de Chió: $\begin{vmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & k - 1 \end{vmatrix} = 2(k - 1) = 10$, logo $k = 6$.
+      11 vem de esquecer o fator 2.
+
+  - estilo: Enem
+    texto: |
+      Duas máquinas de uma fábrica funcionam de forma independente, e o modelo matemático de cada uma é uma matriz de ordem 2. O modelo conjunto é a matriz de ordem 4 do quadro, que tem os dois blocos nos cantos e zeros no restante. Os engenheiros precisam do determinante do modelo conjunto e o calcularam pelo teorema de Laplace.
+    tabela:
+      linhas:
+      - ['$2$', '$3$', '$0$', '$0$']
+      - ['$1$', '$4$', '$0$', '$0$']
+      - ['$0$', '$0$', '$5$', '$1$']
+      - ['$0$', '$0$', '$2$', '$3$']
+    enunciado: |
+      O determinante do modelo conjunto é
+    opcoes: ['$5$', '$13$', '$18$', '$65$', '$130$']
+    correta: D
+    resolucao: |
+      Pela linha 1: $2 \cdot 4 \cdot 13 - 3 \cdot 1 \cdot 13 = 104 - 39 = 65$. É o produto dos determinantes dos blocos: $5 \cdot 13$.
+      18 soma os dois determinantes.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\begin{vmatrix} 0 & 1 & 1 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 0 \end{vmatrix}$ é
+    opcoes: ['$-3$', '$-1$', '$0$', '$1$', '$3$']
+    correta: A
+    resolucao: |
+      Somando as colunas 2, 3 e 4 à coluna 1, ela vira $(3, 3, 3, 3)$; colocando 3 em evidência e subtraindo a linha 1 das outras: $3\begin{vmatrix} 1 & 1 & 1 & 1 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1 \end{vmatrix} = 3 \cdot (-1)^3 = -3$.
+
+aprofundamento:
+  questoes:
+  - estilo: Unicamp
+    texto: |
+      Seja $M_n$ a matriz de ordem $n$ com 3 em toda a diagonal principal, 1 nas posições imediatamente acima e abaixo dela, e 0 nas demais. Indique por $D_n$ o seu determinante.
+    enunciado: ''
+    itens:
+    - 'Calcule $D_1$, $D_2$ e $D_3$.'
+    - 'Desenvolvendo por Laplace na primeira linha, mostre que $D_n = 3D_{n-1} - D_{n-2}$ para $n \ge 3$.'
+    - 'Calcule $D_5$.'
+    espaco: 62
+    resolucao: |
+      a) $D_1 = 3$; $D_2 = 9 - 1 = 8$; $D_3 = \begin{vmatrix} 3 & 1 & 0 \\ 1 & 3 & 1 \\ 0 & 1 & 3 \end{vmatrix} = 27 - 3 - 3 = 21$.
+      b) Pela linha 1: $3 \cdot D_{n-1} - 1 \cdot E$, em que $E$ é o determinante que sobra ao apagar a linha 1 e a coluna 2. A primeira linha de $E$ é $(1, 0, \dots, 0)$; desenvolvendo por ela, $E = D_{n-2}$. Logo $D_n = 3D_{n-1} - D_{n-2}$.
+      c) $D_4 = 3 \cdot 21 - 8 = 55$ e $D_5 = 3 \cdot 55 - 21 = 144$.
+    resposta: 'a) 3, 8 e 21; b) Ver resolução; c) 144'
+
+  - estilo: Fuvest
+    enunciado: 'Seja $A = \begin{pmatrix} 2 & 1 & 3 \\ 0 & 4 & 1 \\ 5 & 2 & 6 \end{pmatrix}$, com cofatores $A_{ij}$.'
+    itens:
+    - 'Calcule $\det A$ por Laplace na linha 1 e confira pela coluna 1.'
+    - 'Calcule $a_{11}A_{21} + a_{12}A_{22} + a_{13}A_{23}$.'
+    - 'Explique, para qualquer matriz de ordem 3, por que a soma do item b) é sempre zero.'
+    espaco: 62
+    resolucao: |
+      a) $A_{11} = 24 - 2 = 22$, $A_{12} = -(0 - 5) = 5$, $A_{13} = 0 - 20 = -20$. $\det A = 44 + 5 - 60 = -11$. Pela coluna 1: $A_{21} = -(6 - 6) = 0$, $A_{31} = 1 - 12 = -11$; $2 \cdot 22 + 0 + 5 \cdot (-11) = -11$.
+      b) $A_{22} = 12 - 15 = -3$, $A_{23} = -(4 - 5) = 1$. Soma: $2 \cdot 0 + 1 \cdot (-3) + 3 \cdot 1 = 0$.
+      c) É o desenvolvimento, pela linha 2, da matriz em que a linha 2 foi substituída pela linha 1. Essa matriz tem duas linhas iguais e determinante nulo.
+    resposta: 'a) $-11$; b) $0$; c) Ver resolução'
+
+  - estilo: ITA
+    enunciado: |
+      O valor de $\begin{vmatrix} 3 & 1 & 1 & 1 \\ 1 & 3 & 1 & 1 \\ 1 & 1 & 3 & 1 \\ 1 & 1 & 1 & 3 \end{vmatrix}$ é
+    opcoes: ['$16$', '$24$', '$32$', '$48$', '$64$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      Somando as outras colunas à coluna 1, ela vira $(6, 6, 6, 6)$. Colocando 6 em evidência e subtraindo a linha 1 das demais, sobra uma triangular com diagonal $1, 2, 2, 2$: $6 \cdot 8 = 48$.
+      O produto da diagonal (81) não vale aqui, pois a matriz não é triangular.
+    resposta: 'D'
+
+  - estilo: Unesp
+    enunciado: 'Considere $V = \begin{pmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 3 & 4 \\ 1 & 4 & 9 & 16 \\ 1 & 8 & 27 & 64 \end{pmatrix}$.'
+    itens:
+    - 'Aplique a regra de Chió e escreva a matriz de ordem 3 obtida.'
+    - 'Calcule $\det V$.'
+    - 'Compare $\det V$ com o produto $(2 - 1)(3 - 1)(4 - 1)(3 - 2)(4 - 2)(4 - 3)$.'
+    espaco: 62
+    resolucao: |
+      a) Subtraindo 1 de cada elemento restante: $\begin{pmatrix} 1 & 2 & 3 \\ 3 & 8 & 15 \\ 7 & 26 & 63 \end{pmatrix}$.
+      b) Pela regra de Sarrus: descem $504 + 210 + 234 = 948$; sobem $168 + 390 + 378 = 936$. $\det V = 12$.
+      c) O produto é $1 \cdot 2 \cdot 3 \cdot 1 \cdot 2 \cdot 1 = 12$: igual. É a fórmula de Vandermonde para os números 1, 2, 3 e 4.
+    resposta: 'a) $\begin{pmatrix} 1 & 2 & 3 \\ 3 & 8 & 15 \\ 7 & 26 & 63 \end{pmatrix}$; b) 12; c) iguais'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a matriz $P = \begin{pmatrix} 1 & 0 & 0 & 2 \\ 0 & 1 & 2 & 0 \\ 0 & 2 & 1 & 0 \\ 2 & 0 & 0 & 1 \end{pmatrix}$ e os cofatores $P_{ij}$. Assinale o que for correto.
+    proposicoes:
+    - '$\det P = 9$.'
+    - 'O cofator $P_{11}$ é igual a $-3$.'
+    - 'Desenvolvendo pela linha 1, $\det P = P_{11} + 2P_{14}$.'
+    - '$P$ é simétrica.'
+    - '$\det(2P) = 18$.'
+    - '$\det P^t = -9$.'
+    - 'Pela regra de Chió, $\det P = \begin{vmatrix} 1 & 2 & 0 \\ 2 & 1 & 0 \\ 0 & 0 & -3 \end{vmatrix}$.'
+    corretas: [1, 2, 3, 4, 7]
+    espaco: 22
+    resolucao: |
+      64) Correta: linhas 2 e 3 não mudam (o elemento da coluna 1 é 0); linha 4: $(0, 0, 1) - 2 \cdot (0, 0, 2) = (0, 0, -3)$.
+      01) Correta: esse determinante vale $(1 - 4)(-3) = 9$.
+      02) Correta: $P_{11} = \begin{vmatrix} 1 & 2 & 0 \\ 2 & 1 & 0 \\ 0 & 0 & 1 \end{vmatrix} = 1 - 4 = -3$. 04) Correta: os outros elementos da linha 1 são zero.
+      08) Correta. 16) Incorreta: $2^4 \cdot 9 = 144$. 32) Incorreta: a transposta tem o mesmo determinante.
+    resposta: 'Soma 79 (01 + 02 + 04 + 08 + 64)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $D(x) = \begin{vmatrix} x & 1 & 1 & 1 \\ 1 & x & 1 & 1 \\ 1 & 1 & x & 1 \\ 1 & 1 & 1 & x \end{vmatrix}$.'
+    itens:
+    - 'Mostre que $D(x) = (x + 3)(x - 1)^3$. (Sugestão: some todas as colunas à primeira.)'
+    - 'Resolva $D(x) = 0$.'
+    - 'Resolva $D(x) < 0$.'
+    espaco: 62
+    resolucao: |
+      a) A coluna 1 vira $(x + 3)(1, 1, 1, 1)$. Colocando $x + 3$ em evidência e subtraindo a linha 1 das demais, sobra uma triangular de diagonal $1, x - 1, x - 1, x - 1$: $D(x) = (x + 3)(x - 1)^3$.
+      b) $x = -3$ ou $x = 1$.
+      c) $(x - 1)^3$ tem o sinal de $x - 1$. O produto $(x + 3)(x - 1)$ é negativo entre as raízes: $-3 < x < 1$.
+    resposta: 'a) Ver resolução; b) $x = -3$ ou $x = 1$; c) $-3 < x < 1$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere $E(k) = \begin{vmatrix} 1 & 2 & 0 & 0 \\ 3 & k & 0 & 0 \\ 0 & 0 & k & 1 \\ 0 & 0 & 4 & 1 \end{vmatrix}$.'
+    itens:
+    - 'Mostre, por Laplace, que $E(k) = (k - 6)(k - 4)$.'
+    - 'Para que valores de $k$ o determinante é nulo?'
+    - 'Quantos números inteiros $k$ tornam $E(k)$ negativo?'
+    espaco: 62
+    resolucao: |
+      a) Pela linha 1: $1 \cdot \begin{vmatrix} k & 0 & 0 \\ 0 & k & 1 \\ 0 & 4 & 1 \end{vmatrix} - 2 \cdot \begin{vmatrix} 3 & 0 & 0 \\ 0 & k & 1 \\ 0 & 4 & 1 \end{vmatrix} = k(k - 4) - 6(k - 4) = (k - 6)(k - 4)$.
+      b) $k = 4$ ou $k = 6$.
+      c) $E(k) < 0$ para $4 < k < 6$: só $k = 5$.
+    resposta: 'a) Ver resolução; b) $k = 4$ ou $k = 6$; c) um ($k = 5$)'
+
+  - estilo: Fuvest
+    enunciado: |
+      Seja $A = \begin{pmatrix} 2 & 1 & 3 \\ 0 & 4 & 1 \\ 5 & 2 & 6 \end{pmatrix}$, com cofatores $A_{ij}$. O valor de $a_{31}A_{11} + a_{32}A_{12} + a_{33}A_{13}$ é
+    opcoes: ['$-22$', '$-11$', '$0$', '$11$', '$22$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      São os elementos da linha 3 com os cofatores da linha 1: é o determinante da matriz em que a linha 1 foi trocada pela linha 3, que tem duas linhas iguais. Vale 0.
+      Conferência: $5 \cdot 22 + 2 \cdot 5 + 6 \cdot (-20) = 110 + 10 - 120 = 0$. $-11$ é o próprio $\det A$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    texto: |
+      Pela regra de Sarrus, um determinante de ordem 3 é a soma de 6 produtos com sinal. Pelo teorema de Laplace, um determinante de ordem 4 vira 4 determinantes de ordem 3, e assim por diante.
+    enunciado: ''
+    itens:
+    - 'Quantas parcelas (produtos) tem o desenvolvimento completo de um determinante de ordem 2? E de ordem 3?'
+    - 'Usando Laplace, explique por que um determinante de ordem 4 tem, no máximo, 24 parcelas.'
+    - 'Quantas parcelas pode ter um determinante de ordem 10? Por que a escolha de filas com zeros é tão importante?'
+    espaco: 62
+    resolucao: |
+      a) Ordem 2: 2 parcelas ($ad$ e $bc$). Ordem 3: 6 parcelas.
+      b) São 4 cofatores de ordem 3, cada um com 6 parcelas: $4 \cdot 6 = 24$.
+      c) O mesmo raciocínio dá $10 \cdot 9 \cdot 8 \cdots 2 \cdot 1 = 10! = 3\,628\,800$ parcelas. Cada zero na fila escolhida elimina um cofator inteiro, e com ele uma enorme quantidade de contas.
+    resposta: 'a) 2 e 6; b) $4 \cdot 6 = 24$; c) $10! = 3\,628\,800$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $A = \begin{pmatrix} 1 & b & c \\ d & e & f \\ g & h & i \end{pmatrix}$.'
+    itens:
+    - 'Aplique a regra de Chió e escreva o determinante de ordem 2 obtido.'
+    - 'Desenvolva esse determinante e mostre que o resultado coincide com o da regra de Sarrus.'
+    - 'Use a regra de Chió para calcular $\begin{vmatrix} 1 & 3 & -2 \\ 4 & 10 & 1 \\ 2 & 5 & 6 \end{vmatrix}$.'
+    espaco: 62
+    resolucao: |
+      a) $\begin{vmatrix} e - db & f - dc \\ h - gb & i - gc \end{vmatrix}$.
+      b) $(e - db)(i - gc) - (f - dc)(h - gb) = ei - egc - dbi + dbgc - fh + fgb + dch - dcgb = ei + fgb + dch - egc - dbi - fh$, exatamente a regra de Sarrus com $a = 1$.
+      c) $\begin{vmatrix} 10 - 12 & 1 + 8 \\ 5 - 6 & 6 + 4 \end{vmatrix} = \begin{vmatrix} -2 & 9 \\ -1 & 10 \end{vmatrix} = -20 + 9 = -11$.
+    resposta: 'a) $\begin{vmatrix} e - db & f - dc \\ h - gb & i - gc \end{vmatrix}$; b) Ver resolução; c) $-11$'
