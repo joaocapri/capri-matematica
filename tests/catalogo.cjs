@@ -264,19 +264,20 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  // Página da aula: as listas em primeiro (PDFs, depois as mesmas listas no site); o resumo fica no fim, recolhido.
  assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['levar','pratique','prova','aprofunde','entenda']);
  assert.equal(d.querySelectorAll('.aula-rail [data-rail]').length,5);
- assert.equal(d.querySelectorAll('.aula-3listas .aula-3l-pdf').length,3,'Cada lista com o botão do PDF no topo da aula');
+ assert.equal(d.querySelectorAll('.aula-listas .lst-btn-pdf').length,3,'Cada lista com o botão do PDF no topo da aula');
  assert.equal(d.querySelector('#resumo-det').open,false,'Resumo recolhido');
- assert.equal(d.querySelectorAll('.aula-3listas a[href^="/caderno/?aula=2.3.2&lista="]').length,3,'Cada lista abre no caderno digital (uma questão por página)');
- assert.equal(d.querySelectorAll('#levar .aula-caderno').length,3);
+ assert.equal(d.querySelectorAll('.aula-listas a[href^="/caderno/?aula=2.3.2&lista="]').length,3,'Cada lista abre no caderno digital (uma questão por página)');
+ assert.deepEqual([...d.querySelectorAll('.aula-listas [data-goodnotes]')].map(b=>b.dataset.goodnotes),['/pdfs/caderno-fixacao-2.3.2.pdf','/pdfs/caderno-vestibular-2.3.2.pdf','/pdfs/caderno-aprofundamento-2.3.2.pdf'],'Cada lista vai para o GoodNotes');
+ assert.equal(d.querySelector('.aula-formula'),null,'Sem a fórmula no destaque');
+ assert.equal(d.querySelectorAll('#levar .aula-pdf .lst-btn').length,9,'Na seção Listas em PDF: PDF, caderno e GoodNotes para cada lista');
  // As 3 listas ficam claras logo na entrada da aula.
- assert.deepEqual([...d.querySelectorAll('.aula-3listas .aula-3l b')].map(b=>b.textContent),['Fixação','Vestibular','Aprofundamento']);
+ assert.deepEqual([...d.querySelectorAll('.aula-listas .lst-nome b')].map(b=>b.textContent),['Lista de fixação','Lista de vestibular','Lista de aprofundamento']);
  assert.equal(d.querySelectorAll('#apr-list .aula-ex').length,10,'Lista de aprofundamento com 10 questões');
  assert.ok(d.querySelector('.aula-crumbs a[href="/funcao-quadratica/"]'),'Aula volta para o assunto');
  assert.match(d.querySelector('.aula-kicker').textContent,/Aula 2 de 6 em Função quadrática/);
- assert.match(d.querySelector('#aula-formula-math').textContent,/\\frac\{-b/,'Fórmula da aula no destaque');
  assert.ok(d.querySelector('.aula-trail .is-current a[aria-current="page"]'));
  assert.equal(d.querySelectorAll('.aula-pdf').length,3,'Vitrine com as três listas');
- assert.ok(d.querySelector('.aula-pdf[href="/pdfs/fixacao-2.3.2.pdf"] img[src="/pdfs/capas/fixacao-2.3.2.webp"]'));
+ assert.ok(d.querySelector('.aula-pdf a[href="/pdfs/fixacao-2.3.2.pdf"] img[src="/pdfs/capas/fixacao-2.3.2.webp"]'));
  // Resumo curto no lugar da teoria longa; níveis Nível 1, Nível 2 e Nível 3.
  assert.ok(d.querySelector('#entenda .aula-resumo'),'Resumo curto da aula');
  assert.equal(d.querySelectorAll('[data-check]').length,0,'Sem checagem rápida');

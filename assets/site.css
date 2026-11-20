@@ -1696,21 +1696,10 @@ button.aula-sprop:hover{border-color:var(--a-purple)}
 .aula-itens-livres{grid-template-columns:1fr}
 .aula-itens-livres li::before{content:none}
 
-/* ===== As 3 listas da aula (2026-11) ===== */
-.aula-3listas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0 4px;max-width:640px}
-.aula-3l{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1.5px solid rgba(255,255,255,.22);border-radius:14px;background:rgba(255,255,255,.06);color:#fff;text-decoration:none;transition:background .15s,border-color .15s}
-.aula-3l:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)}
-.aula-3l:focus-visible{outline:3px solid #d6fa74;outline-offset:2px}
-.aula-3l>span:last-child{display:flex;flex-direction:column;gap:2px;min-width:0}
-.aula-3l b{font:700 15.5px/1.15 'Space Grotesk',system-ui,sans-serif}
-.aula-3l small{font-size:12px;line-height:1.3;color:#cfc6ee}
-.aula-3l-n{flex-shrink:0;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;font:800 14px 'Space Grotesk',system-ui,sans-serif;color:#211946;background:#d6fa74}
-.aula-3l-prova .aula-3l-n{background:#b7e5ff}
-.aula-3l-aprofunde .aula-3l-n{background:#ff9f80}
 .aula-apr-intro{margin:0 0 14px;font-size:15px;color:var(--a-mute)}
 .aula-pdfs-3{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 @media(max-width:900px){.aula-pdfs-3{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.aula-3listas{grid-template-columns:1fr;gap:8px}.aula-3l{padding:10px 12px}.aula-pdfs-3{grid-template-columns:1fr}}
+@media(max-width:620px){.aula-pdfs-3{grid-template-columns:1fr}}
 
 /* afirmativas I, II, III e sequência V ou F no modo prova */
 .aula-afirm{list-style:none;margin:.4rem 0 .6rem;padding:0;display:grid;gap:.35rem}
@@ -1718,20 +1707,6 @@ button.aula-sprop:hover{border-color:var(--a-purple)}
 .aula-afirm b{color:var(--a-purple,var(--purple));font-weight:800}
 .aula-apoio-rot{display:inline-block;margin:0 0 .4rem;padding:.15rem .6rem;border-radius:8px;background:var(--soft);color:var(--a-purple,var(--purple));font-weight:800;font-size:.85em}
 
-/* listas em primeiro plano no herói da aula: cada uma com PDF e versão no site */
-.aula-3listas{max-width:700px;margin-bottom:16px}
-.aula-3l{align-items:flex-start}
-.aula-3l>.aula-3l-txt{display:flex;flex-direction:column;gap:.15rem;min-width:0;flex:1;align-self:stretch}
-.aula-3l-acoes{display:flex;flex-direction:column;gap:.4rem;margin-top:auto;padding-top:.55rem}
-.aula-3l-acoes a{justify-content:center}
-@media(max-width:620px){.aula-3l-acoes{flex-direction:row}.aula-3l-acoes a{flex:1}}
-.aula-3l-acoes a{display:inline-flex;align-items:center;gap:.35rem;padding:.38rem .7rem;border-radius:999px;font-weight:800;font-size:.82rem;text-decoration:none;border:2px solid var(--ink)}
-.aula-3l-pdf{background:var(--lime);color:var(--ink)}
-.aula-3l-pdf svg{width:1em;height:1em}
-.aula-3l-site{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)!important}
-.aula-3l-acoes a.aula-3l-pdf{border-color:var(--lime)}
-.aula-3l-acoes a:hover{transform:translateY(-1px)}
-.aula-3l-acoes a:focus-visible{outline:3px solid var(--a-purple,var(--purple));outline-offset:2px}
 /* resumo recolhido no fim da aula */
 .aula-resumo-det>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border:2px solid var(--ink);border-radius:999px;font-weight:800;background:var(--soft)}
 .aula-resumo-det>summary::-webkit-details-marker{display:none}
@@ -1741,15 +1716,51 @@ button.aula-sprop:hover{border-color:var(--a-purple)}
 .aula-resumo-det[open]>summary span::before{content:'Esconder o resumo';font-size:1rem}
 .aula-resumo-det[open]>summary::after{content:'−'}
 
-/* caderno digital: escrever na lista com a caneta do tablet */
-.aula-3l-site svg{width:1em;height:1em}
-.aula-pdf-col{display:flex;flex-direction:column;gap:10px;min-width:0}
-.aula-caderno{display:flex;align-items:center;gap:10px;padding:12px 14px;border:2px solid var(--ink);border-radius:16px;background:var(--lime);color:var(--ink);text-decoration:none;box-shadow:0 3px 0 var(--ink)}
-.aula-caderno svg{width:22px;height:22px;flex-shrink:0}
-.aula-caderno span{display:flex;flex-direction:column;gap:2px;min-width:0}
-.aula-caderno b{font:700 15px/1.15 'Space Grotesk',system-ui,sans-serif}
-.aula-caderno small{font-size:12.5px;line-height:1.3;color:#3d3561}
-.aula-caderno:hover{transform:translateY(-1px)}
-.aula-caderno:active{transform:translateY(2px);box-shadow:none}
-.aula-pdf-col>.aula-pdf{flex:1}
-.aula-3l-acoes a{white-space:nowrap}
+
+/* ===== Página da aula (2026-11-20): as três listas no destaque, sem a fórmula ===== */
+.aula-hero-grid{grid-template-columns:minmax(0,1fr) minmax(380px,480px);grid-template-areas:"copy listas" "tools listas";align-items:center;column-gap:56px;row-gap:28px}
+.aula-hero-copy{grid-area:copy;align-self:end}
+.aula-hero-tools{grid-area:tools;align-self:start}
+.aula-hero-solo{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "tools"}
+.aula-listas{grid-area:listas;display:flex;flex-direction:column;background:var(--a-card);color:var(--a-ink);border:2px solid var(--a-ink);border-radius:22px;box-shadow:8px 8px 0 #140c33;overflow:hidden}
+.lst{padding:16px 18px 18px}
+.lst+.lst{border-top:1.5px solid var(--a-line)}
+.lst-nome{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.lst-nome b{font:700 18px/1.15 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.015em}
+.lst-nome small{margin-left:auto;font-size:13px;font-weight:600;color:var(--a-mute);white-space:nowrap}
+.lst-marca{flex-shrink:0;width:12px;height:12px;border-radius:4px;border:2px solid var(--a-ink);background:var(--a-lime)}
+.lst-vestibular .lst-marca{background:#b7e5ff}
+.lst-aprofundamento .lst-marca{background:#ff9f80}
+.lst-acoes{display:flex;flex-wrap:wrap;gap:8px}
+.lst-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;flex:1 1 0;min-width:max-content;height:40px;padding:0 11px;border:1.5px solid #cfc8e2;border-radius:11px;background:#fff;color:var(--a-ink);font:600 14.5px/1 'Space Grotesk',system-ui,sans-serif;white-space:nowrap;text-decoration:none;cursor:pointer;transition:border-color .12s,background .12s}
+.lst-btn svg{width:17px;height:17px;flex-shrink:0}
+.lst-btn:hover{border-color:var(--a-ink);background:var(--a-lilac)}
+.lst-btn-pdf{border:2px solid var(--a-ink);background:var(--a-lime)}
+.lst-btn-pdf:hover{background:#c8f15a}
+.aula-hero .lesson-tools.actions{margin:0}
+/* seção "Listas em PDF": capa, nome e as mesmas ações */
+.aula-step-head-solo{align-items:center}
+.aula-step-head-solo h2{margin:0}
+.aula-pdf{border-radius:22px}
+.aula-pdf:hover{transform:none;box-shadow:none;border-color:var(--a-line)}
+.aula-pdf-capa{height:250px}
+.aula-pdf-capa:hover img{transform:rotate(0) translateY(-4px)}
+.aula-pdf:hover .aula-pdf-capa img{transform:rotate(-2deg) translateY(8px)}
+.aula-pdf:hover .aula-pdf-capa:hover img{transform:rotate(0) translateY(-4px)}
+.aula-pdf-info{gap:14px;padding:18px 18px 20px}
+.aula-pdf-info h3{display:flex;align-items:center;gap:10px;margin:0;min-height:46px;font:700 19px/1.15 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.02em}
+.aula-pdf-info .lst-acoes{flex-direction:column}
+.aula-pdf-info .lst-btn{flex:0 0 auto;height:42px}
+.aula-aviso{position:fixed;left:50%;bottom:22px;z-index:60;transform:translate(-50%,12px);margin:0;max-width:calc(100vw - 32px);padding:11px 18px;border-radius:999px;background:var(--ink);color:#fff;font:600 14px/1.3 'DM Sans',system-ui,sans-serif;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.aula-aviso.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:1000px){
+ .aula-hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "listas" "tools";row-gap:28px}
+ .aula-listas{max-width:560px}
+}
+@media(max-width:480px){
+ .lst{padding:14px 14px 16px}
+ .lst-x{display:none}
+ .lst-btn{padding:0 8px;gap:5px;font-size:14px;min-width:0}
+ .aula-listas{box-shadow:5px 5px 0 #140c33}
+}
+@media(prefers-reduced-motion:reduce){.aula-aviso{transition:none}}

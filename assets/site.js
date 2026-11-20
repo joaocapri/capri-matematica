@@ -956,7 +956,8 @@ var AULA_SVG={
  share:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2"></circle><circle cx="6" cy="12" r="2"></circle><circle cx="18" cy="19" r="2"></circle><path d="m8 11 8-5m-8 7 8 5"></path></svg>',
  down:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"></path></svg>',
  play:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"></path></svg>',
- caneta:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.2-4.6L15.8 4.8a2 2 0 012.8 0l.6.6a2 2 0 010 2.8L8.6 18.8z"></path><path d="M13.8 6.8l3.4 3.4"></path></svg>'
+ caneta:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.2-4.6L15.8 4.8a2 2 0 012.8 0l.6.6a2 2 0 010 2.8L8.6 18.8z"></path><path d="M13.8 6.8l3.4 3.4"></path></svg>',
+ tablet:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="2.5" width="15" height="19" rx="2.5"></rect><path d="M8.5 7.5h7M8.5 11h7M8.5 14.5h4"></path></svg>'
 };
 function tex(el,tries){
  var M=window.MathJax;if(!el)return Promise.resolve();
@@ -1028,10 +1029,19 @@ async function lessonPage(){
  }
 
  /* ---------- HTML ---------- */
- var formula=heroFormula(content);
- var heroArt=formula
-  ?'<figure class="aula-formula"><div class="aula-formula-card"><div class="aula-formula-math" id="aula-formula-math">\\['+esc(formula)+'\\]</div></div><figcaption>A fórmula da aula</figcaption></figure>'
-  :'<figure class="aula-formula aula-formula-symbol"><div class="aula-formula-card"><div class="aula-formula-math">'+esc(SUBJECT_TOPIC_ICONS[l.block]||'∑')+'</div></div><figcaption>'+esc(topic.title)+'</figcaption></figure>';
+ /* As três listas: no destaque e na seção "Listas em PDF", sempre com as mesmas três ações. */
+ var LISTAS=[['fixacao','pratique','Lista de fixação',fixQs.length],['vestibular','prova','Lista de vestibular',vestQs.length],['aprofundamento','aprofunde','Lista de aprofundamento',aprQs.length]].filter(function(x){return x[3]||listaPdfs[x[0]]});
+ function acoesLista(t,sid){
+  var pdf=listaPdfs[t],cad=lista&&lista.cadernos&&lista.cadernos[t];
+  return '<div class="lst-acoes">'
+   +(pdf?'<a class="lst-btn lst-btn-pdf" href="'+esc(pdf.url)+'" target="_blank" rel="noopener" data-pdf="'+t+'">'+AULA_SVG.down+'<span><span class="lst-x">Baixar </span>PDF</span></a>':'')
+   +(cad?'<a class="lst-btn" href="'+esc(cad)+'" title="Resolver no site, com a caneta do tablet">'+AULA_SVG.caneta+'<span>Caderno<span class="lst-x"> digital</span></span></a>'
+        +'<button type="button" class="lst-btn" data-goodnotes="/pdfs/caderno-'+t+'-'+id+'.pdf" data-lista="'+t+'" title="Uma questão por página, com espaço para resolver no GoodNotes">'+AULA_SVG.tablet+'<span>GoodNotes</span></button>'
+       :'<a class="lst-btn" href="#'+sid+'" data-goto="'+sid+'">Resolver no site</a>')
+   +'</div>';
+ }
+ var heroListas=LISTAS.length?'<div class="aula-listas" role="group" aria-label="As listas desta aula">'+LISTAS.map(function(x){
+   return '<div class="lst lst-'+x[0]+'"><p class="lst-nome"><span class="lst-marca" aria-hidden="true"></span><b>'+x[2]+'</b>'+(x[3]?'<small>'+plural(x[3],'questão','questões')+'</small>':'')+'</p>'+acoesLista(x[0],x[1])+'</div>'}).join('')+'</div>':'';
  var tools='<div class="actions lesson-tools" role="group" aria-label="Ações desta aula">'
   +'<button type="button" class="lesson-tool lesson-tool-done '+(done.has(id)?'is-active':'')+'" id="btn-done" aria-pressed="'+done.has(id)+'" aria-label="'+(done.has(id)?'Desmarcar aula como estudada':'Marcar aula como estudada')+'">'+AULA_SVG.done+'<span class="lesson-tool-label">'+(done.has(id)?'Estudada':'Já estudei')+'</span></button>'
   +'<button type="button" class="lesson-tool lesson-tool-fav '+(saved.has(id)?'is-active':'')+'" id="btn-fav" aria-pressed="'+saved.has(id)+'" aria-label="'+(saved.has(id)?'Remover aula dos favoritos':'Favoritar esta aula')+'">'+AULA_SVG.fav+'<span class="lesson-tool-label">'+(saved.has(id)?'Favorita':'Favoritar')+'</span></button>'
@@ -1041,17 +1051,16 @@ async function lessonPage(){
  var hasPdfs=listaUrls.length||allFiles.length;
  var hero='<section class="aula-hero" aria-labelledby="aula-titulo"><div class="shell aula-hero-in">'
   +'<nav class="aula-crumbs" aria-label="Caminho"><a href="/">Início</a><span aria-hidden="true">/</span>'+(assunto?'<a href="'+assuntoHref(assunto)+'">'+esc(assunto.name)+'</a>':'<a href="'+topicHref(topic)+'">'+esc(topic.title)+'</a>')+'</nav>'
-  +'<div class="aula-hero-grid"><div class="aula-hero-copy">'
+  +'<div class="aula-hero-grid'+(heroListas?'':' aula-hero-solo')+'"><div class="aula-hero-copy">'
   +'<p class="aula-kicker"><span class="aula-id">'+id+'</span>'+(near.length>1?'Aula '+(nearIndex+1)+' de '+near.length+' em '+esc(grupo):esc(grupo))+'</p>'
   +'<h1 id="aula-titulo">'+esc(l.title)+'</h1>'
   +'<p class="aula-summary">'+esc(l.summary||'Teoria, exemplos e treino desta aula.')+'</p>'
-  +(fixQs.length||vestQs.length||aprQs.length?'<div class="aula-3listas" role="group" aria-label="As listas desta aula">'+[['pratique','fixacao','Fixação',fixQs.length,'para firmar o conteúdo'],['prova','vestibular','Vestibular',vestQs.length,'no estilo das provas'],['aprofunde','aprofundamento','Aprofundamento',aprQs.length,'para ir além']].filter(function(x){return x[3]}).map(function(x,k){var pdf=listaPdfs[x[1]];return '<div class="aula-3l aula-3l-'+x[0]+'"><span class="aula-3l-n">'+(k+1)+'</span><span class="aula-3l-txt"><b>'+x[2]+'</b><small>'+plural(x[3],'questão','questões')+', '+x[4]+'</small><span class="aula-3l-acoes">'+(pdf?'<a class="aula-3l-pdf" href="'+esc(pdf.url)+'" target="_blank" rel="noopener" data-pdf="'+x[1]+'">'+AULA_SVG.down+'Baixar PDF</a>':'')+''+(lista&&lista.cadernos&&lista.cadernos[x[1]]?'<a class="aula-3l-site" href="'+esc(lista.cadernos[x[1]])+'" title="Uma questão por página, com rascunho para resolver com a caneta do tablet">'+AULA_SVG.caneta+'Caderno</a>':'<a class="aula-3l-site" href="#'+x[0]+'" data-goto="'+x[0]+'">Resolver no site</a>')+'</span></span></div>'}).join('')+'</div>':'')
-  +(fixQs.length||vestQs.length||aprQs.length?'':'<div class="aula-hero-cta">'+(hasPdfs?'<a class="aula-btn aula-btn-lime" href="#levar" data-goto="levar">'+AULA_SVG.down+'Baixar as listas</a>':'')+'<a class="aula-btn aula-btn-ghost" href="#entenda" data-goto="entenda">Ver o resumo</a></div>')
-  +tools+'</div>'+heroArt+'</div>'+trail+'</div></section>';
+  +(heroListas?'':'<div class="aula-hero-cta">'+(hasPdfs?'<a class="aula-btn aula-btn-lime" href="#levar" data-goto="levar">'+AULA_SVG.down+'Baixar as listas</a>':'')+'<a class="aula-btn aula-btn-ghost" href="#entenda" data-goto="entenda">Ver o resumo</a></div>')
+  +'</div>'+heroListas+'<div class="aula-hero-tools">'+tools+'</div></div>'+trail+'</div></section>';
 
  var rail='<nav class="aula-rail" aria-label="Roteiro da aula"><p class="aula-rail-title">Nesta aula</p><ol>'+steps.map(function(s,k){return '<li><a href="#'+s.id+'" data-goto="'+s.id+'" data-rail="'+s.id+'"><span class="aula-rail-n">'+(k+1)+'</span><span class="aula-rail-txt"><b>'+s.nome+'</b><small id="rail-'+s.id+'"></small></span></a></li>'}).join('')+'</ol><div class="aula-rail-meter" aria-hidden="true"><span id="rail-meter"></span></div><p class="aula-rail-sum" id="rail-sum"></p></nav>';
 
- function head(sid,titulo,desc){return '<header class="aula-step-head"><span class="aula-step-n" aria-hidden="true">'+stepNum(sid)+'</span><div><h2 id="h-'+sid+'">'+titulo+'</h2><p>'+desc+'</p></div></header>'}
+ function head(sid,titulo,desc){return '<header class="aula-step-head'+(desc?'':' aula-step-head-solo')+'"><span class="aula-step-n" aria-hidden="true">'+stepNum(sid)+'</span><div><h2 id="h-'+sid+'">'+titulo+'</h2>'+(desc?'<p>'+desc+'</p>':'')+'</div></header>'}
 
  function teoriaHtml(){
   if(!teoria.length)return empty('Resumo a caminho','O resumo desta aula ainda não foi publicado. As listas já ajudam a treinar.');
@@ -1073,34 +1082,28 @@ async function lessonPage(){
    +'<div class="aula-check-end" id="check-end" hidden></div></div>';
  }
  var okLabel='Marcar resumo como lido';
- var secEntenda='<section class="aula-step" id="entenda" data-step="entenda" aria-labelledby="h-entenda">'+head('entenda','Resumo da aula','As fórmulas e as armadilhas, para consultar quando precisar. A teoria completa está no material impresso.')
+ var secEntenda='<section class="aula-step" id="entenda" data-step="entenda" aria-labelledby="h-entenda">'+head('entenda','Resumo da aula','As fórmulas e as armadilhas, para consultar quando precisar.')
   +'<details class="aula-resumo-det" id="resumo-det"><summary><span>Mostrar o resumo</span></summary>'+teoriaHtml()+checkHtml()
   +'<div class="aula-step-end"><button type="button" class="aula-btn aula-btn-ink" id="entenda-ok" aria-pressed="'+(!!st.entenda)+'">'+(st.entenda?'Resumo lido':okLabel)+'</button></div></details></section>';
 
- var secPratique=fixQs.length?'<section class="aula-step" id="pratique" data-step="pratique" aria-labelledby="h-pratique">'+head('pratique','Lista de fixação',(lista&&lista.fixacao?'A mesma lista do PDF: '+plural(fixQs.length,'exercício','exercícios')+' em '+plural(fixSecoes.length,'nível','níveis')+'. Resolva no caderno e confira a resolução aqui.':'Exercícios curtos para fixar a ideia.'))
+ var secPratique=fixQs.length?'<section class="aula-step" id="pratique" data-step="pratique" aria-labelledby="h-pratique">'+head('pratique','Lista de fixação',(lista&&lista.fixacao?'A mesma lista do PDF. Resolva e confira aqui a resolução de cada questão.':'Exercícios curtos para fixar a ideia.'))
   +'<div class="aula-prat-top"><div class="aula-levels" role="tablist" aria-label="Níveis">'+fixSecoes.map(function(s,k){return '<button type="button" role="tab" class="aula-level lvl-'+nivelClasse(s.nome)+'" data-level="'+k+'" aria-selected="false"><b>'+esc(nivelNome(s.nome))+'</b><small data-level-count="'+k+'"></small></button>'}).join('')+'</div>'
   +'<div class="aula-prat-meter"><span class="aula-meter" aria-hidden="true"><span id="prat-meter"></span></span><span id="prat-sum"></span></div></div><div class="aula-ex-list" id="ex-list" role="tabpanel"></div></section>':'';
 
- var secProva=vestQs.length?'<section class="aula-step" id="prova" data-step="prova" aria-labelledby="h-prova">'+head('prova','Lista de vestibular','A mesma lista do PDF: '+plural(vestQs.length,'questão','questões')+' no formato das provas. Toque na alternativa e veja a correção na hora.')+'<div class="aula-prova" id="prova-root" tabindex="-1"></div></section>':'';
+ var secProva=vestQs.length?'<section class="aula-step" id="prova" data-step="prova" aria-labelledby="h-prova">'+head('prova','Lista de vestibular','A mesma lista do PDF. Toque na alternativa e veja a correção na hora.')+'<div class="aula-prova" id="prova-root" tabindex="-1"></div></section>':'';
 
- var secAprof=aprQs.length?'<section class="aula-step" id="aprofunde" data-step="aprofunde" aria-labelledby="h-aprofunde">'+head('aprofunde','Lista de aprofundamento','A mesma lista do PDF: '+plural(aprQs.length,'questão mais puxada','questões mais puxadas')+', para quem já domina o básico. Resolva no caderno e confira a resolução aqui.')
+ var secAprof=aprQs.length?'<section class="aula-step" id="aprofunde" data-step="aprofunde" aria-labelledby="h-aprofunde">'+head('aprofunde','Lista de aprofundamento','A mesma lista do PDF. Resolva e confira aqui a resolução de cada questão.')
   +(lista.aprofundamento.intro?'<p class="aula-apr-intro">'+esc(lista.aprofundamento.intro)+'</p>':'')+'<div class="aula-ex-list" id="apr-list">'+aprQs.map(exCard).join('')+'</div></section>':'';
  function aprDone(){return aprQs.filter(function(q){return st.fix[q.chave]==='ok'||st.fix[q.chave]==='erro'}).length}
- function pdfCard(tipo){
-  var p=listaPdfs[tipo];if(!p)return '';
-  var nome={fixacao:'Lista de fixação',vestibular:'Lista de vestibular',aprofundamento:'Lista de aprofundamento'}[tipo];
-  var desc={fixacao:'Do nível 1 ao nível 3, com espaço para resolver',vestibular:'No formato das provas: Enem, Fuvest, Unicamp, somatórias e afirmativas',aprofundamento:'Discursivas de 2ª fase e objetivas difíceis, para ir além'}[tipo];
-  var nq={fixacao:fixQs.length,vestibular:vestQs.length,aprofundamento:aprQs.length}[tipo];
-  return '<a class="aula-pdf" href="'+esc(p.url)+'" target="_blank" rel="noopener" data-pdf="'+tipo+'"><span class="aula-pdf-capa"><img src="'+esc(p.capa)+'" alt="" loading="lazy" width="520" height="736"></span><span class="aula-pdf-info"><b>'+nome+'</b><span>'+desc+'. '+plural(nq,'questão','questões')+' com gabarito resolvido'+(p.paginas?', '+plural(p.paginas,'página','páginas'):'')+'.</span><span class="aula-btn aula-btn-ink aula-pdf-btn">'+AULA_SVG.down+'Baixar PDF</span></span></a>';
+ function pdfCard(x){
+  var t=x[0],p=listaPdfs[t];if(!p)return '';
+  return '<div class="aula-pdf lst-'+t+'"><a class="aula-pdf-capa" href="'+esc(p.url)+'" target="_blank" rel="noopener" data-pdf="'+t+'" aria-label="Abrir o PDF da '+x[2].toLowerCase()+'"><img src="'+esc(p.capa)+'" alt="" loading="lazy" width="520" height="736"></a>'
+   +'<div class="aula-pdf-info"><h3><span class="lst-marca" aria-hidden="true"></span>'+x[2]+'</h3>'+acoesLista(t,x[1])+'</div></div>';
  }
- function cadernoLink(tipo){
-  if(!(lista&&lista.cadernos&&lista.cadernos[tipo]))return '';
-  return '<a class="aula-caderno" href="'+esc(lista.cadernos[tipo])+'">'+AULA_SVG.caneta+'<span><b>Resolver no caderno digital</b><small>Uma questão por página, com rascunho, para resolver com a caneta e exportar</small></span></a>';
- }
- var pdfGrid=listaUrls.length?'<div class="aula-pdfs'+(listaPdfs.aprofundamento?' aula-pdfs-3':'')+'">'+['fixacao','vestibular','aprofundamento'].filter(function(t){return listaPdfs[t]}).map(function(t){return '<div class="aula-pdf-col">'+pdfCard(t)+cadernoLink(t)+'</div>'}).join('')+'</div>':'';
+ var pdfGrid=listaUrls.length?'<div class="aula-pdfs'+(listaPdfs.aprofundamento?' aula-pdfs-3':'')+'">'+LISTAS.map(pdfCard).join('')+'</div>':'';
  var otherHtml=otherFiles.length?'<div class="aula-files"><h3>'+(listaUrls.length?'Outros materiais':'Materiais para baixar')+'</h3>'+otherFiles.map(function(f){return '<a class="aula-file" href="'+esc(f.url)+'" target="_blank" rel="noopener" data-pdf="outro">'+AULA_SVG.down+'<span>'+esc(f.titulo||'Material')+'</span></a>'}).join('')+'</div>':'';
  var videosHtml='';var videosHtmlAntigo='<div class="aula-videos"><h3>Para ver em vídeo</h3>'+videos.map(function(v){var u=safeUrl(v.url);return u?'<a class="aula-video" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>'+esc(v.titulo)+'</b><small>'+esc(v.canal||'')+'</small></span></a>':''}).join('')+'<a class="aula-video aula-video-search" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query='+encodeURIComponent(l.title+' matemática videoaula')+'"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>Procurar videoaulas sobre '+esc(l.title)+'</b><small>Busca no YouTube</small></span></a></div>';
- var secLevar='<section class="aula-step" id="levar" data-step="levar" aria-labelledby="h-levar">'+head('levar','Listas em PDF',listaUrls.length?'Imprima e resolva no papel, ou abra no caderno digital e escreva por cima com a caneta do tablet. Cada lista tem gabarito resolvido no final.':'Materiais para estudar fora da tela.')
+ var secLevar='<section class="aula-step" id="levar" data-step="levar" aria-labelledby="h-levar">'+head('levar','Listas em PDF',listaUrls.length?'':'Materiais para estudar fora da tela.')
   +(pdfGrid||otherHtml?pdfGrid+otherHtml:empty('Listas a caminho','As listas em PDF desta aula ainda vão ser publicadas.')+exatooCard('treino',l))+videosHtml+'</section>';
 
  var seq='<nav class="aula-seq" aria-label="Outras aulas">'+(prev?'<a class="aula-seq-prev" href="'+href(prev)+'"><small>Aula anterior</small><b>'+esc(prev.title)+'</b></a>':'<span></span>')+(next?'<a class="aula-seq-next" href="'+href(next)+'"><small>Próxima aula, '+next.id+'</small><b>'+esc(next.title)+'</b></a>':'')+'</nav>';
@@ -1297,6 +1300,29 @@ async function lessonPage(){
 
  /* ---------- Leve pra casa ---------- */
  document.querySelectorAll('[data-pdf]').forEach(function(a){a.addEventListener('click',function(){st.pdf=true;store.save();updateProgress();matEvt('pdf',{aula:id,modulo:l.block,volume:l.front})})});
+ (function(){
+  var gn=document.querySelectorAll('[data-goodnotes]');if(!gn.length)return;
+  var toque=typeof navigator.share==='function'&&typeof navigator.canShare==='function'&&window.matchMedia&&matchMedia('(pointer:coarse)').matches;
+  var blobs={},pedidos={};
+  function buscar(url){if(!pedidos[url])pedidos[url]=fetch(url).then(function(r){if(!r.ok)throw Error(r.status);return r.blob()}).then(function(b){blobs[url]=b;return b}).catch(function(){delete pedidos[url]});return pedidos[url]}
+  /* O iPad só abre a janela de compartilhar logo após o toque, então os PDFs (cerca de 100 kB cada) já vêm baixados. */
+  if(toque)setTimeout(function(){[].forEach.call(gn,function(b){buscar(b.dataset.goodnotes)})},1500);
+  function nome(b){return (l.title+' '+{fixacao:'fixacao',vestibular:'vestibular',aprofundamento:'aprofundamento'}[b.dataset.lista]).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'.pdf'}
+  [].forEach.call(gn,function(b){
+   b.addEventListener('click',function(){
+    var url=b.dataset.goodnotes;matEvt('goodnotes',{aula:id,lista:b.dataset.lista});
+    if(toque){
+     aulaAviso('Na janela que abrir, escolha GoodNotes');
+     var blob=blobs[url],arq=blob&&new File([blob],nome(b),{type:'application/pdf'});
+     if(arq&&navigator.canShare({files:[arq]})){navigator.share({files:[arq],title:l.title}).catch(function(){});return}
+     window.open(url,'_blank');return; // sem o arquivo pronto: o PDF abre no Safari, e o botão de compartilhar leva ao GoodNotes
+    }
+    var a=document.createElement('a');a.href=url;a.download=nome(b);document.body.appendChild(a);a.click();a.remove();
+    aulaAviso('PDF baixado. Abra no GoodNotes (ou outro app de anotações).');
+   });
+  });
+ })();
+ function aulaAviso(txt){var t=document.getElementById('aula-aviso');if(!t){t=document.createElement('p');t.id='aula-aviso';t.className='aula-aviso';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=txt;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('on')},3200)}
 
  /* ---------- Navegação ---------- */
  function topOffset(){var tb=document.querySelector('.topbar'),h=tb?tb.offsetHeight:0;var main=document.querySelector('main.aula');if(main)main.style.setProperty('--a-top',h+'px');var rail=document.querySelector('.aula-rail');var extra=window.innerWidth<=1000&&rail?rail.offsetHeight:0;return h+extra+16}
@@ -1331,10 +1357,10 @@ async function lessonPage(){
  });
 
  /* ---------- Matemática e chegada direta a uma etapa ---------- */
- tex(document.querySelector('.aula-hero')).then(function(){fitFormula(document.getElementById('aula-formula-math'))});
+ tex(document.querySelector('.aula-hero'));
  tex(document.getElementById('entenda'));
  topOffset();
- if(window.addEventListener)window.addEventListener('resize',function(){topOffset();var f=document.getElementById('aula-formula-math');if(f){f.style.fontSize='';fitFormula(f)}});
+ if(window.addEventListener)window.addEventListener('resize',function(){topOffset()});
  var requested=new URLSearchParams(location.search).get('tab')||location.hash.replace('#','');
  var map={resumo:'entenda',teoria:'entenda',quiz:vestQs.length?'prova':'entenda',videos:'levar',arquivos:'levar'};
  var target=map[requested]||requested;

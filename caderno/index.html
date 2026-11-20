@@ -52,8 +52,8 @@
     <button type="button" class="cd-ib" id="cd-mais-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="cd-menu" aria-label="Mais opções" title="Papel, escrever com o dedo, enunciado">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg>
     </button>
-    <button type="button" class="cd-exportar" id="cd-exportar" disabled title="Exportar a lista resolvida em PDF">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg><span>PDF</span>
+    <button type="button" class="cd-exportar" id="cd-exportar" disabled aria-haspopup="menu" aria-expanded="false" aria-controls="cd-exp-menu" title="Exportar em PDF ou levar para o GoodNotes">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg><span>Exportar</span>
     </button>
   </div>
 
@@ -65,6 +65,11 @@
       <input type="range" id="cd-esp" min="0" max="100" step="1" aria-label="Espessura do traço">
       <canvas class="cd-previa" id="cd-previa" aria-hidden="true"></canvas>
     </div>
+  </section>
+
+  <section class="cd-pop cd-exp" id="cd-exp-menu" role="menu" aria-label="Exportar" hidden>
+    <button type="button" role="menuitem" id="cd-exp-resolvida"><b>Lista resolvida em PDF</b><small>Com tudo o que você escreveu aqui</small></button>
+    <button type="button" role="menuitem" id="cd-exp-gn"><b>Levar para o GoodNotes</b><small>A lista em branco, uma questão por página, para resolver lá</small></button>
   </section>
 
   <section class="cd-pop cd-menu" id="cd-menu" role="menu" aria-label="Mais opções" hidden>
@@ -109,6 +114,11 @@
 </nav>
 
 <aside class="cd-resp" id="cd-resp" aria-label="Resposta e resolução" hidden></aside>
+<div class="cd-pronto" id="cd-pronto" role="dialog" aria-label="PDF pronto" hidden>
+  <span id="cd-pronto-txt">PDF pronto</span>
+  <button type="button" id="cd-pronto-abrir">Abrir</button>
+  <button type="button" id="cd-pronto-x" aria-label="Fechar">×</button>
+</div>
 <p class="cd-status" id="cd-status" role="status" aria-live="polite"></p>
 </body>
 </html>

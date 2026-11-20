@@ -774,7 +774,10 @@ function montarBarra() {
   $('#cd-enun').addEventListener('change', (e) => { st.enun = e.target.checked; salvar(); pedirQuadro(); });
   $('#cd-formas').addEventListener('click', () => { st.formas = !st.formas; $('#cd-formas').setAttribute('aria-pressed', st.formas); salvar(); aviso(st.formas ? 'Formas ligadas: cada traço vira reta, retângulo, triângulo ou círculo' : 'Formas desligadas. Para uma forma, desenhe e segure no fim.', 2600); });
   $('#cd-mais-btn').addEventListener('click', () => { const m = $('#cd-menu'), abrir = m.hidden; fecharPops(); m.hidden = !abrir; $('#cd-mais-btn').setAttribute('aria-expanded', abrir); });
-  $('#cd-exportar').addEventListener('click', exportar);
+  $('#cd-exportar').addEventListener('click', () => { const m = $('#cd-exp-menu'), abrir = m.hidden; fecharPops(); m.hidden = !abrir; $('#cd-exportar').setAttribute('aria-expanded', abrir); });
+  $('#cd-exp-resolvida').addEventListener('click', () => { fecharPops(); exportar(); });
+  $('#cd-exp-gn').addEventListener('click', () => { fecharPops(); levarGoodnotes(); });
+  $('#cd-pronto-x').addEventListener('click', () => { $('#cd-pronto').hidden = true; });
   $('#cd-ant').addEventListener('click', anterior);
   $('#cd-prox').addEventListener('click', proxima);
   $('#cd-conferir').addEventListener('click', () => ($('#cd-resp').hidden ? abrirResp() : fecharResp()));
@@ -783,6 +786,7 @@ function montarBarra() {
     if (!e.target.closest('#cd-painel,#cd-traco,[data-ferramenta]')) fecharPainel();
     if (!e.target.closest('#cd-mapa,#cd-qbtn')) fecharMapa();
     if (!e.target.closest('#cd-menu,#cd-mais-btn')) fecharMenu();
+    if (!e.target.closest('#cd-exp-menu,#cd-exportar')) fecharExp();
   });
   addEventListener('keydown', (e) => {
     if (e.key === ' ' && !e.target.closest('button,select,input,textarea')) { espaco = true; e.preventDefault(); }
@@ -810,7 +814,8 @@ function zoomCentro(z) {
   return { z, tx: sx - wx * z, ty: sy - wy * z };
 }
 function fecharMenu() { $('#cd-menu').hidden = true; $('#cd-mais-btn').setAttribute('aria-expanded', 'false'); }
-function fecharPops() { fecharPainel(); fecharMapa(); fecharMenu(); }
+function fecharExp() { $('#cd-exp-menu').hidden = true; $('#cd-exportar').setAttribute('aria-expanded', 'false'); }
+function fecharPops() { fecharPainel(); fecharMapa(); fecharMenu(); fecharExp(); }
 function alvoTraco() { return st.ferramenta === 'marca' ? 'marca' : 'caneta'; }
 function escolher(f) {
   st.ferramenta = f; document.body.dataset.ferramenta = f;
@@ -939,18 +944,34 @@ async function exportar() {
     }
     if (st.gabarito) for (let n = mapa.gabarito; n <= pdf.numPages; n++) { const [page] = await out.copyPages(src, [n - 1]); out.addPage(page); }
     const bytes = await out.save();
-    const nome = `${slug(titulo)}-${lista}-resolvida.pdf`;
-    const arq = new File([bytes], nome, { type: 'application/pdf' });
-    if (navigator.canShare?.({ files: [arq] }) && matchMedia('(pointer:coarse)').matches) {
-      try { await navigator.share({ files: [arq], title: nome }); aviso('PDF pronto'); return; }
-      catch (e) { if (e?.name === 'AbortError') { aviso('Exportação cancelada'); return; } }
-    }
-    const url = URL.createObjectURL(arq); const a = document.createElement('a'); a.href = url; a.download = nome;
-    document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000);
-    aviso('PDF baixado: ' + nome, 3000);
     window.__caderno.ultimoPdf = bytes;
+    aviso('', 1);
+    entregar(new File([bytes], `${slug(titulo)}-${lista}-resolvida.pdf`, { type: 'application/pdf' }), 'PDF da lista resolvida pronto');
   } catch (e) { console.error(e); aviso('Não consegui montar o PDF. Tente de novo.', 4000); }
   finally { btn.disabled = false; }
+}
+/* No tablet, o PDF vai para a janela de compartilhar (GoodNotes, Notability, Arquivos…); no computador, é baixado.
+   O sistema só abre essa janela logo depois de um toque: se a montagem demorou, o aluno toca em "Abrir". */
+async function entregar(arq, pronto) {
+  const tablet = navigator.canShare?.({ files: [arq] }) && matchMedia('(pointer:coarse)').matches;
+  if (tablet) {
+    try { await navigator.share({ files: [arq], title: arq.name }); $('#cd-pronto').hidden = true; return; }
+    catch (e) {
+      if (e?.name === 'AbortError') return;
+      $('#cd-pronto-txt').textContent = pronto; $('#cd-pronto').hidden = false;
+      $('#cd-pronto-abrir').onclick = () => { $('#cd-pronto').hidden = true; navigator.share({ files: [arq], title: arq.name }).catch(() => {}); };
+      return;
+    }
+  }
+  const url = URL.createObjectURL(arq); const a = document.createElement('a'); a.href = url; a.download = arq.name;
+  document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000);
+  aviso('PDF baixado: ' + arq.name, 3000);
+}
+function levarGoodnotes() { // a lista em branco do caderno: uma questão por página, com espaço quadriculado
+  if (!pdfBytes) return;
+  const arq = new File([pdfBytes], `${slug($('#cd-titulo').textContent)}-${lista}.pdf`, { type: 'application/pdf' });
+  if (matchMedia('(pointer:coarse)').matches && navigator.canShare?.({ files: [arq] })) aviso('Na janela que abrir, escolha GoodNotes', 3000);
+  entregar(arq, 'Lista pronta para o GoodNotes');
 }
 function slug(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'lista'; }
 
