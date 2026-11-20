@@ -1,0 +1,619 @@
+# Aula 3.3.1 — Determinantes de ordem 2 e 3
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: ordem 2 (ad − bc), regra de Sarrus, equações e inequações com determinante,
+# polinômio característico e determinante de matrizes dadas por lei ou por produto (calculando o produto).
+# As propriedades (3.4.1), Laplace (3.4.2) e Binet (3.4.3) ficam para as próximas aulas.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete com o valor de cada determinante.'
+      itens:
+      - '$\begin{vmatrix} 3 & 5 \\ 1 & 2 \end{vmatrix} = 3 \cdot 2 - 5 \cdot 1 = {{1}}$'
+      - '$\begin{vmatrix} 4 & -2 \\ 3 & 1 \end{vmatrix} = {{10}}$'
+      - '$\begin{vmatrix} -1 & 3 \\ 2 & -6 \end{vmatrix} = {{0}}$'
+      - '$\begin{vmatrix} a & b \\ b & a \end{vmatrix} = {{a^2 - b^2}}$'
+      resolucao: |
+        Produto da diagonal principal menos o produto da diagonal secundária.
+        $4 \cdot 1 - (-2) \cdot 3 = 4 + 6 = 10$; $(-1)(-6) - 3 \cdot 2 = 6 - 6 = 0$; $a \cdot a - b \cdot b = a^2 - b^2$.
+      resposta: '$1$; $10$; $0$; $a^2 - b^2$'
+    - enunciado: 'Calcule os determinantes.'
+      itens:
+      - '$\begin{vmatrix} 7 & 2 \\ 3 & 5 \end{vmatrix}$'
+      - '$\begin{vmatrix} 0 & 5 \\ -2 & 4 \end{vmatrix}$'
+      - '$\begin{vmatrix} \tfrac{1}{2} & 3 \\ \tfrac{1}{3} & 4 \end{vmatrix}$'
+      - '$\begin{vmatrix} 2\sqrt{2} & 3 \\ \sqrt{2} & 4 \end{vmatrix}$'
+      colunas: 2
+      espaco_item: 14
+      resolucao: |
+        (a) $35 - 6 = 29$. (b) $0 - (-10) = 10$. (c) $\tfrac{1}{2}\cdot 4 - 3\cdot\tfrac{1}{3} = 2 - 1 = 1$. (d) $8\sqrt{2} - 3\sqrt{2} = 5\sqrt{2}$.
+      resposta: '(a) $29$ (b) $10$ (c) $1$ (d) $5\sqrt{2}$'
+    - enunciado: 'Calcule $\det M$, com $M = \begin{pmatrix} 2 & 1 & 3 \\ 0 & 4 & 1 \\ 5 & 2 & 1 \end{pmatrix}$, pela regra de Sarrus, completando os passos.'
+      itens:
+      - 'Produtos que descem: $2 \cdot 4 \cdot 1 + 1 \cdot 1 \cdot 5 + 3 \cdot 0 \cdot 2 = {{13}}$'
+      - 'Produtos que sobem: $3 \cdot 4 \cdot 5 + 2 \cdot 1 \cdot 2 + 1 \cdot 0 \cdot 1 = {{64}}$'
+      - '$\det M = {{13}} - {{64}} = {{-51}}$'
+      resolucao: |
+        Repetindo as duas primeiras colunas à direita, as diagonais que descem dão $8 + 5 + 0 = 13$ e as que sobem dão $60 + 4 + 0 = 64$.
+        $\det M = 13 - 64 = -51$.
+      resposta: '$13$; $64$; $-51$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'O determinante da matriz identidade de ordem 3 é 3.'
+      - '$\begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc$.'
+      - 'A regra de Sarrus serve para calcular determinantes de ordem 4.'
+      - '$\begin{vmatrix} 2 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 4 \end{vmatrix} = 24$.'
+      justificar: true
+      espaco: 18
+      resolucao: |
+        (F) Pela regra de Sarrus, só o produto da diagonal principal não é nulo: $1 \cdot 1 \cdot 1 = 1$. (V) É a definição de ordem 2.
+        (F) Sarrus só vale para ordem 3. (V) Só a diagonal principal contribui: $2 \cdot 3 \cdot 4 = 24$.
+      resposta: F, V, F, V
+    - enunciado: 'Associe cada matriz ao valor do seu determinante (um valor pode ser usado mais de uma vez).'
+      esquerda:
+      - '$0$'
+      - '$1$'
+      - '$-2$'
+      - '$6$'
+      direita:
+      - '$\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$'
+      - '$\begin{pmatrix} 2 & 4 \\ 1 & 2 \end{pmatrix}$'
+      - '$\begin{pmatrix} 3 & 0 \\ 0 & 2 \end{pmatrix}$'
+      - '$\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$'
+      - '$\begin{pmatrix} 2 & 1 \\ 2 & 0 \end{pmatrix}$'
+      resolucao: |
+        $4 - 6 = -2$; $4 - 4 = 0$; $6 - 0 = 6$; a identidade tem determinante 1; $0 - 2 = -2$.
+      resposta: 'De cima para baixo: 3, 1, 4, 2, 3'
+    - enunciado: 'Para cada lei de formação, escreva a matriz $A = (a_{ij})_{2\times 2}$ no espaço ao lado e complete o quadro com $\det A$.'
+      tabela:
+        cabecalho: ['Lei de formação', '$\det A$']
+        linhas:
+        - ['$a_{ij} = i + j$', '${{-1}}$']
+        - ['$a_{ij} = i \cdot j$', '${{0}}$']
+        - ['$a_{ij} = i - j$', '${{1}}$']
+        - ['$a_{ij} = 2i - j$', '${{2}}$']
+      espaco: 22
+      resolucao: |
+        $\begin{pmatrix} 2 & 3 \\ 3 & 4 \end{pmatrix}$: $8 - 9 = -1$. $\begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}$: $4 - 4 = 0$.
+        $\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$: $0 + 1 = 1$. $\begin{pmatrix} 1 & 0 \\ 3 & 2 \end{pmatrix}$: $2 - 0 = 2$.
+      resposta: '$-1$; $0$; $1$; $2$'
+    - enunciado: 'Resolva a equação $\begin{vmatrix} x & 3 \\ 2 & x \end{vmatrix} = 10$, completando os passos.'
+      itens:
+      - '$x \cdot x - 3 \cdot 2 = 10 \Rightarrow x^2 = {{16}}$'
+      - '$x = {{4}}$ ou $x = {{-4}}$'
+      resolucao: |
+        $x^2 - 6 = 10$, então $x^2 = 16$ e $x = \pm 4$. Conferência: $16 - 6 = 10$.
+      resposta: '$16$; $4$ ou $-4$'
+  - nome: Nível 2
+    questoes:
+    - enunciado: 'Calcule os determinantes pela regra de Sarrus.'
+      itens:
+      - '$\begin{vmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{vmatrix}$'
+      - '$\begin{vmatrix} 2 & 0 & 1 \\ 1 & 3 & 2 \\ 1 & 1 & 4 \end{vmatrix}$'
+      - '$\begin{vmatrix} 1 & -1 & 2 \\ 0 & 3 & 1 \\ 2 & 1 & 0 \end{vmatrix}$'
+      - '$\begin{vmatrix} 3 & 5 & -1 \\ 0 & 2 & 7 \\ 0 & 0 & -4 \end{vmatrix}$'
+      colunas: 2
+      espaco_item: 24
+      resolucao: |
+        (a) Descem: $45 + 84 + 96 = 225$; sobem: $105 + 48 + 72 = 225$; $\det = 0$.
+        (b) Descem: $24 + 0 + 1 = 25$; sobem: $3 + 4 + 0 = 7$; $\det = 18$.
+        (c) Descem: $0 - 2 + 0 = -2$; sobem: $12 + 1 + 0 = 13$; $\det = -15$.
+        (d) Abaixo da diagonal só há zeros: sobra $3 \cdot 2 \cdot (-4) = -24$.
+      resposta: '(a) $0$ (b) $18$ (c) $-15$ (d) $-24$'
+    - texto: |
+        Lucas calculou o determinante abaixo assim:
+        \[ \begin{vmatrix} 2 & -1 \\ 3 & 4 \end{vmatrix} = 2 \cdot 4 - (-1) \cdot 3 = 8 - 3 = 5. \]
+      enunciado: 'Encontre o erro de Lucas e calcule o valor correto.'
+      espaco: 20
+      resolucao: |
+        O produto $(-1) \cdot 3$ vale $-3$, e subtrair $-3$ é somar 3. Lucas perdeu o sinal do produto.
+        O certo é $8 - (-3) = 8 + 3 = 11$.
+      resposta: 'Ele perdeu o sinal de $(-1)\cdot 3$; o determinante é 11'
+    - enunciado: 'Resolva a equação $\begin{vmatrix} 1 & 2 & 1 \\ x & 1 & 0 \\ 0 & 1 & x \end{vmatrix} = -4$.'
+      espaco: 26
+      resolucao: |
+        Descem: $1 \cdot 1 \cdot x + 2 \cdot 0 \cdot 0 + 1 \cdot x \cdot 1 = 2x$. Sobem: $1 \cdot 1 \cdot 0 + 1 \cdot 0 \cdot 1 + x \cdot 2 \cdot x = 2x^2$.
+        $2x - 2x^2 = -4 \Rightarrow x^2 - x - 2 = 0 \Rightarrow x = 2$ ou $x = -1$.
+      resposta: '$x = 2$ ou $x = -1$'
+    - enunciado: 'Resolva a inequação $\begin{vmatrix} x & 2 \\ x & x \end{vmatrix} > 0$.'
+      espaco: 24
+      resolucao: |
+        $x \cdot x - 2x = x^2 - 2x = x(x - 2)$. Esse produto é positivo fora das raízes 0 e 2.
+        Solução: $x < 0$ ou $x > 2$.
+      resposta: '$x < 0$ ou $x > 2$'
+    - enunciado: 'Os autovalores de uma matriz quadrada $A$ são os números $\lambda$ tais que $\det(A - \lambda I) = 0$. Para $A = \begin{pmatrix} 4 & 1 \\ 2 & 3 \end{pmatrix}$, complete.'
+      itens:
+      - '$A - \lambda I = \begin{pmatrix} 4 - \lambda & 1 \\ 2 & 3 - \lambda \end{pmatrix}$'
+      - '$\det(A - \lambda I) = \lambda^2 - {{7}}\,\lambda + {{10}}$'
+      - 'Autovalores: $\lambda = {{2}}$ e $\lambda = {{5}}$'
+      resolucao: |
+        $(4 - \lambda)(3 - \lambda) - 1 \cdot 2 = 12 - 7\lambda + \lambda^2 - 2 = \lambda^2 - 7\lambda + 10$.
+        As raízes têm soma 7 e produto 10: $\lambda = 2$ e $\lambda = 5$.
+      resposta: '$7$ e $10$; $2$ e $5$'
+    - enunciado: 'Considere $A = \begin{pmatrix} 1 & 2 \\ 0 & 3 \end{pmatrix}$ e $B = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$.'
+      itens:
+      - 'Calcule $\det A$ e $\det B$.'
+      - 'Calcule $AB$ e $\det(AB)$.'
+      - 'Compare $\det(AB)$ com $\det A \cdot \det B$.'
+      espaco_item: 16
+      resolucao: |
+        (a) $\det A = 3 - 0 = 3$ e $\det B = 2 - 1 = 1$.
+        (b) $AB = \begin{pmatrix} 2 + 2 & 1 + 2 \\ 3 & 3 \end{pmatrix} = \begin{pmatrix} 4 & 3 \\ 3 & 3 \end{pmatrix}$ e $\det(AB) = 12 - 9 = 3$.
+        (c) São iguais: $3 = 3 \cdot 1$. (Isso sempre acontece: é o teorema de Binet, que veremos em breve.)
+      resposta: '(a) $3$ e $1$ (b) $\begin{pmatrix} 4 & 3 \\ 3 & 3 \end{pmatrix}$ e $3$ (c) iguais'
+    - enunciado: 'Escreva cada matriz de ordem 3 e calcule o seu determinante.'
+      itens:
+      - '$A = (a_{ij})$, com $a_{ij} = 2$ se $i = j$ e $a_{ij} = 1$ se $i \neq j$.'
+      - '$B = (b_{ij})$, com $b_{ij} = 0$ se $i = j$ e $b_{ij} = 1$ se $i \neq j$.'
+      espaco_item: 24
+      resolucao: |
+        (a) $A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}$: descem $8 + 1 + 1 = 10$; sobem $2 + 2 + 2 = 6$; $\det A = 4$.
+        (b) $B = \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix}$: descem $0 + 1 + 1 = 2$; sobem $0 + 0 + 0 = 0$; $\det B = 2$.
+      resposta: '(a) $\det A = 4$ (b) $\det B = 2$'
+    - enunciado: 'Determine os valores de $m$ para os quais $\begin{vmatrix} m + 1 & 3 \\ 2 & m \end{vmatrix} = 0$.'
+      espaco: 20
+      resolucao: |
+        $(m + 1)m - 6 = m^2 + m - 6 = 0$. As raízes são $m = 2$ e $m = -3$.
+        Conferência: com $m = 2$, $3 \cdot 2 - 6 = 0$; com $m = -3$, $(-2)(-3) - 6 = 0$.
+      resposta: '$m = 2$ ou $m = -3$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Considere $D(x) = \begin{vmatrix} x & 1 & 1 \\ 1 & x & 1 \\ 1 & 1 & x \end{vmatrix}$.'
+      itens:
+      - 'Mostre que $D(x) = x^3 - 3x + 2$.'
+      - 'Verifique que $x^3 - 3x + 2 = (x - 1)^2(x + 2)$ e resolva $D(x) = 0$.'
+      espaco_item: 24
+      resolucao: |
+        (a) Descem: $x^3 + 1 + 1$. Sobem: $x + x + x$. Então $D(x) = x^3 + 2 - 3x$.
+        (b) $(x - 1)^2(x + 2) = (x^2 - 2x + 1)(x + 2) = x^3 - 3x + 2$. As raízes são $x = 1$ (dupla) e $x = -2$.
+      resposta: '(a) Ver resolução (b) $x = 1$ ou $x = -2$'
+    - enunciado: 'Considere $E(x) = \begin{vmatrix} 1 & 1 & 1 \\ 1 & x & 1 \\ 1 & 1 & x \end{vmatrix}$.'
+      itens:
+      - 'Mostre que $E(x) = (x - 1)^2$.'
+      - 'Para que valores de $x$ temos $E(x) > 0$? E $E(x) < 0$?'
+      espaco_item: 22
+      resolucao: |
+        (a) Descem: $x^2 + 1 + 1$. Sobem: $x + 1 + x$. $E(x) = x^2 + 2 - 2x - 1 = x^2 - 2x + 1 = (x - 1)^2$.
+        (b) $E(x) > 0$ para todo $x \neq 1$. $E(x) < 0$ não acontece: um quadrado nunca é negativo.
+      resposta: '(a) Ver resolução (b) $x \neq 1$; nunca'
+    - enunciado: 'Determine os autovalores da matriz $A = \begin{pmatrix} 2 & 1 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 5 \end{pmatrix}$, isto é, os valores de $\lambda$ tais que $\det(A - \lambda I) = 0$.'
+      espaco: 24
+      resolucao: |
+        $A - \lambda I = \begin{pmatrix} 2 - \lambda & 1 & 0 \\ 0 & 3 - \lambda & 1 \\ 0 & 0 & 5 - \lambda \end{pmatrix}$ tem zeros abaixo da diagonal; por Sarrus, sobra $(2 - \lambda)(3 - \lambda)(5 - \lambda)$.
+        Autovalores: $\lambda = 2$, $\lambda = 3$ e $\lambda = 5$, os elementos da diagonal.
+      resposta: '$2$, $3$ e $5$'
+    - enunciado: 'Considere $A = \begin{pmatrix} 2 & 1 \\ 1 & 3 \end{pmatrix}$.'
+      itens:
+      - 'Calcule $\det A$.'
+      - 'Calcule $A^2$ e $\det(A^2)$. Compare com $(\det A)^2$.'
+      - 'Calcule $\det(2A)$. É igual a $2 \det A$?'
+      espaco_item: 18
+      resolucao: |
+        (a) $6 - 1 = 5$.
+        (b) $A^2 = \begin{pmatrix} 5 & 5 \\ 5 & 10 \end{pmatrix}$, $\det(A^2) = 50 - 25 = 25 = (\det A)^2$.
+        (c) $2A = \begin{pmatrix} 4 & 2 \\ 2 & 6 \end{pmatrix}$, $\det(2A) = 24 - 4 = 20 = 4 \det A$. Não é $2\det A = 10$: o fator 2 aparece nas duas linhas.
+      resposta: '(a) $5$ (b) $25 = (\det A)^2$ (c) $20$; não, é $4\det A$'
+    - enunciado: 'Determine os valores reais de $k$ para os quais, ao mesmo tempo, $\begin{vmatrix} 1 & k \\ k & 4 \end{vmatrix} < 0$ e $\begin{vmatrix} k & 1 & 0 \\ 1 & k & 0 \\ 0 & 0 & 2 \end{vmatrix} > 0$.'
+      espaco: 28
+      resolucao: |
+        O primeiro é $4 - k^2 < 0$, isto é, $k < -2$ ou $k > 2$.
+        O segundo: descem $2k^2$; sobem $2$; $2k^2 - 2 > 0$, isto é, $k < -1$ ou $k > 1$.
+        As duas condições juntas: $k < -2$ ou $k > 2$.
+      resposta: '$k < -2$ ou $k > 2$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um aplicativo de banco gera um código de segurança a partir dos quatro últimos dígitos do cartão do cliente. Os dígitos são colocados, na ordem, em uma matriz quadrada de ordem 2, conforme o quadro, e o código é o determinante dessa matriz. Por exemplo, para o final 3725, a matriz é $\begin{pmatrix} 3 & 7 \\ 2 & 5 \end{pmatrix}$ e o código é $15 - 14 = 1$.
+    tabela:
+      cabecalho: ['1º dígito', '2º dígito', '3º dígito', '4º dígito']
+      linhas:
+      - ['$a_{11}$', '$a_{12}$', '$a_{21}$', '$a_{22}$']
+    enunciado: |
+      O código de segurança de um cartão de final 4825 é
+    opcoes: ['$4$', '$12$', '$36$', '$40$', '$56$']
+    correta: A
+    resolucao: |
+      A matriz é $\begin{pmatrix} 4 & 8 \\ 2 & 5 \end{pmatrix}$ e o determinante é $4 \cdot 5 - 8 \cdot 2 = 20 - 16 = 4$.
+      36 soma os produtos das diagonais em vez de subtrair.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\begin{vmatrix} 2 & -3 \\ 4 & 1 \end{vmatrix}$ é
+    opcoes: ['$-14$', '$-10$', '$10$', '$14$', '$22$']
+    correta: D
+    resolucao: |
+      $2 \cdot 1 - (-3) \cdot 4 = 2 + 12 = 14$. Quem perde o sinal de $-3$ encontra $2 - 12 = -10$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O determinante da matriz $\begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 2 \\ 0 & 0 & 1 \end{pmatrix}$ é igual a
+    opcoes: ['$0$.', '$1$.', '$3$.', '$6$.']
+    correta: B
+    resolucao: |
+      Pela regra de Sarrus, com zeros abaixo da diagonal, só o produto da diagonal principal não se anula: $1 \cdot 1 \cdot 1 = 1$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere as matrizes $A = \begin{pmatrix} 2 & 1 \\ 3 & 4 \end{pmatrix}$ e $B = \begin{pmatrix} 1 & 0 & 2 \\ 0 & 3 & 0 \\ 1 & 0 & 1 \end{pmatrix}$. Assinale o que for correto.
+    proposicoes:
+    - '$\det A = 5$.'
+    - '$\det A^t = 5$.'
+    - '$\det B = 3$.'
+    - '$\det(2A) = 10$.'
+    - '$\det(A^2) = 25$.'
+    corretas: [1, 2, 5]
+    resolucao: |
+      01) Correta: $8 - 3 = 5$. 02) Correta: $A^t = \begin{pmatrix} 2 & 3 \\ 1 & 4 \end{pmatrix}$, com $8 - 3 = 5$.
+      04) Incorreta: descem $3 + 0 + 0 = 3$; sobem $6 + 0 + 0 = 6$; $\det B = -3$.
+      08) Incorreta: $2A = \begin{pmatrix} 4 & 2 \\ 6 & 8 \end{pmatrix}$ e $\det(2A) = 32 - 12 = 20$.
+      16) Correta: $A^2 = \begin{pmatrix} 7 & 6 \\ 18 & 19 \end{pmatrix}$ e $133 - 108 = 25$.
+      Soma: $01 + 02 + 16 = 19$.
+
+  - estilo: Unesp
+    enunciado: |
+      Uma matriz quadrada é chamada singular quando o seu determinante é nulo. Entre as matrizes a seguir, a única singular é
+    opcoes:
+    - '$\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$'
+    - '$\begin{pmatrix} 3 & 1 \\ 6 & 3 \end{pmatrix}$'
+    - '$\begin{pmatrix} 2 & -4 \\ 1 & 2 \end{pmatrix}$'
+    - '$\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$'
+    - '$\begin{pmatrix} 2 & 3 \\ 4 & 6 \end{pmatrix}$'
+    correta: E
+    resolucao: |
+      Determinantes: $1 - 4 = -3$; $9 - 6 = 3$; $4 + 4 = 8$; $0 - 1 = -1$; $12 - 12 = 0$.
+      Na última, a segunda linha é o dobro da primeira.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'Para quaisquer números reais $a$, $b$, $c$ e $d$, $\begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc$.'
+    - 'O determinante da matriz identidade de ordem 3 é igual a 1.'
+    - 'Se todos os elementos de uma matriz de ordem 2 são positivos, então o seu determinante é positivo.'
+    - 'A regra de Sarrus é usada para calcular determinantes de ordem 3.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I, II e IV, apenas.', 'I, III e IV, apenas.', 'I, II, III e IV.']
+    correta: C
+    resolucao: |
+      I. Correta. II. Correta: só a diagonal principal contribui, com $1 \cdot 1 \cdot 1$.
+      III. Incorreta: $\begin{vmatrix} 1 & 2 \\ 3 & 4 \end{vmatrix} = -2$. IV. Correta.
+
+  - estilo: Fuvest
+    enunciado: |
+      O produto dos valores de $x$ que satisfazem $\begin{vmatrix} x & 2 \\ 3 & x \end{vmatrix} = 19$ é
+    opcoes: ['$-25$', '$-5$', '$0$', '$5$', '$25$']
+    correta: A
+    resolucao: |
+      $x^2 - 6 = 19$, logo $x^2 = 25$ e $x = 5$ ou $x = -5$. O produto é $-25$ (e a soma, 0).
+      Quem esquece a solução negativa marca 5 ou 25.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      Em um sistema de criptografia, as mensagens são codificadas com uma chave $K = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$. Para que a mensagem possa ser decodificada depois, a chave precisa ter determinante diferente de zero. Um programador testou cinco chaves, cujos elementos estão no quadro.
+    tabela:
+      cabecalho: ['Chave', '$a$', '$b$', '$c$', '$d$']
+      linhas:
+      - ['$K_1$', '2', '3', '1', '2']
+      - ['$K_2$', '4', '6', '2', '3']
+      - ['$K_3$', '3', '1', '5', '2']
+      - ['$K_4$', '1', '4', '2', '9']
+      - ['$K_5$', '5', '2', '7', '3']
+    enunciado: |
+      A chave que não pode ser usada é
+    opcoes: ['$K_1$.', '$K_2$.', '$K_3$.', '$K_4$.', '$K_5$.']
+    correta: B
+    resolucao: |
+      Determinantes ($ad - bc$): $K_1$: $4 - 3 = 1$; $K_2$: $12 - 12 = 0$; $K_3$: $6 - 5 = 1$; $K_4$: $9 - 8 = 1$; $K_5$: $15 - 14 = 1$.
+      Só $K_2$ tem determinante nulo.
+
+  - estilo: Unicamp
+    enunciado: |
+      O valor de $x$ para o qual $\begin{vmatrix} 1 & x & 2 \\ 0 & 3 & 1 \\ 1 & 0 & x \end{vmatrix} = 10$ é
+    opcoes: ['$2$.', '$3$.', '$4$.', '$5$.']
+    correta: C
+    resolucao: |
+      Descem: $3x + x + 0 = 4x$. Sobem: $2 \cdot 3 \cdot 1 + 1 \cdot 1 \cdot 0 + x \cdot 0 \cdot x = 6$. Então $4x - 6 = 10$ e $x = 4$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$\begin{vmatrix} \operatorname{sen} x & \cos x \\ -\cos x & \operatorname{sen} x \end{vmatrix} = 1$ para todo número real $x$.'
+    - '$\begin{vmatrix} 1 & 1 & 1 \\ 1 & 2 & 3 \\ 1 & 4 & 9 \end{vmatrix} = 2$.'
+    - 'Se $\begin{vmatrix} a & b \\ c & d \end{vmatrix} = 3$, então $\begin{vmatrix} 3a & 3b \\ 3c & 3d \end{vmatrix} = 9$.'
+    - '$\begin{vmatrix} 2 & 0 & 0 \\ 5 & 3 & 0 \\ 7 & 1 & 4 \end{vmatrix} = 24$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – F – V – V.', 'V – V – F – V.', 'F – V – F – V.', 'V – V – V – F.', 'F – F – V – V.']
+    correta: B
+    resolucao: |
+      (V) $\operatorname{sen}^2 x + \cos^2 x = 1$.
+      (V) Descem: $18 + 3 + 4 = 25$; sobem: $2 + 12 + 9 = 23$; $25 - 23 = 2$.
+      (F) $9ad - 9bc = 9 \cdot 3 = 27$.
+      (V) Acima da diagonal só há zeros: $2 \cdot 3 \cdot 4 = 24$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a matriz $A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & 3 \\ 2 & 0 & 1 \end{pmatrix}$ e a identidade $I$ de ordem 3. Assinale o que for correto.
+    proposicoes:
+    - '$\det A = 13$.'
+    - '$\det A^t = 13$.'
+    - '$\det(-A) = -13$.'
+    - '$\det(A - I) = 12$.'
+    - 'Trocando de posição a primeira e a segunda linhas de $A$, o determinante não se altera.'
+    - '$\det(2A) = 26$.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) Correta: descem $1 + 12 + 0 = 13$; sobem $0 + 0 + 0$.
+      02) Correta: $A^t = \begin{pmatrix} 1 & 0 & 2 \\ 2 & 1 & 0 \\ 0 & 3 & 1 \end{pmatrix}$, com descem $1 + 0 + 12$ e sobem $0$.
+      04) Correta: em $-A$ cada um dos três fatores de cada produto troca de sinal: $(-1)^3 \cdot 13 = -13$.
+      08) Correta: $A - I = \begin{pmatrix} 0 & 2 & 0 \\ 0 & 0 & 3 \\ 2 & 0 & 0 \end{pmatrix}$; descem $0 + 12 + 0$; sobem $0$.
+      16) Incorreta: a nova matriz tem determinante $-13$.
+      32) Incorreta: $\det(2A) = 2^3 \cdot 13 = 104$.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Seja $A = \begin{pmatrix} 3 & 1 \\ 2 & 2 \end{pmatrix}$ e $I$ a identidade de ordem 2. Os valores de $\lambda$ para os quais $\det(A - \lambda I) = 0$ são
+    opcoes: ['$-1$ e $-4$', '$2$ e $3$', '$1$ e $5$', '$1$ e $4$', '$0$ e $5$']
+    correta: D
+    resolucao: |
+      $(3 - \lambda)(2 - \lambda) - 2 = \lambda^2 - 5\lambda + 4 = 0$, com raízes 1 e 4.
+      2 e 3 são os elementos da diagonal; $\lambda^2 - 5\lambda = 0$ (esquecendo o $-2$) dá 0 e 5.
+
+  - estilo: Unesp
+    texto: |
+      Em um jogo, cada participante recebe quatro cartas numeradas e as coloca, na ordem em que recebeu, nas posições $a_{11}$, $a_{12}$, $a_{21}$ e $a_{22}$ de uma matriz de ordem 2. A pontuação é o determinante dessa matriz, e vence quem fizer mais pontos. O quadro mostra as cartas de cada participante.
+    tabela:
+      cabecalho: ['Participante', '1ª', '2ª', '3ª', '4ª']
+      linhas:
+      - ['Ana', '5', '2', '3', '4']
+      - ['Beto', '6', '3', '2', '1']
+      - ['Cris', '4', '1', '$-3$', '3']
+      - ['Davi', '7', '5', '2', '3']
+      - ['Eva', '3', '$-2$', '4', '1']
+    enunciado: |
+      O vencedor foi
+    opcoes: ['Ana.', 'Beto.', 'Cris.', 'Davi.', 'Eva.']
+    correta: C
+    resolucao: |
+      Ana: $20 - 6 = 14$. Beto: $6 - 6 = 0$. Cris: $12 - (-3) = 15$. Davi: $21 - 10 = 11$. Eva: $3 - (-8) = 11$.
+      Vence Cris. Davi tem a maior soma de cartas, mas não o maior determinante.
+
+  - estilo: Enem
+    texto: |
+      A planta de um terreno foi desenhada sobre um quadriculado com lados de 1 metro. O terreno tem a forma de um paralelogramo com um vértice na origem e lados dados pelos vetores $(6, 2)$ e $(2, 5)$, como na figura. O topógrafo informou que a área de um paralelogramo com lados $(a, c)$ e $(b, d)$ é o valor absoluto do determinante $\begin{vmatrix} a & b \\ c & d \end{vmatrix}$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.5]
+        \draw[step=1, gray!25, very thin] (0,0) grid (9,8);
+        \draw[-latex, ink!60] (0,0) -- (9.5,0); \draw[-latex, ink!60] (0,0) -- (0,8.5);
+        \fill[roxo!12] (0,0) -- (6,2) -- (8,7) -- (2,5) -- cycle;
+        \draw[roxo, line width=1pt] (0,0) -- (6,2) -- (8,7) -- (2,5) -- cycle;
+        \fill[roxo] (0,0) circle (4pt) node[below left, font=\scriptsize] {$(0, 0)$};
+        \fill[roxo] (6,2) circle (4pt) node[below right, font=\scriptsize] {$(6, 2)$};
+        \fill[roxo] (2,5) circle (4pt) node[left, font=\scriptsize] {$(2, 5)$};
+        \fill[roxo] (8,7) circle (4pt) node[right, font=\scriptsize] {$(8, 7)$};
+        \end{scope}
+    enunciado: |
+      A área do terreno, em metros quadrados, é
+    opcoes: ['$13$', '$20$', '$24$', '$26$', '$52$']
+    correta: D
+    resolucao: |
+      $\begin{vmatrix} 6 & 2 \\ 2 & 5 \end{vmatrix} = 30 - 4 = 26$, logo a área é $26$ m².
+      13 seria a área do triângulo (metade); 52 dobra o resultado.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Uma empresa de segurança digital usa chaves de ordem 3 que dependem de um parâmetro real $t$:
+        \[ K(t) = \begin{pmatrix} 1 & t & 0 \\ 0 & 1 & t \\ t & 0 & 1 \end{pmatrix}. \]
+        Uma chave só pode ser usada quando o seu determinante é diferente de zero.
+    enunciado: |
+      Para $t = 2$, o determinante da chave é
+    opcoes: ['$1$', '$3$', '$5$', '$8$', '$9$']
+    correta: E
+    resolucao: |
+      Descem: $1 + t^3 + 0$; sobem: $0 + 0 + 0$. Então $\det K(t) = 1 + t^3$ e, para $t = 2$, vale $9$.
+      Quem esquece a parcela 1 marca 8.
+
+  - estilo: Unicamp
+    enunciado: |
+      O único valor real de $t$ para o qual a chave $K(t)$ não pode ser usada é
+    opcoes: ['$-2$.', '$-1$.', '$0$.', '$1$.']
+    correta: B
+    resolucao: |
+      $1 + t^3 = 0 \Rightarrow t^3 = -1 \Rightarrow t = -1$, a única raiz real.
+
+  - estilo: UEM
+    enunciado: |
+      Considere a função $f$ dada por $f(x) = \begin{vmatrix} x & 1 & 0 \\ 0 & x & 1 \\ 1 & 0 & x \end{vmatrix}$. Assinale o que for correto.
+    proposicoes:
+    - '$f(0) = 1$.'
+    - '$f(-1) = 0$.'
+    - '$f(x) = x^3 + 1$ para todo $x$ real.'
+    - '$f(2) = 7$.'
+    - 'A equação $f(x) = 9$ tem a solução $x = 2$.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      Descem: $x^3 + 1 + 0$; sobem: $0 + 0 + 0$. Logo $f(x) = x^3 + 1$ (04 correta).
+      01) Correta: $f(0) = 1$. 02) Correta: $-1 + 1 = 0$. 08) Incorreta: $f(2) = 9$. 16) Correta.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Fuvest
+    enunciado: |
+      A quantidade de números inteiros $x$ que satisfazem $\begin{vmatrix} x & 1 \\ 4 & x \end{vmatrix} < 0$ é
+    opcoes: ['$1$', '$2$', '$3$', '$4$', '$5$']
+    correta: C
+    resolucao: |
+      $x^2 - 4 < 0 \Rightarrow -2 < x < 2$. Os inteiros são $-1$, $0$ e $1$: três.
+      Incluir $-2$ e $2$ (que dão determinante nulo) leva a 5.
+
+  - estilo: Enem
+    texto: |
+      Uma planilha eletrônica foi programada para montar uma matriz quadrada de ordem 3 a partir de uma regra simples: em cada célula da linha $i$ e coluna $j$, ela escreve 1 quando $i \le j$ e escreve 2 quando $i > j$. Em seguida, a própria planilha calcula o determinante da matriz montada, para usar o resultado em outra conta.
+    enunciado: |
+      O determinante calculado pela planilha é
+    opcoes: ['$1$', '$2$', '$6$', '$7$', '$8$']
+    correta: A
+    resolucao: |
+      A matriz é $\begin{pmatrix} 1 & 1 & 1 \\ 2 & 1 & 1 \\ 2 & 2 & 1 \end{pmatrix}$. Descem: $1 + 2 + 4 = 7$; sobem: $2 + 2 + 2 = 6$. Determinante: $7 - 6 = 1$.
+      7 e 6 são só uma das partes da regra de Sarrus.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\begin{vmatrix} 1 & 1 & 1 \\ 1 & 2 & 4 \\ 1 & 4 & 16 \end{vmatrix}$ é
+    opcoes: ['$1$', '$2$', '$3$', '$4$', '$6$']
+    correta: E
+    resolucao: |
+      Descem: $32 + 4 + 4 = 40$; sobem: $2 + 16 + 16 = 34$. Determinante: $6$.
+      Repare que $6 = (2 - 1)(4 - 1)(4 - 2)$; as alternativas 1, 2 e 3 são esses fatores isolados.
+
+aprofundamento:
+  questoes:
+  - estilo: Unicamp
+    texto: |
+      Em geometria analítica, a área do triângulo de vértices $(x_1, y_1)$, $(x_2, y_2)$ e $(x_3, y_3)$ é $\dfrac{1}{2}\left|D\right|$, em que $D = \begin{vmatrix} x_1 & y_1 & 1 \\ x_2 & y_2 & 1 \\ x_3 & y_3 & 1 \end{vmatrix}$. Quando $D = 0$, os três pontos estão alinhados. (Dica: essa fórmula será vista na aula de geometria analítica; aqui, basta usá-la.)
+    enunciado: ''
+    itens:
+    - 'Calcule a área do triângulo de vértices $(0, 0)$, $(4, 0)$ e $(1, 3)$.'
+    - 'Determine $k$ para que os pontos $(1, 2)$, $(3, k)$ e $(5, 10)$ estejam alinhados.'
+    - 'Determine os valores de $k$ para os quais o triângulo de vértices $(1, 2)$, $(3, k)$ e $(5, 10)$ tem área 4.'
+    espaco: 62
+    resolucao: |
+      a) $D = \begin{vmatrix} 0 & 0 & 1 \\ 4 & 0 & 1 \\ 1 & 3 & 1 \end{vmatrix}$: descem $0 + 0 + 12$; sobem $0 + 0 + 0$; $D = 12$ e a área é 6.
+      b) Descem: $k + 10 + 30 = k + 40$; sobem: $5k + 10 + 6 = 5k + 16$. $D = 24 - 4k = 0 \Rightarrow k = 6$. (Os pontos estão na reta $y = 2x$.)
+      c) $\tfrac{1}{2}|24 - 4k| = 4 \Rightarrow |24 - 4k| = 8 \Rightarrow 24 - 4k = 8$ ou $24 - 4k = -8$, isto é, $k = 4$ ou $k = 8$.
+    resposta: 'a) 6; b) $k = 6$; c) $k = 4$ ou $k = 8$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $A = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$ e a identidade $I$ de ordem 2.'
+    itens:
+    - 'Calcule o polinômio $p(\lambda) = \det(A - \lambda I)$.'
+    - 'Determine os autovalores de $A$ (as raízes de $p$).'
+    - 'Para cada autovalor $\lambda$, encontre uma matriz coluna $v = \begin{pmatrix} x \\ y \end{pmatrix}$, não nula, tal que $Av = \lambda v$.'
+    espaco: 62
+    resolucao: |
+      a) $p(\lambda) = (1 - \lambda)^2 - 4 = \lambda^2 - 2\lambda - 3$.
+      b) $\lambda = 3$ e $\lambda = -1$.
+      c) Para $\lambda = 3$: $x + 2y = 3x$ dá $y = x$; por exemplo, $v = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ (de fato, $Av = \begin{pmatrix} 3 \\ 3 \end{pmatrix}$). Para $\lambda = -1$: $x + 2y = -x$ dá $y = -x$; por exemplo, $v = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
+    resposta: 'a) $\lambda^2 - 2\lambda - 3$; b) $3$ e $-1$; c) $\begin{pmatrix} 1 \\ 1 \end{pmatrix}$ e $\begin{pmatrix} 1 \\ -1 \end{pmatrix}$ (ou múltiplos)'
+
+  - estilo: ITA
+    enunciado: |
+      O valor de $\begin{vmatrix} 1 & 2 & 3 \\ 3 & 1 & 2 \\ 2 & 3 & 1 \end{vmatrix}$ é
+    opcoes: ['$0$', '$6$', '$12$', '$18$', '$36$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      Descem: $1 + 8 + 27 = 36$; sobem: $6 + 6 + 6 = 18$. Determinante: $18$.
+      Em geral, com $a$, $b$, $c$ “girando” nas linhas, o determinante é $a^3 + b^3 + c^3 - 3abc$. Quem só faz os produtos que descem marca 36.
+    resposta: 'D'
+
+  - estilo: Unesp
+    texto: |
+      O volume do paralelepípedo determinado por três vetores do espaço é o valor absoluto do determinante da matriz cujas linhas são as coordenadas desses vetores. Quando esse determinante é nulo, os três vetores estão num mesmo plano (são coplanares).
+    enunciado: ''
+    itens:
+    - 'Calcule o volume do paralelepípedo determinado pelos vetores $(2, 0, 0)$, $(1, 3, 0)$ e $(1, 1, 4)$.'
+    - 'Determine $k$ para que os vetores $(1, 1, 0)$, $(0, 1, 1)$ e $(1, 0, k)$ sejam coplanares.'
+    - 'Determine os valores de $k$ para os quais o paralelepípedo determinado por esses três últimos vetores tem volume 5.'
+    espaco: 62
+    resolucao: |
+      a) $\begin{vmatrix} 2 & 0 & 0 \\ 1 & 3 & 0 \\ 1 & 1 & 4 \end{vmatrix} = 2 \cdot 3 \cdot 4 = 24$ (acima da diagonal só há zeros). Volume 24.
+      b) $\begin{vmatrix} 1 & 1 & 0 \\ 0 & 1 & 1 \\ 1 & 0 & k \end{vmatrix}$: descem $k + 1 + 0$; sobem $0 + 0 + 0$. $k + 1 = 0 \Rightarrow k = -1$.
+      c) $|k + 1| = 5 \Rightarrow k = 4$ ou $k = -6$.
+    resposta: 'a) 24; b) $k = -1$; c) $k = 4$ ou $k = -6$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a função $f$ dada por $f(x) = \begin{vmatrix} x & 2 \\ 3 & x - 1 \end{vmatrix}$. Assinale o que for correto.
+    proposicoes:
+    - '$f(x) = x^2 - x - 6$ para todo $x$ real.'
+    - 'As raízes de $f$ são $-2$ e $3$.'
+    - '$f(x) < 0$ para todo $x$ com $-2 < x < 3$.'
+    - 'O menor valor que $f$ assume é $-6$.'
+    - '$f(0) = -6$.'
+    - '$f(x) = \begin{vmatrix} x & 3 \\ 2 & x - 1 \end{vmatrix}$ para todo $x$ real.'
+    - '$f(-x) = f(x)$ para todo $x$ real.'
+    corretas: [1, 2, 3, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) Correta: $x(x - 1) - 6$. 02) Correta: soma 1 e produto $-6$. 04) Correta: entre as raízes, a parábola (com concavidade para cima) fica abaixo do eixo.
+      08) Incorreta: o vértice tem $x = \tfrac{1}{2}$ e $f\left(\tfrac{1}{2}\right) = -\tfrac{25}{4} < -6$. 16) Correta.
+      32) Correta: é o determinante da transposta, com o mesmo valor $x(x - 1) - 6$. 64) Incorreta: $f(1) = -6$ e $f(-1) = -4$.
+    resposta: 'Soma 55 (01 + 02 + 04 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ e $B = \begin{pmatrix} 0 & 1 \\ 2 & 3 \end{pmatrix}$.'
+    itens:
+    - 'Calcule $\det A$, $\det B$ e $\det(AB)$.'
+    - 'Mostre que, nesse caso, $\det(A + B) \neq \det A + \det B$.'
+    - 'Mostre que, para toda matriz $M$ de ordem 2 e todo número real $k$, $\det(kM) = k^2 \det M$.'
+    espaco: 62
+    resolucao: |
+      a) $\det A = 4 - 6 = -2$; $\det B = 0 - 2 = -2$. $AB = \begin{pmatrix} 4 & 7 \\ 8 & 15 \end{pmatrix}$ e $\det(AB) = 60 - 56 = 4 = \det A \cdot \det B$.
+      b) $A + B = \begin{pmatrix} 1 & 3 \\ 5 & 7 \end{pmatrix}$, $\det(A + B) = 7 - 15 = -8$, mas $\det A + \det B = -4$.
+      c) Com $M = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$: $\det(kM) = (ka)(kd) - (kb)(kc) = k^2(ad - bc) = k^2 \det M$.
+    resposta: 'a) $-2$, $-2$ e $4$; b) $-8 \neq -4$; c) Ver resolução'
+
+  - estilo: Unicamp
+    enunciado: 'Considere $g(x) = \begin{vmatrix} x & 1 & 0 \\ 1 & x & 1 \\ 0 & 1 & x \end{vmatrix}$.'
+    itens:
+    - 'Mostre que $g(x) = x^3 - 2x$.'
+    - 'Determine as raízes de $g$.'
+    - 'Resolva a inequação $g(x) > 0$.'
+    espaco: 62
+    resolucao: |
+      a) Descem: $x^3 + 0 + 0$; sobem: $0 + x + x$. Então $g(x) = x^3 - 2x$.
+      b) $x(x^2 - 2) = 0$: $x = 0$, $x = \sqrt{2}$ ou $x = -\sqrt{2}$.
+      c) Estudando o sinal de $x$ e de $x^2 - 2$: o produto é positivo para $-\sqrt{2} < x < 0$ ou $x > \sqrt{2}$.
+    resposta: 'a) Ver resolução; b) $0$ e $\pm\sqrt{2}$; c) $-\sqrt{2} < x < 0$ ou $x > \sqrt{2}$'
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\begin{vmatrix} 1 & 1 & 1 \\ 2 & 3 & 5 \\ 4 & 9 & 25 \end{vmatrix}$ é
+    opcoes: ['$2$', '$3$', '$6$', '$12$', '$30$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      Descem: $75 + 20 + 18 = 113$; sobem: $12 + 45 + 50 = 107$. Determinante: $6$.
+      Repare que $6 = (3 - 2)(5 - 2)(5 - 3)$: a segunda linha tem os números 2, 3 e 5, e a terceira, os seus quadrados.
+    resposta: 'C'
+
+  - estilo: Unesp
+    texto: |
+      Considere todas as matrizes de ordem 2 cujos quatro elementos são 0 ou 1. Uma delas é sorteada ao acaso.
+    enunciado: ''
+    itens:
+    - 'Quantas matrizes desse tipo existem?'
+    - 'Quantas delas têm determinante igual a 1? E igual a $-1$?'
+    - 'Qual é a probabilidade de a matriz sorteada ter determinante nulo?'
+    espaco: 62
+    resolucao: |
+      a) Cada um dos 4 elementos tem 2 valores: $2^4 = 16$ matrizes.
+      b) $ad - bc = 1$ exige $ad = 1$ e $bc = 0$: $a = d = 1$ e $(b, c) \in \{(0, 0), (0, 1), (1, 0)\}$, 3 matrizes. Do mesmo modo, $ad - bc = -1$ exige $b = c = 1$ e $ad = 0$: 3 matrizes.
+      c) Determinante nulo: $16 - 3 - 3 = 10$ matrizes. Probabilidade $\tfrac{10}{16} = \tfrac{5}{8}$.
+    resposta: 'a) 16; b) 3 e 3; c) $\frac{5}{8}$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $M = \begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 + a & 1 \\ 1 & 1 & 1 + b \end{pmatrix}$, com $a$ e $b$ reais.'
+    itens:
+    - 'Mostre, pela regra de Sarrus, que $\det M = ab$.'
+    - 'Para que valores de $a$ e $b$ o determinante de $M$ é nulo?'
+    - 'Com $a = 2$, determine $b$ para que $\det M = 6$ e escreva a matriz $M$.'
+    espaco: 62
+    resolucao: |
+      a) Descem: $(1 + a)(1 + b) + 1 + 1$. Sobem: $(1 + a) + 1 + (1 + b)$. Diferença: $1 + a + b + ab + 2 - 3 - a - b = ab$.
+      b) $ab = 0$: quando $a = 0$ ou $b = 0$.
+      c) $2b = 6 \Rightarrow b = 3$, e $M = \begin{pmatrix} 1 & 1 & 1 \\ 1 & 3 & 1 \\ 1 & 1 & 4 \end{pmatrix}$.
+    resposta: 'a) Ver resolução; b) $a = 0$ ou $b = 0$; c) $b = 3$'
