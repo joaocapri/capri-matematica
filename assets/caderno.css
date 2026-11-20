@@ -152,6 +152,29 @@ body.no-gab .cd-zoomtag{display:none}
 .cd-status{position:fixed;left:50%;bottom:calc(max(12px,env(safe-area-inset-bottom)) + 60px);transform:translateX(-50%) translateY(10px);margin:0;padding:8px 14px;border-radius:999px;background:rgba(33,25,70,.9);color:#fff;font-size:13px;font-weight:600;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:40;white-space:nowrap;max-width:calc(100vw - 24px);overflow:hidden;text-overflow:ellipsis}
 .cd-status.on{opacity:1;transform:translateX(-50%) translateY(0)}
 
+/* ver questão: quando o zoom recorta o enunciado, ele vira um botão no canto */
+.cd-vq{position:fixed;z-index:21;left:max(12px,env(safe-area-inset-left));top:calc(var(--barra) + env(safe-area-inset-top) + 10px);display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px 0 11px;border:1px solid var(--linha);border-radius:999px;background:#fff;color:var(--ink);font-weight:700;font-size:14px;box-shadow:0 6px 18px rgba(33,25,70,.14);transform-origin:left center;animation:cd-vq-entra .22s cubic-bezier(.2,.9,.3,1.3)}
+.cd-vq svg{width:19px;height:19px;fill:none;stroke:var(--purple);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.cd-vq b{color:var(--purple)}
+.cd-vq:hover{border-color:var(--purple)}
+.cd-vq[aria-expanded="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cd-vq[aria-expanded="true"] svg,.cd-vq[aria-expanded="true"] b{stroke:var(--lime);color:var(--lime)}
+.cd-vq.sai{animation:cd-vq-sai .18s ease-in forwards}
+@keyframes cd-vq-entra{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@keyframes cd-vq-sai{to{opacity:0;transform:scale(.6)}}
+.cd-vq-fantasma{position:fixed;z-index:21;pointer-events:none;border:2px solid rgba(74,39,183,.55);border-radius:14px;background:rgba(241,237,252,.55);box-shadow:0 10px 30px rgba(33,25,70,.12);
+  transition:left .38s cubic-bezier(.4,0,.2,1),top .38s cubic-bezier(.4,0,.2,1),width .38s cubic-bezier(.4,0,.2,1),height .38s cubic-bezier(.4,0,.2,1),border-radius .38s,opacity .38s}
+.cd-vq-fundo{position:fixed;inset:0;z-index:23;background:rgba(33,25,70,.12)}
+.cd-vq-caixa{position:fixed;z-index:24;left:max(8px,env(safe-area-inset-left));top:calc(var(--barra) + env(safe-area-inset-top) + 8px);width:min(640px,calc(100vw - 16px));max-height:calc(100% - var(--barra) - env(safe-area-inset-top) - 92px);display:flex;flex-direction:column;background:#fff;border:1px solid var(--linha);border-radius:18px;box-shadow:0 18px 50px rgba(33,25,70,.24);overflow:hidden;transform-origin:22px 0;animation:cd-vq-abre .2s cubic-bezier(.2,.9,.3,1)}
+@keyframes cd-vq-abre{from{opacity:0;transform:scale(.92) translateY(-6px)}to{opacity:1;transform:none}}
+.cd-vq-topo{display:flex;justify-content:space-between;align-items:center;padding:8px 8px 6px 16px;border-bottom:1px solid #f0eef6}
+.cd-vq-topo b{font:700 15px 'Space Grotesk',system-ui,sans-serif;color:#4b4566}
+.cd-vq-topo button{width:34px;height:34px;border:0;border-radius:50%;background:#f3f1f8;font-size:20px;line-height:1;color:#4b4566}
+.cd-vq-img{overflow:auto;-webkit-overflow-scrolling:touch;padding:6px 10px 12px;touch-action:pan-y}
+.cd-vq-img canvas{display:block;width:100%;height:auto}
+.cd-vq-img canvas+canvas{margin-top:6px}
+@media (prefers-reduced-motion:reduce){.cd-vq,.cd-vq.sai,.cd-vq-caixa{animation:none}.cd-vq-fantasma{display:none}}
+
 @media (max-width:760px){
   .cd-titulo small{display:none}
   .cd-sep{margin:0 2px}

@@ -113,6 +113,14 @@
   <section class="cd-pop cd-mapa" id="cd-mapa" role="dialog" aria-label="Ir para a questão" hidden><div class="cd-mapa-grade" id="cd-mapa-grade"></div></section>
 </nav>
 
+<button type="button" class="cd-vq" id="cd-vq" aria-haspopup="dialog" aria-expanded="false" aria-controls="cd-vq-caixa" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4"/><path d="M9.5 12h6M9.5 15.5h6"/></svg><span>Ver questão <b id="cd-vq-n"></b></span>
+</button>
+<div class="cd-vq-fundo" id="cd-vq-fundo" hidden></div>
+<section class="cd-vq-caixa" id="cd-vq-caixa" role="dialog" aria-label="Enunciado da questão" hidden>
+  <div class="cd-vq-topo"><b id="cd-vq-titulo">Questão</b><button type="button" id="cd-vq-x" aria-label="Fechar">×</button></div>
+  <div class="cd-vq-img" id="cd-vq-img"></div>
+</section>
 <aside class="cd-resp" id="cd-resp" aria-label="Resposta e resolução" hidden></aside>
 <div class="cd-pronto" id="cd-pronto" role="dialog" aria-label="PDF pronto" hidden>
   <span id="cd-pronto-txt">PDF pronto</span>

@@ -393,6 +393,7 @@ function desenhar() {
     if (t.f === 'marca') { ctx.globalAlpha = 0.38; ctx.globalCompositeOperation = 'multiply'; ctx.fill(f.path); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; }
     else ctx.fill(f.path);
   }
+  checarRecorte();
 }
 function grade(ctx, w0, h0, w1, h1) { // linhas desenhadas em pixels inteiros, para ficarem nítidas em qualquer zoom
   const { tx, ty, z } = V, X = (x) => Math.round(R * (tx + x * z)) + 0.5, Y = (y) => Math.round(R * (ty + y * z)) + 0.5;
@@ -489,6 +490,89 @@ async function renderBitmap(q, p, chave) {
     for (const [k, v] of bitmaps) if (!k.startsWith(st.atual + '|') && k !== chave) { v.task?.cancel?.(); bitmaps.delete(k); } // libera as outras questões
     pedirQuadro();
   } catch (e) { if (e?.name !== 'RenderingCancelledException') console.warn(e); if (ent.task === task) { ent.task = null; ent.pedido = 0; } }
+}
+
+/* ---------- ver questão ----------
+   Com zoom grande (ou a folha arrastada para longe), o enunciado sai da tela. Ele "entra" num botão no canto,
+   que mostra a questão por cima da folha sem mexer no zoom. Ao voltar o zoom, o botão some. */
+const VQ = { recortado: false, q: null, aberta: false };
+function fracaoVisivel(q) {
+  // parte do enunciado que importa: o cartão, limitado à altura que cabe na tela no zoom ajustado
+  const L = layout(q), zf = vistaAjustada(q).z;
+  const x0 = L.x - 14, y0 = L.y - 14, x1 = L.x + L.w + 14, y1 = Math.min(L.y + L.h + 14, y0 + vh / zf);
+  const w0 = -V.tx / V.z, h0 = -V.ty / V.z, w1 = (vw - V.tx) / V.z, h1 = (vh - V.ty) / V.z;
+  const iw = Math.max(0, Math.min(x1, w1) - Math.max(x0, w0)), ih = Math.max(0, Math.min(y1, h1) - Math.max(y0, h0));
+  return (iw * ih) / ((x1 - x0) * (y1 - y0));
+}
+function checarRecorte() {
+  if (!mapa) return;
+  const q = st.atual, ativo = q !== 'gab' && st.enun;
+  if (!ativo) { if (VQ.recortado || VQ.aberta) definirRecorte(false, false); VQ.q = q; return; }
+  const f = fracaoVisivel(q), novaQ = VQ.q !== q;
+  VQ.q = q;
+  if (novaQ) { definirRecorte(f < 0.6, false); return; }
+  if (!VQ.recortado && f < 0.6) definirRecorte(true, true);
+  else if (VQ.recortado && f > 0.85) definirRecorte(false, true);
+}
+function retanguloCartao() { // o cartão na tela (coordenadas da janela), recortado pela folha
+  const L = layout(st.atual), r = folha.getBoundingClientRect();
+  let x0 = r.left + V.tx + (L.x - 14) * V.z, y0 = r.top + V.ty + (L.y - 14) * V.z;
+  let x1 = r.left + V.tx + (L.x + L.w + 14) * V.z, y1 = r.top + V.ty + (L.y + L.h + 14) * V.z;
+  x0 = Math.max(x0, r.left + 6); y0 = Math.max(y0, r.top + 6); x1 = Math.min(x1, r.right - 6); y1 = Math.min(y1, r.bottom - 6);
+  if (x1 - x0 < 40 || y1 - y0 < 30) return null;
+  return { left: x0, top: y0, width: x1 - x0, height: y1 - y0 };
+}
+function definirRecorte(sim, animar) {
+  const b = $('#cd-vq');
+  VQ.recortado = sim;
+  $('#cd-vq-n').textContent = st.atual === 'gab' ? '' : st.atual;
+  if (!sim) {
+    fecharQuestao();
+    if (b.hidden) return;
+    if (!animar) { b.hidden = true; return; }
+    b.classList.add('sai');
+    setTimeout(() => { if (!VQ.recortado) b.hidden = true; b.classList.remove('sai'); }, 180);
+    return;
+  }
+  b.classList.remove('sai');
+  const ret = animar && !matchMedia('(prefers-reduced-motion: reduce)').matches ? retanguloCartao() : null;
+  if (!ret) { b.hidden = false; return; }
+  // o enunciado "encolhe" até o botão
+  b.hidden = false; const alvo = b.getBoundingClientRect(); b.style.visibility = 'hidden';
+  const g = document.createElement('div'); g.className = 'cd-vq-fantasma';
+  Object.assign(g.style, { left: ret.left + 'px', top: ret.top + 'px', width: ret.width + 'px', height: ret.height + 'px' });
+  document.body.appendChild(g);
+  requestAnimationFrame(() => requestAnimationFrame(() => Object.assign(g.style, { left: alvo.left + 'px', top: alvo.top + 'px', width: alvo.width + 'px', height: alvo.height + 'px', borderRadius: '999px', opacity: '.35' })));
+  setTimeout(() => { g.remove(); b.style.visibility = ''; b.style.animation = 'none'; void b.offsetWidth; b.style.animation = ''; }, 380);
+}
+async function abrirQuestao() {
+  if (st.atual === 'gab') return;
+  fecharPops(); fecharResp();
+  const q = st.atual, caixa = $('#cd-vq-caixa'), img = $('#cd-vq-img');
+  VQ.aberta = true;
+  $('#cd-vq-titulo').textContent = `Questão ${q}`;
+  $('#cd-vq-fundo').hidden = false; caixa.hidden = false; $('#cd-vq').setAttribute('aria-expanded', 'true');
+  img.innerHTML = '';
+  const larg = img.clientWidth - 20, dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+  for (const p of layout(q).pecas) {
+    const [a, b, c, d] = p.c, s = larg * dpr / (c - a);
+    const cv = document.createElement('canvas'); cv.width = Math.ceil((c - a) * s); cv.height = Math.ceil((d - b) * s);
+    cv.setAttribute('aria-label', `Enunciado da questão ${q}`); img.appendChild(cv);
+    const page = await pdf.getPage(p.n);
+    if (!VQ.aberta || st.atual !== q) return;
+    await page.render({ canvasContext: cv.getContext('2d'), viewport: page.getViewport({ scale: s, offsetX: -a * s, offsetY: -b * s }) }).promise;
+  }
+}
+function fecharQuestao() {
+  if (!VQ.aberta) return;
+  VQ.aberta = false;
+  $('#cd-vq-caixa').hidden = true; $('#cd-vq-fundo').hidden = true; $('#cd-vq').setAttribute('aria-expanded', 'false');
+}
+function ligarVerQuestao() {
+  $('#cd-vq').addEventListener('click', () => { if (VQ.aberta) fecharQuestao(); else abrirQuestao(); });
+  $('#cd-vq-x').addEventListener('click', fecharQuestao);
+  $('#cd-vq-fundo').addEventListener('pointerdown', (e) => { e.preventDefault(); fecharQuestao(); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && VQ.aberta) fecharQuestao(); });
 }
 
 /* ---------- escrita e gestos ---------- */
@@ -682,7 +766,7 @@ function irPara(alvo) {
   if (alvo !== 'gab') alvo = Math.max(1, Math.min(totalQ, alvo));
   if (alvo === st.atual) return;
   descartarTraco(); gesto = null; pararInercia(); cancelAnimationFrame(anim);
-  st.atual = alvo; fecharPops(); fecharResp(); mostrar(); salvar();
+  st.atual = alvo; fecharPops(); fecharResp(); fecharQuestao(); mostrar(); salvar();
 }
 function mostrar() {
   const gab = st.atual === 'gab';
@@ -990,7 +1074,7 @@ async function iniciar() {
   $('#cd-voltar').href = `/${Vo}/${Mo}/${Au}/`;
   $('#cd-sub').textContent = NOMES[lista];
   document.title = `${NOMES[lista]} · Caderno | MAT com JOÃO!`;
-  montarBarra(); escolher(st.ferramenta); ligarEntrada();
+  montarBarra(); escolher(st.ferramenta); ligarEntrada(); ligarVerQuestao();
   fetch('/data/aulas.json').then((r) => r.json()).then((d) => { const l = acharAula(d, aulaId); if (l) { $('#cd-titulo').textContent = l.title || l.titulo; document.title = `${l.title || l.titulo} · ${NOMES[lista]} | Caderno`; } }).catch(() => {});
   try { mapa = await (await fetch(`/pdfs/caderno-${lista}-${aulaId}.json`)).json(); } catch { mapa = null; }
   if (!mapa?.pdf) { mapa = null; erro('O caderno desta lista ainda não foi publicado.'); return; }
@@ -1029,5 +1113,5 @@ async function iniciar() {
 }
 function erro(msg) { const c = $('#cd-carregando'); c.hidden = false; c.textContent = msg; $('#cd-zoomtag').hidden = true; }
 
-window.__caderno = { get estado() { return st; }, get vista() { return V; }, get mapa() { return mapa; }, layout: (q) => layout(q), exportar, irPara, reconhecer, aplicarVista, ultimoPdf: null };
+window.__caderno = { get estado() { return st; }, get vista() { return V; }, get verQuestao() { return { ...VQ }; }, get mapa() { return mapa; }, layout: (q) => layout(q), exportar, irPara, reconhecer, aplicarVista, ultimoPdf: null };
 iniciar();
