@@ -21,9 +21,14 @@ const NOMES = { fixacao: 'Lista de fixação', vestibular: 'Lista de vestibular'
 const CORES = {
   caneta: [['Preto', '#1d1b26'], ['Azul', '#2459d6'], ['Vermelho', '#d8352b'], ['Verde', '#1c8f4e'], ['Roxo', '#6a3fd8'], ['Laranja', '#ea7b16']],
   marca: [['Amarelo', '#ffe14d'], ['Verde-limão', '#c8f55f'], ['Rosa', '#ff9ccf'], ['Azul-claro', '#8fd3ff'], ['Laranja', '#ffc078']],
+  lapis: [['Grafite', '#3b3b3b'], ['Grafite claro', '#7d7d7d'], ['Azul', '#2459d6'], ['Vermelho', '#d8352b'], ['Verde', '#1c8f4e'], ['Roxo', '#6a3fd8']],
 };
+CORES.texto = CORES.caneta;
+const FAV_PADRAO = ['#1d1b26', '#2459d6', '#d8352b', '#1c8f4e'];
+const TAM_TEXTO = [['Pequeno', 13], ['Médio', 18], ['Grande', 26]];
+const COM_COR = ['caneta', 'lapis', 'marca', 'texto']; // ferramentas que têm cor (as outras usam a da caneta)
 const ESTILOS = [['tinteiro', 'Tinteiro'], ['esfero', 'Esferográfica'], ['nanquim', 'Nanquim'], ['pincel', 'Pincel']];
-const FAIXA = { caneta: [0.25, 7], marca: [5, 26] };
+const FAIXA = { caneta: [0.25, 7], marca: [5, 26], lapis: [0.4, 5] };
 const deControle = (f, v) => { const [a, b] = FAIXA[f]; return +(a * Math.pow(b / a, v / 100)).toFixed(2); };
 const paraControle = (f, s) => { const [a, b] = FAIXA[f]; return Math.round(100 * Math.log(s / a) / Math.log(b / a)); };
 const mm = (pt) => (pt * 0.3528).toFixed(pt < 2.84 ? 2 : 1).replace(/0$/, '').replace('.', ',') + ' mm';
@@ -43,15 +48,18 @@ const CHAVE = `v4|${aulaId}|${lista}`;
 let st = {
   v: 4, tracos: {}, vista: {}, gabarito: false, dedo: false, atual: 1, formas: false, enun: true,
   ferramenta: 'caneta', estilo: 'tinteiro',
-  cor: { caneta: CORES.caneta[0][1], marca: CORES.marca[0][1] },
-  esp: { caneta: 1.4, marca: 14 }, papel: 'quadriculado', revelado: {}, resultado: {},
+  cor: { caneta: CORES.caneta[0][1], marca: CORES.marca[0][1], lapis: CORES.lapis[0][1], texto: CORES.caneta[0][1] },
+  esp: { caneta: 1.4, marca: 14, lapis: 1.1 }, papel: 'quadriculado', revelado: {}, resultado: {},
+  favoritas: [...FAV_PADRAO], tamTexto: 18,
 };
+const PADRAO = { cor: { ...st.cor }, esp: { ...st.esp } };
 let pdf = null, pdfBytes = null, mapa = null, respostas = [], tamanhos = {}, totalQ = 0;
 const desfazer = [], refazer = [];
 
 /* ---------- traço ---------- */
 function opcoes(t, k) {
   const s = t.s * k, pen = !!t.pen;
+  if (t.f === 'lapis') return { size: s, thinning: pen ? 0.32 : 0.12, smoothing: 0.55, streamline: t.forma ? 0 : 0.4, simulatePressure: false, last: true };
   if (t.f === 'marca') return { size: s, thinning: 0, smoothing: 0.5, streamline: t.forma ? 0 : 0.45, simulatePressure: false, start: { cap: false }, end: { cap: false }, last: true };
   if (t.forma && t.e !== 'pincel') return { size: s * (t.e === 'esfero' ? 0.9 : 1), thinning: 0, smoothing: 0.2, streamline: 0, simulatePressure: false, last: true };
   switch (t.e || 'tinteiro') {
@@ -74,15 +82,60 @@ function caminho(pts, dx = 0, dy = 0) {
   return d + 'Z';
 }
 function desenhaTraco(ctx, t, k) {
+  if (t.f === 'texto') { ctx.save(); ctx.scale(k, k); desenhaTexto(ctx, t); ctx.restore(); return; }
   const out = contorno(t, k);
   if (out.length < 3) return;
-  ctx.save(); ctx.fillStyle = t.c;
-  if (t.f === 'marca') { ctx.globalAlpha = 0.38; ctx.globalCompositeOperation = 'multiply'; }
+  ctx.save(); pintura(ctx, t, k);
   ctx.fill(new Path2D(caminho(out))); ctx.restore();
+}
+/* cor do traço: o lápis tem grão de grafite (uma textura de ruído na cor escolhida); o marca-texto é translúcido */
+const grafites = new Map();
+function texturaLapis(ctx, cor, escala) {
+  let tile = grafites.get(cor);
+  if (!tile) {
+    tile = document.createElement('canvas'); tile.width = tile.height = 64;
+    const g = tile.getContext('2d'), img = g.createImageData(64, 64);
+    const r = parseInt(cor.slice(1, 3), 16), gg = parseInt(cor.slice(3, 5), 16), b = parseInt(cor.slice(5, 7), 16);
+    let semente = 7;
+    const acaso = () => ((semente = (semente * 16807) % 2147483647) / 2147483647);
+    for (let i = 0; i < 64 * 64; i++) {
+      const u = acaso(), a = u < 0.1 ? 45 + u * 300 : 150 + acaso() * 105;
+      img.data.set([r, gg, b, a], i * 4);
+    }
+    g.putImageData(img, 0, 0); grafites.set(cor, tile);
+  }
+  const pat = ctx.createPattern(tile, 'repeat');
+  if (pat.setTransform) pat.setTransform(new DOMMatrix([escala, 0, 0, escala, 0, 0]));
+  return pat;
+}
+function pintura(ctx, t, k = 1) {
+  if (t.f === 'lapis') { ctx.fillStyle = texturaLapis(ctx, t.c, 0.32 * k); ctx.globalAlpha = 0.95; }
+  else { ctx.fillStyle = t.c; if (t.f === 'marca') { ctx.globalAlpha = 0.38; ctx.globalCompositeOperation = 'multiply'; } }
+}
+/* caixa de texto: em unidades da folha, com o canto de cima à esquerda em (x, y) */
+const fonteTexto = (tam) => `500 ${tam}px 'DM Sans', system-ui, sans-serif`;
+const ALTURA_LINHA = 1.3;
+let medidor = null;
+function medidaTexto(t) {
+  medidor ||= document.createElement('canvas').getContext('2d');
+  medidor.font = fonteTexto(t.tam);
+  const linhas = t.txt.split('\n');
+  return { linhas, w: Math.max(t.tam * 0.6, ...linhas.map((l) => medidor.measureText(l).width)), h: linhas.length * t.tam * ALTURA_LINHA };
+}
+function desenhaTexto(ctx, t, dx = 0, dy = 0) {
+  const { linhas } = medidaTexto(t);
+  ctx.save(); ctx.fillStyle = t.c; ctx.font = fonteTexto(t.tam); ctx.textBaseline = 'top';
+  linhas.forEach((l, i) => ctx.fillText(l, t.x + dx, t.y + dy + i * t.tam * ALTURA_LINHA + t.tam * 0.12));
+  ctx.restore();
 }
 const cacheForma = new WeakMap(); // traço → { caminho (Path2D em unidades da folha), caixa }
 function formaDe(t) {
   let c = cacheForma.get(t);
+  if (!c && t.f === 'texto') {
+    const { w, h } = medidaTexto(t);
+    c = { path: null, caixa: [t.x - 3, t.y - 3, t.x + w + 3, t.y + h + 3] };
+    cacheForma.set(t, c);
+  }
   if (!c) {
     const out = contorno(t, 1);
     let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
@@ -94,6 +147,7 @@ function formaDe(t) {
 }
 function caixaTraco(t) {
   const c = cacheForma.get(t); if (c) return c.caixa;
+  if (t.f === 'texto') return formaDe(t).caixa;
   let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
   for (const [x, y] of t.p) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
   const m = t.s * 1.5; return [x0 - m, y0 - m, x1 + m, y1 + m];
@@ -101,7 +155,7 @@ function caixaTraco(t) {
 function tracoExemplo(f, e, s, c, w, h) {
   const p = [];
   for (let i = 0; i <= 40; i++) { const u = i / 40; p.push([w * 0.08 + u * w * 0.84, h / 2 + Math.sin(u * Math.PI * 2) * h * 0.24, 0.25 + 0.6 * Math.sin(u * Math.PI)]); }
-  return { f, e: f === 'marca' ? 'marca' : e, s, c, pen: true, p };
+  return { f, e: f === 'marca' || f === 'lapis' ? f : e, s, c, pen: true, p };
 }
 
 /* ---------- formas perfeitas ---------- */
@@ -386,13 +440,18 @@ function desenhar() {
   grade(ctx, w0, h0, w1, h1);
   ctx.setTransform(k, 0, 0, k, R * tx, R * ty);
   if (st.enun) cartao(ctx, q, [w0, h0, w1, h1]);
+  const escondidos = new Set(editor ? [editor.obj] : []);
+  if (atual?.mover && sel) sel.itens.forEach((t) => escondidos.add(t));
   for (const t of tracosDe(q)) {
+    if (escondidos.has(t)) continue;
     const f = formaDe(t), [a, b, c, d] = f.caixa;
-    if (!f.path || c < w0 || a > w1 || d < h0 || b > h1) continue;
-    ctx.fillStyle = t.c;
-    if (t.f === 'marca') { ctx.globalAlpha = 0.38; ctx.globalCompositeOperation = 'multiply'; ctx.fill(f.path); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; }
-    else ctx.fill(f.path);
+    if (c < w0 || a > w1 || d < h0 || b > h1) continue;
+    if (t.f === 'texto') { desenhaTexto(ctx, t); continue; }
+    if (!f.path) continue;
+    ctx.save(); pintura(ctx, t); ctx.fill(f.path); ctx.restore();
   }
+  if (sel?.q === q && !atual?.mover) contornoSel(ctx, sel.caixa);
+  posicionarSel(); posicionarEditor();
   checarRecorte();
 }
 function grade(ctx, w0, h0, w1, h1) { // linhas desenhadas em pixels inteiros, para ficarem nítidas em qualquer zoom
@@ -575,6 +634,125 @@ function ligarVerQuestao() {
   addEventListener('keydown', (e) => { if (e.key === 'Escape' && VQ.aberta) fecharQuestao(); });
 }
 
+/* ---------- seleção (laço) ----------
+   Contorne o que quer mover: o que ficar dentro do laço é selecionado. Arraste por dentro da caixa para mover;
+   o menu tem Duplicar e Apagar. Um toque sobre um traço seleciona só ele. */
+let sel = null; // { q, itens, caixa }
+function caixaDe(itens) {
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (const t of itens) { const [a, b, c, d] = formaDe(t).caixa; x0 = Math.min(x0, a); y0 = Math.min(y0, b); x1 = Math.max(x1, c); y1 = Math.max(y1, d); }
+  return [x0 - 6, y0 - 6, x1 + 6, y1 + 6];
+}
+function dentroPoligono(x, y, pol) {
+  let dentro = false;
+  for (let i = 0, j = pol.length - 1; i < pol.length; j = i++) {
+    const [xi, yi] = pol[i], [xj, yj] = pol[j];
+    if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) dentro = !dentro;
+  }
+  return dentro;
+}
+const dentroCaixa = ([x, y], [a, b, c, d], m = 0) => x >= a - m && x <= c + m && y >= b - m && y <= d + m;
+function selecionarLaco(pol) {
+  const arr = tracosDe(st.atual);
+  let comp = 0; for (let i = 1; i < pol.length; i++) comp += dist(pol[i], pol[i - 1]);
+  let itens;
+  if (comp < 8 / V.z) { // foi um toque: seleciona o que estiver por baixo
+    const p = pol[0], t = [...arr].reverse().find((t) => dentroCaixa(p, formaDe(t).caixa, 4 / V.z) && (t.f === 'texto' || t.p.some((u, j) => distSeg(p[0], p[1], u[0], u[1], (t.p[j + 1] || u)[0], (t.p[j + 1] || u)[1]) <= t.s + 8 / V.z)));
+    itens = t ? [t] : [];
+  } else itens = arr.filter((t) => {
+    if (t.f === 'texto') { const [a, b, c, d] = formaDe(t).caixa; return dentroPoligono((a + c) / 2, (b + d) / 2, pol); }
+    const passo = Math.max(1, Math.floor(t.p.length / 40)); let n = 0, k = 0;
+    for (let i = 0; i < t.p.length; i += passo) { n++; if (dentroPoligono(t.p[i][0], t.p[i][1], pol)) k++; }
+    return k / n >= 0.5;
+  });
+  sel = itens.length ? { q: st.atual, itens, caixa: caixaDe(itens) } : null;
+  if (!itens.length && comp >= 8 / V.z) aviso('Nada foi selecionado. Contorne o que quer mover.', 1600);
+  pedirQuadro();
+}
+function limparSel() { if (!sel) return; sel = null; $('#cd-sel-menu').hidden = true; pedirQuadro(); }
+function contornoSel(ctx, [a, b, c, d]) {
+  ctx.save(); ctx.lineWidth = 1.4 / V.z; ctx.setLineDash([5 / V.z, 4 / V.z]); ctx.strokeStyle = '#4a27b7'; ctx.fillStyle = 'rgba(74,39,183,.05)';
+  retArred(ctx, a, b, c - a, d - b, 6 / V.z); ctx.fill(); ctx.stroke(); ctx.restore();
+}
+function posicionarSel() {
+  const m = $('#cd-sel-menu');
+  if (!sel || sel.q !== st.atual || atual?.mover) { m.hidden = true; return; }
+  const [a, b, c] = sel.caixa, x = V.tx + (a + c) / 2 * V.z, y = V.ty + b * V.z;
+  m.hidden = false;
+  const w = m.offsetWidth, h = m.offsetHeight;
+  m.style.left = limitar(x - w / 2, 8, vw - w - 8) + 'px';
+  m.style.top = (y - h - 10 < 8 ? Math.min(vh - h - 8, V.ty + sel.caixa[3] * V.z + 10) : y - h - 10) + 'px';
+}
+function deslocar(itens, dx, dy) {
+  const r = (v) => Math.round(v * 100) / 100;
+  for (const t of itens) {
+    if (t.f === 'texto') { t.x = r(t.x + dx); t.y = r(t.y + dy); }
+    else for (const u of t.p) { u[0] = r(u[0] + dx); u[1] = r(u[1] + dy); }
+    cacheForma.delete(t);
+  }
+}
+function apagarSel() {
+  if (!sel) return;
+  const arr = st.tracos['q-' + sel.q] || [], itens = [];
+  for (let i = arr.length - 1; i >= 0; i--) if (sel.itens.includes(arr[i])) { itens.push({ traco: arr[i], idx: i }); arr.splice(i, 1); }
+  if (itens.length) registrar({ t: 'del', q: sel.q, itens });
+  limparSel();
+}
+function duplicarSel() {
+  if (!sel) return;
+  const copias = sel.itens.map((t) => JSON.parse(JSON.stringify(t)));
+  deslocar(copias, 16, 16);
+  (st.tracos['q-' + sel.q] ||= []).push(...copias);
+  registrar({ t: 'adds', q: sel.q, itens: copias });
+  sel = { q: sel.q, itens: copias, caixa: caixaDe(copias) }; pedirQuadro();
+}
+
+/* ---------- caixa de texto ----------
+   Toque na folha com a ferramenta de texto para escrever; toque num texto para editá-lo. O texto fica na folha
+   como os traços: entra no desfazer, na borracha, na seleção e no PDF exportado. */
+let editor = null; // { obj, novo, q, antes, el }
+function textoEm(w) {
+  const arr = tracosDe(st.atual);
+  for (let i = arr.length - 1; i >= 0; i--) if (arr[i].f === 'texto' && dentroCaixa(w, formaDe(arr[i]).caixa, 4 / V.z)) return arr[i];
+  return null;
+}
+function abrirTexto(p) {
+  fecharEditor();
+  const w = mundo(p), existente = textoEm(w), novo = !existente;
+  const obj = existente || { f: 'texto', x: w[0], y: Math.round((w[1] - st.tamTexto * 0.65) * 100) / 100, txt: '', tam: st.tamTexto, c: st.cor.texto };
+  const el = document.createElement('textarea');
+  el.className = 'cd-texto-ed'; el.value = obj.txt; el.rows = 1; el.setAttribute('aria-label', 'Texto na folha');
+  el.setAttribute('autocapitalize', 'sentences'); el.spellcheck = false;
+  editor = { obj, novo, q: st.atual, antes: obj.txt, el };
+  folha.appendChild(el);
+  el.addEventListener('input', posicionarEditor);
+  el.addEventListener('blur', fecharEditor);
+  el.addEventListener('keydown', (e) => { e.stopPropagation(); if (e.key === 'Escape') { e.preventDefault(); el.blur(); } });
+  el.addEventListener('pointerdown', (e) => e.stopPropagation());
+  posicionarEditor(); pedirQuadro();
+  el.focus(); el.setSelectionRange(el.value.length, el.value.length);
+}
+function posicionarEditor() {
+  if (!editor) return;
+  const { obj, el } = editor, tam = obj.tam * V.z;
+  const { w, linhas } = medidaTexto({ ...obj, txt: el.value || ' ' });
+  Object.assign(el.style, {
+    left: V.tx + obj.x * V.z + 'px', top: V.ty + obj.y * V.z + 'px', fontSize: tam + 'px', color: obj.c,
+    width: Math.max(w * V.z + tam * 1.2, tam * 4) + 'px', height: linhas.length * tam * ALTURA_LINHA + tam * 0.3 + 'px',
+  });
+}
+function fecharEditor() {
+  if (!editor) return;
+  const { obj, novo, q, antes, el } = editor; editor = null;
+  const txt = el.value.replace(/\s+$/, '');
+  el.remove();
+  const arr = (st.tracos['q-' + q] ||= []);
+  if (novo) { if (txt) { obj.txt = txt; arr.push(obj); registrar({ t: 'add', q, traco: obj }); } }
+  else if (!txt) { const i = arr.indexOf(obj); if (i >= 0) { arr.splice(i, 1); registrar({ t: 'del', q, itens: [{ traco: obj, idx: i }] }); } }
+  else if (txt !== antes) { obj.txt = txt; registrar({ t: 'texto', q, obj, antes, depois: txt }); }
+  cacheForma.delete(obj); pedirQuadro();
+}
+
 /* ---------- escrita e gestos ---------- */
 let atual = null;      // traço ou borracha em andamento
 let gesto = null;      // arrasto ou pinça
@@ -592,12 +770,18 @@ function ligarEntrada() {
     if (st.atual === 'gab') return;
     fecharPops(); pararInercia(); cancelAnimationFrame(anim);
     const p = local(e);
+    const fechou = !!editor;
+    if (editor) { fecharEditor(); if (st.ferramenta === 'texto' && e.pointerType !== 'touch') { e.preventDefault(); return; } }
     if (e.pointerType === 'touch') {
       if (e.isPrimary) toques.clear(); // descarta dedos que o sistema esqueceu de soltar
-      toques.set(e.pointerId, { ...p, x0: p.x, y0: p.y, t0: performance.now() });
+      toques.set(e.pointerId, { ...p, x0: p.x, y0: p.y, t0: performance.now(), fechou });
       try { tela.setPointerCapture(e.pointerId); } catch {}
       if (atual?.pen) return; // a palma da mão não atrapalha quem escreve com a caneta
-      if (toques.size === 1) { if (st.dedo) iniciarTraco(e, p); else iniciarArrasto(e.pointerId, p); return; }
+      if (toques.size === 1) {
+        const moverSel = st.ferramenta === 'laco' && sel && dentroCaixa(mundo(p), sel.caixa);
+        if (st.dedo || moverSel) iniciarTraco(e, p); else iniciarArrasto(e.pointerId, p);
+        return;
+      }
       if (atual) descartarTraco();
       iniciarPinca(); return;
     }
@@ -618,12 +802,17 @@ function ligarEntrada() {
     if (!atual || e.pointerId !== atual.pid) return;
     const evs = (e.getCoalescedEvents && e.getCoalescedEvents()) || [];
     const lista_ = evs.length ? evs : [e];
-    if (atual.traco) {
+    if (atual.laco) { for (const c of lista_) atual.laco.push(mundo(local(c))); }
+    else if (atual.mover) {
+      const w = mundo(p), primeiro = !atual.mover.mexeu;
+      atual.mover.dx = w[0] - atual.mover.ini[0]; atual.mover.dy = w[1] - atual.mover.ini[1]; atual.mover.mexeu = true;
+      if (primeiro) pedirQuadro(); // esconde os originais enquanto arrasta
+    } else if (atual.traco) {
       if (atual.travado) return; // forma já reconhecida: fica como está até soltar
       for (const c of lista_) { const w = mundo(local(c)); atual.traco.p.push([w[0], w[1], pressao(c)]); }
       const u = atual.traco.p[atual.traco.p.length - 1];
       if (dist(u, atual.ancora) > 3 / V.z) { atual.ancora = u; armarForma(); }
-    } else { for (const c of lista_) apagar(mundo(local(c))); atual.cursor = p; }
+    } else if (atual.apagados) { for (const c of lista_) apagar(mundo(local(c))); atual.cursor = p; }
     pedirVivo();
   });
   const fim = (e) => {
@@ -632,6 +821,8 @@ function ligarEntrada() {
       if (gesto?.tipo === 'pinca' && gesto.ids.includes(e.pointerId)) { terminarPinca(); }
       else if (gesto?.tipo === 'arrasto' && gesto.id === e.pointerId) terminarArrasto(e.type === 'pointerup');
       if (!tq) return;
+      // com a ferramenta de texto, um toque rápido do dedo (sem arrastar) abre uma caixa de texto
+      if (st.ferramenta === 'texto' && !st.dedo && !tq.fechou && e.type === 'pointerup' && !atual && !toques.size && Math.hypot(tq.x - tq.x0, tq.y - tq.y0) < 8 && performance.now() - tq.t0 < 450) { abrirTexto(tq); return; }
     } else if (gesto?.tipo === 'arrasto' && gesto.id === e.pointerId) { terminarArrasto(false); return; }
     if (atual && e.pointerId === atual.pid) concluirTraco(e.type === 'pointercancel');
   };
@@ -656,6 +847,13 @@ function ligarEntrada() {
 function iniciarTraco(e, p) {
   const w = mundo(p), pen = e.pointerType === 'pen';
   if (st.ferramenta === 'borracha') { atual = { pid: e.pointerId, pen, apagados: [], q: st.atual, cursor: p }; apagar(w); pedirVivo(); return; }
+  if (st.ferramenta === 'texto') { atual = { pid: e.pointerId, pen, q: st.atual, texto: p }; return; } // abre ao soltar
+  if (st.ferramenta === 'laco') {
+    if (sel && sel.q === st.atual && dentroCaixa(w, sel.caixa)) atual = { pid: e.pointerId, pen, q: st.atual, mover: { ini: w, dx: 0, dy: 0 } };
+    else { limparSel(); atual = { pid: e.pointerId, pen, q: st.atual, laco: [w] }; }
+    pedirVivo(); return;
+  }
+  if (sel) limparSel();
   const f = st.ferramenta;
   atual = { pid: e.pointerId, pen, q: st.atual, ancora: [w[0], w[1]], timer: 0,
     traco: { f, e: f === 'marca' ? 'marca' : st.estilo, c: st.cor[f], s: st.esp[f], pen, p: [[w[0], w[1], pressao(e)]] } };
@@ -663,6 +861,7 @@ function iniciarTraco(e, p) {
 }
 function descartarTraco() {
   if (!atual) return;
+  if (atual.laco || atual.mover || atual.texto) { atual = null; limparVivo(); pedirQuadro(); return; }
   clearTimeout(atual.timer);
   if (atual.apagados?.length) { const arr = (st.tracos['q-' + atual.q] ||= []); [...atual.apagados].reverse().forEach(({ traco, idx }) => arr.splice(idx, 0, traco)); pedirQuadro(); }
   atual = null; limparVivo();
@@ -670,6 +869,13 @@ function descartarTraco() {
 function concluirTraco(cancelado) {
   const a = atual; atual = null; clearTimeout(a.timer); limparVivo();
   const id = 'q-' + a.q;
+  if (a.texto) { if (!cancelado) abrirTexto(a.texto); return; }
+  if (a.laco) { if (!cancelado) selecionarLaco(a.laco); else pedirQuadro(); return; }
+  if (a.mover) {
+    const { dx, dy } = a.mover;
+    if (!cancelado && Math.hypot(dx, dy) > 0.5) { deslocar(sel.itens, dx, dy); sel.caixa = caixaDe(sel.itens); registrar({ t: 'mover', q: a.q, itens: sel.itens, dx, dy }); }
+    pedirQuadro(); return;
+  }
   if (a.traco) {
     if (cancelado && a.traco.p.length < 3) return;
     if (!a.travado && st.formas && a.traco.p.length > 5) { const fm = reconhecer(a.traco.p, a.traco.f === 'marca'); if (fm) { a.traco.p = fm.pts; a.traco.forma = fm.nome; } }
@@ -680,6 +886,7 @@ function concluirTraco(cancelado) {
   pedirQuadro();
 }
 function armarForma() { // desenhou e segurou parado no fim: vira forma perfeita
+  if (!atual?.traco) return;
   clearTimeout(atual.timer);
   atual.timer = setTimeout(() => {
     const a = atual; if (!a?.traco || a.travado || a.traco.p.length < 6) return;
@@ -695,6 +902,7 @@ function apagar([x, y]) {
   const raio = BORRACHA_PX / V.z;
   let mudou = false;
   for (let i = arr.length - 1; i >= 0; i--) {
+    if (arr[i].f === 'texto') { if (dentroCaixa([x, y], formaDe(arr[i]).caixa, raio)) { atual.apagados.push({ traco: arr[i], idx: i }); arr.splice(i, 1); mudou = true; } continue; }
     const t = arr[i], lim = raio + t.s / 2 * (t.e === 'pincel' ? 2.3 : 1), [a, b, c, d] = caixaTraco(t);
     if (x < a - lim || x > c + lim || y < b - lim || y > d + lim) continue;
     let acertou = false;
@@ -711,6 +919,22 @@ function pintarVivo() {
   if (!atual) return;
   const ctx = vivo.getContext('2d');
   if (atual.traco) { ctx.setTransform(R * V.z, 0, 0, R * V.z, R * V.tx, R * V.ty); desenhaTraco(ctx, atual.traco, 1); return; }
+  if (atual.laco) {
+    ctx.setTransform(R * V.z, 0, 0, R * V.z, R * V.tx, R * V.ty);
+    ctx.beginPath(); atual.laco.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)));
+    ctx.fillStyle = 'rgba(74,39,183,.06)'; ctx.fill();
+    ctx.lineWidth = 1.5 / V.z; ctx.setLineDash([5 / V.z, 4 / V.z]); ctx.strokeStyle = '#4a27b7'; ctx.stroke(); return;
+  }
+  if (atual.mover && sel) {
+    const { dx, dy } = atual.mover;
+    ctx.setTransform(R * V.z, 0, 0, R * V.z, R * (V.tx + dx * V.z), R * (V.ty + dy * V.z));
+    for (const t of sel.itens) {
+      if (t.f === 'texto') { desenhaTexto(ctx, t); continue; }
+      const f = formaDe(t); if (!f.path) continue;
+      ctx.save(); pintura(ctx, t); ctx.fill(f.path); ctx.restore();
+    }
+    contornoSel(ctx, sel.caixa); return;
+  }
   if (atual.cursor) { // círculo da borracha
     ctx.setTransform(R, 0, 0, R, 0, 0); ctx.strokeStyle = 'rgba(33,25,70,.45)'; ctx.lineWidth = 1.2;
     ctx.beginPath(); ctx.arc(atual.cursor.x, atual.cursor.y, BORRACHA_PX, 0, 6.2832); ctx.stroke();
@@ -765,7 +989,7 @@ function terminarPinca() {
 function irPara(alvo) {
   if (alvo !== 'gab') alvo = Math.max(1, Math.min(totalQ, alvo));
   if (alvo === st.atual) return;
-  descartarTraco(); gesto = null; pararInercia(); cancelAnimationFrame(anim);
+  descartarTraco(); fecharEditor(); limparSel(); gesto = null; pararInercia(); cancelAnimationFrame(anim);
   st.atual = alvo; fecharPops(); fecharResp(); fecharQuestao(); mostrar(); salvar();
 }
 function mostrar() {
@@ -832,7 +1056,11 @@ function registrar(op) { desfazer.push(op); refazer.length = 0; botoesHist(); sa
 function botoesHist() { $('#cd-desfazer').disabled = !desfazer.length; $('#cd-refazer').disabled = !refazer.length; }
 function aplicar(op, inverso) {
   const arr = (st.tracos['q-' + op.q] ||= []);
-  if (op.t === 'add') { if (inverso) { const i = arr.lastIndexOf(op.traco); if (i >= 0) arr.splice(i, 1); } else arr.push(op.traco); }
+  limparSel();
+  if (op.t === 'mover') { const k = inverso ? -1 : 1; deslocar(op.itens, k * op.dx, k * op.dy); }
+  else if (op.t === 'texto') { op.obj.txt = inverso ? op.antes : op.depois; cacheForma.delete(op.obj); }
+  else if (op.t === 'adds') { if (inverso) op.itens.forEach((t) => { const i = arr.lastIndexOf(t); if (i >= 0) arr.splice(i, 1); }); else arr.push(...op.itens); }
+  else if (op.t === 'add') { if (inverso) { const i = arr.lastIndexOf(op.traco); if (i >= 0) arr.splice(i, 1); } else arr.push(op.traco); }
   else if (inverso) [...op.itens].reverse().forEach(({ traco, idx }) => arr.splice(idx, 0, traco));
   else op.itens.forEach(({ traco }) => { const i = arr.indexOf(traco); if (i >= 0) arr.splice(i, 1); });
   if (op.q !== st.atual) irPara(op.q); else pedirQuadro(); // desfazer mostra onde a mudança aconteceu
@@ -847,6 +1075,9 @@ function montarBarra() {
     escolher(b.dataset.ferramenta);
   }));
   $('#cd-traco').addEventListener('click', alternarPainel);
+  $('#cd-sel-dup').addEventListener('click', duplicarSel);
+  $('#cd-sel-del').addEventListener('click', apagarSel);
+  montarFavoritas();
   $('#cd-esp').addEventListener('input', (e) => { const f = alvoTraco(); st.esp[f] = deControle(f, +e.target.value); atualizarTraco(); salvar(); });
   $('#cd-desfazer').addEventListener('click', voltar);
   $('#cd-refazer').addEventListener('click', avancar);
@@ -884,8 +1115,10 @@ function montarBarra() {
     else if (e.ctrlKey || e.metaKey || e.altKey) return;
     else if (k === 'arrowright' || k === 'pagedown') { e.preventDefault(); proxima(); }
     else if (k === 'arrowleft' || k === 'pageup') { e.preventDefault(); anterior(); }
-    else if (k === 'escape') { fecharPops(); fecharResp(); }
-    else if (k === 'p') escolher('caneta'); else if (k === 'm') escolher('marca'); else if (k === 'e') escolher('borracha'); else if (k === 'f') $('#cd-formas').click();
+    else if (k === 'escape') { fecharPops(); fecharResp(); limparSel(); }
+    else if ((k === 'delete' || k === 'backspace') && sel) { e.preventDefault(); apagarSel(); }
+    else if (k === 'p') escolher('caneta'); else if (k === 'l') escolher('lapis'); else if (k === 'm') escolher('marca'); else if (k === 'e') escolher('borracha');
+    else if (k === 'v') escolher('laco'); else if (k === 't') escolher('texto'); else if (k === 'f') $('#cd-formas').click();
     else if (k === '+' || k === '=') animarPara(zoomCentro(V.z * 1.25), 180);
     else if (k === '-') animarPara(zoomCentro(V.z / 1.25), 180);
     else if (k === '0') ajustar();
@@ -900,12 +1133,46 @@ function zoomCentro(z) {
 function fecharMenu() { $('#cd-menu').hidden = true; $('#cd-mais-btn').setAttribute('aria-expanded', 'false'); }
 function fecharExp() { $('#cd-exp-menu').hidden = true; $('#cd-exportar').setAttribute('aria-expanded', 'false'); }
 function fecharPops() { fecharPainel(); fecharMapa(); fecharMenu(); fecharExp(); }
-function alvoTraco() { return st.ferramenta === 'marca' ? 'marca' : 'caneta'; }
+function alvoTraco() { return COM_COR.includes(st.ferramenta) ? st.ferramenta : 'caneta'; }
 function escolher(f) {
+  if (f !== st.ferramenta) { fecharEditor(); if (f !== 'laco') limparSel(); }
   st.ferramenta = f; document.body.dataset.ferramenta = f;
   document.querySelectorAll('button[data-ferramenta]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.ferramenta === f));
-  if (f === 'borracha') fecharPainel();
+  if (f === 'borracha' || f === 'laco') fecharPainel();
   atualizarTraco(); salvar();
+}
+/* cores favoritas: quatro na barra, sempre à mão; trocam no painel */
+let favArmada = null;
+function montarFavoritas() {
+  const box = $('#cd-favs'); box.innerHTML = '';
+  const f = alvoTraco(), atualC = f === 'marca' ? null : st.cor[f];
+  st.favoritas.forEach((c, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'cd-fav'; b.style.setProperty('--c', c);
+    b.innerHTML = '<span></span>'; b.title = `Cor favorita ${i + 1}`; b.setAttribute('aria-label', `Cor favorita ${i + 1}`);
+    b.setAttribute('aria-pressed', atualC === c);
+    b.addEventListener('click', () => {
+      let alvo = st.ferramenta;
+      if (!['caneta', 'lapis', 'texto'].includes(alvo)) { alvo = 'caneta'; escolher('caneta'); }
+      st.cor[alvo] = c; atualizarTraco(); salvar();
+    });
+    box.append(b);
+  });
+}
+function montarFavsPainel() {
+  const box = $('#cd-favs-ed'); box.innerHTML = '';
+  st.favoritas.forEach((c, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.style.setProperty('--c', c); b.innerHTML = '<span></span>';
+    b.setAttribute('aria-label', `Trocar a favorita ${i + 1}`); b.setAttribute('aria-pressed', favArmada === i);
+    b.addEventListener('click', () => { favArmada = favArmada === i ? null : i; montarFavsPainel(); });
+    box.append(b);
+  });
+  const dica = $('#cd-favs-dica');
+  dica.textContent = favArmada == null ? 'Para trocar uma favorita, toque nela e depois escolha a cor acima.' : `Agora escolha a nova cor da favorita ${favArmada + 1} acima.`;
+  dica.classList.toggle('on', favArmada != null);
+}
+function escolherCor(f, c) {
+  if (favArmada != null && f !== 'marca') { st.favoritas[favArmada] = c; favArmada = null; }
+  st.cor[f] = c; atualizarTraco(); salvar();
 }
 function montarCores(cont) {
   const f = alvoTraco(); cont.innerHTML = '';
@@ -913,34 +1180,57 @@ function montarCores(cont) {
     const b = document.createElement('button'); b.type = 'button'; b.className = 'cd-cor'; b.setAttribute('role', 'radio');
     b.setAttribute('aria-label', nome); b.title = nome; b.style.setProperty('--c', c); b.innerHTML = '<span></span>';
     b.setAttribute('aria-checked', st.cor[f] === c);
-    b.addEventListener('click', () => { st.cor[f] = c; atualizarTraco(); salvar(); });
+    b.addEventListener('click', () => escolherCor(f, c));
     cont.append(b);
   }
   const propria = !CORES[f].some(([, c]) => c === st.cor[f]);
   const l = document.createElement('label'); l.className = 'cd-outra'; l.title = 'Escolher outra cor';
   const inp = document.createElement('input'); inp.type = 'color'; inp.value = st.cor[f]; inp.setAttribute('aria-label', 'Outra cor');
   inp.addEventListener('input', () => { st.cor[f] = inp.value; atualizarTraco(); salvar(); });
+  inp.addEventListener('change', () => escolherCor(f, inp.value));
   l.append(inp, document.createTextNode(propria ? 'Sua cor' : 'Outra cor'));
   if (propria) l.style.borderStyle = 'solid';
   cont.append(l);
 }
 function atualizarTraco() {
-  const f = alvoTraco(), s = st.esp[f], c = st.cor[f], e = f === 'marca' ? 'marca' : st.estilo;
-  const nomeEstilo = f === 'marca' ? 'Marca-texto' : ESTILOS.find(([k]) => k === st.estilo)[1];
-  $('#cd-traco').title = `${nomeEstilo} · ${mm(s)}. Toque para mudar a cor, o estilo e a espessura`;
+  const f = alvoTraco(), s = st.esp[f], c = st.cor[f], e = f === 'marca' || f === 'lapis' ? f : st.estilo;
   $('#cd-traco-cor').style.setProperty('--c', c);
-  amostra($('#cd-traco-amostra'), tracoExemplo(f, e, Math.min(s, f === 'marca' ? 12 : 3), c, 44, 18), 1);
+  if (f === 'texto') {
+    $('#cd-traco').title = 'Texto. Toque para mudar a cor e o tamanho';
+    amostra($('#cd-traco-amostra'), { f: 'texto', x: 12, y: 1, txt: 'Aa', tam: 14, c }, 1);
+  } else {
+    const nomeEstilo = f === 'marca' ? 'Marca-texto' : f === 'lapis' ? 'Lápis' : ESTILOS.find(([k]) => k === st.estilo)[1];
+    $('#cd-traco').title = `${nomeEstilo} · ${mm(s)}. Toque para mudar a cor${f === 'caneta' ? ', o estilo' : ''} e a espessura`;
+    amostra($('#cd-traco-amostra'), tracoExemplo(f, e, Math.min(s, f === 'marca' ? 12 : 3), c, 44, 18), 1);
+  }
+  montarFavoritas();
+  if (editor && f === 'texto' && editor.obj.c !== c) { editor.obj.c = c; posicionarEditor(); }
   if (!$('#cd-painel').hidden) montarPainel();
 }
 function amostra(canvas, t, k) {
   const r = Math.min(window.devicePixelRatio || 1, 2), w = canvas.clientWidth || canvas.width, h = canvas.clientHeight || canvas.height;
   canvas.width = w * r; canvas.height = h * r;
   const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.width, canvas.height);
-  desenhaTraco(ctx, { ...t, s: t.s * k }, r);
+  desenhaTraco(ctx, t.f === 'texto' ? t : { ...t, s: t.s * k }, r);
 }
 function montarPainel() {
   const f = alvoTraco();
-  $('#cd-estilos-sec').hidden = f === 'marca';
+  $('#cd-estilos-sec').hidden = f !== 'caneta';
+  $('#cd-esp-sec').hidden = f === 'texto';
+  $('#cd-tam-sec').hidden = f !== 'texto';
+  $('#cd-favs-sec').hidden = f === 'marca';
+  if (f !== 'marca') montarFavsPainel();
+  montarCores($('#cd-painel-cores'));
+  if (f === 'texto') {
+    const box = $('#cd-tams'); box.innerHTML = '';
+    for (const [nome, tam] of TAM_TEXTO) {
+      const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'radio'); b.setAttribute('aria-checked', st.tamTexto === tam);
+      b.textContent = nome; b.style.fontSize = Math.round(9 + tam * 0.35) + 'px';
+      b.addEventListener('click', () => { st.tamTexto = tam; salvar(); montarPainel(); });
+      box.append(b);
+    }
+    return;
+  }
   const est = $('#cd-estilos'); est.innerHTML = '';
   for (const [k, nome] of ESTILOS) {
     const b = document.createElement('button'); b.type = 'button'; b.className = 'cd-estilo'; b.setAttribute('role', 'radio');
@@ -953,13 +1243,12 @@ function montarPainel() {
   }
   $('#cd-esp').value = paraControle(f, st.esp[f]);
   $('#cd-esp-valor').textContent = mm(st.esp[f]);
-  montarCores($('#cd-painel-cores'));
   const pv = $('#cd-previa');
-  requestAnimationFrame(() => amostra(pv, tracoExemplo(f, f === 'marca' ? 'marca' : st.estilo, st.esp[f], st.cor[f], pv.clientWidth, pv.clientHeight), 1.4));
+  requestAnimationFrame(() => amostra(pv, tracoExemplo(f, f === 'caneta' ? st.estilo : f, st.esp[f], st.cor[f], pv.clientWidth, pv.clientHeight), 1.4));
 }
 function alternarPainel() { if ($('#cd-painel').hidden) abrirPainel(); else fecharPainel(); }
-function abrirPainel() { if (st.ferramenta === 'borracha') return; fecharMapa(); fecharMenu(); $('#cd-painel').hidden = false; $('#cd-traco').setAttribute('aria-expanded', 'true'); montarPainel(); }
-function fecharPainel() { $('#cd-painel').hidden = true; $('#cd-traco').setAttribute('aria-expanded', 'false'); }
+function abrirPainel() { if (st.ferramenta === 'borracha' || st.ferramenta === 'laco') return; fecharMapa(); fecharMenu(); $('#cd-painel').hidden = false; $('#cd-traco').setAttribute('aria-expanded', 'true'); montarPainel(); }
+function fecharPainel() { favArmada = null; $('#cd-painel').hidden = true; $('#cd-traco').setAttribute('aria-expanded', 'false'); }
 
 /* ---------- exportar a lista resolvida ----------
    Cada questão vira uma ou mais páginas: o enunciado (vetorial, recortado do PDF original), o papel e tudo o que
@@ -1019,8 +1308,15 @@ async function exportar() {
         // o que o aluno escreveu
         for (const t of ts) {
           const [a, b, c, d] = formaDe(t).caixa; if (d < y || b > y + h) continue;
+          if (t.f === 'texto') {
+            t.txt.split('\n').forEach((l, i) => {
+              const linha = semAcento(l); if (!linha.trim()) return;
+              page.drawText(linha, { x: X(t.x), y: Y(t.y + t.tam * (i * ALTURA_LINHA + 0.9)), size: t.tam * s, font: normal, color: cor(t.c) });
+            });
+            continue;
+          }
           const path = caminho(contorno(t, s), M - bx0 * s, TOPO - y * s); if (!path) continue;
-          page.drawSvgPath(path, { x: 0, y: PH, color: cor(t.c), borderWidth: 0, ...(t.f === 'marca' ? { opacity: 0.38, blendMode: BlendMode.Multiply } : {}) });
+          page.drawSvgPath(path, { x: 0, y: PH, color: cor(t.c), borderWidth: 0, ...(t.f === 'marca' ? { opacity: 0.38, blendMode: BlendMode.Multiply } : t.f === 'lapis' ? { opacity: 0.82 } : {}) });
         }
         page.pushOperators(popGraphicsState());
         y += fatia;
@@ -1092,6 +1388,9 @@ async function iniciar() {
   const salvo = await banco.ler(CHAVE);
   if (salvo?.v === 4 && salvo.pdf === mapa.pdf && salvo.numPaginas === pdf.numPages) st = { ...st, ...salvo };
   else if (salvo?.v === 4) aviso('A lista foi atualizada; começamos um caderno novo.', 3500);
+  st.cor = { ...PADRAO.cor, ...st.cor }; st.esp = { ...PADRAO.esp, ...st.esp };
+  if (!Array.isArray(st.favoritas) || st.favoritas.length !== 4) st.favoritas = [...FAV_PADRAO];
+  if (!TAM_TEXTO.some(([, t]) => t === st.tamTexto)) st.tamTexto = 18;
   st.pdf = mapa.pdf; st.numPaginas = pdf.numPages;
   if (st.atual !== 'gab' && !(st.atual >= 1 && st.atual <= totalQ)) st.atual = 1;
   $('#cd-papel').value = st.papel; $('#cd-formas').setAttribute('aria-pressed', st.formas);
@@ -1099,6 +1398,7 @@ async function iniciar() {
   escolher(st.ferramenta);
   $('#cd-carregando').hidden = true;
   $('#cd-nav').hidden = false;
+  document.fonts?.ready.then(() => { for (const arr of Object.values(st.tracos)) for (const t of arr) if (t.f === 'texto') cacheForma.delete(t); pedirQuadro(); });
   mostrar();
   $('#cd-exportar').disabled = false;
   pronto = true;
@@ -1108,10 +1408,10 @@ async function iniciar() {
     else if (antes.vw) V = prenderVista(V);
     atualizarZoom(); desenhar(); pintarVivo();
   }).observe(folha);
-  try { if (!localStorage.getItem('caderno-dica-4')) { $('#cd-dica').hidden = false; $('#cd-dica-ok').addEventListener('click', () => { $('#cd-dica').hidden = true; try { localStorage.setItem('caderno-dica-4', '1'); } catch {} }); } } catch {}
+  try { if (!localStorage.getItem('caderno-dica-5')) { $('#cd-dica').hidden = false; $('#cd-dica-ok').addEventListener('click', () => { $('#cd-dica').hidden = true; try { localStorage.setItem('caderno-dica-5', '1'); } catch {} }); } } catch {}
   if (salvo?.salvoEm && salvo.pdf === mapa.pdf && salvo.v === 4) aviso('Seu caderno foi recuperado deste aparelho', 2200);
 }
 function erro(msg) { const c = $('#cd-carregando'); c.hidden = false; c.textContent = msg; $('#cd-zoomtag').hidden = true; }
 
-window.__caderno = { get estado() { return st; }, get vista() { return V; }, get verQuestao() { return { ...VQ }; }, get mapa() { return mapa; }, layout: (q) => layout(q), exportar, irPara, reconhecer, aplicarVista, ultimoPdf: null };
+window.__caderno = { get estado() { return st; }, get vista() { return V; }, get verQuestao() { return { ...VQ }; }, get selecao() { return sel; }, get mapa() { return mapa; }, layout: (q) => layout(q), exportar, irPara, reconhecer, aplicarVista, ultimoPdf: null };
 iniciar();
