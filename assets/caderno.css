@@ -90,9 +90,9 @@ body.arrastando #cd-tela{cursor:grabbing}
 .cd-nav-seta svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .cd-nav-seta:hover:not(:disabled){background:#f1eff6}
 .cd-nav-seta:disabled{opacity:.28;cursor:default}
-.cd-nav-q{display:flex;align-items:baseline;gap:5px;height:40px;padding:0 10px;border:0;border-radius:999px;background:transparent;white-space:nowrap}
-.cd-nav-q b{font:700 16px 'Space Grotesk',system-ui,sans-serif}
-.cd-nav-q small{font-size:12px;color:var(--mute)}
+.cd-nav-q{display:flex;align-items:center;justify-content:center;gap:5px;height:40px;min-width:92px;padding:0 10px;border:0;border-radius:999px;background:transparent;white-space:nowrap;line-height:1}
+.cd-nav-q b{font:700 16px/1 'Space Grotesk',system-ui,sans-serif}
+.cd-nav-q small{font-size:12px;line-height:1;color:var(--mute);padding-top:1px}
 .cd-nav-q:hover{background:#f1eff6}
 .cd-conferir{display:inline-flex;align-items:center;gap:6px;height:40px;margin-left:4px;padding:0 16px 0 12px;border:0;border-radius:999px;background:var(--lime);color:var(--ink);font-weight:800;font-size:14px}
 .cd-conferir svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
