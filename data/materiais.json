@@ -933,6 +933,27 @@
     "tipo": "aula"
   },
   {
+    "aula": "3.6.1",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação 3.6.1 — 20 questões com espaço para resolver + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-3.6.1.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular 3.6.1 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-3.6.1.pdf"
+      },
+      {
+        "titulo": "Lista de aprofundamento 3.6.1 — questões mais puxadas + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/aprofundamento-3.6.1.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
     "aula": "3.9.4",
     "arquivos": [
       {

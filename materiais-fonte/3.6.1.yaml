@@ -1,0 +1,595 @@
+# Aula 3.6.1 — Sistemas lineares: classificação
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: equação linear, solução de um sistema, classificação (SPD, SPI, SI), sistemas homogêneos,
+# interpretação com retas (2 × 2) e problemas que levam a sistemas. Resolução por substituição ou adição.
+# Cramer (3.6.2), escalonamento formal (3.6.3) e discussão com determinante (3.6.4) ficam para as próximas aulas.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Marque V se a equação é linear e F se não é.'
+      afirmacoes:
+      - '$2x - 3y + z = 7$'
+      - '$xy + z = 4$'
+      - '$x^2 + y = 1$'
+      - '$\sqrt{2}\,x - \dfrac{y}{3} = 0$'
+      - '$\dfrac{1}{x} + y = 2$'
+      justificar: true
+      espaco: 18
+      resolucao: |
+        Numa equação linear, as incógnitas aparecem só com expoente 1, sem produto entre elas e sem dividir.
+        (V) (F) há o produto $xy$. (F) há $x^2$. (V) os coeficientes podem ser irracionais ou frações. (F) $\tfrac{1}{x} = x^{-1}$.
+      resposta: V, F, F, V, F
+    - enunciado: 'Verifique se o terno dado é solução do sistema.'
+      itens:
+      - '$(1, 2, -1)$ e o sistema $\begin{cases} x + y + z = 2 \\ 2x - y + 3z = -3 \end{cases}$'
+      - '$(2, 0, 1)$ e o sistema $\begin{cases} x - y + z = 3 \\ x + y - 2z = 1 \end{cases}$'
+      espaco_item: 16
+      resolucao: |
+        (a) $1 + 2 - 1 = 2$ e $2 - 2 - 3 = -3$: satisfaz as duas, é solução.
+        (b) $2 - 0 + 1 = 3$, mas $2 + 0 - 2 = 0 \neq 1$: não é solução (precisa satisfazer todas as equações).
+      resposta: '(a) sim (b) não'
+    - enunciado: 'Resolva cada sistema e complete o quadro com a classificação: SPD (uma solução), SPI (infinitas) ou SI (nenhuma).'
+      tabela:
+        cabecalho: ['Sistema', 'Classificação']
+        linhas:
+        - ['$x + y = 5$ e $x - y = 1$', '{{SPD}}']
+        - ['$x + y = 5$ e $2x + 2y = 10$', '{{SPI}}']
+        - ['$x + y = 5$ e $x + y = 7$', '{{SI}}']
+      espaco: 22
+      resolucao: |
+        1º: somando, $2x = 6$, $x = 3$ e $y = 2$: uma solução. 2º: a segunda equação é o dobro da primeira, e sobra uma só equação com duas incógnitas: infinitas soluções.
+        3º: $x + y$ não pode valer 5 e 7 ao mesmo tempo: nenhuma solução.
+      resposta: 'SPD, com $(3, 2)$; SPI; SI'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Todo sistema linear homogêneo (com todos os termos independentes nulos) é possível.'
+      - 'Um sistema possível e indeterminado tem exatamente duas soluções.'
+      - 'Se as duas equações de um sistema $2 \times 2$ são proporcionais, inclusive nos termos independentes, o sistema é SPI.'
+      - 'Um sistema linear com 2 equações e 3 incógnitas pode ser possível e determinado.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) A solução nula sempre serve. (F) Um sistema linear tem 0, 1 ou infinitas soluções.
+        (V) As duas equações são, na verdade, a mesma. (F) Com menos equações que incógnitas, sobra liberdade: ou não há solução ou há infinitas.
+      resposta: V, F, V, F
+    - enunciado: 'Cada equação de um sistema $2 \times 2$ representa uma reta. Associe cada sistema à posição das suas retas (uma posição pode ser usada mais de uma vez).'
+      esquerda:
+      - 'Retas concorrentes (SPD)'
+      - 'Retas paralelas distintas (SI)'
+      - 'Retas coincidentes (SPI)'
+      direita:
+      - '$x + y = 2$ e $x - y = 0$'
+      - '$x + 2y = 4$ e $2x + 4y = 8$'
+      - '$y = 2x + 1$ e $y = 2x - 3$'
+      - '$3x - y = 1$ e $x + y = 3$'
+      - '$x - y = 1$ e $2x - 2y = 5$'
+      resolucao: |
+        1º: inclinações diferentes, um ponto comum, $(1, 1)$. 2º: a segunda é o dobro da primeira: a mesma reta.
+        3º: mesma inclinação 2, interceptos diferentes: paralelas. 4º: um ponto comum, $(1, 2)$. 5º: $2x - 2y$ teria de valer 2 e 5: paralelas.
+      resposta: 'De cima para baixo: 1, 3, 2, 1, 2'
+    - enunciado: 'Um estacionamento tem 30 veículos, entre carros e motos, e 100 rodas no total. Com $c$ carros e $m$ motos, complete.'
+      itens:
+      - 'Equações: $c + m = {{30}}$ e $4c + {{2}}m = 100$'
+      - 'Substituindo $m = 30 - c$: $\ 4c + 60 - 2c = 100$, logo $c = {{20}}$ e $m = {{10}}$'
+      resolucao: |
+        Cada carro tem 4 rodas e cada moto, 2. $2c = 40$, então $c = 20$ e $m = 10$. Conferência: $80 + 20 = 100$ rodas.
+      resposta: '$30$ e $2$; $c = 20$ e $m = 10$'
+    - enunciado: 'Resolva o sistema $\begin{cases} x + y + z = 6 \\ y + z = 5 \\ z = 3 \end{cases}$ e classifique-o.'
+      espaco: 18
+      resolucao: |
+        De baixo para cima: $z = 3$; $y = 5 - 3 = 2$; $x = 6 - 2 - 3 = 1$. Solução única $(1, 2, 3)$: SPD.
+      resposta: '$(1, 2, 3)$; SPD'
+  - nome: Nível 2
+    questoes:
+    - enunciado: 'Determine os números reais pedidos.'
+      itens:
+      - '$k$, sabendo que $(2, k)$ é solução de $3x - y = 4$.'
+      - '$a$ e $b$, sabendo que $(1, -1, 2)$ é solução de $\begin{cases} ax + y + z = 4 \\ x + by - z = 2 \end{cases}$.'
+      espaco_item: 16
+      resolucao: |
+        (a) $6 - k = 4$, logo $k = 2$.
+        (b) $a - 1 + 2 = 4$, logo $a = 3$; $1 - b - 2 = 2$, logo $b = -3$.
+      resposta: '(a) $k = 2$ (b) $a = 3$ e $b = -3$'
+    - texto: |
+        Rafa analisou o sistema $\begin{cases} x + 2y = 3 \\ 2x + 4y = 5 \end{cases}$ e escreveu: “a segunda equação é o dobro da primeira, então o sistema é possível e indeterminado”.
+      enunciado: 'Encontre o erro de Rafa e classifique o sistema corretamente.'
+      espaco: 18
+      resolucao: |
+        Só os coeficientes são proporcionais: o dobro da primeira equação é $2x + 4y = 6$, e não $= 5$. Como $2x + 4y$ não pode valer 6 e 5 ao mesmo tempo, o sistema é impossível (as retas são paralelas distintas).
+      resposta: 'Os termos independentes não são proporcionais; o sistema é SI'
+    - enunciado: 'Considere os sistemas homogêneos.'
+      itens:
+      - '$\begin{cases} 2x - y = 0 \\ 4x - 2y = 0 \end{cases}$: classifique-o e dê três soluções.'
+      - '$\begin{cases} x + y = 0 \\ x - y = 0 \end{cases}$: classifique-o.'
+      espaco_item: 16
+      resolucao: |
+        (a) A segunda é o dobro da primeira: sobra $y = 2x$. SPI, com soluções $(t, 2t)$, por exemplo $(0, 0)$, $(1, 2)$ e $(-3, -6)$.
+        (b) Somando, $2x = 0$: $x = 0$ e $y = 0$. SPD, só com a solução nula.
+      resposta: '(a) SPI; por exemplo $(0, 0)$, $(1, 2)$, $(-3, -6)$ (b) SPD, só $(0, 0)$'
+    - enunciado: 'Classifique os sistemas conforme o parâmetro.'
+      itens:
+      - '$\begin{cases} x + 2y = 3 \\ 2x + ky = 6 \end{cases}$, conforme $k$.'
+      - '$\begin{cases} x + 2y = 3 \\ 2x + 4y = m \end{cases}$, conforme $m$.'
+      espaco_item: 18
+      resolucao: |
+        (a) Para $k = 4$, a segunda é o dobro da primeira (inclusive $6 = 2 \cdot 3$): SPI. Para $k \neq 4$, as retas têm inclinações diferentes: SPD.
+        (b) Os coeficientes já são proporcionais. Para $m = 6$: SPI. Para $m \neq 6$: SI.
+      resposta: '(a) $k = 4$: SPI; $k \neq 4$: SPD (b) $m = 6$: SPI; $m \neq 6$: SI'
+    - enunciado: 'Ana, Bia e Caio têm, juntos, 65 anos. Bia tem 5 anos a mais que Ana, e Caio tem o dobro da idade de Ana. Monte um sistema e determine as três idades.'
+      espaco: 24
+      resolucao: |
+        $a + b + c = 65$, $b = a + 5$ e $c = 2a$. Substituindo: $a + a + 5 + 2a = 65$, $4a = 60$, $a = 15$.
+        Então $b = 20$ e $c = 30$.
+      resposta: 'Ana 15, Bia 20 e Caio 30 anos'
+    - enunciado: 'O sistema $\begin{cases} x + y + z = 10 \\ x - y = 2 \end{cases}$ é possível e indeterminado: escrevendo $x$ e $z$ em função de $y$, temos $x = y + 2$ e $z = 8 - 2y$. Complete o quadro com algumas soluções.'
+      tabela:
+        cabecalho: ['$y$', '$x$', '$z$']
+        linhas:
+        - ['$0$', '${{2}}$', '${{8}}$']
+        - ['$1$', '${{3}}$', '${{6}}$']
+        - ['$3$', '${{5}}$', '${{2}}$']
+        - ['$4$', '${{6}}$', '${{0}}$']
+      resolucao: |
+        Da 2ª equação, $x = y + 2$; na 1ª, $z = 10 - x - y = 8 - 2y$. Cada valor de $y$ dá uma solução.
+      resposta: '$(2, 0, 8)$, $(3, 1, 6)$, $(5, 3, 2)$, $(6, 4, 0)$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Se um sistema linear tem duas soluções diferentes, ele tem infinitas soluções.'
+      - 'Um sistema com 3 equações e 2 incógnitas é sempre impossível.'
+      - 'Um sistema homogêneo que é SPD tem apenas a solução nula.'
+      - 'O sistema $\begin{cases} x + y = 1 \\ x + y = 1 \end{cases}$ é possível e determinado.'
+      justificar: true
+      espaco: 22
+      resolucao: |
+        (V) No plano, duas retas com dois pontos comuns são a mesma reta. (F) $x + y = 2$, $x - y = 0$ e $2x = 2$ têm a solução $(1, 1)$.
+        (V) A solução nula sempre existe; sendo única, é a única. (F) É uma só equação repetida: SPI.
+      resposta: V, F, V, F
+    - enunciado: 'Três cadernos e duas canetas custam R\$\,40,00; um caderno e quatro canetas custam R\$\,30,00. Monte o sistema, classifique-o e determine o preço de cada item.'
+      espaco: 22
+      resolucao: |
+        $3c + 2p = 40$ e $c + 4p = 30$. Da segunda, $c = 30 - 4p$; na primeira: $90 - 12p + 2p = 40$, $p = 5$ e $c = 10$.
+        Solução única: SPD. Caderno R\$\,10,00 e caneta R\$\,5,00.
+      resposta: 'SPD; caderno R\$\,10,00 e caneta R\$\,5,00'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Considere o sistema homogêneo $\begin{cases} ax + by = 0 \\ cx + dy = 0 \end{cases}$.'
+      itens:
+      - 'Mostre que, se $(x_1, y_1)$ e $(x_2, y_2)$ são soluções, então $(x_1 + x_2,\ y_1 + y_2)$ também é.'
+      - 'Conclua que, se esse sistema tem uma solução não nula $(x_1, y_1)$, então ele é SPI.'
+      espaco_item: 22
+      resolucao: |
+        (a) $a(x_1 + x_2) + b(y_1 + y_2) = (ax_1 + by_1) + (ax_2 + by_2) = 0 + 0 = 0$, e o mesmo na segunda equação.
+        (b) Do mesmo modo, $(kx_1, ky_1)$ é solução para todo $k$ real: são infinitas soluções.
+      resposta: 'Ver resolução'
+    - enunciado: 'Classifique o sistema $\begin{cases} ax + y = 1 \\ x + y = b \end{cases}$ conforme os valores reais de $a$ e $b$.'
+      espaco: 26
+      resolucao: |
+        Subtraindo as equações: $(a - 1)x = 1 - b$.
+        Se $a \neq 1$: $x = \tfrac{1 - b}{a - 1}$ e $y$ fica determinado: SPD. Se $a = 1$ e $b = 1$: as equações são iguais: SPI. Se $a = 1$ e $b \neq 1$: $0 = 1 - b \neq 0$: SI.
+      resposta: '$a \neq 1$: SPD; $a = 1$ e $b = 1$: SPI; $a = 1$ e $b \neq 1$: SI'
+    - enunciado: 'Balas custam R\$\,2,00 e chocolates, R\$\,5,00. De quantas maneiras é possível gastar exatamente R\$\,40,00 com esses doces? Explique por que a equação $2x + 5y = 40$ tem infinitas soluções reais, mas poucas que servem ao problema.'
+      espaco: 26
+      resolucao: |
+        Uma equação com duas incógnitas tem infinitas soluções reais (é uma reta). Aqui, porém, $x$ e $y$ são números naturais.
+        $2x = 40 - 5y$ exige $y$ par: $y = 0, 2, 4, 6, 8$, com $x = 20, 15, 10, 5, 0$. São 5 maneiras.
+      resposta: '5 maneiras'
+    - enunciado: 'Considere o sistema $\begin{cases} x + y + z = 6 \\ x - y + 2z = 5 \\ 2x + 3z = 11 \end{cases}$.'
+      itens:
+      - 'Mostre que a terceira equação é a soma das duas primeiras e classifique o sistema.'
+      - 'Escreva $x$ e $y$ em função de $z$ e dê duas soluções.'
+      espaco_item: 24
+      resolucao: |
+        (a) Somando as duas primeiras: $2x + 0y + 3z = 11$, que é a terceira. Ela não traz informação nova: sobram duas equações com três incógnitas, e o sistema é SPI.
+        (b) Da terceira, $x = \tfrac{11 - 3z}{2}$; da primeira, $y = 6 - x - z = \tfrac{1 + z}{2}$. Com $z = 1$: $(4, 1, 1)$; com $z = 3$: $(1, 2, 3)$.
+      resposta: '(a) SPI (b) $x = \frac{11 - 3z}{2}$, $y = \frac{1 + z}{2}$; por exemplo $(4, 1, 1)$ e $(1, 2, 3)$'
+    - enunciado: 'Troque a terceira equação do sistema anterior por $2x + 3z = 12$. Mostre que o novo sistema é impossível.'
+      espaco: 18
+      resolucao: |
+        Somando as duas primeiras equações (que continuam no sistema), toda solução teria $2x + 3z = 11$. Mas a terceira exige $2x + 3z = 12$, e $11 \neq 12$. Nenhum terno satisfaz as três: SI.
+      resposta: 'Ver resolução (SI)'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um teatro vendeu 200 ingressos para uma apresentação e arrecadou R\$\,4\,800,00. Os ingressos eram de dois tipos, com os preços indicados no quadro. Para planejar a próxima temporada, a administração quer saber quantas meias-entradas foram vendidas e montou um sistema com essas informações.
+    tabela:
+      cabecalho: ['Ingresso', 'Preço']
+      linhas:
+      - ['Inteira', 'R\$\,30,00']
+      - ['Meia-entrada', 'R\$\,15,00']
+    enunciado: |
+      O número de meias-entradas vendidas foi
+    opcoes: ['$60$', '$80$', '$100$', '$120$', '$140$']
+    correta: B
+    resolucao: |
+      $i + m = 200$ e $30i + 15m = 4800$. Com $i = 200 - m$: $6000 - 30m + 15m = 4800$, $15m = 1200$, $m = 80$.
+      120 é o número de inteiras.
+
+  - estilo: Fuvest
+    enunciado: |
+      Uma solução do sistema $\begin{cases} x + y - z = 2 \\ 2x - y + z = 4 \\ x + 2y + z = 5 \end{cases}$ é
+    opcoes: ['$(2, 0, 0)$', '$(1, 2, 1)$', '$(3, 0, 1)$', '$(0, 2, 0)$', '$(2, 1, 1)$']
+    correta: E
+    resolucao: |
+      $(2, 1, 1)$: $2 + 1 - 1 = 2$, $4 - 1 + 1 = 4$ e $2 + 2 + 1 = 5$.
+      As outras satisfazem a primeira equação, mas falham em alguma das outras; por exemplo, $(2, 0, 0)$ dá 2 na terceira.
+
+  - estilo: Unicamp
+    enunciado: |
+      O sistema $\begin{cases} x + 2y = 3 \\ 2x + 4y = 6 \end{cases}$ é
+    opcoes: ['possível e determinado.', 'possível e indeterminado.', 'impossível.', 'possível, com exatamente duas soluções.']
+    correta: B
+    resolucao: |
+      A segunda equação é o dobro da primeira: as retas coincidem, e há infinitas soluções.
+
+  - estilo: UEM
+    enunciado: |
+      Considere o sistema $\begin{cases} x + y = 4 \\ 2x + 2y = k \end{cases}$, em que $k$ é um número real. Assinale o que for correto.
+    proposicoes:
+    - 'Para $k = 8$, o sistema é possível e indeterminado.'
+    - 'Para $k = 6$, o sistema é impossível.'
+    - 'Existe um valor de $k$ para o qual o sistema é possível e determinado.'
+    - 'Para $k = 8$, o par $(1, 3)$ é uma solução.'
+    - 'Para qualquer $k$, as retas que representam as equações são paralelas ou coincidentes.'
+    corretas: [1, 2, 4, 5]
+    resolucao: |
+      Os coeficientes da segunda equação são o dobro dos da primeira (16 correta).
+      01) Correta: com $k = 8$, a segunda é o dobro da primeira. 02) Correta: $2x + 2y$ teria de valer 8 e 6.
+      04) Incorreta: ou as retas coincidem ($k = 8$) ou são paralelas. 08) Correta: $1 + 3 = 4$.
+      Soma: $01 + 02 + 08 + 16 = 27$.
+
+  - estilo: Unesp
+    texto: |
+      O gráfico mostra as retas $r$ e $s$, cujas equações são $y = 2x - 1$ e $y = -x + 5$. Resolver o sistema formado por essas duas equações é o mesmo que encontrar o ponto comum às duas retas.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.62]
+        \draw[step=1, gray!25, very thin] (-1,-2) grid (6,6);
+        \draw[-latex, ink!60] (-1.3,0) -- (6.4,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,-2.3) -- (0,6.4) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1pt] (-0.5,-2) -- (3.5,6) node[above, font=\scriptsize] {$r$};
+        \draw[ink, line width=1pt] (-1,6) -- (6,-1) node[below, font=\scriptsize] {$s$};
+        \fill[roxo] (2,3) circle (3pt);
+        \end{scope}
+    enunciado: |
+      A solução do sistema é
+    opcoes: ['$(2, 3)$.', '$(3, 2)$.', '$(1, 1)$.', '$(0, 5)$.', 'inexistente, pois o sistema é impossível.']
+    correta: A
+    resolucao: |
+      $2x - 1 = -x + 5 \Rightarrow 3x = 6 \Rightarrow x = 2$ e $y = 3$. As retas são concorrentes: SPD.
+      $(1, 1)$ está só em $r$; $(0, 5)$ está só em $s$; $(3, 2)$ troca as coordenadas.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir sobre sistemas lineares.
+    afirmativas:
+    - 'Todo sistema linear homogêneo é possível.'
+    - 'Um sistema linear pode ter exatamente duas soluções.'
+    - 'Se as equações de um sistema $2 \times 2$ são proporcionais, inclusive nos termos independentes, o sistema é possível e indeterminado.'
+    - 'A equação $x^2 + y = 3$ é linear.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e IV, apenas.', 'I, II e III, apenas.', 'III e IV, apenas.', 'I e III, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta: a solução nula sempre existe.
+      II. Incorreta: um sistema linear tem 0, 1 ou infinitas soluções.
+      III. Correta. IV. Incorreta: há o termo $x^2$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $k$ para o qual o par $(k, 2k)$ é solução da equação $3x + y = 15$ é
+    opcoes: ['$3$', '$5$', '$6$', '$9$', '$15$']
+    correta: A
+    resolucao: |
+      $3k + 2k = 5k = 15 \Rightarrow k = 3$. Quem esquece o $2k$ marca 5.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      Uma nutricionista vai montar uma refeição com porções de dois alimentos, A e B, para fornecer exatamente 14 gramas de proteína e 14 gramas de fibras. O quadro mostra quanto cada porção fornece. Com $a$ porções de A e $b$ porções de B, ela montou um sistema linear e o resolveu.
+    tabela:
+      cabecalho: ['Por porção', 'Proteína (g)', 'Fibras (g)']
+      linhas:
+      - ['Alimento A', '3', '2']
+      - ['Alimento B', '1', '3']
+    enunciado: |
+      O número total de porções da refeição é
+    opcoes: ['$4$', '$5$', '$6$', '$7$', '$8$']
+    correta: C
+    resolucao: |
+      $3a + b = 14$ e $2a + 3b = 14$. Com $b = 14 - 3a$: $2a + 42 - 9a = 14$, $a = 4$ e $b = 2$. Total: 6 porções.
+      4 é o número de porções de A.
+
+  - estilo: Unicamp
+    enunciado: |
+      O sistema $\begin{cases} x + ky = 2 \\ 2x + 6y = 4 \end{cases}$ é possível e indeterminado para $k$ igual a
+    opcoes: ['$2$.', '$3$.', '$4$.', '$6$.']
+    correta: B
+    resolucao: |
+      A segunda equação precisa ser o dobro da primeira: $2k = 6$, logo $k = 3$ (e $2 \cdot 2 = 4$ confere).
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$(1, 1, 1)$ é solução do sistema formado por $x + y + z = 3$ e $x - y + z = 1$.'
+    - 'O sistema formado por $x + y = 1$ e $x + y = 2$ é impossível.'
+    - 'O sistema homogêneo formado por $x + y = 0$ e $x - y = 0$ tem infinitas soluções.'
+    - 'O sistema formado por $x - y = 0$ e $2x - 2y = 0$ é possível e indeterminado.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – V.', 'V – F – V – V.', 'F – V – F – V.', 'V – V – V – F.', 'F – F – V – V.']
+    correta: A
+    resolucao: |
+      (V) $3 = 3$ e $1 = 1$. (V) $x + y$ não pode valer 1 e 2.
+      (F) Somando, $x = 0$, e então $y = 0$: só a solução nula. (V) A segunda é o dobro da primeira.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o sistema $S$: $\begin{cases} x + y + z = 6 \\ x - y = 0 \end{cases}$. Assinale o que for correto.
+    proposicoes:
+    - '$S$ é possível e indeterminado.'
+    - '$(1, 1, 4)$ é solução de $S$.'
+    - '$(2, 2, 2)$ é solução de $S$.'
+    - '$S$ tem exatamente 6 soluções formadas por números naturais.'
+    - 'Acrescentando a equação $z = 2$, obtém-se um sistema possível e determinado.'
+    - 'Acrescentando a equação $2x + z = 6$, obtém-se um sistema impossível.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      As soluções são $(t, t, 6 - 2t)$. 01) Correta. 02) e 04) Corretas ($t = 1$ e $t = 2$).
+      08) Incorreta: com naturais, $t = 0, 1, 2, 3$: 4 soluções. 16) Correta: $6 - 2t = 2$ dá $t = 2$, só $(2, 2, 2)$.
+      32) Incorreta: $2t + (6 - 2t) = 6$ vale sempre; o sistema continua SPI.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Fuvest
+    enunciado: |
+      A soma de dois números é 40 e a diferença entre eles é 8. O produto desses números é
+    opcoes: ['$384$', '$396$', '$400$', '$420$', '$480$']
+    correta: A
+    resolucao: |
+      $x + y = 40$ e $x - y = 8$: $x = 24$ e $y = 16$. Produto: $384$. 400 é $20 \cdot 20$, a metade da soma ao quadrado.
+
+  - estilo: Unesp
+    texto: |
+      Uma lanchonete vende um salgado, um suco e uma sobremesa, com preços $x$, $y$ e $z$, em reais. O quadro mostra três combos e os seus preços. Um cliente montou um sistema linear com essas informações para descobrir o preço de cada item.
+    tabela:
+      cabecalho: ['Combo', 'Composição', 'Preço (R\$)']
+      linhas:
+      - ['1', 'salgado, suco e sobremesa', '20']
+      - ['2', '2 salgados e 1 suco', '17']
+      - ['3', '1 salgado e 2 sobremesas', '21']
+    enunciado: |
+      O preço da sobremesa é
+    opcoes: ['R\$\,5,00.', 'R\$\,6,00.', 'R\$\,7,00.', 'R\$\,8,00.', 'R\$\,9,00.']
+    correta: D
+    resolucao: |
+      $x + y + z = 20$, $2x + y = 17$ e $x + 2z = 21$. Da 2ª, $y = 17 - 2x$; da 3ª, $z = \tfrac{21 - x}{2}$. Na 1ª: $x + 17 - 2x + \tfrac{21 - x}{2} = 20$; multiplicando por 2, $-3x + 55 = 40$, logo $x = 5$.
+      Então $y = 7$ e $z = 8$.
+
+  - estilo: Enem
+    texto: |
+      Um cofrinho tem apenas moedas de R\$\,0,50 e de R\$\,1,00, num total de 60 moedas. Ao abrir o cofrinho, uma criança contou R\$\,42,00. Para saber quantas moedas de cada valor havia, a mãe montou um sistema com duas equações: uma para a quantidade de moedas e outra para o valor total.
+    enunciado: |
+      A quantidade de moedas de R\$\,1,00 era
+    opcoes: ['$18$', '$24$', '$30$', '$36$', '$42$']
+    correta: B
+    resolucao: |
+      $m + n = 60$ e $0{,}5m + n = 42$. Subtraindo: $0{,}5m = 18$, $m = 36$ moedas de R\$\,0,50 e $n = 24$ de R\$\,1,00.
+      36 é a quantidade de moedas de R\$\,0,50.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Em um trecho de ruas de mão única, os engenheiros de trânsito medem o fluxo de veículos por hora. Em cada cruzamento, o número de veículos que entram é igual ao número dos que saem. Com os fluxos desconhecidos $x_1$, $x_2$ e $x_3$ em três trechos, eles chegaram ao sistema
+        \[ \begin{cases} x_1 + x_2 = 500 \\ x_2 + x_3 = 400 \\ x_1 - x_3 = 100 \end{cases} \]
+    enunciado: |
+      Esse sistema é
+    opcoes: ['impossível.', 'possível e determinado, com $x_1 = 250$.', 'homogêneo.', 'possível e indeterminado.', 'possível, com exatamente três soluções.']
+    correta: D
+    resolucao: |
+      A terceira equação é a primeira menos a segunda: $(x_1 + x_2) - (x_2 + x_3) = 500 - 400$. Ela não traz informação nova, e sobram duas equações com três incógnitas: há infinitas soluções.
+
+  - estilo: Unicamp
+    enunciado: |
+      Os engenheiros mediram $x_3 = 150$ veículos por hora. Então $x_1$ vale
+    opcoes: ['$150$.', '$200$.', '$250$.', '$350$.']
+    correta: C
+    resolucao: |
+      Da segunda equação, $x_2 = 400 - 150 = 250$; da primeira, $x_1 = 500 - 250 = 250$. (A terceira confere: $250 - 150 = 100$.)
+
+  - estilo: UEM
+    enunciado: |
+      Considere sistemas lineares com coeficientes reais. Assinale o que for correto.
+    proposicoes:
+    - 'Se um sistema tem duas soluções diferentes, então tem infinitas soluções.'
+    - 'Todo sistema homogêneo admite a solução nula.'
+    - 'Um sistema com mais equações que incógnitas é sempre impossível.'
+    - 'Um sistema com menos equações que incógnitas nunca é possível e determinado.'
+    - 'Se $(x_0, y_0)$ é solução de um sistema qualquer, então $(2x_0, 2y_0)$ também é.'
+    corretas: [1, 2, 4]
+    resolucao: |
+      01) Correta. 02) Correta. 04) Incorreta: $x + y = 2$, $x - y = 0$, $2x = 2$ tem a solução $(1, 1)$.
+      08) Correta: sobra pelo menos uma incógnita livre, ou não há solução.
+      16) Incorreta: em $x + y = 2$, $(1, 1)$ é solução, mas $(2, 2)$ não (isso só vale para sistemas homogêneos).
+      Soma: $01 + 02 + 08 = 11$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\begin{cases} x + y + z = 10 \\ x - y = 2 \\ y - z = 1 \end{cases}$, então o produto $xyz$ é igual a
+    opcoes: ['$6$', '$10$', '$24$', '$30$', '$60$']
+    correta: D
+    resolucao: |
+      $x = y + 2$ e $z = y - 1$. Na primeira: $3y + 1 = 10$, $y = 3$, $x = 5$ e $z = 2$. Produto: 30.
+
+  - estilo: Enem
+    texto: |
+      Uma ração para animais é preparada com três ingredientes, A, B e C. O quadro mostra quantas unidades de três nutrientes há em cada porção de cada ingrediente. O veterinário precisa que a ração tenha exatamente 7 unidades do nutriente 1, 8 do nutriente 2 e 9 do nutriente 3, e montou um sistema para descobrir quantas porções de cada ingrediente usar.
+    tabela:
+      cabecalho: ['', 'A', 'B', 'C']
+      linhas:
+      - ['Nutriente 1', '1', '2', '1']
+      - ['Nutriente 2', '2', '1', '1']
+      - ['Nutriente 3', '1', '1', '2']
+    enunciado: |
+      O número de porções do ingrediente C é
+    opcoes: ['$-1$', '$0$', '$1$', '$2$', '$3$']
+    correta: E
+    resolucao: |
+      $a + 2b + c = 7$, $2a + b + c = 8$ e $a + b + 2c = 9$. Somando as três: $4(a + b + c) = 24$, logo $a + b + c = 6$.
+      Subtraindo essa soma de cada equação: $b = 1$, $a = 2$ e $c = 3$. Conferência: $2 + 2 + 3 = 7$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O sistema $\begin{cases} x + y = 2 \\ x - y = 0 \\ ax + y = 3 \end{cases}$ é possível para $a$ igual a
+    opcoes: ['$-1$', '$0$', '$1$', '$2$', '$3$']
+    correta: D
+    resolucao: |
+      As duas primeiras equações dão $x = y = 1$. A terceira precisa aceitar essa solução: $a + 1 = 3$, $a = 2$. Para outro $a$, o sistema é impossível.
+
+aprofundamento:
+  questoes:
+  - estilo: Unicamp
+    texto: |
+      Em uma rotatória com quatro cruzamentos ligados por trechos de mão única, os fluxos de veículos por hora nos trechos, $x_1$, $x_2$, $x_3$ e $x_4$, satisfazem, pela conservação do fluxo em cada cruzamento,
+      \[ x_1 - x_2 = 100, \qquad x_2 - x_3 = -50, \] \[ x_3 - x_4 = 200, \qquad x_4 - x_1 = -250. \]
+    enunciado: ''
+    itens:
+    - 'Mostre que qualquer uma das equações é consequência das outras três e classifique o sistema.'
+    - 'Escreva $x_2$, $x_3$ e $x_4$ em função de $x_1$.'
+    - 'Como os fluxos não podem ser negativos, qual é o menor valor possível de $x_1$?'
+    espaco: 62
+    resolucao: |
+      a) A soma das quatro equações dá $0 = 100 - 50 + 200 - 250 = 0$. Então a quarta é menos a soma das outras três, e não traz informação nova: sobram 3 equações com 4 incógnitas, e o sistema é SPI.
+      b) $x_2 = x_1 - 100$; $x_3 = x_2 + 50 = x_1 - 50$; $x_4 = x_3 - 200 = x_1 - 250$.
+      c) O menor dos quatro é $x_4 = x_1 - 250 \ge 0$: $x_1 \ge 250$. O menor valor é $x_1 = 250$ (com $x_4 = 0$).
+    resposta: 'a) SPI; b) $x_2 = x_1 - 100$, $x_3 = x_1 - 50$, $x_4 = x_1 - 250$; c) 250'
+
+  - estilo: Fuvest
+    enunciado: 'Considere o sistema $\begin{cases} x + y = 3 \\ 2x + my = n \end{cases}$, com $m$ e $n$ reais.'
+    itens:
+    - 'Mostre que, para $m \neq 2$, o sistema é possível e determinado e escreva a solução.'
+    - 'Para $m = 2$, para que valor de $n$ o sistema é possível e indeterminado?'
+    - 'Para $m = 2$ e $n \neq 6$, classifique o sistema e interprete com retas.'
+    espaco: 62
+    resolucao: |
+      a) Com $y = 3 - x$: $2x + 3m - mx = n$, isto é, $(2 - m)x = n - 3m$. Para $m \neq 2$: $x = \tfrac{n - 3m}{2 - m}$ e $y = 3 - x = \tfrac{6 - n}{2 - m}$, única.
+      b) Com $m = 2$, a segunda equação é $2x + 2y = n$; ela é o dobro da primeira se $n = 6$: SPI.
+      c) Com $n \neq 6$, $2(x + y)$ teria de valer 6 e $n$: SI. As retas são paralelas distintas.
+    resposta: 'a) $x = \frac{n - 3m}{2 - m}$, $y = \frac{6 - n}{2 - m}$; b) $n = 6$; c) SI, retas paralelas'
+
+  - estilo: ITA
+    enunciado: |
+      O número de pares $(x, y)$ de números naturais que satisfazem $3x + 5y = 60$ é
+    opcoes: ['$3$', '$4$', '$5$', '$6$', '$12$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $3x = 60 - 5y$ exige $5y$ múltiplo de 3, isto é, $y$ múltiplo de 3: $y = 0, 3, 6, 9, 12$, com $x = 20, 15, 10, 5, 0$. São 5 pares.
+      Quem exclui o zero conta só 3.
+    resposta: 'C'
+
+  - estilo: Unesp
+    texto: |
+      Para balancear a equação química da combustão do metano, $a\,\mathrm{CH_4} + b\,\mathrm{O_2} \to c\,\mathrm{CO_2} + d\,\mathrm{H_2O}$, é preciso que cada elemento apareça na mesma quantidade nos dois lados.
+    enunciado: ''
+    itens:
+    - 'Escreva o sistema linear formado pelas condições para o carbono, o hidrogênio e o oxigênio.'
+    - 'Classifique o sistema e explique por que ele tem infinitas soluções.'
+    - 'Determine os menores números naturais não nulos $a$, $b$, $c$ e $d$ que balanceiam a equação.'
+    espaco: 62
+    resolucao: |
+      a) Carbono: $a = c$. Hidrogênio: $4a = 2d$. Oxigênio: $2b = 2c + d$.
+      b) É um sistema homogêneo com 3 equações e 4 incógnitas: é possível (admite a nula) e tem incógnita livre, então é SPI. Multiplicar uma solução por qualquer número dá outra.
+      c) Com $a = 1$: $c = 1$, $d = 2$ e $2b = 2 + 2$, $b = 2$. A equação fica $\mathrm{CH_4} + 2\,\mathrm{O_2} \to \mathrm{CO_2} + 2\,\mathrm{H_2O}$.
+    resposta: 'a) $a = c$, $4a = 2d$, $2b = 2c + d$; b) SPI; c) $a = 1$, $b = 2$, $c = 1$, $d = 2$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o sistema $\begin{cases} x + 2y - z = 1 \\ 2x + 4y - 2z = k \\ x - y + z = 2 \end{cases}$, em que $k$ é real. Assinale o que for correto.
+    proposicoes:
+    - 'Para $k = 2$, o sistema é possível e indeterminado.'
+    - 'Para $k = 3$, o sistema é impossível.'
+    - 'Para $k = 2$, o terno $(1, 0, 0)$ é solução.'
+    - 'Para $k = 2$, o terno $(1, 1, 2)$ é solução.'
+    - 'Para nenhum valor de $k$ o sistema é possível e determinado.'
+    - 'Para $k = 2$, toda solução satisfaz $2x + y = 3$.'
+    - 'Para $k = 2$, o sistema tem exatamente duas soluções formadas por números inteiros.'
+    corretas: [1, 2, 4, 5, 6]
+    espaco: 22
+    resolucao: |
+      O lado esquerdo da 2ª equação é o dobro do da 1ª. Se $k = 2$, a 2ª é o dobro da 1ª e sobram duas equações com três incógnitas: SPI (01 correta). Se $k \neq 2$, $2(x + 2y - z)$ teria de valer 2 e $k$: SI (02 e 16 corretas).
+      04) Incorreta: $1 - 0 + 0 = 1 \neq 2$ na 3ª equação. 08) Correta: $1 + 2 - 2 = 1$ e $1 - 1 + 2 = 2$.
+      32) Correta: somando a 1ª e a 3ª, $2x + y = 3$. 64) Incorreta: $y = 3 - 2x$ e $z = x + 2y - 1 = 5 - 3x$ dão uma solução inteira para cada $x$ inteiro: infinitas.
+    resposta: 'Soma 59 (01 + 02 + 08 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere as retas $r$: $(m - 1)x + y = 2$ e $s$: $3x + (m + 1)y = 4$, com $m$ real, e o sistema formado pelas suas equações.'
+    itens:
+    - 'Mostre que as retas têm a mesma inclinação apenas para $m = 2$ ou $m = -2$.'
+    - 'Classifique o sistema para $m = 2$ e para $m = -2$.'
+    - 'Conclua para quais valores de $m$ o sistema é possível e determinado e mostre que ele nunca é possível e indeterminado.'
+    espaco: 62
+    resolucao: |
+      a) As inclinações são $-(m - 1)$ e $-\tfrac{3}{m + 1}$ (para $m \neq -1$; com $m = -1$, $s$ é vertical e $r$ não). Igualando: $(m - 1)(m + 1) = 3$, $m^2 = 4$, $m = \pm 2$.
+      b) $m = 2$: $x + y = 2$ e $3x + 3y = 4$, isto é, $x + y = \tfrac{4}{3}$: SI. $m = -2$: $-3x + y = 2$ e $3x - y = 4$, isto é, $-3x + y = -4$: SI.
+      c) SPD para $m \neq 2$ e $m \neq -2$. Nos dois casos de mesma inclinação, as retas são paralelas distintas, nunca coincidentes: o sistema nunca é SPI.
+    resposta: 'a) Ver resolução; b) SI nos dois casos; c) SPD para $m \neq \pm 2$; nunca SPI'
+
+  - estilo: Unicamp
+    texto: |
+      Uma pessoa quer comprar exatamente 20 frutas, entre maçãs (R\$\,3,00 cada), peras (R\$\,2,00 cada) e laranjas (R\$\,1,00 cada), gastando exatamente R\$\,40,00.
+    enunciado: ''
+    itens:
+    - 'Monte o sistema com $m$ maçãs, $p$ peras e $\ell$ laranjas e classifique-o.'
+    - 'Escreva $p$ e $\ell$ em função de $m$.'
+    - 'De quantas maneiras é possível fazer a compra levando pelo menos uma fruta de cada tipo?'
+    espaco: 62
+    resolucao: |
+      a) $m + p + \ell = 20$ e $3m + 2p + \ell = 40$: duas equações e três incógnitas, SPI (por exemplo, $(5, 10, 5)$ é solução).
+      b) Subtraindo: $2m + p = 20$, $p = 20 - 2m$; então $\ell = 20 - m - p = m$.
+      c) É preciso $m \ge 1$, $\ell = m \ge 1$ e $p = 20 - 2m \ge 1$, isto é, $m \le 9$. Então $m = 1, 2, \dots, 9$: 9 maneiras.
+    resposta: 'a) SPI; b) $p = 20 - 2m$ e $\ell = m$; c) 9 maneiras'
+
+  - estilo: Fuvest
+    enunciado: |
+      Os números reais $a$ e $b$ são tais que $(1, 2)$ é solução do sistema $\begin{cases} ax + by = 5 \\ bx + ay = 4 \end{cases}$. O produto $ab$ é igual a
+    opcoes: ['$1$', '$2$', '$3$', '$4$', '$6$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $a + 2b = 5$ e $b + 2a = 4$. Somando: $3(a + b) = 9$, $a + b = 3$; subtraindo: $b - a = 1$. Então $a = 1$, $b = 2$ e $ab = 2$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere o sistema $\begin{cases} x + y + z = 3 \\ x - y + z = 1 \\ 3x + y + 3z = 7 \end{cases}$.'
+    itens:
+    - 'Encontre números $p$ e $q$ tais que a 3ª equação seja $p$ vezes a 1ª mais $q$ vezes a 2ª, e classifique o sistema.'
+    - 'Determine todas as soluções.'
+    - 'Determine a solução em que $x = z$.'
+    espaco: 62
+    resolucao: |
+      a) $p(1, 1, 1, 3) + q(1, -1, 1, 1) = (3, 1, 3, 7)$: $p + q = 3$ e $p - q = 1$, logo $p = 2$ e $q = 1$ (e $6 + 1 = 7$ confere). A 3ª equação é redundante: SPI.
+      b) Subtraindo as duas primeiras: $2y = 2$, $y = 1$; então $x + z = 2$. Soluções: $(2 - t, 1, t)$, para $t$ real.
+      c) $2 - t = t$ dá $t = 1$: $(1, 1, 1)$.
+    resposta: 'a) $p = 2$, $q = 1$; SPI; b) $(2 - t, 1, t)$; c) $(1, 1, 1)$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere o sistema homogêneo $H$: $\begin{cases} x + y - z = 0 \\ 2x - y + z = 0 \end{cases}$ e o sistema $S$: $\begin{cases} x + y - z = 2 \\ 2x - y + z = 1 \end{cases}$.'
+    itens:
+    - 'Determine todas as soluções de $H$.'
+    - 'Determine todas as soluções de $S$.'
+    - 'Mostre que toda solução de $S$ é a soma da solução particular $(1, 1, 0)$ com uma solução de $H$.'
+    espaco: 62
+    resolucao: |
+      a) Somando as equações de $H$: $3x = 0$, $x = 0$ e $y = z$. Soluções: $(0, t, t)$.
+      b) Somando as de $S$: $3x = 3$, $x = 1$, e então $y - z = 1$. Soluções: $(1, 1 + t, t)$.
+      c) $(1, 1 + t, t) = (1, 1, 0) + (0, t, t)$, e $(0, t, t)$ é solução de $H$. (Confere: $(1, 1, 0)$ satisfaz $S$.)
+    resposta: 'a) $(0, t, t)$; b) $(1, 1 + t, t)$; c) Ver resolução'
