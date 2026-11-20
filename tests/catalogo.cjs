@@ -276,6 +276,8 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.deepEqual([...d.querySelectorAll('.av-listas [data-goodnotes]')].map(b=>b.dataset.goodnotes),['/pdfs/caderno-fixacao-2.3.2.pdf','/pdfs/caderno-vestibular-2.3.2.pdf','/pdfs/caderno-aprofundamento-2.3.2.pdf'],'Cada lista vai para o GoodNotes');
  assert.deepEqual([...d.querySelectorAll('.av-listas [data-fazer]')].map(b=>b.dataset.fazer),['fixacao','vestibular','aprofundamento'],'Fazer agora em cada lista');
  assert.ok(d.querySelector('.av-resumo[href="#entenda"]'),'Atalho para o resumo, que fica no fim');
+ assert.equal(d.querySelector('.lst-meta'),null,'Só o nome da lista, sem a contagem');
+ assert.deepEqual([...d.querySelectorAll('.av-icones .lesson-tool')].map(b=>b.title),['Já estudei','Favoritar','Compartilhar'],'Ações só com ícones, com o nome na dica');
  assert.equal(d.querySelector('#resumo-det').open,false,'Resumo recolhido');
  assert.equal(d.querySelector('.aula-formula'),null);
  assert.equal(d.querySelector('.aula-trail'),null,'Sem a trilha de aulas');
@@ -310,7 +312,6 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  await new Promise(r=>setTimeout(r,40));
  assert.equal(rvEl.hidden,true,'Voltar fecha a lista');
  assert.equal(w.location.search,'');
- assert.equal(d.querySelector('#lp-fixacao').textContent,'1 de 20 conferidas');
  // Vestibular: alternativa corrigida na hora e nota no fim.
  click(w,d.querySelector('[data-fazer="vestibular"]'));
  const vest=lista.vestibular.questoes;
@@ -327,7 +328,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelectorAll('.rv-fim .rv-cel.is-erro').length,1);
  click(w,d.querySelector('.rv-fim [data-rv-sair]'));
  await new Promise(r=>setTimeout(r,40));
- assert.match(d.querySelector('#lp-vestibular').textContent,new RegExp('melhor nota '+(vest.length-1)+' de '+vest.length));
+ assert.equal(JSON.parse(w.localStorage.getItem('matmat-aula-2.3.2')).prova.best,vest.length-1,'Melhor nota guardada');
  assert.equal(d.querySelectorAll('.aula-seq a').length,2);
  dom.window.close();
  ({w,d,dom}=await boot('https://matmatmat.test/2/3/2/#prova'));

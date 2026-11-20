@@ -1042,19 +1042,19 @@ async function lessonPage(){
    +'</div>';
  }
  var blocoListas=LISTAS.length?'<div class="av-listas" role="list" aria-label="As listas desta aula">'+LISTAS.map(function(x){
-   return '<article class="lst lst-'+x[0]+'" role="listitem"><div class="lst-cab"><h2 class="lst-titulo">'+x[2]+'</h2><p class="lst-meta" id="lp-'+x[0]+'">'+(x[3]?plural(x[3],'questão','questões'):'')+'</p></div>'+acoesLista(x[0])+'</article>'}).join('')+'</div>':'';
+   return '<article class="lst lst-'+x[0]+'" role="listitem"><div class="lst-cab"><h2 class="lst-titulo">'+x[2]+'</h2></div>'+acoesLista(x[0])+'</article>'}).join('')+'</div>':'';
  var tools='<div class="actions lesson-tools" role="group" aria-label="Ações desta aula">'
-  +'<button type="button" class="lesson-tool lesson-tool-done '+(done.has(id)?'is-active':'')+'" id="btn-done" aria-pressed="'+done.has(id)+'" aria-label="'+(done.has(id)?'Desmarcar aula como estudada':'Marcar aula como estudada')+'">'+AULA_SVG.done+'<span class="lesson-tool-label">'+(done.has(id)?'Estudada':'Já estudei')+'</span></button>'
-  +'<button type="button" class="lesson-tool lesson-tool-fav '+(saved.has(id)?'is-active':'')+'" id="btn-fav" aria-pressed="'+saved.has(id)+'" aria-label="'+(saved.has(id)?'Remover aula dos favoritos':'Favoritar esta aula')+'">'+AULA_SVG.fav+'<span class="lesson-tool-label">'+(saved.has(id)?'Favorita':'Favoritar')+'</span></button>'
-  +'<button type="button" class="lesson-tool lesson-tool-share" id="btn-share" aria-label="Compartilhe essa aula" aria-controls="lesson-share-options" aria-expanded="false">'+AULA_SVG.share+'<span class="lesson-tool-label">Compartilhar</span></button></div>'
+  +'<button type="button" class="lesson-tool lesson-tool-done '+(done.has(id)?'is-active':'')+'" id="btn-done" title="Já estudei" aria-pressed="'+done.has(id)+'" aria-label="'+(done.has(id)?'Desmarcar aula como estudada':'Marcar aula como estudada')+'">'+AULA_SVG.done+'<span class="lesson-tool-label">'+(done.has(id)?'Estudada':'Já estudei')+'</span></button>'
+  +'<button type="button" class="lesson-tool lesson-tool-fav '+(saved.has(id)?'is-active':'')+'" id="btn-fav" title="Favoritar" aria-pressed="'+saved.has(id)+'" aria-label="'+(saved.has(id)?'Remover aula dos favoritos':'Favoritar esta aula')+'">'+AULA_SVG.fav+'<span class="lesson-tool-label">'+(saved.has(id)?'Favorita':'Favoritar')+'</span></button>'
+  +'<button type="button" class="lesson-tool lesson-tool-share" id="btn-share" title="Compartilhar" aria-label="Compartilhe essa aula" aria-controls="lesson-share-options" aria-expanded="false">'+AULA_SVG.share+'<span class="lesson-tool-label">Compartilhar</span></button></div>'
   +'<div class="lesson-share-options" id="lesson-share-options" hidden><div class="lesson-share-options-head"><strong>Compartilhe com alguém</strong><button type="button" id="share-close" aria-label="Fechar opções de compartilhamento">×</button></div><p>Envie esta aula para sua turma ou para um amigo.</p><div class="lesson-share-links"><a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer">Enviar pelo WhatsApp</a><button id="share-copy" type="button">Copiar mensagem e link</button></div><p class="lesson-share-status" id="share-status" aria-live="polite"></p><textarea id="share-manual" class="share-manual" readonly hidden aria-label="Mensagem para copiar manualmente"></textarea></div>';
  var hasPdfs=listaUrls.length||allFiles.length;
  var topo='<section class="av-topo" aria-labelledby="aula-titulo"><div class="shell">'
   +'<nav class="aula-crumbs" aria-label="Caminho"><a href="/">Início</a><span aria-hidden="true">/</span>'+(assunto?'<a href="'+assuntoHref(assunto)+'">'+esc(assunto.name)+'</a>':'<a href="'+topicHref(topic)+'">'+esc(topic.title)+'</a>')+'</nav>'
-  +'<p class="aula-kicker"><span class="aula-id">'+id+'</span>'+(near.length>1?'Aula '+(nearIndex+1)+' de '+near.length+' em '+esc(grupo):esc(grupo))+'</p>'
+  +'<div class="av-kick"><p class="aula-kicker"><span class="aula-id">'+id+'</span>'+(near.length>1?'Aula '+(nearIndex+1)+' de '+near.length+'<span class="av-kick-em"> em '+esc(grupo)+'</span>':esc(grupo))+'</p><div class="av-icones">'+tools+'</div></div>'
   +'<h1 id="aula-titulo">'+esc(l.title)+'</h1>'
   +(l.summary?'<p class="av-sub">'+esc(l.summary)+'</p>':'')
-  +'<div class="av-linha"><a class="av-resumo" href="#entenda" data-goto="entenda">'+AULA_SVG.resumo+'Ver o resumo da aula</a>'+tools+'</div>'
+  +'<a class="av-resumo" href="#entenda" data-goto="entenda">'+AULA_SVG.resumo+'Ver o resumo da aula</a>'
   +blocoListas
   +'</div></section>';
 
