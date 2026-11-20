@@ -108,9 +108,11 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  let {w,d,dom}=await boot();
  assert.match(d.querySelector('#hero-title').textContent,/O que você quer estudar hoje/);
  assert.equal(d.querySelectorAll('input[type=search]').length,1);
- assert.equal(d.querySelectorAll('.as-tile').length,25,'Assuntos na entrada');
+ assert.equal(d.querySelectorAll('.as-tile').length,29,'Assuntos na entrada');
  assert.equal(d.querySelectorAll('.as-fam').length,4,'Assuntos agrupados em 4 famílias');
  assert.ok(d.querySelector('a.as-tile[href="/combinatoria/"]'),'Combinatória direto na página inicial');
+ for(const id of ['grandezas-e-proporcao','porcentagem','binomio-de-newton','funcao-exponencial','logaritmos','determinantes'])assert.ok(d.querySelector('a.as-tile[href="/'+id+'/"]'),'Assunto separado: '+id);
+ assert.equal(d.querySelector('a.as-tile[href="/exponencial-e-logaritmos/"]'),null,'Exponencial e logaritmos agora são dois assuntos');
  assert.equal(d.querySelector('form[data-livro-atalho]'),null,'Sem atalho do livro na home');
  assert.equal(d.querySelectorAll('.home-explore-decoration').length,0,'Sem seta decorativa gigante');
  assert.equal(d.querySelectorAll('.home-explore .home-section-intro p').length,0,'Sem texto Prefere navegar');
@@ -154,8 +156,8 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(melhor('função par'),'/2/5/1/');
  assert.equal(melhor('bijetora'),'/2/5/2/');
  assert.equal(melhor('sistema 2x2'),'/1/5/3/');
- assert.equal(melhor('binomio de newton'),'/1/20/1/');
- assert.equal(melhor('logaritimo'),'/2/8/1/');
+ assert.equal(melhor('binomio de newton'),'/binomio-de-newton/','Binômio de Newton virou assunto');
+ assert.equal(melhor('logaritimo'),'/logaritmos/','Erro de digitação leva ao assunto Logaritmos');
  assert.ok(d.querySelector('#search-output .hs-fixed'),'Avisa a correção de digitação');
  assert.equal(melhor('exercícios de bhaskara'),'/2/3/2/#pratique','Intenção leva direto à etapa da aula');
  assert.equal(melhor('combinatoria'),'/combinatoria/','Nome do assunto leva ao assunto');
@@ -172,7 +174,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
 
  // Trilha do livro: volumes → volume (/2/) → módulo (/2/3/, endereço do QR code) → aula (/2/3/2/).
  ({w,d,dom}=await boot('https://matmatmat.test/explorar/'));
- assert.equal(d.querySelectorAll('.as-tile').length,25,'Assuntos primeiro');
+ assert.equal(d.querySelectorAll('.as-tile').length,29,'Assuntos primeiro');
  assert.equal(d.querySelectorAll('.area-tile').length,4,'Depois, os volumes do livro');
  assert.equal(d.querySelectorAll('input[type=search]').length,0,'sem caixa de busca repetida');
  assert.ok(d.querySelector('.aula-crumbs a[href="/"]'));
@@ -205,14 +207,14 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  // Assunto: todas as aulas numa lista só, sem passar por volume ou módulo.
  ({w,d,dom}=await boot('https://matmatmat.test/combinatoria/'));
  assert.equal(d.querySelector('#tr-titulo').textContent,'Análise combinatória');
- assert.equal(d.querySelectorAll('.as-row').length,11);
+ assert.equal(d.querySelectorAll('.as-row').length,9);
  assert.equal(d.querySelector('.as-row').getAttribute('href'),'/1/16/1/');
  assert.equal(d.querySelector('.aula-hero-cta'),null,'Assunto com topo enxuto, sem botão de começar');
  assert.equal(d.querySelector('.as-body .tr-head h2').textContent,'Aulas');
  assert.equal(d.querySelector('.as-row .as-n').textContent,'Aula 1','Cada aula numerada como Aula 1, Aula 2…');
  assert.equal(d.querySelector('.header-promise'),null,'Páginas internas com o cabeçalho fino');
  assert.ok(d.querySelector('.aula-crumbs a[href="/"]'));
- assert.equal(d.querySelector('.aula-seq-next').getAttribute('href'),'/probabilidade/');
+ assert.equal(d.querySelector('.aula-seq-next').getAttribute('href'),'/binomio-de-newton/');
  assert.ok(d.querySelector('.bk-promo a[href="/livros/?volume=1"]'),'Oferta do Volume 1 no assunto');
  for(const a of curriculum.assuntos)assert.ok(readFileSync(a.id+'/index.html','utf8').includes('data-assunto="'+a.id+'"'),'Página do assunto '+a.id);
  for(const l of curriculum.lessons)assert.equal(curriculum.assuntos.filter(a=>a.aulas?a.aulas.includes(l.id):a.modulos.includes(l.block)).length,1,'Aula '+l.id+' em exatamente um assunto');

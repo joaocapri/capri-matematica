@@ -23,7 +23,7 @@ async function checkWidth(page,label){
   assert.equal(await page.locator('.home-explore .home-section-intro p').count(),0);
   assert.equal(await page.locator('.home-explore .browser-toolbar').count(),0);
   assert.equal(await page.locator('.home-explore .browser-shortcuts').count(),0);
-  assert.equal(await page.locator('#explore-content .as-tile').count(),25);
+  assert.equal(await page.locator('#explore-content .as-tile').count(),29);
   assert.equal(await page.locator('.discovery-preview').count(),0);
   assert.equal(await page.locator('.home-hero-art').count(),0);
   assert.equal(await page.locator('[data-preview]').count(),0);

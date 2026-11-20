@@ -75,16 +75,25 @@
       ]
     },
     {
-      "id": "proporcao-e-porcentagem",
-      "nome": "Proporção e porcentagem",
-      "icone": "%",
+      "id": "grandezas-e-proporcao",
+      "nome": "Grandezas e proporção",
+      "icone": "a:b",
       "familia": "numeros",
-      "descricao": "Razão, proporção, regra de três, porcentagem e unidades.",
+      "descricao": "Razão, proporção, escalas, regra de três e transformações de unidades.",
       "modulos": [
         "1.8",
         "1.9",
-        "1.10",
         "1.11"
+      ]
+    },
+    {
+      "id": "porcentagem",
+      "nome": "Porcentagem",
+      "icone": "%",
+      "familia": "numeros",
+      "descricao": "Porcentagem, aumentos e descontos, variações sucessivas e índices.",
+      "modulos": [
+        "1.10"
       ]
     },
     {
@@ -124,11 +133,20 @@
       "nome": "Análise combinatória",
       "icone": "n!",
       "familia": "numeros",
-      "descricao": "Princípio fundamental, permutações, arranjos, combinações e binômio de Newton.",
+      "descricao": "Princípio fundamental, permutações, arranjos e combinações.",
       "modulos": [
         "1.16",
         "1.17",
-        "1.18",
+        "1.18"
+      ]
+    },
+    {
+      "id": "binomio-de-newton",
+      "nome": "Binômio de Newton",
+      "icone": "(ⁿₖ)",
+      "familia": "numeros",
+      "descricao": "Números binomiais, triângulo de Pascal e binômio de Newton.",
+      "modulos": [
         "1.19",
         "1.20"
       ]
@@ -233,13 +251,22 @@
       ]
     },
     {
-      "id": "exponencial-e-logaritmos",
-      "nome": "Exponencial e logaritmos",
+      "id": "funcao-exponencial",
+      "nome": "Função exponencial",
+      "icone": "2ˣ",
+      "familia": "funcoes",
+      "descricao": "Função exponencial, modelos de crescimento, equações e inequações exponenciais.",
+      "modulos": [
+        "2.7"
+      ]
+    },
+    {
+      "id": "logaritmos",
+      "nome": "Logaritmos",
       "icone": "log",
       "familia": "funcoes",
-      "descricao": "Função exponencial, logaritmos, propriedades e equações.",
+      "descricao": "Definição, propriedades, equações, inequações e função logarítmica.",
       "modulos": [
-        "2.7",
         "2.8",
         "2.9",
         "2.10",
@@ -266,16 +293,25 @@
     },
     {
       "id": "matrizes",
-      "nome": "Matrizes e determinantes",
+      "nome": "Matrizes",
       "icone": "[ ]",
       "familia": "algebra",
-      "descricao": "Operações com matrizes, determinantes e matriz inversa.",
+      "descricao": "Tipos de matrizes, operações, produto e matriz inversa.",
       "modulos": [
         "3.1",
         "3.2",
-        "3.3",
-        "3.4",
         "3.5"
+      ]
+    },
+    {
+      "id": "determinantes",
+      "nome": "Determinantes",
+      "icone": "det",
+      "familia": "algebra",
+      "descricao": "Determinantes de ordem 2 e 3, propriedades, Laplace, Chió e Binet.",
+      "modulos": [
+        "3.3",
+        "3.4"
       ]
     },
     {
