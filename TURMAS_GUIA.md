@@ -1,4 +1,4 @@
-# MAT MAT MAT! — Área de turmas
+# MAT com JOÃO! — Área de turmas
 **Gestão editorial pelo GitHub; URLs compartilháveis apenas com os alunos.**
 
 Existe um índice não listado em `/turmas/`, para facilitar a navegação do professor. Nenhuma dessas páginas aparece na home pública.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera as listas em PDF (fixação e vestibular) de cada aula do MAT MAT MAT!.
+"""Gera as listas em PDF (fixação e vestibular) de cada aula do MAT com JOÃO!.
 
 Fonte: materiais-fonte/2.3.2.yaml (uma por aula, código do livro), com a matemática em LaTeX.
 Saída: pdfs/fixacao-2.3.2.pdf e pdfs/vestibular-2.3.2.pdf

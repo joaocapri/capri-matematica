@@ -1,4 +1,4 @@
-/* Caderno digital do MAT MAT MAT!
+/* Caderno digital do MAT com JOÃO!
    A tela toda é uma folha de rascunho sem fim. A questão fica impressa no canto da folha, e o aluno escreve
    em qualquer lugar, inclusive por cima do enunciado. O zoom e o arrasto valem só para a folha: a barra e a
    navegação ficam sempre do mesmo tamanho.
@@ -890,7 +890,7 @@ async function exportar() {
     const negrito = await out.embedFont(StandardFonts.HelveticaBold), normal = await out.embedFont(StandardFonts.Helvetica);
     const titulo = $('#cd-titulo').textContent;
     out.setTitle(`${titulo} · ${NOMES[lista]} resolvida`);
-    out.setAuthor('MAT com JOÃO · matcomjoao.com'); out.setCreator('Caderno digital MAT MAT MAT!');
+    out.setAuthor('MAT com JOÃO · matcomjoao.com'); out.setCreator('Caderno digital MAT com JOÃO!');
     const cor = (h) => rgb(parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255);
     const semAcento = (s) => s.normalize('NFC').replace(/[^\x20-\xff]/g, '');
     const M = 28, TOPO = 46, BASE = 24;
@@ -989,7 +989,7 @@ async function iniciar() {
   const [Vo, Mo, Au] = aulaId.split('.');
   $('#cd-voltar').href = `/${Vo}/${Mo}/${Au}/`;
   $('#cd-sub').textContent = NOMES[lista];
-  document.title = `${NOMES[lista]} · Caderno | MAT MAT MAT!`;
+  document.title = `${NOMES[lista]} · Caderno | MAT com JOÃO!`;
   montarBarra(); escolher(st.ferramenta); ligarEntrada();
   fetch('/data/aulas.json').then((r) => r.json()).then((d) => { const l = acharAula(d, aulaId); if (l) { $('#cd-titulo').textContent = l.title || l.titulo; document.title = `${l.title || l.titulo} · ${NOMES[lista]} | Caderno`; } }).catch(() => {});
   try { mapa = await (await fetch(`/pdfs/caderno-${lista}-${aulaId}.json`)).json(); } catch { mapa = null; }

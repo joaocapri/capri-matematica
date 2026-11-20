@@ -46,13 +46,13 @@ function href(l){return '/'+l.id.split('.').join('/')+'/'}
 function frontBy(id){return data.fronts.find(function(x){return x.id===id})}
 function blockBy(id){return data.blocks.find(function(x){return x.id===id})}
 function short(v,n){var s=String(v||'');return s.length>n?s.slice(0,n).trim()+'…':s}
-function title(str){document.title=str+' · MAT MAT MAT!'}
+function title(str){document.title=str+' · MAT com JOÃO!'}
 function empty(label,detail){return '<div class="placeholder"><div class="emoji">✦</div><h3>'+esc(label)+'</h3><p>'+esc(detail)+'</p></div>'}
 function brandLogo(){return '<img class="mat-logo-img" src="/assets/logo-mat-256.png" width="360" height="216" alt="" decoding="async">'}
-function header(inicio){return '<header class="topbar'+(inicio?'':' topbar-interna')+'"><div class="shell"><a href="/" class="brand brand-mat" aria-label="MAT MAT MAT! — página inicial">'+brandLogo()+'</a>'+(inicio?'<p class="header-promise"><span class="header-promise-title">Matemática para o ensino médio e vestibulares</span><span class="header-promise-line"><span class="header-free">100% gratuito</span>sem cadastro e sem enrolação</span></p>':'')+'<nav class="navlinks" aria-label="Navegação principal"><a href="/?q=PDF#resultados">Listas e PDFs</a><a href="/explorar/">Assuntos</a><a class="nav-cta" href="/livros/" data-oferta="cabecalho"><span class="nav-cta-long">Ver o material impresso</span><span class="nav-cta-short">Material impresso</span></a></nav></div>'+(inicio?'<p class="header-promise-bar"><span class="header-free">100% gratuito</span><span class="header-promise-long">Matemática para o ensino médio e vestibulares</span><span class="header-promise-short">Ensino médio e vestibulares</span></p>':'')+'</header>'}
+function header(inicio){return '<header class="topbar'+(inicio?'':' topbar-interna')+'"><div class="shell"><a href="/" class="brand brand-mat" aria-label="MAT com JOÃO! — página inicial">'+brandLogo()+'</a>'+(inicio?'<p class="header-promise"><span class="header-promise-title">Matemática para o ensino médio e vestibulares</span><span class="header-promise-line"><span class="header-free">100% gratuito</span>sem cadastro e sem enrolação</span></p>':'')+'<nav class="navlinks" aria-label="Navegação principal"><a href="/?q=PDF#resultados">Listas e PDFs</a><a href="/explorar/">Assuntos</a><a class="nav-cta" href="/livros/" data-oferta="cabecalho"><span class="nav-cta-long">Ver o material impresso</span><span class="nav-cta-short">Material impresso</span></a></nav></div>'+'</header>'}
 /* Página de vendas: só o logo no centro e um caminho de volta ao site, sem menus que tirem o foco do pedido */
-function headerLoja(){return '<header class="topbar topbar-interna topbar-loja"><div class="shell"><a class="loja-voltar" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span>Voltar ao site</span></a><a href="/" class="brand brand-mat" aria-label="MAT MAT MAT! — página inicial">'+brandLogo()+'</a><span aria-hidden="true"></span></div></header>'}
-function footer(){return '<footer class="footer"><div class="shell"><div class="mat-footer-mark"><a href="/" class="brand-mat brand-mat-footer" aria-label="MAT MAT MAT! — início">'+brandLogo()+'</a><div><strong>MAT MAT MAT!</strong><p>Matemática gratuita para o ensino médio e vestibulares. Conteúdo do Prof. João Capri.</p></div></div><p>Álgebra · Geometria · Aritmética · Estatística · Trigonometria <a href="/livros/">Conheça os livros ↗</a></p></div></footer>'}
+function headerLoja(){return '<header class="topbar topbar-interna topbar-loja"><div class="shell"><a class="loja-voltar" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span>Voltar ao site</span></a><a href="/" class="brand brand-mat" aria-label="MAT com JOÃO! — página inicial">'+brandLogo()+'</a><span aria-hidden="true"></span></div></header>'}
+function footer(){return '<footer class="footer"><div class="shell"><div class="mat-footer-mark"><a href="/" class="brand-mat brand-mat-footer" aria-label="MAT com JOÃO! — início">'+brandLogo()+'</a><div><strong>MAT com JOÃO!</strong><p>Matemática gratuita para o ensino médio e vestibulares. Conteúdo do Prof. João Capri.</p></div></div><p>Álgebra · Geometria · Aritmética · Estatística · Trigonometria <a href="/livros/">Conheça os livros ↗</a></p></div></footer>'}
 function card(l){return '<a class="lesson-card" href="'+href(l)+'"><span class="mini">Aula '+esc(l.id)+' · '+esc(frontBy(l.front).name)+'</span><h4>'+esc(l.title)+'</h4><p>'+esc(l.summary||'Abra a aula e explore seu roteiro de estudos.')+'</p><div class="card-bottom"><span class="badge '+(done.has(l.id)?'checkdone':'')+'">'+(done.has(l.id)?'✓ Estudada':'Ver aula')+'</span><span class="arrow">↗</span></div></a>'}
 
 var SUBJECT_AREAS=[];
@@ -83,7 +83,7 @@ function assuntoGrid(){
  return '<div class="as-fams">'+FAMILIAS.map(function(f){var ss=ASSUNTOS.filter(function(s){return s.familia===f.id});return '<section class="as-fam as-fam-'+f.id+'" aria-label="'+esc(f.nome)+'"><h3 class="as-fam-t">'+esc(f.nome)+'</h3><div class="as-grid">'+ss.map(assuntoTile).join('')+'</div></section>'}).join('')+'</div>';
 }
 function livroAtalho(){
- return '<form class="as-livro" data-livro-atalho><div class="as-livro-tx"><b>Estuda pelo livro MAT MAT MAT!?</b><span>Digite o número do módulo que aparece no livro, como <i>2.3</i>, ou <a href="/explorar/">veja tudo na ordem do livro</a>.</span></div><div class="as-livro-in"><label class="sr-only" for="as-livro-n">Número do módulo</label><input id="as-livro-n" name="modulo" inputmode="decimal" autocomplete="off" placeholder="2.3" maxlength="6"><button type="submit">Abrir</button></div><p class="as-livro-msg" role="status" aria-live="polite"></p></form>';
+ return '<form class="as-livro" data-livro-atalho><div class="as-livro-tx"><b>Estuda pelo livro MAT com JOÃO!?</b><span>Digite o número do módulo que aparece no livro, como <i>2.3</i>, ou <a href="/explorar/">veja tudo na ordem do livro</a>.</span></div><div class="as-livro-in"><label class="sr-only" for="as-livro-n">Número do módulo</label><input id="as-livro-n" name="modulo" inputmode="decimal" autocomplete="off" placeholder="2.3" maxlength="6"><button type="submit">Abrir</button></div><p class="as-livro-msg" role="status" aria-live="polite"></p></form>';
 }
 document.addEventListener('submit',function(e){
  var f=e.target.closest&&e.target.closest('[data-livro-atalho]');if(!f)return;e.preventDefault();
@@ -377,7 +377,7 @@ function shopPromo(ctx){
    +'<div class="bk-promo-cta"><a class="bk-btn" href="/livros/?volume='+a.vol+'" data-oferta="modulo">Quero a coleção</a><a class="bk-link" href="/livros/#por-dentro">Folhear o livro</a></div></div>'
    +'<ol class="bk-tipos">'+t.tipos.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ol></div></aside>';
  }
- return '<aside class="bk-promo bk-promo-geral" data-promo="colecao"><div class="bk-promo-tag">COLEÇÃO MAT MAT MAT! · 4 VOLUMES</div><div class="bk-promo-grid"><div><h2>Toda a matemática do ensino médio <em>no papel.</em></h2>'
+ return '<aside class="bk-promo bk-promo-geral" data-promo="colecao"><div class="bk-promo-tag">COLEÇÃO MAT COM JOÃO · 4 VOLUMES</div><div class="bk-promo-grid"><div><h2>Toda a matemática do ensino médio <em>no papel.</em></h2>'
   +'<p>74 módulos e 315 tipos de questão, cada um com o caminho em passos e questões de vestibular. As listas do site continuam grátis.</p>'
   +'<div class="bk-promo-cta"><a class="bk-btn" href="/livros/" data-oferta="colecao">Quero a coleção</a><a class="bk-link" href="/livros/">Conhecer os 4 volumes</a></div></div>'
   +'<ul class="bk-vols">'+SUBJECT_AREAS.map(function(a){return '<li class="tone-'+a.tone+'"><b>'+a.vol+'</b><span>'+esc(a.name)+'</span></li>'}).join('')+'</ul></div></aside>';
@@ -395,7 +395,7 @@ function home(){
  '<main class="home-v2">'+
  '<section class="hv-hero" aria-labelledby="hero-title"><div class="shell"><div class="home-hero-copy">'+
  '<h1 id="hero-title">O que você quer <em>estudar hoje?</em></h1>'+
- '<p>Listas de Exercícios e Teoria grátis. Simples assim</p>'+
+ '<p>Listas de exercícios de matemática.</p>'+
  '<div class="home-search-section"><label class="home-searchbox" for="hero-search"><span class="home-search-mark" aria-hidden="true">⌕</span><input type="search" id="hero-search" autocomplete="off" aria-label="Pesquisar aulas, assuntos e PDFs" aria-controls="quick-hits" aria-expanded="false" placeholder="Busque um assunto, aula ou PDF…"><button type="button" id="clear-search" aria-label="Limpar busca" hidden>×</button><button type="button" id="btn-search" aria-label="Pesquisar">Buscar ↗</button></label>'+
  '<div class="home-quick-hits" id="quick-hits" hidden aria-live="polite"></div>'+
  '</div>'+hvContinue()+
@@ -460,7 +460,7 @@ function home(){
    html=crumbs([{label:area.name,action:'area',id:area.id},{label:topic.title}])+'<div class="browse-section-head"><span class="browse-kicker">AGORA ESCOLHA A AULA</span><h3>'+esc(topic.title)+'</h3><p>'+esc(topic.description)+'</p></div>'+topicPdfPanel('assunto',topic.id,'Lista geral de '+topic.title)+list(group,'Aulas deste módulo',false)
   }else{
    state.view='areas';
-   html=assuntoGrid()+livroAtalho();
+   html=assuntoGrid();
   }
   browser.innerHTML=html;
  }
@@ -772,7 +772,7 @@ function trAreasPage(){
   +(d?'<div class="tr-hero-progress">'+trMeter(d,total,d+' de '+total+' aulas estudadas')+'<span>Você já estudou <b>'+plural(d,'aula','aulas')+'</b> de '+total+'.</span></div>':'')
   +(saved.size?'<a class="tr-hero-link" href="/explorar/?favoritos=1">'+TR_SVG.heart+'Suas favoritas ('+saved.size+')</a>':'')
   +'</div>'+trSticker('∑','mint',ASSUNTOS.filter(function(x,k){return k%2===0}).map(function(a){return {icon:a.icon,tone:a.tone}}),'Toda a matemática do ensino médio')+'</div></div></section>';
- var tiles='<section class="shell tr-body">'+assuntoGrid()+'</section><section class="shell tr-body as-livro-sec" id="livro"><header class="tr-head"><h2>Na ordem do livro</h2><p>Para quem estuda com a coleção MAT MAT MAT!: os mesmos 4 volumes e módulos do livro impresso.</p></header>'+livroAtalho()+'<div class="area-grid tr-area-grid">'+SUBJECT_AREAS.map(function(a){
+ var tiles='<section class="shell tr-body">'+assuntoGrid()+'</section><section class="shell tr-body as-livro-sec" id="livro"><header class="tr-head"><h2>Na ordem do livro</h2><p>Para quem estuda com a coleção MAT com JOÃO!: os mesmos 4 volumes e módulos do livro impresso.</p></header>'+livroAtalho()+'<div class="area-grid tr-area-grid">'+SUBJECT_AREAS.map(function(a){
   var ls=trAreaLessons(a),n=trDone(ls),ts=trTopics(a).length;
   return '<a class="area-tile" href="'+trAreaUrl(a)+'"><span class="area-tile-icon tone-'+a.tone+'">'+esc(a.icon)+'</span><span class="area-tile-name">'+esc(a.name)+'</span><span class="area-tile-subtitle">'+esc(a.description)+'</span>'
    +(n?trMeter(n,ls.length,n+' de '+ls.length+' aulas estudadas'):'')
@@ -879,7 +879,7 @@ function trListPage(favs){
 async function diagnosisPage(){
  title('Teste seu nível');
  var root=document.getElementById('app');
- root.innerHTML=header(true)+'<main class="shell diagnostic-page"><div class="explorer-back"><a href="/">← Página inicial</a><span>MAT MAT MAT! / AVALIAÇÃO DIAGNÓSTICA</span></div><div id="diagnostic-content" aria-live="polite"></div></main>'+footer();
+ root.innerHTML=header(true)+'<main class="shell diagnostic-page"><div class="explorer-back"><a href="/">← Página inicial</a><span>MAT com JOÃO! / AVALIAÇÃO DIAGNÓSTICA</span></div><div id="diagnostic-content" aria-live="polite"></div></main>'+footer();
  var body=document.getElementById('diagnostic-content'),bank;
  try{var response=await fetch('/data/diagnostico.json');if(!response.ok)throw Error('Diagnóstico indisponível');bank=await response.json();if(!Array.isArray(bank.tracks)||!bank.tracks.length)throw Error('Banco incompleto')}catch(e){body.innerHTML=empty('Não foi possível carregar o diagnóstico','Tente novamente em alguns instantes.');return}
  var track=null,questions=[],current=0,answers={},startedAt=0;
@@ -889,7 +889,7 @@ async function diagnosisPage(){
  function choose(){
   var groups=[{id:'Ensino Médio',title:'Ensino Médio',desc:'Escolha a série que está estudando.'},{id:'Pré-vestibular',title:'Pré-vestibular',desc:'Escolha o perfil de prova que deseja praticar.'}];
   track=null;
-  body.innerHTML='<section class="diag-intro"><div class="diag-kicker">✳ AVALIAÇÃO DE ENTRADA · MAT MAT MAT!</div><h1>Onde você está na <em>matemática?</em></h1><p>Um diagnóstico direcionado ao que você estuda. Escolha seu percurso, resolva problemas em três níveis de complexidade e descubra o que vale revisar.</p><div class="diag-stats"><span>12 questões por percurso</span><span>4 assuntos avaliados</span><span>Correção explicada</span></div></section><div class="diag-catalog">'+groups.map(function(g){return '<section class="diag-track-group"><div class="diag-group-head"><h2>'+g.title+'</h2><p>'+g.desc+'</p></div><div class="diag-track-grid">'+bank.tracks.filter(function(t){return t.group===g.id}).map(function(t){var previous=countPrevious(t.id);return '<button type="button" class="diag-track-card" data-track="'+esc(t.id)+'"><span class="diag-track-symbol tone-'+esc(t.color)+'">'+esc(t.icon)+'</span><span class="diag-track-info"><strong>'+esc(t.title)+'</strong><span>'+esc(t.subtitle)+'</span>'+(previous?'<small>Última tentativa: '+previous.correct+'/12 · '+formatDate(previous.date)+'</small>':'<small>12 questões · '+esc(t.minutes)+'</small>')+'</span><span class="diag-track-arrow" aria-hidden="true">↗</span></button>'}).join('')+'</div></section>'}).join('')+'</div><p class="diag-privacy">Questões autorais. Resultado indicativo, não equivale a prova oficial nem a uma medição padronizada de proficiência. Sem cadastro; só o resumo da última tentativa fica armazenado neste navegador.</p>';
+  body.innerHTML='<section class="diag-intro"><div class="diag-kicker">✳ AVALIAÇÃO DE ENTRADA · MAT com JOÃO!</div><h1>Onde você está na <em>matemática?</em></h1><p>Um diagnóstico direcionado ao que você estuda. Escolha seu percurso, resolva problemas em três níveis de complexidade e descubra o que vale revisar.</p><div class="diag-stats"><span>12 questões por percurso</span><span>4 assuntos avaliados</span><span>Correção explicada</span></div></section><div class="diag-catalog">'+groups.map(function(g){return '<section class="diag-track-group"><div class="diag-group-head"><h2>'+g.title+'</h2><p>'+g.desc+'</p></div><div class="diag-track-grid">'+bank.tracks.filter(function(t){return t.group===g.id}).map(function(t){var previous=countPrevious(t.id);return '<button type="button" class="diag-track-card" data-track="'+esc(t.id)+'"><span class="diag-track-symbol tone-'+esc(t.color)+'">'+esc(t.icon)+'</span><span class="diag-track-info"><strong>'+esc(t.title)+'</strong><span>'+esc(t.subtitle)+'</span>'+(previous?'<small>Última tentativa: '+previous.correct+'/12 · '+formatDate(previous.date)+'</small>':'<small>12 questões · '+esc(t.minutes)+'</small>')+'</span><span class="diag-track-arrow" aria-hidden="true">↗</span></button>'}).join('')+'</div></section>'}).join('')+'</div><p class="diag-privacy">Questões autorais. Resultado indicativo, não equivale a prova oficial nem a uma medição padronizada de proficiência. Sem cadastro; só o resumo da última tentativa fica armazenado neste navegador.</p>';
   body.querySelectorAll('[data-track]').forEach(function(btn){btn.addEventListener('click',function(){track=bank.tracks.find(function(t){return t.id===btn.dataset.track});intro()})});
  }
  function intro(){
@@ -1417,12 +1417,12 @@ async function lessonPage(){
  (function(){var cur=document.querySelector('.aula-hero .aula-trail .is-current'),ol=cur&&cur.closest('ol');if(ol&&ol.scrollWidth>ol.clientWidth+2)(function(){var r=cur.getBoundingClientRect(),o=ol.getBoundingClientRect();ol.scrollLeft+=r.left-o.left-(o.width-r.width)/2})()})();
  document.getElementById('btn-done').addEventListener('click',function(){finishAction(l,this);var cur=document.querySelector('.aula-trail .is-current');if(cur)cur.classList.toggle('is-done',done.has(id))});
  var shareBtn=document.getElementById('btn-share'),shareOptions=document.getElementById('lesson-share-options'),shareStatus=document.getElementById('share-status'),shareManual=document.getElementById('share-manual');
- var shareUrl=new URL(href(l),location.origin).href,shareText='Olha essa aula de matemática no MAT MAT MAT!: '+l.title,shareMessage=shareText+'\n'+shareUrl;
+ var shareUrl=new URL(href(l),location.origin).href,shareText='Olha essa aula de matemática no MAT com JOÃO!: '+l.title,shareMessage=shareText+'\n'+shareUrl;
  document.getElementById('share-whatsapp').href='https://wa.me/?text='+encodeURIComponent(shareMessage);
  function setShareOptions(visible){shareOptions.hidden=!visible;shareBtn.setAttribute('aria-expanded',String(visible));if(!visible){shareStatus.textContent='';shareManual.hidden=true}}
  shareBtn.addEventListener('click',function(){
   if(typeof navigator.share==='function'){
-   try{var result=navigator.share({title:l.title+' | MAT MAT MAT!',text:shareText,url:shareUrl});Promise.resolve(result).then(function(){setShareOptions(false)}).catch(function(err){if(!err||err.name!=='AbortError')setShareOptions(true)})}catch(err){if(!err||err.name!=='AbortError')setShareOptions(true)}
+   try{var result=navigator.share({title:l.title+' | MAT com JOÃO!',text:shareText,url:shareUrl});Promise.resolve(result).then(function(){setShareOptions(false)}).catch(function(err){if(!err||err.name!=='AbortError')setShareOptions(true)})}catch(err){if(!err||err.name!=='AbortError')setShareOptions(true)}
   }else setShareOptions(shareOptions.hidden);
  });
  document.getElementById('share-close').addEventListener('click',function(){setShareOptions(false);shareBtn.focus()});

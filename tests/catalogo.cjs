@@ -57,12 +57,12 @@ async function boot(url='https://matmatmat.test/'){
 function click(w,element){assert.ok(element,'controle não encontrado');element.dispatchEvent(new w.MouseEvent('click',{bubbles:true}))}
 function type(w,element,value){assert.ok(element);element.value=value;element.dispatchEvent(new w.Event('input',{bubbles:true}))}
 (async()=>{
- assert.match(readFileSync('assets/favicon.svg','utf8'),/MAT MAT MAT!/);
+ assert.match(readFileSync('assets/favicon.svg','utf8'),/MAT com JOÃO!/);
  assert.match(readFileSync('assets/print.js','utf8'),/mat-print-bang/);
- assert.match(readFileSync('imprimir/index.html','utf8'),/MAT MAT MAT!/);
- assert.match(readFileSync('index.html','utf8'),/<title>MAT MAT MAT!/);
- assert.match(readFileSync('explorar/index.html','utf8'),/MAT MAT MAT!/);
- assert.match(readFileSync('teste-seu-nivel/index.html','utf8'),/MAT MAT MAT!/);
+ assert.match(readFileSync('imprimir/index.html','utf8'),/MAT com JOÃO!/);
+ assert.match(readFileSync('index.html','utf8'),/<title>MAT com JOÃO!/);
+ assert.match(readFileSync('explorar/index.html','utf8'),/MAT com JOÃO!/);
+ assert.match(readFileSync('teste-seu-nivel/index.html','utf8'),/MAT com JOÃO!/);
  assert.equal(curriculum.lessons.length,215);
  assert.equal(diagnostic.version,2);
  assert.equal(diagnostic.tracks.length,5);
@@ -86,7 +86,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  for(const l of curriculum.lessons){
   const html=readFileSync(l.id.split('.').join('/')+'/index.html','utf8');
   assert.ok(html.includes('data-lesson="'+l.id+'"'));
-  assert.ok(html.includes('MAT MAT MAT!'));
+  assert.ok(html.includes('MAT com JOÃO!'));
  }
  for(const b of curriculum.blocks){
   const html=readFileSync(b.id.replace('.','/')+'/index.html','utf8');
@@ -111,7 +111,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelectorAll('.as-tile').length,25,'Assuntos na entrada');
  assert.equal(d.querySelectorAll('.as-fam').length,4,'Assuntos agrupados em 4 famílias');
  assert.ok(d.querySelector('a.as-tile[href="/combinatoria/"]'),'Combinatória direto na página inicial');
- assert.ok(d.querySelector('form[data-livro-atalho]'),'Atalho para quem tem o livro');
+ assert.equal(d.querySelector('form[data-livro-atalho]'),null,'Sem atalho do livro na home');
  assert.equal(d.querySelectorAll('.home-explore-decoration').length,0,'Sem seta decorativa gigante');
  assert.equal(d.querySelectorAll('.home-explore .home-section-intro p').length,0,'Sem texto Prefere navegar');
  assert.equal(d.querySelectorAll('.home-explore .browser-toolbar').length,0,'Sem Escolha uma área para começar');
@@ -122,9 +122,9 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelectorAll('.discovery-preview').length,0,'Sem vitrine de exemplos');
  assert.equal(d.querySelectorAll('.home-hero-art').length,0,'Sem ilustração debaixo da busca');
  assert.equal(d.querySelectorAll('[data-preview]').length,0,'Sem controles de animação');
- assert.equal(d.querySelector('.home-hero-copy>p').textContent,'Listas de Exercícios e Teoria grátis. Simples assim');
+ assert.equal(d.querySelector('.home-hero-copy>p').textContent,'Listas de exercícios de matemática.');
  assert.equal(d.querySelectorAll('img.mat-logo-img').length,2,'Logo em ambas as marcas visíveis');
- assert.equal(d.querySelector('.brand-mat').getAttribute('aria-label'),'MAT MAT MAT! — página inicial');
+ assert.equal(d.querySelector('.brand-mat').getAttribute('aria-label'),'MAT com JOÃO! — página inicial');
  assert.ok(d.querySelector('a.as-tile[href="/funcoes/"]'));
  assert.equal(d.querySelector('a.nav-cta[href="/livros/"] .nav-cta-long').textContent,'Ver o material impresso','Cabeçalho leva ao material impresso');
  assert.equal(d.querySelector('a.nav-cta[href="/teste-seu-nivel/"]'),null);
@@ -261,7 +261,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  var nativeSharePayload;
  w.navigator.share=function(payload){nativeSharePayload=payload;return Promise.resolve()};
  click(w,d.querySelector('#btn-share'));
- assert.equal(nativeSharePayload.title,'Raízes, discriminante, soma e produto | MAT MAT MAT!');
+ assert.equal(nativeSharePayload.title,'Raízes, discriminante, soma e produto | MAT com JOÃO!');
  assert.match(nativeSharePayload.text,/Olha essa aula de matemática/);
  assert.equal(nativeSharePayload.url,'https://matmatmat.test/2/3/2/');
  assert.equal(d.querySelector('#lesson-share-options').hidden,true);
@@ -349,7 +349,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  ({w,d,dom}=await boot('https://matmatmat.test/teste-seu-nivel/'));
  assert.equal(d.querySelectorAll('[data-track]').length,5,'Cinco percursos para escolher');
  assert.match(d.querySelector('.diag-intro h1').textContent,/Onde você está na matemática/);
- assert.equal(d.querySelectorAll('.header-promise-bar').length,1);
+ assert.equal(d.querySelectorAll('.header-promise-bar').length,0,'Sem a faixa do cabeçalho');
  click(w,d.querySelector('[data-track="em1"]'));
  assert.match(d.querySelector('.diag-selected h1').textContent,/Seu ponto de partida/);
  assert.equal(d.querySelectorAll('.diag-skill-list>div').length,4);

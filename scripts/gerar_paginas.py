@@ -20,8 +20,8 @@ A = json.loads((R / 'data/aulas.json').read_text())
 HEAD = ('<!doctype html>\n<html lang="pt-BR"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1">'
         '<meta name="theme-color" content="#2d195a"><meta name="description" content="{desc}">'
-        '<title>{titulo} | MAT MAT MAT!</title>'
-        '<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><meta property="og:site_name" content="MAT MAT MAT!">'
+        '<title>{titulo} | MAT com JOÃO!</title>'
+        '<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><meta property="og:site_name" content="MAT com JOÃO!">'
         '<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/ofertas.css">'
         "<script>window.MathJax={{tex:{{inlineMath:[['\\\\(','\\\\)']],displayMath:[['\\\\[','\\\\]']]}},"
         "options:{{skipHtmlTags:['script','noscript','style','textarea','pre','code']}}}};</script>"
@@ -47,20 +47,20 @@ def main():
                   'teste-seu-nivel', 'scripts', 'tests', 'materiais-fonte', 'gravacao', 'aulas'}
     for a in A.get('assuntos', []):
         assert a['id'] not in reservados and not a['id'][0].isdigit(), a['id']
-        pagina(R / a['id'], a['nome'], f'{a["nome"]}: {a["descricao"]} Aulas com resumo e listas de exercícios grátis no MAT MAT MAT!.',
+        pagina(R / a['id'], a['nome'], f'{a["nome"]}: {a["descricao"]} Aulas com resumo e listas de exercícios grátis no MAT com JOÃO!.',
                f'data-view="assunto" data-assunto="{a["id"]}"')
     for f in A['fronts']:
         pagina(R / f['id'], f'Volume {f["id"]}: {f["name"]}',
-               f'Listas gratuitas do Volume {f["id"]} ({f["name"]}) da coleção MAT MAT MAT!.',
+               f'Listas gratuitas do Volume {f["id"]} ({f["name"]}) da coleção MAT com JOÃO!.',
                f'data-view="explorar" data-volume="{f["id"]}"')
     for b in A['blocks']:
         v, n = b['id'].split('.')
         onde = f'Volume {v}, extra' if b.get('extra') else f'Volume {v}, módulo {n}'
-        pagina(R / v / n, b['title'], f'Listas gratuitas de {b["title"]} ({onde}) no MAT MAT MAT!.',
+        pagina(R / v / n, b['title'], f'Listas gratuitas de {b["title"]} ({onde}) no MAT com JOÃO!.',
                f'data-view="explorar" data-volume="{v}" data-modulo="{b["id"]}"')
     for l in A['lessons']:
         resumo = (l.get('summary') or '').rstrip('.')
-        desc = (resumo + '. ' if resumo else '') + 'Resumo e listas de fixação e vestibular grátis no MAT MAT MAT!.'
+        desc = (resumo + '. ' if resumo else '') + 'Resumo e listas de fixação e vestibular grátis no MAT com JOÃO!.'
         pagina(R / Path(*l['id'].split('.')), l['title'], desc, f'data-lesson="{l["id"]}"')
     print(len(A.get('assuntos', [])), 'assuntos,', len(A['fronts']), 'volumes,', len(A['blocks']), 'módulos,', len(A['lessons']), 'aulas')
 

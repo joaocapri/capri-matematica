@@ -476,7 +476,7 @@ body{background:var(--pale)}
  .exatoo-symbol{width:40px;height:40px;font-size:22px}
 }
 
-/* MAT MAT MAT — identidade tipográfica em três linhas */
+/* MAT com JOÃO — identidade tipográfica em três linhas */
 .brand-mat{display:inline-flex;align-items:center;gap:15px;min-width:0;text-decoration:none}
 .mat-logo{display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;flex-shrink:0;background:#2d195a;border:2px solid #241448;border-radius:12px;box-shadow:3px 4px 0 #d6fa74;padding:8px 11px 10px;transform:rotate(-3deg);font-family:'Space Grotesk',Arial,sans-serif;font-weight:900;font-size:25px;letter-spacing:-1.8px;line-height:.79;color:#fff;min-width:75px;height:74px}
 .mat-logo>span{display:block}
@@ -708,7 +708,7 @@ body{background:var(--pale)}
 }
 
 
-/* MAT MAT MAT! — audiência no centro do cabeçalho */
+/* MAT com JOÃO! — audiência no centro do cabeçalho */
 .topbar .shell{position:relative}
 .header-audience{position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;pointer-events:none;white-space:nowrap;text-align:center;color:#665b78;font:600 11px/1.28 'DM Sans',system-ui,sans-serif}
 .header-audience strong{font:800 12px/1.28 'Space Grotesk',system-ui,sans-serif;letter-spacing:.2px;color:#5028ad}

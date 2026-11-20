@@ -72,7 +72,7 @@ PREAMBULO = r"""
 \AtBeginDocument{\thickmuskip=5mu\medmuskip=4mu}
 
 % ---------- marca (troque só aqui quando a logo nova estiver pronta) ----------
-\newcommand{\marca}[1][\footnotesize]{{\logofont#1 MAT MAT MAT\textcolor{exclam}{!}}}
+\newcommand{\marca}[1][\footnotesize]{{\logofont#1 MAT com JOÃO\textcolor{exclam}{!}}}
 
 % ---------- lacuna: traço para preencher ao vivo ----------
 \newlength{\lacw}

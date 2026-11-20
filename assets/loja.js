@@ -22,7 +22,7 @@ function motif(v){
  for(var u=0;u<7;u++){var yy=305+u*25;rings+='<ellipse cx="182" cy="'+yy+'" rx="'+(95-Math.abs(yy-381)*.22)+'" ry="'+(7+Math.abs(yy-381)*.05)+'" fill="none" stroke="#28332B" stroke-width=".6"/>';}
  return rings+'<path d="M182 255 L72 462 L294 462 Z" fill="none" stroke="#F8F2EA" stroke-width="2.5"/>';
 }
-function cover(v,larga){var x0=larga?-22.5:0,w=larga?405:360;return '<svg class="shop-cover-art" viewBox="'+x0+' 0 '+w+' 575" role="img" aria-label="Prévia da capa do volume '+v.id+', '+escape(v.name)+'"><rect x="'+x0+'" width="'+w+'" height="575" fill="#F3F1E9"/><text x="32" y="40" font-family="Arial,sans-serif" font-size="17" font-weight="800" fill="#172524">MAT MAT MAT!</text><text x="277" y="40" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#27322C">VOLUME '+v.id+'</text><path d="M32 58 H328" stroke="#152321" stroke-width="1.1"/><text x="32" y="128" font-family="Arial,sans-serif" font-size="'+(v.name==='Geometria'?51:57)+'" font-weight="900" letter-spacing="-2" fill="#172524">'+escape(v.name)+'</text><text x="32" y="164" font-family="Arial,sans-serif" font-size="12" fill="#192924">Prof. Marco Capri</text><text x="32" y="183" font-family="Arial,sans-serif" font-size="12" fill="#192924">Prof. João Capri</text><rect x="'+x0+'" y="217" width="'+w+'" height="298" fill="'+v.color+'"/>'+motif(v)+'<text x="33" y="495" fill="'+(v.id===2?'#F9F8F0':'#172524')+'" font-family="Arial,sans-serif" font-size="9" font-weight="700">MATEMÁTICA</text><text x="315" y="497" fill="'+(v.id===2?'#F9F8F0':'#172524')+'" font-family="Arial,sans-serif" font-size="26" font-weight="900">'+v.id+'</text><text x="32" y="543" fill="#172524" font-family="Arial,sans-serif" font-size="12" font-weight="900">ENSINO MÉDIO E VESTIBULARES</text></svg>';}
+function cover(v,larga){var x0=larga?-22.5:0,w=larga?405:360;return '<svg class="shop-cover-art" viewBox="'+x0+' 0 '+w+' 575" role="img" aria-label="Prévia da capa do volume '+v.id+', '+escape(v.name)+'"><rect x="'+x0+'" width="'+w+'" height="575" fill="#F3F1E9"/><text x="32" y="40" font-family="Arial,sans-serif" font-size="17" font-weight="800" fill="#172524">MAT com JOÃO!</text><text x="277" y="40" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#27322C">VOLUME '+v.id+'</text><path d="M32 58 H328" stroke="#152321" stroke-width="1.1"/><text x="32" y="128" font-family="Arial,sans-serif" font-size="'+(v.name==='Geometria'?51:57)+'" font-weight="900" letter-spacing="-2" fill="#172524">'+escape(v.name)+'</text><text x="32" y="164" font-family="Arial,sans-serif" font-size="12" fill="#192924">Prof. Marco Capri</text><text x="32" y="183" font-family="Arial,sans-serif" font-size="12" fill="#192924">Prof. João Capri</text><rect x="'+x0+'" y="217" width="'+w+'" height="298" fill="'+v.color+'"/>'+motif(v)+'<text x="33" y="495" fill="'+(v.id===2?'#F9F8F0':'#172524')+'" font-family="Arial,sans-serif" font-size="9" font-weight="700">MATEMÁTICA</text><text x="315" y="497" fill="'+(v.id===2?'#F9F8F0':'#172524')+'" font-family="Arial,sans-serif" font-size="26" font-weight="900">'+v.id+'</text><text x="32" y="543" fill="#172524" font-family="Arial,sans-serif" font-size="12" font-weight="900">ENSINO MÉDIO E VESTIBULARES</text></svg>';}
 
 
 /* ---------- Folhear ---------- */
@@ -30,7 +30,7 @@ var fb={folhas:[],faces:[],k:0,n:0,duplo:true,pw:0,anim:false,largura:0};
 var DUR=matchMedia('(prefers-reduced-motion: reduce)').matches?0:700;
 function facesDe(v){
  var f=[{html:'<div class="fb-capa">'+cover(v,true)+'</div>',leg:'Capa'},
-  {html:'<div class="fb-guarda"><b>MAT MAT MAT!</b><span>Volume '+v.id+' · '+escape(v.name)+'</span><small>'+escape(item.authors||'')+'</small></div>',leg:'Folha de guarda'}];
+  {html:'<div class="fb-guarda"><b>MAT com JOÃO!</b><span>Volume '+v.id+' · '+escape(v.name)+'</span><small>'+escape(item.authors||'')+'</small></div>',leg:'Folha de guarda'}];
  (v.amostras||[]).forEach(function(a,i){f.push({html:'<img src="'+escape(a.src)+'" alt="'+escape(a.legenda)+' do Volume '+v.id+'" draggable="false" width="640" height="909"'+(i>1?' loading="lazy"':'')+'>',leg:a.legenda,zoom:i})});
  f.push({html:'<div class="fb-contra"><img src="/assets/logo-mat-256.png" alt="" width="200" height="120" draggable="false"><p>Toda a matemática do ensino médio em 4 livros.</p><small>matcomjoao.com</small></div>',leg:'Contracapa'});
  if(f.length%2)f.splice(f.length-1,0,{html:'<div class="fb-branca"></div>',leg:''});
@@ -134,7 +134,7 @@ function cart_(){
 function pedir(){var p=document.getElementById('pedido');p.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});setTimeout(function(){var i=document.querySelector('#shop-form [name=nome]');if(i&&!i.value)i.focus({preventScroll:true})},450)}
 function message(d){
  var o=oferta();
- return ['Olá! Quero o material impresso MAT MAT MAT!','','• '+cart.kit+'× Coleção completa (Números, Funções, Álgebra e Geometria)']
+ return ['Olá! Quero o material impresso MAT com JOÃO!','','• '+cart.kit+'× Coleção completa (Números, Funções, Álgebra e Geometria)']
  .concat(o?['','Cupom: '+o.cupom+' ('+(o.texto||o.desconto)+')']:[])
  .concat(['','Nome: '+d.nome,'CEP: '+d.cep,'','Pode me passar o valor, o frete e o prazo?']).join('\n');
 }

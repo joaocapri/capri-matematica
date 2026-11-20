@@ -1,4 +1,4 @@
-/* MAT MAT MAT! • ofertas da coleção física dentro do site.
+/* MAT com JOÃO! • ofertas da coleção física dentro do site.
    Notificações (toasts), um modal de cupom e um selo de cupom fixo.
    Tudo é verdadeiro: sem "fulano acabou de comprar" e sem contagem regressiva.
    O cupom e o texto do desconto vêm de data/livros.json → "oferta".
@@ -189,7 +189,7 @@ function aoPdf(d){
  var m=d&&infoModulo(d.modulo),noLivro=m&&!m.extra;
  setTimeout(function(){
   toast({volume:noLivro?d.volume:null,titulo:'Lista baixada ✓',
-   texto:'Curte estudar no papel? A coleção MAT MAT MAT! tem 4 volumes e 983 páginas'+(noLivro?', e '+esc(m.titulo)+' está no Volume '+d.volume:'')+'.'+cupomFrase(),
+   texto:'Curte estudar no papel? A coleção MAT com JOÃO! tem 4 volumes e 983 páginas'+(noLivro?', e '+esc(m.titulo)+' está no Volume '+d.volume:'')+'.'+cupomFrase(),
    cta:'Ver a coleção',href:lojaHref(noLivro?d.volume:null)});
  },1200);
 }

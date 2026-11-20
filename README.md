@@ -1,6 +1,6 @@
-# MAT MAT MAT ✳
+# MAT com JOÃO ✳
 
-Portal gratuito de matemática MAT MAT MAT!, do Prof. João Capri.
+Portal gratuito de matemática MAT com JOÃO!, do Prof. João Capri.
 
 - **Para o aluno, a entrada é por assunto**: a página inicial mostra 20 assuntos (Combinatória, Probabilidade, Funções, Trigonometria…) em 4 grupos, e cada assunto abre a lista de todas as suas aulas. Caminho: início → assunto → aula.
 - **Por baixo, a numeração é a do livro** em 4 volumes: **Volume → Módulo → Aula**, com códigos `V.M.a` (ex.: `2.3.2` = Volume 2, módulo 3, aula 2). Quem tem o livro digita o módulo (ex.: 2.3) no atalho da página inicial ou usa o QR code.
@@ -101,7 +101,7 @@ Veja `GUIA_MATERIAIS_EXATOO.md` para cadastrar PDFs por aula, assunto ou área e
 
 
 ## Identidade e abas (2026)
-O nome público do portal agora é **MAT MAT MAT**, com logotipo tipográfico empilhado em `assets/site.js` e favicon em `assets/favicon.svg`. Há **quatro abas por aula**: Listas e PDFs, Teoria, Quiz e Vídeos. A antiga Visão geral foi removida; links antigos `?tab=resumo` levam à Teoria. Na abertura padrão, a página seleciona **Listas e PDFs somente quando há materiais publicados ou lista gerada**, caso contrário seleciona **Teoria**. A home usa um único campo de busca, sem os textos de apoio e botões de exemplos anteriores.
+O nome público do portal agora é **MAT com JOÃO**, com logotipo tipográfico empilhado em `assets/site.js` e favicon em `assets/favicon.svg`. Há **quatro abas por aula**: Listas e PDFs, Teoria, Quiz e Vídeos. A antiga Visão geral foi removida; links antigos `?tab=resumo` levam à Teoria. Na abertura padrão, a página seleciona **Listas e PDFs somente quando há materiais publicados ou lista gerada**, caso contrário seleciona **Teoria**. A home usa um único campo de busca, sem os textos de apoio e botões de exemplos anteriores.
 
 
 ## Experiência do estudante — navegação 2026
@@ -115,8 +115,8 @@ O banco editável fica em `data/diagnostico.json`: 15 questões de quatro altern
 O antigo desenho da parábola foi substituído por um painel com exemplos **reais** da biblioteca: aula A17, lista PDF da A17 e quiz C20. O visitante pode alternar pelos controles Aula / PDF / Quiz. Sem interação, a prévia gira a cada 5,6 segundos, respeita `prefers-reduced-motion` e pausa na interação ou quando a aba não está visível. Ao começar uma pesquisa, o painel se oculta para priorizar os resultados. Os links abrem diretamente o conteúdo existente.
 
 
-## Home minimalista + MAT MAT MAT!
-Atualização visual: nenhuma ilustração, carousel ou mini-tour abaixo do campo de busca. A home mantém o título "O que você quer estudar hoje?" e o subtítulo exato **"Listas de Exercícios e Teoria grátis. Simples assim"**. Marca oficial **MAT MAT MAT!** com exclamação coral destacada na terceira linha da logo e presença uniforme nos metadados das 215 aulas, diagnóstico, exploração, impressão e favicon. As 215 URLs e o funcionamento da busca foram preservados.
+## Home minimalista + MAT com JOÃO!
+Atualização visual: nenhuma ilustração, carousel ou mini-tour abaixo do campo de busca. A home mantém o título "O que você quer estudar hoje?" e o subtítulo exato **"Listas de Exercícios e Teoria grátis. Simples assim"**. Marca oficial **MAT com JOÃO!** com exclamação coral destacada na terceira linha da logo e presença uniforme nos metadados das 215 aulas, diagnóstico, exploração, impressão e favicon. As 215 URLs e o funcionamento da busca foram preservados.
 
 
 ## Exploração enxuta (atualização da home)
