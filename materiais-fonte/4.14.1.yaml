@@ -1,7 +1,177 @@
 # Aula 4.14.1 — Cilindro
 # Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
-# Falta a fixação (entra no lote do módulo 4.14). `estilo` é só controle interno: não é impresso.
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
 padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete o quadro para cilindros circulares retos de raio $r$ e altura $h$ (deixe as respostas em função de $\pi$).'
+      tabela:
+        cabecalho: ['$r$', '$h$', 'Área da base', 'Área lateral', 'Volume']
+        linhas:
+        - ['2', '5', '{{4\pi}}', '{{20\pi}}', '{{20\pi}}']
+        - ['3', '4', '{{9\pi}}', '{{24\pi}}', '{{36\pi}}']
+        - ['1', '10', '{{\pi}}', '{{20\pi}}', '{{10\pi}}']
+        - ['5', '2', '{{25\pi}}', '{{20\pi}}', '{{50\pi}}']
+      resolucao: |
+        Área da base $\pi r^2$, área lateral $2\pi r h$, volume $\pi r^2 h$.
+        Repare que cilindros diferentes podem ter a mesma área lateral ($20\pi$) e volumes bem diferentes.
+      resposta: '$4\pi, 20\pi, 20\pi$; $9\pi, 24\pi, 36\pi$; $\pi, 20\pi, 10\pi$; $25\pi, 20\pi, 50\pi$'
+    - enunciado: 'Associe cada elemento do cilindro circular reto à sua descrição.'
+      esquerda:
+      - 'raio'
+      - 'altura'
+      - 'geratriz'
+      - 'secção meridiana'
+      direita:
+      - 'distância entre os planos das bases'
+      - 'retângulo obtido ao cortar o cilindro por um plano que contém o eixo'
+      - 'segmento paralelo ao eixo, com extremos nas circunferências das bases'
+      - 'metade do diâmetro da base'
+      resolucao: |
+        No cilindro reto, a geratriz tem o mesmo comprimento da altura, mas é um segmento da superfície lateral. A secção meridiana tem lados $2r$ e $h$.
+      resposta: 'De cima para baixo: 2, 4, 3, 1'
+    - enunciado: 'Um cilindro tem raio 3 e altura 7. Complete o cálculo das áreas pela planificação.'
+      itens:
+      - 'A superfície lateral vira um retângulo de {{6\pi}} por {{7}}.'
+      - 'Área lateral: {{42\pi}}'
+      - 'Área total: $42\pi + 2\cdot 9\pi =$ {{60\pi}}'
+      resolucao: |
+        Um lado do retângulo é o comprimento da circunferência da base, $2\pi\cdot 3 = 6\pi$; o outro é a altura. Área lateral $6\pi\cdot 7 = 42\pi$; total $42\pi + 18\pi = 60\pi$.
+      resposta: '$6\pi$ por 7; $42\pi$; $60\pi$'
+    - enunciado: 'Calcule a capacidade de cada cilindro em litros. Use $\pi \approx 3$ e lembre que 1 dm³ = 1 L.'
+      itens:
+      - '$r = 1$ dm e $h = 4$ dm'
+      - '$r = 10$ cm e $h = 20$ cm'
+      - 'diâmetro 2 m e $h = 1$ m'
+      - '$r = 5$ cm e $h = 8$ cm'
+      colunas: 2
+      espaco_item: 16
+      resolucao: |
+        (a) $3\cdot 1\cdot 4 = 12$ dm³ = 12 L. (b) $3\cdot 100\cdot 20 = 6\,000$ cm³ = 6 L.
+        (c) $r = 1$ m: $3$ m³ = 3 000 L. (d) $3\cdot 25\cdot 8 = 600$ cm³ = 0,6 L.
+      resposta: '(a) 12 L (b) 6 L (c) 3 000 L (d) 0,6 L'
+    - enunciado: 'Um cilindro equilátero tem raio 4 cm. Calcule sua área total e seu volume.'
+      espaco: 26
+      resolucao: |
+        Equilátero: $h = 2r = 8$. Área total: $2\pi\cdot 4\cdot 8 + 2\pi\cdot 16 = 96\pi$ cm². Volume: $\pi\cdot 16\cdot 8 = 128\pi$ cm³.
+      resposta: '$96\pi$ cm² e $128\pi$ cm³'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Num cilindro equilátero, a secção meridiana é um quadrado.'
+      - 'Se o raio de um cilindro dobra e a altura se mantém, o volume dobra.'
+      - 'A área lateral de um cilindro de raio $r$ e altura $h$ é $2\pi r h$.'
+      - 'Um cilindro de raio 2 e altura 3 tem volume maior que um de raio 3 e altura 2.'
+      justificar: true
+      espaco: 18
+      resolucao: |
+        (V) Os lados são $2r$ e $h = 2r$. (F) O volume fica multiplicado por 4, pois depende de $r^2$.
+        (V) É a área do retângulo da planificação. (F) $12\pi < 18\pi$.
+      resposta: V, F, V, F
+    - enunciado: 'Calcule o raio da base de cada cilindro.'
+      itens:
+      - 'volume $45\pi$ e altura 5'
+      - 'área lateral $24\pi$ e altura 4'
+      - 'área da base $49\pi$'
+      - 'circunferência da base com comprimento $10\pi$'
+      colunas: 2
+      espaco_item: 15
+      resolucao: |
+        (a) $r^2\cdot 5 = 45$, $r = 3$. (b) $2r\cdot 4 = 24$, $r = 3$. (c) $r^2 = 49$, $r = 7$. (d) $2r = 10$, $r = 5$.
+      resposta: '(a) 3 (b) 3 (c) 7 (d) 5'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Lia calculou o volume de uma lata com 8 cm de diâmetro e 10 cm de altura assim: $V = \pi\cdot 8^2\cdot 10 = 640\pi$ cm³.
+      enunciado: 'Encontre o erro de Lia e calcule o volume correto.'
+      espaco: 24
+      resolucao: |
+        Lia usou o diâmetro no lugar do raio. Com $r = 4$: $V = \pi\cdot 16\cdot 10 = 160\pi$ cm³ (um quarto do valor dela).
+      resposta: 'Usou o diâmetro; $160\pi$ cm³'
+    - enunciado: 'Compare os cilindros A (raio 2, altura 9) e B (raio 3, altura 4).'
+      itens:
+      - 'Qual tem o maior volume?'
+      - 'Qual tem a maior área lateral?'
+      espaco_item: 15
+      resolucao: |
+        (a) $V_A = \pi\cdot 4\cdot 9 = 36\pi$ e $V_B = \pi\cdot 9\cdot 4 = 36\pi$: os volumes são iguais.
+        (b) $A_A = 2\pi\cdot 2\cdot 9 = 36\pi$ e $A_B = 2\pi\cdot 3\cdot 4 = 24\pi$: A tem a maior área lateral.
+      resposta: '(a) iguais, $36\pi$ (b) A'
+    - enunciado: 'Uma lata de tinta cilíndrica tem 20 cm de diâmetro e 30 cm de altura. Use $\pi \approx 3{,}14$.'
+      itens:
+      - 'Calcule a capacidade da lata em litros.'
+      - 'Se cada litro de tinta pinta 5 m² de parede, quantos metros quadrados a lata cheia pinta?'
+      espaco_item: 15
+      resolucao: |
+        (a) $3{,}14\cdot 10^2\cdot 30 = 9\,420$ cm³ = 9,42 L. (b) $9{,}42\cdot 5 = 47{,}1$ m².
+      resposta: '(a) 9,42 L (b) 47,1 m²'
+    - enunciado: 'Complete: o que acontece com o volume de um cilindro em cada mudança?'
+      tabela:
+        cabecalho: ['Raio', 'Altura', 'Volume fica']
+        linhas:
+        - ['$\times 2$', 'igual', '$\times$ {{4}}']
+        - ['igual', '$\times 3$', '$\times$ {{3}}']
+        - ['$\times 2$', '$\div 2$', '$\times$ {{2}}']
+        - ['$\times 3$', '$\div 9$', '$\times$ {{1}}']
+      resolucao: |
+        $V = \pi r^2 h$: o raio entra ao quadrado. $2^2 = 4$; $3$; $4\cdot\frac12 = 2$; $9\cdot\frac19 = 1$ (o volume não muda).
+      resposta: '4; 3; 2; 1'
+    - enunciado: 'Um cilindro tem área lateral $60\pi$ cm² e volume $150\pi$ cm³. Determine o raio e a altura.'
+      espaco: 26
+      resolucao: |
+        $\frac{V}{A_L} = \frac{\pi r^2 h}{2\pi r h} = \frac r2 = \frac{150}{60}$, logo $r = 5$ cm. Então $2\pi\cdot 5\cdot h = 60\pi$ e $h = 6$ cm.
+      resposta: '$r = 5$ cm e $h = 6$ cm'
+    - enunciado: 'Em um aquário cilíndrico com 10 cm de raio interno, uma pedra é colocada e fica submersa; o nível da água sobe 0,5 cm. Qual é o volume da pedra? Use $\pi \approx 3{,}14$.'
+      espaco: 22
+      resolucao: |
+        O volume da pedra é o da água deslocada: $3{,}14\cdot 100\cdot 0{,}5 = 157$ cm³.
+      resposta: '157 cm³'
+    - enunciado: 'A secção meridiana de um cilindro tem área 48 cm², e a altura do cilindro é 8 cm. Calcule:'
+      itens:
+      - 'o raio da base;'
+      - 'o volume;'
+      - 'a área total.'
+      colunas: 3
+      espaco_item: 15
+      resolucao: |
+        (a) A secção é um retângulo $2r$ por $8$: $16r = 48$, $r = 3$ cm. (b) $\pi\cdot 9\cdot 8 = 72\pi$ cm³. (c) $2\pi\cdot 3\cdot 8 + 2\pi\cdot 9 = 66\pi$ cm².
+      resposta: '(a) 3 cm (b) $72\pi$ cm³ (c) $66\pi$ cm²'
+    - enunciado: 'Uma caixa-d’água cilíndrica de 1 000 litros tem 0,5 m de raio interno. Qual é a sua altura interna? Use $\pi \approx 3$.'
+      espaco: 22
+      resolucao: |
+        1 000 L = 1 m³. $3\cdot 0{,}25\cdot h = 1 \Rightarrow h = \frac43 \approx 1{,}33$ m.
+      resposta: '$\frac43 \approx 1{,}33$ m'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Um retângulo de 4 dm por 10 dm pode ser enrolado de dois modos para formar a superfície lateral de um cilindro. Calcule o volume de cada cilindro e diga qual é o maior.'
+      espaco: 32
+      resolucao: |
+        Altura 10: $2\pi r = 4$, $r = \frac2\pi$ e $V = \pi\cdot\frac{4}{\pi^2}\cdot 10 = \frac{40}{\pi}$ dm³.
+        Altura 4: $2\pi r = 10$, $r = \frac5\pi$ e $V = \pi\cdot\frac{25}{\pi^2}\cdot 4 = \frac{100}{\pi}$ dm³. O segundo (mais baixo e mais largo) é o maior.
+      resposta: '$\frac{40}{\pi}$ e $\frac{100}{\pi}$ dm³; o de altura 4'
+    - enunciado: 'Um cilindro está inscrito em um cubo de aresta $a$ (as bases estão em duas faces opostas). Calcule a razão entre a área lateral do cilindro e a soma das áreas das quatro faces laterais do cubo.'
+      espaco: 26
+      resolucao: |
+        $r = \frac a2$ e $h = a$: área lateral $2\pi\cdot\frac a2\cdot a = \pi a^2$. Faces laterais do cubo: $4a^2$. Razão: $\frac{\pi}{4}$.
+      resposta: '$\frac{\pi}{4}$'
+    - enunciado: 'Um cano tem 2 m de comprimento, diâmetro externo de 6 cm e diâmetro interno de 4 cm. Calcule o volume de material do cano, em função de $\pi$.'
+      espaco: 24
+      resolucao: |
+        Raios 3 cm e 2 cm, comprimento 200 cm: $\pi(9 - 4)\cdot 200 = 1\,000\pi$ cm³.
+      resposta: '$1\,000\pi$ cm³'
+    - enunciado: 'A área total de um cilindro é o dobro da sua área lateral. Mostre que a altura é igual ao raio e calcule o raio, sabendo que o volume é $8\pi$.'
+      espaco: 30
+      resolucao: |
+        $2\pi r h + 2\pi r^2 = 2\cdot 2\pi r h \Rightarrow 2\pi r^2 = 2\pi r h \Rightarrow h = r$. Então $\pi r^3 = 8\pi$ e $r = 2$.
+      resposta: '$h = r$; $r = 2$'
+    - enunciado: 'Um copo cilíndrico com 4 cm de raio interno e 12 cm de altura está com água até $\frac34$ da altura. Cubos de gelo com 2 cm de aresta são colocados e ficam submersos. Quantos cubos cabem sem que a água transborde? Use $\pi \approx 3$.'
+      espaco: 28
+      resolucao: |
+        Faltam 3 cm de altura: $3\cdot 16\cdot 3 = 144$ cm³ livres. Cada cubo desloca $2^3 = 8$ cm³. $\frac{144}{8} = 18$: com 18 cubos a água chega exatamente à borda; o 19º faz transbordar.
+      resposta: '18 cubos'
 
 vestibular:
   questoes:

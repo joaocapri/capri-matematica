@@ -462,7 +462,7 @@ def documento(aula, tipo, dados, n_listas=2, padrao=3):
             questoes.append(q)
             corpo += r"\questao{%d}{%s}" % (len(questoes), enunciado_tex(q, fixa=True, aprof=True, banca=banca)) + "\n"
         corpo += r"\end{multicols}" + "\n"
-    elif banca:
+    elif banca and tipo == "vestibular":
         corpo += r"\begin{multicols}{2}\raggedcolumns" + "\n"
         qs = dados["questoes"]
         for i, q in enumerate(qs, 1):

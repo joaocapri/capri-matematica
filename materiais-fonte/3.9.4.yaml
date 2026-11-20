@@ -1,7 +1,182 @@
 # Aula 3.9.4 — Distância de ponto a reta
 # Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
-# Falta a fixação (entra no lote do módulo 3.9). `estilo` é só controle interno: não é impresso.
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
 padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'A fórmula da distância usa a reta na forma geral $ax + by + c = 0$. Escreva cada reta nessa forma (com coeficientes inteiros) e complete o quadro.'
+      tabela:
+        cabecalho: ['Reta', '$a$', '$b$', '$c$']
+        linhas:
+        - ['$y = 2x + 3$', '{{2}}', '{{-1}}', '{{3}}']
+        - ['$y = -\frac{x}{2} + 1$', '{{1}}', '{{2}}', '{{-2}}']
+        - ['$x = 4$', '{{1}}', '{{0}}', '{{-4}}']
+        - ['$3x = 4y - 5$', '{{3}}', '{{-4}}', '{{5}}']
+      resolucao: |
+        Passe tudo para um membro: $2x - y + 3 = 0$; multiplicando por 2, $x + 2y - 2 = 0$; $x - 4 = 0$; $3x - 4y + 5 = 0$.
+        (Os sinais podem vir todos trocados: a reta é a mesma.)
+      resposta: '$2,-1,3$; $\ 1,2,-2$; $\ 1,0,-4$; $\ 3,-4,5$'
+    - enunciado: 'Calcule a distância de $P(2, 1)$ à reta $3x + 4y - 5 = 0$, completando os passos.'
+      itens:
+      - 'Numerador: $|3\cdot 2 + 4\cdot 1 - 5| =$ {{5}}'
+      - 'Denominador: $\sqrt{3^2 + 4^2} =$ {{5}}'
+      - 'Distância: $d =$ {{1}}'
+      resolucao: |
+        $|6 + 4 - 5| = 5$ e $\sqrt{25} = 5$, logo $d = 1$.
+      resposta: '$d = 1$'
+    - enunciado: 'Calcule a distância de cada ponto à reta $3x - 4y + 10 = 0$.'
+      itens:
+      - '$(0, 0)$'
+      - '$(2, 4)$'
+      - '$(1, -2)$'
+      - '$(-5, 0)$'
+      colunas: 2
+      espaco_item: 15
+      resolucao: |
+        (a) $\frac{10}{5} = 2$. (b) $|6 - 16 + 10| = 0$: o ponto está na reta. (c) $\frac{|3 + 8 + 10|}{5} = \frac{21}{5}$. (d) $\frac{|-15 + 10|}{5} = 1$.
+      resposta: '(a) 2 (b) 0 (c) $\frac{21}{5}$ (d) 1'
+    - enunciado: 'Quando a reta é horizontal ou vertical, a distância sai sem fórmula. Associe cada par ponto e reta à distância entre eles (um número pode ser usado mais de uma vez).'
+      esquerda:
+      - '$d = 3$'
+      - '$d = 5$'
+      - '$d = 2$'
+      direita:
+      - 'ponto $(1, 4)$ e reta $y = 1$'
+      - 'ponto $(-3, 2)$ e reta $x = 2$'
+      - 'ponto $(0, 0)$ e reta $y = -2$'
+      - 'ponto $(5, 5)$ e reta $x = 2$'
+      - 'ponto $(2, -3)$ e reta $y = 2$'
+      resolucao: |
+        Reta horizontal $y = k$: $d = |y_0 - k|$. Reta vertical $x = k$: $d = |x_0 - k|$.
+        $|4 - 1| = 3$; $|-3 - 2| = 5$; $|0 + 2| = 2$; $|5 - 2| = 3$; $|-3 - 2| = 5$.
+      resposta: 'De cima para baixo: 1, 2, 3, 1, 2'
+    - enunciado: 'Calcule a distância da origem à reta $y = 3x - 10$.'
+      espaco: 24
+      resolucao: |
+        Forma geral: $3x - y - 10 = 0$. $d = \frac{|-10|}{\sqrt{9 + 1}} = \frac{10}{\sqrt{10}} = \sqrt{10}$.
+      resposta: '$\sqrt{10}$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'A distância do ponto $(3, 4)$ ao eixo $x$ é 4.'
+      - 'Para usar a fórmula da distância, a reta precisa estar na forma reduzida.'
+      - 'Se um ponto pertence à reta, a distância dele à reta é zero.'
+      - 'A distância entre as retas $2x + y - 1 = 0$ e $2x + y + 4 = 0$ é 5.'
+      justificar: true
+      espaco: 18
+      resolucao: |
+        (V) O eixo $x$ é $y = 0$: $d = |4| = 4$. (F) A fórmula usa a forma geral $ax + by + c = 0$.
+        (V) O numerador $|ax_0 + by_0 + c|$ vale zero. (F) $d = \frac{|-1 - 4|}{\sqrt{5}} = \sqrt{5}$.
+      resposta: V, F, V, F
+    - enunciado: 'Calcule a distância entre as retas paralelas.'
+      itens:
+      - '$3x + 4y + 1 = 0$ e $3x + 4y - 9 = 0$'
+      - '$x - y = 0$ e $x - y + 4 = 0$'
+      - '$y = 2$ e $y = -5$'
+      - '$5x + 12y = 0$ e $5x + 12y - 26 = 0$'
+      colunas: 2
+      espaco_item: 15
+      resolucao: |
+        (a) $\frac{|1 + 9|}{5} = 2$. (b) $\frac{4}{\sqrt2} = 2\sqrt2$. (c) $|2 - (-5)| = 7$. (d) $\frac{26}{13} = 2$.
+      resposta: '(a) 2 (b) $2\sqrt2$ (c) 7 (d) 2'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Caio quis calcular a distância de $P(1, 2)$ à reta $y = 2x + 5$. Ele escreveu a reta como $2x + y + 5 = 0$ e fez $d = \dfrac{|2 + 2 + 5|}{\sqrt{5}} = \dfrac{9}{\sqrt{5}}$.
+      enunciado: 'Encontre o erro de Caio e calcule a distância correta.'
+      espaco: 26
+      resolucao: |
+        Ao passar $y$ para o outro lado, o sinal troca: a forma geral é $2x - y + 5 = 0$.
+        $d = \frac{|2 - 2 + 5|}{\sqrt5} = \frac{5}{\sqrt5} = \sqrt5$.
+      resposta: 'O sinal de $y$; $d = \sqrt5$'
+    - enunciado: 'Considere o triângulo de vértices $A(1, 1)$, $B(4, 5)$ e $C(5, 0)$.'
+      itens:
+      - 'Escreva a equação geral da reta $AB$.'
+      - 'Calcule a altura relativa ao lado $AB$ (a distância de $C$ à reta $AB$).'
+      - 'Calcule o comprimento de $AB$ e a área do triângulo.'
+      espaco_item: 16
+      resolucao: |
+        (a) Coeficiente angular $\frac{5-1}{4-1} = \frac43$: $y - 1 = \frac43(x - 1)$, ou $4x - 3y - 1 = 0$.
+        (b) $d = \frac{|20 - 0 - 1|}{5} = \frac{19}{5}$. (c) $AB = \sqrt{9 + 16} = 5$ e a área é $\frac{5\cdot\frac{19}{5}}{2} = \frac{19}{2}$.
+      resposta: '(a) $4x - 3y - 1 = 0$ (b) $\frac{19}{5}$ (c) $AB = 5$; área $\frac{19}{2}$'
+    - enunciado: 'Determine os pontos do eixo $y$ que estão a uma distância 2 da reta $3x - 4y + 2 = 0$.'
+      espaco: 28
+      resolucao: |
+        Ponto $(0, k)$: $\frac{|-4k + 2|}{5} = 2 \Rightarrow -4k + 2 = 10$ ou $-4k + 2 = -10$, isto é, $k = -2$ ou $k = 3$.
+      resposta: '$(0, -2)$ e $(0, 3)$'
+    - enunciado: 'Escreva as equações das retas paralelas a $3x - 4y = 0$ que estão a uma distância 1 dela.'
+      espaco: 26
+      resolucao: |
+        Paralelas: $3x - 4y + c = 0$. Distância: $\frac{|c - 0|}{5} = 1 \Rightarrow c = 5$ ou $c = -5$.
+      resposta: '$3x - 4y + 5 = 0$ e $3x - 4y - 5 = 0$'
+    - enunciado: 'Complete o quadro com a distância de cada ponto à reta $3x + 4y - 12 = 0$.'
+      tabela:
+        cabecalho: ['Ponto', '$|3x_0 + 4y_0 - 12|$', 'Distância']
+        linhas:
+        - ['$(0, 0)$', '{{12}}', '{{12/5}}']
+        - ['$(4, 0)$', '{{0}}', '{{0}}']
+        - ['$(4, 5)$', '{{20}}', '{{4}}']
+        - ['$(-1, -2)$', '{{23}}', '{{23/5}}']
+      resolucao: |
+        O denominador é sempre $\sqrt{9 + 16} = 5$. Numeradores: $12$; $0$ (o ponto está na reta); $|12 + 20 - 12| = 20$; $|-3 - 8 - 12| = 23$.
+      resposta: '$\frac{12}{5}$; $0$; $4$; $\frac{23}{5}$'
+    - enunciado: 'Determine os valores de $k$ para que o ponto $P(k, 1)$ esteja a uma distância 2 da reta $5x - 12y + 2 = 0$.'
+      espaco: 26
+      resolucao: |
+        $\frac{|5k - 12 + 2|}{13} = 2 \Rightarrow |5k - 10| = 26 \Rightarrow k = \frac{36}{5}$ ou $k = -\frac{16}{5}$.
+      resposta: '$k = \frac{36}{5}$ ou $k = -\frac{16}{5}$'
+    - enunciado: 'Um quadrado tem um lado sobre a reta $4x + 3y - 5 = 0$, e o lado oposto passa pelo ponto $P(3, 4)$. Calcule a área do quadrado.'
+      espaco: 26
+      resolucao: |
+        O lado do quadrado é a distância de $P$ à reta: $\frac{|12 + 12 - 5|}{5} = \frac{19}{5}$. Área: $\left(\frac{19}{5}\right)^2 = \frac{361}{25}$.
+      resposta: '$\frac{361}{25}$'
+    - enunciado: 'Associe cada par de retas paralelas à distância entre elas (um número pode ser usado mais de uma vez).'
+      esquerda:
+      - '$d = 1$'
+      - '$d = 2$'
+      - '$d = \sqrt2$'
+      direita:
+      - '$x + y = 0$ e $x + y = 2$'
+      - '$3x + 4y = 0$ e $3x + 4y = 10$'
+      - '$y = 1$ e $y = 2$'
+      - '$6x + 8y = 0$ e $3x + 4y = 5$'
+      - '$x = -1$ e $x = 1$'
+      resolucao: |
+        $\frac{2}{\sqrt2} = \sqrt2$; $\frac{10}{5} = 2$; $1$; dividindo a primeira por 2, $3x + 4y = 0$, e $\frac55 = 1$; $|1 - (-1)| = 2$.
+      resposta: 'De cima para baixo: 3, 2, 1, 1, 2'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Determine as equações das bissetrizes dos ângulos formados pelas retas $3x + 4y - 1 = 0$ e $4x - 3y + 2 = 0$. (Sugestão: os pontos da bissetriz estão à mesma distância das duas retas.)'
+      espaco: 32
+      resolucao: |
+        Os denominadores valem 5, então $|3x + 4y - 1| = |4x - 3y + 2|$.
+        $3x + 4y - 1 = 4x - 3y + 2 \Rightarrow x - 7y + 3 = 0$; $3x + 4y - 1 = -(4x - 3y + 2) \Rightarrow 7x + y + 1 = 0$.
+      resposta: '$x - 7y + 3 = 0$ e $7x + y + 1 = 0$'
+    - enunciado: 'Determine os pontos da reta $y = x$ que estão a uma distância 3 da reta $4x - 3y + 1 = 0$.'
+      espaco: 26
+      resolucao: |
+        Ponto $(t, t)$: $\frac{|4t - 3t + 1|}{5} = 3 \Rightarrow |t + 1| = 15 \Rightarrow t = 14$ ou $t = -16$.
+      resposta: '$(14, 14)$ e $(-16, -16)$'
+    - enunciado: 'Calcule a área do triângulo de vértices $A(2, 1)$, $B(6, 4)$ e $C(1, 6)$, usando a distância de $C$ à reta $AB$.'
+      espaco: 30
+      resolucao: |
+        Reta $AB$: coeficiente angular $\frac34$, $3x - 4y - 2 = 0$. Altura: $\frac{|3 - 24 - 2|}{5} = \frac{23}{5}$. Base: $AB = 5$.
+        Área: $\frac{5\cdot\frac{23}{5}}{2} = \frac{23}{2}$ (confira com o determinante).
+      resposta: '$\frac{23}{2}$'
+    - enunciado: 'Mostre que a distância entre as retas paralelas $ax + by + c_1 = 0$ e $ax + by + c_2 = 0$ é $\dfrac{|c_1 - c_2|}{\sqrt{a^2 + b^2}}$. (Sugestão: escolha um ponto qualquer da primeira reta.)'
+      espaco: 30
+      resolucao: |
+        Se $P(x_0, y_0)$ está na primeira reta, $ax_0 + by_0 = -c_1$. A distância de $P$ à segunda é $\frac{|ax_0 + by_0 + c_2|}{\sqrt{a^2+b^2}} = \frac{|-c_1 + c_2|}{\sqrt{a^2+b^2}} = \frac{|c_1 - c_2|}{\sqrt{a^2+b^2}}$, que não depende do ponto escolhido.
+      resposta: 'Ver resolução'
+    - enunciado: 'Encontre o ponto da reta $2x - y + 3 = 0$ mais próximo de $P(4, 1)$ e calcule a distância de $P$ à reta.'
+      espaco: 30
+      resolucao: |
+        A perpendicular por $P$ tem coeficiente angular $-\frac12$: $x + 2y - 6 = 0$. Resolvendo com $2x - y + 3 = 0$: $(0, 3)$.
+        Distância: $\frac{|8 - 1 + 3|}{\sqrt5} = \frac{10}{\sqrt5} = 2\sqrt5$ (é o comprimento de $P$ até $(0, 3)$).
+      resposta: '$(0, 3)$; $d = 2\sqrt5$'
 
 vestibular:
   questoes:

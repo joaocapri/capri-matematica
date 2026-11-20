@@ -1,7 +1,204 @@
 # Aula 1.21.3 — Probabilidade condicional
 # Padrão 4: modelo de referência do vestibular e do aprofundamento no formato das provas reais.
-# Falta a fixação (entra no lote do módulo 1.21). `estilo` é só controle interno: não é impresso.
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
 padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Um dado honesto é lançado. Em cada linha, uma informação reduz o espaço amostral. Complete o quadro com o número de casos possíveis e a probabilidade.'
+      tabela:
+        cabecalho: ['Informação', 'Pergunta', 'Casos', 'Probabilidade']
+        linhas:
+        - ['saiu par', 'é o 6?', '{{3}}', '{{1/3}}']
+        - ['saiu mais que 2', 'é par?', '{{4}}', '{{1/2}}']
+        - ['saiu ímpar', 'é primo?', '{{3}}', '{{2/3}}']
+        - ['saiu menos que 5', 'é mais que 2?', '{{4}}', '{{1/2}}']
+      resolucao: |
+        Os casos possíveis são só os que satisfazem a informação: $\{2,4,6\}$; $\{3,4,5,6\}$; $\{1,3,5\}$; $\{1,2,3,4\}$.
+        Entre eles, servem: o 6; o 4 e o 6; o 3 e o 5; o 3 e o 4.
+      resposta: '$\frac13$; $\frac12$; $\frac23$; $\frac12$'
+    - enunciado: 'Uma bola é sorteada de uma urna com bolas numeradas de 1 a 10. Calcule:'
+      itens:
+      - '$P(\text{par} \mid \text{maior que } 6)$'
+      - '$P(\text{múltiplo de } 3 \mid \text{par})$'
+      - '$P(\text{primo} \mid \text{ímpar})$'
+      - '$P(\text{maior que } 7 \mid \text{múltiplo de } 4)$'
+      colunas: 2
+      espaco_item: 16
+      resolucao: |
+        (a) $\{7,8,9,10\}$: pares 8 e 10, $\frac24 = \frac12$. (b) $\{2,4,6,8,10\}$: só o 6, $\frac15$.
+        (c) $\{1,3,5,7,9\}$: primos 3, 5 e 7, $\frac35$. (d) $\{4,8\}$: só o 8, $\frac12$.
+      resposta: '(a) $\frac12$ (b) $\frac15$ (c) $\frac35$ (d) $\frac12$'
+    - enunciado: 'Um dado é lançado. Associe cada informação ao espaço amostral reduzido que ela produz (um número pode ser usado mais de uma vez).'
+      esquerda:
+      - '$\{2, 4, 6\}$'
+      - '$\{4, 5, 6\}$'
+      - '$\{1, 3, 5\}$'
+      direita:
+      - 'Saiu um número ímpar.'
+      - 'Saiu um número par.'
+      - 'Saiu um número maior que 3.'
+      - 'Saiu um número maior que 3 e menor que 7.'
+      resolucao: |
+        Ímpar: $\{1,3,5\}$. Par: $\{2,4,6\}$. Maior que 3: $\{4,5,6\}$. “Menor que 7” não elimina nada, então também é $\{4,5,6\}$.
+      resposta: 'De cima para baixo: 3, 1, 2, 2'
+    - texto: |
+        Uma turma tem 30 alunos: 12 meninas, das quais 8 usam óculos, e 18 meninos, dos quais 6 usam óculos.
+      enunciado: 'Sorteia-se um aluno que usa óculos. Complete os passos para calcular a probabilidade de ser uma menina.'
+      itens:
+      - 'Alunos que usam óculos (o novo espaço amostral): {{14}}'
+      - 'Meninas entre eles: {{8}}'
+      - '$P(\text{menina} \mid \text{óculos}) = \dfrac{8}{14} =$ {{4/7}}'
+      resolucao: |
+        Usam óculos $8 + 6 = 14$ alunos; 8 são meninas. $P = \frac{8}{14} = \frac47$.
+      resposta: '$\frac47$'
+    - enunciado: 'Duas moedas honestas são lançadas. Sabendo que saiu pelo menos uma cara, qual é a probabilidade de terem saído duas caras?'
+      espaco: 26
+      resolucao: |
+        Resultados: CC, CK, KC, KK. “Pelo menos uma cara” elimina KK e sobram 3 casos; só CC tem duas caras: $\frac13$.
+      resposta: '$\frac13$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso). Para A e B eventos com probabilidade positiva:'
+      afirmacoes:
+      - '$P(A \mid B)$ é sempre igual a $P(B \mid A)$.'
+      - 'Se $B \subset A$, então $P(A \mid B) = 1$.'
+      - '$P(A \mid B)$ pode ser maior que $P(A)$.'
+      - 'Se $P(B) = \frac12$ e $P(A \cap B) = \frac15$, então $P(A \mid B) = \frac{1}{10}$.'
+      justificar: true
+      espaco: 18
+      resolucao: |
+        (F) Num dado, $P(6 \mid \text{par}) = \frac13$, mas $P(\text{par} \mid 6) = 1$.
+        (V) Se B acontece, A também acontece. (V) $P(6 \mid \text{par}) = \frac13 > \frac16 = P(6)$.
+        (F) $P(A \mid B) = \frac{1/5}{1/2} = \frac25$: divide-se, não se multiplica.
+      resposta: F, V, V, F
+    - enunciado: 'Use $P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}$ para calcular $P(A \mid B)$ em cada caso.'
+      itens:
+      - '$P(A \cap B) = 0{,}2$ e $P(B) = 0{,}5$'
+      - '$P(A \cap B) = \frac16$ e $P(B) = \frac12$'
+      - '$P(A \cap B) = 0{,}12$ e $P(B) = 0{,}4$'
+      - '$P(A \cap B) = \frac{3}{20}$ e $P(B) = \frac34$'
+      colunas: 2
+      espaco_item: 14
+      resolucao: |
+        (a) $\frac{0{,}2}{0{,}5} = 0{,}4$. (b) $\frac16 \cdot 2 = \frac13$. (c) $\frac{0{,}12}{0{,}4} = 0{,}3$. (d) $\frac{3}{20}\cdot\frac43 = \frac15$.
+      resposta: '(a) $0{,}4$ (b) $\frac13$ (c) $0{,}3$ (d) $\frac15$'
+  - nome: Nível 2
+    questoes:
+    - enunciado: 'Uma pesquisa perguntou a 200 pessoas se bebem café e se bebem chá. Complete o quadro (ele será usado na próxima questão).'
+      tabela:
+        cabecalho: ['', 'Bebe café', 'Não bebe café', 'Total']
+        linhas:
+        - ['Bebe chá', '40', '{{20}}', '60']
+        - ['Não bebe chá', '{{90}}', '50', '{{140}}']
+        - ['Total', '130', '{{70}}', '200']
+      resolucao: |
+        Linha do chá: $60 - 40 = 20$. Coluna do café: $130 - 40 = 90$. Linha “não bebe chá”: $90 + 50 = 140$. Coluna “não bebe café”: $20 + 50 = 70$.
+      resposta: '20; 90; 140; 70'
+    - enunciado: 'Com o quadro da questão anterior, uma pessoa é sorteada. Calcule:'
+      itens:
+      - 'a probabilidade de ela beber chá, sabendo que bebe café;'
+      - 'a probabilidade de ela beber café, sabendo que bebe chá;'
+      - 'a probabilidade de ela não beber café, sabendo que não bebe chá.'
+      espaco_item: 14
+      resolucao: |
+        (a) Entre os 130 que bebem café, 40 bebem chá: $\frac{40}{130} = \frac{4}{13}$.
+        (b) Entre os 60 que bebem chá, 40 bebem café: $\frac{40}{60} = \frac23$. Repare que (a) e (b) são diferentes.
+        (c) Entre os 140 que não bebem chá, 50 não bebem café: $\frac{50}{140} = \frac{5}{14}$.
+      resposta: '(a) $\frac{4}{13}$ (b) $\frac23$ (c) $\frac{5}{14}$'
+    - enunciado: 'Uma urna tem 3 bolas vermelhas e 5 azuis. Retiram-se duas bolas, uma após a outra, sem reposição. Calcule a probabilidade de:'
+      itens:
+      - 'a primeira ser vermelha e a segunda, azul;'
+      - 'as duas serem azuis;'
+      - 'a segunda ser vermelha, sabendo que a primeira foi vermelha.'
+      espaco_item: 14
+      resolucao: |
+        (a) $\frac38\cdot\frac57 = \frac{15}{56}$. (b) $\frac58\cdot\frac47 = \frac{20}{56} = \frac{5}{14}$.
+        (c) Saiu uma vermelha: restam 7 bolas, 2 vermelhas: $\frac27$.
+      resposta: '(a) $\frac{15}{56}$ (b) $\frac{5}{14}$ (c) $\frac27$'
+    - texto: |
+        Bia resolveu assim: “Lancei dois dados. Sabendo que a soma foi 4, a probabilidade de os dois dados mostrarem 2 é $\frac{1}{36}$, porque só o caso $(2, 2)$ serve entre os 36 possíveis.”
+      enunciado: 'Encontre o erro de Bia e resolva corretamente.'
+      espaco: 26
+      resolucao: |
+        Bia esqueceu a informação: sabendo que a soma é 4, o espaço amostral é $\{(1,3), (2,2), (3,1)\}$, com 3 casos. A resposta é $\frac13$.
+      resposta: 'Não reduziu o espaço amostral; $\frac13$'
+    - enunciado: 'Uma família tem 3 filhos. Considere igualmente prováveis menino e menina. Calcule:'
+      itens:
+      - 'a probabilidade de haver exatamente 2 meninos, sabendo que o primeiro filho é menino;'
+      - 'a probabilidade de os três serem meninos, sabendo que há pelo menos um menino.'
+      espaco_item: 16
+      resolucao: |
+        (a) Com o 1º menino, os outros dois são MM, MF, FM ou FF; exatamente um menino entre eles em 2 casos: $\frac24 = \frac12$.
+        (b) Dos 8 casos, só FFF não tem menino; sobram 7, e só MMM serve: $\frac17$.
+      resposta: '(a) $\frac12$ (b) $\frac17$'
+    - enunciado: 'Uma carta é retirada de um baralho comum de 52 cartas. Calcule:'
+      itens:
+      - '$P(\text{rei} \mid \text{figura})$, sabendo que as figuras são valete, dama e rei;'
+      - '$P(\text{copas} \mid \text{carta vermelha})$;'
+      - '$P(\text{ás} \mid \text{não é figura})$.'
+      espaco_item: 13
+      resolucao: |
+        (a) Há 12 figuras, 4 reis: $\frac13$. (b) 26 vermelhas, 13 de copas: $\frac12$. (c) 40 cartas não são figuras, 4 são ases: $\frac{1}{10}$.
+      resposta: '(a) $\frac13$ (b) $\frac12$ (c) $\frac{1}{10}$'
+    - enunciado: 'Sabe-se que $P(A) = 0{,}6$, $P(B) = 0{,}5$ e $P(A \cup B) = 0{,}8$. Complete.'
+      itens:
+      - '$P(A \cap B) = 0{,}6 + 0{,}5 - 0{,}8 =$ {{0,3}}'
+      - '$P(A \mid B) =$ {{0,6}}'
+      - '$P(B \mid A) =$ {{0,5}}'
+      resolucao: |
+        $P(A\cap B) = 0{,}3$. $P(A\mid B) = \frac{0{,}3}{0{,}5} = 0{,}6$. $P(B\mid A) = \frac{0{,}3}{0{,}6} = 0{,}5$.
+      resposta: '$0{,}3$; $0{,}6$; $0{,}5$'
+    - enunciado: 'Em uma escola, 40\% dos alunos jogam vôlei e 25\% jogam vôlei e basquete. Um jogador de vôlei é sorteado. Qual é a probabilidade de ele também jogar basquete?'
+      espaco: 24
+      resolucao: |
+        $P(\text{basquete} \mid \text{vôlei}) = \frac{25\%}{40\%} = \frac58 = 62{,}5\%$.
+      resposta: '$\frac58 = 62{,}5\%$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Dois dados honestos são lançados. Calcule:'
+      itens:
+      - 'a probabilidade de a soma ser 7, sabendo que os números são diferentes;'
+      - 'a probabilidade de os dois números serem ímpares, sabendo que a soma é par.'
+      espaco_item: 18
+      resolucao: |
+        (a) Números diferentes: $36 - 6 = 30$ casos; soma 7: 6 casos, todos com números diferentes: $\frac{6}{30} = \frac15$.
+        (b) Soma par: os dois pares (9 casos) ou os dois ímpares (9 casos), 18 no total: $\frac{9}{18} = \frac12$.
+      resposta: '(a) $\frac15$ (b) $\frac12$'
+    - texto: |
+        Em uma cidade, 1\% das pessoas tem certa doença. Um teste dá positivo em 90\% dos doentes e em 5\% das pessoas que não têm a doença.
+      enunciado: 'Imagine um grupo de 10 000 pessoas dessa cidade. Complete o quadro e calcule a probabilidade de uma pessoa com teste positivo estar doente.'
+      tabela:
+        cabecalho: ['', 'Teste positivo', 'Teste negativo', 'Total']
+        linhas:
+        - ['Doentes', '{{90}}', '{{10}}', '{{100}}']
+        - ['Não doentes', '{{495}}', '{{9 405}}', '{{9 900}}']
+      espaco: 18
+      resolucao: |
+        Doentes: 1\% de 10 000 = 100; positivos: 90\% de 100 = 90. Não doentes: 9 900; positivos: 5\% de 9 900 = 495.
+        Positivos: $90 + 495 = 585$. $P(\text{doente} \mid \text{positivo}) = \frac{90}{585} = \frac{2}{13} \approx 15\%$. Mesmo com um teste “bom”, a maioria dos positivos não está doente.
+      resposta: '$\frac{2}{13} \approx 15\%$'
+    - enunciado: 'Sejam A e B eventos com $P(A) > 0$ e $P(B) > 0$. Mostre que, se $P(A \mid B) = P(A)$, então $P(B \mid A) = P(B)$.'
+      espaco: 30
+      resolucao: |
+        De $P(A\mid B) = P(A)$ vem $P(A\cap B) = P(A)\,P(B)$. Então $P(B\mid A) = \frac{P(A\cap B)}{P(A)} = \frac{P(A)\,P(B)}{P(A)} = P(B)$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Uma urna tem 2 bolas brancas e 3 pretas. Retira-se uma bola, que é devolvida à urna junto com outra bola da mesma cor. Em seguida, retira-se uma segunda bola. Calcule:'
+      itens:
+      - '$P(\text{2ª branca} \mid \text{1ª branca})$;'
+      - '$P(\text{2ª branca} \mid \text{1ª preta})$;'
+      - '$P(\text{2ª branca})$.'
+      espaco_item: 15
+      resolucao: |
+        (a) Depois de uma branca, a urna fica com 3 brancas e 3 pretas: $\frac12$. (b) Depois de uma preta, 2 brancas e 4 pretas: $\frac13$.
+        (c) $\frac25\cdot\frac12 + \frac35\cdot\frac13 = \frac15 + \frac15 = \frac25$.
+      resposta: '(a) $\frac12$ (b) $\frac13$ (c) $\frac25$'
+    - enunciado: 'Um número inteiro de 1 a 30 é sorteado. Sabendo que ele é múltiplo de 2 ou de 3, qual é a probabilidade de ele ser múltiplo de 6?'
+      espaco: 26
+      resolucao: |
+        Múltiplos de 2: 15; de 3: 10; de 6 (dos dois): 5. Múltiplos de 2 ou de 3: $15 + 10 - 5 = 20$. $P = \frac{5}{20} = \frac14$.
+      resposta: '$\frac14$'
 
 vestibular:
   questoes:
