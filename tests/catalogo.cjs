@@ -264,68 +264,75 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.match(nativeSharePayload.text,/Olha essa aula de matemática/);
  assert.equal(nativeSharePayload.url,'https://matmatmat.test/2/3/2/');
  assert.equal(d.querySelector('#lesson-share-options').hidden,true);
- // Página da aula: as listas em primeiro (PDFs, depois as mesmas listas no site); o resumo fica no fim, recolhido.
- assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['pratique','prova','aprofunde','entenda']);
- assert.equal(d.querySelector('.aula-rail'),null,'Sem o roteiro lateral');
- assert.equal(d.querySelector('#levar'),null,'Sem a seção Listas em PDF: as listas ficam no destaque');
- assert.deepEqual([...d.querySelectorAll('[data-abrir]')].map(b=>b.dataset.abrir),['pratique','prova','aprofunde'],'Quero fazer agora: as três listas para resolver no site');
- assert.ok(['pratique','prova','aprofunde'].every(x=>d.getElementById(x).hidden),'As listas do site começam fechadas');
- click(w,d.querySelector('[data-abrir="prova"]'));
- assert.equal(d.getElementById('prova').hidden,false);
- assert.equal(d.getElementById('pratique').hidden,true);
- click(w,d.querySelector('[data-abrir="pratique"]'));
- assert.equal(d.getElementById('prova').hidden,true,'Uma lista aberta de cada vez');
- assert.equal(d.querySelectorAll('.aula-listas .lst-btn-pdf').length,3,'Cada lista com o botão do PDF no topo da aula');
+ // Página da aula: sem o fundo roxo; título, as três listas (PDF, caderno, GoodNotes, Fazer agora) e o resumo recolhido no fim.
+ assert.equal(d.querySelector('.aula-hero'),null,'A aula é a própria página, sem o cabeçalho roxo');
+ assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['entenda']);
+ assert.equal(d.querySelector('#levar'),null);
+ assert.equal(d.querySelector('.aula-rail'),null);
+ assert.deepEqual([...d.querySelectorAll('.av-listas .lst-titulo')].map(b=>b.textContent),['Lista de fixação','Lista de vestibular','Lista de aprofundamento']);
+ assert.equal(d.querySelectorAll('.av-listas .lst-btn-pdf').length,3,'Cada lista com o PDF');
+ assert.ok(d.querySelector('.av-listas a.lst-btn-pdf[href="/pdfs/fixacao-2.3.2.pdf"]'));
+ assert.equal(d.querySelectorAll('.av-listas a[href^="/caderno/?aula=2.3.2&lista="]').length,3,'Cada lista abre no caderno digital');
+ assert.deepEqual([...d.querySelectorAll('.av-listas [data-goodnotes]')].map(b=>b.dataset.goodnotes),['/pdfs/caderno-fixacao-2.3.2.pdf','/pdfs/caderno-vestibular-2.3.2.pdf','/pdfs/caderno-aprofundamento-2.3.2.pdf'],'Cada lista vai para o GoodNotes');
+ assert.deepEqual([...d.querySelectorAll('.av-listas [data-fazer]')].map(b=>b.dataset.fazer),['fixacao','vestibular','aprofundamento'],'Fazer agora em cada lista');
+ assert.ok(d.querySelector('.av-resumo[href="#entenda"]'),'Atalho para o resumo, que fica no fim');
  assert.equal(d.querySelector('#resumo-det').open,false,'Resumo recolhido');
- assert.equal(d.querySelectorAll('.aula-listas a[href^="/caderno/?aula=2.3.2&lista="]').length,3,'Cada lista abre no caderno digital (uma questão por página)');
- assert.deepEqual([...d.querySelectorAll('.aula-listas [data-goodnotes]')].map(b=>b.dataset.goodnotes),['/pdfs/caderno-fixacao-2.3.2.pdf','/pdfs/caderno-vestibular-2.3.2.pdf','/pdfs/caderno-aprofundamento-2.3.2.pdf'],'Cada lista vai para o GoodNotes');
- assert.equal(d.querySelector('.aula-formula'),null,'Sem a fórmula no destaque');
-  // As 3 listas ficam claras logo na entrada da aula.
- assert.deepEqual([...d.querySelectorAll('.aula-listas .lst-nome b')].map(b=>b.textContent),['Lista de fixação','Lista de vestibular','Lista de aprofundamento']);
- assert.equal(d.querySelectorAll('#apr-list .aula-ex').length,10,'Lista de aprofundamento com 10 questões');
+ assert.equal(d.querySelector('.aula-formula'),null);
+ assert.equal(d.querySelector('.aula-trail'),null,'Sem a trilha de aulas');
  assert.ok(d.querySelector('.aula-crumbs a[href="/funcao-quadratica/"]'),'Aula volta para o assunto');
  assert.match(d.querySelector('.aula-kicker').textContent,/Aula 2 de 6 em Função quadrática/);
- assert.equal(d.querySelector('.aula-hero .aula-trail'),null,'Sem a trilha de aulas no destaque');
- assert.ok(d.querySelector('.aula-listas a.lst-btn-pdf[href="/pdfs/fixacao-2.3.2.pdf"]'));
- // Resumo curto no lugar da teoria longa; níveis Nível 1, Nível 2 e Nível 3.
  assert.ok(d.querySelector('#entenda .aula-resumo'),'Resumo curto da aula');
  assert.equal(d.querySelectorAll('[data-check]').length,0,'Sem checagem rápida');
- assert.deepEqual([...d.querySelectorAll('[data-level]')].map(b=>b.className.match(/lvl-(\w+)/)[1]),['facil','medio','dificil']);
- assert.deepEqual([...d.querySelectorAll('[data-level] b')].map(b=>b.textContent),['Nível 1','Nível 2','Nível 3']);
  assert.ok(d.querySelector('.bk-promo[data-promo="modulo"] a[href="/livros/?volume=2"]'),'Oferta do Volume 2 na aula');
- // Pratique: resolução sob demanda e autoavaliação que alimenta o progresso.
+ // Fazer agora: a lista em tela cheia, uma questão de cada vez, com voltar.
  const lista=JSON.parse(readFileSync('data/listas/2.3.2.json','utf8'));
- assert.equal(d.querySelectorAll('#ex-list .aula-ex').length,lista.fixacao.secoes[0].questoes.length);
- const ex=d.querySelector('#ex-list .aula-ex');
+ const rvEl=d.getElementById('rv');
+ assert.equal(rvEl.hidden,true);
+ click(w,d.querySelector('[data-fazer="fixacao"]'));
+ assert.equal(rvEl.hidden,false,'Abre a tela da lista');
+ assert.equal(w.location.search,'?fazer=fixacao','Endereço próprio, para o botão voltar do navegador');
+ assert.equal(d.querySelectorAll('#rv-main .aula-ex').length,1,'Uma questão de cada vez');
+ assert.match(d.querySelector('#rv-main .aula-ex .selo').textContent,/Nível 1/);
+ let ex=d.querySelector('#rv-main .aula-ex');
  assert.equal(ex.querySelector('.aula-ex-sol').hidden,true);
  click(w,ex.querySelector('.aula-ex-ver'));
  assert.equal(ex.querySelector('.aula-ex-sol').hidden,false);
  click(w,ex.querySelector('[data-mark="ok"]'));
  assert.ok(ex.classList.contains('is-ok'));
- assert.match(d.querySelector('#prat-sum').textContent,/^1 de 20 conferidos, 1 certo$/);
  assert.equal(JSON.parse(w.localStorage.getItem('matmat-aula-2.3.2')).fix['1'],'ok');
- click(w,d.querySelector('[data-level="2"]'));
- assert.equal(d.querySelectorAll('#ex-list .aula-ex').length,lista.fixacao.secoes[2].questoes.length);
- // Modo prova: 20 questões corrigidas na hora, nota e revisão das erradas.
- click(w,d.querySelector('#prova-start'));
+ assert.equal(d.querySelector('.rv-prog').textContent,'1/'+lista.fixacao.secoes.reduce((n,s)=>n+s.questoes.length,0));
+ click(w,d.querySelector('[data-rv-passo="1"]'));
+ assert.equal(d.querySelector('.rv-qbtn b').textContent,'2');
+ click(w,d.querySelector('#rv-qbtn'));
+ assert.equal(d.querySelector('#rv-mapa').hidden,false,'Escolher a questão pelo número');
+ assert.ok(d.querySelector('#rv-mapa .rv-cel.is-ok[data-ir="0"]'));
+ click(w,d.querySelector('.rv-bar [data-rv-sair]'));
+ await new Promise(r=>setTimeout(r,40));
+ assert.equal(rvEl.hidden,true,'Voltar fecha a lista');
+ assert.equal(w.location.search,'');
+ assert.equal(d.querySelector('#lp-fixacao').textContent,'1 de 20 conferidas');
+ // Vestibular: alternativa corrigida na hora e nota no fim.
+ click(w,d.querySelector('[data-fazer="vestibular"]'));
  const vest=lista.vestibular.questoes;
  vest.forEach((qq,k)=>{
   if(qq.tipo==='somatoria'){
-   // somatória: marca as proposições corretas e confere a soma
-   qq.codigos.filter(c=>qq.correta&c).forEach(c=>click(w,d.querySelector('#prova-root [data-sprop="'+c+'"]')));
+   qq.codigos.filter(c=>qq.correta&c).forEach(c=>click(w,d.querySelector('#rv-main [data-sprop="'+c+'"]')));
    assert.match(d.querySelector('[data-sconf]').textContent,new RegExp('soma '+qq.correta+'$'));
-   click(w,d.querySelector('#prova-root [data-sconf]'));
-  }else click(w,d.querySelector('#prova-root [data-popt="'+(k===0?(qq.correta+1)%5:qq.correta)+'"]'));
-  assert.ok(d.querySelector('#quiz-feedback .aula-fb-box'));
-  click(w,d.querySelector('#prova-next'));
+   click(w,d.querySelector('#rv-main [data-sconf]'));
+  }else click(w,d.querySelector('#rv-main [data-popt="'+(k===0?(qq.correta+1)%5:qq.correta)+'"]'));
+  assert.ok(d.querySelector('#rv-fb .aula-fb-box'));
+  click(w,d.querySelector('[data-rv-seguir]'));
  });
- assert.equal(d.querySelector('.aula-score-n').textContent,String(vest.length-1));
- assert.equal(d.querySelectorAll('.aula-grid .aula-cell.is-wrong').length,1);
- assert.match(d.querySelector('#fz-prova').textContent,new RegExp('Melhor nota: '+(vest.length-1)+' de '+vest.length));
- assert.ok(d.querySelector('#prova-root a[href*="app.exatoo.com"]'));
- click(w,d.querySelector('#prova-wrong'));
- assert.match(d.querySelector('.aula-prova-bar').textContent,/Questão 1 de 1/);
+ assert.equal(d.querySelector('.rv-placar-n').textContent,String(vest.length-1));
+ assert.equal(d.querySelectorAll('.rv-fim .rv-cel.is-erro').length,1);
+ click(w,d.querySelector('.rv-fim [data-rv-sair]'));
+ await new Promise(r=>setTimeout(r,40));
+ assert.match(d.querySelector('#lp-vestibular').textContent,new RegExp('melhor nota '+(vest.length-1)+' de '+vest.length));
  assert.equal(d.querySelectorAll('.aula-seq a').length,2);
+ dom.window.close();
+ ({w,d,dom}=await boot('https://matmatmat.test/2/3/2/#prova'));
+ assert.equal(d.getElementById('rv').hidden,false,'Link antigo #prova abre a lista de vestibular');
+ assert.equal(w.location.search,'?fazer=vestibular');
  dom.window.close();
  // Aula sem listas publicadas: teoria e materiais, sem etapas vazias; ?tab= antigo ainda leva à etapa.
  ({w,d,dom}=await boot('https://matmatmat.test/4/11/2/?tab=resumo'));

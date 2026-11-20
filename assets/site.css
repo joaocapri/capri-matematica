@@ -1839,3 +1839,104 @@ button.aula-sprop:hover{border-color:var(--a-purple)}
  .as-row-t{grid-area:t}
  .as-go{grid-area:go}
 }
+
+/* ===== Aula sem o fundo roxo (2026-11-20): título, as três listas e o resumo no fim ===== */
+.aula-v6{background:var(--a-paper)}
+.av-topo{padding:6px 0 4px}
+.av-topo .aula-crumbs{padding-top:22px;color:var(--a-mute)}
+.av-topo .aula-crumbs a{color:var(--a-ink)}
+.av-topo .aula-crumbs a:hover{color:var(--a-purple)}
+.av-topo .aula-kicker{margin-top:26px;color:var(--a-mute);font-size:15px}
+.av-topo h1{margin:14px 0 10px;font:700 clamp(40px,5.2vw,64px)/1 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.035em;color:var(--a-ink);text-wrap:balance}
+.av-sub{margin:0;max-width:60ch;font-size:18px;line-height:1.5;color:#5d5775}
+.av-linha{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:22px 0 30px}
+.av-resumo{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 15px;border:1.5px solid var(--a-ink);border-radius:999px;background:var(--a-lilac);color:var(--a-ink);font:600 14.5px/1 'DM Sans',system-ui,sans-serif;text-decoration:none}
+.av-resumo svg{width:18px;height:18px}
+.av-resumo:hover{background:#e6defb}
+.av-topo .lesson-tools.actions{display:flex;gap:8px;margin:0}
+.av-topo .lesson-tools .lesson-tool{flex:0 1 auto;flex-direction:row;gap:7px;min-height:40px;padding:8px 14px;border:1.5px solid var(--a-line);border-radius:999px;background:var(--a-card);color:#4b4566;font:600 14px/1 'DM Sans',system-ui,sans-serif;white-space:nowrap;box-shadow:none}
+.av-topo .lesson-tools .lesson-tool:hover{border-color:var(--a-ink);color:var(--a-ink)}
+.av-topo .lesson-tools .lesson-tool.is-active{border-color:var(--a-ink);background:var(--a-lime);color:var(--a-ink)}
+.av-topo .lesson-tools .lesson-tool svg{width:17px;height:17px}
+
+.av-listas{display:grid;gap:12px}
+.av-listas .lst{display:flex;align-items:center;justify-content:space-between;gap:16px 24px;padding:18px 20px 18px 22px;border:1.5px solid var(--a-line);border-left:7px solid var(--a-lime);border-radius:18px;background:var(--a-card)}
+.av-listas .lst+.lst{border-top:1.5px solid var(--a-line)}
+.av-listas .lst-vestibular{border-left-color:#8fd0f5}
+.av-listas .lst-aprofundamento{border-left-color:#ff9f80}
+.lst-cab{min-width:0}
+.lst-titulo{margin:0;font:700 21px/1.15 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.015em;color:var(--a-ink)}
+.lst-meta{margin:4px 0 0;font-size:13.5px;font-weight:600;color:var(--a-mute)}
+.av-listas .lst-acoes{flex-wrap:nowrap;flex-shrink:0}
+.av-listas .lst-btn{flex:0 0 auto}
+.lst-btn-agora{border:2px solid var(--a-ink);background:var(--a-ink);color:#fff}
+.lst-btn-agora:hover{background:#352a66;border-color:#352a66;color:#fff}
+@media(max-width:1060px){
+ .av-listas .lst{flex-direction:column;align-items:stretch}
+ .av-listas .lst-acoes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:620px){
+ .av-topo .aula-crumbs{padding-top:16px}
+ .av-topo .aula-kicker{margin-top:18px;font-size:13.5px}
+ .av-topo h1{font-size:38px;margin:10px 0 8px}
+ .av-sub{font-size:16px}
+ .av-linha{margin:16px 0 22px;gap:8px}
+ .av-resumo{flex:1 0 100%;justify-content:center}
+ .av-topo .lesson-tools.actions{flex:1 0 100%}
+ .av-topo .lesson-tools .lesson-tool{flex:1 1 0;justify-content:center;padding:8px 6px;font-size:13px;gap:5px;min-width:0}
+ .av-listas .lst{padding:14px 14px 14px 16px;gap:12px;border-left-width:6px}
+ .lst-titulo{font-size:18.5px}
+ .av-listas .lst-acoes{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .av-listas .lst-btn{height:42px;font-size:14.5px}
+ .av-listas .lst-x{display:inline}
+}
+.aula-v6 .aula-body-solo{padding-top:8px}
+.aula-v6 .aula-body-solo #entenda{margin-top:28px}
+
+/* ===== Fazer agora: a lista em tela cheia ===== */
+html.rv-aberto,html.rv-aberto body{overflow:hidden}
+.rv{position:fixed;inset:0;z-index:80;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:var(--a-paper)}
+.rv-bar{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:12px;min-height:60px;padding:8px max(14px,env(safe-area-inset-right)) 8px max(14px,env(safe-area-inset-left));background:rgba(249,247,239,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--a-line)}
+.rv-voltar{display:inline-flex;align-items:center;gap:4px;height:40px;padding:0 14px 0 8px;border:1.5px solid var(--a-line);border-radius:999px;background:var(--a-card);color:var(--a-ink);font:600 14.5px 'DM Sans',system-ui,sans-serif;cursor:pointer;flex-shrink:0}
+.rv-voltar svg{width:20px;height:20px}
+.rv-voltar:hover{border-color:var(--a-ink)}
+.rv-tit{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.2}
+.rv-tit b{font:700 16.5px 'Space Grotesk',system-ui,sans-serif;color:var(--a-ink);outline:0}
+.rv-tit small{max-width:100%;font-size:12.5px;color:var(--a-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rv-prog{flex-shrink:0;min-width:56px;padding:6px 10px;border-radius:999px;background:var(--a-lilac);color:var(--a-ink);font:700 13px 'Space Grotesk',system-ui,sans-serif;text-align:center}
+.rv-main{max-width:780px;margin:0 auto;padding:26px 16px 130px}
+.rv-main .aula-ex,.rv-main .aula-prova-q{margin:0}
+.rv-seguir{display:flex;margin:18px auto 0}
+.rv-nav{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:4;display:flex;align-items:center;gap:2px;padding:4px;border:1px solid var(--a-line);border-radius:999px;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 8px 26px rgba(33,25,70,.14)}
+.rv-seta{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--a-ink);cursor:pointer}
+.rv-seta svg{width:22px;height:22px}
+.rv-seta-prox svg{transform:scaleX(-1)}
+.rv-seta:hover:not(:disabled){background:#f1eff6}
+.rv-seta:disabled{opacity:.28;cursor:default}
+.rv-qbtn{display:flex;align-items:center;justify-content:center;gap:5px;min-width:96px;height:44px;padding:0 12px;border:0;border-radius:999px;background:transparent;line-height:1;cursor:pointer}
+.rv-qbtn b{font:700 17px/1 'Space Grotesk',system-ui,sans-serif;color:var(--a-ink)}
+.rv-qbtn small{font-size:13px;color:var(--a-mute)}
+.rv-qbtn:hover{background:#f1eff6}
+.rv-mapa{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);width:min(360px,calc(100vw - 24px));padding:12px;border:1px solid var(--a-line);border-radius:16px;background:#fff;box-shadow:0 12px 36px rgba(33,25,70,.16)}
+.rv-grade{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.rv-cel{height:42px;border:1.5px solid var(--a-line);border-radius:11px;background:#fff;color:var(--a-ink);font:700 15px 'Space Grotesk',system-ui,sans-serif;cursor:pointer}
+.rv-cel:hover{border-color:var(--a-ink)}
+.rv-cel.is-ok{border-color:#1c8f4e;background:#e8f6ee;color:#155f36}
+.rv-cel.is-erro{border-color:#d8352b;background:#fdecea;color:#9c2620}
+.rv-cel.is-visto{border-color:#b9b0dc}
+.rv-cel.is-atual{box-shadow:0 0 0 2px var(--a-ink)}
+.rv-mapa-fim{width:100%;height:40px;margin-top:8px;border:1.5px solid var(--a-line);border-radius:11px;background:var(--a-lilac);color:var(--a-ink);font:600 14px 'DM Sans',system-ui,sans-serif;cursor:pointer}
+.rv-fim{max-width:560px;margin:10px auto 0;text-align:center}
+.rv-placar{display:inline-flex;align-items:baseline;gap:10px;margin-bottom:6px;color:var(--a-mute);font-weight:600}
+.rv-placar-n{font:700 64px/1 'Space Grotesk',system-ui,sans-serif;color:var(--a-ink)}
+.rv-fim>p{margin:0 auto 22px;max-width:44ch;font-size:16px;line-height:1.5;color:#5d5775}
+.rv-fim-acoes{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+@media(max-width:620px){
+ .rv-bar{gap:8px;min-height:56px}
+ .rv-voltar span{display:none}
+ .rv-voltar{width:40px;padding:0;justify-content:center}
+ .rv-main{padding:18px 12px 120px}
+}
+.av-topo .lesson-tools.actions{background:none;border:0;padding:0;box-shadow:none;border-radius:0}
+.aula-v6 .aula-body-solo{max-width:none}
+.av-topo .lesson-tools .lesson-tool::before{display:none}

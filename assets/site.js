@@ -954,6 +954,9 @@ var AULA_SVG={
  down:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"></path></svg>',
  play:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"></path></svg>',
  caneta:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.2-4.6L15.8 4.8a2 2 0 012.8 0l.6.6a2 2 0 010 2.8L8.6 18.8z"></path><path d="M13.8 6.8l3.4 3.4"></path></svg>',
+ seta:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>',
+ voltar:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>',
+ resumo:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h10.5L19 8v11.5H5z"></path><path d="M8.5 11h7M8.5 14.5h7M8.5 7.5h4"></path></svg>',
  tablet:'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="2.5" width="15" height="19" rx="2.5"></rect><path d="M8.5 7.5h7M8.5 11h7M8.5 14.5h4"></path></svg>'
 };
 function tex(el,tries){
@@ -1028,34 +1031,33 @@ async function lessonPage(){
  /* ---------- HTML ---------- */
  /* As três listas: no destaque e na seção "Listas em PDF", sempre com as mesmas três ações. */
  var LISTAS=[['fixacao','pratique','Lista de fixação',fixQs.length],['vestibular','prova','Lista de vestibular',vestQs.length],['aprofundamento','aprofunde','Lista de aprofundamento',aprQs.length]].filter(function(x){return x[3]||listaPdfs[x[0]]});
- function acoesLista(t,sid){
+ function qtdLista(t){return t==='fixacao'?fixQs.length:t==='vestibular'?vestQs.length:aprQs.length}
+ function acoesLista(t){
   var pdf=listaPdfs[t],cad=lista&&lista.cadernos&&lista.cadernos[t];
   return '<div class="lst-acoes">'
    +(pdf?'<a class="lst-btn lst-btn-pdf" href="'+esc(pdf.url)+'" target="_blank" rel="noopener" data-pdf="'+t+'">'+AULA_SVG.down+'<span><span class="lst-x">Baixar </span>PDF</span></a>':'')
-   +(cad?'<a class="lst-btn" href="'+esc(cad)+'" title="Resolver no site, com a caneta do tablet">'+AULA_SVG.caneta+'<span>Caderno<span class="lst-x"> digital</span></span></a>'
-        +'<button type="button" class="lst-btn" data-goodnotes="/pdfs/caderno-'+t+'-'+id+'.pdf" data-lista="'+t+'" title="Uma questão por página, com espaço para resolver no GoodNotes">'+AULA_SVG.tablet+'<span>GoodNotes</span></button>'
-       :'<a class="lst-btn" href="#'+sid+'" data-goto="'+sid+'">Resolver no site</a>')
+   +(cad?'<a class="lst-btn" href="'+esc(cad)+'" title="Resolver com a caneta do tablet, uma questão por página">'+AULA_SVG.caneta+'<span>Caderno<span class="lst-x"> digital</span></span></a>'
+        +'<button type="button" class="lst-btn" data-goodnotes="/pdfs/caderno-'+t+'-'+id+'.pdf" data-lista="'+t+'" title="Uma questão por página, com espaço para resolver no GoodNotes">'+AULA_SVG.tablet+'<span>GoodNotes</span></button>':'')
+   +(qtdLista(t)?'<button type="button" class="lst-btn lst-btn-agora" data-fazer="'+t+'" title="Resolver aqui no site, uma questão de cada vez">'+AULA_SVG.seta+'<span>Fazer agora</span></button>':'')
    +'</div>';
  }
- var heroListas=LISTAS.length?'<div class="aula-listas" role="group" aria-label="As listas desta aula">'+LISTAS.map(function(x){
-   return '<div class="lst lst-'+x[0]+'"><p class="lst-nome"><span class="lst-marca" aria-hidden="true"></span><b>'+x[2]+'</b>'+(x[3]?'<small>'+plural(x[3],'questão','questões')+'</small>':'')+'</p>'+acoesLista(x[0],x[1])+'</div>'}).join('')+'</div>':'';
+ var blocoListas=LISTAS.length?'<div class="av-listas" role="list" aria-label="As listas desta aula">'+LISTAS.map(function(x){
+   return '<article class="lst lst-'+x[0]+'" role="listitem"><div class="lst-cab"><h2 class="lst-titulo">'+x[2]+'</h2><p class="lst-meta" id="lp-'+x[0]+'">'+(x[3]?plural(x[3],'questão','questões'):'')+'</p></div>'+acoesLista(x[0])+'</article>'}).join('')+'</div>':'';
  var tools='<div class="actions lesson-tools" role="group" aria-label="Ações desta aula">'
   +'<button type="button" class="lesson-tool lesson-tool-done '+(done.has(id)?'is-active':'')+'" id="btn-done" aria-pressed="'+done.has(id)+'" aria-label="'+(done.has(id)?'Desmarcar aula como estudada':'Marcar aula como estudada')+'">'+AULA_SVG.done+'<span class="lesson-tool-label">'+(done.has(id)?'Estudada':'Já estudei')+'</span></button>'
   +'<button type="button" class="lesson-tool lesson-tool-fav '+(saved.has(id)?'is-active':'')+'" id="btn-fav" aria-pressed="'+saved.has(id)+'" aria-label="'+(saved.has(id)?'Remover aula dos favoritos':'Favoritar esta aula')+'">'+AULA_SVG.fav+'<span class="lesson-tool-label">'+(saved.has(id)?'Favorita':'Favoritar')+'</span></button>'
   +'<button type="button" class="lesson-tool lesson-tool-share" id="btn-share" aria-label="Compartilhe essa aula" aria-controls="lesson-share-options" aria-expanded="false">'+AULA_SVG.share+'<span class="lesson-tool-label">Compartilhar</span></button></div>'
   +'<div class="lesson-share-options" id="lesson-share-options" hidden><div class="lesson-share-options-head"><strong>Compartilhe com alguém</strong><button type="button" id="share-close" aria-label="Fechar opções de compartilhamento">×</button></div><p>Envie esta aula para sua turma ou para um amigo.</p><div class="lesson-share-links"><a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer">Enviar pelo WhatsApp</a><button id="share-copy" type="button">Copiar mensagem e link</button></div><p class="lesson-share-status" id="share-status" aria-live="polite"></p><textarea id="share-manual" class="share-manual" readonly hidden aria-label="Mensagem para copiar manualmente"></textarea></div>';
- var trail=near.length>1?'<ol class="aula-trail" aria-label="Aulas de '+esc(grupo)+'">'+near.map(function(x,k){var cur=x.id===id;return '<li class="'+(cur?'is-current ':'')+(done.has(x.id)?'is-done':'')+'"><a href="'+href(x)+'"'+(cur?' aria-current="page"':'')+'><span class="aula-trail-dot" aria-hidden="true"></span><span class="aula-trail-id">'+(k+1)+'</span><span class="aula-trail-name">'+esc(x.title)+'</span></a></li>'}).join('')+'</ol>':'';
  var hasPdfs=listaUrls.length||allFiles.length;
- var hero='<section class="aula-hero" aria-labelledby="aula-titulo"><div class="shell aula-hero-in">'
+ var topo='<section class="av-topo" aria-labelledby="aula-titulo"><div class="shell">'
   +'<nav class="aula-crumbs" aria-label="Caminho"><a href="/">Início</a><span aria-hidden="true">/</span>'+(assunto?'<a href="'+assuntoHref(assunto)+'">'+esc(assunto.name)+'</a>':'<a href="'+topicHref(topic)+'">'+esc(topic.title)+'</a>')+'</nav>'
-  +'<div class="aula-hero-grid'+(heroListas?'':' aula-hero-solo')+'"><div class="aula-hero-copy">'
   +'<p class="aula-kicker"><span class="aula-id">'+id+'</span>'+(near.length>1?'Aula '+(nearIndex+1)+' de '+near.length+' em '+esc(grupo):esc(grupo))+'</p>'
   +'<h1 id="aula-titulo">'+esc(l.title)+'</h1>'
-  +'<p class="aula-summary">'+esc(l.summary||'Teoria, exemplos e treino desta aula.')+'</p>'
-  +(heroListas?'':'<div class="aula-hero-cta">'+(hasPdfs?'<a class="aula-btn aula-btn-lime" href="#levar" data-goto="levar">'+AULA_SVG.down+'Baixar as listas</a>':'')+'<a class="aula-btn aula-btn-ghost" href="#entenda" data-goto="entenda">Ver o resumo</a></div>')
-  +'</div>'+heroListas+'<div class="aula-hero-tools">'+tools+'</div></div></div></section>';
+  +(l.summary?'<p class="av-sub">'+esc(l.summary)+'</p>':'')
+  +'<div class="av-linha"><a class="av-resumo" href="#entenda" data-goto="entenda">'+AULA_SVG.resumo+'Ver o resumo da aula</a>'+tools+'</div>'
+  +blocoListas
+  +'</div></section>';
 
- var railAntigo='<nav class="aula-rail" aria-label="Roteiro da aula"><p class="aula-rail-title">Nesta aula</p><ol>'+steps.map(function(s,k){return '<li><a href="#'+s.id+'" data-goto="'+s.id+'" data-rail="'+s.id+'"><span class="aula-rail-n">'+(k+1)+'</span><span class="aula-rail-txt"><b>'+s.nome+'</b><small id="rail-'+s.id+'"></small></span></a></li>'}).join('')+'</ol><div class="aula-rail-meter" aria-hidden="true"><span id="rail-meter"></span></div><p class="aula-rail-sum" id="rail-sum"></p></nav>';
 
  function head(sid,titulo,desc){return '<header class="aula-step-head'+(desc?'':' aula-step-head-solo')+'"><div><h2 id="h-'+sid+'">'+titulo+'</h2>'+(desc?'<p>'+desc+'</p>':'')+'</div>'+(sid==='entenda'||sid==='levar'?'':'<button type="button" class="aula-fechar" data-fechar="'+sid+'" aria-label="Fechar a '+titulo.toLowerCase()+'">Fechar</button>')+'</header>'}
 
@@ -1083,36 +1085,19 @@ async function lessonPage(){
   +'<details class="aula-resumo-det" id="resumo-det"><summary><span>Mostrar o resumo</span></summary>'+teoriaHtml()+checkHtml()
   +'<div class="aula-step-end"><button type="button" class="aula-btn aula-btn-ink" id="entenda-ok" aria-pressed="'+(!!st.entenda)+'">'+(st.entenda?'Resumo lido':okLabel)+'</button></div></details></section>';
 
- var secPratique=fixQs.length?'<section class="aula-step aula-fazer-sec" id="pratique" data-step="pratique" aria-labelledby="h-pratique" hidden>'+head('pratique','Lista de fixação',(lista&&lista.fixacao?'A mesma lista do PDF. Resolva e confira aqui a resolução de cada questão.':'Exercícios curtos para fixar a ideia.'))
-  +'<div class="aula-prat-top"><div class="aula-levels" role="tablist" aria-label="Níveis">'+fixSecoes.map(function(s,k){return '<button type="button" role="tab" class="aula-level lvl-'+nivelClasse(s.nome)+'" data-level="'+k+'" aria-selected="false"><b>'+esc(nivelNome(s.nome))+'</b><small data-level-count="'+k+'"></small></button>'}).join('')+'</div>'
-  +'<div class="aula-prat-meter"><span class="aula-meter" aria-hidden="true"><span id="prat-meter"></span></span><span id="prat-sum"></span></div></div><div class="aula-ex-list" id="ex-list" role="tabpanel"></div></section>':'';
 
- var secProva=vestQs.length?'<section class="aula-step aula-fazer-sec" id="prova" data-step="prova" aria-labelledby="h-prova" hidden>'+head('prova','Lista de vestibular','A mesma lista do PDF. Toque na alternativa e veja a correção na hora.')+'<div class="aula-prova" id="prova-root" tabindex="-1"></div></section>':'';
 
- var secAprof=aprQs.length?'<section class="aula-step aula-fazer-sec" id="aprofunde" data-step="aprofunde" aria-labelledby="h-aprofunde" hidden>'+head('aprofunde','Lista de aprofundamento','A mesma lista do PDF. Resolva e confira aqui a resolução de cada questão.')
-  +(lista.aprofundamento.intro?'<p class="aula-apr-intro">'+esc(lista.aprofundamento.intro)+'</p>':'')+'<div class="aula-ex-list" id="apr-list">'+aprQs.map(exCard).join('')+'</div></section>':'';
  function aprDone(){return aprQs.filter(function(q){return st.fix[q.chave]==='ok'||st.fix[q.chave]==='erro'}).length}
- function pdfCard(x){
-  var t=x[0],p=listaPdfs[t];if(!p)return '';
-  return '<div class="aula-pdf lst-'+t+'"><a class="aula-pdf-capa" href="'+esc(p.url)+'" target="_blank" rel="noopener" data-pdf="'+t+'" aria-label="Abrir o PDF da '+x[2].toLowerCase()+'"><img src="'+esc(p.capa)+'" alt="" loading="lazy" width="520" height="736"></a>'
-   +'<div class="aula-pdf-info"><h3><span class="lst-marca" aria-hidden="true"></span>'+x[2]+'</h3>'+acoesLista(t,x[1])+'</div></div>';
- }
- var pdfGrid=listaUrls.length?'<div class="aula-pdfs'+(listaPdfs.aprofundamento?' aula-pdfs-3':'')+'">'+LISTAS.map(pdfCard).join('')+'</div>':'';
  var otherHtml=otherFiles.length?'<div class="aula-files"><h3>'+(listaUrls.length?'Outros materiais':'Materiais para baixar')+'</h3>'+otherFiles.map(function(f){return '<a class="aula-file" href="'+esc(f.url)+'" target="_blank" rel="noopener" data-pdf="outro">'+AULA_SVG.down+'<span>'+esc(f.titulo||'Material')+'</span></a>'}).join('')+'</div>':'';
  var videosHtml='';var videosHtmlAntigo='<div class="aula-videos"><h3>Para ver em vídeo</h3>'+videos.map(function(v){var u=safeUrl(v.url);return u?'<a class="aula-video" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>'+esc(v.titulo)+'</b><small>'+esc(v.canal||'')+'</small></span></a>':''}).join('')+'<a class="aula-video aula-video-search" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query='+encodeURIComponent(l.title+' matemática videoaula')+'"><span class="aula-video-play">'+AULA_SVG.play+'</span><span><b>Procurar videoaulas sobre '+esc(l.title)+'</b><small>Busca no YouTube</small></span></a></div>';
  /* Sem listas: a aula mostra os materiais (ou o aviso de que as listas estão a caminho). Com listas, tudo fica no destaque. */
  var secLevar=temListas?(otherHtml?'<section class="aula-step" id="levar" aria-label="Outros materiais">'+otherHtml+'</section>':'')
   :'<section class="aula-step" id="levar" data-step="levar" aria-labelledby="h-levar">'+head('levar','Materiais','')
   +(otherHtml||empty('Listas a caminho','As listas em PDF desta aula ainda vão ser publicadas.')+exatooCard('treino',l))+videosHtml+'</section>';
- /* "Quero fazer agora": as mesmas listas para resolver aqui na página, uma de cada vez */
- var FAZER=[['pratique','Lista de fixação',fixQs.length,'fixacao'],['prova','Lista de vestibular',vestQs.length,'vestibular'],['aprofunde','Lista de aprofundamento',aprQs.length,'aprofundamento']].filter(function(x){return x[2]});
- var secFazer=FAZER.length?'<section class="aula-fazer" id="fazer" aria-labelledby="h-fazer"><h2 id="h-fazer">Quero fazer agora</h2><div class="aula-fazer-tabs">'+FAZER.map(function(x){
-   return '<button type="button" class="aula-fazer-tab lst-'+x[3]+'" data-abrir="'+x[0]+'" aria-expanded="false" aria-controls="'+x[0]+'"><span class="lst-marca" aria-hidden="true"></span><span class="aula-fazer-t"><b>'+x[1]+'</b><small id="fz-'+x[0]+'"></small></span><svg class="aula-fazer-seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>'}).join('')+'</div></section>':'';
-
  var seq='<nav class="aula-seq" aria-label="Outras aulas">'+(prev?'<a class="aula-seq-prev" href="'+href(prev)+'"><small>Aula anterior</small><b>'+esc(prev.title)+'</b></a>':'<span></span>')+(next?'<a class="aula-seq-next" href="'+href(next)+'"><small>Próxima aula, '+next.id+'</small><b>'+esc(next.title)+'</b></a>':'')+'</nav>';
 
  var app=document.getElementById('app');
- app.innerHTML=header()+'<main class="aula" id="conteudo">'+hero+'<div class="shell aula-body aula-body-solo"><div class="aula-main">'+secFazer+secPratique+secProva+secAprof+secLevar+secEntenda+shopPromo(l)+seq+'</div></div></main>'+footer();
+ app.innerHTML=header()+'<main class="aula aula-v6" id="conteudo">'+topo+'<div class="shell aula-body aula-body-solo"><div class="aula-main">'+secLevar+secEntenda+shopPromo(l)+seq+'</div></div><div class="rv" id="rv" role="dialog" aria-modal="true" aria-labelledby="rv-titulo" hidden></div></main>'+footer();
  matEvt('pagina',{tipo:'aula',aula:id,volume:l.front,modulo:l.block,listas:fixQs.length>0||vestQs.length>0});
 
  /* ---------- Progresso ---------- */
@@ -1130,8 +1115,8 @@ async function lessonPage(){
   var n=0;steps.forEach(function(s){var el=document.getElementById('rail-'+s.id);if(el)el.textContent=txt[s.id];var a=document.querySelector('[data-rail="'+s.id+'"]');var ok=stepIsDone(s.id);if(a)a.classList.toggle('is-done',ok);if(ok)n++});
   var m=document.getElementById('rail-meter');if(m)m.style.width=(n*100/steps.length)+'%';
   var sum=document.getElementById('rail-sum');if(sum)sum.textContent=n===steps.length?'Aula completa!':n+' de '+steps.length+' etapas';
-  var fzt={pratique:fixDone()+' de '+fixQs.length+' conferidas',prova:st.prova.best!=null?'Melhor nota: '+st.prova.best+' de '+vestQs.length:plural(vestQs.length,'questão','questões'),aprofunde:aprDone()+' de '+aprQs.length+' conferidas'};
-  FAZER.forEach(function(x){var el=document.getElementById('fz-'+x[0]);if(el)el.textContent=fzt[x[0]];var b=document.querySelector('[data-abrir="'+x[0]+'"]');if(b)b.classList.toggle('is-done',stepIsDone(x[0]))});
+  var lp={fixacao:fixDone()?fixDone()+' de '+fixQs.length+' conferidas':plural(fixQs.length,'questão','questões'),vestibular:st.prova.best!=null?plural(vestQs.length,'questão','questões')+' · melhor nota '+st.prova.best+' de '+vestQs.length:plural(vestQs.length,'questão','questões'),aprofundamento:aprDone()?aprDone()+' de '+aprQs.length+' conferidas':plural(aprQs.length,'questão','questões')};
+  Object.keys(lp).forEach(function(t){var el=document.getElementById('lp-'+t);if(el&&qtdLista(t))el.textContent=lp[t]});
   var pm=document.getElementById('prat-meter');if(pm)pm.style.width=(fixDone()*100/fixQs.length)+'%';
   var ps=document.getElementById('prat-sum');if(ps)ps.textContent=fixDone()+' de '+fixQs.length+' conferidos'+(fixDone()?', '+plural(fixOk(),'certo','certos'):'');
   fixSecoes.forEach(function(s,k){var c=document.querySelector('[data-level-count="'+k+'"]');if(c){var d=s.questoes.filter(function(q){return st.fix[q.n]==='ok'||st.fix[q.n]==='erro'}).length;c.textContent=d?d+'/'+s.questoes.length:plural(s.questoes.length,'questão','questões')}});
@@ -1178,8 +1163,7 @@ async function lessonPage(){
  if(fixQs.length){
   var firstOpen=fixSecoes.findIndex(function(s){return s.questoes.some(function(q){return !st.fix[q.n]||st.fix[q.n]==='visto'})});level=firstOpen<0?0:firstOpen;
   document.querySelectorAll('[data-level]').forEach(function(b){b.addEventListener('click',function(){level=Number(b.dataset.level);drawLevel()})});
-  drawLevel();
-  var al=document.getElementById('apr-list');if(al){bindCards(al);bindGoto(al);tex(al)}
+
  }
  function apoioHtml(q){
   var h='';
@@ -1303,6 +1287,92 @@ async function lessonPage(){
  });
  drawProva();
 
+ /* ---------- Fazer agora: a lista em tela cheia, uma questão de cada vez ---------- */
+ var RV={fixacao:{nome:'Lista de fixação',qs:fixQs},vestibular:{nome:'Lista de vestibular',qs:vestQs},aprofundamento:{nome:'Lista de aprofundamento',qs:aprQs}};
+ var DE_SID={pratique:'fixacao',prova:'vestibular',aprofunde:'aprofundamento'};
+ var rv={tipo:null,i:0,fim:false},rvEl=document.getElementById('rv');
+ function rvSit(t,k){var q=RV[t].qs[k];if(t==='vestibular'){var a=prova.answers[k];return a==null?'':(a===q.correta?'ok':'erro')}return st.fix[q.chave||q.n]||''}
+ function rvConta(t){var r={ok:0,erro:0};RV[t].qs.forEach(function(q,k){var s=rvSit(t,k);if(r[s]!=null)r[s]++});return r}
+ function rvAbrir(t,k,push){
+  if(!RV[t]||!RV[t].qs.length)return;
+  if(rv.tipo!==t||rvEl.hidden&&rv.fim){
+   rv.fim=false;rv.i=0;
+   if(t==='vestibular'&&prova.state!=='site')prova={state:'site',order:vestQs.map(function(q,j){return j}),i:0,answers:{},review:null,sel:{}};
+   else{var f=RV[t].qs.findIndex(function(q,j){var x=rvSit(t,j);return !x||x==='visto'});rv.i=f<0?0:f}
+  }
+  if(k!=null){rv.i=k;rv.fim=false}
+  rv.tipo=t;
+  if(push!==false){try{history.pushState({rv:t},'',location.pathname+'?fazer='+t)}catch(e){}}
+  rvEl.hidden=false;document.documentElement.classList.add('rv-aberto');
+  rvDesenhar();matEvt('fazer_agora',{aula:id,lista:t});
+  var h=document.getElementById('rv-titulo');if(h)h.focus({preventScroll:true});
+ }
+ function rvEsconder(){
+  if(rvEl.hidden)return;
+  rvEl.hidden=true;rvEl.innerHTML='';document.documentElement.classList.remove('rv-aberto');updateProgress();
+  var b=document.querySelector('[data-fazer="'+rv.tipo+'"]');if(b)b.focus({preventScroll:true});
+ }
+ function rvFechar(){if(history.state&&history.state.rv){history.back();return}try{history.replaceState(null,'',location.pathname)}catch(e){}rvEsconder()}
+ window.addEventListener('popstate',function(){var t=new URLSearchParams(location.search).get('fazer');if(RV[t])rvAbrir(t,null,false);else rvEsconder()});
+ function rvVest(k){
+  var q=vestQs[k],ans=prova.answers[k];
+  return '<article class="aula-prova-q rv-vq"><div class="aula-prova-enun"><span class="aula-mcq-n">'+q.n+'</span><div class="aula-prova-txt">'+selo(q.nivel)+apoioHtml(q)+'<p>'+esc(q.enunciado)+'</p>'+afirmHtml(q)+'</div></div>'
+   +(q.tipo==='somatoria'?somaHtml(q,k,ans):'<div class="aula-opts aula-opts-big'+optsClass(q.opcoes)+'">'+q.opcoes.map(function(o,j){var c='';if(ans!=null){if(j===q.correta)c=' is-right';else if(j===ans)c=' is-wrong'}return '<button type="button" class="aula-opt'+c+'" data-popt="'+j+'"'+(ans!=null?' disabled':'')+'><span class="aula-opt-l">'+letter(j)+'</span><span class="aula-opt-t">'+esc(o)+'</span></button>'}).join('')+'</div>')
+   +'<div class="aula-fb" id="rv-fb" aria-live="polite">'+(ans!=null?'<div class="aula-fb-box '+(ans===q.correta?'is-right':'is-wrong')+'"><b>'+(q.tipo==='somatoria'?(ans===q.correta?'Certa! Soma '+q.correta+'.':'Sua soma foi '+ans+'. A correta é '+q.correta+' ('+somaPartes(q)+').'):(ans===q.correta?'Certa!':'Não foi dessa vez. A correta é a '+letter(q.correta)+'.'))+'</b>'+q.resolucao.map(function(r){return '<p>'+esc(r)+'</p>'}).join('')+'</div>':'')+'</div></article>';
+ }
+ function rvGrade(t,cls){return '<div class="'+cls+'">'+RV[t].qs.map(function(q,k){var x=rvSit(t,k);return '<button type="button" class="rv-cel'+(x?' is-'+x:'')+(k===rv.i&&!rv.fim?' is-atual':'')+'" data-ir="'+k+'" aria-label="Questão '+q.n+(x==='ok'?', acertou':x==='erro'?', errou':'')+'">'+q.n+'</button>'}).join('')+'</div>'}
+ function rvFim(t){
+  var n=RV[t].qs.length,c=rvConta(t),feitas=c.ok+c.erro,vest=t==='vestibular';
+  var msg=!feitas?'Você ainda não conferiu nenhuma questão desta lista.':feitas<n?'Você conferiu '+feitas+' de '+n+'. Toque numa questão para voltar a ela.':c.ok===n?'Gabaritou a lista.':c.ok>=n*.7?'Mandou bem. Revise as que errou e essa aula está dominada.':'Refaça as que errou olhando a resolução de cada uma.';
+  return '<section class="rv-fim"><div class="rv-placar"><span class="rv-placar-n">'+c.ok+'</span><span>'+(vest?'acertos em '+n:'certas de '+n)+'</span></div><p>'+msg+'</p>'+rvGrade(t,'rv-grade')
+   +'<div class="rv-fim-acoes"><button type="button" class="aula-btn aula-btn-ink" data-rv-sair>Voltar para a aula</button>'+(vest&&feitas?'<button type="button" class="aula-btn aula-btn-soft" data-rv-refazer>Refazer a lista</button>':'')+'</div></section>';
+ }
+ function rvDesenhar(){
+  var t=rv.tipo,L=RV[t],n=L.qs.length,c=rvConta(t);
+  var corpo=rv.fim?rvFim(t):(t==='vestibular'?rvVest(rv.i):exCard(L.qs[rv.i]))+(rv.fim?'':'<button type="button" class="aula-btn aula-btn-soft rv-seguir" data-rv-seguir>'+(rv.i<n-1?'Próxima questão':'Ver como fui')+'</button>');
+  rvEl.innerHTML='<header class="rv-bar"><button type="button" class="rv-voltar" data-rv-sair>'+AULA_SVG.voltar+'<span>Voltar</span></button><div class="rv-tit"><b id="rv-titulo" tabindex="-1">'+L.nome+'</b><small>'+esc(l.title)+'</small></div><span class="rv-prog" title="Questões conferidas">'+(c.ok+c.erro)+'/'+n+'</span></header>'
+   +'<div class="rv-main" id="rv-main">'+corpo+'</div>'
+   +(rv.fim?'':'<nav class="rv-nav" aria-label="Questões"><button type="button" class="rv-seta" data-rv-passo="-1" aria-label="Questão anterior"'+(rv.i?'':' disabled')+'>'+AULA_SVG.voltar+'</button><button type="button" class="rv-qbtn" id="rv-qbtn" aria-expanded="false" aria-controls="rv-mapa"><b>'+L.qs[rv.i].n+'</b><small>de '+n+'</small></button><button type="button" class="rv-seta rv-seta-prox" data-rv-passo="1" aria-label="'+(rv.i<n-1?'Próxima questão':'Ver como fui')+'">'+AULA_SVG.voltar+'</button>'
+   +'<div class="rv-mapa" id="rv-mapa" hidden>'+rvGrade(t,'rv-grade rv-grade-mini')+'<button type="button" class="rv-mapa-fim" data-rv-fim>Ver como fui</button></div></nav>');
+  rvLigar();rvEl.scrollTop=0;tex(rvEl.querySelector('#rv-main'));
+ }
+ function rvIr(k){var n=RV[rv.tipo].qs.length;if(k>=n){rv.fim=true}else{rv.i=Math.max(0,k);rv.fim=false}rvDesenhar()}
+ function rvResponder(k,j){
+  if(prova.answers[k]!=null)return;prova.answers[k]=j;
+  var n=vestQs.length,feitas=Object.keys(prova.answers).length;
+  if(feitas===n){var sc=vestQs.filter(function(q,x){return prova.answers[x]===q.correta}).length;if(st.prova.best==null||sc>st.prova.best)st.prova.best=sc;st.prova.last=sc;store.save();matEvt('prova-fim',{aula:id,modulo:l.block,volume:l.front,acertos:sc,total:n})}
+  var y=rvEl.scrollTop;rvDesenhar();rvEl.scrollTop=y;
+  var fb=document.getElementById('rv-fb');if(fb&&fb.scrollIntoView)try{fb.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}catch(e){}
+ }
+ function rvLigar(){
+  rvEl.querySelectorAll('[data-rv-sair]').forEach(function(b){b.addEventListener('click',rvFechar)});
+  rvEl.querySelectorAll('[data-rv-passo]').forEach(function(b){b.addEventListener('click',function(){rvIr(rv.i+Number(b.dataset.rvPasso))})});
+  rvEl.querySelectorAll('[data-rv-seguir]').forEach(function(b){b.addEventListener('click',function(){rvIr(rv.i+1)})});
+  rvEl.querySelectorAll('[data-rv-fim]').forEach(function(b){b.addEventListener('click',function(){rvIr(RV[rv.tipo].qs.length)})});
+  rvEl.querySelectorAll('[data-ir]').forEach(function(b){b.addEventListener('click',function(){rvIr(Number(b.dataset.ir))})});
+  rvEl.querySelectorAll('[data-rv-refazer]').forEach(function(b){b.addEventListener('click',function(){prova={state:'site',order:vestQs.map(function(q,j){return j}),i:0,answers:{},review:null,sel:{}};rvIr(0)})});
+  var qb=document.getElementById('rv-qbtn'),mp=document.getElementById('rv-mapa');
+  if(qb)qb.addEventListener('click',function(){var abrir=mp.hidden;mp.hidden=!abrir;qb.setAttribute('aria-expanded',String(abrir))});
+  var main=document.getElementById('rv-main');
+  if(rv.tipo!=='vestibular'){bindCards(main);main.querySelectorAll('[data-mark]').forEach(function(m){m.addEventListener('click',function(){var c=rvConta(rv.tipo),pg=rvEl.querySelector('.rv-prog');if(pg)pg.textContent=(c.ok+c.erro)+'/'+RV[rv.tipo].qs.length})})}
+  else{
+   var k=rv.i,q=vestQs[k];
+   main.querySelectorAll('[data-popt]').forEach(function(b){b.addEventListener('click',function(){rvResponder(k,Number(b.dataset.popt))})});
+   main.querySelectorAll('[data-sprop]').forEach(function(b){b.addEventListener('click',function(){var sel=prova.sel[k]||(prova.sel[k]={}),v=Number(b.dataset.sprop);sel[v]=!sel[v];b.classList.toggle('is-on',!!sel[v]);b.setAttribute('aria-pressed',String(!!sel[v]));var tot=Object.keys(sel).filter(function(x){return sel[x]}).reduce(function(s2,x){return s2+Number(x)},0),cb=main.querySelector('[data-sconf]');if(cb)cb.textContent='Conferir: soma '+tot})});
+   var sc=main.querySelector('[data-sconf]');if(sc)sc.addEventListener('click',function(){var sel=prova.sel[k]||{};rvResponder(k,Object.keys(sel).filter(function(x){return sel[x]}).reduce(function(s2,x){return s2+Number(x)},0))});
+  }
+ }
+ document.querySelectorAll('[data-fazer]').forEach(function(b){b.addEventListener('click',function(){rvAbrir(b.dataset.fazer)})});
+ document.addEventListener('keydown',function(e){
+  if(rvEl.hidden||e.altKey||e.ctrlKey||e.metaKey)return;
+  var t=e.target;if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable))return;
+  if(e.key==='Escape'){var mp=document.getElementById('rv-mapa');if(mp&&!mp.hidden){mp.hidden=true;return}rvFechar();return}
+  if(rv.fim)return;
+  if(e.key==='ArrowRight'){e.preventDefault();rvIr(rv.i+1);return}
+  if(e.key==='ArrowLeft'){e.preventDefault();if(rv.i)rvIr(rv.i-1);return}
+  if(rv.tipo==='vestibular'){var k=e.key.toLowerCase(),idx='abcde'.indexOf(k),q=vestQs[rv.i];if(idx>=0&&q.opcoes&&idx<q.opcoes.length&&prova.answers[rv.i]==null){e.preventDefault();rvResponder(rv.i,idx)}}
+ });
+
  /* ---------- Leve pra casa ---------- */
  document.querySelectorAll('[data-pdf]').forEach(function(a){a.addEventListener('click',function(){st.pdf=true;store.save();updateProgress();matEvt('pdf',{aula:id,modulo:l.block,volume:l.front})})});
  (function(){
@@ -1331,13 +1401,7 @@ async function lessonPage(){
 
  /* ---------- Navegação ---------- */
  function topOffset(){var tb=document.querySelector('.topbar'),h=tb?tb.offsetHeight:0;var main=document.querySelector('main.aula');if(main)main.style.setProperty('--a-top',h+'px');var rail=document.querySelector('.aula-rail');var extra=window.innerWidth<=1000&&rail?rail.offsetHeight:0;return h+extra+16}
- function abrirLista(sid,abrir){
-  FAZER.forEach(function(x){var sec=document.getElementById(x[0]),b=document.querySelector('[data-abrir="'+x[0]+'"]');var on=abrir&&x[0]===sid;if(sec)sec.hidden=!on;if(b){b.setAttribute('aria-expanded',String(on));b.classList.toggle('is-open',on)}});
-  if(abrir){var sec=document.getElementById(sid);if(sec)tex(sec);matEvt('fazer_agora',{aula:id,lista:sid})}
- }
- document.querySelectorAll('[data-abrir]').forEach(function(b){b.addEventListener('click',function(){var sid=b.dataset.abrir,aberta=b.getAttribute('aria-expanded')==='true';abrirLista(sid,!aberta);if(!aberta){goTo(sid);try{history.replaceState(null,'','#'+sid)}catch(e){}}else{try{history.replaceState(null,'',location.pathname)}catch(e){}}})});
- document.querySelectorAll('[data-fechar]').forEach(function(b){b.addEventListener('click',function(){abrirLista(b.dataset.fechar,false);goTo('fazer');try{history.replaceState(null,'',location.pathname)}catch(e){}})});
- function goTo(sid){if(FAZER.some(function(x){return x[0]===sid}))abrirLista(sid,true);var el=document.getElementById(sid);if(!el)return;var y=el.getBoundingClientRect().top+window.pageYOffset-topOffset();try{window.scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}catch(e){window.scrollTo(0,y)}}
+ function goTo(sid){if(DE_SID[sid]){rvAbrir(DE_SID[sid]);return}var el=document.getElementById(sid);if(!el)return;var y=el.getBoundingClientRect().top+window.pageYOffset-topOffset();try{window.scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}catch(e){window.scrollTo(0,y)}}
  function bindGoto(root){root.querySelectorAll('[data-goto]').forEach(function(a){if(a.dataset.bound)return;a.dataset.bound='1';a.addEventListener('click',function(e){e.preventDefault();goTo(a.dataset.goto);try{history.replaceState(null,'','#'+a.dataset.goto)}catch(err){}})})}
  bindGoto(document);
  if('IntersectionObserver' in window){
@@ -1368,14 +1432,17 @@ async function lessonPage(){
  });
 
  /* ---------- Matemática e chegada direta a uma etapa ---------- */
- tex(document.querySelector('.aula-hero'));
+ tex(document.querySelector('.av-topo'));
  tex(document.getElementById('entenda'));
  topOffset();
  if(window.addEventListener)window.addEventListener('resize',function(){topOffset()});
  var requested=new URLSearchParams(location.search).get('tab')||location.hash.replace('#','');
  var map={resumo:'entenda',teoria:'entenda',quiz:vestQs.length?'prova':'entenda',videos:'levar',arquivos:'levar'};
  var target=map[requested]||requested;
- if(steps.some(function(s){return s.id===target})||FAZER.some(function(x){return x[0]===target}))setTimeout(function(){goTo(target)},60);
+ var pedida=new URLSearchParams(location.search).get('fazer');
+ if(RV[pedida]&&RV[pedida].qs.length)rvAbrir(pedida,null,false);
+ else if(DE_SID[target]&&RV[DE_SID[target]].qs.length){try{history.replaceState(null,'',location.pathname+'?fazer='+DE_SID[target])}catch(e){}rvAbrir(DE_SID[target],null,false)}
+ else if(steps.some(function(s){return s.id===target}))setTimeout(function(){goTo(target)},60);
 }
 
 function safeUrl(url){try{var x=new URL(url);return (x.protocol==='https:'||x.protocol==='http:')?x.toString():null}catch(e){return null}}
