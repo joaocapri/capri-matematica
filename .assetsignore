@@ -1,0 +1,14 @@
+# Arquivos do repositório que não vão para o site publicado
+.git
+.github
+.gitignore
+.assetsignore
+wrangler.jsonc
+node_modules
+package.json
+package-lock.json
+*.md
+materiais-fonte
+scripts
+tests
+screenshots

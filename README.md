@@ -21,10 +21,12 @@ Portal gratuito de matemática MAT MAT MAT!, do Prof. João Capri.
   - **Cupom**: `data/livros.json` → `oferta` (`ativo`, `cupom`, `desconto`, `texto`, `observacao`). Com `"ativo": false`, o modal e as menções ao cupom somem.
   - Revisão manual: `?ofertas=on` (tempos curtos) e `?ofertas=reset` (zera o histórico). Testes automatizados não veem ofertas.
 
-## Publicação no Cloudflare Pages
-1. Vincule este repositório a Pages com produção na branch \`main\`.
-2. Selecione nenhum framework (site estático), sem comando de build, diretório de saída \`.\`.
-3. O site passará a ter atualização automática em cada commit.
+## Publicação no Cloudflare
+O site é publicado pelo Cloudflare (Workers com arquivos estáticos), ligado a este repositório: cada push no \`main\` publica sozinho.
+- \`wrangler.jsonc\` diz ao Cloudflare que o site é estático (sem build) e que um endereço inexistente abre o app.
+- \`.assetsignore\` tira do site publicado o que é só do repositório (fontes das listas, scripts, testes, documentos .md).
+- \`_redirects\` e \`_headers\` continuam valendo (endereços antigos das aulas e bloqueio das turmas no Google).
+- Domínio: matcomjoao.com (registrado na Hostinger, com os nameservers apontados para o Cloudflare).
 
 ## Como adicionar conteúdo a uma aula
 Crie \`conteudos/A17.json\` com o formato:
