@@ -1,0 +1,614 @@
+# Aula 3.4.1 — Propriedades dos determinantes
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: fila nula, filas iguais ou proporcionais, troca de filas, fila multiplicada por número,
+# det(kA) = k^n det A, det A^t = det A, matriz triangular. Somar a uma fila um múltiplo de outra (Jacobi)
+# aparece com o enunciado da propriedade. Laplace (3.4.2) e Binet (3.4.3) ficam para as próximas aulas.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Todas as matrizes abaixo têm determinante nulo. Associe cada uma ao motivo (um motivo pode ser usado mais de uma vez).'
+      esquerda:
+      - 'Tem uma fila nula'
+      - 'Tem duas filas iguais'
+      - 'Tem duas filas proporcionais'
+      direita:
+      - '$\begin{pmatrix} 1 & 2 & 3 \\ 0 & 0 & 0 \\ 4 & 5 & 6 \end{pmatrix}$'
+      - '$\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 1 & 2 & 3 \end{pmatrix}$'
+      - '$\begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 0 & 1 & 5 \end{pmatrix}$'
+      - '$\begin{pmatrix} 2 & 0 & 1 \\ 3 & 0 & 5 \\ 7 & 0 & 4 \end{pmatrix}$'
+      - '$\begin{pmatrix} 1 & 4 & 1 \\ 2 & 5 & 2 \\ 3 & 6 & 3 \end{pmatrix}$'
+      resolucao: |
+        “Fila” é linha ou coluna. A 1ª tem a 2ª linha nula; a 2ª tem as linhas 1 e 3 iguais; na 3ª, a linha 2 é o dobro da linha 1.
+        A 4ª tem a 2ª coluna nula; a 5ª tem as colunas 1 e 3 iguais.
+      resposta: 'De cima para baixo: 1, 2, 3, 1, 2'
+    - enunciado: 'Uma matriz $A$ de ordem 3 tem $\det A = 5$. Complete.'
+      itens:
+      - '$\det A^t = {{5}}$'
+      - 'Trocando duas linhas de $A$ de posição, o determinante passa a ser ${{-5}}$.'
+      - 'Multiplicando uma linha de $A$ por 3, o determinante passa a ser ${{15}}$.'
+      - '$\det(2A) = {{40}}$'
+      resolucao: |
+        A transposta tem o mesmo determinante. Trocar duas filas muda o sinal. Multiplicar uma fila por $k$ multiplica o determinante por $k$.
+        Em $2A$, as três linhas são multiplicadas por 2: $\det(2A) = 2^3 \cdot 5 = 40$.
+      resposta: '$5$; $-5$; $15$; $40$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Se uma matriz quadrada tem uma linha formada só por zeros, o seu determinante é zero.'
+      - 'Trocar duas colunas de posição não altera o determinante.'
+      - 'Para toda matriz quadrada $A$, $\det A^t = \det A$.'
+      - 'Se $A$ é uma matriz de ordem 3, então $\det(2A) = 2\det A$.'
+      justificar: true
+      espaco: 18
+      resolucao: |
+        (V) Cada produto da regra tem um fator dessa linha. (F) O determinante troca de sinal.
+        (V) É uma das propriedades. (F) $\det(2A) = 2^3\det A = 8\det A$: cada uma das 3 linhas é multiplicada por 2.
+      resposta: V, F, V, F
+    - enunciado: 'Calcule os determinantes usando as propriedades, sem a regra de Sarrus.'
+      itens:
+      - '$\begin{vmatrix} 2 & 4 & 6 \\ 1 & 2 & 3 \\ 5 & 7 & 9 \end{vmatrix}$'
+      - '$\begin{vmatrix} 3 & 1 & 7 \\ 0 & -2 & 5 \\ 0 & 0 & 4 \end{vmatrix}$'
+      - '$\begin{vmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 0 & 0 & 0 \end{vmatrix}$'
+      - '$\begin{vmatrix} -1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 5 \end{vmatrix}$'
+      colunas: 2
+      espaco_item: 14
+      resolucao: |
+        (a) A linha 1 é o dobro da linha 2: determinante 0. (b) Triangular: produto da diagonal, $3 \cdot (-2) \cdot 4 = -24$.
+        (c) Linha nula: 0. (d) Diagonal: $(-1) \cdot 2 \cdot 5 = -10$.
+      resposta: '(a) $0$ (b) $-24$ (c) $0$ (d) $-10$'
+    - enunciado: 'Sabendo que $\begin{vmatrix} a & b \\ c & d \end{vmatrix} = 7$, complete.'
+      itens:
+      - '$\begin{vmatrix} c & d \\ a & b \end{vmatrix} = {{-7}}$'
+      - '$\begin{vmatrix} 3a & 3b \\ c & d \end{vmatrix} = {{21}}$'
+      - '$\begin{vmatrix} a & c \\ b & d \end{vmatrix} = {{7}}$'
+      - '$\begin{vmatrix} 2a & 2b \\ 2c & 2d \end{vmatrix} = {{28}}$'
+      resolucao: |
+        Linhas trocadas: muda o sinal. Uma linha vezes 3: o determinante vezes 3. A terceira é a transposta: mesmo valor.
+        Na última, as duas linhas foram multiplicadas por 2: $2 \cdot 2 \cdot 7 = 28$.
+      resposta: '$-7$; $21$; $7$; $28$'
+    - texto: |
+        Rafa sabia que $A$ é uma matriz de ordem 3 com $\det A = 2$ e escreveu:
+        \[ \det(3A) = 3 \cdot \det A = 3 \cdot 2 = 6. \]
+      enunciado: 'Encontre o erro de Rafa e calcule $\det(3A)$.'
+      espaco: 18
+      resolucao: |
+        Em $3A$, todas as três linhas são multiplicadas por 3, e cada linha multiplicada põe um fator 3 no determinante.
+        O certo é $\det(3A) = 3^3 \cdot \det A = 27 \cdot 2 = 54$.
+      resposta: 'O fator 3 aparece uma vez por linha; $\det(3A) = 54$'
+    - enunciado: 'Uma matriz $A$ de ordem 3 tem $\det A = -2$. Complete o quadro com o determinante da matriz obtida de $A$ em cada caso ($L$ indica linha, e $C$, coluna).'
+      tabela:
+        cabecalho: ['Operação', 'Determinante']
+        linhas:
+        - ['Trocar $L_1$ e $L_3$', '${{2}}$']
+        - ['$L_2$ vezes 5', '${{-10}}$']
+        - ['Transpor', '${{-2}}$']
+        - ['$A$ vezes $-1$', '${{2}}$']
+        - ['Trocar $L_1$ e $L_2$; depois $C_1$ e $C_3$', '${{-2}}$']
+      resolucao: |
+        Uma troca muda o sinal: $2$. Linha vezes 5: $-10$. Transposta: $-2$.
+        $\det(-A) = (-1)^3 \cdot (-2) = 2$. Duas trocas mudam o sinal duas vezes: $-2$.
+      resposta: '$2$; $-10$; $-2$; $2$; $-2$'
+  - nome: Nível 2
+    questoes:
+    - enunciado: 'Sem fazer contas, explique por que cada determinante é nulo.'
+      itens:
+      - '$\begin{vmatrix} 1 & 5 & 1 \\ 2 & 7 & 2 \\ 3 & 9 & 3 \end{vmatrix}$'
+      - '$\begin{vmatrix} 2 & -1 & 4 \\ -6 & 3 & -12 \\ 5 & 8 & 1 \end{vmatrix}$'
+      - '$\begin{vmatrix} 0 & 3 & 7 \\ 0 & 1 & 9 \\ 0 & 4 & 2 \end{vmatrix}$'
+      espaco_item: 12
+      resolucao: |
+        (a) As colunas 1 e 3 são iguais. (b) A linha 2 é a linha 1 multiplicada por $-3$. (c) A primeira coluna é nula.
+      resposta: '(a) colunas iguais (b) linhas proporcionais (c) coluna nula'
+    - enunciado: 'Considere $D(x) = \begin{vmatrix} 1 & 2 & 3 \\ x & 4 & 6 \\ 5 & 1 & 0 \end{vmatrix}$.'
+      itens:
+      - 'Calcule $D(x)$ pela regra de Sarrus.'
+      - 'Para que valor de $x$ temos $D(x) = 0$? Explique esse resultado com uma propriedade.'
+      espaco_item: 20
+      resolucao: |
+        (a) Descem: $0 + 60 + 3x$; sobem: $60 + 6 + 0$. $D(x) = 3x - 6$.
+        (b) $x = 2$. Com $x = 2$, a linha 2 fica $(2, 4, 6)$, o dobro da linha 1: filas proporcionais.
+      resposta: '(a) $3x - 6$ (b) $x = 2$; a linha 2 vira o dobro da linha 1'
+    - enunciado: 'Matrizes triangulares têm determinante igual ao produto da diagonal principal.'
+      itens:
+      - 'Calcule $\begin{vmatrix} 2 & 0 & 0 \\ 7 & 3 & 0 \\ -1 & 4 & 5 \end{vmatrix}$.'
+      - 'Resolva $\begin{vmatrix} x & 5 & 8 \\ 0 & x & 3 \\ 0 & 0 & x \end{vmatrix} = 27$.'
+      espaco_item: 14
+      resolucao: |
+        (a) $2 \cdot 3 \cdot 5 = 30$. (b) $x \cdot x \cdot x = x^3 = 27$, logo $x = 3$.
+      resposta: '(a) $30$ (b) $x = 3$'
+    - enunciado: 'A matriz $A$ tem $\det A = 3$. Complete o quadro para $A$ de ordem 2 e para $A$ de ordem 3.'
+      tabela:
+        cabecalho: ['', 'Ordem 2', 'Ordem 3']
+        linhas:
+        - ['$\det(2A)$', '${{12}}$', '${{24}}$']
+        - ['$\det(-A)$', '${{3}}$', '${{-3}}$']
+        - ['$\det\left(\tfrac{1}{2}A\right)$', '${{\tfrac{3}{4}}}$', '${{\tfrac{3}{8}}}$']
+      resolucao: |
+        Para $A$ de ordem $n$, $\det(kA) = k^n\det A$.
+        Ordem 2: $4 \cdot 3$; $(-1)^2 \cdot 3$; $\tfrac{1}{4}\cdot 3$. Ordem 3: $8 \cdot 3$; $(-1)^3 \cdot 3$; $\tfrac{1}{8}\cdot 3$.
+      resposta: '$12$ e $24$; $3$ e $-3$; $\frac{3}{4}$ e $\frac{3}{8}$'
+    - enunciado: 'Uma matriz $A$ de ordem 3 tem $\det A = 4$. A matriz $B$ foi obtida de $A$ assim: a linha 1 foi multiplicada por 2, depois as linhas 2 e 3 trocaram de posição e, no fim, a matriz foi transposta. Complete.'
+      itens:
+      - 'Depois de multiplicar a linha 1 por 2: ${{8}}$'
+      - 'Depois de trocar as linhas 2 e 3: ${{-8}}$'
+      - '$\det B = {{-8}}$'
+      - '$\det(3A^t) = {{108}}$'
+      resolucao: |
+        $4 \cdot 2 = 8$; a troca muda o sinal: $-8$; transpor não muda: $-8$.
+        $\det(3A^t) = 3^3 \cdot \det A^t = 27 \cdot 4 = 108$.
+      resposta: '$8$; $-8$; $-8$; $108$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Se $\det A = 0$, então $A$ tem uma fila nula.'
+      - 'Se $A$ tem duas colunas proporcionais, então $\det A = 0$.'
+      - 'Se $\det A \neq 0$, então nenhuma linha de $A$ é formada só por zeros.'
+      - 'Para matrizes $A$ e $B$ de mesma ordem, $\det(A + B) = \det A + \det B$.'
+      justificar: true
+      espaco: 22
+      resolucao: |
+        (F) $\begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}$ tem determinante 0 e nenhuma fila nula. (V) É uma das propriedades.
+        (V) Se houvesse linha nula, o determinante seria 0. (F) Com $A = B = I_2$: $\det(2I) = 4$, mas $\det I + \det I = 2$.
+      resposta: F, V, V, F
+    - enunciado: 'Calcule $\begin{vmatrix} 2 & 4 & 6 \\ 1 & 3 & 5 \\ 3 & 1 & 2 \end{vmatrix}$ colocando um fator em evidência, completando os passos.'
+      itens:
+      - 'A linha 1 tem o fator comum ${{2}}$: $\ \det = 2 \cdot \begin{vmatrix} 1 & 2 & 3 \\ 1 & 3 & 5 \\ 3 & 1 & 2 \end{vmatrix}$'
+      - 'Pela regra de Sarrus, o determinante menor vale ${{3}}$.'
+      - 'Resultado: ${{6}}$'
+      resolucao: |
+        Dividir uma linha por 2 divide o determinante por 2; por isso o 2 sai multiplicando.
+        Determinante menor: descem $6 + 30 + 3 = 39$; sobem $27 + 5 + 4 = 36$; vale 3. Resultado: $2 \cdot 3 = 6$.
+      resposta: '$2$; $3$; $6$'
+    - enunciado: 'Sabendo que $\begin{vmatrix} a & b & c \\ d & e & f \\ g & h & i \end{vmatrix} = -3$, calcule.'
+      itens:
+      - '$\begin{vmatrix} d & e & f \\ a & b & c \\ g & h & i \end{vmatrix}$'
+      - '$\begin{vmatrix} a & b & c \\ 2d & 2e & 2f \\ g & h & i \end{vmatrix}$'
+      - '$\begin{vmatrix} a & d & g \\ b & e & h \\ c & f & i \end{vmatrix}$'
+      - '$\begin{vmatrix} g & h & i \\ d & e & f \\ a & b & c \end{vmatrix}$'
+      colunas: 2
+      espaco_item: 14
+      resolucao: |
+        (a) Linhas 1 e 2 trocadas: $3$. (b) Linha 2 vezes 2: $-6$. (c) Transposta: $-3$. (d) Linhas 1 e 3 trocadas: $3$.
+      resposta: '(a) $3$ (b) $-6$ (c) $-3$ (d) $3$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Somar a uma fila um múltiplo de outra fila paralela não altera o determinante. Use essa propriedade para mostrar, sem a regra de Sarrus, que $\begin{vmatrix} 1 & 1 & 1 \\ a & b & c \\ b + c & c + a & a + b \end{vmatrix} = 0$ para quaisquer $a$, $b$ e $c$.'
+      espaco: 28
+      resolucao: |
+        Somando a linha 2 à linha 3, a nova linha 3 é $(a + b + c,\ a + b + c,\ a + b + c)$, e o determinante não muda.
+        Essa linha é $(a + b + c)$ vezes a linha 1: as linhas 1 e 3 são proporcionais, e o determinante é 0.
+      resposta: 'Ver resolução'
+    - enunciado: 'Uma matriz $A$ de ordem $n$ tem $\det A = 2$ e $\det(2A) = 64$. Determine $n$.'
+      espaco: 18
+      resolucao: |
+        $\det(2A) = 2^n \det A = 2^n \cdot 2 = 2^{n+1} = 64 = 2^6$, logo $n = 5$.
+      resposta: '$n = 5$'
+    - enunciado: 'Uma matriz quadrada é antissimétrica quando $A^t = -A$.'
+      itens:
+      - 'Mostre que toda matriz antissimétrica de ordem 3 tem determinante nulo. (Sugestão: compare $\det A^t$ com $\det(-A)$.)'
+      - 'Mostre, com um exemplo, que isso não vale para ordem 2.'
+      espaco_item: 22
+      resolucao: |
+        (a) $\det A = \det A^t = \det(-A) = (-1)^3\det A = -\det A$. Então $2\det A = 0$ e $\det A = 0$.
+        (b) $\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ é antissimétrica e tem determinante $0 + 1 = 1$. Na ordem 2, $(-1)^2 = 1$ e o argumento não funciona.
+      resposta: '(a) Ver resolução (b) $\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$, com determinante 1'
+    - enunciado: 'Considere $D(x) = \begin{vmatrix} x - 1 & 2 & 3 \\ 0 & x - 2 & 4 \\ 0 & 0 & x - 3 \end{vmatrix}$.'
+      itens:
+      - 'Resolva $D(x) = 0$.'
+      - 'Mostre que $x = 4$ é a única solução real de $D(x) = 6$.'
+      espaco_item: 22
+      resolucao: |
+        (a) Triangular: $D(x) = (x - 1)(x - 2)(x - 3) = 0$ para $x = 1$, $2$ ou $3$.
+        (b) $D(4) = 3 \cdot 2 \cdot 1 = 6$. Desenvolvendo, $D(x) - 6 = x^3 - 6x^2 + 11x - 12 = (x - 4)(x^2 - 2x + 3)$, e $x^2 - 2x + 3$ tem discriminante $4 - 12 < 0$: não há outras raízes reais.
+      resposta: '(a) $x = 1$, $2$ ou $3$ (b) Ver resolução'
+    - enunciado: 'Uma matriz $A$ de ordem 3 tem $\det A = 3$.'
+      itens:
+      - 'Calcule $\det(2A^t)$.'
+      - 'A matriz $C$ é obtida de $A$ trocando as colunas 1 e 2 e multiplicando a coluna 3 por $-1$. Calcule $\det C$.'
+      espaco_item: 16
+      resolucao: |
+        (a) $\det(2A^t) = 2^3 \det A^t = 8 \cdot 3 = 24$.
+        (b) A troca muda o sinal ($-3$), e a coluna vezes $-1$ muda de novo ($3$). $\det C = 3$.
+      resposta: '(a) $24$ (b) $3$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um sistema de segurança só aceita chaves que sejam matrizes de ordem 3 com determinante diferente de zero. Um funcionário gerou cinco chaves e, antes de testá-las, um colega observou que quatro delas seriam recusadas sem que fosse preciso fazer conta alguma. O quadro mostra as linhas de cada chave.
+    tabela:
+      cabecalho: ['Chave', 'Linha 1', 'Linha 2', 'Linha 3']
+      linhas:
+      - ['$K_1$', '$(1, 2, 3)$', '$(0, 0, 0)$', '$(4, 1, 2)$']
+      - ['$K_2$', '$(2, 1, 5)$', '$(4, 2, 10)$', '$(3, 3, 1)$']
+      - ['$K_3$', '$(1, 4, 2)$', '$(3, 1, 5)$', '$(1, 4, 2)$']
+      - ['$K_4$', '$(2, 2, 7)$', '$(1, 1, 3)$', '$(5, 5, 0)$']
+      - ['$K_5$', '$(1, 0, 2)$', '$(3, 1, 0)$', '$(0, 2, 1)$']
+    enunciado: |
+      A única chave que pode ser aceita pelo sistema é
+    opcoes: ['$K_1$.', '$K_2$.', '$K_3$.', '$K_4$.', '$K_5$.']
+    correta: E
+    resolucao: |
+      $K_1$ tem linha nula; em $K_2$, a linha 2 é o dobro da linha 1; $K_3$ tem as linhas 1 e 3 iguais; $K_4$ tem as colunas 1 e 2 iguais. Todas têm determinante 0.
+      $K_5$: descem $1 + 0 + 12 = 13$; sobem $0 + 0 + 0$; o determinante é 13, diferente de zero.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $A$ é uma matriz quadrada de ordem 3 com $\det A = 4$, então $\det(2A)$ é igual a
+    opcoes: ['$8$', '$12$', '$16$', '$32$', '$64$']
+    correta: D
+    resolucao: |
+      $\det(2A) = 2^3 \cdot 4 = 32$. Quem multiplica só uma linha por 2 marca 8; quem usa $2^2$ marca 16.
+
+  - estilo: Unicamp
+    enunciado: |
+      Se $\begin{vmatrix} a & b \\ c & d \end{vmatrix} = 5$, então $\begin{vmatrix} c & d \\ a & b \end{vmatrix}$ é igual a
+    opcoes: ['$-5$.', '$0$.', '$5$.', '$25$.']
+    correta: A
+    resolucao: |
+      As linhas trocaram de posição: o determinante muda de sinal. De fato, $cb - da = -(ad - bc) = -5$.
+
+  - estilo: UEM
+    enunciado: |
+      Seja $A$ uma matriz quadrada de ordem 3 com $\det A = 2$. Assinale o que for correto.
+    proposicoes:
+    - '$\det A^t = 2$.'
+    - '$\det(3A) = 6$.'
+    - 'Trocando duas linhas de $A$ de posição, obtém-se uma matriz de determinante $-2$.'
+    - 'Multiplicando a primeira coluna de $A$ por 5, obtém-se uma matriz de determinante 10.'
+    - '$\det(-A) = 2$.'
+    corretas: [1, 3, 4]
+    resolucao: |
+      01) Correta. 02) Incorreta: $\det(3A) = 27 \cdot 2 = 54$.
+      04) Correta: a troca muda o sinal. 08) Correta: uma fila vezes 5.
+      16) Incorreta: $\det(-A) = (-1)^3 \cdot 2 = -2$.
+      Soma: $01 + 04 + 08 = 13$.
+
+  - estilo: Unesp
+    texto: |
+      Uma professora escreveu no quadro a matriz $A = (a_{ij})_{3\times 3}$ definida por $a_{ij} = i + j$ e pediu o seu determinante. Antes que os colegas começassem a regra de Sarrus, uma aluna respondeu de imediato, observando que a soma da primeira linha com a terceira é igual ao dobro da segunda.
+    enunciado: |
+      O determinante de $A$ é
+    opcoes: ['$-6$', '$-2$', '$0$', '$2$', '$6$']
+    correta: C
+    resolucao: |
+      $A = \begin{pmatrix} 2 & 3 & 4 \\ 3 & 4 & 5 \\ 4 & 5 & 6 \end{pmatrix}$. Somando à linha 3 a linha 1 e subtraindo o dobro da linha 2 (o que não altera o determinante), a linha 3 vira nula. Logo $\det A = 0$.
+      Pela regra de Sarrus: descem $48 + 60 + 60 = 168$; sobem $64 + 50 + 54 = 168$.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir sobre matrizes quadradas.
+    afirmativas:
+    - 'Se uma matriz tem duas linhas iguais, o seu determinante é nulo.'
+    - 'O determinante de uma matriz é igual ao determinante da sua transposta.'
+    - 'Multiplicando todos os elementos de uma matriz de ordem 3 por 2, o determinante dobra.'
+    - 'Trocando duas linhas de posição, o determinante muda de sinal.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'II e IV, apenas.', 'I, II e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I, II e IV são propriedades dos determinantes.
+      III. Incorreta: as três linhas são multiplicadas por 2, e o determinante fica multiplicado por $2^3 = 8$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\begin{vmatrix} 5 & 0 & 0 & 0 \\ 3 & 2 & 0 & 0 \\ 1 & 7 & -1 & 0 \\ 4 & 6 & 9 & 3 \end{vmatrix}$ é
+    opcoes: ['$-30$', '$-6$', '$0$', '$6$', '$30$']
+    correta: A
+    resolucao: |
+      A matriz é triangular (só zeros acima da diagonal): o determinante é $5 \cdot 2 \cdot (-1) \cdot 3 = -30$.
+      Quem esquece o sinal de $-1$ marca 30.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      Uma pesquisa de preços registrou, em reais, o valor de três produtos em três supermercados, organizados na matriz $P$ do quadro (linhas: supermercados; colunas: produtos). Um estudante percebeu que, por coincidência, todos os preços do supermercado 3 são exatamente o dobro dos preços do supermercado 1, e usou esse fato para calcular rapidamente o determinante de $P$.
+    tabela:
+      cabecalho: ['', 'Arroz', 'Feijão', 'Óleo']
+      linhas:
+      - ['Supermercado 1', '20', '8', '6']
+      - ['Supermercado 2', '22', '9', '7']
+      - ['Supermercado 3', '40', '16', '12']
+    enunciado: |
+      O determinante de $P$ é
+    opcoes: ['$-2$', '$0$', '$2$', '$40$', '$120$']
+    correta: B
+    resolucao: |
+      A linha 3 é o dobro da linha 1: duas filas proporcionais dão determinante nulo.
+
+  - estilo: Unicamp
+    enunciado: |
+      Se $A$ é uma matriz de ordem 3 com $\det A = 3$, então $\det(2A^t)$ vale
+    opcoes: ['$6$.', '$12$.', '$24$.', '$48$.']
+    correta: C
+    resolucao: |
+      $\det(2A^t) = 2^3 \det A^t = 8 \cdot 3 = 24$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$\begin{vmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 7 & 1 & 5 \end{vmatrix} = 0$.'
+    - 'Se $\det A = 0$, então $A$ tem duas filas proporcionais.'
+    - '$\begin{vmatrix} 2 & 0 & 0 \\ 1 & 3 & 0 \\ 5 & 8 & 4 \end{vmatrix} = 24$.'
+    - 'Se $A$ é de ordem 3 e $\det A = 1$, então $\det(-A) = 1$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'V – F – V – F.', 'F – F – V – V.', 'V – F – F – V.', 'F – V – V – F.']
+    correta: B
+    resolucao: |
+      (V) A linha 2 é o dobro da linha 1.
+      (F) $\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}$ tem determinante 0 e nenhum par de filas proporcionais.
+      (V) Triangular: $2 \cdot 3 \cdot 4$.
+      (F) $\det(-A) = (-1)^3 \cdot 1 = -1$.
+
+  - estilo: UFSC
+    enunciado: |
+      Sabe-se que $\begin{vmatrix} a & b & c \\ d & e & f \\ g & h & i \end{vmatrix} = 6$. Assinale o que for correto.
+    proposicoes:
+    - '$\begin{vmatrix} d & e & f \\ a & b & c \\ g & h & i \end{vmatrix} = -6$.'
+    - '$\begin{vmatrix} 2a & 2b & 2c \\ d & e & f \\ g & h & i \end{vmatrix} = 12$.'
+    - '$\begin{vmatrix} a & b & c \\ d & e & f \\ a & b & c \end{vmatrix} = 6$.'
+    - '$\begin{vmatrix} a & d & g \\ b & e & h \\ c & f & i \end{vmatrix} = 6$.'
+    - '$\begin{vmatrix} 2a & 2b & 2c \\ 2d & 2e & 2f \\ 2g & 2h & 2i \end{vmatrix} = 12$.'
+    - '$\begin{vmatrix} g & h & i \\ d & e & f \\ a & b & c \end{vmatrix} = -6$.'
+    corretas: [1, 2, 4, 6]
+    resolucao: |
+      01) Correta: uma troca de linhas. 02) Correta: uma linha vezes 2.
+      04) Incorreta: duas linhas iguais, determinante 0.
+      08) Correta: é a transposta.
+      16) Incorreta: as três linhas vezes 2: $8 \cdot 6 = 48$.
+      32) Correta: troca das linhas 1 e 3.
+      Soma: $01 + 02 + 08 + 32 = 43$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O conjunto dos números reais $x$ para os quais $\begin{vmatrix} x & 2 & 4 \\ 1 & 1 & 2 \\ 3 & 5 & 10 \end{vmatrix} = 0$ é
+    opcoes: ['$\{0\}$', '$\{2\}$', '$\{0, 2\}$', 'vazio', 'o conjunto de todos os números reais']
+    correta: E
+    resolucao: |
+      A coluna 3 é o dobro da coluna 2, qualquer que seja $x$: o determinante é sempre 0.
+      Quem faz a regra de Sarrus confere: descem $10x + 12 + 20$; sobem $12 + 10x + 20$.
+
+  - estilo: Unesp
+    texto: |
+      Um programa de computação gráfica aplica, em sequência, as operações do quadro a uma matriz $A$ de ordem 3 com $\det A = 5$, e registra o determinante da matriz final.
+    tabela:
+      cabecalho: ['Passo', 'Operação']
+      linhas:
+      - ['1', 'Troca as linhas 1 e 2 de posição']
+      - ['2', 'Multiplica a linha 3 por 4']
+      - ['3', 'Transpõe a matriz']
+      - ['4', 'Multiplica a matriz inteira por $-1$']
+    enunciado: |
+      O determinante registrado é
+    opcoes: ['$-20$', '$-5$', '$5$', '$20$', '$80$']
+    correta: D
+    resolucao: |
+      Passo 1: $-5$. Passo 2: $-20$. Passo 3: continua $-20$. Passo 4: $(-1)^3 \cdot (-20) = 20$.
+      Quem usa $(-1)^2$ no passo 4, esquecendo que a matriz é de ordem 3, marca $-20$.
+
+  - estilo: Enem
+    texto: |
+      Uma empresa vai instalar três postes de iluminação em um terreno representado num plano cartesiano, com coordenadas em metros. Para que a fiação fique reta, os postes precisam ficar alinhados. Os engenheiros usam o critério: os pontos $(x_1, y_1)$, $(x_2, y_2)$ e $(x_3, y_3)$ estão alinhados quando $\begin{vmatrix} x_1 & y_1 & 1 \\ x_2 & y_2 & 1 \\ x_3 & y_3 & 1 \end{vmatrix} = 0$. Dois postes já estão em $(1, 3)$ e $(4, 9)$, e o terceiro ficará no ponto $(k, 15)$.
+    enunciado: |
+      Para que os três postes fiquem alinhados, o valor de $k$ deve ser
+    opcoes: ['$5$', '$6$', '$7$', '$8$', '$9$']
+    correta: C
+    resolucao: |
+      $\begin{vmatrix} 1 & 3 & 1 \\ 4 & 9 & 1 \\ k & 15 & 1 \end{vmatrix}$: descem $9 + 3k + 60$; sobem $9k + 15 + 12$. Diferença: $42 - 6k = 0$, logo $k = 7$.
+      Conferência: os pontos estão na reta $y = 2x + 1$, e $2 \cdot 7 + 1 = 15$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um programa transforma matrizes de ordem 3 e mostra como o determinante muda, seguindo as regras do quadro (as filas trocadas ou somadas são sempre paralelas: duas linhas ou duas colunas). A matriz de partida $A$ tem $\det A = 2$.
+      tabela:
+        cabecalho: ['Operação', 'Determinante']
+        linhas:
+        - ['Trocar duas filas', 'Muda o sinal']
+        - ['Fila vezes $k$', 'Vezes $k$']
+        - ['Fila + múltiplo de outra', 'Não muda']
+    enunciado: |
+      O programa multiplicou todos os elementos de $A$ por 3. O determinante da nova matriz é
+    opcoes: ['$6$', '$18$', '$27$', '$54$', '$162$']
+    correta: D
+    resolucao: |
+      Multiplicar a matriz inteira por 3 é multiplicar cada uma das 3 linhas por 3: $3 \cdot 3 \cdot 3 \cdot 2 = 54$.
+      6 multiplica uma linha só; 27 esquece o determinante de partida.
+
+  - estilo: Unicamp
+    enunciado: |
+      Partindo de $A$, o programa subtraiu da linha 2 o triplo da linha 1 e, depois, trocou as colunas 1 e 3 de posição. O determinante da matriz obtida é
+    opcoes: ['$-6$.', '$-2$.', '$2$.', '$6$.']
+    correta: B
+    resolucao: |
+      Subtrair da linha 2 um múltiplo da linha 1 não muda o determinante (continua 2). A troca de colunas muda o sinal: $-2$.
+
+  - estilo: UEM
+    enunciado: |
+      Seja $A$ uma matriz quadrada. Assinale o que for correto.
+    proposicoes:
+    - 'Se $A$ tem duas colunas iguais, então $\det A = 0$.'
+    - 'Se $A$ é de ordem 4 e $\det A = 2$, então $\det(2A) = 32$.'
+    - 'Se $A$ é antissimétrica e de ordem 3, então $\det A = 0$.'
+    - 'Se $A$ é antissimétrica e de ordem 2, então $\det A = 0$.'
+    - 'Se $A$ é de ordem 2, então $\det(A + A) = 2\det A$.'
+    corretas: [1, 2, 3]
+    resolucao: |
+      01) Correta. 02) Correta: $2^4 \cdot 2 = 32$.
+      04) Correta: $\det A = \det A^t = \det(-A) = -\det A$, logo $\det A = 0$.
+      08) Incorreta: $\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ tem determinante 1.
+      16) Incorreta: $\det(2A) = 2^2\det A = 4\det A$.
+      Soma: $01 + 02 + 04 = 07$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Para quaisquer números reais $a$, $b$ e $c$, o valor de $\begin{vmatrix} 1 & 1 & 1 \\ a & b & c \\ b + c & c + a & a + b \end{vmatrix}$ é
+    opcoes: ['$0$', '$a + b + c$', '$abc$', '$(a - b)(b - c)(c - a)$', '$1$']
+    correta: A
+    resolucao: |
+      Somando a linha 2 à linha 3 (o que não muda o determinante), a linha 3 fica $(a + b + c)(1, 1, 1)$, proporcional à linha 1. O determinante é 0.
+
+  - estilo: Enem
+    texto: |
+      Um software de engenharia trabalha com matrizes quadradas que descrevem a rigidez de estruturas. Durante um teste, um técnico multiplicou todas as entradas de uma dessas matrizes por 3, para mudar a unidade de medida, e observou que o determinante ficou 81 vezes maior. Ele se lembrou de que, para uma matriz de ordem $n$, $\det(kA) = k^n \det A$.
+    enunciado: |
+      A ordem da matriz usada no teste é
+    opcoes: ['$2$', '$3$', '$4$', '$9$', '$27$']
+    correta: C
+    resolucao: |
+      $3^n = 81 = 3^4$, logo $n = 4$. A ordem 27 viria de confundir $3^n$ com $3n$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Seja $A$ uma matriz de ordem 3 com $\det A = -2$. O valor de $\det(-2A^t)$ é
+    opcoes: ['$-16$', '$-4$', '$4$', '$8$', '$16$']
+    correta: E
+    resolucao: |
+      $\det(-2A^t) = (-2)^3 \det A^t = -8 \cdot (-2) = 16$.
+      $-16$ esquece um dos sinais; 4 usa $(-2)^1$ no lugar de $(-2)^3$.
+
+aprofundamento:
+  questoes:
+  - estilo: Unicamp
+    enunciado: 'Para uma matriz $A$ de ordem $n$ e um número real $k$, vale $\det(kA) = k^n \det A$.'
+    itens:
+    - 'Usando a propriedade de uma fila multiplicada por um número, explique por que $\det(2A) = 8\det A$ quando $A$ é de ordem 3.'
+    - 'Uma matriz $A$ tem $\det A \neq 0$ e $\det(3A) = 243\det A$. Qual é a ordem de $A$?'
+    - 'Existe uma matriz $A$ de ordem 3, com $\det A \neq 0$, tal que $\det(2A) = 2\det A$? Justifique.'
+    espaco: 62
+    resolucao: |
+      a) $2A$ tem as três linhas de $A$ multiplicadas por 2, e cada linha multiplicada por 2 multiplica o determinante por 2: $2 \cdot 2 \cdot 2 = 8$.
+      b) $3^n = 243 = 3^5$, logo $n = 5$.
+      c) Não: $\det(2A) = 8\det A = 2\det A$ obrigaria $6\det A = 0$, isto é, $\det A = 0$.
+    resposta: 'a) Ver resolução; b) $n = 5$; c) não'
+
+  - estilo: Fuvest
+    enunciado: 'Uma matriz quadrada $A$ é antissimétrica quando $A^t = -A$.'
+    itens:
+    - 'Mostre que $\begin{vmatrix} 0 & a & b \\ -a & 0 & c \\ -b & -c & 0 \end{vmatrix} = 0$ para quaisquer $a$, $b$ e $c$, pela regra de Sarrus.'
+    - 'Mostre que toda matriz antissimétrica de ordem ímpar tem determinante nulo.'
+    - 'Dê um exemplo de matriz antissimétrica de ordem 2 com determinante 4.'
+    espaco: 62
+    resolucao: |
+      a) Descem: $0 \cdot 0 \cdot 0 + a \cdot c \cdot (-b) + b \cdot (-a) \cdot (-c) = -abc + abc = 0$. Sobem: $b \cdot 0 \cdot (-b) + 0 \cdot c \cdot (-c) + a \cdot (-a) \cdot 0 = 0$. O determinante é $0 - 0 = 0$.
+      b) Para ordem $n$ ímpar: $\det A = \det A^t = \det(-A) = (-1)^n\det A = -\det A$, logo $\det A = 0$.
+      c) $\begin{pmatrix} 0 & 2 \\ -2 & 0 \end{pmatrix}$: determinante $0 + 4 = 4$.
+    resposta: 'a) e b) Ver resolução; c) $\begin{pmatrix} 0 & 2 \\ -2 & 0 \end{pmatrix}$'
+
+  - estilo: ITA
+    enunciado: |
+      Sabendo que $\begin{vmatrix} a & b & c \\ d & e & f \\ g & h & i \end{vmatrix} = 4$, o valor de $\begin{vmatrix} a + 2d & b + 2e & c + 2f \\ 3d & 3e & 3f \\ g & h & i \end{vmatrix}$ é
+    opcoes: ['$4$', '$8$', '$12$', '$24$', '$36$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      Colocando 3 em evidência na linha 2: $3 \cdot \begin{vmatrix} a + 2d & b + 2e & c + 2f \\ d & e & f \\ g & h & i \end{vmatrix}$.
+      Subtraindo da linha 1 o dobro da linha 2 (sem mudar o determinante), volta-se à matriz original: o resultado é $3 \cdot 4 = 12$.
+      24 conta também o fator 2 da combinação, que não altera o determinante.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Matrizes da forma $V = \begin{pmatrix} 1 & 1 & 1 \\ a & b & c \\ a^2 & b^2 & c^2 \end{pmatrix}$ são chamadas de matrizes de Vandermonde.'
+    itens:
+    - 'Calcule o determinante para $a = 1$, $b = 2$ e $c = 3$.'
+    - 'Subtraindo a coluna 1 das colunas 2 e 3 (o que não altera o determinante), mostre que $\det V = (b - a)(c - a)(c - b)$.'
+    - 'Para que valores de $a$, $b$ e $c$ o determinante é nulo?'
+    espaco: 62
+    resolucao: |
+      a) $\begin{vmatrix} 1 & 1 & 1 \\ 1 & 2 & 3 \\ 1 & 4 & 9 \end{vmatrix}$: descem $18 + 3 + 4 = 25$; sobem $2 + 12 + 9 = 23$; vale 2. (Confere: $1 \cdot 2 \cdot 1 = 2$.)
+      b) A matriz fica $\begin{pmatrix} 1 & 0 & 0 \\ a & b - a & c - a \\ a^2 & b^2 - a^2 & c^2 - a^2 \end{pmatrix}$. Pela regra de Sarrus, sobra $(b - a)(c^2 - a^2) - (c - a)(b^2 - a^2) = (b - a)(c - a)\,[(c + a) - (b + a)] = (b - a)(c - a)(c - b)$.
+      c) Quando dois dos números $a$, $b$ e $c$ são iguais (e então duas colunas ficam iguais).
+    resposta: 'a) 2; b) Ver resolução; c) quando dois deles são iguais'
+
+  - estilo: UFSC
+    enunciado: |
+      Seja $A$ uma matriz de ordem 3 com $\det A = 2$. Assinale o que for correto.
+    proposicoes:
+    - '$\det A^t = 2$.'
+    - '$\det(-A) = -2$.'
+    - '$\det(2A) = 4$.'
+    - 'Se $B$ é obtida de $A$ trocando duas colunas de posição, então $\det B = -2$.'
+    - 'Se $C$ é obtida de $A$ somando à primeira linha o triplo da segunda, então $\det C = 2$.'
+    - 'Se $D$ é obtida de $A$ multiplicando a primeira linha por 3 e dividindo a terceira linha por 3, então $\det D = 2$.'
+    - '$\det(A + A^t) = 2\det A$.'
+    corretas: [1, 2, 4, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) Correta. 02) Correta: $(-1)^3 \cdot 2$. 04) Incorreta: $2^3 \cdot 2 = 16$.
+      08) Correta. 16) Correta: somar múltiplo de outra linha não altera.
+      32) Correta: $3 \cdot \tfrac{1}{3} = 1$, o determinante não muda.
+      64) Incorreta: com $A = \begin{pmatrix} 1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2 \end{pmatrix}$ ($\det A = 2$), $A + A^t = \begin{pmatrix} 2 & 1 & 0 \\ 1 & 2 & 0 \\ 0 & 0 & 4 \end{pmatrix}$ tem determinante $12 \neq 4$.
+    resposta: 'Soma 59 (01 + 02 + 08 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $D(x) = \begin{vmatrix} x & a & a \\ a & x & a \\ a & a & x \end{vmatrix}$, com $a$ real.'
+    itens:
+    - 'Somando as colunas 2 e 3 à coluna 1 e depois subtraindo a linha 1 das linhas 2 e 3, mostre que $D(x) = (x + 2a)(x - a)^2$.'
+    - 'Para $a = 1$, resolva $D(x) = 0$.'
+    - 'Determine $a$ para que $x = 3$ seja raiz dupla de $D(x)$.'
+    espaco: 62
+    resolucao: |
+      a) A coluna 1 vira $(x + 2a)(1, 1, 1)$; colocando $x + 2a$ em evidência: $(x + 2a)\begin{vmatrix} 1 & a & a \\ 1 & x & a \\ 1 & a & x \end{vmatrix}$. Subtraindo a linha 1 das outras: $(x + 2a)\begin{vmatrix} 1 & a & a \\ 0 & x - a & 0 \\ 0 & 0 & x - a \end{vmatrix} = (x + 2a)(x - a)^2$.
+      b) $(x + 2)(x - 1)^2 = 0$: $x = -2$ ou $x = 1$.
+      c) A raiz dupla é $x = a$, então $a = 3$ (e a outra raiz é $-6$).
+    resposta: 'a) Ver resolução; b) $x = -2$ ou $x = 1$; c) $a = 3$'
+
+  - estilo: Unicamp
+    texto: |
+      Uma fábrica tem três unidades, e a produção mensal de três produtos em cada unidade forma as linhas de uma matriz de ordem 3. Na unidade 3, a produção de cada produto é sempre igual à soma das produções das unidades 1 e 2.
+    enunciado: ''
+    itens:
+    - 'Calcule, pela regra de Sarrus, o determinante de $\begin{pmatrix} 1 & 2 & 3 \\ 2 & 1 & 4 \\ 3 & 3 & 7 \end{pmatrix}$.'
+    - 'Explique, com as propriedades, por que toda matriz de produção dessa fábrica tem determinante nulo.'
+    - 'Determine $k$ para que $\begin{vmatrix} 1 & 2 & 3 \\ 2 & 1 & 4 \\ k & 3 & 7 \end{vmatrix} = 0$ e mostre que esse é o único valor.'
+    espaco: 62
+    resolucao: |
+      a) Descem: $7 + 24 + 18 = 49$; sobem: $9 + 12 + 28 = 49$; o determinante é 0.
+      b) Subtraindo da linha 3 as linhas 1 e 2 (o que não muda o determinante), a linha 3 fica nula. Logo o determinante é 0.
+      c) Descem: $7 + 8k + 18$; sobem: $3k + 12 + 28$. Diferença: $5k - 15$, que só se anula para $k = 3$ (justamente quando a linha 3 é a soma das outras).
+    resposta: 'a) 0; b) Ver resolução; c) $k = 3$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $A$ é uma matriz de ordem 4 com $\det A = 5$, então $\det(-2A)$ é igual a
+    opcoes: ['$-80$', '$-40$', '$40$', '$80$', '$160$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      $\det(-2A) = (-2)^4 \cdot 5 = 16 \cdot 5 = 80$. Com ordem par, o sinal negativo desaparece; quem usa $(-2)^3$ marca $-40$.
+    resposta: 'D'
+
+  - estilo: Unesp
+    texto: |
+      Uma imagem digital é uma matriz quadrada de números. Espelhar a imagem de cima para baixo inverte a ordem das suas linhas: a primeira linha vira a última, a segunda vira a penúltima, e assim por diante.
+    enunciado: ''
+    itens:
+    - 'Calcule o determinante da imagem $P = \begin{pmatrix} 1 & 0 & 2 \\ 0 & 3 & 1 \\ 2 & 1 & 0 \end{pmatrix}$.'
+    - 'Sem fazer contas, dê o determinante da imagem espelhada de $P$. Justifique.'
+    - 'Para uma imagem $4 \times 4$, o espelhamento de cima para baixo muda o determinante? Justifique.'
+    espaco: 62
+    resolucao: |
+      a) Descem: $0 + 0 + 0 = 0$; sobem: $12 + 1 + 0 = 13$; $\det P = -13$.
+      b) Para inverter 3 linhas, basta trocar a 1ª com a 3ª: uma troca, o determinante muda de sinal: $13$.
+      c) Com 4 linhas, são duas trocas (1ª com 4ª e 2ª com 3ª): o sinal muda duas vezes e o determinante não se altera.
+    resposta: 'a) $-13$; b) $13$; c) não muda'
+
+  - estilo: Fuvest
+    enunciado: 'Considere matrizes quadradas $A = (a_{ij})$ de ordem $n$.'
+    itens:
+    - 'Mostre que, se $a_{ij} = i \cdot j$ e $n \ge 2$, então $\det A = 0$.'
+    - 'Para $a_{ij} = i + j$ e $n = 3$, mostre que $\det A = 0$ usando que somar a uma fila múltiplos de outras não altera o determinante.'
+    - 'Para $a_{ij} = i + j$ e $n = 2$, calcule $\det A$.'
+    espaco: 62
+    resolucao: |
+      a) A linha $i$ é $(i, 2i, 3i, \dots)$, isto é, $i$ vezes a linha 1. As linhas 1 e 2 são proporcionais: $\det A = 0$.
+      b) $A = \begin{pmatrix} 2 & 3 & 4 \\ 3 & 4 & 5 \\ 4 & 5 & 6 \end{pmatrix}$. Fazendo linha 3 $+$ linha 1 $- 2 \cdot$ linha 2, a linha 3 fica $(0, 0, 0)$: $\det A = 0$.
+      c) $\begin{vmatrix} 2 & 3 \\ 3 & 4 \end{vmatrix} = 8 - 9 = -1$.
+    resposta: 'a) e b) Ver resolução; c) $-1$'
