@@ -46,7 +46,7 @@ button{cursor:pointer}
 .cd-exportar:active:not(:disabled){transform:translateY(2px);box-shadow:none}
 
 /* ---------- mesa e páginas ---------- */
-.cd-mesa{padding:14px 12px 120px;overflow-x:auto}
+.cd-mesa{padding:14px 12px 120px} /* sem overflow aqui: o enunciado fixo (sticky) usa a rolagem da página */
 .cd-paginas{display:flex;flex-direction:column;align-items:center;gap:0;min-width:min-content}
 .cd-carregando,.cd-erro{margin:80px auto;font-weight:700;color:var(--mute);text-align:center;max-width:420px}
 .cd-pag{position:relative;background:var(--papel);box-shadow:0 1px 2px rgba(33,25,70,.18),0 10px 28px rgba(33,25,70,.12);border-radius:3px;overflow:hidden;
@@ -163,3 +163,38 @@ body[data-ferramenta="borracha"] .cd-pag{cursor:cell}
   .cd-estilos{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cd-traco span{display:none}
 }
+
+/* ---------- questão + rascunho, adaptando à tela (em pé: um embaixo do outro; deitado: lado a lado) ---------- */
+.cd-q{display:flex;flex-direction:column;align-items:stretch;gap:14px;margin:0 auto}
+body.paisagem .cd-q{flex-direction:row;align-items:flex-start;gap:18px}
+.cd-enun{background:#fff;border-radius:16px;box-shadow:0 1px 2px rgba(33,25,70,.16),0 8px 24px rgba(33,25,70,.1);padding:10px 0 14px;flex-shrink:0}
+body.paisagem .cd-enun{position:sticky;top:calc(var(--barra,150px) + 8px);overflow:auto;overscroll-behavior:contain}
+.cd-recorte{box-shadow:none;border-radius:0;background:#fff}
+.cd-rasc-col{display:flex;flex-direction:column;align-items:stretch;flex-shrink:0}
+.cd-rasc-topo{display:flex;align-items:center;justify-content:space-between;padding:0 4px 6px;font:700 13px 'Space Grotesk',system-ui,sans-serif;color:#5b5578}
+.cd-rasc{border-radius:16px}
+.cd-rasc-col .cd-espaco{align-self:center}
+.cd-pagina{margin:0 auto}
+
+/* conferir a resposta */
+.cd-resp{padding:6px 16px 0}
+.cd-conferir{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 18px;border:2px solid var(--borda);border-radius:14px;background:var(--lime);font-weight:800;font-size:15px;box-shadow:0 3px 0 var(--borda)}
+.cd-conferir svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.cd-conferir:active{transform:translateY(2px);box-shadow:none}
+.cd-conferir.aberto{background:#fff;box-shadow:none;height:38px;font-size:13.5px;border-width:1.5px}
+.cd-resp-card{margin-top:12px;border:2px solid #cdeedb;background:#f3fbf6;border-radius:14px;padding:12px 14px;font-size:15px;line-height:1.5}
+.cd-resp-certa{margin:0 0 6px;font:600 16px 'Space Grotesk',system-ui,sans-serif;color:#155f36}
+.cd-resp-certa b{font-size:20px}
+.cd-resp-certa span{font:500 13px 'DM Sans',system-ui,sans-serif;color:#3f6b52}
+.cd-resol h3{margin:10px 0 4px;font:700 13px 'Space Grotesk',system-ui,sans-serif;color:#2c4a3a}
+.cd-resol p{margin:0 0 6px;color:#24302a}
+.cd-autoav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid #cdeedb}
+.cd-autoav span{font-weight:700;font-size:13.5px;color:#2c4a3a;margin-right:4px}
+.cd-autoav button{height:38px;padding:0 14px;border:2px solid #b7dcc5;border-radius:12px;background:#fff;font-weight:800;font-size:14px}
+.cd-autoav button[data-res="certo"][aria-pressed="true"]{background:#1c8f4e;border-color:#1c8f4e;color:#fff}
+.cd-autoav button[data-res="errado"][aria-pressed="true"]{background:#d8352b;border-color:#d8352b;color:#fff}
+.cd-placar{font-size:16px!important;color:var(--ink)!important}
+.cd-mapa-grade button.certo{border-color:#1c8f4e;background:#e8f6ee;color:#155f36}
+.cd-mapa-grade button.errado{border-color:#d8352b;background:#fdecea;color:#9c2620}
+.cd-gabarito{margin-bottom:18px}
+.cd-rasc-topo .cd-espaco{margin:0;padding:5px 12px;font-size:12.5px}

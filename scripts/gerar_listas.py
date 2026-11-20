@@ -156,9 +156,13 @@ PREAMBULO = r"""
 \newcommand{\questaocad}[4]{% número, total, nível, corpo
   \par\noindent{\fontsize{13}{15}\selectfont\tikz[baseline=(n.base)]\node[draw=roxo,line width=1pt,text=roxo,rounded corners=4pt,inner xsep=6pt,inner ysep=3pt,font=\bfseries](n){Questão #1};}%
   \hspace{2mm}{\small\color{mudo}de #2}\ifx&#3&\else\hspace{3mm}{\small\bfseries\color{roxo}#3}\fi\par\vspace{4mm}%
-  {\fontsize{12}{16.2}\selectfont\RaggedRight\setlength{\parskip}{4pt}#4\par}%
+  {\fontsize{12}{16.2}\selectfont\raggedright\setlength{\parskip}{4pt}\emergencystretch=3em #4\par}%
   \vspace{4mm}\pdfsavepos\write-1{CADERNOY \thepage\space\the\pdflastypos}\par}
 \newcommand{\marcaq}[1]{\write-1{CADERNOQ #1 \thepage}}
+% posições das alternativas e das proposições, para o caderno marcar a correta na própria questão
+\newcommand{\posicao}[2]{\pdfsavepos\write-1{CADERNO#1 \thepage\space #2 \the\pdflastxpos\space\the\pdflastypos}}
+\newcommand{\altvc}[2]{\def\pendurado{#2}\pendura{7.5mm}{\posicao{ALT}{#1}\letra{#1}}\vspace{1.5pt}}
+\newcommand{\propc}[2]{\def\pendurado{#2}\pendura{8.5mm}{\posicao{PROP}{#1}\codigo{#1}}}
 
 % ---------- gabarito ----------
 \newcommand{\resolucao}[3]{%
@@ -330,7 +334,10 @@ def apoio_tex(q):
     return tex
 
 
-def alternativas_tex(ops, vertical):
+def alternativas_tex(ops, vertical, caderno=False):
+    if caderno:  # no caderno, sempre na vertical e com a posição de cada letra
+        return (r"\par\nopagebreak\vspace{2.5pt}\noindent\begin{minipage}{\linewidth}\lineskiplimit=3pt\lineskip=5pt" +
+                "".join(r"\altvc{%s}{%s}" % ("ABCDE"[k], o) for k, o in enumerate(ops)) + r"\end{minipage}\par")
     if not vertical:
         return r"\alternativas" + "".join("{%s}" % o for o in ops)
     # as alternativas nunca se separam (nem do fim do enunciado)
@@ -383,9 +390,9 @@ def enunciado_tex(q, fixa=False, aprof=False, banca=False, caderno=False):
         else:
             tex += r"\begin{itens}" + "".join(r"\item " + lacunas(i) for i in q["itens"]) + r"\end{itens}"
     if f == "objetiva":
-        tex += alternativas_tex(q["opcoes"], vertical=banca or len(q["opcoes"]) != 5)
+        tex += alternativas_tex(q["opcoes"], vertical=banca or len(q["opcoes"]) != 5, caderno=caderno)
     if f == "somatoria":
-        tex += r"\par\vspace{1mm}" + "".join(r"\prop{%02d}{%s}" % (SOMA[k], p) for k, p in enumerate(q["proposicoes"]))
+        tex += r"\par\vspace{1mm}" + "".join(r"\%s{%02d}{%s}" % ("propc" if caderno else "prop", SOMA[k], p) for k, p in enumerate(q["proposicoes"]))
         tex += r"\somacampo"
     if fixa and not caderno:
         e = espaco_mm(q) + (8 if aprof and "espaco" not in q and espaco_mm(q) else 0)
@@ -831,10 +838,20 @@ def gerar_caderno(aula, codigo, tipo, fonte):
         niveis = [NIVEIS[nivel_vest(q, i)][1] for i, q in enumerate(fonte[tipo]["questoes"], 1)]
     else:
         niveis = [""] * len(fonte[tipo]["questoes"])
+    bp = lambda sp_: int(sp_) / 65536 * 72 / 72.27
+    pos = {"ALT": [], "PROP": []}
+    for tipo_, pg, rot, x, y in re.findall(r"CADERNO(ALT|PROP) (\d+) (\S+) (-?\d+) (-?\d+)", log):
+        pos[tipo_].append((int(pg), rot, round(bp(x), 1), round(altura - bp(y), 1)))
     qs = []
     for n in sorted(inicio):
         fim = (inicio.get(n + 1) or gab) - 1
-        qs.append({"n": n, "paginas": list(range(inicio[n], max(inicio[n], fim) + 1)), "nivel": niveis[n - 1] if n <= len(niveis) else ""})
+        pags = list(range(inicio[n], max(inicio[n], fim) + 1))
+        q = {"n": n, "paginas": pags, "nivel": niveis[n - 1] if n <= len(niveis) else ""}
+        alts = {rot: [pg, x, y] for pg, rot, x, y in pos["ALT"] if pg in pags}
+        props = {str(int(rot)): [pg, x, y] for pg, rot, x, y in pos["PROP"] if pg in pags}
+        if alts: q["alternativas"] = alts
+        if props: q["proposicoes"] = props
+        qs.append(q)
     mapa = {"pdf": f"/pdfs/{pdf_nome}", "paginas": paginas, "questoes": qs, "rascunho": grade,
             "rascunhoFim": round(altura - 20 / 25.4 * 72, 1), "gabarito": gab}
     (DEST / f"caderno-{tipo}-{codigo}.json").write_text(json.dumps(mapa, ensure_ascii=False), encoding="utf-8")

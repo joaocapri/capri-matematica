@@ -9,6 +9,8 @@
 <title>Caderno | MAT MAT MAT!</title>
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="stylesheet" href="/assets/caderno.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']},startup:{typeset:false}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
 <script type="module" src="/assets/caderno.js"></script>
 </head>
 <body>
@@ -35,6 +37,11 @@
       <div class="cd-grupo" id="cd-traco-grupo">
         <button type="button" class="cd-btn cd-traco" id="cd-traco" aria-haspopup="dialog" aria-expanded="false" aria-controls="cd-painel" title="Estilo e espessura do traço">
           <canvas id="cd-traco-amostra" width="56" height="20" aria-hidden="true"></canvas><span id="cd-traco-rotulo">Tinteiro · 0,5 mm</span>
+        </button>
+      </div>
+      <div class="cd-grupo" role="group" aria-label="Formas">
+        <button type="button" class="cd-btn" id="cd-formas" aria-pressed="false" title="Formas perfeitas: cada traço vira reta, retângulo, triângulo ou círculo. (Também dá para desenhar e segurar no fim.)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l6-10 6 10z"/><circle cx="17" cy="7" r="3.5"/></svg><span>Formas</span>
         </button>
       </div>
       <div class="cd-grupo" role="group" aria-label="Desfazer e refazer">
@@ -91,8 +98,8 @@
 
 <main class="cd-mesa" id="cd-mesa">
   <div class="cd-dica" id="cd-dica" hidden>
-    <p><b>Uma questão por página</b>, com o resto da folha como rascunho. Resolva ali mesmo com a caneta; o dedo rola a página e <b>dois dedos dão zoom</b>.</p>
-    <p>Precisa de mais espaço? Toque em <b>+ Mais espaço</b> embaixo da questão. Tudo fica salvo neste aparelho, e no fim você exporta a lista resolvida em PDF.</p>
+    <p><b>Uma questão por vez</b>, com rascunho do lado (deitado) ou embaixo (em pé). Escreva com a caneta; o dedo rola e <b>dois dedos dão zoom</b>.</p>
+    <p>Desenhe e <b>segure no fim</b> para a forma ficar perfeita (reta, quadrado, círculo). Terminou? Toque em <b>Conferir resposta</b>. Tudo fica salvo neste aparelho e vira PDF no fim.</p>
     <button type="button" id="cd-dica-ok">Começar</button>
   </div>
   <div class="cd-paginas" id="cd-paginas"><p class="cd-carregando">Abrindo a lista…</p></div>

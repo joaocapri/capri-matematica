@@ -30,11 +30,12 @@ O site é publicado pelo Cloudflare (Workers com arquivos estáticos), ligado a 
 
 ## Caderno digital (/caderno/)
 Resolver a lista no tablet, com a caneta: \`/caderno/?aula=4.14.1&lista=fixacao\` (lista: fixacao, vestibular ou aprofundamento).
-- **Uma questão por página**: a questão no topo e o resto da folha como rascunho (quadriculado, pautado, pontilhado ou liso). Navegação Anterior/Próxima, mapa das questões e “+ Mais espaço” quando a folha acabar.
-- Caneta com 4 estilos (tinteiro, esferográfica, nanquim, pincel), espessura em controle deslizante (de 0,09 mm a 2,5 mm), cores e “outra cor”; marca-texto; borracha; desfazer/refazer (Ctrl+Z).
-- Apple Pencil escreve e o dedo rola; **pinça com dois dedos** dá zoom (Ctrl + roda no computador). O botão **Dedo** deixa o dedo escrever.
-- O gabarito resolvido fica escondido até o aluno pedir. Tudo salva no aparelho (IndexedDB) e exporta a lista resolvida em PDF, com os traços em vetor.
-- O PDF de cada caderno é gerado junto com as listas: \`scripts/gerar_listas.py\` cria \`pdfs/caderno-<lista>-<aula>.pdf\` e um \`.json\` com o mapa das questões e a altura onde o rascunho começa em cada página. O site só mostra o botão “Caderno” quando esses arquivos existem.
+- **Uma questão por vez, adaptando à tela**: em pé, o enunciado fica em cima e o rascunho embaixo; deitado (largura ≥ 900 px), o enunciado fica à esquerda (fixo) e o rascunho à direita. O rascunho tem largura fixa de 540 unidades (o traço não muda ao girar o tablet) e cresce sozinho quando o aluno escreve perto do fim (ou em “+ Mais espaço”). Papel: quadriculado, pautado, pontilhado ou liso.
+- **Conferir resposta** em cada questão: nas objetivas, a alternativa correta fica marcada em verde na própria questão; na somatória, cada proposição ganha ✓ ou ✗; em todas, aparecem a resposta e a resolução (MathJax), com “Acertei/Errei” — o placar aparece no fim e no mapa das questões.
+- **Formas perfeitas**: desenhar e segurar parado no fim (~0,5 s) transforma o traço em reta, retângulo/quadrado, triângulo, círculo/elipse ou linha quebrada; o botão **Formas** faz isso em todo traço. Com o marca-texto, segurar deixa a faixa reta.
+- Caneta com 4 estilos (tinteiro, esferográfica, nanquim, pincel), espessura em controle deslizante (0,09 a 2,5 mm), cores e “outra cor”; marca-texto; borracha; desfazer/refazer (Ctrl+Z). Apple Pencil escreve e o dedo rola; pinça com dois dedos dá zoom (Ctrl + roda no computador). O botão **Dedo** deixa o dedo escrever.
+- Salva sozinho no aparelho (IndexedDB) e exporta a lista resolvida em PDF: cada questão com o rascunho no espaço quadriculado da página e, se precisar, em folhas de continuação; traços em vetor.
+- O PDF de cada caderno é gerado junto com as listas: \`scripts/gerar_listas.py\` cria \`pdfs/caderno-<lista>-<aula>.pdf\` (uma questão por página) e um \`.json\` com o mapa das questões, a altura onde o rascunho começa e a posição de cada alternativa/proposição. O site só mostra o botão “Caderno” quando esses arquivos existem.
 - Código: \`caderno/index.html\`, \`assets/caderno.js\`, \`assets/caderno.css\`; bibliotecas em \`assets/vendor/\` (ver LICENCAS.txt).
 
 ## Como adicionar conteúdo a uma aula
