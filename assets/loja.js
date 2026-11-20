@@ -39,8 +39,8 @@ function facesDe(v){
 function montarLivro(manter){
  var box=document.getElementById('fb');if(!box)return;
  var w=box.clientWidth,duploAntes=fb.duplo,kAntes=fb.k;
- fb.largura=w;fb.duplo=w>=640;
- fb.pw=fb.duplo?Math.min(430,Math.floor((w-16)/2)):Math.min(380,w-24);
+ fb.largura=w;fb.duplo=true; // sempre o livro aberto em duas páginas; no celular ele fica pequeno, só para folhear
+ fb.pw=Math.max(120,Math.min(430,Math.floor((w-12)/2)));
  var ph=Math.round(fb.pw*909/640);
  fb.faces=facesDe(item.volumes[active]);
  var folhas=fb.duplo?fb.faces.filter(function(x,i){return i%2===0}).map(function(x,i){return {frente:x,verso:fb.faces[2*i+1]}}):fb.faces.map(function(x){return {frente:x}});

@@ -185,3 +185,10 @@
  .fb-nav{gap:10px}
 }
 @media(prefers-reduced-motion:reduce){.fb-virando .fb-face::after{animation:none}.fb-dica{transition:none}}
+@media(max-width:620px){
+ .fb{padding:8px 0 20px;perspective:1400px}
+ .fb-frente{border-radius:0 4px 4px 0}.fb-verso{border-radius:4px 0 0 4px}
+ .fb-guarda{padding:10%}.fb-guarda b{font-size:12px}.fb-guarda span{font-size:10.5px}.fb-guarda small{font-size:9px;margin-top:6px}
+ .fb-contra{gap:8px;padding:10%}.fb-contra p{font-size:11.5px}.fb-contra small{font-size:9.5px}
+ .fb-leg{font-size:13.5px}
+}
