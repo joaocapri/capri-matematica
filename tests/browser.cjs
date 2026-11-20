@@ -35,7 +35,7 @@ async function checkWidth(page,label){
   assert.match(promise,/gratuito/i,'Cabeçalho deixa claro que é gratuito');
   assert.equal(await page.locator('.home-hero-copy>p').textContent(),'Listas de Exercícios e Teoria grátis. Simples assim');
   assert.match(await page.title(),/MAT MAT MAT!/);
-  assert.equal(await page.locator('a.nav-cta[href="/teste-seu-nivel/"]').count(),1);
+  assert.equal(await page.locator('a.nav-cta[href="/livros/"]').count(),1);
   await checkWidth(page,config.name+' home');
   await page.screenshot({path:'screenshots/'+config.name+'-home.png',fullPage:true});
   await page.locator('#hero-search').fill('Bhaskara');
@@ -146,9 +146,11 @@ async function checkWidth(page,label){
   await page.locator('.shop-origem').waitFor();
   assert.match(await page.locator('.shop-origem').innerText(),/Volume 2/);
   assert.equal(await page.locator('.shop-page img').count(),5);
-  await page.locator('.shop-main-actions [data-add="v2"]').click();
+  assert.equal(await page.locator('#shop-form').isVisible(),false,'Formulário só aparece com algo no pedido');
+  await page.locator('.shop-acoes [data-add="v2"]').click();
   await page.locator('#shop-cart .shop-cart-item').waitFor();
   assert.match(await page.locator('#shop-cart').innerText(),/Volume 2/);
+  assert.equal(await page.locator('#shop-form input').count(),2,'Só nome e CEP para pedir');
   await checkWidth(page,config.name+' loja');
   await page.screenshot({path:'screenshots/'+config.name+'-loja.png',fullPage:true});
   // Busca: Enter abre a melhor aula direto.

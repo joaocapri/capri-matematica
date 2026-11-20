@@ -126,7 +126,8 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelectorAll('img.mat-logo-img').length,2,'Logo em ambas as marcas visíveis');
  assert.equal(d.querySelector('.brand-mat').getAttribute('aria-label'),'MAT MAT MAT! — página inicial');
  assert.ok(d.querySelector('a.as-tile[href="/funcoes/"]'));
- assert.ok(d.querySelector('a.nav-cta[href="/teste-seu-nivel/"]'));
+ assert.equal(d.querySelector('a.nav-cta[href="/livros/"] .nav-cta-long').textContent,'Ver o material impresso','Cabeçalho leva ao material impresso');
+ assert.equal(d.querySelector('a.nav-cta[href="/teste-seu-nivel/"]'),null);
  assert.ok(!d.querySelector('#explore-content .browse-topic'));
  assert.equal(d.querySelectorAll('img.mat-logo-img[src="/assets/logo-mat-256.png"]').length,2,'Logo em imagem no topo e no rodapé');
  type(w,d.querySelector('#hero-search'),'Bhaskara');
