@@ -4,10 +4,10 @@
    "Veja por dentro" é um livro para folhear: começa na capa e as páginas viram ao arrastar ou tocar. */
 (function(){
 'use strict';
-var item=null,root=null,active=0,cart={kit:0},origem=0;
+var item=null,root=null,active=0,cart={kit:1},origem=0;
 var KEY='matmatmat-carrinho';
 function escape(s){return String(s==null?'':s).replace(/[&<>"']/g,function(v){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[v]})}
-function restore(){try{var c=JSON.parse(localStorage.getItem(KEY)||'null'),n=Number(c&&c.kit);cart.kit=Number.isInteger(n)&&n>=0&&n<=12?n:0}catch(e){}}
+function restore(){try{var c=JSON.parse(localStorage.getItem(KEY)||'null'),n=Number(c&&c.kit);cart.kit=Number.isInteger(n)&&n>=1&&n<=12?n:1}catch(e){}} // o pedido já começa com a coleção
 function save(){try{localStorage.setItem(KEY,JSON.stringify(cart))}catch(e){}}
 function oferta(){return item&&item.oferta&&item.oferta.ativo&&item.oferta.cupom?item.oferta:null}
 function vol(n){return item.volumes[n-1]}
@@ -127,21 +127,18 @@ function zoom(i){
 /* ---------- Pedido ---------- */
 function cart_(){
  var n=cart.kit,o=oferta();
- document.getElementById('shop-cart').innerHTML=n?'<div class="shop-cart-item"><span class="shop-cart-dot kit" aria-hidden="true"></span><div><b>Coleção completa</b><small>Os 4 volumes, '+soma('paginas')+' páginas</small></div><div class="shop-count"><button type="button" data-count="-1" aria-label="Diminuir a quantidade">−</button><output>'+n+'</output><button type="button" data-count="1" aria-label="Aumentar a quantidade">+</button></div></div>'
-   +(o?'<p class="shop-cart-cupom">Cupom <b>'+escape(o.cupom)+'</b> aplicado: '+escape(o.desconto)+' off</p>':'')
-  :'<div class="shop-empty"><p>Nada no pedido ainda.</p><button type="button" class="shop-cta" data-add="kit">Adicionar a coleção completa</button></div>';
- document.getElementById('shop-form').hidden=!n;var lay=root.querySelector('.shop-order-layout');if(lay)lay.classList.toggle('vazio',!n);
- var bar=document.getElementById('shop-bar');if(bar)bar.innerHTML=n?'<span>Coleção completa'+(n>1?' ×'+n:'')+'</span><a href="#pedido" class="shop-cta">Finalizar</a>':'<span>4 volumes'+(o?' · '+escape(o.desconto)+' off':'')+'</span><button type="button" class="shop-cta" data-add="kit">Quero a coleção</button>';
+ document.getElementById('shop-cart').innerHTML='<div class="shop-cart-item"><span class="shop-cart-dot kit" aria-hidden="true"></span><div><b>Coleção completa</b><small>Os 4 volumes, '+soma('paginas')+' páginas</small></div><div class="shop-count"><button type="button" data-count="-1" aria-label="Diminuir a quantidade"'+(n<=1?' disabled':'')+'>−</button><output>'+n+'</output><button type="button" data-count="1" aria-label="Aumentar a quantidade">+</button></div></div>'
+   +(o?'<p class="shop-cart-cupom">Cupom <b>'+escape(o.cupom)+'</b> aplicado: '+escape(o.desconto)+' off</p>':'');
+ var bar=document.getElementById('shop-bar');if(bar)bar.innerHTML='<span>Coleção completa'+(o?' · '+escape(o.desconto)+' off':'')+'</span><a href="#pedido" class="shop-cta" data-pedir>Pedir</a>';
 }
-function add(){if(!cart.kit)cart.kit=1;save();cart_();flash();document.getElementById('pedido').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
-function flash(){var t=document.getElementById('shop-flash');t.textContent='Coleção completa no pedido ✓';t.classList.remove('show');void t.offsetWidth;t.classList.add('show');clearTimeout(flash.t);flash.t=setTimeout(function(){t.classList.remove('show')},2600)}
+function pedir(){var p=document.getElementById('pedido');p.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});setTimeout(function(){var i=document.querySelector('#shop-form [name=nome]');if(i&&!i.value)i.focus({preventScroll:true})},450)}
 function message(d){
  var o=oferta();
  return ['Olá! Quero o material impresso MAT MAT MAT!','','• '+cart.kit+'× Coleção completa (Números, Funções, Álgebra e Geometria)']
  .concat(o?['','Cupom: '+o.cupom+' ('+(o.texto||o.desconto)+')']:[])
  .concat(['','Nome: '+d.nome,'CEP: '+d.cep,'','Pode me passar o valor, o frete e o prazo?']).join('\n');
 }
-function submit(e){e.preventDefault();if(!cart.kit)return;var f=e.currentTarget;if(!f.reportValidity())return;var d=Object.fromEntries(new FormData(f));Object.keys(d).forEach(function(k){d[k]=String(d[k]).trim()});var url='https://wa.me/'+item.phone+'?text='+encodeURIComponent(message(d));var link=document.getElementById('shop-manual-wa');link.href=url;document.getElementById('shop-link-backup').hidden=false;window.location.assign(url)}
+function submit(e){e.preventDefault();var f=e.currentTarget;if(!f.reportValidity())return;var d=Object.fromEntries(new FormData(f));Object.keys(d).forEach(function(k){d[k]=String(d[k]).trim()});var url='https://wa.me/'+item.phone+'?text='+encodeURIComponent(message(d));var link=document.getElementById('shop-manual-wa');link.href=url;document.getElementById('shop-link-backup').hidden=false;window.location.assign(url)}
 
 var CHECK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 var SETA='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
@@ -167,11 +164,9 @@ function view(){
   '<div class="shop-info">'+
    (vv?'<p class="shop-origem" style="--c:'+vv.color+';--t:'+(claro(vv.color)?'#211946':'#fffefa')+'"><span>'+vv.id+'</span>O módulo que você estudava está no Volume '+vv.id+', '+escape(vv.name)+'.</p>':'')+
    '<h1>Toda a matemática do ensino médio em 4 livros.</h1>'+
-   '<p class="shop-lead">Na mesma ordem das aulas do site, com o que o site não tem.</p>'+
-   '<ul class="shop-fatos"><li>'+CHECK+'<span><b>'+soma('tipos')+' tipos de questão</b> com modelo resolvido</span></li><li>'+CHECK+'<span>Teoria direta de cada um dos <b>'+soma('modulos')+' módulos</b></span></li><li>'+CHECK+'<span><b>'+soma('paginas')+' páginas</b> com espaço para resolver</span></li></ul>'+
+   '<ul class="shop-fatos"><li>'+CHECK+'<span><b>Questões originais de vestibulares</b>, separadas em <b>'+soma('tipos')+' tipos</b>, cada tipo com modelo resolvido</span></li><li>'+CHECK+'<span>Teoria direta de cada um dos <b>'+soma('modulos')+' módulos</b></span></li><li>'+CHECK+'<span><b>'+soma('paginas')+' páginas</b> com espaço para resolver</span></li></ul>'+
    (o?'<div class="shop-cupom"><span>Cupom <b>'+escape(o.cupom)+'</b>: '+escape(o.texto||o.desconto+' de desconto')+'</span><button type="button" class="of-copiar shop-copy" data-cupom="'+escape(o.cupom)+'">Copiar</button></div>':'')+
-   '<div class="shop-acoes"><button type="button" class="shop-cta shop-cta-big" data-add="kit">Quero a coleção completa</button><a class="shop-link" href="#por-dentro">Folhear antes</a></div>'+
-   '<p class="shop-nota">Você confirma valor e frete no WhatsApp, antes de pagar.</p>'+
+   '<div class="shop-acoes"><a href="#pedido" class="shop-cta shop-cta-big" data-pedir>Quero a coleção completa</a></div>'+
   '</div></section>'+
 
  '<section class="shell shop-dentro" id="por-dentro"><div class="shop-tit"><h2>Veja por dentro</h2><div class="shop-pvols" role="group" aria-label="Escolha o volume">'+V.map(function(v,i){return '<button type="button" data-pvol="'+i+'" aria-pressed="false" style="--c:'+v.color+'">'+v.id+' · '+escape(v.name)+'</button>'}).join('')+'</div></div>'+
@@ -180,24 +175,23 @@ function view(){
  '<div class="fb-rodape"><span class="fb-dica on" id="fb-dica">Arraste para o lado para virar a página</span><button type="button" class="fb-ampliar" id="fb-zoom">Ampliar a página</button></div></section>'+
 
  '<section class="shell shop-order" id="pedido"><div class="shop-tit"><h2>Seu pedido</h2></div><div class="shop-order-layout"><div class="shop-basket" id="shop-cart"></div>'+
- '<form id="shop-form" class="shop-checkout" hidden><div class="shop-fields">'+
+ '<form id="shop-form" class="shop-checkout"><div class="shop-fields">'+
  '<label><span>Seu nome</span><input name="nome" autocomplete="name" required maxlength="110"></label>'+
  '<label><span>CEP para o frete</span><input name="cep" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}-?[0-9]{3}" required maxlength="9" placeholder="86000-000"></label></div>'+
  '<button class="shop-cta shop-cta-big shop-submit" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 01-12.6 7.4L3.5 20.5l1.6-4.2A8.5 8.5 0 1120.5 11.6z"/></svg>Pedir pelo WhatsApp</button>'+
- '<p class="shop-nota">O WhatsApp abre com o pedido pronto'+(o?', já com o cupom':'')+'. Lá combinamos valor, frete e entrega. O site não guarda seus dados.</p><p id="shop-link-backup" class="shop-nota" hidden>Não abriu? <a id="shop-manual-wa" href="#" rel="noopener noreferrer">Abrir a conversa</a></p></form></div></section>'+
+ '<p id="shop-link-backup" class="shop-nota" hidden>Não abriu? <a id="shop-manual-wa" href="#" rel="noopener noreferrer">Abrir a conversa</a></p></form></div></section>'+
 
  '<section class="shell shop-faq"><div class="shop-tit"><h2>Dúvidas</h2></div><div class="shop-faq-list">'+faq(o)+'</div></section>'+
 
  '<div class="shop-bar" id="shop-bar"></div>'+
- '<div class="shop-flash" id="shop-flash" role="status" aria-live="polite"></div>'+
  '<dialog class="shop-zoom" id="shop-zoom" aria-label="Página do livro"><figure><img alt=""><figcaption></figcaption></figure><button type="button" class="shop-zoom-x" aria-label="Fechar">×</button><button type="button" class="shop-zoom-nav prev" aria-label="Página anterior">‹</button><button type="button" class="shop-zoom-nav next" aria-label="Próxima página">›</button></dialog>';
 
  montarLivro(false);ligarLivro();cart_();
  root.addEventListener('click',function(e){
   var t=e.target.closest('button,a');if(!t||!root.contains(t))return;
   if(t.dataset.pvol!=null){if(Number(t.dataset.pvol)!==active){active=Number(t.dataset.pvol);montarLivro(false)}}
-  else if(t.dataset.add)add();
-  else if(t.dataset.count){cart.kit=Math.min(12,Math.max(0,cart.kit+Number(t.dataset.count)));save();cart_()}
+  else if(t.hasAttribute('data-pedir')){e.preventDefault();pedir()}
+  else if(t.dataset.count){cart.kit=Math.min(12,Math.max(1,cart.kit+Number(t.dataset.count)));save();cart_()}
  });
  var z=document.getElementById('shop-zoom');
  z.querySelector('.shop-zoom-x').addEventListener('click',function(){z.close()});

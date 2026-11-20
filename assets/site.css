@@ -1961,3 +1961,11 @@ html.rv-aberto,html.rv-aberto body{overflow:hidden}
  .av-resumo{flex:0 0 auto;justify-content:flex-start;margin:10px 0 20px}
 }
 @media(max-width:620px){.av-kick{align-items:center}.av-kick-em{display:none}.av-kick .aula-kicker{flex-wrap:nowrap;white-space:nowrap}}
+
+/* cabeçalho da página de vendas: logo no centro e volta ao site */
+.topbar-loja .shell{display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.topbar-loja .brand-mat{justify-self:center}
+.loja-voltar{justify-self:start;display:inline-flex;align-items:center;gap:4px;padding:6px 10px 6px 4px;border-radius:999px;color:#5b5675;font:600 14px 'DM Sans',system-ui,sans-serif;text-decoration:none}
+.loja-voltar svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.loja-voltar:hover{color:#211946;background:#f1eff6}
+@media(max-width:520px){.loja-voltar span{display:none}.loja-voltar{padding:8px}}

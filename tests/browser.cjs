@@ -153,10 +153,12 @@ async function checkWidth(page,label){
   await page.waitForTimeout(900);
   assert.notEqual(await page.locator('#fb-leg').innerText(),'Capa');
   assert.equal(await page.locator('[data-add^="v"]').count(),0,'Só a coleção completa à venda');
-  assert.equal(await page.locator('#shop-form').isVisible(),false,'Formulário só aparece com algo no pedido');
-  await page.locator('.shop-acoes [data-add="kit"]').click();
-  await page.locator('#shop-cart .shop-cart-item').waitFor();
-  assert.match(await page.locator('#shop-cart').innerText(),/Coleção completa/);
+  assert.match(await page.locator('#shop-cart').innerText(),/Coleção completa/,'O pedido já começa com a coleção');
+  assert.ok(await page.locator('#shop-form').isVisible());
+  assert.equal(await page.locator('.topbar-loja .nav-cta').count(),0,'Na página de vendas, sem o botão do cabeçalho');
+  assert.equal(await page.locator('.topbar-loja a.loja-voltar[href="/"]').count(),1);
+  await page.locator('.shop-acoes [data-pedir]').click();
+  await page.waitForFunction(()=>document.activeElement&&document.activeElement.name==='nome');
   assert.equal(await page.locator('#shop-form input').count(),2,'Só nome e CEP para pedir');
   await checkWidth(page,config.name+' loja');
   await page.screenshot({path:'screenshots/'+config.name+'-loja.png',fullPage:true});
