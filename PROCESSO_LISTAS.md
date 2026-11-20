@@ -5,6 +5,7 @@ Cada aula tem o código do livro **V.M.a** (volume, módulo, aula), como `2.3.2`
 
 - `pdfs/fixacao-V.M.a.pdf`: **lista 1, fixação**. 20 questões com espaço para resolver, do fácil ao difícil, + gabarito resolvido.
 - `pdfs/vestibular-V.M.a.pdf`: **lista 2, vestibular**. 20 questões no formato das provas reais (Enem, Fuvest, Unicamp, UEM, UEL…) + gabarito resolvido.
+- `pdfs/caderno-<lista>-V.M.a.pdf` e `.json`: versão do **caderno digital** de cada lista (uma questão por página, com rascunho). O gerador cria sozinho; não precisa fazer nada.
 - `pdfs/aprofundamento-V.M.a.pdf`: **lista 3, aprofundamento**. 10 questões mais puxadas (discursivas de 2ª fase e objetivas difíceis), com espaço para resolver + gabarito resolvido.
 - `gravacao/V.M.a.pdf`: caderno de gravação em 16:9 para o professor abrir no GoodNotes. Fica fora do site (a pasta está no `.gitignore`).
 

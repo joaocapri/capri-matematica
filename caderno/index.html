@@ -21,7 +21,7 @@
 
     <div class="cd-ferramentas" role="toolbar" aria-label="Ferramentas de escrita">
       <div class="cd-grupo" role="group" aria-label="Ferramenta">
-        <button type="button" class="cd-btn" data-ferramenta="caneta" aria-pressed="true" title="Caneta (P)">
+        <button type="button" class="cd-btn" data-ferramenta="caneta" aria-pressed="true" title="Caneta (P). Toque de novo para escolher o estilo e a espessura">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-4.6L15.8 4.8a2 2 0 012.8 0l.6.6a2 2 0 010 2.8L8.6 18.8z"/><path d="M13.8 6.8l3.4 3.4"/></svg><span>Caneta</span>
         </button>
         <button type="button" class="cd-btn" data-ferramenta="marca" aria-pressed="false" title="Marca-texto (M)">
@@ -32,7 +32,11 @@
         </button>
       </div>
       <div class="cd-grupo cd-cores" role="radiogroup" aria-label="Cor" id="cd-cores"></div>
-      <div class="cd-grupo cd-espessuras" role="radiogroup" aria-label="Espessura" id="cd-espessuras"></div>
+      <div class="cd-grupo" id="cd-traco-grupo">
+        <button type="button" class="cd-btn cd-traco" id="cd-traco" aria-haspopup="dialog" aria-expanded="false" aria-controls="cd-painel" title="Estilo e espessura do traço">
+          <canvas id="cd-traco-amostra" width="56" height="20" aria-hidden="true"></canvas><span id="cd-traco-rotulo">Tinteiro · 0,5 mm</span>
+        </button>
+      </div>
       <div class="cd-grupo" role="group" aria-label="Desfazer e refazer">
         <button type="button" class="cd-btn cd-ico" id="cd-desfazer" title="Desfazer (Ctrl+Z)" aria-label="Desfazer" disabled>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 010 11H11"/></svg>
@@ -42,9 +46,9 @@
         </button>
       </div>
       <div class="cd-grupo" role="group" aria-label="Papel e entrada">
-        <label class="cd-papel" title="Papel das novas folhas de rascunho">
+        <label class="cd-papel" title="Papel do rascunho">
           <span>Papel</span>
-          <select id="cd-papel" aria-label="Papel das novas folhas">
+          <select id="cd-papel" aria-label="Papel do rascunho">
             <option value="quadriculado">Quadriculado</option>
             <option value="pautado">Pautado</option>
             <option value="pontilhado">Pontilhado</option>
@@ -56,9 +60,9 @@
         </button>
       </div>
       <div class="cd-grupo" role="group" aria-label="Zoom">
-        <button type="button" class="cd-btn cd-ico" id="cd-menos" aria-label="Diminuir zoom" title="Diminuir">−</button>
+        <button type="button" class="cd-btn cd-ico" id="cd-menos" aria-label="Diminuir zoom" title="Diminuir (ou faça pinça com dois dedos)">−</button>
         <button type="button" class="cd-btn cd-zoom" id="cd-ajustar" title="Ajustar à largura"><span id="cd-zoom">100%</span></button>
-        <button type="button" class="cd-btn cd-ico" id="cd-mais" aria-label="Aumentar zoom" title="Aumentar">+</button>
+        <button type="button" class="cd-btn cd-ico" id="cd-mais" aria-label="Aumentar zoom" title="Aumentar (ou faça pinça com dois dedos)">+</button>
       </div>
     </div>
 
@@ -66,17 +70,49 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg><span>Exportar PDF</span>
     </button>
   </div>
+
+  <section class="cd-painel" id="cd-painel" role="dialog" aria-label="Estilo e espessura do traço" hidden>
+    <div class="cd-painel-sec" id="cd-estilos-sec">
+      <h2>Estilo da caneta</h2>
+      <div class="cd-estilos" id="cd-estilos" role="radiogroup" aria-label="Estilo da caneta"></div>
+    </div>
+    <div class="cd-painel-sec">
+      <h2><span>Espessura</span><output id="cd-esp-valor">0,5 mm</output></h2>
+      <input type="range" id="cd-esp" min="0" max="100" step="1" aria-label="Espessura do traço">
+      <canvas class="cd-previa" id="cd-previa" width="560" height="90" aria-hidden="true"></canvas>
+    </div>
+    <div class="cd-painel-sec">
+      <h2>Cor</h2>
+      <div class="cd-painel-cores" id="cd-painel-cores"></div>
+    </div>
+    <button type="button" class="cd-painel-ok" id="cd-painel-ok">Pronto</button>
+  </section>
 </header>
 
-<main class="cd-mesa" id="cd-mesa" aria-live="polite">
+<main class="cd-mesa" id="cd-mesa">
   <div class="cd-dica" id="cd-dica" hidden>
-    <p><b>Escreva com a caneta</b> direto na lista. O dedo rola as páginas. Sem caneta? Toque em <b>Dedo</b> para escrever com o dedo.</p>
-    <p>Precisa de espaço? Use <b>+ Folha de rascunho</b> entre as páginas. Tudo fica salvo neste aparelho.</p>
-    <button type="button" id="cd-dica-ok">Entendi</button>
+    <p><b>Uma questão por página</b>, com o resto da folha como rascunho. Resolva ali mesmo com a caneta; o dedo rola a página e <b>dois dedos dão zoom</b>.</p>
+    <p>Precisa de mais espaço? Toque em <b>+ Mais espaço</b> embaixo da questão. Tudo fica salvo neste aparelho, e no fim você exporta a lista resolvida em PDF.</p>
+    <button type="button" id="cd-dica-ok">Começar</button>
   </div>
   <div class="cd-paginas" id="cd-paginas"><p class="cd-carregando">Abrindo a lista…</p></div>
 </main>
 
-<p class="cd-status" id="cd-status" role="status"></p>
+<nav class="cd-nav" id="cd-nav" aria-label="Questões" hidden>
+  <button type="button" class="cd-nav-btn" id="cd-ant" aria-label="Questão anterior">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span>Anterior</span>
+  </button>
+  <button type="button" class="cd-nav-q" id="cd-qbtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="cd-mapa">
+    <b id="cd-qnum">Questão 1</b><small id="cd-qinfo">de 20</small>
+  </button>
+  <button type="button" class="cd-nav-btn cd-nav-prox" id="cd-prox" aria-label="Próxima questão">
+    <span>Próxima</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <section class="cd-mapa" id="cd-mapa" role="dialog" aria-label="Ir para a questão" hidden>
+    <div class="cd-mapa-grade" id="cd-mapa-grade"></div>
+  </section>
+</nav>
+
+<p class="cd-status" id="cd-status" role="status" aria-live="polite"></p>
 </body>
 </html>

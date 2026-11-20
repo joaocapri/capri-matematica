@@ -256,6 +256,9 @@ def exportar(codigo):
             capa(pdf, webp)
             pdfs[tipo] = {"url": f"/pdfs/{pdf.name}", "capa": f"/pdfs/capas/{webp.name}", "paginas": paginas(pdf)}
     dados["pdfs"] = pdfs
+    # caderno digital (uma questão por página): só aparece no site quando o PDF e o mapa existem
+    dados["cadernos"] = {t: f"/caderno/?aula={codigo}&lista={t}" for t in ("fixacao", "vestibular", "aprofundamento")
+                         if (ROOT / "pdfs" / f"caderno-{t}-{codigo}.json").exists() and (ROOT / "pdfs" / f"caderno-{t}-{codigo}.pdf").exists()}
     DEST.mkdir(parents=True, exist_ok=True)
     saida = DEST / f"{codigo}.json"
     saida.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

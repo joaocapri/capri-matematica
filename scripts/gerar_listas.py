@@ -152,6 +152,14 @@ PREAMBULO = r"""
 \newcommand{\altv}[2]{\def\pendurado{#2}\pendura{7.5mm}{\letra{#1}}\vspace{1.5pt}}
 \newcommand{\textocomum}[2]{\par\vspace{1mm}\noindent\begin{minipage}{\linewidth}\begin{tikzpicture}\node[fill=suave,rounded corners=3pt,inner xsep=6pt,inner ysep=3pt,font=\footnotesize\bfseries,text=roxo]{#1};\end{tikzpicture}\par\vspace{1.5mm}{#2}\end{minipage}\par\vspace{4mm}}
 
+% ---------- caderno digital: uma questão por página, o resto da folha é rascunho ----------
+\newcommand{\questaocad}[4]{% número, total, nível, corpo
+  \par\noindent{\fontsize{13}{15}\selectfont\tikz[baseline=(n.base)]\node[draw=roxo,line width=1pt,text=roxo,rounded corners=4pt,inner xsep=6pt,inner ysep=3pt,font=\bfseries](n){Questão #1};}%
+  \hspace{2mm}{\small\color{mudo}de #2}\ifx&#3&\else\hspace{3mm}{\small\bfseries\color{roxo}#3}\fi\par\vspace{4mm}%
+  {\fontsize{12}{16.2}\selectfont\RaggedRight\setlength{\parskip}{4pt}#4\par}%
+  \vspace{4mm}\pdfsavepos\write-1{CADERNOY \thepage\space\the\pdflastypos}\par}
+\newcommand{\marcaq}[1]{\write-1{CADERNOQ #1 \thepage}}
+
 % ---------- gabarito ----------
 \newcommand{\resolucao}[3]{%
   \par\noindent\makebox[\badgew][l]{\qnum{#1}}%
@@ -330,7 +338,7 @@ def alternativas_tex(ops, vertical):
             "".join(r"\altv{%s}{%s}" % ("ABCDE"[k], o) for k, o in enumerate(ops)) + r"\end{minipage}\par")
 
 
-def enunciado_tex(q, fixa=False, aprof=False, banca=False):
+def enunciado_tex(q, fixa=False, aprof=False, banca=False, caderno=False):
     tex = ""  # o campo `estilo` não é impresso: serve só para o validador conferir a variedade de bancas
     if q.get("texto"):
         tex += r"\apoio{%s}" % lacunas(bloco(q["texto"]))
@@ -362,7 +370,7 @@ def enunciado_tex(q, fixa=False, aprof=False, banca=False):
     if q.get("itens"):
         n = min(2, int(q.get("colunas") or 0))
         if n >= 2:
-            alt = int(q.get("espaco_item", 20))
+            alt = 0 if caderno else int(q.get("espaco_item", 20))
             cel = r"\dimexpr(\linewidth-%dmm)/%d\relax" % (5 * (n - 1), n)
             linhas_ = []
             for k0 in range(0, len(q["itens"]), n):
@@ -379,7 +387,7 @@ def enunciado_tex(q, fixa=False, aprof=False, banca=False):
     if f == "somatoria":
         tex += r"\par\vspace{1mm}" + "".join(r"\prop{%02d}{%s}" % (SOMA[k], p) for k, p in enumerate(q["proposicoes"]))
         tex += r"\somacampo"
-    if fixa:
+    if fixa and not caderno:
         e = espaco_mm(q) + (8 if aprof and "espaco" not in q and espaco_mm(q) else 0)
         if e:
             tex += r"\caixa{%dmm}" % e
@@ -437,7 +445,7 @@ NOMES = {"fixacao": "Lista de fixação", "vestibular": "Lista de vestibular", "
 CORES = {"fixacao": "lima", "vestibular": "ceu", "aprofundamento": "ndificil"}
 
 
-def documento(aula, tipo, dados, n_listas=2, padrao=3):
+def documento(aula, tipo, dados, n_listas=2, padrao=3, caderno=False):
     banca = padrao >= 4  # padrão 4: formato de prova real (rótulo de estilo, níveis em faixas, alternativas na vertical)
     fixa = tipo in ("fixacao", "aprofundamento")
     nome_tipo = NOMES[tipo]
@@ -456,7 +464,33 @@ def documento(aula, tipo, dados, n_listas=2, padrao=3):
     corpo = corpo.replace("<<LIVRO>>", faixa_livro(vol, mod, aula["id"]))
 
     questoes, n = [], 0
-    if tipo == "aprofundamento":
+    if caderno:
+        corpo = ""  # sem capa: o caderno começa na questão 1
+        tex = tex.replace("<<TIPOCURTO>>", nome_tipo)
+        itens = []  # (questão, nível, texto comum antes)
+        if tipo == "fixacao":
+            for s_ in dados["secoes"]:
+                for q in s_["questoes"]:
+                    itens.append((q, NIVEIS[chave_nivel(s_["nome"])][1], ""))
+        else:
+            qs = dados["questoes"]
+            comum = {}
+            for i, q in enumerate(qs, 1):
+                if q.get("texto_comum"):
+                    tc = q["texto_comum"]; ult = i + int(tc.get("questoes", 2)) - 1
+                    rot = "Texto para as questões %d e %d" % (i, ult) if ult == i + 1 else "Texto para as questões %d a %d" % (i, ult)
+                    for j in range(i, ult + 1):
+                        comum[j] = r"	extocomum{%s}{%s}" % (rot, apoio_tex(tc))
+                nivel = "" if tipo == "aprofundamento" else NIVEIS[nivel_vest(q, i)][1]
+                itens.append((q, nivel, comum.get(i, "")))
+        total_ = len(itens)
+        for i, (q, nivel, antes) in enumerate(itens, 1):
+            questoes.append(q)
+            corpo_q = antes + enunciado_tex(q, fixa=tipo != "vestibular", aprof=tipo == "aprofundamento", banca=banca, caderno=True)
+            corpo += (r"\clearpage" if i > 1 else "") + r"\marcaq{%d}\questaocad{%d}{%d}{%s}{%s}" % (i, i, total_, nivel, corpo_q) + "\n"
+        corpo += r"\clearpage\write-1{CADERNOG \thepage}" + "\n"
+        fixa = tipo in ("fixacao", "aprofundamento")
+    elif tipo == "aprofundamento":
         corpo += r"\begin{multicols}{2}\raggedcolumns" + "\n"
         for q in dados["questoes"]:
             questoes.append(q)
@@ -501,7 +535,8 @@ def documento(aula, tipo, dados, n_listas=2, padrao=3):
                 nome += r" \,·\, somatória"
             corpo += r"\questaosel{%d}{%d}{%s}{%s}" % (len(questoes), num, nome, enunciado_tex(q)) + "\n"
         corpo += r"\end{multicols}" + "\n"
-    corpo += "\\clearpage\n"
+    if not caderno:
+        corpo += "\\clearpage\n"
 
     # Gabarito
     corpo += r"\faixagabarito{%s}" % nome_tipo + "\n"
@@ -762,7 +797,48 @@ def gerar(codigo):
             destino = DEST / f"{tipo}-{codigo}.pdf"
             shutil.copy(Path(tmp) / "lista.pdf", destino)
             saidas.append(destino)
+        gerar_caderno(aula, codigo, tipo, fonte)
     return saidas
+
+
+def gerar_caderno(aula, codigo, tipo, fonte):
+    """Versão do caderno digital: uma questão por página, com o rascunho no resto da folha.
+    Gera pdfs/caderno-<tipo>-<aula>.pdf e um .json com o mapa de questões e a altura onde o rascunho começa."""
+    tex = documento(aula, tipo, fonte[tipo], 3, fonte.get("padrao", 1), caderno=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        arq = Path(tmp) / "lista.tex"
+        arq.write_text(tex, encoding="utf-8")
+        for _ in range(2):
+            r = subprocess.run(["xelatex", "-interaction=nonstopmode", "-halt-on-error", arq.name], cwd=tmp, capture_output=True, text=True)
+            if r.returncode:
+                debug = Path(tempfile.gettempdir()) / f"erro-caderno-{tipo}-{codigo}.tex"
+                debug.write_text(tex, encoding="utf-8")
+                sys.exit(f"Erro no XeLaTeX (caderno {codigo} {tipo}); fonte em {debug}:\n" + r.stdout[-2500:])
+        log = (Path(tmp) / "lista.log").read_text(encoding="utf-8", errors="replace")
+        pdf_nome = f"caderno-{tipo}-{codigo}.pdf"
+        shutil.copy(Path(tmp) / "lista.pdf", DEST / pdf_nome)
+    paginas = int(subprocess.run(["pdfinfo", str(DEST / pdf_nome)], capture_output=True, text=True).stdout.split("Pages:")[1].split()[0])
+    altura = 841.89  # A4 em pontos do PDF
+    grade = {}
+    for pg, sp in re.findall(r"CADERNOY (\d+) (-?\d+)", log):
+        grade[pg] = round(altura - int(sp) / 65536 * 72 / 72.27, 1)  # de cima para baixo, em pontos do PDF
+    inicio = {int(n): int(pg) for n, pg in re.findall(r"CADERNOQ (\d+) (\d+)", log)}
+    gab = re.findall(r"CADERNOG (\d+)", log)
+    gab = int(gab[-1]) if gab else paginas + 1
+    if tipo == "fixacao":
+        niveis = [NIVEIS[chave_nivel(s_["nome"])][1] for s_ in fonte[tipo]["secoes"] for _ in s_["questoes"]]
+    elif tipo == "vestibular":
+        niveis = [NIVEIS[nivel_vest(q, i)][1] for i, q in enumerate(fonte[tipo]["questoes"], 1)]
+    else:
+        niveis = [""] * len(fonte[tipo]["questoes"])
+    qs = []
+    for n in sorted(inicio):
+        fim = (inicio.get(n + 1) or gab) - 1
+        qs.append({"n": n, "paginas": list(range(inicio[n], max(inicio[n], fim) + 1)), "nivel": niveis[n - 1] if n <= len(niveis) else ""})
+    mapa = {"pdf": f"/pdfs/{pdf_nome}", "paginas": paginas, "questoes": qs, "rascunho": grade,
+            "rascunhoFim": round(altura - 20 / 25.4 * 72, 1), "gabarito": gab}
+    (DEST / f"caderno-{tipo}-{codigo}.json").write_text(json.dumps(mapa, ensure_ascii=False), encoding="utf-8")
+    return DEST / pdf_nome
 
 
 TITULOS = {
