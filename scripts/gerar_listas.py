@@ -399,11 +399,22 @@ SITE = "matcomjoao.com"
 
 
 def faixa_livro(vol, mod, aula_id):
-    """Faixa discreta da capa: onde o conteúdo está no livro e o convite para adquirir."""
-    return (r"\noindent\hfill\href{https://%s/livros/?volume=%s}{\begin{tikzpicture}[baseline]"
-            r"\node[fill=lima!45,draw=ink,line width=.6pt,rounded corners=4pt,inner xsep=8pt,inner ysep=4.5pt,font=\footnotesize,text=ink]"
-            r"{\textbf{No livro:} Volume %s, módulo %s \,·\, aula %s\hspace{4mm}\textbf{\color{roxo}Adquira já em %s/livros}};"
-            r"\end{tikzpicture}}\par" % (SITE, vol, vol, mod, aula_id, SITE))
+    """Faixa centralizada da capa: onde o assunto está no material impresso e o convite para adquirir."""
+    return (r"\begin{center}\href{https://%(site)s/livros/?volume=%(vol)s}{\begin{tikzpicture}"
+            r"\node[draw=ink,line width=.6pt,fill=lima!20,rounded corners=7pt,minimum width=.9\linewidth,minimum height=14.5mm](f){};"
+            # livro aberto, desenhado
+            r"\begin{scope}[shift={([xshift=11mm]f.west)},scale=.4,line join=round]"
+            r"\fill[roxo] (0,-.75) .. controls (-.7,-.45) and (-1.3,-.5) .. (-1.75,-.62) -- (-1.75,.82) .. controls (-1.3,.95) and (-.7,.9) .. (0,.6) -- cycle;"
+            r"\fill[roxo] (0,-.75) .. controls (.7,-.45) and (1.3,-.5) .. (1.75,-.62) -- (1.75,.82) .. controls (1.3,.95) and (.7,.9) .. (0,.6) -- cycle;"
+            r"\draw[white,line width=.7pt] (0,-.62) -- (0,.55);"
+            r"\draw[white,line width=.45pt] (-1.35,.35) .. controls (-.9,.45) .. (-.35,.25) (-1.35,0) .. controls (-.9,.1) .. (-.35,-.1) (.35,.25) .. controls (.9,.45) .. (1.35,.35) (.35,-.1) .. controls (.9,.1) .. (1.35,0);"
+            r"\end{scope}"
+            r"\node[anchor=west,align=left,inner sep=0pt] at ([xshift=20.5mm]f.west)"
+            r"{{\small\bfseries Este assunto está no \textcolor{roxo}{Volume %(vol)s} do material impresso}\\[1.2mm]"
+            r"{\scriptsize\color{mudo}Módulo %(mod)s \,·\, aula %(aula)s}};"
+            r"\node[anchor=east,fill=roxo,text=white,rounded corners=9pt,inner xsep=9pt,inner ysep=5pt,font=\scriptsize\bfseries,align=center]"
+            r" at ([xshift=-4.5mm]f.east) {Adquira já em\\[-.3mm]%(site)s};"
+            r"\end{tikzpicture}}\end{center}" % {"site": SITE, "vol": vol, "mod": mod, "aula": aula_id})
 
 
 NOMES = {"fixacao": "Lista de fixação", "vestibular": "Lista de vestibular", "aprofundamento": "Lista de aprofundamento"}
@@ -651,7 +662,7 @@ def validar_banca(codigo, fonte):
         som = sum(1 for q in qv if formato(q) == "somatoria")
         afirm = sum(1 for q in qv if q.get("afirmativas") or (q.get("afirmacoes") and q.get("opcoes")))
         longas = sum(1 for q in qv if len(str(q.get("texto", ""))) >= 200 or q.get("texto_comum"))
-        visuais = sum(1 for q in qv if q.get("tabela") or q.get("figura") or (q.get("texto_comum") or {}).get("tabela"))
+        visuais = sum(1 for q in qv if q.get("tabela") or q.get("figura") or (q.get("texto_comum") or {}).get("tabela") or (q.get("texto_comum") or {}).get("figura"))
         curtas = sum(1 for q in qv if not (q.get("texto") or q.get("tabela") or q.get("figura") or q.get("texto_comum")))
         bancas = {q.get("estilo") for q in qv}
         for ok, msg in ((3 <= som <= 5, f"{som} somatórias (de 3 a 5)"),
