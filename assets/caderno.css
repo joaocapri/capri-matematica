@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* Caderno digital: a lista em PDF vira um caderno para escrever com a caneta. */
+:root{
+  --ink:#211946;--purple:#4a27b7;--lime:#d3fc61;--orange:#ff7956;--soft:#f1edfc;--mute:#6f6a80;
+  --mesa:#e7e5ee;--papel:#fffefa;--borda:#29213e;
+  --barra-h:64px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--mesa);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;-webkit-text-size-adjust:100%}
+button,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+
+/* ---------- barra de ferramentas ---------- */
+.cd-bar{position:sticky;top:0;z-index:20;padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));background:linear-gradient(var(--mesa) 70%,rgba(231,229,238,0))}
+.cd-bar-in{display:flex;align-items:center;gap:10px;max-width:1280px;margin:0 auto;padding:8px 10px;background:#fff;border:2px solid var(--borda);border-radius:18px;box-shadow:0 4px 0 var(--borda)}
+.cd-voltar{display:inline-flex;align-items:center;gap:2px;padding:8px 10px 8px 6px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14px;color:var(--ink);flex-shrink:0}
+.cd-voltar:hover{background:var(--soft)}
+.cd-voltar svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.cd-titulo{display:flex;flex-direction:column;min-width:0;flex:0 1 210px;line-height:1.15}
+.cd-titulo b{font:700 15px/1.15 'Space Grotesk',system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cd-titulo small{font-size:12px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cd-ferramentas{display:flex;align-items:center;gap:6px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;padding:2px}
+.cd-ferramentas::-webkit-scrollbar{display:none}
+.cd-grupo{display:flex;align-items:center;gap:3px;padding:3px;border-radius:13px;background:#f6f5fa;flex-shrink:0}
+.cd-btn{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 10px;border:0;border-radius:10px;background:transparent;font-weight:700;font-size:13px;white-space:nowrap}
+.cd-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.cd-btn:hover:not(:disabled){background:#ebe8f5}
+.cd-btn[aria-pressed="true"]{background:var(--ink);color:#fff}
+.cd-btn:disabled{opacity:.35;cursor:default}
+.cd-ico{width:38px;padding:0;justify-content:center;font-size:20px;font-weight:600}
+.cd-zoom{min-width:58px;justify-content:center;font-variant-numeric:tabular-nums}
+.cd-cor{width:30px;height:30px;border-radius:50%;border:0;padding:0;display:grid;place-items:center;background:transparent}
+.cd-cor span{width:20px;height:20px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.cd-cor[aria-checked="true"]{box-shadow:0 0 0 2px var(--ink)}
+.cd-esp{width:32px;height:32px;border:0;border-radius:9px;background:transparent;display:grid;place-items:center}
+.cd-esp span{display:block;width:16px;border-radius:9px;background:var(--ink)}
+.cd-esp[aria-checked="true"]{background:#fff;box-shadow:0 0 0 2px var(--ink)}
+.cd-papel{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 4px 0 10px;font-weight:700;font-size:13px}
+.cd-papel select{height:30px;border:0;border-radius:8px;background:#fff;padding:0 6px;font-weight:600;font-size:13px}
+.cd-exportar{display:inline-flex;align-items:center;gap:7px;height:42px;padding:0 14px;border:2px solid var(--borda);border-radius:12px;background:var(--lime);font-weight:800;font-size:14px;flex-shrink:0;box-shadow:0 2px 0 var(--borda)}
+.cd-exportar svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.cd-exportar:disabled{opacity:.5;cursor:default}
+.cd-exportar:active:not(:disabled){transform:translateY(2px);box-shadow:none}
+
+/* ---------- mesa e páginas ---------- */
+.cd-mesa{padding:14px 12px 120px;overflow-x:auto}
+.cd-paginas{display:flex;flex-direction:column;align-items:center;gap:0;min-width:min-content}
+.cd-carregando,.cd-erro{margin:80px auto;font-weight:700;color:var(--mute);text-align:center;max-width:420px}
+.cd-pag{position:relative;background:var(--papel);box-shadow:0 1px 2px rgba(33,25,70,.18),0 10px 28px rgba(33,25,70,.12);border-radius:3px;overflow:hidden;
+  touch-action:pan-x pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;flex-shrink:0}
+body.dedo .cd-pag{touch-action:none}
+.cd-pag canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cd-pag .cd-tinta{z-index:2}
+.cd-pag .cd-vivo{z-index:3}
+body[data-ferramenta="caneta"] .cd-pag{cursor:crosshair}
+body[data-ferramenta="marca"] .cd-pag{cursor:text}
+body[data-ferramenta="borracha"] .cd-pag{cursor:cell}
+.cd-num{position:absolute;right:8px;bottom:6px;z-index:4;font-size:11px;color:#b3aec5;font-weight:700;pointer-events:none}
+
+/* entre páginas: inserir folha */
+.cd-entre{display:flex;justify-content:center;padding:10px 0}
+.cd-inserir{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1.5px dashed #a7a1c4;border-radius:999px;background:transparent;color:#5b5578;font-weight:700;font-size:13px}
+.cd-inserir:hover{border-style:solid;border-color:var(--purple);color:var(--purple);background:#fff}
+
+/* cabeçalho da folha de rascunho */
+.cd-folha-topo{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;font-weight:700;color:#4d4769;padding:0 2px 6px}
+.cd-folha-topo .acoes{display:flex;gap:6px;align-items:center}
+.cd-folha-topo select{height:30px;border:1.5px solid #cfcae2;border-radius:8px;background:#fff;padding:0 6px;font-weight:600;font-size:12.5px}
+.cd-folha-topo button{height:30px;border:1.5px solid #cfcae2;border-radius:8px;background:#fff;padding:0 10px;font-weight:700;font-size:12.5px;color:#a33a2f}
+.cd-folha-topo button:hover{border-color:#a33a2f}
+.cd-bloco{display:flex;flex-direction:column}
+
+/* gabarito escondido */
+.cd-gabarito{margin:26px auto 0;max-width:520px;text-align:center;background:#fff;border:2px solid var(--borda);border-radius:18px;padding:18px 20px;box-shadow:0 4px 0 var(--borda)}
+.cd-gabarito b{font:700 17px 'Space Grotesk',system-ui,sans-serif}
+.cd-gabarito p{margin:6px 0 14px;color:var(--mute);font-size:14px;line-height:1.45}
+.cd-gabarito button{height:42px;padding:0 18px;border:2px solid var(--borda);border-radius:12px;background:var(--soft);font-weight:800}
+
+/* dica de boas-vindas */
+.cd-dica{position:relative;max-width:620px;margin:0 auto 14px;background:var(--ink);color:#fff;border-radius:16px;padding:14px 18px;font-size:14px;line-height:1.45}
+.cd-dica p{margin:0 0 6px}
+.cd-dica b{color:var(--lime)}
+.cd-dica button{margin-top:6px;height:34px;padding:0 14px;border:0;border-radius:10px;background:var(--lime);color:var(--ink);font-weight:800}
+
+/* status */
+.cd-status{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);margin:0;padding:9px 16px;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:30;white-space:nowrap}
+.cd-status.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* telas menores: a barra quebra em duas linhas, com as ferramentas embaixo */
+/* a barra tem duas linhas: em cima, a aula e o botão de exportar; embaixo, as ferramentas */
+.cd-bar-in{flex-wrap:wrap;row-gap:8px}
+.cd-titulo{flex:1 1 auto}
+.cd-ferramentas{order:3;flex-basis:100%;justify-content:safe center;border-top:1.5px solid #eceaf4;padding-top:8px}
+@media (max-width:560px){
+  .cd-btn span{display:none}
+  .cd-btn{padding:0 9px}
+  .cd-papel span{display:none}
+  .cd-exportar span{display:none}
+  .cd-exportar{width:42px;padding:0;justify-content:center}
+  .cd-mesa{padding:10px 6px 110px}
+}
+@media (prefers-reduced-motion:reduce){.cd-status{transition:none}}
+@media (max-width:900px) and (min-width:561px){
+  .cd-ferramentas .cd-btn span,.cd-papel span{display:none}
+  .cd-ferramentas .cd-btn{padding:0 9px}
+}

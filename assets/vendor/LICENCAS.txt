@@ -1,0 +1,4 @@
+Bibliotecas usadas pelo caderno digital (/caderno/), copiadas sem alteração:
+- pdf.js 4.10.38 (pdf.min.mjs, pdf.worker.min.mjs) — Mozilla, licença Apache-2.0
+- pdf-lib 1.17.1 (pdf-lib.esm.min.js) — Andrew Dillon, licença MIT
+- perfect-freehand 1.2.2 (perfect-freehand.mjs) — Steve Ruiz, licença MIT

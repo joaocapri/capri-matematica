@@ -266,6 +266,8 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelectorAll('.aula-rail [data-rail]').length,5);
  assert.equal(d.querySelectorAll('.aula-3listas .aula-3l-pdf').length,3,'Cada lista com o botão do PDF no topo da aula');
  assert.equal(d.querySelector('#resumo-det').open,false,'Resumo recolhido');
+ assert.equal(d.querySelectorAll('.aula-3listas a[href^="/caderno/?aula=2.3.2&lista="]').length,3,'Cada lista abre no caderno digital');
+ assert.equal(d.querySelectorAll('#levar .aula-caderno').length,3);
  // As 3 listas ficam claras logo na entrada da aula.
  assert.deepEqual([...d.querySelectorAll('.aula-3listas .aula-3l b')].map(b=>b.textContent),['Fixação','Vestibular','Aprofundamento']);
  assert.equal(d.querySelectorAll('#apr-list .aula-ex').length,10,'Lista de aprofundamento com 10 questões');

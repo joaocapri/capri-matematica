@@ -28,6 +28,15 @@ O site é publicado pelo Cloudflare (Workers com arquivos estáticos), ligado a 
 - \`_redirects\` e \`_headers\` continuam valendo (endereços antigos das aulas e bloqueio das turmas no Google).
 - Domínio: matcomjoao.com (registrado na Hostinger, com os nameservers apontados para o Cloudflare).
 
+## Caderno digital (/caderno/)
+Abre a lista da aula (o próprio PDF) para escrever por cima com a caneta do tablet: \`/caderno/?aula=4.14.1&lista=fixacao\` (lista: fixacao, vestibular ou aprofundamento).
+- Caneta, marca-texto e borracha; cores e espessuras; desfazer/refazer (Ctrl+Z); zoom.
+- Apple Pencil escreve e o dedo rola a página; o botão **Dedo** deixa o dedo escrever (dois dedos rolam).
+- Folhas de rascunho entre as páginas (quadriculado, pautado, pontilhado ou liso).
+- O gabarito resolvido fica escondido até o aluno pedir (o caderno acha a página “Gabarito resolvido” no PDF).
+- Salva sozinho no aparelho (IndexedDB) e exporta a lista resolvida em PDF, com os traços em vetor.
+- Código: \`caderno/index.html\`, \`assets/caderno.js\`, \`assets/caderno.css\`; bibliotecas em \`assets/vendor/\` (ver LICENCAS.txt).
+
 ## Como adicionar conteúdo a uma aula
 Crie \`conteudos/A17.json\` com o formato:
 

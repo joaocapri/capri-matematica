@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#211946">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Caderno | MAT MAT MAT!</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/assets/caderno.css">
+<script type="module" src="/assets/caderno.js"></script>
+</head>
+<body>
+<header class="cd-bar" id="cd-bar">
+  <div class="cd-bar-in">
+    <a class="cd-voltar" id="cd-voltar" href="/" aria-label="Voltar para a aula">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span>Aula</span>
+    </a>
+    <div class="cd-titulo"><b id="cd-titulo">Caderno</b><small id="cd-sub">Carregando a lista…</small></div>
+
+    <div class="cd-ferramentas" role="toolbar" aria-label="Ferramentas de escrita">
+      <div class="cd-grupo" role="group" aria-label="Ferramenta">
+        <button type="button" class="cd-btn" data-ferramenta="caneta" aria-pressed="true" title="Caneta (P)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-4.6L15.8 4.8a2 2 0 012.8 0l.6.6a2 2 0 010 2.8L8.6 18.8z"/><path d="M13.8 6.8l3.4 3.4"/></svg><span>Caneta</span>
+        </button>
+        <button type="button" class="cd-btn" data-ferramenta="marca" aria-pressed="false" title="Marca-texto (M)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 15l-3 3h5l1-1"/><path d="M9 15l7.5-7.5a2 2 0 012.8 0l.2.2a2 2 0 010 2.8L12 18z"/><path d="M4 21h16"/></svg><span>Marca-texto</span>
+        </button>
+        <button type="button" class="cd-btn" data-ferramenta="borracha" aria-pressed="false" title="Borracha (E)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 20h12"/><path d="M5.6 15.4l8.8-8.8a2 2 0 012.8 0l2.2 2.2a2 2 0 010 2.8L12 19H8.4z"/><path d="M9.6 11.4l5 5"/></svg><span>Borracha</span>
+        </button>
+      </div>
+      <div class="cd-grupo cd-cores" role="radiogroup" aria-label="Cor" id="cd-cores"></div>
+      <div class="cd-grupo cd-espessuras" role="radiogroup" aria-label="Espessura" id="cd-espessuras"></div>
+      <div class="cd-grupo" role="group" aria-label="Desfazer e refazer">
+        <button type="button" class="cd-btn cd-ico" id="cd-desfazer" title="Desfazer (Ctrl+Z)" aria-label="Desfazer" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 010 11H11"/></svg>
+        </button>
+        <button type="button" class="cd-btn cd-ico" id="cd-refazer" title="Refazer (Ctrl+Shift+Z)" aria-label="Refazer" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14l5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 000 11H13"/></svg>
+        </button>
+      </div>
+      <div class="cd-grupo" role="group" aria-label="Papel e entrada">
+        <label class="cd-papel" title="Papel das novas folhas de rascunho">
+          <span>Papel</span>
+          <select id="cd-papel" aria-label="Papel das novas folhas">
+            <option value="quadriculado">Quadriculado</option>
+            <option value="pautado">Pautado</option>
+            <option value="pontilhado">Pontilhado</option>
+            <option value="liso">Liso</option>
+          </select>
+        </label>
+        <button type="button" class="cd-btn" id="cd-dedo" aria-pressed="false" title="Escrever com o dedo (para quem não tem caneta)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 013 0V11"/><path d="M12 10.5V9a1.5 1.5 0 013 0v2"/><path d="M15 10.5a1.5 1.5 0 013 0V15a6 6 0 01-6 6h-.5a6 6 0 01-4.9-2.6L4.3 15a1.6 1.6 0 012.5-2L9 15"/></svg><span>Dedo</span>
+        </button>
+      </div>
+      <div class="cd-grupo" role="group" aria-label="Zoom">
+        <button type="button" class="cd-btn cd-ico" id="cd-menos" aria-label="Diminuir zoom" title="Diminuir">−</button>
+        <button type="button" class="cd-btn cd-zoom" id="cd-ajustar" title="Ajustar à largura"><span id="cd-zoom">100%</span></button>
+        <button type="button" class="cd-btn cd-ico" id="cd-mais" aria-label="Aumentar zoom" title="Aumentar">+</button>
+      </div>
+    </div>
+
+    <button type="button" class="cd-exportar" id="cd-exportar" disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg><span>Exportar PDF</span>
+    </button>
+  </div>
+</header>
+
+<main class="cd-mesa" id="cd-mesa" aria-live="polite">
+  <div class="cd-dica" id="cd-dica" hidden>
+    <p><b>Escreva com a caneta</b> direto na lista. O dedo rola as páginas. Sem caneta? Toque em <b>Dedo</b> para escrever com o dedo.</p>
+    <p>Precisa de espaço? Use <b>+ Folha de rascunho</b> entre as páginas. Tudo fica salvo neste aparelho.</p>
+    <button type="button" id="cd-dica-ok">Entendi</button>
+  </div>
+  <div class="cd-paginas" id="cd-paginas"><p class="cd-carregando">Abrindo a lista…</p></div>
+</main>
+
+<p class="cd-status" id="cd-status" role="status"></p>
+</body>
+</html>
