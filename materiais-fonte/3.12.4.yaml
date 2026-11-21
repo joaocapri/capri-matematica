@@ -1,0 +1,529 @@
+# Aula 3.12.4 — Números complexos: operações na forma trigonométrica
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: produto (multiplica módulos, soma argumentos), quociente (divide módulos, subtrai argumentos, na ordem certa),
+# potência (1ª fórmula de Moivre), multiplicação como rotação e ampliação; no Nível 3 e no aprofundamento, raízes n-ésimas
+# com ângulos notáveis e identidades obtidas por Moivre. Notação: cis θ = cos θ + i sen θ.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Nesta lista, $\operatorname{cis}\theta$ indica $\cos\theta + i\operatorname{sen}\theta$. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete o quadro com o módulo e o argumento (entre $0°$ e $360°$) do produto $z \cdot w$.'
+      tabela:
+        cabecalho: ['$z$', '$w$', '$|zw|$', 'Argumento de $zw$']
+        linhas:
+        - ['$2\operatorname{cis}20°$', '$5\operatorname{cis}40°$', '${{10}}$', '${{60°}}$']
+        - ['$3\operatorname{cis}100°$', '$2\operatorname{cis}50°$', '${{6}}$', '${{150°}}$']
+        - ['$4\operatorname{cis}200°$', '$\frac{1}{2}\operatorname{cis}250°$', '${{2}}$', '${{90°}}$']
+      resolucao: |
+        Multiplicam-se os módulos e somam-se os argumentos. Na última linha, $200° + 250° = 450°$, que equivale a $450° - 360° = 90°$.
+      resposta: '$10$, $60°$; $6$, $150°$; $2$, $90°$'
+    - enunciado: 'Calcule os quocientes, completando com a forma trigonométrica (argumento entre $0°$ e $360°$).'
+      itens:
+      - '$\dfrac{12\operatorname{cis}80°}{3\operatorname{cis}20°} = {{4\operatorname{cis}60°}}$'
+      - '$\dfrac{10\operatorname{cis}30°}{5\operatorname{cis}90°} = {{2\operatorname{cis}300°}}$'
+      resolucao: |
+        Dividem-se os módulos e subtrai-se o argumento do denominador do argumento do numerador. (a) $80° - 20° = 60°$. (b) $30° - 90° = -60°$, que equivale a $300°$.
+      resposta: '$4\operatorname{cis}60°$; $2\operatorname{cis}300°$'
+    - enunciado: 'Use a fórmula de Moivre, $(r\operatorname{cis}\theta)^n = r^n\operatorname{cis}(n\theta)$, e escreva o resultado na forma algébrica.'
+      itens:
+      - '$(2\operatorname{cis}15°)^4$'
+      - '$(\operatorname{cis}40°)^9$'
+      espaco_item: 12
+      resolucao: |
+        (a) $16\operatorname{cis}60° = 16\left(\tfrac{1}{2} + \tfrac{\sqrt{3}}{2}i\right) = 8 + 8\sqrt{3}\,i$. (b) $\operatorname{cis}360° = 1$.
+      resposta: '(a) $8 + 8\sqrt{3}\,i$ (b) $1$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso), para $z$ e $w$ complexos não nulos e $n$ natural.'
+      afirmacoes:
+      - '$|z^n| = |z|^n$.'
+      - 'O argumento de $zw$ é o produto dos argumentos de $z$ e de $w$.'
+      - '$(\operatorname{cis}\theta)^2 = \operatorname{cis}2\theta$.'
+      - 'O argumento de $\frac{z}{w}$ é o argumento de $w$ menos o argumento de $z$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) Moivre. (F) Os argumentos se somam. (V) Moivre com $n = 2$. (F) É o de $z$ menos o de $w$ (numerador menos denominador).
+      resposta: V, F, V, F
+    - enunciado: 'Associe cada potência ao seu valor (um valor pode ser usado mais de uma vez).'
+      esquerda:
+      - '$16$'
+      - '$8i$'
+      - '$-1$'
+      - '$-8$'
+      direita:
+      - '$(1 + i)^8$'
+      - '$(2\operatorname{cis}30°)^3$'
+      - '$(\operatorname{cis}45°)^4$'
+      - '$(2\operatorname{cis}60°)^3$'
+      - '$(2\operatorname{cis}90°)^4$'
+      resolucao: |
+        $(\sqrt{2}\operatorname{cis}45°)^8 = 16\operatorname{cis}360° = 16$; $8\operatorname{cis}90° = 8i$; $\operatorname{cis}180° = -1$; $8\operatorname{cis}180° = -8$; $16\operatorname{cis}360° = 16$.
+      resposta: 'De cima para baixo: 1, 2, 3, 4, 1'
+    - enunciado: 'Sendo $z = 3\operatorname{cis}50°$, escreva $iz$ e $-z$ na forma trigonométrica. Que efeito tem, no plano de Argand-Gauss, multiplicar por $i$? E por $-1$?'
+      espaco: 12
+      resolucao: |
+        $i = \operatorname{cis}90°$ e $-1 = \operatorname{cis}180°$. $iz = 3\operatorname{cis}140°$ e $-z = 3\operatorname{cis}230°$.
+        Multiplicar por $i$ gira o afixo $90°$ em torno da origem (sentido anti-horário); por $-1$, gira $180°$. O módulo não muda.
+      resposta: '$3\operatorname{cis}140°$; $3\operatorname{cis}230°$'
+    - enunciado: 'Sejam $z = 1 + \sqrt{3}\,i$ e $w = \sqrt{3} + i$. Calcule $zw$ pela forma trigonométrica e confira pela forma algébrica.'
+      espaco: 14
+      resolucao: |
+        $z = 2\operatorname{cis}60°$ e $w = 2\operatorname{cis}30°$: $zw = 4\operatorname{cis}90° = 4i$.
+        Conferência: $(1 + \sqrt{3}\,i)(\sqrt{3} + i) = \sqrt{3} + i + 3i + \sqrt{3}\,i^2 = 4i$.
+      resposta: '$4i$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para calcular $\frac{z}{w}$, com $z = 6\operatorname{cis}150°$ e $w = 2\operatorname{cis}30°$, Gabi fez $\frac{6}{2} = 3$ e $30° - 150° = -120°$, e respondeu $3\operatorname{cis}(-120°)$.
+      enunciado: 'Encontre o erro e dê a resposta correta na forma algébrica.'
+      espaco: 12
+      resolucao: |
+        A ordem está trocada: subtrai-se o argumento do denominador do argumento do numerador, $150° - 30° = 120°$.
+        $\tfrac{z}{w} = 3\operatorname{cis}120° = -\tfrac{3}{2} + \tfrac{3\sqrt{3}}{2}i$.
+      resposta: '$-\frac{3}{2} + \frac{3\sqrt{3}}{2}i$'
+    - enunciado: 'Calcule $(\sqrt{3} + i)^6$.'
+      espaco: 10
+      resolucao: |
+        $\sqrt{3} + i = 2\operatorname{cis}30°$: $(\sqrt{3} + i)^6 = 64\operatorname{cis}180° = -64$.
+      resposta: '$-64$'
+    - enunciado: 'Calcule $(1 - i)^{10}$.'
+      espaco: 12
+      resolucao: |
+        $1 - i = \sqrt{2}\operatorname{cis}315°$: $(\sqrt{2})^{10}\operatorname{cis}3150°$. Como $3150° = 8 \cdot 360° + 270°$: $32\operatorname{cis}270° = -32i$.
+      resposta: '$-32i$'
+    - enunciado: 'Considere $z = 1 + \sqrt{3}\,i$. Determine o menor $n \geq 1$ para o qual $z^n$ é real e o menor para o qual $z^n$ é real positivo, e calcule esses valores.'
+      espaco: 14
+      resolucao: |
+        $z = 2\operatorname{cis}60°$ e $z^n = 2^n\operatorname{cis}(60°n)$. Real: $60°n$ múltiplo de $180°$, $n = 3$, $z^3 = 8\operatorname{cis}180° = -8$. Real positivo: $60°n$ múltiplo de $360°$, $n = 6$, $z^6 = 64$.
+      resposta: '$n = 3$ ($-8$); $n = 6$ ($64$)'
+    - enunciado: 'Calcule $\frac{1 + i}{1 - i}$ pela forma trigonométrica.'
+      espaco: 12
+      resolucao: |
+        $\tfrac{\sqrt{2}\operatorname{cis}45°}{\sqrt{2}\operatorname{cis}315°} = \operatorname{cis}(-270°) = \operatorname{cis}90° = i$.
+      resposta: '$i$'
+    - enunciado: 'Complete o quadro com as potências de $w = \operatorname{cis}30°$, na forma algébrica.'
+      tabela:
+        cabecalho: ['$w^3$', '$w^6$', '$w^9$', '$w^{12}$']
+        linhas:
+        - ['${{i}}$', '${{-1}}$', '${{-i}}$', '${{1}}$']
+      resolucao: |
+        $\operatorname{cis}90°$, $\operatorname{cis}180°$, $\operatorname{cis}270°$ e $\operatorname{cis}360°$.
+      resposta: '$i$; $-1$; $-i$; $1$'
+    - enunciado: 'Sendo $z = 2\operatorname{cis}40°$ e $w = 4\operatorname{cis}110°$, calcule $\frac{z^3}{w}$ na forma trigonométrica.'
+      espaco: 12
+      resolucao: |
+        $z^3 = 8\operatorname{cis}120°$. $\tfrac{z^3}{w} = \tfrac{8}{4}\operatorname{cis}(120° - 110°) = 2\operatorname{cis}10°$.
+      resposta: '$2\operatorname{cis}10°$'
+    - enunciado: 'Um quadrado tem centro na origem e um vértice no afixo de $A = 3 + i$. Multiplicando por $i$ sucessivamente, determine os outros três vértices e calcule a área do quadrado.'
+      espaco: 14
+      resolucao: |
+        Cada multiplicação por $i$ gira $90°$: $iA = -1 + 3i$, $i^2A = -3 - i$, $i^3A = 1 - 3i$.
+        O lado vai de $A$ a $iA$: $|iA - A| = |-4 + 2i| = \sqrt{20}$. Área $20$.
+      resposta: '$-1 + 3i$, $-3 - i$, $1 - 3i$; área $20$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Determine as raízes cúbicas de $8$ (as soluções de $z^3 = 8$) e mostre que os afixos formam um triângulo equilátero.'
+      espaco: 16
+      resolucao: |
+        $z = 2\operatorname{cis}\theta$ com $3\theta = 0° + 360°k$: $\theta = 0°, 120°, 240°$. Raízes: $2$, $-1 + \sqrt{3}\,i$ e $-1 - \sqrt{3}\,i$.
+        Estão na circunferência de raio 2, separadas por $120°$: os lados medem $|2 - (-1 + \sqrt{3}\,i)| = \sqrt{9 + 3} = 2\sqrt{3}$ (e os outros, por simetria, também).
+      resposta: '$2$, $-1 \pm \sqrt{3}\,i$'
+    - enunciado: 'Resolva a equação $z^4 = -16$.'
+      espaco: 14
+      resolucao: |
+        $-16 = 16\operatorname{cis}180°$. $z = 2\operatorname{cis}\theta$ com $4\theta = 180° + 360°k$: $\theta = 45°, 135°, 225°, 315°$.
+        Raízes: $\sqrt{2} + \sqrt{2}\,i$, $-\sqrt{2} + \sqrt{2}\,i$, $-\sqrt{2} - \sqrt{2}\,i$, $\sqrt{2} - \sqrt{2}\,i$.
+      resposta: '$\pm\sqrt{2} \pm \sqrt{2}\,i$'
+    - enunciado: 'Desenvolvendo $(\cos\theta + i\operatorname{sen}\theta)^2$ de dois modos (pelo quadrado da soma e por Moivre), obtenha as fórmulas de $\cos 2\theta$ e de $\operatorname{sen}2\theta$.'
+      espaco: 14
+      resolucao: |
+        $(\cos\theta + i\operatorname{sen}\theta)^2 = \cos^2\theta - \operatorname{sen}^2\theta + 2i\operatorname{sen}\theta\cos\theta$, e por Moivre é $\cos 2\theta + i\operatorname{sen}2\theta$.
+        Igualando as partes: $\cos 2\theta = \cos^2\theta - \operatorname{sen}^2\theta$ e $\operatorname{sen}2\theta = 2\operatorname{sen}\theta\cos\theta$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Mostre que $\frac{1}{\operatorname{cis}\theta} = \operatorname{cis}(-\theta)$ e conclua que, para $|z| = 1$, $\frac{1}{z} = \bar z$.'
+      espaco: 12
+      resolucao: |
+        $\operatorname{cis}\theta \cdot \operatorname{cis}(-\theta) = \operatorname{cis}0 = 1$. Se $|z| = 1$, $z = \operatorname{cis}\theta$ e $\tfrac{1}{z} = \operatorname{cis}(-\theta) = \cos\theta - i\operatorname{sen}\theta = \bar z$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Determine o menor $n \geq 1$ para o qual $(\sqrt{3} + i)^n$ é imaginário puro e calcule essa potência.'
+      espaco: 12
+      resolucao: |
+        $(2\operatorname{cis}30°)^n = 2^n\operatorname{cis}(30°n)$. Imaginário puro: $30°n = 90°$ ou $270°$ (mais múltiplos de $360°$). Menor: $n = 3$, $8\operatorname{cis}90° = 8i$.
+      resposta: '$n = 3$; $8i$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um programa de desenho trata cada ponto da tela como um número complexo, com a origem no centro. A ferramenta "girar e ampliar" multiplica cada ponto por $w = 2(\cos 90° + i\operatorname{sen} 90°)$: o ponto gira $90°$ em torno da origem, no sentido anti-horário, e a sua distância à origem dobra. Um usuário aplicou a ferramenta ao ponto $P = 3 + i$, mostrado na figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.5]
+        \draw[step=1, gray!25, very thin] (-3,-1) grid (4,7);
+        \draw[-latex, ink!60] (-3.4,0) -- (4.5,0) node[right, font=\scriptsize] {Re};
+        \draw[-latex, ink!60] (0,-1.4) -- (0,7.5) node[above, font=\scriptsize] {Im};
+        \fill[roxo] (3,1) circle (4pt) node[right, font=\scriptsize] {$P$};
+        \draw[roxo, dashed] (0,0) -- (3,1);
+        \end{scope}
+    enunciado: |
+      O ponto obtido é
+    opcoes: ['$-2 + 6i$', '$6 + 2i$', '$-1 + 3i$', '$2 - 6i$', '$-6 + 2i$']
+    correta: A
+    resolucao: |
+      $w = 2i$, e $P \cdot w = (3 + i) \cdot 2i = 6i + 2i^2 = -2 + 6i$. ($-1 + 3i$ só gira, sem ampliar.)
+
+  - estilo: Fuvest
+    enunciado: |
+      O produto do número $4(\cos 70° + i\operatorname{sen} 70°)$ pelo número $2(\cos 80° + i\operatorname{sen} 80°)$ é igual a
+    opcoes: ['$4\sqrt{3} + 4i$', '$-4 + 4\sqrt{3}\,i$', '$-4\sqrt{3} + 4i$', '$8i$', '$-4\sqrt{3} - 4i$']
+    correta: C
+    resolucao: |
+      $8(\cos 150° + i\operatorname{sen} 150°) = 8\left(-\tfrac{\sqrt{3}}{2} + \tfrac{1}{2}i\right) = -4\sqrt{3} + 4i$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O número $(\cos 15° + i\operatorname{sen} 15°)^{12}$ é igual a
+    opcoes: ['$1$.', '$-1$.', '$i$.', '$-i$.']
+    correta: B
+    resolucao: |
+      Por Moivre: $\cos 180° + i\operatorname{sen} 180° = -1$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere $z = 2(\cos 30° + i\operatorname{sen} 30°)$ e $w = 4(\cos 60° + i\operatorname{sen} 60°)$. Assinale o que for correto.
+    proposicoes:
+    - '$|zw| = 8$.'
+    - 'O argumento de $zw$ é $90°$.'
+    - '$zw = 8i$.'
+    - '$\frac{w}{z} = 2(\cos 90° + i\operatorname{sen} 90°)$.'
+    - '$z^3 = 8i$.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      01) $2 \cdot 4$. 02) $30° + 60°$. 04) $8\operatorname{cis}90°$. 08) Incorreta: $\tfrac{w}{z} = 2\operatorname{cis}30°$. 16) $8\operatorname{cis}90°$.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Enem
+    texto: |
+      Num aplicativo de animação, as transformações de uma figura em torno da origem são feitas multiplicando cada ponto por um número complexo, conforme o quadro. Um animador aplicou duas vezes seguidas a operação "girar $60°$ e dobrar" ao ponto correspondente ao número $2$.
+    tabela:
+      cabecalho: ['Operação', 'Multiplicar por']
+      linhas:
+      - ['Girar $90°$', '$i$']
+      - ['Girar $180°$', '$-1$']
+      - ['Girar $60°$ e dobrar', '$1 + \sqrt{3}\,i$']
+      - ['Girar $45°$', '$\frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2}i$']
+    enunciado: |
+      O ponto final corresponde ao número
+    opcoes: ['$8$', '$4 + 4\sqrt{3}\,i$', '$-2 + 2\sqrt{3}\,i$', '$8i$', '$-4 + 4\sqrt{3}\,i$']
+    correta: E
+    resolucao: |
+      $1 + \sqrt{3}\,i = 2\operatorname{cis}60°$. Duas aplicações: $2 \cdot (2\operatorname{cis}60°)^2 = 2 \cdot 4\operatorname{cis}120° = 8\left(-\tfrac{1}{2} + \tfrac{\sqrt{3}}{2}i\right) = -4 + 4\sqrt{3}\,i$.
+
+  - estilo: UEL
+    enunciado: |
+      Considere $z$ e $w$ números complexos não nulos e $n$ natural. Considere as afirmativas a seguir.
+    afirmativas:
+    - '$|zw| = |z| \cdot |w|$.'
+    - 'Um argumento de $z^n$ é $n$ vezes um argumento de $z$.'
+    - '$\left|\frac{z}{w}\right| = |z| - |w|$.'
+    - '$(\cos\theta + i\operatorname{sen}\theta)^n = \cos n\theta + i\operatorname{sen} n\theta$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'III e IV, apenas.', 'I, II e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I, II e IV. Corretas (produto e Moivre). III. Incorreta: os módulos se dividem, $\tfrac{|z|}{|w|}$.
+
+  - estilo: Unesp
+    enunciado: |
+      O valor de $(1 + i)^{12}$ é
+    opcoes: ['$-64$', '$64$', '$64i$', '$-64i$', '$4096$']
+    correta: A
+    resolucao: |
+      $(\sqrt{2}\operatorname{cis}45°)^{12} = 64\operatorname{cis}540° = 64\operatorname{cis}180° = -64$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    enunciado: |
+      O número $(1 + \sqrt{3}\,i)^6$ é igual a
+    opcoes: ['$64$.', '$-64$.', '$64i$.', '$32$.']
+    correta: A
+    resolucao: |
+      $(2\operatorname{cis}60°)^6 = 64\operatorname{cis}360° = 64$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O módulo e o argumento principal de $\frac{\sqrt{3} + i}{1 + i}$ são, respectivamente,
+    opcoes: ['$\sqrt{2}$ e $15°$', '$\sqrt{2}$ e $345°$', '$2$ e $345°$', '$\sqrt{2}$ e $75°$', '$1$ e $345°$']
+    correta: B
+    resolucao: |
+      $\tfrac{2\operatorname{cis}30°}{\sqrt{2}\operatorname{cis}45°} = \sqrt{2}\operatorname{cis}(-15°)$, e $-15°$ equivale a $345°$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $z = \cos\frac{\pi}{6} + i\operatorname{sen}\frac{\pi}{6}$. Assinale o que for correto.
+    proposicoes:
+    - '$z^6 = -1$.'
+    - '$z^{12} = 1$.'
+    - '$z^3 = i$.'
+    - '$z \cdot \bar z = 1$.'
+    - '$z^4 = -\frac{1}{2} - \frac{\sqrt{3}}{2}i$.'
+    - '$z^{-1} = \bar z$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) $\operatorname{cis}\pi$. 02) $\operatorname{cis}2\pi$. 04) $\operatorname{cis}\tfrac{\pi}{2}$. 08) $|z|^2 = 1$.
+      16) Incorreta: $z^4 = \operatorname{cis}\tfrac{2\pi}{3} = -\tfrac{1}{2} + \tfrac{\sqrt{3}}{2}i$. 32) $|z| = 1$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um artista desenha uma espiral marcando os pontos $z_n = (1 + i)^n$, para $n = 1, 2, 3, \ldots$, no plano de Argand-Gauss. A cada passo, o ponto gira $45°$ em torno da origem e a sua distância à origem fica multiplicada por $\sqrt{2}$. O artista quer saber onde fica o ponto do oitavo passo.
+    enunciado: |
+      O ponto $z_8$ corresponde ao número
+    opcoes: ['$16i$', '$8$', '$16$', '$256$', '$-16$']
+    correta: C
+    resolucao: |
+      $z_8 = (\sqrt{2})^8\operatorname{cis}(8 \cdot 45°) = 16\operatorname{cis}360° = 16$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir, em que $\operatorname{cis}\theta = \cos\theta + i\operatorname{sen}\theta$.
+    afirmacoes:
+    - '$\operatorname{cis}50° \cdot \operatorname{cis}40° = i$.'
+    - '$(2\operatorname{cis}10°)^3 = 6\operatorname{cis}30°$.'
+    - '$\frac{\operatorname{cis}100°}{\operatorname{cis}10°} = i$.'
+    - '$|(3 + 4i)^2| = 10$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – F – V – F.', 'V – F – F – V.', 'V – F – V – V.', 'V – F – V – F.']
+    correta: E
+    resolucao: |
+      (V) $\operatorname{cis}90°$. (F) $2^3 = 8$: $8\operatorname{cis}30°$. (V) $\operatorname{cis}90°$. (F) $|3 + 4i|^2 = 25$.
+
+  - estilo: Enem
+    texto: |
+      Os vértices $P_0, P_1, \ldots, P_5$ do hexágono regular da figura estão na circunferência de raio 1 com centro na origem, e $P_0$ é o afixo de $1$. Um programa obtém cada vértice multiplicando o anterior por $w = \cos 60° + i\operatorname{sen} 60°$, de modo que $P_k$ é o afixo de $w^k$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1.5]
+        \draw[-latex, ink!60] (-1.4,0) -- (1.5,0) node[right, font=\scriptsize] {Re};
+        \draw[-latex, ink!60] (0,-1.3) -- (0,1.35) node[above, font=\scriptsize] {Im};
+        \draw[gray!40] (0,0) circle (1);
+        \draw[roxo, line width=1pt, fill=roxo!10] (0:1) -- (60:1) -- (120:1) -- (180:1) -- (240:1) -- (300:1) -- cycle;
+        \foreach \k in {0,...,5} { \fill[roxo] (\k*60:1) circle (1.2pt); \node[font=\scriptsize] at (\k*60:1.22) {$P_{\k}$}; }
+        \end{scope}
+    enunciado: |
+      O vértice $P_4$ é o afixo de
+    opcoes: ['$-1$', '$-\frac{1}{2} + \frac{\sqrt{3}}{2}i$', '$\frac{1}{2} - \frac{\sqrt{3}}{2}i$', '$-\frac{1}{2} - \frac{\sqrt{3}}{2}i$', '$-\frac{\sqrt{3}}{2} - \frac{1}{2}i$']
+    correta: D
+    resolucao: |
+      $w^4 = \cos 240° + i\operatorname{sen} 240° = -\tfrac{1}{2} - \tfrac{\sqrt{3}}{2}i$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O menor inteiro positivo $n$ para o qual $(\sqrt{3} + i)^n$ é um número real positivo é
+    opcoes: ['$3$', '$6$', '$9$', '$12$', '$24$']
+    correta: D
+    resolucao: |
+      $(2\operatorname{cis}30°)^n = 2^n\operatorname{cis}(30°n)$, real positivo quando $30°n$ é múltiplo de $360°$: $n = 12$. ($n = 6$ dá $-64$.)
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere as raízes de equações do tipo $z^n = a$. Assinale o que for correto.
+    proposicoes:
+    - 'As raízes cúbicas de 1 são $1$, $\cos 120° + i\operatorname{sen} 120°$ e $\cos 240° + i\operatorname{sen} 240°$.'
+    - 'A soma das raízes cúbicas de 1 é zero.'
+    - 'A equação $z^4 = 16$ tem exatamente duas raízes complexas.'
+    - 'As raízes quadradas de $i$ são $\frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2}i$ e $-\frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{2}i$.'
+    - 'Os afixos das raízes sextas de 1 formam um hexágono regular de lado 2.'
+    corretas: [1, 2, 4]
+    resolucao: |
+      01) Correta: $3\theta$ múltiplo de $360°$. 02) Correta: $1 - \tfrac{1}{2} - \tfrac{1}{2} + \left(\tfrac{\sqrt{3}}{2} - \tfrac{\sqrt{3}}{2}\right)i = 0$. 04) Incorreta: são quatro, $\pm 2$ e $\pm 2i$.
+      08) Correta: $\operatorname{cis}45°$ e $\operatorname{cis}225°$, cujo quadrado é $\operatorname{cis}90° = i$. 16) Incorreta: o hexágono está inscrito na circunferência de raio 1, e o lado é 1.
+      Soma: $01 + 02 + 08 = 11$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $z = \cos\frac{\pi}{9} + i\operatorname{sen}\frac{\pi}{9}$, então $z^{30}$ é igual a
+    opcoes: ['$\frac{1}{2} + \frac{\sqrt{3}}{2}i$', '$-\frac{1}{2} + \frac{\sqrt{3}}{2}i$', '$-\frac{1}{2} - \frac{\sqrt{3}}{2}i$', '$\frac{1}{2} - \frac{\sqrt{3}}{2}i$', '$-1$']
+    correta: C
+    resolucao: |
+      $z^{30} = \operatorname{cis}\tfrac{30\pi}{9} = \operatorname{cis}\tfrac{10\pi}{3}$, e $\tfrac{10\pi}{3} - 2\pi = \tfrac{4\pi}{3}$: $-\tfrac{1}{2} - \tfrac{\sqrt{3}}{2}i$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Para desenhar um triângulo equilátero com centro na origem, um programa parte do vértice $A$, no afixo de $4$, e obtém os outros vértices multiplicando por $w = \cos 120° + i\operatorname{sen} 120°$, como mostra o quadro. Cada multiplicação por $w$ gira o ponto $120°$ em torno da origem.
+    tabela:
+      cabecalho: ['Vértice', 'Número']
+      linhas:
+      - ['$A$', '$4$']
+      - ['$B$', '$4w$']
+      - ['$C$', '$4w^2$']
+    enunciado: |
+      O vértice $C$ é o afixo de
+    opcoes: ['$-2 + 2\sqrt{3}\,i$', '$-2 - 2\sqrt{3}\,i$', '$2 - 2\sqrt{3}\,i$', '$-4$', '$-2\sqrt{3} - 2i$']
+    correta: B
+    resolucao: |
+      $4w^2 = 4(\cos 240° + i\operatorname{sen} 240°) = -2 - 2\sqrt{3}\,i$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Para desenhar, do mesmo modo, um quadrado com centro na origem e um vértice no afixo de 4, o número $w$ deveria ser
+    opcoes: ['$i$.', '$-1$.', '$\cos 45° + i\operatorname{sen} 45°$.', '$2i$.']
+    correta: A
+    resolucao: |
+      Os vértices consecutivos de um quadrado centrado na origem estão separados por $90°$, com a mesma distância ao centro: $w = \cos 90° + i\operatorname{sen} 90° = i$.
+
+  - estilo: Unesp
+    enunciado: |
+      O módulo de $\frac{(1 + i)^5}{(1 - i)^3}$ é
+    opcoes: ['$4$', '$\sqrt{2}$', '$8$', '$2\sqrt{2}$', '$2$']
+    correta: E
+    resolucao: |
+      $\tfrac{|1 + i|^5}{|1 - i|^3} = \tfrac{(\sqrt{2})^5}{(\sqrt{2})^3} = (\sqrt{2})^2 = 2$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Sendo $w = \cos\frac{2\pi}{5} + i\operatorname{sen}\frac{2\pi}{5}$, o número de inteiros $n$, com $1 \leq n \leq 100$, para os quais $w^n = 1$ é
+    opcoes: ['$10$', '$20$', '$25$', '$40$', '$50$']
+    correta: B
+    resolucao: |
+      $w^n = \operatorname{cis}\tfrac{2\pi n}{5} = 1$ quando $\tfrac{n}{5}$ é inteiro: $n = 5, 10, \ldots, 100$, que são 20.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere $S_n = (1 + i)^n + (1 - i)^n$, com $n$ natural.'
+    itens:
+    - 'Escreva $1 + i$ e $1 - i$ na forma trigonométrica.'
+    - 'Mostre que $S_n = 2(\sqrt{2})^n\cos\frac{n\pi}{4}$.'
+    - 'Calcule $S_8$ e $S_{10}$.'
+    espaco: 62
+    resolucao: |
+      a) $1 + i = \sqrt{2}\operatorname{cis}\tfrac{\pi}{4}$ e $1 - i = \sqrt{2}\operatorname{cis}\left(-\tfrac{\pi}{4}\right)$.
+      b) Por Moivre: $(\sqrt{2})^n\left[\operatorname{cis}\tfrac{n\pi}{4} + \operatorname{cis}\left(-\tfrac{n\pi}{4}\right)\right]$. As partes imaginárias se cancelam e as reais se somam: $2(\sqrt{2})^n\cos\tfrac{n\pi}{4}$.
+      c) $S_8 = 2 \cdot 16 \cdot \cos 2\pi = 32$. $S_{10} = 2 \cdot 32 \cdot \cos\tfrac{5\pi}{2} = 0$.
+    resposta: 'c) $S_8 = 32$ e $S_{10} = 0$'
+
+  - estilo: Unicamp
+    texto: |
+      Num programa de desenho, girar um ponto $P$ de um ângulo $\alpha$ em torno da origem corresponde a multiplicar o número de $P$ por $\cos\alpha + i\operatorname{sen}\alpha$.
+    enunciado: ''
+    itens:
+    - 'Gire o ponto $A = 2 + i$ de $90°$ três vezes seguidas e determine os três pontos obtidos.'
+    - 'Gire $A$ de $60°$ e escreva o resultado na forma algébrica.'
+    - 'Explique por que as rotações não mudam a distância do ponto à origem e calcule essa distância.'
+    espaco: 62
+    resolucao: |
+      a) Multiplicar por $i$: $iA = -1 + 2i$, $i^2A = -2 - i$, $i^3A = 1 - 2i$.
+      b) $(2 + i)\left(\tfrac{1}{2} + \tfrac{\sqrt{3}}{2}i\right) = 1 + \sqrt{3}\,i + \tfrac{1}{2}i - \tfrac{\sqrt{3}}{2} = \left(1 - \tfrac{\sqrt{3}}{2}\right) + \left(\sqrt{3} + \tfrac{1}{2}\right)i$.
+      c) $|A \cdot \operatorname{cis}\alpha| = |A| \cdot 1 = |A| = \sqrt{5}$.
+    resposta: 'a) $-1 + 2i$, $-2 - i$, $1 - 2i$; b) $\left(1 - \frac{\sqrt{3}}{2}\right) + \left(\sqrt{3} + \frac{1}{2}\right)i$; c) $\sqrt{5}$'
+
+  - estilo: ITA
+    enunciado: |
+      Seja $z = \frac{1 + \sqrt{3}\,i}{1 - i}$. O menor inteiro positivo $n$ para o qual $z^n$ é real é
+    opcoes: ['$4$', '$6$', '$8$', '$12$', '$24$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      $z = \tfrac{2\operatorname{cis}60°}{\sqrt{2}\operatorname{cis}(-45°)} = \sqrt{2}\operatorname{cis}105°$. $z^n$ é real quando $105°n$ é múltiplo de $180°$: $105n = 180k$, ou $7n = 12k$. Como 7 e 12 não têm fator comum, $n$ é múltiplo de 12: $n = 12$.
+    resposta: 'D'
+
+  - estilo: Unesp
+    enunciado: 'Considere a equação $z^3 = -8$.'
+    itens:
+    - 'Determine as três raízes, nas formas trigonométrica e algébrica.'
+    - 'Mostre que os afixos das raízes formam um triângulo equilátero e calcule o lado.'
+    - 'Calcule a área desse triângulo.'
+    espaco: 62
+    resolucao: |
+      a) $-8 = 8\operatorname{cis}180°$; $z = 2\operatorname{cis}\theta$ com $3\theta = 180° + 360°k$: $60°$, $180°$, $300°$. Raízes $1 + \sqrt{3}\,i$, $-2$, $1 - \sqrt{3}\,i$.
+      b) Estão na circunferência de raio 2, separadas por $120°$. Lado: $|(1 + \sqrt{3}\,i) - (1 - \sqrt{3}\,i)| = 2\sqrt{3}$ (e os outros lados também, por simetria).
+      c) $\tfrac{\sqrt{3}}{4}(2\sqrt{3})^2 = 3\sqrt{3}$.
+    resposta: 'a) $1 \pm \sqrt{3}\,i$ e $-2$; b) $2\sqrt{3}$; c) $3\sqrt{3}$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $\alpha$, $\beta$ e $\theta$ reais, $n$ inteiro e $z$ complexo. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{cis}\alpha \cdot \operatorname{cis}\beta = \operatorname{cis}(\alpha + \beta)$.'
+    - '$(\cos\theta + i\operatorname{sen}\theta)^{-1} = \cos\theta - i\operatorname{sen}\theta$.'
+    - '$(\operatorname{cis}\theta)^n = \operatorname{cis}(n\theta)$.'
+    - 'O produto das três raízes cúbicas de 1 é $-1$.'
+    - '$|z^n| = n|z|$.'
+    - 'Se $|z| = 1$, então $|z^n| = 1$.'
+    corretas: [1, 2, 3, 6]
+    espaco: 22
+    resolucao: |
+      01) a 04) Corretas. 08) Incorreta: $\operatorname{cis}(0° + 120° + 240°) = \operatorname{cis}360° = 1$. 16) Incorreta: $|z^n| = |z|^n$. 32) $1^n = 1$.
+    resposta: 'Soma 39 (01 + 02 + 04 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Use a fórmula de Moivre para $n = 3$.'
+    itens:
+    - 'Desenvolva $(\cos\theta + i\operatorname{sen}\theta)^3$ pelo cubo da soma e iguale a $\cos 3\theta + i\operatorname{sen}3\theta$.'
+    - 'Mostre que $\cos 3\theta = 4\cos^3\theta - 3\cos\theta$ e $\operatorname{sen}3\theta = 3\operatorname{sen}\theta - 4\operatorname{sen}^3\theta$.'
+    - 'Mostre que $c = \cos 20°$ satisfaz $8c^3 - 6c - 1 = 0$.'
+    espaco: 62
+    resolucao: |
+      a) Com $c = \cos\theta$ e $s = \operatorname{sen}\theta$: $(c + is)^3 = c^3 + 3c^2(is) + 3c(is)^2 + (is)^3 = (c^3 - 3cs^2) + (3c^2s - s^3)i$.
+      b) $\cos 3\theta = c^3 - 3c(1 - c^2) = 4c^3 - 3c$ e $\operatorname{sen}3\theta = 3(1 - s^2)s - s^3 = 3s - 4s^3$.
+      c) $\cos 60° = \tfrac{1}{2} = 4c^3 - 3c$; multiplicando por 2: $8c^3 - 6c - 1 = 0$.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    texto: |
+      Em circuitos de corrente alternada, tensão, corrente e impedância são representadas por números complexos (fasores), e vale a relação $V = Z \cdot I$. Use $\operatorname{cis}\theta = \cos\theta + i\operatorname{sen}\theta$.
+    enunciado: ''
+    itens:
+    - 'Para $Z = 10\operatorname{cis}30°$ e $I = 2\operatorname{cis}15°$, calcule $V$ na forma trigonométrica.'
+    - 'Escreva esse $V$ na forma algébrica.'
+    - 'Se $V = 100\operatorname{cis}90°$ e $Z = 25\operatorname{cis}30°$, determine $I$ nas formas trigonométrica e algébrica.'
+    espaco: 62
+    resolucao: |
+      a) $V = 20\operatorname{cis}45°$.
+      b) $20\left(\tfrac{\sqrt{2}}{2} + \tfrac{\sqrt{2}}{2}i\right) = 10\sqrt{2} + 10\sqrt{2}\,i$.
+      c) $I = \tfrac{V}{Z} = 4\operatorname{cis}60° = 2 + 2\sqrt{3}\,i$.
+    resposta: 'a) $20\operatorname{cis}45°$; b) $10\sqrt{2} + 10\sqrt{2}\,i$; c) $4\operatorname{cis}60° = 2 + 2\sqrt{3}\,i$'
+
+  - estilo: Fuvest
+    enunciado: |
+      O número $\frac{(1 + i)^{20}}{(1 - i)^{18}}$ é igual a
+    opcoes: ['$2$', '$-2$', '$2i$', '$-2i$', '$4$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      $\tfrac{(\sqrt{2})^{20}\operatorname{cis}(20 \cdot 45°)}{(\sqrt{2})^{18}\operatorname{cis}(18 \cdot (-45°))} = 2\operatorname{cis}(900° + 810°) = 2\operatorname{cis}1710°$. Como $1710° = 4 \cdot 360° + 270°$: $2\operatorname{cis}270° = -2i$.
+    resposta: 'D'
+
+  - estilo: Unesp
+    enunciado: 'Considere a equação $z^3 = i$.'
+    itens:
+    - 'Determine as três raízes, nas formas trigonométrica e algébrica.'
+    - 'Calcule a soma das raízes.'
+    - 'Verifique diretamente que $-i$ é uma das raízes.'
+    espaco: 62
+    resolucao: |
+      a) $i = \operatorname{cis}90°$; $3\theta = 90° + 360°k$: $30°$, $150°$, $270°$. Raízes $\tfrac{\sqrt{3}}{2} + \tfrac{1}{2}i$, $-\tfrac{\sqrt{3}}{2} + \tfrac{1}{2}i$ e $-i$.
+      b) $\left(\tfrac{\sqrt{3}}{2} - \tfrac{\sqrt{3}}{2}\right) + \left(\tfrac{1}{2} + \tfrac{1}{2} - 1\right)i = 0$.
+      c) $(-i)^3 = -i^3 = -(-i) = i$.
+    resposta: 'a) $\pm\frac{\sqrt{3}}{2} + \frac{1}{2}i$ e $-i$; b) $0$'
+
+  - estilo: Fuvest
+    enunciado: 'Seja $\omega = \cos\frac{2\pi}{5} + i\operatorname{sen}\frac{2\pi}{5}$.'
+    itens:
+    - 'Mostre que $\omega^5 = 1$ e que $1 + \omega + \omega^2 + \omega^3 + \omega^4 = 0$. (Sugestão: $(\omega - 1)(1 + \omega + \omega^2 + \omega^3 + \omega^4) = \omega^5 - 1$.)'
+    - 'Tomando a parte real, mostre que $1 + 2\cos 72° + 2\cos 144° = 0$.'
+    - 'Usando $\cos 144° = 2\cos^2 72° - 1$, mostre que $\cos 72° = \frac{\sqrt{5} - 1}{4}$.'
+    espaco: 62
+    resolucao: |
+      a) Moivre: $\omega^5 = \operatorname{cis}2\pi = 1$. Pela sugestão, $(\omega - 1) \cdot S = 0$ com $\omega \neq 1$, logo $S = 0$.
+      b) As partes reais de $\omega, \omega^2, \omega^3, \omega^4$ são $\cos 72°$, $\cos 144°$, $\cos 216° = \cos 144°$ e $\cos 288° = \cos 72°$. Somando com 1: $1 + 2\cos 72° + 2\cos 144° = 0$.
+      c) Com $c = \cos 72°$: $1 + 2c + 2(2c^2 - 1) = 0$, $4c^2 + 2c - 1 = 0$, $c = \tfrac{-2 \pm \sqrt{20}}{8} = \tfrac{-1 \pm \sqrt{5}}{4}$. Como $c > 0$: $c = \tfrac{\sqrt{5} - 1}{4}$.
+    resposta: 'c) $\cos 72° = \frac{\sqrt{5} - 1}{4}$'
