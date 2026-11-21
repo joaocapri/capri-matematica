@@ -1,0 +1,546 @@
+# Aula 4.4.1 — Geometria plana: teorema de Pitágoras
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: a² = b² + c²; ternas pitagóricas; recíproca e classificação pelo maior lado; diagonal do quadrado e do retângulo;
+# altura do triângulo equilátero; trapézio isósceles e losango; distância entre pontos; aplicações (escadas, rampas, telas,
+# postes, bambu quebrado). As demais relações métricas ficam para a 4.4.2.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete o quadro, em que $b$ e $c$ são os catetos e $a$ é a hipotenusa.'
+      tabela:
+        cabecalho: ['$b$', '$c$', '$a$']
+        linhas:
+        - ['$9$', '$12$', '${{15}}$']
+        - ['${{7}}$', '$24$', '$25$']
+        - ['$8$', '${{15}}$', '$17$']
+        - ['$1$', '$1$', '${{\sqrt{2}}}$']
+        - ['$2$', '${{2\sqrt{3}}}$', '$4$']
+      resolucao: |
+        $a^2 = b^2 + c^2$. $81 + 144 = 225$; $625 - 576 = 49$; $289 - 64 = 225$; $1 + 1 = 2$; $16 - 4 = 12$.
+      resposta: '$15$; $7$; $15$; $\sqrt{2}$; $2\sqrt{3}$'
+    - enunciado: 'Uma escada de 2,5 m está apoiada num muro vertical, com o pé a 0,7 m da parede. Complete com a altura em que ela toca o muro.'
+      itens:
+      - 'Altura: {{2{,}4}} m'
+      espaco_item: 10
+      resolucao: |
+        $h^2 = 2{,}5^2 - 0{,}7^2 = 6{,}25 - 0{,}49 = 5{,}76$, $h = 2{,}4$ m.
+      resposta: '2,4 m'
+    - enunciado: 'Complete.'
+      itens:
+      - 'Diagonal do quadrado de lado 5: {{5\sqrt{2}}}'
+      - 'Lado do quadrado de diagonal $6\sqrt{2}$: {{6}}'
+      - 'Altura do triângulo equilátero de lado 10: {{5\sqrt{3}}}'
+      - 'Lado do triângulo equilátero de altura $6\sqrt{3}$: {{12}}'
+      colunas: 2
+      espaco_item: 10
+      resolucao: |
+        $d = \ell\sqrt{2}$ e $h = \tfrac{\ell\sqrt{3}}{2}$ (ambas por Pitágoras). Na última, $\tfrac{\ell\sqrt{3}}{2} = 6\sqrt{3}$, $\ell = 12$.
+      resposta: '$5\sqrt{2}$; $6$; $5\sqrt{3}$; $12$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'A hipotenusa é sempre o maior lado do triângulo retângulo.'
+      - '$6$, $8$ e $10$ formam uma terna pitagórica.'
+      - 'O triângulo de lados $4$, $5$ e $6$ é retângulo.'
+      - 'Se $a^2 = b^2 + c^2$, o triângulo de lados $a$, $b$ e $c$ é retângulo.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) $a^2 = b^2 + c^2 > b^2$. (V) $36 + 64 = 100$. (F) $16 + 25 = 41 \neq 36$. (V) Recíproca do teorema.
+      resposta: V, V, F, V
+    - enunciado: 'Classifique cada triângulo como acutângulo, retângulo ou obtusângulo, comparando o quadrado do maior lado com a soma dos quadrados dos outros dois.'
+      tabela:
+        cabecalho: ['Lados', 'Classificação']
+        linhas:
+        - ['$5$, $12$, $13$', '{{retângulo}}']
+        - ['$4$, $5$, $6$', '{{acutângulo}}']
+        - ['$3$, $5$, $7$', '{{obtusângulo}}']
+        - ['$7$, $24$, $25$', '{{retângulo}}']
+      resolucao: |
+        $169 = 169$; $36 < 41$; $49 > 34$; $625 = 625$. Maior: obtuso; igual: reto; menor: agudo.
+      resposta: 'retângulo; acutângulo; obtusângulo; retângulo'
+    - enunciado: 'A tela de uma televisão tem formato $4 : 3$ (largura : altura) e diagonal de 20 polegadas. Calcule a largura e a altura da tela.'
+      espaco: 10
+      resolucao: |
+        Largura $4k$, altura $3k$: $(4k)^2 + (3k)^2 = 400$, $25k^2 = 400$, $k = 4$. Tela de 16 por 12 polegadas.
+      resposta: '16 e 12 polegadas'
+    - enunciado: 'Use o teorema de Pitágoras para calcular a distância entre os pontos $A(1, 2)$ e $B(7, 10)$.'
+      espaco: 10
+      resolucao: |
+        Os catetos são as diferenças das coordenadas, $6$ e $8$: $AB = \sqrt{36 + 64} = 10$.
+      resposta: '10'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Num triângulo retângulo, a hipotenusa mede 17 e um cateto mede 8. Ivo calculou o outro cateto como $\sqrt{17^2 + 8^2} = \sqrt{353}$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        Ivo somou como se 17 fosse cateto. Como 17 é a hipotenusa: $c^2 = 289 - 64 = 225$, $c = 15$.
+      resposta: '15'
+    - enunciado: 'Um bambu de 9 m de altura quebrou num ponto, e a ponta tocou o chão a 3 m da base, com a parte de baixo ainda vertical. A que altura ele quebrou?'
+      espaco: 12
+      resolucao: |
+        Com quebra a $x$ m: a parte caída mede $9 - x$ e é a hipotenusa. $x^2 + 9 = (9 - x)^2 = 81 - 18x + x^2$: $18x = 72$, $x = 4$ m.
+      resposta: '4 m'
+    - enunciado: 'Um trapézio isósceles tem bases de 16 cm e 6 cm e lados não paralelos de 13 cm. Calcule a altura.'
+      espaco: 12
+      resolucao: |
+        Cada projeção do lado sobre a base maior mede $\tfrac{16 - 6}{2} = 5$: $h = \sqrt{169 - 25} = 12$ cm.
+      resposta: '12 cm'
+    - enunciado: 'As diagonais de um losango medem 10 cm e 24 cm. Calcule o lado e o perímetro.'
+      espaco: 10
+      resolucao: |
+        As diagonais se cortam ao meio e são perpendiculares: o lado é hipotenusa de catetos 5 e 12, $\ell = 13$ cm. Perímetro $52$ cm.
+      resposta: '13 cm; 52 cm'
+    - enunciado: 'Complete o quadro com a diagonal de cada retângulo.'
+      tabela:
+        cabecalho: ['Lados', 'Diagonal']
+        linhas:
+        - ['$5$ e $12$', '${{13}}$']
+        - ['$8$ e $15$', '${{17}}$']
+        - ['$1$ e $2$', '${{\sqrt{5}}}$']
+        - ['$20$ e $21$', '${{29}}$']
+      resolucao: |
+        $\sqrt{25 + 144}$; $\sqrt{64 + 225}$; $\sqrt{1 + 4}$; $\sqrt{400 + 441} = \sqrt{841}$.
+      resposta: '$13$; $17$; $\sqrt{5}$; $29$'
+    - enunciado: 'Uma rampa vence um desnível de 0,7 m com 2,4 m de comprimento horizontal. Qual é o comprimento da rampa?'
+      espaco: 10
+      resolucao: |
+        $\sqrt{2{,}4^2 + 0{,}7^2} = \sqrt{5{,}76 + 0{,}49} = \sqrt{6{,}25} = 2{,}5$ m.
+      resposta: '2,5 m'
+    - enunciado: 'Um triângulo isósceles tem lados 10, 10 e 12. Calcule a altura relativa à base e a área.'
+      espaco: 10
+      resolucao: |
+        A altura cai no ponto médio da base: $h = \sqrt{100 - 36} = 8$. Área $\tfrac{12 \cdot 8}{2} = 48$.
+      resposta: 'altura 8; área 48'
+    - enunciado: 'Num triângulo equilátero de lado 8, calcule a altura e a distância do centro a um vértice.'
+      espaco: 10
+      resolucao: |
+        $h = 4\sqrt{3}$. O centro está a $\tfrac{2}{3}$ da altura a partir do vértice: $\tfrac{8\sqrt{3}}{3}$.
+      resposta: '$4\sqrt{3}$; $\frac{8\sqrt{3}}{3}$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove o teorema de Pitágoras: monte um quadrado de lado $b + c$ com quatro cópias do triângulo retângulo de catetos $b$ e $c$ nos cantos, deixando no meio um quadrado de lado $a$, e compare as áreas.'
+      espaco: 16
+      resolucao: |
+        A área do quadrado grande é $(b + c)^2$. Ela também é a soma das áreas dos quatro triângulos e do quadrado do meio: $4 \cdot \tfrac{bc}{2} + a^2$. Logo $b^2 + 2bc + c^2 = 2bc + a^2$, isto é, $a^2 = b^2 + c^2$. (O quadrilátero do meio é um quadrado: os ângulos agudos de cada triângulo somam $90°$.)
+      resposta: 'Ver resolução'
+    - enunciado: 'Uma caixa tem a forma de um bloco retangular de dimensões 3, 4 e 12. Usando Pitágoras duas vezes, calcule a diagonal da caixa (de um vértice ao vértice oposto).'
+      espaco: 12
+      resolucao: |
+        Diagonal da base: $\sqrt{9 + 16} = 5$. Ela e a altura 12 são catetos da diagonal da caixa: $\sqrt{25 + 144} = 13$.
+      resposta: '13'
+    - enunciado: 'Os catetos de um triângulo retângulo medem $x$ e $x + 7$, e a hipotenusa mede 13. Determine $x$.'
+      espaco: 12
+      resolucao: |
+        $x^2 + (x + 7)^2 = 169$: $2x^2 + 14x - 120 = 0$, $x^2 + 7x - 60 = 0$, $x = 5$ (a raiz $-12$ não serve).
+      resposta: '$x = 5$'
+    - enunciado: 'Mostre que, para inteiros $m > n > 0$, os números $m^2 - n^2$, $2mn$ e $m^2 + n^2$ formam uma terna pitagórica. Gere a terna para $m = 4$ e $n = 1$.'
+      espaco: 12
+      resolucao: |
+        $(m^2 - n^2)^2 + (2mn)^2 = m^4 - 2m^2n^2 + n^4 + 4m^2n^2 = (m^2 + n^2)^2$. Para $m = 4$, $n = 1$: $15$, $8$ e $17$.
+      resposta: '$15, 8, 17$'
+    - enunciado: 'Uma formiga anda pela superfície de um cubo de aresta 1, de um vértice até o vértice oposto. Planificando duas faces vizinhas, mostre que o menor caminho mede $\sqrt{5}$.'
+      espaco: 14
+      resolucao: |
+        As duas faces planificadas formam um retângulo $2 \times 1$, e os vértices ficam em cantos opostos dele. O caminho reto é a diagonal: $\sqrt{4 + 1} = \sqrt{5} \approx 2{,}24$ (menor que ir pelas arestas, 3, ou pela diagonal de uma face mais uma aresta, $\sqrt{2} + 1 \approx 2{,}41$).
+      resposta: '$\sqrt{5}$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Para dar acesso a cadeirantes a uma loja, será construída uma rampa reta que vence um desnível de 1,2 m e ocupa 3,5 m na horizontal, como na figura. O construtor precisa do comprimento da rampa para comprar o piso antiderrapante.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \fill[lilas!40] (0,0) -- (3.5,0) -- (3.5,1.2) -- cycle;
+        \draw[ink, line width=1pt] (-0.4,0) -- (4.4,0);
+        \draw[ink, line width=1pt] (3.5,0) -- (3.5,1.2) -- (4.4,1.2);
+        \draw[roxo, line width=1.4pt] (0,0) -- (3.5,1.2);
+        \draw[ink] (3.25,0) -- (3.25,0.25) -- (3.5,0.25);
+        \node[font=\scriptsize, below] at (1.75,0) {3,5 m};
+        \node[font=\scriptsize, right] at (3.5,0.6) {1,2 m};
+        \end{scope}
+    enunciado: |
+      O comprimento da rampa é
+    opcoes: ['$4{,}7$ m', '$3{,}5$ m', '$3{,}7$ m', '$3{,}9$ m', '$1{,}2$ m']
+    correta: C
+    resolucao: |
+      $\sqrt{3{,}5^2 + 1{,}2^2} = \sqrt{12{,}25 + 1{,}44} = \sqrt{13{,}69} = 3{,}7$ m. ($4{,}7$ m é a soma dos catetos.)
+
+  - estilo: Fuvest
+    enunciado: |
+      A diagonal de um retângulo de lados 8 e 15 mede
+    opcoes: ['$23$', '$17$', '$\sqrt{161}$', '$13$', '$19$']
+    correta: B
+    resolucao: |
+      $\sqrt{64 + 225} = \sqrt{289} = 17$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A altura de um triângulo equilátero de lado 10 mede
+    opcoes: ['$5\sqrt{3}$.', '$5$.', '$10\sqrt{3}$.', '$5\sqrt{2}$.']
+    correta: A
+    resolucao: |
+      A altura divide a base ao meio: $h^2 = 100 - 25 = 75$, $h = 5\sqrt{3}$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere ternas de números como possíveis medidas dos lados de um triângulo retângulo. Assinale o que for correto.
+    proposicoes:
+    - '$3$, $4$ e $5$ são medidas dos lados de um triângulo retângulo.'
+    - '$5$, $12$ e $13$ são medidas dos lados de um triângulo retângulo.'
+    - '$6$, $8$ e $10$ são medidas dos lados de um triângulo retângulo.'
+    - '$20$, $21$ e $29$ são medidas dos lados de um triângulo retângulo.'
+    - '$4$, $5$ e $6$ são medidas dos lados de um triângulo retângulo.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) $9 + 16 = 25$. 02) $25 + 144 = 169$. 04) Dobro de $3, 4, 5$. 08) $400 + 441 = 841$. 16) Incorreta: $16 + 25 = 41 \neq 36$.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Enem
+    texto: |
+      Uma loja anuncia televisores pelo tamanho da diagonal da tela. O quadro mostra a largura e a altura da tela de quatro modelos, em centímetros. Um cliente quer uma tela com diagonal de pelo menos 1 m e de no máximo 1,3 m, para caber num nicho da sala.
+    tabela:
+      cabecalho: ['TV', 'Largura (cm)', 'Altura (cm)']
+      linhas:
+      - ['1', '80', '60']
+      - ['2', '96', '72']
+      - ['3', '64', '48']
+      - ['4', '120', '90']
+    enunciado: |
+      Atendem ao cliente
+    opcoes: ['apenas a TV 1.', 'apenas a TV 2.', 'apenas as TVs 2 e 3.', 'apenas as TVs 1 e 2.', 'apenas as TVs 1, 2 e 4.']
+    correta: D
+    resolucao: |
+      Diagonais: $\sqrt{80^2 + 60^2} = 100$; $120$; $80$; $150$ cm. Entre 100 e 130: TVs 1 e 2.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'O triângulo de lados $6$, $8$ e $10$ é retângulo.'
+    - 'O triângulo de lados $2$, $3$ e $4$ é obtusângulo.'
+    - 'A diagonal de um quadrado de lado $\ell$ mede $2\ell$.'
+    - 'A altura de um triângulo equilátero de lado 2 mede $\sqrt{3}$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e III, apenas.', 'I, II e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. $36 + 64 = 100$. II. $16 > 4 + 9$. III. Incorreta: $\ell\sqrt{2}$. IV. $\tfrac{2\sqrt{3}}{2} = \sqrt{3}$.
+
+  - estilo: Unesp
+    enunciado: |
+      Uma escada de 5 m está apoiada num muro vertical e toca o muro a 4,8 m do chão. A distância do pé da escada ao muro é
+    opcoes: ['$0{,}2$ m', '$1$ m', '$2{,}2$ m', '$0{,}8$ m', '$1{,}4$ m']
+    correta: E
+    resolucao: |
+      $\sqrt{25 - 23{,}04} = \sqrt{1{,}96} = 1{,}4$ m.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Um bambu de 8 m de altura quebrou num ponto, e a sua ponta tocou o chão a 4 m da base, como na figura, com a parte de baixo ainda vertical.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.6]
+        \draw[ink, line width=1pt] (-0.6,0) -- (5,0);
+        \draw[lima!70!black, line width=2.4pt] (0,0) -- (0,3);
+        \draw[lima!70!black, line width=2.4pt] (0,3) -- (4,0);
+        \node[font=\scriptsize, below] at (2,0) {4 m};
+        \node[font=\scriptsize, left] at (0,1.5) {$x$};
+        \end{scope}
+    enunciado: |
+      A altura $x$ em que o bambu quebrou é
+    opcoes: ['$4$ m.', '$3$ m.', '$5$ m.', '$2$ m.']
+    correta: B
+    resolucao: |
+      A parte caída mede $8 - x$: $x^2 + 16 = (8 - x)^2$, $16 = 64 - 16x$, $x = 3$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      Um trapézio isósceles tem bases 20 e 8 e altura 8. O seu perímetro é
+    opcoes: ['$40$', '$42$', '$44$', '$46$', '$48$']
+    correta: E
+    resolucao: |
+      Projeção de cada lado: $\tfrac{20 - 8}{2} = 6$. Lado $\sqrt{36 + 64} = 10$. Perímetro $20 + 8 + 10 + 10 = 48$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o quadrado $ABCD$ de lado 6 e o ponto médio $M$ do lado $BC$. Assinale o que for correto.
+    proposicoes:
+    - 'A diagonal do quadrado mede $6\sqrt{2}$.'
+    - '$AM = 3\sqrt{5}$.'
+    - '$DM = 3\sqrt{5}$.'
+    - 'O ângulo $A\hat{M}D$ é reto.'
+    - 'O triângulo $AMD$ é isósceles.'
+    - 'A distância de $M$ ao centro do quadrado é 3.'
+    corretas: [1, 2, 3, 5, 6]
+    resolucao: |
+      01) $\ell\sqrt{2}$. 02) $\sqrt{36 + 9} = \sqrt{45}$. 04) Idem, por simetria. 08) Incorreta: $AM^2 + DM^2 = 90 \neq AD^2 = 36$. 16) $AM = DM$. 32) O centro está a meia distância entre $BC$ e $AD$, na altura de $M$: 3.
+      Soma: $01 + 02 + 04 + 16 + 32 = 55$.
+
+  - estilo: Enem
+    texto: |
+      Um drone decolou de um ponto do chão, subiu verticalmente 120 m e, em seguida, deslocou-se 160 m na horizontal, sempre na mesma altura. Para economizar bateria na volta, o operador vai trazê-lo em linha reta até o ponto de decolagem.
+    enunciado: |
+      A distância em linha reta do drone ao ponto de decolagem é
+    opcoes: ['$280$ m', '$140$ m', '$200$ m', '$240$ m', '$100\sqrt{2}$ m']
+    correta: C
+    resolucao: |
+      $\sqrt{120^2 + 160^2} = \sqrt{14\,400 + 25\,600} = \sqrt{40\,000} = 200$ m.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Num triângulo retângulo, a hipotenusa é o maior lado.'
+    - 'Num triângulo retângulo, a soma dos catetos é igual à hipotenusa.'
+    - 'A diagonal de um retângulo de lados 6 e 8 mede 10.'
+    - 'Os números $1$, $\sqrt{3}$ e $2$ são medidas dos lados de um triângulo retângulo.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'V – F – V – F.', 'F – F – V – V.', 'V – F – V – V.', 'V – V – F – V.']
+    correta: D
+    resolucao: |
+      (V) (F) A soma dos catetos é sempre maior que a hipotenusa. (V) (V) $1 + 3 = 4$.
+
+  - estilo: Enem
+    texto: |
+      Dois postes verticais, de 8 m e 3 m de altura, estão a 12 m um do outro, num terreno plano. Um eletricista vai esticar um cabo reto ligando o topo de um ao topo do outro, como na figura, e precisa saber o comprimento do cabo.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.33]
+        \draw[ink, line width=1pt] (-1,0) -- (13,0);
+        \draw[ink, line width=2pt] (0,0) -- (0,8);
+        \draw[ink, line width=2pt] (12,0) -- (12,3);
+        \draw[roxo, line width=1.2pt] (0,8) -- (12,3);
+        \draw[ink!50, dashed] (0,3) -- (12,3);
+        \node[font=\scriptsize, below] at (6,0) {12 m};
+        \node[font=\scriptsize, left] at (0,4) {8 m};
+        \node[font=\scriptsize, right] at (12,1.5) {3 m};
+        \end{scope}
+    enunciado: |
+      O comprimento do cabo é
+    opcoes: ['$13$ m', '$12$ m', '$15$ m', '$11$ m', '$\sqrt{73}$ m']
+    correta: A
+    resolucao: |
+      O cabo é hipotenusa de um triângulo de catetos 12 (horizontal) e $8 - 3 = 5$ (vertical): $\sqrt{144 + 25} = 13$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      As diagonais de um losango medem 12 e 16. O perímetro do losango é
+    opcoes: ['$28$', '$20$', '$40$', '$48$', '$56$']
+    correta: C
+    resolucao: |
+      Lado: $\sqrt{6^2 + 8^2} = 10$. Perímetro $40$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere a classificação de triângulos pelo maior lado. Assinale o que for correto.
+    proposicoes:
+    - 'O triângulo de lados $5$, $6$ e $7$ é acutângulo.'
+    - 'O triângulo de lados $4$, $6$ e $8$ é obtusângulo.'
+    - 'O triângulo de lados $8$, $15$ e $17$ é retângulo.'
+    - 'O triângulo de lados $6$, $7$ e $10$ é acutângulo.'
+    - 'Em todo triângulo obtusângulo, o quadrado do maior lado é maior que a soma dos quadrados dos outros dois.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      01) $49 < 61$. 02) $64 > 52$. 04) $289 = 289$. 08) Incorreta: $100 > 85$, obtusângulo. 16) Correta.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Os catetos de um triângulo retângulo medem $x$ e $x + 7$, e a hipotenusa mede 17. O valor de $x$ é
+    opcoes: ['$5$', '$8$', '$15$', '$12$', '$10$']
+    correta: B
+    resolucao: |
+      $x^2 + (x + 7)^2 = 289$: $x^2 + 7x - 120 = 0$, $x = 8$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Uma caixa tem a forma de um bloco retangular, com base de 30 cm por 40 cm e altura de 120 cm, como na figura. Uma pessoa quer guardar nela um bastão rígido e reto, o mais comprido possível.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.5]
+        \draw[ink, line width=1pt, fill=lilas!25] (0,0) rectangle (4,6);
+        \draw[ink, line width=1pt, fill=lilas!40] (0,6) -- (1.2,6.9) -- (5.2,6.9) -- (4,6) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!15] (4,0) -- (5.2,0.9) -- (5.2,6.9) -- (4,6) -- cycle;
+        \draw[ink!50, dashed] (0,0) -- (1.2,0.9) -- (5.2,0.9) (1.2,0.9) -- (1.2,6.9);
+        \draw[roxo, line width=1.2pt] (0,0) -- (5.2,6.9);
+        \node[font=\scriptsize, below] at (2,0) {40 cm};
+        \node[font=\scriptsize, below right] at (4.5,0.4) {30 cm};
+        \node[font=\scriptsize, left] at (0,3) {120 cm};
+        \end{scope}
+    enunciado: |
+      A diagonal da base da caixa mede
+    opcoes: ['$70$ cm', '$35$ cm', '$120$ cm', '$60$ cm', '$50$ cm']
+    correta: E
+    resolucao: |
+      $\sqrt{30^2 + 40^2} = 50$ cm.
+
+  - estilo: Unicamp
+    enunciado: |
+      O maior bastão que cabe na caixa, de um vértice ao vértice oposto, mede
+    opcoes: ['$130$ cm.', '$170$ cm.', '$125$ cm.', '$190$ cm.']
+    correta: A
+    resolucao: |
+      A diagonal da base (50) e a altura (120) são catetos: $\sqrt{2500 + 14\,400} = \sqrt{16\,900} = 130$ cm.
+
+  - estilo: Unesp
+    enunciado: |
+      A distância entre os pontos $A(-2, 3)$ e $B(4, -5)$ do plano cartesiano é
+    opcoes: ['$8$', '$10$', '$14$', '$\sqrt{52}$', '$6$']
+    correta: B
+    resolucao: |
+      Catetos $|4 - (-2)| = 6$ e $|-5 - 3| = 8$: $\sqrt{36 + 64} = 10$.
+
+  - estilo: Fuvest
+    enunciado: |
+      A altura de um triângulo equilátero mede 6. O perímetro desse triângulo é
+    opcoes: ['$12\sqrt{3}$', '$18$', '$6\sqrt{3}$', '$24$', '$8\sqrt{3}$']
+    correta: A
+    resolucao: |
+      $\tfrac{\ell\sqrt{3}}{2} = 6$: $\ell = \tfrac{12}{\sqrt{3}} = 4\sqrt{3}$. Perímetro $12\sqrt{3}$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere um triângulo retângulo de catetos $b$ e $c$ e hipotenusa $a$.'
+    itens:
+    - 'Prove que $a^2 = b^2 + c^2$, comparando as áreas de um quadrado de lado $b + c$ dividido em quatro cópias do triângulo e um quadrado de lado $a$.'
+    - 'Deduza que a diagonal de um quadrado de lado $\ell$ mede $\ell\sqrt{2}$ e que a altura de um triângulo equilátero de lado $\ell$ mede $\frac{\ell\sqrt{3}}{2}$.'
+    - 'Um quadrado e um triângulo equilátero têm o mesmo perímetro, 12. Qual é maior: a diagonal do quadrado ou a altura do triângulo?'
+    espaco: 62
+    resolucao: |
+      a) $(b + c)^2 = 4 \cdot \tfrac{bc}{2} + a^2$, logo $b^2 + c^2 = a^2$.
+      b) A diagonal é hipotenusa de catetos $\ell$ e $\ell$: $\sqrt{2\ell^2}$. A altura é cateto de hipotenusa $\ell$ e outro cateto $\tfrac{\ell}{2}$: $\sqrt{\ell^2 - \tfrac{\ell^2}{4}} = \tfrac{\ell\sqrt{3}}{2}$.
+      c) Quadrado de lado 3: diagonal $3\sqrt{2} \approx 4{,}24$. Triângulo de lado 4: altura $2\sqrt{3} \approx 3{,}46$. A diagonal é maior ($18 > 12$, comparando os quadrados).
+    resposta: 'c) a diagonal do quadrado'
+
+  - estilo: Unicamp
+    texto: |
+      Um bambu de altura $H$ quebra num ponto a uma altura $x$, e a ponta toca o chão a uma distância $d$ da base, com a parte de baixo ainda vertical.
+    enunciado: ''
+    itens:
+    - 'Mostre que $x = \frac{H^2 - d^2}{2H}$.'
+    - 'Calcule $x$ para $H = 10$ m e $d = 4$ m.'
+    - 'Para $H = 10$ m, qual deve ser $d$ para que o bambu tenha quebrado a 2,8 m do chão?'
+    espaco: 62
+    resolucao: |
+      a) A parte caída mede $H - x$: $x^2 + d^2 = (H - x)^2 = H^2 - 2Hx + x^2$, $2Hx = H^2 - d^2$.
+      b) $x = \tfrac{100 - 16}{20} = 4{,}2$ m.
+      c) $2{,}8 = \tfrac{100 - d^2}{20}$: $d^2 = 44$, $d = 2\sqrt{11} \approx 6{,}6$ m.
+    resposta: 'b) 4,2 m; c) $2\sqrt{11}$ m'
+
+  - estilo: ITA
+    enunciado: |
+      O número de triângulos retângulos, não congruentes, com lados de medidas inteiras e um cateto medindo 12 é
+    opcoes: ['$2$', '$3$', '$4$', '$5$', '$6$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $a^2 - c^2 = 144$, ou $(a - c)(a + c) = 144$, com os dois fatores de mesma paridade (para $a$ e $c$ inteiros) e $a - c < a + c$: $2 \cdot 72$, $4 \cdot 36$, $6 \cdot 24$, $8 \cdot 18$. Triângulos $(12, 35, 37)$, $(12, 16, 20)$, $(12, 9, 15)$, $(12, 5, 13)$: 4.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Uma aranha está num canto de uma caixa de dimensões 3, 4 e 5 e quer chegar, andando pela superfície, ao canto oposto.'
+    itens:
+    - 'Planificando duas faces vizinhas, mostre que um caminho possível mede $\sqrt{(3 + 4)^2 + 5^2}$.'
+    - 'Calcule os comprimentos dos três caminhos obtidos com as três planificações possíveis e indique o menor.'
+    - 'Compare o menor caminho com a diagonal interna da caixa.'
+    espaco: 62
+    resolucao: |
+      a) Duas faces vizinhas, de dimensões $3 \times 5$ e $4 \times 5$, formam um retângulo $7 \times 5$, e os cantos ficam em vértices opostos dele.
+      b) $\sqrt{7^2 + 5^2} = \sqrt{74}$, $\sqrt{8^2 + 4^2} = \sqrt{80}$ e $\sqrt{9^2 + 3^2} = \sqrt{90}$. O menor é $\sqrt{74} \approx 8{,}6$.
+      c) Diagonal interna: $\sqrt{9 + 16 + 25} = \sqrt{50} \approx 7{,}1$, menor, pois a aranha não pode atravessar a caixa.
+    resposta: 'b) $\sqrt{74}$; c) $\sqrt{50}$'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - 'O triângulo de lados $9$, $40$ e $41$ é retângulo.'
+    - 'A altura de um triângulo equilátero de lado 6 mede $3\sqrt{3}$.'
+    - 'A diagonal de um cubo de aresta 2 mede $2\sqrt{3}$.'
+    - 'Se a hipotenusa de um triângulo retângulo isósceles mede 10, cada cateto mede 5.'
+    - 'O triângulo de lados $\sqrt{2}$, $\sqrt{3}$ e $\sqrt{5}$ é retângulo.'
+    - 'A distância entre $(1, 1)$ e $(4, 5)$ é 5.'
+    corretas: [1, 2, 3, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) $81 + 1600 = 1681$. 02) $\tfrac{6\sqrt{3}}{2}$. 04) $\sqrt{4 + 4 + 4} = 2\sqrt{3}$. 08) Incorreta: $2c^2 = 100$, $c = 5\sqrt{2}$. 16) $2 + 3 = 5$. 32) $\sqrt{9 + 16}$.
+    resposta: 'Soma 55 (01 + 02 + 04 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'No quadrado $ABCD$ de lado 2, com $A(0, 0)$, $B(2, 0)$, $C(2, 2)$ e $D(0, 2)$, constrói-se, para dentro, o triângulo equilátero $ABE$.'
+    itens:
+    - 'Determine as coordenadas de $E$.'
+    - 'Calcule a distância de $E$ ao lado $CD$.'
+    - 'Mostre que $DE = \sqrt{8 - 4\sqrt{3}}$ e que esse número é igual a $\sqrt{6} - \sqrt{2}$.'
+    espaco: 62
+    resolucao: |
+      a) $E$ fica na mediatriz de $AB$, a uma altura $\sqrt{3}$: $E(1, \sqrt{3})$.
+      b) $2 - \sqrt{3} \approx 0{,}27$.
+      c) $DE^2 = 1^2 + (2 - \sqrt{3})^2 = 1 + 4 - 4\sqrt{3} + 3 = 8 - 4\sqrt{3}$. E $(\sqrt{6} - \sqrt{2})^2 = 6 + 2 - 2\sqrt{12} = 8 - 4\sqrt{3}$, com $\sqrt{6} - \sqrt{2} > 0$.
+    resposta: 'a) $(1, \sqrt{3})$; b) $2 - \sqrt{3}$'
+
+  - estilo: Unicamp
+    texto: |
+      Um drone parte de um ponto $O$ do chão. Ele se desloca 90 m para o leste, 120 m para o norte e sobe até 80 m de altura.
+    enunciado: ''
+    itens:
+    - 'Qual é a distância horizontal entre o drone e $O$?'
+    - 'Qual é a distância em linha reta entre o drone e $O$?'
+    - 'Mostre que, se as três distâncias fossem $a$, $b$ e $c$, a distância em linha reta seria $\sqrt{a^2 + b^2 + c^2}$.'
+    espaco: 62
+    resolucao: |
+      a) $\sqrt{90^2 + 120^2} = 150$ m.
+      b) A distância horizontal e a altura são catetos: $\sqrt{150^2 + 80^2} = \sqrt{28\,900} = 170$ m.
+      c) A horizontal é $\sqrt{a^2 + b^2}$, e com a altura $c$: $\sqrt{a^2 + b^2 + c^2}$.
+    resposta: 'a) 150 m; b) 170 m'
+
+  - estilo: Fuvest
+    enunciado: |
+      Num triângulo retângulo, a hipotenusa mede 13 e a soma dos catetos é 17. A área do triângulo é
+    opcoes: ['$30$', '$60$', '$40$', '$32{,}5$', '$24$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $b + c = 17$ e $b^2 + c^2 = 169$. $(b + c)^2 = 289 = 169 + 2bc$: $bc = 60$, área $\tfrac{bc}{2} = 30$. (Catetos 5 e 12.)
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Um trapézio isósceles tem bases de 21 cm e 9 cm e lados não paralelos de 10 cm.'
+    itens:
+    - 'Calcule a altura do trapézio.'
+    - 'Calcule a medida de cada diagonal.'
+    - 'Calcule a área do trapézio.'
+    espaco: 62
+    resolucao: |
+      a) Projeção de cada lado: $\tfrac{21 - 9}{2} = 6$. $h = \sqrt{100 - 36} = 8$ cm.
+      b) A diagonal vai de um vértice da base maior ao vértice oposto da menor: catetos $8$ e $21 - 6 = 15$. $\sqrt{64 + 225} = 17$ cm.
+      c) $\tfrac{(21 + 9) \cdot 8}{2} = 120$ cm².
+    resposta: 'a) 8 cm; b) 17 cm; c) 120 cm²'
+
+  - estilo: Fuvest
+    enunciado: 'Considere as ternas $(m^2 - n^2, 2mn, m^2 + n^2)$, com $m > n > 0$ inteiros.'
+    itens:
+    - 'Mostre que elas são ternas pitagóricas.'
+    - 'Obtenha, por essa fórmula, uma terna com hipotenusa 25.'
+    - 'Obtenha duas ternas diferentes que tenham um cateto igual a 20.'
+    espaco: 62
+    resolucao: |
+      a) $(m^2 - n^2)^2 + (2mn)^2 = m^4 + 2m^2n^2 + n^4 = (m^2 + n^2)^2$.
+      b) $m^2 + n^2 = 25$ com $m = 4$, $n = 3$: $(7, 24, 25)$.
+      c) $2mn = 20$, $mn = 10$: $(m, n) = (10, 1)$ dá $(99, 20, 101)$; $(5, 2)$ dá $(21, 20, 29)$.
+    resposta: 'b) $(7, 24, 25)$; c) $(99, 20, 101)$ e $(21, 20, 29)$'
