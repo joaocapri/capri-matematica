@@ -1,0 +1,577 @@
+# Aula 4.11.2 — Geometria espacial: planificações e vistas
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: planificações do cubo (faces opostas; 11 arranjos), do paralelepípedo, de prismas, de pirâmides, do
+# cilindro (retângulo 2πr × h) e do cone (setor de ângulo 360°·r/g); vistas frontal, lateral e superior; pilhas de cubinhos a
+# partir da vista superior com alturas; menor caminho sobre a superfície (formiga) pela planificação.
+# Áreas de superfícies ficam para as aulas de cada sólido.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Associe cada sólido à sua planificação.'
+      esquerda:
+      - 'cubo'
+      - 'cilindro'
+      - 'cone'
+      - 'pirâmide de base quadrada'
+      - 'prisma triangular'
+      - 'tetraedro'
+      direita:
+      - 'um círculo e um setor circular'
+      - '4 triângulos'
+      - '6 quadrados'
+      - '2 triângulos e 3 retângulos'
+      - '2 círculos e um retângulo'
+      - 'um quadrado e 4 triângulos'
+      resolucao: |
+        A planificação tem exatamente as faces do sólido; no cilindro e no cone, a superfície lateral curva se abre num retângulo e num setor.
+      resposta: 'De cima para baixo: 3, 6, 1, 5, 2, 4'
+    - enunciado: 'Complete o quadro com a forma de cada vista dos sólidos apoiados na mesa (cilindro e cone em pé).'
+      tabela:
+        cabecalho: ['Sólido', 'Vista frontal', 'Vista superior']
+        linhas:
+        - ['cilindro', '{{retângulo}}', '{{círculo}}']
+        - ['cone', '{{triângulo}}', '{{círculo}}']
+        - ['esfera', '{{círculo}}', '{{círculo}}']
+        - ['cubo', '{{quadrado}}', '{{quadrado}}']
+      resolucao: |
+        De frente, o cilindro mostra altura e diâmetro; o cone, um triângulo isósceles. De cima, ambos mostram a base circular (o cone, com o vértice no centro).
+      resposta: 'retângulo, círculo; triângulo, círculo; círculo, círculo; quadrado, quadrado'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Qualquer arranjo de 6 quadrados ligados pelos lados é planificação de um cubo.'
+      - 'A superfície lateral de um cilindro de raio $r$ e altura $h$ se planifica num retângulo de lados $2\pi r$ e $h$.'
+      - 'A superfície lateral de um cone se planifica num setor circular.'
+      - 'Numa planificação do cubo, duas faces com um lado comum nunca são opostas no cubo.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (F) Seis quadrados em fila, por exemplo, não fecham. (V) O comprimento é o da circunferência da base. (V) (V) Lado comum na planificação vira aresta comum: as faces são vizinhas.
+      resposta: F, V, V, V
+    - enunciado: 'Um cilindro tem raio 3 e altura 10. Complete sobre a sua planificação.'
+      itens:
+      - 'Comprimento do retângulo lateral: {{6\pi}}'
+      - 'Largura do retângulo lateral: {{10}}'
+      - 'Número de círculos: {{2}}'
+      espaco_item: 8
+      resolucao: |
+        O retângulo tem comprimento igual à circunferência da base, $2\pi \cdot 3$, e largura igual à altura.
+      resposta: '$6\pi$; 10; 2'
+    - enunciado: 'Na planificação de cubo da figura, indique a face oposta a $A$, a $B$ e a $C$.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.55]
+          \foreach \x/\y/\t in {1/2/A, 0/1/B, 1/1/C, 2/1/D, 3/1/E, 1/0/F} {
+            \draw[ink, line width=1pt, fill=lilas!25] (\x,\y) rectangle ++(1,1);
+            \node[font=\scriptsize] at (\x+0.5,\y+0.5) {$\t$};
+          }
+          \end{scope}
+      espaco: 8
+      resolucao: |
+        Na coluna de 3 faces, $A$ e $F$ ficam separadas por $C$: opostas. Na fila de 4, faces separadas por uma são opostas: $B$ e $D$, $C$ e $E$.
+      resposta: '$A$: $F$; $B$: $D$; $C$: $E$'
+    - enunciado: 'Um cone tem raio da base 6 e geratriz 10. Calcule o ângulo do setor circular da planificação da sua superfície lateral.'
+      espaco: 8
+      resolucao: |
+        O setor tem raio $g = 10$ e arco igual à circunferência da base, $12\pi$. A circunferência inteira de raio 10 mede $20\pi$: $\theta = \tfrac{12\pi}{20\pi} \cdot 360° = 216°$.
+      resposta: '$216°$'
+    - enunciado: 'A planificação de uma caixa com a forma de um paralelepípedo de $5 \times 3 \times 2$ é recortada de uma folha. Quantos retângulos a compõem e quais são as suas dimensões?'
+      espaco: 8
+      resolucao: |
+        Seis retângulos, em pares iguais: dois $5 \times 3$, dois $5 \times 2$ e dois $3 \times 2$.
+      resposta: '6: $5 \times 3$, $5 \times 2$, $3 \times 2$ (dois de cada)'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para o cone de raio 4 e geratriz 12, Bruno calculou o ângulo do setor da planificação como $\frac{4}{12} \cdot 180° = 60°$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        A fração deve ser aplicada à volta inteira: $\theta = \tfrac{r}{g} \cdot 360° = \tfrac{4}{12} \cdot 360° = 120°$.
+      resposta: '$120°$'
+    - enunciado: 'Uma formiga anda sobre a superfície de um cubo de aresta 3, de um vértice até o vértice oposto. Calcule o menor caminho possível.'
+      espaco: 12
+      resolucao: |
+        Planificando duas faces vizinhas, forma-se um retângulo $3 \times 6$, e o caminho é a diagonal: $\sqrt{9 + 36} = 3\sqrt{5}$.
+      resposta: '$3\sqrt{5}$'
+    - enunciado: 'A vista superior de uma pilha de cubinhos iguais mostra, em cada posição, quantos cubinhos estão empilhados ali. A linha de baixo é a da frente.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.55]
+          \foreach \x/\y/\t in {0/1/3, 1/1/1, 2/1/2, 0/0/1, 1/0/0, 2/0/2} {
+            \draw[ink, line width=1pt, fill=lilas!20] (\x,\y) rectangle ++(1,1);
+            \node[font=\scriptsize] at (\x+0.5,\y+0.5) {$\t$};
+          }
+          \node[below, font=\scriptsize] at (1.5,0) {frente};
+          \end{scope}
+      itens:
+      - 'Total de cubinhos: {{9}}'
+      - 'Alturas na vista frontal, da esquerda para a direita: {{3, 1, 2}}'
+      espaco_item: 8
+      resolucao: |
+        $3 + 1 + 2 + 1 + 0 + 2 = 9$. Olhando de frente, cada coluna mostra a maior pilha dela: $\max(3, 1) = 3$, $\max(1, 0) = 1$, $\max(2, 2) = 2$.
+      resposta: '9; 3, 1, 2'
+    - enunciado: 'A superfície lateral de um cilindro, planificada, é um retângulo de $12\pi$ por 8, sendo $12\pi$ o lado que dá a volta. Calcule o raio e a altura.'
+      espaco: 8
+      resolucao: |
+        $2\pi r = 12\pi$: $r = 6$; altura 8.
+      resposta: '$r = 6$; $h = 8$'
+    - enunciado: 'Complete com o ângulo do setor da planificação lateral de cada cone.'
+      tabela:
+        cabecalho: ['Raio $r$', 'Geratriz $g$', 'Ângulo do setor']
+        linhas:
+        - ['$3$', '$9$', '${{120°}}$']
+        - ['$5$', '$10$', '${{180°}}$']
+        - ['$2$', '$8$', '${{90°}}$']
+        - ['$4$', '$6$', '${{240°}}$']
+      resolucao: |
+        $\theta = \tfrac{r}{g} \cdot 360°$.
+      resposta: '$120°$; $180°$; $90°$; $240°$'
+    - enunciado: 'Uma pirâmide regular de base quadrada tem aresta da base 6 e altura 4. Calcule a altura de cada triângulo da planificação.'
+      espaco: 10
+      resolucao: |
+        A altura do triângulo lateral (apótema da pirâmide) é hipotenusa de um triângulo retângulo de catetos 4 (altura) e 3 (metade da aresta da base): $5$.
+      resposta: '5'
+    - enunciado: 'Um cilindro tem circunferência da base 16 e altura 6. Uma formiga vai, pela superfície lateral, de um ponto da borda inferior até o ponto da borda superior diametralmente oposto. Calcule o menor caminho.'
+      espaco: 12
+      resolucao: |
+        Na planificação, os pontos ficam separados por meia volta, 8, na horizontal e por 6 na vertical: $\sqrt{64 + 36} = 10$.
+      resposta: '10'
+    - enunciado: 'Um paralelepípedo de comprimento 4, largura 3 e altura 2 está apoiado na mesa pela face $4 \times 3$. Complete com as dimensões das vistas.'
+      itens:
+      - 'Vista frontal: {{4 \times 2}}'
+      - 'Vista superior: {{4 \times 3}}'
+      - 'Vista lateral: {{3 \times 2}}'
+      espaco_item: 8
+      resolucao: |
+        Cada vista mostra as duas dimensões perpendiculares à direção de observação.
+      resposta: '$4 \times 2$; $4 \times 3$; $3 \times 2$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que o ângulo do setor da planificação lateral de um cone de raio $r$ e geratriz $g$ é $\frac{r}{g} \cdot 360°$.'
+      espaco: 12
+      resolucao: |
+        O setor tem raio $g$, e o seu arco envolve a base: mede $2\pi r$. O comprimento do arco é proporcional ao ângulo; a volta inteira de raio $g$ mede $2\pi g$: $\theta = \tfrac{2\pi r}{2\pi g} \cdot 360°$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Explique por que, numa fila de quatro quadrados de uma planificação do cubo, o primeiro e o terceiro (e o segundo e o quarto) são faces opostas.'
+      espaco: 12
+      resolucao: |
+        Dobrando a fila, os quatro quadrados formam o “anel” lateral do cubo em volta de um eixo. Num anel de quatro faces, cada face é vizinha das duas do lado e oposta à que está a duas posições.
+      resposta: 'Ver resolução'
+    - enunciado: 'Uma caixa tem dimensões 1, 2 e 3. Calcule o menor caminho, pela superfície, entre dois vértices opostos, comparando as planificações possíveis.'
+      espaco: 14
+      resolucao: |
+        Abrindo duas faces vizinhas, o caminho é a diagonal de um retângulo cujos lados são uma dimensão e a soma das outras duas: $\sqrt{(1 + 2)^2 + 3^2} = \sqrt{18}$, $\sqrt{(1 + 3)^2 + 2^2} = \sqrt{20}$, $\sqrt{(2 + 3)^2 + 1^2} = \sqrt{26}$. O menor é $3\sqrt{2}$.
+      resposta: '$3\sqrt{2}$'
+    - enunciado: 'Mostre que o ângulo do setor de um cone é sempre menor que $360°$ e explique o que aconteceria se fosse igual.'
+      espaco: 10
+      resolucao: |
+        A geratriz é hipotenusa de um triângulo retângulo com cateto $r$: $g > r$, logo $\tfrac{r}{g} \cdot 360° < 360°$. Com $360°$, teríamos $r = g$ e altura zero: o “cone” seria um disco plano.
+      resposta: 'Ver resolução'
+    - enunciado: 'A planificação de um tetraedro regular de aresta $a$ pode ser um triângulo equilátero dividido pelos pontos médios. Qual é o lado desse triângulo, e quais pontos se juntam ao montar?'
+      espaco: 12
+      resolucao: |
+        O triângulo grande tem lado $2a$; as bases médias o dividem em 4 triângulos de lado $a$. Ao dobrar pelas bases médias, os três vértices do triângulo grande se juntam no vértice do tetraedro.
+      resposta: 'lado $2a$; os três vértices se juntam'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Num dado comum, os números de faces opostas somam 7. A figura mostra uma planificação de um dado em que já foram marcados os números 1, 2 e 3; as faces $X$, $Y$ e $Z$ ainda serão numeradas, de modo que o dado montado siga essa regra.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.55]
+        \foreach \x/\y/\t in {1/2/X, 0/1/2, 1/1/1, 2/1/Y, 3/1/Z, 1/0/3} {
+          \draw[ink, line width=1pt, fill=lilas!25] (\x,\y) rectangle ++(1,1);
+          \node[font=\scriptsize] at (\x+0.5,\y+0.5) {$\t$};
+        }
+        \end{scope}
+    enunciado: |
+      Os números das faces $X$, $Y$ e $Z$ são, respectivamente,
+    opcoes: ['$4$, $6$ e $5$', '$4$, $5$ e $6$', '$5$, $4$ e $6$', '$6$, $5$ e $4$', '$6$, $4$ e $5$']
+    correta: B
+    resolucao: |
+      $X$ é oposta a 3 (coluna de três faces): 4. Na fila de quatro, faces a duas posições são opostas: $Y$ oposta a 2, $Y = 5$; $Z$ oposta a 1, $Z = 6$.
+
+  - estilo: Fuvest
+    enunciado: |
+      A superfície lateral de um cone de raio 5 e geratriz 15, planificada, é um setor circular de ângulo
+    opcoes: ['$120°$', '$60°$', '$90°$', '$150°$', '$108°$']
+    correta: A
+    resolucao: |
+      $\tfrac{5}{15} \cdot 360° = 120°$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A planificação da superfície lateral de um cilindro é um retângulo de $10\pi$ por 7, em que o lado de $10\pi$ dá a volta na base. O raio do cilindro é
+    opcoes: ['$5$.', '$10$.', '$\frac{5}{\pi}$.', '$7$.']
+    correta: A
+    resolucao: |
+      $2\pi r = 10\pi$: $r = 5$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere planificações e vistas. Assinale o que for correto.
+    proposicoes:
+    - 'A superfície lateral do cilindro se planifica num retângulo.'
+    - 'A superfície lateral do cone se planifica num setor circular.'
+    - 'A planificação de uma pirâmide de base pentagonal tem um pentágono e 5 triângulos.'
+    - 'A vista superior de um cone em pé é um círculo (com o vértice no centro).'
+    - 'A vista frontal de uma esfera é um quadrado.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01), 02), 04), 08) Corretas. 16) Incorreta: qualquer vista da esfera é um círculo.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Enem
+    texto: |
+      Um chapéu de festa é feito enrolando um setor circular de papel de 30 cm de raio e ângulo de $120°$, sem sobreposição, como na figura. Para fazer a fita que contorna a boca do chapéu, a costureira precisa saber o raio dessa boca circular.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.06]
+        \fill[lilas!35] (0,0) -- (30,0) arc (0:120:30) -- cycle;
+        \draw[ink, line width=1pt] (0,0) -- (30,0) arc (0:120:30) -- cycle;
+        \draw[mudo] (5,0) arc (0:120:5);
+        \node[font=\scriptsize] at (60:9) {$120°$};
+        \node[below, font=\scriptsize] at (15,0) {30 cm};
+        \end{scope}
+    enunciado: |
+      O raio da boca do chapéu é
+    opcoes: ['$30$ cm', '$15$ cm', '$10$ cm', '$20$ cm', '$5$ cm']
+    correta: C
+    resolucao: |
+      $\tfrac{r}{30} \cdot 360° = 120°$: $r = 10$ cm. (O arco $\tfrac{1}{3} \cdot 60\pi = 20\pi$ vira a circunferência $2\pi r$.)
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'Seis quadrados iguais em fila formam uma planificação do cubo.'
+    - 'A superfície lateral de um cilindro de raio 2 e altura 5 se planifica num retângulo de $4\pi$ por 5.'
+    - 'A superfície lateral de um cone de raio 3 e geratriz 6 se planifica num setor de $180°$.'
+    - 'Olhando um cilindro deitado na direção do seu eixo, vê-se um círculo.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e IV, apenas.', 'III e IV, apenas.', 'II, III e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. Incorreta: a fila não fecha o cubo. II. $2\pi \cdot 2$. III. $\tfrac{3}{6} \cdot 360°$. IV. Correta.
+
+  - estilo: Unesp
+    enunciado: |
+      O número de polígonos que formam a planificação de um prisma triangular é
+    opcoes: ['$3$', '$6$', '$9$', '$4$', '$5$']
+    correta: E
+    resolucao: |
+      Dois triângulos (bases) e três retângulos (faces laterais).
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      A figura mostra uma planificação de um cubo, com as faces identificadas por letras.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.55]
+        \foreach \x/\y/\t in {0/0/A, 1/0/B, 1/1/C, 2/1/D, 2/2/E, 3/2/F} {
+          \draw[ink, line width=1pt, fill=lilas!25] (\x,\y) rectangle ++(1,1);
+          \node[font=\scriptsize] at (\x+0.5,\y+0.5) {$\t$};
+        }
+        \end{scope}
+    enunciado: |
+      No cubo montado, a face oposta à face $A$ é a face
+    opcoes: ['$D$.', '$B$.', '$C$.', '$F$.']
+    correta: A
+    resolucao: |
+      $A$ é vizinha de $B$; $B$ dobra sobre $C$, e $C$ é vizinha de $D$. Montando a “escada”, as faces opostas ficam a três passos: $A$ e $D$, $B$ e $E$, $C$ e $F$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O menor caminho sobre a superfície de um cubo de aresta 2, entre dois vértices opostos, mede
+    opcoes: ['$2\sqrt{3}$', '$2\sqrt{5}$', '$4$', '$6$', '$2 + 2\sqrt{2}$']
+    correta: B
+    resolucao: |
+      Planificando duas faces: diagonal do retângulo $2 \times 4$, $\sqrt{20} = 2\sqrt{5}$. ($2\sqrt{3}$ é a diagonal interna, que não está na superfície.)
+
+  - estilo: UFSC
+    enunciado: |
+      Um cilindro tem raio 4 e altura 10 e está em pé sobre uma mesa. Assinale o que for correto.
+    proposicoes:
+    - 'A superfície lateral se planifica num retângulo de $8\pi$ por 10.'
+    - 'A planificação completa tem dois círculos de raio 4 e um retângulo.'
+    - 'O menor caminho pela superfície lateral entre um ponto da borda inferior e o ponto diametralmente oposto da borda superior mede $\sqrt{16\pi^2 + 100}$.'
+    - 'A vista frontal é um retângulo de 8 por 10.'
+    - 'A vista superior é um círculo de raio 4.'
+    - 'A vista frontal é um quadrado.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $2\pi \cdot 4$. 02) Correta. 04) Meia volta, $4\pi$, e altura 10. 08) Diâmetro e altura. 16) Correta. 32) Incorreta: $8 \ne 10$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Uma lata de molho tem a forma de um cilindro de 4 cm de raio e 12 cm de altura. O rótulo de papel cobre toda a superfície lateral, sem sobreposição. Para encomendar as bobinas de rótulos, a gráfica precisa das dimensões do retângulo de papel. Use $\pi \approx 3{,}14$.
+    enunciado: |
+      As dimensões aproximadas do rótulo são
+    opcoes: ['$12{,}6$ cm por 12 cm', '$8{,}0$ cm por 12 cm', '$25{,}1$ cm por 12 cm', '$50{,}2$ cm por 12 cm', '$25{,}1$ cm por 24 cm']
+    correta: C
+    resolucao: |
+      O comprimento é a circunferência: $8\pi \approx 25{,}1$ cm; a largura é a altura, 12 cm.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Existem 11 planificações diferentes do cubo.'
+    - 'Duas faces com um lado comum na planificação podem ser opostas no cubo montado.'
+    - 'A vista superior de uma pirâmide regular de base quadrada, em pé, é um quadrado com as diagonais.'
+    - 'A planificação lateral de um cone de raio 4 e geratriz 8 é um setor de $180°$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – F – V – V.', 'V – V – F – V.']
+    correta: D
+    resolucao: |
+      (V) (F) Lado comum vira aresta comum: são vizinhas. (V) As arestas laterais aparecem como as diagonais. (V) $\tfrac{4}{8} \cdot 360°$.
+
+  - estilo: Enem
+    texto: |
+      Num projeto de marcenaria, uma peça maciça foi desenhada apenas pelas suas três vistas ortogonais (frontal, lateral e superior), descritas no quadro. O técnico da oficina precisa identificar o sólido para encomendar o bloco de madeira certo.
+    tabela:
+      cabecalho: ['Vista', 'Forma observada']
+      linhas:
+      - ['frontal', 'retângulo']
+      - ['lateral', 'retângulo']
+      - ['superior', 'triângulo']
+    enunciado: |
+      O sólido é um
+    opcoes: ['prisma de base triangular, em pé sobre a base.', 'pirâmide de base triangular.', 'cilindro em pé.', 'cone em pé.', 'cubo.']
+    correta: A
+    resolucao: |
+      De cima, vê-se a base triangular; de frente e de lado, as faces laterais aparecem como retângulos. Pirâmide e cone teriam vistas triangulares de frente.
+
+  - estilo: Unesp
+    enunciado: |
+      Um paralelepípedo de dimensões 6, 4 e 3 está apoiado na mesa pela face de $6 \times 4$. A área da sua vista superior é
+    opcoes: ['$18$', '$12$', '$72$', '$54$', '$24$']
+    correta: E
+    resolucao: |
+      De cima, vê-se a face $6 \times 4$: área 24.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Um cone tem raio da base 4 e geratriz 12. Assinale o que for correto.
+    proposicoes:
+    - 'A planificação lateral é um setor de $120°$.'
+    - 'O arco desse setor mede $8\pi$.'
+    - 'Se o raio fosse 6, com a mesma geratriz, o setor teria $180°$.'
+    - 'O raio do setor é igual à geratriz.'
+    - 'O raio do setor é 4.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) $\tfrac{4}{12} \cdot 360°$. 02) Circunferência da base. 04) $\tfrac{6}{12} \cdot 360°$. 08) Correta. 16) Incorreta: é 12.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Uma formiga anda sobre a superfície de uma caixa de dimensões 1, 2 e 3, de um vértice até o vértice oposto. O menor caminho possível mede
+    opcoes: ['$\sqrt{14}$.', '$3\sqrt{2}$.', '$2\sqrt{5}$.', '$\sqrt{26}$.']
+    correta: B
+    resolucao: |
+      As planificações dão $\sqrt{3^2 + 3^2}$, $\sqrt{4^2 + 2^2}$ e $\sqrt{5^2 + 1^2}$; o menor é $\sqrt{18} = 3\sqrt{2}$. ($\sqrt{14}$ é a diagonal interna.)
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um arquiteto representa uma escultura de cubos iguais pela vista superior, anotando em cada posição quantos cubos estão empilhados, como na figura. A linha de baixo é a da frente da escultura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.55]
+        \foreach \x/\y/\t in {0/2/3, 1/2/2, 2/2/1, 0/1/2, 1/1/0, 2/1/1, 0/0/1, 1/0/1, 2/0/2} {
+          \draw[ink, line width=1pt, fill=lilas!20] (\x,\y) rectangle ++(1,1);
+          \node[font=\scriptsize] at (\x+0.5,\y+0.5) {$\t$};
+        }
+        \node[below, font=\scriptsize] at (1.5,0) {frente};
+        \end{scope}
+    enunciado: |
+      O número de cubos da escultura é
+    opcoes: ['$9$', '$15$', '$13$', '$11$', '$12$']
+    correta: C
+    resolucao: |
+      $3 + 2 + 1 + 2 + 0 + 1 + 1 + 1 + 2 = 13$.
+
+  - estilo: Unesp
+    enunciado: |
+      Na vista frontal da escultura, as alturas das colunas, da esquerda para a direita, são
+    opcoes: ['$1$, $1$ e $2$', '$3$, $2$ e $1$', '$6$, $3$ e $4$', '$3$, $2$ e $2$', '$2$, $2$ e $3$']
+    correta: D
+    resolucao: |
+      Cada coluna mostra a maior pilha: $\max(3, 2, 1) = 3$, $\max(2, 0, 1) = 2$, $\max(1, 1, 2) = 2$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O número de planificações distintas de um cubo (desconsiderando rotações e reflexões) é
+    opcoes: ['$6$', '$8$', '$24$', '$16$', '$11$']
+    correta: E
+    resolucao: |
+      São 11 arranjos de seis quadrados que, dobrados, formam um cubo.
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra a planificação de uma pirâmide regular de base quadrada: um quadrado de lado 6 e quatro triângulos isósceles de altura 5 relativa à base.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.25]
+        \draw[ink, line width=1pt, fill=lilas!30] (0,0) rectangle (6,6);
+        \draw[ink, line width=1pt, fill=lilas!15] (0,6) -- (3,11) -- (6,6) (0,0) -- (3,-5) -- (6,0) (0,0) -- (-5,3) -- (0,6) (6,0) -- (11,3) -- (6,6);
+        \node[below, font=\scriptsize] at (3,0.9) {$6$};
+        \end{scope}
+    enunciado: |
+      A área de papel dessa planificação é
+    opcoes: ['$60$', '$96$', '$156$', '$36$', '$132$']
+    correta: B
+    resolucao: |
+      Quadrado: 36. Triângulos: $4 \cdot \tfrac{6 \cdot 5}{2} = 60$. Total 96.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere um cone de raio $r$, altura $h$ e geratriz $g$.'
+    itens:
+    - 'Mostre que o ângulo do setor da planificação lateral é $\frac{r}{g} \cdot 360°$.'
+    - 'Calcule esse ângulo para $r = 5$ e $h = 12$.'
+    - 'Que relação entre $r$ e $h$ faz o setor ser um semicírculo?'
+    espaco: 62
+    resolucao: |
+      a) O arco do setor, de raio $g$, mede $2\pi r$; a fração da volta é $\tfrac{2\pi r}{2\pi g}$.
+      b) $g = 13$: $\tfrac{5}{13} \cdot 360° \approx 138{,}5°$.
+      c) $g = 2r$: $h^2 = 4r^2 - r^2$, $h = r\sqrt{3}$.
+    resposta: 'b) $\frac{1800°}{13} \approx 138{,}5°$; c) $h = r\sqrt{3}$'
+
+  - estilo: Unicamp
+    texto: |
+      Uma formiga anda sobre a superfície de uma caixa de dimensões $a \le b \le c$, de um vértice até o vértice oposto.
+    enunciado: ''
+    itens:
+    - 'Mostre que os caminhos que atravessam duas faces vizinhas medem $\sqrt{(a + b)^2 + c^2}$, $\sqrt{(a + c)^2 + b^2}$ ou $\sqrt{(b + c)^2 + a^2}$.'
+    - 'Prove que o menor é $\sqrt{(a + b)^2 + c^2}$.'
+    - 'Calcule para a caixa de dimensões 3, 4 e 12.'
+    espaco: 62
+    resolucao: |
+      a) Abrindo as duas faces num retângulo, um lado é a dimensão comum às duas e o outro é a soma das outras duas.
+      b) Os quadrados dos três valores são $a^2 + b^2 + c^2 + 2ab$, $\ldots + 2ac$ e $\ldots + 2bc$. O menor produto é $ab$.
+      c) $\sqrt{7^2 + 12^2} = \sqrt{193}$.
+    resposta: 'c) $\sqrt{193}$'
+
+  - estilo: ITA
+    enunciado: |
+      Um setor circular de raio 12 e ângulo de $90°$ é enrolado, sem sobreposição, formando a superfície lateral de um cone. A altura desse cone é
+    opcoes: ['$3\sqrt{15}$', '$9$', '$3$', '$12$', '$6\sqrt{3}$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $\tfrac{r}{12} \cdot 360° = 90°$: $r = 3$. $h = \sqrt{144 - 9} = \sqrt{135} = 3\sqrt{15}$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Num dado, os números de faces opostas somam 7. Considere a planificação em cruz: uma fila de quatro quadrados, com um quadrado acima e outro abaixo do segundo quadrado da fila.
+    enunciado: ''
+    itens:
+    - 'Explique por que o quadrado de cima e o de baixo são faces opostas.'
+    - 'Se a fila tem, na ordem, 1, 2, $x$ e $y$, calcule $x$ e $y$.'
+    - 'O quadrado de cima é o 3. Qual é o de baixo?'
+    espaco: 62
+    resolucao: |
+      a) Eles se dobram sobre lados opostos do segundo quadrado da fila e ficam um de cada lado do cubo, separados por ele.
+      b) Na fila, faces a duas posições são opostas: $x = 7 - 1 = 6$ e $y = 7 - 2 = 5$.
+      c) $7 - 3 = 4$.
+    resposta: 'b) $x = 6$, $y = 5$; c) 4'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere planificações e vistas. Assinale o que for correto.
+    proposicoes:
+    - 'Um setor de $180°$ e raio 10, enrolado, forma um cone de raio 5.'
+    - 'A planificação de um tetraedro regular pode ser um triângulo equilátero de lado igual ao dobro da aresta.'
+    - 'O menor caminho sobre um cubo de aresta 1 entre vértices opostos mede $\sqrt{3}$.'
+    - 'A vista frontal de uma pirâmide regular de base quadrada, em pé, é um triângulo.'
+    - 'A superfície lateral de um prisma hexagonal se planifica em 6 retângulos.'
+    - 'Toda vista de um cilindro é um retângulo.'
+    corretas: [1, 2, 4, 5]
+    espaco: 22
+    resolucao: |
+      01) $\tfrac{r}{10} \cdot 360° = 180°$. 02) Dobrando pelas bases médias. 04) Incorreta: $\sqrt{3}$ atravessa o interior; pela superfície, $\sqrt{5}$. 08) Correta. 16) Correta. 32) Incorreta: a vista na direção do eixo é um círculo.
+    resposta: 'Soma 27 (01 + 02 + 08 + 16)'
+
+  - estilo: Fuvest
+    texto: |
+      Uma pirâmide regular de base quadrada tem aresta da base 10 e altura 12.
+    enunciado: ''
+    itens:
+    - 'Calcule a altura dos triângulos da planificação (apótema da pirâmide).'
+    - 'Calcule a aresta lateral.'
+    - 'Calcule a área total de papel da planificação.'
+    espaco: 62
+    resolucao: |
+      a) $\sqrt{12^2 + 5^2} = 13$.
+      b) $\sqrt{13^2 + 5^2} = \sqrt{194}$.
+      c) $100 + 4 \cdot \tfrac{10 \cdot 13}{2} = 360$.
+    resposta: 'a) 13; b) $\sqrt{194}$; c) 360'
+
+  - estilo: Unicamp
+    texto: |
+      Um cilindro tem raio 3 e altura 8. Uma fita é enrolada na superfície lateral, dando uma volta completa, de um ponto da borda inferior até o ponto da borda superior exatamente acima dele.
+    enunciado: ''
+    itens:
+    - 'Desenhe (descreva) a fita na planificação lateral.'
+    - 'Calcule o comprimento mínimo da fita.'
+    - 'E se a fita desse duas voltas completas?'
+    espaco: 62
+    resolucao: |
+      a) Na planificação, um retângulo de $6\pi$ por 8; a fita é a diagonal.
+      b) $\sqrt{36\pi^2 + 64}$.
+      c) Duas planificações lado a lado: $\sqrt{144\pi^2 + 64}$.
+    resposta: 'b) $\sqrt{36\pi^2 + 64}$; c) $\sqrt{144\pi^2 + 64}$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Um setor de $240°$ e raio 9 é enrolado, sem sobreposição, formando a superfície lateral de um cone. O raio da base do cone é
+    opcoes: ['$6$', '$3$', '$9$', '$4{,}5$', '$12$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $\tfrac{r}{9} \cdot 360° = 240°$: $r = 6$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      A vista superior de uma pilha de cubos iguais de aresta 1 mostra, em cada posição de uma grade $2 \times 2$, as alturas 3 e 1 (linha de trás) e 2 e 2 (linha da frente).
+    enunciado: ''
+    itens:
+    - 'Quantos cubos há?'
+    - 'Descreva as vistas frontal e lateral direita (alturas das colunas).'
+    - 'Calcule o volume e a área da vista superior.'
+    espaco: 62
+    resolucao: |
+      a) $3 + 1 + 2 + 2 = 8$.
+      b) Frontal: colunas da esquerda e da direita com alturas $\max(3, 2) = 3$ e $\max(1, 2) = 2$. Lateral direita (olhando da direita, a coluna da frente fica à esquerda): $\max(2, 2) = 2$ e $\max(3, 1) = 3$.
+      c) Volume 8; a vista superior é o quadrado $2 \times 2$, de área 4.
+    resposta: 'a) 8; c) 8 e 4'
+
+  - estilo: Fuvest
+    enunciado: 'Considere planificações do cubo.'
+    itens:
+    - 'Explique por que nenhuma planificação do cubo tem 5 quadrados numa mesma fila.'
+    - 'Explique por que nenhuma planificação contém um bloco $2 \times 2$ de quadrados.'
+    - 'Desenhe (descreva) duas planificações diferentes com uma fila de 4 quadrados.'
+    espaco: 62
+    resolucao: |
+      a) Numa fila, as faces 1 e 3 são opostas e as faces 1 e 5 coincidiriam no mesmo lugar ao dobrar (a fila de 4 já dá a volta completa).
+      b) Os quatro quadrados se encontram num vértice da planificação; ao dobrar, três faces cobrem os $360°$ e a quarta sobraria (num vértice do cubo há só 3 faces).
+      c) A cruz (um quadrado acima e um abaixo do segundo) e o “T” deslocado (um quadrado acima do primeiro e outro abaixo do quarto), entre outras.
+    resposta: 'Ver resolução'
