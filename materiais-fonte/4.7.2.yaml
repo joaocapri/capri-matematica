@@ -1,0 +1,569 @@
+# Aula 4.7.2 — Geometria plana: áreas de triângulos
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: A = bh/2 (inclusive altura externa e triângulo retângulo); triângulo equilátero ℓ²√3/4; fórmula de Heron;
+# A = ab·sen C/2; A = p·r; A = abc/(4R) como aplicação; triângulos de mesma base e mesma altura; razão de áreas com o mesmo
+# vértice; mediana e baricentro dividem a área; altura relativa à hipotenusa por áreas; teorema de Viviani.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete o quadro com a área de cada triângulo.'
+      tabela:
+        cabecalho: ['Dados', 'Área']
+        linhas:
+        - ['base 10, altura 7', '${{35}}$']
+        - ['catetos 9 e 12', '${{54}}$']
+        - ['equilátero de lado 6', '${{9\sqrt{3}}}$']
+        - ['lados 8 e 5, ângulo de $30°$ entre eles', '${{10}}$']
+        - ['lados 5, 5 e 8', '${{12}}$']
+      resolucao: |
+        $\tfrac{70}{2}$; $\tfrac{108}{2}$; $\tfrac{36\sqrt{3}}{4}$; $\tfrac{8 \cdot 5 \cdot \frac{1}{2}}{2}$; Heron com $p = 9$: $\sqrt{9 \cdot 4 \cdot 4 \cdot 1} = 12$.
+      resposta: '35; 54; $9\sqrt{3}$; 10; 12'
+    - enunciado: 'Associe os dados conhecidos à fórmula de área mais direta.'
+      esquerda:
+      - 'base e altura'
+      - 'os três lados'
+      - 'dois lados e o ângulo entre eles'
+      - 'lado $\ell$ de um triângulo equilátero'
+      - 'semiperímetro $p$ e raio $r$ da circunferência inscrita'
+      direita:
+      - '$\frac{ab\operatorname{sen}\hat{C}}{2}$'
+      - '$p \cdot r$'
+      - '$\frac{bh}{2}$'
+      - '$\sqrt{p(p - a)(p - b)(p - c)}$'
+      - '$\frac{\ell^2\sqrt{3}}{4}$'
+      resolucao: |
+        Cada fórmula usa exatamente os dados da sua linha; a de Heron dispensa a altura.
+      resposta: 'De cima para baixo: 3, 5, 1, 2, 4'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Triângulos de mesma base e mesma altura têm a mesma área.'
+      - 'Uma mediana divide o triângulo em dois triângulos de mesma área.'
+      - 'Dobrando a base e a altura de um triângulo, a área dobra.'
+      - 'A área de um triângulo retângulo é a metade do produto dos catetos.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (V) As duas partes têm bases iguais (metades do lado) e a mesma altura. (F) Quadruplica. (V) Um cateto é a altura relativa ao outro.
+      resposta: V, V, F, V
+    - enunciado: 'Complete.'
+      itens:
+      - 'Triângulo de área 30 e base 12: altura {{5}}'
+      - 'Triângulo equilátero de área $16\sqrt{3}$: lado {{8}}'
+      - 'Triângulo retângulo de hipotenusa 10 e um cateto 6: área {{24}}'
+      espaco_item: 10
+      resolucao: |
+        (a) $\tfrac{12h}{2} = 30$. (b) $\ell^2 = 64$. (c) O outro cateto mede 8: $\tfrac{48}{2}$.
+      resposta: '5; 8; 24'
+    - enunciado: 'Calcule a área do triângulo $ABC$ da figura, em que $BC = 6$ e a altura relativa a $BC$ mede 5.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.4]
+          \draw[ink, line width=1pt, fill=lilas!25] (0,0) -- (6,0) -- (-2.5,5) -- cycle;
+          \draw[roxo, dashed] (-2.5,5) -- (-2.5,0) -- (0,0);
+          \draw[mudo] (-2.5,0.6) -- (-1.9,0.6) -- (-1.9,0);
+          \node[below, font=\scriptsize] at (0,0) {$B$};
+          \node[below, font=\scriptsize] at (6,0) {$C$};
+          \node[above, font=\scriptsize] at (-2.5,5) {$A$};
+          \node[left, font=\scriptsize] at (-2.5,2.5) {$5$};
+          \node[below, font=\scriptsize] at (3,0) {$6$};
+          \end{scope}
+      espaco: 8
+      resolucao: |
+        A altura cai fora do triângulo, mas a fórmula vale: $\tfrac{6 \cdot 5}{2} = 15$.
+      resposta: '15'
+    - enunciado: 'Use a fórmula de Heron para calcular a área do triângulo de lados 7, 8 e 9.'
+      espaco: 10
+      resolucao: |
+        $p = 12$: $\sqrt{12 \cdot 5 \cdot 4 \cdot 3} = \sqrt{720} = 12\sqrt{5}$.
+      resposta: '$12\sqrt{5}$'
+    - enunciado: 'Dois lados de um triângulo medem 10 e 12, e o ângulo entre eles mede $150°$. Calcule a área.'
+      espaco: 8
+      resolucao: |
+        $\operatorname{sen}150° = \tfrac{1}{2}$: $A = \tfrac{10 \cdot 12 \cdot \frac{1}{2}}{2} = 30$.
+      resposta: '30'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para um triângulo com lados 7 e 10 e ângulo de $60°$ entre eles, Rui fez $A = \frac{7 \cdot 10}{2} = 35$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        Faltou o seno: $\tfrac{bh}{2}$ só serve se um lado for a altura (ângulo reto). $A = \tfrac{7 \cdot 10 \cdot \operatorname{sen}60°}{2} = \tfrac{35\sqrt{3}}{2}$.
+      resposta: '$\frac{35\sqrt{3}}{2}$'
+    - enunciado: 'Calcule a área do triângulo isósceles de lados 13, 13 e 10.'
+      espaco: 10
+      resolucao: |
+        A altura relativa à base cai no ponto médio dela: $\sqrt{169 - 25} = 12$. $A = \tfrac{10 \cdot 12}{2} = 60$.
+      resposta: '60'
+    - enunciado: 'Calcule o raio da circunferência inscrita no triângulo de lados 8, 15 e 17.'
+      espaco: 10
+      resolucao: |
+        $8^2 + 15^2 = 17^2$: é retângulo, de área $60$. Com $p = 20$: $r = \tfrac{A}{p} = 3$.
+      resposta: '3'
+    - enunciado: 'A área de um triângulo de lados $a$, $b$, $c$ também é $\frac{abc}{4R}$, em que $R$ é o raio da circunferência circunscrita. Calcule $R$ para o triângulo de lados 5, 5 e 8.'
+      espaco: 10
+      resolucao: |
+        Área 12 (Heron, ou altura 3 sobre a base 8). $R = \tfrac{5 \cdot 5 \cdot 8}{4 \cdot 12} = \tfrac{200}{48} = \tfrac{25}{6}$.
+      resposta: '$\frac{25}{6}$'
+    - enunciado: 'Complete o quadro para triângulos equiláteros.'
+      tabela:
+        cabecalho: ['Lado', 'Altura', 'Área']
+        linhas:
+        - ['$2$', '${{\sqrt{3}}}$', '${{\sqrt{3}}}$']
+        - ['$4$', '${{2\sqrt{3}}}$', '${{4\sqrt{3}}}$']
+        - ['$10$', '${{5\sqrt{3}}}$', '${{25\sqrt{3}}}$']
+      resolucao: |
+        $h = \tfrac{\ell\sqrt{3}}{2}$ e $A = \tfrac{\ell h}{2} = \tfrac{\ell^2\sqrt{3}}{4}$.
+      resposta: '$\sqrt{3}$, $\sqrt{3}$; $2\sqrt{3}$, $4\sqrt{3}$; $5\sqrt{3}$, $25\sqrt{3}$'
+    - enunciado: 'O triângulo $ABC$ tem área 48, $M$ é o ponto médio de $BC$ e $G$ é o baricentro. Calcule as áreas dos triângulos $ABM$ e $GBC$.'
+      espaco: 12
+      resolucao: |
+        A mediana divide a área ao meio: $ABM = 24$. $G$ está a $\tfrac{1}{3}$ da mediana $AM$ a partir de $M$: a altura de $GBC$ é $\tfrac{1}{3}$ da de $ABC$, e a área é $16$.
+      resposta: '24 e 16'
+    - enunciado: 'Dois lados de um triângulo medem 6 e 8. Complete com a área para cada ângulo $\theta$ entre eles.'
+      itens:
+      - '$\theta = 30°$: {{12}}'
+      - '$\theta = 90°$: {{24}}'
+      - '$\theta = 150°$: {{12}}'
+      espaco_item: 8
+      resolucao: |
+        $A = 24\operatorname{sen}\theta$: $\operatorname{sen}30° = \operatorname{sen}150° = \tfrac{1}{2}$ e $\operatorname{sen}90° = 1$ (a maior área).
+      resposta: '12; 24; 12'
+    - enunciado: 'Um triângulo retângulo tem catetos 15 e 20. Use áreas para calcular a altura relativa à hipotenusa.'
+      espaco: 10
+      resolucao: |
+        Hipotenusa 25. A área é $\tfrac{15 \cdot 20}{2} = 150$ e também $\tfrac{25h}{2}$: $h = 12$.
+      resposta: '12'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que a área de um triângulo com lados $a$ e $b$ e ângulo $\hat{C}$ entre eles é $\frac{ab\operatorname{sen}\hat{C}}{2}$.'
+      espaco: 12
+      resolucao: |
+        Tome $a$ como base. A altura relativa a ela, traçada pelo outro extremo de $b$, é o cateto oposto a $\hat{C}$ num triângulo retângulo de hipotenusa $b$: $h = b\operatorname{sen}\hat{C}$ (se $\hat{C}$ é obtuso, usa-se o suplemento, de mesmo seno). $A = \tfrac{ah}{2}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que a área de um triângulo é $p \cdot r$, sendo $p$ o semiperímetro e $r$ o raio da circunferência inscrita.'
+      espaco: 12
+      resolucao: |
+        Ligue o incentro $I$ aos vértices: o triângulo fica dividido em $IBC$, $ICA$ e $IAB$, todos de altura $r$. $A = \tfrac{ar}{2} + \tfrac{br}{2} + \tfrac{cr}{2} = \tfrac{a + b + c}{2} \cdot r = pr$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que a área do triângulo equilátero de lado $\ell$ é $\frac{\ell^2\sqrt{3}}{4}$.'
+      espaco: 10
+      resolucao: |
+        A altura cai no ponto médio da base: $h^2 = \ell^2 - \tfrac{\ell^2}{4}$, $h = \tfrac{\ell\sqrt{3}}{2}$. $A = \tfrac{\ell h}{2} = \tfrac{\ell^2\sqrt{3}}{4}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'No triângulo $ABC$, de área 40, o ponto $D$ do lado $BC$ é tal que $\frac{BD}{DC} = \frac{2}{3}$. Prove que as áreas de $ABD$ e $ADC$ estão na razão $\frac{2}{3}$ e calcule-as.'
+      espaco: 12
+      resolucao: |
+        Os dois triângulos têm a mesma altura (a distância de $A$ à reta $BC$); as áreas estão na razão das bases. Dividindo 40 na razão $2 : 3$: $16$ e $24$.
+      resposta: '16 e 24'
+    - enunciado: 'Num triângulo retângulo de catetos $b$ e $c$ e hipotenusa $a$, prove, usando áreas, que a altura relativa à hipotenusa é $\frac{bc}{a}$.'
+      espaco: 10
+      resolucao: |
+        A área é $\tfrac{bc}{2}$ (catetos) e também $\tfrac{ah}{2}$ (hipotenusa e sua altura). Igualando: $h = \tfrac{bc}{a}$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um terreno triangular tem lados de 25 m, 39 m e 56 m. Como nenhum ângulo é reto, o corretor calculou a área pela fórmula de Heron, $A = \sqrt{p(p - a)(p - b)(p - c)}$, em que $p$ é o semiperímetro. Na região, o metro quadrado de terreno custa R\$\,300,00.
+    enunciado: |
+      O valor do terreno é
+    opcoes: ['R\$\,84\,000,00', 'R\$\,108\,000,00', 'R\$\,126\,000,00', 'R\$\,252\,000,00', 'R\$\,36\,000,00']
+    correta: C
+    resolucao: |
+      $p = 60$: $A = \sqrt{60 \cdot 35 \cdot 21 \cdot 4} = \sqrt{176\,400} = 420$ m². Valor: $420 \cdot 300 = 126\,000$ reais.
+
+  - estilo: Fuvest
+    enunciado: |
+      A área de um triângulo equilátero de lado $4\sqrt{3}$ é
+    opcoes: ['$12\sqrt{3}$', '$48$', '$6\sqrt{3}$', '$36$', '$24\sqrt{3}$']
+    correta: A
+    resolucao: |
+      $\tfrac{48\sqrt{3}}{4} = 12\sqrt{3}$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Dois lados de um triângulo medem 6 e 10, e o ângulo entre eles mede $30°$. A área do triângulo é
+    opcoes: ['$15$.', '$30$.', '$15\sqrt{3}$.', '$60$.']
+    correta: A
+    resolucao: |
+      $\tfrac{6 \cdot 10 \cdot \frac{1}{2}}{2} = 15$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere as áreas de triângulos. Assinale o que for correto.
+    proposicoes:
+    - 'Um triângulo retângulo de catetos 6 e 8 tem área 24.'
+    - 'Um triângulo equilátero de lado 2 tem área $\sqrt{3}$.'
+    - 'Um triângulo com lados 5 e 6 e ângulo reto entre eles tem área 30.'
+    - 'Qualquer altura divide o triângulo em dois triângulos de mesma área.'
+    - 'Um triângulo com dois lados de 10 e ângulo de $60°$ entre eles tem área $25\sqrt{3}$.'
+    corretas: [1, 2, 5]
+    resolucao: |
+      01) $\tfrac{48}{2}$. 02) $\tfrac{4\sqrt{3}}{4}$. 04) Incorreta: $15$. 08) Incorreta: isso vale para a mediana; a altura só divide ao meio se cair no ponto médio. 16) $\tfrac{100 \cdot \frac{\sqrt{3}}{2}}{2}$.
+      Soma: $01 + 02 + 16 = 19$.
+
+  - estilo: Enem
+    texto: |
+      A vela de um pequeno barco é um triângulo, como na figura. Dois dos seus lados medem 3 m e 4 m e formam, entre si, um ângulo de $120°$. O tecido é vendido por metro quadrado, e o velejador precisa saber a área da vela. Use $\sqrt{3} \approx 1{,}73$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.55]
+        \draw[ink, line width=1pt, fill=lilas!25] (0,0) -- (4,0) -- (-1.5,2.598) -- cycle;
+        \draw[mudo] (0.5,0) arc (0:120:0.5);
+        \node[font=\scriptsize] at (0.55,0.5) {$120°$};
+        \node[below, font=\scriptsize] at (2,0) {4 m};
+        \node[left, font=\scriptsize] at (-0.8,1.2) {3 m};
+        \end{scope}
+    enunciado: |
+      A área da vela é, aproximadamente,
+    opcoes: ['$6{,}0$ m²', '$5{,}2$ m²', '$10{,}4$ m²', '$3{,}0$ m²', '$12{,}0$ m²']
+    correta: B
+    resolucao: |
+      $\tfrac{3 \cdot 4 \cdot \operatorname{sen}120°}{2} = 6 \cdot \tfrac{\sqrt{3}}{2} = 3\sqrt{3} \approx 5{,}2$ m².
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'O triângulo de lados 7, 24 e 25 tem área 84.'
+    - 'O triângulo com lados 4 e 9 e ângulo de $30°$ entre eles tem área 18.'
+    - 'Num triângulo de área 30 e perímetro 30, o raio da circunferência inscrita mede 2.'
+    - 'O triângulo equilátero de altura 3 tem área $3\sqrt{3}$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'III e IV, apenas.', 'I, III e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. $7^2 + 24^2 = 25^2$: área $\tfrac{7 \cdot 24}{2} = 84$. II. Incorreta: $\tfrac{36 \cdot \frac{1}{2}}{2} = 9$. III. $r = \tfrac{30}{15} = 2$. IV. Lado $2\sqrt{3}$: $\tfrac{12\sqrt{3}}{4} = 3\sqrt{3}$.
+
+  - estilo: Unesp
+    enunciado: |
+      A área do triângulo de lados 5, 6 e 7 é
+    opcoes: ['$15$', '$12\sqrt{2}$', '$21$', '$18$', '$6\sqrt{6}$']
+    correta: E
+    resolucao: |
+      $p = 9$: $\sqrt{9 \cdot 4 \cdot 3 \cdot 2} = \sqrt{216} = 6\sqrt{6}$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, $ABCD$ é um quadrado de lado 8 e $E$ é um ponto qualquer do lado $CD$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.25]
+        \draw[ink, line width=1pt] (0,0) -- (8,0) -- (8,8) -- (0,8) -- cycle;
+        \draw[roxo, line width=1pt, fill=lilas!35] (0,0) -- (8,0) -- (5,8) -- cycle;
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[below right, font=\scriptsize] at (8,0) {$B$};
+        \node[above right, font=\scriptsize] at (8,8) {$C$};
+        \node[above left, font=\scriptsize] at (0,8) {$D$};
+        \node[above, font=\scriptsize] at (5,8) {$E$};
+        \end{scope}
+    enunciado: |
+      A área do triângulo $ABE$ é
+    opcoes: ['$32$.', '$16$.', '$64$.', '$24$.']
+    correta: A
+    resolucao: |
+      Base $AB = 8$ e altura 8 (a distância entre $AB$ e $CD$), qualquer que seja $E$: $32$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O raio da circunferência inscrita no triângulo de lados 9, 12 e 15 mede
+    opcoes: ['$2$', '$3$', '$4$', '$4{,}5$', '$6$']
+    correta: B
+    resolucao: |
+      É retângulo: área $54$; $p = 18$; $r = 3$.
+
+  - estilo: UFSC
+    enunciado: |
+      No triângulo $ABC$, $AB = 13$, $BC = 14$ e $CA = 15$. Assinale o que for correto.
+    proposicoes:
+    - 'O semiperímetro é 21.'
+    - 'A área é 84.'
+    - 'A altura relativa ao lado $BC$ mede 12.'
+    - 'O raio da circunferência inscrita mede 4.'
+    - 'O raio da circunferência circunscrita mede 8.'
+    - 'A mediana relativa a $BC$ divide o triângulo em dois de área 42.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) $\tfrac{42}{2}$. 02) $\sqrt{21 \cdot 8 \cdot 7 \cdot 6} = 84$. 04) $\tfrac{2 \cdot 84}{14}$. 08) $\tfrac{84}{21}$. 16) Incorreta: $R = \tfrac{13 \cdot 14 \cdot 15}{4 \cdot 84} = \tfrac{65}{8}$. 32) Correta.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Uma placa de advertência tem a forma de um triângulo equilátero de 90 cm de lado, como na figura. Uma prefeitura vai mandar pintar o fundo de 200 placas e precisa da área de cada uma para fazer o pedido de tinta. Use $\sqrt{3} \approx 1{,}73$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1.2pt, fill=lima!40] (0,0) -- (2,0) -- (1,1.732) -- cycle;
+        \node[font=\bfseries] at (1,0.6) {!};
+        \node[below, font=\scriptsize] at (1,0) {90 cm};
+        \end{scope}
+    enunciado: |
+      A área de cada placa é, aproximadamente,
+    opcoes: ['$0{,}40$ m²', '$0{,}70$ m²', '$0{,}35$ m²', '$0{,}20$ m²', '$0{,}81$ m²']
+    correta: C
+    resolucao: |
+      $\tfrac{90^2\sqrt{3}}{4} = 2025\sqrt{3} \approx 3503$ cm² $\approx 0{,}35$ m².
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Triângulos de mesma base, com o terceiro vértice sobre uma reta paralela à base, têm a mesma área.'
+    - 'O triângulo com dois lados de 8 e ângulo de $150°$ entre eles tem área 16.'
+    - 'Se dois lados de um triângulo medem 6 e 10, a maior área possível é 60.'
+    - 'O triângulo retângulo de hipotenusa 10 e altura relativa à hipotenusa 4 tem área 20.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – V – F – V.', 'V – F – F – V.', 'V – V – F – V.', 'V – V – F – F.']
+    correta: D
+    resolucao: |
+      (V) Mesma base e mesma altura. (V) $\tfrac{64 \cdot \frac{1}{2}}{2}$. (F) A maior é $\tfrac{60}{2} = 30$, com ângulo reto. (V) $\tfrac{10 \cdot 4}{2}$.
+
+  - estilo: Enem
+    texto: |
+      Um agrimensor mediu os lados de três lotes triangulares que estão à venda, todos pelo mesmo preço, num loteamento. O comprador quer ficar com o lote de maior área. O quadro mostra as medidas dos lados de cada lote, em metros.
+    tabela:
+      cabecalho: ['Lote', 'Lados (m)']
+      linhas:
+      - ['L1', '$20$, $21$ e $29$']
+      - ['L2', '$25$, $25$ e $14$']
+      - ['L3', '$13$, $20$ e $21$']
+    enunciado: |
+      O lote de maior área é
+    opcoes: ['L1.', 'L2.', 'L3.', 'L1 ou L2, que têm a mesma área.', 'qualquer um, pois têm a mesma área.']
+    correta: A
+    resolucao: |
+      L1: $20^2 + 21^2 = 29^2$, retângulo, área $210$ m². L2: isósceles, altura $\sqrt{625 - 49} = 24$, área $168$ m². L3: Heron com $p = 27$: $\sqrt{27 \cdot 14 \cdot 7 \cdot 6} = 126$ m².
+
+  - estilo: Unesp
+    enunciado: |
+      O triângulo $ABC$ tem área 60, e o ponto $D$ do lado $BC$ é tal que $BD = 2 \cdot DC$. A área do triângulo $ABD$ é
+    opcoes: ['$20$', '$30$', '$45$', '$24$', '$40$']
+    correta: E
+    resolucao: |
+      Mesma altura: as áreas estão na razão das bases, $2 : 1$. $ABD = \tfrac{2}{3} \cdot 60 = 40$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Dois lados de um triângulo medem 6 e 8, e $\theta$ é o ângulo entre eles. Assinale o que for correto.
+    proposicoes:
+    - 'Se $\theta = 90°$, a área é 24.'
+    - 'Se $\theta = 30°$, a área é 12.'
+    - 'Se $\theta = 150°$, a área é 12.'
+    - 'A maior área possível ocorre para $\theta = 90°$.'
+    - 'Se $\theta = 60°$, a área é $24\sqrt{3}$.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      $A = 24\operatorname{sen}\theta$. 01), 02), 04) Corretas. 08) O seno é máximo em $90°$. 16) Incorreta: $12\sqrt{3}$.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Num triângulo retângulo de catetos 12 e 16, a altura relativa à hipotenusa mede
+    opcoes: ['$12$.', '$9{,}6$.', '$10$.', '$8$.']
+    correta: B
+    resolucao: |
+      Hipotenusa 20. $\tfrac{12 \cdot 16}{2} = \tfrac{20h}{2}$: $h = 9{,}6$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um terreno tem a forma do triângulo $ABC$ da figura, com $AB = 30$ m, $BC = 40$ m e $CA = 50$ m. Ele será dividido em dois lotes por uma cerca reta que vai do canto $B$ até o ponto médio $M$ do lado $CA$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.045]
+        \draw[ink, line width=1pt, fill=lilas!25] (0,0) -- (40,0) -- (0,30) -- cycle;
+        \draw[roxo, line width=1pt] (0,0) -- (20,15);
+        \draw[mudo] (0,3) -- (3,3) -- (3,0);
+        \node[below left, font=\scriptsize] at (0,0) {$B$};
+        \node[below right, font=\scriptsize] at (40,0) {$C$};
+        \node[above left, font=\scriptsize] at (0,30) {$A$};
+        \node[above right, font=\scriptsize] at (20,15) {$M$};
+        \end{scope}
+    enunciado: |
+      A área de cada lote é
+    opcoes: ['$600$ m²', '$375$ m²', '$300$ m²', '$250$ m²', '$400$ m²']
+    correta: C
+    resolucao: |
+      $30^2 + 40^2 = 50^2$: o triângulo é retângulo em $B$, de área $\tfrac{30 \cdot 40}{2} = 600$ m². A mediana $BM$ divide a área ao meio: $300$ m².
+
+  - estilo: Unicamp
+    enunciado: |
+      O comprimento da cerca $BM$ é
+    opcoes: ['$20$ m.', '$24$ m.', '$30$ m.', '$25$ m.']
+    correta: D
+    resolucao: |
+      Num triângulo retângulo, a mediana relativa à hipotenusa mede metade dela: $25$ m ($M$ é o centro da circunferência circunscrita).
+
+  - estilo: Fuvest
+    enunciado: |
+      A área de um triângulo de lados $a$, $b$, $c$ é $\frac{abc}{4R}$, em que $R$ é o raio da circunferência circunscrita. Para o triângulo de lados 10, 10 e 12, $R$ vale
+    opcoes: ['$5$', '$6$', '$8$', '$\frac{25}{8}$', '$\frac{25}{4}$']
+    correta: E
+    resolucao: |
+      Altura sobre a base 12: $\sqrt{100 - 36} = 8$; área $48$. $R = \tfrac{10 \cdot 10 \cdot 12}{4 \cdot 48} = \tfrac{1200}{192} = \tfrac{25}{4}$.
+
+  - estilo: Unesp
+    texto: |
+      O ponto $P$ é interior ao triângulo equilátero $ABC$, de lado 8, e as distâncias de $P$ aos lados são $x$, $y$ e $z$, como na figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.32]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) -- (8,0) -- (4,6.928) -- cycle;
+        \coordinate (P) at (3.4,2.2);
+        \fill[ink] (P) circle (3pt);
+        \draw[roxo] (P) -- (3.4,0);
+        \draw[roxo] (P) -- (5.898,3.642);
+        \draw[roxo] (P) -- (1.803,3.122);
+        \node[below, font=\scriptsize] at (0,0) {$A$};
+        \node[below, font=\scriptsize] at (8,0) {$B$};
+        \node[above, font=\scriptsize] at (4,6.928) {$C$};
+        \node[below left, font=\scriptsize] at (P) {$P$};
+        \end{scope}
+    enunciado: |
+      A soma $x + y + z$ é
+    opcoes: ['$8$', '$4\sqrt{3}$', '$12$', '$8\sqrt{3}$', '$2\sqrt{3}$']
+    correta: B
+    resolucao: |
+      $PAB$, $PBC$ e $PCA$ somam a área do triângulo: $\tfrac{8(x + y + z)}{2} = \tfrac{64\sqrt{3}}{4}$. Então $x + y + z = 4\sqrt{3}$, a altura.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere um triângulo de lados $a$, $b$, $c$, semiperímetro $p$ e raio $r$ da circunferência inscrita.'
+    itens:
+    - 'Prove que a área é $\frac{ab\operatorname{sen}\hat{C}}{2}$.'
+    - 'Prove que a área é $p \cdot r$.'
+    - 'Deduza a área do triângulo equilátero de lado $\ell$ e o raio da circunferência inscrita nele.'
+    espaco: 62
+    resolucao: |
+      a) Com $a$ como base, a altura é $b\operatorname{sen}\hat{C}$ (cateto oposto a $\hat{C}$, ou ao seu suplemento, de mesmo seno).
+      b) O incentro divide o triângulo em três de altura $r$: $\tfrac{(a + b + c)r}{2} = pr$.
+      c) $h = \tfrac{\ell\sqrt{3}}{2}$, $A = \tfrac{\ell^2\sqrt{3}}{4}$. Com $p = \tfrac{3\ell}{2}$: $r = \tfrac{A}{p} = \tfrac{\ell\sqrt{3}}{6}$.
+    resposta: 'c) $\frac{\ell^2\sqrt{3}}{4}$ e $\frac{\ell\sqrt{3}}{6}$'
+
+  - estilo: Unicamp
+    texto: |
+      Um terreno triangular tem lados de 17 m, 25 m e 28 m.
+    enunciado: ''
+    itens:
+    - 'Calcule a área pela fórmula de Heron.'
+    - 'Calcule a altura relativa ao maior lado.'
+    - 'Calcule o raio do maior círculo que cabe dentro do terreno.'
+    espaco: 62
+    resolucao: |
+      a) $p = 35$: $\sqrt{35 \cdot 18 \cdot 10 \cdot 7} = \sqrt{44\,100} = 210$ m².
+      b) $\tfrac{28h}{2} = 210$: $h = 15$ m.
+      c) É a circunferência inscrita: $r = \tfrac{210}{35} = 6$ m.
+    resposta: 'a) 210 m²; b) 15 m; c) 6 m'
+
+  - estilo: ITA
+    enunciado: |
+      No triângulo $ABC$, $AB = 8$, $AC = 5$ e $\hat{A} = 60°$. A bissetriz interna $AD$ mede
+    opcoes: ['$\frac{40}{13}$', '$\frac{20\sqrt{3}}{13}$', '$\frac{40\sqrt{3}}{13}$', '$\frac{13\sqrt{3}}{4}$', '$5$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $ABD$ e $ADC$ têm ângulos de $30°$ em $A$ e somam $ABC$: $\tfrac{8 \cdot AD}{4} + \tfrac{5 \cdot AD}{4} = \tfrac{40 \cdot \frac{\sqrt{3}}{2}}{2} = 10\sqrt{3}$. Então $\tfrac{13 \cdot AD}{4} = 10\sqrt{3}$ e $AD = \tfrac{40\sqrt{3}}{13}$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Considere o triângulo equilátero $ABC$ de lado 6.'
+    itens:
+    - 'Calcule a altura e a área.'
+    - 'Calcule os raios das circunferências inscrita e circunscrita.'
+    - 'Prove que, para todo ponto $P$ interior, a soma das distâncias de $P$ aos três lados é constante, e calcule-a.'
+    espaco: 62
+    resolucao: |
+      a) $h = 3\sqrt{3}$, $A = 9\sqrt{3}$.
+      b) $r = \tfrac{h}{3} = \sqrt{3}$ e $R = \tfrac{2h}{3} = 2\sqrt{3}$.
+      c) $PAB + PBC + PCA = ABC$: $\tfrac{6(x + y + z)}{2} = 9\sqrt{3}$, $x + y + z = 3\sqrt{3}$, a altura.
+    resposta: 'a) $3\sqrt{3}$ e $9\sqrt{3}$; b) $\sqrt{3}$ e $2\sqrt{3}$; c) $3\sqrt{3}$'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - 'O triângulo de lados 9, 10 e 17 tem área 36.'
+    - 'O triângulo com dois lados de 6 e ângulo de $120°$ entre eles tem área $9\sqrt{3}$.'
+    - 'O triângulo de base 10 e altura 10 tem área 100.'
+    - 'O triângulo retângulo isósceles de hipotenusa 8 tem área 16.'
+    - 'O baricentro $G$ divide o triângulo $ABC$ nos triângulos $GAB$, $GBC$ e $GCA$, de mesma área.'
+    - 'O triângulo equilátero de perímetro 18 tem área $9\sqrt{3}$.'
+    corretas: [1, 2, 4, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) $p = 18$: $\sqrt{18 \cdot 9 \cdot 8 \cdot 1} = 36$. 02) $\tfrac{36 \cdot \frac{\sqrt{3}}{2}}{2}$. 04) Incorreta: 50. 08) Catetos $4\sqrt{2}$: $\tfrac{32}{2}$. 16) Cada um tem $\tfrac{1}{3}$ da área (altura $\tfrac{1}{3}$ da correspondente). 32) Lado 6.
+    resposta: 'Soma 59 (01 + 02 + 08 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'No triângulo $ABC$, de área 48, os pontos $D$ e $E$ estão nos lados $AB$ e $AC$, com $AD = \frac{1}{3}AB$ e $AE = \frac{3}{4}AC$.'
+    itens:
+    - 'Prove que $\frac{\text{área}(ADE)}{\text{área}(ABC)} = \frac{AD \cdot AE}{AB \cdot AC}$.'
+    - 'Calcule a área de $ADE$.'
+    - 'Calcule a área do quadrilátero $BDEC$.'
+    espaco: 62
+    resolucao: |
+      a) As duas áreas usam o mesmo ângulo $\hat{A}$: $\tfrac{\frac{1}{2}AD \cdot AE\operatorname{sen}\hat{A}}{\frac{1}{2}AB \cdot AC\operatorname{sen}\hat{A}}$.
+      b) Razão $\tfrac{1}{3} \cdot \tfrac{3}{4} = \tfrac{1}{4}$: área $12$.
+      c) $48 - 12 = 36$.
+    resposta: 'b) 12; c) 36'
+
+  - estilo: Unicamp
+    enunciado: 'Dois lados de um triângulo medem 10 e 14, e $\theta$ é o ângulo entre eles.'
+    itens:
+    - 'Escreva a área em função de $\theta$.'
+    - 'Determine a maior área possível e a medida do terceiro lado nesse caso.'
+    - 'Para que valores de $\theta$ a área é 35?'
+    espaco: 62
+    resolucao: |
+      a) $A = \tfrac{140\operatorname{sen}\theta}{2} = 70\operatorname{sen}\theta$.
+      b) Máxima para $\theta = 90°$: $70$. Terceiro lado $\sqrt{100 + 196} = \sqrt{296} = 2\sqrt{74}$.
+      c) $\operatorname{sen}\theta = \tfrac{1}{2}$: $\theta = 30°$ ou $\theta = 150°$.
+    resposta: 'a) $70\operatorname{sen}\theta$; b) 70 e $2\sqrt{74}$; c) $30°$ ou $150°$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Um triângulo equilátero tem área $25\sqrt{3}$. O seu perímetro é
+    opcoes: ['$30$', '$15$', '$10\sqrt{3}$', '$20$', '$25$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $\tfrac{\ell^2\sqrt{3}}{4} = 25\sqrt{3}$: $\ell = 10$, perímetro $30$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Um triângulo retângulo tem catetos 15 e 20.'
+    itens:
+    - 'Calcule a hipotenusa e a área.'
+    - 'Calcule a altura relativa à hipotenusa.'
+    - 'Calcule o raio da circunferência inscrita.'
+    espaco: 62
+    resolucao: |
+      a) $25$ e $150$.
+      b) $\tfrac{25h}{2} = 150$: $h = 12$.
+      c) $p = 30$: $r = \tfrac{150}{30} = 5$.
+    resposta: 'a) 25 e 150; b) 12; c) 5'
+
+  - estilo: Fuvest
+    enunciado: 'No triângulo $ABC$, de área 72, as três medianas se cortam no baricentro $G$ e dividem o triângulo em seis triângulos menores.'
+    itens:
+    - 'Sendo $M$ o ponto médio de $BC$, prove que $GBM$ e $GCM$ têm a mesma área.'
+    - 'Prove que os seis triângulos têm a mesma área.'
+    - 'Calcule a área de cada um dos seis triângulos e a do triângulo $GBC$.'
+    espaco: 62
+    resolucao: |
+      a) Bases $BM = MC$ e mesma altura (a distância de $G$ a $BC$).
+      b) Sejam $x$, $y$, $z$ as áreas dos pares iguais ao lado de $BC$, $CA$ e $AB$. A mediana $AM$ divide $ABC$ ao meio: $ABM$ tem área $x + 2z$ e $ACM$, $x + 2y$; logo $y = z$. Com a mediana que sai de $B$, do mesmo modo, $x = z$.
+      c) $\tfrac{72}{6} = 12$; $GBC$ é formado por dois deles: $24$.
+    resposta: 'c) 12 cada; $GBC$: 24'
