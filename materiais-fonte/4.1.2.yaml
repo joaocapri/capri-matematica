@@ -1,0 +1,622 @@
+# Aula 4.1.2 — Geometria plana: retas paralelas e transversais
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: ângulos correspondentes, alternos (internos e externos) e colaterais (internos e externos) entre paralelas;
+# recíproca (ângulos iguais garantem paralelismo); o "bico" entre paralelas (soma dos ângulos com as paralelas) e a poligonal
+# em zigue-zague; bissetrizes. Usa a 4.1.1. A soma dos ângulos do triângulo aparece só como prévia no aprofundamento.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Em todas as figuras, as retas $r$ e $s$ são paralelas. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Na figura, a transversal $t$ corta as paralelas $r$ e $s$. Classifique cada par de ângulos como correspondentes, alternos internos, alternos externos ou colaterais internos.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.85]
+          \draw[ink, line width=1pt] (-2.2,2) -- (3.4,2) node[right, font=\scriptsize] {$r$};
+          \draw[ink, line width=1pt] (-2.2,0) -- (3.4,0) node[right, font=\scriptsize] {$s$};
+          \draw[roxo, line width=1pt] (-0.8,-1) -- (2.4,3) node[above, font=\scriptsize] {$t$};
+          \foreach \p/\n in {{(2.01,2.19)}/1, {(1.41,2.41)}/2, {(1.19,1.81)}/3, {(1.79,1.59)}/4, {(0.41,0.19)}/5, {(-0.19,0.41)}/6, {(-0.41,-0.19)}/7, {(0.19,-0.41)}/8} \node[font=\scriptsize] at \p {\n};
+          \end{scope}
+      tabela:
+        cabecalho: ['Par', 'Classificação']
+        linhas:
+        - ['1 e 5', '{{correspondentes}}']
+        - ['3 e 5', '{{alternos internos}}']
+        - ['4 e 5', '{{colaterais internos}}']
+        - ['2 e 8', '{{alternos externos}}']
+      resolucao: |
+        1 e 5 ocupam a mesma posição em cada cruzamento. 3 e 5 estão entre as paralelas, em lados opostos de $t$. 4 e 5 estão entre as paralelas, do mesmo lado de $t$. 2 e 8 estão fora das paralelas, em lados opostos de $t$.
+      resposta: 'correspondentes; alternos internos; colaterais internos; alternos externos'
+    - enunciado: 'Com a numeração da figura da questão 1, sabendo que o ângulo 1 mede $65°$, complete o quadro.'
+      tabela:
+        cabecalho: ['2', '3', '4', '5', '6', '7', '8']
+        linhas:
+        - ['${{115°}}$', '${{65°}}$', '${{115°}}$', '${{65°}}$', '${{115°}}$', '${{65°}}$', '${{115°}}$']
+      resolucao: |
+        Só há dois valores: $65°$ e o suplemento, $115°$. Os ângulos agudos são 1, 3, 5 e 7; os obtusos, 2, 4, 6 e 8.
+      resposta: '$115°, 65°, 115°, 65°, 115°, 65°, 115°$'
+    - enunciado: 'Dois ângulos alternos internos medem $3x - 15°$ e $2x + 25°$. Determine $x$ e a medida dos ângulos.'
+      espaco: 10
+      resolucao: |
+        Alternos internos entre paralelas são iguais: $3x - 15 = 2x + 25$, $x = 40°$. Cada um mede $105°$.
+      resposta: '$x = 40°$; $105°$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso), considerando duas retas cortadas por uma transversal.'
+      afirmacoes:
+      - 'Se as retas são paralelas, os ângulos correspondentes são iguais.'
+      - 'Se as retas são paralelas, os ângulos colaterais internos são iguais.'
+      - 'Se dois ângulos alternos internos são iguais, as retas são paralelas.'
+      - 'Mesmo com as retas não paralelas, os ângulos correspondentes são iguais.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) Somam $180°$ (só são iguais se forem retos). (V) É a recíproca. (F) A igualdade vale só com paralelas.
+      resposta: V, F, V, F
+    - enunciado: 'Na figura, determine a medida do ângulo $x$ do "bico".'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.8]
+          \draw[ink, line width=1pt] (-0.8,3) -- (3.6,3) node[right, font=\scriptsize] {$r$};
+          \draw[ink, line width=1pt] (-0.8,0) -- (3.6,0) node[right, font=\scriptsize] {$s$};
+          \draw[roxo, line width=1.1pt] (0.2,3) -- (2.498,1.072) -- (0.2,0);
+          \draw[ink!70] (0.8,3) arc (0:-40:.6);
+          \draw[ink!70] (0.8,0) arc (0:25:.6);
+          \node[font=\scriptsize] at (1.15,2.75) {$40°$};
+          \node[font=\scriptsize] at (1.15,0.25) {$25°$};
+          \node[font=\scriptsize] at (1.95,1.1) {$x$};
+          \end{scope}
+      itens:
+      - '$x = {{65°}}$'
+      resolucao: |
+        Traçando pelo vértice do bico uma paralela a $r$ e $s$, o ângulo $x$ fica dividido em dois, iguais (alternos internos) a $40°$ e $25°$: $x = 65°$.
+      resposta: '$65°$'
+    - enunciado: 'Dois ângulos colaterais internos medem $x + 20°$ e $2x - 20°$. Determine as medidas dos dois ângulos.'
+      espaco: 10
+      resolucao: |
+        Colaterais internos somam $180°$: $3x = 180°$, $x = 60°$. Medidas: $80°$ e $100°$.
+      resposta: '$80°$ e $100°$'
+    - enunciado: 'Dois ângulos correspondentes medem $5x - 30°$ e $3x + 10°$. Determine a medida de cada um e a do seu suplemento.'
+      espaco: 10
+      resolucao: |
+        $5x - 30 = 3x + 10$: $x = 20°$. Cada um mede $70°$, e o suplemento, $110°$.
+      resposta: '$70°$; suplemento $110°$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Dois ângulos alternos internos medem $2x + 10°$ e $4x - 50°$. Rui escreveu $(2x + 10) + (4x - 50) = 180$ e achou $x = 36{,}7°$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        Alternos internos são iguais, não suplementares: $2x + 10 = 4x - 50$, $x = 30°$, e cada ângulo mede $70°$.
+      resposta: '$x = 30°$; $70°$'
+    - enunciado: 'Na figura, o bico mede $75°$. Determine $x$ e os ângulos que os lados do bico formam com as paralelas.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.8]
+          \draw[ink, line width=1pt] (-0.8,3) -- (3.4,3) node[right, font=\scriptsize] {$r$};
+          \draw[ink, line width=1pt] (-0.8,0) -- (3.4,0) node[right, font=\scriptsize] {$s$};
+          \draw[roxo, line width=1.1pt] (0.2,3) -- (2.149,1.365) -- (0.2,0);
+          \draw[ink!70] (0.8,3) arc (0:-40:.6);
+          \draw[ink!70] (0.8,0) arc (0:35:.6);
+          \node[font=\scriptsize] at (1.2,2.72) {$2x$};
+          \node[font=\scriptsize] at (1.35,0.3) {$x + 15°$};
+          \node[font=\scriptsize] at (2.55,1.4) {$75°$};
+          \end{scope}
+      espaco: 10
+      resolucao: |
+        O bico é a soma: $2x + (x + 15) = 75$, $x = 20°$. Os ângulos são $40°$ e $35°$.
+      resposta: '$x = 20°$; $40°$ e $35°$'
+    - enunciado: 'Na figura, determine $x$.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.72]
+          \draw[ink, line width=1pt] (-0.6,4) -- (4.4,4) node[right, font=\scriptsize] {$r$};
+          \draw[ink, line width=1pt] (-0.6,0) -- (4.4,0) node[right, font=\scriptsize] {$s$};
+          \draw[roxo, line width=1.1pt] (0,4) -- (3,2.601) -- (1,1.446) -- (3.505,0);
+          \node[font=\scriptsize] at (0.85,3.78) {$25°$};
+          \node[font=\scriptsize] at (2.55,2.45) {$x$};
+          \node[font=\scriptsize] at (1.55,1.45) {$60°$};
+          \node[font=\scriptsize] at (2.8,0.22) {$30°$};
+          \end{scope}
+      espaco: 14
+      resolucao: |
+        Trace por cada vértice uma paralela a $r$. No vértice de baixo, que aponta para a esquerda: $60° = y + 30°$, em que $y$ é o ângulo entre o segmento do meio e a paralela; logo $y = 30°$.
+        No vértice de cima, que aponta para a direita: $x = 25° + y = 55°$.
+      resposta: '$x = 55°$'
+    - enunciado: 'Com a numeração da figura da questão 1, o ângulo 1 mede $3x + 10°$, o ângulo 5 mede $100°$ e o ângulo 6 mede $2y$. Determine $x$ e $y$.'
+      espaco: 12
+      resolucao: |
+        1 e 5 são correspondentes: $3x + 10 = 100$, $x = 30°$. 5 e 6 são adjacentes suplementares: $2y = 80°$, $y = 40°$.
+      resposta: '$x = 30°$, $y = 40°$'
+    - enunciado: 'Complete o quadro, sabendo que um dos ângulos do par mede $72°$ e que as retas são paralelas.'
+      tabela:
+        cabecalho: ['Par', 'O outro ângulo mede']
+        linhas:
+        - ['correspondentes', '${{72°}}$']
+        - ['alternos internos', '${{72°}}$']
+        - ['colaterais internos', '${{108°}}$']
+        - ['alternos externos', '${{72°}}$']
+        - ['colaterais externos', '${{108°}}$']
+      resolucao: |
+        Correspondentes e alternos são iguais; colaterais (internos ou externos) são suplementares.
+      resposta: '$72°$; $72°$; $108°$; $72°$; $108°$'
+    - enunciado: 'Duas retas $r$ e $s$ (não se sabe se paralelas) são cortadas por uma transversal, formando ângulos alternos internos de $3x + 20°$ e $5x - 10°$. Para que valor de $x$ as retas são paralelas? Quanto medem os ângulos nesse caso?'
+      espaco: 10
+      resolucao: |
+        Pela recíproca, são paralelas quando os alternos internos são iguais: $3x + 20 = 5x - 10$, $x = 15°$, e os ângulos medem $65°$.
+      resposta: '$x = 15°$; $65°$'
+    - enunciado: 'Uma rua reta cruza duas avenidas paralelas. Numa das esquinas da primeira avenida, o ângulo entre a rua e a avenida mede $118°$. Quais são as medidas dos ângulos das esquinas da segunda avenida?'
+      espaco: 10
+      resolucao: |
+        Os ângulos são iguais aos da primeira avenida (correspondentes e alternos): dois medem $118°$ e dois medem $62°$.
+      resposta: '$118°$, $118°$, $62°$, $62°$'
+    - enunciado: 'Um bico entre duas paralelas mede $110°$, e um dos seus lados forma $48°$ com uma das paralelas. Que ângulo o outro lado forma com a outra paralela?'
+      espaco: 10
+      resolucao: |
+        O bico é a soma dos dois ângulos: $110° - 48° = 62°$.
+      resposta: '$62°$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove a propriedade do bico: se um bico entre as paralelas $r$ e $s$ tem lados que formam ângulos $\alpha$ e $\beta$ com elas, então o bico mede $\alpha + \beta$.'
+      espaco: 14
+      resolucao: |
+        Pelo vértice $V$ do bico, trace a reta $u$ paralela a $r$ (e, portanto, a $s$). O lado que vai a $r$ forma com $u$ um ângulo alterno interno ao de $\alpha$: mede $\alpha$. O lado que vai a $s$ forma com $u$ um ângulo igual a $\beta$, pelo mesmo motivo. O bico é a soma das duas partes: $\alpha + \beta$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Uma poligonal liga $r$ a $s$ com dois bicos, um apontando para a direita (ângulo $x$) e outro para a esquerda (ângulo $y$), como na figura da questão 10. O primeiro segmento forma $a$ com $r$ e o último forma $b$ com $s$. Mostre que $x + b = y + a$.'
+      espaco: 14
+      resolucao: |
+        Seja $c$ o ângulo que o segmento do meio forma com as paralelas traçadas pelos vértices. Pelo bico: $x = a + c$ e $y = c + b$. Subtraindo, $x - y = a - b$, ou seja, $x + b = y + a$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Mostre que as bissetrizes de dois ângulos colaterais internos se cortam formando um ângulo reto.'
+      espaco: 14
+      resolucao: |
+        Os colaterais internos somam $180°$: $\alpha + \beta = 180°$. As bissetrizes formam um bico entre as paralelas, com lados que fazem $\tfrac{\alpha}{2}$ e $\tfrac{\beta}{2}$ com elas. O bico mede $\tfrac{\alpha + \beta}{2} = 90°$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Entre duas paralelas cortadas por uma transversal, dois ângulos alternos internos medem $2x + y$ e $x + 2y$, e um ângulo colateral interno a eles mede $120°$. Determine $x$ e $y$.'
+      espaco: 12
+      resolucao: |
+        Alternos internos iguais: $2x + y = x + 2y$, $x = y$. Colaterais suplementares: $2x + y = 60°$, $3x = 60°$. Logo $x = y = 20°$.
+      resposta: '$x = y = 20°$'
+    - enunciado: 'Num periscópio, dois espelhos planos paralelos refletem a luz. Um raio atinge o primeiro espelho formando $45°$ com ele, segue até o segundo e é refletido de novo. Sabendo que o raio refletido forma com o espelho o mesmo ângulo que o raio incidente, mostre que o raio que sai é paralelo ao que entrou.'
+      espaco: 14
+      resolucao: |
+        Entre os espelhos, o raio é uma transversal às paralelas: ele forma $45°$ com o primeiro e, por alternos internos, $45°$ com o segundo. Ao refletir, sai formando $45°$ com o segundo espelho. O raio que entra e o que sai formam ângulos iguais (alternos) com o segmento do meio, então são paralelos.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      No mapa de um bairro, duas avenidas paralelas são cortadas por uma rua reta, como na figura. Num cruzamento, o ângulo entre a rua e a avenida de baixo mede $62°$. A prefeitura vai instalar um canteiro na esquina marcada com $x$, na avenida de cima, e precisa saber o ângulo dessa esquina.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.85]
+        \fill[mudo!25] (-2.4,1.8) rectangle (3.6,2.2);
+        \fill[mudo!25] (-2.4,-0.2) rectangle (3.6,0.2);
+        \draw[ink, line width=1pt] (-2.4,2) -- (3.6,2) node[right, font=\scriptsize] {avenida};
+        \draw[ink, line width=1pt] (-2.4,0) -- (3.6,0) node[right, font=\scriptsize] {avenida};
+        \draw[roxo, line width=1.2pt] (-0.6,-1) -- (1.8,3) node[above, font=\scriptsize] {rua};
+        \draw[ink!70] (0.55,0) arc (0:59:.55);
+        \node[font=\scriptsize] at (0.95,0.3) {$62°$};
+        \node[font=\scriptsize, roxo] at (0.75,2.4) {$x$};
+        \end{scope}
+    enunciado: |
+      O ângulo $x$ mede
+    opcoes: ['$62°$', '$28°$', '$118°$', '$128°$', '$152°$']
+    correta: C
+    resolucao: |
+      Na avenida de cima, o ângulo correspondente ao de $62°$ (à direita da rua, acima da avenida) também mede $62°$, e $x$ é adjacente a ele, do outro lado da rua: $x = 180° - 62° = 118°$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Dois ângulos correspondentes, formados por duas paralelas e uma transversal, medem $5x - 40°$ e $3x + 20°$. Cada um deles mede
+    opcoes: ['$110°$', '$30°$', '$70°$', '$120°$', '$100°$']
+    correta: A
+    resolucao: |
+      $5x - 40 = 3x + 20$: $x = 30°$, e cada ângulo mede $110°$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Dois ângulos colaterais internos, formados por duas paralelas e uma transversal, medem $3x + 10°$ e $x + 30°$. O maior deles mede
+    opcoes: ['$65°$.', '$115°$.', '$35°$.', '$105°$.']
+    correta: B
+    resolucao: |
+      $4x + 40 = 180$: $x = 35°$. Medidas $115°$ e $65°$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere duas retas paralelas cortadas por uma transversal. Assinale o que for correto.
+    proposicoes:
+    - 'Os ângulos correspondentes são congruentes.'
+    - 'Os ângulos alternos externos são congruentes.'
+    - 'Os ângulos colaterais externos são suplementares.'
+    - 'Os ângulos colaterais internos são congruentes.'
+    - 'Se duas retas cortadas por uma transversal formam ângulos alternos internos congruentes, então elas são paralelas.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      01), 02) e 04) Corretas. 08) Incorreta: são suplementares. 16) Correta: é a recíproca.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Enem
+    texto: |
+      Uma barra metálica foi dobrada e encaixada entre duas prateleiras paralelas, formando um bico, como na figura. A parte de cima da barra forma $50°$ com a prateleira de cima. O ponto da dobra forma um ângulo de $80°$. O marceneiro quer saber o ângulo entre a parte de baixo da barra e a prateleira de baixo.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.85]
+        \fill[mudo!30] (-0.8,3) rectangle (3.4,3.25);
+        \fill[mudo!30] (-0.8,-0.25) rectangle (3.4,0);
+        \draw[ink, line width=1pt] (-0.8,3) -- (3.4,3);
+        \draw[ink, line width=1pt] (-0.8,0) -- (3.4,0);
+        \draw[roxo, line width=1.8pt] (0.2,3) -- (1.896,0.979) -- (0.2,0);
+        \draw[ink!70] (0.75,3) arc (0:-50:.55);
+        \draw[ink!70] (0.75,0) arc (0:30:.55);
+        \node[font=\scriptsize] at (1.05,2.72) {$50°$};
+        \node[font=\scriptsize] at (1.0,0.2) {$x$};
+        \node[font=\scriptsize] at (2.3,1.0) {$80°$};
+        \end{scope}
+    enunciado: |
+      O ângulo $x$ mede
+    opcoes: ['$30°$', '$80°$', '$110°$', '$50°$', '$40°$']
+    correta: A
+    resolucao: |
+      Pela propriedade do bico: $80° = 50° + x$, então $x = 30°$.
+
+  - estilo: UEL
+    texto: |
+      Na figura, as retas $r$ e $s$ são paralelas e $t$ é uma transversal.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.85]
+        \draw[ink, line width=1pt] (-2.2,2) -- (3.4,2) node[right, font=\scriptsize] {$r$};
+        \draw[ink, line width=1pt] (-2.2,0) -- (3.4,0) node[right, font=\scriptsize] {$s$};
+        \draw[roxo, line width=1pt] (-0.8,-1) -- (2.4,3) node[above, font=\scriptsize] {$t$};
+        \foreach \p/\n in {{(2.01,2.19)}/1, {(1.41,2.41)}/2, {(1.19,1.81)}/3, {(1.79,1.59)}/4, {(0.41,0.19)}/5, {(-0.19,0.41)}/6, {(-0.41,-0.19)}/7, {(0.19,-0.41)}/8} \node[font=\scriptsize] at \p {\n};
+        \end{scope}
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'Os ângulos 1 e 5 são correspondentes.'
+    - 'Os ângulos 3 e 6 são alternos internos.'
+    - 'Os ângulos 4 e 5 são colaterais internos.'
+    - 'Os ângulos 2 e 7 são opostos pelo vértice.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e IV, apenas.', 'I e III, apenas.', 'I, III e IV, apenas.', 'I, II, III e IV.']
+    correta: C
+    resolucao: |
+      I. Correta. II. Incorreta: 3 e 6 estão do mesmo lado de $t$ (são colaterais internos); o alterno interno de 3 é 5. III. Correta. IV. Incorreta: 2 e 7 estão em cruzamentos diferentes, sem vértice comum.
+
+  - estilo: Unesp
+    enunciado: |
+      Uma transversal corta duas retas paralelas, formando oito ângulos. Um deles mede $47°$. A soma das medidas dos oito ângulos é
+    opcoes: ['$360°$', '$720°$', '$540°$', '$1080°$', '$180°$']
+    correta: B
+    resolucao: |
+      Quatro medem $47°$ e quatro, $133°$: $4 \cdot 180° = 720°$. (Em cada cruzamento, os quatro ângulos somam $360°$.)
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, as retas $r$ e $s$ são paralelas.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.72]
+        \draw[ink, line width=1pt] (-0.6,4) -- (4.8,4) node[right, font=\scriptsize] {$r$};
+        \draw[ink, line width=1pt] (-0.6,0) -- (4.8,0) node[right, font=\scriptsize] {$s$};
+        \draw[roxo, line width=1.1pt] (0,4) -- (3,2.908) -- (0.8,2.319) -- (4.111,0);
+        \node[font=\scriptsize] at (0.95,3.8) {$20°$};
+        \node[font=\scriptsize] at (2.55,2.72) {$x$};
+        \node[font=\scriptsize] at (1.35,2.3) {$50°$};
+        \node[font=\scriptsize] at (3.35,0.22) {$35°$};
+        \end{scope}
+    enunciado: |
+      O valor de $x$ é
+    opcoes: ['$35°$.', '$45°$.', '$55°$.', '$85°$.']
+    correta: A
+    resolucao: |
+      Com paralelas pelos vértices: no bico que aponta para a esquerda, $50° = c + 35°$, $c = 15°$. No que aponta para a direita, $x = 20° + c = 35°$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Dois ângulos colaterais internos, formados por duas paralelas e uma transversal, estão na razão $2 : 7$. O menor deles mede
+    opcoes: ['$20°$', '$80°$', '$140°$', '$70°$', '$40°$']
+    correta: E
+    resolucao: |
+      $2k + 7k = 180°$: $k = 20°$. Medidas $40°$ e $140°$.
+
+  - estilo: UFSC
+    texto: |
+      Na figura, as retas $r$ e $s$ são paralelas e $t$ é uma transversal. O ângulo 1 mede $3x + 5°$ e o ângulo 7 mede $4x - 15°$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.85]
+        \draw[ink, line width=1pt] (-2.2,2) -- (3.4,2) node[right, font=\scriptsize] {$r$};
+        \draw[ink, line width=1pt] (-2.2,0) -- (3.4,0) node[right, font=\scriptsize] {$s$};
+        \draw[roxo, line width=1pt] (-0.8,-1) -- (2.4,3) node[above, font=\scriptsize] {$t$};
+        \foreach \p/\n in {{(2.01,2.19)}/1, {(1.41,2.41)}/2, {(1.19,1.81)}/3, {(1.79,1.59)}/4, {(0.41,0.19)}/5, {(-0.19,0.41)}/6, {(-0.41,-0.19)}/7, {(0.19,-0.41)}/8} \node[font=\scriptsize] at \p {\n};
+        \end{scope}
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - '$x = 20°$.'
+    - 'O ângulo 1 mede $65°$.'
+    - 'O ângulo 6 mede $115°$.'
+    - 'O ângulo 3 mede $115°$.'
+    - 'Os ângulos 4 e 6 somam $230°$.'
+    - 'Os ângulos 1 e 8 são suplementares.'
+    corretas: [1, 2, 3, 5, 6]
+    resolucao: |
+      1 e 7 são alternos externos: $3x + 5 = 4x - 15$, $x = 20°$, e medem $65°$. Os agudos (1, 3, 5, 7) medem $65°$; os obtusos (2, 4, 6, 8), $115°$.
+      01), 02) e 04) Corretas. 08) Incorreta: 3 mede $65°$. 16) $115° + 115°$. 32) $65° + 115°$.
+      Soma: $01 + 02 + 04 + 16 + 32 = 55$.
+
+  - estilo: Enem
+    texto: |
+      Uma ferrovia reta cruza duas estradas retas e paralelas. No primeiro cruzamento, o ângulo agudo entre a ferrovia e a estrada mede $38°$. Para instalar a sinalização do segundo cruzamento, um engenheiro precisa da medida do ângulo obtuso que a ferrovia forma com a segunda estrada.
+    enunciado: |
+      Esse ângulo obtuso mede
+    opcoes: ['$38°$', '$52°$', '$128°$', '$142°$', '$152°$']
+    correta: D
+    resolucao: |
+      No segundo cruzamento, os ângulos repetem os do primeiro: o agudo mede $38°$ e o obtuso, $180° - 38° = 142°$. ($128°$ vem de somar $90°$.)
+
+  - estilo: UFPR
+    enunciado: |
+      Considere duas retas cortadas por uma transversal. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Se as retas são paralelas, os ângulos colaterais externos são suplementares.'
+    - 'Dois ângulos alternos internos sempre somam $180°$.'
+    - 'Se dois ângulos correspondentes são congruentes, as retas são paralelas.'
+    - 'Se as retas são paralelas e a transversal é perpendicular a uma delas, formam-se quatro ângulos retos e quatro agudos.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'V – F – V – F.', 'F – F – V – F.', 'V – F – V – V.', 'V – V – F – F.']
+    correta: B
+    resolucao: |
+      (V) (F) Entre paralelas são congruentes; em geral, nada se garante. (V) Recíproca. (F) A transversal é perpendicular às duas: os oito ângulos são retos.
+
+  - estilo: Enem
+    texto: |
+      Para verificar se dois trilhos são paralelos, quatro equipes mediram dois dos ângulos formados pelos trilhos com uma mesma barra transversal. O quadro mostra o tipo de par medido por cada equipe e os valores encontrados. Os trilhos só podem ser declarados paralelos se as medidas confirmarem a propriedade das paralelas.
+    tabela:
+      cabecalho: ['Equipe', 'Par medido', 'Medidas']
+      linhas:
+      - ['1', 'correspondentes', '$72°$ e $72°$']
+      - ['2', 'alternos internos', '$110°$ e $70°$']
+      - ['3', 'colaterais internos', '$95°$ e $85°$']
+      - ['4', 'alternos externos', '$60°$ e $62°$']
+    enunciado: |
+      As medidas confirmam que os trilhos são paralelos
+    opcoes: ['apenas para a equipe 1.', 'apenas para as equipes 1 e 2.', 'apenas para as equipes 2 e 4.', 'apenas para as equipes 3 e 4.', 'apenas para as equipes 1 e 3.']
+    correta: E
+    resolucao: |
+      Equipe 1: correspondentes iguais. Equipe 3: colaterais internos somando $180°$. Na equipe 2, os alternos internos deveriam ser iguais; na 4, os alternos externos também.
+
+  - estilo: Fuvest
+    texto: |
+      Na figura, as retas $r$ e $s$ são paralelas.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1pt] (-0.8,3) -- (3,3) node[right, font=\scriptsize] {$r$};
+        \draw[ink, line width=1pt] (-0.8,0) -- (3,0) node[right, font=\scriptsize] {$s$};
+        \draw[roxo, line width=1.1pt] (0.2,3) -- (1.367,2.021) -- (0.2,0);
+        \node[font=\scriptsize] at (1.05,2.8) {$2x$};
+        \node[font=\scriptsize] at (0.95,0.3) {$3x$};
+        \node[font=\scriptsize] at (1.85,2.0) {$100°$};
+        \end{scope}
+    enunciado: |
+      O valor de $x$ é
+    opcoes: ['$10°$', '$15°$', '$20°$', '$25°$', '$40°$']
+    correta: C
+    resolucao: |
+      Pela propriedade do bico: $2x + 3x = 100°$, $x = 20°$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere retas de um mesmo plano. Assinale o que for correto.
+    proposicoes:
+    - 'As bissetrizes de dois ângulos alternos externos formados por duas paralelas e uma transversal são paralelas.'
+    - 'As bissetrizes de dois ângulos alternos internos formados por duas paralelas e uma transversal são paralelas.'
+    - 'As bissetrizes de dois ângulos correspondentes formados por duas paralelas e uma transversal são paralelas.'
+    - 'Duas retas perpendiculares a uma mesma reta são paralelas.'
+    - 'Duas retas paralelas a uma terceira podem ser concorrentes.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) a 04) Corretas: em cada caso, as bissetrizes formam com a transversal ângulos alternos ou correspondentes iguais (metades de ângulos iguais), e a recíproca garante o paralelismo. 08) Os ângulos correspondentes são retos. 16) Incorreta: são paralelas entre si.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Entre dois ângulos colaterais internos formados por duas paralelas e uma transversal, um mede $30°$ a menos que o dobro do outro. O maior deles mede
+    opcoes: ['$110°$', '$70°$', '$120°$', '$100°$', '$60°$']
+    correta: A
+    resolucao: |
+      $x + (2x - 30) = 180$: $x = 70°$. Medidas $70°$ e $110°$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Dois espelhos planos foram montados paralelos, um em cima do outro. Um raio de luz atinge o espelho de cima formando $35°$ com ele e é refletido em direção ao espelho de baixo, como na figura. Em cada reflexão, o raio refletido forma com o espelho o mesmo ângulo que o raio incidente.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \fill[lilas!40] (-0.8,2.5) rectangle (5.6,2.75);
+        \fill[lilas!40] (-0.8,-0.25) rectangle (5.6,0);
+        \draw[ink, line width=1pt] (-0.8,2.5) -- (5.6,2.5);
+        \draw[ink, line width=1pt] (-0.8,0) -- (5.6,0);
+        \draw[roxo, line width=1.1pt, -latex] (-0.286,1.6) -- (0.5,2.15);
+        \draw[roxo, line width=1.1pt] (0.5,2.15) -- (1,2.5);
+        \draw[roxo, line width=1.1pt, -latex] (1,2.5) -- (2.8,1.24);
+        \draw[roxo, line width=1.1pt] (2.8,1.24) -- (4.571,0);
+        \draw[roxo, line width=1.1pt, -latex] (4.571,0) -- (5.4,0.58);
+        \draw[ink!70] (0.45,2.5) arc (180:215:.55);
+        \node[font=\scriptsize] at (0.15,2.25) {$35°$};
+        \end{scope}
+    enunciado: |
+      Ao atingir o espelho de baixo, o raio forma com ele um ângulo de
+    opcoes: ['$55°$', '$70°$', '$110°$', '$35°$', '$145°$']
+    correta: D
+    resolucao: |
+      Depois da primeira reflexão, o raio forma $35°$ com o espelho de cima. Entre os espelhos, ele é uma transversal às paralelas: forma $35°$ com o de baixo (alternos internos).
+
+  - estilo: Unicamp
+    enunciado: |
+      Depois de refletido no espelho de baixo, o raio
+    opcoes: ['fica paralelo ao raio que chegou ao espelho de cima.', 'fica perpendicular ao raio que chegou ao espelho de cima.', 'forma $35°$ com o raio que chegou ao espelho de cima.', 'forma $70°$ com o raio que chegou ao espelho de cima.']
+    correta: A
+    resolucao: |
+      O raio que chega sobe formando $35°$ com os espelhos, e o raio que sai também sobe formando $35°$ com eles, no mesmo sentido: os dois formam ângulos correspondentes iguais com as paralelas e, portanto, são paralelos.
+
+  - estilo: Unesp
+    enunciado: |
+      Dos oito ângulos formados por duas paralelas e uma transversal, um ângulo agudo mede $\frac{2}{7}$ de um ângulo obtuso. O ângulo obtuso mede
+    opcoes: ['$40°$', '$100°$', '$120°$', '$130°$', '$140°$']
+    correta: E
+    resolucao: |
+      Um agudo e um obtuso desses oito são suplementares: $\tfrac{2}{7}o + o = 180°$, $o = 140°$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Duas retas paralelas são cortadas por uma transversal. As bissetrizes de dois ângulos colaterais internos se cortam num ponto $P$. O ângulo formado por elas em $P$ mede
+    opcoes: ['$45°$', '$90°$', '$60°$', '$120°$', '$180°$']
+    correta: B
+    resolucao: |
+      As bissetrizes formam um bico com lados que fazem $\tfrac{\alpha}{2}$ e $\tfrac{\beta}{2}$ com as paralelas, e $\alpha + \beta = 180°$: o bico mede $90°$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Uma poligonal sai de um ponto $A$ da reta $r$ e chega a um ponto $B$ da reta $s$, paralela a $r$, fazendo dois bicos: o primeiro aponta para a direita e mede $x$; o segundo aponta para a esquerda e mede $y$. O primeiro segmento forma $a$ com $r$, e o último forma $b$ com $s$.'
+    itens:
+    - 'Traçando paralelas pelos vértices, mostre que $x = a + c$ e $y = c + b$, em que $c$ é o ângulo do segmento do meio com essas paralelas.'
+    - 'Conclua que $x + b = y + a$ (a soma dos ângulos que apontam para um lado é igual à soma dos que apontam para o outro).'
+    - 'Calcule $x$ para $a = 32°$, $y = 70°$ e $b = 26°$.'
+    espaco: 62
+    resolucao: |
+      a) No primeiro bico, a paralela pelo vértice divide $x$ em uma parte igual a $a$ (alternos internos com $r$) e outra igual a $c$. No segundo, a paralela divide $y$ em $c$ (alternos internos com a paralela anterior) e $b$.
+      b) $x - y = a - b$, isto é, $x + b = y + a$.
+      c) $x + 26 = 70 + 32$: $x = 76°$.
+    resposta: 'c) $x = 76°$'
+
+  - estilo: Unicamp
+    texto: |
+      Num periscópio, a luz entra na horizontal, atinge um espelho inclinado de $45°$, sobe na vertical e atinge um segundo espelho, paralelo ao primeiro, saindo de novo na horizontal. Em cada reflexão, os raios incidente e refletido formam ângulos iguais com o espelho.
+    enunciado: ''
+    itens:
+    - 'Mostre que, no primeiro espelho, o raio refletido forma $90°$ com o incidente.'
+    - 'Mostre que o raio vertical forma $45°$ com o segundo espelho.'
+    - 'Conclua que o raio que sai é paralelo ao que entrou e tem o mesmo sentido.'
+    espaco: 62
+    resolucao: |
+      a) O raio horizontal forma $45°$ com o espelho, e o refletido também: os três ângulos em torno do ponto, de um lado do espelho, somam $180°$, e o ângulo entre os raios é $180° - 45° - 45° = 90°$.
+      b) Os espelhos são paralelos, e o raio vertical é uma transversal a eles: ele forma $45°$ com o primeiro e, por alternos internos, $45°$ com o segundo.
+      c) Pelo item a) aplicado ao segundo espelho, o raio que sai forma $90°$ com o vertical: é horizontal, logo paralelo ao que entrou. Como os espelhos são paralelos, o segundo desvia a luz para o lado oposto ao do primeiro, e ela volta ao sentido original.
+    resposta: 'Ver resolução'
+
+  - estilo: ITA
+    enunciado: |
+      Duas retas paralelas são cortadas por uma transversal, que não é perpendicular a elas. As bissetrizes dos quatro ângulos internos (os dois de cada cruzamento que ficam entre as paralelas) determinam um quadrilátero. Esse quadrilátero é
+    opcoes: ['um quadrado.', 'um retângulo que não é quadrado.', 'um losango que não é quadrado.', 'um trapézio que não é paralelogramo.', 'um paralelogramo sem ângulo reto.']
+    correta: B
+    espaco: 22
+    resolucao: |
+      Em cada cruzamento, os dois ângulos internos são adjacentes suplementares: as bissetrizes são perpendiculares (ângulos retos nos cruzamentos). Nos outros dois vértices, encontram-se bissetrizes de colaterais internos: também $90°$. Os quatro ângulos são retos: retângulo. Os lados que partem de um cruzamento medem $d\cos\tfrac{\alpha}{2}$ e $d\operatorname{sen}\tfrac{\alpha}{2}$ ($d$ é a distância entre os cruzamentos), diferentes se $\alpha \neq 90°$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Pelo vértice $A$ de um triângulo $ABC$, trace a reta $r$ paralela a $BC$.'
+    itens:
+    - 'Usando ângulos alternos internos, mostre que $\hat{A} + \hat{B} + \hat{C} = 180°$.'
+    - 'Mostre que o ângulo externo em $C$ (adjacente a $\hat{C}$) é igual a $\hat{A} + \hat{B}$.'
+    - 'Num triângulo, $\hat{A} = 2x$, $\hat{B} = 3x$ e o ângulo externo em $C$ mede $125°$. Determine os três ângulos internos.'
+    espaco: 62
+    resolucao: |
+      a) A reta $r$ forma com $AB$ um ângulo igual a $\hat{B}$ e com $AC$ um ângulo igual a $\hat{C}$ (alternos internos, com as transversais $AB$ e $AC$). Esses dois ângulos e $\hat{A}$ formam um ângulo raso em $A$: $\hat{A} + \hat{B} + \hat{C} = 180°$.
+      b) O externo em $C$ é $180° - \hat{C} = \hat{A} + \hat{B}$.
+      c) $5x = 125°$, $x = 25°$: $\hat{A} = 50°$, $\hat{B} = 75°$, $\hat{C} = 55°$.
+    resposta: 'c) $50°$, $75°$ e $55°$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere duas retas paralelas cortadas por uma transversal, num mesmo plano. Assinale o que for correto.
+    proposicoes:
+    - 'Se a transversal é perpendicular a uma das paralelas, é perpendicular à outra.'
+    - 'Os oito ângulos formados somam $720°$.'
+    - 'Entre os oito ângulos, há no máximo dois valores distintos.'
+    - 'Se dois ângulos colaterais internos são congruentes, cada um mede $45°$.'
+    - 'Dois ângulos alternos internos são sempre suplementares.'
+    - 'As bissetrizes de dois ângulos colaterais externos são perpendiculares.'
+    corretas: [1, 2, 3, 6]
+    espaco: 22
+    resolucao: |
+      01) Correspondentes ao ângulo reto. 02) $2 \cdot 360°$. 04) Um ângulo e o seu suplemento. 08) Incorreta: somam $180°$, então medem $90°$.
+      16) Incorreta: são congruentes (suplementares só se forem retos). 32) Os colaterais externos somam $180°$, e as metades, $90°$.
+    resposta: 'Soma 39 (01 + 02 + 04 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Duas paralelas são cortadas por uma transversal. Dois ângulos correspondentes medem $3a - b$ e $2a + 10°$, e um colateral interno a um deles mede $a + b$.'
+    itens:
+    - 'Escreva o sistema de equações que traduz o enunciado.'
+    - 'Determine $a$ e $b$.'
+    - 'Quais são as medidas dos oito ângulos?'
+    espaco: 62
+    resolucao: |
+      a) Correspondentes iguais: $3a - b = 2a + 10$. Colaterais suplementares: $(a + b) + (2a + 10) = 180$.
+      b) $a - b = 10$ e $3a + b = 170$: $4a = 180$, $a = 45°$, $b = 35°$.
+      c) Os correspondentes medem $100°$, e o colateral, $80°$: quatro ângulos de $100°$ e quatro de $80°$.
+    resposta: 'b) $a = 45°$, $b = 35°$; c) quatro de $100°$ e quatro de $80°$'
+
+  - estilo: Unicamp
+    texto: |
+      Por volta de 240 a.C., Eratóstenes estimou a circunferência da Terra. Ao meio-dia do solstício de verão, em Siena, o Sol ficava a pino (raios verticais); no mesmo instante, em Alexandria, uma haste vertical fazia sombra, e os raios formavam com ela um ângulo de $7{,}2°$. Os raios do Sol chegam à Terra praticamente paralelos.
+    enunciado: ''
+    itens:
+    - 'A haste de Alexandria aponta para o centro da Terra, assim como a direção vertical em Siena. Explique por que o ângulo entre essas duas direções, no centro da Terra, também mede $7{,}2°$.'
+    - 'Que fração da volta completa corresponde a $7{,}2°$?'
+    - 'Se a distância de Siena a Alexandria fosse de 800 km, qual seria a circunferência da Terra?'
+    espaco: 62
+    resolucao: |
+      a) O raio que chega a Siena segue a vertical até o centro. Ele e o raio que chega a Alexandria são paralelos, cortados pela reta da haste de Alexandria (que passa pelo centro): o ângulo no topo da haste e o ângulo no centro são alternos internos, logo iguais.
+      b) $\tfrac{7{,}2}{360} = \tfrac{1}{50}$.
+      c) $50 \cdot 800 = 40\,000$ km.
+    resposta: 'b) $\frac{1}{50}$; c) 40 000 km'
+
+  - estilo: Fuvest
+    enunciado: |
+      Uma poligonal liga duas paralelas $r$ e $s$, fazendo dois bicos. O primeiro segmento forma $30°$ com $r$; o primeiro bico, que aponta para a direita, mede $100°$; o último segmento forma $40°$ com $s$. O segundo bico, que aponta para a esquerda, mede
+    opcoes: ['$70°$', '$90°$', '$100°$', '$110°$', '$130°$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      O segmento do meio forma $c$ com as paralelas: $100° = 30° + c$, $c = 70°$. Segundo bico: $c + 40° = 110°$.
+    resposta: 'D'
+
+  - estilo: Unesp
+    enunciado: 'As paralelas $r$ e $s$ são cortadas por uma transversal em $P$ (em $r$) e $Q$ (em $s$). As bissetrizes dos ângulos colaterais internos em $P$ e $Q$ se cortam em $M$.'
+    itens:
+    - 'Mostre que $P\hat{M}Q = 90°$.'
+    - 'Se o ângulo interno em $P$ mede $64°$, calcule os ângulos do triângulo $PMQ$.'
+    - 'A bissetriz traçada por $P$ corta $s$ em $X$. Mostre que o triângulo $PQX$ tem dois ângulos iguais.'
+    espaco: 62
+    resolucao: |
+      a) As bissetrizes formam um bico com lados que fazem $\tfrac{\alpha}{2}$ e $\tfrac{\beta}{2}$ com as paralelas, e $\alpha + \beta = 180°$: $P\hat{M}Q = 90°$.
+      b) Em $P$: $32°$; em $Q$: $\tfrac{180° - 64°}{2} = 58°$; em $M$: $90°$ (e $32° + 58° + 90° = 180°$).
+      c) A bissetriz forma $\tfrac{\alpha}{2}$ com $PQ$ (em $P$) e, por alternos internos, forma $\tfrac{\alpha}{2}$ com $s$ (em $X$). O triângulo $PQX$ tem os ângulos em $P$ e em $X$ iguais a $\tfrac{\alpha}{2}$.
+    resposta: 'b) $32°$, $58°$ e $90°$'
+
+  - estilo: Fuvest
+    enunciado: 'Uma transversal forma com duas paralelas um ângulo agudo $\alpha$.'
+    itens:
+    - 'Escreva as medidas dos oito ângulos formados em função de $\alpha$.'
+    - 'Determine $\alpha$ para que a soma dos quatro ângulos obtusos seja o triplo da soma dos quatro agudos.'
+    - 'Para esse $\alpha$, qual é o ângulo entre as bissetrizes de dois ângulos correspondentes? E entre as de dois colaterais internos?'
+    espaco: 62
+    resolucao: |
+      a) Quatro medem $\alpha$ e quatro medem $180° - \alpha$.
+      b) $4(180° - \alpha) = 3 \cdot 4\alpha$: $180° - \alpha = 3\alpha$, $\alpha = 45°$.
+      c) As bissetrizes de correspondentes são paralelas (ângulo $0°$). As de colaterais internos são perpendiculares ($90°$), qualquer que seja $\alpha$.
+    resposta: 'b) $45°$; c) paralelas; perpendiculares'
