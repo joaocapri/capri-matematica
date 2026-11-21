@@ -1,0 +1,548 @@
+# Aula 4.13.2 — Geometria espacial: volume da pirâmide
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: V = A_b·h/3; um terço do prisma de mesma base e altura; altura a partir do apótema ou da aresta lateral
+# (Pitágoras); tetraedro regular (a³√2/12); octaedro regular (a³√2/3); tetraedro trirretângulo (abc/6); pirâmides em cubos;
+# secção paralela à base (volumes na razão k³). Tronco fica para a 4.16.1.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Use $V = \frac{A_b \cdot h}{3}$. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete com o volume de cada pirâmide.'
+      itens:
+      - 'Base de área 27 e altura 8: {{72}}'
+      - 'Base quadrada de lado 5 e altura 12: {{100}}'
+      - 'Base triangular retângula de catetos 6 e 8, altura 10: {{80}}'
+      - 'Base hexagonal regular de lado 2 e altura $3\sqrt{3}$: {{18}}'
+      - 'Base retangular de 4 por 9 e altura 5: {{60}}'
+      espaco_item: 8
+      resolucao: |
+        $\tfrac{27 \cdot 8}{3} = 72$; $\tfrac{25 \cdot 12}{3} = 100$; $\tfrac{24 \cdot 10}{3} = 80$; base $6 \cdot \tfrac{4\sqrt{3}}{4} = 6\sqrt{3}$, $\tfrac{6\sqrt{3} \cdot 3\sqrt{3}}{3} = 18$; $\tfrac{36 \cdot 5}{3} = 60$.
+      resposta: '72; 100; 80; 18; 60'
+    - enunciado: 'Associe cada pirâmide ao seu volume.'
+      esquerda:
+      - 'base quadrada de lado 3, altura 4'
+      - 'base quadrada de lado 4, altura 3'
+      - 'base de área 15, altura 6'
+      - 'base retangular de 2 por 6, altura 5'
+      - 'base de área 18, altura 3'
+      direita:
+      - '$20$'
+      - '$12$'
+      - '$30$'
+      - '$18$'
+      - '$16$'
+      resolucao: |
+        $\tfrac{9 \cdot 4}{3} = 12$; $\tfrac{16 \cdot 3}{3} = 16$; $\tfrac{15 \cdot 6}{3} = 30$; $\tfrac{12 \cdot 5}{3} = 20$; $\tfrac{18 \cdot 3}{3} = 18$.
+      resposta: 'De cima para baixo: 4, 1, 3, 5, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Uma pirâmide tem um terço do volume do prisma de mesma base e mesma altura.'
+      - 'Dobrando a aresta da base de uma pirâmide quadrangular e mantendo a altura, o volume dobra.'
+      - 'Duas pirâmides de mesma base e mesma altura têm o mesmo volume, mesmo que uma delas seja oblíqua.'
+      - 'O volume de uma pirâmide regular é $\frac{A_b \cdot g}{3}$, sendo $g$ o apótema da pirâmide.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) A área da base quadruplica, e o volume também. (V) Só importam $A_b$ e $h$. (F) Usa-se a altura $h$, não o apótema.
+      resposta: V, F, V, F
+    - enunciado: 'Complete com o volume de cada tetraedro regular de aresta $a$, que é $\frac{a^3\sqrt{2}}{12}$.'
+      tabela:
+        cabecalho: ['$a$', 'Volume']
+        linhas:
+        - ['$3$', '${{\frac{9\sqrt{2}}{4}}}$']
+        - ['$12$', '${{144\sqrt{2}}}$']
+        - ['$2\sqrt{3}$', '${{2\sqrt{6}}}$']
+        - ['$6\sqrt{2}$', '${{72}}$']
+      resolucao: |
+        $\tfrac{27\sqrt{2}}{12}$; $\tfrac{1728\sqrt{2}}{12}$; $(2\sqrt{3})^3 = 24\sqrt{3}$, $\tfrac{24\sqrt{6}}{12}$; $(6\sqrt{2})^3 = 432\sqrt{2}$, $\tfrac{864}{12}$.
+      resposta: '$\frac{9\sqrt{2}}{4}$; $144\sqrt{2}$; $2\sqrt{6}$; 72'
+    - enunciado: 'A pirâmide quadrangular regular da figura tem aresta da base 6 e aresta lateral $\sqrt{34}$. Calcule a altura e o volume.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.8]
+          \draw[ink, line width=1pt] (0,0) -- (3,0) -- (4,1) (0,0) -- (2,3) -- (3,0) (2,3) -- (4,1);
+          \draw[ink, dashed] (0,0) -- (1,1) -- (4,1) (1,1) -- (2,3);
+          \draw[roxo, dashed] (2,3) -- (2,0.5);
+          \draw[roxo, line width=1.2pt] (2,3) -- (3,0);
+          \node[below, font=\scriptsize] at (1.5,0) {$6$};
+          \node[right, font=\scriptsize] at (2.6,1.4) {$\sqrt{34}$};
+          \node[left, font=\scriptsize] at (2,1.4) {$h$};
+          \end{scope}
+      espaco: 10
+      resolucao: |
+        A aresta lateral se projeta na semidiagonal $3\sqrt{2}$: $h = \sqrt{34 - 18} = 4$. $V = \tfrac{36 \cdot 4}{3} = 48$.
+      resposta: '$h = 4$; $V = 48$'
+    - enunciado: 'Uma pirâmide triangular regular tem aresta da base 6 e altura $4\sqrt{3}$. Calcule o volume.'
+      espaco: 8
+      resolucao: |
+        $A_b = \tfrac{36\sqrt{3}}{4} = 9\sqrt{3}$; $V = \tfrac{9\sqrt{3} \cdot 4\sqrt{3}}{3} = 36$.
+      resposta: '36'
+    - enunciado: 'Um bloco de madeira em forma de prisma, de volume 90 cm³, é esculpido até virar uma pirâmide de mesma base e mesma altura. Quanto de madeira é retirado?'
+      espaco: 8
+      resolucao: |
+        A pirâmide tem $\tfrac{90}{3} = 30$ cm³; retira-se $90 - 30 = 60$ cm³.
+      resposta: '60 cm³'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para uma pirâmide quadrangular regular de aresta da base 18 e apótema 15, Ana calculou $V = \frac{324 \cdot 15}{3} = 1620$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        O apótema não é a altura. $m = 9$ e $h = \sqrt{225 - 81} = 12$: $V = \tfrac{324 \cdot 12}{3} = 1296$.
+      resposta: '1296'
+    - enunciado: 'Um tetraedro regular tem aresta 6. Calcule a área da base, a altura e o volume.'
+      espaco: 12
+      resolucao: |
+        $A_b = 9\sqrt{3}$. O vértice se projeta no centro da base, a $2\sqrt{3}$ dos vértices: $h = \sqrt{36 - 12} = 2\sqrt{6}$. $V = \tfrac{9\sqrt{3} \cdot 2\sqrt{6}}{3} = 6\sqrt{18} = 18\sqrt{2}$.
+      resposta: '$9\sqrt{3}$; $2\sqrt{6}$; $18\sqrt{2}$'
+    - enunciado: 'Uma barraca tem a forma de uma pirâmide quadrangular regular de 4 m de lado na base e 3 m de altura. Quantos litros de ar cabem nela?'
+      espaco: 8
+      resolucao: |
+        $V = \tfrac{16 \cdot 3}{3} = 16$ m³ $= 16\,000$ L.
+      resposta: '16 000 L'
+    - enunciado: 'Uma pirâmide quadrangular regular tem volume 384 e aresta da base 12. Calcule a altura, o apótema e a área lateral.'
+      espaco: 12
+      resolucao: |
+        $\tfrac{144h}{3} = 384$: $h = 8$. $g = \sqrt{64 + 36} = 10$. $A_l = 4 \cdot \tfrac{12 \cdot 10}{2} = 240$.
+      resposta: '8; 10; 240'
+    - enunciado: 'Complete para pirâmides quadrangulares regulares de aresta da base $a$ e apótema $g$.'
+      tabela:
+        cabecalho: ['$a$', '$g$', '$h$', '$V$']
+        linhas:
+        - ['$24$', '$13$', '${{5}}$', '${{960}}$']
+        - ['$30$', '$17$', '${{8}}$', '${{2400}}$']
+        - ['$40$', '$25$', '${{15}}$', '${{8000}}$']
+      resolucao: |
+        $h = \sqrt{g^2 - (a/2)^2}$ e $V = \tfrac{a^2 h}{3}$.
+      resposta: '5, 960; 8, 2400; 15, 8000'
+    - enunciado: 'Uma pirâmide tem a base numa face de um cubo de aresta 9 e o vértice no centro da face oposta. Calcule o volume da pirâmide e o volume do cubo fora dela.'
+      espaco: 10
+      resolucao: |
+        $V = \tfrac{81 \cdot 9}{3} = 243$, um terço do cubo ($729$). Fora dela: $729 - 243 = 486$.
+      resposta: '243 e 486'
+    - enunciado: 'Um plano passa pelos três vértices de um cubo de aresta 6 vizinhos de um mesmo vértice e separa um canto do cubo. Calcule o volume desse canto e a fração do cubo que ele representa.'
+      espaco: 10
+      resolucao: |
+        É uma pirâmide de base triangular retângula de catetos 6 (área 18) e altura 6: $V = \tfrac{18 \cdot 6}{3} = 36$, ou seja, $\tfrac{36}{216} = \tfrac{1}{6}$ do cubo.
+      resposta: '36; $\frac{1}{6}$'
+    - enunciado: 'Uma pirâmide hexagonal regular tem aresta da base 4 e aresta lateral 5. Calcule o volume.'
+      espaco: 10
+      resolucao: |
+        O raio da base é 4: $h = \sqrt{25 - 16} = 3$. $A_b = 6 \cdot \tfrac{16\sqrt{3}}{4} = 24\sqrt{3}$. $V = \tfrac{24\sqrt{3} \cdot 3}{3} = 24\sqrt{3}$.
+      resposta: '$24\sqrt{3}$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que o volume de um tetraedro regular de aresta $a$ é $\frac{a^3\sqrt{2}}{12}$.'
+      espaco: 12
+      resolucao: |
+        $A_b = \tfrac{a^2\sqrt{3}}{4}$. O vértice se projeta no centro da base, a $\tfrac{a\sqrt{3}}{3}$ dos vértices: $h = \sqrt{a^2 - \tfrac{a^2}{3}} = \tfrac{a\sqrt{6}}{3}$. $V = \tfrac{1}{3} \cdot \tfrac{a^2\sqrt{3}}{4} \cdot \tfrac{a\sqrt{6}}{3} = \tfrac{a^3\sqrt{18}}{36} = \tfrac{a^3\sqrt{2}}{12}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que o volume de um octaedro regular de aresta $a$ é $\frac{a^3\sqrt{2}}{3}$.'
+      espaco: 12
+      resolucao: |
+        São duas pirâmides quadrangulares de base $a^2$ e arestas laterais $a$. A semidiagonal da base mede $\tfrac{a\sqrt{2}}{2}$: $h = \sqrt{a^2 - \tfrac{a^2}{2}} = \tfrac{a\sqrt{2}}{2}$. $V = 2 \cdot \tfrac{1}{3} \cdot a^2 \cdot \tfrac{a\sqrt{2}}{2} = \tfrac{a^3\sqrt{2}}{3}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Três arestas de um tetraedro, de medidas $a$, $b$ e $c$, partem de um mesmo vértice e são perpendiculares duas a duas. Prove que o volume é $\frac{abc}{6}$.'
+      espaco: 10
+      resolucao: |
+        Tome como base o triângulo retângulo de catetos $a$ e $b$ (área $\tfrac{ab}{2}$). A aresta $c$ é perpendicular às duas, logo ao plano da base: é a altura. $V = \tfrac{1}{3} \cdot \tfrac{ab}{2} \cdot c$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Um plano paralelo à base de uma pirâmide de volume $V$ passa na metade da altura. Prove que ele separa uma pirâmide de volume $\frac{V}{8}$ e um tronco de volume $\frac{7V}{8}$.'
+      espaco: 12
+      resolucao: |
+        A pirâmide menor é semelhante à original, de razão $\tfrac{1}{2}$: a área da base fica multiplicada por $\tfrac{1}{4}$ e a altura por $\tfrac{1}{2}$, logo o volume por $\tfrac{1}{8}$. O tronco tem $V - \tfrac{V}{8} = \tfrac{7V}{8}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que uma pirâmide cuja base é uma face de um cubo de aresta $a$ e cujo vértice é qualquer ponto da face oposta tem volume igual a $\frac{1}{3}$ do cubo.'
+      espaco: 10
+      resolucao: |
+        A base tem área $a^2$, e qualquer ponto da face oposta está à distância $a$ do plano da base: $V = \tfrac{a^2 \cdot a}{3} = \tfrac{a^3}{3}$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Uma fábrica produz bombons maciços de chocolate em forma de pirâmide quadrangular regular, como na figura, com aresta da base de 4 cm e altura de 6 cm. Para planejar a compra de matéria-prima, o setor de produção precisa saber quanto chocolate vai em cada bombom.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) -- (3,0) -- (2,3) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!35] (3,0) -- (4,1) -- (2,3) -- cycle;
+        \draw[ink, dashed] (0,0) -- (1,1) -- (4,1) (1,1) -- (2,3);
+        \end{scope}
+    enunciado: |
+      O volume de chocolate de cada bombom é
+    opcoes: ['$96$ cm³', '$48$ cm³', '$32$ cm³', '$24$ cm³', '$16$ cm³']
+    correta: C
+    resolucao: |
+      $V = \tfrac{16 \cdot 6}{3} = 32$ cm³.
+
+  - estilo: Fuvest
+    enunciado: |
+      O volume de um tetraedro regular de aresta 6 é
+    opcoes: ['$18\sqrt{2}$', '$36\sqrt{2}$', '$9\sqrt{3}$', '$54\sqrt{2}$', '$18\sqrt{3}$']
+    correta: A
+    resolucao: |
+      $\tfrac{a^3\sqrt{2}}{12} = \tfrac{216\sqrt{2}}{12} = 18\sqrt{2}$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Uma pirâmide quadrangular regular tem aresta da base 8 e aresta lateral 9. O seu volume é
+    opcoes: ['$\frac{512}{3}$.', '$\frac{448}{3}$.', '$448$.', '$192$.']
+    correta: B
+    resolucao: |
+      Semidiagonal $4\sqrt{2}$: $h = \sqrt{81 - 32} = 7$. $V = \tfrac{64 \cdot 7}{3} = \tfrac{448}{3}$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere uma pirâmide quadrangular regular de aresta da base 16 e altura 15. Assinale o que for correto.
+    proposicoes:
+    - 'O apótema da pirâmide mede 17.'
+    - 'O volume é 1280.'
+    - 'A área lateral é 544.'
+    - 'A área total é 800.'
+    - 'A aresta lateral mede 17.'
+    - 'O prisma de mesma base e mesma altura tem volume 3840.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) $\sqrt{225 + 64}$. 02) $\tfrac{256 \cdot 15}{3}$. 04) $4 \cdot \tfrac{16 \cdot 17}{2}$. 08) $544 + 256$. 16) Incorreta: $\sqrt{289 + 64} = \sqrt{353}$. 32) $256 \cdot 15$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um reservatório de água de uma pequena propriedade rural tem a forma de uma pirâmide quadrangular regular invertida, com a base no nível do chão. A abertura é um quadrado de 3 m de lado, e a profundidade, do centro da abertura até o fundo, é de 2 m. O dono quer saber a capacidade do reservatório.
+    enunciado: |
+      A capacidade do reservatório, em litros, é
+    opcoes: ['$18\,000$', '$9\,000$', '$3\,000$', '$6\,000$', '$2\,000$']
+    correta: D
+    resolucao: |
+      $V = \tfrac{9 \cdot 2}{3} = 6$ m³ $= 6\,000$ L.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre volumes de pirâmides.
+    afirmativas:
+    - 'O volume de uma pirâmide é $\frac{A_b \cdot h}{3}$.'
+    - 'Mantendo a base e dobrando a altura, o volume dobra.'
+    - 'Mantendo a altura e dobrando a aresta da base de uma pirâmide quadrangular, o volume dobra.'
+    - 'Pirâmides de mesma base e mesma altura têm o mesmo volume.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'III e IV, apenas.', 'II, III e IV, apenas.', 'I, II e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta. II. Correta: $V$ é proporcional a $h$. III. Incorreta: a área da base quadruplica, e o volume também. IV. Correta.
+
+  - estilo: Unesp
+    enunciado: |
+      Uma pirâmide tem base retangular de 3 por 4 e altura 6. O seu volume é
+    opcoes: ['$24$', '$72$', '$36$', '$12$', '$48$']
+    correta: A
+    resolucao: |
+      $\tfrac{12 \cdot 6}{3} = 24$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, um plano passa pelos vértices $A$, $C$ e $F$ de um cubo de aresta 3 e separa o canto $B$ do cubo.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \fill[lilas!40] (0,0) -- (2,2) -- (2.8,0.6) -- cycle;
+        \draw[ink, line width=1pt] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle (2,0) -- (2.8,0.6) -- (2.8,2.6) -- (0.8,2.6) -- (0,2) (2,2) -- (2.8,2.6);
+        \draw[ink, dashed] (0.8,0.6) -- (0,0) (0.8,0.6) -- (2.8,0.6) (0.8,0.6) -- (0.8,2.6);
+        \draw[roxo, line width=1pt] (0,0) -- (2,2) -- (2.8,0.6);
+        \draw[roxo, dashed] (0,0) -- (2.8,0.6);
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[below, font=\scriptsize] at (2,0) {$B$};
+        \node[right, font=\scriptsize] at (2.8,0.6) {$C$};
+        \node[above left, font=\scriptsize] at (2,2) {$F$};
+        \end{scope}
+    enunciado: |
+      O volume do sólido $ABCF$ é
+    opcoes: ['$9$.', '$\frac{9}{2}$.', '$\frac{27}{2}$.', '$3$.']
+    correta: B
+    resolucao: |
+      Base $ABC$, triângulo retângulo de catetos 3 (área $\tfrac{9}{2}$), e altura $BF = 3$: $V = \tfrac{1}{3} \cdot \tfrac{9}{2} \cdot 3 = \tfrac{9}{2}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Uma pirâmide hexagonal regular tem aresta da base 2 e altura 3. O seu volume é
+    opcoes: ['$18\sqrt{3}$', '$12\sqrt{3}$', '$6\sqrt{3}$', '$3\sqrt{3}$', '$2\sqrt{3}$']
+    correta: C
+    resolucao: |
+      $A_b = 6 \cdot \tfrac{4\sqrt{3}}{4} = 6\sqrt{3}$; $V = \tfrac{6\sqrt{3} \cdot 3}{3} = 6\sqrt{3}$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere um tetraedro regular de aresta $a$. Assinale o que for correto.
+    proposicoes:
+    - 'O volume é $\frac{a^3\sqrt{2}}{12}$.'
+    - 'Para $a = 3$, o volume é $\frac{9\sqrt{2}}{4}$.'
+    - 'Dobrando a aresta, o volume fica multiplicado por 8.'
+    - 'O volume é um terço do volume do prisma de mesma base e mesma altura.'
+    - 'Para $a = 2\sqrt{2}$, o volume é $\frac{8}{3}$.'
+    - 'A altura é $\frac{a\sqrt{3}}{2}$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $\tfrac{1}{3} \cdot \tfrac{a^2\sqrt{3}}{4} \cdot \tfrac{a\sqrt{6}}{3}$. 02) $\tfrac{27\sqrt{2}}{12}$. 04) $2^3 = 8$. 08) Fórmula da pirâmide. 16) $(2\sqrt{2})^3 = 16\sqrt{2}$ e $\tfrac{16\sqrt{2} \cdot \sqrt{2}}{12} = \tfrac{8}{3}$. 32) Incorreta: essa é a altura de uma face; a do tetraedro é $\tfrac{a\sqrt{6}}{3}$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Um artesão produz pesos de papel de vidro maciço em forma de pirâmide quadrangular regular. Cada peça tem aresta da base de 10 cm, e a altura de cada face triangular, medida do meio de um lado da base até o topo, é de 13 cm. O vidro usado tem densidade de 2,5 g por centímetro cúbico.
+    enunciado: |
+      A massa de cada peso de papel é
+    opcoes: ['$1{,}0$ kg', '$1{,}1$ kg', '$3{,}0$ kg', '$3{,}25$ kg', '$0{,}4$ kg']
+    correta: A
+    resolucao: |
+      Altura $h = \sqrt{13^2 - 5^2} = 12$ cm. $V = \tfrac{100 \cdot 12}{3} = 400$ cm³; massa $400 \cdot 2{,}5 = 1000$ g.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Uma pirâmide tem um terço do volume do prisma de mesma base e mesma altura.'
+    - 'Dobrando todas as arestas de uma pirâmide, o volume dobra.'
+    - 'O canto separado de um cubo de aresta $a$ por um plano que passa pelos três vértices vizinhos de um vértice tem volume $\frac{a^3}{6}$.'
+    - 'Uma pirâmide de base quadrada de lado $a$ e altura $a$ tem volume $\frac{a^3}{2}$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'V – F – V – F.', 'F – F – V – V.', 'V – F – F – F.', 'F – V – V – F.']
+    correta: B
+    resolucao: |
+      (V) (F) Fica multiplicado por $2^3 = 8$. (V) $\tfrac{1}{3} \cdot \tfrac{a^2}{2} \cdot a$. (F) É $\tfrac{a^3}{3}$.
+
+  - estilo: Enem
+    texto: |
+      Uma empresa de cosméticos estuda cinco modelos de frasco em forma de pirâmide para um novo perfume e quer o de maior capacidade. O quadro mostra, para cada modelo, a base e a altura internas, em centímetros.
+    tabela:
+      cabecalho: ['Modelo', 'Base', 'Altura']
+      linhas:
+      - ['M1', 'quadrado de lado 9', '$8$']
+      - ['M2', 'quadrado de lado 12', '$4$']
+      - ['M3', 'retângulo de 10 por 6', '$12$']
+      - ['M4', 'triângulo retângulo de catetos 12 e 10', '$15$']
+      - ['M5', 'quadrado de lado 10', '$8$']
+    enunciado: |
+      O frasco de maior capacidade é o modelo
+    opcoes: ['M1.', 'M2.', 'M3.', 'M5.', 'M4.']
+    correta: E
+    resolucao: |
+      Volumes (cm³): M1 216; M2 192; M3 240; M4 $\tfrac{60 \cdot 15}{3} = 300$; M5 $\approx 266{,}7$.
+
+  - estilo: Unesp
+    enunciado: |
+      Uma pirâmide quadrangular regular tem volume 512 e aresta da base 16. O apótema dessa pirâmide mede
+    opcoes: ['$6$', '$8$', '$12$', '$10$', '$2\sqrt{41}$']
+    correta: D
+    resolucao: |
+      $\tfrac{256h}{3} = 512$: $h = 6$. $g = \sqrt{36 + 64} = 10$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere um cubo de aresta 6 e uma pirâmide cuja base é uma face do cubo e cujo vértice é o centro da face oposta. Assinale o que for correto.
+    proposicoes:
+    - 'O volume da pirâmide é 72.'
+    - 'O volume da pirâmide é um terço do volume do cubo.'
+    - 'O apótema da pirâmide mede $3\sqrt{5}$.'
+    - 'A aresta lateral da pirâmide mede $3\sqrt{6}$.'
+    - 'A área lateral da pirâmide é $36\sqrt{5}$.'
+    - 'O volume do cubo fora da pirâmide é 108.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $\tfrac{36 \cdot 6}{3}$. 02) $\tfrac{72}{216}$. 04) $\sqrt{36 + 9}$. 08) $\sqrt{36 + 18}$. 16) $4 \cdot \tfrac{6 \cdot 3\sqrt{5}}{2}$. 32) Incorreta: $216 - 72 = 144$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Uma pirâmide de volume 96 é cortada por um plano paralelo à base, na metade da altura. O volume do tronco obtido é
+    opcoes: ['$84$.', '$48$.', '$12$.', '$72$.']
+    correta: A
+    resolucao: |
+      A pirâmide menor tem razão $\tfrac{1}{2}$ e volume $\tfrac{96}{8} = 12$. Tronco: $96 - 12 = 84$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Uma loja vende caixas de presente formadas por um cubo de papelão de 20 cm de aresta e uma tampa em forma de pirâmide quadrangular regular, de mesma base que o cubo e 7,5 cm de altura. A tampa é encaixada sobre o cubo, e o espaço interno total pode ser usado para guardar o presente.
+    enunciado: |
+      O volume interno total da caixa é
+    opcoes: ['$8$ L', '$11$ L', '$9$ L', '$10$ L', '$12$ L']
+    correta: C
+    resolucao: |
+      Cubo $8000$ cm³; tampa $\tfrac{400 \cdot 7{,}5}{3} = 1000$ cm³. Total $9000$ cm³ $= 9$ L.
+
+  - estilo: Unesp
+    enunciado: |
+      A área de papelão das faces triangulares da tampa é
+    opcoes: ['$300$ cm²', '$400$ cm²', '$600$ cm²', '$500$ cm²', '$900$ cm²']
+    correta: D
+    resolucao: |
+      Apótema $\sqrt{7{,}5^2 + 10^2} = 12{,}5$ cm. Área $4 \cdot \tfrac{20 \cdot 12{,}5}{2} = 500$ cm².
+
+  - estilo: Fuvest
+    enunciado: |
+      O volume de um octaedro regular de aresta $a$ é
+    opcoes: ['$\frac{a^3\sqrt{2}}{12}$', '$\frac{a^3\sqrt{2}}{6}$', '$\frac{a^3\sqrt{3}}{3}$', '$a^3\sqrt{2}$', '$\frac{a^3\sqrt{2}}{3}$']
+    correta: E
+    resolucao: |
+      Duas pirâmides de base $a^2$ e altura $\tfrac{a\sqrt{2}}{2}$: $2 \cdot \tfrac{1}{3} \cdot a^2 \cdot \tfrac{a\sqrt{2}}{2}$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, a pirâmide $VABCD$ tem base retangular, com $AB = 8$ e $BC = 6$, e a aresta $VA$, de medida 5, é perpendicular ao plano da base.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.32]
+        \draw[ink, line width=1pt] (0,5) -- (0,0) -- (8,0) -- (11,2.4) (0,5) -- (8,0) (0,5) -- (11,2.4);
+        \draw[ink, dashed] (0,0) -- (3,2.4) -- (11,2.4) (0,5) -- (3,2.4);
+        \node[left, font=\scriptsize] at (0,5) {$V$};
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[below, font=\scriptsize] at (8,0) {$B$};
+        \node[right, font=\scriptsize] at (11,2.4) {$C$};
+        \node[below right, font=\scriptsize] at (3,2.4) {$D$};
+        \end{scope}
+    enunciado: |
+      O volume da pirâmide é
+    opcoes: ['$240$', '$80$', '$120$', '$40$', '$160$']
+    correta: B
+    resolucao: |
+      $VA$ é a altura: $V = \tfrac{48 \cdot 5}{3} = 80$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere um prisma triangular $ABCDEF$, de bases $ABC$ e $DEF$ (com $AD$, $BE$ e $CF$ arestas laterais), área da base $A_b$ e altura $h$, e as pirâmides $T_1 = FABC$, $T_2 = FABE$ e $T_3 = FADE$.'
+    itens:
+    - 'Explique por que $T_1$, $T_2$ e $T_3$ preenchem o prisma sem se sobrepor e por que $T_1$ e $T_3$ têm o mesmo volume.'
+    - 'Prove que $T_2$ e $T_3$ têm o mesmo volume e conclua que $V_{\text{pirâmide}} = \frac{A_b \cdot h}{3}$.'
+    - 'Para um prisma de base de área 12 e altura 10, calcule o volume de cada pirâmide.'
+    espaco: 62
+    resolucao: |
+      a) $T_1$ é a pirâmide de vértice $F$ sobre a base $ABC$. O que sobra é a pirâmide de vértice $F$ sobre a face $ABED$, que o plano $AEF$ divide em $T_2$ e $T_3$. $T_1$ (base $ABC$, vértice $F$) e $T_3$ (base $DEF$, vértice $A$) têm bases congruentes e a mesma altura $h$.
+      b) $T_2$ e $T_3$ têm o mesmo vértice $F$ e bases $ABE$ e $ADE$, metades do paralelogramo $ABED$: mesma área e mesma altura. As três têm volume igual, logo cada uma vale $\tfrac{A_b h}{3}$.
+      c) $\tfrac{12 \cdot 10}{3} = 40$.
+    resposta: 'c) 40'
+
+  - estilo: Unicamp
+    enunciado: 'Considere um tetraedro regular de aresta $a$ e o ponto $O$ interior a ele que está à mesma distância $r$ das quatro faces.'
+    itens:
+    - 'Calcule a altura $h$ e o volume do tetraedro.'
+    - 'Dividindo o tetraedro em quatro pirâmides de vértice $O$, prove que $r = \frac{h}{4}$.'
+    - 'Calcule $r$ para $a = 6$.'
+    espaco: 62
+    resolucao: |
+      a) $h = \tfrac{a\sqrt{6}}{3}$; $V = \tfrac{a^3\sqrt{2}}{12}$.
+      b) Sendo $S$ a área de uma face: $V = \tfrac{S h}{3}$ e também $V = 4 \cdot \tfrac{S r}{3}$. Logo $r = \tfrac{h}{4}$.
+      c) $h = 2\sqrt{6}$ e $r = \tfrac{\sqrt{6}}{2}$.
+    resposta: 'a) $\frac{a\sqrt{6}}{3}$ e $\frac{a^3\sqrt{2}}{12}$; c) $\frac{\sqrt{6}}{2}$'
+
+  - estilo: ITA
+    enunciado: |
+      Os centros das seis faces de um cubo de aresta $a$ são os vértices de um octaedro. O volume desse octaedro é
+    opcoes: ['$\frac{a^3}{6}$', '$\frac{a^3}{3}$', '$\frac{a^3}{4}$', '$\frac{a^3}{8}$', '$\frac{a^3\sqrt{2}}{3}$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      Os centros das quatro faces laterais formam um quadrado de diagonal $a$ (área $\tfrac{a^2}{2}$), a $\tfrac{a}{2}$ dos outros dois centros. $V = 2 \cdot \tfrac{1}{3} \cdot \tfrac{a^2}{2} \cdot \tfrac{a}{2} = \tfrac{a^3}{6}$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Um reservatório tem a forma de uma pirâmide quadrangular regular invertida, com abertura quadrada de 4 m de lado, no alto, e 3 m de profundidade.
+    enunciado: ''
+    itens:
+    - 'Calcule a capacidade do reservatório, em litros.'
+    - 'Calcule o volume de água quando a água atinge 1,5 m de profundidade.'
+    - 'A partir dessa situação, uma bomba de 400 L por minuto enche o reservatório. Em quanto tempo ele fica cheio?'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{16 \cdot 3}{3} = 16$ m³ $= 16\,000$ L.
+      b) A água forma uma pirâmide semelhante, de razão $\tfrac{1}{2}$: $\tfrac{16}{8} = 2$ m³.
+      c) Faltam $14\,000$ L: $\tfrac{14\,000}{400} = 35$ min.
+    resposta: 'a) 16 000 L; b) 2 m³; c) 35 min'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere volumes de pirâmides. Assinale o que for correto.
+    proposicoes:
+    - 'O volume de uma pirâmide é $\frac{A_b \cdot h}{3}$.'
+    - 'A pirâmide cuja base é uma face de um cubo de aresta $a$ e cujo vértice é o centro da face oposta tem volume $\frac{a^3}{3}$.'
+    - 'O tetraedro regular de aresta 3 tem volume $\frac{9\sqrt{2}}{4}$.'
+    - 'Mantendo a base e dobrando a altura, o volume quadruplica.'
+    - 'Um plano paralelo à base, na metade da altura, separa uma pirâmide com $\frac{1}{8}$ do volume original.'
+    - 'O octaedro regular de aresta 3 tem volume $9\sqrt{2}$.'
+    corretas: [1, 2, 3, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) Correta. 02) $\tfrac{a^2 \cdot a}{3}$. 04) $\tfrac{27\sqrt{2}}{12}$. 08) Incorreta: dobra. 16) Razão $\tfrac{1}{2}$, volumes na razão $\tfrac{1}{8}$. 32) $\tfrac{27\sqrt{2}}{3}$.
+    resposta: 'Soma 55 (01 + 02 + 04 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'De um cubo de aresta $a$, separa-se um canto pelo plano que passa pelos três vértices vizinhos de um mesmo vértice $P$.'
+    itens:
+    - 'Calcule o volume do canto separado.'
+    - 'Mostre que a secção é um triângulo equilátero e calcule a sua área.'
+    - 'Calcule a distância de $P$ ao plano da secção.'
+    espaco: 62
+    resolucao: |
+      a) Base triangular de catetos $a$ e altura $a$: $\tfrac{a^3}{6}$.
+      b) Os três lados são diagonais de faces: $a\sqrt{2}$. Área $\tfrac{(a\sqrt{2})^2\sqrt{3}}{4} = \tfrac{a^2\sqrt{3}}{2}$.
+      c) Tomando a secção como base: $\tfrac{1}{3} \cdot \tfrac{a^2\sqrt{3}}{2} \cdot d = \tfrac{a^3}{6}$, logo $d = \tfrac{a}{\sqrt{3}} = \tfrac{a\sqrt{3}}{3}$.
+    resposta: 'a) $\frac{a^3}{6}$; b) $\frac{a^2\sqrt{3}}{2}$; c) $\frac{a\sqrt{3}}{3}$'
+
+  - estilo: Unicamp
+    enunciado: 'Uma pirâmide de altura 12 e volume $V$ é cortada por um plano paralelo à base, a uma distância $d$ do vértice.'
+    itens:
+    - 'Prove que a pirâmide menor tem volume $V\left(\frac{d}{12}\right)^3$.'
+    - 'Para que valor de $d$ a pirâmide menor tem metade do volume?'
+    - 'Para $V = 480$ e $d = 6$, calcule o volume do tronco.'
+    espaco: 62
+    resolucao: |
+      a) A pirâmide menor é semelhante, de razão $k = \tfrac{d}{12}$: a área da base fica multiplicada por $k^2$ e a altura por $k$.
+      b) $\left(\tfrac{d}{12}\right)^3 = \tfrac{1}{2}$: $d = \tfrac{12}{\sqrt[3]{2}} = 6\sqrt[3]{4}$.
+      c) Pirâmide menor $\tfrac{480}{8} = 60$; tronco $420$.
+    resposta: 'b) $6\sqrt[3]{4}$; c) 420'
+
+  - estilo: Fuvest
+    enunciado: |
+      Uma pirâmide quadrangular regular tem aresta da base 14 e área lateral 700. O seu volume é
+    opcoes: ['$1176$', '$4704$', '$1568$', '$1633$', '$784$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $4 \cdot \tfrac{14g}{2} = 700$: $g = 25$. $h = \sqrt{625 - 49} = 24$. $V = \tfrac{196 \cdot 24}{3} = 1568$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Num tetraedro $OABC$, as arestas $OA = 3$, $OB = 4$ e $OC = 12$ são perpendiculares duas a duas.'
+    itens:
+    - 'Calcule o volume do tetraedro.'
+    - 'Sabendo que a área da face $ABC$ é $\sqrt{S_1^2 + S_2^2 + S_3^2}$, sendo $S_1$, $S_2$ e $S_3$ as áreas das outras três faces, calcule essa área.'
+    - 'Calcule a distância de $O$ ao plano $ABC$.'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{3 \cdot 4 \cdot 12}{6} = 24$.
+      b) Faces: 6, 18 e 24. $\sqrt{36 + 324 + 576} = \sqrt{936} = 6\sqrt{26}$.
+      c) $\tfrac{1}{3} \cdot 6\sqrt{26} \cdot d = 24$: $d = \tfrac{12}{\sqrt{26}} = \tfrac{6\sqrt{26}}{13}$.
+    resposta: 'a) 24; b) $6\sqrt{26}$; c) $\frac{6\sqrt{26}}{13}$'
+
+  - estilo: Fuvest
+    enunciado: 'Uma pirâmide hexagonal regular tem aresta da base $a$ e aresta lateral $2a$.'
+    itens:
+    - 'Calcule a altura.'
+    - 'Calcule o volume em função de $a$.'
+    - 'Para $a = 2$, calcule o volume e a área lateral.'
+    espaco: 62
+    resolucao: |
+      a) O raio da base é $a$: $h = \sqrt{4a^2 - a^2} = a\sqrt{3}$.
+      b) $A_b = \tfrac{3a^2\sqrt{3}}{2}$; $V = \tfrac{1}{3} \cdot \tfrac{3a^2\sqrt{3}}{2} \cdot a\sqrt{3} = \tfrac{3a^3}{2}$.
+      c) $V = 12$. Apótema $\sqrt{16 - 1} = \sqrt{15}$; $A_l = 6 \cdot \tfrac{2\sqrt{15}}{2} = 6\sqrt{15}$.
+    resposta: 'a) $a\sqrt{3}$; b) $\frac{3a^3}{2}$; c) 12 e $6\sqrt{15}$'
