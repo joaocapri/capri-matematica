@@ -27,6 +27,14 @@ O site é publicado pelo Cloudflare (Workers com arquivos estáticos), ligado a 
 - \`.assetsignore\` tira do site publicado o que é só do repositório (fontes das listas, scripts, testes, documentos .md).
 - \`_redirects\` e \`_headers\` continuam valendo (endereços antigos das aulas e bloqueio das turmas no Google).
 - Domínio: matcomjoao.com (registrado na Hostinger, com os nameservers apontados para o Cloudflare).
+- \`worker/index.js\` só atende \`/api/*\` (\`run_worker_first\`): \`/api/saude\` responde "ok" e \`/api/sala/<CÓDIGO>/ws\` é o WebSocket da turma ao vivo, uma sala por Durable Object (classe \`Sala\`). Todo o resto continua servido direto dos arquivos.
+
+## Modo aula (/modo-aula/) e aula ao vivo (/ao-vivo/)
+Endereço não listado (noindex) para o professor dar aula on-line transmitindo a tela do iPad.
+- Páginas pontilhadas em paisagem, uma de cada vez, viradas com o dedo; arrastar além da última (se ela já tem algo) cria outra. Caneta com 4 estilos e espessura, marca-texto, borracha, laço (move e redimensiona), laser, formas perfeitas.
+- **Questão** insere qualquer questão das listas (recorte do PDF do caderno), que pode ser arrastada e redimensionada. Aulas salvas no aparelho (IndexedDB); exportação em PDF vetorial.
+- **Turma ao vivo** (ícone de pessoas): abre uma sala com código de 4 caracteres. Os alunos entram em \`/ao-vivo/\` (link no rodapé do site), veem a página do professor enquanto ele escreve e, quando ele propõe um exercício, resolvem na própria cópia; o professor acompanha todas as resoluções ao vivo e pode copiar uma para a aula.
+- Código: \`modo-aula/\` (o mesmo \`modo-aula.js\` serve as duas páginas; \`/ao-vivo/\` tem \`data-papel="aluno"\`) e \`worker/index.js\`.
 
 ## Caderno digital (/caderno/)
 Resolver a lista no tablet, com a caneta: \`/caderno/?aula=4.14.1&lista=fixacao\` (lista: fixacao, vestibular ou aprofundamento).
