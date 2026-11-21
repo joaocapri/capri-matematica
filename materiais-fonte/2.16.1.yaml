@@ -1,0 +1,526 @@
+# Aula 2.16.1 — Trigonometria: relação fundamental e identidades
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: sen² + cos² = 1, 1 + tg² = sec², 1 + cotg² = cossec²; achar todas as razões a partir de uma,
+# com o quadrante; sen x + cos x e sen x · cos x; simplificar expressões; provar identidades.
+# Arcos soma, diferença e duplo ficam para as aulas 2.17.
+padrao: 4
+
+fixacao:
+  intro: 'Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. As três relações: $\operatorname{sen}^2 x + \cos^2 x = 1$, $1 + \operatorname{tg}^2 x = \sec^2 x$ e $1 + \operatorname{cotg}^2 x = \operatorname{cossec}^2 x$. O gabarito resolvido está no final.'
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete.'
+      itens:
+      - '$\operatorname{sen}^2 37^\circ + \cos^2 37^\circ =$ {{1}}'
+      - '$\sec^2 x - \operatorname{tg}^2 x =$ {{1}}'
+      - '$\operatorname{cossec}^2 x - \operatorname{cotg}^2 x =$ {{1}}'
+      - '$1 - \operatorname{sen}^2 x =$ {{\cos^2 x}}'
+      espaco_item: 8
+      resolucao: |
+        As três relações valem para qualquer arco em que as razões existem.
+      resposta: '1; 1; 1; $\cos^2 x$'
+    - enunciado: 'Associe cada expressão à sua forma simplificada.'
+      esquerda:
+      - '$1 - \cos^2 x$'
+      - '$\sec^2 x - 1$'
+      - '$\operatorname{cossec}^2 x - 1$'
+      - '$\frac{1 - \operatorname{sen}^2 x}{\cos x}$'
+      - '$\operatorname{tg}x \cdot \cos x$'
+      direita:
+      - '$\operatorname{tg}^2 x$'
+      - '$\operatorname{sen}x$'
+      - '$\operatorname{sen}^2 x$'
+      - '$\cos x$'
+      - '$\operatorname{cotg}^2 x$'
+      resolucao: |
+        Use as três relações; em (4), $\frac{\cos^2 x}{\cos x} = \cos x$; em (5), $\frac{\operatorname{sen}x}{\cos x} \cdot \cos x$.
+      resposta: 'De cima para baixo: 2, 5, 1, 4, 3'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - '$1 + \operatorname{tg}^2 x = \sec^2 x$, sempre que $\cos x \ne 0$.'
+      - '$(\operatorname{sen}x + \cos x)^2 = 1$ para todo $x$.'
+      - '$\operatorname{sen}^4 x - \cos^4 x = \operatorname{sen}^2 x - \cos^2 x$.'
+      - '$\operatorname{sen}^2 x + \cos^2 x = 1$ só vale para $x$ agudo.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) Divida a relação fundamental por $\cos^2 x$. (F) Sobra $2\operatorname{sen}x\cos x$, que nem sempre é 0. (V) Diferença de quadrados, com fator $\operatorname{sen}^2 x + \cos^2 x = 1$. (F) Vale para todo arco.
+      resposta: V, F, V, F
+    - enunciado: 'Complete a tabela.'
+      tabela:
+        cabecalho: ['$\cos x$', 'Quadrante', '$\operatorname{sen}x$', '$\operatorname{tg}x$']
+        linhas:
+        - ['$\frac{5}{13}$', '4º', '${{-12/13}}$', '${{-12/5}}$']
+        - ['$-\frac{15}{17}$', '3º', '${{-8/17}}$', '${{8/15}}$']
+        - ['$-0{,}6$', '2º', '${{0{,}8}}$', '${{-4/3}}$']
+        - ['$\frac{2\sqrt2}{3}$', '1º', '${{1/3}}$', '${{\sqrt2/4}}$']
+      resolucao: |
+        $\operatorname{sen}^2 x = 1 - \cos^2 x$, com o sinal do quadrante; depois $\operatorname{tg}x = \frac{\operatorname{sen}x}{\cos x}$. Na última: $\frac{1/3}{2\sqrt2/3} = \frac{1}{2\sqrt2} = \frac{\sqrt2}{4}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Simplifique $\cos^2 x \cdot \operatorname{tg}^2 x$.'
+      espaco: 8
+      resolucao: |
+        $\cos^2 x \cdot \frac{\operatorname{sen}^2 x}{\cos^2 x} = \operatorname{sen}^2 x$.
+      resposta: '$\operatorname{sen}^2 x$'
+    - enunciado: 'Simplifique $(\sec^2 x - 1) \cdot \operatorname{cotg}^2 x$, para $x$ fora dos eixos.'
+      espaco: 8
+      resolucao: |
+        $\operatorname{tg}^2 x \cdot \operatorname{cotg}^2 x = 1$.
+      resposta: '1'
+    - enunciado: 'Calcule $3\operatorname{sen}^2 x + 3\cos^2 x - 1$.'
+      espaco: 8
+      resolucao: |
+        $3(\operatorname{sen}^2 x + \cos^2 x) - 1 = 3 - 1 = 2$.
+      resposta: '2'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Bia escreveu: "Se $\operatorname{sen}x = 0{,}5$, então $\cos x = 0{,}5$, porque seno mais cosseno dá 1."
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        A relação é entre os quadrados: $\cos^2 x = 1 - 0{,}25 = 0{,}75$, logo $\cos x = \pm\frac{\sqrt3}{2}$ (o sinal depende do quadrante).
+      resposta: '$\cos x = \pm\frac{\sqrt3}{2}$'
+    - enunciado: 'Sabendo que $\operatorname{tg}x = 3$ e que $x$ está no 3º quadrante, calcule $\sec x$ e $\cos x$.'
+      espaco: 10
+      resolucao: |
+        $\sec^2 x = 1 + 9 = 10$; no 3º Q a secante é negativa: $\sec x = -\sqrt{10}$ e $\cos x = -\frac{\sqrt{10}}{10}$.
+      resposta: '$-\sqrt{10}$ e $-\frac{\sqrt{10}}{10}$'
+    - enunciado: 'Sabendo que $\operatorname{cotg}x = -2$ e que $x$ está no 4º quadrante, calcule $\operatorname{cossec}x$ e $\operatorname{sen}x$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{cossec}^2 x = 1 + 4 = 5$; no 4º Q o seno é negativo: $\operatorname{cossec}x = -\sqrt5$ e $\operatorname{sen}x = -\frac{\sqrt5}{5}$.
+      resposta: '$-\sqrt5$ e $-\frac{\sqrt5}{5}$'
+    - enunciado: 'Sabendo que $\operatorname{sen}x + \cos x = 1{,}2$, calcule $\operatorname{sen}x \cdot \cos x$.'
+      espaco: 8
+      resolucao: |
+        Elevando ao quadrado: $1 + 2\operatorname{sen}x\cos x = 1{,}44$, logo $\operatorname{sen}x\cos x = 0{,}22$.
+      resposta: '0,22'
+    - enunciado: 'Simplifique $\dfrac{\sec x - \cos x}{\operatorname{sen}x}$, para $x$ fora dos eixos.'
+      espaco: 10
+      resolucao: |
+        $\sec x - \cos x = \frac{1 - \cos^2 x}{\cos x} = \frac{\operatorname{sen}^2 x}{\cos x}$. Dividindo por $\operatorname{sen}x$: $\frac{\operatorname{sen}x}{\cos x} = \operatorname{tg}x$.
+      resposta: '$\operatorname{tg}x$'
+    - enunciado: 'Sabe-se que $\operatorname{sen}x \cdot \cos x = \frac14$. Complete.'
+      itens:
+      - '$(\operatorname{sen}x + \cos x)^2 =$ {{3/2}}'
+      - '$(\operatorname{sen}x - \cos x)^2 =$ {{1/2}}'
+      - '$\operatorname{sen}^4 x + \cos^4 x =$ {{7/8}}'
+      espaco_item: 8
+      resolucao: |
+        $1 + \frac12$; $1 - \frac12$; $(\operatorname{sen}^2 x + \cos^2 x)^2 - 2\operatorname{sen}^2 x\cos^2 x = 1 - \frac{2}{16}$.
+      resposta: '$\frac32$; $\frac12$; $\frac78$'
+    - enunciado: 'Sabendo que $\cos x = \frac13$, calcule $\operatorname{sen}^4 x - \cos^4 x$.'
+      espaco: 8
+      resolucao: |
+        $(\operatorname{sen}^2 x - \cos^2 x)(\operatorname{sen}^2 x + \cos^2 x) = \operatorname{sen}^2 x - \cos^2 x = \frac89 - \frac19 = \frac79$.
+      resposta: '$\frac79$'
+    - enunciado: 'Mostre que $\operatorname{tg}x + \operatorname{cotg}x$ é igual a $\sec x \cdot \operatorname{cossec}x$, para $x$ fora dos eixos.'
+      espaco: 10
+      resolucao: |
+        $\frac{\operatorname{sen}x}{\cos x} + \frac{\cos x}{\operatorname{sen}x} = \frac{\operatorname{sen}^2 x + \cos^2 x}{\operatorname{sen}x\cos x} = \frac{1}{\operatorname{sen}x\cos x}$.
+      resposta: 'Ver resolução'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que $1 + \operatorname{tg}^2 x = \sec^2 x$, sempre que $\cos x \ne 0$.'
+      espaco: 10
+      resolucao: |
+        Divida $\operatorname{sen}^2 x + \cos^2 x = 1$ por $\cos^2 x$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $1 + \operatorname{cotg}^2 x = \operatorname{cossec}^2 x$, sempre que $\operatorname{sen}x \ne 0$.'
+      espaco: 10
+      resolucao: |
+        Divida $\operatorname{sen}^2 x + \cos^2 x = 1$ por $\operatorname{sen}^2 x$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}^4 x + \cos^4 x = 1 - 2\operatorname{sen}^2 x\cos^2 x$.'
+      espaco: 10
+      resolucao: |
+        $1 = (\operatorname{sen}^2 x + \cos^2 x)^2 = \operatorname{sen}^4 x + 2\operatorname{sen}^2 x\cos^2 x + \cos^4 x$. Isole a soma das quartas potências.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $(1 + \operatorname{tg}^2 x)(1 - \operatorname{sen}^2 x) = 1$, sempre que $\cos x \ne 0$.'
+      espaco: 10
+      resolucao: |
+        $\sec^2 x \cdot \cos^2 x = 1$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\dfrac{\cos x}{1 - \operatorname{sen}x} = \dfrac{1 + \operatorname{sen}x}{\cos x}$, sempre que $\cos x \ne 0$.'
+      espaco: 10
+      resolucao: |
+        Os produtos cruzados são iguais: $\cos^2 x = (1 - \operatorname{sen}x)(1 + \operatorname{sen}x) = 1 - \operatorname{sen}^2 x$. ($\cos x \ne 0$ garante $\operatorname{sen}x \ne 1$.)
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um drone voa com velocidade de módulo 10 m/s. A velocidade tem uma componente horizontal $10\cos\theta$ e uma componente vertical $10\operatorname{sen}\theta$, em que $\theta$ é o ângulo do movimento com a horizontal. O sensor do drone registrou componente horizontal de 6 m/s, com o drone subindo, ou seja, com componente vertical positiva.
+    enunciado: |
+      A componente vertical da velocidade é
+    opcoes: ['$8$ m/s', '$4$ m/s', '$6$ m/s', '$10$ m/s', '$2$ m/s']
+    correta: A
+    resolucao: |
+      $\cos\theta = 0{,}6$, logo $\operatorname{sen}^2\theta = 0{,}64$ e $\operatorname{sen}\theta = 0{,}8$ (positivo): $10 \cdot 0{,}8 = 8$ m/s.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\sec x = 3$ e $x$ está no 4º quadrante, então $\operatorname{tg}x$ vale
+    opcoes: ['$2\sqrt2$', '$-2\sqrt2$', '$-\sqrt2$', '$\frac{\sqrt2}{4}$', '$-\frac13$']
+    correta: B
+    resolucao: |
+      $\operatorname{tg}^2 x = 9 - 1 = 8$; no 4º Q a tangente é negativa.
+
+  - estilo: Unicamp
+    enunciado: |
+      Para todo $x$, a expressão $(\operatorname{sen}x + \cos x)^2$ $+ (\operatorname{sen}x - \cos x)^2$ vale
+    opcoes: ['$0$.', '$1$.', '$2$.', '$4\operatorname{sen}x\cos x$.']
+    correta: C
+    resolucao: |
+      Os termos $\pm 2\operatorname{sen}x\cos x$ se cancelam: $2(\operatorname{sen}^2 x + \cos^2 x) = 2$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere um arco $x$ do 2º quadrante com $\cos x = -0{,}28$. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}x = 0{,}96$.'
+    - '$\operatorname{tg}x = -\frac{24}{7}$.'
+    - '$\sec x = -\frac{25}{7}$.'
+    - '$\operatorname{cossec}x = \frac{25}{24}$.'
+    - '$\operatorname{cotg}x = \frac{7}{24}$.'
+    - '$\operatorname{sen}x \cdot \cos x < 0$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      $\operatorname{sen}^2 x = 1 - 0{,}0784 = 0{,}9216$, e no 2º Q $\operatorname{sen}x = 0{,}96$. Em frações: $\cos x = -\frac{7}{25}$ e $\operatorname{sen}x = \frac{24}{25}$. 16) Incorreta: $\operatorname{cotg}x = -\frac{7}{24}$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um professor pediu a cinco alunos que medissem, com régua, o seno e o cosseno de um mesmo ângulo desenhado num ciclo trigonométrico de raio 1. O quadro mostra os valores anotados. Ele explicou que só um par de valores é compatível com a relação fundamental $\operatorname{sen}^2 x + \cos^2 x = 1$.
+    tabela:
+      cabecalho: ['Aluno', 'Ana', 'Bia', 'Caio', 'Davi', 'Eva']
+      linhas:
+      - ['seno', '$0{,}60$', '$0{,}50$', '$0{,}90$', '$0{,}28$', '$0{,}70$']
+      - ['cosseno', '$0{,}70$', '$0{,}80$', '$0{,}30$', '$0{,}96$', '$0{,}80$']
+    enunciado: |
+      O par compatível com a relação fundamental é o de
+    opcoes: ['Ana.', 'Bia.', 'Caio.', 'Davi.', 'Eva.']
+    correta: D
+    resolucao: |
+      Somas dos quadrados: 0,85; 0,89; 0,90; $0{,}0784 + 0{,}9216 = 1$; 1,13.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, válidas sempre que as razões existem.
+    afirmativas:
+    - '$\operatorname{sen}^2 x = 1 - \cos^2 x$.'
+    - '$\sec^2 x = 1 + \operatorname{cotg}^2 x$.'
+    - '$\operatorname{cossec}^2 x - \operatorname{cotg}^2 x = 1$.'
+    - '$\operatorname{tg}^2 x \cdot \cos^2 x = \operatorname{sen}^2 x$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      II. Incorreta: $\sec^2 x = 1 + \operatorname{tg}^2 x$.
+
+  - estilo: Unesp
+    enunciado: |
+      Para $\cos x \ne 0$, a expressão $(1 + \operatorname{tg}^2 x)\cos^2 x$ é igual a
+    opcoes: ['$1$', '$\operatorname{sen}^2 x$', '$\operatorname{tg}^2 x$', '$\sec^2 x$', '$0$']
+    correta: A
+    resolucao: |
+      $\sec^2 x \cdot \cos^2 x = 1$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, P é a extremidade do arco $\theta$, no 3º quadrante, e a abscissa de P é $-0{,}8$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0); \draw[mudo, ->] (0,-2.2) -- (0,2.4);
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \fill[roxo] (-1.44,-1.08) circle (2.2pt) node[below left, font=\small] {P};
+        \draw[roxo] (0,0) -- (-1.44,-1.08);
+        \draw[mudo, dashed] (-1.44,-1.08) -- (-1.44,0) node[above, font=\scriptsize, ink] {$-0{,}8$};
+        \end{scope}
+    enunciado: |
+      Então
+    opcoes: ['$\operatorname{tg}\theta = -0{,}75$ e $\sec\theta = -1{,}25$.', '$\operatorname{tg}\theta = 0{,}75$ e $\sec\theta = -1{,}25$.', '$\operatorname{tg}\theta = 0{,}75$ e $\sec\theta = 1{,}25$.', '$\operatorname{tg}\theta = \frac43$ e $\sec\theta = -1{,}25$.']
+    correta: B
+    resolucao: |
+      $\operatorname{sen}^2\theta = 1 - 0{,}64 = 0{,}36$; no 3º Q, $\operatorname{sen}\theta = -0{,}6$. $\operatorname{tg}\theta = \frac{-0{,}6}{-0{,}8} = 0{,}75$ e $\sec\theta = \frac{1}{-0{,}8}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Para $\cos x \ne 0$, a expressão $\dfrac{\operatorname{sen}^3 x + \operatorname{sen}x\cos^2 x}{\cos x}$ é igual a
+    opcoes: ['$\operatorname{sen}x$', '$\cos x$', '$\operatorname{tg}x$', '$\sec x$', '$1$']
+    correta: C
+    resolucao: |
+      $\frac{\operatorname{sen}x(\operatorname{sen}^2 x + \cos^2 x)}{\cos x} = \frac{\operatorname{sen}x}{\cos x}$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere um arco $x$ do 1º quadrante com $\operatorname{sen}x + \cos x = \frac75$. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}x \cdot \cos x = \frac{12}{25}$.'
+    - '$(\operatorname{sen}x - \cos x)^2 = \frac{1}{25}$.'
+    - '$\operatorname{sen}^4 x + \cos^4 x = \frac{337}{625}$.'
+    - '$\operatorname{tg}x + \operatorname{cotg}x = \frac{25}{12}$.'
+    - 'Os valores de $\operatorname{sen}x$ e $\cos x$ são $\frac35$ e $\frac45$, em alguma ordem.'
+    - '$\operatorname{sen}x \cdot \cos x = \frac{7}{25}$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $1 + 2p = \frac{49}{25}$. 02) $1 - 2p$. 04) $1 - 2p^2 = 1 - \frac{288}{625}$. 08) $\frac{1}{p}$. 16) Soma $\frac75$ e produto $\frac{12}{25}$. 32) Incorreta.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Num projeto de engenharia, a posição de uma peça que gira em torno de um eixo é dada, em centímetros, pelas coordenadas $x = 3\cos t$ e $y = 3\operatorname{sen}t$, em que $t$ é o tempo em segundos. O técnico quer saber a que distância do eixo, que está na origem, a peça se encontra ao longo do movimento.
+    enunciado: |
+      A distância da peça ao eixo
+    opcoes: ['é sempre 3 cm.', 'varia entre 0 e 3 cm.', 'é sempre 9 cm.', 'é sempre 6 cm.', 'varia entre 3 e $3\sqrt2$ cm.']
+    correta: A
+    resolucao: |
+      $\sqrt{9\cos^2 t + 9\operatorname{sen}^2 t} = \sqrt9 = 3$.
+
+  - estilo: UFPR
+    enunciado: |
+      Para $x$ fora dos eixos, identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$\operatorname{tg}x + \operatorname{cotg}x = \sec x \cdot \operatorname{cossec}x$.'
+    - '$\operatorname{sen}x \cdot \operatorname{tg}x = \cos x$.'
+    - '$(1 - \cos^2 x)\operatorname{cossec}^2 x = 1$.'
+    - '$\sec^2 x + \operatorname{cossec}^2 x = \sec^2 x \cdot \operatorname{cossec}^2 x$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      Segunda: $\operatorname{sen}x \cdot \operatorname{tg}x = \frac{\operatorname{sen}^2 x}{\cos x}$. Quarta: $\frac{1}{\cos^2 x} + \frac{1}{\operatorname{sen}^2 x} = \frac{1}{\cos^2 x\operatorname{sen}^2 x}$. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Para conferir a relação fundamental, um aluno desenhou um ciclo de raio 1 e marcou a extremidade P de um arco do 1º quadrante. Ele traçou o segmento PA, perpendicular ao eixo horizontal, e mediu com a régua $OA = 0{,}6$. O triângulo OAP é retângulo em A, e sua hipotenusa OP é o raio.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1.15]
+        \draw[mudo, ->] (-.4,0) -- (2.4,0); \draw[mudo, ->] (0,-.4) -- (0,2.4);
+        \draw[ink, line width=.9pt] (1.8,0) arc (0:90:1.8);
+        \draw[roxo, line width=.9pt] (0,0) -- (1.08,1.44) -- (1.08,0) -- cycle;
+        \draw[roxo] (1.08,.18) -- (.9,.18) -- (.9,0);
+        \node[font=\small, below left] at (0,0) {O}; \node[font=\small, below] at (1.08,0) {A}; \node[font=\small, above right] at (1.08,1.44) {P};
+        \end{scope}
+    enunciado: |
+      A medida de AP deve ser
+    opcoes: ['$0{,}4$', '$0{,}6$', '$1{,}0$', '$0{,}8$', '$1{,}6$']
+    correta: D
+    resolucao: |
+      $AP = \operatorname{sen}x = \sqrt{1 - 0{,}36} = 0{,}8$.
+
+  - estilo: Unesp
+    enunciado: |
+      Se $\operatorname{cossec}x = \frac54$ e $x$ está no 2º quadrante, então $\operatorname{cotg}x$ vale
+    opcoes: ['$\frac34$', '$-\frac34$', '$-\frac43$', '$\frac43$', '$-\frac35$']
+    correta: B
+    resolucao: |
+      $\operatorname{cotg}^2 x = \frac{25}{16} - 1 = \frac{9}{16}$; no 2º Q a cotangente é negativa.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere $x$ real, com as razões existindo. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}^4 x - \cos^4 x = \operatorname{sen}^2 x - \cos^2 x$.'
+    - '$(1 - \cos x)(1 + \cos x) = \operatorname{sen}^2 x$.'
+    - '$\operatorname{tg}^2 x - \operatorname{sen}^2 x = \operatorname{tg}^2 x \cdot \operatorname{sen}^2 x$.'
+    - '$\dfrac{\cos x}{1 - \operatorname{sen}x} = \dfrac{1 + \operatorname{sen}x}{\cos x}$.'
+    - '$\operatorname{sen}x + \cos x = 1$ para todo $x$.'
+    - '$\sec^2 x - \operatorname{tg}^2 x = 1$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      04) $\operatorname{sen}^2 x\left(\frac{1}{\cos^2 x} - 1\right) = \operatorname{sen}^2 x \cdot \operatorname{tg}^2 x$. 08) Produtos cruzados: $\cos^2 x = 1 - \operatorname{sen}^2 x$. 16) Incorreta: para $x = \pi$, a soma é $-1$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Se $\operatorname{tg}x + \operatorname{cotg}x = 4$, então $\operatorname{sen}x \cdot \cos x$ vale
+    opcoes: ['$\frac14$.', '$4$.', '$\frac12$.', '$2$.']
+    correta: A
+    resolucao: |
+      $\operatorname{tg}x + \operatorname{cotg}x = \frac{1}{\operatorname{sen}x\cos x} = 4$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um bloco de peso $P$ está parado sobre uma rampa que forma um ângulo $\alpha$ com o chão. O peso se divide em duas componentes: uma paralela à rampa, de intensidade $P\operatorname{sen}\alpha$, e outra perpendicular à rampa, de intensidade $P\cos\alpha$. Num experimento, o bloco pesa 50 N e a componente perpendicular à rampa mede 40 N.
+    enunciado: |
+      A componente do peso paralela à rampa mede
+    opcoes: ['$10$ N', '$40$ N', '$30$ N', '$20$ N', '$50$ N']
+    correta: C
+    resolucao: |
+      $\cos\alpha = 0{,}8$, logo $\operatorname{sen}\alpha = 0{,}6$ (ângulo agudo): $50 \cdot 0{,}6 = 30$ N.
+
+  - estilo: Unesp
+    enunciado: |
+      A tangente do ângulo $\alpha$ da rampa é
+    opcoes: ['$\frac43$', '$\frac35$', '$\frac45$', '$\frac34$', '$\frac53$']
+    correta: D
+    resolucao: |
+      $\frac{0{,}6}{0{,}8} = \frac34$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\operatorname{sen}x - \cos x = \frac12$, então $\operatorname{sen}x \cdot \cos x$ vale
+    opcoes: ['$\frac14$', '$\frac34$', '$-\frac38$', '$\frac18$', '$\frac38$']
+    correta: E
+    resolucao: |
+      $1 - 2\operatorname{sen}x\cos x = \frac14$: $\operatorname{sen}x\cos x = \frac38$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, o triângulo ABC é retângulo em B, com $AB = 12$ e $AC = 13$, e $\alpha$ é o ângulo em A.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.32]
+        \draw[ink, line width=.9pt] (0,0) -- (12,0) -- (12,5) -- cycle;
+        \draw[ink] (11.3,0) -- (11.3,.7) -- (12,.7);
+        \node[font=\small, below left] at (0,0) {A}; \node[font=\small, below right] at (12,0) {B}; \node[font=\small, above right] at (12,5) {C};
+        \node[font=\small, below] at (6,0) {12}; \node[font=\small, above left] at (6,2.5) {13};
+        \draw[roxo] (2.2,0) arc (0:22.6:2.2); \node[roxo, font=\scriptsize] at (3,.55) {$\alpha$};
+        \end{scope}
+    enunciado: |
+      O valor de $1 + \operatorname{tg}^2\alpha$ é
+    opcoes: ['$\frac{25}{144}$', '$\frac{169}{144}$', '$\frac{13}{12}$', '$\frac{144}{169}$', '$1$']
+    correta: B
+    resolucao: |
+      $1 + \operatorname{tg}^2\alpha = \sec^2\alpha = \left(\frac{13}{12}\right)^2$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Sabe-se que $\operatorname{tg}x = 2\sqrt2$ e que $\pi < x < \frac{3\pi}{2}$.'
+    itens:
+    - 'Calcule $\sec x$.'
+    - 'Calcule $\cos x$ e $\operatorname{sen}x$.'
+    - 'Calcule $\operatorname{cossec}x$ e $\operatorname{cotg}x$.'
+    espaco: 62
+    resolucao: |
+      a) $\sec^2 x = 1 + 8 = 9$; no 3º Q, $\sec x = -3$.
+      b) $\cos x = -\frac13$; $\operatorname{sen}x = \operatorname{tg}x \cdot \cos x = -\frac{2\sqrt2}{3}$.
+      c) $\operatorname{cossec}x = -\frac{3}{2\sqrt2} = -\frac{3\sqrt2}{4}$; $\operatorname{cotg}x = \frac{1}{2\sqrt2} = \frac{\sqrt2}{4}$.
+    resposta: 'a) $-3$; b) $-\frac13$ e $-\frac{2\sqrt2}{3}$; c) $-\frac{3\sqrt2}{4}$ e $\frac{\sqrt2}{4}$'
+
+  - estilo: Unicamp
+    enunciado: 'Seja $m = \operatorname{sen}x + \cos x$.'
+    itens:
+    - 'Escreva $\operatorname{sen}x \cdot \cos x$ em função de $m$.'
+    - 'Mostre que $\operatorname{sen}^3 x + \cos^3 x = \frac{m(3 - m^2)}{2}$.'
+    - 'Para $m = \sqrt2$, ache $x$ em $[0, 2\pi)$.'
+    espaco: 62
+    resolucao: |
+      a) $m^2 = 1 + 2\operatorname{sen}x\cos x$: $\operatorname{sen}x\cos x = \frac{m^2 - 1}{2}$.
+      b) $a^3 + b^3 = (a + b)(a^2 - ab + b^2) = m\left(1 - \frac{m^2 - 1}{2}\right) = \frac{m(3 - m^2)}{2}$.
+      c) $\operatorname{sen}x\cos x = \frac12$, logo $(\operatorname{sen}x - \cos x)^2 = 0$: $\operatorname{sen}x = \cos x = \frac{\sqrt2}{2}$, $x = \frac{\pi}{4}$.
+    resposta: 'a) $\frac{m^2 - 1}{2}$; c) $\frac{\pi}{4}$'
+
+  - estilo: ITA
+    enunciado: |
+      O conjunto dos valores de $\operatorname{sen}^4 x + \cos^4 x$, com $x$ real, é
+    opcoes: ['$\left[\frac12, 1\right]$', '$[0, 1]$', '$\left[\frac14, 1\right]$', '$\left[0, \frac12\right]$', '$\{1\}$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      Vale $1 - 2s(1 - s)$, com $s = \operatorname{sen}^2 x \in [0, 1]$. O produto $s(1 - s)$ vai de 0 a $\frac14$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Considere $x$ fora dos eixos.'
+    itens:
+    - 'Prove que $(\sec x - \cos x)(\operatorname{cossec}x - \operatorname{sen}x) = \operatorname{sen}x\cos x$.'
+    - 'Prove que $(\operatorname{tg}x + \operatorname{cotg}x)\operatorname{sen}x\cos x = 1$.'
+    - 'Calcule a expressão do item a para $x = \frac{\pi}{6}$.'
+    espaco: 62
+    resolucao: |
+      a) $\frac{1 - \cos^2 x}{\cos x} \cdot \frac{1 - \operatorname{sen}^2 x}{\operatorname{sen}x} = \frac{\operatorname{sen}^2 x}{\cos x} \cdot \frac{\cos^2 x}{\operatorname{sen}x} = \operatorname{sen}x\cos x$.
+      b) $\operatorname{tg}x + \operatorname{cotg}x = \frac{1}{\operatorname{sen}x\cos x}$.
+      c) $\frac12 \cdot \frac{\sqrt3}{2} = \frac{\sqrt3}{4}$.
+    resposta: 'c) $\frac{\sqrt3}{4}$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $x$ real, com as razões existindo. Assinale o que for correto.
+    proposicoes:
+    - 'Se $\operatorname{sen}x = \cos x$, então $\operatorname{tg}x = 1$.'
+    - '$\sec^2 37^\circ - \operatorname{tg}^2 37^\circ = 1$.'
+    - 'Se $\operatorname{tg}x = \frac12$, então $\cos^2 x = \frac45$.'
+    - '$\operatorname{sen}^6 x + \cos^6 x = 1 - 3\operatorname{sen}^2 x\cos^2 x$.'
+    - 'Se $\operatorname{sen}x = \frac13$, então $\cos x = \frac23$.'
+    - '$\operatorname{tg}^2 x \cdot \operatorname{cossec}^2 x = \sec^2 x$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      04) $\sec^2 x = \frac54$. 08) Com $a = \operatorname{sen}^2 x$, $b = \cos^2 x$: $a^3 + b^3 = (a + b)^3 - 3ab(a + b) = 1 - 3ab$. 16) Incorreta: $\cos x = \pm\frac{2\sqrt2}{3}$. 32) $\frac{\operatorname{sen}^2 x}{\cos^2 x} \cdot \frac{1}{\operatorname{sen}^2 x}$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Um ponto se move no plano com coordenadas $x = 2\sec t$ e $y = 3\operatorname{tg}t$, com $\cos t \ne 0$.'
+    itens:
+    - 'Calcule $\frac{x^2}{4} - \frac{y^2}{9}$.'
+    - 'Escreva a equação que relaciona $x$ e $y$, sem $t$.'
+    - 'Verifique que o ponto $(4,\ 3\sqrt3)$ é atingido e ache um $t$ correspondente.'
+    espaco: 62
+    resolucao: |
+      a) $\sec^2 t - \operatorname{tg}^2 t = 1$.
+      b) $\frac{x^2}{4} - \frac{y^2}{9} = 1$.
+      c) $\sec t = 2$ e $\operatorname{tg}t = \sqrt3$: $t = \frac{\pi}{3}$ (e $\frac{16}{4} - \frac{27}{9} = 1$ confere).
+    resposta: 'a) 1; b) $\frac{x^2}{4} - \frac{y^2}{9} = 1$; c) $t = \frac{\pi}{3}$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere a equação $2\operatorname{sen}^2 x - 3\cos x = 0$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Reescreva a equação usando apenas $\cos x$.'
+    - 'Resolva a equação do 2º grau obtida, em $\cos x$.'
+    - 'Dê as soluções em $[0, 2\pi)$.'
+    espaco: 62
+    resolucao: |
+      a) $2(1 - \cos^2 x) - 3\cos x = 0$, ou $2\cos^2 x + 3\cos x - 2 = 0$.
+      b) $\cos x = \frac{-3 \pm 5}{4}$: $\frac12$ ou $-2$ (impossível).
+      c) $x = \frac{\pi}{3}$ ou $x = \frac{5\pi}{3}$.
+    resposta: 'c) $\frac{\pi}{3}$ e $\frac{5\pi}{3}$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\sec x + \operatorname{tg}x = 3$, então $\sec x - \operatorname{tg}x$ vale
+    opcoes: ['$3$', '$\frac13$', '$-\frac13$', '$1$', '$9$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $(\sec x + \operatorname{tg}x)(\sec x - \operatorname{tg}x) = \sec^2 x - \operatorname{tg}^2 x = 1$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Sabe-se que $\cos x = \frac35$ e que $x$ está no 4º quadrante.'
+    itens:
+    - 'Calcule $\operatorname{tg}x$ e $\sec x$.'
+    - 'Calcule $\operatorname{cossec}x$ e $\operatorname{cotg}x$.'
+    - 'Calcule $E = \dfrac{\sec x + \operatorname{tg}x}{\operatorname{cossec}x + \operatorname{cotg}x}$.'
+    espaco: 62
+    resolucao: |
+      a) $\operatorname{sen}x = -\frac45$: $\operatorname{tg}x = -\frac43$ e $\sec x = \frac53$.
+      b) $\operatorname{cossec}x = -\frac54$ e $\operatorname{cotg}x = -\frac34$.
+      c) $E = \frac{1/3}{-2} = -\frac16$.
+    resposta: 'a) $-\frac43$ e $\frac53$; b) $-\frac54$ e $-\frac34$; c) $-\frac16$'
+
+  - estilo: Fuvest
+    enunciado: 'Seja $k = \operatorname{sen}x \cdot \cos x$.'
+    itens:
+    - 'Usando $(\operatorname{sen}x - \cos x)^2 \ge 0$ e $(\operatorname{sen}x + \cos x)^2 \ge 0$, mostre que $-\frac12 \le k \le \frac12$.'
+    - 'Para que $x$ em $[0, \pi]$ temos $k = \frac12$?'
+    - 'Existe $x$ com $\operatorname{sen}x + \cos x = 1{,}5$? Justifique.'
+    espaco: 62
+    resolucao: |
+      a) $1 - 2k \ge 0$ e $1 + 2k \ge 0$.
+      b) Igualdade em $(\operatorname{sen}x - \cos x)^2 = 0$: $\operatorname{sen}x = \cos x$, $x = \frac{\pi}{4}$.
+      c) Não: $(\operatorname{sen}x + \cos x)^2 = 1 + 2k \le 2$, logo a soma não passa de $\sqrt2 \approx 1{,}41$.
+    resposta: 'b) $\frac{\pi}{4}$; c) não'
