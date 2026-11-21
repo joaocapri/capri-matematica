@@ -1,0 +1,615 @@
+# Aula 4.7.5 — Geometria plana: áreas de figuras compostas
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: dividir e somar, completar e subtrair; figuras com semicírculos e quadrantes; sobreposições; molduras e
+# faixas; revestimento com lajotas; polígonos em malha quadriculada; regiões clássicas (folha, pétalas, lúnula de Hipócrates,
+# círculo no canto); janela normanda (otimização) no aprofundamento.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Deixe as respostas em função de $\pi$, salvo indicação. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Calcule a área da figura em L, de duas maneiras: dividindo em retângulos e completando o retângulo.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.25]
+          \draw[ink, line width=1pt, fill=lilas!25] (0,0) -- (12,0) -- (12,5) -- (7,5) -- (7,9) -- (0,9) -- cycle;
+          \node[below, font=\scriptsize] at (6,0) {$12$};
+          \node[left, font=\scriptsize] at (0,4.5) {$9$};
+          \node[above, font=\scriptsize] at (3.5,9) {$7$};
+          \node[right, font=\scriptsize] at (12,2.5) {$5$};
+          \end{scope}
+      espaco: 10
+      resolucao: |
+        Dividindo: $12 \cdot 5 + 7 \cdot 4 = 60 + 28 = 88$. Completando: $12 \cdot 9 - 5 \cdot 4 = 108 - 20 = 88$.
+      resposta: '88'
+    - enunciado: 'Complete com a área de cada figura composta.'
+      itens:
+      - 'Retângulo $6 \times 4$ com um triângulo de base 6 e altura 3 sobre o lado de medida 6: {{33}}'
+      - 'Quadrado de lado 8 com um semicírculo de diâmetro 8 sobre um lado: {{64 + 8\pi}}'
+      - 'Retângulo $10 \times 6$ com um furo circular de raio 2: {{60 - 4\pi}}'
+      espaco_item: 10
+      resolucao: |
+        $24 + 9$; $64 + \tfrac{16\pi}{2}$; $60 - 4\pi$.
+      resposta: '$33$; $64 + 8\pi$; $60 - 4\pi$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Pode-se achar a área de uma figura completando-a até uma figura conhecida e subtraindo o que sobra.'
+      - 'Se duas figuras se sobrepõem, a área coberta por elas é a soma das duas áreas.'
+      - 'Recortando uma figura e rearrumando as peças, sem sobreposição, a área não muda.'
+      - 'O perímetro de uma figura composta é a soma dos perímetros das partes.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) A parte comum seria contada duas vezes; é preciso subtraí-la uma vez. (V) (F) Os lados internos, de contato entre as partes, não fazem parte do contorno.
+      resposta: V, F, V, F
+    - enunciado: 'A cruz da figura é formada por 5 quadrados de lado 3. Complete.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.25]
+          \draw[ink, line width=1pt, fill=lilas!25] (3,0) -- (6,0) -- (6,3) -- (9,3) -- (9,6) -- (6,6) -- (6,9) -- (3,9) -- (3,6) -- (0,6) -- (0,3) -- (3,3) -- cycle;
+          \draw[mudo, dashed] (3,3) -- (6,3) -- (6,6) -- (3,6) -- cycle;
+          \node[below, font=\scriptsize] at (4.5,0) {$3$};
+          \end{scope}
+      itens:
+      - 'Área: {{45}}'
+      - 'Perímetro: {{36}}'
+      espaco_item: 8
+      resolucao: |
+        Área $5 \cdot 9 = 45$. O contorno tem 12 segmentos de medida 3: $36$.
+      resposta: '45; 36'
+    - enunciado: 'Uma janela é um retângulo de 1,2 m de largura por 1 m de altura, com um semicírculo de diâmetro 1,2 m em cima. Calcule a área de vidro.'
+      espaco: 8
+      resolucao: |
+        $1{,}2 \cdot 1 + \tfrac{\pi \cdot 0{,}6^2}{2} = 1{,}2 + 0{,}18\pi$ m² ($\approx 1{,}77$ m²).
+      resposta: '$1{,}2 + 0{,}18\pi$ m²'
+    - enunciado: 'Um quadro de 50 cm por 40 cm tem uma moldura de 5 cm de largura em toda a volta. Complete.'
+      itens:
+      - 'Área do quadro com a moldura: {{3000}} cm²'
+      - 'Área do quadro: {{2000}} cm²'
+      - 'Área da moldura: {{1000}} cm²'
+      espaco_item: 8
+      resolucao: |
+        Por fora, $60 \times 50 = 3000$; quadro $2000$; moldura $1000$.
+      resposta: '3000; 2000; 1000'
+    - enunciado: 'De um quadrado de lado 6 retiram-se quatro quartos de círculo de raio 3, com centros nos vértices. Calcule a área que sobra.'
+      espaco: 8
+      resolucao: |
+        Os quatro quartos formam um círculo de raio 3: $36 - 9\pi$.
+      resposta: '$36 - 9\pi$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Dois retângulos de $8 \times 3$ se cruzam formando um sinal de mais, com o centro comum. Pedro disse que a área do sinal é $24 + 24 = 48$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        O quadrado central $3 \times 3$ pertence aos dois retângulos e foi contado duas vezes: $48 - 9 = 39$.
+      resposta: '39'
+    - enunciado: 'Calcule a área do pentágono da figura.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.25]
+          \draw[ink, line width=1pt, fill=lilas!25] (0,0) -- (10,0) -- (10,4) -- (6,7) -- (0,7) -- cycle;
+          \draw[mudo, dashed] (6,7) -- (10,7) -- (10,4);
+          \node[below, font=\scriptsize] at (5,0) {$10$};
+          \node[left, font=\scriptsize] at (0,3.5) {$7$};
+          \node[right, font=\scriptsize] at (10,2) {$4$};
+          \node[above, font=\scriptsize] at (3,7) {$6$};
+          \end{scope}
+      espaco: 10
+      resolucao: |
+        Completando o retângulo $10 \times 7$, sobra um triângulo retângulo de catetos 4 e 3: $70 - 6 = 64$.
+      resposta: '64'
+    - enunciado: 'Um campo é formado por um retângulo de 100 m por 60 m e por dois semicírculos de diâmetro 60 m, um em cada lado menor. Calcule a área.'
+      espaco: 10
+      resolucao: |
+        Os dois semicírculos formam um círculo de raio 30: $6000 + 900\pi$ m².
+      resposta: '$6000 + 900\pi$ m²'
+    - enunciado: 'Num quadrado de lado 8, traçam-se dois semicírculos internos, de diâmetro 8, sobre dois lados opostos. Calcule a área do quadrado fora dos semicírculos.'
+      espaco: 10
+      resolucao: |
+        Os semicírculos têm raio 4 e não se sobrepõem (tocam-se no centro); juntos formam um círculo de área $16\pi$. Sobra $64 - 16\pi$.
+      resposta: '$64 - 16\pi$'
+    - enunciado: 'Os cômodos serão revestidos com lajotas quadradas de 40 cm de lado. Complete o quadro.'
+      tabela:
+        cabecalho: ['Cômodo', 'Dimensões (m)', 'Área (m²)', 'Lajotas']
+        linhas:
+        - ['sala', '$4 \times 5$', '${{20}}$', '${{125}}$']
+        - ['quarto', '$3 \times 3{,}2$', '${{9{,}6}}$', '${{60}}$']
+        - ['cozinha', '$2{,}4 \times 3$', '${{7{,}2}}$', '${{45}}$']
+      resolucao: |
+        Cada lajota cobre $0{,}16$ m²: $\tfrac{20}{0{,}16} = 125$, $\tfrac{9{,}6}{0{,}16} = 60$, $\tfrac{7{,}2}{0{,}16} = 45$.
+      resposta: '20, 125; 9,6, 60; 7,2, 45'
+    - enunciado: 'No quadrado $ABCD$ de lado 6, traçam-se os arcos de centros $A$ e $C$ e raio 6, que passam por $B$ e $D$. Calcule a área da região comum aos dois quartos de círculo (a “folha”).'
+      espaco: 12
+      resolucao: |
+        Cada quarto de círculo tem $9\pi$; tirando o triângulo $ABD$ (18), sobra um segmento $9\pi - 18$. A folha são dois segmentos: $18\pi - 36$.
+      resposta: '$18\pi - 36$'
+    - enunciado: 'Calcule a área da figura formada por um triângulo retângulo de catetos 6 e 8 e um semicírculo construído para fora sobre a hipotenusa.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.2]
+          \draw[ink, line width=1pt, fill=lilas!25] (0,0) -- (8,0) arc (-36.87:143.13:5) -- cycle;
+          \draw[ink] (8,0) -- (0,6);
+          \draw[mudo] (0,1) -- (1,1) -- (1,0);
+          \node[below, font=\scriptsize] at (4,0) {$8$};
+          \node[left, font=\scriptsize] at (0,3) {$6$};
+          \end{scope}
+      espaco: 10
+      resolucao: |
+        Hipotenusa 10, raio 5. $24 + \tfrac{25\pi}{2}$.
+      resposta: '$24 + \frac{25\pi}{2}$'
+    - enunciado: 'Um canteiro tem a forma da região entre dois quartos de círculo concêntricos, de raios 10 m e 6 m. Calcule a área.'
+      espaco: 8
+      resolucao: |
+        $\tfrac{\pi(100 - 36)}{4} = 16\pi$ m².
+      resposta: '$16\pi$ m²'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Num quarto de círculo de centro $O$ e raio 2, a corda $AB$ une as extremidades do arco. Sobre $AB$, para fora, traça-se um semicírculo. Prove que a lúnula (a parte do semicírculo fora do quarto de círculo) tem área igual à do triângulo $OAB$.'
+      espaco: 14
+      resolucao: |
+        $AB = 2\sqrt{2}$: o semicírculo tem raio $\sqrt{2}$ e área $\pi$. O segmento do quarto de círculo é $\pi - 2$. Lúnula: $\pi - (\pi - 2) = 2$, que é a área de $OAB$.
+      resposta: 'área 2'
+    - enunciado: 'Num quadrado de lado 2, traçam-se quatro semicírculos internos, de diâmetro igual ao lado, sobre os quatro lados. Calcule a área total das quatro “pétalas” (regiões cobertas por dois semicírculos).'
+      espaco: 14
+      resolucao: |
+        Cada pétala é formada por dois segmentos de um quarto de círculo de raio 1: $2\left(\tfrac{\pi}{4} - \tfrac{1}{2}\right) = \tfrac{\pi}{2} - 1$. As quatro: $2\pi - 4$.
+      resposta: '$2\pi - 4$'
+    - enunciado: 'Um círculo de raio $r$ está inscrito num quadrado. Calcule a área de cada um dos quatro cantos do quadrado fora do círculo.'
+      espaco: 10
+      resolucao: |
+        $\tfrac{(2r)^2 - \pi r^2}{4} = \tfrac{(4 - \pi)r^2}{4}$.
+      resposta: '$\frac{(4 - \pi)r^2}{4}$'
+    - enunciado: 'Na malha quadriculada de lado 1, o quadrilátero tem vértices nos pontos $(0, 0)$, $(6, 1)$, $(4, 5)$ e $(1, 4)$. Calcule a área completando o retângulo.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.35]
+          \draw[mudo!50, very thin] (0,0) grid (6,5);
+          \draw[ink, line width=1pt, fill=lilas!35] (0,0) -- (6,1) -- (4,5) -- (1,4) -- cycle;
+          \end{scope}
+      espaco: 14
+      resolucao: |
+        Retângulo $6 \times 5 = 30$. Fora do quadrilátero: triângulos de áreas $3$ (embaixo), $4$ (à direita), $1{,}5$ e $2$ (à esquerda e em cima) e o quadradinho $1$ do canto. $30 - 11{,}5 = 18{,}5$.
+      resposta: '18,5'
+    - enunciado: 'Num quadrado de lado 2, com o círculo inscrito de raio 1, um círculo menor fica num canto, tangente aos dois lados e ao círculo inscrito. Calcule o raio do círculo menor.'
+      espaco: 14
+      resolucao: |
+        Os centros estão na diagonal. Do vértice ao centro maior: $\sqrt{2}$. Do vértice ao centro menor: $x\sqrt{2}$. Tangência: $x\sqrt{2} + x + 1 = \sqrt{2}$, $x = \tfrac{\sqrt{2} - 1}{\sqrt{2} + 1} = 3 - 2\sqrt{2}$.
+      resposta: '$3 - 2\sqrt{2}$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      A planta de um apartamento tem a forma da figura, com as medidas em metros. O proprietário vai trocar todo o piso, e a empresa contratada cobra R\$\,40,00 por metro quadrado, já incluindo o material e a mão de obra.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.2]
+        \draw[ink, line width=1pt, fill=lilas!25] (0,0) -- (10,0) -- (10,6) -- (6,6) -- (6,9) -- (0,9) -- cycle;
+        \node[below, font=\scriptsize] at (5,0) {$10$};
+        \node[left, font=\scriptsize] at (0,4.5) {$9$};
+        \node[above, font=\scriptsize] at (3,9) {$6$};
+        \node[right, font=\scriptsize] at (10,3) {$6$};
+        \end{scope}
+    enunciado: |
+      O valor do serviço é
+    opcoes: ['R\$\,3\,600,00', 'R\$\,3\,120,00', 'R\$\,2\,400,00', 'R\$\,2\,880,00', 'R\$\,4\,200,00']
+    correta: B
+    resolucao: |
+      $10 \cdot 6 + 6 \cdot 3 = 78$ m²; $78 \cdot 40 = 3120$ reais.
+
+  - estilo: Fuvest
+    enunciado: |
+      Uma figura é formada por um quadrado de lado 6 e por um triângulo equilátero construído para fora sobre um dos lados. A área da figura é
+    opcoes: ['$36 + 9\sqrt{3}$', '$36 + 18\sqrt{3}$', '$45\sqrt{3}$', '$36 + 6\sqrt{3}$', '$54$']
+    correta: A
+    resolucao: |
+      $36 + \tfrac{36\sqrt{3}}{4} = 36 + 9\sqrt{3}$.
+
+  - estilo: Unicamp
+    enunciado: |
+      De um retângulo de 8 por 6 retiram-se dois semicírculos de diâmetro 6, um em cada lado menor, para dentro. A área que sobra é
+    opcoes: ['$48 - 18\pi$.', '$48 - 6\pi$.', '$48 - 9\pi$.', '$48 - 36\pi$.']
+    correta: C
+    resolucao: |
+      Os dois semicírculos de raio 3 formam um círculo de área $9\pi$ (cabem, pois $3 + 3 \le 8$).
+
+  - estilo: UEM
+    enunciado: |
+      Considere áreas de figuras compostas. Assinale o que for correto.
+    proposicoes:
+    - 'Um retângulo de $10 \times 4$ com um semicírculo de diâmetro 4 acoplado a um lado menor tem área $40 + 2\pi$.'
+    - 'Um quadrado de lado 4 do qual se retiram quatro quartos de círculo de raio 2, com centros nos vértices, tem área $16 - 4\pi$.'
+    - 'Uma cruz formada por 5 quadrados de lado 2 tem área 20.'
+    - 'A cruz do item anterior tem perímetro 20.'
+    - 'Uma moldura de largura 1 em volta de um quadro de $4 \times 3$ tem área 18.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      01) $40 + \tfrac{4\pi}{2}$. 02) Os quartos formam um círculo de raio 2. 04) $5 \cdot 4$. 08) Incorreta: 12 segmentos de 2, perímetro 24. 16) $6 \cdot 5 - 12$.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Enem
+    texto: |
+      Uma janela tem a forma de um retângulo de 1,6 m de largura por 1,2 m de altura, com um semicírculo de 1,6 m de diâmetro em cima, como na figura. Toda a janela será fechada com vidro, cobrado por metro quadrado. Use $\pi \approx 3{,}14$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \draw[ink, line width=1pt, fill=lilas!25] (0,0) -- (1.6,0) -- (1.6,1.2) arc (0:180:0.8) -- cycle;
+        \draw[ink] (0,1.2) -- (1.6,1.2);
+        \node[below, font=\scriptsize] at (0.8,0) {1,6 m};
+        \node[left, font=\scriptsize] at (0,0.6) {1,2 m};
+        \end{scope}
+    enunciado: |
+      A área de vidro é, aproximadamente,
+    opcoes: ['$1{,}92$ m²', '$3{,}93$ m²', '$2{,}42$ m²', '$2{,}92$ m²', '$4{,}93$ m²']
+    correta: D
+    resolucao: |
+      $1{,}6 \cdot 1{,}2 + \tfrac{\pi \cdot 0{,}8^2}{2} = 1{,}92 + 0{,}32\pi \approx 1{,}92 + 1{,}00 = 2{,}92$ m².
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'Para cobrir 12 m² com lajotas quadradas de 30 cm de lado, bastam 120 lajotas.'
+    - 'Um retângulo de $8 \times 5$ do qual se retira um quadrado de $2 \times 2$ de um canto tem área 36.'
+    - 'A região entre um círculo de raio 3 e o quadrado circunscrito a ele tem área $36 - 9\pi$.'
+    - 'Dois quadrados de lado 4 que se sobrepõem numa região de área 4 cobrem, juntos, área 28.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'II e IV, apenas.', 'I, II e III, apenas.', 'II, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Incorreta: $\tfrac{12}{0{,}09} \approx 133{,}3$, são necessárias 134. II. $40 - 4$. III. Quadrado de lado 6. IV. $16 + 16 - 4$.
+
+  - estilo: Unesp
+    enunciado: |
+      O número de lajotas quadradas de 25 cm de lado necessárias para cobrir um piso de 5 m por 4 m, sem perdas, é
+    opcoes: ['$320$', '$80$', '$200$', '$400$', '$250$']
+    correta: A
+    resolucao: |
+      $\tfrac{20}{0{,}0625} = 320$ (ou $20 \cdot 16$ lajotas por fileira).
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, $ABCD$ é um quadrado de lado 4, e os arcos $BD$ têm centros em $A$ e em $C$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.45]
+        \fill[lilas!45] (4,0) arc (0:90:4) arc (180:270:4) -- cycle;
+        \draw[ink, line width=1pt] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+        \draw[roxo, line width=1pt] (4,0) arc (0:90:4);
+        \draw[roxo, line width=1pt] (0,4) arc (180:270:4);
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[below right, font=\scriptsize] at (4,0) {$B$};
+        \node[above right, font=\scriptsize] at (4,4) {$C$};
+        \node[above left, font=\scriptsize] at (0,4) {$D$};
+        \end{scope}
+    enunciado: |
+      A área da região sombreada é
+    opcoes: ['$8\pi - 16$.', '$4\pi - 8$.', '$16 - 4\pi$.', '$8\pi - 8$.']
+    correta: A
+    resolucao: |
+      Cada quarto de círculo tem $4\pi$; menos o triângulo de área 8, cada segmento tem $4\pi - 8$. A região são dois segmentos: $8\pi - 16$.
+
+  - estilo: Fuvest
+    texto: |
+      Num quadrado de lado 2, traçam-se quatro semicírculos internos, cada um com diâmetro num lado, como na figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \begin{scope}
+        \clip (1,0) circle (1);
+        \fill[lilas!50] (2,1) circle (1);
+        \fill[lilas!50] (0,1) circle (1);
+        \end{scope}
+        \begin{scope}
+        \clip (1,2) circle (1);
+        \fill[lilas!50] (2,1) circle (1);
+        \fill[lilas!50] (0,1) circle (1);
+        \end{scope}
+        \draw[ink, line width=1pt] (0,0) rectangle (2,2);
+        \draw[roxo] (0,0) arc (180:0:1);
+        \draw[roxo] (2,2) arc (0:-180:1);
+        \draw[roxo] (0,0) arc (-90:90:1);
+        \draw[roxo] (2,2) arc (90:270:1);
+        \end{scope}
+    enunciado: |
+      A área total das quatro pétalas sombreadas é
+    opcoes: ['$\pi - 2$', '$2\pi - 4$', '$4 - \pi$', '$2\pi - 2$', '$\pi$']
+    correta: B
+    resolucao: |
+      Cada pétala são dois segmentos de um quarto de círculo de raio 1: $2\left(\tfrac{\pi}{4} - \tfrac{1}{2}\right)$. Quatro pétalas: $2\pi - 4$.
+
+  - estilo: UFSC
+    enunciado: |
+      Um campo é formado por um retângulo de 80 m por 40 m e por dois semicírculos de diâmetro 40 m, um em cada lado menor. Assinale o que for correto.
+    proposicoes:
+    - 'A área do retângulo é 3200 m².'
+    - 'Os dois semicírculos, juntos, têm área $400\pi$ m².'
+    - 'A área do campo é $(3200 + 400\pi)$ m².'
+    - 'Com $\pi \approx 3{,}14$, a área do campo é maior que 4000 m².'
+    - 'Se o retângulo tivesse o dobro da largura e os semicírculos acompanhassem, a área dobraria.'
+    - 'Uma faixa de 2 m de largura em toda a volta, por fora do campo, tem área $(320 + 84\pi)$ m².'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) $80 \cdot 40$. 02) Círculo de raio 20. 04) Soma. 08) $3200 + 1256 = 4456$. 16) Incorreta: o retângulo dobra, mas os semicírculos (raio dobrado) quadruplicam. 32) Por fora: $80 \cdot 44 + 484\pi$; menos $3200 + 400\pi$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um azulejo quadrado de 20 cm de lado tem quatro quartos de círculo de 10 cm de raio pintados de azul, com centros nos vértices, como na figura; o restante do azulejo é branco. A fábrica quer saber a área branca de cada azulejo. Use $\pi \approx 3{,}14$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \fill[white] (0,0) rectangle (2,2);
+        \fill[roxo!45] (0,0) -- (1,0) arc (0:90:1) -- cycle;
+        \fill[roxo!45] (2,0) -- (2,1) arc (90:180:1) -- cycle;
+        \fill[roxo!45] (2,2) -- (1,2) arc (180:270:1) -- cycle;
+        \fill[roxo!45] (0,2) -- (0,1) arc (270:360:1) -- cycle;
+        \draw[ink, line width=1pt] (0,0) rectangle (2,2);
+        \end{scope}
+    enunciado: |
+      A área branca é, aproximadamente,
+    opcoes: ['$314$ cm²', '$43$ cm²', '$86$ cm²', '$100$ cm²', '$157$ cm²']
+    correta: C
+    resolucao: |
+      Os quatro quartos formam um círculo de raio 10: $400 - 100\pi \approx 400 - 314 = 86$ cm².
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'A área de um semicírculo de diâmetro 10 é $12{,}5\pi$.'
+    - 'A figura formada por um quadrado de lado 4 e um triângulo equilátero de lado 4 construído sobre um lado tem área $16 + 4\sqrt{3}$.'
+    - 'A área coberta por duas figuras que se sobrepõem é a soma das áreas das duas.'
+    - 'Um retângulo de $6 \times 4$ com um furo circular de raio 1 tem área $24 - \pi$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – V – F – V.', 'V – F – F – V.', 'V – V – F – V.', 'V – V – F – F.']
+    correta: D
+    resolucao: |
+      (V) $\tfrac{25\pi}{2}$. (V) $\tfrac{16\sqrt{3}}{4} = 4\sqrt{3}$. (F) A parte comum seria contada duas vezes. (V)
+
+  - estilo: Enem
+    texto: |
+      Uma sala retangular de 4 m por 6 m será revestida com lajotas quadradas. O quadro mostra os três modelos disponíveis numa loja e o preço de cada lajota. Por causa dos recortes, compra-se sempre o número inteiro de lajotas imediatamente acima da conta exata.
+    tabela:
+      cabecalho: ['Modelo', 'Lado (cm)', 'Preço por lajota (R\$)']
+      linhas:
+      - ['I', '$30$', '$2{,}00$']
+      - ['II', '$40$', '$3{,}50$']
+      - ['III', '$50$', '$5{,}50$']
+    enunciado: |
+      O modelo de menor custo total e esse custo são
+    opcoes: ['I, R\$\,534,00.', 'II, R\$\,525,00.', 'III, R\$\,528,00.', 'I, R\$\,532,00.', 'III, R\$\,550,00.']
+    correta: B
+    resolucao: |
+      Área 24 m². I: $\tfrac{24}{0{,}09} = 266{,}7$, 267 lajotas, R\$\,534,00. II: $\tfrac{24}{0{,}16} = 150$, R\$\,525,00. III: $\tfrac{24}{0{,}25} = 96$, R\$\,528,00.
+
+  - estilo: Unesp
+    enunciado: |
+      Um terreno é formado por um retângulo de 20 m por 15 m e por um triângulo retângulo de catetos 15 m e 8 m, apoiado pelo cateto de 15 m num dos lados de 15 m do retângulo. A área do terreno é
+    opcoes: ['$300$ m²', '$420$ m²', '$330$ m²', '$400$ m²', '$360$ m²']
+    correta: E
+    resolucao: |
+      $300 + \tfrac{15 \cdot 8}{2} = 360$ m².
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere um quadrado de lado 4 e os círculos inscrito e circunscrito a ele. Assinale o que for correto.
+    proposicoes:
+    - 'A área do círculo inscrito é $4\pi$.'
+    - 'Cada um dos quatro cantos do quadrado fora do círculo inscrito tem área $4 - \pi$.'
+    - 'A área do círculo circunscrito é $8\pi$.'
+    - 'A região do círculo circunscrito fora do quadrado tem área $8\pi - 16$.'
+    - 'A coroa entre os dois círculos tem área $2\pi$.'
+    - 'O círculo inscrito ocupa mais de 80\% da área do quadrado.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) Raio 2. 02) $\tfrac{16 - 4\pi}{4}$. 04) Raio $2\sqrt{2}$. 08) $8\pi - 16$. 16) Incorreta: $8\pi - 4\pi = 4\pi$. 32) Incorreta: $\tfrac{\pi}{4} \approx 78{,}5\%$.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Num quarto de círculo de centro $O$ e raio 2, a corda $AB$ une as extremidades do arco, e sobre ela se traça, para fora, um semicírculo. A área da lúnula, parte do semicírculo fora do quarto de círculo, é
+    opcoes: ['$2$.', '$\pi$.', '$\pi - 2$.', '$4$.']
+    correta: A
+    resolucao: |
+      Semicírculo de raio $\sqrt{2}$: área $\pi$. Segmento do quarto de círculo: $\pi - 2$. Lúnula: $\pi - (\pi - 2) = 2$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Uma praça quadrada de 40 m de lado tem, no centro, um chafariz circular de 10 m de diâmetro e, em cada canto, um canteiro com a forma de um quarto de círculo de 10 m de raio, como na figura. O restante da praça é calçado. Use $\pi \approx 3{,}14$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.045]
+        \draw[ink, line width=1pt, fill=mudo!15] (0,0) rectangle (40,40);
+        \fill[lima!60] (0,0) -- (10,0) arc (0:90:10) -- cycle;
+        \fill[lima!60] (40,0) -- (40,10) arc (90:180:10) -- cycle;
+        \fill[lima!60] (40,40) -- (30,40) arc (180:270:10) -- cycle;
+        \fill[lima!60] (0,40) -- (0,30) arc (270:360:10) -- cycle;
+        \draw[roxo, line width=1pt, fill=lilas!50] (20,20) circle (5);
+        \draw[ink, line width=1pt] (0,0) rectangle (40,40);
+        \end{scope}
+    enunciado: |
+      A área total dos quatro canteiros é, aproximadamente,
+    opcoes: ['$78{,}5$ m²', '$157$ m²', '$314$ m²', '$628$ m²', '$400$ m²']
+    correta: C
+    resolucao: |
+      Os quatro quartos formam um círculo de raio 10: $100\pi \approx 314$ m².
+
+  - estilo: Unesp
+    enunciado: |
+      A área calçada da praça é, aproximadamente,
+    opcoes: ['$1286{,}0$ m²', '$1521{,}5$ m²', '$1600{,}0$ m²', '$1207{,}5$ m²', '$1050{,}0$ m²']
+    correta: D
+    resolucao: |
+      $1600 - 100\pi - 25\pi = 1600 - 125\pi \approx 1600 - 392{,}5 = 1207{,}5$ m².
+
+  - estilo: Fuvest
+    enunciado: |
+      Num quadrado de lado 2 está inscrito um círculo de raio 1. Um círculo menor, num dos cantos, é tangente a dois lados do quadrado e ao círculo inscrito. O raio do círculo menor é
+    opcoes: ['$\sqrt{2} - 1$', '$\frac{1}{4}$', '$2 - \sqrt{2}$', '$\frac{\sqrt{2}}{4}$', '$3 - 2\sqrt{2}$']
+    correta: E
+    resolucao: |
+      Os centros estão na diagonal: $x\sqrt{2} + x + 1 = \sqrt{2}$, $x = \tfrac{\sqrt{2} - 1}{\sqrt{2} + 1} = (\sqrt{2} - 1)^2 = 3 - 2\sqrt{2}$.
+
+  - estilo: Unesp
+    texto: |
+      Na malha quadriculada da figura, cada quadradinho tem lado 1, e o pentágono tem vértices nos pontos $(1, 0)$, $(5, 1)$, $(6, 4)$, $(2, 5)$ e $(0, 2)$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.35]
+        \draw[mudo!50, very thin] (0,0) grid (6,5);
+        \draw[ink, line width=1pt, fill=lilas!35] (1,0) -- (5,1) -- (6,4) -- (2,5) -- (0,2) -- cycle;
+        \end{scope}
+    enunciado: |
+      A área do pentágono é
+    opcoes: ['$20$', '$19{,}5$', '$18$', '$21$', '$24$']
+    correta: B
+    resolucao: |
+      Retângulo $6 \times 5 = 30$. Fora do pentágono ficam triângulos retângulos de áreas $1$, $2$, $1{,}5$, $2$ e $3$ e o quadradinho de área 1 junto ao ponto $(6, 0)$: total $10{,}5$. Área $30 - 10{,}5 = 19{,}5$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Num quadrado de lado $2a$, traçam-se quatro semicírculos internos, cada um com diâmetro num lado.'
+    itens:
+    - 'Calcule a área de uma pétala (região comum a dois semicírculos vizinhos).'
+    - 'Calcule a área total das quatro pétalas.'
+    - 'Mostre, usando áreas, que os quatro semicírculos cobrem todo o quadrado.'
+    espaco: 62
+    resolucao: |
+      a) A pétala são dois segmentos de um quarto de círculo de raio $a$: $2\left(\tfrac{\pi a^2}{4} - \tfrac{a^2}{2}\right) = \tfrac{\pi a^2}{2} - a^2$.
+      b) $2\pi a^2 - 4a^2$.
+      c) A área coberta é a soma dos semicírculos menos as sobreposições (as pétalas, cobertas duas vezes): $4 \cdot \tfrac{\pi a^2}{2} - (2\pi a^2 - 4a^2) = 4a^2$, a área do quadrado.
+    resposta: 'a) $\frac{\pi a^2}{2} - a^2$; b) $2\pi a^2 - 4a^2$'
+
+  - estilo: Unicamp
+    texto: |
+      Uma janela normanda é um retângulo de largura $2r$ e altura $h$, com um semicírculo de raio $r$ em cima. O contorno da janela (os três lados do retângulo e o arco) mede $4 + \pi$ metros.
+    enunciado: ''
+    itens:
+    - 'Escreva $h$ em função de $r$.'
+    - 'Escreva a área da janela em função de $r$.'
+    - 'Determine $r$ e $h$ para que a área seja máxima, e calcule essa área.'
+    espaco: 62
+    resolucao: |
+      a) $2r + 2h + \pi r = 4 + \pi$: $h = \tfrac{4 + \pi - (2 + \pi)r}{2}$.
+      b) $A = 2rh + \tfrac{\pi r^2}{2} = (4 + \pi)r - (2 + \pi)r^2 + \tfrac{\pi r^2}{2} = (4 + \pi)r - \left(2 + \tfrac{\pi}{2}\right)r^2$.
+      c) Parábola de vértice em $r = \tfrac{4 + \pi}{2(2 + \pi/2)} = 1$; então $h = 1$ e $A = 4 + \pi - 2 - \tfrac{\pi}{2} = 2 + \tfrac{\pi}{2}$ m².
+    resposta: 'c) $r = h = 1$ m; $2 + \frac{\pi}{2}$ m²'
+
+  - estilo: ITA
+    enunciado: |
+      Num quadrado de lado 1, traçam-se quatro quartos de círculo de raio 1, com centros nos vértices. A área da região central, comum aos quatro, é
+    opcoes: ['$\frac{\pi}{4}$', '$1 - \frac{\sqrt{3}}{4}$', '$1 + \frac{\pi}{3} - \sqrt{3}$', '$\frac{\pi}{3} - \frac{\sqrt{3}}{2}$', '$\pi - 3$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      Com o quadrado de vértices $(0, 0)$, $(1, 0)$, $(1, 1)$ e $(0, 1)$, os arcos de centros vizinhos se cortam em pontos como $\left(\tfrac{1}{2}, \tfrac{\sqrt{3}}{2}\right)$ (vértice de um triângulo equilátero sobre um lado). Os quatro pontos desse tipo formam um quadrado de diagonal $\sqrt{3} - 1$ e área $\tfrac{(\sqrt{3} - 1)^2}{2} = 2 - \sqrt{3}$. Cada lado dele é corda de um arco de $30°$ e raio 1, e os quatro segmentos somam $4\left(\tfrac{\pi}{12} - \tfrac{1}{4}\right) = \tfrac{\pi}{3} - 1$. Total: $1 + \tfrac{\pi}{3} - \sqrt{3}$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    texto: |
+      Um quadro retangular de 60 cm por 40 cm receberá uma moldura de largura constante $x$ cm em toda a volta.
+    enunciado: ''
+    itens:
+    - 'Escreva a área da moldura em função de $x$.'
+    - 'Determine $x$ para que a moldura tenha a mesma área do quadro.'
+    - 'Nesse caso, calcule o perímetro externo da moldura.'
+    espaco: 62
+    resolucao: |
+      a) $(60 + 2x)(40 + 2x) - 2400 = 4x^2 + 200x$.
+      b) $4x^2 + 200x = 2400$: $x^2 + 50x - 600 = 0$, $x = 10$ cm.
+      c) Por fora: $80 \times 60$, perímetro $280$ cm.
+    resposta: 'a) $4x^2 + 200x$; b) 10 cm; c) 280 cm'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - 'Num quadrado de lado 2 com quatro semicírculos internos sobre os lados, as pétalas somam $2\pi - 4$.'
+    - 'A lúnula de Hipócrates construída sobre a corda de um quarto de círculo de raio 2 tem área 2.'
+    - 'A região comum aos quatro quartos de círculo de raio 1, centrados nos vértices de um quadrado de lado 1, tem área $\frac{\pi}{4}$.'
+    - 'A “folha” comum a dois quartos de círculo de raio 2, centrados em vértices opostos de um quadrado de lado 2, tem área $2\pi - 4$.'
+    - 'Um círculo de raio 1 tem área maior que a de um quadrado de lado 1,8.'
+    - 'Um retângulo de $4 \times 2$ com dois semicírculos de diâmetro 2 acoplados aos lados menores tem área $8 + \pi$.'
+    corretas: [1, 2, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) Correta. 02) Correta. 04) Incorreta: $1 + \tfrac{\pi}{3} - \sqrt{3}$. 08) Dois segmentos de $\pi - 2$. 16) Incorreta: $\pi < 3{,}24$. 32) Os dois semicírculos formam um círculo de raio 1.
+    resposta: 'Soma 43 (01 + 02 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Num quarto de círculo de centro $O$ e raio $r$, a corda $AB$ une as extremidades do arco, e sobre ela se traça, para fora, um semicírculo.'
+    itens:
+    - 'Calcule a área do segmento circular limitado pelo arco $AB$ do quarto de círculo e pela corda $AB$.'
+    - 'Calcule a área do semicírculo de diâmetro $AB$.'
+    - 'Prove que a lúnula tem área igual à do triângulo $OAB$.'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{\pi r^2}{4} - \tfrac{r^2}{2}$.
+      b) $AB = r\sqrt{2}$: $\tfrac{1}{2}\pi\left(\tfrac{r\sqrt{2}}{2}\right)^2 = \tfrac{\pi r^2}{4}$.
+      c) Lúnula $=$ semicírculo $-$ segmento $= \tfrac{\pi r^2}{4} - \tfrac{\pi r^2}{4} + \tfrac{r^2}{2} = \tfrac{r^2}{2}$, a área de $OAB$.
+    resposta: 'c) $\frac{r^2}{2}$'
+
+  - estilo: Unicamp
+    texto: |
+      O piso de uma sala em L é um retângulo de 8 m por 6 m do qual falta um canto retangular de 3 m por 2 m.
+    enunciado: ''
+    itens:
+    - 'Calcule a área do piso.'
+    - 'Quantas lajotas quadradas de 30 cm de lado são necessárias, comprando 10\% a mais para perdas?'
+    - 'Calcule o comprimento do rodapé, que contorna toda a sala, e explique por que ele é igual ao perímetro do retângulo de 8 m por 6 m.'
+    espaco: 62
+    resolucao: |
+      a) $48 - 6 = 42$ m².
+      b) $\tfrac{42}{0{,}09} \approx 466{,}7$; com 10\% a mais, $\approx 513{,}3$: 514 lajotas.
+      c) Os dois lados do canto retirado, juntos, substituem exatamente os pedaços que faltam dos lados do retângulo: $2(8 + 6) = 28$ m.
+    resposta: 'a) 42 m²; b) 514; c) 28 m'
+
+  - estilo: Fuvest
+    enunciado: |
+      A região de um círculo de raio 2 que fica fora do quadrado inscrito nele tem área
+    opcoes: ['$4\pi - 8$', '$4\pi - 4$', '$2\pi - 4$', '$4\pi - 16$', '$\pi - 2$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      O quadrado inscrito tem diagonal 4 e área $\tfrac{16}{2} = 8$: $4\pi - 8$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Num quadrado de lado $2r$, está inscrito um círculo de raio $r$. Em cada canto, um círculo menor é tangente a dois lados do quadrado e ao círculo inscrito.
+    enunciado: ''
+    itens:
+    - 'Calcule a área da região de um canto, fora do círculo inscrito.'
+    - 'Calcule o raio dos círculos menores.'
+    - 'Para $r = 1$, que fração da região de um canto o círculo menor ocupa? ($\pi \approx 3{,}14$ e $\sqrt{2} \approx 1{,}414$)'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{(4 - \pi)r^2}{4}$.
+      b) Na diagonal: $x\sqrt{2} + x + r = r\sqrt{2}$, $x = r(3 - 2\sqrt{2})$.
+      c) $x \approx 0{,}172$: área $\pi x^2 \approx 0{,}093$; o canto tem $\approx 0{,}215$. Fração $\approx 0{,}43$.
+    resposta: 'a) $\frac{(4 - \pi)r^2}{4}$; b) $r(3 - 2\sqrt{2})$; c) $\approx 43\%$'
+
+  - estilo: Fuvest
+    enunciado: 'No triângulo retângulo $ABC$, de catetos 6 e 8, são traçados semicírculos sobre os três lados: os dos catetos para fora e o da hipotenusa para o lado do vértice $C$ do ângulo reto.'
+    itens:
+    - 'Calcule as áreas dos três semicírculos.'
+    - 'Calcule a área da figura formada pelo triângulo e pelos dois semicírculos dos catetos.'
+    - 'Calcule a soma das áreas das duas lúnulas (partes dos semicírculos dos catetos fora do semicírculo da hipotenusa).'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{9\pi}{2}$, $8\pi$ e $\tfrac{25\pi}{2}$.
+      b) $24 + \tfrac{9\pi}{2} + 8\pi = 24 + \tfrac{25\pi}{2}$.
+      c) A mesma figura é o semicírculo da hipotenusa mais as lúnulas: lúnulas $= 24 + \tfrac{25\pi}{2} - \tfrac{25\pi}{2} = 24$.
+    resposta: 'a) $\frac{9\pi}{2}$, $8\pi$, $\frac{25\pi}{2}$; b) $24 + \frac{25\pi}{2}$; c) 24'
