@@ -1,0 +1,529 @@
+# Aula 2.15.2 — Trigonometria: redução ao 1º quadrante
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: simetrias do ciclo (π − x, π + x, 2π − x, −x), arco de referência, sinal pelo quadrante,
+# arcos maiores que uma volta e negativos, arcos complementares (π/2 − x), simplificação de expressões.
+# A tangente e as demais razões ficam para a aula 2.15.3.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Para reduzir um arco, ache o arco de referência no 1º quadrante e coloque o sinal do quadrante. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete com os valores.'
+      itens:
+      - '$\operatorname{sen}135^\circ =$ {{\sqrt2/2}}'
+      - '$\cos 150^\circ =$ {{-\sqrt3/2}}'
+      - '$\operatorname{sen}225^\circ =$ {{-\sqrt2/2}}'
+      - '$\cos 300^\circ =$ {{1/2}}'
+      espaco_item: 8
+      resolucao: |
+        $135^\circ = 180^\circ - 45^\circ$ (2º Q, seno $+$). $150^\circ = 180^\circ - 30^\circ$ (2º Q, cosseno $-$). $225^\circ = 180^\circ + 45^\circ$ (3º Q, seno $-$). $300^\circ = 360^\circ - 60^\circ$ (4º Q, cosseno $+$).
+      resposta: '$\frac{\sqrt2}{2}$; $-\frac{\sqrt3}{2}$; $-\frac{\sqrt2}{2}$; $\frac12$'
+    - enunciado: 'Associe cada arco à forma que mostra o seu arco de referência.'
+      esquerda:
+      - '$160^\circ$'
+      - '$200^\circ$'
+      - '$340^\circ$'
+      - '$110^\circ$'
+      - '$250^\circ$'
+      direita:
+      - '$360^\circ - 20^\circ$'
+      - '$180^\circ - 70^\circ$'
+      - '$180^\circ + 20^\circ$'
+      - '$180^\circ + 70^\circ$'
+      - '$180^\circ - 20^\circ$'
+      resolucao: |
+        2º Q: $180^\circ - r$; 3º Q: $180^\circ + r$; 4º Q: $360^\circ - r$.
+      resposta: 'De cima para baixo: 3, 4, 2, 5, 1'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso), para todo arco $x$.'
+      afirmacoes:
+      - '$\cos(180^\circ - x) = \cos x$.'
+      - '$\operatorname{sen}(180^\circ - x) = \operatorname{sen}x$.'
+      - '$\operatorname{sen}(180^\circ + x) = -\operatorname{sen}x$.'
+      - '$\cos(360^\circ - x) = -\cos x$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (F) Simetria pelo eixo vertical: a abscissa troca de sinal. (V) A ordenada se mantém. (V) Simetria pela origem: as duas coordenadas trocam de sinal. (F) Simetria pelo eixo horizontal: a abscissa se mantém.
+      resposta: F, V, V, F
+    - enunciado: 'Complete a tabela.'
+      tabela:
+        cabecalho: ['Arco', 'Referência', '$\operatorname{sen}x$', '$\cos x$']
+        linhas:
+        - ['$\frac{2\pi}{3}$', '${{\pi/3}}$', '${{\sqrt3/2}}$', '${{-1/2}}$']
+        - ['$\frac{3\pi}{4}$', '${{\pi/4}}$', '${{\sqrt2/2}}$', '${{-\sqrt2/2}}$']
+        - ['$\frac{7\pi}{6}$', '${{\pi/6}}$', '${{-1/2}}$', '${{-\sqrt3/2}}$']
+        - ['$\frac{5\pi}{3}$', '${{\pi/3}}$', '${{-\sqrt3/2}}$', '${{1/2}}$']
+      resolucao: |
+        $\frac{2\pi}{3} = \pi - \frac{\pi}{3}$; $\frac{3\pi}{4} = \pi - \frac{\pi}{4}$; $\frac{7\pi}{6} = \pi + \frac{\pi}{6}$; $\frac{5\pi}{3} = 2\pi - \frac{\pi}{3}$. Depois, o sinal do quadrante.
+      resposta: 'Ver resolução'
+    - enunciado: 'Calcule $\operatorname{sen}330^\circ$.'
+      espaco: 8
+      resolucao: |
+        $330^\circ = 360^\circ - 30^\circ$, 4º Q (seno negativo): $-\frac12$.
+      resposta: '$-\frac12$'
+    - enunciado: 'Calcule $\cos 1110^\circ$.'
+      espaco: 8
+      resolucao: |
+        $1110^\circ = 3 \cdot 360^\circ + 30^\circ$: $\cos 30^\circ = \frac{\sqrt3}{2}$.
+      resposta: '$\frac{\sqrt3}{2}$'
+    - enunciado: 'Calcule $\cos(-135^\circ)$.'
+      espaco: 8
+      resolucao: |
+        $\cos(-135^\circ) = \cos 135^\circ = -\cos 45^\circ = -\frac{\sqrt2}{2}$.
+      resposta: '$-\frac{\sqrt2}{2}$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Lia escreveu: $\cos 210^\circ = \cos 30^\circ = \frac{\sqrt3}{2}$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        O arco de referência está certo, mas $210^\circ$ está no 3º quadrante, onde o cosseno é negativo: $\cos 210^\circ = -\frac{\sqrt3}{2}$.
+      resposta: '$-\frac{\sqrt3}{2}$'
+    - enunciado: 'Simplifique $\operatorname{sen}(\pi - x) + \cos(\pi + x) + \operatorname{sen}(2\pi - x)$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{sen}x - \cos x - \operatorname{sen}x = -\cos x$.
+      resposta: '$-\cos x$'
+    - enunciado: 'Calcule $\operatorname{sen}120^\circ \cdot \cos 330^\circ$.'
+      espaco: 8
+      resolucao: |
+        $\frac{\sqrt3}{2} \cdot \frac{\sqrt3}{2} = \frac34$.
+      resposta: '$\frac34$'
+    - enunciado: 'Calcule $\cos 135^\circ + \operatorname{sen}225^\circ$.'
+      espaco: 8
+      resolucao: |
+        $-\frac{\sqrt2}{2} - \frac{\sqrt2}{2} = -\sqrt2$.
+      resposta: '$-\sqrt2$'
+    - enunciado: 'O arco $x$ está no 1º quadrante e $\operatorname{sen}x = 0{,}6$ (logo, $\cos x = 0{,}8$). Complete.'
+      itens:
+      - '$\operatorname{sen}(180^\circ - x) =$ {{0{,}6}}'
+      - '$\cos(180^\circ + x) =$ {{-0{,}8}}'
+      - '$\operatorname{sen}(360^\circ - x) =$ {{-0{,}6}}'
+      espaco_item: 8
+      resolucao: |
+        Os módulos são os de $x$; o sinal é o do quadrante: 2º Q (seno $+$), 3º Q (cosseno $-$), 4º Q (seno $-$).
+      resposta: '0,6; $-0{,}8$; $-0{,}6$'
+    - enunciado: 'Calcule $\operatorname{sen}\frac{17\pi}{6}$.'
+      espaco: 8
+      resolucao: |
+        $\frac{17\pi}{6} - 2\pi = \frac{5\pi}{6} = \pi - \frac{\pi}{6}$: $\operatorname{sen}\frac{\pi}{6} = \frac12$.
+      resposta: '$\frac12$'
+    - enunciado: 'Coloque em ordem crescente: $\cos 100^\circ$, $\cos 200^\circ$ e $\cos 300^\circ$.'
+      espaco: 10
+      resolucao: |
+        $\cos 100^\circ = -\cos 80^\circ$ (perto de 0), $\cos 200^\circ = -\cos 20^\circ$ (perto de $-1$), $\cos 300^\circ = \frac12$. $\cos 200^\circ < \cos 100^\circ < \cos 300^\circ$.
+      resposta: '$\cos 200^\circ < \cos 100^\circ < \cos 300^\circ$'
+    - enunciado: 'Dê os arcos de $[0^\circ, 360^\circ)$ cujo seno é $-\frac{\sqrt3}{2}$.'
+      espaco: 8
+      resolucao: |
+        Referência $60^\circ$; seno negativo no 3º e no 4º Q: $180^\circ + 60^\circ = 240^\circ$ e $360^\circ - 60^\circ = 300^\circ$.
+      resposta: '$240^\circ$ e $300^\circ$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que $\operatorname{sen}(180^\circ - x) = \operatorname{sen}x$ e $\cos(180^\circ - x) = -\cos x$.'
+      espaco: 10
+      resolucao: |
+        As extremidades de $x$ e $180^\circ - x$ são simétricas em relação ao eixo vertical: mesma ordenada e abscissas opostas.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\cos(180^\circ + x) = -\cos x$ e $\operatorname{sen}(180^\circ + x) = -\operatorname{sen}x$.'
+      espaco: 10
+      resolucao: |
+        Somar $180^\circ$ leva a extremidade ao ponto diametralmente oposto, simétrico em relação à origem: as duas coordenadas trocam de sinal.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}(90^\circ - x) = \cos x$.'
+      espaco: 10
+      resolucao: |
+        As extremidades de $x$ e $90^\circ - x$ são simétricas em relação à reta $y = x$ (a bissetriz do 1º quadrante), e essa simetria troca as coordenadas: a ordenada de uma é a abscissa da outra.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}x + \operatorname{sen}(x + \pi) = 0$ para todo $x$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{sen}(x + \pi) = -\operatorname{sen}x$, pela simetria em relação à origem.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\cos 20^\circ + \cos 40^\circ + \cos 140^\circ + \cos 160^\circ = 0$.'
+      espaco: 10
+      resolucao: |
+        $\cos 160^\circ = -\cos 20^\circ$ e $\cos 140^\circ = -\cos 40^\circ$: os termos se cancelam aos pares.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      O braço de um guindaste mede 20 m e gira em torno de um pino. O operador mede o ângulo do braço a partir da horizontal, do lado direito, no sentido anti-horário, como no ciclo trigonométrico. A altura da ponta do braço em relação ao pino é $20\operatorname{sen}\theta$. Para descarregar um contêiner, o braço foi posicionado em $\theta = 120^\circ$.
+    enunciado: |
+      Nessa posição, a ponta do braço está acima do pino
+    opcoes: ['$10\sqrt3$ m', '$10$ m', '$-10\sqrt3$ m', '$20$ m', '$10\sqrt2$ m']
+    correta: A
+    resolucao: |
+      $\operatorname{sen}120^\circ = \operatorname{sen}60^\circ = \frac{\sqrt3}{2}$: $20 \cdot \frac{\sqrt3}{2} = 10\sqrt3 \approx 17{,}3$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\operatorname{sen}240^\circ + \cos 330^\circ$ é
+    opcoes: ['$-\sqrt3$', '$0$', '$\sqrt3$', '$-1$', '$1$']
+    correta: B
+    resolucao: |
+      $-\frac{\sqrt3}{2} + \frac{\sqrt3}{2} = 0$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O valor de $\cos(-300^\circ)$ é
+    opcoes: ['$-\frac12$.', '$-\frac{\sqrt3}{2}$.', '$\frac12$.', '$\frac{\sqrt3}{2}$.']
+    correta: C
+    resolucao: |
+      $-300^\circ + 360^\circ = 60^\circ$: $\cos 60^\circ = \frac12$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere a redução de arcos ao 1º quadrante. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}135^\circ = \operatorname{sen}45^\circ$.'
+    - '$\cos 135^\circ = -\cos 45^\circ$.'
+    - '$\operatorname{sen}225^\circ = -\operatorname{sen}45^\circ$.'
+    - '$\cos 300^\circ = \cos 60^\circ$.'
+    - '$\operatorname{sen}330^\circ = \operatorname{sen}30^\circ$.'
+    - '$\cos 210^\circ = -\cos 30^\circ$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      16) Incorreta: no 4º Q o seno é negativo, $\operatorname{sen}330^\circ = -\operatorname{sen}30^\circ$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um técnico precisa calcular forças numa estrutura, mas só dispõe de uma tabela com senos e cossenos de ângulos do 1º quadrante, com duas casas decimais. Para ângulos maiores, ele usa as simetrias do ciclo trigonométrico. Em um dos cálculos, aparece o cosseno de $160^\circ$.
+    tabela:
+      cabecalho: ['Ângulo', '$10^\circ$', '$20^\circ$', '$30^\circ$', '$40^\circ$']
+      linhas:
+      - ['seno', '$0{,}17$', '$0{,}34$', '$0{,}50$', '$0{,}64$']
+      - ['cosseno', '$0{,}98$', '$0{,}94$', '$0{,}87$', '$0{,}77$']
+    enunciado: |
+      O valor aproximado de $\cos 160^\circ$ é
+    opcoes: ['$0{,}94$', '$0{,}34$', '$-0{,}34$', '$-0{,}94$', '$-0{,}17$']
+    correta: D
+    resolucao: |
+      $160^\circ = 180^\circ - 20^\circ$, 2º Q: $\cos 160^\circ = -\cos 20^\circ \approx -0{,}94$.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, válidas para todo arco $x$.
+    afirmativas:
+    - '$\operatorname{sen}(\pi - x) = \operatorname{sen}x$.'
+    - '$\cos(\pi - x) = \cos x$.'
+    - '$\operatorname{sen}(2\pi - x) = -\operatorname{sen}x$.'
+    - '$\cos(\pi + x) = -\cos x$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      II. Incorreta: $\cos(\pi - x) = -\cos x$.
+
+  - estilo: Unesp
+    enunciado: |
+      O valor de $\operatorname{sen}\frac{11\pi}{6}$ é
+    opcoes: ['$-\frac12$', '$\frac12$', '$-\frac{\sqrt3}{2}$', '$\frac{\sqrt3}{2}$', '$0$']
+    correta: A
+    resolucao: |
+      $\frac{11\pi}{6} = 2\pi - \frac{\pi}{6}$, 4º Q: $-\frac12$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, P é a extremidade do arco $\alpha$ e tem coordenadas $(0{,}6;\ 0{,}8)$. O ponto Q é o simétrico de P em relação ao eixo vertical, ou seja, a extremidade do arco $\pi - \alpha$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0); \draw[mudo, ->] (0,-2.2) -- (0,2.4);
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \fill[roxo] (1.08,1.44) circle (2.2pt) node[above right, font=\small] {P};
+        \fill[roxo] (-1.08,1.44) circle (2.2pt) node[above left, font=\small] {Q};
+        \draw[roxo] (0,0) -- (1.08,1.44); \draw[roxo] (0,0) -- (-1.08,1.44);
+        \draw[mudo, dashed] (-1.08,1.44) -- (1.08,1.44);
+        \draw[roxo, ->] (.45,0) arc (0:53:.45); \node[roxo, font=\scriptsize] at (.68,.3) {$\alpha$};
+        \end{scope}
+    enunciado: |
+      Então
+    opcoes: ['$\operatorname{sen}(\pi - \alpha) = -0{,}8$ e $\cos(\pi - \alpha) = 0{,}6$.', '$\operatorname{sen}(\pi - \alpha) = 0{,}8$ e $\cos(\pi - \alpha) = -0{,}6$.', '$\operatorname{sen}(\pi - \alpha) = 0{,}6$ e $\cos(\pi - \alpha) = -0{,}8$.', '$\operatorname{sen}(\pi - \alpha) = -0{,}6$ e $\cos(\pi - \alpha) = -0{,}8$.']
+    correta: B
+    resolucao: |
+      $Q = (-0{,}6;\ 0{,}8)$: o seno é a ordenada e o cosseno é a abscissa.
+
+  - estilo: Fuvest
+    enunciado: |
+      Para $x$ com $\operatorname{sen}x \ne 0$, a expressão $\dfrac{\operatorname{sen}(\pi - x) \cdot \cos(\pi + x)}{\operatorname{sen}(2\pi - x)}$ é igual a
+    opcoes: ['$-\cos x$', '$\operatorname{sen}x$', '$\cos x$', '$-\operatorname{sen}x$', '$1$']
+    correta: C
+    resolucao: |
+      $\frac{\operatorname{sen}x \cdot (-\cos x)}{-\operatorname{sen}x} = \cos x$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere um arco $x$ do 1º quadrante com $\cos x = 0{,}6$ e $\operatorname{sen}x = 0{,}8$. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}(\pi - x) = 0{,}8$.'
+    - '$\cos(\pi + x) = -0{,}6$.'
+    - '$\operatorname{sen}(2\pi - x) = -0{,}8$.'
+    - '$\cos(\pi - x) + \cos x = 0$.'
+    - '$\operatorname{sen}(\pi + x) \cdot \operatorname{sen}(\pi - x) = -0{,}64$.'
+    - '$\cos(2\pi - x) = -0{,}6$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      16) $(-0{,}8) \cdot 0{,}8 = -0{,}64$. 32) Incorreta: $\cos(2\pi - x) = \cos x = 0{,}6$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      As pás de uma turbina eólica medem 40 m, e o eixo do rotor fica a 80 m do chão. A altura da ponta de uma pá, em metros, é $h = 80 + 40\operatorname{sen}\theta$, em que $\theta$ é o ângulo da pá com a horizontal, medido como no ciclo trigonométrico. Um drone de inspeção deve ser posicionado na altura da ponta da pá quando $\theta = 210^\circ$.
+    enunciado: |
+      O drone deve ficar a uma altura de
+    opcoes: ['$60$ m', '$100$ m', '$80$ m', '$45{,}4$ m', '$114{,}6$ m']
+    correta: A
+    resolucao: |
+      $\operatorname{sen}210^\circ = -\operatorname{sen}30^\circ = -\frac12$: $80 - 20 = 60$ m.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$\operatorname{sen}\frac{5\pi}{6} = \frac12$.'
+    - '$\cos\frac{4\pi}{3} = \frac12$.'
+    - '$\operatorname{sen}\frac{7\pi}{4} = -\frac{\sqrt2}{2}$.'
+    - '$\cos\frac{5\pi}{3} = \frac12$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      $\frac{4\pi}{3} = \pi + \frac{\pi}{3}$, 3º Q: $\cos\frac{4\pi}{3} = -\frac12$. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Num jogo de computador, quatro portais ficam nos vértices P, Q, R e S de um retângulo inscrito numa arena circular de raio 1, com lados paralelos aos eixos. O portal P está na extremidade do arco de $40^\circ$. O jogador precisa chegar ao portal cujas coordenadas são as de P com os dois sinais trocados. Há ainda um ponto de controle T no topo da arena.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.65]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0); \draw[mudo, ->] (0,-2.2) -- (0,2.4);
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \draw[mudo, dashed] (40:1.8) -- (140:1.8) -- (220:1.8) -- (320:1.8) -- cycle;
+        \foreach \a/\n in {40/P,140/Q,320/R,220/S,90/T} { \fill[roxo] (\a:1.8) circle (2.2pt); \node[font=\small] at (\a:2.2) {\n}; }
+        \end{scope}
+    enunciado: |
+      O jogador deve ir ao portal
+    opcoes: ['P.', 'Q.', 'R.', 'S.', 'T.']
+    correta: D
+    resolucao: |
+      Trocar os dois sinais é a simetria pela origem: o arco $40^\circ + 180^\circ = 220^\circ$, o ponto S.
+
+  - estilo: Unesp
+    enunciado: |
+      O valor de $\operatorname{sen}(-1020^\circ)$ é
+    opcoes: ['$-\frac{\sqrt3}{2}$', '$\frac{\sqrt3}{2}$', '$\frac12$', '$-\frac12$', '$0$']
+    correta: B
+    resolucao: |
+      $-1020^\circ + 3 \cdot 360^\circ = 60^\circ$: $\operatorname{sen}60^\circ = \frac{\sqrt3}{2}$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere $x$ real qualquer. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}\left(\frac{\pi}{2} - x\right) = \cos x$.'
+    - '$\cos\left(\frac{\pi}{2} - x\right) = \operatorname{sen}x$.'
+    - '$\operatorname{sen}(\pi + x) + \operatorname{sen}x = 0$.'
+    - '$\cos(\pi - x) + \cos(\pi + x) = -2\cos x$.'
+    - '$\operatorname{sen}(2\pi - x) = \operatorname{sen}x$.'
+    - '$\cos 100^\circ = -\cos 80^\circ$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      08) $-\cos x - \cos x$. 16) Incorreta: $\operatorname{sen}(2\pi - x) = -\operatorname{sen}x$. 32) $100^\circ = 180^\circ - 80^\circ$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O valor de $\operatorname{sen}10^\circ + \operatorname{sen}190^\circ$ $+ \cos 70^\circ + \cos 250^\circ$ é
+    opcoes: ['$0$.', '$1$.', '$2\operatorname{sen}10^\circ$.', '$2\cos 70^\circ$.']
+    correta: A
+    resolucao: |
+      $\operatorname{sen}190^\circ = -\operatorname{sen}10^\circ$ e $\cos 250^\circ = -\cos 70^\circ$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um farol fica na origem de um sistema de coordenadas, com o eixo horizontal apontando para o leste e o vertical para o norte, em quilômetros. Um barco a 10 km do farol, na direção que faz ângulo $\theta$ com o leste (medido no sentido anti-horário), está no ponto $(10\cos\theta,\ 10\operatorname{sen}\theta)$. A guarda costeira acompanha dois barcos.
+    enunciado: |
+      O primeiro barco está na direção $\theta = 150^\circ$. Suas coordenadas são
+    opcoes: ['$(5\sqrt3,\ 5)$', '$(-5,\ 5\sqrt3)$', '$(-5\sqrt3,\ 5)$', '$(5\sqrt3,\ -5)$', '$(-5\sqrt3,\ -5)$']
+    correta: C
+    resolucao: |
+      $\cos 150^\circ = -\frac{\sqrt3}{2}$ e $\operatorname{sen}150^\circ = \frac12$.
+
+  - estilo: Unesp
+    enunciado: |
+      O segundo barco está na direção $\theta = 240^\circ$. Suas coordenadas são
+    opcoes: ['$(5,\ -5\sqrt3)$', '$(-5\sqrt3,\ -5)$', '$(-5,\ 5\sqrt3)$', '$(-5,\ -5\sqrt3)$', '$(5,\ 5\sqrt3)$']
+    correta: D
+    resolucao: |
+      $240^\circ = 180^\circ + 60^\circ$, 3º Q: $\cos = -\frac12$ e $\operatorname{sen} = -\frac{\sqrt3}{2}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\operatorname{sen}\frac{5\pi}{4} \cdot \cos\frac{3\pi}{4}$ é
+    opcoes: ['$-\frac12$', '$-1$', '$1$', '$\frac{\sqrt2}{2}$', '$\frac12$']
+    correta: E
+    resolucao: |
+      $\left(-\frac{\sqrt2}{2}\right) \cdot \left(-\frac{\sqrt2}{2}\right) = \frac24 = \frac12$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, P é a extremidade de um arco $\alpha$ do 1º quadrante, e Q é o simétrico de P em relação ao eixo horizontal.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0); \draw[mudo, ->] (0,-2.2) -- (0,2.4);
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \fill[roxo] (35:1.8) circle (2.2pt) node[above right, font=\small] {P};
+        \fill[roxo] (-35:1.8) circle (2.2pt) node[below right, font=\small] {Q};
+        \draw[roxo] (0,0) -- (35:1.8); \draw[roxo] (0,0) -- (-35:1.8);
+        \draw[mudo, dashed] (35:1.8) -- (-35:1.8);
+        \draw[roxo, ->] (.5,0) arc (0:35:.5); \node[roxo, font=\scriptsize] at (.75,.22) {$\alpha$};
+        \end{scope}
+    enunciado: |
+      No intervalo $[0, 2\pi)$, Q é a extremidade do arco
+    opcoes: ['$\pi - \alpha$', '$2\pi - \alpha$', '$\pi + \alpha$', '$\frac{\pi}{2} + \alpha$', '$\frac{3\pi}{2} - \alpha$']
+    correta: B
+    resolucao: |
+      A simetria pelo eixo horizontal leva $\alpha$ em $-\alpha$, que, na primeira volta, é $2\pi - \alpha$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere $E = \operatorname{sen}\frac{25\pi}{6} + \cos\left(-\frac{17\pi}{3}\right) + \operatorname{sen}\left(-\frac{31\pi}{4}\right)$.'
+    itens:
+    - 'Calcule $\operatorname{sen}\frac{25\pi}{6}$.'
+    - 'Calcule $\cos\left(-\frac{17\pi}{3}\right)$.'
+    - 'Calcule $\operatorname{sen}\left(-\frac{31\pi}{4}\right)$ e o valor de $E$.'
+    espaco: 62
+    resolucao: |
+      a) $\frac{25\pi}{6} - 4\pi = \frac{\pi}{6}$: $\frac12$.
+      b) $-\frac{17\pi}{3} + 6\pi = \frac{\pi}{3}$: $\frac12$.
+      c) $-\frac{31\pi}{4} + 8\pi = \frac{\pi}{4}$: $\frac{\sqrt2}{2}$. $E = 1 + \frac{\sqrt2}{2}$.
+    resposta: 'a) $\frac12$; b) $\frac12$; c) $\frac{\sqrt2}{2}$ e $E = 1 + \frac{\sqrt2}{2}$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere as somas $S = \operatorname{sen}1^\circ + \operatorname{sen}2^\circ + \dots + \operatorname{sen}359^\circ$ e $C = \cos 1^\circ + \cos 2^\circ + \dots + \cos 179^\circ$.'
+    itens:
+    - 'Mostre que $\operatorname{sen}x + \operatorname{sen}(360^\circ - x) = 0$.'
+    - 'Calcule $S$.'
+    - 'Calcule $C$.'
+    espaco: 62
+    resolucao: |
+      a) $\operatorname{sen}(360^\circ - x) = -\operatorname{sen}x$.
+      b) Os termos $1^\circ$ e $359^\circ$, $2^\circ$ e $358^\circ$, … se anulam aos pares, e sobra $\operatorname{sen}180^\circ = 0$. $S = 0$.
+      c) $\cos(180^\circ - x) = -\cos x$: $1^\circ$ e $179^\circ$, … se anulam, e sobra $\cos 90^\circ = 0$. $C = 0$.
+    resposta: 'b) 0; c) 0'
+
+  - estilo: ITA
+    enunciado: |
+      O valor de $\cos^2\frac{\pi}{12} + \cos^2\frac{5\pi}{12}$ é
+    opcoes: ['$1$', '$\frac12$', '$\frac{\sqrt3}{2}$', '$2$', '$\frac32$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $\frac{5\pi}{12} = \frac{\pi}{2} - \frac{\pi}{12}$, logo $\cos\frac{5\pi}{12} = \operatorname{sen}\frac{\pi}{12}$, e a soma é $\cos^2 + \operatorname{sen}^2 = 1$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Considere as expressões $E_1 = \operatorname{sen}(\pi - x) + \operatorname{sen}(\pi + x)$ e $E_2 = \cos(\pi - x)\cos(2\pi - x)$ $+ \operatorname{sen}(\pi + x)\operatorname{sen}(2\pi - x)$.'
+    itens:
+    - 'Simplifique $E_1$.'
+    - 'Simplifique $E_2$.'
+    - 'Calcule $E_2$ para $x = \frac{\pi}{6}$.'
+    espaco: 62
+    resolucao: |
+      a) $\operatorname{sen}x - \operatorname{sen}x = 0$.
+      b) $(-\cos x)(\cos x) + (-\operatorname{sen}x)(-\operatorname{sen}x) = \operatorname{sen}^2 x - \cos^2 x$.
+      c) $\frac14 - \frac34 = -\frac12$.
+    resposta: 'a) 0; b) $\operatorname{sen}^2 x - \cos^2 x$; c) $-\frac12$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a redução ao 1º quadrante, com arcos em graus ou em radianos. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}160^\circ = \operatorname{sen}20^\circ$.'
+    - '$\cos 160^\circ < \cos 140^\circ$.'
+    - '$\operatorname{sen}200^\circ + \operatorname{sen}340^\circ = 2\operatorname{sen}200^\circ$.'
+    - '$\cos(270^\circ - x) = -\operatorname{sen}x$.'
+    - '$\operatorname{sen}3 < 0$ (arco de 3 radianos).'
+    - '$\operatorname{sen}100^\circ = \cos 10^\circ$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      02) $-\cos 20^\circ < -\cos 40^\circ$. 04) Os dois valem $-\operatorname{sen}20^\circ$. 08) $270^\circ - x = 180^\circ + (90^\circ - x)$: $-\cos(90^\circ - x) = -\operatorname{sen}x$. 16) Incorreta: $\frac{\pi}{2} < 3 < \pi$, 2º Q. 32) $\operatorname{sen}100^\circ = \operatorname{sen}80^\circ = \cos 10^\circ$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Num triângulo ABC, os ângulos internos medem $A$, $B$ e $C$.'
+    itens:
+    - 'Mostre que $\operatorname{sen}(A + B) = \operatorname{sen}C$ e $\cos(A + B) = -\cos C$.'
+    - 'Se $\cos C = -\frac13$, calcule $\operatorname{sen}C$.'
+    - 'Nesse caso, calcule $\operatorname{sen}(A + B)$ e $\cos(A + B)$.'
+    espaco: 62
+    resolucao: |
+      a) $A + B = 180^\circ - C$; use $\operatorname{sen}(180^\circ - C) = \operatorname{sen}C$ e $\cos(180^\circ - C) = -\cos C$.
+      b) $\operatorname{sen}^2 C = 1 - \frac19 = \frac89$; como $0 < C < 180^\circ$, $\operatorname{sen}C = \frac{2\sqrt2}{3}$.
+      c) $\operatorname{sen}(A + B) = \frac{2\sqrt2}{3}$ e $\cos(A + B) = \frac13$.
+    resposta: 'b) $\frac{2\sqrt2}{3}$; c) $\frac{2\sqrt2}{3}$ e $\frac13$'
+
+  - estilo: Unicamp
+    enunciado: 'Seja $0 < \alpha < \frac{\pi}{2}$. As extremidades dos arcos $\alpha$, $\pi - \alpha$, $\pi + \alpha$ e $2\pi - \alpha$ no ciclo trigonométrico são vértices de um retângulo.'
+    itens:
+    - 'Escreva as coordenadas dos quatro vértices em função de $\operatorname{sen}\alpha$ e $\cos\alpha$.'
+    - 'Mostre que a área do retângulo é $4\operatorname{sen}\alpha\cos\alpha$ e calcule-a para $\alpha = \frac{\pi}{6}$.'
+    - 'Para que $\alpha$ o retângulo é um quadrado? Qual é a área nesse caso?'
+    espaco: 62
+    resolucao: |
+      a) $(\cos\alpha, \operatorname{sen}\alpha)$, $(-\cos\alpha, \operatorname{sen}\alpha)$, $(-\cos\alpha, -\operatorname{sen}\alpha)$, $(\cos\alpha, -\operatorname{sen}\alpha)$.
+      b) Lados $2\cos\alpha$ e $2\operatorname{sen}\alpha$. Com $\alpha = \frac{\pi}{6}$: $4 \cdot \frac12 \cdot \frac{\sqrt3}{2} = \sqrt3$.
+      c) $\operatorname{sen}\alpha = \cos\alpha$: $\alpha = \frac{\pi}{4}$, área $4 \cdot \frac12 = 2$.
+    resposta: 'b) $\sqrt3$; c) $\frac{\pi}{4}$ e área 2'
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\operatorname{sen}x = \frac13$, então $\operatorname{sen}(\pi - x) + \cos\left(\frac{\pi}{2} - x\right) + \operatorname{sen}(\pi + x)$ vale
+    opcoes: ['$-\frac13$', '$\frac13$', '$1$', '$0$', '$\frac23$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $\frac13 + \frac13 - \frac13 = \frac13$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Use os valores aproximados $\operatorname{sen}72^\circ \approx 0{,}95$ e $\cos 72^\circ \approx 0{,}31$.'
+    itens:
+    - 'Calcule $\operatorname{sen}108^\circ$.'
+    - 'Calcule $\cos 252^\circ$.'
+    - 'Calcule $\operatorname{sen}288^\circ$ e $\cos(-72^\circ)$.'
+    espaco: 62
+    resolucao: |
+      a) $108^\circ = 180^\circ - 72^\circ$: $0{,}95$.
+      b) $252^\circ = 180^\circ + 72^\circ$: $-0{,}31$.
+      c) $288^\circ = 360^\circ - 72^\circ$: $-0{,}95$. $\cos(-72^\circ) = \cos 72^\circ = 0{,}31$.
+    resposta: 'a) 0,95; b) $-0{,}31$; c) $-0{,}95$ e 0,31'
+
+  - estilo: Fuvest
+    enunciado: 'Sabe-se que $\operatorname{sen}x = \frac23$ e que $\frac{\pi}{2} < x < \pi$.'
+    itens:
+    - 'Calcule $\cos x$.'
+    - 'Calcule $\operatorname{sen}(\pi - x) + \cos(\pi + x)$.'
+    - 'Calcule $\cos\left(\frac{\pi}{2} + x\right) \cdot \operatorname{sen}\left(\frac{3\pi}{2} - x\right)$.'
+    espaco: 62
+    resolucao: |
+      a) $\cos^2 x = \frac59$; no 2º Q, $\cos x = -\frac{\sqrt5}{3}$.
+      b) $\operatorname{sen}x - \cos x = \frac23 + \frac{\sqrt5}{3} = \frac{2 + \sqrt5}{3}$.
+      c) $\cos\left(\frac{\pi}{2} + x\right) = -\operatorname{sen}x$ e $\operatorname{sen}\left(\frac{3\pi}{2} - x\right) = -\cos x$: $\operatorname{sen}x\cos x = \frac23 \cdot \left(-\frac{\sqrt5}{3}\right) = -\frac{2\sqrt5}{9}$.
+    resposta: 'a) $-\frac{\sqrt5}{3}$; b) $\frac{2 + \sqrt5}{3}$; c) $-\frac{2\sqrt5}{9}$'
