@@ -1,0 +1,529 @@
+# Aula 3.14.3 — Polinômios: relações de Girard
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: relações de Girard para graus 2, 3 e 4 (com coeficiente dominante qualquer); expressões
+# simétricas (soma dos quadrados, dos inversos, produtos deslocados); montar o polinômio a partir de soma e
+# produtos; raízes em PA e em PG; achar raízes com uma informação extra.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Em $ax^3 + bx^2 + cx + d$, com raízes $r_1$, $r_2$ e $r_3$, a soma é $-\frac{b}{a}$, a soma dos produtos dois a dois é $\frac{c}{a}$ e o produto é $-\frac{d}{a}$. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Para as raízes de $2x^3 - 8x^2 + 6x + 4$, complete.'
+      itens:
+      - 'Soma das raízes: {{4}}'
+      - 'Soma dos produtos dois a dois: {{3}}'
+      - 'Produto das raízes: {{-2}}'
+      espaco_item: 8
+      resolucao: |
+        Com $a = 2$: soma $= \frac{8}{2} = 4$; pares $= \frac{6}{2} = 3$; produto $= -\frac{4}{2} = -2$.
+      resposta: '4; 3; $-2$'
+    - enunciado: 'Associe cada polinômio à soma e ao produto das suas raízes.'
+      esquerda:
+      - '$x^3 - 3x^2 + x + 5$'
+      - '$x^3 + 3x^2 - x - 5$'
+      - '$x^3 - 5x^2 + x + 3$'
+      - '$2x^3 - 6x^2 + x - 10$'
+      - '$x^3 + 5x^2 - 3$'
+      direita:
+      - 'soma 3 e produto 5'
+      - 'soma $-3$ e produto 5'
+      - 'soma 5 e produto $-3$'
+      - 'soma 3 e produto $-5$'
+      - 'soma $-5$ e produto 3'
+      resolucao: |
+        Soma $-\frac{b}{a}$ e produto $-\frac{d}{a}$. No quarto, $a = 2$: soma $\frac{6}{2} = 3$ e produto $\frac{10}{2} = 5$.
+      resposta: 'De cima para baixo: 4, 2, 3, 1, 5'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Em $ax^2 + bx + c$, a soma das raízes é $-\frac{b}{a}$.'
+      - 'Em $x^3 + bx^2 + cx + d$, o produto das raízes é $d$.'
+      - 'Para usar as relações de Girard, é preciso conhecer as raízes.'
+      - 'Em $x^4 + bx^3 + cx^2 + dx + e$, o produto das raízes é $e$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) É $-d$: no grau 3, o sinal do produto troca. (F) Elas dão soma e produtos sem calcular as raízes. (V) No grau 4 (par), o produto é $+\frac{e}{a}$.
+      resposta: V, F, F, V
+    - enunciado: 'Complete a tabela com a soma e o produto das raízes.'
+      tabela:
+        cabecalho: ['Equação', 'Soma', 'Produto']
+        linhas:
+        - ['$x^2 - 7x + 10 = 0$', '${{7}}$', '${{10}}$']
+        - ['$3x^2 + 6x - 9 = 0$', '${{-2}}$', '${{-3}}$']
+        - ['$2x^2 - 5x = 0$', '${{5/2}}$', '${{0}}$']
+        - ['$x^2 - 16 = 0$', '${{0}}$', '${{-16}}$']
+      resolucao: |
+        Soma $-\frac{b}{a}$ e produto $\frac{c}{a}$. Na segunda: $-\frac{6}{3} = -2$ e $-\frac{9}{3} = -3$.
+      resposta: '7, 10; $-2$, $-3$; $\frac{5}{2}$, 0; 0, $-16$'
+    - enunciado: 'Escreva o polinômio de grau 3, coeficiente dominante 1, cujas raízes têm soma 2, soma dos produtos dois a dois $-5$ e produto $-6$.'
+      espaco: 8
+      resolucao: |
+        $x^3 - 2x^2 - 5x + 6$ (o coeficiente de $x^2$ é menos a soma, o termo independente é menos o produto). As raízes são 1, 3 e $-2$.
+      resposta: '$x^3 - 2x^2 - 5x + 6$'
+    - enunciado: 'Sendo $a$, $b$ e $c$ as raízes de $x^3 - 7x + 6$, calcule $\frac{1}{a} + \frac{1}{b} + \frac{1}{c}$.'
+      espaco: 8
+      resolucao: |
+        $\frac{ab + ac + bc}{abc} = \frac{-7}{-6} = \frac{7}{6}$.
+      resposta: '$\frac{7}{6}$'
+    - enunciado: 'Sabendo que 2 é raiz de $x^3 - x^2 - 4x + 4$, use as relações de Girard para encontrar as outras duas.'
+      espaco: 10
+      resolucao: |
+        Outras raízes $r$ e $s$: $2 + r + s = 1$, logo $r + s = -1$; $2rs = -4$, logo $rs = -2$. Soma $-1$ e produto $-2$: $1$ e $-2$.
+      resposta: '1 e $-2$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Ana disse que a soma das raízes de $2x^3 - 6x^2 + 5x - 1$ é 6.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        Faltou dividir pelo coeficiente dominante: a soma é $-\frac{-6}{2} = 3$.
+      resposta: '3'
+    - enunciado: 'Sendo $a$, $b$ e $c$ as raízes de $x^3 - 3x^2 - 4x + 12$, calcule $a^2 + b^2 + c^2$.'
+      espaco: 8
+      resolucao: |
+        $(a + b + c)^2 - 2(ab + ac + bc) = 9 - 2(-4) = 17$.
+      resposta: '17'
+    - enunciado: 'As raízes de $x^3 - 6x^2 + 3x + 10$ estão em PA. Encontre-as.'
+      espaco: 10
+      resolucao: |
+        Com $r - q$, $r$, $r + q$: soma $3r = 6$, $r = 2$. Outras: soma 4 e produto $\frac{-10}{2} = -5$: 5 e $-1$. Raízes $-1$, 2 e 5.
+      resposta: '$-1$, 2 e 5'
+    - enunciado: 'Para as raízes de $x^4 - 2x^3 - 3x^2 + 4x + 1$, complete.'
+      itens:
+      - 'Soma: {{2}}'
+      - 'Soma dos produtos dois a dois: {{-3}}'
+      - 'Soma dos produtos três a três: {{-4}}'
+      - 'Produto: {{1}}'
+      espaco_item: 8
+      resolucao: |
+        No grau 4 os sinais alternam: $-b$, $+c$, $-d$, $+e$.
+      resposta: '2; $-3$; $-4$; 1'
+    - enunciado: 'Sendo $p$ e $q$ as raízes de $x^2 - 5x + 3$, calcule $p^2q + pq^2$.'
+      espaco: 8
+      resolucao: |
+        $pq(p + q) = 3 \cdot 5 = 15$.
+      resposta: '15'
+    - enunciado: 'As raízes de $x^3 - 21x^2 + 84x - 64$ estão em PG. Encontre-as.'
+      espaco: 10
+      resolucao: |
+        Com $\frac{r}{q}$, $r$, $rq$: produto $r^3 = 64$, $r = 4$. Outras: soma 17 e produto 16: 1 e 16. Raízes 1, 4 e 16.
+      resposta: '1, 4 e 16'
+    - enunciado: 'Sendo $a$, $b$ e $c$ as raízes de $x^3 - 2x^2 + 5x - 1$, calcule $(1 + a)(1 + b)(1 + c)$.'
+      espaco: 8
+      resolucao: |
+        Desenvolvendo: $1 + (a + b + c) + (ab + ac + bc) + abc = 1 + 2 + 5 + 1 = 9$.
+      resposta: '9'
+    - enunciado: 'Escreva a equação do 2º grau, com coeficiente dominante 1, cujas raízes são $2 + \sqrt{3}$ e $2 - \sqrt{3}$.'
+      espaco: 8
+      resolucao: |
+        Soma 4 e produto $4 - 3 = 1$: $x^2 - 4x + 1 = 0$.
+      resposta: '$x^2 - 4x + 1 = 0$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove as relações de Girard do grau 2 a partir de $ax^2 + bx + c = a(x - r)(x - s)$.'
+      espaco: 10
+      resolucao: |
+        $a(x - r)(x - s) = ax^2 - a(r + s)x + ars$. Comparando: $b = -a(r + s)$ e $c = ars$, ou seja, $r + s = -\frac{b}{a}$ e $rs = \frac{c}{a}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove as relações de Girard do grau 3 desenvolvendo $a(x - r)(x - s)(x - t)$.'
+      espaco: 10
+      resolucao: |
+        $a[x^3 - (r + s + t)x^2 + (rs + rt + st)x - rst]$. Comparando com $ax^3 + bx^2 + cx + d$: $r + s + t = -\frac{b}{a}$, $rs + rt + st = \frac{c}{a}$, $rst = -\frac{d}{a}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $a^2 + b^2 + c^2 = (a + b + c)^2 - 2(ab + ac + bc)$ e explique por que isso permite calcular a soma dos quadrados das raízes sem conhecê-las.'
+      espaco: 10
+      resolucao: |
+        $(a + b + c)^2 = a^2 + b^2 + c^2 + 2ab + 2ac + 2bc$. O lado direito só usa soma e soma dos produtos dois a dois, que vêm dos coeficientes.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, se as raízes de $x^3 + bx^2 + cx + d$ estão em PA, então $-\frac{b}{3}$ é raiz.'
+      espaco: 10
+      resolucao: |
+        Raízes $r - q$, $r$, $r + q$: a soma é $3r = -b$, logo $r = -\frac{b}{3}$, que é a raiz do meio.
+      resposta: 'Ver resolução'
+    - enunciado: 'Sejam $r$, $s$ e $t$ as raízes de $x^3 + bx^2 + cx + d$, com $d \ne 0$. Prove que $\frac{1}{r}$, $\frac{1}{s}$ e $\frac{1}{t}$ são raízes de $dx^3 + cx^2 + bx + 1$.'
+      espaco: 10
+      resolucao: |
+        Como $d \ne 0$, nenhuma raiz é 0. Para $y = \frac{1}{r}$: $dy^3 + cy^2 + by + 1 = \frac{d + cr + br^2 + r^3}{r^3} = \frac{P(r)}{r^3} = 0$. O mesmo vale para $s$ e $t$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Num projeto de engenharia, os três instantes em que um sinal se anula são as raízes do polinômio $P(x) = 2x^3 - 9x^2 + 7x + 6$. O técnico responsável não precisa de cada instante separadamente: para ajustar o equipamento, basta saber a soma das três raízes, e ele quer obtê-la direto dos coeficientes.
+    enunciado: |
+      A soma das raízes de $P$ é
+    opcoes: ['$4{,}5$', '$9$', '$-4{,}5$', '$3$', '$7$']
+    correta: A
+    resolucao: |
+      $-\frac{b}{a} = \frac{9}{2} = 4{,}5$. (As raízes são 2, 3 e $-\frac{1}{2}$.)
+
+  - estilo: Fuvest
+    enunciado: |
+      O produto das raízes de $3x^3 - x^2 + 4x - 12$ é
+    opcoes: ['$-4$', '$4$', '$12$', '$-12$', '$\frac{1}{3}$']
+    correta: B
+    resolucao: |
+      $-\frac{d}{a} = -\frac{-12}{3} = 4$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Se $a$ e $b$ são as raízes de $x^2 - 6x + 4$, então $a^2 + b^2$ vale
+    opcoes: ['$36$.', '$20$.', '$28$.', '$32$.']
+    correta: C
+    resolucao: |
+      $(a + b)^2 - 2ab = 36 - 8 = 28$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere $P(x) = x^3 - 4x^2 + x + 6$, de raízes $a$, $b$ e $c$. Assinale o que for correto.
+    proposicoes:
+    - '$a + b + c = 4$.'
+    - '$ab + ac + bc = 1$.'
+    - '$abc = -6$.'
+    - '$\frac{1}{a} + \frac{1}{b} + \frac{1}{c} = -\frac{1}{6}$.'
+    - '$a^2 + b^2 + c^2 = 18$.'
+    - 'As raízes de $P$ são $-1$, 2 e 3.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01), 02) e 03) Girard. 08) $\frac{1}{-6}$. 16) Incorreta: $16 - 2 = 14$. 32) $(x + 1)(x - 2)(x - 3)$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Para treinar as relações de Girard, um professor escreveu no quadro cinco equações do 3º grau, nomeadas de E1 a E5, e pediu aos alunos que, sem resolver nenhuma delas, apontassem aquela cujas três raízes têm soma igual a 6, lembrando de dividir pelo coeficiente dominante.
+    tabela:
+      cabecalho: ['Nome', 'Equação']
+      linhas:
+      - ['E1', '$x^3 - 6x + 2 = 0$']
+      - ['E2', '$2x^3 - 6x^2 + 1 = 0$']
+      - ['E3', '$x^3 + 6x^2 - 5 = 0$']
+      - ['E4', '$3x^3 - 18x^2 + x - 4 = 0$']
+      - ['E5', '$x^3 - 2x^2 + 6x = 0$']
+    enunciado: |
+      A equação cujas raízes têm soma 6 é
+    opcoes: ['E1.', 'E2.', 'E3.', 'E4.', 'E5.']
+    correta: D
+    resolucao: |
+      Somas: E1, 0; E2, 3; E3, $-6$; E4, $\frac{18}{3} = 6$; E5, 2.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre as raízes de $ax^3 + bx^2 + cx + d$, com $a \ne 0$.
+    afirmativas:
+    - 'A soma das raízes é $-\frac{b}{a}$.'
+    - 'O produto das raízes é $\frac{d}{a}$.'
+    - 'A soma dos produtos dois a dois é $\frac{c}{a}$.'
+    - 'Se $d = 0$, então 0 é uma das raízes.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'II e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta. II. Incorreta: é $-\frac{d}{a}$. III. Correta. IV. Correta: o produto $-\frac{d}{a}$ é 0.
+
+  - estilo: Unesp
+    enunciado: |
+      Duas raízes de $x^3 - 3x^2 + kx + 12$ são opostas. O valor de $k$ é
+    opcoes: ['$-4$', '$4$', '$-12$', '$3$', '$12$']
+    correta: A
+    resolucao: |
+      Raízes $r$, $-r$, $t$: soma $t = 3$. $P(3) = 27 - 27 + 3k + 12 = 0$: $k = -4$. ($(x - 3)(x^2 - 4)$.)
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      A figura mostra o gráfico de um polinômio $P(x) = x^3 + bx^2 + cx + d$, que corta o eixo $x$ nos pontos indicados.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.65]
+        \draw[mudo, ->] (-1.9,0) -- (4.9,0) node[right, font=\scriptsize] {$x$};
+        \draw[mudo, ->] (0,-1.5) -- (0,1.1) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1pt, domain=-1.4:4.3, samples=70] plot (\x, {0.15*(\x+1)*(\x-1)*(\x-4)});
+        \foreach \t in {-1, 1, 4} \fill[ink] (\t,0) circle (1.5pt) node[below right, font=\scriptsize] {$\t$};
+        \end{scope}
+    enunciado: |
+      O valor de $b$ é
+    opcoes: ['$4$.', '$-4$.', '$-1$.', '$1$.']
+    correta: B
+    resolucao: |
+      A soma das raízes é $-1 + 1 + 4 = 4 = -b$: $b = -4$.
+
+  - estilo: Fuvest
+    enunciado: |
+      As raízes de $x^3 - 12x^2 + 39x - 28$ estão em progressão aritmética. A razão positiva dessa progressão é
+    opcoes: ['$1$', '$2$', '$3$', '$4$', '$6$']
+    correta: C
+    resolucao: |
+      Soma $3r = 12$: a do meio é 4. As outras têm soma 8 e produto 7: 1 e 7. PA 1, 4, 7, razão 3.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $P(x) = 2x^3 - 3x^2 - 3x + 2$. Assinale o que for correto.
+    proposicoes:
+    - 'A soma das raízes de $P$ é $\frac{3}{2}$.'
+    - 'O produto das raízes de $P$ é $-1$.'
+    - 'A soma dos produtos dois a dois das raízes é $-\frac{3}{2}$.'
+    - '$\frac{1}{2}$ é raiz de $P$.'
+    - 'A soma dos inversos das raízes é $\frac{3}{2}$.'
+    - 'A soma dos quadrados das raízes é 5.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $\frac{3}{2}$. 02) $-\frac{2}{2}$. 04) $-\frac{3}{2}$. 08) $P = (x - 2)(2x - 1)(x + 1)$. 16) $\frac{-3/2}{-1} = \frac{3}{2}$. 32) Incorreta: $\frac{9}{4} + 3 = \frac{21}{4}$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Uma fábrica produz caixas em forma de paralelepípedo reto-retângulo. As medidas das arestas de um modelo, em centímetros, são as três raízes de $x^3 - 10x^2 + 31x - 30$. Para encomendar o papelão, o setor de compras precisa da área total da caixa, que é a soma das áreas das seis faces.
+    enunciado: |
+      A área total da caixa, em centímetros quadrados, é
+    opcoes: ['$62$', '$31$', '$30$', '$124$', '$40$']
+    correta: A
+    resolucao: |
+      Área total $= 2(ab + ac + bc) = 2 \cdot 31 = 62$. (Arestas 2, 3 e 5.)
+
+  - estilo: UFPR
+    enunciado: |
+      Sejam $a$, $b$ e $c$ as raízes de $x^3 - 5x^2 + 2x + 8$. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$a + b + c = 5$.'
+    - '$abc = 8$.'
+    - '$ab + ac + bc = 2$.'
+    - '$a^2 + b^2 + c^2 = 21$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      (V) (F) $abc = -8$. (V) (V) $25 - 4 = 21$.
+
+  - estilo: Enem
+    texto: |
+      Num exercício, um aluno precisava encontrar a equação do 2º grau, com coeficiente dominante 1, cujas raízes são $3 + \sqrt{2}$ e $3 - \sqrt{2}$. Em vez de desenvolver o produto dos fatores, ele usou soma e produto. Os colegas escreveram as equações do quadro.
+    tabela:
+      cabecalho: ['Nome', 'Equação']
+      linhas:
+      - ['E1', '$x^2 + 6x + 7 = 0$']
+      - ['E2', '$x^2 - 6x + 11 = 0$']
+      - ['E3', '$x^2 - 7x + 6 = 0$']
+      - ['E4', '$x^2 - 6x + 7 = 0$']
+      - ['E5', '$x^2 - 3x + 7 = 0$']
+    enunciado: |
+      A equação correta é
+    opcoes: ['E1.', 'E2.', 'E3.', 'E4.', 'E5.']
+    correta: D
+    resolucao: |
+      Soma 6 e produto $9 - 2 = 7$: $x^2 - 6x + 7 = 0$.
+
+  - estilo: Unesp
+    enunciado: |
+      Sendo $a$, $b$ e $c$ as raízes de $x^3 - 2x^2 + 3x - 5$, o valor de $\frac{1}{ab} + \frac{1}{ac} + \frac{1}{bc}$ é
+    opcoes: ['$\frac{5}{2}$', '$\frac{2}{5}$', '$\frac{3}{5}$', '$-\frac{2}{5}$', '$\frac{3}{2}$']
+    correta: B
+    resolucao: |
+      $\frac{c + b + a}{abc} = \frac{2}{5}$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere $P(x) = x^4 - 5x^3 + 5x^2 + 5x - 6$. Assinale o que for correto.
+    proposicoes:
+    - 'A soma das raízes de $P$ é 5.'
+    - 'O produto das raízes de $P$ é $-6$.'
+    - 'A soma dos produtos dois a dois das raízes é 5.'
+    - 'A soma dos produtos três a três das raízes é $-5$.'
+    - 'A soma dos quadrados das raízes é 10.'
+    - '1 e $-1$ são raízes de $P$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      Grau 4: $-b$, $+c$, $-d$, $+e$. 16) Incorreta: $25 - 10 = 15$. 32) $P(1) = P(-1) = 0$; as raízes são $-1$, 1, 2 e 3.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Se as raízes de $x^3 + px + q$ estão em progressão aritmética, então
+    opcoes: ['$q = 0$.', '$p = 0$.', '$p = q$.', '$p + q = 0$.']
+    correta: A
+    resolucao: |
+      A soma é 0, então a raiz do meio é 0, e $q = P(0) = 0$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Três resistores de um circuito têm resistências, em ohms, iguais às raízes de $x^3 - 14x^2 + 56x - 64$. O fabricante informa que esses valores estão em progressão geométrica. Um técnico quer descobrir os valores usando só as relações de Girard, começando pelo produto das raízes.
+    enunciado: |
+      O valor do termo do meio da progressão é
+    opcoes: ['$2$', '$8$', '$4$', '$16$', '$64$']
+    correta: C
+    resolucao: |
+      Com $\frac{r}{q}$, $r$, $rq$: $r^3 = 64$, $r = 4$. (Os outros são 2 e 8.)
+
+  - estilo: Unesp
+    enunciado: |
+      A soma dos quadrados das três resistências é
+    opcoes: ['$196$', '$56$', '$112$', '$84$', '$140$']
+    correta: D
+    resolucao: |
+      $14^2 - 2 \cdot 56 = 196 - 112 = 84$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Uma das raízes de $x^3 - 8x^2 + kx - 12$ é igual à soma das outras duas. O valor de $k$ é
+    opcoes: ['$12$', '$8$', '$15$', '$-19$', '$19$']
+    correta: E
+    resolucao: |
+      Se $r = s + t$, a soma é $2r = 8$, $r = 4$. $P(4) = 64 - 128 + 4k - 12 = 0$: $k = 19$. (Raízes 1, 3 e 4.)
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra a parábola $y = x^2 - 5x + c$, que corta o eixo $x$ nos pontos de abscissas $x_1$ e $x_2$, com $x_2 = 4x_1$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.65]
+        \draw[mudo, ->] (-0.8,0) -- (5.9,0) node[right, font=\scriptsize] {$x$};
+        \draw[mudo, ->] (0,-1.1) -- (0,2.1) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1pt, domain=-0.3:5.3, samples=60] plot (\x, {0.35*(\x*\x-5*\x+4)});
+        \fill[ink] (1,0) circle (1.5pt) node[below left, font=\scriptsize] {$x_1$};
+        \fill[ink] (4,0) circle (1.5pt) node[below right, font=\scriptsize] {$x_2$};
+        \end{scope}
+    enunciado: |
+      O valor de $c$ é
+    opcoes: ['$5$', '$4$', '$1$', '$-4$', '$16$']
+    correta: B
+    resolucao: |
+      $x_1 + 4x_1 = 5$: $x_1 = 1$, $x_2 = 4$. $c = x_1 x_2 = 4$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere $P(x) = x^3 - 3x^2 - 6x + m$.'
+    itens:
+    - 'Prove que, se as raízes de $P$ estão em PA, a raiz do meio é 1.'
+    - 'Encontre $m$ para que as raízes estejam em PA.'
+    - 'Com esse $m$, encontre as três raízes.'
+    espaco: 62
+    resolucao: |
+      a) Com $r - q$, $r$, $r + q$: $3r = 3$, $r = 1$.
+      b) $P(1) = 1 - 3 - 6 + m = 0$: $m = 8$.
+      c) As outras têm soma 2 e produto $\frac{-8}{1} = -8$: 4 e $-2$. Raízes $-2$, 1 e 4.
+    resposta: 'b) $m = 8$; c) $-2$, 1 e 4'
+
+  - estilo: Unicamp
+    texto: |
+      As medidas das arestas de uma caixa em forma de paralelepípedo reto-retângulo, em cm, são as raízes de $x^3 - 9x^2 + 26x - 24$.
+    enunciado: ''
+    itens:
+    - 'Calcule o volume da caixa.'
+    - 'Calcule a área total da caixa.'
+    - 'Calcule a medida da diagonal da caixa, sem encontrar as arestas.'
+    espaco: 62
+    resolucao: |
+      a) $abc = 24$ cm³.
+      b) $2(ab + ac + bc) = 52$ cm².
+      c) $d^2 = a^2 + b^2 + c^2 = 81 - 52 = 29$: $d = \sqrt{29}$ cm. (Arestas 2, 3 e 4.)
+    resposta: 'a) 24 cm³; b) 52 cm²; c) $\sqrt{29}$ cm'
+
+  - estilo: ITA
+    enunciado: |
+      Sejam $a$, $b$ e $c$ as raízes de $x^3 - x - 1$. O valor de $a^4 + b^4 + c^4$ é
+    opcoes: ['$2$', '$0$', '$3$', '$-2$', '$4$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      Cada raiz satisfaz $x^3 = x + 1$, logo $x^4 = x^2 + x$. Somando: $\sum a^2 + \sum a$. $\sum a = 0$ e $\sum a^2 = 0 - 2(-1) = 2$. Total 2.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Considere $x^2 - 6x + m = 0$, de raízes $a$ e $b$.'
+    itens:
+    - 'Escreva $a^2 + b^2$ em função de $m$.'
+    - 'Encontre $m$ para que $a^2 + b^2 = 20$.'
+    - 'Com esse $m$, calcule $\frac{1}{a} + \frac{1}{b}$ e confira resolvendo a equação.'
+    espaco: 62
+    resolucao: |
+      a) $36 - 2m$.
+      b) $36 - 2m = 20$: $m = 8$.
+      c) $\frac{a + b}{ab} = \frac{6}{8} = \frac{3}{4}$. Raízes 2 e 4: $\frac{1}{2} + \frac{1}{4} = \frac{3}{4}$.
+    resposta: 'b) $m = 8$; c) $\frac{3}{4}$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere as relações de Girard. Assinale o que for correto.
+    proposicoes:
+    - 'Em $ax^2 + bx + c$, o produto das raízes é $\frac{c}{a}$.'
+    - 'Se as raízes de $x^3 + bx^2 + cx + d$ estão em PA, então $-\frac{b}{3}$ é raiz.'
+    - 'A soma dos inversos das raízes de $x^3 - 2x^2 + 4x - 8$ é $\frac{1}{2}$.'
+    - 'O polinômio de coeficiente dominante 1 e raízes 1, 2 e $-3$ é $x^3 - 7x + 6$.'
+    - 'Em $x^4 + bx^3 + cx^2 + dx + e$, a soma das raízes é $e$.'
+    - 'As raízes de $x^3 - 13x^2 + 39x - 27$ estão em PG, e a do meio é 3.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) Correta. 02) A do meio é $-\frac{b}{3}$. 04) $\frac{4}{8}$. 08) Soma 0, pares $2 - 3 - 6 = -7$, produto $-6$. 16) Incorreta: é $-b$. 32) $r^3 = 27$; raízes 1, 3 e 9.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Sejam $a$, $b$ e $c$ as raízes de $x^3 + px + q$.'
+    itens:
+    - 'Prove que $a + b + c = 0$ e que $a^2 + b^2 + c^2 = -2p$.'
+    - 'Prove que $a^3 + b^3 + c^3 = -3q$. (Some $x^3 = -px - q$ nas três raízes.)'
+    - 'Calcule $a^2 + b^2 + c^2$ e $a^3 + b^3 + c^3$ para $x^3 - 7x + 6$ e confira com as raízes.'
+    espaco: 62
+    resolucao: |
+      a) Não há termo em $x^2$: soma 0. $\sum a^2 = 0^2 - 2p = -2p$.
+      b) $\sum a^3 = -p \sum a - 3q = -3q$.
+      c) $14$ e $-18$. Raízes 1, 2 e $-3$: $1 + 4 + 9 = 14$ e $1 + 8 - 27 = -18$.
+    resposta: 'c) 14 e $-18$'
+
+  - estilo: Unicamp
+    enunciado: 'As raízes de $x^3 - 9x^2 + 23x - 15$ estão em PA.'
+    itens:
+    - 'Encontre a raiz do meio.'
+    - 'Encontre as três raízes.'
+    - 'Escreva o polinômio de coeficiente dominante 1 cujas raízes são os dobros dessas.'
+    espaco: 62
+    resolucao: |
+      a) $3r = 9$: $r = 3$.
+      b) Outras: soma 6 e produto 5: 1 e 5. Raízes 1, 3 e 5.
+      c) Raízes 2, 6 e 10: soma 18, pares $12 + 20 + 60 = 92$, produto 120. $x^3 - 18x^2 + 92x - 120$.
+    resposta: 'b) 1, 3 e 5; c) $x^3 - 18x^2 + 92x - 120$'
+
+  - estilo: Fuvest
+    enunciado: |
+      A soma dos quadrados das raízes complexas de $2x^3 - 4x^2 + 3x - 1$ é
+    opcoes: ['$4$', '$1$', '$7$', '$-1$', '$\frac{5}{2}$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      Soma 2 e pares $\frac{3}{2}$: $4 - 3 = 1$. (Raízes 1 e $\frac{1 \pm i}{2}$.)
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere $P(x) = x^4 - 10x^3 + 35x^2 - 50x + 24$.'
+    itens:
+    - 'Dê a soma, a soma dos produtos dois a dois, a dos produtos três a três e o produto das raízes.'
+    - 'Calcule a soma dos inversos das raízes.'
+    - 'Calcule a soma dos quadrados das raízes e confira, sabendo que as raízes são 1, 2, 3 e 4.'
+    espaco: 62
+    resolucao: |
+      a) 10; 35; 50; 24.
+      b) $\frac{50}{24} = \frac{25}{12}$.
+      c) $100 - 70 = 30$, e $1 + 4 + 9 + 16 = 30$.
+    resposta: 'b) $\frac{25}{12}$; c) 30'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $P(x) = x^3 + kx^2 + 14x - 8$, com raízes em PG.'
+    itens:
+    - 'Para raízes $\frac{r}{q}$, $r$, $rq$, prove que a soma dos produtos dois a dois é $r$ vezes a soma das raízes.'
+    - 'Encontre a raiz do meio e o valor de $k$.'
+    - 'Encontre as três raízes.'
+    espaco: 62
+    resolucao: |
+      a) $\frac{r^2}{q} + r^2 q + r^2 = r\left(\frac{r}{q} + rq + r\right)$.
+      b) Produto $r^3 = 8$: $r = 2$. Então $14 = 2 \cdot (-k)$: $k = -7$.
+      c) Outras: soma 5 e produto 4: 1 e 4. Raízes 1, 2 e 4.
+    resposta: 'b) $r = 2$, $k = -7$; c) 1, 2 e 4'
