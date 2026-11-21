@@ -267,9 +267,9 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.match(nativeSharePayload.text,/Olha essa aula de matemática/);
  assert.equal(nativeSharePayload.url,'https://matmatmat.test/2/3/2/');
  assert.equal(d.querySelector('#lesson-share-options').hidden,true);
- // Página da aula: sem o fundo roxo; título, as três listas (PDF, caderno, GoodNotes, Fazer agora) e o resumo recolhido no fim.
+ // Página da aula: sem o fundo roxo; título e as três listas (PDF, caderno, GoodNotes, Fazer agora). Sem resumo.
  assert.equal(d.querySelector('.aula-hero'),null,'A aula é a própria página, sem o cabeçalho roxo');
- assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),['entenda']);
+ assert.deepEqual([...d.querySelectorAll('.aula-step')].map(x=>x.id),[],'A aula é só as listas');
  assert.equal(d.querySelector('#levar'),null);
  assert.equal(d.querySelector('.aula-rail'),null);
  assert.deepEqual([...d.querySelectorAll('.av-listas .lst-titulo')].map(b=>b.textContent),['Lista de fixação','Lista de vestibular','Lista de aprofundamento']);
@@ -278,15 +278,15 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(d.querySelectorAll('.av-listas a[href^="/caderno/?aula=2.3.2&lista="]').length,3,'Cada lista abre no caderno digital');
  assert.deepEqual([...d.querySelectorAll('.av-listas [data-goodnotes]')].map(b=>b.dataset.goodnotes),['/pdfs/caderno-fixacao-2.3.2.pdf','/pdfs/caderno-vestibular-2.3.2.pdf','/pdfs/caderno-aprofundamento-2.3.2.pdf'],'Cada lista vai para o GoodNotes');
  assert.deepEqual([...d.querySelectorAll('.av-listas [data-fazer]')].map(b=>b.dataset.fazer),['fixacao','vestibular','aprofundamento'],'Fazer agora em cada lista');
- assert.ok(d.querySelector('.av-resumo[href="#entenda"]'),'Atalho para o resumo, que fica no fim');
+ assert.equal(d.querySelector('.av-resumo'),null,'Sem atalho para resumo');
  assert.equal(d.querySelector('.lst-meta'),null,'Só o nome da lista, sem a contagem');
  assert.deepEqual([...d.querySelectorAll('.av-icones .lesson-tool')].map(b=>b.title),['Já estudei','Favoritar','Compartilhar'],'Ações só com ícones, com o nome na dica');
- assert.equal(d.querySelector('#resumo-det').open,false,'Resumo recolhido');
+ assert.equal(d.querySelector('#resumo-det'),null,'Sem resumo');
  assert.equal(d.querySelector('.aula-formula'),null);
  assert.equal(d.querySelector('.aula-trail'),null,'Sem a trilha de aulas');
  assert.ok(d.querySelector('.aula-crumbs a[href="/funcao-quadratica/"]'),'Aula volta para o assunto');
  assert.match(d.querySelector('.aula-kicker').textContent,/Aula 2 de 6 em Função quadrática/);
- assert.ok(d.querySelector('#entenda .aula-resumo'),'Resumo curto da aula');
+ assert.equal(d.querySelector('#entenda'),null,'Sem resumo da aula');
  assert.equal(d.querySelectorAll('[data-check]').length,0,'Sem checagem rápida');
  assert.ok(d.querySelector('.bk-promo[data-promo="modulo"] a[href="/livros/?volume=2"]'),'Oferta do Volume 2 na aula');
  // Fazer agora: a lista em tela cheia, uma questão de cada vez, com voltar.
@@ -340,7 +340,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  dom.window.close();
  // Aula sem listas publicadas (trocar por outra quando esta ganhar listas): teoria e materiais, sem etapas vazias; ?tab= antigo ainda leva à etapa.
  ({w,d,dom}=await boot('https://matmatmat.test/1/1/7/?tab=resumo'));
- assert.ok(d.querySelector('#entenda'));
+ assert.equal(d.querySelector('#entenda'),null,'Sem resumo');
  assert.equal(d.querySelector('#prova'),null);
  assert.ok(d.querySelector('#levar'));
  await new Promise(r=>setTimeout(r,120));

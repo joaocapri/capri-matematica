@@ -41,3 +41,4 @@ Crie ou atualize \`conteudos/2.3.2.json\` (substitua o código) com:
 
 ## Recursos em vídeo
 Aba de vídeos pode usar pesquisa temática claramente identificada. Não apresentar buscas como vídeos específicos já selecionados.
+- **Sem resumo (nov/2026):** a página da aula mostra só as listas (PDF, caderno, GoodNotes e Fazer agora). A teoria em `conteudos/` não aparece mais no site; ela só serve de referência para as listas não repetirem exemplos.

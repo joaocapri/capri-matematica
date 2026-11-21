@@ -551,7 +551,7 @@ function home(){
  /* ---------- Página de resultados ---------- */
  function steps(l,intent){
   var lists=trHasLists(l.id),u=href(l);
-  var st=[['entenda','Teoria',true],['pratique','20 exercícios',lists],['prova','Modo prova',lists],['levar','PDFs e vídeos',true]].filter(function(s){return s[2]});
+  var st=[['pratique','20 exercícios',lists],['prova','Modo prova',lists],['levar','PDFs',true]].filter(function(s){return s[2]});
   return '<nav class="tr-steps" aria-label="Etapas da aula '+l.id+'">'+st.map(function(s){return '<a href="'+u+'#'+s[0]+'"'+(intent===s[0]?' class="is-on"':'')+'>'+s[1]+'</a>'}).join('')+'</nav>';
  }
  function files(id){var fs=bListFiles(id);return fs.length?'<div class="hs-files">'+fs.map(function(f){var nome=/vestibular-/.test(f.url)?'Lista de vestibular':/aprofundamento-/.test(f.url)?'Lista de aprofundamento':'Lista de fixação';return '<a class="hs-file" href="'+esc(f.url)+'" target="_blank" rel="noopener">'+AULA_SVG.down+'<span>'+nome+'</span><small>PDF</small></a>'}).join('')+'</div>':''}
@@ -767,7 +767,7 @@ function trAreasPage(){
   +'<div class="aula-hero-grid"><div>'
   +'<p class="aula-kicker">'+ASSUNTOS.length+' assuntos e '+total+' aulas</p>'
   +'<h1 id="tr-titulo">Escolha o assunto</h1>'
-  +'<p class="aula-summary">Toque no assunto e escolha a aula. Cada aula tem um resumo curto, a lista de fixação e a lista de vestibular, com gabarito resolvido.</p>'
+  +'<p class="aula-summary">Toque no assunto e escolha a aula. Cada aula tem as listas de fixação, de vestibular e de aprofundamento, com gabarito resolvido.</p>'
   +'<div class="aula-hero-cta"><a class="aula-btn aula-btn-lime" href="/teste-seu-nivel/">Descobrir por onde começar</a><a class="aula-btn aula-btn-ghost" href="/explorar/?todas=1">Ver todas as aulas</a></div>'
   +(d?'<div class="tr-hero-progress">'+trMeter(d,total,d+' de '+total+' aulas estudadas')+'<span>Você já estudou <b>'+plural(d,'aula','aulas')+'</b> de '+total+'.</span></div>':'')
   +(saved.size?'<a class="tr-hero-link" href="/explorar/?favoritos=1">'+TR_SVG.heart+'Suas favoritas ('+saved.size+')</a>':'')
@@ -831,17 +831,17 @@ function trTopicPage(area,topic){
   +(d?'<div class="tr-hero-progress">'+trMeter(d,ls.length,d+' de '+ls.length+' aulas estudadas')+'<span>'+(d===ls.length?'<b>Módulo completo.</b> Todas as aulas estão marcadas como estudadas.':'<b>'+d+' de '+ls.length+'</b> aulas estudadas.')+'</span></div>':'')
   +'</div>'+(ls[0]?'<figure class="aula-formula"><div class="aula-formula-card"><div class="aula-formula-math tr-hero-formula" id="aula-formula-math" data-formula="'+ls.map(function(l){return l.id}).join(',')+'" data-mini></div></div><figcaption>A fórmula-chave do módulo</figcaption></figure>':'')+'</div>'
   +(topics.length>1?trail:'')+'</div></section>';
- var list='<section class="shell tr-body" id="aulas"><header class="tr-head"><h2>As aulas, em ordem</h2><p>'+(anyLists?'Toque no título para abrir a aula, ou vá direto à etapa que você quer: teoria, exercícios, modo prova ou PDFs.':'Toque no título para abrir a aula.')+'</p></header><ol class="tr-route tr-lessons">'+ls.map(function(l,k){
+ var list='<section class="shell tr-body" id="aulas"><header class="tr-head"><h2>As aulas, em ordem</h2><p>'+(anyLists?'Toque no título para abrir a aula, ou vá direto à etapa que você quer: exercícios, modo prova ou PDFs.':'Toque no título para abrir a aula.')+'</p></header><ol class="tr-route tr-lessons">'+ls.map(function(l,k){
   var p=trProgress(l),lists=trHasLists(l.id),u=href(l);
   var state=p.done?'is-done':p.started?'is-started':'';
-  var steps=[['entenda','Teoria',true],['pratique','20 exercícios',lists],['prova','Modo prova',lists],['levar','PDFs',lists]].filter(function(s){return s[2]});
-  var segs=[p.entenda,lists&&p.fix>=20,p.best!=null,p.pdf];
-  var label=p.done?'Estudada':p.best!=null?'Melhor nota na prova: '+p.best+' de 20':p.fix?plural(p.fix,'exercício conferido','exercícios conferidos'):p.entenda?'Teoria concluída':'';
+  var steps=[['pratique','20 exercícios',lists],['prova','Modo prova',lists],['levar','PDFs',lists]].filter(function(s){return s[2]});
+  var segs=[lists&&p.fix>=20,p.best!=null,p.pdf];
+  var label=p.done?'Estudada':p.best!=null?'Melhor nota na prova: '+p.best+' de 20':p.fix?plural(p.fix,'exercício conferido','exercícios conferidos'):'';
   return '<li class="tr-stop '+state+'"><span class="tr-stop-n" aria-hidden="true">'+(p.done?TR_SVG.check:(k+1))+'</span>'
    +'<article class="tr-lesson"><div class="tr-lesson-main"><p class="tr-lesson-kicker"><span class="aula-id">'+l.id+'</span>'+(saved.has(l.id)?'<span class="tr-fav" title="Favorita">'+TR_SVG.heart+'<span class="sr-only">Favorita</span></span>':'')+(label?'<span class="tr-tag'+(p.done?' tr-tag-done':'')+'">'+(p.done?TR_SVG.check:'')+esc(label)+'</span>':'')+'</p>'
    +'<h3><a href="'+u+'">'+esc(l.title)+'</a></h3><p class="tr-lesson-sum">'+esc(l.summary||'')+'</p>'
    +'<div class="tr-lesson-foot"><nav class="tr-steps" aria-label="Etapas da aula '+l.id+'">'+steps.map(function(s){return '<a href="'+u+'#'+s[0]+'">'+s[1]+'</a>'}).join('')+'</nav>'
-   +(p.started&&!p.done?'<span class="tr-segs" role="img" aria-label="Etapas concluídas: '+segs.filter(Boolean).length+' de 4">'+segs.map(function(s){return '<i class="'+(s?'on':'')+'"></i>'}).join('')+'</span>':'')+'</div></div>'
+   +(p.started&&!p.done?'<span class="tr-segs" role="img" aria-label="Etapas concluídas: '+segs.filter(Boolean).length+' de '+segs.length+'">'+segs.map(function(s){return '<i class="'+(s?'on':'')+'"></i>'}).join('')+'</span>':'')+'</div></div>'
    +'<div class="tr-formula" aria-hidden="true"><div class="tr-formula-math" data-formula="'+l.id+'" data-mini></div></div></article></li>';
  }).join('')+'</ol>'
   +trPdfPanel('assunto',topic.id,'Listas gerais de '+topic.title);
@@ -1021,8 +1021,7 @@ async function lessonPage(){
  if(fixQs.length)steps.push({id:'pratique',nome:'Fixação no site'});
  if(vestQs.length)steps.push({id:'prova',nome:'Vestibular no site'});
  if(aprQs.length)steps.push({id:'aprofunde',nome:'Aprofundamento no site'});
- steps.push({id:'entenda',nome:'Resumo da aula'});
- document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-goto="entenda"]');if(a){var d=document.getElementById('resumo-det');if(d)d.open=true}});
+ /* A aula não tem mais resumo: só as listas. */
 
  function lessonPdfFiles(){
   var linked=materialsAt('aula',id).concat(materialsAt('assunto',topicId),materialsAt('area',subjectArea.id));
@@ -1056,7 +1055,6 @@ async function lessonPage(){
   +'<div class="av-kick"><p class="aula-kicker"><span class="aula-id">'+id+'</span>'+(near.length>1?'Aula '+(nearIndex+1)+' de '+near.length+'<span class="av-kick-em"> em '+esc(grupo)+'</span>':esc(grupo))+'</p><div class="av-icones">'+tools+'</div></div>'
   +'<h1 id="aula-titulo">'+esc(l.title)+'</h1>'
   +(l.summary?'<p class="av-sub">'+esc(l.summary)+'</p>':'')
-  +'<a class="av-resumo" href="#entenda" data-goto="entenda">'+AULA_SVG.resumo+'Ver o resumo da aula</a>'
   +blocoListas
   +'</div></section>';
 
@@ -1083,9 +1081,7 @@ async function lessonPage(){
    +'<div class="aula-check-end" id="check-end" hidden></div></div>';
  }
  var okLabel='Marcar resumo como lido';
- var secEntenda='<section class="aula-step" id="entenda" data-step="entenda" aria-labelledby="h-entenda">'+head('entenda','Resumo da aula','As fórmulas e as armadilhas, para consultar quando precisar.')
-  +'<details class="aula-resumo-det" id="resumo-det"><summary><span>Mostrar o resumo</span></summary>'+teoriaHtml()+checkHtml()
-  +'<div class="aula-step-end"><button type="button" class="aula-btn aula-btn-ink" id="entenda-ok" aria-pressed="'+(!!st.entenda)+'">'+(st.entenda?'Resumo lido':okLabel)+'</button></div></details></section>';
+ var secEntenda='';
 
 
 
@@ -1158,7 +1154,7 @@ async function lessonPage(){
   })});
  });
  var okBtn=document.getElementById('entenda-ok');
- okBtn.addEventListener('click',function(){st.entenda=!st.entenda;store.save();okBtn.setAttribute('aria-pressed',String(!!st.entenda));okBtn.textContent=st.entenda?'Teoria concluída':okLabel;updateProgress();if(st.entenda)goTo(steps[1]?steps[1].id:'levar')});
+ if(okBtn)okBtn.addEventListener('click',function(){st.entenda=!st.entenda;store.save();okBtn.setAttribute('aria-pressed',String(!!st.entenda));okBtn.textContent=st.entenda?'Teoria concluída':okLabel;updateProgress();if(st.entenda)goTo(steps[1]?steps[1].id:'levar')});
 
  /* ---------- Pratique ---------- */
  var level=0;
@@ -1435,11 +1431,10 @@ async function lessonPage(){
 
  /* ---------- Matemática e chegada direta a uma etapa ---------- */
  tex(document.querySelector('.av-topo'));
- tex(document.getElementById('entenda'));
  topOffset();
  if(window.addEventListener)window.addEventListener('resize',function(){topOffset()});
  var requested=new URLSearchParams(location.search).get('tab')||location.hash.replace('#','');
- var map={resumo:'entenda',teoria:'entenda',quiz:vestQs.length?'prova':'entenda',videos:'levar',arquivos:'levar'};
+ var map={resumo:'levar',teoria:'levar',entenda:'levar',quiz:vestQs.length?'prova':'levar',videos:'levar',arquivos:'levar'};
  var target=map[requested]||requested;
  var pedida=new URLSearchParams(location.search).get('fazer');
  if(RV[pedida]&&RV[pedida].qs.length)rvAbrir(pedida,null,false);

@@ -1969,3 +1969,4 @@ html.rv-aberto,html.rv-aberto body{overflow:hidden}
 .loja-voltar svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .loja-voltar:hover{color:#211946;background:#f1eff6}
 @media(max-width:520px){.loja-voltar span{display:none}.loja-voltar{padding:8px}}
+.av-topo .av-sub+.av-listas,.av-topo h1+.av-listas{margin-top:24px}
