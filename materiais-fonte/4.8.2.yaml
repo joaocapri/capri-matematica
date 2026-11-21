@@ -1,0 +1,579 @@
+# Aula 4.8.2 — Geometria plana: ângulos na circunferência
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: ângulo central e arco; ângulo inscrito (metade do arco; inscritos no mesmo arco; inscrito na
+# semicircunferência); ângulo de segmento (tangente e corda); ângulos excêntricos interior e exterior (inclusive duas
+# tangentes); quadrilátero inscritível (opostos suplementares); arco capaz. Potência de ponto fica para a 4.8.3.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Os arcos são medidos em graus. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete o quadro, sabendo que o ângulo central e o ângulo inscrito correspondem ao mesmo arco.'
+      tabela:
+        cabecalho: ['Arco', 'Ângulo central', 'Ângulo inscrito']
+        linhas:
+        - ['$70°$', '${{70°}}$', '${{35°}}$']
+        - ['$150°$', '${{150°}}$', '${{75°}}$']
+        - ['${{120°}}$', '${{120°}}$', '$60°$']
+        - ['${{48°}}$', '$48°$', '${{24°}}$']
+      resolucao: |
+        O central mede o arco; o inscrito, metade do arco.
+      resposta: '$70°, 35°$; $150°, 75°$; $120°, 120°$; $48°, 24°$'
+    - enunciado: 'Associe a posição do vértice ao nome do ângulo.'
+      esquerda:
+      - 'vértice no centro'
+      - 'vértice na circunferência, lados secantes'
+      - 'vértice na circunferência, um lado tangente'
+      - 'vértice dentro do círculo, fora do centro'
+      - 'vértice fora do círculo'
+      direita:
+      - 'ângulo de segmento'
+      - 'ângulo excêntrico exterior'
+      - 'ângulo central'
+      - 'ângulo excêntrico interior'
+      - 'ângulo inscrito'
+      resolucao: |
+        O nome indica onde está o vértice; a medida depende dos arcos que os lados determinam.
+      resposta: 'De cima para baixo: 3, 5, 1, 4, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Ângulos inscritos que determinam o mesmo arco são congruentes.'
+      - 'Um ângulo inscrito cujos lados passam pelas extremidades de um diâmetro é reto.'
+      - 'Num quadrilátero inscrito, os ângulos opostos são congruentes.'
+      - 'O ângulo central mede o dobro de um ângulo inscrito que determina o mesmo arco.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) Medem metade do mesmo arco. (V) Metade de $180°$. (F) São suplementares: juntos, determinam a circunferência toda, $\tfrac{360°}{2}$. (V)
+      resposta: V, V, F, V
+    - enunciado: 'Complete.'
+      itens:
+      - 'Ângulo excêntrico interior que determina arcos de $80°$ e $40°$: {{60°}}'
+      - 'Ângulo excêntrico exterior que determina arcos de $80°$ e $40°$: {{20°}}'
+      - 'Ângulo de segmento que determina um arco de $110°$: {{55°}}'
+      espaco_item: 10
+      resolucao: |
+        Interior: $\tfrac{80 + 40}{2}$. Exterior: $\tfrac{80 - 40}{2}$. De segmento: metade do arco.
+      resposta: '$60°$; $20°$; $55°$'
+    - enunciado: 'O quadrilátero $ABCD$ está inscrito na circunferência, com $\hat{A} = 75°$ e $\hat{B} = 100°$. Calcule $\hat{C}$ e $\hat{D}$.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=1]
+          \draw[ink, line width=1pt] (0,0) circle (1.1);
+          \draw[roxo, line width=1pt, fill=lilas!25] (200:1.1) -- (300:1.1) -- (20:1.1) -- (110:1.1) -- cycle;
+          \node[left, font=\scriptsize] at (200:1.1) {$A$};
+          \node[below, font=\scriptsize] at (300:1.1) {$B$};
+          \node[right, font=\scriptsize] at (20:1.1) {$C$};
+          \node[above, font=\scriptsize] at (110:1.1) {$D$};
+          \end{scope}
+      espaco: 8
+      resolucao: |
+        Ângulos opostos são suplementares: $\hat{C} = 105°$ e $\hat{D} = 80°$.
+      resposta: '$\hat{C} = 105°$, $\hat{D} = 80°$'
+    - enunciado: 'O triângulo $ABC$ está inscrito numa circunferência, e $AB$ é um diâmetro. Se $\hat{A} = 35°$, calcule $\hat{C}$ e $\hat{B}$.'
+      espaco: 8
+      resolucao: |
+        $\hat{C}$ é inscrito numa semicircunferência: $90°$. Então $\hat{B} = 55°$.
+      resposta: '$90°$ e $55°$'
+    - enunciado: 'Os pontos $A$, $B$ e $C$ dividem uma circunferência em arcos $AB$, $BC$ e $CA$ proporcionais a 2, 3 e 4. Calcule os ângulos do triângulo $ABC$.'
+      espaco: 10
+      resolucao: |
+        Arcos $80°$, $120°$ e $160°$. Cada ângulo é metade do arco oposto: $\hat{C} = 40°$, $\hat{A} = 60°$, $\hat{B} = 80°$.
+      resposta: '$40°$, $60°$, $80°$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para um ângulo de vértice fora da circunferência, cujos lados determinam arcos de $100°$ e $30°$, Bia calculou $\frac{100° + 30°}{2} = 65°$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        Com o vértice fora, usa-se a semidiferença: $\tfrac{100° - 30°}{2} = 35°$. A semissoma é para o vértice dentro.
+      resposta: '$35°$'
+    - enunciado: 'Na figura, as cordas $AC$ e $BD$ se cortam em $P$. Os arcos $AB$ e $CD$ (os que não contêm outros pontos marcados) medem $70°$ e $110°$. Calcule $A\hat{P}B$.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=1]
+          \draw[ink, line width=1pt] (0,0) circle (1.1);
+          \draw[roxo, line width=1pt] (160:1.1) -- (340:1.1) (230:1.1) -- (90:1.1);
+          \node[left, font=\scriptsize] at (160:1.1) {$A$};
+          \node[below left, font=\scriptsize] at (230:1.1) {$B$};
+          \node[right, font=\scriptsize] at (340:1.1) {$C$};
+          \node[above, font=\scriptsize] at (90:1.1) {$D$};
+          \end{scope}
+      espaco: 8
+      resolucao: |
+        Ângulo excêntrico interior: $\tfrac{70° + 110°}{2} = 90°$.
+      resposta: '$90°$'
+    - enunciado: 'A reta $t$ é tangente em $A$ a uma circunferência, e $AB$ é uma corda. O arco $AB$ contido no ângulo entre $t$ e $AB$ mede $140°$. Calcule esse ângulo e o ângulo inscrito $A\hat{C}B$, com $C$ no outro arco.'
+      espaco: 10
+      resolucao: |
+        Ângulo de segmento: $\tfrac{140°}{2} = 70°$. O inscrito $A\hat{C}B$ determina o mesmo arco: $70°$.
+      resposta: '$70°$ e $70°$'
+    - enunciado: 'De um ponto $P$ externo, duas secantes determinam na circunferência arcos de $130°$ e $50°$. Calcule o ângulo entre as secantes.'
+      espaco: 8
+      resolucao: |
+        $\tfrac{130° - 50°}{2} = 40°$.
+      resposta: '$40°$'
+    - enunciado: 'Um polígono regular de $n$ lados está inscrito numa circunferência. Complete o quadro com o ângulo central de um lado e o ângulo inscrito que determina um lado.'
+      tabela:
+        cabecalho: ['$n$', 'Ângulo central', 'Ângulo inscrito']
+        linhas:
+        - ['$5$', '${{72°}}$', '${{36°}}$']
+        - ['$6$', '${{60°}}$', '${{30°}}$']
+        - ['$8$', '${{45°}}$', '${{22{,}5°}}$']
+        - ['$10$', '${{36°}}$', '${{18°}}$']
+      resolucao: |
+        Cada lado determina um arco de $\tfrac{360°}{n}$; o inscrito mede a metade, $\tfrac{180°}{n}$.
+      resposta: '$72°, 36°$; $60°, 30°$; $45°, 22{,}5°$; $36°, 18°$'
+    - enunciado: 'De um ponto $P$ traçam-se as tangentes $PA$ e $PB$ a uma circunferência, e o arco menor $AB$ mede $110°$. Calcule $A\hat{P}B$.'
+      espaco: 10
+      resolucao: |
+        Arco maior $250°$: $\tfrac{250° - 110°}{2} = 70°$. (Ou: no quadrilátero $PAOB$, os ângulos em $A$ e $B$ são retos, e $P = 180° - 110°$.)
+      resposta: '$70°$'
+    - enunciado: 'O quadrilátero $ABCD$ está inscrito numa circunferência, com $\hat{A} = 2x + 10°$ e $\hat{C} = 3x - 5°$. Calcule $x$, $\hat{A}$ e $\hat{C}$.'
+      espaco: 10
+      resolucao: |
+        $\hat{A} + \hat{C} = 180°$: $5x + 5° = 180°$, $x = 35°$. $\hat{A} = 80°$ e $\hat{C} = 100°$.
+      resposta: '$x = 35°$; $80°$ e $100°$'
+    - enunciado: 'O triângulo $ABC$ está inscrito numa circunferência, e a reta $t$ é tangente em $A$. O ângulo entre $t$ e o lado $AB$, do lado oposto a $C$, mede $50°$. Calcule $\hat{C}$.'
+      espaco: 10
+      resolucao: |
+        O ângulo de segmento e o inscrito $\hat{C}$ determinam o mesmo arco $AB$: $\hat{C} = 50°$.
+      resposta: '$50°$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que o ângulo inscrito mede metade do ângulo central de mesmo arco, no caso em que um lado do inscrito passa pelo centro.'
+      espaco: 12
+      resolucao: |
+        Seja $A\hat{V}B$ inscrito, com $VA$ passando pelo centro $O$. O triângulo $OVB$ é isósceles ($OV = OB$): $O\hat{B}V = O\hat{V}B = \alpha$. O ângulo central $A\hat{O}B$ é externo a esse triângulo: $A\hat{O}B = 2\alpha$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que o ângulo excêntrico interior mede a semissoma dos arcos determinados por ele e pelo seu oposto pelo vértice.'
+      espaco: 12
+      resolucao: |
+        Cordas $AC$ e $BD$ cortando-se em $P$. $A\hat{P}B$ é externo ao triângulo $PBC$: $A\hat{P}B = P\hat{C}B + P\hat{B}C$. Esses são inscritos, de medidas $\tfrac{\text{arco } AB}{2}$ e $\tfrac{\text{arco } CD}{2}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que o ângulo excêntrico exterior mede a semidiferença dos arcos determinados por seus lados.'
+      espaco: 12
+      resolucao: |
+        Secantes $PAB$ e $PCD$ ($A$, $C$ mais próximos de $P$). No triângulo $PAD$, o ângulo $B\hat{A}D$ é externo: $B\hat{A}D = \hat{P} + A\hat{D}P$. Logo $\hat{P} = \tfrac{\text{arco } BD}{2} - \tfrac{\text{arco } AC}{2}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, num quadrilátero inscrito numa circunferência, os ângulos opostos são suplementares.'
+      espaco: 12
+      resolucao: |
+        $\hat{A}$ e $\hat{C}$ são inscritos e determinam os dois arcos $BCD$ e $DAB$, que somam $360°$. Então $\hat{A} + \hat{C} = \tfrac{360°}{2} = 180°$; do mesmo modo, $\hat{B} + \hat{D} = 180°$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que o ângulo entre uma tangente e uma corda (ângulo de segmento) mede metade do arco que ele determina.'
+      espaco: 12
+      resolucao: |
+        Tangente em $A$ e corda $AB$. Trace o diâmetro $AA''$. O ângulo entre a tangente e $AA''$ é reto ($90° = \tfrac{180°}{2}$). O ângulo entre $AA''$ e $AB$ é inscrito, metade do arco $A''B$. Somando (ou subtraindo), o ângulo de segmento é metade do arco $AB$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um fotógrafo quer enquadrar a fachada $AB$ de um prédio sempre com o mesmo ângulo de visão, de $30°$. Os pontos do terreno de onde a fachada é vista sob esse ângulo formam um arco de circunferência que passa por $A$ e $B$, como na figura. O fotógrafo quer saber sob que ângulo o centro $O$ dessa circunferência vê a fachada.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \draw[mudo, dashed] (0,0) circle (1.2);
+        \draw[ink, line width=1pt] (240:1.2) -- (300:1.2);
+        \draw[roxo, line width=1pt] (300:1.2) arc (300:600:1.2);
+        \coordinate (P) at (100:1.2);
+        \draw[ink] (240:1.2) -- (P) -- (300:1.2);
+        \fill[ink] (0,0) circle (1.2pt) (P) circle (1.2pt);
+        \node[below left, font=\scriptsize] at (240:1.2) {$A$};
+        \node[below right, font=\scriptsize] at (300:1.2) {$B$};
+        \node[above, font=\scriptsize] at (P) {$P$};
+        \node[right, font=\scriptsize] at (0,0) {$O$};
+        \end{scope}
+    enunciado: |
+      O ângulo $A\hat{O}B$ mede
+    opcoes: ['$60°$', '$30°$', '$15°$', '$90°$', '$120°$']
+    correta: A
+    resolucao: |
+      $A\hat{P}B$ é inscrito e determina o arco $AB$; o central $A\hat{O}B$ determina o mesmo arco e mede o dobro: $60°$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Um ângulo inscrito mede $38°$. O ângulo central que determina o mesmo arco mede
+    opcoes: ['$19°$', '$76°$', '$38°$', '$142°$', '$104°$']
+    correta: B
+    resolucao: |
+      O dobro: $76°$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Num quadrilátero $ABCD$ inscrito numa circunferência, $\hat{A} = 68°$. O ângulo $\hat{C}$ mede
+    opcoes: ['$112°$.', '$68°$.', '$22°$.', '$136°$.']
+    correta: A
+    resolucao: |
+      Opostos suplementares: $180° - 68° = 112°$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere ângulos na circunferência. Assinale o que for correto.
+    proposicoes:
+    - 'Ângulos inscritos que determinam o mesmo arco são congruentes.'
+    - 'O ângulo central mede o dobro de um ângulo inscrito que determina o mesmo arco.'
+    - 'Um ângulo inscrito numa semicircunferência é agudo.'
+    - 'Todo retângulo é inscritível numa circunferência.'
+    - 'Todo losango que não é quadrado é inscritível numa circunferência.'
+    corretas: [1, 2, 4]
+    resolucao: |
+      01) Correta. 02) Correta. 04) Incorreta: é reto. 08) Opostos somam $180°$. 16) Incorreta: os ângulos opostos são iguais e diferentes de $90°$, não somam $180°$.
+      Soma: $01 + 02 + 08 = 11$.
+
+  - estilo: Enem
+    texto: |
+      Uma roda-gigante tem 12 cabines igualmente espaçadas na sua circunferência, como na figura. Uma criança na cabine $P$ observa as cabines $A$ e $E$, separadas por quatro espaços entre cabines, que ficam do lado oposto da roda. Ela quer saber o ângulo formado pelas linhas de visada.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1]
+        \draw[ink, line width=1pt] (0,0) circle (1.1);
+        \foreach \k in {0,...,11} \fill[lilas] (\k*30:1.1) circle (2.2pt);
+        \draw[roxo, line width=1pt] (90:1.1) -- (210:1.1) -- (330:1.1);
+        \node[left, font=\scriptsize] at (210:1.1) {$P$};
+        \node[above, font=\scriptsize] at (90:1.1) {$A$};
+        \node[right, font=\scriptsize] at (330:1.1) {$E$};
+        \end{scope}
+    enunciado: |
+      O ângulo $A\hat{P}E$ mede
+    opcoes: ['$120°$', '$30°$', '$60°$', '$90°$', '$45°$']
+    correta: C
+    resolucao: |
+      Cada espaço corresponde a $\tfrac{360°}{12} = 30°$: o arco $AE$ que não contém $P$ mede $120°$. O ângulo inscrito mede $60°$.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'O ângulo excêntrico interior que determina arcos de $90°$ e $50°$ mede $70°$.'
+    - 'O ângulo excêntrico exterior que determina arcos de $150°$ e $50°$ mede $50°$.'
+    - 'O ângulo de segmento que determina um arco de $100°$ mede $100°$.'
+    - 'Num quadrilátero inscrito, se $\hat{A} = 80°$, então $\hat{C} = 100°$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'III e IV, apenas.', 'I, II e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. $\tfrac{140}{2}$. II. $\tfrac{100}{2}$. III. Incorreta: $50°$. IV. Suplementares.
+
+  - estilo: Unesp
+    enunciado: |
+      Num triângulo $ABC$ inscrito numa circunferência, o lado $AB$ é um diâmetro e $\hat{A} = 28°$. O ângulo $\hat{B}$ mede
+    opcoes: ['$28°$', '$90°$', '$56°$', '$152°$', '$62°$']
+    correta: E
+    resolucao: |
+      $\hat{C} = 90°$ (inscrito na semicircunferência): $\hat{B} = 180° - 90° - 28° = 62°$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, $PA$ e $PB$ são tangentes à circunferência, e o arco menor $AB$ mede $130°$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \draw[ink, line width=1pt] (0,0) circle (1);
+        \draw[roxo, line width=1pt] (65:1) -- (2.366,0) -- (-65:1);
+        \fill[ink] (0,0) circle (1.2pt);
+        \node[above, font=\scriptsize] at (65:1) {$A$};
+        \node[below, font=\scriptsize] at (-65:1) {$B$};
+        \node[right, font=\scriptsize] at (2.366,0) {$P$};
+        \end{scope}
+    enunciado: |
+      O ângulo $A\hat{P}B$ mede
+    opcoes: ['$50°$.', '$65°$.', '$130°$.', '$25°$.']
+    correta: A
+    resolucao: |
+      $\tfrac{230° - 130°}{2} = 50°$ (ou $180° - 130°$, pelo quadrilátero com dois ângulos retos).
+
+  - estilo: Fuvest
+    enunciado: |
+      Três pontos dividem uma circunferência em arcos proporcionais a 3, 4 e 5. O maior ângulo do triângulo formado por esses pontos mede
+    opcoes: ['$60°$', '$75°$', '$90°$', '$150°$', '$45°$']
+    correta: B
+    resolucao: |
+      Arcos $90°$, $120°$ e $150°$; os ângulos são as metades: $45°$, $60°$, $75°$.
+
+  - estilo: UFSC
+    enunciado: |
+      O pentágono regular $ABCDE$ está inscrito numa circunferência de centro $O$. Assinale o que for correto.
+    proposicoes:
+    - 'O ângulo central $A\hat{O}B$ mede $72°$.'
+    - 'O ângulo $C\hat{A}D$ mede $36°$.'
+    - 'O ângulo interno $A\hat{B}C$ mede $108°$.'
+    - 'As diagonais $AC$ e $BD$ formam, no ponto de encontro, um ângulo de $72°$ voltado para o lado $AB$.'
+    - 'O ângulo entre a tangente em $A$ e o lado $AB$ mede $36°$.'
+    - 'O ângulo $B\hat{A}C$ mede $72°$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      Cada lado determina $72°$. 01) Correta. 02) Inscrito no arco $CD$. 04) Inscrito no arco $AEDC$ de $216°$. 08) $\tfrac{72° + 72°}{2}$ (arcos $AB$ e $CD$). 16) Ângulo de segmento no arco $AB$. 32) Incorreta: inscrito no arco $BC$, $36°$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Num auditório, as poltronas da primeira fila foram dispostas sobre um arco de circunferência que passa pelas extremidades $A$ e $B$ do palco, para que todos vejam o palco sob o mesmo ângulo. O arco $AB$ do lado do palco, que não contém as poltronas, mede $70°$.
+    enunciado: |
+      O ângulo sob o qual cada espectador da primeira fila vê o palco mede
+    opcoes: ['$70°$', '$140°$', '$35°$', '$110°$', '$17{,}5°$']
+    correta: C
+    resolucao: |
+      Cada espectador vê o palco sob um ângulo inscrito que determina o arco de $70°$: $35°$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Um ângulo inscrito que determina um arco de $150°$ mede $75°$.'
+    - 'O ângulo central mede a metade do inscrito que determina o mesmo arco.'
+    - 'Todo trapézio isósceles é inscritível numa circunferência.'
+    - 'O ângulo de segmento que determina um arco de $80°$ mede $40°$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – F – V – V.', 'V – V – F – V.']
+    correta: D
+    resolucao: |
+      (V) (F) É o dobro. (V) Os ângulos de uma base são iguais, e os de bases diferentes são suplementares: opostos somam $180°$. (V)
+
+  - estilo: Enem
+    texto: |
+      Um artesão monta molduras com a forma de quadriláteros $ABCD$ que devem ser encaixadas num aro circular, com os quatro vértices sobre o aro. O quadro mostra os ângulos internos de cinco molduras, na ordem $\hat{A}$, $\hat{B}$, $\hat{C}$, $\hat{D}$.
+    tabela:
+      cabecalho: ['Moldura', '$\hat{A}$', '$\hat{B}$', '$\hat{C}$', '$\hat{D}$']
+      linhas:
+      - ['M1', '$80°$', '$95°$', '$100°$', '$85°$']
+      - ['M2', '$70°$', '$110°$', '$70°$', '$110°$']
+      - ['M3', '$60°$', '$120°$', '$60°$', '$120°$']
+      - ['M4', '$100°$', '$100°$', '$60°$', '$100°$']
+      - ['M5', '$85°$', '$95°$', '$85°$', '$95°$']
+    enunciado: |
+      A única moldura que pode ser encaixada no aro é a
+    opcoes: ['M1.', 'M2.', 'M3.', 'M4.', 'M5.']
+    correta: A
+    resolucao: |
+      É preciso $\hat{A} + \hat{C} = \hat{B} + \hat{D} = 180°$. Só M1: $80° + 100°$ e $95° + 85°$.
+
+  - estilo: Unesp
+    enunciado: |
+      Duas cordas de uma circunferência se cortam num ponto interior, e um dos ângulos formados determina, com o seu oposto pelo vértice, arcos de $60°$ e $100°$. Esse ângulo mede
+    opcoes: ['$40°$', '$160°$', '$20°$', '$100°$', '$80°$']
+    correta: E
+    resolucao: |
+      $\tfrac{60° + 100°}{2} = 80°$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      O triângulo $ABC$, com $\hat{A} = 50°$ e $\hat{B} = 60°$, está inscrito numa circunferência de centro $O$, e a reta $t$ é tangente em $C$. Assinale o que for correto.
+    proposicoes:
+    - 'O arco $BC$ que não contém $A$ mede $100°$.'
+    - 'O arco $AC$ que não contém $B$ mede $120°$.'
+    - 'O arco $AB$ que não contém $C$ mede $140°$.'
+    - 'O ângulo entre $t$ e a corda $CB$, do lado oposto a $A$, mede $50°$.'
+    - 'O ângulo central $B\hat{O}C$ mede $50°$.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) $2 \cdot 50°$. 02) $2 \cdot 60°$. 04) $\hat{C} = 70°$: $140°$. 08) Ângulo de segmento no arco $BC$: $50°$. 16) Incorreta: $100°$.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Unicamp
+    enunciado: |
+      De um ponto $P$ externo, duas secantes determinam numa circunferência arcos de $150°$ e $40°$. O ângulo entre as secantes mede
+    opcoes: ['$95°$.', '$55°$.', '$110°$.', '$40°$.']
+    correta: B
+    resolucao: |
+      $\tfrac{150° - 40°}{2} = 55°$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Num relógio de parede circular, os números de 1 a 12 estão igualmente espaçados. Um designer desenhou no mostrador segmentos ligando alguns números, como na figura: do 12 ao 3 e ao 7, e as cordas do 12 ao 6 e do 3 ao 8.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1]
+        \draw[ink, line width=1pt] (0,0) circle (1.1);
+        \foreach \k in {1,...,12} \node[font=\tiny] at ({90-30*\k}:1.28) {\k};
+        \foreach \k in {1,...,12} \fill[ink] ({90-30*\k}:1.1) circle (1pt);
+        \draw[roxo, line width=.9pt] (90:1.1) -- (0:1.1) (90:1.1) -- (-120:1.1);
+        \draw[lilas, line width=.9pt] (90:1.1) -- (270:1.1) (0:1.1) -- (-150:1.1);
+        \end{scope}
+    enunciado: |
+      O ângulo formado, no número 12, pelos segmentos que vão ao 3 e ao 7 mede
+    opcoes: ['$120°$', '$90°$', '$60°$', '$45°$', '$30°$']
+    correta: C
+    resolucao: |
+      O arco de 3 a 7, que não contém o 12, tem 4 espaços de $30°$: $120°$. O ângulo inscrito mede $60°$.
+
+  - estilo: Unesp
+    enunciado: |
+      O menor ângulo formado pelas cordas que ligam o 12 ao 6 e o 3 ao 8 mede
+    opcoes: ['$90°$', '$60°$', '$105°$', '$75°$', '$45°$']
+    correta: D
+    resolucao: |
+      Ângulo excêntrico interior: o ângulo voltado para o arco de 12 a 3 ($90°$) tem oposto voltado para o arco de 6 a 8 ($60°$): $\tfrac{90° + 60°}{2} = 75°$. O outro mede $105°$.
+
+  - estilo: Fuvest
+    enunciado: |
+      De um ponto $P$ traçam-se uma tangente $PT$ e uma secante $PAB$ a uma circunferência. Os arcos $TB$ e $TA$ entre os lados do ângulo medem $150°$ e $50°$. O ângulo $T\hat{P}B$ mede
+    opcoes: ['$100°$', '$75°$', '$25°$', '$40°$', '$50°$']
+    correta: E
+    resolucao: |
+      Ângulo excêntrico exterior: $\tfrac{150° - 50°}{2} = 50°$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, o quadrilátero $ABCD$ está inscrito na circunferência, com $B\hat{A}C = 30°$ e $C\hat{A}D = 40°$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1]
+        \draw[ink, line width=1pt] (0,0) circle (1.1);
+        \draw[roxo, line width=1pt, fill=lilas!20] (200:1.1) -- (300:1.1) -- (0:1.1) -- (80:1.1) -- cycle;
+        \draw[ink] (200:1.1) -- (0:1.1);
+        \node[left, font=\scriptsize] at (200:1.1) {$A$};
+        \node[below, font=\scriptsize] at (300:1.1) {$B$};
+        \node[right, font=\scriptsize] at (0:1.1) {$C$};
+        \node[above, font=\scriptsize] at (80:1.1) {$D$};
+        \end{scope}
+    enunciado: |
+      O ângulo $B\hat{C}D$ mede
+    opcoes: ['$70°$', '$110°$', '$140°$', '$120°$', '$100°$']
+    correta: B
+    resolucao: |
+      $B\hat{A}D = 30° + 40° = 70°$, e o oposto $B\hat{C}D = 180° - 70° = 110°$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Prove que um ângulo inscrito mede metade do ângulo central que determina o mesmo arco, nos três casos.'
+    itens:
+    - 'O centro está sobre um dos lados do ângulo inscrito.'
+    - 'O centro está no interior do ângulo inscrito.'
+    - 'O centro está no exterior do ângulo inscrito.'
+    espaco: 62
+    resolucao: |
+      a) Com $VA$ passando por $O$, o triângulo $OVB$ é isósceles e $A\hat{O}B$ é externo a ele: $A\hat{O}B = 2 \cdot A\hat{V}B$.
+      b) Trace o diâmetro $VV''$. Ele divide o inscrito e o central em duas partes, cada uma no caso a): somando, vale a relação.
+      c) Trace o diâmetro $VV''$. O inscrito é a diferença de dois ângulos do caso a), e o central, a diferença dos centrais correspondentes.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    enunciado: 'Considere duas retas que cortam uma circunferência.'
+    itens:
+    - 'Prove que, se as retas se cortam num ponto interior, o ângulo entre elas mede a semissoma dos arcos determinados por ele e pelo seu oposto pelo vértice.'
+    - 'Prove que, se as retas se cortam num ponto exterior, o ângulo mede a semidiferença dos arcos.'
+    - 'Duas secantes, de um ponto exterior, formam $25°$, e o arco menor determinado mede $40°$. Calcule o arco maior.'
+    espaco: 62
+    resolucao: |
+      a) Cordas $AC$ e $BD$ em $P$: $A\hat{P}B$ é externo ao triângulo $PBC$, soma de dois inscritos, $\tfrac{\text{arco } AB}{2} + \tfrac{\text{arco } CD}{2}$.
+      b) Secantes $PAB$ e $PCD$: no triângulo $PAD$, $B\hat{A}D = \hat{P} + A\hat{D}C$; daí $\hat{P} = \tfrac{\text{arco } BD - \text{arco } AC}{2}$.
+      c) $\tfrac{x - 40°}{2} = 25°$: $x = 90°$.
+    resposta: 'c) $90°$'
+
+  - estilo: ITA
+    enunciado: |
+      Num polígono regular de $n$ lados inscrito numa circunferência, as diagonais que partem de um vértice e terminam em dois vértices consecutivos formam um ângulo de $12°$. O valor de $n$ é
+    opcoes: ['$30$', '$12$', '$15$', '$18$', '$24$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      Esse ângulo é inscrito e determina o arco de um lado, $\tfrac{360°}{n}$: $\tfrac{180°}{n} = 12°$, $n = 15$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Os vértices do triângulo $ABC$ dividem a circunferência circunscrita em arcos $AB$, $BC$ e $CA$ proporcionais a 2, 3 e 7.'
+    itens:
+    - 'Calcule os arcos.'
+    - 'Calcule os ângulos do triângulo e classifique-o quanto aos ângulos.'
+    - 'Calcule o ângulo entre a tangente em $A$ e o lado $AB$, do lado oposto a $C$.'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{360°}{12} = 30°$: arcos $60°$, $90°$ e $210°$.
+      b) $\hat{C} = 30°$, $\hat{A} = 45°$, $\hat{B} = 105°$: obtusângulo (o centro fica fora do triângulo).
+      c) Ângulo de segmento no arco $AB$: $30°$.
+    resposta: 'a) $60°, 90°, 210°$; b) $45°, 105°, 30°$, obtusângulo; c) $30°$'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - 'Um ângulo inscrito que determina um terço da circunferência mede $60°$.'
+    - 'As diagonais de um retângulo inscrito numa circunferência são diâmetros.'
+    - 'Existe quadrilátero inscritível cujos ângulos, na ordem, são proporcionais a 3, 4, 6 e 5.'
+    - 'O ângulo entre duas tangentes que determinam um arco menor de $100°$ mede $80°$.'
+    - 'Todo paralelogramo é inscritível numa circunferência.'
+    - 'O ângulo excêntrico interior que determina arcos de $30°$ e $90°$ mede $60°$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) $\tfrac{120°}{2}$. 02) Os ângulos retos são inscritos em semicircunferências. 04) $3x + 6x = 4x + 5x = 180°$ com $x = 20°$. 08) $180° - 100°$. 16) Incorreta: só os retângulos. 32) $\tfrac{120°}{2}$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    texto: |
+      O arco capaz de um ângulo $\alpha$ sobre um segmento $AB$ é o arco de circunferência formado pelos pontos $P$, de um lado de $AB$, tais que $A\hat{P}B = \alpha$.
+    enunciado: ''
+    itens:
+    - 'Explique por que todos os pontos de um mesmo arco de circunferência por $A$ e $B$ veem $AB$ sob o mesmo ângulo.'
+    - 'Para $AB = 6$ e $\alpha = 30°$, calcule o raio da circunferência do arco capaz.'
+    - 'Qual é o arco capaz de $90°$ sobre $AB$?'
+    espaco: 62
+    resolucao: |
+      a) Todos os ângulos $A\hat{P}B$ são inscritos e determinam o mesmo arco $AB$.
+      b) O central $A\hat{O}B$ mede $60°$: o triângulo $AOB$ é isósceles com ângulo de $60°$, isto é, equilátero, e $R = 6$.
+      c) A semicircunferência de diâmetro $AB$.
+    resposta: 'b) 6; c) semicircunferência de diâmetro $AB$'
+
+  - estilo: Unicamp
+    texto: |
+      Num relógio circular, os números de 1 a 12 estão igualmente espaçados na borda.
+    enunciado: ''
+    itens:
+    - 'Calcule o ângulo, com vértice no 12, formado pelos segmentos que vão ao 2 e ao 5.'
+    - 'Calcule o menor ângulo entre as cordas que ligam o 1 ao 7 e o 4 ao 9.'
+    - 'Calcule o ângulo entre a reta tangente ao relógio no 12 e a corda do 12 ao 4.'
+    espaco: 62
+    resolucao: |
+      a) Arco de 2 a 5: $90°$; inscrito $45°$.
+      b) Cordas 1–7 e 4–9: um ângulo determina os arcos de 1 a 4 ($90°$) e de 7 a 9 ($60°$): $75°$; o outro, $105°$. O menor é $75°$.
+      c) Arco de 12 a 4: $120°$; ângulo de segmento $60°$.
+    resposta: 'a) $45°$; b) $75°$; c) $60°$'
+
+  - estilo: Fuvest
+    enunciado: |
+      De um ponto $P$ traçam-se a tangente $PT$ e a secante $PAB$ a uma circunferência, e $T\hat{P}B = 35°$. O arco maior entre os lados do ângulo mede $150°$. O arco menor mede
+    opcoes: ['$80°$', '$115°$', '$70°$', '$40°$', '$110°$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $\tfrac{150° - x}{2} = 35°$: $x = 80°$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'O quadrilátero convexo $ABCD$ está inscrito numa circunferência de diâmetro $AB$, com $A\hat{B}C = 70°$ e $B\hat{A}D = 60°$.'
+    itens:
+    - 'Calcule $A\hat{C}B$ e $A\hat{D}B$.'
+    - 'Calcule $B\hat{C}D$ e $A\hat{D}C$.'
+    - 'Calcule o ângulo agudo entre as diagonais $AC$ e $BD$.'
+    espaco: 62
+    resolucao: |
+      a) Ambos são inscritos na semicircunferência: $90°$.
+      b) Opostos suplementares: $B\hat{C}D = 120°$ e $A\hat{D}C = 110°$.
+      c) Arcos: $B\hat{A}C = 20°$ dá arco $BC = 40°$; $A\hat{B}D = 30°$ dá arco $AD = 60°$; o arco $CD$ é $180° - 40° - 60° = 80°$. O ângulo entre as diagonais voltado para $CD$ e seu oposto (voltado para o arco $AB$ de $180°$): $\tfrac{80° + 180°}{2} = 130°$. O agudo mede $50°$.
+    resposta: 'a) $90°$; b) $120°$ e $110°$; c) $50°$'
+
+  - estilo: Fuvest
+    enunciado: 'De um ponto $P$ exterior traçam-se a tangente $PT$ e a secante $PAB$ a uma circunferência, com $A$ entre $P$ e $B$.'
+    itens:
+    - 'Prove que $P\hat{T}A = P\hat{B}T$.'
+    - 'Prove que os triângulos $PTA$ e $PBT$ são semelhantes.'
+    - 'Conclua que $PT^2 = PA \cdot PB$ e calcule $PT$ para $PA = 4$ e $AB = 5$.'
+    espaco: 62
+    resolucao: |
+      a) $P\hat{T}A$ é ângulo de segmento e $P\hat{B}T$ é inscrito; ambos determinam o arco $TA$.
+      b) Têm o ângulo $\hat{P}$ comum e o par do item a) (caso AA).
+      c) $\tfrac{PT}{PB} = \tfrac{PA}{PT}$: $PT^2 = 4 \cdot 9 = 36$, $PT = 6$.
+    resposta: 'c) 6'
