@@ -1,0 +1,548 @@
+# Aula 4.3.3 — Geometria plana: semelhança de triângulos
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: casos AA, LAL e LLL; razão de semelhança k (lados, perímetros, alturas e medianas na razão k);
+# paralela a um lado; sombras, espelho, câmara escura, postes com cabos cruzados, quadrado inscrito, trapézio e diagonais,
+# ângulo comum com lados "trocados". As relações métricas no triângulo retângulo ficam para a 4.4.2; razão entre áreas, para a 4.7.4.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'O triângulo $ABC$, de lados $AB = 6$, $BC = 8$ e $AC = 10$, é semelhante ao triângulo $DEF$ ($A \leftrightarrow D$, $B \leftrightarrow E$, $C \leftrightarrow F$), com $DE = 9$. Complete.'
+      tabela:
+        cabecalho: ['Razão $k = \frac{DE}{AB}$', '$EF$', '$DF$', 'Perímetro de $DEF$']
+        linhas:
+        - ['${{1{,}5}}$', '${{12}}$', '${{15}}$', '${{36}}$']
+      resolucao: |
+        $k = \tfrac{9}{6} = 1{,}5$. $EF = 1{,}5 \cdot 8 = 12$, $DF = 1{,}5 \cdot 10 = 15$, e o perímetro é $1{,}5 \cdot 24 = 36$.
+      resposta: '$1{,}5$; $12$; $15$; $36$'
+    - enunciado: 'No mesmo instante, uma vara vertical de 1,5 m projeta uma sombra de 2 m, e um poste projeta uma sombra de 12 m. Complete.'
+      itens:
+      - 'Altura do poste: {{9}} m'
+      espaco_item: 10
+      resolucao: |
+        Os raios de sol são paralelos: os triângulos são semelhantes (AA). $\tfrac{1{,}5}{2} = \tfrac{h}{12}$, $h = 9$ m.
+      resposta: '9 m'
+    - enunciado: 'No triângulo $ABC$, $DE \parallel BC$, com $D$ em $AB$ e $E$ em $AC$. Sabendo que $AD = 5$, $AB = 15$ e $BC = 18$, complete.'
+      itens:
+      - '$DE = {{6}}$'
+      espaco_item: 10
+      resolucao: |
+        $ADE$ e $ABC$ são semelhantes: $\tfrac{DE}{BC} = \tfrac{AD}{AB} = \tfrac{1}{3}$, $DE = 6$.
+      resposta: '6'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Dois triângulos com dois ângulos respectivamente iguais são semelhantes.'
+      - 'Dois triângulos equiláteros quaisquer são semelhantes.'
+      - 'Dois triângulos isósceles quaisquer são semelhantes.'
+      - 'Triângulos congruentes são semelhantes, com razão 1.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) Caso AA (o terceiro ângulo também fica igual). (V) Todos os ângulos medem $60°$. (F) Por exemplo, um com ângulos $40°, 40°, 100°$ e outro com $70°, 70°, 40°$. (V)
+      resposta: V, V, F, V
+    - enunciado: 'Dois triângulos são semelhantes, com razão $\frac{3}{2}$ (do maior para o menor). Complete.'
+      itens:
+      - 'Se o perímetro do menor é 20, o do maior é {{30}}.'
+      - 'Se uma altura do maior mede 9, a correspondente do menor mede {{6}}.'
+      resolucao: |
+        Perímetros, alturas e medianas seguem a razão de semelhança. $20 \cdot 1{,}5 = 30$; $9 \div 1{,}5 = 6$.
+      resposta: '$30$; $6$'
+    - enunciado: 'Indique o caso de semelhança (AA, LAL ou LLL) em cada situação.'
+      itens:
+      - 'Os dois triângulos têm ângulos de $40°$ e $60°$: {{AA}}'
+      - 'Lados $4, 6, 8$ e $6, 9, 12$: {{LLL}}'
+      - 'Lados $3$ e $5$ com $50°$ entre eles, e lados $6$ e $10$ com $50°$ entre eles: {{LAL}}'
+      resolucao: |
+        (a) Dois ângulos iguais. (b) Razão $1{,}5$ nos três lados. (c) Lados proporcionais (razão 2) e o ângulo entre eles igual.
+      resposta: 'AA; LLL; LAL'
+    - enunciado: 'Na figura, $DE \parallel BC$, $AD = 4$, $AB = 10$ e $DE = 6$. Determine $BC$.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.8]
+          \draw[ink, line width=1pt, fill=lilas!25] (2,3.5) node[above, font=\scriptsize] {$A$} -- (0,0) node[below left, font=\scriptsize] {$B$} -- (5,0) node[below right, font=\scriptsize] {$C$} -- cycle;
+          \draw[roxo, line width=1.2pt] (1.2,2.1) node[left, font=\scriptsize] {$D$} -- (3.2,2.1) node[right, font=\scriptsize] {$E$};
+          \end{scope}
+      espaco: 10
+      resolucao: |
+        $\tfrac{DE}{BC} = \tfrac{AD}{AB}$: $\tfrac{6}{BC} = \tfrac{4}{10}$, $BC = 15$.
+      resposta: '$BC = 15$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        No triângulo $ABC$, $DE \parallel BC$, com $AD = 6$, $DB = 3$ e $BC = 12$. Nina escreveu $\frac{DE}{BC} = \frac{AD}{DB}$ e achou $DE = 24$.
+      enunciado: 'Por que o resultado é absurdo? Corrija.'
+      espaco: 10
+      resolucao: |
+        $DE$ é lado do triângulo menor e não pode ser maior que $BC$. A semelhança compara o triângulo pequeno ($ADE$) com o grande inteiro ($ABC$): $\tfrac{DE}{BC} = \tfrac{AD}{AB} = \tfrac{6}{9}$, $DE = 8$.
+      resposta: '$DE = 8$'
+    - enunciado: 'Uma pessoa coloca um espelho no chão, a 2 m dos seus pés, e se afasta até ver, nele, o topo de um prédio. O espelho está a 30 m da base do prédio, e os olhos da pessoa estão a 1,6 m do chão. Sabendo que os raios de luz formam ângulos iguais com o espelho, calcule a altura do prédio.'
+      espaco: 12
+      resolucao: |
+        Os triângulos (pessoa, espelho) e (prédio, espelho) são retângulos e têm ângulos iguais no espelho: semelhantes (AA). $\tfrac{H}{30} = \tfrac{1{,}6}{2}$, $H = 24$ m.
+      resposta: '24 m'
+    - enunciado: 'No triângulo $ABC$, $D$ está em $AB$ e $E$ em $AC$, com $A\hat{D}E = A\hat{C}B$. Sabendo que $AD = 4$, $AE = 5$ e $AC = 10$, calcule $AB$.'
+      espaco: 12
+      resolucao: |
+        $ADE$ e $ACB$ têm $\hat{A}$ comum e $A\hat{D}E = A\hat{C}B$: semelhantes (AA), com $D \leftrightarrow C$ e $E \leftrightarrow B$. $\tfrac{AD}{AC} = \tfrac{AE}{AB}$: $\tfrac{4}{10} = \tfrac{5}{AB}$, $AB = 12{,}5$.
+      resposta: '$AB = 12{,}5$'
+    - enunciado: 'Um quadrado está inscrito num triângulo de base 12 e altura 6, com um lado sobre a base e os outros dois vértices nos outros lados. Calcule o lado do quadrado.'
+      espaco: 12
+      resolucao: |
+        O lado superior do quadrado é paralelo à base e forma com o vértice oposto um triângulo semelhante ao original, de altura $6 - x$: $\tfrac{x}{12} = \tfrac{6 - x}{6}$. $6x = 72 - 12x$, $x = 4$.
+      resposta: '4'
+    - enunciado: 'Dois triângulos são semelhantes, com razão $k = \frac{2}{3}$ (do menor para o maior). Complete o quadro.'
+      tabela:
+        cabecalho: ['Elemento', 'No menor', 'No maior']
+        linhas:
+        - ['Menor lado', '$6$', '${{9}}$']
+        - ['Altura', '${{4}}$', '$6$']
+        - ['Perímetro', '$20$', '${{30}}$']
+        - ['Mediana', '${{8}}$', '$12$']
+      resolucao: |
+        Do menor para o maior, multiplica-se por $\tfrac{3}{2}$; do maior para o menor, por $\tfrac{2}{3}$.
+      resposta: '$9$; $4$; $30$; $8$'
+    - enunciado: 'No trapézio $ABCD$, de bases $AB = 6$ e $CD = 15$, as diagonais se cortam em $P$, e $AC = 14$. Calcule $AP$ e $PC$.'
+      espaco: 12
+      resolucao: |
+        $PAB$ e $PCD$ são semelhantes (ângulos opostos pelo vértice em $P$ e alternos internos, pois $AB \parallel CD$), com razão $\tfrac{6}{15} = \tfrac{2}{5}$. $AP = \tfrac{2}{7} \cdot 14 = 4$ e $PC = 10$.
+      resposta: '$AP = 4$, $PC = 10$'
+    - enunciado: 'Dois postes verticais, de 6 m e 3 m, estão a certa distância. Um cabo liga o topo de cada um à base do outro. A que altura do chão os cabos se cruzam?'
+      espaco: 14
+      resolucao: |
+        Seja $h$ a altura e $d$ a distância entre os postes, com o cruzamento a $x$ do poste de 3 m. Por semelhança: $\tfrac{h}{6} = \tfrac{x}{d}$ e $\tfrac{h}{3} = \tfrac{d - x}{d}$. Somando: $\tfrac{h}{6} + \tfrac{h}{3} = 1$, $h = 2$ m.
+      resposta: '2 m'
+    - enunciado: 'Numa câmara escura, a luz de um objeto de 2 m de altura, a 10 m de um pequeno furo, forma no fundo da caixa uma imagem invertida. A caixa tem 20 cm de profundidade. Qual é a altura da imagem?'
+      espaco: 10
+      resolucao: |
+        Os raios que passam pelo furo formam triângulos semelhantes (opostos pelo vértice): $\tfrac{i}{2} = \tfrac{0{,}2}{10}$, $i = 0{,}04$ m $= 4$ cm.
+      resposta: '4 cm'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Mostre que, se dois triângulos $ABC$ e $DEF$ têm $\hat{A} = \hat{D}$ e $\hat{B} = \hat{E}$, então $\frac{DE}{AB} = \frac{DF}{AC}$. (Sugestão: marque em $AB$ o ponto $B^{\prime}$ com $AB^{\prime} = DE$ e trace por ele a paralela a $BC$.)'
+      espaco: 16
+      resolucao: |
+        A paralela por $B^{\prime}$ corta $AC$ em $C^{\prime}$. O triângulo $AB^{\prime}C^{\prime}$ tem $\hat{A} = \hat{D}$, $AB^{\prime} = DE$ e $A\hat{B^{\prime}}C^{\prime} = \hat{B} = \hat{E}$ (correspondentes): é congruente a $DEF$ (ALA), logo $AC^{\prime} = DF$. Por Tales, $\tfrac{AB^{\prime}}{AB} = \tfrac{AC^{\prime}}{AC}$, isto é, $\tfrac{DE}{AB} = \tfrac{DF}{AC}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Dois postes verticais, de alturas $a$ e $b$, têm cabos ligando o topo de cada um à base do outro. Mostre que a altura $h$ do cruzamento satisfaz $\frac{1}{h} = \frac{1}{a} + \frac{1}{b}$ e que ela não depende da distância entre os postes.'
+      espaco: 14
+      resolucao: |
+        Com distância $d$ e o cruzamento a $x$ do poste de altura $b$: $\tfrac{h}{a} = \tfrac{x}{d}$ e $\tfrac{h}{b} = \tfrac{d - x}{d}$. Somando: $\tfrac{h}{a} + \tfrac{h}{b} = 1$, ou $\tfrac{1}{h} = \tfrac{1}{a} + \tfrac{1}{b}$. A distância $d$ não aparece.
+      resposta: 'Ver resolução'
+    - enunciado: 'Num triângulo de base 10 e altura 15, inscreve-se um retângulo com um lado sobre a base, de altura $x$ e largura $y$. Mostre que $y = 10 - \frac{2x}{3}$ e determine as dimensões do retângulo cuja largura é o dobro da altura.'
+      espaco: 14
+      resolucao: |
+        O triângulo acima do retângulo é semelhante ao original: $\tfrac{y}{10} = \tfrac{15 - x}{15}$, $y = 10 - \tfrac{2x}{3}$. Com $y = 2x$: $\tfrac{8x}{3} = 10$, $x = 3{,}75$ e $y = 7{,}5$.
+      resposta: '$3{,}75$ por $7{,}5$'
+    - enunciado: 'Dois triângulos semelhantes têm perímetros 24 e 36. Um lado do maior mede 15. Quanto mede o lado correspondente do menor? Qual é a razão entre as alturas correspondentes?'
+      espaco: 10
+      resolucao: |
+        A razão é $\tfrac{24}{36} = \tfrac{2}{3}$. Lado: $15 \cdot \tfrac{2}{3} = 10$. As alturas estão na mesma razão, $\tfrac{2}{3}$.
+      resposta: '$10$; $\frac{2}{3}$'
+    - enunciado: 'No triângulo $ABC$, $AB = 9$ e $AC = 12$. O ponto $D$ está em $AC$ e $A\hat{B}D = A\hat{C}B$. Mostre que $AB^2 = AD \cdot AC$ e calcule $AD$.'
+      espaco: 14
+      resolucao: |
+        $ABD$ e $ACB$ têm $\hat{A}$ comum e $A\hat{B}D = A\hat{C}B$: semelhantes (AA), com $B \leftrightarrow C$ e $D \leftrightarrow B$. $\tfrac{AB}{AC} = \tfrac{AD}{AB}$, ou $AB^2 = AD \cdot AC$. $AD = \tfrac{81}{12} = 6{,}75$.
+      resposta: '$AD = 6{,}75$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Para estimar a altura de um prédio, um estudante de 1,70 m de altura mediu, no mesmo instante, a sua própria sombra e a sombra do prédio, num terreno plano, como na figura. A sombra do estudante media 0,85 m e a do prédio, 24 m.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.62]
+        \draw[ink, line width=1pt] (-0.5,0) -- (9.5,0);
+        \fill[lilas!50] (0,0) rectangle (1.2,4.8);
+        \draw[ink] (0,0) rectangle (1.2,4.8);
+        \draw[lima!70!black, dashed] (1.2,4.8) -- (3.6,0);
+        \draw[ink, line width=1.4pt] (6.5,0) -- (6.5,0.68);
+        \fill[ink] (6.5,0.78) circle (2pt);
+        \draw[lima!70!black, dashed] (6.5,0.78) -- (6.84,0);
+        \node[font=\scriptsize, below] at (2.4,0) {24 m};
+        \node[font=\scriptsize, below] at (6.7,0) {0,85 m};
+        \end{scope}
+    enunciado: |
+      A altura do prédio é
+    opcoes: ['$12$ m', '$24$ m', '$34$ m', '$40{,}8$ m', '$48$ m']
+    correta: E
+    resolucao: |
+      Os raios de sol são paralelos, e os triângulos são semelhantes: $\tfrac{H}{24} = \tfrac{1{,}70}{0{,}85} = 2$, $H = 48$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      Dois triângulos são semelhantes, e a razão de semelhança do menor para o maior é $\frac{2}{5}$. Se um lado do menor mede 8, o lado correspondente do maior mede
+    opcoes: ['$3{,}2$', '$16$', '$20$', '$10$', '$40$']
+    correta: C
+    resolucao: |
+      $8 \div \tfrac{2}{5} = 20$.
+
+  - estilo: Unicamp
+    enunciado: |
+      No triângulo $ABC$, $DE \parallel BC$, com $D$ em $AB$ e $E$ em $AC$. Se $AD = 2$, $DB = 6$ e $BC = 20$, então $DE$ mede
+    opcoes: ['$5$.', '$\frac{20}{3}$.', '$15$.', '$8$.']
+    correta: A
+    resolucao: |
+      $\tfrac{DE}{BC} = \tfrac{AD}{AB} = \tfrac{2}{8}$: $DE = 5$. ($\tfrac{20}{3}$ vem de usar $DB$ no lugar de $AB$.)
+
+  - estilo: UEM
+    enunciado: |
+      Considere a semelhança de triângulos. Assinale o que for correto.
+    proposicoes:
+    - 'Dois ângulos respectivamente iguais garantem a semelhança.'
+    - 'Todos os triângulos equiláteros são semelhantes entre si.'
+    - 'Todos os triângulos retângulos isósceles são semelhantes entre si.'
+    - 'Todos os triângulos retângulos são semelhantes entre si.'
+    - 'Se a razão de semelhança é $k$, a razão entre os perímetros também é $k$.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      01) Caso AA. 02) Ângulos de $60°$. 04) Ângulos de $45°$, $45°$ e $90°$. 08) Incorreta: os ângulos agudos podem variar. 16) Correta.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Enem
+    texto: |
+      Para medir a altura de uma árvore, uma estudante colocou um espelho no chão, a 8 m da base da árvore, e se afastou até ver no espelho o topo da árvore, como na figura. Nesse momento, ela estava a 1,2 m do espelho, e os seus olhos estavam a 1,5 m do chão. Os raios de luz formam ângulos iguais com o espelho.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.42]
+        \draw[ink, line width=1pt] (-0.6,0) -- (10,0);
+        \draw[ink, line width=1.4pt] (0,0) -- (0,1.5);
+        \fill[ink] (0,1.6) circle (3pt);
+        \draw[lima!70!black, line width=2pt] (9.2,0) -- (9.2,10);
+        \fill[lima!60] (9.2,10) circle (0.9);
+        \fill[roxo] (1.1,-0.12) rectangle (1.3,0.05);
+        \draw[roxo, dashed] (0,1.6) -- (1.2,0) -- (9.2,10);
+        \node[font=\scriptsize, below] at (0.6,0) {1,2 m};
+        \node[font=\scriptsize, below] at (5.2,0) {8 m};
+        \end{scope}
+    enunciado: |
+      A altura da árvore é
+    opcoes: ['$9{,}6$ m', '$10$ m', '$6{,}4$ m', '$12$ m', '$8$ m']
+    correta: B
+    resolucao: |
+      Os triângulos retângulos têm ângulos iguais no espelho (AA): $\tfrac{H}{8} = \tfrac{1{,}5}{1{,}2}$, $H = 10$ m.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'Dois triângulos congruentes são semelhantes.'
+    - 'Dois triângulos semelhantes são congruentes.'
+    - 'Os triângulos de lados $3$, $4$, $5$ e $9$, $12$, $15$ são semelhantes.'
+    - 'Dois triângulos que têm um ângulo igual são semelhantes.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e IV, apenas.', 'I e III, apenas.', 'I, III e IV, apenas.', 'I, II, III e IV.']
+    correta: C
+    resolucao: |
+      I. Correta (razão 1). II. Incorreta: podem ter tamanhos diferentes. III. Correta (LLL, razão 3). IV. Incorreta: são necessários dois ângulos iguais.
+
+  - estilo: Unesp
+    enunciado: |
+      Dois postes verticais, de 6 m e 4 m, têm cabos que ligam o topo de cada um à base do outro. Os cabos se cruzam a uma altura do chão de
+    opcoes: ['$5$ m', '$2$ m', '$3$ m', '$2{,}4$ m', '$1{,}2$ m']
+    correta: D
+    resolucao: |
+      $\tfrac{1}{h} = \tfrac{1}{6} + \tfrac{1}{4} = \tfrac{5}{12}$: $h = 2{,}4$ m.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      No trapézio $ABCD$ da figura, as bases medem $AB = 20$ e $CD = 8$. As diagonais se cortam em $P$, e $AC = 21$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.85]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) node[below left, font=\scriptsize] {$A$} -- (5,0) node[below right, font=\scriptsize] {$B$} -- (3.5,2) node[above right, font=\scriptsize] {$C$} -- (1.5,2) node[above left, font=\scriptsize] {$D$} -- cycle;
+        \draw[roxo, line width=1pt] (0,0) -- (3.5,2) (5,0) -- (1.5,2);
+        \fill[roxo] (2.5,1.429) circle (2pt) node[below=2pt, font=\scriptsize] {$P$};
+        \end{scope}
+    enunciado: |
+      A medida de $PC$ é
+    opcoes: ['$6$.', '$8$.', '$7$.', '$15$.']
+    correta: A
+    resolucao: |
+      $PAB$ e $PCD$ são semelhantes (AA), com razão $\tfrac{20}{8} = \tfrac{5}{2}$: $AP = \tfrac{5}{7} \cdot 21 = 15$ e $PC = 6$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Um quadrado está inscrito num triângulo de base 15 e altura 10, com um lado sobre a base. O lado do quadrado mede
+    opcoes: ['$5$', '$6$', '$7{,}5$', '$4$', '$9$']
+    correta: B
+    resolucao: |
+      $\tfrac{x}{15} = \tfrac{10 - x}{10}$: $10x = 150 - 15x$, $x = 6$.
+
+  - estilo: UFSC
+    enunciado: |
+      O triângulo $ABC$, com $AB = 4$, $BC = 6$ e $AC = 8$, é semelhante ao triângulo $DEF$ ($A \leftrightarrow D$, $B \leftrightarrow E$, $C \leftrightarrow F$), com razão $\frac{3}{2}$ de $DEF$ para $ABC$. Assinale o que for correto.
+    proposicoes:
+    - '$DE = 6$.'
+    - '$EF = 9$.'
+    - '$DF = 12$.'
+    - 'O perímetro de $DEF$ é 27.'
+    - 'A razão entre as alturas correspondentes de $DEF$ e de $ABC$ é $\frac{3}{2}$.'
+    - 'A razão entre as áreas de $DEF$ e de $ABC$ é $\frac{3}{2}$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) a 08) Multiplicando por $\tfrac{3}{2}$: $6$, $9$, $12$ e perímetro $27$. 16) Alturas seguem a razão. 32) Incorreta: área é base vezes altura, e as duas crescem na razão $\tfrac{3}{2}$; a razão entre as áreas é $\tfrac{9}{4}$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Uma câmara escura é uma caixa fechada com um pequeno furo numa das faces. A luz de um objeto passa pelo furo e forma, na face oposta, uma imagem invertida. Um estudante quer construir uma câmara em que uma árvore de 5 m de altura, a 25 m do furo, forme uma imagem de 4 cm de altura.
+    enunciado: |
+      A profundidade da caixa (distância do furo à face da imagem) deve ser de
+    opcoes: ['$4$ cm', '$10$ cm', '$25$ cm', '$20$ cm', '$40$ cm']
+    correta: D
+    resolucao: |
+      Os triângulos são semelhantes (opostos pelo vértice no furo): $\tfrac{p}{25} = \tfrac{0{,}04}{5}$, $p = 0{,}2$ m $= 20$ cm.
+
+  - estilo: UFPR
+    enunciado: |
+      No triângulo $ABC$, $D$ está em $AB$ e $E$ em $AC$. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Se $DE \parallel BC$, os triângulos $ADE$ e $ABC$ são semelhantes.'
+    - 'Se $DE \parallel BC$, então $\frac{DE}{BC} = \frac{AD}{DB}$.'
+    - 'A razão entre os perímetros de dois triângulos semelhantes é igual à razão de semelhança.'
+    - 'Se dois ângulos de um triângulo são iguais a dois ângulos de outro, os triângulos são semelhantes.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'V – F – V – F.', 'F – F – V – V.', 'V – F – V – V.', 'V – V – F – V.']
+    correta: D
+    resolucao: |
+      (V) AA. (F) É $\tfrac{AD}{AB}$. (V) (V) Caso AA.
+
+  - estilo: Enem
+    texto: |
+      Para medir a largura $AB$ de um rio, sendo $A$ uma pedra na margem oposta, um técnico marcou, na sua margem, os pontos $B$, $C$ e $D$ alinhados, com $AB$ perpendicular à margem, $BC = 30$ m e $CD = 12$ m. De $D$, andou perpendicularmente à margem, afastando-se do rio, até o ponto $E$ em que $E$, $C$ e $A$ ficaram alinhados, e mediu $DE = 18$ m, como na figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.62]
+        \fill[lilas!35] (-0.8,0.25) rectangle (5,4.2);
+        \fill[ink!60] (0,4.5) circle (4pt) node[above, font=\scriptsize] {$A$};
+        \draw[roxo, line width=1pt] (0,4.5) -- (0,0) node[below left, font=\scriptsize] {$B$} -- (4.2,0) node[above right, font=\scriptsize] {$D$} -- (4.2,-1.8) node[below, font=\scriptsize] {$E$} -- cycle;
+        \fill[ink] (3,0) circle (2.5pt) node[above, font=\scriptsize] {$C$};
+        \node[font=\scriptsize, below] at (1.5,0) {30 m};
+        \node[font=\scriptsize, above] at (3.65,0) {12};
+        \node[font=\scriptsize, right] at (4.2,-0.9) {18 m};
+        \end{scope}
+    enunciado: |
+      A largura do rio é
+    opcoes: ['$30$ m', '$36$ m', '$40$ m', '$54$ m', '$45$ m']
+    correta: E
+    resolucao: |
+      $ABC$ e $EDC$ são retângulos e têm ângulos opostos pelo vértice em $C$: semelhantes (AA). $\tfrac{AB}{ED} = \tfrac{BC}{DC}$: $AB = 18 \cdot \tfrac{30}{12} = 45$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, $AB = 9$ e $AC = 12$. O ponto $D$ está em $AC$ e $A\hat{B}D = A\hat{C}B$. A medida de $AD$ é
+    opcoes: ['$6{,}75$', '$8$', '$9$', '$4$', '$5{,}25$']
+    correta: A
+    resolucao: |
+      $ABD$ e $ACB$ são semelhantes (ângulo $\hat{A}$ comum e $A\hat{B}D = A\hat{C}B$): $\tfrac{AD}{AB} = \tfrac{AB}{AC}$, $AD = \tfrac{81}{12} = 6{,}75$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Dois triângulos são semelhantes, com razão $k$. Assinale o que for correto.
+    proposicoes:
+    - 'A razão entre as alturas correspondentes é $k$.'
+    - 'A razão entre as medianas correspondentes é $k$.'
+    - 'A razão entre as áreas é $k^2$.'
+    - 'Se $k = 1$, os triângulos são congruentes.'
+    - 'Dois triângulos isósceles com bases de mesma medida são semelhantes.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) e 02) Correspondem a segmentos proporcionais. 04) Área $= \tfrac{\text{base} \cdot \text{altura}}{2}$, e cada uma fica multiplicada por $k$. 08) Lados iguais, caso LLL. 16) Incorreta: os outros lados podem ter qualquer medida.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Dois triângulos semelhantes têm perímetros 24 e 36. Um lado do maior mede 15. O lado correspondente do menor mede
+    opcoes: ['$6$', '$9$', '$10$', '$12$', '$22{,}5$']
+    correta: C
+    resolucao: |
+      Razão $\tfrac{24}{36} = \tfrac{2}{3}$: $15 \cdot \tfrac{2}{3} = 10$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        À noite, uma pessoa de 1,8 m de altura está a 7 m de um poste de iluminação de 6 m de altura, num terreno plano. A lâmpada, no alto do poste, projeta no chão a sombra da pessoa, como na figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.42]
+        \draw[ink, line width=1pt] (-0.5,0) -- (11,0);
+        \draw[ink, line width=2pt] (0,0) -- (0,6);
+        \fill[lima!80!black] (0,6) circle (6pt);
+        \draw[ink, line width=1.6pt] (7,0) -- (7,1.8);
+        \draw[lima!70!black, dashed] (0,6) -- (10,0);
+        \draw[roxo, line width=2.5pt] (7,0) -- (10,0);
+        \node[font=\scriptsize, below] at (3.5,0) {7 m};
+        \node[font=\scriptsize, below] at (8.5,0) {sombra};
+        \end{scope}
+    enunciado: |
+      O comprimento da sombra da pessoa é
+    opcoes: ['$2{,}1$ m', '$3$ m', '$3{,}5$ m', '$4{,}2$ m', '$2{,}4$ m']
+    correta: B
+    resolucao: |
+      O triângulo da pessoa com a sombra $s$ é semelhante ao do poste com $s + 7$: $\tfrac{1{,}8}{6} = \tfrac{s}{s + 7}$. $6s = 1{,}8s + 12{,}6$, $s = 3$ m.
+
+  - estilo: Unicamp
+    enunciado: |
+      Se a pessoa se afastar do poste até ficar a 14 m dele, a sua sombra passará a medir
+    opcoes: ['$6$ m.', '$3$ m.', '$4{,}2$ m.', '$7$ m.']
+    correta: A
+    resolucao: |
+      $\tfrac{1{,}8}{6} = \tfrac{s}{s + 14}$: $4{,}2s = 25{,}2$, $s = 6$ m. (A sombra é proporcional à distância ao poste: $s = \tfrac{3}{7}d$.)
+
+  - estilo: Unesp
+    enunciado: |
+      No triângulo $ABC$, $DE \parallel BC$, com $D$ em $AB$ e $E$ em $AC$. Se $AD = 4$, $AB = 10$ e $BC = 25$, então $DE$ mede
+    opcoes: ['$6$', '$8$', '$12{,}5$', '$15$', '$10$']
+    correta: E
+    resolucao: |
+      $\tfrac{DE}{25} = \tfrac{4}{10}$: $DE = 10$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Dois postes verticais, de 10 m e 15 m, têm cabos ligando o topo de cada um à base do outro. Os cabos se cruzam a uma altura do chão de
+    opcoes: ['$5$ m', '$6$ m', '$12{,}5$ m', '$7{,}5$ m', '$8$ m']
+    correta: B
+    resolucao: |
+      $\tfrac{1}{h} = \tfrac{1}{10} + \tfrac{1}{15} = \tfrac{1}{6}$: $h = 6$ m, qualquer que seja a distância entre os postes.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Dois postes verticais, de alturas $a$ e $b$, estão a uma distância $d$ um do outro. Cabos ligam o topo de cada poste à base do outro e se cruzam a uma altura $h$.'
+    itens:
+    - 'Mostre que $\frac{1}{h} = \frac{1}{a} + \frac{1}{b}$.'
+    - 'Para $a = 4$ m, $b = 12$ m e $d = 10$ m, calcule $h$ e a distância horizontal do cruzamento ao poste de 4 m.'
+    - 'Se a distância entre os postes dobrar, o que acontece com $h$? E com a posição horizontal do cruzamento, em proporção a $d$?'
+    espaco: 62
+    resolucao: |
+      a) Seja $x$ a distância horizontal do cruzamento ao poste de altura $a$. Semelhança com o cabo que desce do poste $b$: $\tfrac{h}{b} = \tfrac{x}{d}$. Com o cabo que desce do poste $a$: $\tfrac{h}{a} = \tfrac{d - x}{d}$. Somando: $\tfrac{h}{a} + \tfrac{h}{b} = 1$.
+      b) $\tfrac{1}{h} = \tfrac{1}{4} + \tfrac{1}{12} = \tfrac{1}{3}$: $h = 3$ m. $x = \tfrac{hd}{b} = \tfrac{3 \cdot 10}{12} = 2{,}5$ m.
+      c) $h$ não muda. $\tfrac{x}{d} = \tfrac{h}{b}$ também não muda: o cruzamento fica sempre a $\tfrac{1}{4}$ da distância, a partir do poste menor.
+    resposta: 'b) $h = 3$ m; 2,5 m; c) $h$ não muda'
+
+  - estilo: Unicamp
+    texto: |
+      Num triângulo de base $b$ e altura $H$, inscreve-se um retângulo de altura $x$, com um lado sobre a base e os outros dois vértices nos outros lados do triângulo.
+    enunciado: ''
+    itens:
+    - 'Mostre que a largura do retângulo é $y = b\left(1 - \frac{x}{H}\right)$.'
+    - 'Mostre que o lado do quadrado inscrito dessa forma é $\frac{bH}{b + H}$.'
+    - 'Mostre que a área do retângulo é máxima quando $x = \frac{H}{2}$ e que essa área máxima é a metade da área do triângulo.'
+    espaco: 62
+    resolucao: |
+      a) O triângulo acima do retângulo, de altura $H - x$, é semelhante ao original: $\tfrac{y}{b} = \tfrac{H - x}{H}$.
+      b) $x = y$: $x = b - \tfrac{bx}{H}$, $x\left(1 + \tfrac{b}{H}\right) = b$, $x = \tfrac{bH}{b + H}$.
+      c) $A(x) = bx - \tfrac{b}{H}x^2$, parábola com concavidade para baixo e vértice em $x = \tfrac{H}{2}$. $A = b \cdot \tfrac{H}{2} \cdot \tfrac{1}{2} = \tfrac{bH}{4}$, metade de $\tfrac{bH}{2}$.
+    resposta: 'Ver resolução'
+
+  - estilo: ITA
+    enunciado: |
+      No triângulo $ABC$, $AB = 6$, $AC = 9$ e $BC = 10$. O ponto $D$ do lado $BC$ é tal que $B\hat{A}D = A\hat{C}B$. A medida de $BD$ é
+    opcoes: ['$3{,}6$', '$4$', '$2{,}4$', '$5{,}4$', '$6$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $BAD$ e $BCA$ têm $\hat{B}$ comum e $B\hat{A}D = B\hat{C}A$: semelhantes. $\tfrac{BD}{BA} = \tfrac{BA}{BC}$: $BD = \tfrac{36}{10} = 3{,}6$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'No trapézio $ABCD$, de bases $AB = a$ e $CD = b$, as diagonais se cortam em $P$. Pelo ponto $P$ traça-se o segmento $MN$, paralelo às bases, com $M$ em $AD$ e $N$ em $BC$.'
+    itens:
+    - 'Mostre que $\frac{AP}{PC} = \frac{a}{b}$.'
+    - 'Mostre que $MP = \frac{ab}{a + b}$ e que $PN = \frac{ab}{a + b}$.'
+    - 'Calcule $MN$ para $a = 6$ e $b = 12$.'
+    espaco: 62
+    resolucao: |
+      a) $PAB$ e $PCD$: ângulos opostos pelo vértice em $P$ e alternos internos ($AB \parallel CD$). Semelhantes, com $\tfrac{AP}{PC} = \tfrac{AB}{CD} = \tfrac{a}{b}$.
+      b) No triângulo $ADC$, $MP \parallel DC$: $\tfrac{MP}{DC} = \tfrac{AP}{AC} = \tfrac{a}{a + b}$, $MP = \tfrac{ab}{a + b}$. No triângulo $CAB$, $PN \parallel AB$: $\tfrac{PN}{AB} = \tfrac{CP}{CA} = \tfrac{b}{a + b}$, $PN = \tfrac{ab}{a + b}$.
+      c) $MN = \tfrac{2ab}{a + b} = \tfrac{144}{18} = 8$.
+    resposta: 'c) $MN = 8$'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - 'Os triângulos de lados $2, 3, 4$ e $4, 6, 8$ são semelhantes.'
+    - 'Se dois triângulos têm os lados proporcionais, os ângulos correspondentes são iguais.'
+    - 'Se $DE \parallel BC$ no triângulo $ABC$, com $D$ em $AB$, então $\frac{DE}{BC} = \frac{AD}{AB}$.'
+    - 'Se a razão de semelhança entre dois triângulos é 3, a razão entre os perímetros é 9.'
+    - 'Uma pessoa de 1,5 m que projeta sombra de 2 m, ao lado de uma torre que projeta sombra de 40 m, indica que a torre mede 30 m.'
+    - 'Dois triângulos com um ângulo igual e os lados que o formam proporcionais são semelhantes.'
+    corretas: [1, 2, 3, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) Razão 2 (LLL). 02) É a definição combinada com o caso LLL. 04) Semelhança $ADE \sim ABC$. 08) Incorreta: a razão dos perímetros é 3. 16) $\tfrac{1{,}5}{2} = \tfrac{H}{40}$, $H = 30$. 32) Caso LAL.
+    resposta: 'Soma 55 (01 + 02 + 04 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'No triângulo $ABC$, os pontos $D$ (em $AB$) e $E$ (em $AC$) são tais que $A\hat{D}E = A\hat{C}B$.'
+    itens:
+    - 'Prove que os triângulos $ADE$ e $ACB$ são semelhantes e escreva a proporção entre os lados.'
+    - 'Mostre que $AD \cdot AB = AE \cdot AC$.'
+    - 'Se $AD = 3$, $DB = 5$ e $AE = 4$, calcule $EC$.'
+    espaco: 62
+    resolucao: |
+      a) $\hat{A}$ é comum e $A\hat{D}E = A\hat{C}B$ (caso AA), com $D \leftrightarrow C$ e $E \leftrightarrow B$: $\tfrac{AD}{AC} = \tfrac{AE}{AB} = \tfrac{DE}{CB}$.
+      b) De $\tfrac{AD}{AC} = \tfrac{AE}{AB}$: $AD \cdot AB = AE \cdot AC$.
+      c) $3 \cdot 8 = 4 \cdot AC$: $AC = 6$ e $EC = 2$.
+    resposta: 'c) $EC = 2$'
+
+  - estilo: Unicamp
+    texto: |
+      Num projetor de slides, a lente fica entre o slide e a tela, e os raios que passam pelo centro da lente formam, com o slide e com a imagem, triângulos semelhantes. Um slide de 3,5 cm de largura produz, numa tela a 4 m da lente, uma imagem de 1,4 m de largura.
+    enunciado: ''
+    itens:
+    - 'Qual é a distância entre o slide e a lente?'
+    - 'Mantendo essa distância, a que distância da lente deve ficar a tela para que a imagem tenha 2,1 m de largura?'
+    - 'Qual é a razão de ampliação em cada caso?'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{d}{400} = \tfrac{3{,}5}{140}$: $d = 10$ cm.
+      b) A largura da imagem é proporcional à distância da tela: $\tfrac{2{,}1}{1{,}4} \cdot 4 = 6$ m.
+      c) $\tfrac{140}{3{,}5} = 40$ e $\tfrac{210}{3{,}5} = 60$ (iguais a $\tfrac{400}{10}$ e $\tfrac{600}{10}$).
+    resposta: 'a) 10 cm; b) 6 m; c) 40 e 60'
+
+  - estilo: Fuvest
+    enunciado: |
+      Dois triângulos semelhantes têm razão de semelhança $\frac{3}{4}$, e a soma dos seus perímetros é 70. O perímetro do menor é
+    opcoes: ['$40$', '$30$', '$35$', '$52{,}5$', '$28$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      Os perímetros estão na razão $3 : 4$: $3k + 4k = 70$, $k = 10$, e o menor mede $30$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Uma pessoa, com os olhos a 1,6 m do chão, usa um espelho no chão para ver o topo de uma torre de 40 m. Os raios de luz formam ângulos iguais com o espelho.'
+    itens:
+    - 'Explique por que os triângulos formados pela pessoa e pela torre com o espelho são semelhantes.'
+    - 'Se a pessoa está a 2 m do espelho, a que distância da torre fica o espelho?'
+    - 'Se a distância entre a pessoa e a base da torre é 65 m, onde deve ficar o espelho?'
+    espaco: 62
+    resolucao: |
+      a) Os dois triângulos são retângulos (pessoa e torre verticais) e têm ângulos iguais no espelho: caso AA.
+      b) $\tfrac{40}{D} = \tfrac{1{,}6}{2}$: $D = 50$ m.
+      c) Com $p$ a distância da pessoa ao espelho: $\tfrac{1{,}6}{p} = \tfrac{40}{65 - p}$. $104 - 1{,}6p = 40p$, $p = 2{,}5$ m da pessoa, ou seja, a $62{,}5$ m da torre.
+    resposta: 'b) 50 m; c) a 2,5 m da pessoa'
+
+  - estilo: Fuvest
+    enunciado: 'Uma pirâmide tem base quadrada com 120 m de lado. Num certo instante, a sombra da pirâmide vai 30 m além da borda da base, na direção perpendicular a ela, e uma vara vertical de 1 m projeta uma sombra de 1,5 m.'
+    itens:
+    - 'Explique por que, para comparar com a vara, a "sombra" da pirâmide deve ser medida a partir do centro da base.'
+    - 'Calcule a altura da pirâmide.'
+    - 'Mais tarde, a vara projeta sombra de 2 m. Quanto a sombra da pirâmide ultrapassa a borda da base nesse momento?'
+    espaco: 62
+    resolucao: |
+      a) O vértice da pirâmide fica acima do centro da base. O triângulo semelhante ao da vara tem cateto vertical igual à altura e cateto horizontal do centro até a ponta da sombra: $60 + 30 = 90$ m.
+      b) $\tfrac{h}{90} = \tfrac{1}{1{,}5}$: $h = 60$ m.
+      c) $\tfrac{60}{s} = \tfrac{1}{2}$: $s = 120$ m a partir do centro, ou seja, $120 - 60 = 60$ m além da borda.
+    resposta: 'b) 60 m; c) 60 m'
