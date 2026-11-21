@@ -1,0 +1,560 @@
+# Aula 4.12.1 — Geometria espacial: prismas, elementos e áreas
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: elementos (bases, arestas laterais, altura); prisma reto, oblíquo e regular; área lateral (P·h no reto),
+# área da base e área total; cubo e paralelepípedo (diagonal e relação (a + b + c)² = d² + A_T); prismas triangular e
+# hexagonal regulares; aquários sem tampa, pinturas, embalagens; prisma oblíquo simples. Volume fica para a 4.12.2.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. $A_l$ é a área lateral e $A_T$, a área total. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete com a área lateral e a área total de cada prisma reto.'
+      itens:
+      - 'Cubo de aresta 5: $A_l =$ {{100}} e $A_T =$ {{150}}'
+      - 'Paralelepípedo de base $6 \times 4$ e altura 3: $A_l =$ {{60}} e $A_T =$ {{108}}'
+      - 'Prisma triangular regular, aresta da base 4 e altura 10: $A_l =$ {{120}} e $A_T =$ {{120 + 8\sqrt{3}}}'
+      - 'Prisma hexagonal regular, aresta da base 2 e altura 5: $A_l =$ {{60}} e $A_T =$ {{60 + 12\sqrt{3}}}'
+      espaco_item: 10
+      resolucao: |
+        $A_l = P_{\text{base}} \cdot h$ e $A_T = A_l + 2A_b$. Triângulo equilátero de lado 4: $4\sqrt{3}$. Hexágono de lado 2: $6 \cdot \sqrt{3}$.
+      resposta: '100, 150; 60, 108; 120, $120 + 8\sqrt{3}$; 60, $60 + 12\sqrt{3}$'
+    - enunciado: 'Associe cada elemento ou tipo de prisma à sua descrição.'
+      esquerda:
+      - 'bases'
+      - 'arestas laterais'
+      - 'altura'
+      - 'prisma reto'
+      - 'prisma regular'
+      direita:
+      - 'distância entre os planos das bases'
+      - 'prisma reto cuja base é um polígono regular'
+      - 'duas faces congruentes em planos paralelos'
+      - 'prisma de arestas laterais perpendiculares às bases'
+      - 'segmentos paralelos e iguais que ligam as bases'
+      resolucao: |
+        No prisma reto, a altura é igual à aresta lateral; no oblíquo, é menor.
+      resposta: 'De cima para baixo: 3, 5, 1, 4, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Num prisma reto, as faces laterais são retângulos.'
+      - 'Num prisma oblíquo, a altura é igual à aresta lateral.'
+      - 'A área total de um cubo de aresta $a$ é $6a^2$.'
+      - 'As faces laterais de um prisma regular são sempre quadrados.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) A aresta é inclinada; a altura é menor. (V) (F) São retângulos; quadrados só se a altura for igual à aresta da base.
+      resposta: V, F, V, F
+    - enunciado: 'Um cubo tem diagonal $6\sqrt{3}$. Complete.'
+      itens:
+      - 'Aresta: {{6}}'
+      - 'Área total: {{216}}'
+      - 'Diagonal de uma face: {{6\sqrt{2}}}'
+      espaco_item: 8
+      resolucao: |
+        $a\sqrt{3} = 6\sqrt{3}$: $a = 6$. $6 \cdot 36 = 216$; $6\sqrt{2}$.
+      resposta: '6; 216; $6\sqrt{2}$'
+    - enunciado: 'Calcule a área total do paralelepípedo da figura, de dimensões 8, 5 e 3.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.3]
+          \draw[ink, line width=1pt, fill=lilas!20] (0,0) rectangle (8,3);
+          \draw[ink, line width=1pt, fill=lilas!35] (0,3) -- (2,4.6) -- (10,4.6) -- (8,3) -- cycle;
+          \draw[ink, line width=1pt, fill=lilas!10] (8,0) -- (10,1.6) -- (10,4.6) -- (8,3) -- cycle;
+          \node[below, font=\scriptsize] at (4,0) {$8$};
+          \node[right, font=\scriptsize] at (9.1,0.6) {$5$};
+          \node[left, font=\scriptsize] at (0,1.5) {$3$};
+          \end{scope}
+      espaco: 8
+      resolucao: |
+        $2(8 \cdot 5 + 8 \cdot 3 + 5 \cdot 3) = 2 \cdot 79 = 158$.
+      resposta: '158'
+    - enunciado: 'Um aquário sem tampa tem 60 cm de comprimento, 30 cm de largura e 40 cm de altura. Quantos cm² de vidro são usados?'
+      espaco: 8
+      resolucao: |
+        Fundo $60 \cdot 30 = 1800$; duas faces $60 \times 40$: 4800; duas $30 \times 40$: 2400. Total 9000 cm².
+      resposta: '9000 cm²'
+    - enunciado: 'Um prisma hexagonal regular tem aresta da base 4 e altura 10. Calcule a área lateral e a área total.'
+      espaco: 10
+      resolucao: |
+        $A_l = 24 \cdot 10 = 240$. Base: $6 \cdot \tfrac{16\sqrt{3}}{4} = 24\sqrt{3}$. $A_T = 240 + 48\sqrt{3}$.
+      resposta: '$240$; $240 + 48\sqrt{3}$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para a área total de um cubo de aresta 4, Bia fez $4^3 = 64$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        $4^3$ é o volume. A área total soma 6 faces de $4^2$: $96$.
+      resposta: '96'
+    - enunciado: 'Um paralelepípedo retângulo tem $a + b + c = 12$ e diagonal $\sqrt{50}$. Calcule a área total.'
+      espaco: 10
+      resolucao: |
+        $(a + b + c)^2 = a^2 + b^2 + c^2 + 2(ab + bc + ac) = d^2 + A_T$: $144 = 50 + A_T$, $A_T = 94$.
+      resposta: '94'
+    - enunciado: 'Um cubo tem área total 150. Calcule a aresta e a diagonal.'
+      espaco: 8
+      resolucao: |
+        $6a^2 = 150$: $a = 5$; diagonal $5\sqrt{3}$.
+      resposta: '5 e $5\sqrt{3}$'
+    - enunciado: 'Um prisma reto tem por base um triângulo retângulo de catetos 6 e 8, e altura 10. Calcule $A_l$ e $A_T$.'
+      espaco: 10
+      resolucao: |
+        Hipotenusa 10; perímetro 24: $A_l = 240$. Base 24: $A_T = 240 + 48 = 288$.
+      resposta: '240 e 288'
+    - enunciado: 'Complete o quadro para paralelepípedos retângulos.'
+      tabela:
+        cabecalho: ['Dimensões', 'Diagonal', '$A_T$']
+        linhas:
+        - ['$2$, $3$, $6$', '${{7}}$', '${{72}}$']
+        - ['$1$, $2$, $2$', '${{3}}$', '${{16}}$']
+        - ['$3$, $4$, $12$', '${{13}}$', '${{192}}$']
+      resolucao: |
+        $d = \sqrt{a^2 + b^2 + c^2}$ e $A_T = 2(ab + bc + ac)$. Confira: $(a + b + c)^2 = d^2 + A_T$.
+      resposta: '7, 72; 3, 16; 13, 192'
+    - enunciado: 'Uma sala de 5 m por 4 m e 3 m de altura terá as paredes e o teto pintados. Cada litro de tinta cobre 10 m². Quantas latas de 1 litro são necessárias (desconsidere portas e janelas)?'
+      espaco: 10
+      resolucao: |
+        Paredes: $2(5 + 4) \cdot 3 = 54$ m²; teto: 20 m². Total 74 m²: 7,4 L, ou seja, 8 latas.
+      resposta: '8 latas'
+    - enunciado: 'Uma caixa cúbica de 20 cm de aresta será embrulhada com papel, usando 10\% a mais que a área total para as dobras. Quanto papel é usado?'
+      espaco: 8
+      resolucao: |
+        $6 \cdot 400 = 2400$ cm²; com 10\% a mais, $2640$ cm².
+      resposta: '2640 cm²'
+    - enunciado: 'Um cubo de aresta 3 é cortado em 27 cubinhos de aresta 1. Compare a soma das áreas dos cubinhos com a área do cubo original.'
+      espaco: 10
+      resolucao: |
+        Cubo: $6 \cdot 9 = 54$. Cubinhos: $27 \cdot 6 = 162$, o triplo.
+      resposta: '162 e 54; o triplo'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que a área lateral de um prisma reto é o perímetro da base vezes a altura.'
+      espaco: 10
+      resolucao: |
+        Cada face lateral é um retângulo de lados $\ell_i$ (lado da base) e $h$. Somando: $\sum \ell_i h = h\sum \ell_i = P \cdot h$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, num paralelepípedo retângulo de dimensões $a$, $b$, $c$, diagonal $d$ e área total $A_T$, vale $(a + b + c)^2 = d^2 + A_T$.'
+      espaco: 10
+      resolucao: |
+        $(a + b + c)^2 = a^2 + b^2 + c^2 + 2ab + 2bc + 2ac$, com $d^2 = a^2 + b^2 + c^2$ e $A_T = 2(ab + bc + ac)$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Um prisma oblíquo tem base quadrada de lado 4 e arestas laterais de 10, inclinadas $60°$ em relação à base, num plano paralelo a duas faces laterais. Calcule a altura e a área lateral.'
+      espaco: 14
+      resolucao: |
+        Altura $10\operatorname{sen}60° = 5\sqrt{3}$. Duas faces são retângulos $4 \times 10$ (área 40 cada); as outras duas são paralelogramos de lados 4 e 10 com ângulo de $60°$, área $4 \cdot 5\sqrt{3} = 20\sqrt{3}$ cada. $A_l = 80 + 40\sqrt{3}$.
+      resposta: '$h = 5\sqrt{3}$; $A_l = 80 + 40\sqrt{3}$'
+    - enunciado: 'Entre os paralelepípedos retângulos com a mesma soma de dimensões $a + b + c = s$, prove que o de maior área total é o cubo.'
+      espaco: 12
+      resolucao: |
+        $A_T = s^2 - d^2$, com $d^2 = a^2 + b^2 + c^2$. Como $a^2 + b^2 + c^2 \ge \tfrac{(a + b + c)^2}{3}$, com igualdade só para $a = b = c$, a área é máxima no cubo: $\tfrac{2s^2}{3}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Um prisma hexagonal regular tem aresta da base 3 e altura 8. Calcule a maior diagonal do prisma.'
+      espaco: 10
+      resolucao: |
+        A maior diagonal da base liga vértices opostos: $2 \cdot 3 = 6$. A maior diagonal do prisma: $\sqrt{36 + 64} = 10$.
+      resposta: '10'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um aquário sem tampa, com a forma de um paralelepípedo, tem 80 cm de comprimento, 40 cm de largura e 50 cm de altura, como na figura. O vidraceiro cobra R\$\,120,00 por metro quadrado de vidro, e o cliente quer saber o preço do aquário.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.03]
+        \draw[ink, line width=1pt, fill=lilas!15] (0,0) rectangle (80,50);
+        \draw[ink, line width=1pt] (0,50) -- (16,62) -- (96,62) -- (80,50) (80,0) -- (96,12) -- (96,62);
+        \draw[ink, dashed] (0,0) -- (16,12) -- (96,12) (16,12) -- (16,62);
+        \node[below, font=\scriptsize] at (40,0) {80 cm};
+        \node[right, font=\scriptsize] at (88,4) {40 cm};
+        \node[left, font=\scriptsize] at (0,25) {50 cm};
+        \end{scope}
+    enunciado: |
+      O preço do vidro do aquário é
+    opcoes: ['R\$\,230,40', 'R\$\,182,40', 'R\$\,144,00', 'R\$\,96,00', 'R\$\,240,00']
+    correta: B
+    resolucao: |
+      Fundo $3200$; frente e fundo $2 \cdot 4000$; laterais $2 \cdot 2000$: $15\,200$ cm² $= 1{,}52$ m². $1{,}52 \cdot 120 = 182{,}40$ reais.
+
+  - estilo: Fuvest
+    enunciado: |
+      A área total de um cubo cuja diagonal mede $4\sqrt{3}$ é
+    opcoes: ['$96$', '$64$', '$48$', '$16$', '$144$']
+    correta: A
+    resolucao: |
+      Aresta 4: $6 \cdot 16 = 96$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Um prisma triangular regular tem aresta da base 6 e altura 10. A sua área lateral é
+    opcoes: ['$180$.', '$60$.', '$180 + 18\sqrt{3}$.', '$360$.']
+    correta: A
+    resolucao: |
+      $3 \cdot 6 \cdot 10 = 180$. (Com as bases, $180 + 18\sqrt{3}$.)
+
+  - estilo: UEM
+    enunciado: |
+      Considere prismas e as suas áreas. Assinale o que for correto.
+    proposicoes:
+    - 'Um cubo de aresta 3 tem área total 54.'
+    - 'Um paralelepípedo de dimensões 2, 3 e 4 tem área total 52.'
+    - 'As faces laterais de um prisma reto são retângulos.'
+    - 'A diagonal de um paralelepípedo de dimensões 2, 3 e 6 mede 7.'
+    - 'A área total de um cubo de aresta $a$ é $a^3$.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) $6 \cdot 9$. 02) $2(6 + 12 + 8)$. 04) Correta. 08) $\sqrt{49}$. 16) Incorreta: $6a^2$.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Enem
+    texto: |
+      Uma embalagem de presente tem a forma de um prisma hexagonal regular, com aresta da base de 5 cm e altura de 20 cm, como na figura. Para orçar o papelão, a fábrica calcula a área total da embalagem, desprezando as abas de colagem. Use $\sqrt{3} \approx 1{,}73$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \foreach \k/\l in {0/1, 1/2, 2/3, 3/4, 4/5, 5/0} \draw[ink, line width=1pt] ({cos(60*\k)},{2+0.35*sin(60*\k)}) -- ({cos(60*\l)},{2+0.35*sin(60*\l)});
+        \foreach \k/\l in {3/4, 4/5, 5/0} \draw[ink, line width=1pt] ({cos(60*\k)},{0.35*sin(60*\k)}) -- ({cos(60*\l)},{0.35*sin(60*\l)});
+        \foreach \k/\l in {0/1, 1/2, 2/3} \draw[ink, dashed] ({cos(60*\k)},{0.35*sin(60*\k)}) -- ({cos(60*\l)},{0.35*sin(60*\l)});
+        \foreach \k in {0, 3, 4, 5} \draw[ink, line width=1pt] ({cos(60*\k)},{0.35*sin(60*\k)}) -- ({cos(60*\k)},{2+0.35*sin(60*\k)});
+        \foreach \k in {1, 2} \draw[ink, dashed] ({cos(60*\k)},{0.35*sin(60*\k)}) -- ({cos(60*\k)},{2+0.35*sin(60*\k)});
+        \end{scope}
+    enunciado: |
+      A área total da embalagem é, aproximadamente,
+    opcoes: ['$600$ cm²', '$665$ cm²', '$730$ cm²', '$860$ cm²', '$795$ cm²']
+    correta: C
+    resolucao: |
+      $A_l = 30 \cdot 20 = 600$. Duas bases: $2 \cdot 6 \cdot \tfrac{25\sqrt{3}}{4} = 75\sqrt{3} \approx 129{,}8$. Total $\approx 730$ cm².
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre prismas.
+    afirmativas:
+    - 'A área lateral de um prisma reto é o perímetro da base vezes a altura.'
+    - 'Num prisma oblíquo, a aresta lateral é igual à altura.'
+    - 'Um prisma hexagonal regular tem 6 faces laterais retangulares congruentes.'
+    - 'Um cubo de área total 96 tem aresta 4.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e IV, apenas.', 'III e IV, apenas.', 'I, III e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. Correta. II. Incorreta: a aresta é maior que a altura. III. Correta. IV. $6a^2 = 96$, $a = 4$.
+
+  - estilo: Unesp
+    enunciado: |
+      A área total de um paralelepípedo retângulo de dimensões 5, 4 e 2 é
+    opcoes: ['$40$', '$38$', '$56$', '$80$', '$76$']
+    correta: E
+    resolucao: |
+      $2(20 + 10 + 8) = 76$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      A figura mostra um prisma reto cuja base é um triângulo retângulo de catetos 3 e 4, com altura 10.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.3]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) -- (4,0) -- (4,10) -- (0,10) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!35] (0,10) -- (4,10) -- (1.5,12) -- cycle;
+        \draw[ink, line width=1pt] (4,0) -- (1.5,2) (1.5,2) -- (1.5,12);
+        \draw[ink, dashed] (0,0) -- (1.5,2);
+        \end{scope}
+    enunciado: |
+      A área total do prisma é
+    opcoes: ['$132$.', '$120$.', '$126$.', '$144$.']
+    correta: A
+    resolucao: |
+      Hipotenusa 5, perímetro 12: $A_l = 120$. Bases: $2 \cdot 6 = 12$. Total 132.
+
+  - estilo: Fuvest
+    enunciado: |
+      Um paralelepípedo retângulo tem a soma das três dimensões igual a 10 e diagonal $\sqrt{38}$. A sua área total é
+    opcoes: ['$38$', '$62$', '$100$', '$138$', '$72$']
+    correta: B
+    resolucao: |
+      $(a + b + c)^2 = d^2 + A_T$: $100 = 38 + A_T$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere um cubo de aresta 4. Assinale o que for correto.
+    proposicoes:
+    - 'A área total é 96.'
+    - 'A diagonal mede $4\sqrt{3}$.'
+    - 'Se ele for dividido em 8 cubos iguais, a soma das áreas totais desses cubos será 192.'
+    - 'A diagonal de uma face mede $4\sqrt{2}$.'
+    - 'Aumentando a aresta em 50\%, a área total aumenta 125\%.'
+    - 'A área lateral é 96.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $6 \cdot 16$. 02) $a\sqrt{3}$. 04) Cubinhos de aresta 2: $8 \cdot 24$. 08) $a\sqrt{2}$. 16) $1{,}5^2 = 2{,}25$. 32) Incorreta: $4 \cdot 16 = 64$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      As paredes e o teto de uma sala de 6 m por 4 m, com 3 m de altura, serão pintados. Há uma porta de 2 m² e uma janela de 3 m², que não serão pintadas. A tinta é vendida em latas de 3,6 litros, e cada litro cobre 10 m² com uma demão.
+    enunciado: |
+      O número mínimo de latas para uma demão é
+    opcoes: ['$2$', '$8$', '$3$', '$4$', '$1$']
+    correta: C
+    resolucao: |
+      Paredes $2(6 + 4) \cdot 3 - 5 = 55$ m²; teto 24 m². Total 79 m²: 7,9 L. Duas latas dão 7,2 L: são necessárias 3.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Um paralelepípedo retângulo tem 6 faces retangulares.'
+    - 'A área lateral de um cubo de aresta $a$ é $6a^2$.'
+    - 'As bases de um prisma triangular regular são triângulos equiláteros.'
+    - 'Dobrando todas as arestas de um prisma, a área total fica 4 vezes maior.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – F – V – V.', 'V – V – F – V.']
+    correta: D
+    resolucao: |
+      (V) (F) A lateral tem 4 faces: $4a^2$. (V) (V) Áreas escalam com $k^2$.
+
+  - estilo: Enem
+    texto: |
+      Uma fábrica estuda cinco modelos de caixa fechada, todas com o mesmo volume de 1000 cm³, e quer escolher o modelo que gasta menos papelão, isto é, o de menor área total (sem contar as abas de colagem). O quadro mostra as dimensões, em centímetros.
+    tabela:
+      cabecalho: ['Caixa', 'Dimensões (cm)']
+      linhas:
+      - ['C1', '$10 \times 10 \times 10$']
+      - ['C2', '$20 \times 10 \times 5$']
+      - ['C3', '$25 \times 8 \times 5$']
+      - ['C4', '$20 \times 20 \times 2{,}5$']
+      - ['C5', '$40 \times 5 \times 5$']
+    enunciado: |
+      A caixa que gasta menos papelão é a
+    opcoes: ['C1.', 'C2.', 'C3.', 'C4.', 'C5.']
+    correta: A
+    resolucao: |
+      Áreas: $600$, $700$, $730$, $1000$ e $850$ cm². A menor é a do cubo.
+
+  - estilo: Unesp
+    enunciado: |
+      Um cubo tem área total 54. A sua diagonal mede
+    opcoes: ['$9$', '$3\sqrt{2}$', '$6$', '$27$', '$3\sqrt{3}$']
+    correta: E
+    resolucao: |
+      $6a^2 = 54$: $a = 3$; diagonal $3\sqrt{3}$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Um prisma hexagonal regular tem aresta da base 2 e altura $2\sqrt{3}$. Assinale o que for correto.
+    proposicoes:
+    - 'A área de cada base é $6\sqrt{3}$.'
+    - 'A área lateral é $24\sqrt{3}$.'
+    - 'A área total é $36\sqrt{3}$.'
+    - 'A maior diagonal da base mede 4.'
+    - 'A maior diagonal do prisma mede $2\sqrt{7}$.'
+    - 'As faces laterais são quadrados.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $6 \cdot \tfrac{4\sqrt{3}}{4}$. 02) $12 \cdot 2\sqrt{3}$. 04) $24\sqrt{3} + 12\sqrt{3}$. 08) Dobro da aresta. 16) $\sqrt{16 + 12}$. 32) Incorreta: $2 \ne 2\sqrt{3}$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Um prisma oblíquo tem arestas laterais de 10 cm, inclinadas $60°$ em relação ao plano da base. A altura do prisma é
+    opcoes: ['$10$ cm.', '$5\sqrt{3}$ cm.', '$5$ cm.', '$10\sqrt{3}$ cm.']
+    correta: B
+    resolucao: |
+      $h = 10\operatorname{sen}60° = 5\sqrt{3}$ cm.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Uma barraca de acampamento tem a forma de um prisma triangular deitado, como na figura: a frente e o fundo são triângulos isósceles de base 2,4 m e altura 1,6 m, e o comprimento da barraca é 3 m. As duas faces inclinadas, a frente e o fundo são de lona; o piso é de um material mais grosso.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.6]
+        \draw[ink, line width=1pt, fill=lilas!30] (0,0) -- (2.4,0) -- (1.2,1.6) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!15] (1.2,1.6) -- (3.2,2.4) -- (4.4,0.8) -- (2.4,0) -- cycle;
+        \draw[ink, dashed] (0,0) -- (2,0.8) -- (4.4,0.8) (2,0.8) -- (3.2,2.4);
+        \end{scope}
+    enunciado: |
+      A área de lona da barraca é
+    opcoes: ['$12{,}00$ m²', '$23{,}04$ m²', '$15{,}84$ m²', '$13{,}92$ m²', '$19{,}20$ m²']
+    correta: C
+    resolucao: |
+      Lado inclinado do triângulo: $\sqrt{1{,}2^2 + 1{,}6^2} = 2$ m. Faces inclinadas: $2 \cdot 2 \cdot 3 = 12$ m². Frente e fundo: $2 \cdot \tfrac{2{,}4 \cdot 1{,}6}{2} = 3{,}84$ m². Total 15,84 m².
+
+  - estilo: Unesp
+    enunciado: |
+      A área total da barraca, incluindo o piso, é
+    opcoes: ['$15{,}84$ m²', '$19{,}44$ m²', '$22{,}80$ m²', '$23{,}04$ m²', '$25{,}20$ m²']
+    correta: D
+    resolucao: |
+      Piso: $2{,}4 \cdot 3 = 7{,}2$ m². $15{,}84 + 7{,}2 = 23{,}04$ m².
+
+  - estilo: Fuvest
+    enunciado: |
+      A soma das 12 arestas de um paralelepípedo retângulo é 24, e a sua área total é 22. A diagonal mede
+    opcoes: ['$\sqrt{22}$', '$6$', '$2\sqrt{3}$', '$\sqrt{58}$', '$\sqrt{14}$']
+    correta: E
+    resolucao: |
+      $4(a + b + c) = 24$: $a + b + c = 6$. $d^2 = 36 - 22 = 14$.
+
+  - estilo: Unesp
+    texto: |
+      De um cubo de aresta 3, formado por 27 cubinhos de aresta 1, retira-se o cubinho de um dos cantos, como na figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.6]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) -- (3,0) -- (3,2) -- (2,2) -- (2,3) -- (0,3) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!35] (0,3) -- (1,3.7) -- (4,3.7) -- (4,2.7) -- (3.3,2.2) -- (2.3,2.2) -- (2.3,3.2) -- (2,3) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!10] (3,0) -- (4,0.7) -- (4,2.7) -- (3.3,2.2) -- (3,2) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!50] (2,2) -- (3,2) -- (3.3,2.2) -- (2.3,2.2) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!25] (2,2) -- (2.3,2.2) -- (2.3,3.2) -- (2,3) -- cycle;
+        \end{scope}
+    enunciado: |
+      A área total do sólido que resta é
+    opcoes: ['$51$', '$54$', '$57$', '$48$', '$60$']
+    correta: B
+    resolucao: |
+      O cubinho do canto tinha 3 faces expostas, que saem; em compensação, aparecem 3 faces novas (as dos cubinhos vizinhos). A área continua 54.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere prismas retos e paralelepípedos retângulos.'
+    itens:
+    - 'Prove que a área lateral de um prisma reto é o perímetro da base vezes a altura.'
+    - 'Prove que, num paralelepípedo retângulo, $(a + b + c)^2 = d^2 + A_T$.'
+    - 'Um paralelepípedo tem $a + b + c = 14$ e diagonal 10. Calcule a área total.'
+    espaco: 62
+    resolucao: |
+      a) As faces laterais são retângulos de altura $h$ e bases iguais aos lados da base: somando, $P \cdot h$.
+      b) Desenvolvendo o quadrado: $a^2 + b^2 + c^2 + 2(ab + bc + ac)$.
+      c) $196 - 100 = 96$.
+    resposta: 'c) 96'
+
+  - estilo: Unicamp
+    texto: |
+      Um prisma oblíquo tem base quadrada de lado 6 e arestas laterais de 10, inclinadas $30°$ em relação ao plano da base, num plano paralelo a duas faces laterais.
+    enunciado: ''
+    itens:
+    - 'Calcule a altura do prisma.'
+    - 'Calcule a área lateral.'
+    - 'Compare com a área lateral de um prisma reto de mesma base e mesma altura.'
+    espaco: 62
+    resolucao: |
+      a) $10\operatorname{sen}30° = 5$.
+      b) Duas faces retangulares $6 \times 10$ (60 cada) e duas em paralelogramo de lados 6 e 10, com altura relativa ao lado 6 igual a 5 (30 cada): $A_l = 180$.
+      c) Reto de altura 5: $24 \cdot 5 = 120$. O oblíquo tem área lateral maior.
+    resposta: 'a) 5; b) 180; c) 120, menor'
+
+  - estilo: ITA
+    enunciado: |
+      As faces de um paralelepípedo retângulo têm áreas 6, 8 e 12. A diagonal do paralelepípedo mede
+    opcoes: ['$\sqrt{29}$', '$\sqrt{26}$', '$\sqrt{52}$', '$13$', '$5$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $ab = 6$, $ac = 8$, $bc = 12$: $(abc)^2 = 576$, $abc = 24$. Então $a = 2$, $b = 3$, $c = 4$ e $d = \sqrt{4 + 9 + 16} = \sqrt{29}$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Um cubo de madeira de aresta 3 é pintado por fora e depois cortado em 27 cubinhos de aresta 1.
+    enunciado: ''
+    itens:
+    - 'Quantos cubinhos ficam com 3, 2, 1 e 0 faces pintadas?'
+    - 'Confira que o total de faces pintadas dos cubinhos é igual à área do cubo original.'
+    - 'Generalize para um cubo de aresta $n$ cortado em $n^3$ cubinhos: quantos não têm face pintada?'
+    espaco: 62
+    resolucao: |
+      a) 3 faces: os 8 cantos. 2 faces: 1 por aresta, 12. 1 face: 1 por face, 6. 0 faces: o central, 1. ($8 + 12 + 6 + 1 = 27$.)
+      b) $8 \cdot 3 + 12 \cdot 2 + 6 \cdot 1 = 54 = 6 \cdot 9$.
+      c) Os do interior formam um cubo de aresta $n - 2$: $(n - 2)^3$.
+    resposta: 'a) 8, 12, 6, 1; c) $(n - 2)^3$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere prismas e as suas áreas. Assinale o que for correto.
+    proposicoes:
+    - 'A área total de um cubo de aresta $a$ é $6a^2$.'
+    - 'Dobrando a aresta de um cubo, a área total fica 4 vezes maior.'
+    - 'Um paralelepípedo de dimensões 1, 2 e 3 tem área total 22.'
+    - 'Um prisma hexagonal regular de aresta da base $\ell$ e altura $h$ tem área total $6\ell h + 3\sqrt{3}\,\ell^2$.'
+    - 'Um prisma reto e um oblíquo, de mesma base e mesma altura, têm a mesma área lateral.'
+    - 'Um cubo de diagonal $\sqrt{3}$ tem área total 6.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) Correta. 02) $(2a)^2 = 4a^2$. 04) $2(2 + 6 + 3)$. 08) $6\ell h + 2 \cdot \tfrac{6\ell^2\sqrt{3}}{4}$. 16) Incorreta: a do oblíquo é maior. 32) Aresta 1.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere os paralelepípedos retângulos com soma das dimensões $a + b + c = s$ fixa.'
+    itens:
+    - 'Mostre que $A_T = s^2 - d^2$.'
+    - 'Prove que $a^2 + b^2 + c^2 \ge \frac{s^2}{3}$, com igualdade só se $a = b = c$.'
+    - 'Conclua qual tem a maior área total e calcule essa área para $s = 12$.'
+    espaco: 62
+    resolucao: |
+      a) Da relação $(a + b + c)^2 = d^2 + A_T$.
+      b) $3(a^2 + b^2 + c^2) - (a + b + c)^2 = (a - b)^2 + (b - c)^2 + (a - c)^2 \ge 0$.
+      c) $d^2$ mínimo no cubo: $A_T$ máxima, $s^2 - \tfrac{s^2}{3} = \tfrac{2s^2}{3}$. Para $s = 12$: cubo de aresta 4, área 96.
+    resposta: 'c) o cubo; 96'
+
+  - estilo: Unicamp
+    texto: |
+      Uma barraca tem a forma de um prisma triangular deitado: a frente e o fundo são triângulos isósceles de base 3 m e altura 2 m, e o comprimento é 4 m.
+    enunciado: ''
+    itens:
+    - 'Calcule o lado inclinado do triângulo.'
+    - 'Calcule a área de lona sem o piso.'
+    - 'Calcule a área total, com o piso.'
+    espaco: 62
+    resolucao: |
+      a) $\sqrt{1{,}5^2 + 2^2} = 2{,}5$ m.
+      b) Faces inclinadas $2 \cdot 2{,}5 \cdot 4 = 20$; frente e fundo $2 \cdot 3 = 6$. Total 26 m².
+      c) Piso $3 \cdot 4 = 12$: 38 m².
+    resposta: 'a) 2,5 m; b) 26 m²; c) 38 m²'
+
+  - estilo: Fuvest
+    enunciado: |
+      Um cubo tem área total 216. A sua diagonal mede
+    opcoes: ['$6\sqrt{3}$', '$6\sqrt{2}$', '$36$', '$18$', '$12$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $6a^2 = 216$: $a = 6$; diagonal $6\sqrt{3}$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Um prisma hexagonal regular tem aresta da base 3 e altura 8.'
+    itens:
+    - 'Calcule a área de uma base e a área total.'
+    - 'Calcule a maior diagonal do prisma.'
+    - 'Calcule a diagonal que liga um vértice de uma base ao vértice da outra base que está a dois vértices de distância (diagonal menor).'
+    espaco: 62
+    resolucao: |
+      a) $6 \cdot \tfrac{9\sqrt{3}}{4} = \tfrac{27\sqrt{3}}{2}$; $A_T = 18 \cdot 8 + 27\sqrt{3} = 144 + 27\sqrt{3}$.
+      b) Diagonal maior da base 6: $\sqrt{36 + 64} = 10$.
+      c) Diagonal menor da base $3\sqrt{3}$: $\sqrt{27 + 64} = \sqrt{91}$.
+    resposta: 'a) $\frac{27\sqrt{3}}{2}$ e $144 + 27\sqrt{3}$; b) 10; c) $\sqrt{91}$'
+
+  - estilo: Fuvest
+    enunciado: 'Um cubo de aresta 3 é formado por 27 cubinhos de aresta 1. Retira-se um único cubinho da superfície.'
+    itens:
+    - 'Qual é a área total se o cubinho retirado for de um canto?'
+    - 'E se for do meio de uma aresta?'
+    - 'E se for do centro de uma face?'
+    espaco: 62
+    resolucao: |
+      Saem as faces expostas do cubinho e aparecem as faces dos vizinhos que ficavam encostadas nele.
+      a) Canto: sai 3, entra 3: 54.
+      b) Meio de aresta: sai 2, entra 4: 56.
+      c) Centro de face: sai 1, entra 5: 58.
+    resposta: 'a) 54; b) 56; c) 58'

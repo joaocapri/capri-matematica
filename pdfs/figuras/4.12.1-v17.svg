@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="79.82" height="45.8" viewBox="0 0 79.82 45.8">
+<defs>
+<clipPath id="clip-0">
+<path clip-rule="nonzero" d="M 0.0820312 2 L 58 2 L 58 45.601562 L 0.0820312 45.601562 Z M 0.0820312 2 "/>
+</clipPath>
+<clipPath id="clip-1">
+<path clip-rule="nonzero" d="M 8 0 L 79.558594 0 L 79.558594 45.601562 L 8 45.601562 Z M 8 0 "/>
+</clipPath>
+<clipPath id="clip-2">
+<path clip-rule="nonzero" d="M 0.0820312 0 L 79.558594 0 L 79.558594 45.601562 L 0.0820312 45.601562 Z M 0.0820312 0 "/>
+</clipPath>
+</defs>
+<path fill-rule="nonzero" fill="rgb(93.647766%, 91.410828%, 99.058533%)" fill-opacity="1" d="M 2.5625 43.121094 L 43.207031 43.121094 L 22.886719 16.027344 Z M 2.5625 43.121094 "/>
+<g clip-path="url(#clip-0)">
+<path fill="none" stroke-width="0.99628" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(12.89978%, 9.799194%, 27.49939%)" stroke-opacity="1" stroke-miterlimit="10" d="M -0.00158952 -0.000395469 L 40.820429 -0.000395469 L 20.411381 27.211668 Z M -0.00158952 -0.000395469 " transform="matrix(0.995652, 0, 0, -0.995652, 2.564083, 43.1207)"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(96.821594%, 95.704651%, 99.528503%)" fill-opacity="1" d="M 22.886719 16.027344 L 56.753906 2.476562 L 77.074219 29.574219 L 43.207031 43.121094 Z M 22.886719 16.027344 "/>
+<g clip-path="url(#clip-1)">
+<path fill="none" stroke-width="0.99628" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(12.89978%, 9.799194%, 27.49939%)" stroke-opacity="1" stroke-miterlimit="10" d="M 20.411381 27.211668 L 54.42646 40.821623 L 74.835508 13.605636 L 40.820429 -0.000395469 Z M 20.411381 27.211668 " transform="matrix(0.995652, 0, 0, -0.995652, 2.564083, 43.1207)"/>
+</g>
+<g clip-path="url(#clip-2)">
+<path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(12.89978%, 9.799194%, 27.49939%)" stroke-opacity="1" stroke-dasharray="2.98883 2.98883" stroke-miterlimit="10" d="M -0.00158952 -0.000395469 L 34.017413 13.605636 L 74.835508 13.605636 M 34.017413 13.605636 L 54.42646 40.821623 " transform="matrix(0.995652, 0, 0, -0.995652, 2.564083, 43.1207)"/>
+</g>
+</svg>
