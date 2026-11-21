@@ -1,0 +1,517 @@
+# Aula 3.13.4 — Polinômios: dispositivo de Briot-Ruffini
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: divisão por x − a com o dispositivo (completando zeros); leitura de quociente e resto; divisor x + a;
+# divisor ax − b (dividir o quociente por a, resto igual); divisões sucessivas e fatoração; raiz dupla; o dispositivo como
+# cálculo rápido de P(a) (Horner); parâmetros. O teorema do resto, como enunciado, fica para a 3.13.5.
+# Nos quadros, a primeira célula do cabeçalho é o número a, e as demais são os coeficientes do dividendo.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Nos quadros do dispositivo, a primeira célula de cima é o número $a$ do divisor $x - a$, e as outras são os coeficientes do dividendo. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete o dispositivo para dividir $x^3 - 2x^2 + 0x + 5$ por $x - 3$ e escreva, no espaço, o quociente e o resto.'
+      tabela:
+        cabecalho: ['$3$', '$1$', '$-2$', '$0$', '$5$']
+        linhas:
+        - ['', '${{1}}$', '${{1}}$', '${{3}}$', '${{14}}$']
+      resolucao: |
+        Desce 1; $1 \cdot 3 - 2 = 1$; $1 \cdot 3 + 0 = 3$; $3 \cdot 3 + 5 = 14$. $Q = x^2 + x + 3$ e $R = 14$.
+      resposta: '1, 1, 3, 14: $Q = x^2 + x + 3$ e $R = 14$'
+    - enunciado: 'Associe cada divisor ao número $a$ que vai no dispositivo.'
+      esquerda:
+      - '$x - 5$'
+      - '$x + 5$'
+      - '$x$'
+      - '$2x - 1$'
+      - '$3x + 2$'
+      direita:
+      - '$-\frac{2}{3}$'
+      - '$0$'
+      - '$5$'
+      - '$\frac{1}{2}$'
+      - '$-5$'
+      resolucao: |
+        $a$ é a raiz do divisor: $x + 5 = x - (-5)$; $2x - 1 = 0$ dá $\tfrac{1}{2}$; $3x + 2 = 0$ dá $-\tfrac{2}{3}$.
+      resposta: 'De cima para baixo: 5, 3, 1, 4, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'O dispositivo de Briot-Ruffini divide por polinômios da forma $x - a$.'
+      - 'Para dividir por $x + 2$, usa-se $a = 2$.'
+      - 'Os coeficientes dos graus que faltam devem ser escritos como zero.'
+      - 'Ao dividir por $2x - 1$, o resto obtido no dispositivo deve ser dividido por 2.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) Usa-se $a = -2$. (V) (F) Divide-se o quociente por 2; o resto não muda.
+      resposta: V, F, V, F
+    - enunciado: 'Divida $2x^4 - x^3 + 3x - 4$ por $x + 1$ com o dispositivo. Complete.'
+      itens:
+      - 'Coeficientes do dividendo, com o zero: {{2, -1, 0, 3, -4}}'
+      - 'Quociente: {{2x^3 - 3x^2 + 3x}}'
+      - 'Resto: {{-4}}'
+      espaco_item: 8
+      resolucao: |
+        $a = -1$: desce 2; $-2 - 1 = -3$; $3 + 0 = 3$; $-3 + 3 = 0$; $0 - 4 = -4$. Quociente $2x^3 - 3x^2 + 3x + 0$.
+      resposta: '$2, -1, 0, 3, -4$; $2x^3 - 3x^2 + 3x$; $-4$'
+    - enunciado: 'Divida $x^4 - 16$ por $x - 2$.'
+      espaco: 8
+      resolucao: |
+        Coeficientes $1, 0, 0, 0, -16$ e $a = 2$: 1, 2, 4, 8, resto 0. $Q = x^3 + 2x^2 + 4x + 8$.
+      resposta: '$Q = x^3 + 2x^2 + 4x + 8$; $R = 0$'
+    - enunciado: 'Divida $4x^2 - 4x + 5$ por $2x - 1$.'
+      espaco: 10
+      resolucao: |
+        Com $a = \tfrac{1}{2}$: desce 4; $2 - 4 = -2$; $-1 + 5 = 4$. Dividindo o quociente $4x - 2$ por 2: $Q = 2x - 1$; $R = 4$.
+      resposta: '$Q = 2x - 1$; $R = 4$'
+    - enunciado: 'Divida $x^5 - 3x^3 + 2$ por $x - 1$.'
+      espaco: 8
+      resolucao: |
+        Coeficientes $1, 0, -3, 0, 0, 2$: 1, 1, $-2$, $-2$, $-2$, resto 0. $Q = x^4 + x^3 - 2x^2 - 2x - 2$.
+      resposta: '$Q = x^4 + x^3 - 2x^2 - 2x - 2$; $R = 0$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para dividir $x^3 + 2x - 7$ por $x - 2$, Rafa usou os coeficientes 1, 2 e $-7$ no dispositivo.
+      enunciado: 'Encontre o erro e faça a divisão corretamente.'
+      espaco: 10
+      resolucao: |
+        Faltou o zero do termo em $x^2$: $1, 0, 2, -7$. Com $a = 2$: 1, 2, 6, resto 5. $Q = x^2 + 2x + 6$, $R = 5$.
+      resposta: '$Q = x^2 + 2x + 6$; $R = 5$'
+    - enunciado: 'Divida $x^3 - 6x^2 + 11x - 6$ por $x - 1$ e o quociente obtido por $x - 2$. Escreva o polinômio como produto de três fatores.'
+      espaco: 12
+      resolucao: |
+        $a = 1$: 1, $-5$, 6, resto 0. Depois $a = 2$ em $1, -5, 6$: 1, $-3$, resto 0. Logo $(x - 1)(x - 2)(x - 3)$.
+      resposta: '$(x - 1)(x - 2)(x - 3)$'
+    - enunciado: 'Use o dispositivo para encontrar $k$ tal que $x^3 + kx^2 - 5x + 6$ seja divisível por $x - 1$.'
+      espaco: 10
+      resolucao: |
+        $a = 1$: 1; $1 + k$; $k - 4$; $k + 2$. Resto nulo: $k = -2$.
+      resposta: '$k = -2$'
+    - enunciado: 'No dispositivo do quadro, de uma divisão por $x - 2$, faltam dois coeficientes do dividendo. Encontre $b$ e $d$.'
+      tabela:
+        cabecalho: ['$2$', '$1$', '$b$', '$-4$', '$d$']
+        linhas:
+        - ['', '$1$', '$1$', '$-2$', '$0$']
+      espaco: 10
+      resolucao: |
+        $1 \cdot 2 + b = 1$: $b = -1$. Conferindo: $1 \cdot 2 - 4 = -2$. $-2 \cdot 2 + d = 0$: $d = 4$.
+      resposta: '$b = -1$, $d = 4$'
+    - enunciado: 'Divida $2x^3 + 3x^2 - 8x + 3$ por $2x - 1$ e fatore o dividendo.'
+      espaco: 12
+      resolucao: |
+        $a = \tfrac{1}{2}$: 2, 4, $-6$, resto 0. Quociente $\tfrac{2x^2 + 4x - 6}{2} = x^2 + 2x - 3 = (x + 3)(x - 1)$. Logo $(2x - 1)(x + 3)(x - 1)$.
+      resposta: '$(2x - 1)(x + 3)(x - 1)$'
+    - enunciado: 'Complete o dispositivo com o número 3 para $P(x) = 2x^4 - 5x^3 + x - 7$ e conclua o valor de $P(3)$.'
+      tabela:
+        cabecalho: ['$3$', '$2$', '$-5$', '$0$', '$1$', '$-7$']
+        linhas:
+        - ['', '${{2}}$', '${{1}}$', '${{3}}$', '${{10}}$', '${{23}}$']
+      resolucao: |
+        Coeficientes $2, -5, 0, 1, -7$ e $a = 3$: 2, 1, 3, 10, 23. O último número é $P(3) = 23$.
+      resposta: '23'
+    - enunciado: 'Divida $x^4 - 5x^2 + 4$ sucessivamente por $x - 1$ e por $x + 1$.'
+      espaco: 10
+      resolucao: |
+        $a = 1$ em $1, 0, -5, 0, 4$: 1, 1, $-4$, $-4$, resto 0. $a = -1$ em $1, 1, -4, -4$: 1, 0, $-4$, resto 0. Quociente final $x^2 - 4$.
+      resposta: '$x^2 - 4$'
+    - enunciado: 'Divida $x^3 + x^2 - 10x + 8$ por $x^2 - 3x + 2$, usando o dispositivo duas vezes.'
+      espaco: 10
+      resolucao: |
+        $x^2 - 3x + 2 = (x - 1)(x - 2)$. $a = 1$: 1, 2, $-8$, resto 0. $a = 2$ em $1, 2, -8$: 1, 4, resto 0. $Q = x + 4$.
+      resposta: '$x + 4$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Para $P(x) = a_3x^3 + a_2x^2 + a_1x + a_0$, prove que o último número do dispositivo com o número $a$ é $P(a)$.'
+      espaco: 12
+      resolucao: |
+        Os números são $b_2 = a_3$, $b_1 = a_3a + a_2$, $b_0 = (a_3a + a_2)a + a_1$ e o último, $((a_3a + a_2)a + a_1)a + a_0 = a_3a^3 + a_2a^2 + a_1a + a_0 = P(a)$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, se $P(x) = (x - a)Q_1(x) + R$, então $P(x) = (kx - ka) \cdot \frac{Q_1(x)}{k} + R$, e explique a regra para divisores do tipo $kx - b$.'
+      espaco: 10
+      resolucao: |
+        $(kx - ka)\tfrac{Q_1}{k} = (x - a)Q_1$. Para dividir por $kx - b$, usa-se $a = \tfrac{b}{k}$ e divide-se o quociente do dispositivo por $k$; o resto é o mesmo.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, se a divisão de $P$ por $x - a$ é exata e a divisão do quociente por $x - a$ também é, então $P$ é divisível por $(x - a)^2$.'
+      espaco: 8
+      resolucao: |
+        $P = (x - a)Q_1$ e $Q_1 = (x - a)Q_2$: $P = (x - a)^2 Q_2$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que o resto da divisão de $P$ por $x - 1$ é a soma dos coeficientes de $P$.'
+      espaco: 8
+      resolucao: |
+        Com $a = 1$, o dispositivo só soma: cada número é o anterior vezes 1 mais o próximo coeficiente. O último é a soma de todos.
+      resposta: 'Ver resolução'
+    - enunciado: 'Para $P(x) = a_2x^2 + a_1x + a_0$, prove que os números do dispositivo dão $Q(x) = b_1x + b_0$ e $R$ tais que $P(x) = (x - a)Q(x) + R$.'
+      espaco: 12
+      resolucao: |
+        $b_1 = a_2$, $b_0 = a_2a + a_1$, $R = b_0a + a_0$. $(x - a)(b_1x + b_0) + R = a_2x^2 + (b_0 - a_2a)x - ab_0 + R = a_2x^2 + a_1x + a_0$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Num caderno de estudos, um aluno registrou a divisão do polinômio $P(x) = 2x^3 - 7x^2 + 4x + 5$ por $x - 3$, feita com o dispositivo de Briot-Ruffini, como no quadro. Na primeira linha estão o número 3 e os coeficientes de $P$; na segunda, os números obtidos.
+    tabela:
+      cabecalho: ['$3$', '$2$', '$-7$', '$4$', '$5$']
+      linhas:
+      - ['', '$2$', '$-1$', '$1$', '$8$']
+    enunciado: |
+      O quociente e o resto dessa divisão são, respectivamente,
+    opcoes: ['$2x^2 - x + 1$ e $8$.', '$2x^3 - x^2 + x$ e $8$.', '$2x^2 - x + 1$ e $0$.', '$2x^2 + x - 1$ e $8$.', '$2x - 1$ e $x + 8$.']
+    correta: A
+    resolucao: |
+      Os três primeiros números são os coeficientes do quociente, de grau 2, e o último é o resto.
+
+  - estilo: Fuvest
+    enunciado: |
+      O resto da divisão de $x^4 + x^3 - 2$ por $x + 2$ é
+    opcoes: ['$-6$', '$6$', '$2$', '$-2$', '$14$']
+    correta: B
+    resolucao: |
+      Coeficientes $1, 1, 0, 0, -2$ e $a = -2$: 1, $-1$, 2, $-4$, 6.
+
+  - estilo: Unicamp
+    enunciado: |
+      O quociente da divisão de $x^3 + 8$ por $x + 2$ é
+    opcoes: ['$x^2 + 2x + 4$.', '$x^2 - 4$.', '$x^2 - 2x + 4$.', '$x^2 + 4$.']
+    correta: C
+    resolucao: |
+      $1, 0, 0, 8$ com $a = -2$: 1, $-2$, 4, resto 0.
+
+  - estilo: UEM
+    enunciado: |
+      Considere a divisão de $P(x) = x^4 - 2x^3 - 3x^2 + 8x - 4$ por $x - 1$. Assinale o que for correto.
+    proposicoes:
+    - 'O resto é 0.'
+    - 'O quociente é $x^3 - x^2 - 4x + 4$.'
+    - 'O quociente também é divisível por $x - 1$.'
+    - '1 é raiz dupla de $P$.'
+    - '$-1$ é raiz de $P$.'
+    - '2 é raiz de $P$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      $a = 1$: 1, $-1$, $-4$, 4, 0. De novo em $1, -1, -4, 4$: 1, 0, $-4$, 0. Logo $P = (x - 1)^2(x^2 - 4)$. 16) Incorreta: $1 + 2 - 3 - 8 - 4 = -12$. 32) Correta.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Programas de computador calculam valores de polinômios com o mesmo esquema do dispositivo de Briot-Ruffini, que usa poucas multiplicações. Um analista precisa do valor de $P(x) = x^3 - 4x^2 + 2x + 10$ para $x = 5$ e aplicou o dispositivo com o número 5 e os coeficientes de $P$.
+    enunciado: |
+      O valor de $P(5)$ é
+    opcoes: ['$35$', '$55$', '$40$', '$45$', '$50$']
+    correta: D
+    resolucao: |
+      Desce 1; $5 - 4 = 1$; $5 + 2 = 7$; $35 + 10 = 45$.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre o dispositivo de Briot-Ruffini.
+    afirmativas:
+    - 'Ele serve para dividir um polinômio por $x - a$.'
+    - 'Para dividir por $x + 3$, usa-se o número $-3$.'
+    - 'Para dividir por $2x - 4$, usa-se o número 4.'
+    - 'O último número obtido é o resto da divisão.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'III e IV, apenas.', 'II, III e IV, apenas.', 'I, II e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta. II. Correta. III. Incorreta: a raiz de $2x - 4$ é 2. IV. Correta.
+
+  - estilo: Unesp
+    enunciado: |
+      O quociente da divisão de $3x^2 - 7x + 2$ por $x - 2$ é
+    opcoes: ['$3x - 1$', '$3x + 1$', '$3x - 13$', '$x - 1$', '$3x + 6$']
+    correta: A
+    resolucao: |
+      $a = 2$: 3, $-1$, resto 0.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      O quadro mostra o dispositivo de uma divisão por $x + 1$, em que faltam dois coeficientes do dividendo.
+    tabela:
+      cabecalho: ['$-1$', '$1$', '$m$', '$-2$', '$n$']
+      linhas:
+      - ['', '$1$', '$3$', '$-5$', '$0$']
+    enunciado: |
+      O valor de $m + n$ é
+    opcoes: ['$9$.', '$-1$.', '$1$.', '$-9$.']
+    correta: B
+    resolucao: |
+      $-1 + m = 3$: $m = 4$. $-3 - 2 = -5$ confere. $5 + n = 0$: $n = -5$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O quociente da divisão de $2x^3 - 3x^2 - 11x + 6$ por $2x - 1$ é
+    opcoes: ['$2x^2 - 2x - 12$', '$x^2 - x + 6$', '$x^2 - x - 6$', '$x^2 + x - 6$', '$2x^2 + x - 6$']
+    correta: C
+    resolucao: |
+      $a = \tfrac{1}{2}$: 2, $-2$, $-12$, resto 0. Dividindo por 2: $x^2 - x - 6$.
+
+  - estilo: UFSC
+    enunciado: |
+      O polinômio $P(x) = x^3 - 7x + 6$ é dividido por $x - 1$, e o quociente obtido é dividido por $x - 2$. Assinale o que for correto.
+    proposicoes:
+    - 'A divisão por $x - 1$ é exata.'
+    - 'O primeiro quociente é $x^2 + x - 6$.'
+    - '$P$ é divisível por $x - 2$.'
+    - '$P(x) = (x - 1)(x - 2)(x + 3)$.'
+    - 'A soma das raízes de $P$ é 0.'
+    - '$P(0) = -6$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      $1, 0, -7, 6$ com $a = 1$: 1, 1, $-6$, 0. Depois $a = 2$: 1, 3, 0. 16) $1 + 2 - 3 = 0$. 32) Incorreta: $P(0) = 6$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Uma calculadora antiga só fazia uma operação por vez. Para calcular $P(2)$, com $P(x) = x^4 - 3x^3 + 2x^2 + x - 5$, um técnico usou o esquema do dispositivo de Briot-Ruffini: multiplicar por 2 e somar o próximo coeficiente, repetindo até o fim.
+    enunciado: |
+      O valor obtido para $P(2)$ é
+    opcoes: ['$-3$', '$3$', '$-1$', '$5$', '$-5$']
+    correta: A
+    resolucao: |
+      1; $2 - 3 = -1$; $-2 + 2 = 0$; $0 + 1 = 1$; $2 - 5 = -3$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'O resto da divisão de $x^2 + 1$ por $x - 1$ é 2.'
+    - 'Para dividir por $x + 1$ no dispositivo, usa-se o número 1.'
+    - 'O quociente de $x^4 - 1$ por $x - 1$ é $x^3 + x^2 + x + 1$.'
+    - 'As divisões de $P$ por $2x - 2$ e por $x - 1$ têm o mesmo resto.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      (V) $1, 0, 1$: 1, 1, 2. (F) Usa-se $-1$. (V) $1, 0, 0, 0, -1$: 1, 1, 1, 1, 0. (V) Muda só o quociente.
+
+  - estilo: Enem
+    texto: |
+      Um estudante dividiu o polinômio $P(x) = x^3 - 3x^2 - 4x + 12$ por vários binômios $x - a$ com o dispositivo de Briot-Ruffini e anotou os restos no quadro. Com esses dados, ele quer escrever $P$ como produto de três fatores do primeiro grau.
+    tabela:
+      cabecalho: ['$a$', '$1$', '$-1$', '$2$', '$-2$', '$3$']
+      linhas:
+      - ['Resto', '$6$', '$12$', '$0$', '$0$', '$0$']
+    enunciado: |
+      A fatoração de $P$ é
+    opcoes: ['$(x - 1)(x + 1)(x - 3)$.', '$(x - 2)^2(x - 3)$.', '$(x + 2)(x - 2)(x + 3)$.', '$(x - 2)(x + 2)(x - 3)$.', '$(x - 1)(x - 2)(x - 3)$.']
+    correta: D
+    resolucao: |
+      Resto nulo indica divisão exata: os fatores são $x - 2$, $x + 2$ e $x - 3$ (e o produto tem coeficiente dominante 1).
+
+  - estilo: Unesp
+    enunciado: |
+      O resto da divisão de $2x^3 + x^2 - 5$ por $x - 1$ é
+    opcoes: ['$2$', '$-2$', '$-5$', '$3$', '$0$']
+    correta: B
+    resolucao: |
+      $2, 1, 0, -5$ com $a = 1$: 2, 3, 3, $-2$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere a divisão de $P(x) = 6x^3 - 7x^2 + 1$ por $2x - 1$. Assinale o que for correto.
+    proposicoes:
+    - 'O resto é 0.'
+    - 'O quociente é $3x^2 - 2x - 1$.'
+    - '$\frac{1}{2}$ é raiz de $P$.'
+    - '1 é raiz de $P$.'
+    - 'O quociente é $6x^2 - 4x - 2$.'
+    - '$-\frac{1}{3}$ é raiz de $P$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      $a = \tfrac{1}{2}$ em $6, -7, 0, 1$: 6, $-4$, $-2$, 0. Dividindo por 2: $3x^2 - 2x - 1 = (3x + 1)(x - 1)$. 16) Incorreta: esse é o quociente antes de dividir por 2.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O polinômio $x^3 + kx^2 + 4x - 12$ é divisível por $x - 3$. O valor de $k$ é
+    opcoes: ['$-3$.', '$3$.', '$-4$.', '$4$.']
+    correta: A
+    resolucao: |
+      $a = 3$: 1; $3 + k$; $9 + 3k + 4$; $3(13 + 3k) - 12 = 27 + 9k$. Resto nulo: $k = -3$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um professor propôs à turma encontrar as raízes de $P(x) = x^4 - 10x^2 + 9$. A estratégia combinada foi dividir $P$ por $x - 1$ com o dispositivo de Briot-Ruffini e, depois, dividir o quociente por $x + 1$, até chegar a um polinômio de grau 2.
+    enunciado: |
+      O quociente da divisão de $P$ por $x - 1$ é
+    opcoes: ['$x^3 - 9x - 9$', '$x^3 + x^2 + 9x + 9$', '$x^3 + x^2 - 9x - 9$', '$x^3 - x^2 - 9x + 9$', '$x^3 - 10x + 9$']
+    correta: C
+    resolucao: |
+      $1, 0, -10, 0, 9$ com $a = 1$: 1, 1, $-9$, $-9$, resto 0.
+
+  - estilo: Unesp
+    enunciado: |
+      As raízes de $P$ são
+    opcoes: ['$\pm 1$, apenas.', '$1$ e $9$.', '$\pm 9$.', '$\pm 1$ e $\pm 3$.', '$1$, $-1$ e $9$.']
+    correta: D
+    resolucao: |
+      Dividindo $1, 1, -9, -9$ por $x + 1$: 1, 0, $-9$, resto 0. Sobra $x^2 - 9$: raízes $\pm 3$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O quociente da divisão de $6x^2 + 7x - 3$ por $3x - 1$ é
+    opcoes: ['$6x + 9$', '$2x - 3$', '$3x + 2$', '$6x - 9$', '$2x + 3$']
+    correta: E
+    resolucao: |
+      $a = \tfrac{1}{3}$: 6, 9, resto 0. Dividindo $6x + 9$ por 3: $2x + 3$.
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra o dispositivo de Briot-Ruffini de uma divisão de $P(x) = x^3 - 3x + 5$ por $x + 2$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1pt] (0.6,-0.9) -- (0.6,0.5) (0.6,-0.3) -- (5,-0.3);
+        \draw[ink] (4,-0.9) -- (4,-0.3);
+        \node[font=\small] at (0.25,0.1) {$-2$};
+        \foreach \t/\v in {1/1, 2/0, 3/-3, 4.5/5} \node[font=\small] at (\t,0.1) {$\v$};
+        \foreach \t/\v in {1/1, 2/-2, 3/1, 4.5/3} \node[font=\small] at (\t,-0.6) {$\v$};
+        \end{scope}
+    enunciado: |
+      O quociente da divisão é
+    opcoes: ['$x^2 + 2x + 1$', '$x^2 - 2x + 1$', '$x^2 - 3x + 5$', '$x^2 - 2x + 3$', '$x^2 + 1$']
+    correta: B
+    resolucao: |
+      Os três primeiros números da segunda linha (1, $-2$, 1) são os coeficientes do quociente; o resto é 3.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere $P(x) = 2x^3 - 3x^2 + 4x - 5$.'
+    itens:
+    - 'Escreva $P(x)$ na forma $((2x - 3)x + 4)x - 5$ e explique por que o dispositivo com o número $a$ calcula $P(a)$.'
+    - 'Calcule $P(2)$ pelo dispositivo e o quociente da divisão por $x - 2$.'
+    - 'Quantas multiplicações o dispositivo usa para um polinômio de grau 3? E o cálculo direto de $2a^3 - 3a^2 + 4a - 5$, calculando cada potência separadamente?'
+    espaco: 62
+    resolucao: |
+      a) Cada passo do dispositivo é "multiplica por $a$ e soma o próximo coeficiente", exatamente a forma aninhada.
+      b) 2, 1, 6, 7: $P(2) = 7$; quociente $2x^2 + x + 6$.
+      c) 3 multiplicações. Direto: $a^2$ (1), $a^3$ (1), $2a^3$, $3a^2$, $4a$ (3): 5 multiplicações.
+    resposta: 'b) $P(2) = 7$ e $2x^2 + x + 6$; c) 3 e 5'
+
+  - estilo: Unicamp
+    enunciado: 'Considere $P(x) = 4x^3 - 8x^2 + x + 3$.'
+    itens:
+    - 'Divida $P$ por $2x - 3$ usando o dispositivo e corrigindo o quociente.'
+    - 'Fatore $P$ completamente.'
+    - 'Explique por que, na divisão por $2x - 3$, o resto é o mesmo obtido no dispositivo com $a = \frac{3}{2}$.'
+    espaco: 62
+    resolucao: |
+      a) $a = \tfrac{3}{2}$: 4, $-2$, $-2$, resto 0. Quociente $\tfrac{4x^2 - 2x - 2}{2} = 2x^2 - x - 1$.
+      b) $2x^2 - x - 1 = (2x + 1)(x - 1)$: $P = (2x - 3)(2x + 1)(x - 1)$.
+      c) $P = \left(x - \tfrac{3}{2}\right)Q_1 + R = (2x - 3)\tfrac{Q_1}{2} + R$.
+    resposta: 'a) $2x^2 - x - 1$; b) $(2x - 3)(2x + 1)(x - 1)$'
+
+  - estilo: ITA
+    enunciado: |
+      O resto da divisão de $x^{2026} + 1$ por $x + 1$ é
+    opcoes: ['$2$', '$0$', '$1$', '$-1$', '$2026$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      No dispositivo com $a = -1$, o último número é o valor do polinômio em $-1$: $(-1)^{2026} + 1 = 2$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Um programa calcula valores de polinômios pelo esquema do dispositivo de Briot-Ruffini.
+    enunciado: ''
+    itens:
+    - 'Calcule $P(10)$ para $P(x) = 3x^3 + 7x + 2$, pelo dispositivo.'
+    - 'Explique por que o resultado tem os algarismos 3, 0, 7 e 2.'
+    - 'Calcule também o quociente da divisão de $P$ por $x - 10$.'
+    espaco: 62
+    resolucao: |
+      a) $3, 0, 7, 2$ com $a = 10$: 3, 30, 307, 3072.
+      b) $3 \cdot 10^3 + 0 \cdot 10^2 + 7 \cdot 10 + 2$: os coeficientes são os algarismos na base 10.
+      c) $3x^2 + 30x + 307$, resto 3072.
+    resposta: 'a) 3072; c) $3x^2 + 30x + 307$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o dispositivo de Briot-Ruffini. Assinale o que for correto.
+    proposicoes:
+    - 'Para dividir por $x + 4$, usa-se o número $-4$.'
+    - 'O último número obtido é o resto.'
+    - 'Para dividir por $3x - 1$, usa-se $\frac{1}{3}$ e divide-se o quociente obtido por 3.'
+    - 'O resto da divisão de $x^3$ por $x - 2$ é 8.'
+    - 'Esquecer os coeficientes nulos não altera o resultado.'
+    - '$x^4 - 1$ é divisível por $x + 1$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) Correta. 02) Correta. 04) Correta. 08) $1, 0, 0, 0$: 1, 2, 4, 8. 16) Incorreta: mudaria os graus. 32) $1, 0, 0, 0, -1$ com $-1$: 1, $-1$, 1, $-1$, 0.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $P(x) = x^3 - 3x + 2$.'
+    itens:
+    - 'Divida $P$ por $x - 1$ e o quociente de novo por $x - 1$.'
+    - 'Escreva a fatoração de $P$ e diga a multiplicidade da raiz 1.'
+    - 'Para que valor de $k$ o polinômio $x^3 + kx + 2$ tem 1 como raiz dupla?'
+    espaco: 62
+    resolucao: |
+      a) $1, 0, -3, 2$: 1, 1, $-2$, 0. Depois $1, 1, -2$: 1, 2, 0.
+      b) $(x - 1)^2(x + 2)$: raiz dupla.
+      c) Primeira divisão: $1 + k + 2 = 0$, $k = -3$; e então a segunda divisão também é exata (item a).
+    resposta: 'b) $(x - 1)^2(x + 2)$; c) $k = -3$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere $P(x) = x^4 - x^3 - 7x^2 + x + 6$.'
+    itens:
+    - 'Divida $P$ por $x - 1$.'
+    - 'Divida o quociente por $x + 1$.'
+    - 'Fatore $P$ completamente e dê as suas raízes.'
+    espaco: 62
+    resolucao: |
+      a) $1, -1, -7, 1, 6$: 1, 0, $-7$, $-6$, 0. Quociente $x^3 - 7x - 6$.
+      b) $1, 0, -7, -6$ com $-1$: 1, $-1$, $-6$, 0. Quociente $x^2 - x - 6$.
+      c) $(x - 1)(x + 1)(x - 3)(x + 2)$: raízes 1, $-1$, 3 e $-2$.
+    resposta: 'c) $(x - 1)(x + 1)(x - 3)(x + 2)$'
+
+  - estilo: Fuvest
+    enunciado: |
+      O resto da divisão de $x^2 + x + 1$ por $x - a$ é 7. A soma dos possíveis valores de $a$ é
+    opcoes: ['$1$', '$-3$', '$-1$', '$2$', '$6$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      O dispositivo dá 1, $a + 1$, $a^2 + a + 1 = 7$: $a^2 + a - 6 = 0$, $a = 2$ ou $a = -3$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'O polinômio $P(x) = 2x^3 + ax^2 + bx - 6$ é divisível por $x - 1$ e por $x + 2$.'
+    itens:
+    - 'Pelo dispositivo, escreva os restos das divisões por $x - 1$ e por $x + 2$ em função de $a$ e $b$.'
+    - 'Encontre $a$ e $b$.'
+    - 'Fatore $P$.'
+    espaco: 62
+    resolucao: |
+      a) Por $x - 1$: $2 + a + b - 6$. Por $x + 2$: $-16 + 4a - 2b - 6$.
+      b) $a + b = 4$ e $2a - b = 11$: $a = 5$, $b = -1$.
+      c) $2x^3 + 5x^2 - x - 6 = (x - 1)(x + 2)(2x + 3)$.
+    resposta: 'b) $a = 5$, $b = -1$; c) $(x - 1)(x + 2)(2x + 3)$'
+
+  - estilo: Fuvest
+    enunciado: 'Para dividir $P(x) = x^3 + 2x^2 - x + 3$ por $(x - 1)(x - 2)$, faz-se o dispositivo duas vezes.'
+    itens:
+    - 'Divida $P$ por $x - 1$: quociente $Q_1$ e resto $R_1$.'
+    - 'Divida $Q_1$ por $x - 2$: quociente $Q_2$ e resto $R_2$.'
+    - 'Mostre que $P = (x - 1)(x - 2)Q_2 + R_2(x - 1) + R_1$ e escreva o resto da divisão de $P$ por $(x - 1)(x - 2)$.'
+    espaco: 62
+    resolucao: |
+      a) $1, 2, -1, 3$: 1, 3, 2, 5. $Q_1 = x^2 + 3x + 2$, $R_1 = 5$.
+      b) $1, 3, 2$ com 2: 1, 5, 12. $Q_2 = x + 5$, $R_2 = 12$.
+      c) $P = (x - 1)Q_1 + R_1 = (x - 1)[(x - 2)Q_2 + R_2] + R_1$. Resto $12(x - 1) + 5 = 12x - 7$, de grau menor que 2.
+    resposta: 'c) $12x - 7$'
