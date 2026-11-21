@@ -1,0 +1,563 @@
+# Aula 3.7.2 — Geometria analítica: ponto médio e baricentro
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: ponto médio; achar um extremo conhecendo o médio; baricentro; divisão de um segmento numa razão dada;
+# paralelogramos (diagonais com o mesmo ponto médio); medianas. Usa a distância (3.7.1) quando preciso.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Determine o ponto médio $M$ do segmento de extremos $A(2, 3)$ e $B(8, 11)$, completando.'
+      itens:
+      - '$x_M = \dfrac{2 + 8}{2} = {{5}}$'
+      - '$y_M = \dfrac{3 + 11}{2} = {{7}}$'
+      resolucao: |
+        Cada coordenada de $M$ é a média das coordenadas correspondentes de $A$ e $B$: $M(5, 7)$.
+      resposta: '$M(5, 7)$'
+    - enunciado: 'Determine o ponto médio de cada segmento.'
+      itens:
+      - '$A(-4, 1)$ e $B(6, 5)$'
+      - '$A(3, -2)$ e $B(-1, -6)$'
+      - '$A(0, 7)$ e $B(5, 0)$'
+      - '$A(a, b)$ e $B(-a, -b)$'
+      espaco_item: 10
+      resolucao: |
+        (a) $(1, 3)$. (b) $(1, -4)$. (c) $(2{,}5;\ 3{,}5)$. (d) $(0, 0)$: pontos simétricos em relação à origem têm a origem como ponto médio.
+      resposta: '(a) $(1, 3)$ (b) $(1, -4)$ (c) $(2{,}5;\ 3{,}5)$ (d) $(0, 0)$'
+    - enunciado: 'Complete o quadro com o baricentro $G$ de cada triângulo.'
+      tabela:
+        cabecalho: ['Vértices', '$G$']
+        linhas:
+        - ['$(0, 0)$, $(6, 0)$, $(3, 9)$', '$({{3}}, {{3}})$']
+        - ['$(1, 2)$, $(4, 5)$, $(7, -1)$', '$({{4}}, {{2}})$']
+        - ['$(-3, 0)$, $(0, 6)$, $(6, 3)$', '$({{1}}, {{3}})$']
+      resolucao: |
+        $G$ é a média das coordenadas dos três vértices: $\left(\tfrac{9}{3}, \tfrac{9}{3}\right)$, $\left(\tfrac{12}{3}, \tfrac{6}{3}\right)$ e $\left(\tfrac{3}{3}, \tfrac{9}{3}\right)$.
+      resposta: '$(3, 3)$, $(4, 2)$, $(1, 3)$'
+    - enunciado: 'Em cada caso, $M$ é o ponto médio de $AB$. Determine $B$.'
+      itens:
+      - '$M(3, -1)$ e $A(1, 4)$'
+      - '$M(0, 0)$ e $A(-2, 7)$'
+      espaco_item: 12
+      resolucao: |
+        $B = 2M - A$, coordenada a coordenada. (a) $(6 - 1,\ -2 - 4) = (5, -6)$. (b) $(2, -7)$.
+      resposta: '(a) $B(5, -6)$ (b) $B(2, -7)$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'As coordenadas do ponto médio de $AB$ são as médias das coordenadas de $A$ e de $B$.'
+      - 'O baricentro de um triângulo é o ponto médio do seu maior lado.'
+      - 'O ponto médio de $(a, 0)$ e $(0, b)$ é $\left(\frac{a}{2}, \frac{b}{2}\right)$.'
+      - 'O baricentro de um triângulo pode ficar fora dele.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) É a fórmula. (F) O baricentro é o encontro das medianas, a média dos três vértices.
+        (V) $\left(\tfrac{a + 0}{2}, \tfrac{0 + b}{2}\right)$. (F) As medianas ficam dentro do triângulo, e o baricentro também.
+      resposta: V, F, V, F
+    - enunciado: 'Associe cada segmento ao seu ponto médio (um ponto pode ser usado mais de uma vez).'
+      esquerda:
+      - '$(2, 3)$'
+      - '$(0, 0)$'
+      - '$(-1, 4)$'
+      direita:
+      - '$(0, 0)$ e $(4, 6)$'
+      - '$(-3, 5)$ e $(3, -5)$'
+      - '$(-2, 3)$ e $(0, 5)$'
+      - '$(1, 1)$ e $(3, 5)$'
+      - '$(-5, 2)$ e $(3, 6)$'
+      resolucao: |
+        $(2, 3)$; $(0, 0)$; $(-1, 4)$; $(2, 3)$; $(-1, 4)$.
+      resposta: 'De cima para baixo: 1, 2, 3, 1, 3'
+    - enunciado: 'Considere o triângulo de vértices $A(0, 0)$, $B(8, 0)$ e $C(2, 6)$.'
+      itens:
+      - 'Determine o ponto médio $M$ do lado $BC$.'
+      - 'Calcule o comprimento da mediana $AM$.'
+      espaco_item: 12
+      resolucao: |
+        (a) $M(5, 3)$. (b) $AM = \sqrt{25 + 9} = \sqrt{34}$.
+      resposta: '(a) $M(5, 3)$ (b) $\sqrt{34}$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para achar o ponto médio de $A(-2, 5)$ e $B(6, -1)$, Rui calculou $\left(\frac{6 - (-2)}{2}, \frac{-1 - 5}{2}\right) = (4, -3)$.
+      enunciado: 'Explique o erro de Rui e dê o ponto médio correto.'
+      espaco: 14
+      resolucao: |
+        Rui subtraiu as coordenadas: assim se obtém metade do “deslocamento” de $A$ até $B$, não o ponto médio. O correto é somar:
+        $M = \left(\tfrac{-2 + 6}{2}, \tfrac{5 - 1}{2}\right) = (2, 2)$. (De fato, $A + (4, -3) = (2, 2)$.)
+      resposta: '$M(2, 2)$'
+    - enunciado: 'Os pontos $A(1, 1)$, $B(5, 2)$ e $C(6, 5)$ são vértices consecutivos do paralelogramo $ABCD$. Determine $D$, sabendo que as diagonais de um paralelogramo se cortam no ponto médio de cada uma.'
+      espaco: 18
+      resolucao: |
+        Ponto médio de $AC$: $(3{,}5;\ 3)$. Ele também é o ponto médio de $BD$: $D = 2 \cdot (3{,}5;\ 3) - (5, 2) = (2, 4)$.
+      resposta: '$D(2, 4)$'
+    - enunciado: 'Os pontos $P$ e $Q$ dividem o segmento de $A(1, 2)$ a $B(10, 14)$ em três partes iguais, com $P$ mais perto de $A$. Determine $P$ e $Q$.'
+      espaco: 16
+      resolucao: |
+        O deslocamento de $A$ até $B$ é $(9, 12)$; um terço dele é $(3, 4)$. $P = A + (3, 4) = (4, 6)$ e $Q = P + (3, 4) = (7, 10)$.
+      resposta: '$P(4, 6)$ e $Q(7, 10)$'
+    - enunciado: 'Duas cidades estão em $A(2, 9)$ e $B(14, 1)$, num mapa com eixos em quilômetros. Um posto de saúde será construído no ponto médio entre elas. Determine a posição do posto e a distância dele a cada cidade.'
+      espaco: 16
+      resolucao: |
+        $M(8, 5)$. $MA = \sqrt{36 + 16} = \sqrt{52} = 2\sqrt{13} \approx 7{,}2$ km, igual a $MB$.
+      resposta: '$(8, 5)$; $2\sqrt{13}$ km'
+    - enunciado: 'O baricentro do triângulo $ABC$ é $G(2, 3)$, com $A(0, 0)$ e $B(5, 1)$. Determine $C$.'
+      espaco: 14
+      resolucao: |
+        $\tfrac{0 + 5 + x}{3} = 2$, $x = 1$; $\tfrac{0 + 1 + y}{3} = 3$, $y = 8$. $C(1, 8)$.
+      resposta: '$C(1, 8)$'
+    - enunciado: 'Os pontos $P_1$, $P_2$ e $P_3$ dividem o segmento de $A(0, 0)$ a $B(12, 6)$ em quatro partes iguais, nessa ordem a partir de $A$. Complete o quadro.'
+      tabela:
+        cabecalho: ['Ponto', 'Coordenadas']
+        linhas:
+        - ['$P_1$', '$({{3}};\ {{1,5}})$']
+        - ['$P_2$', '$({{6}};\ {{3}})$']
+        - ['$P_3$', '$({{9}};\ {{4,5}})$']
+      resolucao: |
+        Um quarto do deslocamento $(12, 6)$ é $(3;\ 1{,}5)$. $P_2$ é o ponto médio de $AB$.
+      resposta: '$(3;\ 1{,}5)$, $(6, 3)$, $(9;\ 4{,}5)$'
+    - enunciado: 'Considere o triângulo de vértices $A(0, 0)$, $B(6, 0)$ e $C(2, 4)$.'
+      itens:
+      - 'Determine os pontos médios $M$, $N$ e $P$ dos lados $AB$, $BC$ e $CA$.'
+      - 'Calcule os lados do triângulo $MNP$ e compare com os lados de $ABC$.'
+      espaco_item: 18
+      resolucao: |
+        (a) $M(3, 0)$, $N(4, 2)$, $P(1, 2)$.
+        (b) $MN = \sqrt{5}$, $NP = 3$, $MP = 2\sqrt{2}$. Em $ABC$: $AB = 6$, $BC = 4\sqrt{2}$, $CA = 2\sqrt{5}$. Cada lado de $MNP$ é a metade de um lado de $ABC$ ($NP = \tfrac{AB}{2}$, $MP = \tfrac{BC}{2}$, $MN = \tfrac{CA}{2}$).
+      resposta: '(a) $(3, 0)$, $(4, 2)$, $(1, 2)$ (b) são as metades'
+    - enunciado: 'Determine $k$ para que o ponto médio de $A(k, 3)$ e $B(5, k)$ esteja no eixo $x$. Qual é esse ponto médio?'
+      espaco: 14
+      resolucao: |
+        $M = \left(\tfrac{k + 5}{2}, \tfrac{3 + k}{2}\right)$. No eixo $x$: $3 + k = 0$, $k = -3$, e $M(1, 0)$.
+      resposta: '$k = -3$; $M(1, 0)$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'O paralelogramo $ABCD$ tem vértices $A(0, 0)$, $B(a, 0)$, $D(b, c)$ e $C(a + b, c)$. Mostre que as diagonais $AC$ e $BD$ têm o mesmo ponto médio.'
+      espaco: 18
+      resolucao: |
+        Ponto médio de $AC$: $\left(\tfrac{a + b}{2}, \tfrac{c}{2}\right)$. Ponto médio de $BD$: $\left(\tfrac{a + b}{2}, \tfrac{0 + c}{2}\right)$. São iguais: as diagonais se cortam ao meio.
+      resposta: 'Ver resolução'
+    - enunciado: 'No triângulo de vértices $A(0, 0)$, $B(6, 0)$ e $C(0, 9)$, seja $M$ o ponto médio de $BC$.'
+      itens:
+      - 'Determine o baricentro $G$ e o ponto $M$.'
+      - 'Mostre que $AG = 2 \cdot GM$.'
+      espaco_item: 18
+      resolucao: |
+        (a) $G(2, 3)$ e $M(3;\ 4{,}5)$.
+        (b) $AG = \sqrt{4 + 9} = \sqrt{13}$. $GM = \sqrt{1 + 2{,}25} = \sqrt{3{,}25} = \tfrac{\sqrt{13}}{2}$. Então $AG = 2 \cdot GM$.
+      resposta: '(a) $G(2, 3)$, $M(3;\ 4{,}5)$'
+    - enunciado: 'Os pontos médios dos lados $AB$, $BC$ e $CA$ de um triângulo são $M(2, 1)$, $N(5, 3)$ e $P(3, 5)$. Determine os vértices $A$, $B$ e $C$.'
+      espaco: 22
+      resolucao: |
+        $A + B = (4, 2)$, $B + C = (10, 6)$ e $C + A = (6, 10)$. Somando: $2(A + B + C) = (20, 18)$, $A + B + C = (10, 9)$.
+        $A = (10, 9) - (10, 6) = (0, 3)$; $B = (4, 2) - (0, 3) = (4, -1)$; $C = (6, 10) - (0, 3) = (6, 7)$.
+      resposta: '$A(0, 3)$, $B(4, -1)$, $C(6, 7)$'
+    - enunciado: 'Prolongando o segmento de $A(1, 3)$ a $B(4, 1)$ além de $B$, determine o ponto $C$ tal que $BC = AB$. Que papel $B$ tem no segmento $AC$?'
+      espaco: 16
+      resolucao: |
+        $B$ é o ponto médio de $AC$: $C = 2B - A = (8 - 1,\ 2 - 3) = (7, -1)$.
+      resposta: '$C(7, -1)$; $B$ é o ponto médio de $AC$'
+    - enunciado: 'Considere $A(3, -3)$, $B(9, 9)$ e o ponto $P = \left(\frac{2x_A + x_B}{3}, \frac{2y_A + y_B}{3}\right)$.'
+      itens:
+      - 'Calcule $P$.'
+      - 'Mostre que $AP + PB = AB$ e que $AP : PB = 1 : 2$.'
+      espaco_item: 18
+      resolucao: |
+        (a) $P\left(\tfrac{6 + 9}{3}, \tfrac{-6 + 9}{3}\right) = (5, 1)$.
+        (b) $AP = \sqrt{4 + 16} = 2\sqrt{5}$, $PB = \sqrt{16 + 64} = 4\sqrt{5}$ e $AB = \sqrt{36 + 144} = 6\sqrt{5}$. Então $AP + PB = AB$ ($P$ está no segmento) e $AP : PB = 1 : 2$.
+      resposta: '(a) $P(5, 1)$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      O mapa quadriculado mostra dois pontos de ônibus, $A$ e $B$, numa avenida reta. A prefeitura vai instalar um novo ponto exatamente no meio do caminho entre eles. No sistema de eixos do mapa, cada lado de quadradinho vale uma unidade.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.42]
+        \draw[step=1, gray!30, very thin] (0,0) grid (11,8);
+        \draw[-latex, ink!60] (-0.3,0) -- (11.5,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,-0.3) -- (0,8.5) node[above, font=\scriptsize] {$y$};
+        \draw[ink!50, line width=2pt] (2,1) -- (10,7);
+        \fill[roxo] (2,1) circle (5pt) node[below right, font=\scriptsize] {$A$};
+        \fill[roxo] (10,7) circle (5pt) node[above left, font=\scriptsize] {$B$};
+        \end{scope}
+    enunciado: |
+      As coordenadas do novo ponto de ônibus são
+    opcoes: ['$(4, 3)$', '$(5, 4)$', '$(8, 6)$', '$(6, 4)$', '$(12, 8)$']
+    correta: D
+    resolucao: |
+      $A(2, 1)$ e $B(10, 7)$: $M\left(\tfrac{12}{2}, \tfrac{8}{2}\right) = (6, 4)$.
+      $(4, 3)$ é metade da diferença, e $(12, 8)$ é a soma sem dividir.
+
+  - estilo: Fuvest
+    enunciado: |
+      O baricentro do triângulo de vértices $(2, 5)$, $(-4, 1)$ e $(8, -3)$ é
+    opcoes: ['$(1, 2)$', '$(3;\ 1{,}5)$', '$(2, 1)$', '$(6, 3)$', '$(2, 3)$']
+    correta: C
+    resolucao: |
+      $\left(\tfrac{2 - 4 + 8}{3}, \tfrac{5 + 1 - 3}{3}\right) = (2, 1)$. $(6, 3)$ é a soma sem dividir, e $(3;\ 1{,}5)$ divide por 2.
+
+  - estilo: Unicamp
+    enunciado: |
+      O ponto $M(4, -2)$ é o ponto médio do segmento $AB$, com $A(1, 3)$. Então $B$ é
+    opcoes: ['$(2{,}5;\ 0{,}5)$.', '$(7, -7)$.', '$(5, 1)$.', '$(-2, 8)$.']
+    correta: B
+    resolucao: |
+      $B = 2M - A = (8 - 1,\ -4 - 3) = (7, -7)$. $(2{,}5;\ 0{,}5)$ é o ponto médio de $AM$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere o triângulo de vértices $A(-2, 4)$, $B(6, 0)$ e $C(2, 8)$. Assinale o que for correto.
+    proposicoes:
+    - 'O ponto médio de $AB$ é $(2, 2)$.'
+    - 'O baricentro do triângulo é $(2, 4)$.'
+    - 'O ponto médio de $BC$ é $(4, 4)$.'
+    - 'O baricentro está no segmento que liga $C$ ao ponto médio de $AB$.'
+    - 'A mediana relativa ao vértice $C$ mede 8.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) $(2, 2)$. 02) $\left(\tfrac{6}{3}, \tfrac{12}{3}\right) = (2, 4)$. 04) $(4, 4)$.
+      08) $C(2, 8)$ e $(2, 2)$ estão na reta $x = 2$, e $G(2, 4)$ está entre eles. 16) Incorreta: a mediana mede $8 - 2 = 6$.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, os pontos $P$ e $Q$ dividem o segmento $AB$, de extremos $A(1, 1)$ e $B(10, 7)$, em três partes de mesmo comprimento.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.45]
+        \draw[step=1, gray!25, very thin] (0,0) grid (11,8);
+        \draw[-latex, ink!60] (-0.3,0) -- (11.5,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,-0.3) -- (0,8.5) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1pt] (1,1) -- (10,7);
+        \fill[roxo] (1,1) circle (4pt) node[below right, font=\scriptsize] {$A$};
+        \fill[roxo] (10,7) circle (4pt) node[above left, font=\scriptsize] {$B$};
+        \fill[ink] (4,3) circle (4pt) node[above left, font=\scriptsize] {$P$};
+        \fill[ink] (7,5) circle (4pt) node[above left, font=\scriptsize] {$Q$};
+        \end{scope}
+    enunciado: |
+      As coordenadas de $Q$ são
+    opcoes: ['$(4, 3)$', '$(7, 5)$', '$(5{,}5;\ 4)$', '$(6, 4)$', '$(8, 6)$']
+    correta: B
+    resolucao: |
+      Um terço do deslocamento $(9, 6)$ é $(3, 2)$. $P = (4, 3)$ e $Q = (7, 5)$. $(5{,}5;\ 4)$ é o ponto médio de $AB$.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'O ponto médio de $A(a, b)$ e $B(c, d)$ é $\left(\frac{a + c}{2}, \frac{b + d}{2}\right)$.'
+    - 'O baricentro de um triângulo é o ponto de encontro das suas alturas.'
+    - 'Se $M$ é o ponto médio de $AB$, então, coordenada a coordenada, $B = 2M - A$.'
+    - 'O baricentro do triângulo de vértices $(0, 0)$, $(3, 0)$ e $(0, 3)$ é $(1, 1)$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'III e IV, apenas.', 'I, II e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta. II. Incorreta: é o encontro das medianas (o das alturas é o ortocentro).
+      III. Correta: de $M = \tfrac{A + B}{2}$. IV. Correta: $\left(\tfrac{3}{3}, \tfrac{3}{3}\right)$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Os pontos $A(1, 2)$, $B(5, 4)$, $C(7, 8)$ e $D$ são vértices consecutivos de um paralelogramo. Então $D$ é
+    opcoes: ['$(3, 6)$', '$(11, 10)$', '$(-1, -2)$', '$(4, 5)$', '$(2, 6)$']
+    correta: A
+    resolucao: |
+      As diagonais $AC$ e $BD$ têm o mesmo ponto médio, $(4, 5)$. $D = (8, 10) - (5, 4) = (3, 6)$. $(4, 5)$ é o centro do paralelogramo.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      Uma operadora quer instalar uma torre para atender três cidades, cujas posições, num mapa com eixos em quilômetros, estão no quadro. Por recomendação técnica, a torre ficará no baricentro do triângulo formado pelas três cidades.
+    tabela:
+      cabecalho: ['Cidade', 'Coordenadas (km)']
+      linhas:
+      - ['A', '$(0, 0)$']
+      - ['B', '$(12, 3)$']
+      - ['C', '$(6, 15)$']
+    enunciado: |
+      As coordenadas da torre são
+    opcoes: ['$(4, 5)$', '$(6, 9)$', '$(9;\ 7{,}5)$', '$(6, 6)$', '$(18, 18)$']
+    correta: D
+    resolucao: |
+      $G\left(\tfrac{0 + 12 + 6}{3}, \tfrac{0 + 3 + 15}{3}\right) = (6, 6)$. $(9;\ 7{,}5)$ divide por 2, e $(18, 18)$ não divide.
+
+  - estilo: Unicamp
+    enunciado: |
+      O segmento de extremos $A(-3, 5)$ e $B(k, -1)$ tem ponto médio sobre o eixo das ordenadas. Então $k$ vale
+    opcoes: ['$-3$.', '$0$.', '$3$.', '$6$.']
+    correta: C
+    resolucao: |
+      No eixo $y$, a abscissa é zero: $\tfrac{-3 + k}{2} = 0$, $k = 3$.
+
+  - estilo: UFPR
+    enunciado: |
+      Considere o triângulo de vértices $A(0, 0)$, $B(4, 0)$ e $C(0, 6)$. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'O baricentro do triângulo é $\left(\frac{4}{3}, 2\right)$.'
+    - 'O ponto médio da hipotenusa $BC$ é $(2, 3)$.'
+    - 'O ponto médio da hipotenusa é equidistante dos três vértices.'
+    - 'O baricentro é equidistante dos três vértices.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – F – V – F.', 'F – V – V – F.', 'V – V – V – F.', 'V – V – F – V.', 'V – V – V – V.']
+    correta: C
+    resolucao: |
+      (V) $\left(\tfrac{4}{3}, \tfrac{6}{3}\right)$. (V) $(2, 3)$. (V) Ele dista $\sqrt{4 + 9} = \sqrt{13}$ de $A$, de $B$ e de $C$.
+      (F) $GA = \sqrt{\tfrac{16}{9} + 4}$ e $GB = \sqrt{\tfrac{64}{9} + 4}$ são diferentes.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere os pontos $A(1, 1)$ e $B(7, 4)$. Assinale o que for correto.
+    proposicoes:
+    - 'O ponto médio de $AB$ é $(4;\ 2{,}5)$.'
+    - 'O ponto $P(3, 2)$ está no segmento $AB$ e $AP : PB = 1 : 2$.'
+    - 'O ponto $Q(5, 3)$ está mais perto de $A$ do que de $B$.'
+    - 'Os pontos $(3, 2)$ e $(5, 3)$ dividem $AB$ em três partes iguais.'
+    - 'O ponto médio de $AB$ coincide com o ponto $(3, 2)$.'
+    corretas: [1, 2, 4]
+    resolucao: |
+      O deslocamento de $A$ até $B$ é $(6, 3)$; um terço é $(2, 1)$. Os pontos de divisão são $(3, 2)$ e $(5, 3)$ (02 e 08 corretas).
+      01) Correta. 04) Incorreta: $Q$ está a dois terços do caminho, mais perto de $B$. 16) Incorreta.
+      Soma: $01 + 02 + 08 = 11$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Os pontos $M(2, 3)$, $N(5, 1)$ e $P(4, 6)$ são os pontos médios dos lados de um triângulo. O baricentro desse triângulo é
+    opcoes: ['$(11, 10)$', '$\left(\frac{11}{2}, 5\right)$', '$(4, 3)$', '$\left(\frac{11}{3}, \frac{10}{3}\right)$', '$\left(\frac{22}{3}, \frac{20}{3}\right)$']
+    correta: D
+    resolucao: |
+      Se os vértices são $A$, $B$, $C$, então $M + N + P = \tfrac{(A + B) + (B + C) + (C + A)}{2} = A + B + C$. Os dois triângulos têm o mesmo baricentro: $\left(\tfrac{11}{3}, \tfrac{10}{3}\right)$.
+
+  - estilo: Unesp
+    texto: |
+      Um cabo reto está esticado entre os pontos $A(0, 8)$ e $B(12, 2)$ de uma fachada, com coordenadas em metros. Uma luminária será pendurada no cabo, no ponto que está a um quarto do caminho de $A$ para $B$.
+    enunciado: |
+      As coordenadas desse ponto são
+    opcoes: ['$(6, 5)$', '$(9;\ 3{,}5)$', '$(4, 6)$', '$(3, 2)$', '$(3;\ 6{,}5)$']
+    correta: E
+    resolucao: |
+      Deslocamento de $A$ até $B$: $(12, -6)$; um quarto: $(3;\ -1{,}5)$. Ponto: $(0 + 3;\ 8 - 1{,}5) = (3;\ 6{,}5)$.
+      $(6, 5)$ é o ponto médio e $(9;\ 3{,}5)$ está a três quartos do caminho.
+
+  - estilo: Enem
+    texto: |
+      Na planta de um parque, com eixos em metros, os dois portões estão em $P_1(20, 30)$ e $P_2(80, 110)$. Um chafariz será construído no ponto médio entre os portões, e a administração quer instalar placas indicando a distância do chafariz até cada portão.
+    enunciado: |
+      A distância do chafariz a cada portão é
+    opcoes: ['25 m.', '40 m.', '50 m.', '70 m.', '100 m.']
+    correta: C
+    resolucao: |
+      $M(50, 70)$. $MP_1 = \sqrt{30^2 + 40^2} = 50$ m. 100 m é a distância entre os portões.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Num jogo de computador, uma nave triangular tem vértices $A(-2, 1)$, $B(4, -1)$ e $C(1, 9)$ na tela. O programa gira a nave em torno do seu centro de gravidade, que, para uma placa triangular homogênea, é o baricentro. O programador também precisa do comprimento de uma das medianas para desenhar o eixo da nave.
+    enunciado: |
+      O centro de gravidade da nave é o ponto
+    opcoes: ['$(1, 0)$', '$(1, 3)$', '$(3, 9)$', '$(1;\ 4{,}5)$', '$(1{,}5;\ 4)$']
+    correta: B
+    resolucao: |
+      $G\left(\tfrac{-2 + 4 + 1}{3}, \tfrac{1 - 1 + 9}{3}\right) = (1, 3)$. $(1, 0)$ é o ponto médio de $AB$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O comprimento da mediana relativa ao vértice $C$ é
+    opcoes: ['$9$.', '$6$.', '$3$.', '$\sqrt{82}$.']
+    correta: A
+    resolucao: |
+      O ponto médio de $AB$ é $(1, 0)$, e $C(1, 9)$: a mediana é vertical e mede 9. (6 é a distância de $C$ a $G$, e 3, de $G$ ao ponto médio.)
+
+  - estilo: UEM
+    enunciado: |
+      Considere triângulos e quadriláteros no plano cartesiano. Assinale o que for correto.
+    proposicoes:
+    - 'O baricentro divide cada mediana na razão $2 : 1$, a partir do vértice.'
+    - 'O ponto médio de $AB$ é equidistante de $A$ e de $B$.'
+    - 'Todo ponto equidistante de $A$ e de $B$ é o ponto médio de $AB$.'
+    - 'Os pontos médios dos lados de qualquer quadrilátero são vértices de um paralelogramo.'
+    - 'O triângulo formado pelos pontos médios dos lados de um triângulo tem o mesmo baricentro que ele.'
+    corretas: [1, 2, 4, 5]
+    resolucao: |
+      01) Correta. 02) Correta. 04) Incorreta: há infinitos pontos equidistantes (a mediatriz de $AB$).
+      08) Correta: as diagonais desse quadrilátero têm o mesmo ponto médio, $\tfrac{A + B + C + D}{4}$. 16) Correta: a soma dos pontos médios é $A + B + C$.
+      Soma: $01 + 02 + 08 + 16 = 27$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O ponto $P(3, 4)$ está no segmento de extremos $A(1, 3)$ e $B$, com $AP : PB = 2 : 3$. Então $B$ é
+    opcoes: ['$(6;\ 5{,}5)$', '$(5, 5)$', '$(4;\ 4{,}5)$', '$(7, 6)$', '$(9, 7)$']
+    correta: A
+    resolucao: |
+      $AP$ é $\tfrac{2}{5}$ de $AB$. De $A$ a $P$ o deslocamento é $(2, 1)$, então de $A$ a $B$ é $\tfrac{5}{2}(2, 1) = (5;\ 2{,}5)$, e $B = (6;\ 5{,}5)$.
+
+  - estilo: Enem
+    texto: |
+      Um terreno triangular está representado na figura, com eixos em metros. A prefeitura vai instalar um poste de iluminação no baricentro do terreno, ponto em que as três medianas se encontram.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.5]
+        \draw[step=1, gray!25, very thin] (0,0) grid (10,7);
+        \draw[-latex, ink!60] (-0.3,0) -- (10.5,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,-0.3) -- (0,7.5) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1pt, fill=roxo!10] (0,0) -- (9,0) -- (3,6) -- cycle;
+        \end{scope}
+    enunciado: |
+      As coordenadas do poste são
+    opcoes: ['$(3, 3)$', '$(4{,}5;\ 3)$', '$(6, 3)$', '$(4, 3)$', '$(4, 2)$']
+    correta: E
+    resolucao: |
+      Vértices $(0, 0)$, $(9, 0)$ e $(3, 6)$: $G\left(\tfrac{12}{3}, \tfrac{6}{3}\right) = (4, 2)$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O ponto $M(3, b)$ é o ponto médio do segmento de extremos $A(a, 2)$ e $B(4, 6)$. O valor de $a + b$ é
+    opcoes: ['$5$', '$6$', '$7$', '$8$', '$9$']
+    correta: B
+    resolucao: |
+      $\tfrac{a + 4}{2} = 3$, $a = 2$; $b = \tfrac{2 + 6}{2} = 4$. Soma: 6.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Os pontos médios dos lados $AB$, $BC$ e $CA$ de um triângulo $ABC$ são $M(1, 2)$, $N(4, 2)$ e $P(3, 5)$.'
+    itens:
+    - 'Determine os vértices $A$, $B$ e $C$.'
+    - 'Verifique que $ABC$ e $MNP$ têm o mesmo baricentro.'
+    - 'Calcule as áreas dos dois triângulos e a razão entre elas.'
+    espaco: 62
+    resolucao: |
+      a) $A + B = (2, 4)$, $B + C = (8, 4)$, $C + A = (6, 10)$; somando, $A + B + C = (8, 9)$. $A = (0, 5)$, $B = (2, -1)$, $C = (6, 5)$.
+      b) Baricentro de $ABC$: $\left(\tfrac{8}{3}, 3\right)$. De $MNP$: $\left(\tfrac{1 + 4 + 3}{3}, \tfrac{2 + 2 + 5}{3}\right) = \left(\tfrac{8}{3}, 3\right)$.
+      c) $ABC$: base $AC = 6$ (horizontal, em $y = 5$) e altura $5 - (-1) = 6$: área 18. $MNP$: base $MN = 3$ (em $y = 2$) e altura 3: área $4{,}5$. Razão $\tfrac{18}{4{,}5} = 4$.
+    resposta: 'a) $A(0, 5)$, $B(2, -1)$, $C(6, 5)$; b) $\left(\frac{8}{3}, 3\right)$; c) 18 e 4,5; razão 4'
+
+  - estilo: Unicamp
+    texto: |
+      Uma estrada retilínea liga as cidades A e B, nos pontos $A(2, 1)$ e $B(14, 9)$ de um mapa com eixos em quilômetros. Serão instalados três postos de apoio que dividem a estrada em quatro trechos de mesmo comprimento.
+    enunciado: ''
+    itens:
+    - 'Determine as coordenadas dos três postos.'
+    - 'Calcule o comprimento de cada trecho.'
+    - 'Qual é o comprimento total da estrada?'
+    espaco: 62
+    resolucao: |
+      a) Deslocamento de $A$ até $B$: $(12, 8)$; um quarto: $(3, 2)$. Postos: $(5, 3)$, $(8, 5)$ e $(11, 7)$.
+      b) $\sqrt{9 + 4} = \sqrt{13} \approx 3{,}6$ km.
+      c) $4\sqrt{13} \approx 14{,}4$ km (confere: $AB = \sqrt{144 + 64} = \sqrt{208} = 4\sqrt{13}$).
+    resposta: 'a) $(5, 3)$, $(8, 5)$, $(11, 7)$; b) $\sqrt{13}$ km; c) $4\sqrt{13}$ km'
+
+  - estilo: ITA
+    enunciado: |
+      O ponto $P$ do segmento de extremos $A(-1, 2)$ e $B(5, -7)$ tal que $\frac{AP}{PB} = 2$ é
+    opcoes: ['$(1, -1)$', '$(2;\ -2{,}5)$', '$(3, -4)$', '$(7, -10)$', '$(-3, 8)$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $AP$ é $\tfrac{2}{3}$ de $AB$. $P = A + \tfrac{2}{3}(6, -9) = (-1 + 4,\ 2 - 6) = (3, -4)$.
+      $(1, -1)$ é o ponto com $\tfrac{AP}{PB} = \tfrac{1}{2}$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Os pontos $A(0, 0)$, $B(4, 1)$ e $C(1, 3)$ são três vértices de um paralelogramo.'
+    itens:
+    - 'Explique por que, num paralelogramo, as duas diagonais têm o mesmo ponto médio.'
+    - 'Determine todas as possibilidades para o quarto vértice $D$.'
+    - 'Mostre que os três pontos encontrados são vértices de um triângulo cujos lados têm como pontos médios $A$, $B$ e $C$.'
+    espaco: 62
+    resolucao: |
+      a) As diagonais de um paralelogramo se cortam ao meio (os triângulos formados por uma diagonal e dois lados opostos são congruentes).
+      b) $D$ pode ser oposto a $A$, a $B$ ou a $C$: $D = B + C - A = (5, 4)$, $D = A + C - B = (-3, 2)$ ou $D = A + B - C = (3, -2)$.
+      c) Pontos médios: de $(-3, 2)$ e $(3, -2)$, $(0, 0) = A$; de $(3, -2)$ e $(5, 4)$, $(4, 1) = B$; de $(-3, 2)$ e $(5, 4)$, $(1, 3) = C$.
+    resposta: 'a) Ver resolução; b) $(5, 4)$, $(-3, 2)$ ou $(3, -2)$; c) Ver resolução'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o triângulo de vértices $A(1, 1)$, $B(7, 1)$ e $C(4, 7)$. Assinale o que for correto.
+    proposicoes:
+    - 'O baricentro do triângulo é $(4, 3)$.'
+    - 'A mediana relativa ao vértice $C$ mede 6.'
+    - 'O triângulo é isósceles.'
+    - 'O baricentro está a 2 unidades da reta que contém o lado $AB$.'
+    - 'A distância do baricentro ao vértice $C$ é 3.'
+    - 'A mediana relativa ao vértice $C$ é perpendicular ao lado $AB$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) $\left(\tfrac{12}{3}, \tfrac{9}{3}\right)$. 02) O ponto médio de $AB$ é $(4, 1)$; até $C(4, 7)$: 6. 04) $AC = BC = \sqrt{9 + 36} = \sqrt{45}$.
+      08) $AB$ está em $y = 1$ e $G$ em $y = 3$. 16) Incorreta: $GC = 7 - 3 = 4$. 32) A mediana é vertical e $AB$ é horizontal.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere o quadrilátero de vértices $A(0, 0)$, $B(8, 0)$, $C(6, 6)$ e $D(2, 4)$.'
+    itens:
+    - 'Determine os pontos médios $M$, $N$, $P$ e $Q$ dos lados $AB$, $BC$, $CD$ e $DA$.'
+    - 'Mostre que $MNPQ$ é um paralelogramo, verificando que $MP$ e $NQ$ têm o mesmo ponto médio.'
+    - 'Mostre que isso vale para qualquer quadrilátero: o ponto médio de $MP$ e o de $NQ$ são ambos iguais a $\frac{A + B + C + D}{4}$.'
+    espaco: 62
+    resolucao: |
+      a) $M(4, 0)$, $N(7, 3)$, $P(4, 5)$, $Q(1, 2)$.
+      b) Ponto médio de $MP$: $(4;\ 2{,}5)$. De $NQ$: $(4;\ 2{,}5)$. Iguais: $MNPQ$ é paralelogramo.
+      c) $M = \tfrac{A + B}{2}$ e $P = \tfrac{C + D}{2}$, então $\tfrac{M + P}{2} = \tfrac{A + B + C + D}{4}$. Da mesma forma, $\tfrac{N + Q}{2} = \tfrac{(B + C) + (D + A)}{4}$, a mesma coisa.
+    resposta: 'a) $(4, 0)$, $(7, 3)$, $(4, 5)$, $(1, 2)$; b) e c) Ver resolução'
+
+  - estilo: Unicamp
+    texto: |
+      O centro de massa de um sistema de massas pontuais é a média das posições, com pesos iguais às massas: $x_{cm} = \frac{m_1 x_1 + m_2 x_2 + m_3 x_3}{m_1 + m_2 + m_3}$, e o mesmo para $y$. Considere massas de 2 kg em $(0, 0)$, 3 kg em $(10, 0)$ e 5 kg em $(4, 6)$, com coordenadas em metros.
+    enunciado: ''
+    itens:
+    - 'Calcule o centro de massa do sistema.'
+    - 'Se as três massas fossem iguais, qual seria o centro de massa? Que ponto notável do triângulo é esse?'
+    - 'Mostre que o centro de massa das duas primeiras massas (sem a terceira) divide o segmento entre elas na razão $3 : 2$.'
+    espaco: 62
+    resolucao: |
+      a) $x = \tfrac{0 + 30 + 20}{10} = 5$ e $y = \tfrac{0 + 0 + 30}{10} = 3$: $(5, 3)$.
+      b) $\left(\tfrac{14}{3}, 2\right)$: o baricentro.
+      c) $x = \tfrac{0 + 30}{5} = 6$: o ponto $(6, 0)$. Ele dista 6 de $(0, 0)$ e 4 de $(10, 0)$: razão $6 : 4 = 3 : 2$ (mais perto da massa maior).
+    resposta: 'a) $(5, 3)$; b) $\left(\frac{14}{3}, 2\right)$, o baricentro; c) Ver resolução'
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, $A(2, 7)$ e o baricentro é $G(4, 3)$. O ponto médio do lado $BC$ é
+    opcoes: ['$(5, 1)$', '$(6, -1)$', '$(3, 5)$', '$(8, -5)$', '$(4, 3)$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $G$ divide a mediana $AM$ na razão $2 : 1$: $AG$ é $\tfrac{2}{3}$ de $AM$. De $A$ a $G$ o deslocamento é $(2, -4)$; de $A$ a $M$ é $\tfrac{3}{2}(2, -4) = (3, -6)$. $M = (5, 1)$.
+      $(6, -1)$ seria $2G - A$, o que supõe $G$ no meio de $AM$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Para achar o baricentro de $A(0, 0)$, $B(6, 0)$ e $C(0, 6)$, um aluno tomou o ponto médio $M$ de $AB$ e depois o ponto médio de $CM$, dizendo que “o baricentro fica no meio da mediana”.
+    enunciado: ''
+    itens:
+    - 'Calcule o ponto obtido pelo aluno e o baricentro correto.'
+    - 'Explique o erro, usando a razão em que o baricentro divide a mediana.'
+    - 'Mostre que, em qualquer triângulo, $C + \frac{2}{3}(M - C) = \frac{A + B + C}{3}$, sendo $M$ o ponto médio de $AB$.'
+    espaco: 62
+    resolucao: |
+      a) $M(3, 0)$; ponto médio de $CM$: $(1{,}5;\ 3)$. Baricentro: $(2, 2)$.
+      b) O baricentro não fica no meio da mediana: ele divide $CM$ na razão $2 : 1$ a partir de $C$, isto é, está a $\tfrac{2}{3}$ do caminho de $C$ até $M$: $(0, 6) + \tfrac{2}{3}(3, -6) = (2, 2)$.
+      c) $C + \tfrac{2}{3}\left(\tfrac{A + B}{2} - C\right) = C + \tfrac{A + B}{3} - \tfrac{2C}{3} = \tfrac{A + B + C}{3}$.
+    resposta: 'a) $(1{,}5;\ 3)$ e $(2, 2)$; b) e c) Ver resolução'
+
+  - estilo: Fuvest
+    enunciado: 'Considere o triângulo retângulo de vértices $A(0, 0)$, $B(b, 0)$ e $C(0, c)$, com $b > 0$ e $c > 0$.'
+    itens:
+    - 'Determine o ponto médio $M$ da hipotenusa $BC$.'
+    - 'Mostre que $MA = MB = MC = \frac{\sqrt{b^2 + c^2}}{2}$.'
+    - 'Conclua qual é o raio da circunferência que passa pelos três vértices quando $b = 6$ e $c = 8$.'
+    espaco: 62
+    resolucao: |
+      a) $M\left(\tfrac{b}{2}, \tfrac{c}{2}\right)$.
+      b) $MA = \sqrt{\tfrac{b^2}{4} + \tfrac{c^2}{4}} = \tfrac{\sqrt{b^2 + c^2}}{2}$. $MB = \sqrt{\tfrac{b^2}{4} + \tfrac{c^2}{4}}$, o mesmo, e $MC$ também.
+      c) $M$ é equidistante dos três vértices, então é o centro da circunferência, com raio igual à metade da hipotenusa: $\tfrac{\sqrt{36 + 64}}{2} = 5$.
+    resposta: 'a) $\left(\frac{b}{2}, \frac{c}{2}\right)$; b) Ver resolução; c) $5$'
