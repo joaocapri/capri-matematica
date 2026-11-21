@@ -1,0 +1,556 @@
+# Aula 4.5.2 — Geometria plana: quadriláteros notáveis
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: trapézio (isósceles, retângulo), paralelogramo, retângulo, losango e quadrado; ângulos (opostos, consecutivos,
+# da base); propriedades das diagonais; base média do trapézio e segmento dos pontos médios das diagonais; base média do
+# triângulo; quadrilátero dos pontos médios (Varignon); pipa. Áreas ficam para a 4.7.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Associe cada quadrilátero à sua definição.'
+      esquerda:
+      - 'trapézio'
+      - 'paralelogramo'
+      - 'retângulo'
+      - 'losango'
+      - 'quadrado'
+      direita:
+      - 'quatro lados congruentes'
+      - 'apenas um par de lados opostos paralelos'
+      - 'quatro ângulos retos e quatro lados congruentes'
+      - 'dois pares de lados opostos paralelos'
+      - 'quatro ângulos retos'
+      resolucao: |
+        Trapézio: um só par de lados paralelos. Paralelogramo: dois pares. Retângulo: ângulos retos. Losango: lados iguais. Quadrado: as duas coisas.
+      resposta: 'De cima para baixo: 4, 1, 5, 2, 3'
+    - enunciado: 'Complete o quadro sobre as diagonais. Escreva sim (vale sempre) ou não (nem sempre vale). Colunas: M (cortam-se ao meio), C (são congruentes) e P (são perpendiculares).'
+      tabela:
+        cabecalho: ['Quadrilátero', 'M', 'C', 'P']
+        linhas:
+        - ['paralelogramo', '{{sim}}', '{{não}}', '{{não}}']
+        - ['retângulo', '{{sim}}', '{{sim}}', '{{não}}']
+        - ['losango', '{{sim}}', '{{não}}', '{{sim}}']
+        - ['quadrado', '{{sim}}', '{{sim}}', '{{sim}}']
+      resolucao: |
+        Todo paralelogramo tem diagonais que se cortam ao meio. O retângulo acrescenta diagonais congruentes; o losango, diagonais perpendiculares; o quadrado tem as três propriedades.
+      resposta: 'sim, não, não; sim, sim, não; sim, não, sim; sim, sim, sim'
+    - enunciado: 'Num paralelogramo $ABCD$, o ângulo $\hat{A}$ mede $65°$. Determine $\hat{B}$, $\hat{C}$ e $\hat{D}$.'
+      espaco: 8
+      resolucao: |
+        Ângulos opostos são congruentes e consecutivos são suplementares: $\hat{C} = 65°$ e $\hat{B} = \hat{D} = 115°$.
+      resposta: '$\hat{B} = \hat{D} = 115°$, $\hat{C} = 65°$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Todo quadrado é um losango.'
+      - 'Todo losango é um quadrado.'
+      - 'Todo retângulo é um paralelogramo.'
+      - 'Num paralelogramo, dois ângulos consecutivos são suplementares.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) Um losango pode ter ângulos de $60°$ e $120°$. (V) (V) Os lados paralelos formam ângulos colaterais internos.
+      resposta: V, F, V, V
+    - enunciado: 'Complete com a medida pedida, num trapézio de bases $B$ e $b$.'
+      itens:
+      - 'Bases 10 e 6: a base média mede {{8}}'
+      - 'Bases 15 e 9: a base média mede {{12}}'
+      - 'Base maior 13 e base média 9: a base menor mede {{5}}'
+      espaco_item: 10
+      resolucao: |
+        Base média $= \tfrac{B + b}{2}$: (a) $8$; (b) $12$; (c) $\tfrac{13 + b}{2} = 9$, $b = 5$.
+      resposta: '$8$; $12$; $5$'
+    - enunciado: 'As diagonais de um losango medem 18 e 24. Calcule o lado e o perímetro.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.9]
+          \draw[ink, line width=1pt, fill=lilas!25] (0,1.2) -- (1.6,0) -- (0,-1.2) -- (-1.6,0) -- cycle;
+          \draw[roxo, dashed] (0,1.2) -- (0,-1.2) (-1.6,0) -- (1.6,0);
+          \draw[mudo] (0,0.15) -- (0.15,0.15) -- (0.15,0);
+          \end{scope}
+      espaco: 8
+      resolucao: |
+        As diagonais se cortam ao meio e são perpendiculares: o lado é a hipotenusa de catetos 9 e 12, $\sqrt{81 + 144} = 15$. Perímetro $60$.
+      resposta: 'lado 15; perímetro 60'
+    - enunciado: 'Num retângulo $ABCD$, as diagonais se cortam em $O$, com $AO = 2x + 1$ e $BO = 3x - 4$. Calcule $x$ e a medida da diagonal.'
+      espaco: 10
+      resolucao: |
+        No retângulo, as diagonais são congruentes e se cortam ao meio: $AO = BO$. $2x + 1 = 3x - 4$, $x = 5$, $AO = 11$, diagonal $22$.
+      resposta: '$x = 5$; diagonal 22'
+  - nome: Nível 2
+    questoes:
+    - enunciado: 'Num trapézio isósceles, um dos ângulos da base maior mede $70°$. Determine os outros três ângulos.'
+      espaco: 8
+      resolucao: |
+        Os ângulos da mesma base são congruentes: $70°$. Os ângulos adjacentes a uma lateral são suplementares: $110°$ e $110°$.
+      resposta: '$70°$, $110°$, $110°$'
+    - texto: |
+        Lia disse: “As diagonais deste quadrilátero são perpendiculares; então, ele é um losango”.
+      enunciado: 'Lia está certa? Justifique com um contraexemplo, se for o caso.'
+      espaco: 10
+      resolucao: |
+        Não. A pipa (dois pares de lados consecutivos iguais, como $3, 3, 5, 5$) tem diagonais perpendiculares e não é losango. Para ser losango, as diagonais também precisam se cortar ao meio.
+      resposta: 'Não (ex.: pipa)'
+    - enunciado: 'Num paralelogramo, dois ângulos consecutivos medem $2x + 10°$ e $3x - 20°$. Calcule os ângulos do paralelogramo.'
+      espaco: 10
+      resolucao: |
+        Consecutivos são suplementares: $5x - 10° = 180°$, $x = 38°$. Ângulos: $86°$ e $94°$ (dois de cada).
+      resposta: '$86°$, $94°$, $86°$, $94°$'
+    - enunciado: 'Um trapézio isósceles tem bases 20 e 4 e laterais 10. Calcule a altura.'
+      espaco: 10
+      resolucao: |
+        Cada projeção da lateral sobre a base maior mede $\tfrac{20 - 4}{2} = 8$: $h = \sqrt{100 - 64} = 6$.
+      resposta: '6'
+    - enunciado: 'Num trapézio de bases $B$ e $b$, a base média mede $\frac{B + b}{2}$ e o segmento que une os pontos médios das diagonais mede $\frac{B - b}{2}$. Complete.'
+      tabela:
+        cabecalho: ['$B$', '$b$', 'Base média', 'Segmento das diagonais']
+        linhas:
+        - ['$20$', '$8$', '${{14}}$', '${{6}}$']
+        - ['$18$', '$10$', '${{14}}$', '${{4}}$']
+        - ['$15$', '$7$', '${{11}}$', '${{4}}$']
+      resolucao: |
+        Ex.: $\tfrac{20 + 8}{2} = 14$ e $\tfrac{20 - 8}{2} = 6$.
+      resposta: '14, 6; 14, 4; 11, 4'
+    - enunciado: 'No retângulo $ABCD$, as diagonais se cortam em $O$ e $O\hat{A}B = 32°$. Calcule $A\hat{O}B$ e o ângulo agudo entre as diagonais.'
+      espaco: 10
+      resolucao: |
+        $OA = OB$ (metades de diagonais congruentes): o triângulo $AOB$ é isósceles e $O\hat{B}A = 32°$. $A\hat{O}B = 180° - 64° = 116°$; o ângulo agudo é $64°$.
+      resposta: '$116°$; $64°$'
+    - enunciado: 'Um losango tem lado 6 e um ângulo de $60°$. Calcule as duas diagonais.'
+      espaco: 12
+      resolucao: |
+        A diagonal menor forma, com dois lados, um triângulo isósceles com ângulo de $60°$ entre eles, isto é, equilátero: mede 6. Metades: 3 e $\tfrac{d}{2}$, com $\left(\tfrac{d}{2}\right)^2 = 36 - 9 = 27$: $d = 6\sqrt{3}$.
+      resposta: '$6$ e $6\sqrt{3}$'
+    - enunciado: 'No triângulo $ABC$, com $AB = 10$, $AC = 14$ e $BC = 18$, os pontos $M$, $N$ e $P$ são os pontos médios de $AB$, $AC$ e $BC$. Complete.'
+      itens:
+      - '$MN =$ {{9}}'
+      - '$NP =$ {{5}}'
+      - '$MP =$ {{7}}'
+      - 'Perímetro de $MNP =$ {{21}}'
+      espaco_item: 8
+      resolucao: |
+        O segmento que une os pontos médios de dois lados é paralelo ao terceiro e mede a metade dele: $MN = \tfrac{BC}{2}$, $NP = \tfrac{AB}{2}$, $MP = \tfrac{AC}{2}$. Perímetro: metade de $42$.
+      resposta: '$9$; $5$; $7$; $21$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que as diagonais de um paralelogramo se cortam ao meio.'
+      espaco: 14
+      resolucao: |
+        Seja $O$ o encontro das diagonais de $ABCD$. Os triângulos $OAB$ e $OCD$ têm $AB = CD$ e $O\hat{A}B = O\hat{C}D$, $O\hat{B}A = O\hat{D}C$ (alternos internos, $AB \parallel CD$). Pelo caso ALA, são congruentes: $OA = OC$ e $OB = OD$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que um paralelogramo de diagonais congruentes é um retângulo.'
+      espaco: 12
+      resolucao: |
+        Em $ABCD$, os triângulos $ABD$ e $BAC$ têm $AB$ comum, $AD = BC$ e $BD = AC$: são congruentes (LLL). Então $\hat{A} = \hat{B}$. Como são consecutivos, somam $180°$: cada um mede $90°$, e o paralelogramo tem os quatro ângulos retos.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que os pontos médios dos lados de um quadrilátero qualquer são vértices de um paralelogramo, com perímetro igual à soma das diagonais. Aplique a um quadrilátero de diagonais 10 e 14.'
+      espaco: 14
+      resolucao: |
+        Em $ABCD$, com $M, N, P, Q$ médios de $AB, BC, CD, DA$: nos triângulos $ABC$ e $ACD$, $MN$ e $QP$ são paralelos a $AC$ e medem $\tfrac{AC}{2}$. Do mesmo modo, $NP$ e $MQ$ são paralelos a $BD$ e medem $\tfrac{BD}{2}$. Lados opostos paralelos: paralelogramo, de perímetro $AC + BD$. Aplicação: $24$.
+      resposta: 'perímetro 24'
+    - enunciado: 'Um trapézio retângulo tem bases 9 e 4 e lateral oblíqua 13. Calcule a altura e o perímetro.'
+      espaco: 10
+      resolucao: |
+        A projeção da lateral oblíqua mede $9 - 4 = 5$: $h = \sqrt{169 - 25} = 12$, que é a outra lateral. Perímetro: $9 + 4 + 13 + 12 = 38$.
+      resposta: 'altura 12; perímetro 38'
+    - enunciado: 'Num trapézio isósceles de bases 10 e 4, as diagonais são perpendiculares. Mostre que a altura é igual à base média e calcule-a.'
+      espaco: 12
+      resolucao: |
+        As diagonais formam, com cada base, um triângulo isósceles (pela simetria) e retângulo no encontro $O$: as alturas desses triângulos, a partir de $O$, medem metade das bases. Altura: $\tfrac{10}{2} + \tfrac{4}{2} = \tfrac{10 + 4}{2} = 7$.
+      resposta: '7'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Para conferir se a moldura de um quadro, já montada, ficou com os cantos em esquadro, um marceneiro mede os lados e as diagonais. Os lados opostos têm a mesma medida, 60 cm e 40 cm, e as duas diagonais medem 72,1 cm cada uma. Com isso, ele conclui que os quatro cantos da moldura são ângulos retos.
+    enunciado: |
+      A conclusão do marceneiro está correta porque
+    opcoes: ['todo paralelogramo de diagonais congruentes é um retângulo.', 'todo quadrilátero de diagonais congruentes é um retângulo.', 'todo quadrilátero de lados opostos congruentes é um retângulo.', 'as diagonais de um paralelogramo são sempre perpendiculares.', 'todo paralelogramo de diagonais congruentes é um losango.']
+    correta: A
+    resolucao: |
+      Lados opostos congruentes garantem um paralelogramo; com diagonais congruentes, ele é um retângulo. Só diagonais congruentes não bastam: o trapézio isósceles também as tem.
+
+  - estilo: Fuvest
+    enunciado: |
+      Num paralelogramo, um ângulo mede o dobro de outro. Os ângulos do paralelogramo medem
+    opcoes: ['$45°$ e $90°$', '$30°$ e $60°$', '$72°$ e $144°$', '$60°$ e $120°$', '$90°$ e $90°$']
+    correta: D
+    resolucao: |
+      Os ângulos diferentes são consecutivos e suplementares: $x + 2x = 180°$, $x = 60°$.
+
+  - estilo: Unicamp
+    enunciado: |
+      As diagonais de um losango medem 10 cm e 24 cm. O perímetro do losango é
+    opcoes: ['$68$ cm.', '$52$ cm.', '$48$ cm.', '$26$ cm.']
+    correta: B
+    resolucao: |
+      Metades: 5 e 12, perpendiculares. Lado $\sqrt{25 + 144} = 13$, perímetro $52$ cm.
+
+  - estilo: UEM
+    enunciado: |
+      Considere os quadriláteros notáveis. Assinale o que for correto.
+    proposicoes:
+    - 'Todo quadrado é um retângulo.'
+    - 'Todo losango é um paralelogramo.'
+    - 'Todo retângulo é um losango.'
+    - 'As diagonais de um losango são perpendiculares.'
+    - 'As diagonais de um trapézio isósceles são congruentes.'
+    corretas: [1, 2, 4, 5]
+    resolucao: |
+      01) Tem quatro ângulos retos. 02) Lados opostos iguais, logo paralelos. 04) Incorreta: um retângulo $2 \times 1$ não tem lados iguais. 08) Correta. 16) Pela simetria do trapézio isósceles.
+      Soma: $01 + 02 + 08 + 16 = 27$.
+
+  - estilo: Enem
+    texto: |
+      O letreiro de uma loja tem a forma de um trapézio isósceles, como na figura. A base maior mede 3,0 m, a base menor mede 1,8 m e cada lateral mede 1,0 m. Para fixá-lo na fachada, o eletricista precisa saber a altura do letreiro, isto é, a distância entre as duas bases.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1.3]
+        \draw[ink, line width=1pt, fill=lilas!25] (0,0) -- (3,0) -- (2.4,0.8) -- (0.6,0.8) -- cycle;
+        \draw[roxo, dashed] (0.6,0.8) -- (0.6,0);
+        \node[below, font=\scriptsize] at (1.5,0) {$3{,}0$ m};
+        \node[above, font=\scriptsize] at (1.5,0.8) {$1{,}8$ m};
+        \node[left, font=\scriptsize] at (0.22,0.45) {$1{,}0$ m};
+        \node[right, font=\scriptsize] at (2.78,0.45) {$1{,}0$ m};
+        \end{scope}
+    enunciado: |
+      A altura do letreiro é
+    opcoes: ['$0{,}6$ m', '$0{,}4$ m', '$0{,}8$ m', '$1{,}0$ m', '$1{,}2$ m']
+    correta: C
+    resolucao: |
+      Cada projeção da lateral mede $\tfrac{3{,}0 - 1{,}8}{2} = 0{,}6$ m: $h = \sqrt{1 - 0{,}36} = 0{,}8$ m.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'Num paralelogramo, os ângulos opostos são congruentes.'
+    - 'As diagonais de um retângulo são perpendiculares.'
+    - 'Num trapézio, os ângulos adjacentes a uma mesma lateral são suplementares.'
+    - 'Todo quadrilátero com dois pares de lados consecutivos congruentes é um losango.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I, apenas.', 'II e IV, apenas.', 'I, II e III, apenas.', 'III e IV, apenas.', 'I e III, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta. II. Incorreta: só quando é quadrado. III. Correta: são colaterais internos entre as bases paralelas. IV. Incorreta: a pipa é um contraexemplo.
+
+  - estilo: Unesp
+    enunciado: |
+      As bases de um trapézio medem 22 cm e 10 cm. O segmento que une os pontos médios das diagonais mede
+    opcoes: ['$6$ cm', '$16$ cm', '$12$ cm', '$8$ cm', '$4$ cm']
+    correta: A
+    resolucao: |
+      $\tfrac{22 - 10}{2} = 6$ cm (a base média mede 16 cm).
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, $ABCD$ é um retângulo, $O$ é o encontro das diagonais e $O\hat{A}B = 25°$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) -- (3,0) -- (3,1.4) -- (0,1.4) -- cycle;
+        \draw[roxo, line width=.9pt] (0,0) -- (3,1.4) (3,0) -- (0,1.4);
+        \draw[mudo] (0.6,0) arc (0:25:0.6);
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[below right, font=\scriptsize] at (3,0) {$B$};
+        \node[above right, font=\scriptsize] at (3,1.4) {$C$};
+        \node[above left, font=\scriptsize] at (0,1.4) {$D$};
+        \node[below, font=\scriptsize] at (1.5,0.62) {$O$};
+        \end{scope}
+    enunciado: |
+      O ângulo $B\hat{O}C$ mede
+    opcoes: ['$65°$.', '$25°$.', '$50°$.', '$130°$.']
+    correta: C
+    resolucao: |
+      $OA = OB$: o triângulo $AOB$ é isósceles, e $A\hat{O}B = 180° - 50° = 130°$. $B\hat{O}C$ é o suplemento: $50°$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Um losango tem lado 8 e um ângulo interno de $120°$. A diagonal maior mede
+    opcoes: ['$8$', '$8\sqrt{3}$', '$16$', '$4\sqrt{3}$', '$8\sqrt{2}$']
+    correta: B
+    resolucao: |
+      A diagonal menor liga os vértices de $120°$ e forma, com dois lados, um triângulo com ângulo de $60°$ entre lados iguais: equilátero, de lado 8. Metade da maior: $\sqrt{64 - 16} = 4\sqrt{3}$; a maior mede $8\sqrt{3}$.
+
+  - estilo: UFSC
+    enunciado: |
+      No paralelogramo $ABCD$, $AB = 10$, $AD = 6$ e $\hat{A} = 60°$. Assinale o que for correto.
+    proposicoes:
+    - 'O ângulo $\hat{C}$ mede $60°$.'
+    - 'O ângulo $\hat{B}$ mede $120°$.'
+    - 'O perímetro é 32.'
+    - 'A altura relativa ao lado $AB$ mede $3\sqrt{3}$.'
+    - 'As diagonais são congruentes.'
+    - 'As diagonais se cortam ao meio.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) Oposto a $\hat{A}$. 02) Consecutivo: $180° - 60°$. 04) $2(10 + 6)$. 08) A altura por $D$ forma um triângulo de ângulos $30°$, $60°$, $90°$ com hipotenusa 6: $h = 3\sqrt{3}$. 16) Incorreta: só no retângulo. 32) Correta.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Uma pipa tem a forma da figura: $AB = AD = 30$ cm e $CB = CD = 40$ cm. As varetas são as diagonais $AC$ e $BD$, perpendiculares, e a vareta $BD$ mede 48 cm. Para montar a pipa, é preciso cortar a vareta $AC$ no comprimento certo.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1.5]
+        \draw[ink, line width=1pt, fill=lilas!25] (0,0.72) -- (-0.96,0) -- (0,-1.28) -- (0.96,0) -- cycle;
+        \draw[roxo, line width=.9pt] (0,0.72) -- (0,-1.28) (-0.96,0) -- (0.96,0);
+        \node[above, font=\scriptsize] at (0,0.72) {$A$};
+        \node[left, font=\scriptsize] at (-0.96,0) {$B$};
+        \node[below, font=\scriptsize] at (0,-1.28) {$C$};
+        \node[right, font=\scriptsize] at (0.96,0) {$D$};
+        \end{scope}
+    enunciado: |
+      O comprimento da vareta $AC$ é
+    opcoes: ['$48$ cm', '$56$ cm', '$64$ cm', '$50$ cm', '$70$ cm']
+    correta: D
+    resolucao: |
+      $AC$ corta $BD$ ao meio (pela simetria da pipa): metades de 24 cm. Parte de cima: $\sqrt{900 - 576} = 18$; parte de baixo: $\sqrt{1600 - 576} = 32$. $AC = 50$ cm.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Todo quadrilátero cujas diagonais se cortam ao meio é um paralelogramo.'
+    - 'Todo quadrilátero de diagonais perpendiculares é um losango.'
+    - 'Um paralelogramo com um ângulo reto é um retângulo.'
+    - 'Os ângulos de uma mesma base de um trapézio isósceles são congruentes.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – F – V – V.', 'V – V – V – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – F – F.']
+    correta: A
+    resolucao: |
+      (V) (F) A pipa é um contraexemplo. (V) Os consecutivos são suplementares, e os opostos, iguais: todos medem $90°$. (V)
+
+  - estilo: Enem
+    texto: |
+      Um jardineiro vai cercar um canteiro com a forma de um trapézio isósceles cujas bases medem 20 m e 8 m e cuja distância entre as bases é 8 m. A tela será colocada em todo o contorno do canteiro, e ele precisa saber quantos metros comprar, sem sobras.
+    enunciado: |
+      O jardineiro deve comprar
+    opcoes: ['$36$ m', '$40$ m', '$44$ m', '$52$ m', '$48$ m']
+    correta: E
+    resolucao: |
+      Projeção de cada lateral: $\tfrac{20 - 8}{2} = 6$; lateral $\sqrt{36 + 64} = 10$. Contorno: $20 + 8 + 10 + 10 = 48$ m.
+
+  - estilo: Unesp
+    enunciado: |
+      Os lados de um triângulo medem 12, 16 e 20. O perímetro do triângulo cujos vértices são os pontos médios desses lados é
+    opcoes: ['$12$', '$24$', '$48$', '$16$', '$36$']
+    correta: B
+    resolucao: |
+      Cada lado do novo triângulo é metade de um lado do original: perímetro $\tfrac{48}{2} = 24$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Num trapézio isósceles $ABCD$, as bases medem $AB = 18$ e $CD = 8$, e as laterais medem 13. Assinale o que for correto.
+    proposicoes:
+    - 'A altura do trapézio mede 12.'
+    - 'A base média mede 13.'
+    - 'As diagonais são congruentes.'
+    - 'O segmento que une os pontos médios das diagonais mede 10.'
+    - 'O perímetro é 52.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      01) Projeção $\tfrac{18 - 8}{2} = 5$: $h = \sqrt{169 - 25} = 12$. 02) $\tfrac{18 + 8}{2}$. 04) Trapézio isósceles. 08) Incorreta: $\tfrac{18 - 8}{2} = 5$. 16) $18 + 8 + 26$.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Unicamp
+    enunciado: |
+      As diagonais de um quadrilátero convexo medem 14 cm e 20 cm. O quadrilátero cujos vértices são os pontos médios dos lados tem perímetro
+    opcoes: ['$17$ cm.', '$24$ cm.', '$68$ cm.', '$34$ cm.']
+    correta: D
+    resolucao: |
+      Os lados do novo quadrilátero são metades das diagonais, dois a dois: $7 + 10 + 7 + 10 = 34$ cm.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Num jogo de adivinhação, uma professora descreveu quatro quadriláteros convexos apenas pelas propriedades das suas diagonais, como no quadro: M indica que as diagonais se cortam ao meio; C, que são congruentes; P, que são perpendiculares. Os alunos deveriam descobrir que tipo de quadrilátero cada um poderia ser.
+    tabela:
+      cabecalho: ['Quadrilátero', 'M', 'C', 'P']
+      linhas:
+      - ['Q1', 'sim', 'sim', 'não']
+      - ['Q2', 'sim', 'não', 'sim']
+      - ['Q3', 'sim', 'sim', 'sim']
+      - ['Q4', 'não', 'sim', 'não']
+    enunciado: |
+      O quadrilátero Q2 é necessariamente um
+    opcoes: ['retângulo.', 'quadrado.', 'trapézio.', 'pipa que não é paralelogramo.', 'losango.']
+    correta: E
+    resolucao: |
+      Diagonais que se cortam ao meio: paralelogramo. Perpendiculares: losango. Como não são congruentes, não é quadrado.
+
+  - estilo: Fuvest
+    enunciado: |
+      O quadrilátero Q4 pode ser um
+    opcoes: ['paralelogramo.', 'retângulo.', 'trapézio isósceles.', 'losango.', 'quadrado.']
+    correta: C
+    resolucao: |
+      Como as diagonais não se cortam ao meio, Q4 não é paralelogramo (nem retângulo, losango ou quadrado). O trapézio isósceles tem diagonais congruentes que não se cortam ao meio.
+
+  - estilo: Fuvest
+    enunciado: |
+      Num trapézio isósceles de bases 12 e 6, as diagonais são perpendiculares. A altura do trapézio é
+    opcoes: ['$6$', '$9$', '$12$', '$4{,}5$', '$18$']
+    correta: B
+    resolucao: |
+      As diagonais formam, com cada base, triângulos retângulos isósceles; as alturas deles, a partir do encontro das diagonais, medem metade das bases: $6 + 3 = 9$.
+
+  - estilo: Unesp
+    texto: |
+      No paralelogramo $ABCD$ da figura, $AB = 10$ e $AD = 6$. A bissetriz do ângulo $\hat{A}$ corta o lado $CD$ no ponto $E$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.3]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) -- (10,0) -- (13,5.196) -- (3,5.196) -- cycle;
+        \draw[roxo, line width=.9pt] (0,0) -- (9,5.196);
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[below right, font=\scriptsize] at (10,0) {$B$};
+        \node[above right, font=\scriptsize] at (13,5.196) {$C$};
+        \node[above left, font=\scriptsize] at (3,5.196) {$D$};
+        \node[above, font=\scriptsize] at (9,5.196) {$E$};
+        \end{scope}
+    enunciado: |
+      A medida de $EC$ é
+    opcoes: ['$4$', '$6$', '$5$', '$3$', '$2$']
+    correta: A
+    resolucao: |
+      $D\hat{E}A = E\hat{A}B$ (alternos, $CD \parallel AB$) $= D\hat{A}E$ (bissetriz): o triângulo $ADE$ é isósceles, $DE = AD = 6$. Então $EC = 10 - 6 = 4$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere um quadrilátero $ABCD$.'
+    itens:
+    - 'Prove que, se $ABCD$ é paralelogramo, os lados opostos são congruentes.'
+    - 'Prove que, se $ABCD$ é paralelogramo, as diagonais se cortam ao meio.'
+    - 'Prove a recíproca: se as diagonais de $ABCD$ se cortam ao meio, ele é paralelogramo.'
+    espaco: 62
+    resolucao: |
+      a) A diagonal $AC$ forma os triângulos $ABC$ e $CDA$, com $AC$ comum e ângulos alternos iguais ($B\hat{A}C = D\hat{C}A$, $B\hat{C}A = D\hat{A}C$). Pelo caso ALA são congruentes: $AB = CD$ e $BC = DA$.
+      b) Com $O$ no encontro das diagonais, $OAB$ e $OCD$ são congruentes (ALA, com $AB = CD$ e ângulos alternos): $OA = OC$ e $OB = OD$.
+      c) Se $OA = OC$ e $OB = OD$, os triângulos $OAB$ e $OCD$ são congruentes (LAL, ângulos opostos pelo vértice). Então $O\hat{A}B = O\hat{C}D$, alternos: $AB \parallel CD$. Do mesmo modo, $AD \parallel BC$.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    texto: |
+      Num quadrilátero convexo $ABCD$, os pontos $M$, $N$, $P$ e $Q$ são os pontos médios de $AB$, $BC$, $CD$ e $DA$.
+    enunciado: ''
+    itens:
+    - 'Prove que $MNPQ$ é um paralelogramo.'
+    - 'Prove que o perímetro de $MNPQ$ é $AC + BD$.'
+    - 'Mostre que, se as diagonais de $ABCD$ são perpendiculares, $MNPQ$ é um retângulo; e, se são congruentes, $MNPQ$ é um losango.'
+    espaco: 62
+    resolucao: |
+      a) No triângulo $ABC$, $MN \parallel AC$ e $MN = \tfrac{AC}{2}$; no $ACD$, $QP \parallel AC$ e $QP = \tfrac{AC}{2}$. Então $MN$ e $QP$ são paralelos e iguais; o mesmo vale para $NP$ e $MQ$ (paralelos a $BD$).
+      b) $2 \cdot \tfrac{AC}{2} + 2 \cdot \tfrac{BD}{2} = AC + BD$.
+      c) Os lados de $MNPQ$ são paralelos às diagonais: se $AC \perp BD$, lados consecutivos são perpendiculares (retângulo). Se $AC = BD$, os quatro lados medem metade disso (losango).
+    resposta: 'Ver resolução'
+
+  - estilo: ITA
+    enunciado: |
+      Num trapézio, a base média mede 15 e o segmento que une os pontos médios das diagonais mede 5. As bases medem
+    opcoes: ['$18$ e $12$', '$25$ e $5$', '$20$ e $10$', '$15$ e $10$', '$20$ e $5$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $\tfrac{B + b}{2} = 15$ e $\tfrac{B - b}{2} = 5$: $B + b = 30$ e $B - b = 10$, logo $B = 20$ e $b = 10$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'O trapézio $ABCD$ é retângulo em $A$ e $D$, com bases $AB = 15$ e $CD = 7$ e altura $AD = 6$.'
+    itens:
+    - 'Calcule a lateral $BC$.'
+    - 'Calcule o perímetro.'
+    - 'Calcule a base média e o segmento que une os pontos médios das diagonais.'
+    espaco: 62
+    resolucao: |
+      a) Projetando $C$ sobre $AB$: catetos $15 - 7 = 8$ e $6$, $BC = 10$.
+      b) $15 + 7 + 6 + 10 = 38$.
+      c) $\tfrac{15 + 7}{2} = 11$ e $\tfrac{15 - 7}{2} = 4$.
+    resposta: 'a) 10; b) 38; c) 11 e 4'
+
+  - estilo: UFSC
+    enunciado: |
+      As diagonais do losango $ABCD$ medem $AC = 16$ e $BD = 12$. Assinale o que for correto.
+    proposicoes:
+    - 'O lado do losango mede 10.'
+    - 'O perímetro do losango é 40.'
+    - 'As diagonais são bissetrizes dos ângulos do losango.'
+    - 'O losango é um quadrado.'
+    - 'Os quatro ângulos do losango são congruentes.'
+    - 'O quadrilátero formado pelos pontos médios dos lados é um retângulo de perímetro 28.'
+    corretas: [1, 2, 3, 6]
+    espaco: 22
+    resolucao: |
+      01) $\sqrt{8^2 + 6^2} = 10$. 02) $4 \cdot 10$. 04) Correta (os quatro triângulos são congruentes). 08) Incorreta: as diagonais são diferentes. 16) Incorreta: pela mesma razão. 32) Diagonais perpendiculares: retângulo de lados 8 e 6.
+    resposta: 'Soma 39 (01 + 02 + 04 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere o paralelogramo $ABCD$.'
+    itens:
+    - 'Prove que as bissetrizes de dois ângulos consecutivos são perpendiculares.'
+    - 'Conclua que as quatro bissetrizes internas formam um retângulo (quando o paralelogramo não é losango).'
+    - 'Se $AB = 12$ e $AD = 7$, e a bissetriz de $\hat{A}$ corta $CD$ em $E$, calcule $DE$ e $EC$.'
+    espaco: 62
+    resolucao: |
+      a) $\hat{A} + \hat{B} = 180°$: as metades somam $90°$, e o triângulo formado pelas bissetrizes e por $AB$ tem o terceiro ângulo de $90°$.
+      b) Cada dois ângulos vizinhos do quadrilátero das bissetrizes são formados por bissetrizes de ângulos consecutivos: os quatro ângulos são retos.
+      c) $D\hat{E}A = E\hat{A}B = D\hat{A}E$: o triângulo $ADE$ é isósceles, $DE = 7$ e $EC = 5$.
+    resposta: 'c) $DE = 7$, $EC = 5$'
+
+  - estilo: Unicamp
+    enunciado: 'Num trapézio isósceles, as diagonais são perpendiculares.'
+    itens:
+    - 'Mostre que as diagonais formam, com cada base, um triângulo retângulo isósceles.'
+    - 'Prove que a altura é igual à base média.'
+    - 'Se as bases medem 17 e 7, calcule a altura e as laterais.'
+    espaco: 62
+    resolucao: |
+      a) Pela simetria, o encontro $O$ das diagonais está no eixo do trapézio, e $OA = OB$ na base maior (e o mesmo na menor). Com ângulo reto em $O$, os triângulos são retângulos isósceles.
+      b) Num triângulo retângulo isósceles, a altura relativa à hipotenusa mede metade dela. Somando: $h = \tfrac{B}{2} + \tfrac{b}{2}$.
+      c) $h = 12$; projeção $\tfrac{17 - 7}{2} = 5$; lateral $\sqrt{25 + 144} = 13$.
+    resposta: 'c) altura 12; laterais 13'
+
+  - estilo: Fuvest
+    enunciado: |
+      Um losango tem lado 10, e uma das suas diagonais mede 12. A outra diagonal mede
+    opcoes: ['$16$', '$8$', '$14$', '$18$', '$20$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      Metades: 6 e $\sqrt{100 - 36} = 8$. A outra diagonal mede 16.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'No retângulo $ABCD$, $AB = 8$ e $BC = 6$. As diagonais se cortam em $O$, e $M$ é o ponto médio de $AB$.'
+    itens:
+    - 'Calcule as diagonais.'
+    - 'Calcule $OA$ e $OB$ e classifique o triângulo $AOB$.'
+    - 'Calcule $OM$ e mostre que $OM \perp AB$.'
+    espaco: 62
+    resolucao: |
+      a) $\sqrt{64 + 36} = 10$ cada.
+      b) $OA = OB = 5$: isósceles.
+      c) No triângulo $ABC$, $O$ e $M$ são médios de $AC$ e $AB$: $OM \parallel BC$ e $OM = 3$. Como $BC \perp AB$, $OM \perp AB$ (também: mediana da base do isósceles $AOB$).
+    resposta: 'a) 10; b) 5 e 5, isósceles; c) 3'
+
+  - estilo: Fuvest
+    enunciado: 'No trapézio isósceles $ABCD$, de base maior $AB$, os lados $AD$, $DC$ e $CB$ são congruentes, e a diagonal $AC$ é perpendicular a $BC$.'
+    itens:
+    - 'Prove que $AC$ é bissetriz do ângulo $\hat{A}$.'
+    - 'Calcule os ângulos do trapézio.'
+    - 'Se $BC = 5$, calcule $AB$ e o perímetro.'
+    espaco: 62
+    resolucao: |
+      a) $DA = DC$: $D\hat{A}C = D\hat{C}A$. E $D\hat{C}A = C\hat{A}B$ (alternos, $DC \parallel AB$). Logo $D\hat{A}C = C\hat{A}B$.
+      b) Seja $C\hat{A}B = \alpha$: $\hat{A} = 2\alpha = \hat{B}$. No triângulo $ABC$: $\alpha + 2\alpha + 90° = 180°$, $\alpha = 30°$. Ângulos: $60°$, $60°$, $120°$, $120°$.
+      c) No triângulo $ABC$, $BC$ é oposto ao ângulo de $30°$: $AB = 2 \cdot BC = 10$. Perímetro $10 + 5 + 5 + 5 = 25$.
+    resposta: 'b) $60°, 60°, 120°, 120°$; c) $AB = 10$, perímetro 25'
