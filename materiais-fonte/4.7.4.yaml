@@ -1,0 +1,565 @@
+# Aula 4.7.4 — Geometria plana: razão entre áreas
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: figuras semelhantes (áreas na razão k²); escalas de mapas, plantas e maquetes; paralela à base de um
+# triângulo (triângulo menor e trapézio); paralelas que dividem a área em partes iguais; triângulos de mesma altura ou com um
+# ângulo comum; triângulos formados pelas diagonais de um trapézio; ampliações e reduções percentuais.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Para figuras semelhantes, complete o quadro com a razão de semelhança $k$ ou com a razão entre as áreas.'
+      tabela:
+        cabecalho: ['Razão de semelhança', 'Razão entre as áreas']
+        linhas:
+        - ['$3$', '${{9}}$']
+        - ['$\frac{1}{2}$', '${{\frac{1}{4}}}$']
+        - ['${{\frac{4}{5}}}$', '$\frac{16}{25}$']
+        - ['${{\sqrt{5}}}$', '$5$']
+      resolucao: |
+        A razão entre as áreas é $k^2$; no sentido contrário, $k$ é a raiz quadrada da razão entre as áreas.
+      resposta: '$9$; $\frac{1}{4}$; $\frac{4}{5}$; $\sqrt{5}$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso), para figuras semelhantes de razão $k$.'
+      afirmacoes:
+      - 'Os perímetros estão na razão $k$.'
+      - 'As áreas estão na razão $k$.'
+      - 'Dois círculos quaisquer são semelhantes.'
+      - 'Dois retângulos quaisquer são semelhantes.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) Perímetro é comprimento. (F) Na razão $k^2$. (V) Um é ampliação do outro. (F) Um retângulo $2 \times 1$ não é semelhante a um $3 \times 1$.
+      resposta: V, F, V, F
+    - enunciado: 'Associe cada situação à razão entre as áreas (a menor pela maior).'
+      esquerda:
+      - 'triângulo cortado pela base média e o triângulo original'
+      - 'círculos de raios 2 e 6'
+      - 'quadrados de diagonais 4 e 6'
+      - 'área no mapa e área real, na escala 1 : 1000'
+      - 'triângulos de mesma altura e bases 3 e 5'
+      direita:
+      - '$\frac{4}{9}$'
+      - '$\frac{1}{1\,000\,000}$'
+      - '$\frac{1}{4}$'
+      - '$\frac{3}{5}$'
+      - '$\frac{1}{9}$'
+      resolucao: |
+        Nas quatro primeiras há semelhança: $\left(\tfrac{1}{2}\right)^2$, $\left(\tfrac{1}{3}\right)^2$, $\left(\tfrac{2}{3}\right)^2$, $\left(\tfrac{1}{1000}\right)^2$. Na última, só as bases mudam: $\tfrac{3}{5}$.
+      resposta: 'De cima para baixo: 3, 4, 1, 5, 2'
+    - enunciado: 'Dois triângulos semelhantes têm lados correspondentes 4 e 10, e o menor tem área 12. Complete.'
+      itens:
+      - 'Razão de semelhança (maior pelo menor): {{\frac{5}{2}}}'
+      - 'Razão entre as áreas: {{\frac{25}{4}}}'
+      - 'Área do maior: {{75}}'
+      espaco_item: 10
+      resolucao: |
+        $k = \tfrac{10}{4}$; áreas na razão $k^2 = \tfrac{25}{4}$; $12 \cdot \tfrac{25}{4} = 75$.
+      resposta: '$\frac{5}{2}$; $\frac{25}{4}$; $75$'
+    - enunciado: 'Na figura, $DE \parallel BC$, $AD = 2$, $DB = 3$ e a área do triângulo $ADE$ é 8. Calcule a área de $ABC$ e a do trapézio $DBCE$.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.5]
+          \draw[ink, line width=1pt, fill=lilas!20] (0,0) -- (6,0) -- (2,5) -- cycle;
+          \draw[roxo, line width=1pt, fill=lilas!50] (1.2,3) -- (3.6,3) -- (2,5) -- cycle;
+          \node[below left, font=\scriptsize] at (0,0) {$B$};
+          \node[below right, font=\scriptsize] at (6,0) {$C$};
+          \node[above, font=\scriptsize] at (2,5) {$A$};
+          \node[left, font=\scriptsize] at (1.2,3) {$D$};
+          \node[right, font=\scriptsize] at (3.6,3) {$E$};
+          \end{scope}
+      espaco: 8
+      resolucao: |
+        $ADE \sim ABC$ com $k = \tfrac{AD}{AB} = \tfrac{2}{5}$: $\tfrac{8}{\text{área}(ABC)} = \tfrac{4}{25}$, área $50$. Trapézio: $50 - 8 = 42$.
+      resposta: '50 e 42'
+    - enunciado: 'Num mapa na escala 1 : 50 000, uma região tem 4 cm². Qual é a área real, em km²?'
+      espaco: 10
+      resolucao: |
+        1 cm representa 50 000 cm $= 0{,}5$ km; 1 cm² representa $0{,}25$ km². Então 4 cm² representam 1 km².
+      resposta: '1 km²'
+    - enunciado: 'Duas pizzas redondas têm 30 cm e 20 cm de diâmetro. Quantas vezes a área da maior é a da menor?'
+      espaco: 8
+      resolucao: |
+        Círculos são semelhantes: $\left(\tfrac{30}{20}\right)^2 = 2{,}25$.
+      resposta: '2,25 vezes'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Ana disse: “a área de um quadrado aumentou 44\%; então, o lado também aumentou 44\%”.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        A área é multiplicada por $k^2 = 1{,}44$; o lado, por $k = 1{,}2$. O lado aumentou 20\%.
+      resposta: '20\%'
+    - enunciado: 'Um triângulo tem área 72. Uma paralela à base corta a altura num ponto a $\frac{1}{3}$ da altura, a partir do vértice oposto à base. Calcule a área do triângulo menor e a do trapézio.'
+      espaco: 10
+      resolucao: |
+        Razão de semelhança $\tfrac{1}{3}$: área $\tfrac{72}{9} = 8$. Trapézio: $64$.
+      resposta: '8 e 64'
+    - enunciado: 'Um triângulo tem altura 10. A que distância do vértice oposto à base deve passar uma paralela à base para dividir o triângulo em duas partes de mesma área?'
+      espaco: 10
+      resolucao: |
+        O triângulo menor deve ter metade da área: $k^2 = \tfrac{1}{2}$, $k = \tfrac{\sqrt{2}}{2}$. Distância $10 \cdot \tfrac{\sqrt{2}}{2} = 5\sqrt{2}$.
+      resposta: '$5\sqrt{2}$'
+    - enunciado: 'Dois polígonos semelhantes têm perímetros 12 e 18, e o menor tem área 20. Calcule a área do maior.'
+      espaco: 8
+      resolucao: |
+        $k = \tfrac{18}{12} = \tfrac{3}{2}$: área $20 \cdot \tfrac{9}{4} = 45$.
+      resposta: '45'
+    - enunciado: 'Complete o quadro sobre escalas.'
+      tabela:
+        cabecalho: ['Escala', '1 cm representa', '1 cm² representa']
+        linhas:
+        - ['$1 : 100$', '{{1 m}}', '{{1 m²}}']
+        - ['$1 : 1000$', '{{10 m}}', '{{100 m²}}']
+        - ['$1 : 50\,000$', '{{500 m}}', '{{250 000 m²}}']
+      resolucao: |
+        O comprimento real de 1 cm é o denominador da escala, em cm; a área real de 1 cm² é o quadrado desse comprimento.
+      resposta: '1 m, 1 m²; 10 m, 100 m²; 500 m, 250 000 m²'
+    - enunciado: 'No triângulo $ABC$, $D$ está em $AB$ e $E$ em $AC$, com $AD = 3$, $AB = 8$, $AE = 4$ e $AC = 6$. Calcule a razão entre as áreas de $ADE$ e $ABC$.'
+      espaco: 10
+      resolucao: |
+        Os dois triângulos têm o ângulo $\hat{A}$ em comum: $\tfrac{\frac{1}{2} \cdot 3 \cdot 4\operatorname{sen}\hat{A}}{\frac{1}{2} \cdot 8 \cdot 6\operatorname{sen}\hat{A}} = \tfrac{12}{48} = \tfrac{1}{4}$.
+      resposta: '$\frac{1}{4}$'
+    - enunciado: 'Uma foto de 10 cm por 15 cm é ampliada em 150\% (cada dimensão fica 1,5 vez maior). Complete.'
+      itens:
+      - 'Novas dimensões: {{15}} cm por {{22{,}5}} cm'
+      - 'A área fica multiplicada por {{2{,}25}}'
+      espaco_item: 8
+      resolucao: |
+        $10 \cdot 1{,}5$ e $15 \cdot 1{,}5$; área $\times\, 1{,}5^2 = 2{,}25$ (de 150 cm² para 337,5 cm²).
+      resposta: '15 por 22,5; 2,25'
+    - enunciado: 'O raio de um círculo aumenta 10\%. Em quantos por cento aumenta a área?'
+      espaco: 8
+      resolucao: |
+        $1{,}1^2 = 1{,}21$: a área aumenta 21\%.
+      resposta: '21\%'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que a razão entre as áreas de dois triângulos semelhantes é o quadrado da razão de semelhança.'
+      espaco: 12
+      resolucao: |
+        Se os lados estão na razão $k$, as alturas correspondentes também estão (são lados de triângulos retângulos semelhantes). $\tfrac{\frac{1}{2}(kb)(kh)}{\frac{1}{2}bh} = k^2$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que a paralela à base $BC$ do triângulo $ABC$ que divide a área ao meio corta $AB$ num ponto $D$ com $\frac{AD}{AB} = \frac{\sqrt{2}}{2}$.'
+      espaco: 12
+      resolucao: |
+        A paralela determina $ADE \sim ABC$, com $k = \tfrac{AD}{AB}$. Para $ADE$ ter metade da área, $k^2 = \tfrac{1}{2}$: $k = \tfrac{\sqrt{2}}{2}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'No trapézio $ABCD$, de bases $AB = 6$ e $CD = 4$, as diagonais se cortam em $O$, e o triângulo $OCD$ tem área 8. Calcule as áreas de $OAB$, $OBC$, $ODA$ e do trapézio.'
+      espaco: 14
+      resolucao: |
+        $OAB \sim OCD$ com $k = \tfrac{6}{4}$: área $8 \cdot \tfrac{9}{4} = 18$. $OBC$ e $OCD$ têm a mesma altura (a partir de $C$), e $\tfrac{OB}{OD} = \tfrac{3}{2}$: área $12$. Do mesmo modo, $ODA = 12$. Trapézio: $8 + 18 + 12 + 12 = 50$.
+      resposta: '18, 12, 12; 50'
+    - enunciado: 'Duas paralelas à base dividem um triângulo de altura $h$ em três partes de mesma área. A que distâncias do vértice oposto elas passam?'
+      espaco: 12
+      resolucao: |
+        Os triângulos menores têm $\tfrac{1}{3}$ e $\tfrac{2}{3}$ da área: razões $\sqrt{\tfrac{1}{3}}$ e $\sqrt{\tfrac{2}{3}}$. Distâncias $\tfrac{h\sqrt{3}}{3}$ e $\tfrac{h\sqrt{6}}{3}$.
+      resposta: '$\frac{h\sqrt{3}}{3}$ e $\frac{h\sqrt{6}}{3}$'
+    - enunciado: 'Prove que a razão entre as áreas de dois polígonos semelhantes é $k^2$.'
+      espaco: 12
+      resolucao: |
+        Divida os dois polígonos em triângulos pelas diagonais que saem de vértices correspondentes. Os triângulos correspondentes são semelhantes, de razão $k$, e cada par tem áreas na razão $k^2$. Somando: $\tfrac{k^2 S_1 + k^2 S_2 + \cdots}{S_1 + S_2 + \cdots} = k^2$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Num mapa rodoviário na escala 1 : 200 000, a região de uma reserva florestal ocupa 15 cm². Um estudante quer saber a área real da reserva para comparar com outras áreas de preservação do estado, cujas medidas são dadas em quilômetros quadrados.
+    enunciado: |
+      A área real da reserva é
+    opcoes: ['$60$ km²', '$30$ km²', '$3000$ km²', '$6$ km²', '$600$ km²']
+    correta: A
+    resolucao: |
+      1 cm representa 200 000 cm $= 2$ km; 1 cm² representa 4 km². Então $15 \cdot 4 = 60$ km².
+
+  - estilo: Fuvest
+    enunciado: |
+      Dois triângulos são semelhantes, na razão $\frac{2}{3}$, e o maior tem área 45. A área do menor é
+    opcoes: ['$30$', '$20$', '$15$', '$10$', '$27$']
+    correta: B
+    resolucao: |
+      $45 \cdot \tfrac{4}{9} = 20$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A razão entre as áreas de dois círculos de raios 3 e 5 é
+    opcoes: ['$\frac{3}{5}$.', '$\frac{6}{10}$.', '$\frac{9}{25}$.', '$\frac{27}{125}$.']
+    correta: C
+    resolucao: |
+      $\left(\tfrac{3}{5}\right)^2 = \tfrac{9}{25}$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere figuras semelhantes. Assinale o que for correto.
+    proposicoes:
+    - 'Se os lados são multiplicados por 3, a área é multiplicada por 9.'
+    - 'Dois quadrados quaisquer são semelhantes.'
+    - 'Dois retângulos quaisquer são semelhantes.'
+    - 'A razão entre os perímetros é igual à razão de semelhança.'
+    - 'Se a área quadruplica, a razão de semelhança é 4.'
+    corretas: [1, 2, 4]
+    resolucao: |
+      01) $3^2$. 02) Correta. 04) Incorreta: as proporções podem ser diferentes. 08) Correta. 16) Incorreta: $k^2 = 4$, $k = 2$.
+      Soma: $01 + 02 + 08 = 11$.
+
+  - estilo: Enem
+    texto: |
+      Um cartaz retangular de 0,8 m por 0,5 m foi ampliado para um outdoor, multiplicando cada dimensão por 6, como na figura. No cartaz foram usados 0,1 L de tinta, e a quantidade de tinta é proporcional à área pintada. A gráfica quer prever a tinta do outdoor.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.45]
+        \draw[ink, line width=1pt, fill=lilas!40] (0,0) rectangle (0.8,0.5);
+        \node[below, font=\scriptsize] at (0.4,0) {cartaz};
+        \draw[ink, line width=1pt, fill=lilas!25] (2,0) rectangle (6.8,3);
+        \node[below, font=\scriptsize] at (4.4,0) {outdoor};
+        \end{scope}
+    enunciado: |
+      A quantidade de tinta para o outdoor é
+    opcoes: ['$0{,}6$ L', '$1{,}2$ L', '$2{,}4$ L', '$3{,}6$ L', '$21{,}6$ L']
+    correta: D
+    resolucao: |
+      A área fica multiplicada por $6^2 = 36$: $36 \cdot 0{,}1 = 3{,}6$ L.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'Triângulos semelhantes na razão $\frac{1}{3}$ têm áreas na razão $\frac{1}{9}$.'
+    - 'A base média de um triângulo determina um triângulo menor com metade da área do original.'
+    - 'Num mapa na escala 1 : 1000, cada cm² corresponde a 100 m².'
+    - 'Dois hexágonos regulares quaisquer são semelhantes.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. $\left(\tfrac{1}{3}\right)^2$. II. Incorreta: $\tfrac{1}{4}$. III. 1 cm representa 10 m. IV. Ângulos iguais e lados proporcionais.
+
+  - estilo: Unesp
+    enunciado: |
+      Uma foto de 10 cm por 15 cm é ampliada para 20 cm por 30 cm. A área da foto ampliada é
+    opcoes: ['$4$ vezes a original.', '$2$ vezes a original.', '$8$ vezes a original.', '$3$ vezes a original.', '$1{,}5$ vez a original.']
+    correta: A
+    resolucao: |
+      Razão de semelhança 2: área $\times 4$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, $DE \parallel BC$, $\frac{AD}{AB} = \frac{3}{5}$ e o triângulo $ABC$ tem área 100.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.5]
+        \fill[lilas!40] (0,0) -- (6,0) -- (3.6,3) -- (1.2,3) -- cycle;
+        \draw[ink, line width=1pt] (0,0) -- (6,0) -- (2,5) -- cycle;
+        \draw[roxo, line width=1pt] (1.2,3) -- (3.6,3);
+        \node[below left, font=\scriptsize] at (0,0) {$B$};
+        \node[below right, font=\scriptsize] at (6,0) {$C$};
+        \node[above, font=\scriptsize] at (2,5) {$A$};
+        \node[left, font=\scriptsize] at (1.2,3) {$D$};
+        \node[right, font=\scriptsize] at (3.6,3) {$E$};
+        \end{scope}
+    enunciado: |
+      A área do trapézio sombreado $DBCE$ é
+    opcoes: ['$64$.', '$36$.', '$60$.', '$40$.']
+    correta: A
+    resolucao: |
+      $ADE$ tem $\left(\tfrac{3}{5}\right)^2 = \tfrac{9}{25}$ da área: 36. Trapézio: $100 - 36 = 64$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Um triângulo tem altura 12. Uma paralela à base divide-o em duas partes de mesma área. A distância dessa paralela ao vértice oposto à base é
+    opcoes: ['$6$', '$6\sqrt{2}$', '$4\sqrt{3}$', '$8$', '$3\sqrt{2}$']
+    correta: B
+    resolucao: |
+      $k^2 = \tfrac{1}{2}$: $12 \cdot \tfrac{\sqrt{2}}{2} = 6\sqrt{2}$.
+
+  - estilo: UFSC
+    enunciado: |
+      No triângulo $ABC$, de área 90, os pontos $D \in AB$ e $E \in AC$ são tais que $DE \parallel BC$ e $AD = \frac{AB}{3}$. Assinale o que for correto.
+    proposicoes:
+    - 'Os triângulos $ADE$ e $ABC$ são semelhantes, na razão $\frac{1}{3}$.'
+    - 'A área de $ADE$ é 10.'
+    - 'A área do trapézio $DBCE$ é 80.'
+    - '$DE = \frac{BC}{3}$.'
+    - 'O perímetro de $ADE$ é $\frac{1}{9}$ do perímetro de $ABC$.'
+    - 'Se fosse $AD = \frac{AB}{2}$, a área de $ADE$ seria 45.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) Correta. 02) $\tfrac{90}{9}$. 04) $90 - 10$. 08) Correta. 16) Incorreta: $\tfrac{1}{3}$. 32) Incorreta: $\tfrac{90}{4} = 22{,}5$.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Enem
+    texto: |
+      Uma pizzaria cobra o mesmo preço por centímetro quadrado de pizza em todos os tamanhos, que têm a mesma espessura. A pizza de 35 cm de diâmetro custa R\$\,49,00. O dono quer lançar uma pizza de 25 cm de diâmetro e precisa definir o preço dela.
+    enunciado: |
+      O preço da pizza de 25 cm deve ser
+    opcoes: ['R\$\,25,00', 'R\$\,35,00', 'R\$\,30,00', 'R\$\,20,00', 'R\$\,40,00']
+    correta: A
+    resolucao: |
+      Preço proporcional à área: $49 \cdot \left(\tfrac{25}{35}\right)^2 = 49 \cdot \tfrac{25}{49} = 25$ reais.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Se o lado de um quadrado aumenta 20\%, a área aumenta 44\%.'
+    - 'Se o raio de um círculo dobra, a área dobra.'
+    - 'Polígonos semelhantes de perímetros 10 e 30 têm áreas na razão $\frac{1}{9}$.'
+    - 'Numa planta na escala 1 : 50, um cômodo representado por 12 cm² tem 3 m².'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – F – V – V.', 'V – F – V – V.', 'V – F – F – V.', 'V – V – F – V.']
+    correta: C
+    resolucao: |
+      (V) $1{,}2^2 = 1{,}44$. (F) Quadruplica. (V) $\left(\tfrac{1}{3}\right)^2$. (V) 1 cm² representa $50^2 = 2500$ cm² $= 0{,}25$ m²; $12 \cdot 0{,}25 = 3$.
+
+  - estilo: Enem
+    texto: |
+      As telas de televisão de um mesmo modelo são retângulos semelhantes, e o tamanho é indicado pela medida da diagonal, em polegadas. O quadro mostra as telas de uma loja. Um cliente tem a tela A e quer uma tela com cerca de 2,25 vezes a área dela.
+    tabela:
+      cabecalho: ['Tela', 'Diagonal (pol.)']
+      linhas:
+      - ['A', '$32$']
+      - ['B', '$40$']
+      - ['C', '$48$']
+      - ['D', '$64$']
+      - ['E', '$80$']
+    enunciado: |
+      O cliente deve escolher a tela
+    opcoes: ['B.', 'D.', 'C.', 'E.', 'A, pois nenhuma atende.']
+    correta: C
+    resolucao: |
+      $k^2 = 2{,}25$, $k = 1{,}5$: diagonal $32 \cdot 1{,}5 = 48$ polegadas.
+
+  - estilo: Unesp
+    enunciado: |
+      O raio de um círculo aumenta 30\%. A sua área aumenta
+    opcoes: ['$30\%$', '$60\%$', '$90\%$', '$69\%$', '$130\%$']
+    correta: D
+    resolucao: |
+      $1{,}3^2 = 1{,}69$: aumento de 69\%.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      No trapézio $ABCD$, de bases $AB = 12$ e $CD = 6$, as diagonais se cortam em $O$, e o triângulo $OCD$ tem área 10. Assinale o que for correto.
+    proposicoes:
+    - 'Os triângulos $OAB$ e $OCD$ são semelhantes, na razão 2.'
+    - 'A área de $OAB$ é 40.'
+    - 'A área de $OBC$ é 20.'
+    - 'A área do trapézio é 90.'
+    - '$O$ divide a diagonal $AC$ na razão $AO : OC = 2 : 1$.'
+    - '$O$ é o ponto médio das duas diagonais.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) Ângulos alternos e opostos pelo vértice; $k = \tfrac{12}{6}$. 02) $10 \cdot 4$. 04) $OBC$ e $OCD$ têm a mesma altura por $C$ e $OB = 2 \cdot OD$: $20$. 08) $10 + 40 + 20 + 20$. 16) Pela semelhança. 32) Incorreta: isso só ocorreria com bases iguais (paralelogramo).
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Numa maquete na escala 1 : 50, o piso de um salão tem 0,2 m². A área real do piso é
+    opcoes: ['$10$ m².', '$500$ m².', '$100$ m².', '$250$ m².']
+    correta: B
+    resolucao: |
+      Área $\times 50^2 = 2500$: $0{,}2 \cdot 2500 = 500$ m².
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um logotipo é feito a partir de um triângulo equilátero de 64 cm² de área. Ligando os pontos médios dos lados, obtém-se um segundo triângulo; ligando os pontos médios dos lados deste, um terceiro, e assim por diante, como na figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1.2]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) -- (2,0) -- (1,1.732) -- cycle;
+        \draw[roxo, line width=1pt, fill=lilas!45] (1,0) -- (1.5,0.866) -- (0.5,0.866) -- cycle;
+        \draw[roxo, line width=1pt, fill=lima!50] (1.25,0.433) -- (1,0.866) -- (0.75,0.433) -- cycle;
+        \end{scope}
+    enunciado: |
+      A área do terceiro triângulo é
+    opcoes: ['$16$ cm²', '$21{,}3$ cm²', '$8$ cm²', '$2$ cm²', '$4$ cm²']
+    correta: E
+    resolucao: |
+      Cada triângulo é semelhante ao anterior, na razão $\tfrac{1}{2}$, e tem $\tfrac{1}{4}$ da área: $64$, $16$, $4$ cm².
+
+  - estilo: Unicamp
+    enunciado: |
+      O primeiro triângulo da sequência com área menor que 1 cm² é o
+    opcoes: ['terceiro.', 'quarto.', 'sexto.', 'quinto.']
+    correta: D
+    resolucao: |
+      Áreas: $64$, $16$, $4$, $1$, $\tfrac{1}{4}$. O quarto tem exatamente 1 cm²; o quinto é o primeiro menor que 1.
+
+  - estilo: Fuvest
+    enunciado: |
+      Duas paralelas à base dividem um triângulo de altura 9 em três partes de mesma área. A distância da paralela mais próxima do vértice oposto à base até esse vértice é
+    opcoes: ['$3$', '$3\sqrt{2}$', '$6$', '$3\sqrt{6}$', '$3\sqrt{3}$']
+    correta: E
+    resolucao: |
+      O triângulo menor tem $\tfrac{1}{3}$ da área: $k = \tfrac{\sqrt{3}}{3}$, distância $9 \cdot \tfrac{\sqrt{3}}{3} = 3\sqrt{3}$.
+
+  - estilo: Unesp
+    texto: |
+      No paralelogramo $ABCD$ da figura, de área 48, $M$ é o ponto médio de $CD$, e o segmento $AM$ corta a diagonal $BD$ no ponto $P$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.45]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) -- (8,0) -- (10,4) -- (2,4) -- cycle;
+        \draw[roxo, line width=1pt] (0,0) -- (6,4) (8,0) -- (2,4);
+        \fill[ink] (4,2.667) circle (3pt);
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[below right, font=\scriptsize] at (8,0) {$B$};
+        \node[above right, font=\scriptsize] at (10,4) {$C$};
+        \node[above left, font=\scriptsize] at (2,4) {$D$};
+        \node[above, font=\scriptsize] at (6,4) {$M$};
+        \node[right, font=\scriptsize] at (4.2,2.5) {$P$};
+        \end{scope}
+    enunciado: |
+      A área do triângulo $PAB$ é
+    opcoes: ['$12$', '$16$', '$8$', '$24$', '$4$']
+    correta: B
+    resolucao: |
+      $PDM \sim PBA$ ($DM \parallel AB$), com razão $\tfrac{DM}{AB} = \tfrac{1}{2}$: $DP : PB = 1 : 2$. O triângulo $ABD$ tem metade do paralelogramo, 24, e $PAB$ tem $\tfrac{2}{3}$ dele: 16.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere figuras semelhantes, de razão de semelhança $k$.'
+    itens:
+    - 'Prove que dois triângulos semelhantes têm áreas na razão $k^2$.'
+    - 'Estenda o resultado para polígonos semelhantes quaisquer.'
+    - 'Dois hexágonos regulares têm perímetros 18 e 30. Calcule as áreas e verifique a razão.'
+    espaco: 62
+    resolucao: |
+      a) As alturas correspondentes também estão na razão $k$: $\tfrac{\frac{1}{2}(kb)(kh)}{\frac{1}{2}bh} = k^2$.
+      b) Divida os polígonos em triângulos correspondentes, semelhantes na razão $k$; somando áreas, a razão continua $k^2$.
+      c) Lados 3 e 5: áreas $6 \cdot \tfrac{9\sqrt{3}}{4} = \tfrac{27\sqrt{3}}{2}$ e $6 \cdot \tfrac{25\sqrt{3}}{4} = \tfrac{75\sqrt{3}}{2}$. Razão $\tfrac{25}{9} = \left(\tfrac{5}{3}\right)^2$.
+    resposta: 'c) $\frac{27\sqrt{3}}{2}$ e $\frac{75\sqrt{3}}{2}$; razão $\frac{25}{9}$'
+
+  - estilo: Unicamp
+    texto: |
+      Um terreno tem a forma de um triângulo de altura $h$, relativa à frente, e será dividido por cercas paralelas à frente em lotes de mesma área.
+    enunciado: ''
+    itens:
+    - 'Para dois lotes, a que distância do vértice oposto à frente fica a cerca?'
+    - 'Para três lotes, a que distâncias ficam as duas cercas?'
+    - 'Para $n$ lotes, a que distância fica a $j$-ésima cerca, contada a partir do vértice?'
+    espaco: 62
+    resolucao: |
+      a) O triângulo menor tem $\tfrac{1}{2}$ da área: $k = \tfrac{\sqrt{2}}{2}$, distância $\tfrac{h\sqrt{2}}{2}$.
+      b) Triângulos com $\tfrac{1}{3}$ e $\tfrac{2}{3}$ da área: $h\sqrt{\tfrac{1}{3}}$ e $h\sqrt{\tfrac{2}{3}}$.
+      c) O triângulo até a $j$-ésima cerca tem $\tfrac{j}{n}$ da área: distância $h\sqrt{\tfrac{j}{n}}$.
+    resposta: 'a) $\frac{h\sqrt{2}}{2}$; b) $\frac{h\sqrt{3}}{3}$ e $\frac{h\sqrt{6}}{3}$; c) $h\sqrt{\frac{j}{n}}$'
+
+  - estilo: ITA
+    enunciado: |
+      Num trapézio de bases 3 e 7, as diagonais se cortam em $O$, e o triângulo formado por $O$ e pela base menor tem área 9. A área do trapézio é
+    opcoes: ['$58$', '$79$', '$100$', '$121$', '$90$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      Triângulo da base maior: $9 \cdot \left(\tfrac{7}{3}\right)^2 = 49$. Os dois laterais têm áreas iguais a $9 \cdot \tfrac{7}{3} = 21$. Total: $9 + 49 + 21 + 21 = 100$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    texto: |
+      Um mapa de uma região rural está na escala 1 : 25 000.
+    enunciado: ''
+    itens:
+    - 'Que distância real corresponde a 1 cm do mapa?'
+    - 'Que área real, em m² e em hectares, corresponde a 1 cm² do mapa?'
+    - 'Uma fazenda ocupa 8 cm² no mapa. Qual é a sua área real em hectares?'
+    espaco: 62
+    resolucao: |
+      a) 25 000 cm $= 250$ m.
+      b) $250^2 = 62\,500$ m² $= 6{,}25$ ha.
+      c) $8 \cdot 6{,}25 = 50$ ha.
+    resposta: 'a) 250 m; b) 62 500 m², 6,25 ha; c) 50 ha'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - 'Figuras semelhantes na razão $\frac{3}{2}$ têm áreas na razão $\frac{9}{4}$.'
+    - 'Se um quadrado tem o dobro da área de outro, o seu lado é $\sqrt{2}$ vezes o lado do outro.'
+    - 'Se as dimensões de uma foto aumentam 25\%, a área aumenta 50\%.'
+    - 'O trapézio que a base média separa de um triângulo tem $\frac{3}{4}$ da área do triângulo.'
+    - 'Círculos de áreas $16\pi$ e $36\pi$ têm raios na razão $\frac{2}{3}$.'
+    - 'Numa planta na escala 1 : 100, cada cm² representa 1 m².'
+    corretas: [1, 2, 4, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) $k^2$. 02) $k^2 = 2$. 04) Incorreta: $1{,}25^2 = 1{,}5625$, aumento de 56,25\%. 08) O triângulo menor tem $\tfrac{1}{4}$. 16) $\sqrt{\tfrac{16}{36}}$. 32) 1 cm representa 1 m.
+    resposta: 'Soma 59 (01 + 02 + 08 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'No trapézio $ABCD$, de bases $AB = a$ e $CD = b$, as diagonais se cortam em $O$. Sejam $S_1$ e $S_2$ as áreas de $OCD$ e $OAB$.'
+    itens:
+    - 'Prove que $\frac{S_2}{S_1} = \frac{a^2}{b^2}$.'
+    - 'Prove que os triângulos $OBC$ e $ODA$ têm a mesma área $S$ e que $S^2 = S_1 S_2$.'
+    - 'Prove que a área do trapézio é $\left(\sqrt{S_1} + \sqrt{S_2}\right)^2$.'
+    espaco: 62
+    resolucao: |
+      a) $OAB \sim OCD$ (ângulos alternos e opostos pelo vértice), na razão $\tfrac{a}{b}$.
+      b) $ABC$ e $ABD$ têm a mesma base e a mesma altura; tirando $OAB$ de ambos, $OBC = ODA = S$. $OBC$ e $OCD$ têm a mesma altura por $C$: $\tfrac{S}{S_1} = \tfrac{OB}{OD} = \tfrac{a}{b}$. Do mesmo modo, $\tfrac{S_2}{S} = \tfrac{OA}{OC} = \tfrac{a}{b}$. Então $\tfrac{S}{S_1} = \tfrac{S_2}{S}$.
+      c) $S_1 + S_2 + 2S = S_1 + S_2 + 2\sqrt{S_1 S_2} = \left(\sqrt{S_1} + \sqrt{S_2}\right)^2$.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    texto: |
+      As folhas de papel da série A são retângulos semelhantes: cortando uma folha ao meio, pelo lado maior, obtêm-se duas folhas do tamanho seguinte, semelhantes à original. A folha A0 tem área 1 m².
+    enunciado: ''
+    itens:
+    - 'Sendo $x < y$ os lados de uma folha, prove que $\frac{y}{x} = \sqrt{2}$.'
+    - 'Calcule a área de uma folha A4, obtida após quatro cortes.'
+    - 'Calcule as dimensões da folha A4, em centímetros, com uma casa decimal ($\sqrt[4]{2} \approx 1{,}189$).'
+    espaco: 62
+    resolucao: |
+      a) A metade tem lados $\tfrac{y}{2}$ e $x$, com $x$ como lado maior. Semelhança: $\tfrac{y}{x} = \tfrac{x}{y/2}$, $y^2 = 2x^2$, $\tfrac{y}{x} = \sqrt{2}$.
+      b) Cada corte divide a área por 2: $\tfrac{1}{16}$ m² $= 625$ cm².
+      c) $x \cdot x\sqrt{2} = 625$: $x^2 = \tfrac{625}{\sqrt{2}}$, $x = \tfrac{25}{\sqrt[4]{2}} \approx 21{,}0$ cm; $y = x\sqrt{2} = 25\sqrt[4]{2} \approx 29{,}7$ cm.
+    resposta: 'b) $\frac{1}{16}$ m²; c) $\approx 21{,}0$ cm por $29{,}7$ cm'
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, o ponto $D$ de $AB$ e o ponto $E$ de $AC$ são tais que $AD : DB = 1 : 2$ e $AE : EC = 3 : 1$. A razão entre as áreas de $ADE$ e de $ABC$ é
+    opcoes: ['$\frac{1}{4}$', '$\frac{1}{3}$', '$\frac{3}{8}$', '$\frac{1}{6}$', '$\frac{3}{4}$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      Mesmo ângulo $\hat{A}$: $\tfrac{AD}{AB} \cdot \tfrac{AE}{AC} = \tfrac{1}{3} \cdot \tfrac{3}{4} = \tfrac{1}{4}$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Uma copiadora reduz documentos em 70\%: cada dimensão da cópia é 70\% da original.
+    enunciado: ''
+    itens:
+    - 'Que porcentagem da área original tem a cópia?'
+    - 'Que porcentagem de redução, aproximada, faria a área da cópia ser metade da original? ($\sqrt{2} \approx 1{,}414$)'
+    - 'Fazendo uma cópia da cópia, também em 70\%, que porcentagens da original ficam o lado e a área?'
+    espaco: 62
+    resolucao: |
+      a) $0{,}7^2 = 0{,}49$: 49\%.
+      b) $k^2 = 0{,}5$: $k = \tfrac{\sqrt{2}}{2} \approx 0{,}707$, cerca de 71\%.
+      c) Lado $0{,}49$ (49\%); área $0{,}49^2 \approx 0{,}24$ (cerca de 24\%).
+    resposta: 'a) 49\%; b) $\approx 71\%$; c) 49\% e $\approx 24\%$'
+
+  - estilo: Fuvest
+    texto: |
+      Parte-se de um triângulo de área 64. Ligando os pontos médios dos lados, obtém-se um segundo triângulo; ligando os pontos médios dos lados deste, um terceiro, e assim por diante, indefinidamente.
+    enunciado: ''
+    itens:
+    - 'Prove que cada triângulo tem $\frac{1}{4}$ da área do anterior.'
+    - 'Escreva a área do $n$-ésimo triângulo.'
+    - 'Calcule a soma das áreas de todos os triângulos da sequência.'
+    espaco: 62
+    resolucao: |
+      a) Os lados do novo triângulo são bases médias, metades dos lados do anterior: semelhantes na razão $\tfrac{1}{2}$, áreas na razão $\tfrac{1}{4}$.
+      b) $A_n = 64 \cdot \left(\tfrac{1}{4}\right)^{n - 1}$.
+      c) Soma da PG infinita: $\tfrac{64}{1 - \frac{1}{4}} = \tfrac{256}{3}$.
+    resposta: 'b) $64\left(\frac{1}{4}\right)^{n-1}$; c) $\frac{256}{3}$'
