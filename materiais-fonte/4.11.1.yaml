@@ -1,0 +1,540 @@
+# Aula 4.11.1 — Geometria espacial: poliedros e relação de Euler
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: elementos (V, A, F); relação de Euler V − A + F = 2 para poliedros convexos; contagem de arestas pelas faces
+# (2A = soma dos lados) e pelos vértices (2A = soma dos graus); prismas, pirâmides e bipirâmides de base n; os cinco poliedros
+# de Platão; soma dos ângulos das faces S = 360°(V − 2); truncamentos (bola de futebol, cubo e tetraedro truncados).
+# Planificações e vistas ficam para a 4.11.2.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Os poliedros são convexos; $V$, $A$ e $F$ indicam vértices, arestas e faces. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete o quadro dos poliedros de Platão.'
+      tabela:
+        cabecalho: ['Poliedro', 'Faces', '$V$', '$A$']
+        linhas:
+        - ['tetraedro', '4 triângulos', '${{4}}$', '${{6}}$']
+        - ['hexaedro (cubo)', '6 quadrados', '${{8}}$', '${{12}}$']
+        - ['octaedro', '8 triângulos', '${{6}}$', '${{12}}$']
+        - ['dodecaedro', '12 pentágonos', '${{20}}$', '${{30}}$']
+        - ['icosaedro', '20 triângulos', '${{12}}$', '${{30}}$']
+      resolucao: |
+        $A = \tfrac{\text{soma dos lados das faces}}{2}$ e $V = 2 + A - F$. Ex.: dodecaedro, $A = \tfrac{60}{2} = 30$ e $V = 2 + 30 - 12 = 20$.
+      resposta: '4, 6; 8, 12; 6, 12; 20, 30; 12, 30'
+    - enunciado: 'Associe cada poliedro de Platão ao número de faces que se encontram em cada vértice.'
+      esquerda:
+      - 'tetraedro'
+      - 'cubo'
+      - 'octaedro'
+      - 'dodecaedro'
+      - 'icosaedro'
+      direita:
+      - '4 triângulos'
+      - '3 pentágonos'
+      - '3 triângulos'
+      - '5 triângulos'
+      - '3 quadrados'
+      resolucao: |
+        Em cada vértice, a soma dos ângulos das faces deve ser menor que $360°$: $3 \cdot 60°$, $3 \cdot 90°$, $4 \cdot 60°$, $3 \cdot 108°$, $5 \cdot 60°$.
+      resposta: 'De cima para baixo: 3, 4, 1, 5, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'A esfera não é um poliedro.'
+      - 'Todo poliedro convexo satisfaz $V - A + F = 2$.'
+      - 'Existe um poliedro de Platão com faces hexagonais.'
+      - 'Um prisma de base pentagonal tem 15 arestas.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) A sua superfície não é formada por polígonos. (V) Relação de Euler. (F) Três hexágonos regulares num vértice somam $360°$: ficam planos. (V) $3 \cdot 5$.
+      resposta: V, V, F, V
+    - enunciado: 'Para um prisma de base heptagonal, complete.'
+      itens:
+      - '$V =$ {{14}}'
+      - '$A =$ {{21}}'
+      - '$F =$ {{9}}'
+      espaco_item: 8
+      resolucao: |
+        Duas bases de 7 vértices; 7 arestas em cada base e 7 laterais; 7 faces laterais e 2 bases. Confere: $14 - 21 + 9 = 2$.
+      resposta: '14; 21; 9'
+    - enunciado: 'Um poliedro convexo tem 10 faces e 16 arestas. Quantos vértices ele tem?'
+      espaco: 8
+      resolucao: |
+        $V - 16 + 10 = 2$: $V = 8$.
+      resposta: '8'
+    - enunciado: 'Um poliedro convexo tem 6 faces quadrangulares e 8 faces triangulares. Calcule $A$ e $V$.'
+      espaco: 10
+      resolucao: |
+        Cada aresta é lado de duas faces: $2A = 6 \cdot 4 + 8 \cdot 3 = 48$, $A = 24$. $V = 2 + 24 - 14 = 12$.
+      resposta: '$A = 24$; $V = 12$'
+    - enunciado: 'Uma pirâmide tem 12 arestas. Qual é o polígono da base? Calcule $V$ e $F$.'
+      espaco: 8
+      resolucao: |
+        Pirâmide de base $n$: $2n$ arestas. $n = 6$, base hexagonal: $V = 7$ e $F = 7$.
+      resposta: 'hexágono; $V = 7$, $F = 7$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para um poliedro formado por 12 faces pentagonais, Caio contou $A = 12 \cdot 5 = 60$ arestas.
+      enunciado: 'Encontre o erro e corrija. Calcule também $V$.'
+      espaco: 10
+      resolucao: |
+        Cada aresta é comum a duas faces e foi contada duas vezes: $A = 30$. $V = 2 + 30 - 12 = 20$.
+      resposta: '$A = 30$; $V = 20$'
+    - enunciado: 'A soma dos ângulos de todas as faces de um poliedro convexo é $S = 360°(V - 2)$. Calcule $S$ para um poliedro de 10 vértices e confira a fórmula no cubo.'
+      espaco: 10
+      resolucao: |
+        $360° \cdot 8 = 2880°$. No cubo: $6 \cdot 360° = 2160° = 360°(8 - 2)$.
+      resposta: '$2880°$'
+    - enunciado: 'Uma bola de futebol clássica tem 12 gomos pentagonais e 20 hexagonais. Calcule o número de arestas (costuras) e de vértices.'
+      espaco: 10
+      resolucao: |
+        $2A = 12 \cdot 5 + 20 \cdot 6 = 180$, $A = 90$. $V = 2 + 90 - 32 = 60$.
+      resposta: '$A = 90$; $V = 60$'
+    - enunciado: 'Um poliedro convexo tem só faces triangulares e 12 vértices. Calcule $A$ e $F$.'
+      espaco: 10
+      resolucao: |
+        $3F = 2A$. Euler: $12 - A + \tfrac{2A}{3} = 2$, $A = 30$ e $F = 20$.
+      resposta: '$A = 30$; $F = 20$'
+    - enunciado: 'Complete o quadro para prismas e pirâmides de base com $n$ lados.'
+      tabela:
+        cabecalho: ['Sólido', '$V$', '$A$', '$F$']
+        linhas:
+        - ['prisma, $n = 5$', '${{10}}$', '${{15}}$', '${{7}}$']
+        - ['pirâmide, $n = 5$', '${{6}}$', '${{10}}$', '${{6}}$']
+        - ['prisma, $n = 10$', '${{20}}$', '${{30}}$', '${{12}}$']
+        - ['pirâmide, $n = 10$', '${{11}}$', '${{20}}$', '${{11}}$']
+      resolucao: |
+        Prisma: $2n$, $3n$, $n + 2$. Pirâmide: $n + 1$, $2n$, $n + 1$.
+      resposta: '10, 15, 7; 6, 10, 6; 20, 30, 12; 11, 20, 11'
+    - enunciado: 'Um poliedro convexo tem 12 faces, e de cada vértice saem exatamente 3 arestas. Calcule $V$ e $A$.'
+      espaco: 10
+      resolucao: |
+        Cada aresta tem dois extremos: $3V = 2A$. Euler: $V - \tfrac{3V}{2} + 12 = 2$, $V = 20$ e $A = 30$.
+      resposta: '$V = 20$; $A = 30$'
+    - enunciado: 'Cortando os 8 cantos de um cubo, obtém-se um poliedro com 8 faces triangulares e 6 octogonais (cubo truncado). Complete.'
+      itens:
+      - '$F =$ {{14}}'
+      - '$A =$ {{36}}'
+      - '$V =$ {{24}}'
+      espaco_item: 8
+      resolucao: |
+        $2A = 8 \cdot 3 + 6 \cdot 8 = 72$. $V = 2 + 36 - 14 = 24$ (cada canto vira 3 vértices).
+      resposta: '14; 36; 24'
+    - enunciado: 'Um poliedro convexo tem 4 faces triangulares e 4 hexagonais (tetraedro truncado). Calcule $A$ e $V$.'
+      espaco: 8
+      resolucao: |
+        $2A = 12 + 24 = 36$, $A = 18$. $V = 2 + 18 - 8 = 12$.
+      resposta: '$A = 18$; $V = 12$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que, em qualquer poliedro, o dobro do número de arestas é igual à soma dos números de lados de todas as faces.'
+      espaco: 10
+      resolucao: |
+        Somando os lados de todas as faces, cada aresta aparece exatamente duas vezes, uma em cada face que ela separa.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que só existem 5 poliedros de Platão (faces polígonos regulares iguais, mesmo número $m$ de faces em cada vértice).'
+      espaco: 14
+      resolucao: |
+        Num vértice, $m \ge 3$ faces de ângulo $180° - \tfrac{360°}{n}$ somam menos de $360°$: $m\left(1 - \tfrac{2}{n}\right) < 2$, ou $(m - 2)(n - 2) < 4$. Com $m, n \ge 3$: $(n, m) = (3, 3), (3, 4), (3, 5), (4, 3), (5, 3)$, que são os cinco.
+      resposta: 'Ver resolução'
+    - enunciado: 'Usando a relação de Euler, prove que a soma dos ângulos de todas as faces de um poliedro convexo é $360°(V - 2)$.'
+      espaco: 12
+      resolucao: |
+        Uma face de $n_i$ lados tem ângulos somando $180°(n_i - 2)$. Somando: $180°\left(\sum n_i - 2F\right) = 180°(2A - 2F) = 360°(A - F) = 360°(V - 2)$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, num poliedro em que todas as faces são triangulares, o número de faces é par.'
+      espaco: 10
+      resolucao: |
+        $2A = 3F$: $3F$ é par, logo $F$ é par.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que não existe poliedro convexo com 7 arestas.'
+      espaco: 14
+      resolucao: |
+        Cada face tem pelo menos 3 lados e cada vértice, pelo menos 3 arestas: $3F \le 2A$ e $3V \le 2A$. Com $A = 7$: $F \le 4$ e $V \le 4$, logo $V + F \le 8$. Mas Euler exige $V + F = A + 2 = 9$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um designer criou uma luminária cuja estrutura é um poliedro convexo com 6 faces quadradas e 8 faces triangulares, todas de vidro. As faces são unidas por perfis metálicos ao longo das arestas, e cada vértice recebe um conector. Para fazer a encomenda, ele precisa do número de conectores.
+    enunciado: |
+      O número de conectores é
+    opcoes: ['$14$', '$12$', '$24$', '$10$', '$16$']
+    correta: B
+    resolucao: |
+      $2A = 6 \cdot 4 + 8 \cdot 3 = 48$, $A = 24$; $V = 2 + 24 - 14 = 12$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Um poliedro convexo tem 20 faces e 30 arestas. O número de vértices é
+    opcoes: ['$12$', '$10$', '$20$', '$8$', '$52$']
+    correta: A
+    resolucao: |
+      $V = 2 + 30 - 20 = 12$.
+
+  - estilo: Unicamp
+    texto: |
+      A figura mostra um prisma de base hexagonal.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \foreach \k/\l in {0/1, 1/2, 2/3, 3/4, 4/5, 5/0} \draw[ink, line width=1pt] ({cos(60*\k)},{1.6+0.35*sin(60*\k)}) -- ({cos(60*\l)},{1.6+0.35*sin(60*\l)});
+        \foreach \k/\l in {3/4, 4/5, 5/0} \draw[ink, line width=1pt] ({cos(60*\k)},{0.35*sin(60*\k)}) -- ({cos(60*\l)},{0.35*sin(60*\l)});
+        \foreach \k/\l in {0/1, 1/2, 2/3} \draw[ink, dashed] ({cos(60*\k)},{0.35*sin(60*\k)}) -- ({cos(60*\l)},{0.35*sin(60*\l)});
+        \foreach \k in {0, 3, 4, 5} \draw[ink, line width=1pt] ({cos(60*\k)},{0.35*sin(60*\k)}) -- ({cos(60*\k)},{1.6+0.35*sin(60*\k)});
+        \foreach \k in {1, 2} \draw[ink, dashed] ({cos(60*\k)},{0.35*sin(60*\k)}) -- ({cos(60*\k)},{1.6+0.35*sin(60*\k)});
+        \end{scope}
+    enunciado: |
+      O número de arestas desse prisma é
+    opcoes: ['$18$.', '$12$.', '$24$.', '$8$.']
+    correta: A
+    resolucao: |
+      $3n = 18$ (6 em cada base e 6 laterais).
+
+  - estilo: UEM
+    enunciado: |
+      Considere poliedros. Assinale o que for correto.
+    proposicoes:
+    - 'A relação $V - A + F = 2$ vale para todo poliedro convexo.'
+    - 'O octaedro regular tem 6 vértices.'
+    - 'Uma pirâmide de base hexagonal tem 12 arestas.'
+    - 'Existem exatamente cinco poliedros de Platão.'
+    - 'O icosaedro regular tem 30 vértices.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) Euler. 02) $A = 12$, $V = 2 + 12 - 8$. 04) $2 \cdot 6$. 08) Correta. 16) Incorreta: tem 12 vértices (e 30 arestas).
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Enem
+    texto: |
+      Uma luminária tem a forma de um octaedro regular, como na figura, montado com varetas de madeira nas arestas e conectores nos vértices. O artesão vai produzir 20 luminárias e precisa calcular quantas varetas comprar, sem sobras.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \coordinate (T) at (0,1.3); \coordinate (B) at (0,-1.3);
+        \coordinate (L) at (-1,0); \coordinate (R) at (1,0);
+        \coordinate (F) at (-0.35,-0.3); \coordinate (K) at (0.35,0.3);
+        \draw[ink, dashed] (K) -- (T) (K) -- (B) (K) -- (L) (K) -- (R);
+        \draw[ink, line width=1pt, fill=lilas!20] (T) -- (L) -- (F) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!30] (T) -- (F) -- (R) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!20] (B) -- (L) -- (F) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!30] (B) -- (F) -- (R) -- cycle;
+        \end{scope}
+    enunciado: |
+      O número de varetas necessárias é
+    opcoes: ['$120$', '$160$', '$240$', '$200$', '$360$']
+    correta: C
+    resolucao: |
+      O octaedro tem $\tfrac{8 \cdot 3}{2} = 12$ arestas: $20 \cdot 12 = 240$ varetas.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre poliedros convexos.
+    afirmativas:
+    - 'Um poliedro com 8 faces triangulares tem 12 arestas.'
+    - 'Um prisma cuja base tem $n$ lados tem $3n$ arestas.'
+    - 'Uma pirâmide com 10 vértices tem 10 faces.'
+    - 'O dodecaedro regular tem 12 vértices.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e IV, apenas.', 'III e IV, apenas.', 'I, II e III, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. $\tfrac{24}{2}$. II. Correta. III. Base de 9 lados: $V = F = 10$. IV. Incorreta: tem 20 vértices (e 12 faces).
+
+  - estilo: Unesp
+    enunciado: |
+      Um poliedro convexo tem 12 vértices e 30 arestas. O número de faces é
+    opcoes: ['$18$', '$12$', '$22$', '$40$', '$20$']
+    correta: E
+    resolucao: |
+      $F = 2 + 30 - 12 = 20$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    enunciado: |
+      Cortando os 8 cantos de um cubo, obtém-se um poliedro com 8 faces triangulares e 6 faces octogonais. O número de vértices desse poliedro é
+    opcoes: ['$24$.', '$14$.', '$36$.', '$32$.']
+    correta: A
+    resolucao: |
+      $2A = 24 + 48$, $A = 36$; $V = 2 + 36 - 14 = 24$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Um poliedro convexo tem 8 faces triangulares e 2 faces quadrangulares. O número de vértices é
+    opcoes: ['$10$', '$8$', '$16$', '$12$', '$6$']
+    correta: B
+    resolucao: |
+      $2A = 24 + 8 = 32$, $A = 16$; $V = 2 + 16 - 10 = 8$.
+
+  - estilo: UFSC
+    enunciado: |
+      Um poliedro convexo tem 4 faces triangulares e 6 faces quadrangulares. Assinale o que for correto.
+    proposicoes:
+    - 'O poliedro tem 18 arestas.'
+    - 'O poliedro tem 10 vértices.'
+    - 'A soma dos ângulos de todas as faces é $2880°$.'
+    - 'Vale $V + F = A + 2$.'
+    - 'A soma dos números de lados de todas as faces é 36.'
+    - 'O poliedro tem 20 vértices.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $\tfrac{12 + 24}{2}$. 02) $2 + 18 - 10$. 04) $360° \cdot 8$. 08) Euler. 16) $12 + 24$. 32) Incorreta.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Uma fábrica produz dados para jogos com a forma de um icosaedro regular, com 20 faces triangulares numeradas. As arestas de cada dado recebem um filete de tinta dourada, e a máquina de pintura é programada pelo número de arestas.
+    enunciado: |
+      O número de arestas pintadas em cada dado é
+    opcoes: ['$20$', '$60$', '$30$', '$12$', '$40$']
+    correta: C
+    resolucao: |
+      $\tfrac{20 \cdot 3}{2} = 30$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Existem exatamente cinco poliedros de Platão.'
+    - 'Um prisma triangular tem 6 arestas.'
+    - 'Em todo poliedro convexo, $V - A + F = 2$.'
+    - 'A soma dos ângulos de todas as faces de um cubo é $2160°$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – F – V – V.', 'V – V – F – V.']
+    correta: D
+    resolucao: |
+      (V) (F) Tem 9. (V) (V) $6 \cdot 360°$.
+
+  - estilo: Enem
+    texto: |
+      Num trabalho, um aluno contou vértices, arestas e faces de cinco poliedros convexos e anotou os resultados no quadro. Ao conferir com a relação de Euler, a professora percebeu que uma das linhas está errada.
+    tabela:
+      cabecalho: ['Poliedro', '$V$', '$A$', '$F$']
+      linhas:
+      - ['P1', '$9$', '$14$', '$6$']
+      - ['P2', '$8$', '$12$', '$6$']
+      - ['P3', '$6$', '$12$', '$8$']
+      - ['P4', '$10$', '$15$', '$7$']
+      - ['P5', '$7$', '$12$', '$7$']
+    enunciado: |
+      A linha errada é a do poliedro
+    opcoes: ['P1.', 'P2.', 'P3.', 'P4.', 'P5.']
+    correta: A
+    resolucao: |
+      P1: $9 - 14 + 6 = 1 \ne 2$. Nas outras, $V - A + F = 2$.
+
+  - estilo: Unesp
+    enunciado: |
+      A soma dos ângulos de todas as faces de um poliedro convexo de 12 vértices é
+    opcoes: ['$1800°$', '$4320°$', '$2160°$', '$3960°$', '$3600°$']
+    correta: E
+    resolucao: |
+      $360°(12 - 2) = 3600°$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Um poliedro convexo tem só faces triangulares e 30 arestas. Assinale o que for correto.
+    proposicoes:
+    - 'O poliedro tem 20 faces.'
+    - 'O poliedro tem 12 vértices.'
+    - 'A soma dos ângulos de todas as faces é $3600°$.'
+    - 'Se de todos os vértices sai o mesmo número de arestas, esse número é 5.'
+    - 'O número de faces é par.'
+    - 'O poliedro tem 20 vértices.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $3F = 60$. 02) $2 + 30 - 20$. 04) $20 \cdot 180°$. 08) $\tfrac{2 \cdot 30}{12} = 5$. 16) $F = \tfrac{2A}{3}$, e $3F$ par. 32) Incorreta.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Um poliedro convexo tem 4 faces triangulares e 4 faces hexagonais. O seu número de vértices é
+    opcoes: ['$18$.', '$12$.', '$8$.', '$16$.']
+    correta: B
+    resolucao: |
+      $2A = 12 + 24$, $A = 18$; $V = 2 + 18 - 8 = 12$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        A molécula de fulereno C60 tem átomos de carbono nos vértices de um poliedro convexo formado por 12 faces pentagonais e 20 hexagonais, com a forma de uma bola de futebol. Cada ligação química entre dois átomos corresponde a uma aresta do poliedro.
+    enunciado: |
+      O número de átomos da molécula, isto é, de vértices do poliedro, é
+    opcoes: ['$32$', '$90$', '$60$', '$120$', '$30$']
+    correta: C
+    resolucao: |
+      $2A = 60 + 120$, $A = 90$; $V = 2 + 90 - 32 = 60$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O número de ligações químicas da molécula é
+    opcoes: ['$60$.', '$180$.', '$120$.', '$90$.']
+    correta: D
+    resolucao: |
+      As ligações são as arestas: $\tfrac{12 \cdot 5 + 20 \cdot 6}{2} = 90$. (Confere: cada átomo faz 3 ligações, $\tfrac{60 \cdot 3}{2} = 90$.)
+
+  - estilo: Fuvest
+    enunciado: |
+      Num poliedro convexo de 12 vértices, de cada vértice saem exatamente 4 arestas. O número de faces é
+    opcoes: ['$12$', '$24$', '$8$', '$20$', '$14$']
+    correta: E
+    resolucao: |
+      $2A = 12 \cdot 4$, $A = 24$; $F = 2 + 24 - 12 = 14$.
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra um sólido formado por um cubo e por uma pirâmide de base quadrada, colada sobre a face superior do cubo, com a base coincidindo com essa face.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1pt] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+        \draw[ink, line width=1pt] (2,0) -- (2.8,0.6) -- (2.8,2.6) (2,2) -- (2.8,2.6);
+        \draw[ink, dashed] (0,0) -- (0.8,0.6) -- (2.8,0.6) (0.8,0.6) -- (0.8,2.6);
+        \draw[ink, line width=1pt] (0,2) -- (1.4,3.6) -- (2,2) (1.4,3.6) -- (2.8,2.6);
+        \draw[ink, dashed] (1.4,3.6) -- (0.8,2.6) -- (0,2) (0.8,2.6) -- (2.8,2.6);
+        \end{scope}
+    enunciado: |
+      O número de arestas desse sólido é
+    opcoes: ['$20$', '$16$', '$12$', '$17$', '$13$']
+    correta: B
+    resolucao: |
+      As 12 arestas do cubo continuam (as da face superior viram arestas da base da pirâmide), e a pirâmide acrescenta 4 laterais: 16. Confere: $V = 9$, $F = 5 + 4 = 9$, $9 - 16 + 9 = 2$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere poliedros convexos.'
+    itens:
+    - 'Prove que $2A$ é a soma dos números de lados das faces e também a soma dos números de arestas que saem de cada vértice.'
+    - 'Um poliedro convexo tem só faces pentagonais e hexagonais, e de cada vértice saem 3 arestas. Prove que há exatamente 12 faces pentagonais.'
+    - 'Se esse poliedro tem 20 faces hexagonais, calcule $V$ e $A$.'
+    espaco: 62
+    resolucao: |
+      a) Cada aresta é lado de 2 faces e tem 2 extremos; nas duas somas, ela é contada duas vezes.
+      b) Com $p$ pentágonos e $h$ hexágonos: $2A = 5p + 6h$ e $3V = 2A$. Euler: $\tfrac{2A}{3} - A + p + h = 2$, ou $p + h - \tfrac{5p + 6h}{6} = 2$, que dá $\tfrac{p}{6} = 2$, $p = 12$.
+      c) $A = \tfrac{60 + 120}{2} = 90$ e $V = 60$.
+    resposta: 'c) $V = 60$; $A = 90$'
+
+  - estilo: Unicamp
+    enunciado: 'Num poliedro de Platão, as faces são polígonos regulares de $n$ lados e em cada vértice concorrem $m$ faces.'
+    itens:
+    - 'Mostre que $(m - 2)(n - 2) < 4$.'
+    - 'Encontre todos os pares $(n, m)$ e identifique os poliedros.'
+    - 'Para $(n, m) = (5, 3)$, mostre que $F = 12$ a partir de $nF = 2A = mV$ e da relação de Euler.'
+    espaco: 62
+    resolucao: |
+      a) Os $m$ ângulos num vértice somam menos de $360°$: $m\left(180° - \tfrac{360°}{n}\right) < 360°$, $mn - 2m - 2n < 0$, $(m - 2)(n - 2) < 4$.
+      b) $(3, 3)$ tetraedro; $(3, 4)$ octaedro; $(3, 5)$ icosaedro; $(4, 3)$ cubo; $(5, 3)$ dodecaedro.
+      c) $A = \tfrac{5F}{2}$ e $V = \tfrac{5F}{3}$: $\tfrac{5F}{3} - \tfrac{5F}{2} + F = 2$, $\tfrac{F}{6} = 2$, $F = 12$.
+    resposta: 'b) os cinco poliedros de Platão; c) 12'
+
+  - estilo: ITA
+    enunciado: |
+      Um poliedro convexo tem 32 faces, sendo 12 pentagonais e 20 hexagonais. O número de vértices é
+    opcoes: ['$90$', '$32$', '$60$', '$62$', '$120$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $A = \tfrac{60 + 120}{2} = 90$; $V = 2 + 90 - 32 = 60$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Considere a soma $S$ dos ângulos de todas as faces de um poliedro convexo.'
+    itens:
+    - 'Prove que $S = 360°(V - 2)$.'
+    - 'Confira a fórmula no tetraedro e no prisma triangular.'
+    - 'Um poliedro convexo tem $S = 5400°$. Quantos vértices ele tem?'
+    espaco: 62
+    resolucao: |
+      a) $S = \sum 180°(n_i - 2) = 180°(2A - 2F) = 360°(A - F) = 360°(V - 2)$.
+      b) Tetraedro: $4 \cdot 180° = 720° = 360° \cdot 2$. Prisma triangular: $2 \cdot 180° + 3 \cdot 360° = 1440° = 360° \cdot 4$.
+      c) $V - 2 = 15$: $V = 17$.
+    resposta: 'c) 17'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere poliedros convexos. Assinale o que for correto.
+    proposicoes:
+    - 'Um poliedro com 4 faces triangulares e 4 hexagonais tem 12 vértices.'
+    - 'Um poliedro com 8 faces triangulares e 6 octogonais tem 14 faces.'
+    - 'Um poliedro com 8 faces triangulares e 2 quadrangulares tem 8 vértices.'
+    - 'Se todas as faces de um poliedro são triangulares, o número de faces é par.'
+    - 'Existe poliedro convexo com 7 arestas.'
+    - 'A soma dos ângulos das faces do icosaedro regular é $3600°$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) $A = 18$, $V = 12$. 02) $8 + 6$. 04) $A = 16$, $V = 8$. 08) $3F = 2A$. 16) Incorreta (ver prova clássica: $V + F \le 8 < 9$). 32) $360° \cdot 10$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Vamos provar que não existe poliedro convexo com exatamente 7 arestas.'
+    itens:
+    - 'Prove que $3F \le 2A$ e $3V \le 2A$ em qualquer poliedro.'
+    - 'Conclua que, se $A = 7$, então $V + F \le 8$.'
+    - 'Use a relação de Euler para chegar a uma contradição. Existe poliedro convexo com 6 arestas? E com 8?'
+    espaco: 62
+    resolucao: |
+      a) Cada face tem pelo menos 3 lados e de cada vértice saem pelo menos 3 arestas; as somas valem $2A$.
+      b) $F \le \tfrac{14}{3}$ e $V \le \tfrac{14}{3}$, inteiros: $F \le 4$ e $V \le 4$.
+      c) Euler pede $V + F = 9$: impossível. Com 6 arestas, o tetraedro; com 8, a pirâmide de base quadrada.
+    resposta: 'c) com 6, tetraedro; com 8, pirâmide quadrangular'
+
+  - estilo: Unicamp
+    texto: |
+      A bola de futebol clássica é obtida cortando os 12 vértices de um icosaedro regular: em cada vértice, onde concorrem 5 triângulos, o corte faz surgir uma face pentagonal, e cada triângulo vira um hexágono.
+    enunciado: ''
+    itens:
+    - 'Quantas faces de cada tipo tem a bola?'
+    - 'Calcule $A$ e $V$ da bola.'
+    - 'Mostre que cada vértice da bola é encontro de 1 pentágono e 2 hexágonos e confira o número de vértices por essa contagem.'
+    espaco: 62
+    resolucao: |
+      a) 12 pentágonos (um por vértice do icosaedro) e 20 hexágonos (um por face).
+      b) $A = \tfrac{60 + 120}{2} = 90$; $V = 2 + 90 - 32 = 60$.
+      c) Cada vértice está na borda de um único pentágono, entre dois hexágonos. Os 12 pentágonos têm $12 \cdot 5 = 60$ vértices, sem repetição.
+    resposta: 'a) 12 e 20; b) 90 e 60'
+
+  - estilo: Fuvest
+    enunciado: |
+      Um prisma tem 30 arestas. O número de faces é
+    opcoes: ['$12$', '$10$', '$20$', '$15$', '$32$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $3n = 30$: $n = 10$; $F = n + 2 = 12$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Considere sólidos construídos sobre um polígono convexo de $n$ lados.'
+    itens:
+    - 'Escreva $V$, $A$ e $F$ do prisma e da pirâmide de base com $n$ lados.'
+    - 'Uma bipirâmide é formada por duas pirâmides coladas pela base. Escreva $V$, $A$ e $F$.'
+    - 'Verifique a relação de Euler nos três casos.'
+    espaco: 62
+    resolucao: |
+      a) Prisma: $2n$, $3n$, $n + 2$. Pirâmide: $n + 1$, $2n$, $n + 1$.
+      b) $V = n + 2$ (base e dois ápices), $A = 3n$, $F = 2n$.
+      c) $2n - 3n + n + 2 = 2$; $n + 1 - 2n + n + 1 = 2$; $n + 2 - 3n + 2n = 2$.
+    resposta: 'b) $n + 2$, $3n$, $2n$'
+
+  - estilo: Fuvest
+    enunciado: 'Num cubo, faz-se um corte plano junto a cada vértice, retirando um pequeno tetraedro.'
+    itens:
+    - 'Se os cortes são pequenos (não se tocam), calcule $V$, $A$ e $F$ do sólido resultante.'
+    - 'Se cada corte passa pelos pontos médios das três arestas que saem do vértice, o sólido tem faces quadradas e triangulares. Calcule $V$, $A$ e $F$.'
+    - 'Calcule a soma dos ângulos das faces nos dois casos e confira com $360°(V - 2)$.'
+    espaco: 62
+    resolucao: |
+      a) Faces: 6 octógonos e 8 triângulos, $F = 14$; $A = \tfrac{48 + 24}{2} = 36$; $V = 24$.
+      b) Os vértices são os 12 pontos médios das arestas; faces: 6 quadrados e 8 triângulos, $F = 14$; $A = \tfrac{24 + 24}{2} = 24$; $V = 12$.
+      c) a) $6 \cdot 1080° + 8 \cdot 180° = 7920° = 360° \cdot 22$. b) $6 \cdot 360° + 8 \cdot 180° = 3600° = 360° \cdot 10$.
+    resposta: 'a) 24, 36, 14; b) 12, 24, 14'
