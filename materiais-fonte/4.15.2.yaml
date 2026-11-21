@@ -1,0 +1,550 @@
+# Aula 4.15.2 — Geometria espacial: volume do cone
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: V = πr²h/3; um terço do cilindro de mesma base e altura; altura pela geratriz; cone equilátero
+# (V = πr³√3/3); cone gerado por rotação e por setor; recipientes cônicos (líquido com vértice para baixo: razão k³;
+# vértice para cima: 1 − k³); comparação de cones e cilindros. Tronco de cone fica para a 4.16.2.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Use $V = \frac{\pi r^2 h}{3}$ e deixe as respostas em função de $\pi$, salvo indicação. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete com o volume de cada cone.'
+      itens:
+      - 'Raio 2 e altura 9: {{12\pi}}'
+      - 'Raio 6 e altura 5: {{60\pi}}'
+      - 'Diâmetro 10 e altura 6: {{50\pi}}'
+      - 'Raio 4 e geratriz 5: {{16\pi}}'
+      - 'Base de área $27\pi$ e altura 10: {{90\pi}}'
+      espaco_item: 8
+      resolucao: |
+        $\tfrac{4 \cdot 9}{3}\pi$; $\tfrac{36 \cdot 5}{3}\pi$; $r = 5$: $\tfrac{25 \cdot 6}{3}\pi$; $h = 3$: $\tfrac{16 \cdot 3}{3}\pi$; $\tfrac{27\pi \cdot 10}{3}$.
+      resposta: '$12\pi$; $60\pi$; $50\pi$; $16\pi$; $90\pi$'
+    - enunciado: 'Associe cada cone ao seu volume.'
+      esquerda:
+      - 'raio 1, altura 3'
+      - 'raio 3, altura 1'
+      - 'raio 2, altura 6'
+      - 'raio 6, altura 2'
+      - 'raio 3, altura 3'
+      direita:
+      - '$8\pi$'
+      - '$\pi$'
+      - '$24\pi$'
+      - '$9\pi$'
+      - '$3\pi$'
+      resolucao: |
+        $\pi$; $3\pi$; $8\pi$; $24\pi$; $9\pi$. Trocar raio e altura muda o volume: o raio entra ao quadrado.
+      resposta: 'De cima para baixo: 3, 1, 4, 5, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Um cone tem um terço do volume do cilindro de mesma base e mesma altura.'
+      - 'Dobrando o raio de um cone e mantendo a altura, o volume dobra.'
+      - 'Dobrando a altura de um cone e mantendo o raio, o volume dobra.'
+      - 'O volume de um cone é $\frac{\pi r^2 g}{3}$, sendo $g$ a geratriz.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) O raio entra ao quadrado: o volume quadruplica. (V) (F) Usa-se a altura, não a geratriz.
+      resposta: V, F, V, F
+    - enunciado: 'Complete com o volume de cada cone equilátero de raio $r$, que é $\frac{\pi r^3\sqrt{3}}{3}$.'
+      tabela:
+        cabecalho: ['$r$', 'Volume']
+        linhas:
+        - ['$1$', '${{\frac{\pi\sqrt{3}}{3}}}$']
+        - ['$2$', '${{\frac{8\pi\sqrt{3}}{3}}}$']
+        - ['$3$', '${{9\pi\sqrt{3}}}$']
+        - ['$\sqrt{3}$', '${{3\pi}}$']
+      resolucao: |
+        $h = r\sqrt{3}$. Para $r = \sqrt{3}$: $r^3 = 3\sqrt{3}$ e $\tfrac{\pi \cdot 3\sqrt{3} \cdot \sqrt{3}}{3} = 3\pi$.
+      resposta: '$\frac{\pi\sqrt{3}}{3}$; $\frac{8\pi\sqrt{3}}{3}$; $9\pi\sqrt{3}$; $3\pi$'
+    - enunciado: 'O cone da figura tem geratriz 17 e raio 8. Calcule a altura e o volume.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.8]
+          \draw[ink, line width=1pt] (-1.6,0) -- (0,3) -- (1.6,0);
+          \draw[ink, line width=1pt] (-1.6,0) arc (180:360:1.6 and 0.4);
+          \draw[ink, dashed] (1.6,0) arc (0:180:1.6 and 0.4);
+          \draw[roxo, dashed] (0,0) -- (0,3);
+          \draw[roxo, line width=1pt] (0,0) -- (1.6,0);
+          \node[left, font=\scriptsize] at (0,1.4) {$h$};
+          \node[below, font=\scriptsize] at (0.8,0) {$8$};
+          \node[right, font=\scriptsize] at (0.9,1.5) {$17$};
+          \end{scope}
+      espaco: 8
+      resolucao: |
+        $h = \sqrt{289 - 64} = 15$; $V = \tfrac{\pi \cdot 64 \cdot 15}{3} = 320\pi$.
+      resposta: '$h = 15$; $320\pi$'
+    - enunciado: 'Um cone e um cilindro têm o mesmo raio e o mesmo volume. O cilindro tem altura 4. Qual a altura do cone?'
+      espaco: 8
+      resolucao: |
+        $\tfrac{\pi r^2 h}{3} = \pi r^2 \cdot 4$: $h = 12$.
+      resposta: '12'
+    - enunciado: 'Uma casquinha de sorvete é um cone de 3 cm de raio e 12 cm de altura. Calcule a sua capacidade, com $\pi \approx 3{,}14$.'
+      espaco: 8
+      resolucao: |
+        $\tfrac{\pi \cdot 9 \cdot 12}{3} = 36\pi \approx 113{,}04$ cm³.
+      resposta: '$\approx 113$ cm³'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para um cone de 8 cm de diâmetro e 6 cm de altura, Bia calculou $V = \frac{\pi \cdot 8^2 \cdot 6}{3} = 128\pi$ cm³.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        Ela usou o diâmetro no lugar do raio. Com $r = 4$: $V = \tfrac{\pi \cdot 16 \cdot 6}{3} = 32\pi$ cm³.
+      resposta: '$32\pi$ cm³'
+    - enunciado: 'Um triângulo retângulo de catetos 6 e 9 gira em torno de cada cateto. Calcule os dois volumes.'
+      espaco: 10
+      resolucao: |
+        Em torno do cateto de 9: $r = 6$, $V = \tfrac{\pi \cdot 36 \cdot 9}{3} = 108\pi$. Em torno do de 6: $r = 9$, $V = \tfrac{\pi \cdot 81 \cdot 6}{3} = 162\pi$.
+      resposta: '$108\pi$ e $162\pi$'
+    - enunciado: 'Uma taça cônica, com o vértice para baixo, tem 6 cm de raio e 12 cm de altura e contém líquido até 8 cm de altura. Complete.'
+      itens:
+      - 'Capacidade da taça: {{144\pi}} cm³'
+      - 'Fração da taça ocupada pelo líquido: {{\frac{8}{27}}}'
+      - 'Volume de líquido: {{\frac{128\pi}{3}}} cm³'
+      espaco_item: 8
+      resolucao: |
+        O líquido forma um cone semelhante, de razão $\tfrac{8}{12} = \tfrac{2}{3}$: fração $\tfrac{8}{27}$. Taça: $\tfrac{\pi \cdot 36 \cdot 12}{3} = 144\pi$; líquido $144\pi \cdot \tfrac{8}{27} = \tfrac{128\pi}{3}$ cm³.
+      resposta: '$\frac{128\pi}{3}$ cm³; $\frac{8}{27}$'
+    - enunciado: 'Um semicírculo de raio 8 é enrolado para formar a superfície lateral de um cone. Calcule o volume do cone.'
+      espaco: 10
+      resolucao: |
+        Arco $8\pi = 2\pi r$: $r = 4$, $g = 8$, $h = 4\sqrt{3}$. $V = \tfrac{\pi \cdot 16 \cdot 4\sqrt{3}}{3} = \tfrac{64\sqrt{3}\,\pi}{3}$.
+      resposta: '$\frac{64\sqrt{3}\,\pi}{3}$'
+    - enunciado: 'Um cone equilátero tem altura 6. Calcule o raio e o volume.'
+      espaco: 10
+      resolucao: |
+        $r\sqrt{3} = 6$: $r = 2\sqrt{3}$. $V = \tfrac{\pi \cdot 12 \cdot 6}{3} = 24\pi$.
+      resposta: '$2\sqrt{3}$; $24\pi$'
+    - enunciado: 'Um funil cônico, cheio, tem 5 cm de raio e 9 cm de altura e escoa 3 cm³ por segundo. Com $\pi \approx 3$, em quanto tempo ele esvazia?'
+      espaco: 8
+      resolucao: |
+        $V = \tfrac{\pi \cdot 25 \cdot 9}{3} = 75\pi \approx 225$ cm³; $\tfrac{225}{3} = 75$ s.
+      resposta: '75 s'
+    - enunciado: 'De um cilindro maciço de raio 4 e altura 9 retira-se um cone de mesma base e mesma altura. Calcule o volume que resta.'
+      espaco: 8
+      resolucao: |
+        Cilindro $144\pi$; cone $48\pi$; restam $96\pi$, ou seja, $\tfrac{2}{3}$ do cilindro.
+      resposta: '$96\pi$'
+    - enunciado: 'Um cone tem volume $392\pi$ e altura 24. Calcule o raio e a área lateral.'
+      espaco: 10
+      resolucao: |
+        $\tfrac{\pi r^2 \cdot 24}{3} = 392\pi$: $r^2 = 49$, $r = 7$. $g = \sqrt{576 + 49} = 25$; $A_L = 175\pi$.
+      resposta: '7; $175\pi$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que o volume de um cone equilátero de raio $r$ é $\frac{\pi r^3\sqrt{3}}{3}$.'
+      espaco: 10
+      resolucao: |
+        $g = 2r$ e $h = \sqrt{4r^2 - r^2} = r\sqrt{3}$: $V = \tfrac{\pi r^2 \cdot r\sqrt{3}}{3}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Um plano paralelo à base de um cone de volume $V$ e altura $H$ passa a uma distância $d$ do vértice. Prove que o cone menor tem volume $V\left(\frac{d}{H}\right)^3$.'
+      espaco: 12
+      resolucao: |
+        O cone menor é semelhante ao original, de razão $k = \tfrac{d}{H}$: raio $kr$ e altura $kH$. $\tfrac{\pi (kr)^2 (kH)}{3} = k^3 V$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que um cone com a base numa base de um cilindro e o vértice no centro da outra base ocupa $\frac{1}{3}$ do cilindro.'
+      espaco: 8
+      resolucao: |
+        Mesmo raio $r$ e mesma altura $h$: $\tfrac{\pi r^2 h / 3}{\pi r^2 h} = \tfrac{1}{3}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Um recipiente cônico, com o vértice para cima, tem líquido até a metade da altura (medida a partir da base). Prove que o líquido ocupa $\frac{7}{8}$ do recipiente.'
+      espaco: 12
+      resolucao: |
+        A parte vazia, no alto, é um cone semelhante de razão $\tfrac{1}{2}$, com $\tfrac{1}{8}$ do volume. O líquido ocupa $1 - \tfrac{1}{8} = \tfrac{7}{8}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Dois cones têm o mesmo volume, e o raio do segundo é o dobro do raio do primeiro. Prove que a altura do segundo é $\frac{1}{4}$ da altura do primeiro.'
+      espaco: 8
+      resolucao: |
+        $\tfrac{\pi r^2 h_1}{3} = \tfrac{\pi (2r)^2 h_2}{3}$: $h_1 = 4h_2$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Uma sorveteria vende casquinhas cônicas, como na figura, com 2,5 cm de raio na boca e 12 cm de altura. Para controlar o estoque, o dono quer saber o volume de sorvete necessário para encher uma casquinha até a borda, sem a bola de cima. Use 3 como aproximação para $\pi$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.6]
+        \fill[lilas!35] (-1,2.4) -- (0,0) -- (1,2.4) arc (0:-180:1 and 0.25);
+        \draw[ink, line width=1pt] (-1,2.4) -- (0,0) -- (1,2.4);
+        \draw[ink, line width=1pt, fill=lilas!15] (0,2.4) ellipse (1 and 0.25);
+        \end{scope}
+    enunciado: |
+      O volume de sorvete de cada casquinha é
+    opcoes: ['$75$ cm³', '$225$ cm³', '$150$ cm³', '$25$ cm³', '$300$ cm³']
+    correta: A
+    resolucao: |
+      $\tfrac{\pi \cdot 6{,}25 \cdot 12}{3} = 25\pi \approx 75$ cm³.
+
+  - estilo: Fuvest
+    enunciado: |
+      O volume de um cone de raio 6 e altura 7 é
+    opcoes: ['$252\pi$', '$84\pi$', '$42\pi$', '$126\pi$', '$168\pi$']
+    correta: B
+    resolucao: |
+      $\tfrac{\pi \cdot 36 \cdot 7}{3} = 84\pi$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O volume de um cone equilátero de raio 2 é
+    opcoes: ['$8\sqrt{3}\,\pi$.', '$\frac{8\pi}{3}$.', '$\frac{8\sqrt{3}\,\pi}{3}$.', '$4\sqrt{3}\,\pi$.']
+    correta: C
+    resolucao: |
+      $h = 2\sqrt{3}$: $\tfrac{\pi \cdot 4 \cdot 2\sqrt{3}}{3}$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere um cone reto de raio 9 e geratriz 15. Assinale o que for correto.
+    proposicoes:
+    - 'A altura do cone é 12.'
+    - 'O volume do cone é $324\pi$.'
+    - 'A área lateral do cone é $135\pi$.'
+    - 'O cilindro de mesma base e mesma altura tem volume $972\pi$.'
+    - 'Dobrando o raio e mantendo a altura, o volume dobra.'
+    - 'A área total do cone é $216\pi$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) $\sqrt{225 - 81}$. 02) $\tfrac{\pi \cdot 81 \cdot 12}{3}$. 04) $\pi \cdot 9 \cdot 15$. 08) $\pi \cdot 81 \cdot 12$. 16) Incorreta: quadruplica. 32) $135\pi + 81\pi$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Numa obra, a areia descarregada formou um monte em forma de cone com 6 m de diâmetro na base e 2 m de altura. Ela será levada para outra obra num caminhão cuja caçamba transporta, no máximo, 5 m³ de areia por viagem. Use 3 como aproximação para $\pi$.
+    enunciado: |
+      O número mínimo de viagens necessárias é
+    opcoes: ['$11$', '$2$', '$6$', '$4$', '$3$']
+    correta: D
+    resolucao: |
+      $r = 3$ m: $V = \tfrac{\pi \cdot 9 \cdot 2}{3} = 6\pi \approx 18$ m³. $\tfrac{18}{5} = 3{,}6$: 4 viagens.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre o volume de um cone reto de raio $r$ e altura $h$.
+    afirmativas:
+    - 'O volume é $\frac{\pi r^2 h}{3}$.'
+    - 'O volume é um terço do volume do cilindro de mesma base e mesma altura.'
+    - 'Dobrando o raio e mantendo a altura, o volume dobra.'
+    - 'Se o cone é equilátero, o volume é $\frac{\pi r^3\sqrt{3}}{3}$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'III e IV, apenas.', 'II, III e IV, apenas.', 'I, II e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta. II. Correta. III. Incorreta: quadruplica. IV. Correta: $h = r\sqrt{3}$.
+
+  - estilo: Unesp
+    enunciado: |
+      Um cone e um cilindro têm o mesmo raio e o mesmo volume. Se a altura do cilindro é 5, a altura do cone é
+    opcoes: ['$15$', '$5$', '$\frac{5}{3}$', '$10$', '$25$']
+    correta: A
+    resolucao: |
+      $\tfrac{\pi r^2 h}{3} = \pi r^2 \cdot 5$: $h = 15$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      A taça da figura tem a parte interna em forma de cone, com o vértice para baixo, 4 cm de raio na boca e 12 cm de altura. Ela contém líquido até 9 cm de altura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \fill[lilas!40] (-0.75,2.25) -- (0,0) -- (0.75,2.25) arc (0:-180:0.75 and 0.18);
+        \draw[ink, line width=.6pt, fill=lilas!25] (0,2.25) ellipse (0.75 and 0.18);
+        \draw[ink, line width=1pt] (-1,3) -- (0,0) -- (1,3);
+        \draw[ink, line width=1pt] (0,3) ellipse (1 and 0.25);
+        \draw[ink, line width=1pt] (0,0) -- (0,-1) (-0.6,-1) -- (0.6,-1);
+        \draw[mudo, <->] (1.5,0) -- (1.5,3);
+        \node[right, font=\scriptsize] at (1.5,1.5) {$12$};
+        \draw[mudo, <->] (-1.3,0) -- (-1.3,2.25);
+        \node[left, font=\scriptsize] at (-1.3,1.1) {$9$};
+        \end{scope}
+    enunciado: |
+      O volume de líquido na taça é
+    opcoes: ['$48\pi$ cm³.', '$27\pi$ cm³.', '$36\pi$ cm³.', '$9\pi$ cm³.']
+    correta: B
+    resolucao: |
+      Taça: $\tfrac{\pi \cdot 16 \cdot 12}{3} = 64\pi$. O líquido é um cone semelhante, de razão $\tfrac{9}{12} = \tfrac{3}{4}$: $64\pi \cdot \tfrac{27}{64} = 27\pi$ cm³.
+
+  - estilo: Fuvest
+    enunciado: |
+      Um triângulo retângulo de catetos 4 e 6 gira em torno do cateto de 4. O volume do sólido gerado é
+    opcoes: ['$32\pi$', '$96\pi$', '$48\pi$', '$16\pi$', '$144\pi$']
+    correta: C
+    resolucao: |
+      Cone de raio 6 e altura 4: $\tfrac{\pi \cdot 36 \cdot 4}{3} = 48\pi$.
+
+  - estilo: UFSC
+    enunciado: |
+      Um recipiente cônico, com o vértice para baixo, tem 6 cm de raio na boca e 12 cm de altura. Assinale o que for correto.
+    proposicoes:
+    - 'A capacidade do recipiente é $144\pi$ cm³.'
+    - 'Com água até 6 cm de altura, o volume de água é $18\pi$ cm³.'
+    - 'Com água até a metade da altura, a água ocupa $\frac{1}{8}$ da capacidade.'
+    - 'Para conter metade da capacidade, a água deve atingir a altura de $6\sqrt[3]{4}$ cm.'
+    - 'Com água até 4 cm de altura, o volume de água é $\frac{16\pi}{3}$ cm³.'
+    - 'Com água até 9 cm de altura, o volume de água é $108\pi$ cm³.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $\tfrac{\pi \cdot 36 \cdot 12}{3}$. 02) Razão $\tfrac{1}{2}$: $\tfrac{144\pi}{8}$. 04) Correta. 08) $\left(\tfrac{x}{12}\right)^3 = \tfrac{1}{2}$: $x = \tfrac{12}{\sqrt[3]{2}} = 6\sqrt[3]{4}$. 16) Razão $\tfrac{1}{3}$: $\tfrac{144\pi}{27}$. 32) Incorreta: $144\pi \cdot \tfrac{27}{64} = 60{,}75\pi$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Uma ampulheta é formada por dois recipientes cônicos iguais, unidos pelos vértices. Cada cone tem 2 cm de raio e 6 cm de altura. No início, a areia enche completamente o cone de cima e escoa para o de baixo à razão de 0,2 cm³ por segundo. Use 3 como aproximação para $\pi$.
+    enunciado: |
+      O tempo para toda a areia passar para o cone de baixo é
+    opcoes: ['$2$ min', '$6$ min', '$40$ s', '$4$ min', '$1$ min']
+    correta: A
+    resolucao: |
+      $V = \tfrac{\pi \cdot 4 \cdot 6}{3} = 8\pi \approx 24$ cm³; $\tfrac{24}{0{,}2} = 120$ s $= 2$ min.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Um cone de raio 3 e altura 8 tem volume $24\pi$.'
+    - 'Dobrando o raio e a altura de um cone, o volume fica multiplicado por 4.'
+    - 'O cone de mesma base e mesma altura de um cilindro de volume $60\pi$ tem volume $20\pi$.'
+    - 'Um cone equilátero de raio $\sqrt{3}$ tem volume $3\pi$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      (V) $\tfrac{\pi \cdot 9 \cdot 8}{3}$. (F) Fica multiplicado por $2^2 \cdot 2 = 8$. (V) Um terço. (V) $h = 3$: $\tfrac{\pi \cdot 3 \cdot 3}{3}$.
+
+  - estilo: Enem
+    texto: |
+      Uma empresa vai lançar embalagens cônicas de papelão para pipoca, vendidas sempre cheias até a borda, e quer escolher, entre cinco modelos, o de maior capacidade. O quadro mostra o raio da boca e a altura de cada modelo, em centímetros.
+    tabela:
+      cabecalho: ['Modelo', 'Raio', 'Altura']
+      linhas:
+      - ['C1', '$4$', '$15$']
+      - ['C2', '$5$', '$10$']
+      - ['C3', '$6$', '$6$']
+      - ['C4', '$3$', '$24$']
+      - ['C5', '$5$', '$9$']
+    enunciado: |
+      A embalagem de maior capacidade é a
+    opcoes: ['C1.', 'C3.', 'C4.', 'C2.', 'C5.']
+    correta: D
+    resolucao: |
+      $\tfrac{\pi r^2 h}{3}$: C1 $80\pi$; C2 $\tfrac{250\pi}{3} \approx 83{,}3\pi$; C3 $72\pi$; C4 $72\pi$; C5 $75\pi$.
+
+  - estilo: Unesp
+    enunciado: |
+      Um cone reto tem volume $128\pi$ e raio 8. A sua geratriz mede
+    opcoes: ['$6$', '$10$', '$8$', '$14$', '$2\sqrt{7}$']
+    correta: B
+    resolucao: |
+      $\tfrac{\pi \cdot 64 \cdot h}{3} = 128\pi$: $h = 6$. $g = \sqrt{36 + 64} = 10$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Um semicírculo de raio 6 é enrolado para formar a superfície lateral de um cone. Assinale o que for correto.
+    proposicoes:
+    - 'O raio da base do cone é 3.'
+    - 'A altura do cone é $3\sqrt{3}$.'
+    - 'O cone é equilátero.'
+    - 'O volume do cone é $9\sqrt{3}\,\pi$.'
+    - 'A área lateral do cone é $18\pi$.'
+    - 'A área total do cone é $36\pi$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) Arco $6\pi = 2\pi r$. 02) $\sqrt{36 - 9}$. 04) $g = 6 = 2r$. 08) $\tfrac{\pi \cdot 9 \cdot 3\sqrt{3}}{3}$. 16) Área do semicírculo. 32) Incorreta: $18\pi + 9\pi = 27\pi$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Um cone de volume 135 é cortado por um plano paralelo à base, a $\frac{2}{3}$ da altura a partir do vértice. O volume do cone menor obtido é
+    opcoes: ['$40$.', '$90$.', '$60$.', '$45$.']
+    correta: A
+    resolucao: |
+      Razão $\tfrac{2}{3}$: $135 \cdot \tfrac{8}{27} = 40$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um silo de armazenagem de grãos é formado por um cilindro de 3 m de raio e 8 m de altura, apoiado sobre um funil em forma de cone, com o vértice para baixo, também com 3 m de raio e 2 m de altura. Os grãos saem pela ponta do funil. Use 3 como aproximação para $\pi$.
+    enunciado: |
+      A capacidade total do silo é
+    opcoes: ['$216$ m³', '$252$ m³', '$234$ m³', '$270$ m³', '$240$ m³']
+    correta: C
+    resolucao: |
+      Cilindro $\pi \cdot 9 \cdot 8 = 72\pi$; cone $\tfrac{\pi \cdot 9 \cdot 2}{3} = 6\pi$. Total $78\pi \approx 234$ m³.
+
+  - estilo: Unesp
+    enunciado: |
+      A parte cônica corresponde, aproximadamente, a que porcentagem da capacidade total do silo?
+    opcoes: ['$25\%$', '$8{,}3\%$', '$33{,}3\%$', '$7{,}7\%$', '$12{,}5\%$']
+    correta: D
+    resolucao: |
+      $\tfrac{6\pi}{78\pi} = \tfrac{1}{13} \approx 7{,}7\%$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Um cone e um cilindro têm o mesmo volume e a mesma altura. A razão entre o raio do cone e o raio do cilindro é
+    opcoes: ['$3$', '$\frac{1}{3}$', '$\frac{\sqrt{3}}{3}$', '$9$', '$\sqrt{3}$']
+    correta: E
+    resolucao: |
+      $\tfrac{\pi R^2 h}{3} = \pi r^2 h$: $R^2 = 3r^2$, $\tfrac{R}{r} = \sqrt{3}$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, um cone está inscrito num cilindro de 3 de raio e 8 de altura: a base do cone é uma base do cilindro, e o vértice é o centro da outra base.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[ink, line width=1pt] (-1.2,0) -- (-1.2,2.6) (1.2,0) -- (1.2,2.6);
+        \draw[ink, line width=1pt] (0,2.6) ellipse (1.2 and 0.3);
+        \draw[ink, line width=1pt] (-1.2,0) arc (180:360:1.2 and 0.3);
+        \draw[ink, dashed] (1.2,0) arc (0:180:1.2 and 0.3);
+        \fill[lilas!35] (-1.2,0) -- (0,2.6) -- (1.2,0) arc (360:180:1.2 and 0.3);
+        \draw[roxo, line width=1pt] (-1.2,0) -- (0,2.6) -- (1.2,0);
+        \draw[mudo, dashed] (0,0) -- (1.2,0);
+        \node[below, font=\scriptsize] at (0.6,-0.3) {$3$};
+        \node[right, font=\scriptsize] at (1.2,1.3) {$8$};
+        \end{scope}
+    enunciado: |
+      O volume do cilindro que fica fora do cone é
+    opcoes: ['$24\pi$', '$48\pi$', '$72\pi$', '$36\pi$', '$96\pi$']
+    correta: B
+    resolucao: |
+      Cilindro $72\pi$; cone $24\pi$; fora $48\pi$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere um cone de raio $r$ e altura $h$ e uma pirâmide de mesma altura cuja base, de área $\pi r^2$, está no mesmo plano da base do cone.'
+    itens:
+    - 'Prove que um plano paralelo às bases, a uma distância $x$ dos vértices, corta os dois sólidos em secções de mesma área.'
+    - 'Use o princípio de Cavalieri para concluir que $V_{\text{cone}} = \frac{\pi r^2 h}{3}$.'
+    - 'Calcule o volume de um cone de raio 3 e altura 7 e compare-o com o do cilindro de mesma base e altura.'
+    espaco: 62
+    resolucao: |
+      a) Cada secção é semelhante à base do seu sólido, de razão $\tfrac{x}{h}$: as duas áreas valem $\pi r^2 \left(\tfrac{x}{h}\right)^2$.
+      b) Secções de mesma área em todas as alturas dão volumes iguais: $V_{\text{cone}} = V_{\text{pirâmide}} = \tfrac{\pi r^2 h}{3}$.
+      c) $21\pi$, um terço do cilindro ($63\pi$).
+    resposta: 'c) $21\pi$ e $63\pi$'
+
+  - estilo: Unicamp
+    enunciado: 'Um recipiente cônico, com o vértice para baixo, tem altura $H$ e capacidade $V$.'
+    itens:
+    - 'Prove que, com líquido até a altura $x$, o volume de líquido é $V\left(\frac{x}{H}\right)^3$.'
+    - 'Que altura o líquido deve atingir para encher metade do recipiente?'
+    - 'Para $H = 20$ cm, calcule essa altura, com $\sqrt[3]{2} \approx 1{,}26$.'
+    espaco: 62
+    resolucao: |
+      a) O líquido forma um cone semelhante, de razão $\tfrac{x}{H}$.
+      b) $\left(\tfrac{x}{H}\right)^3 = \tfrac{1}{2}$: $x = \tfrac{H}{\sqrt[3]{2}}$.
+      c) $\tfrac{20}{1{,}26} \approx 15{,}9$ cm.
+    resposta: 'b) $\frac{H}{\sqrt[3]{2}}$; c) $\approx 15{,}9$ cm'
+
+  - estilo: ITA
+    enunciado: |
+      Aumentando em 20\% o raio de um cone e diminuindo em 20\% a sua altura, o volume
+    opcoes: ['aumenta 15,2\%.', 'não se altera.', 'diminui 4\%.', 'aumenta 4\%.', 'aumenta 20\%.']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $1{,}2^2 \cdot 0{,}8 = 1{,}152$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Um funil cônico, com o vértice para baixo, tem 10 cm de raio na boca e 15 cm de altura e está cheio de água.
+    enunciado: ''
+    itens:
+    - 'Calcule a capacidade do funil.'
+    - 'Calcule o volume de água quando o nível baixar para 9 cm de altura.'
+    - 'Se a água escoa a $20\pi$ cm³ por segundo, em quanto tempo o funil, cheio, esvazia?'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{\pi \cdot 100 \cdot 15}{3} = 500\pi$ cm³.
+      b) Razão $\tfrac{9}{15} = \tfrac{3}{5}$: $500\pi \cdot \tfrac{27}{125} = 108\pi$ cm³.
+      c) $\tfrac{500\pi}{20\pi} = 25$ s.
+    resposta: 'a) $500\pi$ cm³; b) $108\pi$ cm³; c) 25 s'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere cones retos. Assinale o que for correto.
+    proposicoes:
+    - 'Um cone de raio 2 e altura 3 tem volume $4\pi$.'
+    - 'Triplicando a altura e mantendo o raio, o volume triplica.'
+    - 'Reduzindo o raio à metade e mantendo a altura, o volume cai à metade.'
+    - 'Um cone equilátero de raio 1 tem volume $\frac{\pi\sqrt{3}}{3}$.'
+    - 'Num recipiente cônico com o vértice para baixo, líquido até $\frac{2}{3}$ da altura ocupa $\frac{8}{27}$ da capacidade.'
+    - 'Se um cone e um cilindro têm a mesma base e o mesmo volume, a altura do cone é o triplo da do cilindro.'
+    corretas: [1, 2, 4, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) $\tfrac{\pi \cdot 4 \cdot 3}{3}$. 02) Correta. 04) Incorreta: cai a $\tfrac{1}{4}$. 08) $h = \sqrt{3}$. 16) $\left(\tfrac{2}{3}\right)^3$. 32) $\tfrac{A_b h_1}{3} = A_b h_2$.
+    resposta: 'Soma 59 (01 + 02 + 08 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Um recipiente cônico de altura $H$ e capacidade $V$ está com o vértice para cima e tem líquido até a altura $x$, medida a partir da base.'
+    itens:
+    - 'Prove que o volume de líquido é $V\left[1 - \left(\frac{H - x}{H}\right)^3\right]$.'
+    - 'Calcule a fração ocupada quando $x = \frac{H}{2}$.'
+    - 'O recipiente, com líquido até $x = \frac{H}{2}$, é virado com o vértice para baixo. Que altura o líquido atinge?'
+    espaco: 62
+    resolucao: |
+      a) A parte vazia, no alto, é um cone semelhante de altura $H - x$, com volume $V\left(\tfrac{H - x}{H}\right)^3$.
+      b) $1 - \tfrac{1}{8} = \tfrac{7}{8}$.
+      c) Com o vértice para baixo, $\left(\tfrac{y}{H}\right)^3 = \tfrac{7}{8}$: $y = \tfrac{H\sqrt[3]{7}}{2}$.
+    resposta: 'b) $\frac{7}{8}$; c) $\frac{H\sqrt[3]{7}}{2}$'
+
+  - estilo: Unicamp
+    enunciado: 'Um disco de papel de raio 12 é cortado em três setores iguais, e cada setor é enrolado para formar a superfície lateral de um cone.'
+    itens:
+    - 'Calcule o raio da base e a altura de cada cone.'
+    - 'Calcule o volume de cada cone.'
+    - 'Se o disco fosse cortado em dois setores iguais, o volume de cada cone aumentaria ou diminuiria? Justifique com o cálculo.'
+    espaco: 62
+    resolucao: |
+      a) Setores de $120°$: $r = 4$; $h = \sqrt{144 - 16} = 8\sqrt{2}$.
+      b) $\tfrac{\pi \cdot 16 \cdot 8\sqrt{2}}{3} = \tfrac{128\sqrt{2}\,\pi}{3} \approx 60{,}3\pi$.
+      c) Semicírculos: $r = 6$, $h = 6\sqrt{3}$, $V = \tfrac{\pi \cdot 36 \cdot 6\sqrt{3}}{3} = 72\sqrt{3}\,\pi \approx 124{,}7\pi$. Aumentaria.
+    resposta: 'a) 4 e $8\sqrt{2}$; b) $\frac{128\sqrt{2}\,\pi}{3}$; c) aumentaria ($72\sqrt{3}\,\pi$)'
+
+  - estilo: Fuvest
+    enunciado: |
+      Um triângulo retângulo de lados 3, 4 e 5 gira em torno da hipotenusa. O volume do sólido gerado é
+    opcoes: ['$12\pi$', '$16\pi$', '$\frac{48\pi}{5}$', '$\frac{36\pi}{5}$', '$\frac{64\pi}{5}$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      Dois cones de raio $\tfrac{3 \cdot 4}{5} = \tfrac{12}{5}$ e alturas somando 5: $\tfrac{\pi}{3} \cdot \tfrac{144}{25} \cdot 5 = \tfrac{48\pi}{5}$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Um copo cônico de 4 cm de raio e 9 cm de altura está cheio de suco.'
+    itens:
+    - 'O suco é despejado num copo cilíndrico de 4 cm de raio. Que altura ele atinge?'
+    - 'E se o copo cilíndrico tiver 2 cm de raio?'
+    - 'Quantos copos cônicos cheios são necessários para encher um cilindro de 4 cm de raio e 15 cm de altura?'
+    espaco: 62
+    resolucao: |
+      a) $V = \tfrac{\pi \cdot 16 \cdot 9}{3} = 48\pi$; $16\pi h = 48\pi$: $h = 3$ cm.
+      b) $4\pi h = 48\pi$: $h = 12$ cm.
+      c) $\tfrac{240\pi}{48\pi} = 5$.
+    resposta: 'a) 3 cm; b) 12 cm; c) 5'
+
+  - estilo: Fuvest
+    enunciado: 'Considere um cone equilátero de raio $r$ e altura $h$.'
+    itens:
+    - 'Prove que $V = \frac{\pi r^3\sqrt{3}}{3}$.'
+    - 'Prove que, em função da altura, $V = \frac{\pi h^3}{9}$.'
+    - 'Se a área total é $27\pi$, calcule o volume.'
+    espaco: 62
+    resolucao: |
+      a) $h = r\sqrt{3}$.
+      b) $r = \tfrac{h}{\sqrt{3}}$: $V = \tfrac{\pi}{3} \cdot \tfrac{h^2}{3} \cdot h = \tfrac{\pi h^3}{9}$.
+      c) $3\pi r^2 = 27\pi$: $r = 3$; $V = 9\sqrt{3}\,\pi$.
+    resposta: 'c) $9\sqrt{3}\,\pi$'
