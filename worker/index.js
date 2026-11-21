@@ -33,12 +33,16 @@ export class Sala {
     this.modo = 'aula';        // 'aula' (alunos acompanham a página do professor) | 'exercicio'
     this.pagina = null;        // página atual do professor
     this.exercicio = null;     // página proposta (cada aluno resolve na sua cópia)
-    this.alunos = new Map();   // id → { nome, ws, pagina, visto }
+    this.alunos = new Map();   // id → { nome, ws, camadas: Map(pid → traços) }  (o que o aluno escreve em cada página)
+    this.chave = null;         // segredo do QR Code: sem ele, ninguém entra
+    this.admitidos = new Set(); // alunos que já entraram (voltam mesmo depois de o professor gerar um QR novo)
   }
 
   async carregar() {
     if (this.carregado) return;
     this.token = (await this.ctx.storage.get('token')) || null;
+    this.chave = (await this.ctx.storage.get('chave')) || null;
+    this.admitidos = new Set((await this.ctx.storage.get('admitidos')) || []);
     this.carregado = true;
   }
 
@@ -72,21 +76,23 @@ export class Sala {
       const tk = String(msg.token || '');
       if (tk.length < 16) { this.enviar(ws, { t: 'erro', msg: 'Token inválido' }); ws.close(1008, 'token'); return null; }
       if (!this.token) { this.token = tk; await this.ctx.storage.put('token', tk); }
+      if (msg.chave && String(msg.chave) !== this.chave) { this.chave = String(msg.chave).slice(0, 40); await this.ctx.storage.put('chave', this.chave); }
       else if (this.token !== tk) { this.enviar(ws, { t: 'erro', fatal: true, msg: 'Este código já está em uso por outra sala. Abra uma sala nova.' }); ws.close(1008, 'ocupada'); return null; }
       if (this.prof && this.prof !== ws) { try { this.prof.close(4000, 'aberta em outro aparelho'); } catch {} }
       this.prof = ws;
       this.enviar(ws, { t: 'bemvindo', papel: 'prof' });
       this.listaParaProf();
-      for (const [id, a] of this.alunos) if (a.pagina) this.enviar(ws, { t: 'aluno', id, op: { t: 'pagina', pagina: a.pagina } });
+      for (const [id, a] of this.alunos) for (const [pid, tracos] of a.camadas) this.enviar(ws, { t: 'aluno', id, op: { t: 'pagina', pid, pagina: { tracos } } });
       this.paraAlunos({ t: 'prof', online: true });
       return { papel: 'prof' };
     }
     if (msg.papel === 'aluno') {
-      if (!this.token) { this.enviar(ws, { t: 'erro', fatal: true, msg: 'Não encontrei essa sala. Confira o código com o professor.' }); ws.close(1008, 'sem sala'); return null; }
       const id = String(msg.id || '').slice(0, 40), nome = String(msg.nome || 'Aluno').trim().slice(0, 40) || 'Aluno';
-      if (!id) { ws.close(1008, 'sem id'); return null; }
+      const pode = this.token && this.chave && id && (String(msg.chave || '') === this.chave || this.admitidos.has(id));
+      if (!pode) { this.enviar(ws, { t: 'erro', fatal: true, msg: 'Este link de entrada não vale mais. Peça ao professor o QR Code da aula.' }); ws.close(1008, 'sem acesso'); return null; }
+      if (!this.admitidos.has(id)) { this.admitidos.add(id); await this.ctx.storage.put('admitidos', [...this.admitidos].slice(-200)); }
       let a = this.alunos.get(id);
-      if (!a) { a = { nome, ws: null, pagina: null }; this.alunos.set(id, a); }
+      if (!a) { a = { nome, ws: null, camadas: new Map() }; this.alunos.set(id, a); }
       if (a.ws && a.ws !== ws) { try { a.ws.close(4000, 'aberta em outro aparelho'); } catch {} }
       a.ws = ws; a.nome = nome;
       this.enviar(ws, { t: 'estado', modo: this.modo, pagina: this.pagina, exercicio: this.exercicio, profOnline: !!this.prof });
@@ -101,17 +107,17 @@ export class Sala {
       case 'pagina': this.pagina = msg.pagina || null; break;
       case 'add': if (this.pagina && msg.traco) this.pagina.tracos.push(msg.traco); break;
       case 'vivo': case 'laser': break; // só repassa
+      case 'chave': // o professor gerou um QR Code novo: os links antigos param de valer para quem ainda não entrou
+        this.chave = String(msg.chave || '').slice(0, 40) || null; this.ctx.storage.put('chave', this.chave); return;
       case 'exercicio':
-        const mesmo = msg.pagina?.eid && this.exercicio?.eid === msg.pagina.eid; // o professor reconectou: nada muda
         this.exercicio = msg.pagina || null; this.modo = this.exercicio ? 'exercicio' : 'aula';
-        if (this.exercicio && !mesmo) for (const a of this.alunos.values()) a.pagina = null; // cada exercício começa limpo
         this.paraAlunos({ t: 'estado', modo: this.modo, pagina: this.pagina, exercicio: this.exercicio, profOnline: true });
         return;
       case 'encerrar':
         this.paraAlunos({ t: 'encerrada' });
         for (const a of this.alunos.values()) try { a.ws?.close(1000, 'encerrada'); } catch {}
-        this.alunos.clear(); this.pagina = this.exercicio = null; this.modo = 'aula'; this.token = null;
-        this.ctx.storage.delete('token');
+        this.alunos.clear(); this.pagina = this.exercicio = null; this.modo = 'aula'; this.token = this.chave = null; this.admitidos.clear();
+        this.ctx.storage.deleteAll();
         try { this.prof?.close(1000, 'encerrada'); } catch {}
         this.prof = null;
         return;
@@ -120,12 +126,13 @@ export class Sala {
     if (this.modo === 'aula' && cru.length <= LIMITE) this.paraAlunos(null, cru);
   }
 
-  doAluno(id, msg, cru) {
+  doAluno(id, msg, cru) { // anotações do aluno: cada página (pid) tem a sua camada, só dele e do professor
     const a = this.alunos.get(id); if (!a) return;
-    if (this.modo !== 'exercicio') return;
-    if (msg.t === 'pagina') a.pagina = msg.pagina || null;
-    else if (msg.t === 'add') { if (!a.pagina) a.pagina = { tracos: [] }; a.pagina.tracos.push(msg.traco); }
+    const pid = String(msg.pid || '').slice(0, 60); if (!pid) return;
+    if (msg.t === 'pagina') a.camadas.set(pid, msg.pagina?.tracos || []);
+    else if (msg.t === 'add') { if (!a.camadas.has(pid)) a.camadas.set(pid, []); a.camadas.get(pid).push(msg.traco); }
     else if (msg.t !== 'vivo') return;
+    if (a.camadas.size > 300) a.camadas.delete(a.camadas.keys().next().value);
     if (this.prof && cru.length <= LIMITE) this.enviar(this.prof, { t: 'aluno', id, op: msg });
   }
 

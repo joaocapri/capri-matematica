@@ -99,11 +99,13 @@ function opcoes(t, k) { // os mesmos estilos do caderno
   switch (t.e || 'tinteiro') {
     case 'esfero': return { size: s, thinning: pen ? 0.18 : 0.1, smoothing: 0.62, streamline: 0.5, simulatePressure: false, last: true };
     case 'nanquim': return { size: s, thinning: 0, smoothing: 0.55, streamline: 0.5, simulatePressure: false, last: true };
-    case 'pincel': return { size: s * 2.3, thinning: t.forma ? 0.3 : 0.86, smoothing: 0.62, streamline: t.forma ? 0 : 0.42, simulatePressure: !pen && !t.forma,
-      start: { taper: pen || t.forma ? 0 : s * 6, cap: true }, end: { taper: t.forma ? 0 : s * 9, cap: true }, last: true };
-    default: return { size: s, thinning: pen ? 0.58 : 0.45, smoothing: 0.5, streamline: 0.42, simulatePressure: !pen, last: true };
+    // pincel e tinteiro: traço liso de caneta (pressão suavizada na captura, curva de resposta macia e contorno bem alisado)
+    case 'pincel': return { size: s * 2.3, thinning: t.forma ? 0.3 : 0.68, smoothing: 0.78, streamline: t.forma ? 0 : 0.55, easing: suave, simulatePressure: !pen && !t.forma,
+      start: { taper: pen || t.forma ? 0 : s * 5, cap: true }, end: { taper: t.forma ? 0 : s * 8, cap: true }, last: true };
+    default: return { size: s, thinning: pen ? 0.42 : 0.38, smoothing: 0.75, streamline: 0.55, easing: suave, simulatePressure: !pen, last: true };
   }
 }
+const suave = (t) => Math.sin((t * Math.PI) / 2);
 function tracoExemplo(f, e, s, c, w, h) {
   const p = [];
   for (let i = 0; i <= 40; i++) { const u = i / 40; p.push([w * 0.08 + u * w * 0.84, h / 2 + Math.sin(u * Math.PI * 2) * h * 0.24, 0.25 + 0.6 * Math.sin(u * Math.PI)]); }
@@ -320,6 +322,7 @@ function desenhar() {
   if (!aula) return;
   const ctx = tela.getContext('2d');
   ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = MESA; ctx.fillRect(0, 0, tela.width, tela.height);
+  renumerar();
   const passo = PW * V.z + GAP_PG;
   for (const i of [aula.atual - 1, aula.atual, aula.atual + 1]) {
     const pg = aula.paginas[i]; if (!pg) continue;
@@ -398,7 +401,22 @@ function desenharQuestao(ctx, o, escala, mini) {
     ctx.fillStyle = '#8a84a6'; ctx.font = `600 ${Math.min(22, w / 14)}px 'DM Sans', system-ui, sans-serif`; ctx.textBaseline = 'middle';
     ctx.fillText(ent?.erro ? `Questão ${o.n} (${o.aula}) não abriu` : `Questão ${o.n} · ${NOMES[o.lista]} ${o.aula}`, x + 16, y + Math.min(h / 2, 30));
   }
+  if (ent?.cv && o.num != null) rotuloQuestao(ctx, o);
   ctx.strokeStyle = '#d9d4e8'; ctx.lineWidth = 1; ctx.strokeRect(x, y, w, h);
+  ctx.restore();
+}
+/* a questão entra com o número da aula (1, 2, 3…), não com o da lista: o selo original é coberto por um novo.
+   Medidas em pontos do PDF do caderno: o recorte tem 527,28 de largura e o selo ocupa a faixa de 0 a 36 do topo. */
+const CW_Q = 527.28, SELO = { faixa: 36, x: 9, y: 8.5, h: 23, fonte: 14 };
+function rotuloQuestao(ctx, o) {
+  const k = o.w / CW_Q, txt = `Questão ${o.num}`;
+  ctx.save(); ctx.translate(o.x, o.y); ctx.scale(k, k);
+  ctx.fillStyle = '#fff'; ctx.fillRect(1, 1, CW_Q - 2, SELO.faixa);
+  ctx.font = `700 ${SELO.fonte}px 'Space Grotesk', 'DM Sans', system-ui, sans-serif`; ctx.textBaseline = 'middle';
+  const w = ctx.measureText(txt).width + 14;
+  ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(SELO.x, SELO.y, w, SELO.h, 5); else ctx.rect(SELO.x, SELO.y, w, SELO.h);
+  ctx.lineWidth = 1.3; ctx.strokeStyle = '#4a27b7'; ctx.stroke();
+  ctx.fillStyle = '#4a27b7'; ctx.fillText(txt, SELO.x + 7, SELO.y + SELO.h / 2 + 0.5);
   ctx.restore();
 }
 
@@ -536,7 +554,7 @@ function ligarEntrada() {
       try { tela.setPointerCapture(e.pointerId); } catch {}
       if (atual?.pen) return; // a palma da mão não atrapalha quem escreve com a caneta
       if (toques.size === 1) {
-        if (ALUNO && av.dedo && !av.leitura) { iniciarCaneta(e, p); return; } // aluno sem caneta: o dedo escreve
+        if (ALUNO && av.dedo) { iniciarCaneta(e, p); return; } // aluno sem caneta: o dedo escreve
         iniciarToque(e.pointerId, p); return;
       }
       if (atual) cancelarTraco();
@@ -545,7 +563,6 @@ function ligarEntrada() {
     }
     if (e.pointerType === 'mouse' && e.button !== 0) { e.preventDefault(); tela.setPointerCapture(e.pointerId); gesto = { tipo: 'arrasto', id: e.pointerId, ult: p }; return; }
     if (atual) return;
-    if (ALUNO && av.leitura) return; // acompanhando a aula: só olha
     if (gesto && gesto.tipo !== 'pinca') { soltarGesto(false); }
     e.preventDefault(); tela.setPointerCapture(e.pointerId);
     iniciarCaneta(e, p);
@@ -599,7 +616,7 @@ function iniciarCaneta(e, p) {
   if (f === 'borracha') { atual = { pid: e.pointerId, pen, apagou: false, antes: foto(pagina()), cursor: p }; apagar(w); pedirVivo(); return; }
   if (f === 'laco') { atual = { pid: e.pointerId, pen, laco: [w] }; pedirVivo(); return; }
   atual = { pid: e.pointerId, pen, ancora: w, timer: 0,
-    traco: { id: novoId(), f, e: f === 'marca' ? 'marca' : pref.estilo, c: pref.cor[f], s: pref.esp[f], pen, p: [[w[0], w[1], pressao(e)]] }, enviados: 0 };
+    traco: { id: novoId(), f, e: f === 'marca' ? 'marca' : pref.estilo, c: pref.cor[f], s: pref.esp[f], pen, p: [[w[0], w[1], pressao(e)]] }, enviados: 0, pp: pressao(e) };
   armarForma(); pedirVivo();
 }
 function moverCaneta(evs, p) {
@@ -609,7 +626,12 @@ function moverCaneta(evs, p) {
   if (a.laco) { for (const c of evs) a.laco.push(mundo(local(c))); pedirVivo(); return; }
   if (a.traco) {
     if (a.travado) return;
-    for (const c of evs) { const w = mundo(local(c)); a.traco.p.push([w[0], w[1], pressao(c)]); }
+    for (const c of evs) { // pressão suavizada: a mão treme, a tinta não
+      const w = mundo(local(c)), u = a.traco.p[a.traco.p.length - 1];
+      if (Math.hypot(w[0] - u[0], w[1] - u[1]) < 0.35 / V.z) continue; // pontos colados só criam serrilhado
+      a.pp = a.pp == null ? pressao(c) : a.pp * 0.72 + pressao(c) * 0.28;
+      a.traco.p.push([w[0], w[1], Math.round(a.pp * 1000) / 1000]);
+    }
     const u = a.traco.p[a.traco.p.length - 1];
     if (dist(u, a.ancora) > 3 / V.z) { a.ancora = u; armarForma(); }
     pedirVivo(); aoVivo(a); return;
@@ -851,7 +873,7 @@ function miniatura(pg, larg, a = aula) {
   return cv;
 }
 function abrirMapa() {
-  fecharPops(); limparSel();
+  fecharPops(); limparSel(); renumerar();
   const g = $('#ma-mapa-grade'); g.innerHTML = '';
   aula.paginas.forEach((pg, i) => {
     const d = document.createElement('div'); d.className = 'ma-mini'; if (i === aula.atual) d.setAttribute('aria-current', 'true');
@@ -953,36 +975,47 @@ async function inserirQuestao(aulaId, lista, n) {
   let w = 620, h = w * info.prop;
   if (h > PH - 50) { h = PH - 50; w = h / info.prop; }
   let x = 30, y = 25;
-  if (pg.objs.length) { // ao lado da última, se couber; senão, um pouco abaixo e à direita
+  if (pg.objs.length) { // embaixo da última, se couber; senão ao lado; senão um pouco deslocada
     const u = pg.objs[pg.objs.length - 1];
-    if (u.x + u.w + 30 + w <= PW - 20) { x = u.x + u.w + 30; y = u.y; } else { x = Math.min(u.x + 36, PW - w - 20); y = Math.min(u.y + 36, PH - h - 20); }
+    if (u.y + u.h + 24 + h <= PH - 15) { x = u.x; y = u.y + u.h + 24; }
+    else if (u.x + u.w + 30 + w <= PW - 20) { x = u.x + u.w + 30; y = 25; }
+    else { x = Math.min(u.x + 36, PW - w - 20); y = Math.min(u.y + 36, PH - h - 20); }
   }
   const o = { id: novoId(), tipo: 'q', aula: aulaId, lista, n, x, y, w: Math.round(w), h: Math.round(h) };
   pg.objs.push(o); registrar(pg, antes);
   fecharInserir(); selecionar([], [o]);
-  aviso(`Questão ${n} inserida. Arraste para mover; a bolinha no canto muda o tamanho.`, 2600);
+  renumerar();
+  aviso(`Questão ${o.num} inserida. Arraste para mover; a bolinha no canto muda o tamanho.`, 2600);
 }
 
 /* ---------- exportar a aula em PDF (vetorial: as questões entram como PDF, a escrita como desenho) ---------- */
 async function exportar() {
-  fecharPops(); aviso('Montando o PDF…', 60000);
+  fecharPops(); renumerar();
+  let folhas = aula.paginas.map((pg) => ({ objs: pg.objs, tracos: pg.tracos }));
+  const dosAlunos = sala ? aula.paginas.flatMap(folhasDosAlunos).length + folhasDeExercicios().length : 0;
+  if (dosAlunos && confirm(`Incluir no PDF as anotações e resoluções dos alunos (${dosAlunos} página${dosAlunos > 1 ? 's' : ''} a mais)?`)) {
+    folhas = aula.paginas.flatMap((pg) => [{ objs: pg.objs, tracos: pg.tracos }, ...folhasDosAlunos(pg)]).concat(folhasDeExercicios());
+  }
+  aviso('Montando o PDF…', 60000);
   try {
-    const { PDFDocument, rgb, BlendMode } = await import('/assets/vendor/pdf-lib.esm.min.js');
+    const { PDFDocument, rgb, BlendMode, StandardFonts } = await import('/assets/vendor/pdf-lib.esm.min.js');
     const out = await PDFDocument.create(), s = 841.89 / PW, H = PH * s;
+    const negrito = await out.embedFont(StandardFonts.HelveticaBold);
     const cor = (h) => rgb(parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255);
     const fontesPdf = new Map();
     const docDe = async (o) => { const k = o.aula + '|' + o.lista; if (!fontesPdf.has(k)) { const f = await fonte(o.aula, o.lista); fontesPdf.set(k, PDFDocument.load(await (await fetch(f.url)).arrayBuffer())); } return fontesPdf.get(k); };
-    for (const pg of aula.paginas) {
+    for (const folha of folhas) {
+      const papelF = folha.papel || aula.papel;
       const page = out.addPage([841.89, H]);
       page.drawRectangle({ x: 0, y: 0, width: 841.89, height: H, color: cor(PAPEL) });
       const Y = (y) => H - y * s;
-      if (aula.papel === 'pontilhado') { for (let y = PASSO; y < PH; y += PASSO) for (let x = PASSO; x < PW; x += PASSO) page.drawCircle({ x: x * s, y: Y(y), size: 0.75, color: cor(COR_PAPEL.ponto) }); }
-      else if (aula.papel === 'quadriculado' || aula.papel === 'pautado') {
-        const p = aula.papel === 'pautado' ? 32 : PASSO, cl = cor(aula.papel === 'pautado' ? COR_PAPEL.pauta : COR_PAPEL.linha);
-        if (aula.papel === 'quadriculado') for (let x = p; x < PW; x += p) page.drawLine({ start: { x: x * s, y: 0 }, end: { x: x * s, y: H }, thickness: 0.5, color: cl });
-        for (let y = aula.papel === 'pautado' ? 64 : p; y < PH; y += p) page.drawLine({ start: { x: 0, y: Y(y) }, end: { x: 841.89, y: Y(y) }, thickness: 0.5, color: cl });
+      if (papelF === 'pontilhado') { for (let y = PASSO; y < PH; y += PASSO) for (let x = PASSO; x < PW; x += PASSO) page.drawCircle({ x: x * s, y: Y(y), size: 0.75, color: cor(COR_PAPEL.ponto) }); }
+      else if (papelF === 'quadriculado' || papelF === 'pautado') {
+        const p = papelF === 'pautado' ? 32 : PASSO, cl = cor(papelF === 'pautado' ? COR_PAPEL.pauta : COR_PAPEL.linha);
+        if (papelF === 'quadriculado') for (let x = p; x < PW; x += p) page.drawLine({ start: { x: x * s, y: 0 }, end: { x: x * s, y: H }, thickness: 0.5, color: cl });
+        for (let y = papelF === 'pautado' ? 64 : p; y < PH; y += p) page.drawLine({ start: { x: 0, y: Y(y) }, end: { x: 841.89, y: Y(y) }, thickness: 0.5, color: cl });
       }
-      for (const o of pg.objs) {
+      for (const o of folha.objs) {
         page.drawRectangle({ x: o.x * s, y: Y(o.y + o.h), width: o.w * s, height: o.h * s, color: rgb(1, 1, 1), borderColor: cor('#d9d4e8'), borderWidth: 0.6 });
         try {
           const doc = await docDe(o), { lista: ps } = await pecas(o.aula, o.lista, o.n), larg = ps[0].c[2] - ps[0].c[0], k = o.w / larg;
@@ -994,11 +1027,23 @@ async function exportar() {
             page.drawPage(emb, { x: o.x * s, y: Y(y + h), width: o.w * s, height: h * s });
             y += h + GAP_PECA * k;
           }
+          if (o.num != null) { // o selo com o número da aula
+            const kq = (o.w / CW_Q) * s, txt = `Questão ${o.num}`, tam = SELO.fonte * 0.92 * kq, tw = negrito.widthOfTextAtSize(txt, tam);
+            const X0 = o.x * s, Y0 = Y(o.y);
+            page.drawRectangle({ x: X0 + 1 * kq, y: Y0 - SELO.faixa * kq, width: (CW_Q - 2) * kq, height: (SELO.faixa - 1) * kq, color: rgb(1, 1, 1) });
+            page.drawRectangle({ x: X0 + SELO.x * kq, y: Y0 - (SELO.y + SELO.h) * kq, width: tw + 14 * kq, height: SELO.h * kq, borderColor: cor('#4a27b7'), borderWidth: 1.1 * kq });
+            page.drawText(txt, { x: X0 + (SELO.x + 7) * kq, y: Y0 - (SELO.y + SELO.h / 2 + 4.6) * kq, size: tam, font: negrito, color: cor('#4a27b7') });
+          }
         } catch (e) { console.warn(e); }
       }
-      for (const t of pg.tracos) {
+      for (const t of folha.tracos) {
         const path = caminho(contorno(t, s)); if (!path) continue;
         page.drawSvgPath(path, { x: 0, y: H, color: cor(t.c), borderWidth: 0, ...(t.f === 'marca' ? { opacity: 0.38, blendMode: BlendMode.Multiply } : {}) });
+      }
+      if (folha.rotulo) { // de quem são as anotações
+        const txt = folha.rotulo.normalize('NFC').replace(/[^\x20-\xff]/g, '?'), tam = 10, tw = negrito.widthOfTextAtSize(txt, tam);
+        page.drawRectangle({ x: 841.89 - tw - 26, y: H - 26, width: tw + 16, height: 18, color: cor('#211946') });
+        page.drawText(txt, { x: 841.89 - tw - 18, y: H - 20.5, size: tam, font: negrito, color: cor('#d3fc61') });
       }
     }
     const bytes = await out.save();
@@ -1156,30 +1201,42 @@ class Conexao {
   fechar() { this.fechada = true; clearTimeout(this.timer); clearInterval(this.ping); try { this.ws?.close(1000); } catch {} }
   get aberta() { return this.ws?.readyState === 1; }
 }
-let sala = null; // professor: { codigo, token, con, online, alunos: Map, exercicio, ultimo }
-const av = { con: null, codigo: '', nome: '', id: '', modo: 'aula', exercicio: null, profOnline: false, leitura: true }; // aluno
+let sala = null; // professor: { codigo, token, chave, con, online, alunos: Map, exercicio, exercicios: [] }
+const av = { con: null, codigo: '', chave: '', nome: '', id: '', modo: 'aula', exercicio: null, profOnline: false, dedo: false, notas: {}, prof: null }; // aluno
 const conexao = () => (ALUNO ? av.con : sala?.con);
-function transmitir(m) { const c = conexao(); if (!c || (ALUNO && !av.exercicio)) return; c.enviar(m); }
+function transmitir(m) { conexao()?.enviar(m); }
 const cabecaTraco = (t) => ({ f: t.f, e: t.e, c: t.c, s: t.s, pen: t.pen });
-const paginaEnvio = (pg) => ({ id: pg.id, papel: aula.papel, objs: pg.objs, tracos: pg.tracos });
+function renumerar() { // as questões da aula são numeradas na ordem em que aparecem: 1, 2, 3…
+  if (ALUNO || !aula?.paginas) return;
+  let n = 0; for (const pg of aula.paginas) for (const o of pg.objs) o.num = ++n;
+}
+const paginaEnvio = (pg) => { renumerar(); return { id: pg.id, papel: aula.papel, objs: pg.objs.map((o) => ({ ...o })), tracos: pg.tracos }; };
+const pidAluno = () => (av.exercicio ? 'ex-' + av.exercicio.eid : av.prof?.id || 'espera');
 let timerPag = 0;
 function mudouPagina(op) {
+  if (!ALUNO && !$('#ma-resol')?.hidden) redesenharResol();
   if (!aula || !conexao()) return;
-  if (ALUNO && !av.exercicio) return;
+  if (ALUNO) {
+    guardarTrabalho();
+    const pid = pidAluno();
+    if (op) { transmitir({ ...op, pid }); return; }
+    clearTimeout(timerPag); timerPag = setTimeout(() => transmitir({ t: 'pagina', pid, pagina: { tracos: pagina().tracos } }), 80);
+    return;
+  }
   if (op) { transmitir(op); return; }
   clearTimeout(timerPag);
-  timerPag = setTimeout(() => { if (aula) transmitir({ t: 'pagina', pagina: ALUNO ? { tracos: pagina().tracos } : paginaEnvio(pagina()) }); }, 80);
+  timerPag = setTimeout(() => { if (aula?.paginas) transmitir({ t: 'pagina', pagina: paginaEnvio(pagina()) }); }, 80);
 }
 function aoVivo(a, fim) { // manda o traço (ou o laser) enquanto ele é escrito, aos pedaços
-  if (!conexao() || (ALUNO && !av.exercicio)) return;
+  if (!conexao()) return;
   if (fim) { clearTimeout(a.timerVivo); enviarVivo(a, true); return; }
   if (a.timerVivo) return;
   a.timerVivo = setTimeout(() => { a.timerVivo = 0; if (atual === a) enviarVivo(a); }, 45);
 }
 function enviarVivo(a, fim) {
-  if (a.laser) { const pts = a.laser.pts.slice(a.enviados).map(([x, y]) => [x, y]); a.enviados = a.laser.pts.length; transmitir({ t: 'laser', id: a.laser.id, p: pts, fim: !!fim }); return; }
+  if (a.laser) { if (ALUNO) return; const pts = a.laser.pts.slice(a.enviados).map(([x, y]) => [x, y]); a.enviados = a.laser.pts.length; transmitir({ t: 'laser', id: a.laser.id, p: pts, fim: !!fim }); return; }
   const t = a.traco; if (!t) return;
-  transmitir({ t: 'vivo', id: t.id, ini: a.enviados ? undefined : cabecaTraco(t), p: t.p.slice(a.enviados) }); a.enviados = t.p.length;
+  transmitir({ t: 'vivo', id: t.id, pid: ALUNO ? pidAluno() : undefined, ini: a.enviados ? undefined : cabecaTraco(t), p: t.p.slice(a.enviados) }); a.enviados = t.p.length;
 }
 function aplicarVivo(mapa, m) {
   if (m.fim) { mapa.delete(m.id); return; }
@@ -1198,23 +1255,53 @@ let quadroImg = 0;
 function imagensMudaram() { pedirQuadro(); if (!quadroImg) quadroImg = requestAnimationFrame(() => { quadroImg = 0; if (!ALUNO && !$('#ma-resol').hidden) redesenharResol(); }); }
 
 /* --- professor --- */
-function abrirSala(codigo = gerarCodigo(), token = gerarToken(), exercicio = null) {
-  sala = { codigo, token, con: null, online: false, alunos: new Map(), exercicio, ultimo: null };
+const linkEntrada = () => `${location.origin}/ao-vivo/#s=${sala.codigo}.${sala.chave}`;
+function abrirSala(salvo) {
+  const novo = !salvo;
+  sala = { codigo: salvo?.codigo || gerarCodigo(), token: salvo?.token || gerarToken(), chave: salvo?.chave || gerarToken().slice(0, 12), con: null, online: false,
+    alunos: new Map(), exercicio: salvo?.exercicio || null, exercicios: salvo?.exercicios || [] };
   guardarSala();
-  sala.con = new Conexao(codigo, () => ({ t: 'ola', papel: 'prof', token }), recebeProf, (ok) => { if (!sala) return; sala.online = ok; pintarSala(); });
+  sala.con = new Conexao(sala.codigo, () => ({ t: 'ola', papel: 'prof', token: sala.token, chave: sala.chave }), recebeProf, (ok) => { if (!sala) return; sala.online = ok; pintarSala(); });
   pintarSala();
+  if (novo) mostrarQR(false);
 }
-function guardarSala() { try { if (sala) localStorage.setItem('ma:sala', JSON.stringify({ codigo: sala.codigo, token: sala.token, exercicio: sala.exercicio })); else localStorage.removeItem('ma:sala'); } catch {} }
+function guardarSala() {
+  try {
+    if (sala) localStorage.setItem('ma:sala', JSON.stringify({ codigo: sala.codigo, token: sala.token, chave: sala.chave, exercicio: sala.exercicio, exercicios: sala.exercicios.slice(-20) }));
+    else localStorage.removeItem('ma:sala');
+  } catch {}
+}
 function fecharSala() {
   if (!sala) return;
-  if (!confirm('Fechar a sala? Os alunos saem da aula ao vivo.')) return;
+  if (!confirm('Fechar a sala? Os alunos saem da aula ao vivo e o QR Code deixa de valer.')) return;
   sala.con.enviar({ t: 'encerrar' }); const c = sala.con; setTimeout(() => c.fechar(), 300);
-  sala = null; guardarSala(); pintarSala(); fecharResol();
+  sala = null; guardarSala(); pintarSala(); fecharResol(); fecharQR();
+}
+/* QR Code de entrada: cada vez que é mostrado, nasce uma chave nova (quem já entrou continua; links antigos param de valer) */
+let qrLib = null;
+async function mostrarQR(trocar = true) {
+  if (!sala) return; fecharPops();
+  if (trocar) { sala.chave = gerarToken().slice(0, 12); guardarSala(); sala.con.enviar({ t: 'chave', chave: sala.chave }); }
+  qrLib ||= (await import('/assets/vendor/qrcode.mjs')).default;
+  const q = qrLib(0, 'M'); q.addData(linkEntrada()); q.make();
+  const n = q.getModuleCount(), cv = $('#ma-qr-cv'), px = Math.min(520, Math.round(Math.min(innerWidth, innerHeight) * 0.6)), r = Math.min(devicePixelRatio || 1, 2);
+  const m = 3, cel = (px * r) / (n + 2 * m);
+  cv.width = cv.height = Math.round(px * r); cv.style.width = cv.style.height = px + 'px';
+  const ctx = cv.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cv.width, cv.height); ctx.fillStyle = '#211946';
+  for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) if (q.isDark(y, x)) ctx.fillRect(Math.floor((x + m) * cel), Math.floor((y + m) * cel), Math.ceil(cel), Math.ceil(cel));
+  $('#ma-qr').hidden = false;
+}
+function fecharQR() { const el = $('#ma-qr'); if (el) el.hidden = true; }
+async function copiarLink() {
+  if (!sala) return;
+  const url = linkEntrada();
+  try { if (navigator.share && matchMedia('(pointer:coarse)').matches) { await navigator.share({ url, title: 'Aula ao vivo' }); return; } } catch (e) { if (e?.name === 'AbortError') return; }
+  try { await navigator.clipboard.writeText(url); aviso('Link de entrada copiado. Mande para o aluno.', 2400); } catch { prompt('Copie o link de entrada:', url); }
 }
 function recebeProf(m) {
   if (!sala) return;
   if (m.t === 'bemvindo') {
-    if (aula) sala.con.enviar({ t: 'pagina', pagina: paginaEnvio(pagina()) });
+    if (aula?.paginas) sala.con.enviar({ t: 'pagina', pagina: paginaEnvio(pagina()) });
     if (sala.exercicio) sala.con.enviar({ t: 'exercicio', pagina: sala.exercicio });
     return;
   }
@@ -1227,14 +1314,15 @@ function recebeProf(m) {
     return;
   }
   if (m.t === 'aluno') {
-    const a = alunoProf(m.id), op = m.op || {};
-    if (op.t === 'pagina') { a.tracos = op.pagina?.tracos || []; a.vivos.clear(); }
-    else if (op.t === 'add' && op.traco) { a.tracos.push(op.traco); a.vivos.delete(op.traco.id); }
-    else if (op.t === 'vivo') aplicarVivo(a.vivos, op);
+    const a = alunoProf(m.id), op = m.op || {}, pid = op.pid;
+    if (!pid) return;
+    if (op.t === 'pagina') { a.camadas.set(pid, op.pagina?.tracos || []); for (const [k, t] of a.vivos) if (t.pid === pid) a.vivos.delete(k); }
+    else if (op.t === 'add' && op.traco) { if (!a.camadas.has(pid)) a.camadas.set(pid, []); a.camadas.get(pid).push(op.traco); a.vivos.delete(op.traco.id); }
+    else if (op.t === 'vivo') { aplicarVivo(a.vivos, op); const t = a.vivos.get(op.id); if (t) t.pid = pid; }
     atualizarResol(m.id);
   }
 }
-function alunoProf(id) { let a = sala.alunos.get(id); if (!a) { a = { nome: 'Aluno', online: true, tracos: [], vivos: new Map() }; sala.alunos.set(id, a); } return a; }
+function alunoProf(id) { let a = sala.alunos.get(id); if (!a) { a = { nome: 'Aluno', online: true, camadas: new Map(), vivos: new Map() }; sala.alunos.set(id, a); } return a; }
 function pintarSala() {
   const btn = $('#ma-sala-btn'); if (!btn) return;
   const n = sala ? [...sala.alunos.values()].filter((a) => a.online).length : 0;
@@ -1242,47 +1330,53 @@ function pintarSala() {
   const badge = $('#ma-turma-n'); badge.hidden = !sala || !n; badge.textContent = n;
   $('#ma-sala-fechada').hidden = !!sala; $('#ma-sala-aberta').hidden = !sala;
   if (!sala) return;
-  $('#ma-sala-codigo').textContent = sala.codigo;
-  $('#ma-sala-con').textContent = sala.online ? (sala.exercicio ? 'Exercício em andamento: cada aluno resolve na própria cópia.' : 'Ao vivo: os alunos veem a página em que você está.') : 'Conectando ao servidor…';
-  $('#ma-ex-propor').hidden = !!sala.exercicio; $('#ma-ex-ver').hidden = !sala.exercicio && !sala.ultimo; $('#ma-ex-fim').hidden = !sala.exercicio;
-  $('#ma-ex-ver').textContent = sala.exercicio ? 'Ver resoluções ao vivo' : 'Ver resoluções do último exercício';
+  $('#ma-sala-con').textContent = !sala.online ? 'Conectando ao servidor…' : sala.exercicio ? 'Exercício em andamento: cada aluno resolve na própria cópia.' : 'Ao vivo: os alunos veem a sua página e podem anotar por cima (só eles e você veem).';
+  $('#ma-ex-propor').hidden = !!sala.exercicio; $('#ma-ex-fim').hidden = !sala.exercicio;
   const lista = [...sala.alunos.values()].sort((a, b) => b.online - a.online || a.nome.localeCompare(b.nome));
   $('#ma-sala-n').textContent = n ? `${n} aluno${n > 1 ? 's' : ''} na sala` : 'Ninguém entrou ainda';
   $('#ma-sala-alunos').innerHTML = lista.map((a) => `<li class="${a.online ? '' : 'off'}">${esc(a.nome)}</li>`).join('');
 }
 function proporExercicio() {
   if (!sala || !aula) return;
-  const pg = pagina();
-  sala.exercicio = { eid: novoId(), papel: aula.papel, objs: pg.objs.map((o) => ({ ...o })), tracos: pg.tracos.slice() };
-  for (const a of sala.alunos.values()) { a.tracos = []; a.vivos.clear(); }
+  const pg = paginaEnvio(pagina());
+  sala.exercicio = { eid: novoId(), papel: aula.papel, objs: pg.objs, tracos: pg.tracos.slice(), pagina: aula.atual + 1 };
+  sala.exercicios.push(sala.exercicio);
   sala.con.enviar({ t: 'exercicio', pagina: sala.exercicio }); guardarSala(); pintarSala();
   fecharPops(); abrirResol();
-  aviso('Exercício enviado. As resoluções aparecem aqui enquanto os alunos escrevem.', 3000);
+  aviso('Exercício enviado. Cada aluno resolve na própria cópia; você acompanha aqui.', 3000);
 }
 function encerrarExercicio() {
   if (!sala?.exercicio) return;
-  sala.ultimo = sala.exercicio; sala.exercicio = null;
+  sala.exercicio = null;
   sala.con.enviar({ t: 'exercicio', pagina: null }); guardarSala(); pintarSala();
+  if (!$('#ma-resol').hidden) montarResol();
   aviso('Exercício encerrado. Os alunos voltam a acompanhar a sua página.', 2600);
 }
-/* resoluções dos alunos, ao vivo */
+/* o que cada aluno está vendo e escrevendo, ao vivo */
 let resolAberta = null; // id do aluno na tela grande
 const cartoes = new Map();
-const exAtual = () => sala?.exercicio || sala?.ultimo;
-function paginaDoAluno(a) { const ex = exAtual(); return { id: 'r', objs: ex?.objs || [], fixos: ex?.tracos || [], tracos: a.tracos, extras: [...a.vivos.values()] }; }
+function vistaDoAluno(a) { // { base, pid }: a página que o aluno tem na frente agora
+  if (sala.exercicio) return { base: sala.exercicio, pid: 'ex-' + sala.exercicio.eid, ex: true };
+  if (!aula?.paginas) return null;
+  return { base: paginaEnvio(pagina()), pid: pagina().id, ex: false };
+}
+function paginaDoAluno(a) {
+  const v = vistaDoAluno(a); if (!v) return null;
+  return { id: 'r', objs: v.base.objs, fixos: v.base.tracos, tracos: a.camadas.get(v.pid) || [], extras: [...a.vivos.values()].filter((t) => t.pid === v.pid) };
+}
 function garantirImagens(objs) { return Promise.all(objs.map((o) => imagemQuestao(o.aula, o.lista, o.n, 800).then((cv) => { const k = `${o.aula}|${o.lista}|${o.n}`; if (!prontas.get(k)?.cv) prontas.set(k, { P: 800, cv }); }).catch(() => {}))); }
 function abrirResol() {
   if (!sala) return; fecharPops();
   $('#ma-resol').hidden = false; $('#ma-resol-grande').hidden = true; resolAberta = null;
   montarResol();
-  garantirImagens(exAtual()?.objs || []).then(redesenharResol);
+  garantirImagens(sala.exercicio?.objs || pagina()?.objs || []).then(redesenharResol);
 }
 function fecharResol() { const r = $('#ma-resol'); if (r) r.hidden = true; resolAberta = null; cartoes.clear(); pedirQuadro(); }
 function montarResol() {
   const g = $('#ma-resol-grade'); g.innerHTML = ''; cartoes.clear();
   const lista = [...sala.alunos].sort(([, a], [, b]) => a.nome.localeCompare(b.nome));
-  $('#ma-resol-info').textContent = sala.exercicio ? 'Ao vivo: o que cada aluno escreve aparece aqui na hora. Toque para ver grande.' : 'Exercício encerrado: estas são as resoluções que ficaram.';
-  if (!lista.length) { g.innerHTML = '<p class="ma-grade-msg">Ninguém entrou na sala ainda. Os alunos entram em matcomjoao.com/ao-vivo com o código ' + esc(sala.codigo) + '.</p>'; return; }
+  $('#ma-resol-info').textContent = sala.exercicio ? 'Exercício: a cópia de cada aluno, ao vivo. Toque para ver grande.' : `Página ${aula ? aula.atual + 1 : ''} com as anotações de cada aluno, ao vivo. Toque para ver grande.`;
+  if (!lista.length) { g.innerHTML = '<p class="ma-grade-msg">Ninguém entrou na sala ainda. Mostre o QR Code ou mande o link de entrada.</p>'; return; }
   for (const [id, a] of lista) {
     const b = document.createElement('button'); b.type = 'button'; b.className = 'ma-resol-card';
     const cv = document.createElement('canvas'), nome = document.createElement('b'); nome.textContent = a.nome;
@@ -1295,15 +1389,17 @@ function desenharNoCanvas(cv, pg, papelTipo, mini) {
   const r = Math.min(window.devicePixelRatio || 1, 2), w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
   cv.width = Math.round(w * r); cv.height = Math.round(h * r);
   const ctx = cv.getContext('2d'); ctx.fillStyle = MESA; ctx.fillRect(0, 0, cv.width, cv.height);
+  if (!pg) return;
   const m = mini ? 0 : 6, z = Math.min((w - 2 * m) / PW, (h - 2 * m) / PH), tx = (w - PW * z) / 2, ty = (h - PH * z) / 2;
   const salva = aula; aula = { papel: papelTipo || 'pontilhado' };
-  desenharPagina(ctx, pg, tx, ty, z, r, false, mini);
-  aula = salva;
+  try { desenharPagina(ctx, pg, tx, ty, z, r, false, mini); } finally { aula = salva; }
 }
+const papelVisto = () => sala?.exercicio?.papel || aula?.papel;
 function desenharCartao(id) {
   const c = cartoes.get(id), a = sala?.alunos.get(id); if (!c || !a) return;
-  c.b.classList.toggle('off', !a.online); c.b.classList.toggle('escrevendo', a.vivos.size > 0);
-  desenharNoCanvas(c.cv, paginaDoAluno(a), exAtual()?.papel, true);
+  const pg = paginaDoAluno(a);
+  c.b.classList.toggle('off', !a.online); c.b.classList.toggle('escrevendo', !!pg?.extras.length);
+  desenharNoCanvas(c.cv, pg, papelVisto(), true);
 }
 function redesenharResol() { if (!sala || $('#ma-resol').hidden) return; for (const id of cartoes.keys()) desenharCartao(id); if (resolAberta) desenharGrande(); }
 const pendentes = new Set(); let quadroResol = 0;
@@ -1312,50 +1408,82 @@ function atualizarResol(id) {
   pendentes.add(id);
   if (!quadroResol) quadroResol = requestAnimationFrame(() => { quadroResol = 0; for (const x of pendentes) { if (!cartoes.has(x)) { montarResol(); break; } desenharCartao(x); } pendentes.clear(); if (resolAberta && sala.alunos.has(resolAberta)) desenharGrande(); });
 }
-function abrirResolGrande(id) { resolAberta = id; $('#ma-resol-nome').textContent = sala.alunos.get(id)?.nome || ''; $('#ma-resol-grande').hidden = false; requestAnimationFrame(desenharGrande); }
-function desenharGrande() { const a = sala?.alunos.get(resolAberta); if (!a) return; desenharNoCanvas($('#ma-resol-cv'), paginaDoAluno(a), exAtual()?.papel, false); }
-function copiarResolucao() {
-  const a = sala?.alunos.get(resolAberta), ex = exAtual(); if (!a || !ex || !aula) return;
-  const i = inserirPagina(aula.atual, { tracos: [...ex.tracos, ...a.tracos], objs: ex.objs });
-  fecharResol(); irPara(i, true);
-  aviso(`Resolução de ${a.nome} copiada para a página ${i + 1}.`, 2600);
+function abrirResolGrande(id) {
+  resolAberta = id; $('#ma-resol-nome').textContent = sala.alunos.get(id)?.nome || '';
+  $('#ma-resol-copiar').textContent = sala.exercicio ? 'Copiar como página nova' : 'Trazer para a minha página';
+  $('#ma-resol-grande').hidden = false; requestAnimationFrame(desenharGrande);
+}
+function desenharGrande() { const a = sala?.alunos.get(resolAberta); if (!a) return; desenharNoCanvas($('#ma-resol-cv'), paginaDoAluno(a), papelVisto(), false); }
+const copiarTracos = (ts) => ts.map((t) => ({ ...t, id: novoId() }));
+function trazerDoAluno() {
+  const a = sala?.alunos.get(resolAberta), v = a && vistaDoAluno(a); if (!v || !aula?.paginas) return;
+  const seus = a.camadas.get(v.pid) || [];
+  if (v.ex) { // exercício: vira uma página nova da aula
+    const i = inserirPagina(aula.atual, { tracos: [...v.base.tracos, ...copiarTracos(seus)], objs: v.base.objs });
+    fecharResol(); irPara(i, true);
+    aviso(`Resolução de ${a.nome} copiada para a página ${i + 1}.`, 2600); return;
+  }
+  if (!seus.length) { aviso(`${a.nome} ainda não anotou nada nesta página.`); return; }
+  const pg = pagina(), antes = foto(pg); pg.tracos.push(...copiarTracos(seus)); registrar(pg, antes);
+  fecharResol(); pedirQuadro();
+  aviso(`As anotações de ${a.nome} vieram para a sua página.`, 2600);
+}
+/* no PDF: depois de cada página, as anotações de cada aluno; no fim, as resoluções dos exercícios */
+function folhasDosAlunos(pg) {
+  if (!sala) return [];
+  const out = [];
+  for (const a of sala.alunos.values()) { const ts = a.camadas.get(pg.id); if (ts?.length) out.push({ objs: pg.objs, tracos: [...pg.tracos, ...ts], rotulo: `Anotações de ${a.nome}` }); }
+  return out;
+}
+function folhasDeExercicios() {
+  if (!sala) return [];
+  const out = [];
+  for (const ex of sala.exercicios) for (const a of sala.alunos.values()) {
+    const ts = a.camadas.get('ex-' + ex.eid); if (ts?.length) out.push({ objs: ex.objs, tracos: [...ex.tracos, ...ts], papel: ex.papel, rotulo: `Exercício (página ${ex.pagina || '?'}) · resolução de ${a.nome}` });
+  }
+  return out;
 }
 
 /* --- aluno --- */
-function lerTrabalho() { try { return JSON.parse(localStorage.getItem('av:trab') || 'null'); } catch { return null; } }
-function guardarTrabalho() { if (!ALUNO || !av.exercicio || !aula) return; try { localStorage.setItem('av:trab', JSON.stringify({ codigo: av.codigo, eid: av.exercicio.eid, tracos: pagina().tracos })); } catch {} }
-function telaEntrar(erro) {
+const chaveNotas = () => 'av:notas:' + av.codigo;
+function lerNotas() { try { return JSON.parse(localStorage.getItem(chaveNotas()) || '{}'); } catch { return {}; } }
+function guardarTrabalho() {
+  if (!ALUNO || !aula) return;
+  av.notas[pidAluno()] = pagina().tracos;
+  try { localStorage.setItem(chaveNotas(), JSON.stringify(av.notas)); } catch {}
+}
+function telaEntrar(erro, limpar = true) {
   av.con?.fechar(); av.con = null; aula = null; remotos.clear();
-  try { sessionStorage.removeItem('av:sala'); } catch {}
+  if (limpar) try { sessionStorage.removeItem('av:sala'); } catch {}
   document.body.dataset.tela = 'entrar';
+  const tem = !!(av.codigo && av.chave);
+  $('#av-form').hidden = !tem || !!erro; $('#av-sem').hidden = tem && !erro;
   const e = $('#av-erro'); e.hidden = !erro; e.textContent = erro || '';
 }
-function entrarNaSala(codigo, nome) {
-  codigo = codigo.toUpperCase().replace(/[^A-Z0-9]/g, '');
-  if (!/^[A-Z0-9]{4,6}$/.test(codigo)) { telaEntrar('O código tem 4 letras ou números.'); return; }
-  nome = nome.trim().slice(0, 40); if (!nome) { telaEntrar('Escreva o seu nome.'); return; }
-  try { localStorage.setItem('av:nome', nome); sessionStorage.setItem('av:sala', codigo); } catch {}
-  Object.assign(av, { codigo, nome, modo: 'aula', exercicio: null, profOnline: false });
-  aula = { papel: 'pontilhado', atual: 0, paginas: [{ id: 'espera', objs: [], tracos: [] }] };
+function entrarNaSala(nome) {
+  nome = nome.trim().slice(0, 40); if (!nome) { $('#av-nome').focus(); return; }
+  try { localStorage.setItem('av:nome', nome); sessionStorage.setItem('av:sala', av.codigo + '.' + av.chave); } catch {}
+  Object.assign(av, { nome, modo: 'aula', exercicio: null, profOnline: false, prof: null });
+  av.notas = lerNotas();
+  aula = { papel: 'pontilhado', atual: 0, paginas: [{ id: 'espera', objs: [], fixos: [], tracos: [] }] };
   desfazer = []; refazer = []; botoes(); sel = null;
-  document.body.dataset.tela = 'aula'; definirLeitura(true); pintarAluno();
+  document.body.dataset.tela = 'aula'; pintarAluno();
   requestAnimationFrame(() => { medir(); V = vistaAjustada(); pedirQuadro(); });
-  av.con = new Conexao(codigo, () => ({ t: 'ola', papel: 'aluno', id: av.id, nome }), recebeAluno, (ok) => { av.online = ok; pintarAluno(); });
+  av.con = new Conexao(av.codigo, () => ({ t: 'ola', papel: 'aluno', id: av.id, nome, chave: av.chave }), recebeAluno, (ok) => { av.online = ok; pintarAluno(); });
 }
-function definirLeitura(sim) { av.leitura = sim; document.body.dataset.leitura = sim ? '1' : '0'; if (sim) { cancelarTraco(); limparSel(); } }
 function pintarAluno() {
   $('#av-con').dataset.on = av.online ? '1' : '0';
   $('#av-estado').textContent = av.exercicio ? 'Exercício: resolva nesta página' : 'Acompanhando a aula';
-  $('#av-sub').textContent = !av.online ? 'Conectando…' : !av.profOnline ? `Sala ${av.codigo} · o professor ainda não está na sala` : av.exercicio ? `Sala ${av.codigo} · o professor vê o que você escreve` : `Sala ${av.codigo} · ${av.nome}`;
+  $('#av-sub').textContent = !av.online ? 'Conectando…' : !av.profOnline ? 'O professor ainda não está na sala' : av.exercicio ? 'O professor vê o que você escreve' : 'Suas anotações: só você e o professor veem';
   document.body.dataset.modo = av.exercicio ? 'exercicio' : 'aula';
 }
-function mostrarPaginaProf(pg) {
-  pg ||= { id: 'espera', objs: [], tracos: [] };
-  const trocou = pagina().id !== pg.id;
-  aula.papel = pg.papel || 'pontilhado';
-  aula.paginas = [{ id: pg.id, objs: pg.objs || [], tracos: pg.tracos || [] }];
+function montarPaginaAluno(base, pid, ex) { // a página do professor (ou do exercício) por baixo, e as anotações do aluno por cima
+  const trocou = pagina().id !== pid;
+  if (trocou) { cancelarTraco(); limparSel(); desfazer = []; refazer = []; botoes(); }
+  aula.papel = base?.papel || 'pontilhado';
+  aula.paginas = [{ id: pid, objs: base?.objs || [], fixos: base?.tracos || [], tracos: trocou ? (av.notas[pid] || []) : pagina().tracos }];
   remotos.clear();
-  if (trocou) { V = vistaAjustada(); $('#ma-zoomtag').hidden = true; }
+  if (trocou) { V = vistaAjustada(); $('#ma-zoomtag').hidden = true; if (aula.paginas[0].tracos.length) av.con.enviar({ t: 'pagina', pid, pagina: { tracos: aula.paginas[0].tracos } }); }
   pedirQuadro();
 }
 function recebeAluno(m) {
@@ -1364,41 +1492,46 @@ function recebeAluno(m) {
     case 'encerrada': telaEntrar('O professor encerrou a aula ao vivo.'); return;
     case 'prof': av.profOnline = m.online; pintarAluno(); return;
     case 'estado': {
-      av.profOnline = m.profOnline;
+      av.profOnline = m.profOnline; av.prof = m.pagina || av.prof;
+      const tinha = av.exercicio;
       if (m.modo === 'exercicio' && m.exercicio) {
-        const ex = m.exercicio, novo = av.exercicio?.eid !== ex.eid, salvo = lerTrabalho();
-        const tracos = !novo ? pagina().tracos : salvo?.codigo === av.codigo && salvo?.eid === ex.eid ? salvo.tracos : [];
-        av.exercicio = ex; av.modo = 'exercicio';
-        aula.papel = ex.papel || 'pontilhado';
-        aula.paginas = [{ id: 'ex-' + ex.eid, objs: ex.objs || [], fixos: ex.tracos || [], tracos }];
-        remotos.clear();
-        if (novo) { desfazer = []; refazer = []; botoes(); V = vistaAjustada(); $('#ma-zoomtag').hidden = true; aviso('O professor propôs um exercício. Resolva nesta página: ele acompanha o que você escreve.', 4000); }
-        definirLeitura(false);
-        if (tracos.length) av.con.enviar({ t: 'pagina', pagina: { tracos } }); // reconectou: manda o que já tinha escrito
+        av.exercicio = m.exercicio; av.modo = 'exercicio';
+        montarPaginaAluno(m.exercicio, 'ex-' + m.exercicio.eid, true);
+        if (tinha?.eid !== m.exercicio.eid) aviso('O professor propôs um exercício. Resolva nesta página: ele acompanha o que você escreve.', 4000);
       } else {
-        const tinha = !!av.exercicio;
-        av.exercicio = null; av.modo = 'aula'; definirLeitura(true); mostrarPaginaProf(m.pagina);
-        if (tinha) { desfazer = []; refazer = []; botoes(); aviso('Exercício encerrado. Você voltou a acompanhar a aula.', 2600); }
+        av.exercicio = null; av.modo = 'aula';
+        montarPaginaAluno(av.prof, av.prof?.id || 'espera', false);
+        if (tinha) aviso('Exercício encerrado. Você voltou a acompanhar a aula.', 2600);
       }
+      // reconectou: manda as anotações desta página
+      if (pagina().tracos.length) av.con.enviar({ t: 'pagina', pid: pidAluno(), pagina: { tracos: pagina().tracos } });
       pintarAluno(); pedirQuadro(); return;
     }
-    case 'pagina': if (!av.exercicio) mostrarPaginaProf(m.pagina); return;
-    case 'add': if (!av.exercicio && m.traco) { pagina().tracos.push(m.traco); remotos.delete(m.traco.id); pedirQuadro(); } return;
+    case 'pagina': av.prof = m.pagina; if (!av.exercicio) montarPaginaAluno(m.pagina, m.pagina?.id || 'espera', false); return;
+    case 'add': if (m.traco) { av.prof?.tracos.push(m.traco); if (!av.exercicio) { pagina().fixos.push(m.traco); remotos.delete(m.traco.id); pedirQuadro(); } } return;
     case 'vivo': if (!av.exercicio) { aplicarVivo(remotos, m); pedirQuadro(); } return;
     case 'laser': if (!av.exercicio) receberLaser(m); return;
   }
 }
 function iniciarAluno() {
   try { av.id = localStorage.getItem('av:id') || ''; if (!av.id) { av.id = novoId() + novoId(); localStorage.setItem('av:id', av.id); } } catch { av.id = novoId() + novoId(); }
-  let nome = '', codigo = (qs.get('c') || '').toUpperCase();
-  try { nome = localStorage.getItem('av:nome') || ''; codigo ||= sessionStorage.getItem('av:sala') || ''; } catch {}
-  $('#av-nome').value = nome; $('#av-codigo').value = codigo;
-  on('#av-form', 'submit', (e) => { e.preventDefault(); entrarNaSala($('#av-codigo').value, $('#av-nome').value); });
+  const lerEntrada = () => {
+    let ent = (location.hash.match(/s=([A-Z0-9]{4,6})\.([a-f0-9]{8,40})/i) || []).slice(1);
+    if (!ent.length) try { ent = (sessionStorage.getItem('av:sala') || '').split('.'); } catch {}
+    [av.codigo, av.chave] = [String(ent[0] || '').toUpperCase(), String(ent[1] || '')];
+    if (location.hash) history.replaceState(null, '', location.pathname); // o link de entrada não fica na barra
+  };
+  lerEntrada();
+  window.addEventListener('hashchange', () => { if (!/s=/.test(location.hash)) return; lerEntrada(); telaEntrar(null, false); });
+  let nome = ''; try { nome = localStorage.getItem('av:nome') || ''; } catch {}
+  $('#av-nome').value = nome;
+  on('#av-form', 'submit', (e) => { e.preventDefault(); entrarNaSala($('#av-nome').value); });
   try { av.dedo = localStorage.getItem('av:dedo') === '1'; } catch {}
   const bd = $('#av-dedo'); bd.setAttribute('aria-pressed', String(!!av.dedo));
   bd.onclick = () => { av.dedo = !av.dedo; bd.setAttribute('aria-pressed', String(av.dedo)); try { localStorage.setItem('av:dedo', av.dedo ? '1' : '0'); } catch {} aviso(av.dedo ? 'O dedo escreve. Dois dedos movem e dão zoom.' : 'O dedo volta a só mover a página.', 2000); };
-  on('#av-sair', 'click', () => { if (av.exercicio && pagina().tracos.length && !confirm('Sair da aula? O professor deixa de ver a sua resolução.')) return; telaEntrar(); });
-  if (codigo && nome && sessionStorage.getItem('av:sala')) entrarNaSala(codigo, nome); // recarregou a página: volta direto
+  on('#av-sair', 'click', () => { if (!confirm('Sair da aula ao vivo?')) return; av.chave = ''; telaEntrar(); });
+  telaEntrar(null, false);
+  if (av.codigo && av.chave && nome) { let volta = false; try { volta = sessionStorage.getItem('av:sala') === av.codigo + '.' + av.chave; } catch {} if (volta) entrarNaSala(nome); }
 }
 
 /* ---------- botões ---------- */
@@ -1418,7 +1551,7 @@ function ligarBotoes() {
     if (!ALUNO && (k === 'arrowright' || k === 'pagedown')) { e.preventDefault(); irPara(aula.atual + 1); }
     else if (!ALUNO && (k === 'arrowleft' || k === 'pageup')) { e.preventDefault(); irPara(aula.atual - 1); }
     else if ((k === 'delete' || k === 'backspace') && sel) { e.preventDefault(); apagarSel(); }
-    else if (k === 'escape') { limparSel(); fecharPops(); if (!ALUNO) { fecharInserir(); fecharMapa(); fecharResol(); } }
+    else if (k === 'escape') { limparSel(); fecharPops(); if (!ALUNO) { fecharInserir(); fecharMapa(); fecharResol(); fecharQR(); } }
     else { const f = { p: 'caneta', m: 'marca', e: 'borracha', v: 'laco', l: ALUNO ? null : 'laser' }[k]; if (f) { pref.ferramenta = f; guardarPref(); pintarBarra(); } }
   });
   if (ALUNO) return;
@@ -1445,10 +1578,13 @@ function ligarBotoes() {
   $('#ma-sala-fechar').onclick = fecharSala;
   $('#ma-ex-propor').onclick = proporExercicio;
   $('#ma-ex-fim').onclick = encerrarExercicio;
-  $('#ma-ex-ver').onclick = abrirResol;
+  $('#ma-ver-alunos').onclick = abrirResol;
+  $('#ma-qr-btn').onclick = () => mostrarQR(true);
+  $('#ma-link-btn').onclick = copiarLink;
+  $('#ma-qr-x').onclick = fecharQR; $('#ma-qr-novo').onclick = () => mostrarQR(true); $('#ma-qr-link').onclick = copiarLink;
   $('#ma-resol-x').onclick = fecharResol;
   $('#ma-resol-voltar').onclick = () => { resolAberta = null; $('#ma-resol-grande').hidden = true; redesenharResol(); };
-  $('#ma-resol-copiar').onclick = copiarResolucao;
+  $('#ma-resol-copiar').onclick = trazerDoAluno;
   // tela cheia: no iPad, o melhor é abrir pela Tela de Início (fica sem a barra do Safari)
   const raiz = document.documentElement, pode = raiz.requestFullscreen || raiz.webkitRequestFullscreen, emApp = matchMedia('(display-mode: fullscreen), (display-mode: standalone)').matches || navigator.standalone;
   if (pode && !emApp) {
@@ -1466,7 +1602,7 @@ async function iniciar() {
   montarBarra(); ligarBotoes(); ligarEntrada();
   if (ALUNO) { iniciarAluno(); return; }
   if (qs.get('aula')) { pref.aulaSite = qs.get('aula').replace(/[^0-9.]/g, ''); guardarPref(); }
-  try { const s = JSON.parse(localStorage.getItem('ma:sala') || 'null'); if (s?.codigo && s?.token) abrirSala(s.codigo, s.token, s.exercicio || null); } catch {}
+  try { const s = JSON.parse(localStorage.getItem('ma:sala') || 'null'); if (s?.codigo && s?.token) abrirSala(s); } catch {}
   const id = (location.hash.match(/a=([\w]+)/) || [])[1];
   if (id && (await banco.ler(id))) abrirAula(id); else mostrarInicio();
 }

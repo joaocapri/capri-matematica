@@ -33,7 +33,7 @@ O site é publicado pelo Cloudflare (Workers com arquivos estáticos), ligado a 
 Endereço não listado (noindex) para o professor dar aula on-line transmitindo a tela do iPad.
 - Páginas pontilhadas em paisagem, uma de cada vez, viradas com o dedo; arrastar além da última (se ela já tem algo) cria outra. Caneta com 4 estilos e espessura, marca-texto, borracha, laço (move e redimensiona), laser, formas perfeitas.
 - **Questão** insere qualquer questão das listas (recorte do PDF do caderno), que pode ser arrastada e redimensionada. Aulas salvas no aparelho (IndexedDB); exportação em PDF vetorial.
-- **Turma ao vivo** (ícone de pessoas): abre uma sala com código de 4 caracteres. Os alunos entram em \`/ao-vivo/\` (link no rodapé do site), veem a página do professor enquanto ele escreve e, quando ele propõe um exercício, resolvem na própria cópia; o professor acompanha todas as resoluções ao vivo e pode copiar uma para a aula.
+- **Turma ao vivo** (ícone de pessoas): abre uma sala com código de 4 caracteres. Os alunos entram em \`/ao-vivo/\` só pelo QR Code ou pelo link que o professor mostra (\`#s=CÓDIGO.chave\`; cada QR novo troca a chave), sem link no site, veem a página do professor enquanto ele escreve e podem anotar por cima (camada só deles, que o professor acompanha ao vivo e pode trazer para a página); quando ele propõe um exercício, cada um resolve na própria cópia. O PDF exportado pode levar as anotações e resoluções dos alunos.
 - Código: \`modo-aula/\` (o mesmo \`modo-aula.js\` serve as duas páginas; \`/ao-vivo/\` tem \`data-papel="aluno"\`) e \`worker/index.js\`.
 
 ## Caderno digital (/caderno/)

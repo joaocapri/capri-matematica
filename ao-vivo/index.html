@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#e9e7f0">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,19 +13,20 @@
 <link rel="stylesheet" href="/modo-aula/modo-aula.css">
 <script type="module" src="/modo-aula/modo-aula.js"></script>
 </head>
-<body data-papel="aluno" data-tela="entrar" data-ferramenta="caneta" data-leitura="1">
+<body data-papel="aluno" data-tela="entrar" data-ferramenta="caneta">
 
 <section class="av-entrar" aria-labelledby="av-t">
-  <form class="av-caixa" id="av-form">
+  <div class="av-caixa">
     <h1 id="av-t">Aula ao vivo</h1>
-    <p>Digite o código que o professor passou. Você acompanha a aula na tela e, quando ele propuser um exercício, resolve aqui com a caneta.</p>
-    <label for="av-codigo">Código da sala</label>
-    <input id="av-codigo" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" required placeholder="K7QM">
-    <label for="av-nome">Seu nome</label>
-    <input id="av-nome" maxlength="40" autocomplete="given-name" required placeholder="Como o professor vai ver você">
-    <button type="submit" class="ma-bt-pri">Entrar na aula</button>
+    <form id="av-form" hidden>
+      <p>Você vai acompanhar a aula nesta tela e pode anotar por cima com a caneta. As anotações são suas; o professor acompanha o que você escreve.</p>
+      <label for="av-nome">Seu nome</label>
+      <input id="av-nome" maxlength="40" autocomplete="given-name" required placeholder="Como o professor vai ver você">
+      <button type="submit" class="ma-bt-pri">Entrar na aula</button>
+    </form>
+    <p class="av-sem" id="av-sem">Esta página só abre pelo QR Code ou pelo link que o professor mostra na aula. Peça a ele e aponte a câmera do iPad para o código.</p>
     <p class="av-erro" id="av-erro" hidden></p>
-  </form>
+  </div>
 </section>
 
 <header class="ma-bar" id="ma-bar">

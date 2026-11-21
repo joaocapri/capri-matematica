@@ -104,15 +104,18 @@
   <section class="ma-pop ma-sala" id="ma-sala" role="dialog" aria-label="Turma ao vivo" hidden>
     <div id="ma-sala-fechada">
       <h2>Turma ao vivo</h2>
-      <p>Abra uma sala e passe o código aos alunos. Eles entram pelo iPad em <b>matcomjoao.com/ao-vivo</b> e veem esta página enquanto você escreve. Quando você propõe um exercício, cada um resolve na própria cópia e você acompanha todos aqui.</p>
+      <p>Abra uma sala e mostre o QR Code (ou mande o link). O aluno entra pelo iPad, vê esta página enquanto você escreve e pode anotar por cima: as anotações são dele, mas você acompanha tudo. Sem o QR Code ou o link, ninguém entra.</p>
       <button type="button" class="ma-bt-pri" id="ma-sala-abrir">Abrir sala ao vivo</button>
     </div>
     <div id="ma-sala-aberta" hidden>
-      <div class="ma-sala-cod"><small>Código da sala</small><b id="ma-sala-codigo">----</b><span>matcomjoao.com/ao-vivo</span></div>
+      <div class="ma-sala-entrada">
+        <button type="button" class="ma-bt-pri" id="ma-qr-btn">Mostrar QR Code</button>
+        <button type="button" class="ma-bt-sec" id="ma-link-btn">Mandar link</button>
+      </div>
       <p class="ma-sala-con" id="ma-sala-con">Conectando…</p>
       <div class="ma-sala-acoes">
-        <button type="button" class="ma-bt-pri" id="ma-ex-propor">Propor esta página como exercício</button>
-        <button type="button" class="ma-bt-pri" id="ma-ex-ver" hidden>Ver resoluções</button>
+        <button type="button" class="ma-bt-sec" id="ma-ver-alunos">Ver o que os alunos escrevem</button>
+        <button type="button" class="ma-bt-sec" id="ma-ex-propor">Propor esta página como exercício</button>
         <button type="button" class="ma-bt-sec" id="ma-ex-fim" hidden>Encerrar exercício</button>
       </div>
       <h3 id="ma-sala-n">Ninguém entrou ainda</h3>
@@ -174,12 +177,22 @@
   <div class="ma-mapa-grade" id="ma-mapa-grade"></div>
 </section>
 
+<!-- ================= QR Code de entrada ================= -->
+<section class="ma-qr" id="ma-qr" aria-label="QR Code de entrada" hidden>
+  <div class="ma-qr-caixa">
+    <b>Aponte a câmera do iPad</b>
+    <span>O QR Code leva direto para a aula. Cada vez que você mostra, ele é novo: os antigos deixam de valer.</span>
+    <canvas id="ma-qr-cv" aria-label="QR Code para entrar na aula ao vivo"></canvas>
+    <div class="ma-qr-acoes"><button type="button" class="ma-bt-sec" id="ma-qr-novo">Gerar outro</button><button type="button" class="ma-bt-sec" id="ma-qr-link">Mandar link</button><button type="button" class="ma-bt-pri" id="ma-qr-x">Pronto</button></div>
+  </div>
+</section>
+
 <!-- ================= resoluções dos alunos ================= -->
 <section class="ma-mapa ma-resol" id="ma-resol" aria-label="Resoluções dos alunos" hidden>
-  <div class="ma-mapa-topo"><b>Resoluções</b><span id="ma-resol-info">Ao vivo: o que cada aluno escreve aparece aqui na hora. Toque para ver grande.</span><button type="button" class="ma-ib" id="ma-resol-x" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="ma-mapa-topo"><b>Alunos</b><span id="ma-resol-info">Ao vivo: o que cada aluno escreve aparece aqui na hora. Toque para ver grande.</span><button type="button" class="ma-ib" id="ma-resol-x" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="ma-mapa-grade ma-resol-grade" id="ma-resol-grade"></div>
   <div class="ma-resol-grande" id="ma-resol-grande" hidden>
-    <div class="ma-mapa-topo"><button type="button" class="ma-ib" id="ma-resol-voltar" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><b id="ma-resol-nome"></b><span></span><button type="button" class="ma-bt-sec" id="ma-resol-copiar">Copiar para a minha aula</button></div>
+    <div class="ma-mapa-topo"><button type="button" class="ma-ib" id="ma-resol-voltar" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><b id="ma-resol-nome"></b><span></span><button type="button" class="ma-bt-sec" id="ma-resol-copiar">Trazer para a minha página</button></div>
     <div class="ma-resol-tela"><canvas id="ma-resol-cv"></canvas></div>
   </div>
 </section>
