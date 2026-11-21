@@ -61,7 +61,9 @@
     </button>
     <span class="ma-sep" aria-hidden="true"></span>
     <div class="ma-cores" id="ma-cores" role="radiogroup" aria-label="Cor"></div>
-    <div class="ma-esps" id="ma-esps" role="radiogroup" aria-label="Espessura"></div>
+    <button type="button" class="ma-traco" id="ma-traco" aria-haspopup="dialog" aria-expanded="false" aria-controls="ma-painel" title="Estilo da caneta e espessura">
+      <canvas id="ma-traco-amostra" width="52" height="20" aria-hidden="true"></canvas>
+    </button>
     <span class="ma-sep" aria-hidden="true"></span>
     <button type="button" class="ma-ib" id="ma-desfazer" aria-label="Desfazer" title="Desfazer (Cmd+Z) · ou toque com dois dedos" disabled>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 010 11H11"/></svg>
@@ -78,6 +80,9 @@
       <button type="button" class="ma-nav-seta" id="ma-prox" aria-label="Próxima página"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       <button type="button" class="ma-nav-mais" id="ma-nova-pag" aria-label="Nova página depois desta" title="Nova página depois desta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
     </nav>
+    <button type="button" class="ma-ib ma-turma" id="ma-sala-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="ma-sala" title="Turma ao vivo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.8 14.2c2.4-.3 4.3 1.1 4.8 4"/></svg><i class="ma-turma-n" id="ma-turma-n" hidden></i>
+    </button>
     <button type="button" class="ma-bt-q" id="ma-inserir-btn" aria-expanded="false" aria-controls="ma-inserir">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4"/><path d="M12.5 11v6M9.5 14h6"/></svg><span>Questão</span>
     </button>
@@ -85,6 +90,36 @@
       <svg viewBox="0 0 24 24" aria-hidden="true" class="cheio"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
     </button>
   </div>
+
+  <section class="ma-pop ma-painel" id="ma-painel" role="dialog" aria-label="Estilo e espessura" hidden>
+    <div class="ma-painel-sec" id="ma-estilos-sec"><h2>Estilo da caneta</h2><div class="ma-estilos" id="ma-estilos" role="radiogroup" aria-label="Estilo da caneta"></div></div>
+    <div class="ma-painel-sec">
+      <h2><span>Espessura</span><output id="ma-esp-valor"></output></h2>
+      <div class="ma-tams" id="ma-tams" role="radiogroup" aria-label="Espessuras rápidas"></div>
+      <input type="range" id="ma-esp" min="0" max="100" step="1" aria-label="Espessura do traço">
+      <canvas class="ma-previa" id="ma-previa" aria-hidden="true"></canvas>
+    </div>
+  </section>
+
+  <section class="ma-pop ma-sala" id="ma-sala" role="dialog" aria-label="Turma ao vivo" hidden>
+    <div id="ma-sala-fechada">
+      <h2>Turma ao vivo</h2>
+      <p>Abra uma sala e passe o código aos alunos. Eles entram pelo iPad em <b>matcomjoao.com/ao-vivo</b> e veem esta página enquanto você escreve. Quando você propõe um exercício, cada um resolve na própria cópia e você acompanha todos aqui.</p>
+      <button type="button" class="ma-bt-pri" id="ma-sala-abrir">Abrir sala ao vivo</button>
+    </div>
+    <div id="ma-sala-aberta" hidden>
+      <div class="ma-sala-cod"><small>Código da sala</small><b id="ma-sala-codigo">----</b><span>matcomjoao.com/ao-vivo</span></div>
+      <p class="ma-sala-con" id="ma-sala-con">Conectando…</p>
+      <div class="ma-sala-acoes">
+        <button type="button" class="ma-bt-pri" id="ma-ex-propor">Propor esta página como exercício</button>
+        <button type="button" class="ma-bt-pri" id="ma-ex-ver" hidden>Ver resoluções</button>
+        <button type="button" class="ma-bt-sec" id="ma-ex-fim" hidden>Encerrar exercício</button>
+      </div>
+      <h3 id="ma-sala-n">Ninguém entrou ainda</h3>
+      <ul class="ma-sala-alunos" id="ma-sala-alunos"></ul>
+      <button type="button" class="ma-bt-link" id="ma-sala-fechar">Fechar a sala</button>
+    </div>
+  </section>
 
   <section class="ma-pop ma-menu" id="ma-menu" role="menu" aria-label="Mais opções" hidden>
     <label class="ma-menu-item">Papel desta aula
@@ -137,6 +172,16 @@
 <section class="ma-mapa" id="ma-mapa" aria-label="Todas as páginas" hidden>
   <div class="ma-mapa-topo"><b>Páginas</b><span>Toque para ir. Os botões embaixo de cada página duplicam ou apagam.</span><button type="button" class="ma-ib" id="ma-mapa-x" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="ma-mapa-grade" id="ma-mapa-grade"></div>
+</section>
+
+<!-- ================= resoluções dos alunos ================= -->
+<section class="ma-mapa ma-resol" id="ma-resol" aria-label="Resoluções dos alunos" hidden>
+  <div class="ma-mapa-topo"><b>Resoluções</b><span id="ma-resol-info">Ao vivo: o que cada aluno escreve aparece aqui na hora. Toque para ver grande.</span><button type="button" class="ma-ib" id="ma-resol-x" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="ma-mapa-grade ma-resol-grade" id="ma-resol-grade"></div>
+  <div class="ma-resol-grande" id="ma-resol-grande" hidden>
+    <div class="ma-mapa-topo"><button type="button" class="ma-ib" id="ma-resol-voltar" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><b id="ma-resol-nome"></b><span></span><button type="button" class="ma-bt-sec" id="ma-resol-copiar">Copiar para a minha aula</button></div>
+    <div class="ma-resol-tela"><canvas id="ma-resol-cv"></canvas></div>
+  </div>
 </section>
 
 <p class="ma-status" id="ma-status" role="status" aria-live="polite"></p>

@@ -26,7 +26,11 @@ const CORES = {
   caneta: [['Preto', '#1d1b26'], ['Azul', '#2459d6'], ['Vermelho', '#d8352b'], ['Verde', '#1c8f4e'], ['Roxo', '#6a3fd8'], ['Laranja', '#ea7b16']],
   marca: [['Amarelo', '#ffe14d'], ['Verde-limão', '#c8f55f'], ['Rosa', '#ff9ccf'], ['Azul-claro', '#8fd3ff'], ['Laranja', '#ffc078']],
 };
-const ESPS = { caneta: [1.6, 2.8, 5], marca: [12, 20, 32] };
+const ESPS = { caneta: [1.2, 2, 3.4], marca: [12, 20, 32] };   // espessuras rápidas (fina, média, grossa)
+const FAIXA = { caneta: [0.5, 8], marca: [6, 44] };              // limites do controle deslizante
+const ESTILOS = [['tinteiro', 'Tinteiro'], ['esfero', 'Esferográfica'], ['nanquim', 'Nanquim'], ['pincel', 'Pincel']];
+const deControle = (f, v) => { const [a, b] = FAIXA[f]; return +(a * Math.pow(b / a, v / 100)).toFixed(2); };
+const paraControle = (f, s) => { const [a, b] = FAIXA[f]; return Math.round(100 * Math.log(s / a) / Math.log(b / a)); };
 const BORRACHA_PX = 14;
 const $ = (s) => document.querySelector(s);
 const limitar = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -34,11 +38,15 @@ const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const novoId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 const qs = new URLSearchParams(location.search);
+const ALUNO = document.body.dataset.papel === 'aluno'; // /ao-vivo/: o aluno acompanha e resolve exercícios
+const on = (sel, ev, fn) => { const el = $(sel); if (el) el.addEventListener(ev, fn); return el; };
 
 /* ---------- preferências (ferramenta, cores) ---------- */
-let pref = { ferramenta: 'caneta', cor: { caneta: CORES.caneta[0][1], marca: CORES.marca[0][1] }, esp: { caneta: 1, marca: 1 }, aulaSite: null, lista: 'fixacao' };
-try { pref = { ...pref, ...JSON.parse(localStorage.getItem('ma:pref') || '{}') }; } catch {}
-const guardarPref = () => { try { localStorage.setItem('ma:pref', JSON.stringify(pref)); } catch {} };
+let pref = { ferramenta: 'caneta', estilo: 'pincel', cor: { caneta: CORES.caneta[0][1], marca: CORES.marca[0][1] }, esp: { caneta: ESPS.caneta[1], marca: ESPS.marca[1] }, aulaSite: null, lista: 'fixacao' };
+try { pref = { ...pref, ...JSON.parse(localStorage.getItem(ALUNO ? 'av:pref' : 'ma:pref') || '{}') }; } catch {}
+for (const f of ['caneta', 'marca']) if (Number.isInteger(pref.esp[f]) && pref.esp[f] <= 2) pref.esp[f] = ESPS[f][pref.esp[f]]; // versão antiga guardava o índice
+if (!['caneta', 'marca', 'borracha', 'laco', 'laser'].includes(pref.ferramenta) || (ALUNO && pref.ferramenta === 'laser')) pref.ferramenta = 'caneta';
+const guardarPref = () => { try { localStorage.setItem(ALUNO ? 'av:pref' : 'ma:pref', JSON.stringify(pref)); } catch {} };
 
 /* ---------- banco (IndexedDB, com localStorage de reserva) ---------- */
 const banco = (() => {
@@ -71,6 +79,7 @@ const pagina = () => aula.paginas[aula.atual];
 let timerSalvar = 0;
 function salvar(ja) {
   if (!aula) return;
+  if (ALUNO) { guardarTrabalho(); return; }
   clearTimeout(timerSalvar);
   const f = async () => { aula.editada = Date.now(); if (!(await banco.gravar(aula))) aviso('Não consegui salvar neste aparelho. Exporte o PDF para não perder.', 5000); };
   if (ja) return f();
@@ -83,11 +92,22 @@ function aviso(txt, ms = 1800) {
 }
 
 /* ---------- traço (o mesmo motor do caderno) ---------- */
-function opcoes(t, k) {
+function opcoes(t, k) { // os mesmos estilos do caderno
   const s = t.s * k, pen = !!t.pen;
   if (t.f === 'marca') return { size: s, thinning: 0, smoothing: 0.5, streamline: t.forma ? 0 : 0.45, simulatePressure: false, start: { cap: false }, end: { cap: false }, last: true };
-  if (t.forma) return { size: s, thinning: 0, smoothing: 0.2, streamline: 0, simulatePressure: false, last: true };
-  return { size: s, thinning: pen ? 0.5 : 0.4, smoothing: 0.5, streamline: 0.42, simulatePressure: !pen, last: true };
+  if (t.forma && t.e !== 'pincel') return { size: s * (t.e === 'esfero' ? 0.9 : 1), thinning: 0, smoothing: 0.2, streamline: 0, simulatePressure: false, last: true };
+  switch (t.e || 'tinteiro') {
+    case 'esfero': return { size: s, thinning: pen ? 0.18 : 0.1, smoothing: 0.62, streamline: 0.5, simulatePressure: false, last: true };
+    case 'nanquim': return { size: s, thinning: 0, smoothing: 0.55, streamline: 0.5, simulatePressure: false, last: true };
+    case 'pincel': return { size: s * 2.3, thinning: t.forma ? 0.3 : 0.86, smoothing: 0.62, streamline: t.forma ? 0 : 0.42, simulatePressure: !pen && !t.forma,
+      start: { taper: pen || t.forma ? 0 : s * 6, cap: true }, end: { taper: t.forma ? 0 : s * 9, cap: true }, last: true };
+    default: return { size: s, thinning: pen ? 0.58 : 0.45, smoothing: 0.5, streamline: 0.42, simulatePressure: !pen, last: true };
+  }
+}
+function tracoExemplo(f, e, s, c, w, h) {
+  const p = [];
+  for (let i = 0; i <= 40; i++) { const u = i / 40; p.push([w * 0.08 + u * w * 0.84, h / 2 + Math.sin(u * Math.PI * 2) * h * 0.24, 0.25 + 0.6 * Math.sin(u * Math.PI)]); }
+  return { f, e: f === 'marca' ? 'marca' : e, s, c, pen: true, p };
 }
 const contorno = (t, k) => getStroke(t.p.map(([x, y, p]) => [x * k, y * k, p]), opcoes(t, k));
 function caminho(pts, dx = 0, dy = 0) {
@@ -262,7 +282,7 @@ function imagemPronta(o, precisa) {
   const P = limitar(Math.ceil(precisa * 1.25 / 400) * 400, 800, 2800);
   if ((!ent || ent.P < P * 0.8) && !pedidas.has(k + '|' + P)) {
     pedidas.add(k + '|' + P);
-    imagemQuestao(o.aula, o.lista, o.n, P).then((cv) => { const e = prontas.get(k); if (!e || e.P < P) prontas.set(k, { P, cv }); pedirQuadro(); })
+    imagemQuestao(o.aula, o.lista, o.n, P).then((cv) => { const e = prontas.get(k); if (!e || e.P < P) prontas.set(k, { P, cv }); imagensMudaram(); })
       .catch(() => { prontas.set(k, { P: 0, erro: true }); pedirQuadro(); })
       .finally(() => pedidas.delete(k + '|' + P));
   }
@@ -307,7 +327,24 @@ function desenhar() {
     if (ox > vw || ox + PW * V.z < 0) continue;
     desenharPagina(ctx, pg, ox, V.ty, V.z, R, i === aula.atual);
   }
+  // na última página (com algo escrito), arrastar para o lado mostra a página nova que vai nascer
+  if (desl < 0 && aula.atual === aula.paginas.length - 1 && podeCriarAoDeslizar()) {
+    const ox = V.tx + passo + desl;
+    ctx.save(); ctx.globalAlpha = Math.min(1, -desl / (passo * 0.25));
+    ctx.fillStyle = PAPEL; ctx.fillRect(ox * R, V.ty * R, PW * V.z * R, PH * V.z * R);
+    ctx.fillStyle = '#8a84a6'; ctx.font = `700 ${18 * R}px 'DM Sans', system-ui, sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(-desl > passo * 0.18 ? 'Solte para criar a página' : 'Nova página', (ox + PW * V.z / 2) * R, (V.ty + PH * V.z / 2) * R);
+    ctx.restore();
+  }
+  // o que chega ao vivo (traços sendo escritos pelo professor, para o aluno)
+  if (remotos.size) {
+    ctx.save(); ctx.setTransform(R * V.z, 0, 0, R * V.z, R * (V.tx + desl), R * V.ty);
+    ctx.beginPath(); ctx.rect(0, 0, PW, PH); ctx.clip();
+    for (const t of remotos.values()) desenhaTracoVivo(ctx, t);
+    ctx.restore();
+  }
 }
+const remotos = new Map(); // id → traço em andamento recebido pela sala
 function papel(ctx, tipo, z) {
   if (tipo === 'liso') return;
   ctx.save();
@@ -333,20 +370,25 @@ function desenharPagina(ctx, pg, tx, ty, z, r, atual, mini) {
   ctx.beginPath(); ctx.rect(0, 0, PW, PH); ctx.clip();
   papel(ctx, aula?.papel || 'pontilhado', z * (mini ? 3 : 1));
   const movendo = atual && sel && moverAtivo();
+  const transformar = (ctx) => { // a seleção sendo arrastada ou redimensionada (com o canto de cima à esquerda fixo)
+    const d = sel.d;
+    if (d.redim) { ctx.translate(d.a, d.b); ctx.scale(d.k, d.k); ctx.translate(-d.a, -d.b); } else ctx.translate(d.dx, d.dy);
+  };
   for (const o of pg.objs) {
-    const d = movendo && sel.objs.includes(o) ? sel.d : null;
-    desenharQuestao(ctx, o, z * r, d, mini);
+    if (movendo && sel.objs.includes(o)) { ctx.save(); transformar(ctx); desenharQuestao(ctx, o, z * r * (sel.d.k || 1), mini); ctx.restore(); }
+    else desenharQuestao(ctx, o, z * r, mini);
   }
+  if (pg.fixos) for (const t of pg.fixos) desenhaTraco(ctx, t); // o que o professor já tinha escrito na página do exercício
   for (const t of pg.tracos) {
-    if (movendo && sel.tracos.has(t)) { ctx.save(); ctx.translate(sel.d.dx, sel.d.dy); desenhaTraco(ctx, t); ctx.restore(); }
+    if (movendo && sel.tracos.has(t)) { ctx.save(); transformar(ctx); desenhaTraco(ctx, t); ctx.restore(); }
     else desenhaTraco(ctx, t);
   }
+  if (pg.extras) for (const t of pg.extras) desenhaTracoVivo(ctx, t); // traços em andamento (resoluções ao vivo)
   if (atual && sel && !mini) desenharSel(ctx, z);
   ctx.restore();
 }
-function desenharQuestao(ctx, o, escala, d, mini) {
-  let { x, y, w, h } = o;
-  if (d) { if (d.redim) { w = d.w; h = d.h; } else { x += d.dx; y += d.dy; } }
+function desenharQuestao(ctx, o, escala, mini) {
+  const { x, y, w, h } = o;
   ctx.save();
   ctx.fillStyle = '#fff'; ctx.fillRect(x, y, w, h);
   const ent = mini ? prontas.get(`${o.aula}|${o.lista}|${o.n}`) : imagemPronta(o, w * escala);
@@ -378,7 +420,7 @@ function limparSel() { if (!sel) return; sel = null; $('#ma-sel-menu').hidden = 
 const umaQuestao = () => sel && sel.objs.length === 1 && !sel.tracos.size;
 function caixaVisivel() {
   let [a, b, c, d] = sel.caixa;
-  if (sel.d?.redim) { const o = sel.objs[0]; c = o.x + sel.d.w; d = o.y + sel.d.h; }
+  if (sel.d?.redim) { c = a + (c - a) * sel.d.k; d = b + (d - b) * sel.d.k; }
   else if (sel.d) { a += sel.d.dx; c += sel.d.dx; b += sel.d.dy; d += sel.d.dy; }
   return [a, b, c, d];
 }
@@ -387,7 +429,7 @@ function desenharSel(ctx, z) {
   ctx.save();
   ctx.strokeStyle = '#4a27b7'; ctx.lineWidth = 1.6 / z; ctx.setLineDash([6 / z, 5 / z]);
   ctx.strokeRect(a - m, b - m, c - a + 2 * m, d - b + 2 * m);
-  if (umaQuestao()) { // alça de tamanho no canto
+  { // alça de tamanho no canto (vale para qualquer seleção)
     ctx.setLineDash([]); ctx.fillStyle = '#4a27b7'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.5 / z;
     ctx.beginPath(); ctx.arc(c + m, d + m, 11 / z, 0, 6.2832); ctx.fill(); ctx.stroke();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.8 / z; ctx.beginPath();
@@ -408,11 +450,11 @@ function posicionarSelMenu() {
 function acertoSel(w, z) { // a caneta/dedo caiu na alça ou dentro da seleção?
   if (!sel) return null;
   const [a, b, c, d] = sel.caixa, m = 6 / z;
-  if (umaQuestao() && dist(w, [c + m, d + m]) < 26 / z) return 'redim';
+  if (dist(w, [c + m, d + m]) < 26 / z) return 'redim';
   if (w[0] >= a - m && w[0] <= c + m && w[1] >= b - m && w[1] <= d + m) return 'mover';
   return null;
 }
-function questaoEm(w) { const objs = pagina().objs; for (let i = objs.length - 1; i >= 0; i--) { const o = objs[i]; if (w[0] >= o.x && w[0] <= o.x + o.w && w[1] >= o.y && w[1] <= o.y + o.h) return o; } return null; }
+function questaoEm(w) { if (ALUNO) return null; const objs = pagina().objs; for (let i = objs.length - 1; i >= 0; i--) { const o = objs[i]; if (w[0] >= o.x && w[0] <= o.x + o.w && w[1] >= o.y && w[1] <= o.y + o.h) return o; } return null; }
 function dentroPoligono(x, y, pol) {
   let dentro = false;
   for (let i = 0, j = pol.length - 1; i < pol.length; j = i++) { const [xi, yi] = pol[i], [xj, yj] = pol[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) dentro = !dentro; }
@@ -422,20 +464,20 @@ function selecionarLaco(pol) {
   if (pol.length < 3) { limparSel(); return; }
   const pg = pagina();
   const tracos = pg.tracos.filter((t) => { let n = 0; for (const [x, y] of t.p) if (dentroPoligono(x, y, pol)) n++; return n >= t.p.length * 0.6; });
-  const objs = pg.objs.filter((o) => dentroPoligono(o.x + o.w / 2, o.y + o.h / 2, pol));
+  const objs = ALUNO ? [] : pg.objs.filter((o) => dentroPoligono(o.x + o.w / 2, o.y + o.h / 2, pol));
   selecionar(tracos, objs);
 }
 function concluirMover() {
   const pg = pagina(), d = sel.d; sel.d = null;
   if (!d || (!d.redim && Math.hypot(d.dx, d.dy) < 0.5)) { posicionarSelMenu(); pedirQuadro(); return; }
   const antes = foto(pg);
-  if (d.redim) { const o = sel.objs[0]; o.w = d.w; o.h = d.h; }
-  else {
-    for (const o of sel.objs) { o.x = Math.round((o.x + d.dx) * 10) / 10; o.y = Math.round((o.y + d.dy) * 10) / 10; }
-    const novos = new Set();
-    pg.tracos = pg.tracos.map((t) => { if (!sel.tracos.has(t)) return t; const n = { ...t, p: t.p.map(([x, y, p]) => [Math.round((x + d.dx) * 100) / 100, Math.round((y + d.dy) * 100) / 100, p]) }; novos.add(n); return n; });
-    sel.tracos = novos;
-  }
+  if (d.redim && Math.abs(d.k - 1) < 0.005) { posicionarSelMenu(); pedirQuadro(); return; }
+  // posição nova de um ponto: arrasto (dx, dy) ou escala k a partir do canto (a, b)
+  const X = d.redim ? (x) => d.a + (x - d.a) * d.k : (x) => x + d.dx, Y = d.redim ? (y) => d.b + (y - d.b) * d.k : (y) => y + d.dy, k = d.redim ? d.k : 1;
+  for (const o of sel.objs) { o.x = Math.round(X(o.x) * 10) / 10; o.y = Math.round(Y(o.y) * 10) / 10; o.w = Math.round(o.w * k * 10) / 10; o.h = Math.round(o.h * k * 10) / 10; }
+  const novos = new Set();
+  pg.tracos = pg.tracos.map((t) => { if (!sel.tracos.has(t)) return t; const n = { ...t, s: Math.round(t.s * k * 100) / 100, p: t.p.map(([x, y, p]) => [Math.round(X(x) * 100) / 100, Math.round(Y(y) * 100) / 100, p]) }; novos.add(n); return n; });
+  sel.tracos = novos;
   sel.caixa = caixaSel(sel);
   registrar(pg, antes); posicionarSelMenu(); pedirQuadro();
 }
@@ -454,8 +496,8 @@ function duplicarSel() {
 
 /* ---------- desfazer: fotos da página antes de cada mudança ---------- */
 const foto = (pg) => ({ tracos: pg.tracos.slice(), objs: pg.objs.map((o) => ({ ...o })) });
-function registrar(pg, antes) { desfazer.push({ pid: pg.id, antes }); if (desfazer.length > 200) desfazer.shift(); refazer = []; botoes(); salvar(); }
-function registrarPaginas(antes) { desfazer.push({ paginas: antes }); refazer = []; botoes(); salvar(); }
+function registrar(pg, antes, op) { desfazer.push({ pid: pg.id, antes }); if (desfazer.length > 200) desfazer.shift(); refazer = []; botoes(); salvar(); if (pg === pagina()) mudouPagina(op); }
+function registrarPaginas(antes) { desfazer.push({ paginas: antes }); refazer = []; botoes(); salvar(); mudouPagina(); }
 function trocar(de, para) {
   const e = de.pop(); if (!e) return;
   limparSel(); cancelarTraco();
@@ -469,11 +511,11 @@ function trocar(de, para) {
     pg.tracos = e.antes.tracos.slice(); pg.objs = e.antes.objs.map((o) => ({ ...o }));
     if (i !== aula.atual) irPara(i, true);
   }
-  botoes(); salvar(); pedirQuadro(); atualizarNav();
+  botoes(); salvar(); pedirQuadro(); atualizarNav(); mudouPagina();
 }
 const voltar = () => trocar(desfazer, refazer);
 const avancar = () => trocar(refazer, desfazer);
-function botoes() { $('#ma-desfazer').disabled = !desfazer.length; $('#ma-refazer').disabled = !refazer.length; }
+function botoes() { const a = $('#ma-desfazer'), b = $('#ma-refazer'); if (a) a.disabled = !desfazer.length; if (b) b.disabled = !refazer.length; }
 
 /* ---------- entrada: caneta escreve, dedo vira a página e seleciona, dois dedos dão zoom ---------- */
 let atual = null;   // traço, borracha, laço, laser ou movimento em andamento (caneta ou mouse)
@@ -500,6 +542,7 @@ function ligarEntrada() {
     }
     if (e.pointerType === 'mouse' && e.button !== 0) { e.preventDefault(); tela.setPointerCapture(e.pointerId); gesto = { tipo: 'arrasto', id: e.pointerId, ult: p }; return; }
     if (atual) return;
+    if (ALUNO && av.leitura) return; // acompanhando a aula: só olha
     if (gesto && gesto.tipo !== 'pinca') { soltarGesto(false); }
     e.preventDefault(); tela.setPointerCapture(e.pointerId);
     iniciarCaneta(e, p);
@@ -545,38 +588,40 @@ function iniciarCaneta(e, p) {
   const w = mundo(p), pen = e.pointerType === 'pen', f = pref.ferramenta;
   const h = f !== 'laser' && acertoSel(w, V.z);
   if (h) { atual = { pid: e.pointerId, pen, mover: true }; comecarMover(h, w); return; }
-  if (f === 'laser') { atual = { pid: e.pointerId, pen, laser: { pts: [[w[0], w[1], performance.now()]] } }; lasers.push(atual.laser); animarLaser(); return; }
+  if (f === 'laser') { atual = { pid: e.pointerId, pen, laser: { id: novoId(), pts: [[w[0], w[1], performance.now()]] }, enviados: 0 }; lasers.push(atual.laser); animarLaser(); aoVivo(atual); return; }
   limparSel();
+  if (f !== 'laco' && (w[0] < -8 || w[0] > PW + 8 || w[1] < -8 || w[1] > PH + 8)) { atual = { pid: e.pointerId, pen, nada: true }; return; } // fora da página
   if (f === 'borracha') { atual = { pid: e.pointerId, pen, apagou: false, antes: foto(pagina()), cursor: p }; apagar(w); pedirVivo(); return; }
   if (f === 'laco') { atual = { pid: e.pointerId, pen, laco: [w] }; pedirVivo(); return; }
   atual = { pid: e.pointerId, pen, ancora: w, timer: 0,
-    traco: { f, c: pref.cor[f], s: ESPS[f][pref.esp[f]], pen, p: [[w[0], w[1], pressao(e)]] } };
+    traco: { id: novoId(), f, e: f === 'marca' ? 'marca' : pref.estilo, c: pref.cor[f], s: pref.esp[f], pen, p: [[w[0], w[1], pressao(e)]] }, enviados: 0 };
   armarForma(); pedirVivo();
 }
 function moverCaneta(evs, p) {
   const a = atual;
   if (a.mover) { arrastarSel(mundo(p)); return; }
-  if (a.laser) { const t = performance.now(); for (const c of evs) { const w = mundo(local(c)); a.laser.pts.push([w[0], w[1], t]); } return; }
+  if (a.laser) { const t = performance.now(); for (const c of evs) { const w = mundo(local(c)); a.laser.pts.push([w[0], w[1], t]); } aoVivo(a); return; }
   if (a.laco) { for (const c of evs) a.laco.push(mundo(local(c))); pedirVivo(); return; }
   if (a.traco) {
     if (a.travado) return;
     for (const c of evs) { const w = mundo(local(c)); a.traco.p.push([w[0], w[1], pressao(c)]); }
     const u = a.traco.p[a.traco.p.length - 1];
     if (dist(u, a.ancora) > 3 / V.z) { a.ancora = u; armarForma(); }
-    pedirVivo(); return;
+    pedirVivo(); aoVivo(a); return;
   }
   if (a.antes) { for (const c of evs) apagar(mundo(local(c))); a.cursor = p; pedirVivo(); }
 }
 function concluirCaneta(cancelado) {
   const a = atual; atual = null; clearTimeout(a.timer); limparVivo();
   if (a.mover) { if (cancelado && sel) sel.d = null; if (sel) concluirMover(); return; }
-  if (a.laser) { a.laser.fim = performance.now(); animarLaser(); return; }
+  if (a.laser) { a.laser.fim = performance.now(); animarLaser(); aoVivo(a, true); return; }
   if (a.laco) { if (!cancelado) selecionarLaco(a.laco); return; }
+  if (a.nada) return;
   const pg = pagina();
   if (a.traco) {
     if (cancelado && a.traco.p.length < 3) return;
     if (a.traco.p.length === 1) { const [x, y, pr] = a.traco.p[0]; a.traco.p.push([x + 0.01, y + 0.01, pr]); }
-    const antes = foto(pg); pg.tracos.push(a.traco); registrar(pg, antes); pedirQuadro(); return;
+    const antes = foto(pg); pg.tracos.push(a.traco); registrar(pg, antes, { t: 'add', traco: a.traco }); pedirQuadro(); return;
   }
   if (a.apagou) registrar(pg, a.antes);
   pedirQuadro();
@@ -585,6 +630,7 @@ function cancelarTraco() {
   if (!atual) return;
   if (atual.antes && atual.apagou) { const pg = pagina(); pg.tracos = atual.antes.tracos.slice(); }
   if (atual.mover && sel) sel.d = null;
+  if (atual.traco) transmitir({ t: 'vivo', id: atual.traco.id, fim: true });
   clearTimeout(atual.timer); atual = null; limparVivo(); pedirQuadro();
 }
 function armarForma() { // desenhou e segurou parado no fim: vira forma perfeita
@@ -594,6 +640,7 @@ function armarForma() { // desenhou e segurou parado no fim: vira forma perfeita
     const a = atual; if (!a?.traco || a.travado || a.traco.p.length < 6) return;
     const fm = reconhecer(a.traco.p, a.traco.f === 'marca'); if (!fm) return;
     a.traco.p = fm.pts; a.traco.forma = fm.nome; a.travado = true; pedirVivo(); aviso(fm.nome, 900);
+    transmitir({ t: 'vivo', id: a.traco.id, ini: cabecaTraco(a.traco), p: a.traco.p, refaz: true }); a.enviados = a.traco.p.length;
   }, 520);
 }
 function apagar([x, y]) {
@@ -608,19 +655,19 @@ function apagar([x, y]) {
   if (mudou) { atual.apagou = true; pedirQuadro(); }
 }
 function comecarMover(tipo, w) {
-  const o = sel.objs[0];
-  sel.ini = w; sel.d = tipo === 'redim' ? { redim: true, w: o.w, h: o.h, off: [o.x + o.w - w[0], o.y + o.h - w[1]] } : { dx: 0, dy: 0 };
+  sel.ini = w;
+  if (tipo === 'redim') { const [a, b, c, d] = sel.caixa; sel.d = { redim: true, k: 1, a, b, c, d, off: [c - w[0], d - w[1]] }; }
+  else sel.d = { dx: 0, dy: 0 };
   $('#ma-sel-menu').hidden = true;
 }
 function arrastarSel(w) {
   if (!sel?.d) return;
-  const dx = w[0] - sel.ini[0], dy = w[1] - sel.ini[1];
-  if (sel.d.redim) { // o canto acompanha o dedo, mantendo a proporção da questão
-    const o = sel.objs[0], prop = o.h / o.w, [ox, oy] = sel.d.off;
-    const nw = limitar(Math.max(w[0] + ox - o.x, (w[1] + oy - o.y) / prop), 160, PW * 1.2);
-    sel.d.w = Math.round(nw); sel.d.h = Math.round(nw * prop);
-  }
-  else { sel.d.dx = dx; sel.d.dy = dy; }
+  if (sel.d.redim) { // o canto acompanha a caneta/dedo; a proporção se mantém
+    const { a, b, c, d, off } = sel.d, lw = Math.max(c - a, 1), lh = Math.max(d - b, 1);
+    let k = Math.max((w[0] + off[0] - a) / lw, (w[1] + off[1] - b) / lh);
+    const min = Math.max(24 / Math.max(lw, lh), sel.objs.length ? 120 / Math.min(...sel.objs.map((o) => o.w)) : 0);
+    sel.d.k = limitar(k, min, (PW * 1.3) / lw);
+  } else { sel.d.dx = w[0] - sel.ini[0]; sel.d.dy = w[1] - sel.ini[1]; }
   pedirQuadro();
 }
 
@@ -695,7 +742,7 @@ function moverGesto(p) {
   if (g.tipo === 'arrasto') { aplicarVista({ ...V, tx: V.tx + p.x - g.ult.x, ty: V.ty + p.y - g.ult.y }); g.ult = p; return; }
   if (g.tipo === 'virar') {
     let dx = p.x - g.ini.x;
-    if ((dx > 0 && aula.atual === 0) || (dx < 0 && aula.atual === aula.paginas.length - 1)) dx *= 0.25; // borda: resiste
+    if ((dx > 0 && aula.atual === 0) || (dx < 0 && aula.atual === aula.paginas.length - 1 && !podeCriarAoDeslizar())) dx *= 0.25; // borda: resiste
     desl = dx; pedirQuadro();
   }
 }
@@ -711,12 +758,16 @@ function soltarGesto(comToque) {
     const a = g.hist[0], b = g.hist[g.hist.length - 1], v = (b.t - a.t) > 0 ? (b.x - a.x) / (b.t - a.t) : 0;
     const largura = PW * V.z + GAP_PG;
     let alvo = 0;
-    if ((desl < -largura * 0.18 || v < -0.45) && aula.atual < aula.paginas.length - 1) alvo = -1;
+    const ultima = aula.atual === aula.paginas.length - 1;
+    if ((desl < -largura * 0.18 || v < -0.45) && !ultima) alvo = -1;
+    else if (desl < -largura * 0.18 && ultima && podeCriarAoDeslizar()) { inserirPagina(aula.atual); alvo = -1; } // arrastou além da última: nasce uma página nova
     else if ((desl > largura * 0.18 || v > 0.45) && aula.atual > 0) alvo = 1;
-    else if (aula.atual === aula.paginas.length - 1 && desl < -60) aviso('Última página. Toque em + para criar outra.', 1800);
+    else if (ultima && desl < -60 && !podeCriarAoDeslizar()) aviso('Esta página ainda está em branco.', 1400);
     deslizar(alvo);
   }
 }
+// arrastar além da última página cria outra, desde que a última já tenha algo (não acumula páginas em branco)
+const podeCriarAoDeslizar = () => !ALUNO && !!aula && (pagina().tracos.length > 0 || pagina().objs.length > 0);
 let animDesl = 0;
 function deslizar(alvo) { // alvo: -1 próxima, 1 anterior, 0 volta ao lugar
   cancelAnimationFrame(animDesl);
@@ -762,10 +813,10 @@ function irPara(i, semAnim) {
   if (!semAnim && Math.abs(i - aula.atual) === 1 && !comZoom()) { deslizar(i > aula.atual ? -1 : 1); return; }
   cancelarTraco(); limparSel(); gesto = null; desl = 0;
   aula.atual = i; V = vistaAjustada(); $('#ma-zoomtag').hidden = true;
-  atualizarNav(); pedirQuadro(); salvar();
+  atualizarNav(); pedirQuadro(); salvar(); mudouPagina();
 }
 function atualizarNav() {
-  if (!aula) return;
+  if (!aula || ALUNO) return;
   $('#ma-pag').textContent = aula.atual + 1; $('#ma-total').textContent = '/' + aula.paginas.length;
   $('#ma-ant').disabled = aula.atual === 0; $('#ma-prox').disabled = aula.atual === aula.paginas.length - 1;
 }
@@ -1001,56 +1052,394 @@ async function abrirAula(id) {
   history.replaceState(null, '', location.pathname + location.search + '#a=' + id);
   $('#ma-titulo').textContent = aula.titulo; document.title = aula.titulo + ' · Modo aula';
   $('#ma-papel').value = aula.papel;
-  requestAnimationFrame(() => { medir(); V = vistaAjustada(); atualizarNav(); pedirQuadro(); });
+  requestAnimationFrame(() => { medir(); V = vistaAjustada(); atualizarNav(); pedirQuadro(); mudouPagina(); });
 }
 
-/* ---------- barra ---------- */
-function montarBarra() {
-  const cores = $('#ma-cores'), esps = $('#ma-esps');
-  const pintarBarra = () => {
-    const f = pref.ferramenta === 'marca' ? 'marca' : 'caneta';
-    document.body.dataset.ferramenta = pref.ferramenta;
-    for (const b of document.querySelectorAll('[data-ferramenta]')) if (b.tagName === 'BUTTON') b.setAttribute('aria-pressed', String(b.dataset.ferramenta === pref.ferramenta));
-    cores.innerHTML = '';
-    for (const [nome, c] of CORES[f]) {
-      const b = document.createElement('button'); b.type = 'button'; b.className = 'ma-cor'; b.setAttribute('role', 'radio'); b.setAttribute('aria-label', nome); b.title = nome;
-      b.setAttribute('aria-checked', String(pref.cor[f] === c)); b.style.setProperty('--c', c); b.innerHTML = '<span></span>';
-      b.onclick = () => { pref.cor[f] = c; if (!['caneta', 'marca'].includes(pref.ferramenta)) pref.ferramenta = f; guardarPref(); pintarBarra(); };
-      cores.append(b);
-    }
-    esps.innerHTML = '';
-    ['Fino', 'Médio', 'Grosso'].forEach((nome, i) => {
-      const b = document.createElement('button'); b.type = 'button'; b.className = 'ma-esp'; b.setAttribute('role', 'radio'); b.setAttribute('aria-label', nome); b.title = nome;
-      b.setAttribute('aria-checked', String(pref.esp[f] === i)); b.style.setProperty('--d', [5, 8, 12][i] + 'px'); b.innerHTML = '<span></span>';
-      b.onclick = () => { pref.esp[f] = i; guardarPref(); pintarBarra(); };
-      esps.append(b);
-    });
-  };
-  for (const b of document.querySelectorAll('.ma-bar-meio [data-ferramenta]')) b.onclick = () => { pref.ferramenta = b.dataset.ferramenta; if (pref.ferramenta !== 'laco') limparSel(); guardarPref(); pintarBarra(); };
-  pintarBarra();
-  window.__pintarBarra = pintarBarra;
+
+/* ---------- barra: ferramentas, cores, estilo e espessura ---------- */
+function amostraTraco(cv, f, e, s, c, k = 1) {
+  const r = Math.min(window.devicePixelRatio || 1, 2), w = cv.clientWidth || cv.width, h = cv.clientHeight || cv.height;
+  cv.width = Math.round(w * r); cv.height = Math.round(h * r);
+  const ctx = cv.getContext('2d'); ctx.setTransform(r, 0, 0, r, 0, 0); ctx.clearRect(0, 0, w, h);
+  desenhaTracoVivo(ctx, { ...tracoExemplo(f, e, Math.min(s * k, h * 0.38 / (e === 'pincel' ? 2.3 : 1)), c, w, h) });
 }
-function fecharPops() { $('#ma-menu').hidden = true; $('#ma-mais-btn').setAttribute('aria-expanded', 'false'); }
+function pintarBarra() {
+  const f = pref.ferramenta === 'marca' ? 'marca' : 'caneta', cores = $('#ma-cores');
+  document.body.dataset.ferramenta = pref.ferramenta;
+  for (const b of document.querySelectorAll('.ma-bar-meio [data-ferramenta]')) b.setAttribute('aria-pressed', String(b.dataset.ferramenta === pref.ferramenta));
+  cores.innerHTML = '';
+  for (const [nome, c] of CORES[f]) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'ma-cor'; b.setAttribute('role', 'radio'); b.setAttribute('aria-label', nome); b.title = nome;
+    b.setAttribute('aria-checked', String(pref.cor[f] === c)); b.style.setProperty('--c', c); b.innerHTML = '<span></span>';
+    b.onclick = () => { pref.cor[f] = c; if (!['caneta', 'marca'].includes(pref.ferramenta)) pref.ferramenta = f; guardarPref(); pintarBarra(); };
+    cores.append(b);
+  }
+  amostraTraco($('#ma-traco-amostra'), f, pref.estilo, pref.esp[f], pref.cor[f], 1.4);
+  if (!$('#ma-painel').hidden) pintarPainel();
+}
+function pintarPainel() {
+  const f = pref.ferramenta === 'marca' ? 'marca' : 'caneta';
+  $('#ma-estilos-sec').hidden = f === 'marca';
+  const est = $('#ma-estilos'); est.innerHTML = '';
+  for (const [id, nome] of ESTILOS) {
+    const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'radio'); b.setAttribute('aria-checked', String(pref.estilo === id));
+    const cv = document.createElement('canvas'); b.append(cv, nome);
+    b.onclick = () => { pref.estilo = id; pref.ferramenta = 'caneta'; guardarPref(); pintarBarra(); };
+    est.append(b); requestAnimationFrame(() => amostraTraco(cv, 'caneta', id, pref.esp.caneta, pref.cor.caneta, 1.2));
+  }
+  const tams = $('#ma-tams'); tams.innerHTML = '';
+  ['Fina', 'Média', 'Grossa'].forEach((nome, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'radio'); b.textContent = nome;
+    b.setAttribute('aria-checked', String(Math.abs(pref.esp[f] - ESPS[f][i]) < 0.01));
+    b.onclick = () => { pref.esp[f] = ESPS[f][i]; guardarPref(); pintarBarra(); };
+    tams.append(b);
+  });
+  $('#ma-esp').value = paraControle(f, pref.esp[f]);
+  const mult = f === 'caneta' && pref.estilo === 'pincel' ? 2.3 : 1;
+  $('#ma-esp-valor').textContent = (pref.esp[f] * mult).toFixed(1).replace('.', ',');
+  const pv = $('#ma-previa'); requestAnimationFrame(() => amostraTraco(pv, f, pref.estilo, pref.esp[f], pref.cor[f], V.z || 1));
+}
+function abrirPainel() {
+  const pn = $('#ma-painel'), abrir = pn.hidden; fecharPops();
+  if (!abrir) return;
+  if (!['caneta', 'marca'].includes(pref.ferramenta)) { pref.ferramenta = 'caneta'; guardarPref(); pintarBarra(); }
+  pn.hidden = false; $('#ma-traco').setAttribute('aria-expanded', 'true'); pintarPainel();
+}
+function montarBarra() {
+  for (const b of document.querySelectorAll('.ma-bar-meio [data-ferramenta]')) b.onclick = () => {
+    const f = b.dataset.ferramenta;
+    if (f === pref.ferramenta && (f === 'caneta' || f === 'marca')) { abrirPainel(); return; } // tocar de novo abre estilo e espessura
+    pref.ferramenta = f; if (f !== 'laco') limparSel(); guardarPref(); pintarBarra();
+  };
+  on('#ma-traco', 'click', (e) => { e.stopPropagation(); abrirPainel(); });
+  on('#ma-esp', 'input', (e) => { const f = pref.ferramenta === 'marca' ? 'marca' : 'caneta'; pref.esp[f] = deControle(f, +e.target.value); guardarPref(); pintarBarra(); });
+  pintarBarra();
+}
+function fecharPops() {
+  for (const [p, b] of [['#ma-menu', '#ma-mais-btn'], ['#ma-painel', '#ma-traco'], ['#ma-sala', '#ma-sala-btn']]) { const el = $(p); if (el) el.hidden = true; $(b)?.setAttribute('aria-expanded', 'false'); }
+}
+
+/* ---------- aula ao vivo ----------
+   O professor abre uma sala (código de 4 letras); os alunos entram em /ao-vivo/ pelo iPad.
+   Modo "aula": os alunos veem a página atual do professor, com a escrita aparecendo enquanto ele escreve.
+   Modo "exercício": cada aluno resolve na própria cópia da página proposta, e o professor vê todas ao vivo.
+   O servidor (worker/index.js) só repassa as mensagens; cada aparelho é dono do que escreve. */
+const ALFABETO = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+const aleatorio = (n) => Array.from(crypto.getRandomValues(new Uint8Array(n)));
+const gerarCodigo = () => aleatorio(4).map((b) => ALFABETO[b % ALFABETO.length]).join('');
+const gerarToken = () => aleatorio(18).map((b) => b.toString(16).padStart(2, '0')).join('');
+const enderecoSala = (c) => `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/api/sala/${c}/ws`;
+class Conexao {
+  constructor(codigo, ola, aoReceber, aoMudar) { Object.assign(this, { codigo, ola, aoReceber, aoMudar, tentativas: 0, fechada: false }); this.abrir(); }
+  abrir() {
+    if (this.fechada) return;
+    let ws; try { ws = new WebSocket(enderecoSala(this.codigo)); } catch { this.depois(); return; }
+    this.ws = ws;
+    ws.onopen = () => { this.tentativas = 0; ws.send(JSON.stringify(this.ola())); this.aoMudar(true); this.ping = setInterval(() => { try { ws.send('{"t":"ping"}'); } catch {} }, 25000); };
+    ws.onmessage = (e) => { let m; try { m = JSON.parse(e.data); } catch { return; } this.aoReceber(m); };
+    ws.onclose = (e) => {
+      clearInterval(this.ping); if (this.ws !== ws) return;
+      this.aoMudar(false);
+      if (e.code === 4000) { this.fechada = true; aviso('A sala foi aberta em outro aparelho.', 4000); return; }
+      if (e.code === 1008 || e.reason === 'encerrada') return;
+      this.depois();
+    };
+  }
+  depois() { if (this.fechada) return; clearTimeout(this.timer); this.timer = setTimeout(() => this.abrir(), Math.min(8000, 500 * 2 ** this.tentativas++)); }
+  enviar(m) { if (this.ws?.readyState !== 1) return false; const txt = JSON.stringify(m); if (txt.length > 900 * 1024) { aviso('Página grande demais para mandar ao vivo.'); return false; } this.ws.send(txt); return true; }
+  fechar() { this.fechada = true; clearTimeout(this.timer); clearInterval(this.ping); try { this.ws?.close(1000); } catch {} }
+  get aberta() { return this.ws?.readyState === 1; }
+}
+let sala = null; // professor: { codigo, token, con, online, alunos: Map, exercicio, ultimo }
+const av = { con: null, codigo: '', nome: '', id: '', modo: 'aula', exercicio: null, profOnline: false, leitura: true }; // aluno
+const conexao = () => (ALUNO ? av.con : sala?.con);
+function transmitir(m) { const c = conexao(); if (!c || (ALUNO && !av.exercicio)) return; c.enviar(m); }
+const cabecaTraco = (t) => ({ f: t.f, e: t.e, c: t.c, s: t.s, pen: t.pen });
+const paginaEnvio = (pg) => ({ id: pg.id, papel: aula.papel, objs: pg.objs, tracos: pg.tracos });
+let timerPag = 0;
+function mudouPagina(op) {
+  if (!aula || !conexao()) return;
+  if (ALUNO && !av.exercicio) return;
+  if (op) { transmitir(op); return; }
+  clearTimeout(timerPag);
+  timerPag = setTimeout(() => { if (aula) transmitir({ t: 'pagina', pagina: ALUNO ? { tracos: pagina().tracos } : paginaEnvio(pagina()) }); }, 80);
+}
+function aoVivo(a, fim) { // manda o traço (ou o laser) enquanto ele é escrito, aos pedaços
+  if (!conexao() || (ALUNO && !av.exercicio)) return;
+  if (fim) { clearTimeout(a.timerVivo); enviarVivo(a, true); return; }
+  if (a.timerVivo) return;
+  a.timerVivo = setTimeout(() => { a.timerVivo = 0; if (atual === a) enviarVivo(a); }, 45);
+}
+function enviarVivo(a, fim) {
+  if (a.laser) { const pts = a.laser.pts.slice(a.enviados).map(([x, y]) => [x, y]); a.enviados = a.laser.pts.length; transmitir({ t: 'laser', id: a.laser.id, p: pts, fim: !!fim }); return; }
+  const t = a.traco; if (!t) return;
+  transmitir({ t: 'vivo', id: t.id, ini: a.enviados ? undefined : cabecaTraco(t), p: t.p.slice(a.enviados) }); a.enviados = t.p.length;
+}
+function aplicarVivo(mapa, m) {
+  if (m.fim) { mapa.delete(m.id); return; }
+  let t = mapa.get(m.id);
+  if (m.refaz || !t) { if (!m.ini && !t) return; t = { ...(m.ini || t), id: m.id, p: [] }; mapa.set(m.id, t); }
+  for (const p of m.p || []) t.p.push(p);
+}
+function receberLaser(m) {
+  let l = lasers.find((x) => x.id === m.id);
+  if (!l) { l = { id: m.id, pts: [] }; lasers.push(l); }
+  const t = performance.now(); for (const [x, y] of m.p || []) l.pts.push([x, y, t]);
+  if (m.fim) l.fim = t;
+  animarLaser();
+}
+let quadroImg = 0;
+function imagensMudaram() { pedirQuadro(); if (!quadroImg) quadroImg = requestAnimationFrame(() => { quadroImg = 0; if (!ALUNO && !$('#ma-resol').hidden) redesenharResol(); }); }
+
+/* --- professor --- */
+function abrirSala(codigo = gerarCodigo(), token = gerarToken(), exercicio = null) {
+  sala = { codigo, token, con: null, online: false, alunos: new Map(), exercicio, ultimo: null };
+  guardarSala();
+  sala.con = new Conexao(codigo, () => ({ t: 'ola', papel: 'prof', token }), recebeProf, (ok) => { if (!sala) return; sala.online = ok; pintarSala(); });
+  pintarSala();
+}
+function guardarSala() { try { if (sala) localStorage.setItem('ma:sala', JSON.stringify({ codigo: sala.codigo, token: sala.token, exercicio: sala.exercicio })); else localStorage.removeItem('ma:sala'); } catch {} }
+function fecharSala() {
+  if (!sala) return;
+  if (!confirm('Fechar a sala? Os alunos saem da aula ao vivo.')) return;
+  sala.con.enviar({ t: 'encerrar' }); const c = sala.con; setTimeout(() => c.fechar(), 300);
+  sala = null; guardarSala(); pintarSala(); fecharResol();
+}
+function recebeProf(m) {
+  if (!sala) return;
+  if (m.t === 'bemvindo') {
+    if (aula) sala.con.enviar({ t: 'pagina', pagina: paginaEnvio(pagina()) });
+    if (sala.exercicio) sala.con.enviar({ t: 'exercicio', pagina: sala.exercicio });
+    return;
+  }
+  if (m.t === 'erro') { aviso(m.msg, 5000); if (m.fatal) { sala.con.fechar(); sala = null; guardarSala(); pintarSala(); } return; }
+  if (m.t === 'alunos') {
+    const vistos = new Set();
+    for (const x of m.lista) { vistos.add(x.id); const a = alunoProf(x.id); a.nome = x.nome; a.online = x.online; }
+    for (const [id, a] of sala.alunos) if (!vistos.has(id)) a.online = false;
+    pintarSala(); if (!$('#ma-resol').hidden) montarResol();
+    return;
+  }
+  if (m.t === 'aluno') {
+    const a = alunoProf(m.id), op = m.op || {};
+    if (op.t === 'pagina') { a.tracos = op.pagina?.tracos || []; a.vivos.clear(); }
+    else if (op.t === 'add' && op.traco) { a.tracos.push(op.traco); a.vivos.delete(op.traco.id); }
+    else if (op.t === 'vivo') aplicarVivo(a.vivos, op);
+    atualizarResol(m.id);
+  }
+}
+function alunoProf(id) { let a = sala.alunos.get(id); if (!a) { a = { nome: 'Aluno', online: true, tracos: [], vivos: new Map() }; sala.alunos.set(id, a); } return a; }
+function pintarSala() {
+  const btn = $('#ma-sala-btn'); if (!btn) return;
+  const n = sala ? [...sala.alunos.values()].filter((a) => a.online).length : 0;
+  btn.dataset.on = sala ? '1' : '0';
+  const badge = $('#ma-turma-n'); badge.hidden = !sala || !n; badge.textContent = n;
+  $('#ma-sala-fechada').hidden = !!sala; $('#ma-sala-aberta').hidden = !sala;
+  if (!sala) return;
+  $('#ma-sala-codigo').textContent = sala.codigo;
+  $('#ma-sala-con').textContent = sala.online ? (sala.exercicio ? 'Exercício em andamento: cada aluno resolve na própria cópia.' : 'Ao vivo: os alunos veem a página em que você está.') : 'Conectando ao servidor…';
+  $('#ma-ex-propor').hidden = !!sala.exercicio; $('#ma-ex-ver').hidden = !sala.exercicio && !sala.ultimo; $('#ma-ex-fim').hidden = !sala.exercicio;
+  $('#ma-ex-ver').textContent = sala.exercicio ? 'Ver resoluções ao vivo' : 'Ver resoluções do último exercício';
+  const lista = [...sala.alunos.values()].sort((a, b) => b.online - a.online || a.nome.localeCompare(b.nome));
+  $('#ma-sala-n').textContent = n ? `${n} aluno${n > 1 ? 's' : ''} na sala` : 'Ninguém entrou ainda';
+  $('#ma-sala-alunos').innerHTML = lista.map((a) => `<li class="${a.online ? '' : 'off'}">${esc(a.nome)}</li>`).join('');
+}
+function proporExercicio() {
+  if (!sala || !aula) return;
+  const pg = pagina();
+  sala.exercicio = { eid: novoId(), papel: aula.papel, objs: pg.objs.map((o) => ({ ...o })), tracos: pg.tracos.slice() };
+  for (const a of sala.alunos.values()) { a.tracos = []; a.vivos.clear(); }
+  sala.con.enviar({ t: 'exercicio', pagina: sala.exercicio }); guardarSala(); pintarSala();
+  fecharPops(); abrirResol();
+  aviso('Exercício enviado. As resoluções aparecem aqui enquanto os alunos escrevem.', 3000);
+}
+function encerrarExercicio() {
+  if (!sala?.exercicio) return;
+  sala.ultimo = sala.exercicio; sala.exercicio = null;
+  sala.con.enviar({ t: 'exercicio', pagina: null }); guardarSala(); pintarSala();
+  aviso('Exercício encerrado. Os alunos voltam a acompanhar a sua página.', 2600);
+}
+/* resoluções dos alunos, ao vivo */
+let resolAberta = null; // id do aluno na tela grande
+const cartoes = new Map();
+const exAtual = () => sala?.exercicio || sala?.ultimo;
+function paginaDoAluno(a) { const ex = exAtual(); return { id: 'r', objs: ex?.objs || [], fixos: ex?.tracos || [], tracos: a.tracos, extras: [...a.vivos.values()] }; }
+function garantirImagens(objs) { return Promise.all(objs.map((o) => imagemQuestao(o.aula, o.lista, o.n, 800).then((cv) => { const k = `${o.aula}|${o.lista}|${o.n}`; if (!prontas.get(k)?.cv) prontas.set(k, { P: 800, cv }); }).catch(() => {}))); }
+function abrirResol() {
+  if (!sala) return; fecharPops();
+  $('#ma-resol').hidden = false; $('#ma-resol-grande').hidden = true; resolAberta = null;
+  montarResol();
+  garantirImagens(exAtual()?.objs || []).then(redesenharResol);
+}
+function fecharResol() { const r = $('#ma-resol'); if (r) r.hidden = true; resolAberta = null; cartoes.clear(); pedirQuadro(); }
+function montarResol() {
+  const g = $('#ma-resol-grade'); g.innerHTML = ''; cartoes.clear();
+  const lista = [...sala.alunos].sort(([, a], [, b]) => a.nome.localeCompare(b.nome));
+  $('#ma-resol-info').textContent = sala.exercicio ? 'Ao vivo: o que cada aluno escreve aparece aqui na hora. Toque para ver grande.' : 'Exercício encerrado: estas são as resoluções que ficaram.';
+  if (!lista.length) { g.innerHTML = '<p class="ma-grade-msg">Ninguém entrou na sala ainda. Os alunos entram em matcomjoao.com/ao-vivo com o código ' + esc(sala.codigo) + '.</p>'; return; }
+  for (const [id, a] of lista) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'ma-resol-card';
+    const cv = document.createElement('canvas'), nome = document.createElement('b'); nome.textContent = a.nome;
+    b.append(cv, nome); b.onclick = () => abrirResolGrande(id);
+    g.append(b); cartoes.set(id, { b, cv });
+  }
+  requestAnimationFrame(redesenharResol);
+}
+function desenharNoCanvas(cv, pg, papelTipo, mini) {
+  const r = Math.min(window.devicePixelRatio || 1, 2), w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
+  cv.width = Math.round(w * r); cv.height = Math.round(h * r);
+  const ctx = cv.getContext('2d'); ctx.fillStyle = MESA; ctx.fillRect(0, 0, cv.width, cv.height);
+  const m = mini ? 0 : 6, z = Math.min((w - 2 * m) / PW, (h - 2 * m) / PH), tx = (w - PW * z) / 2, ty = (h - PH * z) / 2;
+  const salva = aula; aula = { papel: papelTipo || 'pontilhado' };
+  desenharPagina(ctx, pg, tx, ty, z, r, false, mini);
+  aula = salva;
+}
+function desenharCartao(id) {
+  const c = cartoes.get(id), a = sala?.alunos.get(id); if (!c || !a) return;
+  c.b.classList.toggle('off', !a.online); c.b.classList.toggle('escrevendo', a.vivos.size > 0);
+  desenharNoCanvas(c.cv, paginaDoAluno(a), exAtual()?.papel, true);
+}
+function redesenharResol() { if (!sala || $('#ma-resol').hidden) return; for (const id of cartoes.keys()) desenharCartao(id); if (resolAberta) desenharGrande(); }
+const pendentes = new Set(); let quadroResol = 0;
+function atualizarResol(id) {
+  if ($('#ma-resol')?.hidden) return;
+  pendentes.add(id);
+  if (!quadroResol) quadroResol = requestAnimationFrame(() => { quadroResol = 0; for (const x of pendentes) { if (!cartoes.has(x)) { montarResol(); break; } desenharCartao(x); } pendentes.clear(); if (resolAberta && sala.alunos.has(resolAberta)) desenharGrande(); });
+}
+function abrirResolGrande(id) { resolAberta = id; $('#ma-resol-nome').textContent = sala.alunos.get(id)?.nome || ''; $('#ma-resol-grande').hidden = false; requestAnimationFrame(desenharGrande); }
+function desenharGrande() { const a = sala?.alunos.get(resolAberta); if (!a) return; desenharNoCanvas($('#ma-resol-cv'), paginaDoAluno(a), exAtual()?.papel, false); }
+function copiarResolucao() {
+  const a = sala?.alunos.get(resolAberta), ex = exAtual(); if (!a || !ex || !aula) return;
+  const i = inserirPagina(aula.atual, { tracos: [...ex.tracos, ...a.tracos], objs: ex.objs });
+  fecharResol(); irPara(i, true);
+  aviso(`Resolução de ${a.nome} copiada para a página ${i + 1}.`, 2600);
+}
+
+/* --- aluno --- */
+function lerTrabalho() { try { return JSON.parse(localStorage.getItem('av:trab') || 'null'); } catch { return null; } }
+function guardarTrabalho() { if (!ALUNO || !av.exercicio || !aula) return; try { localStorage.setItem('av:trab', JSON.stringify({ codigo: av.codigo, eid: av.exercicio.eid, tracos: pagina().tracos })); } catch {} }
+function telaEntrar(erro) {
+  av.con?.fechar(); av.con = null; aula = null; remotos.clear();
+  try { sessionStorage.removeItem('av:sala'); } catch {}
+  document.body.dataset.tela = 'entrar';
+  const e = $('#av-erro'); e.hidden = !erro; e.textContent = erro || '';
+}
+function entrarNaSala(codigo, nome) {
+  codigo = codigo.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (!/^[A-Z0-9]{4,6}$/.test(codigo)) { telaEntrar('O código tem 4 letras ou números.'); return; }
+  nome = nome.trim().slice(0, 40); if (!nome) { telaEntrar('Escreva o seu nome.'); return; }
+  try { localStorage.setItem('av:nome', nome); sessionStorage.setItem('av:sala', codigo); } catch {}
+  Object.assign(av, { codigo, nome, modo: 'aula', exercicio: null, profOnline: false });
+  aula = { papel: 'pontilhado', atual: 0, paginas: [{ id: 'espera', objs: [], tracos: [] }] };
+  desfazer = []; refazer = []; botoes(); sel = null;
+  document.body.dataset.tela = 'aula'; definirLeitura(true); pintarAluno();
+  requestAnimationFrame(() => { medir(); V = vistaAjustada(); pedirQuadro(); });
+  av.con = new Conexao(codigo, () => ({ t: 'ola', papel: 'aluno', id: av.id, nome }), recebeAluno, (ok) => { av.online = ok; pintarAluno(); });
+}
+function definirLeitura(sim) { av.leitura = sim; document.body.dataset.leitura = sim ? '1' : '0'; if (sim) { cancelarTraco(); limparSel(); } }
+function pintarAluno() {
+  $('#av-con').dataset.on = av.online ? '1' : '0';
+  $('#av-estado').textContent = av.exercicio ? 'Exercício: resolva nesta página' : 'Acompanhando a aula';
+  $('#av-sub').textContent = !av.online ? 'Conectando…' : !av.profOnline ? `Sala ${av.codigo} · o professor ainda não está na sala` : av.exercicio ? `Sala ${av.codigo} · o professor vê o que você escreve` : `Sala ${av.codigo} · ${av.nome}`;
+  document.body.dataset.modo = av.exercicio ? 'exercicio' : 'aula';
+}
+function mostrarPaginaProf(pg) {
+  pg ||= { id: 'espera', objs: [], tracos: [] };
+  const trocou = pagina().id !== pg.id;
+  aula.papel = pg.papel || 'pontilhado';
+  aula.paginas = [{ id: pg.id, objs: pg.objs || [], tracos: pg.tracos || [] }];
+  remotos.clear();
+  if (trocou) { V = vistaAjustada(); $('#ma-zoomtag').hidden = true; }
+  pedirQuadro();
+}
+function recebeAluno(m) {
+  switch (m.t) {
+    case 'erro': if (m.fatal) telaEntrar(m.msg); else aviso(m.msg, 4000); return;
+    case 'encerrada': telaEntrar('O professor encerrou a aula ao vivo.'); return;
+    case 'prof': av.profOnline = m.online; pintarAluno(); return;
+    case 'estado': {
+      av.profOnline = m.profOnline;
+      if (m.modo === 'exercicio' && m.exercicio) {
+        const ex = m.exercicio, novo = av.exercicio?.eid !== ex.eid, salvo = lerTrabalho();
+        const tracos = !novo ? pagina().tracos : salvo?.codigo === av.codigo && salvo?.eid === ex.eid ? salvo.tracos : [];
+        av.exercicio = ex; av.modo = 'exercicio';
+        aula.papel = ex.papel || 'pontilhado';
+        aula.paginas = [{ id: 'ex-' + ex.eid, objs: ex.objs || [], fixos: ex.tracos || [], tracos }];
+        remotos.clear();
+        if (novo) { desfazer = []; refazer = []; botoes(); V = vistaAjustada(); $('#ma-zoomtag').hidden = true; aviso('O professor propôs um exercício. Resolva nesta página: ele acompanha o que você escreve.', 4000); }
+        definirLeitura(false);
+        if (tracos.length) av.con.enviar({ t: 'pagina', pagina: { tracos } }); // reconectou: manda o que já tinha escrito
+      } else {
+        const tinha = !!av.exercicio;
+        av.exercicio = null; av.modo = 'aula'; definirLeitura(true); mostrarPaginaProf(m.pagina);
+        if (tinha) { desfazer = []; refazer = []; botoes(); aviso('Exercício encerrado. Você voltou a acompanhar a aula.', 2600); }
+      }
+      pintarAluno(); pedirQuadro(); return;
+    }
+    case 'pagina': if (!av.exercicio) mostrarPaginaProf(m.pagina); return;
+    case 'add': if (!av.exercicio && m.traco) { pagina().tracos.push(m.traco); remotos.delete(m.traco.id); pedirQuadro(); } return;
+    case 'vivo': if (!av.exercicio) { aplicarVivo(remotos, m); pedirQuadro(); } return;
+    case 'laser': if (!av.exercicio) receberLaser(m); return;
+  }
+}
+function iniciarAluno() {
+  try { av.id = localStorage.getItem('av:id') || ''; if (!av.id) { av.id = novoId() + novoId(); localStorage.setItem('av:id', av.id); } } catch { av.id = novoId() + novoId(); }
+  let nome = '', codigo = (qs.get('c') || '').toUpperCase();
+  try { nome = localStorage.getItem('av:nome') || ''; codigo ||= sessionStorage.getItem('av:sala') || ''; } catch {}
+  $('#av-nome').value = nome; $('#av-codigo').value = codigo;
+  on('#av-form', 'submit', (e) => { e.preventDefault(); entrarNaSala($('#av-codigo').value, $('#av-nome').value); });
+  on('#av-sair', 'click', () => { if (av.exercicio && pagina().tracos.length && !confirm('Sair da aula? O professor deixa de ver a sua resolução.')) return; telaEntrar(); });
+  if (codigo && nome && sessionStorage.getItem('av:sala')) entrarNaSala(codigo, nome); // recarregou a página: volta direto
+}
+
+/* ---------- botões ---------- */
 function ligarBotoes() {
+  // comuns (professor e aluno)
+  on('#ma-desfazer', 'click', voltar); on('#ma-refazer', 'click', avancar);
+  on('#ma-ajustar', 'click', () => aplicarVista(vistaAjustada()));
+  on('#ma-sel-del', 'click', apagarSel); on('#ma-sel-dup', 'click', duplicarSel);
+  document.addEventListener('pointerdown', (e) => { if (!e.target.closest('.ma-pop,#ma-mais-btn,#ma-traco,#ma-sala-btn,.ma-bar-meio [data-ferramenta]')) fecharPops(); });
+  window.addEventListener('resize', () => { if (aula) medir(); if (!ALUNO && !$('#ma-resol').hidden) redesenharResol(); });
+  document.addEventListener('keydown', (e) => {
+    if (!aula || e.target.closest('input,select,textarea')) return;
+    const k = e.key.toLowerCase();
+    if ((e.metaKey || e.ctrlKey) && k === 'z') { e.preventDefault(); e.shiftKey ? avancar() : voltar(); return; }
+    if ((e.metaKey || e.ctrlKey) && k === 'y') { e.preventDefault(); avancar(); return; }
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (!ALUNO && (k === 'arrowright' || k === 'pagedown')) { e.preventDefault(); irPara(aula.atual + 1); }
+    else if (!ALUNO && (k === 'arrowleft' || k === 'pageup')) { e.preventDefault(); irPara(aula.atual - 1); }
+    else if ((k === 'delete' || k === 'backspace') && sel) { e.preventDefault(); apagarSel(); }
+    else if (k === 'escape') { limparSel(); fecharPops(); if (!ALUNO) { fecharInserir(); fecharMapa(); fecharResol(); } }
+    else { const f = { p: 'caneta', m: 'marca', e: 'borracha', v: 'laco', l: ALUNO ? null : 'laser' }[k]; if (f) { pref.ferramenta = f; guardarPref(); pintarBarra(); } }
+  });
+  if (ALUNO) return;
+
+  // só o professor
   $('#ma-nova').onclick = novaAula;
   $('#ma-voltar').onclick = mostrarInicio;
   $('#ma-titulo').onclick = () => { const t = prompt('Nome da aula', aula.titulo); if (t?.trim()) { aula.titulo = t.trim(); $('#ma-titulo').textContent = aula.titulo; salvar(); } };
-  $('#ma-desfazer').onclick = voltar; $('#ma-refazer').onclick = avancar;
   $('#ma-ant').onclick = () => irPara(aula.atual - 1);
   $('#ma-prox').onclick = () => irPara(aula.atual + 1);
   $('#ma-nova-pag').onclick = () => { const i = inserirPagina(); irPara(i, true); aviso('Nova página ' + (i + 1), 1000); };
   $('#ma-nav-n').onclick = abrirMapa; $('#ma-paginas-btn').onclick = abrirMapa; $('#ma-mapa-x').onclick = fecharMapa;
-  $('#ma-ajustar').onclick = () => aplicarVista(vistaAjustada());
   $('#ma-inserir-btn').onclick = () => ($('#ma-inserir').hidden ? abrirInserir() : fecharInserir());
   $('#ma-ins-x').onclick = fecharInserir;
   $('#ma-ins-aula').onclick = () => ($('#ma-ins-busca').hidden ? mostrarBusca() : catalogo && pref.aulaSite && mostrarQuestoes());
   $('#ma-busca').oninput = (e) => listarAulas(e.target.value);
   for (const b of document.querySelectorAll('.ma-abas button')) b.onclick = () => { pref.lista = b.dataset.lista; guardarPref(); mostrarQuestoes(); };
-  $('#ma-sel-del').onclick = apagarSel; $('#ma-sel-dup').onclick = duplicarSel;
   $('#ma-mais-btn').onclick = (e) => { e.stopPropagation(); const m = $('#ma-menu'), abrir = m.hidden; fecharPops(); if (abrir) { m.hidden = false; $('#ma-mais-btn').setAttribute('aria-expanded', 'true'); } };
-  document.addEventListener('pointerdown', (e) => { if (!e.target.closest('#ma-menu,#ma-mais-btn')) fecharPops(); });
-  $('#ma-papel').onchange = (e) => { aula.papel = e.target.value; salvar(); pedirQuadro(); };
+  $('#ma-papel').onchange = (e) => { aula.papel = e.target.value; salvar(); pedirQuadro(); mudouPagina(); };
   $('#ma-exportar').onclick = exportar;
+  // turma ao vivo
+  $('#ma-sala-btn').onclick = (e) => { e.stopPropagation(); const m = $('#ma-sala'), abrir = m.hidden; fecharPops(); if (abrir) { m.hidden = false; $('#ma-sala-btn').setAttribute('aria-expanded', 'true'); pintarSala(); } };
+  $('#ma-sala-abrir').onclick = () => { abrirSala(); };
+  $('#ma-sala-fechar').onclick = fecharSala;
+  $('#ma-ex-propor').onclick = proporExercicio;
+  $('#ma-ex-fim').onclick = encerrarExercicio;
+  $('#ma-ex-ver').onclick = abrirResol;
+  $('#ma-resol-x').onclick = fecharResol;
+  $('#ma-resol-voltar').onclick = () => { resolAberta = null; $('#ma-resol-grande').hidden = true; redesenharResol(); };
+  $('#ma-resol-copiar').onclick = copiarResolucao;
   // tela cheia: no iPad, o melhor é abrir pela Tela de Início (fica sem a barra do Safari)
   const raiz = document.documentElement, pode = raiz.requestFullscreen || raiz.webkitRequestFullscreen, emApp = matchMedia('(display-mode: fullscreen), (display-mode: standalone)').matches || navigator.standalone;
   if (pode && !emApp) {
@@ -1058,19 +1447,6 @@ function ligarBotoes() {
     $('#ma-tela-cheia').onclick = () => { fecharPops(); const el = document.fullscreenElement || document.webkitFullscreenElement; if (el) (document.exitFullscreen || document.webkitExitFullscreen).call(document); else pode.call(raiz).catch?.(() => aviso('O navegador não deixou abrir em tela cheia.')); };
   }
   if (emApp) $('#ma-dica-pwa').hidden = true;
-  document.addEventListener('keydown', (e) => {
-    if (!aula || e.target.closest('input,select,textarea')) return;
-    const k = e.key.toLowerCase();
-    if ((e.metaKey || e.ctrlKey) && k === 'z') { e.preventDefault(); e.shiftKey ? avancar() : voltar(); return; }
-    if ((e.metaKey || e.ctrlKey) && k === 'y') { e.preventDefault(); avancar(); return; }
-    if (e.metaKey || e.ctrlKey || e.altKey) return;
-    if (k === 'arrowright' || k === 'pagedown') { e.preventDefault(); irPara(aula.atual + 1); }
-    else if (k === 'arrowleft' || k === 'pageup') { e.preventDefault(); irPara(aula.atual - 1); }
-    else if ((k === 'delete' || k === 'backspace') && sel) { e.preventDefault(); apagarSel(); }
-    else if (k === 'escape') { limparSel(); fecharInserir(); fecharMapa(); fecharPops(); }
-    else { const f = { p: 'caneta', m: 'marca', e: 'borracha', v: 'laco', l: 'laser' }[k]; if (f) { pref.ferramenta = f; guardarPref(); window.__pintarBarra(); } }
-  });
-  window.addEventListener('resize', () => { if (aula) medir(); });
   document.addEventListener('visibilitychange', () => { if (document.hidden) salvar(true); });
   window.addEventListener('pagehide', () => salvar(true));
 }
@@ -1078,11 +1454,13 @@ function ligarBotoes() {
 /* ---------- início ---------- */
 async function iniciar() {
   tela = $('#ma-tela'); vivo = $('#ma-vivo'); folha = $('#ma-folha');
-  if (qs.get('aula')) { pref.aulaSite = qs.get('aula').replace(/[^0-9.]/g, ''); guardarPref(); }
   montarBarra(); ligarBotoes(); ligarEntrada();
+  if (ALUNO) { iniciarAluno(); return; }
+  if (qs.get('aula')) { pref.aulaSite = qs.get('aula').replace(/[^0-9.]/g, ''); guardarPref(); }
+  try { const s = JSON.parse(localStorage.getItem('ma:sala') || 'null'); if (s?.codigo && s?.token) abrirSala(s.codigo, s.token, s.exercicio || null); } catch {}
   const id = (location.hash.match(/a=([\w]+)/) || [])[1];
   if (id && (await banco.ler(id))) abrirAula(id); else mostrarInicio();
 }
 iniciar();
 
-window.__modoAula = { get aula() { return aula; }, get vista() { return V; }, get sel() { return sel; }, irPara, inserirQuestao, voltar, avancar, exportar, desfazer: () => desfazer };
+window.__modoAula = { get aula() { return aula; }, get vista() { return V; }, get sel() { return sel; }, get sala() { return sala; }, get av() { return av; }, irPara, inserirQuestao, voltar, avancar, exportar, desfazer: () => desfazer };

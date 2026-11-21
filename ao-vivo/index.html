@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#e9e7f0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="description" content="Entre na aula ao vivo do Prof. João Capri com o código da sala e resolva os exercícios no seu iPad.">
+<title>Aula ao vivo | MAT com JOÃO!</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/logo-mat-256.png">
+<link rel="stylesheet" href="/modo-aula/modo-aula.css">
+<script type="module" src="/modo-aula/modo-aula.js"></script>
+</head>
+<body data-papel="aluno" data-tela="entrar" data-ferramenta="caneta" data-leitura="1">
+
+<section class="av-entrar" aria-labelledby="av-t">
+  <form class="av-caixa" id="av-form">
+    <h1 id="av-t">Aula ao vivo</h1>
+    <p>Digite o código que o professor passou. Você acompanha a aula na tela e, quando ele propuser um exercício, resolve aqui com a caneta.</p>
+    <label for="av-codigo">Código da sala</label>
+    <input id="av-codigo" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" required placeholder="K7QM">
+    <label for="av-nome">Seu nome</label>
+    <input id="av-nome" maxlength="40" autocomplete="given-name" required placeholder="Como o professor vai ver você">
+    <button type="submit" class="ma-bt-pri">Entrar na aula</button>
+    <p class="av-erro" id="av-erro" hidden></p>
+  </form>
+</section>
+
+<header class="ma-bar" id="ma-bar">
+  <div class="ma-bar-esq">
+    <span class="av-con" id="av-con" title="Conexão"></span>
+    <div class="av-estado"><b id="av-estado">Aula ao vivo</b><small id="av-sub"></small></div>
+  </div>
+
+  <div class="ma-bar-meio" role="toolbar" aria-label="Ferramentas">
+    <button type="button" class="ma-ib" data-ferramenta="caneta" aria-pressed="true" aria-label="Caneta" title="Caneta">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-4.6L15.8 4.8a2 2 0 012.8 0l.6.6a2 2 0 010 2.8L8.6 18.8z"/><path d="M13.8 6.8l3.4 3.4"/></svg>
+    </button>
+    <button type="button" class="ma-ib" data-ferramenta="marca" aria-pressed="false" aria-label="Marca-texto" title="Marca-texto">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 15l-3 3h5l1-1"/><path d="M9 15l7.5-7.5a2 2 0 012.8 0l.2.2a2 2 0 010 2.8L12 18z"/><path d="M4 21h16"/></svg>
+    </button>
+    <button type="button" class="ma-ib" data-ferramenta="borracha" aria-pressed="false" aria-label="Borracha" title="Borracha">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 20h12"/><path d="M5.6 15.4l8.8-8.8a2 2 0 012.8 0l2.2 2.2a2 2 0 010 2.8L12 19H8.4z"/><path d="M9.6 11.4l5 5"/></svg>
+    </button>
+    <button type="button" class="ma-ib" data-ferramenta="laco" aria-pressed="false" aria-label="Selecionar" title="Selecionar: contorne o que quer mover">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 17.5C4.4 16.3 3 14.2 3 12c0-4.4 4-7.5 9-7.5s9 3.1 9 7.5-4 7.5-9 7.5c-1 0-2-.1-2.9-.3" stroke-dasharray="2.6 2.6"/><path d="M9.5 15.2l1.6 6.1 1.8-2.4 2.9.8z"/></svg>
+    </button>
+    <span class="ma-sep" aria-hidden="true"></span>
+    <div class="ma-cores" id="ma-cores" role="radiogroup" aria-label="Cor"></div>
+    <button type="button" class="ma-traco" id="ma-traco" aria-haspopup="dialog" aria-expanded="false" aria-controls="ma-painel" title="Estilo da caneta e espessura">
+      <canvas id="ma-traco-amostra" width="52" height="20" aria-hidden="true"></canvas>
+    </button>
+    <span class="ma-sep" aria-hidden="true"></span>
+    <button type="button" class="ma-ib" id="ma-desfazer" aria-label="Desfazer" title="Desfazer · ou toque com dois dedos" disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 010 11H11"/></svg>
+    </button>
+    <button type="button" class="ma-ib" id="ma-refazer" aria-label="Refazer" title="Refazer" disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14l5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 000 11H13"/></svg>
+    </button>
+  </div>
+
+  <div class="ma-bar-dir">
+    <button type="button" class="ma-bt-sec" id="av-sair">Sair</button>
+  </div>
+
+  <section class="ma-pop ma-painel" id="ma-painel" role="dialog" aria-label="Estilo e espessura" hidden>
+    <div class="ma-painel-sec" id="ma-estilos-sec"><h2>Estilo da caneta</h2><div class="ma-estilos" id="ma-estilos" role="radiogroup" aria-label="Estilo da caneta"></div></div>
+    <div class="ma-painel-sec">
+      <h2><span>Espessura</span><output id="ma-esp-valor"></output></h2>
+      <div class="ma-tams" id="ma-tams" role="radiogroup" aria-label="Espessuras rápidas"></div>
+      <input type="range" id="ma-esp" min="0" max="100" step="1" aria-label="Espessura do traço">
+      <canvas class="ma-previa" id="ma-previa" aria-hidden="true"></canvas>
+    </div>
+  </section>
+</header>
+
+<main class="ma-folha" id="ma-folha" aria-label="Página da aula">
+  <canvas id="ma-tela" aria-label="Página da aula. Quando houver exercício, escreva com a caneta; dois dedos dão zoom."></canvas>
+  <canvas id="ma-vivo" aria-hidden="true"></canvas>
+  <div class="ma-sel-menu" id="ma-sel-menu" role="toolbar" aria-label="Seleção" hidden>
+    <button type="button" id="ma-sel-dup">Duplicar</button>
+    <button type="button" id="ma-sel-del">Apagar</button>
+  </div>
+</main>
+<div class="ma-zoomtag" id="ma-zoomtag" hidden><button type="button" id="ma-ajustar">Página inteira</button></div>
+
+<p class="ma-status" id="ma-status" role="status" aria-live="polite"></p>
+</body>
+</html>

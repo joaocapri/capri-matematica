@@ -1,11 +1,20 @@
 // Publicação no Cloudflare (Workers com arquivos estáticos).
 // O site é estático: não há build. O Cloudflare copia o repositório e publica a cada push no main.
+// O Worker (worker/index.js) só atende /api/* — hoje, a aula ao vivo (uma sala por código, em Durable Objects).
+// Todo o resto é servido direto dos arquivos, como antes.
 {
   "name": "capri-matematica",
   "compatibility_date": "2026-11-01",
+  "main": "worker/index.js",
   "assets": {
     "directory": "./",
+    "binding": "ASSETS",
     // Endereço que não existe abre o site (o app escolhe a página), como fazia o Cloudflare Pages.
-    "not_found_handling": "single-page-application"
-  }
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "SALAS", "class_name": "Sala" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Sala"] }]
 }
