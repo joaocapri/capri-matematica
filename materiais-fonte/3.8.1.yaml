@@ -1,0 +1,587 @@
+# Aula 3.8.1 — Geometria analítica: coeficiente angular e equação da reta
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: coeficiente angular m = Δy/Δx = tg α; retas horizontais (m = 0) e verticais (sem m);
+# equação por um ponto, y − y₀ = m(x − x₀); equação por dois pontos; interpretação de m como taxa de variação.
+# As formas geral, segmentária e paramétrica (3.8.2) e as posições relativas (3.9) ficam para as próximas aulas.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Calcule o coeficiente angular da reta que passa por $A(1, 2)$ e $B(4, 11)$, completando.'
+      itens:
+      - '$\Delta y = 11 - 2 = {{9}}$ e $\Delta x = 4 - 1 = {{3}}$'
+      - '$m = \dfrac{\Delta y}{\Delta x} = {{3}}$'
+      resolucao: |
+        $m = \tfrac{9}{3} = 3$: para cada unidade que $x$ aumenta, $y$ aumenta 3.
+      resposta: '$9$, $3$; $m = 3$'
+    - enunciado: 'Calcule o coeficiente angular da reta que passa pelos pontos dados (ou diga que ele não existe).'
+      itens:
+      - '$(0, 0)$ e $(2, 5)$'
+      - '$(-1, 4)$ e $(3, -4)$'
+      - '$(2, 3)$ e $(7, 3)$'
+      - '$(1, 1)$ e $(1, 5)$'
+      espaco_item: 10
+      resolucao: |
+        (a) $\tfrac{5}{2}$. (b) $\tfrac{-8}{4} = -2$. (c) $\tfrac{0}{5} = 0$: reta horizontal.
+        (d) $\Delta x = 0$: a reta é vertical e não tem coeficiente angular.
+      resposta: '(a) $\frac{5}{2}$ (b) $-2$ (c) $0$ (d) não existe'
+    - enunciado: 'O coeficiente angular é a tangente do ângulo $\alpha$ que a reta forma com o eixo $x$. Complete o quadro.'
+      tabela:
+        cabecalho: ['$\alpha$', '$m = \operatorname{tg} \alpha$']
+        linhas:
+        - ['$0°$', '${{0}}$']
+        - ['$30°$', '${{\frac{\sqrt{3}}{3}}}$']
+        - ['$45°$', '${{1}}$']
+        - ['$60°$', '${{\sqrt{3}}}$']
+        - ['$135°$', '${{-1}}$']
+      resolucao: |
+        Valores notáveis da tangente. Para $135°$: $\operatorname{tg} 135° = -\operatorname{tg} 45° = -1$ (a reta “desce”).
+      resposta: '$0$, $\frac{\sqrt{3}}{3}$, $1$, $\sqrt{3}$, $-1$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Se $m > 0$, a reta sobe da esquerda para a direita.'
+      - 'Uma reta vertical tem coeficiente angular igual a 0.'
+      - 'O valor de $m = \frac{\Delta y}{\Delta x}$ não depende de quais dois pontos da reta são usados.'
+      - 'Retas com $m = 2$ e $m = -2$ formam o mesmo ângulo com o eixo $x$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) $y$ aumenta quando $x$ aumenta. (F) A horizontal tem $m = 0$; a vertical não tem $m$.
+        (V) Numa reta, a razão é sempre a mesma. (F) Uma forma ângulo agudo e a outra, obtuso (são simétricas em relação a uma vertical).
+      resposta: V, F, V, F
+    - enunciado: 'Escreva a equação da reta, na forma $y = mx + n$, que passa pelo ponto dado e tem o coeficiente angular dado.'
+      itens:
+      - '$(2, 5)$ e $m = 4$'
+      - '$(-1, 3)$ e $m = -2$'
+      - '$(3, -4)$ e $m = 0$'
+      espaco_item: 12
+      resolucao: |
+        Use $y - y_0 = m(x - x_0)$. (a) $y - 5 = 4(x - 2)$, $y = 4x - 3$. (b) $y - 3 = -2(x + 1)$, $y = -2x + 1$. (c) $y = -4$.
+      resposta: '(a) $y = 4x - 3$ (b) $y = -2x + 1$ (c) $y = -4$'
+    - enunciado: 'Associe cada reta à sua descrição (uma descrição pode ser usada mais de uma vez).'
+      esquerda:
+      - 'crescente'
+      - 'decrescente'
+      - 'horizontal'
+      direita:
+      - '$y = 3x - 2$'
+      - '$y - 1 = -(x + 4)$'
+      - '$y = 5$'
+      - '$y - 2 = \frac{1}{2}(x - 1)$'
+      - '$y = -4x$'
+      resolucao: |
+        Os coeficientes angulares são $3$, $-1$, $0$, $\tfrac{1}{2}$ e $-4$.
+      resposta: 'De cima para baixo: 1, 2, 3, 1, 2'
+    - enunciado: 'Determine a equação da reta que passa por $A(1, 3)$ e $B(3, 7)$.'
+      espaco: 14
+      resolucao: |
+        $m = \tfrac{7 - 3}{3 - 1} = 2$. $y - 3 = 2(x - 1)$: $y = 2x + 1$. (Confere em $B$: $6 + 1 = 7$.)
+      resposta: '$y = 2x + 1$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para a reta que passa por $A(2, 5)$ e $B(6, 3)$, Léo calculou $m = \frac{6 - 2}{3 - 5} = -2$.
+      enunciado: 'Encontre o erro de Léo e dê o coeficiente angular correto.'
+      espaco: 12
+      resolucao: |
+        Léo inverteu a fração: o coeficiente angular é a variação de $y$ sobre a variação de $x$. $m = \tfrac{3 - 5}{6 - 2} = -\tfrac{1}{2}$.
+      resposta: '$m = -\frac{1}{2}$'
+    - enunciado: 'A reta da figura passa pelos pontos destacados. Determine o seu coeficiente angular e a sua equação.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.5]
+          \draw[step=1, gray!25, very thin] (-1,-2) grid (5,6);
+          \draw[-latex, ink!60] (-1.3,0) -- (5.4,0) node[right, font=\scriptsize] {$x$};
+          \draw[-latex, ink!60] (0,-2.3) -- (0,6.4) node[above, font=\scriptsize] {$y$};
+          \draw[roxo, line width=1pt] (-0.5,-2) -- (3.5,6);
+          \fill[roxo] (0,-1) circle (4pt) node[right, font=\scriptsize] {$(0, -1)$};
+          \fill[roxo] (3,5) circle (4pt) node[right, font=\scriptsize] {$(3, 5)$};
+          \end{scope}
+      espaco: 14
+      resolucao: |
+        $m = \tfrac{5 - (-1)}{3 - 0} = 2$. $y - (-1) = 2(x - 0)$: $y = 2x - 1$.
+      resposta: '$m = 2$; $y = 2x - 1$'
+    - enunciado: 'Determine o coeficiente angular e o ângulo que cada reta forma com o eixo $x$.'
+      itens:
+      - 'reta por $(1, 2)$ e $(4, 5)$'
+      - 'reta por $(0, 0)$ e $(3, -3\sqrt{3})$'
+      espaco_item: 14
+      resolucao: |
+        (a) $m = \tfrac{3}{3} = 1 = \operatorname{tg} 45°$: $45°$.
+        (b) $m = -\sqrt{3}$. O ângulo é obtuso, com $\operatorname{tg} \alpha = -\sqrt{3}$: $\alpha = 180° - 60° = 120°$.
+      resposta: '(a) $1$; $45°$ (b) $-\sqrt{3}$; $120°$'
+    - enunciado: 'Numa cidade, o preço de uma corrida de táxi é uma função do 1º grau da distância: 4 km custam R\$\,20,00 e 10 km custam R\$\,38,00. Determine o preço por quilômetro, a equação do preço $p$ em função da distância $d$ e o valor da bandeirada (preço fixo).'
+      espaco: 18
+      resolucao: |
+        $m = \tfrac{38 - 20}{10 - 4} = 3$ reais por km. $p - 20 = 3(d - 4)$: $p = 3d + 8$. Bandeirada: R\$\,8,00.
+      resposta: 'R\$\,3,00 por km; $p = 3d + 8$; R\$\,8,00'
+    - enunciado: 'Complete o quadro com pontos da reta $y - 1 = 2(x - 3)$.'
+      tabela:
+        cabecalho: ['$x$', '$y$']
+        linhas:
+        - ['$3$', '${{1}}$']
+        - ['$5$', '${{5}}$']
+        - ['$0$', '${{-5}}$']
+        - ['${{6}}$', '$7$']
+      resolucao: |
+        $y = 1 + 2(x - 3) = 2x - 5$. Para $y = 7$: $2x - 5 = 7$, $x = 6$.
+      resposta: '$1$, $5$, $-5$; $x = 6$'
+    - enunciado: 'Determine $k$ para que $A(1, 2)$, $B(3, 6)$ e $C(5, k)$ estejam alinhados, usando coeficientes angulares.'
+      espaco: 12
+      resolucao: |
+        $m_{AB} = \tfrac{4}{2} = 2$. Alinhados $\iff m_{BC} = 2$: $\tfrac{k - 6}{2} = 2$, $k = 10$.
+      resposta: '$k = 10$'
+    - enunciado: 'Uma rampa sobe 1,5 m ao longo de 12 m na horizontal.'
+      itens:
+      - 'Qual é o coeficiente angular da rampa? Dê também em porcentagem.'
+      - 'Uma norma de acessibilidade limita a inclinação de rampas a cerca de 8,33\%. A rampa atende a norma?'
+      espaco_item: 12
+      resolucao: |
+        (a) $m = \tfrac{1{,}5}{12} = 0{,}125$, isto é, $12{,}5\%$.
+        (b) Não: $12{,}5\% > 8{,}33\%$. Para subir 1,5 m dentro da norma, seriam precisos 18 m na horizontal.
+      resposta: '(a) $0{,}125 = 12{,}5\%$ (b) não'
+    - enunciado: 'A reta que passa por $A(1, k)$ e $B(3, 2k + 1)$ tem coeficiente angular 3. Determine $k$ e a equação da reta.'
+      espaco: 14
+      resolucao: |
+        $m = \tfrac{(2k + 1) - k}{3 - 1} = \tfrac{k + 1}{2} = 3$: $k = 5$. A reta passa por $(1, 5)$: $y - 5 = 3(x - 1)$, $y = 3x + 2$.
+      resposta: '$k = 5$; $y = 3x + 2$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Explique por que três pontos $A$, $B$ e $C$ (sem retas verticais) estão alinhados se, e somente se, $m_{AB} = m_{BC}$. Verifique com $A(0, 1)$, $B(2, 4)$ e $C(6, 10)$.'
+      espaco: 18
+      resolucao: |
+        Se as retas $AB$ e $BC$ têm a mesma inclinação e o ponto $B$ em comum, elas são a mesma reta. Se as inclinações são diferentes, $AB$ e $BC$ formam um “bico” em $B$.
+        $m_{AB} = \tfrac{3}{2}$ e $m_{BC} = \tfrac{6}{4} = \tfrac{3}{2}$: alinhados.
+      resposta: 'Alinhados ($m = \frac{3}{2}$)'
+    - enunciado: 'Determine as equações das retas que contêm os lados do triângulo de vértices $A(0, 0)$, $B(4, 2)$ e $C(1, 5)$.'
+      espaco: 20
+      resolucao: |
+        $AB$: $m = \tfrac{2}{4} = \tfrac{1}{2}$, $y = \tfrac{x}{2}$. $BC$: $m = \tfrac{3}{-3} = -1$, $y - 2 = -(x - 4)$, $y = -x + 6$. $AC$: $m = 5$, $y = 5x$.
+      resposta: '$y = \frac{x}{2}$, $y = -x + 6$, $y = 5x$'
+    - enunciado: 'A água congela a 0 °C, ou 32 °F, e ferve a 100 °C, ou 212 °F. A relação entre as escalas é do 1º grau.'
+      itens:
+      - 'Escreva $F$ em função de $C$.'
+      - 'Em que temperatura as duas escalas marcam o mesmo número?'
+      espaco_item: 14
+      resolucao: |
+        (a) $m = \tfrac{212 - 32}{100 - 0} = 1{,}8$. $F = 1{,}8C + 32$.
+        (b) $C = 1{,}8C + 32$: $-0{,}8C = 32$, $C = -40$. Ou seja, $-40$ °C $= -40$ °F.
+      resposta: '(a) $F = 1{,}8C + 32$ (b) $-40$'
+    - enunciado: 'A reta $r$ passa por $(2, 1)$ e forma um ângulo de $135°$ com o eixo $x$. Determine a equação de $r$, os pontos em que ela corta os eixos e a área do triângulo que ela forma com os eixos.'
+      espaco: 18
+      resolucao: |
+        $m = \operatorname{tg} 135° = -1$. $y - 1 = -(x - 2)$: $y = -x + 3$. Corta os eixos em $(3, 0)$ e $(0, 3)$. Área $\tfrac{3 \cdot 3}{2} = 4{,}5$.
+      resposta: '$y = -x + 3$; $(3, 0)$ e $(0, 3)$; $4{,}5$'
+    - enunciado: 'Considere as retas $y - 2 = m(x - 1)$, para $m$ real.'
+      itens:
+      - 'Mostre que todas passam pelo mesmo ponto.'
+      - 'Determine $m$ para que a reta passe por $(4, 8)$.'
+      - 'Determine $m$ para que a reta corte o eixo $x$ em $x = 3$.'
+      espaco_item: 12
+      resolucao: |
+        (a) Com $x = 1$: $y - 2 = 0$. Todas passam por $(1, 2)$.
+        (b) $6 = m \cdot 3$, $m = 2$. (c) $0 - 2 = m(3 - 1)$, $m = -1$.
+      resposta: '(a) $(1, 2)$ (b) $m = 2$ (c) $m = -1$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      O gráfico mostra o volume de água em um reservatório, em litros, durante as 4 primeiras horas depois que uma válvula foi aberta. O volume diminuiu sempre no mesmo ritmo, e o técnico responsável quer informar a vazão da válvula, isto é, quantos litros saem do reservatório a cada hora.
+    figura:
+      tikz: |
+        \begin{scope}[xscale=1.1, yscale=.32]
+        \draw[gray!25, very thin] (0,0) grid[xstep=1, ystep=2] (5,10);
+        \draw[-latex, ink!60] (0,0) -- (5.4,0) node[right, font=\scriptsize] {horas};
+        \draw[-latex, ink!60] (0,0) -- (0,11.2) node[above, font=\scriptsize] {litros};
+        \node[left, font=\tiny] at (0,2) {200};
+        \node[left, font=\tiny] at (0,4) {400};
+        \node[left, font=\tiny] at (0,6) {600};
+        \node[left, font=\tiny] at (0,8) {800};
+        \node[left, font=\tiny] at (0,10) {1000};
+        \foreach \x in {1,2,3,4,5} \node[below, font=\tiny] at (\x,0) {\x};
+        \draw[roxo, line width=1.2pt] (0,10) -- (4,4);
+        \fill[roxo] (0,10) circle (2.5pt);
+        \fill[roxo] (4,4) circle (2.5pt);
+        \end{scope}
+    enunciado: |
+      O volume de água diminuiu, a cada hora,
+    opcoes: ['100 litros.', '150 litros.', '250 litros.', '400 litros.', '600 litros.']
+    correta: B
+    resolucao: |
+      Coeficiente angular: $\tfrac{400 - 1000}{4 - 0} = -150$ L/h. O volume diminui 150 L por hora. 600 L é a perda nas 4 horas.
+
+  - estilo: Fuvest
+    enunciado: |
+      O coeficiente angular da reta que passa por $(-2, 5)$ e $(4, -7)$ é
+    opcoes: ['$-2$', '$-\frac{1}{2}$', '$\frac{1}{2}$', '$2$', '$6$']
+    correta: A
+    resolucao: |
+      $m = \tfrac{-7 - 5}{4 - (-2)} = \tfrac{-12}{6} = -2$. $-\tfrac{1}{2}$ é a fração invertida.
+
+  - estilo: Unicamp
+    enunciado: |
+      Uma reta forma um ângulo de $60°$ com o eixo $x$. O seu coeficiente angular é
+    opcoes: ['$\frac{\sqrt{3}}{3}$.', '$\frac{1}{2}$.', '$\sqrt{3}$.', '$\frac{\sqrt{3}}{2}$.']
+    correta: C
+    resolucao: |
+      $m = \operatorname{tg} 60° = \sqrt{3}$. $\tfrac{1}{2}$ é o cosseno e $\tfrac{\sqrt{3}}{2}$ é o seno de $60°$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere a reta $r$ que passa por $A(1, 3)$ e $B(4, 9)$. Assinale o que for correto.
+    proposicoes:
+    - 'O coeficiente angular de $r$ é 2.'
+    - 'Uma equação de $r$ é $y - 3 = 2(x - 1)$.'
+    - 'O ponto $(0, 1)$ pertence a $r$.'
+    - 'A reta $r$ forma um ângulo agudo com o eixo $x$.'
+    - 'O ponto $(5, 10)$ pertence a $r$.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      $m = \tfrac{6}{3} = 2$ e $y = 2x + 1$. 01), 02) Corretas. 04) $2 \cdot 0 + 1 = 1$. 08) $m > 0$.
+      16) Incorreta: $2 \cdot 5 + 1 = 11 \neq 10$.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra uma reta que corta os eixos nos pontos $(6, 0)$ e $(0, 4)$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.5]
+        \draw[step=1, gray!25, very thin] (-1,-1) grid (7,5);
+        \draw[-latex, ink!60] (-1.3,0) -- (7.4,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,-1.3) -- (0,5.4) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1pt] (-0.75,4.5) -- (6.75,-0.5);
+        \fill[roxo] (6,0) circle (4pt);
+        \fill[roxo] (0,4) circle (4pt);
+        \end{scope}
+    enunciado: |
+      Uma equação dessa reta é
+    opcoes: ['$y = -\frac{2}{3}x + 4$', '$y = -\frac{3}{2}x + 4$', '$y = \frac{2}{3}x + 4$', '$y = -\frac{2}{3}x + 6$', '$y = 4x + 6$']
+    correta: A
+    resolucao: |
+      $m = \tfrac{4 - 0}{0 - 6} = -\tfrac{2}{3}$, e a reta passa por $(0, 4)$: $y = -\tfrac{2}{3}x + 4$.
+      $-\tfrac{3}{2}$ inverte a fração.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir sobre o coeficiente angular $m$ de uma reta.
+    afirmativas:
+    - 'Toda reta não vertical tem coeficiente angular.'
+    - 'Se a reta forma $45°$ com o eixo $x$, então $m = 1$.'
+    - 'Se $m < 0$, o ângulo que a reta forma com o eixo $x$ é obtuso.'
+    - 'Uma reta horizontal não tem coeficiente angular.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e IV, apenas.', 'I, II e III, apenas.', 'III e IV, apenas.', 'I, II, III e IV.']
+    correta: C
+    resolucao: |
+      I. Correta. II. Correta: $\operatorname{tg} 45° = 1$. III. Correta: a tangente é negativa para ângulos entre $90°$ e $180°$.
+      IV. Incorreta: a horizontal tem $m = 0$; quem não tem $m$ é a vertical.
+
+  - estilo: Fuvest
+    enunciado: |
+      A reta que passa por $(2, -1)$ e tem coeficiente angular 3 tem equação
+    opcoes: ['$y = 3x + 7$', '$y = 3x - 1$', '$y = 3x - 5$', '$y = 3x - 7$', '$y = -x + 3$']
+    correta: D
+    resolucao: |
+      $y + 1 = 3(x - 2)$: $y = 3x - 7$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      O custo mensal de um plano de telefonia depende dos minutos usados. O quadro mostra o valor pago em três meses. A relação entre os minutos e o valor é do 1º grau, com uma parte fixa (a assinatura) e um valor igual para cada minuto usado.
+    tabela:
+      cabecalho: ['Minutos', 'Valor (R\$)']
+      linhas:
+      - ['100', '45,00']
+      - ['200', '60,00']
+      - ['300', '75,00']
+    enunciado: |
+      Num mês em que forem usados 500 minutos, o valor pago será
+    opcoes: ['R\$\,90,00.', 'R\$\,100,00.', 'R\$\,105,00.', 'R\$\,120,00.', 'R\$\,150,00.']
+    correta: C
+    resolucao: |
+      $m = \tfrac{60 - 45}{100} = 0{,}15$ real por minuto. $v - 45 = 0{,}15(t - 100)$: $v = 0{,}15t + 30$. Para 500: $75 + 30 = 105$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Os pontos $(1, 2)$, $(3, k)$ e $(6, 12)$ estão numa mesma reta. Então $k$ vale
+    opcoes: ['$5$.', '$6$.', '$7$.', '$8$.']
+    correta: B
+    resolucao: |
+      $m = \tfrac{12 - 2}{6 - 1} = 2$. De $(1, 2)$ a $(3, k)$: $\tfrac{k - 2}{2} = 2$, $k = 6$.
+
+  - estilo: UFPR
+    enunciado: |
+      Considere a reta $r$: $y - 4 = -3(x - 1)$. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'O coeficiente angular de $r$ é $-3$.'
+    - 'A reta $r$ passa pelo ponto $(1, 4)$.'
+    - 'A reta $r$ passa pelo ponto $(0, 1)$.'
+    - 'A reta $r$ corta o eixo $x$ no ponto de abscissa $\frac{7}{3}$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – V.', 'V – F – F – V.', 'F – V – V – F.', 'V – V – V – F.', 'V – V – V – V.']
+    correta: A
+    resolucao: |
+      $y = -3x + 7$. (V) (V) (F) Com $x = 0$, $y = 7$. (V) $0 = -3x + 7$, $x = \tfrac{7}{3}$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a reta $s$ que passa por $P(2, 1)$ e $Q(5, 4)$. Assinale o que for correto.
+    proposicoes:
+    - 'O coeficiente angular de $s$ é 1.'
+    - 'A reta $s$ forma um ângulo de $45°$ com o eixo $x$.'
+    - 'A reta $s$ passa pela origem.'
+    - 'A reta $s$ corta o eixo $x$ no ponto $(1, 0)$.'
+    - 'O ponto $(10, 9)$ pertence a $s$.'
+    - 'A distância entre $P$ e $Q$ é $3\sqrt{2}$.'
+    corretas: [1, 2, 4, 5, 6]
+    resolucao: |
+      $m = \tfrac{3}{3} = 1$ e $y = x - 1$. 01), 02) Corretas. 04) Incorreta: passa por $(0, -1)$. 08) $y = 0$ dá $x = 1$. 16) $10 - 1 = 9$. 32) $\sqrt{9 + 9} = 3\sqrt{2}$.
+      Soma: $01 + 02 + 08 + 16 + 32 = 59$.
+
+  - estilo: Fuvest
+    enunciado: |
+      A reta que passa por $A(-1, 2)$ e $B(3, 10)$ corta o eixo $y$ no ponto de ordenada
+    opcoes: ['$0$', '$1$', '$2$', '$3$', '$4$']
+    correta: E
+    resolucao: |
+      $m = \tfrac{8}{4} = 2$. $y - 2 = 2(x + 1)$: $y = 2x + 4$. Com $x = 0$: $y = 4$.
+
+  - estilo: Unesp
+    texto: |
+      Em placas de estradas, a inclinação de uma subida é informada em porcentagem: é a razão entre o quanto a estrada sobe e o quanto ela avança na horizontal, multiplicada por 100. Num trecho, a estrada sobe 30 m a cada 400 m medidos na horizontal.
+    enunciado: |
+      A inclinação indicada na placa desse trecho é
+    opcoes: ['$7{,}5\%$.', '$13{,}3\%$.', '$30\%$.', '$3\%$.', '$75\%$.']
+    correta: A
+    resolucao: |
+      $\tfrac{30}{400} = 0{,}075 = 7{,}5\%$. Esse número é o coeficiente angular da estrada. $13{,}3\%$ vem de inverter a razão ($400 \div 30 \approx 13{,}3$).
+
+  - estilo: Enem
+    texto: |
+      Uma loja aluga bicicletas cobrando uma taxa fixa mais um valor por hora de uso. Um cliente pagou R\$\,12,00 por 2 horas, e outro pagou R\$\,27,00 por 5 horas. O gerente quer afixar uma tabela com os valores para outros tempos de uso.
+    enunciado: |
+      O valor do aluguel por 8 horas é
+    opcoes: ['R\$\,30,00.', 'R\$\,36,00.', 'R\$\,38,00.', 'R\$\,40,00.', 'R\$\,42,00.']
+    correta: E
+    resolucao: |
+      $m = \tfrac{27 - 12}{5 - 2} = 5$ reais por hora. $v = 12 + 5(h - 2) = 5h + 2$. Para 8 h: $42$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um carro novo custa R\$\,80\,000,00. Uma seguradora estima que ele perde valor de forma linear: depois de 3 anos de uso, o valor de mercado será de R\$\,59\,000,00. O gráfico do valor em função do tempo é, portanto, um trecho de reta.
+    enunciado: |
+      Segundo essa estimativa, a cada ano o carro perde
+    opcoes: ['R\$\,3\,000,00.', 'R\$\,5\,000,00.', 'R\$\,6\,000,00.', 'R\$\,7\,000,00.', 'R\$\,21\,000,00.']
+    correta: D
+    resolucao: |
+      Coeficiente angular: $\tfrac{59\,000 - 80\,000}{3} = -7\,000$ reais por ano. R\$\,21\,000,00 é a perda nos 3 anos.
+
+  - estilo: Unicamp
+    enunciado: |
+      Segundo a mesma estimativa, o carro valerá R\$\,38\,000,00 depois de
+    opcoes: ['5 anos.', '6 anos.', '7 anos.', '8 anos.']
+    correta: B
+    resolucao: |
+      $V = 80\,000 - 7\,000t = 38\,000$: $t = 6$ anos.
+
+  - estilo: UEM
+    enunciado: |
+      Considere retas do plano cartesiano. Assinale o que for correto.
+    proposicoes:
+    - 'O coeficiente angular de uma reta não vertical é a tangente do ângulo que ela forma com o eixo $x$.'
+    - 'Duas retas com o mesmo coeficiente angular formam o mesmo ângulo com o eixo $x$.'
+    - 'A reta $y - 3 = 0 \cdot (x - 2)$ é vertical.'
+    - 'Se $A(x_1, y_1)$ e $B(x_2, y_2)$ são distintos e $x_1 = x_2$, a reta $AB$ não tem coeficiente angular.'
+    - 'Toda reta com coeficiente angular 1 passa pela origem.'
+    corretas: [1, 2, 4]
+    resolucao: |
+      01) Correta. 02) Correta. 04) Incorreta: é a reta horizontal $y = 3$.
+      08) Correta: $\Delta x = 0$, reta vertical. 16) Incorreta: $y = x + 5$ tem $m = 1$.
+      Soma: $01 + 02 + 08 = 11$.
+
+  - estilo: Fuvest
+    enunciado: |
+      A reta $r$ passa por $(2, 3)$ e forma um ângulo de $135°$ com o eixo $x$. Ela corta o eixo $x$ no ponto de abscissa
+    opcoes: ['$-1$', '$1$', '$3$', '$5$', '$6$']
+    correta: D
+    resolucao: |
+      $m = \operatorname{tg} 135° = -1$. $y - 3 = -(x - 2)$: $y = -x + 5$. Com $y = 0$: $x = 5$.
+
+  - estilo: Enem
+    texto: |
+      O gráfico mostra o custo total de produção de uma pequena fábrica em função do número de peças produzidas em um dia. O custo é formado por um valor fixo, que inclui aluguel e energia, e por um valor igual para cada peça produzida. O dono quer saber quanto cada peça adicional acrescenta ao custo.
+    figura:
+      tikz: |
+        \begin{scope}[xscale=.75, yscale=.75]
+        \draw[gray!25, very thin] (0,0) grid (6,5);
+        \draw[-latex, ink!60] (0,0) -- (6.4,0) node[right, font=\scriptsize] {peças};
+        \draw[-latex, ink!60] (0,0) -- (0,5.4) node[above, font=\scriptsize] {custo (R\$)};
+        \foreach \y in {1,2,3,4,5} \node[left, font=\tiny] at (0,\y) {\y00};
+        \foreach \x in {1,2,3,4,5,6} \node[below, font=\tiny] at (\x,0) {\x0};
+        \draw[roxo, line width=1.2pt] (0,2) -- (6,5);
+        \fill[roxo] (0,2) circle (2.5pt);
+        \fill[roxo] (5,4.5) circle (2.5pt);
+        \draw[ink!50, dashed] (5,0) -- (5,4.5) -- (0,4.5);
+        \end{scope}
+    enunciado: |
+      O custo de cada peça produzida é
+    opcoes: ['R\$\,4,00.', 'R\$\,5,00.', 'R\$\,9,00.', 'R\$\,250,00.', 'R\$\,450,00.']
+    correta: B
+    resolucao: |
+      Pontos $(0, 200)$ e $(50, 450)$: $m = \tfrac{250}{50} = 5$ reais por peça. R\$\,9,00 seria $\tfrac{450}{50}$, que inclui o custo fixo.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se a reta $y = mx + 2$ passa pelo ponto $(3, -4)$, então $m$ é igual a
+    opcoes: ['$-3$', '$-2$', '$-\frac{2}{3}$', '$\frac{2}{3}$', '$2$']
+    correta: B
+    resolucao: |
+      $-4 = 3m + 2$: $m = -2$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere o triângulo de vértices $A(1, 1)$, $B(5, 3)$ e $C(2, 6)$.'
+    itens:
+    - 'Calcule os coeficientes angulares das retas $AB$, $BC$ e $AC$.'
+    - 'Escreva as equações dessas três retas.'
+    - 'Escreva a equação da reta que contém a mediana relativa ao vértice $C$.'
+    espaco: 62
+    resolucao: |
+      a) $m_{AB} = \tfrac{2}{4} = \tfrac{1}{2}$; $m_{BC} = \tfrac{3}{-3} = -1$; $m_{AC} = \tfrac{5}{1} = 5$.
+      b) $AB$: $y - 1 = \tfrac{1}{2}(x - 1)$, $y = \tfrac{x}{2} + \tfrac{1}{2}$. $BC$: $y - 3 = -(x - 5)$, $y = -x + 8$. $AC$: $y - 1 = 5(x - 1)$, $y = 5x - 4$.
+      c) Ponto médio de $AB$: $M(3, 2)$. $m_{CM} = \tfrac{2 - 6}{3 - 2} = -4$: $y - 2 = -4(x - 3)$, $y = -4x + 14$.
+    resposta: 'a) $\frac{1}{2}$, $-1$, $5$; b) Ver resolução; c) $y = -4x + 14$'
+
+  - estilo: Unicamp
+    texto: |
+      A população de uma cidade era de 50 mil habitantes em 2010 e de 62 mil em 2020. Suponha que ela continue crescendo de forma linear.
+    enunciado: ''
+    itens:
+    - 'Escreva a população $P$, em milhares, em função do número $t$ de anos depois de 2010.'
+    - 'Estime a população em 2030.'
+    - 'Em que ano a população deve chegar a 80 mil habitantes?'
+    espaco: 62
+    resolucao: |
+      a) $m = \tfrac{62 - 50}{10} = 1{,}2$ mil por ano. $P = 50 + 1{,}2t$.
+      b) $t = 20$: $P = 74$ mil.
+      c) $50 + 1{,}2t = 80$: $t = 25$, isto é, em 2035.
+    resposta: 'a) $P = 50 + 1{,}2t$; b) 74 mil; c) 2035'
+
+  - estilo: ITA
+    enunciado: |
+      O ângulo que a reta que passa por $(1, 2)$ e $(1 + \sqrt{3}, 3)$ forma com o eixo $x$ mede
+    opcoes: ['$15°$', '$30°$', '$45°$', '$60°$', '$120°$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $m = \tfrac{1}{\sqrt{3}} = \tfrac{\sqrt{3}}{3} = \operatorname{tg} 30°$. Quem inverte a fração obtém $\sqrt{3}$ e marca $60°$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere o retângulo de vértices $(0, 0)$, $(8, 0)$, $(8, 4)$ e $(0, 4)$.'
+    itens:
+    - 'Determine o centro do retângulo e explique por que toda reta que passa por ele divide o retângulo em duas partes de mesma área.'
+    - 'Escreva a equação da reta que passa pelo centro e pelo ponto $(2, 0)$.'
+    - 'Determine onde essa reta corta o lado superior e confira que as duas partes têm a mesma área.'
+    espaco: 62
+    resolucao: |
+      a) Centro $(4, 2)$, ponto médio das diagonais. O retângulo é simétrico em relação ao centro: cada ponto de uma parte tem um simétrico na outra, e as partes são congruentes.
+      b) $m = \tfrac{2 - 0}{4 - 2} = 1$: $y = x - 2$.
+      c) Com $y = 4$: $x = 6$. Parte da esquerda: trapézio de vértices $(0, 0)$, $(2, 0)$, $(6, 4)$, $(0, 4)$, com bases 2 e 6 e altura 4: área $\tfrac{(2 + 6) \cdot 4}{2} = 16$. O retângulo tem área 32: as partes têm 16 cada.
+    resposta: 'a) $(4, 2)$; b) $y = x - 2$; c) $(6, 4)$; 16 e 16'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere os pontos $A(0, 2)$, $B(4, 4)$, $C(6, 5)$ e $D(2, 0)$. Assinale o que for correto.
+    proposicoes:
+    - 'Os pontos $A$, $B$ e $C$ estão alinhados.'
+    - 'O coeficiente angular da reta $AD$ é $-1$.'
+    - 'A reta $AB$ corta o eixo $x$ no ponto $(-4, 0)$.'
+    - 'A reta $AB$ forma um ângulo de $30°$ com o eixo $x$.'
+    - 'O coeficiente angular da reta $BD$ é 2.'
+    - 'O ponto $D$ pertence à reta $AB$.'
+    corretas: [1, 2, 3, 5]
+    espaco: 22
+    resolucao: |
+      01) $m_{AB} = \tfrac{2}{4} = \tfrac{1}{2}$ e $m_{BC} = \tfrac{1}{2}$. 02) $\tfrac{0 - 2}{2 - 0} = -1$. 04) $y = \tfrac{x}{2} + 2 = 0$ dá $x = -4$.
+      08) Incorreta: $\operatorname{tg} 30° = \tfrac{\sqrt{3}}{3} \neq \tfrac{1}{2}$. 16) $\tfrac{4 - 0}{4 - 2} = 2$. 32) Incorreta: $\tfrac{2}{2} + 2 = 3 \neq 0$.
+    resposta: 'Soma 23 (01 + 02 + 04 + 16)'
+
+  - estilo: Fuvest
+    texto: |
+      Um raio de luz sai de $A(0, 4)$, reflete-se num espelho plano colocado sobre o eixo $x$, no ponto $P$, e chega a $B(6, 2)$. Na reflexão, o caminho $AP + PB$ é o menor possível, e por isso $P$ está alinhado com $B$ e com o simétrico de $A$ em relação ao eixo, $A'(0, -4)$.
+    enunciado: ''
+    itens:
+    - 'Escreva a equação da reta $A''B$ e determine $P$.'
+    - 'Calcule os coeficientes angulares de $AP$ e de $PB$.'
+    - 'Mostre que $AP$ e $PB$ formam ângulos iguais com o espelho.'
+    espaco: 62
+    resolucao: |
+      a) $m = \tfrac{2 - (-4)}{6 - 0} = 1$: $y = x - 4$. Com $y = 0$: $P(4, 0)$.
+      b) $m_{AP} = \tfrac{0 - 4}{4 - 0} = -1$ e $m_{PB} = \tfrac{2 - 0}{6 - 4} = 1$.
+      c) $AP$ forma $135°$ com o sentido positivo do eixo, isto é, $45°$ com o espelho do lado esquerdo; $PB$ forma $45°$ do lado direito. Os ângulos são iguais.
+    resposta: 'a) $y = x - 4$; $P(4, 0)$; b) $-1$ e $1$; c) Ver resolução'
+
+  - estilo: Unicamp
+    texto: |
+      Um ciclista anda em linha reta com velocidade constante. No instante $t = 2$ s, ele está a 14 m de um poste; no instante $t = 6$ s, está a 34 m do mesmo poste, afastando-se dele.
+    enunciado: ''
+    itens:
+    - 'Calcule o coeficiente angular do gráfico posição × tempo e diga o que ele representa.'
+    - 'Escreva a posição $s$ em função de $t$.'
+    - 'Em que instante o ciclista estará a 64 m do poste?'
+    espaco: 62
+    resolucao: |
+      a) $m = \tfrac{34 - 14}{6 - 2} = 5$ m/s: é a velocidade do ciclista.
+      b) $s - 14 = 5(t - 2)$: $s = 5t + 4$ (no instante 0 ele estava a 4 m do poste).
+      c) $5t + 4 = 64$: $t = 12$ s.
+    resposta: 'a) $5$ m/s, a velocidade; b) $s = 5t + 4$; c) $12$ s'
+
+  - estilo: Fuvest
+    enunciado: |
+      Sendo $a > 0$ e $b > 0$, o coeficiente angular da reta que passa por $(a, 0)$ e $(0, b)$ é
+    opcoes: ['$-\frac{b}{a}$', '$\frac{b}{a}$', '$-\frac{a}{b}$', '$\frac{a}{b}$', '$ab$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $m = \tfrac{b - 0}{0 - a} = -\tfrac{b}{a}$. A reta desce: $m$ tem de ser negativo.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Ao determinar o ângulo que a reta que passa por $(1, 4)$ e $(5, 0)$ forma com o eixo $x$, um aluno calculou $m = -1$ e escreveu: “$\operatorname{tg} \alpha = -1$, logo $\alpha = -45°$”.
+    enunciado: ''
+    itens:
+    - 'Confira o valor de $m$.'
+    - 'Explique por que a resposta do aluno não serve e dê o ângulo correto.'
+    - 'Qual é o ângulo de uma reta com $m = -\sqrt{3}$?'
+    espaco: 62
+    resolucao: |
+      a) $m = \tfrac{0 - 4}{5 - 1} = -1$.
+      b) O ângulo de uma reta com o eixo $x$ é medido no sentido anti-horário, a partir do sentido positivo do eixo, e fica entre $0°$ e $180°$. Com $\operatorname{tg} \alpha = -1$ nesse intervalo, $\alpha = 135°$.
+      c) $\operatorname{tg} \alpha = -\sqrt{3}$: $\alpha = 180° - 60° = 120°$.
+    resposta: 'a) $-1$; b) $135°$; c) $120°$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere as retas $r_m$: $y - 1 = m(x - 2)$, com $m < 0$.'
+    itens:
+    - 'Mostre que todas passam pelo ponto $(2, 1)$, que fica no 1º quadrante.'
+    - 'Determine, em função de $m$, os pontos em que $r_m$ corta os eixos.'
+    - 'Mostre que o triângulo formado por $r_m$ e pelos eixos tem área 4 apenas para $m = -\frac{1}{2}$ e escreva a equação dessa reta.'
+    espaco: 62
+    resolucao: |
+      a) Com $x = 2$: $y = 1$.
+      b) Eixo $x$ ($y = 0$): $x = 2 - \tfrac{1}{m}$. Eixo $y$ ($x = 0$): $y = 1 - 2m$. Com $m < 0$, as duas coordenadas são positivas.
+      c) Com $m = -k$, $k > 0$: área $= \tfrac{1}{2}\left(2 + \tfrac{1}{k}\right)(1 + 2k) = \tfrac{(2k + 1)^2}{2k}$. Igualando a 4: $(2k + 1)^2 = 8k$, $4k^2 - 4k + 1 = 0$, $(2k - 1)^2 = 0$, $k = \tfrac{1}{2}$. Então $m = -\tfrac{1}{2}$ e $y = -\tfrac{x}{2} + 2$.
+    resposta: 'a) Ver resolução; b) $\left(2 - \frac{1}{m}, 0\right)$ e $(0, 1 - 2m)$; c) $y = -\frac{x}{2} + 2$'
