@@ -35,6 +35,7 @@ const mm = (pt) => (pt * 0.3528).toFixed(pt < 2.84 ? 2 : 1).replace(/0$/, '').re
 const BORRACHA_PX = 11;
 const VERDE = '#1c8f4e', VERMELHO = '#d8352b';
 const $ = (s) => document.querySelector(s);
+const paginaAmpliada = () => !!window.__paginaAmpliada?.(); // ver /assets/sem-zoom.js
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const limitar = (v, a, b) => Math.max(a, Math.min(b, v));
 
@@ -47,12 +48,12 @@ const CHAVE = `v4|${aulaId}|${lista}`;
 /* ---------- estado ---------- */
 let st = {
   v: 4, tracos: {}, vista: {}, gabarito: false, dedo: false, atual: 1, formas: false, enun: true,
-  ferramenta: 'caneta', estilo: 'tinteiro',
+  ferramenta: 'caneta', estilo: 'pincel', // padrão: caneta pincel de 0,79 mm (2,24 pt)
   cor: { caneta: CORES.caneta[0][1], marca: CORES.marca[0][1], lapis: CORES.lapis[0][1], texto: CORES.caneta[0][1] },
-  esp: { caneta: 1.4, marca: 14, lapis: 1.1 }, papel: 'quadriculado', revelado: {}, resultado: {},
+  esp: { caneta: 2.24, marca: 14, lapis: 1.1 }, papel: 'quadriculado', revelado: {}, resultado: {},
   favoritas: [...FAV_PADRAO], tamTexto: 18,
 };
-const PADRAO = { cor: { ...st.cor }, esp: { ...st.esp } };
+const PADRAO = { cor: { ...st.cor }, esp: { ...st.esp }, estilo: st.estilo };
 let pdf = null, pdfBytes = null, mapa = null, respostas = [], tamanhos = {}, totalQ = 0;
 const desfazer = [], refazer = [];
 
@@ -763,8 +764,9 @@ const mundo = (p) => [Math.round((p.x - V.tx) / V.z * 100) / 100, Math.round((p.
 const pressao = (e) => Math.round((e.pointerType === 'pen' ? Math.max(0.05, e.pressure || 0.5) : 0.5) * 1000) / 1000;
 
 function ligarEntrada() {
-  tela.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
-  tela.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+  // com a página do navegador ampliada (não deveria acontecer, ver /assets/sem-zoom.js), os dedos ficam livres para desfazer esse zoom
+  tela.addEventListener('touchstart', (e) => { if (!paginaAmpliada()) e.preventDefault(); }, { passive: false });
+  tela.addEventListener('touchmove', (e) => { if (!paginaAmpliada()) e.preventDefault(); }, { passive: false });
   tela.addEventListener('contextmenu', (e) => e.preventDefault());
   tela.addEventListener('pointerdown', (e) => {
     if (st.atual === 'gab') return;
@@ -773,6 +775,7 @@ function ligarEntrada() {
     const fechou = !!editor;
     if (editor) { fecharEditor(); if (st.ferramenta === 'texto' && e.pointerType !== 'touch') { e.preventDefault(); return; } }
     if (e.pointerType === 'touch') {
+      if (paginaAmpliada()) return;
       if (e.isPrimary) toques.clear(); // descarta dedos que o sistema esqueceu de soltar
       toques.set(e.pointerId, { ...p, x0: p.x, y0: p.y, t0: performance.now(), fechou });
       try { tela.setPointerCapture(e.pointerId); } catch {}
@@ -839,9 +842,9 @@ function ligarEntrada() {
   }, { passive: false });
   // Safari no Mac: pinça do trackpad
   let gz = null;
-  document.addEventListener('gesturestart', (e) => { e.preventDefault(); if (!toques.size && st.atual !== 'gab') gz = { z: V.z }; });
-  document.addEventListener('gesturechange', (e) => { e.preventDefault(); if (!gz || toques.size) return; const p = local(e); zoomEm(gz.z * e.scale, p.x, p.y); });
-  document.addEventListener('gestureend', (e) => { e.preventDefault(); gz = null; });
+  document.addEventListener('gesturestart', (e) => { if (paginaAmpliada()) return; e.preventDefault(); if (!toques.size && st.atual !== 'gab') gz = { z: V.z }; });
+  document.addEventListener('gesturechange', (e) => { if (paginaAmpliada()) return; e.preventDefault(); if (!gz || toques.size) return; const p = local(e); zoomEm(gz.z * e.scale, p.x, p.y); });
+  document.addEventListener('gestureend', (e) => { if (paginaAmpliada()) return; e.preventDefault(); gz = null; });
 }
 
 function iniciarTraco(e, p) {
@@ -1386,7 +1389,11 @@ async function iniciar() {
   for (let n = 1; n <= pdf.numPages; n++) { const vp = (await pdf.getPage(n)).getViewport({ scale: 1 }); tamanhos[n] = [vp.width, vp.height]; }
   totalQ = mapa.questoes.length;
   const salvo = await banco.ler(CHAVE);
-  if (salvo?.v === 4 && salvo.pdf === mapa.pdf && salvo.numPaginas === pdf.numPages) st = { ...st, ...salvo };
+  if (salvo?.v === 4 && salvo.pdf === mapa.pdf && salvo.numPaginas === pdf.numPages) {
+    // caderno começado com o padrão antigo (tinteiro de 0,49 mm, sem mudança do aluno): passa para o pincel de 0,79 mm
+    if (salvo.estilo === 'tinteiro' && salvo.esp?.caneta === 1.4) { salvo.estilo = PADRAO.estilo; salvo.esp = { ...salvo.esp, caneta: PADRAO.esp.caneta }; }
+    st = { ...st, ...salvo };
+  }
   else if (salvo?.v === 4) aviso('A lista foi atualizada; começamos um caderno novo.', 3500);
   st.cor = { ...PADRAO.cor, ...st.cor }; st.esp = { ...PADRAO.esp, ...st.esp };
   if (!Array.isArray(st.favoritas) || st.favoritas.length !== 4) st.favoritas = [...FAV_PADRAO];

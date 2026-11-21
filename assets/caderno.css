@@ -112,7 +112,7 @@ body[data-ferramenta="laco"] #cd-tela{cursor:default}
 #cd-sel-del{color:#ffb4ae}
 body.arrastando #cd-tela{cursor:grabbing}
 .cd-carregando{position:absolute;inset:0;display:grid;place-items:center;font-weight:700;color:var(--mute);text-align:center;padding:20px;background:var(--papel)}
-.cd-gab{position:absolute;inset:0;overflow:auto;-webkit-overflow-scrolling:touch;background:#efedf3;padding:18px 12px 110px;touch-action:pan-x pan-y pinch-zoom}
+.cd-gab{position:absolute;inset:0;overflow:auto;-webkit-overflow-scrolling:touch;background:#efedf3;padding:18px 12px 110px;touch-action:pan-y}
 .cd-gab-topo{max-width:640px;margin:0 auto 18px;background:#fff;border-radius:18px;padding:20px;text-align:center;box-shadow:0 2px 10px rgba(33,25,70,.08)}
 .cd-gab-topo b{font:700 19px 'Space Grotesk',system-ui,sans-serif}
 .cd-gab-topo p{margin:6px 0 14px;color:var(--mute);font-size:14px;line-height:1.45}

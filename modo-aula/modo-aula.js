@@ -22,17 +22,22 @@ const ZMAX = 5;
 const MESA = '#e9e7f0', PAPEL = '#fffefa';
 const COR_PAPEL = { linha: '#dcd7ef', pauta: '#cbc5e4', ponto: '#aaa3d2' };
 const NOMES = { fixacao: 'Fixação', vestibular: 'Vestibular', aprofundamento: 'Aprofundamento' };
-const CORES = {
-  caneta: [['Preto', '#1d1b26'], ['Azul', '#2459d6'], ['Vermelho', '#d8352b'], ['Verde', '#1c8f4e'], ['Roxo', '#6a3fd8'], ['Laranja', '#ea7b16']],
-  marca: [['Amarelo', '#ffe14d'], ['Verde-limão', '#c8f55f'], ['Rosa', '#ff9ccf'], ['Azul-claro', '#8fd3ff'], ['Laranja', '#ffc078']],
+const CORES = { // a paleta do painel (e ainda há "Outra cor", com qualquer cor)
+  caneta: [['Preto', '#1d1b26'], ['Grafite', '#3b3b3b'], ['Azul', '#2459d6'], ['Azul-celeste', '#1f9bd7'], ['Vermelho', '#d8352b'], ['Rosa', '#d63c84'],
+    ['Verde', '#1c8f4e'], ['Verde-limão', '#6fae13'], ['Roxo', '#6a3fd8'], ['Laranja', '#ea7b16'], ['Marrom', '#8a5a2b'], ['Dourado', '#c49a12']],
+  marca: [['Amarelo', '#ffe14d'], ['Verde-limão', '#c8f55f'], ['Rosa', '#ff9ccf'], ['Azul-claro', '#8fd3ff'], ['Laranja', '#ffc078'], ['Lilás', '#d6bcff'], ['Verde-água', '#93efd2'], ['Cinza', '#d8d5e2']],
 };
-const ESPS = { caneta: [1.2, 2, 3.4], marca: [12, 20, 32] };   // espessuras rápidas (fina, média, grossa)
-const FAIXA = { caneta: [0.5, 8], marca: [6, 44] };              // limites do controle deslizante
+CORES.lapis = CORES.caneta;
+const FAV_PADRAO = { caneta: ['#1d1b26', '#2459d6', '#d8352b', '#1c8f4e', '#6a3fd8', '#ea7b16'], marca: ['#ffe14d', '#c8f55f', '#ff9ccf', '#8fd3ff', '#ffc078'] };
+const ESPS = { caneta: [1.2, 2, 3.4], marca: [12, 20, 32], lapis: [0.8, 1.3, 2.2] }; // espessuras rápidas (fina, média, grossa)
+const FAIXA = { caneta: [0.5, 8], marca: [6, 44], lapis: [0.4, 5] };                // limites do controle deslizante
+const FERRAMENTAS = ['caneta', 'lapis', 'marca', 'borracha', 'laco', 'laser'];
 const ESTILOS = [['tinteiro', 'Tinteiro'], ['esfero', 'Esferográfica'], ['nanquim', 'Nanquim'], ['pincel', 'Pincel']];
 const deControle = (f, v) => { const [a, b] = FAIXA[f]; return +(a * Math.pow(b / a, v / 100)).toFixed(2); };
 const paraControle = (f, s) => { const [a, b] = FAIXA[f]; return Math.round(100 * Math.log(s / a) / Math.log(b / a)); };
 const BORRACHA_PX = 14;
 const $ = (s) => document.querySelector(s);
+const paginaAmpliada = () => !!window.__paginaAmpliada?.(); // ver /assets/sem-zoom.js
 const limitar = (v, a, b) => Math.max(a, Math.min(b, v));
 const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -42,10 +47,16 @@ const ALUNO = document.body.dataset.papel === 'aluno'; // /ao-vivo/: o aluno aco
 const on = (sel, ev, fn) => { const el = $(sel); if (el) el.addEventListener(ev, fn); return el; };
 
 /* ---------- preferências (ferramenta, cores) ---------- */
-let pref = { ferramenta: 'caneta', estilo: 'pincel', cor: { caneta: CORES.caneta[0][1], marca: CORES.marca[0][1] }, esp: { caneta: ESPS.caneta[1], marca: ESPS.marca[1] }, aulaSite: null, lista: 'fixacao' };
-try { pref = { ...pref, ...JSON.parse(localStorage.getItem(ALUNO ? 'av:pref' : 'ma:pref') || '{}') }; } catch {}
+const PREF0 = { ferramenta: 'caneta', estilo: 'pincel', formas: false, aulaSite: null, lista: 'fixacao',
+  cor: { caneta: CORES.caneta[0][1], marca: CORES.marca[0][1], lapis: '#3b3b3b' }, esp: { caneta: ESPS.caneta[1], marca: ESPS.marca[1], lapis: ESPS.lapis[1] },
+  favs: { caneta: [...FAV_PADRAO.caneta], marca: [...FAV_PADRAO.marca] } };
+let pref = structuredClone(PREF0);
+try { const g = JSON.parse(localStorage.getItem(ALUNO ? 'av:pref' : 'ma:pref') || '{}'); pref = { ...pref, ...g, cor: { ...pref.cor, ...g.cor }, esp: { ...pref.esp, ...g.esp }, favs: { ...pref.favs, ...g.favs } }; } catch {}
 for (const f of ['caneta', 'marca']) if (Number.isInteger(pref.esp[f]) && pref.esp[f] <= 2) pref.esp[f] = ESPS[f][pref.esp[f]]; // versão antiga guardava o índice
-if (!['caneta', 'marca', 'borracha', 'laco', 'laser'].includes(pref.ferramenta) || (ALUNO && pref.ferramenta === 'laser')) pref.ferramenta = 'caneta';
+for (const k of ['caneta', 'marca']) if (!Array.isArray(pref.favs[k]) || pref.favs[k].length !== FAV_PADRAO[k].length) pref.favs[k] = [...FAV_PADRAO[k]];
+if (!FERRAMENTAS.includes(pref.ferramenta) || (ALUNO && pref.ferramenta === 'laser')) pref.ferramenta = 'caneta';
+const grupoCor = () => (pref.ferramenta === 'marca' ? 'marca' : pref.ferramenta === 'lapis' ? 'lapis' : 'caneta'); // de quem é a cor e a espessura na barra
+const chaveFav = (f) => (f === 'marca' ? 'marca' : 'caneta'); // lápis e caneta dividem as cores da barra
 const guardarPref = () => { try { localStorage.setItem(ALUNO ? 'av:pref' : 'ma:pref', JSON.stringify(pref)); } catch {} };
 
 /* ---------- banco (IndexedDB, com localStorage de reserva) ---------- */
@@ -94,6 +105,7 @@ function aviso(txt, ms = 1800) {
 /* ---------- traço (o mesmo motor do caderno) ---------- */
 function opcoes(t, k) { // os mesmos estilos do caderno
   const s = t.s * k, pen = !!t.pen;
+  if (t.f === 'lapis') return { size: s, thinning: pen ? 0.32 : 0.12, smoothing: 0.6, streamline: t.forma ? 0 : 0.45, simulatePressure: false, last: true };
   if (t.f === 'marca') return { size: s, thinning: 0, smoothing: 0.5, streamline: t.forma ? 0 : 0.45, simulatePressure: false, start: { cap: false }, end: { cap: false }, last: true };
   if (t.forma && t.e !== 'pincel') return { size: s * (t.e === 'esfero' ? 0.9 : 1), thinning: 0, smoothing: 0.2, streamline: 0, simulatePressure: false, last: true };
   switch (t.e || 'tinteiro') {
@@ -109,7 +121,7 @@ const suave = (t) => Math.sin((t * Math.PI) / 2);
 function tracoExemplo(f, e, s, c, w, h) {
   const p = [];
   for (let i = 0; i <= 40; i++) { const u = i / 40; p.push([w * 0.08 + u * w * 0.84, h / 2 + Math.sin(u * Math.PI * 2) * h * 0.24, 0.25 + 0.6 * Math.sin(u * Math.PI)]); }
-  return { f, e: f === 'marca' ? 'marca' : e, s, c, pen: true, p };
+  return { f, e: f === 'marca' || f === 'lapis' ? f : e, s, c, pen: true, p };
 }
 const contorno = (t, k) => getStroke(t.p.map(([x, y, p]) => [x * k, y * k, p]), opcoes(t, k));
 function caminho(pts, dx = 0, dy = 0) {
@@ -134,7 +146,27 @@ function formaDe(t) {
   }
   return c;
 }
-function pintura(ctx, t) { ctx.fillStyle = t.c; if (t.f === 'marca') { ctx.globalAlpha = 0.38; ctx.globalCompositeOperation = 'multiply'; } }
+/* o lápis tem grão de grafite (uma textura de ruído na cor escolhida); o marca-texto é translúcido */
+const grafites = new Map();
+function texturaLapis(ctx, cor) {
+  let tile = grafites.get(cor);
+  if (!tile) {
+    tile = document.createElement('canvas'); tile.width = tile.height = 64;
+    const g = tile.getContext('2d'), img = g.createImageData(64, 64);
+    const r = parseInt(cor.slice(1, 3), 16), gg = parseInt(cor.slice(3, 5), 16), b = parseInt(cor.slice(5, 7), 16);
+    let semente = 7;
+    const acaso = () => ((semente = (semente * 16807) % 2147483647) / 2147483647);
+    for (let i = 0; i < 64 * 64; i++) { const u = acaso(), a = u < 0.1 ? 45 + u * 300 : 150 + acaso() * 105; img.data.set([r, gg, b, a], i * 4); }
+    g.putImageData(img, 0, 0); grafites.set(cor, tile);
+  }
+  const pat = ctx.createPattern(tile, 'repeat');
+  if (pat.setTransform) pat.setTransform(new DOMMatrix([0.32, 0, 0, 0.32, 0, 0]));
+  return pat;
+}
+function pintura(ctx, t) {
+  if (t.f === 'lapis') { ctx.fillStyle = texturaLapis(ctx, t.c); ctx.globalAlpha = 0.95; return; }
+  ctx.fillStyle = t.c; if (t.f === 'marca') { ctx.globalAlpha = 0.38; ctx.globalCompositeOperation = 'multiply'; }
+}
 function desenhaTraco(ctx, t) { const f = formaDe(t); if (!f.path) return; ctx.save(); pintura(ctx, t); ctx.fill(f.path); ctx.restore(); }
 function desenhaTracoVivo(ctx, t) { const out = contorno(t, 1); if (out.length < 3) return; ctx.save(); pintura(ctx, t); ctx.fill(new Path2D(caminho(out))); ctx.restore(); }
 
@@ -542,13 +574,15 @@ const toques = new Map();
 let lasers = [];    // rastros do laser que estão sumindo
 
 function ligarEntrada() {
-  tela.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
-  tela.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+  // com a página do navegador ampliada (não deveria acontecer, ver /assets/sem-zoom.js), os dedos ficam livres para desfazer esse zoom
+  tela.addEventListener('touchstart', (e) => { if (!paginaAmpliada()) e.preventDefault(); }, { passive: false });
+  tela.addEventListener('touchmove', (e) => { if (!paginaAmpliada()) e.preventDefault(); }, { passive: false });
   tela.addEventListener('contextmenu', (e) => e.preventDefault());
   tela.addEventListener('pointerdown', (e) => {
     fecharPops();
     const p = local(e);
     if (e.pointerType === 'touch') {
+      if (paginaAmpliada()) return;
       if (e.isPrimary) toques.clear();
       toques.set(e.pointerId, { ...p, x0: p.x, y0: p.y, t0: performance.now() });
       try { tela.setPointerCapture(e.pointerId); } catch {}
@@ -598,9 +632,9 @@ function ligarEntrada() {
     if (Math.abs(e.deltaX) > 30 && Math.abs(e.deltaX) > Math.abs(e.deltaY) && !rodaTravada) { rodaTravada = true; setTimeout(() => (rodaTravada = false), 450); irPara(aula.atual + (e.deltaX > 0 ? 1 : -1)); }
   }, { passive: false });
   let gz = null;
-  document.addEventListener('gesturestart', (e) => { e.preventDefault(); if (!toques.size) gz = { z: V.z }; });
-  document.addEventListener('gesturechange', (e) => { e.preventDefault(); if (!gz || toques.size) return; const p = local(e); zoomEm(gz.z * e.scale, p.x, p.y); });
-  document.addEventListener('gestureend', (e) => { e.preventDefault(); gz = null; });
+  document.addEventListener('gesturestart', (e) => { if (paginaAmpliada()) return; e.preventDefault(); if (!toques.size) gz = { z: V.z }; });
+  document.addEventListener('gesturechange', (e) => { if (paginaAmpliada()) return; e.preventDefault(); if (!gz || toques.size) return; const p = local(e); zoomEm(gz.z * e.scale, p.x, p.y); });
+  document.addEventListener('gestureend', (e) => { if (paginaAmpliada()) return; e.preventDefault(); gz = null; });
 }
 let rodaTravada = false;
 
@@ -616,7 +650,7 @@ function iniciarCaneta(e, p) {
   if (f === 'borracha') { atual = { pid: e.pointerId, pen, apagou: false, antes: foto(pagina()), cursor: p }; apagar(w); pedirVivo(); return; }
   if (f === 'laco') { atual = { pid: e.pointerId, pen, laco: [w] }; pedirVivo(); return; }
   atual = { pid: e.pointerId, pen, ancora: w, timer: 0,
-    traco: { id: novoId(), f, e: f === 'marca' ? 'marca' : pref.estilo, c: pref.cor[f], s: pref.esp[f], pen, p: [[w[0], w[1], pressao(e)]] }, enviados: 0, pp: pressao(e) };
+    traco: { id: novoId(), f, e: f === 'marca' || f === 'lapis' ? f : pref.estilo, c: pref.cor[f], s: pref.esp[f], pen, p: [[w[0], w[1], pressao(e)]] }, enviados: 0, pp: pressao(e) };
   armarForma(); pedirVivo();
 }
 function moverCaneta(evs, p) {
@@ -647,6 +681,7 @@ function concluirCaneta(cancelado) {
   const pg = pagina();
   if (a.traco) {
     if (cancelado && a.traco.p.length < 3) return;
+    if (pref.formas && !a.travado && a.traco.p.length > 5) { const fm = reconhecer(a.traco.p, a.traco.f === 'marca'); if (fm) { a.traco.p = fm.pts; a.traco.forma = fm.nome; } } // modo formas: todo traço vira forma
     if (a.traco.p.length === 1) { const [x, y, pr] = a.traco.p[0]; a.traco.p.push([x + 0.01, y + 0.01, pr]); }
     const antes = foto(pg); pg.tracos.push(a.traco); registrar(pg, antes, { t: 'add', traco: a.traco }); pedirQuadro(); return;
   }
@@ -1038,7 +1073,7 @@ async function exportar() {
       }
       for (const t of folha.tracos) {
         const path = caminho(contorno(t, s)); if (!path) continue;
-        page.drawSvgPath(path, { x: 0, y: H, color: cor(t.c), borderWidth: 0, ...(t.f === 'marca' ? { opacity: 0.38, blendMode: BlendMode.Multiply } : {}) });
+        page.drawSvgPath(path, { x: 0, y: H, color: cor(t.c), borderWidth: 0, ...(t.f === 'marca' ? { opacity: 0.38, blendMode: BlendMode.Multiply } : t.f === 'lapis' ? { opacity: 0.82 } : {}) });
       }
       if (folha.rotulo) { // de quem são as anotações
         const txt = folha.rotulo.normalize('NFC').replace(/[^\x20-\xff]/g, '?'), tam = 10, tw = negrito.widthOfTextAtSize(txt, tam);
@@ -1115,22 +1150,57 @@ function amostraTraco(cv, f, e, s, c, k = 1) {
   desenhaTracoVivo(ctx, { ...tracoExemplo(f, e, Math.min(s * k, h * 0.38 / (e === 'pincel' ? 2.3 : 1)), c, w, h) });
 }
 function pintarBarra() {
-  const f = pref.ferramenta === 'marca' ? 'marca' : 'caneta', cores = $('#ma-cores');
+  const f = grupoCor(), cores = $('#ma-cores');
   document.body.dataset.ferramenta = pref.ferramenta;
   for (const b of document.querySelectorAll('.ma-bar-meio [data-ferramenta]')) b.setAttribute('aria-pressed', String(b.dataset.ferramenta === pref.ferramenta));
+  $('#ma-formas')?.setAttribute('aria-pressed', String(!!pref.formas));
   cores.innerHTML = '';
-  for (const [nome, c] of CORES[f]) {
-    const b = document.createElement('button'); b.type = 'button'; b.className = 'ma-cor'; b.setAttribute('role', 'radio'); b.setAttribute('aria-label', nome); b.title = nome;
+  pref.favs[chaveFav(f)].forEach((c, i) => { // as cores da barra: escolhidas pelo professor no painel
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'ma-cor'; b.setAttribute('role', 'radio');
+    const nome = CORES[f].find(([, x]) => x === c)?.[0] || `Cor ${i + 1}`; b.setAttribute('aria-label', nome); b.title = nome;
     b.setAttribute('aria-checked', String(pref.cor[f] === c)); b.style.setProperty('--c', c); b.innerHTML = '<span></span>';
-    b.onclick = () => { pref.cor[f] = c; if (!['caneta', 'marca'].includes(pref.ferramenta)) pref.ferramenta = f; guardarPref(); pintarBarra(); };
+    b.onclick = () => { pref.cor[f] = c; if (!['caneta', 'marca', 'lapis'].includes(pref.ferramenta)) pref.ferramenta = f; guardarPref(); pintarBarra(); };
     cores.append(b);
-  }
-  amostraTraco($('#ma-traco-amostra'), f, pref.estilo, pref.esp[f], pref.cor[f], 1.4);
+  });
+  amostraTraco($('#ma-traco-amostra'), f, f === 'caneta' ? pref.estilo : f, pref.esp[f], pref.cor[f], 1.4);
   if (!$('#ma-painel').hidden) pintarPainel();
 }
+let favArmada = null; // índice da cor da barra que vai ser trocada pela próxima cor escolhida
+function escolherCor(f, c) {
+  if (favArmada != null) { pref.favs[chaveFav(f)][favArmada] = c; favArmada = null; }
+  pref.cor[f] = c; guardarPref(); pintarBarra();
+}
+function pintarPaleta(f) {
+  const box = $('#ma-paleta'); if (!box) return; box.innerHTML = '';
+  for (const [nome, c] of CORES[f]) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'ma-cor'; b.setAttribute('role', 'radio');
+    b.setAttribute('aria-label', nome); b.title = nome; b.style.setProperty('--c', c); b.innerHTML = '<span></span>';
+    b.setAttribute('aria-checked', String(pref.cor[f] === c));
+    b.onclick = () => escolherCor(f, c);
+    box.append(b);
+  }
+  const propria = !CORES[f].some(([, c]) => c === pref.cor[f]);
+  const l = document.createElement('label'); l.className = 'ma-outra' + (propria ? ' ativa' : ''); l.title = 'Escolher qualquer cor';
+  if (propria) l.style.setProperty('--c', pref.cor[f]);
+  const inp = document.createElement('input'); inp.type = 'color'; inp.value = pref.cor[f]; inp.setAttribute('aria-label', 'Outra cor');
+  inp.oninput = () => { pref.cor[f] = inp.value; guardarPref(); amostraTraco($('#ma-traco-amostra'), f, f === 'caneta' ? pref.estilo : f, pref.esp[f], pref.cor[f], 1.4); };
+  inp.onchange = () => escolherCor(f, inp.value);
+  l.append(inp, document.createTextNode(propria ? 'Sua cor' : 'Outra cor'));
+  box.append(l);
+  const ed = $('#ma-favs-ed'), dica = $('#ma-favs-dica'); if (!ed) return; ed.innerHTML = '';
+  pref.favs[chaveFav(f)].forEach((c, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'ma-cor'; b.style.setProperty('--c', c); b.innerHTML = '<span></span>';
+    b.setAttribute('aria-label', `Trocar a cor ${i + 1} da barra`); b.setAttribute('aria-pressed', String(favArmada === i));
+    b.onclick = () => { favArmada = favArmada === i ? null : i; pintarPaleta(f); };
+    ed.append(b);
+  });
+  dica.textContent = favArmada == null ? 'Para trocar uma cor da barra, toque nela e depois escolha a nova cor acima.' : `Agora escolha acima a nova cor ${favArmada + 1} da barra.`;
+  dica.classList.toggle('on', favArmada != null);
+}
 function pintarPainel() {
-  const f = pref.ferramenta === 'marca' ? 'marca' : 'caneta';
-  $('#ma-estilos-sec').hidden = f === 'marca';
+  const f = grupoCor();
+  $('#ma-estilos-sec').hidden = f !== 'caneta';
+  pintarPaleta(f);
   const est = $('#ma-estilos'); est.innerHTML = '';
   for (const [id, nome] of ESTILOS) {
     const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'radio'); b.setAttribute('aria-checked', String(pref.estilo === id));
@@ -1148,22 +1218,27 @@ function pintarPainel() {
   $('#ma-esp').value = paraControle(f, pref.esp[f]);
   const mult = f === 'caneta' && pref.estilo === 'pincel' ? 2.3 : 1;
   $('#ma-esp-valor').textContent = (pref.esp[f] * mult).toFixed(1).replace('.', ',');
-  const pv = $('#ma-previa'); requestAnimationFrame(() => amostraTraco(pv, f, pref.estilo, pref.esp[f], pref.cor[f], V.z || 1));
+  const pv = $('#ma-previa'); requestAnimationFrame(() => amostraTraco(pv, f, f === 'caneta' ? pref.estilo : f, pref.esp[f], pref.cor[f], V.z || 1));
 }
 function abrirPainel() {
   const pn = $('#ma-painel'), abrir = pn.hidden; fecharPops();
   if (!abrir) return;
-  if (!['caneta', 'marca'].includes(pref.ferramenta)) { pref.ferramenta = 'caneta'; guardarPref(); pintarBarra(); }
-  pn.hidden = false; $('#ma-traco').setAttribute('aria-expanded', 'true'); pintarPainel();
+  if (!['caneta', 'marca', 'lapis'].includes(pref.ferramenta)) { pref.ferramenta = 'caneta'; guardarPref(); pintarBarra(); }
+  favArmada = null; pn.hidden = false; $('#ma-traco').setAttribute('aria-expanded', 'true'); pintarPainel();
+}
+function alternarFormas() {
+  pref.formas = !pref.formas; guardarPref(); pintarBarra();
+  aviso(pref.formas ? 'Formas ligadas: cada traço vira reta, triângulo, retângulo ou círculo' : 'Formas desligadas. Para uma forma, desenhe e segure no fim.', 2600);
 }
 function montarBarra() {
   for (const b of document.querySelectorAll('.ma-bar-meio [data-ferramenta]')) b.onclick = () => {
     const f = b.dataset.ferramenta;
-    if (f === pref.ferramenta && (f === 'caneta' || f === 'marca')) { abrirPainel(); return; } // tocar de novo abre estilo e espessura
+    if (f === pref.ferramenta && ['caneta', 'marca', 'lapis'].includes(f)) { abrirPainel(); return; } // tocar de novo abre cor, estilo e espessura
     pref.ferramenta = f; if (f !== 'laco') limparSel(); guardarPref(); pintarBarra();
   };
   on('#ma-traco', 'click', (e) => { e.stopPropagation(); abrirPainel(); });
-  on('#ma-esp', 'input', (e) => { const f = pref.ferramenta === 'marca' ? 'marca' : 'caneta'; pref.esp[f] = deControle(f, +e.target.value); guardarPref(); pintarBarra(); });
+  on('#ma-formas', 'click', alternarFormas);
+  on('#ma-esp', 'input', (e) => { const f = grupoCor(); pref.esp[f] = deControle(f, +e.target.value); guardarPref(); pintarBarra(); });
   pintarBarra();
 }
 function fecharPops() {
@@ -1552,7 +1627,8 @@ function ligarBotoes() {
     else if (!ALUNO && (k === 'arrowleft' || k === 'pageup')) { e.preventDefault(); irPara(aula.atual - 1); }
     else if ((k === 'delete' || k === 'backspace') && sel) { e.preventDefault(); apagarSel(); }
     else if (k === 'escape') { limparSel(); fecharPops(); if (!ALUNO) { fecharInserir(); fecharMapa(); fecharResol(); fecharQR(); } }
-    else { const f = { p: 'caneta', m: 'marca', e: 'borracha', v: 'laco', l: ALUNO ? null : 'laser' }[k]; if (f) { pref.ferramenta = f; guardarPref(); pintarBarra(); } }
+    else if (k === 'f') alternarFormas();
+    else { const f = { p: 'caneta', g: 'lapis', m: 'marca', e: 'borracha', v: 'laco', l: ALUNO ? null : 'laser' }[k]; if (f) { pref.ferramenta = f; guardarPref(); pintarBarra(); } }
   });
   if (ALUNO) return;
 

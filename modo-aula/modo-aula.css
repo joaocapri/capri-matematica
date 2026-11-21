@@ -44,6 +44,8 @@ body[data-ferramenta="borracha"] .ma-traco,body[data-ferramenta="laco"] .ma-trac
 .ma-bt-q{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 13px 0 10px;border:0;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:13.5px}
 .ma-bt-q svg{width:19px;height:19px;stroke:var(--lime);stroke-width:1.9}
 .ma-bt-q[aria-expanded="true"]{background:var(--purple)}
+/* iPad de 9,7" e 10,2" deitado (1024 a 1080 px): barra mais compacta, com quatro cores à mão (as outras ficam no painel) */
+@media (max-width:1100px){.ma-bar-meio .ma-ib{width:36px}.ma-sep{margin:0 3px}.ma-cores .ma-cor:nth-child(n+5){display:none}.ma-cor{width:29px}.ma-bt-q span{display:none}.ma-bt-q{padding:0 9px}.ma-traco canvas{width:44px}}
 @media (max-width:900px){.ma-cores .ma-cor:nth-child(n+4){display:none}.ma-bt-q span{display:none}.ma-bt-q{padding:0 9px}}
 
 /* ---------- janelinhas ---------- */
@@ -160,6 +162,22 @@ body[data-tela="inicio"] .ma-bar,body[data-tela="inicio"] .ma-nav,body[data-tela
 .ma-painel-sec+.ma-painel-sec{margin-top:14px}
 .ma-painel h2{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 8px;font-size:12.5px;font-weight:700;color:var(--mute)}
 .ma-painel output{font-variant-numeric:tabular-nums;color:var(--ink)}
+.ma-painel{max-height:calc(100dvh - var(--barra) - 24px);overflow:auto;overscroll-behavior:contain}
+.ma-paleta{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.ma-paleta .ma-cor{width:34px;height:34px}
+.ma-paleta .ma-cor span{width:24px;height:24px}
+.ma-outra{position:relative;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px 0 4px;border:1px dashed #c4bfdb;border-radius:999px;font-weight:700;font-size:12.5px;color:#4b4566;cursor:pointer}
+.ma-outra input{width:26px;height:26px;border:0;padding:0;background:conic-gradient(#d8352b,#ea7b16,#e8c21d,#1c8f4e,#1f9bd7,#2459d6,#6a3fd8,#d63c84,#d8352b);border-radius:50%;cursor:pointer;-webkit-appearance:none;appearance:none}
+.ma-outra input::-webkit-color-swatch-wrapper{padding:0}
+.ma-outra input::-webkit-color-swatch{border:0;border-radius:50%;opacity:0}
+.ma-outra.ativa{border-style:solid;border-color:var(--c)}
+.ma-outra.ativa input{background:var(--c)}
+.ma-favs-ed{display:flex;flex-wrap:wrap;gap:8px}
+.ma-favs-ed .ma-cor{width:40px;height:40px;border:1px solid var(--linha);border-radius:12px;background:#fff}
+.ma-favs-ed .ma-cor span{width:22px;height:22px}
+.ma-favs-ed .ma-cor[aria-pressed="true"]{border:2px solid var(--purple);background:var(--soft);box-shadow:none}
+.ma-favs-dica{margin:6px 0 0;font-size:12px;line-height:1.35;color:var(--mute)}
+.ma-favs-dica.on{color:var(--purple);font-weight:700}
 .ma-estilos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
 .ma-estilos button{display:flex;flex-direction:column;align-items:center;gap:4px;border:1px solid var(--linha);border-radius:12px;background:#fff;padding:7px 4px 6px;font-size:11.5px;font-weight:700;color:#4b4566}
 .ma-estilos button canvas{width:64px;height:22px}
