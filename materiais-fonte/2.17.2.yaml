@@ -1,0 +1,525 @@
+# Aula 2.17.2 — Trigonometria: arco duplo e arco metade
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: sen 2x, cos 2x (três formas), tg 2x; arco metade (sen², cos² e tg de x/2); valores de 22,5° e 15°;
+# arco triplo como aplicação; alcance de projétil, áreas e simplificações; equações simples que pedem cos 2x.
+# Transformação em produto fica para a aula 2.17.3.
+padrao: 4
+
+fixacao:
+  intro: 'Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Fórmulas: $\operatorname{sen}2x = 2\operatorname{sen}x\cos x$, $\cos 2x = \cos^2 x - \operatorname{sen}^2 x$ e, para o arco metade, $\cos^2\frac{x}{2} = \frac{1 + \cos x}{2}$ e $\operatorname{sen}^2\frac{x}{2} = \frac{1 - \cos x}{2}$. O gabarito resolvido está no final.'
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete as fórmulas.'
+      itens:
+      - '$\operatorname{sen}2x = 2 \cdot$ {{\operatorname{sen}x\cos x}}'
+      - '$\cos 2x = \cos^2 x -$ {{\operatorname{sen}^2 x}}'
+      - '$\cos 2x = 2\cos^2 x -$ {{1}}'
+      - '$\cos 2x = 1 -$ {{2\operatorname{sen}^2 x}}'
+      espaco_item: 8
+      resolucao: |
+        Faça $a = b = x$ nas fórmulas da soma; as outras formas saem de $\operatorname{sen}^2 x + \cos^2 x = 1$.
+      resposta: '$\operatorname{sen}x\cos x$; $\operatorname{sen}^2 x$; 1; $2\operatorname{sen}^2 x$'
+    - enunciado: 'Associe cada expressão ao seu valor.'
+      esquerda:
+      - '$2\operatorname{sen}15^\circ\cos 15^\circ$'
+      - '$\cos^2 15^\circ - \operatorname{sen}^2 15^\circ$'
+      - '$2\cos^2 22{,}5^\circ - 1$'
+      - '$1 - 2\operatorname{sen}^2 60^\circ$'
+      - '$\frac{2\operatorname{tg}22{,}5^\circ}{1 - \operatorname{tg}^2 22{,}5^\circ}$'
+      direita:
+      - '$-\frac12$'
+      - '$1$'
+      - '$\frac12$'
+      - '$\frac{\sqrt2}{2}$'
+      - '$\frac{\sqrt3}{2}$'
+      resolucao: |
+        $\operatorname{sen}30^\circ$; $\cos 30^\circ$; $\cos 45^\circ$; $\cos 120^\circ$; $\operatorname{tg}45^\circ$.
+      resposta: 'De cima para baixo: 4, 5, 1, 3, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso), para todo $x$ em que as razões existem.'
+      afirmacoes:
+      - '$\cos 2x = 1 - 2\operatorname{sen}^2 x$.'
+      - '$\operatorname{sen}2x = 2\operatorname{sen}x$.'
+      - '$\operatorname{tg}2x = 2\operatorname{tg}x$.'
+      - '$\cos^2 x = \frac{1 + \cos 2x}{2}$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) Troque $\cos^2 x$ por $1 - \operatorname{sen}^2 x$. (F) Com $x = 90^\circ$: $0 \ne 2$. (F) Com $x = 30^\circ$: $\sqrt3 \ne \frac{2\sqrt3}{3}$. (V) Isole $\cos^2 x$ em $\cos 2x = 2\cos^2 x - 1$.
+      resposta: V, F, F, V
+    - enunciado: 'Complete a tabela.'
+      tabela:
+        cabecalho: ['$\operatorname{sen}x$', '$\cos x$', '$\operatorname{sen}2x$', '$\cos 2x$']
+        linhas:
+        - ['$0{,}6$', '$-0{,}8$', '${{-0{,}96}}$', '${{0{,}28}}$']
+        - ['$\frac{5}{13}$', '$\frac{12}{13}$', '${{120/169}}$', '${{119/169}}$']
+        - ['$-\frac13$', '$\frac{2\sqrt2}{3}$', '${{-4\sqrt2/9}}$', '${{7/9}}$']
+      resolucao: |
+        $\operatorname{sen}2x = 2\operatorname{sen}x\cos x$ e $\cos 2x = \cos^2 x - \operatorname{sen}^2 x$. Por exemplo, na 1ª linha: $2 \cdot 0{,}6 \cdot (-0{,}8) = -0{,}96$ e $0{,}64 - 0{,}36 = 0{,}28$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Calcule $\cos 22{,}5^\circ$.'
+      espaco: 10
+      resolucao: |
+        $\cos^2 22{,}5^\circ = \frac{1 + \cos 45^\circ}{2} = \frac{2 + \sqrt2}{4}$, e o cosseno é positivo: $\frac{\sqrt{2 + \sqrt2}}{2}$.
+      resposta: '$\frac{\sqrt{2 + \sqrt2}}{2}$'
+    - enunciado: 'Calcule $2\operatorname{sen}75^\circ\cos 75^\circ$.'
+      espaco: 8
+      resolucao: |
+        $\operatorname{sen}150^\circ = \frac12$.
+      resposta: '$\frac12$'
+    - enunciado: 'Simplifique $(\operatorname{sen}x + \cos x)^2 - 1$.'
+      espaco: 8
+      resolucao: |
+        $1 + 2\operatorname{sen}x\cos x - 1 = \operatorname{sen}2x$.
+      resposta: '$\operatorname{sen}2x$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Léo escreveu: "Se $\operatorname{sen}x = 0{,}5$, então $\operatorname{sen}2x = 1$, porque o arco dobrou."
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        O seno não dobra junto com o arco: $\operatorname{sen}2x = 2 \cdot 0{,}5 \cdot \cos x = \cos x = \pm\frac{\sqrt3}{2}$, conforme o quadrante.
+      resposta: '$\operatorname{sen}2x = \pm\frac{\sqrt3}{2}$'
+    - enunciado: 'Sabendo que $\cos x = -\frac13$ e que $x$ está no 2º quadrante, calcule $\cos 2x$ e $\operatorname{sen}2x$.'
+      espaco: 12
+      resolucao: |
+        $\cos 2x = 2 \cdot \frac19 - 1 = -\frac79$. $\operatorname{sen}x = \frac{2\sqrt2}{3}$, logo $\operatorname{sen}2x = 2 \cdot \frac{2\sqrt2}{3} \cdot \left(-\frac13\right) = -\frac{4\sqrt2}{9}$.
+      resposta: '$-\frac79$ e $-\frac{4\sqrt2}{9}$'
+    - enunciado: 'Sabendo que $\operatorname{tg}x = 3$, calcule $\operatorname{tg}2x$.'
+      espaco: 8
+      resolucao: |
+        $\frac{6}{1 - 9} = -\frac34$.
+      resposta: '$-\frac34$'
+    - enunciado: 'O arco $x$ está entre $0$ e $\frac{\pi}{2}$, com $\cos x = \frac{7}{25}$. Complete.'
+      itens:
+      - '$\operatorname{sen}\frac{x}{2} =$ {{3/5}}'
+      - '$\cos\frac{x}{2} =$ {{4/5}}'
+      - '$\operatorname{tg}\frac{x}{2} =$ {{3/4}}'
+      espaco_item: 8
+      resolucao: |
+        $\operatorname{sen}^2\frac{x}{2} = \frac{1 - 7/25}{2} = \frac{9}{25}$ e $\cos^2\frac{x}{2} = \frac{1 + 7/25}{2} = \frac{16}{25}$; $\frac{x}{2}$ está no 1º Q.
+      resposta: '$\frac35$; $\frac45$; $\frac34$'
+    - enunciado: 'Calcule $\operatorname{tg}22{,}5^\circ$ usando $\operatorname{tg}\frac{x}{2} = \frac{\operatorname{sen}x}{1 + \cos x}$.'
+      espaco: 10
+      resolucao: |
+        Com $x = 45^\circ$: $\frac{\sqrt2/2}{1 + \sqrt2/2} = \frac{\sqrt2}{2 + \sqrt2} = \frac{\sqrt2(2 - \sqrt2)}{2} = \sqrt2 - 1$.
+      resposta: '$\sqrt2 - 1$'
+    - enunciado: 'Simplifique $\cos^4 x - \operatorname{sen}^4 x$.'
+      espaco: 8
+      resolucao: |
+        $(\cos^2 x - \operatorname{sen}^2 x)(\cos^2 x + \operatorname{sen}^2 x) = \cos 2x$.
+      resposta: '$\cos 2x$'
+    - enunciado: 'Calcule $\operatorname{sen}15^\circ \cdot \cos 15^\circ$.'
+      espaco: 8
+      resolucao: |
+        $\frac12\operatorname{sen}30^\circ = \frac14$.
+      resposta: '$\frac14$'
+    - enunciado: 'Simplifique $\dfrac{1 - \cos 2x}{\operatorname{sen}2x}$, para $x$ fora dos eixos.'
+      espaco: 10
+      resolucao: |
+        $\frac{2\operatorname{sen}^2 x}{2\operatorname{sen}x\cos x} = \operatorname{tg}x$.
+      resposta: '$\operatorname{tg}x$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'A partir de $\cos(a + b)$, prove que $\cos 2x = 2\cos^2 x - 1$.'
+      espaco: 10
+      resolucao: |
+        $\cos 2x = \cos^2 x - \operatorname{sen}^2 x = \cos^2 x - (1 - \cos^2 x)$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}^2 x = \frac{1 - \cos 2x}{2}$.'
+      espaco: 10
+      resolucao: |
+        Isole $\operatorname{sen}^2 x$ em $\cos 2x = 1 - 2\operatorname{sen}^2 x$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{tg}2x = \frac{2\operatorname{tg}x}{1 - \operatorname{tg}^2 x}$, quando as tangentes existem.'
+      espaco: 10
+      resolucao: |
+        Faça $a = b = x$ em $\operatorname{tg}(a + b)$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}3x = 3\operatorname{sen}x - 4\operatorname{sen}^3 x$.'
+      espaco: 12
+      resolucao: |
+        $\operatorname{sen}(2x + x) = 2\operatorname{sen}x\cos^2 x + (1 - 2\operatorname{sen}^2 x)\operatorname{sen}x = 2\operatorname{sen}x(1 - \operatorname{sen}^2 x) + \operatorname{sen}x - 2\operatorname{sen}^3 x$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $(\operatorname{sen}x + \cos x)^2 = 1 + \operatorname{sen}2x$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{sen}^2 x + \cos^2 x + 2\operatorname{sen}x\cos x$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Desprezando a resistência do ar, o alcance horizontal de um objeto lançado do chão com velocidade $v$, num ângulo $\theta$ com a horizontal, é $R = \frac{v^2\operatorname{sen}2\theta}{g}$. Num treino, uma bola foi chutada a 20 m/s, com $\theta = 15^\circ$. Use $g = 10$ m/s².
+    enunciado: |
+      O alcance da bola foi de
+    opcoes: ['$20$ m', '$40$ m', '$10$ m', '$20\sqrt3$ m', '$10\sqrt3$ m']
+    correta: A
+    resolucao: |
+      $\frac{400 \cdot \operatorname{sen}30^\circ}{10} = 40 \cdot \frac12 = 20$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\operatorname{sen}x = \frac13$, então $\cos 2x$ vale
+    opcoes: ['$\frac29$', '$\frac79$', '$-\frac79$', '$\frac13$', '$\frac89$']
+    correta: B
+    resolucao: |
+      $1 - 2 \cdot \frac19 = \frac79$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O valor de $\operatorname{sen}22{,}5^\circ \cdot \cos 22{,}5^\circ$ é
+    opcoes: ['$\frac{\sqrt2}{2}$.', '$\frac12$.', '$\frac{\sqrt2}{4}$.', '$\frac14$.']
+    correta: C
+    resolucao: |
+      $\frac12\operatorname{sen}45^\circ = \frac{\sqrt2}{4}$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere um arco $x$ do 1º quadrante com $\operatorname{tg}x = \frac12$. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}2x = \frac45$.'
+    - '$\cos 2x = \frac35$.'
+    - '$\operatorname{tg}2x = \frac43$.'
+    - 'O arco $2x$ está no 1º quadrante.'
+    - '$\operatorname{sen}2x = 2\operatorname{sen}x$.'
+    - '$\cos^2 x = \frac45$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      $\operatorname{sen}x = \frac{1}{\sqrt5}$ e $\cos x = \frac{2}{\sqrt5}$. 01) $2 \cdot \frac{2}{5}$. 02) $\frac45 - \frac15$. 04) $\frac{1}{1 - 1/4}$. 08) Seno e cosseno de $2x$ positivos. 16) Incorreta: $2\operatorname{sen}x = \frac{2}{\sqrt5} \approx 0{,}89$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um terreno tem a forma de um triângulo isósceles cujos lados iguais medem 10 m e formam entre si um ângulo $2\theta$. A área é $\frac12 \cdot 10 \cdot 10 \cdot \operatorname{sen}2\theta = 100\operatorname{sen}\theta\cos\theta$, em m². O quadro dá valores aproximados de seno e cosseno; no terreno em questão, $\theta = 25^\circ$.
+    tabela:
+      cabecalho: ['$\theta$', '$20^\circ$', '$25^\circ$', '$30^\circ$', '$35^\circ$']
+      linhas:
+      - ['seno', '$0{,}34$', '$0{,}42$', '$0{,}50$', '$0{,}57$']
+      - ['cosseno', '$0{,}94$', '$0{,}91$', '$0{,}87$', '$0{,}82$']
+    enunciado: |
+      A área do terreno é de aproximadamente
+    opcoes: ['$42$ m²', '$91$ m²', '$50$ m²', '$38$ m²', '$76$ m²']
+    correta: D
+    resolucao: |
+      $100 \cdot 0{,}42 \cdot 0{,}91 \approx 38{,}2$ m².
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, para $x$ em que as razões existem.
+    afirmativas:
+    - '$\operatorname{sen}2x = 2\operatorname{sen}x\cos x$.'
+    - '$\cos 2x = 2\cos x - 1$.'
+    - '$\cos^2 x = \frac{1 + \cos 2x}{2}$.'
+    - '$\operatorname{tg}2x = \frac{2\operatorname{tg}x}{1 - \operatorname{tg}^2 x}$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      II. Incorreta: $\cos 2x = 2\cos^2 x - 1$.
+
+  - estilo: Unesp
+    enunciado: |
+      O valor de $\cos^2 15^\circ - \operatorname{sen}^2 15^\circ$ é
+    opcoes: ['$\frac{\sqrt3}{2}$', '$\frac12$', '$1$', '$\frac{\sqrt2}{2}$', '$0$']
+    correta: A
+    resolucao: |
+      $\cos 30^\circ$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, o triângulo ABC é retângulo em B, com $AB = 4$, $BC = 3$, e $\theta$ é o ângulo em A.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.6]
+        \draw[ink, line width=.9pt] (0,0) -- (4,0) -- (4,3) -- cycle;
+        \draw[ink] (3.6,0) -- (3.6,.4) -- (4,.4);
+        \node[font=\small, below left] at (0,0) {A}; \node[font=\small, below right] at (4,0) {B}; \node[font=\small, above right] at (4,3) {C};
+        \node[font=\scriptsize, below] at (2,0) {4}; \node[font=\scriptsize, right] at (4,1.5) {3};
+        \draw[roxo] (1,0) arc (0:36.9:1); \node[roxo, font=\scriptsize] at (1.3,.35) {$\theta$};
+        \end{scope}
+    enunciado: |
+      O valor de $\operatorname{sen}2\theta$ é
+    opcoes: ['$\frac{12}{25}$.', '$\frac{24}{25}$.', '$\frac{7}{25}$.', '$\frac65$.']
+    correta: B
+    resolucao: |
+      $AC = 5$, $\operatorname{sen}\theta = \frac35$ e $\cos\theta = \frac45$: $2 \cdot \frac35 \cdot \frac45 = \frac{24}{25}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\operatorname{sen}x + \cos x = \frac12$, então $\operatorname{sen}2x$ vale
+    opcoes: ['$\frac34$', '$-\frac14$', '$-\frac34$', '$\frac14$', '$-\frac12$']
+    correta: C
+    resolucao: |
+      $1 + \operatorname{sen}2x = \frac14$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $x$ entre $0$ e $\frac{\pi}{2}$, com $\cos x = \frac19$. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}\frac{x}{2} = \frac23$.'
+    - '$\cos\frac{x}{2} = \frac{\sqrt5}{3}$.'
+    - '$\operatorname{tg}\frac{x}{2} = \frac{2\sqrt5}{5}$.'
+    - '$\cos 2x = -\frac{79}{81}$.'
+    - 'O arco $\frac{x}{2}$ está no 1º quadrante.'
+    - '$\operatorname{sen}x = 2\operatorname{sen}\frac{x}{2}$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $\frac{1 - 1/9}{2} = \frac49$. 02) $\frac{1 + 1/9}{2} = \frac59$. 04) $\frac{2/3}{\sqrt5/3}$. 08) $\frac{2}{81} - 1$. 32) Incorreta: $2 \cdot \frac23 > 1$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      O alcance de um projétil lançado do chão, sem resistência do ar, é $R = \frac{v^2}{g}\operatorname{sen}2\theta$, em que $v$ é a velocidade de lançamento e $\theta$ é o ângulo com a horizontal. Num campeonato de arremesso, o técnico quer saber qual ângulo de lançamento faz a bola ir mais longe, mantida a mesma velocidade.
+    enunciado: |
+      O alcance é máximo para $\theta$ igual a
+    opcoes: ['$45^\circ$', '$30^\circ$', '$60^\circ$', '$90^\circ$', '$15^\circ$']
+    correta: A
+    resolucao: |
+      O maior valor de $\operatorname{sen}2\theta$ é 1, em $2\theta = 90^\circ$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$\operatorname{sen}2x = 2\operatorname{sen}x\cos x$ para todo $x$.'
+    - '$\cos 2x = \cos^2 x + \operatorname{sen}^2 x$ para todo $x$.'
+    - '$\operatorname{tg}22{,}5^\circ = \sqrt2 - 1$.'
+    - '$\operatorname{sen}^2\frac{x}{2} = \frac{1 - \cos x}{2}$ para todo $x$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      A segunda daria $\cos 2x = 1$ sempre; o certo é $\cos^2 x - \operatorname{sen}^2 x$. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      O telhado de um galpão tem seção em forma de triângulo isósceles: as duas águas medem 5 m cada e formam no topo um ângulo $2\theta$. O engenheiro sabe que $\cos 2\theta = 0{,}28$ e precisa da largura da base AB, para encomendar a viga. Ele usa a lei dos cossenos no triângulo da figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.6]
+        \draw[ink, line width=.9pt] (0,0) -- (6,0) -- (3,4) -- cycle;
+        \draw[mudo, dashed] (3,4) -- (3,0);
+        \node[font=\small, below left] at (0,0) {A}; \node[font=\small, below right] at (6,0) {B};
+        \node[font=\scriptsize, above left] at (1.5,2) {5}; \node[font=\scriptsize, above right] at (4.5,2) {5};
+        \draw[roxo] (2.55,3.4) arc (233.1:306.9:.75); \node[roxo, font=\scriptsize] at (3,2.9) {$2\theta$};
+        \end{scope}
+    enunciado: |
+      A largura da base AB é
+    opcoes: ['$8$ m', '$4$ m', '$5$ m', '$6$ m', '$10$ m']
+    correta: D
+    resolucao: |
+      $AB^2 = 25 + 25 - 50 \cdot 0{,}28 = 36$. (Também: $\cos 2\theta = 1 - 2\operatorname{sen}^2\theta$ dá $\operatorname{sen}\theta = 0{,}6$ e $AB = 2 \cdot 5 \cdot 0{,}6$.)
+
+  - estilo: Unesp
+    enunciado: |
+      O valor de $8\operatorname{sen}15^\circ\cos 15^\circ\cos 30^\circ$ é
+    opcoes: ['$2\sqrt3$', '$\sqrt3$', '$1$', '$\frac{\sqrt3}{2}$', '$2$']
+    correta: B
+    resolucao: |
+      $4\operatorname{sen}30^\circ\cos 30^\circ = 2\operatorname{sen}60^\circ = \sqrt3$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere $x$ real, com as razões existindo. Assinale o que for correto.
+    proposicoes:
+    - '$\cos^4 x - \operatorname{sen}^4 x = \cos 2x$.'
+    - '$(\operatorname{sen}x + \cos x)^2 = 1 + \operatorname{sen}2x$.'
+    - '$\operatorname{sen}3x = 3\operatorname{sen}x - 4\operatorname{sen}^3 x$.'
+    - '$\operatorname{tg}\frac{x}{2} = \frac{\operatorname{sen}x}{1 + \cos x}$.'
+    - '$\cos 2x = 2\cos x - 1$.'
+    - '$\operatorname{sen}^2 x\cos^2 x = \frac{\operatorname{sen}^2 2x}{4}$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      08) $\frac{2\operatorname{sen}\frac{x}{2}\cos\frac{x}{2}}{2\cos^2\frac{x}{2}}$. 16) Incorreta: com $x = 60^\circ$, $-\frac12 \ne 0$. 32) $\left(\frac{\operatorname{sen}2x}{2}\right)^2$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O maior valor de $\operatorname{sen}x \cdot \cos x$, com $x$ real, é
+    opcoes: ['$\frac12$.', '$1$.', '$2$.', '$\frac14$.']
+    correta: A
+    resolucao: |
+      $\frac12\operatorname{sen}2x \le \frac12$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um observador em A vê o topo T de uma torre vertical sob um ângulo de $15^\circ$ com a horizontal. Ele anda 20 m em linha reta na direção da torre, até o ponto B, e passa a ver o topo sob um ângulo de $30^\circ$. Como o ângulo externo em B é o dobro do ângulo em A, o triângulo ABT é isósceles, com $BT = AB = 20$ m.
+    enunciado: |
+      A altura da torre é
+    opcoes: ['$20$ m', '$5$ m', '$10$ m', '$10\sqrt3$ m', '$5\sqrt3$ m']
+    correta: C
+    resolucao: |
+      No triângulo retângulo de hipotenusa BT: $h = 20\operatorname{sen}30^\circ = 10$ m.
+
+  - estilo: Unesp
+    enunciado: |
+      A distância de B até o pé da torre é
+    opcoes: ['$10$ m', '$20$ m', '$20\sqrt3$ m', '$10\sqrt3$ m', '$5\sqrt3$ m']
+    correta: D
+    resolucao: |
+      $20\cos 30^\circ = 10\sqrt3 \approx 17{,}3$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\operatorname{tg}x = 2$, então $\cos 2x$ vale
+    opcoes: ['$\frac35$', '$\frac45$', '$-\frac45$', '$\frac15$', '$-\frac35$']
+    correta: E
+    resolucao: |
+      $\cos 2x = \frac{1 - \operatorname{tg}^2 x}{1 + \operatorname{tg}^2 x} = \frac{1 - 4}{5}$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, O é o centro de um círculo de raio 5, e o ângulo central AOB mede $2\theta$, com $\cos\theta = 0{,}6$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.4]
+        \draw[ink, line width=.9pt] (0,0) circle (5);
+        \draw[roxo, line width=.9pt] (0,0) -- (-4,-3) -- (4,-3) -- cycle;
+        \fill[ink] (0,0) circle (3pt) node[above, font=\small] {O};
+        \node[font=\small, below left] at (-4,-3) {A}; \node[font=\small, below right] at (4,-3) {B};
+        \draw[roxo] (-.8,-.6) arc (216.9:323.1:1); \node[roxo, font=\scriptsize] at (0,-1.5) {$2\theta$};
+        \end{scope}
+    enunciado: |
+      A área do triângulo AOB é
+    opcoes: ['$24$', '$12$', '$10$', '$20$', '$6$']
+    correta: B
+    resolucao: |
+      $\frac12 \cdot 5 \cdot 5 \cdot \operatorname{sen}2\theta$, com $\operatorname{sen}2\theta = 2 \cdot 0{,}8 \cdot 0{,}6 = 0{,}96$: $12{,}5 \cdot 0{,}96 = 12$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Sabe-se que $\cos x = -\frac{5}{13}$ e que $x$ está no 3º quadrante.'
+    itens:
+    - 'Calcule $\operatorname{sen}2x$ e $\cos 2x$.'
+    - 'Calcule $\operatorname{tg}2x$.'
+    - 'Supondo $\pi < x < \frac{3\pi}{2}$, em que quadrante está a extremidade de $2x$? Confira com os sinais obtidos.'
+    espaco: 62
+    resolucao: |
+      a) $\operatorname{sen}x = -\frac{12}{13}$: $\operatorname{sen}2x = 2 \cdot \frac{-12}{13} \cdot \frac{-5}{13} = \frac{120}{169}$; $\cos 2x = \frac{25 - 144}{169} = -\frac{119}{169}$.
+      b) $-\frac{120}{119}$.
+      c) $\operatorname{tg}x = \frac{12}{5} > 1$, logo $x > \frac{5\pi}{4}$ e $\frac{5\pi}{2} < 2x < 3\pi$: 2º quadrante (seno $+$, cosseno $-$), como em a.
+    resposta: 'a) $\frac{120}{169}$ e $-\frac{119}{169}$; b) $-\frac{120}{119}$; c) 2º quadrante'
+
+  - estilo: Unicamp
+    enunciado: 'Use as fórmulas do arco metade com $x = 45^\circ$.'
+    itens:
+    - 'Calcule $\operatorname{sen}22{,}5^\circ$.'
+    - 'Calcule $\cos 22{,}5^\circ$.'
+    - 'Calcule $\operatorname{tg}22{,}5^\circ$ e mostre que vale $\sqrt2 - 1$.'
+    espaco: 62
+    resolucao: |
+      a) $\operatorname{sen}^2 22{,}5^\circ = \frac{1 - \sqrt2/2}{2} = \frac{2 - \sqrt2}{4}$: $\frac{\sqrt{2 - \sqrt2}}{2}$.
+      b) $\frac{\sqrt{2 + \sqrt2}}{2}$.
+      c) $\sqrt{\frac{2 - \sqrt2}{2 + \sqrt2}} = \sqrt{\frac{(2 - \sqrt2)^2}{2}} = \frac{2 - \sqrt2}{\sqrt2} = \sqrt2 - 1$.
+    resposta: 'a) $\frac{\sqrt{2 - \sqrt2}}{2}$; b) $\frac{\sqrt{2 + \sqrt2}}{2}$; c) $\sqrt2 - 1$'
+
+  - estilo: ITA
+    enunciado: |
+      O valor de $\cos 36^\circ \cdot \cos 72^\circ$ é
+    opcoes: ['$\frac14$', '$\frac12$', '$\frac{\sqrt5}{4}$', '$\frac18$', '$\frac{\sqrt5 - 1}{4}$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      Multiplique por $\operatorname{sen}36^\circ$: $\operatorname{sen}36^\circ\cos 36^\circ\cos 72^\circ = \frac12\operatorname{sen}72^\circ\cos 72^\circ = \frac14\operatorname{sen}144^\circ = \frac14\operatorname{sen}36^\circ$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Considere $f(x) = \operatorname{sen}x\cos x$.'
+    itens:
+    - 'Escreva $f(x)$ em função de $\operatorname{sen}2x$.'
+    - 'Dê o maior e o menor valor de $f$.'
+    - 'Resolva $f(x) = \frac14$ em $[0, \pi]$.'
+    espaco: 62
+    resolucao: |
+      a) $f(x) = \frac12\operatorname{sen}2x$.
+      b) $\frac12$ e $-\frac12$.
+      c) $\operatorname{sen}2x = \frac12$, com $2x \in [0, 2\pi]$: $2x = \frac{\pi}{6}$ ou $\frac{5\pi}{6}$, logo $x = \frac{\pi}{12}$ ou $\frac{5\pi}{12}$.
+    resposta: 'b) $\frac12$ e $-\frac12$; c) $\frac{\pi}{12}$ e $\frac{5\pi}{12}$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $x$ real, com as razões existindo. Assinale o que for correto.
+    proposicoes:
+    - '$\cos 2x = \frac{1 - \operatorname{tg}^2 x}{1 + \operatorname{tg}^2 x}$.'
+    - '$\operatorname{sen}2x = \frac{2\operatorname{tg}x}{1 + \operatorname{tg}^2 x}$.'
+    - '$\operatorname{sen}18^\circ\cos 18^\circ = \frac12\operatorname{sen}36^\circ$.'
+    - '$\cos^2 75^\circ - \operatorname{sen}^2 75^\circ = -\frac{\sqrt3}{2}$.'
+    - '$\operatorname{sen}2x = 2\operatorname{sen}x$ para todo $x$.'
+    - '$1 - \cos x = 2\operatorname{sen}^2\frac{x}{2}$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) e 02) Divida por $\cos^2 x$ em cima e embaixo, usando $1 = \operatorname{sen}^2 x + \cos^2 x$. 08) $\cos 150^\circ$. 16) Incorreta: com $x = 90^\circ$, $0 \ne 2$. 32) Arco metade.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere o arco triplo.'
+    itens:
+    - 'Prove que $\cos 3x = 4\cos^3 x - 3\cos x$.'
+    - 'Confira a fórmula com $x = 30^\circ$.'
+    - 'Mostre que $c = \cos 20^\circ$ é raiz da equação $8c^3 - 6c - 1 = 0$.'
+    espaco: 62
+    resolucao: |
+      a) $\cos(2x + x) = (2\cos^2 x - 1)\cos x - 2\operatorname{sen}^2 x\cos x = 2\cos^3 x - \cos x - 2(1 - \cos^2 x)\cos x$.
+      b) $4 \cdot \frac{3\sqrt3}{8} - 3 \cdot \frac{\sqrt3}{2} = 0 = \cos 90^\circ$.
+      c) $\cos 60^\circ = \frac12 = 4c^3 - 3c$; multiplique por 2.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    enunciado: 'O alcance de um projétil lançado a 20 m/s é $R(\theta) = 40\operatorname{sen}2\theta$ metros, com $0 < \theta < 90^\circ$.'
+    itens:
+    - 'Calcule $R(15^\circ)$, $R(45^\circ)$ e $R(75^\circ)$.'
+    - 'Mostre que $R(90^\circ - \theta) = R(\theta)$.'
+    - 'Para que ângulos o alcance é $20\sqrt3$ m?'
+    espaco: 62
+    resolucao: |
+      a) 20 m, 40 m e 20 m.
+      b) $\operatorname{sen}(180^\circ - 2\theta) = \operatorname{sen}2\theta$.
+      c) $\operatorname{sen}2\theta = \frac{\sqrt3}{2}$: $2\theta = 60^\circ$ ou $120^\circ$, logo $\theta = 30^\circ$ ou $60^\circ$.
+    resposta: 'a) 20, 40 e 20 m; c) $30^\circ$ e $60^\circ$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\operatorname{tg}x = \frac13$, então $\operatorname{tg}2x$ vale
+    opcoes: ['$\frac23$', '$\frac34$', '$\frac14$', '$\frac43$', '$\frac38$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $\frac{2/3}{1 - 1/9} = \frac{2/3}{8/9} = \frac34$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere $x$ fora dos eixos.'
+    itens:
+    - 'Simplifique $\dfrac{1 + \cos 2x}{\operatorname{sen}2x}$.'
+    - 'Mostre que $\dfrac{\operatorname{sen}2x}{1 + \cos 2x} = \operatorname{tg}x$.'
+    - 'Use o item b para calcular $\operatorname{tg}15^\circ$.'
+    espaco: 62
+    resolucao: |
+      a) $\frac{2\cos^2 x}{2\operatorname{sen}x\cos x} = \operatorname{cotg}x$.
+      b) É o inverso do item a.
+      c) $\frac{\operatorname{sen}30^\circ}{1 + \cos 30^\circ} = \frac{1/2}{1 + \sqrt3/2} = \frac{1}{2 + \sqrt3} = 2 - \sqrt3$.
+    resposta: 'a) $\operatorname{cotg}x$; c) $2 - \sqrt3$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere a equação $\cos 2x + \operatorname{sen}x = 0$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Reescreva a equação usando apenas $\operatorname{sen}x$.'
+    - 'Resolva a equação do 2º grau obtida, em $\operatorname{sen}x$.'
+    - 'Dê as soluções em $[0, 2\pi)$.'
+    espaco: 62
+    resolucao: |
+      a) $1 - 2\operatorname{sen}^2 x + \operatorname{sen}x = 0$, ou $2\operatorname{sen}^2 x - \operatorname{sen}x - 1 = 0$.
+      b) $\operatorname{sen}x = \frac{1 \pm 3}{4}$: 1 ou $-\frac12$.
+      c) $x = \frac{\pi}{2}$, $\frac{7\pi}{6}$ ou $\frac{11\pi}{6}$.
+    resposta: 'c) $\frac{\pi}{2}$, $\frac{7\pi}{6}$ e $\frac{11\pi}{6}$'
