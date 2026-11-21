@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="81.52" height="64.51" viewBox="0 0 81.52 64.51">
+<defs>
+<clipPath id="clip-0">
+<path clip-rule="nonzero" d="M 0.0703125 5 L 68 5 L 68 64.023438 L 0.0703125 64.023438 Z M 0.0703125 5 "/>
+</clipPath>
+<clipPath id="clip-1">
+<path clip-rule="nonzero" d="M 13 0 L 80.972656 0 L 80.972656 64.023438 L 13 64.023438 Z M 13 0 "/>
+</clipPath>
+<clipPath id="clip-2">
+<path clip-rule="nonzero" d="M 22 0 L 80.972656 0 L 80.972656 42 L 22 42 Z M 22 0 "/>
+</clipPath>
+</defs>
+<path fill-rule="nonzero" fill="rgb(93.647766%, 91.410828%, 99.058533%)" fill-opacity="1" d="M 2.542969 61.550781 L 53.179688 61.550781 L 53.179688 36.230469 L 27.863281 19.351562 L 2.542969 36.230469 Z M 2.542969 61.550781 "/>
+<g clip-path="url(#clip-0)">
+<path fill="none" stroke-width="0.99628" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(12.89978%, 9.799194%, 27.49939%)" stroke-opacity="1" stroke-miterlimit="10" d="M 0.00168282 0.00169615 L 51.023024 0.00169615 L 51.023024 25.514335 L 25.514321 42.521448 L 0.00168282 25.514335 Z M 0.00168282 0.00169615 " transform="matrix(0.992462, 0, 0, -0.992462, 2.541299, 61.552465)"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(96.821594%, 95.704651%, 99.528503%)" fill-opacity="1" d="M 53.179688 61.550781 L 78.5 44.671875 L 78.5 19.351562 L 53.179688 2.472656 L 27.863281 19.351562 L 53.179688 36.230469 Z M 53.179688 61.550781 "/>
+<g clip-path="url(#clip-1)">
+<path fill="none" stroke-width="0.99628" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(12.89978%, 9.799194%, 27.49939%)" stroke-opacity="1" stroke-miterlimit="10" d="M 51.023024 0.00169615 L 76.535663 17.00881 L 76.535663 42.521448 L 51.023024 59.528562 L 25.514321 42.521448 L 51.023024 25.514335 Z M 51.023024 0.00169615 " transform="matrix(0.992462, 0, 0, -0.992462, 2.541299, 61.552465)"/>
+</g>
+<g clip-path="url(#clip-2)">
+<path fill="none" stroke-width="0.3985" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(12.89978%, 9.799194%, 27.49939%)" stroke-opacity="1" stroke-miterlimit="10" d="M 51.023024 25.514335 L 76.535663 42.521448 M 25.514321 42.521448 L 51.023024 59.528562 " transform="matrix(0.992462, 0, 0, -0.992462, 2.541299, 61.552465)"/>
+</g>
+</svg>
