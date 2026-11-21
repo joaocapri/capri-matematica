@@ -1,0 +1,525 @@
+# Aula 2.18.1 — Trigonometria: equações trigonométricas
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: equações sen x = a, cos x = a, tg x = a (num intervalo e solução geral); sen x = sen α,
+# cos x = cos α, tg x = tg α; arcos do tipo kx e x − c; equações do 2º grau em sen ou cos; fatoração com arco duplo
+# e transformação em produto; a sen x + b cos x = c; soluções estranhas ao elevar ao quadrado; fenômenos periódicos.
+# Inequações ficam para a aula 2.19.1.
+padrao: 4
+
+fixacao:
+  intro: 'Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Lembre: $\operatorname{sen}x = \operatorname{sen}\alpha$ dá $x = \alpha + 2k\pi$ ou $x = \pi - \alpha + 2k\pi$; $\cos x = \cos\alpha$ dá $x = \pm\alpha + 2k\pi$; $\operatorname{tg}x = \operatorname{tg}\alpha$ dá $x = \alpha + k\pi$, com $k$ inteiro. O gabarito resolvido está no final.'
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete com as soluções no intervalo $[0, 2\pi)$.'
+      itens:
+      - '$\cos x = \frac12$: {{\pi/3 \text{ e } 5\pi/3}}'
+      - '$\operatorname{sen}x = -1$: {{3\pi/2}}'
+      - '$\operatorname{tg}x = 1$: {{\pi/4 \text{ e } 5\pi/4}}'
+      - '$\cos x = -\frac{\sqrt2}{2}$: {{3\pi/4 \text{ e } 5\pi/4}}'
+      espaco_item: 8
+      resolucao: |
+        Arco de referência e sinais dos quadrantes.
+      resposta: '$\frac{\pi}{3}, \frac{5\pi}{3}$; $\frac{3\pi}{2}$; $\frac{\pi}{4}, \frac{5\pi}{4}$; $\frac{3\pi}{4}, \frac{5\pi}{4}$'
+    - enunciado: 'Associe cada equação ao seu conjunto solução em $[0, 2\pi)$.'
+      esquerda:
+      - '$\operatorname{sen}x = \frac{\sqrt3}{2}$'
+      - '$\cos x = 0$'
+      - '$\operatorname{tg}x = -\sqrt3$'
+      - '$\operatorname{sen}x = -\frac12$'
+      - '$\cos x = -1$'
+      direita:
+      - '$\{\pi\}$'
+      - '$\left\{\frac{7\pi}{6}, \frac{11\pi}{6}\right\}$'
+      - '$\left\{\frac{\pi}{3}, \frac{2\pi}{3}\right\}$'
+      - '$\left\{\frac{2\pi}{3}, \frac{5\pi}{3}\right\}$'
+      - '$\left\{\frac{\pi}{2}, \frac{3\pi}{2}\right\}$'
+      resolucao: |
+        Ache o arco de referência e use os sinais dos quadrantes; $\cos x = 0$ e $\cos x = -1$ são pontos dos eixos.
+      resposta: 'De cima para baixo: 5, 4, 1, 3, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso), com $k$ inteiro.'
+      afirmacoes:
+      - '$\operatorname{sen}x = \operatorname{sen}\alpha \iff x = \alpha + 2k\pi$ ou $x = \pi - \alpha + 2k\pi$.'
+      - 'A equação $\operatorname{sen}x = 2$ tem solução.'
+      - '$\cos x = \cos\alpha \iff x = \pm\alpha + 2k\pi$.'
+      - '$\operatorname{tg}x = \operatorname{tg}\alpha \iff x = \alpha + 2k\pi$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) Simetria pelo eixo vertical. (F) $|\operatorname{sen}x| \le 1$. (V) Simetria pelo eixo horizontal. (F) Seria $x = \alpha + k\pi$.
+      resposta: V, F, V, F
+    - enunciado: 'Complete a tabela com as soluções em $[0^\circ, 360^\circ)$, em ordem crescente.'
+      tabela:
+        cabecalho: ['Equação', '1ª solução', '2ª solução']
+        linhas:
+        - ['$\operatorname{sen}x = \frac{\sqrt2}{2}$', '${{45^\circ}}$', '${{135^\circ}}$']
+        - ['$\cos x = -\frac12$', '${{120^\circ}}$', '${{240^\circ}}$']
+        - ['$\operatorname{tg}x = \frac{\sqrt3}{3}$', '${{30^\circ}}$', '${{210^\circ}}$']
+        - ['$\operatorname{sen}x = -\frac{\sqrt3}{2}$', '${{240^\circ}}$', '${{300^\circ}}$']
+      resolucao: |
+        Referências $45^\circ$, $60^\circ$, $30^\circ$ e $60^\circ$, com os sinais dos quadrantes.
+      resposta: 'Ver resolução'
+    - enunciado: 'Resolva $2\cos x - \sqrt3 = 0$ em $[0, 2\pi)$.'
+      espaco: 8
+      resolucao: |
+        $\cos x = \frac{\sqrt3}{2}$: $x = \frac{\pi}{6}$ ou $x = \frac{11\pi}{6}$.
+      resposta: '$\frac{\pi}{6}$ e $\frac{11\pi}{6}$'
+    - enunciado: 'Dê a solução geral de $\cos x = 0$.'
+      espaco: 8
+      resolucao: |
+        Pontos $(0, \pm1)$, a meia volta um do outro.
+      resposta: '$\frac{\pi}{2} + k\pi$'
+    - enunciado: 'Resolva $3\operatorname{tg}x - \sqrt3 = 0$ em $[0, 2\pi)$.'
+      espaco: 8
+      resolucao: |
+        $\operatorname{tg}x = \frac{\sqrt3}{3}$: $x = \frac{\pi}{6}$ ou $x = \frac{7\pi}{6}$.
+      resposta: '$\frac{\pi}{6}$ e $\frac{7\pi}{6}$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Caio resolveu $\operatorname{sen}x = \frac{\sqrt3}{2}$ em $[0, 2\pi)$ e respondeu: $x = \frac{\pi}{3}$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        Faltou a do 2º quadrante: $\pi - \frac{\pi}{3} = \frac{2\pi}{3}$.
+      resposta: '$\frac{\pi}{3}$ e $\frac{2\pi}{3}$'
+    - enunciado: 'Resolva $2\cos^2 x + \cos x - 1 = 0$ em $[0, 2\pi)$.'
+      espaco: 12
+      resolucao: |
+        Com $c = \cos x$: $2c^2 + c - 1 = 0$, $c = \frac12$ ou $c = -1$. Soluções: $\frac{\pi}{3}$, $\pi$ e $\frac{5\pi}{3}$.
+      resposta: '$\frac{\pi}{3}$, $\pi$ e $\frac{5\pi}{3}$'
+    - enunciado: 'Resolva $\operatorname{sen}2x = \cos x$ em $[0, 2\pi)$.'
+      espaco: 12
+      resolucao: |
+        $2\operatorname{sen}x\cos x - \cos x = 0$, $\cos x(2\operatorname{sen}x - 1) = 0$. $\cos x = 0$: $\frac{\pi}{2}$, $\frac{3\pi}{2}$. $\operatorname{sen}x = \frac12$: $\frac{\pi}{6}$, $\frac{5\pi}{6}$.
+      resposta: '$\frac{\pi}{6}$, $\frac{\pi}{2}$, $\frac{5\pi}{6}$ e $\frac{3\pi}{2}$'
+    - enunciado: 'Complete a solução geral, com $k$ inteiro.'
+      itens:
+      - '$\operatorname{sen}x = \operatorname{sen}\frac{\pi}{5}$: $x = \frac{\pi}{5} + 2k\pi$ ou $x =$ {{4\pi/5}} $+ 2k\pi$'
+      - '$\cos x = \cos\frac{\pi}{7}$: $x =$ {{\pm\pi/7}} $+ 2k\pi$'
+      - '$\operatorname{tg}x = \operatorname{tg}\frac{2\pi}{9}$: $x = \frac{2\pi}{9} +$ {{k\pi}}'
+      espaco_item: 8
+      resolucao: |
+        $\pi - \frac{\pi}{5} = \frac{4\pi}{5}$; o cosseno aceita $\pm$; a tangente repete a cada $\pi$.
+      resposta: '$\frac{4\pi}{5}$; $\pm\frac{\pi}{7}$; $k\pi$'
+    - enunciado: 'Resolva $\operatorname{sen}2x = \frac{\sqrt3}{2}$ em $[0, \pi]$.'
+      espaco: 10
+      resolucao: |
+        Com $0 \le 2x \le 2\pi$: $2x = \frac{\pi}{3}$ ou $\frac{2\pi}{3}$, logo $x = \frac{\pi}{6}$ ou $\frac{\pi}{3}$.
+      resposta: '$\frac{\pi}{6}$ e $\frac{\pi}{3}$'
+    - enunciado: 'Resolva $\cos\left(x - \frac{\pi}{3}\right) = \frac12$ em $[0, 2\pi)$.'
+      espaco: 10
+      resolucao: |
+        $x - \frac{\pi}{3} = \pm\frac{\pi}{3} + 2k\pi$: $x = \frac{2\pi}{3} + 2k\pi$ ou $x = 2k\pi$. No intervalo: $0$ e $\frac{2\pi}{3}$.
+      resposta: '$0$ e $\frac{2\pi}{3}$'
+    - enunciado: 'Resolva $\operatorname{sen}x + \cos x = 0$ em $[0, 2\pi)$.'
+      espaco: 10
+      resolucao: |
+        $\cos x = 0$ não serve (daria $\operatorname{sen}x = \pm1$). Dividindo por $\cos x$: $\operatorname{tg}x = -1$, $x = \frac{3\pi}{4}$ ou $\frac{7\pi}{4}$.
+      resposta: '$\frac{3\pi}{4}$ e $\frac{7\pi}{4}$'
+    - enunciado: 'Quantas soluções tem $\operatorname{sen}3x = \frac12$ em $[0, 2\pi)$?'
+      espaco: 10
+      resolucao: |
+        $3x$ percorre $[0, 6\pi)$, três voltas; em cada volta há duas soluções. Total: 6.
+      resposta: '6'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que $\operatorname{sen}x = \operatorname{sen}\alpha$ se, e somente se, $x = \alpha + 2k\pi$ ou $x = \pi - \alpha + 2k\pi$.'
+      espaco: 10
+      resolucao: |
+        A reta horizontal de altura $\operatorname{sen}\alpha$ corta o ciclo só nas extremidades de $\alpha$ e de $\pi - \alpha$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\cos x = \cos\alpha$ se, e somente se, $x = \pm\alpha + 2k\pi$.'
+      espaco: 10
+      resolucao: |
+        A reta vertical de abscissa $\cos\alpha$ corta o ciclo só nas extremidades de $\alpha$ e de $-\alpha$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{tg}x = \operatorname{tg}\alpha$ se, e somente se, $x = \alpha + k\pi$.'
+      espaco: 10
+      resolucao: |
+        A reta por O e $(1, \operatorname{tg}\alpha)$ corta o ciclo nas extremidades de $\alpha$ e $\alpha + \pi$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que a equação $\operatorname{sen}x + \cos x = 2$ não tem solução.'
+      espaco: 10
+      resolucao: |
+        Seria preciso $\operatorname{sen}x = \cos x = 1$, o que contraria $\operatorname{sen}^2 x + \cos^2 x = 1$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que a equação $\operatorname{sen}^4 x + \cos^4 x = \frac14$ não tem solução.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{sen}^4 x + \cos^4 x = 1 - \frac12\operatorname{sen}^2 2x \ge \frac12 > \frac14$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Num porto, a altura da maré, em metros, é modelada por $h(t) = 3 + 2\operatorname{sen}\left(\frac{\pi t}{6}\right)$, em que $t$ é o tempo em horas contado a partir da meia-noite. Um navio só pode atracar quando a maré está exatamente em 4 m, por causa da altura da plataforma de carga. O capitão consulta o modelo para as primeiras 12 horas do dia ($0 \le t < 12$).
+    enunciado: |
+      Nesse período, a maré está em 4 m nos instantes
+    opcoes: ['$t = 1$ h e $t = 5$ h', '$t = 1$ h e $t = 11$ h', '$t = 2$ h e $t = 4$ h', '$t = 3$ h e $t = 9$ h', '$t = 1$ h e $t = 7$ h']
+    correta: A
+    resolucao: |
+      $\operatorname{sen}\frac{\pi t}{6} = \frac12$, com $0 \le \frac{\pi t}{6} < 2\pi$: $\frac{\pi t}{6} = \frac{\pi}{6}$ ou $\frac{5\pi}{6}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O número de soluções de $\cos 2x = \frac12$ no intervalo $[0, 2\pi]$ é
+    opcoes: ['$2$', '$4$', '$3$', '$8$', '$1$']
+    correta: B
+    resolucao: |
+      $2x \in [0, 4\pi]$: $2x = \frac{\pi}{3}, \frac{5\pi}{3}, \frac{7\pi}{3}, \frac{11\pi}{3}$.
+
+  - estilo: Unicamp
+    enunciado: |
+      As soluções de $\operatorname{tg}x = -\sqrt3$ no intervalo $[0, 2\pi)$ são
+    opcoes: ['$\frac{\pi}{3}$ e $\frac{4\pi}{3}$.', '$\frac{2\pi}{3}$ e $\frac{4\pi}{3}$.', '$\frac{2\pi}{3}$ e $\frac{5\pi}{3}$.', '$\frac{5\pi}{6}$ e $\frac{11\pi}{6}$.']
+    correta: C
+    resolucao: |
+      Referência $\frac{\pi}{3}$; tangente negativa no 2º e no 4º Q.
+
+  - estilo: UEM
+    enunciado: |
+      Considere a equação $2\cos^2 x - 3\cos x + 1 = 0$, com $0 \le x < 2\pi$. Assinale o que for correto.
+    proposicoes:
+    - '$x = 0$ é solução.'
+    - '$x = \frac{\pi}{3}$ é solução.'
+    - 'A equação tem exatamente 3 soluções.'
+    - 'A soma das soluções é $2\pi$.'
+    - '$x = \pi$ é solução.'
+    - 'Todas as soluções têm cosseno positivo.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      $\cos x = 1$ ou $\cos x = \frac12$: $0$, $\frac{\pi}{3}$, $\frac{5\pi}{3}$. 16) Incorreta: $\cos\pi = -1$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Num dia de primavera, a temperatura de uma cidade, em °C, é dada por $T(t) = 20 + 5\operatorname{sen}\left(\frac{\pi(t - 9)}{12}\right)$, com $t$ em horas. Uma família quer começar uma atividade exatamente quando a temperatura chegar a 22,5 °C enquanto ainda está subindo. O quadro mostra o horário de início de cada atividade.
+    tabela:
+      cabecalho: ['Atividade', 'Caminhada', 'Almoço', 'Cinema', 'Feira', 'Jantar']
+      linhas:
+      - ['Início', '7 h', '13 h', '17 h', '11 h', '21 h']
+    enunciado: |
+      A atividade escolhida deve ser
+    opcoes: ['a caminhada.', 'o almoço.', 'o cinema.', 'a feira.', 'o jantar.']
+    correta: D
+    resolucao: |
+      $\operatorname{sen}\frac{\pi(t - 9)}{12} = \frac12$: $\frac{\pi(t - 9)}{12} = \frac{\pi}{6}$ ($t = 11$, temperatura subindo) ou $\frac{5\pi}{6}$ ($t = 19$, descendo).
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, com $k$ inteiro.
+    afirmativas:
+    - '$\operatorname{sen}x = \operatorname{sen}\alpha$ se, e somente se, $x = \alpha + 2k\pi$ ou $x = \pi - \alpha + 2k\pi$.'
+    - 'A equação $\cos x = 1{,}5$ tem solução.'
+    - '$\operatorname{tg}x = \operatorname{tg}\alpha$ se, e somente se, $x = \alpha + k\pi$.'
+    - '$\cos x = \cos\alpha$ se, e somente se, $x = \pm\alpha + 2k\pi$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      II. Incorreta: $|\cos x| \le 1$.
+
+  - estilo: Unesp
+    enunciado: |
+      O conjunto solução de $2\operatorname{sen}x - \sqrt2 = 0$ em $[0, 2\pi)$ é
+    opcoes: ['$\left\{\frac{\pi}{4}, \frac{3\pi}{4}\right\}$', '$\left\{\frac{\pi}{4}, \frac{7\pi}{4}\right\}$', '$\left\{\frac{\pi}{4}, \frac{5\pi}{4}\right\}$', '$\left\{\frac{3\pi}{4}, \frac{5\pi}{4}\right\}$', '$\left\{\frac{\pi}{4}\right\}$']
+    correta: A
+    resolucao: |
+      $\operatorname{sen}x = \frac{\sqrt2}{2}$: 1º e 2º quadrantes.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, a reta horizontal $y = -0{,}6$ corta o ciclo trigonométrico em $P_1$ e $P_2$. Seja $\alpha$ o arco agudo com $\operatorname{sen}\alpha = 0{,}6$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0); \draw[mudo, ->] (0,-2.2) -- (0,2.4);
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \draw[roxo, dashed] (-2.2,-1.08) -- (2.2,-1.08) node[right, font=\scriptsize] {$y = -0{,}6$};
+        \fill[roxo] (-1.44,-1.08) circle (2.2pt) node[above left, font=\small] {$P_1$};
+        \fill[roxo] (1.44,-1.08) circle (2.2pt) node[above right, font=\small] {$P_2$};
+        \end{scope}
+    enunciado: |
+      No intervalo $[0, 2\pi)$, as soluções de $\operatorname{sen}x = -0{,}6$ são
+    opcoes: ['$\pi - \alpha$ e $\pi + \alpha$.', '$\pi + \alpha$ e $2\pi - \alpha$.', '$\alpha$ e $\pi - \alpha$.', '$-\alpha$ e $\pi + \alpha$.']
+    correta: B
+    resolucao: |
+      $P_1$ está no 3º Q ($\pi + \alpha$) e $P_2$ no 4º Q ($2\pi - \alpha$). O arco $-\alpha$ não está no intervalo.
+
+  - estilo: Fuvest
+    enunciado: |
+      O conjunto solução de $\operatorname{sen}x + \cos x = 1$ em $[0, 2\pi)$ é
+    opcoes: ['$\left\{\frac{\pi}{4}\right\}$', '$\{0, \pi\}$', '$\left\{0, \frac{\pi}{2}\right\}$', '$\left\{\frac{\pi}{2}, \pi\right\}$', '$\left\{\frac{\pi}{4}, \frac{\pi}{2}\right\}$']
+    correta: C
+    resolucao: |
+      $\sqrt2\operatorname{sen}\left(x + \frac{\pi}{4}\right) = 1$: $x + \frac{\pi}{4} = \frac{\pi}{4}$ ou $\frac{3\pi}{4}$ (a menos de voltas).
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a equação $\operatorname{sen}2x = \operatorname{sen}x$, com $0 \le x < 2\pi$. Assinale o que for correto.
+    proposicoes:
+    - '$x = 0$ é solução.'
+    - '$x = \pi$ é solução.'
+    - '$x = \frac{\pi}{3}$ é solução.'
+    - '$x = \frac{5\pi}{3}$ é solução.'
+    - 'A equação tem exatamente 4 soluções.'
+    - '$x = \frac{2\pi}{3}$ é solução.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      $\operatorname{sen}x(2\cos x - 1) = 0$: $\operatorname{sen}x = 0$ ($0$, $\pi$) ou $\cos x = \frac12$ ($\frac{\pi}{3}$, $\frac{5\pi}{3}$). 32) Incorreta: $\cos\frac{2\pi}{3} = -\frac12$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      O ângulo de um pêndulo com a vertical, em radianos, é dado por $\theta(t) = 0{,}2\cos(\pi t)$, com $t$ em segundos. Um sensor fotográfico registra cada passagem do pêndulo pela posição vertical, quando $\theta = 0$. O técnico quer programar o sensor para os dois primeiros segundos do experimento ($0 \le t \le 2$).
+    enunciado: |
+      O pêndulo passa pela vertical nos instantes
+    opcoes: ['$0{,}5$ s e $1{,}5$ s', '$1$ s e $2$ s', '$0{,}5$ s, apenas', '$0$ s, $1$ s e $2$ s', '$0{,}25$ s e $0{,}75$ s']
+    correta: A
+    resolucao: |
+      $\cos(\pi t) = 0$: $\pi t = \frac{\pi}{2} + k\pi$, $t = 0{,}5 + k$.
+
+  - estilo: UFPR
+    enunciado: |
+      Considere equações no intervalo $[0, 2\pi)$. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$\cos x = -1$ tem uma única solução.'
+    - '$\operatorname{sen}x = \frac13$ tem uma única solução.'
+    - '$\operatorname{tg}x = 0$ tem as soluções $0$ e $\pi$.'
+    - '$\operatorname{sen}2x = 0$ tem 4 soluções.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      A segunda tem duas soluções (1º e 2º Q). A última: $2x = 0, \pi, 2\pi, 3\pi$. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Um sinal $y = \operatorname{sen}x$ é comparado continuamente com um nível fixo de 0,4. Um alarme dispara toda vez que o sinal atinge exatamente esse nível, subindo ou descendo. A figura mostra o sinal e o nível para $0 \le x \le 4\pi$, e o técnico quer saber quantas vezes o alarme dispara nesse trecho.
+    figura:
+      tikz: |
+        \begin{scope}[xscale=.42, yscale=.9]
+        \draw[mudo, ->] (0,0) -- (13.2,0) node[right, font=\scriptsize] {$x$}; \draw[mudo, ->] (0,-1.3) -- (0,1.4);
+        \draw[roxo, line width=.9pt, domain=0:12.566, samples=160, smooth] plot (\x, {sin(\x r)});
+        \draw[lima!70!black, dashed] (0,.4) -- (12.8,.4) node[right, font=\scriptsize] {$0{,}4$};
+        \draw[mudo] (12.566,.08) -- (12.566,-.08) node[below, font=\scriptsize] {$4\pi$};
+        \end{scope}
+    enunciado: |
+      O número de disparos do alarme é
+    opcoes: ['$1$', '$2$', '$3$', '$4$', '$8$']
+    correta: D
+    resolucao: |
+      $\operatorname{sen}x = 0{,}4$ tem duas soluções por volta; em duas voltas, 4.
+
+  - estilo: Unesp
+    enunciado: |
+      A solução geral de $\cos 2x = 0$ é, com $k$ inteiro,
+    opcoes: ['$x = \frac{\pi}{4} + k\pi$', '$x = \frac{\pi}{4} + \frac{k\pi}{2}$', '$x = \frac{\pi}{2} + k\pi$', '$x = \frac{\pi}{4} + 2k\pi$', '$x = \frac{k\pi}{2}$']
+    correta: B
+    resolucao: |
+      $2x = \frac{\pi}{2} + k\pi$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere equações trigonométricas com $x$ real. Assinale o que for correto.
+    proposicoes:
+    - '$x = \frac{6\pi}{7}$ é solução de $\operatorname{sen}x = \operatorname{sen}\frac{\pi}{7}$.'
+    - '$x = -\frac{\pi}{5}$ é solução de $\cos x = \cos\frac{\pi}{5}$.'
+    - '$x = \frac{9\pi}{8}$ é solução de $\operatorname{tg}x = \operatorname{tg}\frac{\pi}{8}$.'
+    - '$\operatorname{sen}3x = 0$ tem 6 soluções em $[0, 2\pi)$.'
+    - 'A equação $\operatorname{sen}x = 1{,}1$ tem solução.'
+    - 'A equação $\operatorname{sen}x\cos x = 1$ não tem solução.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) $\pi - \frac{\pi}{7}$. 04) $\frac{\pi}{8} + \pi$. 08) $3x = 0, \pi, \dots, 5\pi$. 16) Incorreta. 32) $\operatorname{sen}x\cos x = \frac12\operatorname{sen}2x \le \frac12$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A soma das soluções de $\cos x = -\frac12$ no intervalo $[0, 2\pi)$ é
+    opcoes: ['$2\pi$.', '$\pi$.', '$\frac{4\pi}{3}$.', '$3\pi$.']
+    correta: A
+    resolucao: |
+      $\frac{2\pi}{3} + \frac{4\pi}{3} = 2\pi$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        A altura de uma cabine de roda-gigante, em metros, é $h(t) = 22 - 20\cos\left(\frac{\pi t}{15}\right)$, em que $t$ é o tempo em minutos desde que a cabine saiu do ponto mais baixo. Uma volta completa leva 30 minutos. O operador quer saber em que instantes a cabine passa por certas alturas durante a primeira volta, com $0 \le t < 30$.
+    enunciado: |
+      A cabine atinge 32 m pela primeira vez no instante
+    opcoes: ['$t = 5$ min', '$t = 15$ min', '$t = 10$ min', '$t = 20$ min', '$t = 7{,}5$ min']
+    correta: C
+    resolucao: |
+      $\cos\frac{\pi t}{15} = -\frac12$: $\frac{\pi t}{15} = \frac{2\pi}{3}$, $t = 10$.
+
+  - estilo: Unesp
+    enunciado: |
+      Na primeira volta, a cabine está na altura do centro da roda (22 m) nos instantes
+    opcoes: ['$t = 15$ min, apenas', '$t = 7{,}5$ min e $t = 15$ min', '$t = 10$ min e $t = 20$ min', '$t = 7{,}5$ min e $t = 22{,}5$ min', '$t = 0$ e $t = 15$ min']
+    correta: D
+    resolucao: |
+      $\cos\frac{\pi t}{15} = 0$: $\frac{\pi t}{15} = \frac{\pi}{2}$ ou $\frac{3\pi}{2}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O conjunto solução de $\operatorname{sen}^2 x = 3\cos^2 x$ no intervalo $[0, \pi]$ é
+    opcoes: ['$\left\{\frac{\pi}{3}\right\}$', '$\left\{\frac{\pi}{6}, \frac{5\pi}{6}\right\}$', '$\left\{\frac{\pi}{3}, \frac{4\pi}{3}\right\}$', '$\left\{\frac{\pi}{6}, \frac{\pi}{3}\right\}$', '$\left\{\frac{\pi}{3}, \frac{2\pi}{3}\right\}$']
+    correta: E
+    resolucao: |
+      $\cos x = 0$ não serve. $\operatorname{tg}^2 x = 3$, $\operatorname{tg}x = \pm\sqrt3$.
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra os gráficos de $y = \operatorname{sen}x$ e $y = \cos x$ no intervalo $[0, 2\pi]$.
+    figura:
+      tikz: |
+        \begin{scope}[xscale=.7, yscale=.9]
+        \draw[mudo, ->] (0,0) -- (6.8,0) node[right, font=\scriptsize] {$x$}; \draw[mudo, ->] (0,-1.3) -- (0,1.4);
+        \draw[roxo, line width=.9pt, domain=0:6.283, samples=120, smooth] plot (\x, {sin(\x r)});
+        \draw[ink, line width=.9pt, dashed, domain=0:6.283, samples=120, smooth] plot (\x, {cos(\x r)});
+        \draw[mudo] (6.283,.08) -- (6.283,-.08) node[below, font=\scriptsize] {$2\pi$};
+        \node[roxo, font=\scriptsize] at (1.57,1.2) {$\operatorname{sen}$}; \node[ink, font=\scriptsize] at (.4,1.2) {$\cos$};
+        \end{scope}
+    enunciado: |
+      As abscissas dos pontos em que os gráficos se cruzam são
+    opcoes: ['$\frac{\pi}{4}$ e $\frac{3\pi}{4}$', '$\frac{\pi}{4}$ e $\frac{5\pi}{4}$', '$\frac{\pi}{2}$ e $\frac{3\pi}{2}$', '$\frac{3\pi}{4}$ e $\frac{7\pi}{4}$', '$\frac{\pi}{4}$ e $\frac{7\pi}{4}$']
+    correta: B
+    resolucao: |
+      $\operatorname{sen}x = \cos x$, ou $\operatorname{tg}x = 1$: 1º e 3º quadrantes.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere a equação $2\cos^2 x + 5\operatorname{sen}x - 4 = 0$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Reescreva a equação usando apenas $\operatorname{sen}x$.'
+    - 'Resolva a equação do 2º grau obtida.'
+    - 'Dê as soluções em $[0, 2\pi)$.'
+    espaco: 62
+    resolucao: |
+      a) $2(1 - \operatorname{sen}^2 x) + 5\operatorname{sen}x - 4 = 0$, ou $2\operatorname{sen}^2 x - 5\operatorname{sen}x + 2 = 0$.
+      b) $\operatorname{sen}x = \frac{5 \pm 3}{4}$: $2$ (impossível) ou $\frac12$.
+      c) $\frac{\pi}{6}$ e $\frac{5\pi}{6}$.
+    resposta: 'c) $\frac{\pi}{6}$ e $\frac{5\pi}{6}$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere a equação $\sqrt3\operatorname{sen}x + \cos x = 1$.'
+    itens:
+    - 'Mostre que o primeiro membro é igual a $2\operatorname{sen}\left(x + \frac{\pi}{6}\right)$.'
+    - 'Resolva a equação em $[0, 2\pi)$.'
+    - 'Escreva a solução geral.'
+    espaco: 62
+    resolucao: |
+      a) $2\left(\operatorname{sen}x\cos\frac{\pi}{6} + \cos x\operatorname{sen}\frac{\pi}{6}\right)$.
+      b) $\operatorname{sen}\left(x + \frac{\pi}{6}\right) = \frac12$: $x + \frac{\pi}{6} = \frac{\pi}{6}$ ou $\frac{5\pi}{6}$: $x = 0$ ou $\frac{2\pi}{3}$.
+      c) $x = 2k\pi$ ou $x = \frac{2\pi}{3} + 2k\pi$.
+    resposta: 'b) $0$ e $\frac{2\pi}{3}$; c) $2k\pi$ ou $\frac{2\pi}{3} + 2k\pi$'
+
+  - estilo: ITA
+    enunciado: |
+      O número de soluções de $\operatorname{sen}x = \cos 2x$ no intervalo $[0, 2\pi)$ é
+    opcoes: ['$3$', '$2$', '$4$', '$1$', '$6$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $\operatorname{sen}x = 1 - 2\operatorname{sen}^2 x$: $\operatorname{sen}x = \frac12$ ($\frac{\pi}{6}$, $\frac{5\pi}{6}$) ou $\operatorname{sen}x = -1$ ($\frac{3\pi}{2}$).
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Considere a equação $\operatorname{sen}3x = \operatorname{sen}x$.'
+    itens:
+    - 'Escreva as duas famílias de soluções, usando $\operatorname{sen}a = \operatorname{sen}b$.'
+    - 'Liste as soluções em $[0, 2\pi)$.'
+    - 'Confira uma delas, diferente de $0$ e de $\pi$, substituindo na equação.'
+    espaco: 62
+    resolucao: |
+      a) $3x = x + 2k\pi$, ou seja, $x = k\pi$; ou $3x = \pi - x + 2k\pi$, ou seja, $x = \frac{\pi}{4} + \frac{k\pi}{2}$.
+      b) $0$, $\frac{\pi}{4}$, $\frac{3\pi}{4}$, $\pi$, $\frac{5\pi}{4}$, $\frac{7\pi}{4}$.
+      c) Com $x = \frac{\pi}{4}$: $\operatorname{sen}\frac{3\pi}{4} = \frac{\sqrt2}{2} = \operatorname{sen}\frac{\pi}{4}$.
+    resposta: 'b) $0$, $\frac{\pi}{4}$, $\frac{3\pi}{4}$, $\pi$, $\frac{5\pi}{4}$, $\frac{7\pi}{4}$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $k$ inteiro. Assinale o que for correto.
+    proposicoes:
+    - 'A solução geral de $\cos x = \frac12$ é $x = \pm\frac{\pi}{3} + 2k\pi$.'
+    - 'A solução geral de $\operatorname{tg}x = 1$ é $x = \frac{\pi}{4} + k\pi$.'
+    - 'As soluções de $\operatorname{sen}x = -\frac{\sqrt2}{2}$ em $[0, 2\pi)$ são $\frac{5\pi}{4}$ e $\frac{7\pi}{4}$.'
+    - 'A equação $2\operatorname{sen}x = 3$ não tem solução.'
+    - 'A equação $\cos 2x = 1$ tem uma única solução em $[0, 2\pi)$.'
+    - 'A equação $\operatorname{sen}^2 x = \frac14$ tem 4 soluções em $[0, 2\pi)$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      08) Seria $\operatorname{sen}x = 1{,}5$. 16) Incorreta: $0$ e $\pi$. 32) $\operatorname{sen}x = \pm\frac12$: $\frac{\pi}{6}$, $\frac{5\pi}{6}$, $\frac{7\pi}{6}$, $\frac{11\pi}{6}$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere a equação $\operatorname{sen}x = 2m - 1$, com $0 \le x < 2\pi$ e $m$ real.'
+    itens:
+    - 'Para que valores de $m$ a equação tem solução?'
+    - 'Para que valores de $m$ ela tem exatamente uma solução?'
+    - 'Resolva a equação para $m = \frac14$.'
+    espaco: 62
+    resolucao: |
+      a) $-1 \le 2m - 1 \le 1$: $0 \le m \le 1$.
+      b) Só os valores $\pm1$ do seno têm uma única solução na volta: $m = 0$ ou $m = 1$.
+      c) $\operatorname{sen}x = -\frac12$: $\frac{7\pi}{6}$ e $\frac{11\pi}{6}$.
+    resposta: 'a) $0 \le m \le 1$; b) $0$ e $1$; c) $\frac{7\pi}{6}$ e $\frac{11\pi}{6}$'
+
+  - estilo: Unicamp
+    enunciado: 'A altura de uma boia, em metros, é $h(t) = 5 + 2\operatorname{sen}\left(\frac{\pi t}{6}\right)$, com $t$ em horas e $0 \le t \le 24$.'
+    itens:
+    - 'Em que instantes a boia atinge a altura máxima?'
+    - 'Em que instantes ela está a 4 m?'
+    - 'Ela chega a 8 m? Justifique.'
+    espaco: 62
+    resolucao: |
+      a) $\operatorname{sen}\frac{\pi t}{6} = 1$: $\frac{\pi t}{6} = \frac{\pi}{2} + 2k\pi$, $t = 3$ e $t = 15$ (7 m).
+      b) $\operatorname{sen}\frac{\pi t}{6} = -\frac12$: $\frac{\pi t}{6} = \frac{7\pi}{6}, \frac{11\pi}{6}, \frac{19\pi}{6}, \frac{23\pi}{6}$: $t = 7$, $11$, $19$, $23$.
+      c) Não: seria preciso $\operatorname{sen} = 1{,}5$.
+    resposta: 'a) 3 h e 15 h; b) 7, 11, 19 e 23 h; c) não'
+
+  - estilo: Fuvest
+    enunciado: |
+      Seja $\alpha$ o arco do intervalo $\left(0, \frac{\pi}{2}\right)$ com $\operatorname{tg}\alpha = 2$. A soma das soluções de $\operatorname{tg}x = 2$ no intervalo $[0, 2\pi)$ é
+    opcoes: ['$\alpha + \pi$', '$2\alpha + \pi$', '$2\pi$', '$\pi$', '$2\alpha$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      As soluções são $\alpha$ e $\alpha + \pi$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere a equação $\operatorname{sen}x + \operatorname{sen}3x = \operatorname{sen}2x$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Transforme $\operatorname{sen}x + \operatorname{sen}3x$ em produto.'
+    - 'Mostre que a equação equivale a $\operatorname{sen}2x\,(2\cos x - 1) = 0$.'
+    - 'Dê as soluções.'
+    espaco: 62
+    resolucao: |
+      a) $2\operatorname{sen}2x\cos x$.
+      b) $2\operatorname{sen}2x\cos x - \operatorname{sen}2x = 0$.
+      c) $\operatorname{sen}2x = 0$: $0$, $\frac{\pi}{2}$, $\pi$, $\frac{3\pi}{2}$. $\cos x = \frac12$: $\frac{\pi}{3}$, $\frac{5\pi}{3}$.
+    resposta: 'c) $0$, $\frac{\pi}{3}$, $\frac{\pi}{2}$, $\pi$, $\frac{3\pi}{2}$, $\frac{5\pi}{3}$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere a equação $\operatorname{sen}x + \cos x = \sqrt{\frac32}$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Elevando ao quadrado, mostre que se obtém $\operatorname{sen}2x = \frac12$.'
+    - 'Resolva $\operatorname{sen}2x = \frac12$ em $[0, 2\pi)$.'
+    - 'Quais dessas soluções satisfazem a equação original? Por quê?'
+    espaco: 62
+    resolucao: |
+      a) $1 + 2\operatorname{sen}x\cos x = \frac32$.
+      b) $2x \in [0, 4\pi)$: $2x = \frac{\pi}{6}, \frac{5\pi}{6}, \frac{13\pi}{6}, \frac{17\pi}{6}$, logo $x = \frac{\pi}{12}, \frac{5\pi}{12}, \frac{13\pi}{12}, \frac{17\pi}{12}$.
+      c) O segundo membro é positivo, então $\operatorname{sen}x + \cos x > 0$. No 3º quadrante a soma é negativa: só $\frac{\pi}{12}$ e $\frac{5\pi}{12}$ servem. As outras surgiram ao elevar ao quadrado.
+    resposta: 'c) $\frac{\pi}{12}$ e $\frac{5\pi}{12}$'
