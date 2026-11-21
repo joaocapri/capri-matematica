@@ -1,0 +1,525 @@
+# Aula 2.17.3 — Trigonometria: transformação em produto
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: sen p ± sen q e cos p ± cos q como produtos; a volta (produto em soma); somas de valores que se
+# anulam; fatoração para resolver equações; ponto médio de uma corda do ciclo; batimentos e soma de ondas;
+# identidades em triângulos. Equações trigonométricas em geral ficam para a aula 2.18.1.
+padrao: 4
+
+fixacao:
+  intro: 'Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Fórmulas: $\operatorname{sen}p + \operatorname{sen}q = 2\operatorname{sen}\frac{p + q}{2}\cos\frac{p - q}{2}$, $\cos p + \cos q = 2\cos\frac{p + q}{2}\cos\frac{p - q}{2}$, $\operatorname{sen}p - \operatorname{sen}q = 2\cos\frac{p + q}{2}\operatorname{sen}\frac{p - q}{2}$ e $\cos p - \cos q = -2\operatorname{sen}\frac{p + q}{2}\operatorname{sen}\frac{p - q}{2}$. O gabarito resolvido está no final.'
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete a forma de produto.'
+      itens:
+      - '$\operatorname{sen}70^\circ + \operatorname{sen}20^\circ = 2\operatorname{sen}45^\circ \cdot$ {{\cos 25^\circ}}'
+      - '$\cos 80^\circ + \cos 20^\circ = 2\cos 50^\circ \cdot$ {{\cos 30^\circ}}'
+      - '$\operatorname{sen}80^\circ - \operatorname{sen}20^\circ = 2\cos 50^\circ \cdot$ {{\operatorname{sen}30^\circ}}'
+      - '$\cos 40^\circ - \cos 80^\circ = 2\operatorname{sen}60^\circ \cdot$ {{\operatorname{sen}20^\circ}}'
+      espaco_item: 8
+      resolucao: |
+        Semissoma e semidiferença: $(45^\circ, 25^\circ)$, $(50^\circ, 30^\circ)$, $(50^\circ, 30^\circ)$, $(60^\circ, -20^\circ)$. Na última, $-2\operatorname{sen}60^\circ\operatorname{sen}(-20^\circ) = 2\operatorname{sen}60^\circ\operatorname{sen}20^\circ$.
+      resposta: '$\cos 25^\circ$; $\cos 30^\circ$; $\operatorname{sen}30^\circ$; $\operatorname{sen}20^\circ$'
+    - enunciado: 'Associe cada expressão ao seu valor.'
+      esquerda:
+      - '$\operatorname{sen}75^\circ + \operatorname{sen}15^\circ$'
+      - '$\operatorname{sen}75^\circ - \operatorname{sen}15^\circ$'
+      - '$\cos 100^\circ + \cos 20^\circ$'
+      - '$\operatorname{sen}100^\circ - \operatorname{sen}20^\circ$'
+      - '$\cos 20^\circ - \cos 100^\circ$'
+      direita:
+      - '$\operatorname{sen}40^\circ$'
+      - '$\frac{\sqrt6}{2}$'
+      - '$\sqrt3\operatorname{sen}40^\circ$'
+      - '$\cos 40^\circ$'
+      - '$\frac{\sqrt2}{2}$'
+      resolucao: |
+        $2\operatorname{sen}45^\circ\cos 30^\circ$; $2\cos 45^\circ\operatorname{sen}30^\circ$; $2\cos 60^\circ\cos 40^\circ$; $2\cos 60^\circ\operatorname{sen}40^\circ$; $-2\operatorname{sen}60^\circ\operatorname{sen}(-40^\circ)$.
+      resposta: 'De cima para baixo: 4, 1, 5, 3, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso), para quaisquer $p$ e $q$.'
+      afirmacoes:
+      - '$\operatorname{sen}p + \operatorname{sen}q = \operatorname{sen}(p + q)$.'
+      - '$\cos p + \cos q = 2\cos\frac{p + q}{2}\cos\frac{p - q}{2}$.'
+      - '$\cos p - \cos q = 2\operatorname{sen}\frac{p + q}{2}\operatorname{sen}\frac{p - q}{2}$.'
+      - '$\operatorname{sen}p - \operatorname{sen}q = 2\cos\frac{p + q}{2}\operatorname{sen}\frac{p - q}{2}$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (F) Com $p = q = 90^\circ$: $2 \ne 0$. (V) É a fórmula. (F) Falta o sinal $-$: com $p = 0$ e $q = 180^\circ$, $2 \ne -2$. (V) É a fórmula.
+      resposta: F, V, F, V
+    - enunciado: 'Complete a tabela, escrevendo $\operatorname{sen}p + \operatorname{sen}q$ como produto.'
+      tabela:
+        cabecalho: ['$p$', '$q$', '$\frac{p + q}{2}$', '$\frac{p - q}{2}$', '$\operatorname{sen}p + \operatorname{sen}q$']
+        linhas:
+        - ['$80^\circ$', '$40^\circ$', '${{60^\circ}}$', '${{20^\circ}}$', '${{\sqrt3\cos 20^\circ}}$']
+        - ['$130^\circ$', '$50^\circ$', '${{90^\circ}}$', '${{40^\circ}}$', '${{2\cos 40^\circ}}$']
+        - ['$5x$', '$3x$', '${{4x}}$', '${{x}}$', '${{2\operatorname{sen}4x\cos x}}$']
+      resolucao: |
+        $2\operatorname{sen}60^\circ\cos 20^\circ = \sqrt3\cos 20^\circ$; $2\operatorname{sen}90^\circ\cos 40^\circ = 2\cos 40^\circ$; $2\operatorname{sen}4x\cos x$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Calcule $\cos 75^\circ + \cos 15^\circ$.'
+      espaco: 8
+      resolucao: |
+        $2\cos 45^\circ\cos 30^\circ = 2 \cdot \frac{\sqrt2}{2} \cdot \frac{\sqrt3}{2} = \frac{\sqrt6}{2}$.
+      resposta: '$\frac{\sqrt6}{2}$'
+    - enunciado: 'Fatore $\operatorname{sen}3x + \operatorname{sen}x$.'
+      espaco: 8
+      resolucao: |
+        $2\operatorname{sen}2x\cos x$.
+      resposta: '$2\operatorname{sen}2x\cos x$'
+    - enunciado: 'Fatore $\cos 5x - \cos 3x$.'
+      espaco: 8
+      resolucao: |
+        $-2\operatorname{sen}4x\operatorname{sen}x$.
+      resposta: '$-2\operatorname{sen}4x\operatorname{sen}x$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Nina escreveu: $\cos 70^\circ + \cos 50^\circ = \cos 120^\circ = -\frac12$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        A soma dos cossenos não é o cosseno da soma (e uma soma de dois números positivos não daria negativo). Pela fórmula: $2\cos 60^\circ\cos 10^\circ = \cos 10^\circ$.
+      resposta: '$\cos 10^\circ$'
+    - enunciado: 'Calcule $\operatorname{sen}105^\circ - \operatorname{sen}15^\circ$.'
+      espaco: 8
+      resolucao: |
+        $2\cos 60^\circ\operatorname{sen}45^\circ = \frac{\sqrt2}{2}$.
+      resposta: '$\frac{\sqrt2}{2}$'
+    - enunciado: 'Simplifique $\dfrac{\operatorname{sen}3x + \operatorname{sen}x}{\cos 3x + \cos x}$.'
+      espaco: 10
+      resolucao: |
+        $\frac{2\operatorname{sen}2x\cos x}{2\cos 2x\cos x} = \operatorname{tg}2x$.
+      resposta: '$\operatorname{tg}2x$'
+    - enunciado: 'Complete a forma de produto.'
+      itens:
+      - '$\operatorname{sen}6x + \operatorname{sen}2x = 2\cos 2x \cdot$ {{\operatorname{sen}4x}}'
+      - '$\cos 6x + \cos 2x = 2\cos 4x \cdot$ {{\cos 2x}}'
+      - '$\operatorname{sen}6x - \operatorname{sen}2x = 2\cos 4x \cdot$ {{\operatorname{sen}2x}}'
+      espaco_item: 8
+      resolucao: |
+        Semissoma $4x$ e semidiferença $2x$ nas três.
+      resposta: '$\operatorname{sen}4x$; $\cos 2x$; $\operatorname{sen}2x$'
+    - enunciado: 'Calcule $\cos 20^\circ + \cos 100^\circ + \cos 140^\circ$.'
+      espaco: 10
+      resolucao: |
+        $\cos 100^\circ + \cos 140^\circ = 2\cos 120^\circ\cos 20^\circ = -\cos 20^\circ$. A soma é 0.
+      resposta: '0'
+    - enunciado: 'Resolva $\operatorname{sen}3x + \operatorname{sen}x = 0$ no intervalo $[0, \pi]$.'
+      espaco: 12
+      resolucao: |
+        $2\operatorname{sen}2x\cos x = 0$. $\operatorname{sen}2x = 0$: $x = 0$, $\frac{\pi}{2}$ ou $\pi$. $\cos x = 0$: $x = \frac{\pi}{2}$.
+      resposta: '$0$, $\frac{\pi}{2}$ e $\pi$'
+    - enunciado: 'Calcule $\dfrac{\operatorname{sen}75^\circ + \operatorname{sen}15^\circ}{\cos 75^\circ + \cos 15^\circ}$.'
+      espaco: 10
+      resolucao: |
+        $\frac{2\operatorname{sen}45^\circ\cos 30^\circ}{2\cos 45^\circ\cos 30^\circ} = \operatorname{tg}45^\circ = 1$.
+      resposta: '1'
+    - enunciado: 'Mostre que $\operatorname{sen}80^\circ + \operatorname{sen}40^\circ = \sqrt3\cos 20^\circ$.'
+      espaco: 8
+      resolucao: |
+        $2\operatorname{sen}60^\circ\cos 20^\circ = 2 \cdot \frac{\sqrt3}{2}\cos 20^\circ$.
+      resposta: 'Ver resolução'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove a fórmula de $\operatorname{sen}p + \operatorname{sen}q$ somando $\operatorname{sen}(a + b)$ e $\operatorname{sen}(a - b)$, com $a = \frac{p + q}{2}$ e $b = \frac{p - q}{2}$.'
+      espaco: 12
+      resolucao: |
+        $\operatorname{sen}(a + b) + \operatorname{sen}(a - b) = 2\operatorname{sen}a\cos b$, e $a + b = p$, $a - b = q$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove a fórmula de $\cos p - \cos q$.'
+      espaco: 10
+      resolucao: |
+        $\cos(a + b) - \cos(a - b) = -2\operatorname{sen}a\operatorname{sen}b$, com $a = \frac{p + q}{2}$ e $b = \frac{p - q}{2}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\dfrac{\operatorname{sen}p + \operatorname{sen}q}{\cos p + \cos q} = \operatorname{tg}\dfrac{p + q}{2}$, quando o denominador não se anula.'
+      espaco: 10
+      resolucao: |
+        $\frac{2\operatorname{sen}\frac{p + q}{2}\cos\frac{p - q}{2}}{2\cos\frac{p + q}{2}\cos\frac{p - q}{2}}$; cancele $\cos\frac{p - q}{2}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}x + \operatorname{sen}2x + \operatorname{sen}3x = \operatorname{sen}2x(1 + 2\cos x)$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{sen}3x + \operatorname{sen}x = 2\operatorname{sen}2x\cos x$; some $\operatorname{sen}2x$ e coloque-o em evidência.
+      resposta: 'Ver resolução'
+    - enunciado: 'Num triângulo ABC, prove que $\operatorname{sen}A + \operatorname{sen}B = 2\cos\frac{C}{2}\cos\frac{A - B}{2}$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{sen}A + \operatorname{sen}B = 2\operatorname{sen}\frac{A + B}{2}\cos\frac{A - B}{2}$, e $\frac{A + B}{2} = 90^\circ - \frac{C}{2}$, cujo seno é $\cos\frac{C}{2}$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Numa roda-gigante de 10 m de raio, com o centro a 12 m do chão, a altura de uma cabine é $12 + 10\operatorname{sen}\theta$ metros, em que $\theta$ é o ângulo do raio com a horizontal. Para conferir o balanceamento, um técnico soma as alturas de duas cabines, nas posições $\theta = 75^\circ$ e $\theta = 15^\circ$, usando a transformação em produto.
+    enunciado: |
+      A soma das alturas das duas cabines é
+    opcoes: ['$24 + 5\sqrt6$ m', '$24 + 5\sqrt2$ m', '$34$ m', '$24 + 10\sqrt2$ m', '$24 + 10\sqrt6$ m']
+    correta: A
+    resolucao: |
+      $24 + 10(\operatorname{sen}75^\circ + \operatorname{sen}15^\circ) = 24 + 10 \cdot 2\operatorname{sen}45^\circ\cos 30^\circ = 24 + 10 \cdot \frac{\sqrt6}{2}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\operatorname{sen}75^\circ - \operatorname{sen}15^\circ$ é
+    opcoes: ['$\frac{\sqrt6}{2}$', '$\frac{\sqrt2}{2}$', '$\frac12$', '$\frac{\sqrt3}{2}$', '$0$']
+    correta: B
+    resolucao: |
+      $2\cos 45^\circ\operatorname{sen}30^\circ = \frac{\sqrt2}{2}$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A expressão $\cos 3x + \cos x$ é igual a
+    opcoes: ['$2\cos 4x\cos x$.', '$2\operatorname{sen}2x\operatorname{sen}x$.', '$2\cos 2x\cos x$.', '$\cos 4x$.']
+    correta: C
+    resolucao: |
+      Semissoma $2x$, semidiferença $x$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere a transformação em produto. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}70^\circ + \operatorname{sen}50^\circ = \sqrt3\cos 10^\circ$.'
+    - '$\cos 70^\circ + \cos 50^\circ = \cos 10^\circ$.'
+    - '$\operatorname{sen}70^\circ - \operatorname{sen}50^\circ = \operatorname{sen}10^\circ$.'
+    - '$\cos 50^\circ - \cos 70^\circ = \sqrt3\operatorname{sen}10^\circ$.'
+    - '$\operatorname{sen}70^\circ + \operatorname{sen}50^\circ = \operatorname{sen}120^\circ$.'
+    - '$\dfrac{\operatorname{sen}70^\circ + \operatorname{sen}50^\circ}{\cos 70^\circ + \cos 50^\circ} = \sqrt3$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      Semissoma $60^\circ$ e semidiferença $10^\circ$ em todas. 16) Incorreta: a soma dos senos não é o seno da soma. 32) $\operatorname{tg}60^\circ$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Duas peças iguais estão presas à borda de uma roda de raio 1 m, nas extremidades dos arcos $p$ e $q$. A altura do centro de massa das duas peças, em relação ao eixo, é $\frac{\operatorname{sen}p + \operatorname{sen}q}{2}$. Para evitar vibração, o técnico quer um par de posições que deixe esse centro exatamente na altura do eixo. O quadro mostra os pares testados.
+    tabela:
+      cabecalho: ['Par', 'I', 'II', 'III', 'IV', 'V']
+      linhas:
+      - ['$p$', '$30^\circ$', '$40^\circ$', '$70^\circ$', '$200^\circ$', '$10^\circ$']
+      - ['$q$', '$60^\circ$', '$100^\circ$', '$120^\circ$', '$160^\circ$', '$80^\circ$']
+    enunciado: |
+      O par adequado é o
+    opcoes: ['I.', 'II.', 'III.', 'IV.', 'V.']
+    correta: D
+    resolucao: |
+      $\operatorname{sen}200^\circ + \operatorname{sen}160^\circ = 2\operatorname{sen}180^\circ\cos 20^\circ = 0$. Nos outros, os dois senos são positivos.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, para quaisquer $p$ e $q$.
+    afirmativas:
+    - '$\operatorname{sen}p + \operatorname{sen}q = 2\operatorname{sen}\frac{p + q}{2}\cos\frac{p - q}{2}$.'
+    - '$\cos p + \cos q = 2\operatorname{sen}\frac{p + q}{2}\cos\frac{p - q}{2}$.'
+    - '$\cos p - \cos q = -2\operatorname{sen}\frac{p + q}{2}\operatorname{sen}\frac{p - q}{2}$.'
+    - '$\operatorname{sen}p - \operatorname{sen}q = 2\cos\frac{p + q}{2}\operatorname{sen}\frac{p - q}{2}$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      II. Incorreta: na soma de cossenos aparecem dois cossenos, $2\cos\frac{p + q}{2}\cos\frac{p - q}{2}$.
+
+  - estilo: Unesp
+    enunciado: |
+      O valor de $\operatorname{sen}10^\circ + \operatorname{sen}50^\circ - \operatorname{sen}70^\circ$ é
+    opcoes: ['$0$', '$\frac12$', '$\operatorname{sen}10^\circ$', '$\frac{\sqrt3}{2}$', '$1$']
+    correta: A
+    resolucao: |
+      $\operatorname{sen}50^\circ - \operatorname{sen}70^\circ = 2\cos 60^\circ\operatorname{sen}(-10^\circ) = -\operatorname{sen}10^\circ$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, P e Q são as extremidades dos arcos de $100^\circ$ e $20^\circ$ no ciclo trigonométrico, e M é o ponto médio da corda PQ.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0); \draw[mudo, ->] (0,-2.2) -- (0,2.4);
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \draw[roxo, line width=.9pt] (100:1.8) -- (20:1.8);
+        \fill[roxo] (100:1.8) circle (2.2pt) node[above left, font=\small] {P};
+        \fill[roxo] (20:1.8) circle (2.2pt) node[right, font=\small] {Q};
+        \draw[ink] (0,0) -- (60:.9); \fill[ink] (60:.9) circle (2pt) node[right, font=\small] {M};
+        \end{scope}
+    enunciado: |
+      A distância OM é igual a
+    opcoes: ['$\cos 60^\circ$.', '$\cos 40^\circ$.', '$\operatorname{sen}40^\circ$.', '$2\cos 40^\circ$.']
+    correta: B
+    resolucao: |
+      $M = \left(\frac{\cos 100^\circ + \cos 20^\circ}{2}, \frac{\operatorname{sen}100^\circ + \operatorname{sen}20^\circ}{2}\right) = (\cos 60^\circ\cos 40^\circ,\ \operatorname{sen}60^\circ\cos 40^\circ)$, a uma distância $\cos 40^\circ$ de O.
+
+  - estilo: Fuvest
+    enunciado: |
+      Para $\cos 4x \ne 0$ e $\cos x \ne 0$, a expressão $\dfrac{\operatorname{sen}5x - \operatorname{sen}3x}{\cos 5x + \cos 3x}$ é igual a
+    opcoes: ['$\operatorname{tg}4x$', '$\operatorname{cotg}x$', '$\operatorname{tg}x$', '$\operatorname{tg}2x$', '$\operatorname{sen}x$']
+    correta: C
+    resolucao: |
+      $\frac{2\cos 4x\operatorname{sen}x}{2\cos 4x\cos x} = \operatorname{tg}x$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a equação $\operatorname{sen}5x + \operatorname{sen}x = 0$. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}5x + \operatorname{sen}x = 2\operatorname{sen}3x\cos 2x$.'
+    - '$x = 0$ é solução.'
+    - '$x = \frac{\pi}{4}$ é solução.'
+    - '$x = \frac{\pi}{3}$ é solução.'
+    - 'No intervalo $\left[0, \frac{\pi}{2}\right]$, a equação tem exatamente 3 soluções.'
+    - '$x = \frac{\pi}{6}$ é solução.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      Soluções: $\operatorname{sen}3x = 0$ ou $\cos 2x = 0$. Em $\left[0, \frac{\pi}{2}\right]$: $0$, $\frac{\pi}{3}$ e $\frac{\pi}{4}$. 32) Incorreta: $\operatorname{sen}\frac{\pi}{2} = 1$ e $\cos\frac{\pi}{3} = \frac12$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Num motor, dois pistões sobem e descem; suas posições, em centímetros, são $y_1 = \cos t$ e $y_2 = \cos(t + 120^\circ)$, em que $t$ é um ângulo que cresce com o tempo. Um engenheiro quer saber a amplitude da soma $y_1 + y_2$, isto é, o maior valor que ela atinge, e escreve a soma como um produto.
+    enunciado: |
+      A amplitude de $y_1 + y_2$ é
+    opcoes: ['$1$', '$2$', '$\sqrt3$', '$\frac12$', '$0$']
+    correta: A
+    resolucao: |
+      $y_1 + y_2 = 2\cos(t + 60^\circ)\cos 60^\circ = \cos(t + 60^\circ)$: amplitude 1.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$\operatorname{sen}3x - \operatorname{sen}x = 2\cos 2x\operatorname{sen}x$.'
+    - '$\cos 3x - \cos x = 2\operatorname{sen}2x\operatorname{sen}x$.'
+    - '$\cos 80^\circ + \cos 40^\circ = \cos 20^\circ$.'
+    - '$\operatorname{sen}80^\circ - \operatorname{sen}20^\circ = \operatorname{sen}40^\circ$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      Segunda: o certo é $-2\operatorname{sen}2x\operatorname{sen}x$. Terceira: $2\cos 60^\circ\cos 20^\circ$. Quarta: $2\cos 50^\circ\operatorname{sen}30^\circ = \cos 50^\circ = \operatorname{sen}40^\circ$. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Um engenheiro analisa o sinal $f(x) = \cos 3x + \cos x$, cujo gráfico, para $0 \le x \le \pi$, está na figura. Ele precisa dos instantes, entre $0$ e $\pi$, em que o sinal se anula, e para isso escreve $f(x)$ como um produto de dois cossenos.
+    figura:
+      tikz: |
+        \begin{scope}[xscale=1.4, yscale=.6]
+        \draw[mudo, ->] (0,0) -- (3.5,0) node[right, font=\scriptsize] {$x$}; \draw[mudo, ->] (0,-2.3) -- (0,2.4);
+        \draw[roxo, line width=.9pt, domain=0:3.1416, samples=120, smooth] plot (\x, {cos(3*\x r) + cos(\x r)});
+        \draw[mudo] (3.1416,.1) -- (3.1416,-.1) node[below, font=\scriptsize] {$\pi$};
+        \node[font=\scriptsize, left] at (0,2) {2}; \node[font=\scriptsize, left] at (0,-2) {$-2$};
+        \end{scope}
+    enunciado: |
+      No intervalo $(0, \pi)$, o sinal se anula em
+    opcoes: ['$\frac{\pi}{3}$ e $\frac{2\pi}{3}$, apenas.', '$\frac{\pi}{2}$, apenas.', '$\frac{\pi}{4}$ e $\frac{3\pi}{4}$, apenas.', '$\frac{\pi}{4}$, $\frac{\pi}{2}$ e $\frac{3\pi}{4}$.', '$\frac{\pi}{6}$, $\frac{\pi}{2}$ e $\frac{5\pi}{6}$.']
+    correta: D
+    resolucao: |
+      $f(x) = 2\cos 2x\cos x$. $\cos 2x = 0$: $\frac{\pi}{4}$ e $\frac{3\pi}{4}$; $\cos x = 0$: $\frac{\pi}{2}$.
+
+  - estilo: Unesp
+    enunciado: |
+      O valor de $\cos 75^\circ - \cos 15^\circ$ é
+    opcoes: ['$\frac{\sqrt2}{2}$', '$-\frac{\sqrt2}{2}$', '$-\frac{\sqrt6}{2}$', '$0$', '$-\frac12$']
+    correta: B
+    resolucao: |
+      $-2\operatorname{sen}45^\circ\operatorname{sen}30^\circ = -\frac{\sqrt2}{2}$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere $x$, $a$, $b$, $p$ e $q$ reais, com os denominadores não nulos. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}x + \operatorname{sen}2x + \operatorname{sen}3x$ $= \operatorname{sen}2x(1 + 2\cos x)$.'
+    - '$\cos x + \cos 3x = 2\cos 2x\cos x$.'
+    - '$\dfrac{\operatorname{sen}p + \operatorname{sen}q}{\cos p + \cos q} = \operatorname{tg}\dfrac{p + q}{2}$.'
+    - '$2\operatorname{sen}a\cos b = \operatorname{sen}(a + b) + \operatorname{sen}(a - b)$.'
+    - '$\cos p + \cos q = \cos(p + q)$.'
+    - '$\operatorname{sen}3x - \operatorname{sen}x = 2\cos 2x\operatorname{sen}x$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      08) Some as fórmulas de $\operatorname{sen}(a + b)$ e $\operatorname{sen}(a - b)$. 16) Incorreta: com $p = q = 0$, $2 \ne 1$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O valor de $\cos 10^\circ + \cos 110^\circ + \cos 130^\circ$ é
+    opcoes: ['$0$.', '$1$.', '$\cos 10^\circ$.', '$-\cos 10^\circ$.']
+    correta: A
+    resolucao: |
+      $\cos 110^\circ + \cos 130^\circ = 2\cos 120^\circ\cos 10^\circ = -\cos 10^\circ$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Dois diapasões quase iguais, tocados juntos, produzem um som cujo volume aumenta e diminui periodicamente: são os batimentos. Num experimento, o som resultante foi modelado por $y = \operatorname{sen}(888\pi t) + \operatorname{sen}(880\pi t)$, com $t$ em segundos. Escrevendo $y$ como um produto, aparece um fator que varia devagar e controla o volume.
+    enunciado: |
+      A forma de produto de $y$ é
+    opcoes: ['$2\operatorname{sen}(884\pi t)\operatorname{sen}(4\pi t)$', '$\operatorname{sen}(1768\pi t)$', '$2\operatorname{sen}(884\pi t)\cos(4\pi t)$', '$2\cos(884\pi t)\operatorname{sen}(4\pi t)$', '$2\cos(884\pi t)\cos(4\pi t)$']
+    correta: C
+    resolucao: |
+      Semissoma $884\pi t$ e semidiferença $4\pi t$.
+
+  - estilo: Unesp
+    enunciado: |
+      O volume é máximo quando $|\cos(4\pi t)| = 1$. O intervalo de tempo entre dois máximos consecutivos é
+    opcoes: ['$0{,}5$ s', '$1$ s', '$0{,}125$ s', '$0{,}25$ s', '$4$ s']
+    correta: D
+    resolucao: |
+      $|\cos(4\pi t)| = 1$ quando $4\pi t = k\pi$, ou seja, $t = \frac{k}{4}$: a cada 0,25 s (4 batimentos por segundo).
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\dfrac{\operatorname{sen}20^\circ + \operatorname{sen}40^\circ}{\cos 10^\circ}$ é
+    opcoes: ['$2$', '$\sqrt3$', '$\frac12$', '$\frac{\sqrt3}{2}$', '$1$']
+    correta: E
+    resolucao: |
+      $\operatorname{sen}20^\circ + \operatorname{sen}40^\circ = 2\operatorname{sen}30^\circ\cos 10^\circ = \cos 10^\circ$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, o triângulo ABC tem ângulos de $80^\circ$ em A e $40^\circ$ em B.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.55]
+        \coordinate (A) at (0,0); \coordinate (B) at (6,0); \coordinate (C) at ({6*sin(40)/sin(60)*cos(80)},{6*sin(40)/sin(60)*sin(80)});
+        \draw[ink, line width=.9pt] (A) -- (B) -- (C) -- cycle;
+        \node[font=\small, below left] at (A) {A}; \node[font=\small, below right] at (B) {B}; \node[font=\small, above] at (C) {C};
+        \draw[roxo] (.9,0) arc (0:80:.9); \node[roxo, font=\scriptsize] at (1.1,.6) {$80^\circ$};
+        \draw[roxo] (5.1,0) arc (180:140:.9); \node[roxo, font=\scriptsize] at (4.6,.3) {$40^\circ$};
+        \end{scope}
+    enunciado: |
+      O valor de $\operatorname{sen}A + \operatorname{sen}B$ é igual a
+    opcoes: ['$2\cos 20^\circ$', '$\sqrt3\cos 20^\circ$', '$\operatorname{sen}120^\circ$', '$\sqrt3\operatorname{sen}20^\circ$', '$\cos 20^\circ$']
+    correta: B
+    resolucao: |
+      $2\operatorname{sen}60^\circ\cos 20^\circ = \sqrt3\cos 20^\circ$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Use a transformação em produto.'
+    itens:
+    - 'Mostre que $\cos 40^\circ + \cos 80^\circ = \cos 20^\circ$.'
+    - 'Conclua que $\cos 20^\circ - \cos 40^\circ - \cos 80^\circ = 0$.'
+    - 'Mostre que $\operatorname{sen}20^\circ + \operatorname{sen}40^\circ = \operatorname{sen}80^\circ$.'
+    espaco: 62
+    resolucao: |
+      a) $2\cos 60^\circ\cos 20^\circ = \cos 20^\circ$.
+      b) Substitua o item a.
+      c) $2\operatorname{sen}30^\circ\cos 10^\circ = \cos 10^\circ = \operatorname{sen}80^\circ$.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    enunciado: 'Considere a equação $\operatorname{sen}3x + \operatorname{sen}x = \cos x$, com $0 \le x \le \pi$.'
+    itens:
+    - 'Escreva o primeiro membro como produto.'
+    - 'Mostre que a equação equivale a $\cos x\,(2\operatorname{sen}2x - 1) = 0$.'
+    - 'Dê as soluções.'
+    espaco: 62
+    resolucao: |
+      a) $2\operatorname{sen}2x\cos x$.
+      b) $2\operatorname{sen}2x\cos x - \cos x = 0$; coloque $\cos x$ em evidência.
+      c) $\cos x = 0$: $\frac{\pi}{2}$. $\operatorname{sen}2x = \frac12$, com $0 \le 2x \le 2\pi$: $2x = \frac{\pi}{6}$ ou $\frac{5\pi}{6}$. Soluções: $\frac{\pi}{12}$, $\frac{5\pi}{12}$ e $\frac{\pi}{2}$.
+    resposta: 'c) $\frac{\pi}{12}$, $\frac{5\pi}{12}$ e $\frac{\pi}{2}$'
+
+  - estilo: ITA
+    enunciado: |
+      O valor de $\operatorname{sen}10^\circ \cdot \operatorname{sen}50^\circ \cdot \operatorname{sen}70^\circ$ é
+    opcoes: ['$\frac18$', '$\frac14$', '$\frac{\sqrt3}{8}$', '$\frac{1}{16}$', '$\frac12$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $\operatorname{sen}50^\circ\operatorname{sen}70^\circ = \frac{\cos 20^\circ - \cos 120^\circ}{2} = \frac{\cos 20^\circ}{2} + \frac14$. Vezes $\operatorname{sen}10^\circ$: $\frac{\operatorname{sen}30^\circ - \operatorname{sen}10^\circ}{4} + \frac{\operatorname{sen}10^\circ}{4} = \frac18$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'P e Q são as extremidades dos arcos $p$ e $q$ no ciclo trigonométrico, e M é o ponto médio de PQ.'
+    itens:
+    - 'Mostre que $M = \left(\cos\frac{p + q}{2}\cos\frac{p - q}{2},\ \operatorname{sen}\frac{p + q}{2}\cos\frac{p - q}{2}\right)$.'
+    - 'Conclua que $OM = \left|\cos\frac{p - q}{2}\right|$.'
+    - 'Para $p = 150^\circ$ e $q = 30^\circ$, dê M e a distância OM.'
+    espaco: 62
+    resolucao: |
+      a) $M = \left(\frac{\cos p + \cos q}{2}, \frac{\operatorname{sen}p + \operatorname{sen}q}{2}\right)$; transforme cada soma em produto.
+      b) $OM^2 = \cos^2\frac{p - q}{2}\left(\cos^2\frac{p + q}{2} + \operatorname{sen}^2\frac{p + q}{2}\right)$.
+      c) $M = (\cos 90^\circ\cos 60^\circ, \operatorname{sen}90^\circ\cos 60^\circ) = \left(0, \frac12\right)$ e $OM = \frac12$.
+    resposta: 'c) $\left(0, \frac12\right)$ e $\frac12$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a transformação em produto. Assinale o que for correto.
+    proposicoes:
+    - '$\cos 20^\circ + \cos 100^\circ + \cos 140^\circ = 0$.'
+    - '$\operatorname{sen}80^\circ - \operatorname{sen}40^\circ = \operatorname{sen}20^\circ$.'
+    - '$\cos 36^\circ - \cos 72^\circ = 2\operatorname{sen}54^\circ\operatorname{sen}18^\circ$.'
+    - '$2\operatorname{sen}3x\cos x = \operatorname{sen}4x + \operatorname{sen}2x$.'
+    - '$\cos 3x + \cos x = \cos 4x$.'
+    - '$\operatorname{sen}5x - \operatorname{sen}3x = 2\cos 4x\operatorname{sen}x$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) $\cos 100^\circ + \cos 140^\circ = -\cos 20^\circ$. 02) $2\cos 60^\circ\operatorname{sen}20^\circ$. 04) $-2\operatorname{sen}54^\circ\operatorname{sen}(-18^\circ)$. 08) Produto em soma. 16) Incorreta: com $x = 0$, $2 \ne 1$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Num triângulo ABC, de ângulos $A$, $B$ e $C$, temos $\frac{A + B}{2} = 90^\circ - \frac{C}{2}$.'
+    itens:
+    - 'Mostre que $\operatorname{sen}A + \operatorname{sen}B = 2\cos\frac{C}{2}\cos\frac{A - B}{2}$ e que $\operatorname{sen}C = 2\cos\frac{A + B}{2}\cos\frac{C}{2}$.'
+    - 'Prove que $\operatorname{sen}A + \operatorname{sen}B + \operatorname{sen}C = 4\cos\frac{A}{2}\cos\frac{B}{2}\cos\frac{C}{2}$.'
+    - 'Confira a igualdade do item b num triângulo equilátero.'
+    espaco: 62
+    resolucao: |
+      a) A primeira é a transformação da soma. Na segunda, $\operatorname{sen}C = 2\operatorname{sen}\frac{C}{2}\cos\frac{C}{2}$ e $\operatorname{sen}\frac{C}{2} = \cos\frac{A + B}{2}$.
+      b) Some: $2\cos\frac{C}{2}\left(\cos\frac{A - B}{2} + \cos\frac{A + B}{2}\right) = 2\cos\frac{C}{2} \cdot 2\cos\frac{A}{2}\cos\frac{B}{2}$.
+      c) $3 \cdot \frac{\sqrt3}{2} = \frac{3\sqrt3}{2}$ e $4\left(\frac{\sqrt3}{2}\right)^3 = \frac{3\sqrt3}{2}$.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    enunciado: 'Um sinal é dado por $y(t) = \cos 12t + \cos 10t$, para $t \ge 0$.'
+    itens:
+    - 'Escreva $y(t)$ como produto.'
+    - 'Mostre que $|y(t)| \le 2|\cos t|$ e dê o maior valor de $y$.'
+    - 'Qual o primeiro instante $t > 0$ em que o fator $2\cos t$ se anula?'
+    espaco: 62
+    resolucao: |
+      a) $2\cos 11t\cos t$.
+      b) $|\cos 11t| \le 1$. O maior valor é 2, em $t = 0$.
+      c) $t = \frac{\pi}{2}$.
+    resposta: 'a) $2\cos 11t\cos t$; b) 2; c) $\frac{\pi}{2}$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Para $\operatorname{sen}2x \ne 0$, a expressão $\dfrac{\cos 3x - \cos x}{\operatorname{sen}3x + \operatorname{sen}x}$ é igual a
+    opcoes: ['$\operatorname{tg}x$', '$-\operatorname{tg}x$', '$\operatorname{cotg}x$', '$-\operatorname{tg}2x$', '$\operatorname{tg}2x$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $\frac{-2\operatorname{sen}2x\operatorname{sen}x}{2\operatorname{sen}2x\cos x} = -\operatorname{tg}x$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere a equação $\cos 5x + \cos x = 0$, com $0 \le x \le \pi$.'
+    itens:
+    - 'Escreva o primeiro membro como produto.'
+    - 'Resolva $\cos 3x = 0$ no intervalo dado.'
+    - 'Dê todas as soluções da equação.'
+    espaco: 62
+    resolucao: |
+      a) $2\cos 3x\cos 2x$.
+      b) $3x = \frac{\pi}{2}$, $\frac{3\pi}{2}$ ou $\frac{5\pi}{2}$: $x = \frac{\pi}{6}$, $\frac{\pi}{2}$ ou $\frac{5\pi}{6}$.
+      c) Junte $\cos 2x = 0$: $x = \frac{\pi}{4}$ ou $\frac{3\pi}{4}$. São cinco: $\frac{\pi}{6}$, $\frac{\pi}{4}$, $\frac{\pi}{2}$, $\frac{3\pi}{4}$, $\frac{5\pi}{6}$.
+    resposta: 'c) $\frac{\pi}{6}$, $\frac{\pi}{4}$, $\frac{\pi}{2}$, $\frac{3\pi}{4}$ e $\frac{5\pi}{6}$'
+
+  - estilo: Fuvest
+    enunciado: 'A volta da transformação escreve produtos como somas.'
+    itens:
+    - 'Prove que $2\operatorname{sen}a\cos b = \operatorname{sen}(a + b) + \operatorname{sen}(a - b)$.'
+    - 'Calcule $\operatorname{sen}75^\circ\cos 15^\circ$.'
+    - 'Calcule $\cos 75^\circ\cos 15^\circ$, usando $2\cos a\cos b = \cos(a + b) + \cos(a - b)$.'
+    espaco: 62
+    resolucao: |
+      a) Some as fórmulas de $\operatorname{sen}(a + b)$ e $\operatorname{sen}(a - b)$.
+      b) $\frac{\operatorname{sen}90^\circ + \operatorname{sen}60^\circ}{2} = \frac{2 + \sqrt3}{4}$.
+      c) $\frac{\cos 90^\circ + \cos 60^\circ}{2} = \frac14$.
+    resposta: 'b) $\frac{2 + \sqrt3}{4}$; c) $\frac14$'
