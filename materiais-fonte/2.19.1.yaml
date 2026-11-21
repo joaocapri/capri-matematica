@@ -1,0 +1,526 @@
+# Aula 2.19.1 — Trigonometria: inequações trigonométricas
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: sen x, cos x, tg x comparados com um número, no intervalo [0, 2π) e na forma geral; arcos kx;
+# inequações do 2º grau em sen ou cos; produtos e quocientes (quadro de sinais); domínio com raiz; |sen x| e |cos x|;
+# sen x comparado com cos x; tempo em que um fenômeno periódico fica acima de um nível.
+padrao: 4
+
+fixacao:
+  intro: 'Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Para resolver, marque no ciclo os pontos de fronteira (onde vale a igualdade) e veja qual arco satisfaz a desigualdade. Salvo aviso, use o intervalo $[0, 2\pi)$. O gabarito resolvido está no final.'
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete com a solução em $[0, 2\pi)$.'
+      itens:
+      - '$\operatorname{sen}x > \frac12$: {{\pi/6 < x < 5\pi/6}}'
+      - '$\cos x \ge \frac12$: {{0 \le x \le \pi/3 \text{ ou } 5\pi/3 \le x < 2\pi}}'
+      - '$\operatorname{tg}x > 0$: {{0 < x < \pi/2 \text{ ou } \pi < x < 3\pi/2}}'
+      - '$\operatorname{sen}x < 0$: {{\pi < x < 2\pi}}'
+      espaco_item: 8
+      resolucao: |
+        Arco acima da reta $y = \frac12$; arco à direita da reta $x = \frac12$; 1º e 3º Q; 3º e 4º Q.
+      resposta: 'Ver resolução'
+    - enunciado: 'Associe cada inequação à sua solução em $[0, 2\pi)$.'
+      esquerda:
+      - '$\cos x > 0$'
+      - '$\operatorname{sen}x \le -\frac12$'
+      - '$\cos x < -\frac{\sqrt2}{2}$'
+      - '$\operatorname{sen}x \ge \frac{\sqrt3}{2}$'
+      - '$\operatorname{tg}x \ge 1$'
+      direita:
+      - '$\frac{3\pi}{4} < x < \frac{5\pi}{4}$'
+      - '$\frac{\pi}{3} \le x \le \frac{2\pi}{3}$'
+      - '$0 \le x < \frac{\pi}{2}$ ou $\frac{3\pi}{2} < x < 2\pi$'
+      - '$\frac{\pi}{4} \le x < \frac{\pi}{2}$ ou $\frac{5\pi}{4} \le x < \frac{3\pi}{2}$'
+      - '$\frac{7\pi}{6} \le x \le \frac{11\pi}{6}$'
+      resolucao: |
+        Fronteiras: $\frac{\pi}{2}, \frac{3\pi}{2}$; $\frac{7\pi}{6}, \frac{11\pi}{6}$; $\frac{3\pi}{4}, \frac{5\pi}{4}$; $\frac{\pi}{3}, \frac{2\pi}{3}$; $\frac{\pi}{4}, \frac{5\pi}{4}$ (a tangente não existe em $\frac{\pi}{2}$ e $\frac{3\pi}{2}$).
+      resposta: 'De cima para baixo: 3, 4, 1, 5, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - '$\operatorname{sen}x \le 1$ para todo $x$.'
+      - 'A inequação $\cos x > 1$ tem solução.'
+      - 'A tangente só é positiva no 1º quadrante.'
+      - '$\operatorname{sen}x\cos x > 0$ no 1º e no 3º quadrantes.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) Ordenada de um ponto do ciclo. (F) $\cos x \le 1$. (F) Também no 3º Q. (V) Sinais iguais no 1º e no 3º Q.
+      resposta: V, F, F, V
+    - enunciado: 'Complete a tabela com a solução em $[0^\circ, 360^\circ)$.'
+      tabela:
+        cabecalho: ['Inequação', 'Solução']
+        linhas:
+        - ['$\operatorname{sen}x > \frac{\sqrt2}{2}$', '{{45° < x < 135°}}']
+        - ['$\cos x < \frac12$', '{{60° < x < 300°}}']
+        - ['$\operatorname{sen}x < -\frac12$', '{{210° < x < 330°}}']
+        - ['$\cos x \ge -\frac{\sqrt3}{2}$', '{{0° ≤ x ≤ 150° ou 210° ≤ x < 360°}}']
+      resolucao: |
+        Ache as fronteiras pela redução e escolha o arco certo no ciclo. Na última, tira-se o arco $150^\circ < x < 210^\circ$, onde o cosseno é menor que $-\frac{\sqrt3}{2}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Resolva $2\cos x - 1 < 0$.'
+      espaco: 8
+      resolucao: |
+        $\cos x < \frac12$: $\frac{\pi}{3} < x < \frac{5\pi}{3}$.
+      resposta: '$\frac{\pi}{3} < x < \frac{5\pi}{3}$'
+    - enunciado: 'Resolva $\sqrt2\operatorname{sen}x \ge 1$.'
+      espaco: 8
+      resolucao: |
+        $\operatorname{sen}x \ge \frac{\sqrt2}{2}$: $\frac{\pi}{4} \le x \le \frac{3\pi}{4}$.
+      resposta: '$\frac{\pi}{4} \le x \le \frac{3\pi}{4}$'
+    - enunciado: 'Resolva $\operatorname{tg}x < \sqrt3$ no intervalo $\left[0, \frac{\pi}{2}\right)$.'
+      espaco: 8
+      resolucao: |
+        A tangente cresce nesse intervalo e vale $\sqrt3$ em $\frac{\pi}{3}$: $0 \le x < \frac{\pi}{3}$.
+      resposta: '$0 \le x < \frac{\pi}{3}$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Ana resolveu $\operatorname{sen}x > \frac12$ em $[0, 2\pi)$ assim: "como $\operatorname{sen}\frac{\pi}{6} = \frac12$, a solução é $x > \frac{\pi}{6}$".
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        O seno não cresce sempre: depois de $\frac{\pi}{2}$ ele volta a diminuir e fica menor que $\frac12$ após $\frac{5\pi}{6}$. Solução: $\frac{\pi}{6} < x < \frac{5\pi}{6}$.
+      resposta: '$\frac{\pi}{6} < x < \frac{5\pi}{6}$'
+    - enunciado: 'Resolva $2\operatorname{sen}^2 x - \operatorname{sen}x < 0$.'
+      espaco: 12
+      resolucao: |
+        $\operatorname{sen}x(2\operatorname{sen}x - 1) < 0$: $0 < \operatorname{sen}x < \frac12$. Solução: $0 < x < \frac{\pi}{6}$ ou $\frac{5\pi}{6} < x < \pi$.
+      resposta: '$0 < x < \frac{\pi}{6}$ ou $\frac{5\pi}{6} < x < \pi$'
+    - enunciado: 'Resolva $|\operatorname{sen}x| < \frac12$.'
+      espaco: 12
+      resolucao: |
+        $-\frac12 < \operatorname{sen}x < \frac12$: perto do eixo horizontal. $0 \le x < \frac{\pi}{6}$, $\frac{5\pi}{6} < x < \frac{7\pi}{6}$ ou $\frac{11\pi}{6} < x < 2\pi$.
+      resposta: '$\left[0, \frac{\pi}{6}\right) \cup \left(\frac{5\pi}{6}, \frac{7\pi}{6}\right) \cup \left(\frac{11\pi}{6}, 2\pi\right)$'
+    - enunciado: 'Complete a solução geral, com $k$ inteiro.'
+      itens:
+      - '$\cos x > 0$: $-\frac{\pi}{2} + 2k\pi < x <$ {{\pi/2 + 2k\pi}}'
+      - '$\operatorname{sen}x \ge \frac12$: $\frac{\pi}{6} + 2k\pi \le x \le$ {{5\pi/6 + 2k\pi}}'
+      - '$\operatorname{tg}x > 1$: $\frac{\pi}{4} + k\pi < x <$ {{\pi/2 + k\pi}}'
+      espaco_item: 8
+      resolucao: |
+        Um arco por volta para o seno e o cosseno; para a tangente, um trecho a cada $\pi$.
+      resposta: '$\frac{\pi}{2} + 2k\pi$; $\frac{5\pi}{6} + 2k\pi$; $\frac{\pi}{2} + k\pi$'
+    - enunciado: 'Resolva $\operatorname{sen}2x > 0$.'
+      espaco: 10
+      resolucao: |
+        $2x \in [0, 4\pi)$ com seno positivo: $0 < 2x < \pi$ ou $2\pi < 2x < 3\pi$. Logo $0 < x < \frac{\pi}{2}$ ou $\pi < x < \frac{3\pi}{2}$.
+      resposta: '$\left(0, \frac{\pi}{2}\right) \cup \left(\pi, \frac{3\pi}{2}\right)$'
+    - enunciado: 'Dê o domínio de $f(x) = \sqrt{2\cos x - 1}$ em $[0, 2\pi)$.'
+      espaco: 10
+      resolucao: |
+        $2\cos x - 1 \ge 0$: $\cos x \ge \frac12$. $0 \le x \le \frac{\pi}{3}$ ou $\frac{5\pi}{3} \le x < 2\pi$.
+      resposta: '$\left[0, \frac{\pi}{3}\right] \cup \left[\frac{5\pi}{3}, 2\pi\right)$'
+    - enunciado: 'Resolva $\cos^2 x > \frac14$.'
+      espaco: 10
+      resolucao: |
+        $|\cos x| > \frac12$: longe do eixo vertical. $0 \le x < \frac{\pi}{3}$, $\frac{2\pi}{3} < x < \frac{4\pi}{3}$ ou $\frac{5\pi}{3} < x < 2\pi$.
+      resposta: '$\left[0, \frac{\pi}{3}\right) \cup \left(\frac{2\pi}{3}, \frac{4\pi}{3}\right) \cup \left(\frac{5\pi}{3}, 2\pi\right)$'
+    - enunciado: 'Resolva $\operatorname{sen}x > \cos x$.'
+      espaco: 10
+      resolucao: |
+        A igualdade vale em $\frac{\pi}{4}$ e $\frac{5\pi}{4}$. Entre eles, o ponto fica acima da reta $y = x$: $\frac{\pi}{4} < x < \frac{5\pi}{4}$.
+      resposta: '$\frac{\pi}{4} < x < \frac{5\pi}{4}$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que $\operatorname{sen}x + \cos x \le \sqrt2$ para todo $x$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{sen}x + \cos x = \sqrt2\operatorname{sen}\left(x + \frac{\pi}{4}\right)$, e o seno não passa de 1.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, se $0 < x < \frac{\pi}{2}$, então $\operatorname{sen}x < \operatorname{tg}x$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{tg}x = \frac{\operatorname{sen}x}{\cos x}$, com $\operatorname{sen}x > 0$ e $0 < \cos x < 1$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $2\operatorname{sen}^2 x - 3\operatorname{sen}x + 1 \ge 0$ equivale a $\operatorname{sen}x \le \frac12$ ou $\operatorname{sen}x = 1$.'
+      espaco: 10
+      resolucao: |
+        $(2\operatorname{sen}x - 1)(\operatorname{sen}x - 1) \ge 0$: $\operatorname{sen}x \le \frac12$ ou $\operatorname{sen}x \ge 1$, e este último só ocorre com $\operatorname{sen}x = 1$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\cos 2x \ge 0$ se, e somente se, $|\cos x| \ge |\operatorname{sen}x|$.'
+      espaco: 10
+      resolucao: |
+        $\cos 2x = \cos^2 x - \operatorname{sen}^2 x \ge 0 \iff \cos^2 x \ge \operatorname{sen}^2 x$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}x\cos x \le \frac12$ para todo $x$, com igualdade em $x = \frac{\pi}{4}$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{sen}x\cos x = \frac12\operatorname{sen}2x \le \frac12$, e em $\frac{\pi}{4}$ vale $\frac12\operatorname{sen}\frac{\pi}{2} = \frac12$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Num canal, a profundidade da água, em metros, é $h(t) = 4 + 2\cos\left(\frac{\pi t}{6}\right)$, em que $t$ é o tempo em horas desde a meia-noite. Um barco de carga só navega com segurança quando a profundidade é de pelo menos 5 m. O comandante analisa as primeiras 12 horas do dia ($0 \le t < 12$) para planejar as viagens.
+    enunciado: |
+      Nesse período, o barco pode navegar durante um total de
+    opcoes: ['$4$ horas', '$2$ horas', '$6$ horas', '$8$ horas', '$3$ horas']
+    correta: A
+    resolucao: |
+      $\cos\frac{\pi t}{6} \ge \frac12$: $0 \le \frac{\pi t}{6} \le \frac{\pi}{3}$ ou $\frac{5\pi}{3} \le \frac{\pi t}{6} < 2\pi$, isto é, $0 \le t \le 2$ ou $10 \le t < 12$: 4 horas.
+
+  - estilo: Fuvest
+    enunciado: |
+      A solução de $\operatorname{sen}x < \frac{\sqrt3}{2}$ no intervalo $[0, \pi]$ é
+    opcoes: ['$\left(\frac{\pi}{3}, \frac{2\pi}{3}\right)$', '$\left[0, \frac{\pi}{3}\right) \cup \left(\frac{2\pi}{3}, \pi\right]$', '$\left[0, \frac{\pi}{3}\right)$', '$\left(\frac{2\pi}{3}, \pi\right]$', '$\left[0, \frac{\pi}{6}\right) \cup \left(\frac{5\pi}{6}, \pi\right]$']
+    correta: B
+    resolucao: |
+      O seno passa de $\frac{\sqrt3}{2}$ só entre $\frac{\pi}{3}$ e $\frac{2\pi}{3}$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A solução de $\operatorname{tg}x \ge \sqrt3$ no intervalo $\left[0, \frac{\pi}{2}\right)$ é
+    opcoes: ['$\left[0, \frac{\pi}{3}\right]$.', '$\left[\frac{\pi}{6}, \frac{\pi}{2}\right)$.', '$\left[\frac{\pi}{3}, \frac{\pi}{2}\right)$.', '$\left(\frac{\pi}{3}, \frac{\pi}{2}\right]$.']
+    correta: C
+    resolucao: |
+      A tangente cresce no intervalo e vale $\sqrt3$ em $\frac{\pi}{3}$; em $\frac{\pi}{2}$ ela não existe.
+
+  - estilo: UEM
+    enunciado: |
+      Considere a inequação $2\operatorname{sen}x - 1 > 0$, com $0 \le x < 2\pi$. Assinale o que for correto.
+    proposicoes:
+    - '$x = \frac{\pi}{2}$ satisfaz a inequação.'
+    - '$x = \frac{\pi}{6}$ não satisfaz a inequação.'
+    - 'O conjunto solução é um intervalo de comprimento $\frac{2\pi}{3}$.'
+    - '$x = \frac{3\pi}{4}$ satisfaz a inequação.'
+    - '$x = \pi$ satisfaz a inequação.'
+    - '$x = \frac{2\pi}{3}$ satisfaz a inequação.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      Solução: $\frac{\pi}{6} < x < \frac{5\pi}{6}$, de comprimento $\frac{4\pi}{6}$. 16) Incorreta: $\operatorname{sen}\pi = 0$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Em cinco cidades, a temperatura ao longo do dia é modelada por $T = a + b\operatorname{sen}\left(\frac{\pi t}{12}\right)$, com $t$ em horas. A temperatura passa de 30 °C quando $\operatorname{sen}\left(\frac{\pi t}{12}\right) > \frac{30 - a}{b}$. Uma empresa de ar-condicionado quer anunciar na cidade em que a temperatura fica acima de 30 °C por mais de 8 horas por dia.
+    tabela:
+      cabecalho: ['Cidade', 'I', 'II', 'III', 'IV', 'V']
+      linhas:
+      - ['$a$ (°C)', '$24$', '$26$', '$22$', '$27$', '$25$']
+      - ['$b$ (°C)', '$8$', '$6$', '$10$', '$8$', '$10$']
+    enunciado: |
+      A cidade escolhida deve ser a
+    opcoes: ['I.', 'II.', 'III.', 'IV.', 'V.']
+    correta: D
+    resolucao: |
+      $\operatorname{sen}\theta > c$ dura mais de 8 h (um terço do dia) quando $c < \frac12$. Valores de $c$: 0,75; 0,67; 0,8; 0,375; 0,5 (exatamente 8 h). Só a IV.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre o intervalo $[0, 2\pi)$.
+    afirmativas:
+    - '$\operatorname{sen}x < 0$ para $\pi < x < 2\pi$.'
+    - '$\cos x > 0$ para $0 < x < \pi$.'
+    - '$\operatorname{tg}x > 0$ no 1º e no 3º quadrantes.'
+    - '$\operatorname{sen}x\cos x < 0$ no 2º e no 4º quadrantes.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      II. Incorreta: no 2º quadrante o cosseno é negativo.
+
+  - estilo: Unesp
+    enunciado: |
+      A solução de $\operatorname{sen}x \ge -\frac12$ no intervalo $[0, 2\pi)$ é
+    opcoes: ['$\left[0, \frac{7\pi}{6}\right] \cup \left[\frac{11\pi}{6}, 2\pi\right)$', '$\left[\frac{7\pi}{6}, \frac{11\pi}{6}\right]$', '$\left[0, \frac{5\pi}{6}\right]$', '$\left[\frac{\pi}{6}, \frac{5\pi}{6}\right]$', '$\left[0, \frac{7\pi}{6}\right]$']
+    correta: A
+    resolucao: |
+      Tira-se o arco $\frac{7\pi}{6} < x < \frac{11\pi}{6}$, onde o seno é menor que $-\frac12$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, o arco destacado do ciclo trigonométrico fica acima da reta $y = \frac12$, incluindo os pontos da reta.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0); \draw[mudo, ->] (0,-2.2) -- (0,2.4);
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \draw[roxo, dashed] (-2.2,.9) -- (2.2,.9) node[right, font=\scriptsize] {$y = \frac12$};
+        \draw[roxo, line width=2.4pt] (30:1.8) arc (30:150:1.8);
+        \fill[roxo] (30:1.8) circle (2.4pt); \fill[roxo] (150:1.8) circle (2.4pt);
+        \end{scope}
+    enunciado: |
+      O arco destacado representa a solução da inequação
+    opcoes: ['$\cos x \ge \frac12$.', '$\operatorname{sen}x \ge \frac12$.', '$\operatorname{sen}x \le \frac12$.', '$\operatorname{tg}x \ge \frac12$.']
+    correta: B
+    resolucao: |
+      Os pontos acima da reta $y = \frac12$ têm ordenada, isto é, seno, pelo menos $\frac12$.
+
+  - estilo: Fuvest
+    enunciado: |
+      A solução de $2\cos^2 x - \cos x < 0$ no intervalo $[0, 2\pi)$ é
+    opcoes: ['$\left(\frac{\pi}{3}, \frac{5\pi}{3}\right)$', '$\left(0, \frac{\pi}{3}\right)$', '$\left(\frac{\pi}{3}, \frac{\pi}{2}\right) \cup \left(\frac{3\pi}{2}, \frac{5\pi}{3}\right)$', '$\left(\frac{\pi}{2}, \frac{3\pi}{2}\right)$', '$\left(\frac{\pi}{6}, \frac{\pi}{2}\right)$']
+    correta: C
+    resolucao: |
+      $\cos x(2\cos x - 1) < 0$: $0 < \cos x < \frac12$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a inequação $\operatorname{sen}2x > 0$, com $0 \le x < 2\pi$. Assinale o que for correto.
+    proposicoes:
+    - '$x = \frac{\pi}{4}$ satisfaz a inequação.'
+    - '$x = \frac{5\pi}{4}$ satisfaz a inequação.'
+    - '$x = \frac{3\pi}{4}$ não satisfaz a inequação.'
+    - 'A soma dos comprimentos dos intervalos que formam a solução é $\pi$.'
+    - 'A inequação equivale a $\operatorname{sen}x$ e $\cos x$ terem o mesmo sinal, ambos não nulos.'
+    - '$x = \frac{\pi}{2}$ satisfaz a inequação.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      Solução: $\left(0, \frac{\pi}{2}\right) \cup \left(\pi, \frac{3\pi}{2}\right)$. 16) $\operatorname{sen}2x = 2\operatorname{sen}x\cos x$. 32) Incorreta: $\operatorname{sen}\pi = 0$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      A intensidade luminosa de um farol, em porcentagem, varia com o tempo segundo $I(t) = 50 + 50\operatorname{sen}\left(\frac{\pi t}{2}\right)$, com $t$ em segundos; o ciclo dura 4 segundos. De longe, os navegantes só enxergam a luz quando a intensidade passa de 75\%. A capitania quer saber que fração de cada ciclo a luz fica visível.
+    enunciado: |
+      A fração de cada ciclo em que a luz é visível é
+    opcoes: ['$\frac13$', '$\frac12$', '$\frac23$', '$\frac14$', '$\frac16$']
+    correta: A
+    resolucao: |
+      $\operatorname{sen}\frac{\pi t}{2} > \frac12$: $\frac{\pi}{6} < \frac{\pi t}{2} < \frac{5\pi}{6}$, ou seja, $\frac13 < t < \frac53$. São $\frac43$ s de 4 s.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$\cos x > 0$ para $\frac{3\pi}{2} < x < 2\pi$.'
+    - '$\operatorname{tg}x > 0$ para $\frac{\pi}{2} < x < \pi$.'
+    - '$\operatorname{sen}x < \cos x$ para $0 < x < \frac{\pi}{4}$.'
+    - '$|\cos x| \le \frac12$ para $\frac{\pi}{3} \le x \le \frac{2\pi}{3}$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      No 2º Q a tangente é negativa. Antes de $\frac{\pi}{4}$, o ponto fica abaixo da reta $y = x$. Entre $\frac{\pi}{3}$ e $\frac{2\pi}{3}$, o cosseno vai de $\frac12$ a $-\frac12$. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Um painel solar só aciona a bomba de uma fonte quando a potência captada supera metade da máxima. Num dia sem nuvens, a potência relativa é modelada por $y = \operatorname{sen}x$, em que $x$ vai de 0 (nascer do sol) a $\pi$ (pôr do sol). A figura mostra o gráfico de $y = \operatorname{sen}x$ e a reta $y = 0{,}5$ no intervalo $[0, 2\pi]$.
+    figura:
+      tikz: |
+        \begin{scope}[xscale=.7, yscale=.9]
+        \draw[mudo, ->] (0,0) -- (6.8,0) node[right, font=\scriptsize] {$x$}; \draw[mudo, ->] (0,-1.3) -- (0,1.4);
+        \draw[roxo, line width=.9pt, domain=0:6.283, samples=120, smooth] plot (\x, {sin(\x r)});
+        \draw[lima!70!black, dashed] (0,.5) -- (6.5,.5) node[right, font=\scriptsize] {$0{,}5$};
+        \draw[mudo] (3.1416,.08) -- (3.1416,-.08) node[below, font=\scriptsize] {$\pi$};
+        \draw[mudo] (6.283,.08) -- (6.283,-.08) node[below, font=\scriptsize] {$2\pi$};
+        \end{scope}
+    enunciado: |
+      A bomba fica ligada para $x$ no intervalo
+    opcoes: ['$(0, \pi)$', '$\left(\frac{\pi}{3}, \frac{2\pi}{3}\right)$', '$\left(\frac{\pi}{6}, \frac{11\pi}{6}\right)$', '$\left(\frac{\pi}{6}, \frac{5\pi}{6}\right)$', '$\left(\frac{5\pi}{6}, \frac{13\pi}{6}\right)$']
+    correta: D
+    resolucao: |
+      $\operatorname{sen}x > \frac12$ entre $\frac{\pi}{6}$ e $\frac{5\pi}{6}$.
+
+  - estilo: Unesp
+    enunciado: |
+      O domínio de $f(x) = \sqrt{\operatorname{sen}x}$, para $x$ no intervalo $[0, 2\pi]$, é
+    opcoes: ['$[0, \pi]$', '$[0, \pi] \cup \{2\pi\}$', '$(0, \pi)$', '$[\pi, 2\pi]$', '$[0, 2\pi]$']
+    correta: B
+    resolucao: |
+      $\operatorname{sen}x \ge 0$ em $[0, \pi]$ e também em $x = 2\pi$, onde vale 0.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere $x$ real. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}x + \cos x \le \sqrt2$.'
+    - 'Se $0 < x < \frac{\pi}{2}$, então $\operatorname{sen}x < \operatorname{tg}x$.'
+    - '$\cos 2x \ge 0$ para $0 \le x \le \frac{\pi}{4}$.'
+    - '$\operatorname{sen}x\cos x \le \frac12$.'
+    - '$\operatorname{sen}x > \cos x$ para todo $x$ do intervalo $(0, \pi)$.'
+    - 'A inequação $\operatorname{sen}x > 1$ não tem solução.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) $\sqrt2\operatorname{sen}\left(x + \frac{\pi}{4}\right)$. 04) $0 \le 2x \le \frac{\pi}{2}$. 08) $\frac12\operatorname{sen}2x$. 16) Incorreta: em $x = \frac{\pi}{6}$, $\frac12 < \frac{\sqrt3}{2}$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A solução de $\operatorname{sen}x < \cos x$ no intervalo $[0, 2\pi)$ é
+    opcoes: ['$\left[0, \frac{\pi}{4}\right) \cup \left(\frac{5\pi}{4}, 2\pi\right)$.', '$\left(\frac{\pi}{4}, \frac{5\pi}{4}\right)$.', '$\left(\frac{\pi}{4}, \frac{3\pi}{4}\right)$.', '$\left(0, \frac{\pi}{4}\right)$.']
+    correta: A
+    resolucao: |
+      Igualdade em $\frac{\pi}{4}$ e $\frac{5\pi}{4}$; o seno é menor fora do arco entre eles.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Numa roda-gigante, a altura de uma cabine, em metros, é $h(t) = 12 - 10\cos\left(\frac{\pi t}{6}\right)$, com $t$ em minutos desde que a cabine passou pelo ponto mais baixo; cada volta dura 12 minutos. Acima de 17 m, os passageiros enxergam o mar por cima dos prédios. Abaixo de 7 m, a vista fica escondida pelas árvores do parque.
+    enunciado: |
+      Em cada volta, a vista do mar fica disponível durante
+    opcoes: ['$6$ min', '$2$ min', '$4$ min', '$8$ min', '$3$ min']
+    correta: C
+    resolucao: |
+      $h > 17 \iff \cos\frac{\pi t}{6} < -\frac12 \iff \frac{2\pi}{3} < \frac{\pi t}{6} < \frac{4\pi}{3} \iff 4 < t < 8$.
+
+  - estilo: Unesp
+    enunciado: |
+      A fração de cada volta em que a vista fica escondida pelas árvores é
+    opcoes: ['$\frac12$', '$\frac16$', '$\frac23$', '$\frac13$', '$\frac14$']
+    correta: D
+    resolucao: |
+      $h < 7 \iff \cos\frac{\pi t}{6} > \frac12$: $0 \le t < 2$ ou $10 < t < 12$. São 4 min de 12.
+
+  - estilo: Fuvest
+    enunciado: |
+      A solução de $\operatorname{tg}^2 x < 3$ no intervalo $[0, \pi)$, excluído $\frac{\pi}{2}$, é
+    opcoes: ['$\left(\frac{\pi}{3}, \frac{2\pi}{3}\right)$', '$\left[0, \frac{\pi}{3}\right)$', '$\left[0, \frac{\pi}{2}\right)$', '$\left(\frac{\pi}{6}, \frac{5\pi}{6}\right)$', '$\left[0, \frac{\pi}{3}\right) \cup \left(\frac{2\pi}{3}, \pi\right)$']
+    correta: E
+    resolucao: |
+      $-\sqrt3 < \operatorname{tg}x < \sqrt3$: longe de $\frac{\pi}{2}$, antes de $\frac{\pi}{3}$ e depois de $\frac{2\pi}{3}$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, o arco destacado do ciclo trigonométrico fica à esquerda da reta $x = -\frac12$, incluindo os pontos da reta.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0); \draw[mudo, ->] (0,-2.2) -- (0,2.4);
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \draw[roxo, dashed] (-.9,-2.2) -- (-.9,2.2) node[above, font=\scriptsize] {$x = -\frac12$};
+        \draw[roxo, line width=2.4pt] (120:1.8) arc (120:240:1.8);
+        \fill[roxo] (120:1.8) circle (2.4pt); \fill[roxo] (240:1.8) circle (2.4pt);
+        \end{scope}
+    enunciado: |
+      Em $[0, 2\pi)$, o arco destacado corresponde a
+    opcoes: ['$\frac{\pi}{3} \le x \le \frac{5\pi}{3}$', '$\frac{2\pi}{3} \le x \le \frac{4\pi}{3}$', '$\frac{5\pi}{6} \le x \le \frac{7\pi}{6}$', '$\frac{4\pi}{3} \le x \le \frac{5\pi}{3}$', '$\frac{2\pi}{3} \le x \le \frac{5\pi}{3}$']
+    correta: B
+    resolucao: |
+      É a solução de $\cos x \le -\frac12$, com fronteiras $\frac{2\pi}{3}$ e $\frac{4\pi}{3}$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere a inequação $2\operatorname{sen}^2 x - 3\operatorname{sen}x + 1 > 0$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Fatore o primeiro membro.'
+    - 'Mostre que a inequação equivale a $\operatorname{sen}x < \frac12$.'
+    - 'Dê a solução.'
+    espaco: 62
+    resolucao: |
+      a) $(2\operatorname{sen}x - 1)(\operatorname{sen}x - 1)$.
+      b) O produto é positivo quando $\operatorname{sen}x < \frac12$ ou $\operatorname{sen}x > 1$; a segunda é impossível.
+      c) $0 \le x < \frac{\pi}{6}$ ou $\frac{5\pi}{6} < x < 2\pi$.
+    resposta: 'c) $\left[0, \frac{\pi}{6}\right) \cup \left(\frac{5\pi}{6}, 2\pi\right)$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere $f(x) = \sqrt{\operatorname{sen}x - \cos x}$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Mostre que $\operatorname{sen}x - \cos x = \sqrt2\operatorname{sen}\left(x - \frac{\pi}{4}\right)$.'
+    - 'Resolva $\operatorname{sen}\left(x - \frac{\pi}{4}\right) \ge 0$ no intervalo dado.'
+    - 'Dê o domínio de $f$.'
+    espaco: 62
+    resolucao: |
+      a) $\sqrt2\left(\operatorname{sen}x\cos\frac{\pi}{4} - \cos x\operatorname{sen}\frac{\pi}{4}\right)$.
+      b) $0 \le x - \frac{\pi}{4} \le \pi$ (o trecho de $-\frac{\pi}{4}$ a 0 tem seno negativo): $\frac{\pi}{4} \le x \le \frac{5\pi}{4}$.
+      c) $\left[\frac{\pi}{4}, \frac{5\pi}{4}\right]$.
+    resposta: 'c) $\left[\frac{\pi}{4}, \frac{5\pi}{4}\right]$'
+
+  - estilo: ITA
+    enunciado: |
+      Quantos inteiros $n$, com $1 \le n \le 6$, satisfazem $\operatorname{sen}n > 0$ (arcos em radianos)?
+    opcoes: ['$3$', '$4$', '$2$', '$5$', '$1$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      O seno é positivo em $(0, \pi) \approx (0;\ 3{,}14)$ e negativo em $(\pi, 2\pi) \approx (3{,}14;\ 6{,}28)$: $n = 1, 2, 3$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'A altura da maré num cais é $h(t) = 3 + 1{,}5\operatorname{sen}\left(\frac{\pi t}{6}\right)$, em metros, com $t$ em horas e $0 \le t < 24$. Um navio precisa de pelo menos 3,75 m.'
+    itens:
+    - 'Escreva a inequação em $\operatorname{sen}\frac{\pi t}{6}$.'
+    - 'Dê os intervalos de tempo em que o navio pode entrar.'
+    - 'Por quantas horas, no dia, a entrada é possível?'
+    espaco: 62
+    resolucao: |
+      a) $\operatorname{sen}\frac{\pi t}{6} \ge \frac12$.
+      b) $\frac{\pi}{6} \le \frac{\pi t}{6} \le \frac{5\pi}{6}$ ou $\frac{13\pi}{6} \le \frac{\pi t}{6} \le \frac{17\pi}{6}$: $1 \le t \le 5$ ou $13 \le t \le 17$.
+      c) 8 horas.
+    resposta: 'b) $[1, 5]$ e $[13, 17]$; c) 8 h'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere inequações no intervalo $[0, 2\pi)$, salvo aviso. Assinale o que for correto.
+    proposicoes:
+    - '$\cos x > \operatorname{sen}x \iff$ $x \in \left[0, \frac{\pi}{4}\right) \cup \left(\frac{5\pi}{4}, 2\pi\right)$.'
+    - '$\operatorname{sen}x > 0$ e $\cos x < 0 \iff x \in \left(\frac{\pi}{2}, \pi\right)$.'
+    - 'Em $[0, \pi)$, $|\operatorname{tg}x| < 1 \iff x \in \left[0, \frac{\pi}{4}\right) \cup \left(\frac{3\pi}{4}, \pi\right)$.'
+    - '$\operatorname{sen}2x \ge 0 \iff x \in \left[0, \frac{\pi}{2}\right] \cup \left[\pi, \frac{3\pi}{2}\right]$.'
+    - '$\cos x \ge \frac12 \iff x \in \left[\frac{\pi}{3}, \frac{5\pi}{3}\right]$.'
+    - '$2\cos^2 x - 1 < 0 \iff$ $x \in \left(\frac{\pi}{4}, \frac{3\pi}{4}\right) \cup \left(\frac{5\pi}{4}, \frac{7\pi}{4}\right)$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      16) Incorreta: esse é o conjunto de $\cos x \le \frac12$. 32) $2\cos^2 x - 1 = \cos 2x < 0$: $\frac{\pi}{2} < 2x < \frac{3\pi}{2}$ ou $\frac{5\pi}{2} < 2x < \frac{7\pi}{2}$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere a inequação $\operatorname{sen}x + \cos x > 1$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Reescreva-a como $\operatorname{sen}\left(x + \frac{\pi}{4}\right) > \frac{\sqrt2}{2}$.'
+    - 'Resolva-a.'
+    - 'Interprete: o ponto $(\cos x, \operatorname{sen}x)$ fica de que lado da reta $X + Y = 1$?'
+    espaco: 62
+    resolucao: |
+      a) $\operatorname{sen}x + \cos x = \sqrt2\operatorname{sen}\left(x + \frac{\pi}{4}\right)$; divida por $\sqrt2$.
+      b) $\frac{\pi}{4} < x + \frac{\pi}{4} < \frac{3\pi}{4}$: $0 < x < \frac{\pi}{2}$.
+      c) Do lado oposto ao da origem: a corda que liga $(1, 0)$ a $(0, 1)$ corta o arco do 1º quadrante.
+    resposta: 'b) $0 < x < \frac{\pi}{2}$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere a inequação $\dfrac{2\operatorname{sen}x - 1}{\cos x} \ge 0$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Estude o sinal do numerador.'
+    - 'Estude o sinal do denominador.'
+    - 'Dê a solução, usando um quadro de sinais.'
+    espaco: 62
+    resolucao: |
+      a) Positivo em $\left(\frac{\pi}{6}, \frac{5\pi}{6}\right)$, nulo nas pontas e negativo no resto.
+      b) Positivo em $\left[0, \frac{\pi}{2}\right) \cup \left(\frac{3\pi}{2}, 2\pi\right)$, nulo em $\frac{\pi}{2}$ e $\frac{3\pi}{2}$ (excluídos).
+      c) Sinais iguais ou numerador nulo: $\left[\frac{\pi}{6}, \frac{\pi}{2}\right) \cup \left[\frac{5\pi}{6}, \frac{3\pi}{2}\right)$.
+    resposta: 'c) $\left[\frac{\pi}{6}, \frac{\pi}{2}\right) \cup \left[\frac{5\pi}{6}, \frac{3\pi}{2}\right)$'
+
+  - estilo: Fuvest
+    enunciado: |
+      A soma dos comprimentos dos intervalos que formam a solução de $|\cos x| > \frac{\sqrt3}{2}$ em $[0, 2\pi)$ é
+    opcoes: ['$\frac{\pi}{3}$', '$\frac{2\pi}{3}$', '$\frac{\pi}{6}$', '$\pi$', '$\frac{4\pi}{3}$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $\cos x > \frac{\sqrt3}{2}$: $\left[0, \frac{\pi}{6}\right) \cup \left(\frac{11\pi}{6}, 2\pi\right)$, total $\frac{\pi}{3}$; $\cos x < -\frac{\sqrt3}{2}$: $\left(\frac{5\pi}{6}, \frac{7\pi}{6}\right)$, mais $\frac{\pi}{3}$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere a inequação $\cos 2x > \operatorname{sen}x$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Reescreva-a só com $s = \operatorname{sen}x$.'
+    - 'Para que valores de $s$ ela vale?'
+    - 'Dê a solução em $x$.'
+    espaco: 62
+    resolucao: |
+      a) $1 - 2s^2 > s$, ou $2s^2 + s - 1 < 0$.
+      b) Raízes $-1$ e $\frac12$: $-1 < s < \frac12$.
+      c) $\operatorname{sen}x < \frac12$, tirando $x = \frac{3\pi}{2}$: $\left[0, \frac{\pi}{6}\right) \cup \left(\frac{5\pi}{6}, \frac{3\pi}{2}\right) \cup \left(\frac{3\pi}{2}, 2\pi\right)$.
+    resposta: 'c) $\left[0, \frac{\pi}{6}\right) \cup \left(\frac{5\pi}{6}, \frac{3\pi}{2}\right) \cup \left(\frac{3\pi}{2}, 2\pi\right)$'
+
+  - estilo: Fuvest
+    enunciado: 'No ciclo trigonométrico, seja $0 < x < \frac{\pi}{2}$, com $A = (1, 0)$, $P = (\cos x, \operatorname{sen}x)$ e $T = (1, \operatorname{tg}x)$.'
+    itens:
+    - 'Compare as áreas do triângulo OAP, do setor circular OAP e do triângulo OAT.'
+    - 'Conclua que $\operatorname{sen}x < x < \operatorname{tg}x$.'
+    - 'Deduza que $\cos x < \frac{\operatorname{sen}x}{x} < 1$.'
+    espaco: 62
+    resolucao: |
+      a) O triângulo OAP está dentro do setor, que está dentro do triângulo OAT: $\frac{\operatorname{sen}x}{2} < \frac{x}{2} < \frac{\operatorname{tg}x}{2}$.
+      b) Multiplique por 2.
+      c) De $\operatorname{sen}x < x$: $\frac{\operatorname{sen}x}{x} < 1$. De $x < \frac{\operatorname{sen}x}{\cos x}$: $\cos x < \frac{\operatorname{sen}x}{x}$.
+    resposta: 'Ver resolução'
