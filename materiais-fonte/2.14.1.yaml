@@ -1,0 +1,529 @@
+# Aula 2.14.1 — Trigonometria: arcos e ângulos
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: grau e radiano (conversões); comprimento do arco ℓ = α·R (α em radianos); área do setor
+# α·R²/2; ângulo entre os ponteiros do relógio; voltas de rodas, polias e engrenagens; arcos na Terra.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Lembre que $180^\circ = \pi$ rad e que, com $\alpha$ em radianos, o arco mede $\ell = \alpha R$. Quando precisar, use $\pi \approx 3{,}14$. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete as conversões.'
+      itens:
+      - '$30^\circ =$ {{\pi/6}} rad'
+      - '$135^\circ =$ {{3\pi/4}} rad'
+      - '$\frac{5\pi}{3}$ rad $=$ {{300°}}'
+      - '$\frac{7\pi}{6}$ rad $=$ {{210°}}'
+      espaco_item: 8
+      resolucao: |
+        Multiplique os graus por $\frac{\pi}{180}$; para voltar, troque $\pi$ por $180^\circ$.
+      resposta: '$\frac{\pi}{6}$; $\frac{3\pi}{4}$; $300^\circ$; $210^\circ$'
+    - enunciado: 'Associe cada medida em radianos à medida em graus.'
+      esquerda:
+      - '$\frac{\pi}{4}$'
+      - '$\frac{2\pi}{3}$'
+      - '$\frac{5\pi}{6}$'
+      - '$\frac{3\pi}{2}$'
+      - '$\frac{\pi}{9}$'
+      direita:
+      - '$150^\circ$'
+      - '$45^\circ$'
+      - '$20^\circ$'
+      - '$270^\circ$'
+      - '$120^\circ$'
+      resolucao: |
+        Troque $\pi$ por $180^\circ$: $45^\circ$, $120^\circ$, $150^\circ$, $270^\circ$, $20^\circ$.
+      resposta: 'De cima para baixo: 3, 1, 5, 4, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - '1 rad vale cerca de $57{,}3^\circ$.'
+      - '$\pi$ rad $= 360^\circ$.'
+      - 'O comprimento de um arco é $\alpha R$, com $\alpha$ em radianos.'
+      - 'A medida em radianos de um ângulo central não depende do raio.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) $\frac{180^\circ}{\pi}$. (F) $\pi$ rad é meia volta, $180^\circ$. (V) (V) Arco e raio crescem na mesma proporção.
+      resposta: V, F, V, V
+    - enunciado: 'Complete a tabela, em que $R$ é o raio, $\alpha$ o ângulo central e $\ell$ o comprimento do arco.'
+      tabela:
+        cabecalho: ['$R$', '$\alpha$ (rad)', '$\ell$']
+        linhas:
+        - ['$5$', '$2$', '${{10}}$']
+        - ['$12$', '$\frac{\pi}{3}$', '${{4\pi}}$']
+        - ['$4$', '${{3}}$', '$12$']
+        - ['${{6}}$', '$\frac{\pi}{2}$', '$3\pi$']
+      resolucao: |
+        $\ell = \alpha R$: $10$; $4\pi$; $\alpha = \frac{12}{4} = 3$; $R = \frac{3\pi}{\pi/2} = 6$.
+      resposta: '10; $4\pi$; 3; 6'
+    - enunciado: 'O ponteiro dos minutos de um relógio mede 10 cm. Que distância a sua ponta percorre em 20 minutos?'
+      espaco: 8
+      resolucao: |
+        20 min são $\frac13$ de volta: $\alpha = \frac{2\pi}{3}$. $\ell = \frac{2\pi}{3} \cdot 10 = \frac{20\pi}{3} \approx 20{,}9$ cm.
+      resposta: '$\frac{20\pi}{3} \approx 20{,}9$ cm'
+    - enunciado: 'Um arco de 15 cm está numa circunferência de raio 6 cm. Quanto mede o ângulo central, em radianos?'
+      espaco: 8
+      resolucao: |
+        $\alpha = \frac{15}{6} = 2{,}5$ rad.
+      resposta: '2,5 rad'
+    - enunciado: 'Qual o menor ângulo entre os ponteiros de um relógio às 3 h 30 min?'
+      espaco: 8
+      resolucao: |
+        Minutos em $180^\circ$; horas em $90^\circ + 30 \cdot 0{,}5^\circ = 105^\circ$. Diferença: $75^\circ$.
+      resposta: '$75^\circ$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Caio escreveu: "$60^\circ = \frac{\pi}{6}$ rad".
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        $\frac{\pi}{6}$ é $30^\circ$. $60^\circ = 60 \cdot \frac{\pi}{180} = \frac{\pi}{3}$.
+      resposta: '$\frac{\pi}{3}$'
+    - enunciado: 'A roda de uma bicicleta tem raio de 35 cm. Quantas voltas ela dá para percorrer 220 m? Use $\pi \approx 3{,}14$.'
+      espaco: 8
+      resolucao: |
+        Uma volta: $2\pi \cdot 0{,}35 \approx 2{,}2$ m. $\frac{220}{2{,}2} = 100$ voltas.
+      resposta: 'Cerca de 100'
+    - enunciado: 'Qual o menor ângulo entre os ponteiros de um relógio às 2 h 20 min?'
+      espaco: 8
+      resolucao: |
+        Minutos: $120^\circ$. Horas: $60^\circ + 20 \cdot 0{,}5^\circ = 70^\circ$. Diferença: $50^\circ$.
+      resposta: '$50^\circ$'
+    - enunciado: 'Duas cidades estão no mesmo meridiano, com $10^\circ$ de diferença de latitude. O raio da Terra é de cerca de 6 400 km. Complete.'
+      itens:
+      - '$10^\circ$ em radianos: {{\pi/18}}'
+      - 'Distância entre as cidades, pelo meridiano: cerca de {{1\,116}} km'
+      espaco_item: 8
+      resolucao: |
+        $\ell = \frac{\pi}{18} \cdot 6\,400 \approx 0{,}1744 \cdot 6\,400 \approx 1\,116$ km.
+      resposta: '$\frac{\pi}{18}$; cerca de 1 116 km'
+    - enunciado: 'Calcule a área de um setor circular de raio 6 e ângulo central $\frac{\pi}{3}$.'
+      espaco: 8
+      resolucao: |
+        $A = \frac{\alpha R^2}{2} = \frac{\pi}{3} \cdot \frac{36}{2} = 6\pi$.
+      resposta: '$6\pi$'
+    - enunciado: 'Converta $22^\circ 30''$ para radianos.'
+      espaco: 8
+      resolucao: |
+        $22^\circ 30'' = 22{,}5^\circ = \frac{180^\circ}{8}$: $\frac{\pi}{8}$ rad.
+      resposta: '$\frac{\pi}{8}$'
+    - enunciado: 'Um pêndulo de 50 cm oscila, de um extremo ao outro, num ângulo de $36^\circ$. Que distância a ponta percorre numa ida?'
+      espaco: 8
+      resolucao: |
+        $36^\circ = \frac{\pi}{5}$: $\ell = 50 \cdot \frac{\pi}{5} = 10\pi \approx 31{,}4$ cm.
+      resposta: '$10\pi \approx 31{,}4$ cm'
+    - enunciado: 'Duas polias, de raios 10 cm e 25 cm, são ligadas por uma correia. Quantas voltas a maior dá enquanto a menor dá 5?'
+      espaco: 8
+      resolucao: |
+        A correia percorre o mesmo comprimento nas duas: $5 \cdot 2\pi \cdot 10 = n \cdot 2\pi \cdot 25$, $n = 2$.
+      resposta: '2'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que, numa circunferência de raio $R$, um ângulo central de $\alpha$ radianos determina um arco de comprimento $\alpha R$.'
+      espaco: 10
+      resolucao: |
+        O arco é proporcional ao ângulo central: a volta inteira, $2\pi$ rad, dá $2\pi R$. Logo $\frac{\ell}{2\pi R} = \frac{\alpha}{2\pi}$, isto é, $\ell = \alpha R$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que a medida em radianos de um ângulo central não depende do raio da circunferência.'
+      espaco: 10
+      resolucao: |
+        Circunferências concêntricas são semelhantes: com raios $R$ e $kR$, os arcos de um mesmo ângulo medem $\ell$ e $k\ell$. A razão arco/raio, que é a medida em radianos, é a mesma.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, às $h$ horas e $m$ minutos, o ponteiro das horas está a $30h + 0{,}5m$ graus e o dos minutos a $6m$ graus da marca das 12.'
+      espaco: 10
+      resolucao: |
+        O ponteiro das horas dá $360^\circ$ em 12 h: $30^\circ$ por hora e $0{,}5^\circ$ por minuto. O dos minutos dá $360^\circ$ em 60 min: $6^\circ$ por minuto.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que a área de um setor de raio $R$ e arco $\ell$ é $\frac{\ell R}{2}$.'
+      espaco: 10
+      resolucao: |
+        A área é proporcional ao ângulo: $\frac{A}{\pi R^2} = \frac{\alpha}{2\pi}$, logo $A = \frac{\alpha R^2}{2} = \frac{(\alpha R) R}{2} = \frac{\ell R}{2}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, em 12 horas, os ponteiros de um relógio se sobrepõem exatamente 11 vezes.'
+      espaco: 10
+      resolucao: |
+        O dos minutos ganha $6^\circ - 0{,}5^\circ = 5{,}5^\circ$ por minuto sobre o das horas. Eles se encontram a cada $\frac{360}{5{,}5} = \frac{720}{11}$ min. Em 720 min, isso acontece $\frac{720}{720/11} = 11$ vezes.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um ciclista quer saber quantas voltas a roda da sua bicicleta dá num passeio. A roda tem raio de 30 cm e não desliza no chão, de modo que, a cada volta, a bicicleta avança o comprimento da circunferência da roda. O aplicativo marcou um percurso de 1,884 km. Use $\pi \approx 3{,}14$.
+    enunciado: |
+      O número de voltas dadas pela roda foi
+    opcoes: ['$1\,000$', '$500$', '$2\,000$', '$100$', '$3\,140$']
+    correta: A
+    resolucao: |
+      Uma volta: $2 \cdot 3{,}14 \cdot 0{,}3 = 1{,}884$ m. $\frac{1\,884}{1{,}884} = 1\,000$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O arco de $\frac{7\pi}{4}$ rad mede, em graus,
+    opcoes: ['$300^\circ$', '$315^\circ$', '$330^\circ$', '$225^\circ$', '$270^\circ$']
+    correta: B
+    resolucao: |
+      $\frac{7 \cdot 180^\circ}{4} = 315^\circ$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O menor ângulo formado pelos ponteiros de um relógio às 9 h 15 min mede
+    opcoes: ['$180^\circ$.', '$165^\circ$.', '$172{,}5^\circ$.', '$187{,}5^\circ$.']
+    correta: C
+    resolucao: |
+      Horas: $270^\circ + 7{,}5^\circ = 277{,}5^\circ$; minutos: $90^\circ$. Diferença $187{,}5^\circ$; o menor ângulo é $360^\circ - 187{,}5^\circ$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere arcos e ângulos medidos em graus e em radianos. Assinale o que for correto.
+    proposicoes:
+    - '$\frac{\pi}{5}$ rad $= 36^\circ$.'
+    - '1 rad é maior que $57^\circ$.'
+    - 'Em 15 minutos, o ponteiro dos minutos gira $\frac{\pi}{2}$ rad.'
+    - 'Um arco de $60^\circ$ numa circunferência de raio 6 mede $2\pi$.'
+    - '$360^\circ = \pi$ rad.'
+    - 'Em 1 hora, o ponteiro das horas gira $\frac{\pi}{6}$ rad.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      02) $\frac{180^\circ}{\pi} \approx 57{,}3^\circ$. 08) $\frac{\pi}{3} \cdot 6$. 16) Incorreta: $2\pi$ rad. 32) $30^\circ$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Numa pista de atletismo, cada curva é uma semicircunferência. Na prova de 200 m, os atletas correm uma curva inteira, cada um na sua raia. O quadro mostra o raio da curva medido em cada raia. Para compensar, a largada das raias de fora é adiantada. Use $\pi \approx 3{,}14$.
+    tabela:
+      cabecalho: ['Raia', '1', '2', '3', '4']
+      linhas:
+      - ['Raio da curva (m)', '$36{,}8$', '$38{,}0$', '$39{,}2$', '$40{,}4$']
+    enunciado: |
+      Na curva, o percurso da raia 4 é maior que o da raia 1 em, aproximadamente,
+    opcoes: ['$3{,}6$ m', '$7{,}2$ m', '$22{,}6$ m', '$11{,}3$ m', '$36$ m']
+    correta: D
+    resolucao: |
+      Meia volta mede $\pi R$: $\pi(40{,}4 - 36{,}8) = 3{,}6\pi \approx 11{,}3$ m.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre arcos de circunferência.
+    afirmativas:
+    - 'Uma volta completa mede $2\pi$ rad.'
+    - 'Um ângulo central, em radianos, é a razão entre o arco e o raio.'
+    - 'A medida em graus de um arco depende do raio da circunferência.'
+    - '$\frac{3\pi}{2}$ rad $= 270^\circ$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'II e IV, apenas.', 'II, III e IV, apenas.', 'I, II e IV, apenas.']
+    correta: E
+    resolucao: |
+      III. Incorreta: o ângulo central não muda com o raio.
+
+  - estilo: Unesp
+    enunciado: |
+      Um arco de 12 cm está numa circunferência de raio 4 cm. O ângulo central correspondente mede
+    opcoes: ['$3$ rad', '$48$ rad', '$\frac13$ rad', '$3\pi$ rad', '$12\pi$ rad']
+    correta: A
+    resolucao: |
+      $\frac{12}{4} = 3$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      O relógio da figura marca 10 h 10 min.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.6]
+        \draw[ink, line width=1pt] (0,0) circle (2);
+        \foreach \k in {0,...,11} \draw[ink] ({90-30*\k}:1.75) -- ({90-30*\k}:2);
+        \node[font=\scriptsize] at (90:1.45) {12}; \node[font=\scriptsize] at (0:1.45) {3}; \node[font=\scriptsize] at (270:1.45) {6}; \node[font=\scriptsize] at (180:1.45) {9};
+        \draw[roxo, line width=1.4pt] (0,0) -- (30:1.6);
+        \draw[ink, line width=2pt] (0,0) -- (145:1.05);
+        \fill[ink] (0,0) circle (2pt);
+        \end{scope}
+    enunciado: |
+      O menor ângulo entre os ponteiros mede
+    opcoes: ['$120^\circ$.', '$115^\circ$.', '$125^\circ$.', '$110^\circ$.']
+    correta: B
+    resolucao: |
+      Horas: $300^\circ + 5^\circ = 305^\circ$; minutos: $60^\circ$. Diferença $245^\circ$; menor ângulo $115^\circ$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Uma correia liga duas polias, de raios 8 cm e 20 cm. A menor gira a 50 rotações por minuto. A maior gira a
+    opcoes: ['$125$ rpm', '$50$ rpm', '$20$ rpm', '$8$ rpm', '$40$ rpm']
+    correta: C
+    resolucao: |
+      Mesma velocidade da correia: $50 \cdot 8 = n \cdot 20$, $n = 20$.
+
+  - estilo: UFSC
+    enunciado: |
+      Duas cidades estão no mesmo meridiano terrestre, uma a $15^\circ$ de latitude norte e outra a $30^\circ$ de latitude sul. Considere a Terra uma esfera de raio 6 400 km e $\pi \approx 3{,}14$. Assinale o que for correto.
+    proposicoes:
+    - 'A diferença de latitude entre as cidades é de $45^\circ$.'
+    - '$45^\circ$ equivalem a $\frac{\pi}{4}$ rad.'
+    - 'A distância entre elas, pelo meridiano, é $1\,600\pi$ km.'
+    - 'Essa distância é de cerca de 5 024 km.'
+    - 'O arco entre elas é $\frac18$ da circunferência do meridiano.'
+    - 'Essa distância é de cerca de 2 512 km.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $15^\circ + 30^\circ$. 04) $\frac{\pi}{4} \cdot 6\,400$. 08) $1\,600 \cdot 3{,}14$. 16) $\frac{45}{360}$. 32) Incorreta.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      O relógio de uma torre tem ponteiro dos minutos com 1,5 m de comprimento. Um turista observou o relógio durante a visita a uma igreja, das 10 h 05 min às 10 h 45 min, e ficou curioso para saber quanto a ponta desse ponteiro andou nesse tempo. Use $\pi \approx 3{,}14$.
+    enunciado: |
+      A ponta do ponteiro dos minutos percorreu, aproximadamente,
+    opcoes: ['$6{,}28$ m', '$3{,}14$ m', '$9{,}42$ m', '$4{,}71$ m', '$1{,}5$ m']
+    correta: A
+    resolucao: |
+      40 min são $\frac23$ de volta: $\alpha = \frac{4\pi}{3}$. $\ell = \frac{4\pi}{3} \cdot 1{,}5 = 2\pi \approx 6{,}28$ m.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$210^\circ = \frac{7\pi}{6}$ rad.'
+    - '$\frac{5\pi}{4}$ rad $= 240^\circ$.'
+    - '1 rad é o ângulo central de um arco de comprimento igual ao raio.'
+    - '$\frac{\pi}{12}$ rad $= 15^\circ$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      (V) (F) $225^\circ$. (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Num pivô central de irrigação, uma tubulação de 400 m gira em torno de uma das extremidades, molhando uma área circular. A figura mostra a posição da tubulação no início e depois de uma hora, quando ela tinha girado $60^\circ$. O agricultor quer saber quanto a ponta da tubulação andou nesse tempo. Use $\pi \approx 3{,}14$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.55]
+        \fill[lilas] (0,0) -- (3,0) arc (0:60:3) -- cycle;
+        \draw[mudo, dashed] (0,0) circle (3);
+        \draw[roxo, line width=1.1pt] (0,0) -- (3,0);
+        \draw[roxo, line width=1.1pt] (0,0) -- (60:3);
+        \draw[ink, line width=1pt] (3,0) arc (0:60:3);
+        \fill[ink] (0,0) circle (2pt);
+        \node[below, font=\small] at (1.5,0) {$400$ m};
+        \node[roxo, font=\scriptsize] at (.75,.42) {$60^\circ$};
+        \end{scope}
+    enunciado: |
+      A ponta da tubulação percorreu, aproximadamente,
+    opcoes: ['$200$ m', '$400$ m', '$1\,256$ m', '$419$ m', '$628$ m']
+    correta: D
+    resolucao: |
+      $\ell = \frac{\pi}{3} \cdot 400 \approx 419$ m.
+
+  - estilo: Unesp
+    enunciado: |
+      A área de um setor circular de raio 10 e ângulo central de $72^\circ$ é
+    opcoes: ['$40\pi$', '$20\pi$', '$10\pi$', '$72\pi$', '$5\pi$']
+    correta: B
+    resolucao: |
+      $72^\circ = \frac{2\pi}{5}$: $A = \frac{2\pi}{5} \cdot \frac{100}{2} = 20\pi$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere os ponteiros de um relógio comum. Assinale o que for correto.
+    proposicoes:
+    - 'Às 3 h, o menor ângulo entre os ponteiros é $90^\circ$.'
+    - 'Às 6 h, o ângulo entre os ponteiros é $180^\circ$.'
+    - 'O ponteiro das horas gira $0{,}5^\circ$ por minuto.'
+    - 'O ponteiro dos minutos gira $6^\circ$ por minuto.'
+    - 'Às 3 h 15 min, os ponteiros estão sobrepostos.'
+    - 'Às 12 h 30 min, o menor ângulo entre os ponteiros é $165^\circ$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      16) Incorreta: o das horas já andou $7{,}5^\circ$ além do 3. 32) Minutos em $180^\circ$, horas em $15^\circ$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      As rodas de um carro têm raio de 40 cm e giram a 300 rotações por minuto, sem deslizar. A velocidade do carro é de cerca de
+    opcoes: ['$45$ km/h.', '$75$ km/h.', '$25$ km/h.', '$90$ km/h.']
+    correta: A
+    resolucao: |
+      Por minuto: $300 \cdot 2\pi \cdot 0{,}4 = 240\pi \approx 754$ m. Por hora: $\approx 45\,200$ m.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Uma roda-gigante tem 60 m de diâmetro e 24 cabines presas na circunferência externa, igualmente espaçadas. A equipe de manutenção precisa saber a distância, ao longo da roda, entre duas cabines vizinhas e o ângulo central entre elas, para instalar novos sensores. Use $\pi \approx 3{,}14$.
+    enunciado: |
+      A distância, ao longo da circunferência, entre duas cabines vizinhas é de, aproximadamente,
+    opcoes: ['$2{,}5$ m', '$15$ m', '$7{,}85$ m', '$31{,}4$ m', '$3{,}9$ m']
+    correta: C
+    resolucao: |
+      $\frac{2\pi \cdot 30}{24} = 2{,}5\pi \approx 7{,}85$ m.
+
+  - estilo: Unesp
+    enunciado: |
+      O ângulo central entre duas cabines vizinhas mede
+    opcoes: ['$\frac{\pi}{6}$ rad', '$\frac{\pi}{24}$ rad', '$\frac{\pi}{3}$ rad', '$\frac{\pi}{12}$ rad', '$2\pi$ rad']
+    correta: D
+    resolucao: |
+      $\frac{2\pi}{24} = \frac{\pi}{12}$ ($15^\circ$).
+
+  - estilo: Fuvest
+    enunciado: |
+      O menor ângulo formado pelos ponteiros de um relógio às 7 h 20 min mede
+    opcoes: ['$80^\circ$', '$110^\circ$', '$120^\circ$', '$90^\circ$', '$100^\circ$']
+    correta: E
+    resolucao: |
+      Horas: $210^\circ + 10^\circ = 220^\circ$; minutos: $120^\circ$.
+
+  - estilo: Unesp
+    texto: |
+      Na circunferência de centro O e raio 6 da figura, o arco AB destacado mede $4\pi$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.5]
+        \draw[mudo] (0,0) circle (2.6);
+        \draw[roxo, line width=1.4pt] (20:2.6) arc (20:140:2.6);
+        \draw[ink] (0,0) -- (20:2.6); \draw[ink] (0,0) -- (140:2.6);
+        \fill[ink] (0,0) circle (1.5pt) node[below, font=\scriptsize] {O};
+        \fill[ink] (20:2.6) circle (1.5pt) node[right, font=\small] {A};
+        \fill[ink] (140:2.6) circle (1.5pt) node[left, font=\small] {B};
+        \node[font=\small] at (80:2.15) {$4\pi$};
+        \end{scope}
+    enunciado: |
+      O ângulo central $A\hat{O}B$ mede
+    opcoes: ['$60^\circ$', '$120^\circ$', '$90^\circ$', '$150^\circ$', '$240^\circ$']
+    correta: B
+    resolucao: |
+      $\alpha = \frac{4\pi}{6} = \frac{2\pi}{3}$ rad $= 120^\circ$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Ao meio-dia, os dois ponteiros de um relógio estão sobrepostos.'
+    itens:
+    - 'Quantos graus por minuto o ponteiro dos minutos ganha sobre o das horas?'
+    - 'Depois de quanto tempo os ponteiros voltam a se sobrepor pela primeira vez? Dê em horas, minutos e segundos (aproximados).'
+    - 'Depois de quanto tempo, a partir do meio-dia, eles ficam opostos ($180^\circ$) pela primeira vez?'
+    espaco: 62
+    resolucao: |
+      a) $6^\circ - 0{,}5^\circ = 5{,}5^\circ$ por minuto.
+      b) $\frac{360}{5{,}5} = \frac{720}{11} \approx 65{,}45$ min: cerca de 1 h 5 min 27 s.
+      c) $\frac{180}{5{,}5} = \frac{360}{11} \approx 32{,}7$ min.
+    resposta: 'b) $\frac{720}{11}$ min; c) $\frac{360}{11}$ min'
+
+  - estilo: Unicamp
+    enunciado: 'A Terra gira uma vez em torno do seu eixo a cada 24 horas. Considere o raio da Terra igual a 6 400 km e $\pi \approx 3{,}14$.'
+    itens:
+    - 'Qual a velocidade angular da Terra, em radianos por hora?'
+    - 'Com que velocidade, em km/h, se move um ponto do equador por causa dessa rotação?'
+    - 'E um ponto a $60^\circ$ de latitude, cuja circunferência de giro tem raio $6\,400\cos 60^\circ$?'
+    espaco: 62
+    resolucao: |
+      a) $\frac{2\pi}{24} = \frac{\pi}{12}$ rad/h.
+      b) $\frac{\pi}{12} \cdot 6\,400 \approx 1\,675$ km/h.
+      c) Raio 3 200 km: metade, cerca de 837 km/h.
+    resposta: 'a) $\frac{\pi}{12}$ rad/h; b) $\approx 1\,675$ km/h; c) $\approx 837$ km/h'
+
+  - estilo: ITA
+    enunciado: |
+      Numa bicicleta, a coroa (presa ao pedal) tem 48 dentes e a catraca (presa à roda traseira) tem 16 dentes. A roda tem raio de 0,35 m. A cada volta completa do pedal, a bicicleta avança, aproximadamente,
+    opcoes: ['$6{,}6$ m', '$2{,}2$ m', '$4{,}4$ m', '$13{,}2$ m', '$3{,}3$ m']
+    correta: A
+    espaco: 22
+    resolucao: |
+      A corrente passa 48 dentes: a catraca dá 3 voltas, e a roda também. $3 \cdot 2\pi \cdot 0{,}35 = 2{,}1\pi \approx 6{,}6$ m.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Um leque aberto tem a forma de uma coroa circular de ângulo $120^\circ$, com raio externo 25 cm e raio interno 10 cm (a parte do tecido).'
+    itens:
+    - 'Calcule a área do setor de raio 25 cm e ângulo $120^\circ$.'
+    - 'Calcule a área do setor de raio 10 cm e mesmo ângulo.'
+    - 'Calcule a área do tecido do leque.'
+    espaco: 62
+    resolucao: |
+      a) $\frac{2\pi}{3} \cdot \frac{625}{2} = \frac{625\pi}{3}$ cm².
+      b) $\frac{2\pi}{3} \cdot \frac{100}{2} = \frac{100\pi}{3}$ cm².
+      c) $\frac{525\pi}{3} = 175\pi \approx 550$ cm².
+    resposta: 'c) $175\pi$ cm²'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - '$1^\circ = \frac{\pi}{180}$ rad.'
+    - 'Um arco de comprimento igual ao diâmetro corresponde a um ângulo central de 2 rad.'
+    - 'Um setor de ângulo $\theta$ (em radianos) e raio $R$ tem área $\frac{\theta R^2}{2}$.'
+    - 'Em 12 horas, os ponteiros de um relógio se sobrepõem 11 vezes.'
+    - 'O ponteiro das horas gira $30^\circ$ por minuto.'
+    - 'Um ângulo de 2,5 rad é maior que $140^\circ$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      02) $\frac{2R}{R}$. 08) A cada $\frac{720}{11}$ min. 16) Incorreta: $30^\circ$ por hora. 32) $2{,}5 \cdot 57{,}3^\circ \approx 143^\circ$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Eratóstenes estimou o tamanho da Terra: ao meio-dia do solstício, em Siena, o Sol estava a pino; em Alexandria, 800 km ao norte no mesmo meridiano, os raios faziam $7{,}2^\circ$ com a vertical.'
+    itens:
+    - 'Que fração da circunferência da Terra é o arco de $7{,}2^\circ$?'
+    - 'Estime a circunferência da Terra.'
+    - 'Estime o raio da Terra. Use $\pi \approx 3{,}14$.'
+    espaco: 62
+    resolucao: |
+      a) $\frac{7{,}2}{360} = \frac{1}{50}$.
+      b) $50 \cdot 800 = 40\,000$ km.
+      c) $\frac{40\,000}{2 \cdot 3{,}14} \approx 6\,369$ km.
+    resposta: 'b) 40 000 km; c) cerca de 6 370 km'
+
+  - estilo: Unicamp
+    enunciado: 'Um motor tem uma polia de raio 6 cm que gira a 1 500 rpm e move, por uma correia, uma polia de raio 15 cm.'
+    itens:
+    - 'Quantas rotações por minuto dá a polia maior?'
+    - 'Qual a velocidade da correia, em metros por minuto? Use $\pi \approx 3{,}14$.'
+    - 'Qual a velocidade angular da polia maior, em rad/s?'
+    espaco: 62
+    resolucao: |
+      a) $1\,500 \cdot \frac{6}{15} = 600$ rpm.
+      b) $1\,500 \cdot 2\pi \cdot 0{,}06 = 180\pi \approx 565$ m/min.
+      c) $600 \cdot \frac{2\pi}{60} = 20\pi$ rad/s.
+    resposta: 'a) 600 rpm; b) $\approx 565$ m/min; c) $20\pi$ rad/s'
+
+  - estilo: Fuvest
+    enunciado: |
+      Numa circunferência de raio 9, uma corda tem comprimento igual ao raio. O menor arco determinado por ela mede
+    opcoes: ['$9\pi$', '$3\pi$', '$\pi$', '$6\pi$', '$9$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      Corda e dois raios formam um triângulo equilátero: ângulo central $\frac{\pi}{3}$. Arco $= \frac{\pi}{3} \cdot 9 = 3\pi$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Às $h$ horas e $m$ minutos, o ângulo entre os ponteiros é $|30h - 5{,}5m|$ (ou $360^\circ$ menos isso).'
+    itens:
+    - 'Justifique a fórmula.'
+    - 'Qual o ângulo às 2 h em ponto?'
+    - 'Entre 2 h e 3 h, em que instante os ponteiros formam $90^\circ$ (fora as 3 h em ponto)?'
+    espaco: 62
+    resolucao: |
+      a) Horas em $30h + 0{,}5m$, minutos em $6m$: diferença $30h - 5{,}5m$.
+      b) $60^\circ$.
+      c) $|60 - 5{,}5m| = 90$: $m = \frac{300}{11} \approx 27{,}3$ min, cerca de 2 h 27 min 16 s.
+    resposta: 'b) $60^\circ$; c) $\frac{300}{11}$ min depois das 2 h'
+
+  - estilo: Fuvest
+    enunciado: 'Uma roda-gigante de raio 30 m dá uma volta completa a cada 20 minutos.'
+    itens:
+    - 'Qual a velocidade angular, em rad/min?'
+    - 'Qual a velocidade de uma cabine, em m/min?'
+    - 'Que distância uma cabine percorre em 7 minutos? Use $\pi \approx 3{,}14$.'
+    espaco: 62
+    resolucao: |
+      a) $\frac{2\pi}{20} = \frac{\pi}{10}$ rad/min.
+      b) $\frac{\pi}{10} \cdot 30 = 3\pi \approx 9{,}4$ m/min.
+      c) $7 \cdot 3\pi = 21\pi \approx 66$ m.
+    resposta: 'a) $\frac{\pi}{10}$; b) $3\pi$ m/min; c) $\approx 66$ m'
