@@ -1,0 +1,528 @@
+# Aula 2.17.1 — Trigonometria: adição e subtração de arcos
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: sen(a ± b), cos(a ± b), tg(a ± b); valores de 15°, 75°, 105°, 165°; razões de a ± b a partir de
+# a e b com quadrantes; ângulo entre retas e ângulos de visão; a sen x + b cos x como uma só senoide; identidades.
+# Arco duplo e arco metade ficam para a aula 2.17.2.
+padrao: 4
+
+fixacao:
+  intro: 'Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Fórmulas: $\operatorname{sen}(a \pm b) = \operatorname{sen}a\cos b \pm \cos a\operatorname{sen}b$ e $\cos(a \pm b) = \cos a\cos b \mp \operatorname{sen}a\operatorname{sen}b$. O gabarito resolvido está no final.'
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Use as fórmulas de adição para completar.'
+      itens:
+      - '$\operatorname{sen}(x + 90^\circ) =$ {{\cos x}}'
+      - '$\cos(x + 90^\circ) =$ {{-\operatorname{sen}x}}'
+      - '$\operatorname{sen}(x + 180^\circ) =$ {{-\operatorname{sen}x}}'
+      - '$\cos(x - 90^\circ) =$ {{\operatorname{sen}x}}'
+      espaco_item: 8
+      resolucao: |
+        $\operatorname{sen}x \cdot 0 + \cos x \cdot 1$; $\cos x \cdot 0 - \operatorname{sen}x \cdot 1$; $\operatorname{sen}x \cdot (-1) + \cos x \cdot 0$; $\cos x \cdot 0 + \operatorname{sen}x \cdot 1$.
+      resposta: '$\cos x$; $-\operatorname{sen}x$; $-\operatorname{sen}x$; $\operatorname{sen}x$'
+    - enunciado: 'Associe cada expressão ao seu valor.'
+      esquerda:
+      - '$\operatorname{sen}20^\circ\cos 10^\circ + \cos 20^\circ\operatorname{sen}10^\circ$'
+      - '$\cos 70^\circ\cos 20^\circ - \operatorname{sen}70^\circ\operatorname{sen}20^\circ$'
+      - '$\operatorname{sen}80^\circ\cos 20^\circ - \cos 80^\circ\operatorname{sen}20^\circ$'
+      - '$\cos 100^\circ\cos 55^\circ + \operatorname{sen}100^\circ\operatorname{sen}55^\circ$'
+      - '$\operatorname{sen}100^\circ\cos 10^\circ - \cos 100^\circ\operatorname{sen}10^\circ$'
+      direita:
+      - '$\frac{\sqrt2}{2}$'
+      - '$\frac12$'
+      - '$1$'
+      - '$0$'
+      - '$\frac{\sqrt3}{2}$'
+      resolucao: |
+        $\operatorname{sen}30^\circ$; $\cos 90^\circ$; $\operatorname{sen}60^\circ$; $\cos 45^\circ$; $\operatorname{sen}90^\circ$.
+      resposta: 'De cima para baixo: 4, 1, 5, 2, 3'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso), para quaisquer arcos.'
+      afirmacoes:
+      - '$\operatorname{sen}(a + b) = \operatorname{sen}a + \operatorname{sen}b$.'
+      - '$\cos(a - b) = \cos(b - a)$.'
+      - '$\operatorname{sen}(a - b) = -\operatorname{sen}(b - a)$.'
+      - '$\cos(a + b) = \cos a\cos b + \operatorname{sen}a\operatorname{sen}b$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (F) Com $a = b = 90^\circ$: $0 \ne 2$. (V) O cosseno é par. (V) O seno é ímpar. (F) O sinal do meio é $-$.
+      resposta: F, V, V, F
+    - enunciado: 'Complete a tabela usando a decomposição indicada.'
+      tabela:
+        cabecalho: ['Arco', 'Decomposição', '$\operatorname{sen}$', '$\cos$']
+        linhas:
+        - ['$15^\circ$', '$45^\circ - 30^\circ$', '${{(\sqrt6-\sqrt2)/4}}$', '${{(\sqrt6+\sqrt2)/4}}$']
+        - ['$105^\circ$', '$60^\circ + 45^\circ$', '${{(\sqrt6+\sqrt2)/4}}$', '${{(\sqrt2-\sqrt6)/4}}$']
+        - ['$165^\circ$', '$120^\circ + 45^\circ$', '${{(\sqrt6-\sqrt2)/4}}$', '${{-(\sqrt6+\sqrt2)/4}}$']
+      resolucao: |
+        Por exemplo, $\cos 105^\circ = \frac12 \cdot \frac{\sqrt2}{2} - \frac{\sqrt3}{2} \cdot \frac{\sqrt2}{2} = \frac{\sqrt2 - \sqrt6}{4}$. Em $165^\circ$, use $\operatorname{sen}120^\circ = \frac{\sqrt3}{2}$ e $\cos 120^\circ = -\frac12$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Calcule $\cos 75^\circ$.'
+      espaco: 8
+      resolucao: |
+        $\cos(45^\circ + 30^\circ) = \frac{\sqrt2}{2} \cdot \frac{\sqrt3}{2} - \frac{\sqrt2}{2} \cdot \frac12 = \frac{\sqrt6 - \sqrt2}{4}$.
+      resposta: '$\frac{\sqrt6 - \sqrt2}{4}$'
+    - enunciado: 'Calcule $\operatorname{tg}15^\circ$ usando $\operatorname{tg}(45^\circ - 30^\circ)$.'
+      espaco: 10
+      resolucao: |
+        $\frac{1 - \frac{\sqrt3}{3}}{1 + \frac{\sqrt3}{3}} = \frac{3 - \sqrt3}{3 + \sqrt3} = \frac{(3 - \sqrt3)^2}{6} = \frac{12 - 6\sqrt3}{6} = 2 - \sqrt3$.
+      resposta: '$2 - \sqrt3$'
+    - enunciado: 'Simplifique $\operatorname{sen}(x + 30^\circ) - \operatorname{sen}(x - 30^\circ)$.'
+      espaco: 8
+      resolucao: |
+        Os termos $\operatorname{sen}x\cos 30^\circ$ se cancelam: sobra $2\cos x\operatorname{sen}30^\circ = \cos x$.
+      resposta: '$\cos x$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Gil escreveu: $\cos 75^\circ = \cos 45^\circ + \cos 30^\circ = \frac{\sqrt2 + \sqrt3}{2}$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        O cosseno da soma não é a soma dos cossenos (o resultado passa de 1, o que é impossível). Pela fórmula, $\cos 75^\circ = \frac{\sqrt6 - \sqrt2}{4}$.
+      resposta: '$\frac{\sqrt6 - \sqrt2}{4}$'
+    - enunciado: 'Os arcos $a$ e $b$ são do 1º quadrante, com $\operatorname{sen}a = \frac35$ e $\cos b = \frac{5}{13}$. Calcule $\operatorname{sen}(a + b)$ e $\cos(a + b)$.'
+      espaco: 12
+      resolucao: |
+        $\cos a = \frac45$ e $\operatorname{sen}b = \frac{12}{13}$. $\operatorname{sen}(a + b) = \frac{15}{65} + \frac{48}{65} = \frac{63}{65}$; $\cos(a + b) = \frac{20}{65} - \frac{36}{65} = -\frac{16}{65}$.
+      resposta: '$\frac{63}{65}$ e $-\frac{16}{65}$'
+    - enunciado: 'Sabendo que $\operatorname{tg}a = 2$ e $\operatorname{tg}b = 3$, calcule $\operatorname{tg}(a + b)$.'
+      espaco: 8
+      resolucao: |
+        $\frac{2 + 3}{1 - 6} = -1$.
+      resposta: '$-1$'
+    - enunciado: 'Os arcos $a$ e $b$ têm $\operatorname{sen}a = 0{,}6$, $\cos a = 0{,}8$, $\operatorname{sen}b = 0{,}8$ e $\cos b = 0{,}6$. Complete.'
+      itens:
+      - '$\operatorname{sen}(a + b) =$ {{1}}'
+      - '$\cos(a + b) =$ {{0}}'
+      - '$\operatorname{sen}(a - b) =$ {{-0{,}28}}'
+      espaco_item: 8
+      resolucao: |
+        $0{,}36 + 0{,}64$; $0{,}48 - 0{,}48$; $0{,}36 - 0{,}64$.
+      resposta: '1; 0; $-0{,}28$'
+    - enunciado: 'Simplifique $\operatorname{sen}(a + b) + \operatorname{sen}(a - b)$.'
+      espaco: 8
+      resolucao: |
+        Os termos $\cos a\operatorname{sen}b$ se cancelam: $2\operatorname{sen}a\cos b$.
+      resposta: '$2\operatorname{sen}a\cos b$'
+    - enunciado: 'Calcule $\operatorname{sen}105^\circ \cdot \cos 15^\circ$.'
+      espaco: 10
+      resolucao: |
+        Os dois valem $\frac{\sqrt6 + \sqrt2}{4}$: $\frac{(\sqrt6 + \sqrt2)^2}{16} = \frac{8 + 4\sqrt3}{16} = \frac{2 + \sqrt3}{4}$.
+      resposta: '$\frac{2 + \sqrt3}{4}$'
+    - enunciado: 'Calcule $\operatorname{tg}105^\circ$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{tg}(60^\circ + 45^\circ) = \frac{\sqrt3 + 1}{1 - \sqrt3} = \frac{(\sqrt3 + 1)^2}{1 - 3} = -\frac{4 + 2\sqrt3}{2} = -2 - \sqrt3$.
+      resposta: '$-2 - \sqrt3$'
+    - enunciado: 'Simplifique $\cos(x + y)\cos y + \operatorname{sen}(x + y)\operatorname{sen}y$.'
+      espaco: 8
+      resolucao: |
+        É $\cos\big((x + y) - y\big) = \cos x$.
+      resposta: '$\cos x$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'A partir da fórmula de $\operatorname{sen}(a + b)$, prove a de $\operatorname{sen}(a - b)$.'
+      espaco: 10
+      resolucao: |
+        Troque $b$ por $-b$: $\cos(-b) = \cos b$ e $\operatorname{sen}(-b) = -\operatorname{sen}b$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{tg}(a + b) = \frac{\operatorname{tg}a + \operatorname{tg}b}{1 - \operatorname{tg}a\operatorname{tg}b}$, quando as tangentes existem.'
+      espaco: 10
+      resolucao: |
+        $\frac{\operatorname{sen}a\cos b + \cos a\operatorname{sen}b}{\cos a\cos b - \operatorname{sen}a\operatorname{sen}b}$; divida numerador e denominador por $\cos a\cos b$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}(a + b)\operatorname{sen}(a - b) = \operatorname{sen}^2 a - \operatorname{sen}^2 b$.'
+      espaco: 10
+      resolucao: |
+        O produto é $\operatorname{sen}^2 a\cos^2 b - \cos^2 a\operatorname{sen}^2 b = \operatorname{sen}^2 a(1 - \operatorname{sen}^2 b) - (1 - \operatorname{sen}^2 a)\operatorname{sen}^2 b = \operatorname{sen}^2 a - \operatorname{sen}^2 b$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\cos(a + b) + \cos(a - b) = 2\cos a\cos b$.'
+      espaco: 10
+      resolucao: |
+        Some as duas fórmulas: os termos $\operatorname{sen}a\operatorname{sen}b$ se cancelam.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, se $a + b = 45^\circ$, então $(1 + \operatorname{tg}a)(1 + \operatorname{tg}b) = 2$.'
+      espaco: 10
+      resolucao: |
+        $1 = \operatorname{tg}45^\circ = \frac{\operatorname{tg}a + \operatorname{tg}b}{1 - \operatorname{tg}a\operatorname{tg}b}$ dá $\operatorname{tg}a + \operatorname{tg}b + \operatorname{tg}a\operatorname{tg}b = 1$. Somando 1: $(1 + \operatorname{tg}a)(1 + \operatorname{tg}b) = 2$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um robô de limpeza se move sobre uma pista circular de raio 1 m, com centro na origem. Ele parte do ponto $(1, 0)$, gira $45^\circ$ no sentido anti-horário, para e depois gira mais $30^\circ$ no mesmo sentido. A sua abscissa final, em metros, é o cosseno do ângulo total girado, e o técnico precisa desse valor exato.
+    enunciado: |
+      A abscissa final do robô é
+    opcoes: ['$\frac{\sqrt6 - \sqrt2}{4}$', '$\frac{\sqrt6 + \sqrt2}{4}$', '$\frac{\sqrt2 + \sqrt3}{2}$', '$\frac{\sqrt3 - 1}{2}$', '$\frac14$']
+    correta: A
+    resolucao: |
+      $\cos 75^\circ = \cos 45^\circ\cos 30^\circ - \operatorname{sen}45^\circ\operatorname{sen}30^\circ = \frac{\sqrt6 - \sqrt2}{4}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\operatorname{sen}15^\circ$ é
+    opcoes: ['$\frac{\sqrt6 + \sqrt2}{4}$', '$\frac{\sqrt6 - \sqrt2}{4}$', '$\frac{\sqrt3 - 1}{2}$', '$\frac{\sqrt2 - 1}{2}$', '$\frac14$']
+    correta: B
+    resolucao: |
+      $\operatorname{sen}(45^\circ - 30^\circ) = \frac{\sqrt2}{2} \cdot \frac{\sqrt3}{2} - \frac{\sqrt2}{2} \cdot \frac12$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A expressão $\cos(x - y)\cos y - \operatorname{sen}(x - y)\operatorname{sen}y$ é igual a
+    opcoes: ['$\operatorname{sen}x$.', '$\cos y$.', '$\cos x$.', '$\cos(x - 2y)$.']
+    correta: C
+    resolucao: |
+      É $\cos\big((x - y) + y\big) = \cos x$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere as fórmulas de adição de arcos. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}(a + b) = \operatorname{sen}a\cos b + \cos a\operatorname{sen}b$.'
+    - '$\cos(a - b) = \cos a\cos b + \operatorname{sen}a\operatorname{sen}b$.'
+    - '$\operatorname{sen}\left(\frac{\pi}{2} - x\right) = \cos x$, como caso particular da fórmula do seno da diferença.'
+    - '$\cos 15^\circ = \frac{\sqrt6 + \sqrt2}{4}$.'
+    - '$\operatorname{sen}(a + b) = \operatorname{sen}a + \operatorname{sen}b$ para quaisquer $a$ e $b$.'
+    - '$\operatorname{tg}75^\circ = 2 + \sqrt3$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      04) $1 \cdot \cos x - 0 \cdot \operatorname{sen}x$. 16) Incorreta: com $a = b = 90^\circ$, dá $0 \ne 2$. 32) $\frac{1 + \frac{\sqrt3}{3}}{1 - \frac{\sqrt3}{3}} = 2 + \sqrt3$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Para calcular a área de um terreno triangular, um engenheiro precisa do seno de $105^\circ$. Ele não tem calculadora, mas sabe que $105^\circ = 60^\circ + 45^\circ$ e tem o quadro abaixo, com valores aproximados de seno e cosseno de alguns ângulos notáveis.
+    tabela:
+      cabecalho: ['Ângulo', '$30^\circ$', '$45^\circ$', '$60^\circ$']
+      linhas:
+      - ['seno', '$0{,}50$', '$0{,}71$', '$0{,}87$']
+      - ['cosseno', '$0{,}87$', '$0{,}71$', '$0{,}50$']
+    enunciado: |
+      O valor aproximado de $\operatorname{sen}105^\circ$ que ele obtém é
+    opcoes: ['$0{,}26$', '$1{,}58$', '$0{,}71$', '$0{,}97$', '$0{,}62$']
+    correta: D
+    resolucao: |
+      $0{,}87 \cdot 0{,}71 + 0{,}50 \cdot 0{,}71 = 0{,}6177 + 0{,}355 \approx 0{,}97$.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, para arcos em que as razões existem.
+    afirmativas:
+    - '$\cos(a + b) = \cos a\cos b - \operatorname{sen}a\operatorname{sen}b$.'
+    - '$\operatorname{sen}(a + b) = \operatorname{sen}a\cos b - \cos a\operatorname{sen}b$.'
+    - '$\operatorname{tg}(a - b) = \frac{\operatorname{tg}a - \operatorname{tg}b}{1 + \operatorname{tg}a\operatorname{tg}b}$.'
+    - '$\cos(a - b) = \cos(b - a)$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      II. Incorreta: no seno da soma, o sinal do meio é $+$.
+
+  - estilo: Unesp
+    enunciado: |
+      Se $\operatorname{tg}a = \frac12$ e $\operatorname{tg}b = \frac13$, então $\operatorname{tg}(a + b)$ vale
+    opcoes: ['$1$', '$\frac56$', '$\frac57$', '$-1$', '$\frac65$']
+    correta: A
+    resolucao: |
+      $\frac{\frac56}{1 - \frac16} = 1$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na malha quadriculada da figura, os pontos são $O = (0, 0)$, $P = (3, 1)$ e $Q = (1, 2)$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.75]
+        \draw[mudo!50, very thin] (0,0) grid (4,3);
+        \draw[ink, line width=.9pt] (0,0) -- (3,1); \draw[ink, line width=.9pt] (0,0) -- (1,2);
+        \fill[roxo] (3,1) circle (2.2pt) node[right, font=\small] {P};
+        \fill[roxo] (1,2) circle (2.2pt) node[above, font=\small] {Q};
+        \fill[roxo] (0,0) circle (2.2pt) node[below left, font=\small] {O};
+        \end{scope}
+    enunciado: |
+      O ângulo POQ mede
+    opcoes: ['$30^\circ$.', '$45^\circ$.', '$60^\circ$.', '$75^\circ$.']
+    correta: B
+    resolucao: |
+      As retas OP e OQ fazem com o eixo ângulos de tangentes $\frac13$ e 2. $\operatorname{tg}\theta = \frac{2 - \frac13}{1 + \frac23} = 1$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\operatorname{sen}a = \frac45$, com $a$ no 2º quadrante, e $\cos b = \frac{12}{13}$, com $b$ no 1º quadrante, então $\operatorname{sen}(a + b)$ vale
+    opcoes: ['$\frac{63}{65}$', '$-\frac{33}{65}$', '$\frac{33}{65}$', '$\frac{16}{65}$', '$-\frac{63}{65}$']
+    correta: C
+    resolucao: |
+      $\cos a = -\frac35$ e $\operatorname{sen}b = \frac{5}{13}$: $\frac45 \cdot \frac{12}{13} - \frac35 \cdot \frac{5}{13} = \frac{48 - 15}{65}$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere ângulos agudos $a$ e $b$ com $\operatorname{tg}a = \frac12$ e $\operatorname{tg}b = \frac13$. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{tg}(a + b) = 1$.'
+    - '$a + b = 45^\circ$.'
+    - '$\operatorname{tg}(a - b) = \frac17$.'
+    - '$\operatorname{sen}(a + b) = \frac{\sqrt2}{2}$.'
+    - '$(1 + \operatorname{tg}a)(1 + \operatorname{tg}b) = 2$.'
+    - '$\operatorname{tg}(a + b) = \operatorname{tg}a + \operatorname{tg}b$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $\frac{5/6}{5/6}$. 02) $a + b$ está entre $0^\circ$ e $180^\circ$ e tem tangente 1. 04) $\frac{1/6}{7/6}$. 16) $\frac32 \cdot \frac43$. 32) Incorreta: $\frac56 \ne 1$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Dois alto-falantes emitem sinais que, num certo ponto, são descritos por $y_1 = \operatorname{sen}t$ e $y_2 = \cos t$. O sinal ouvido é a soma $y = \operatorname{sen}t + \cos t$. Usando a fórmula do seno da soma, um técnico escreveu $y = \sqrt2\operatorname{sen}(t + 45^\circ)$, e assim descobriu a amplitude do sinal resultante, isto é, o maior valor que $y$ atinge.
+    enunciado: |
+      A amplitude do sinal resultante é
+    opcoes: ['$\sqrt2$', '$2$', '$1$', '$\frac{\sqrt2}{2}$', '$\frac12$']
+    correta: A
+    resolucao: |
+      $\sqrt2\operatorname{sen}(t + 45^\circ) = \sqrt2\left(\frac{\sqrt2}{2}\operatorname{sen}t + \frac{\sqrt2}{2}\cos t\right) = \operatorname{sen}t + \cos t$. O maior valor é $\sqrt2$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$\operatorname{sen}105^\circ = \frac{\sqrt6 + \sqrt2}{4}$.'
+    - '$\cos 105^\circ = \frac{\sqrt6 + \sqrt2}{4}$.'
+    - '$\operatorname{tg}15^\circ = 2 - \sqrt3$.'
+    - '$\operatorname{sen}(x + 60^\circ) + \operatorname{sen}(x - 60^\circ) = \operatorname{sen}x$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      $105^\circ$ está no 2º Q: $\cos 105^\circ = \frac{\sqrt2 - \sqrt6}{4} < 0$. A última dá $2\operatorname{sen}x\cos 60^\circ = \operatorname{sen}x$. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Numa sala de cinema, os olhos de um espectador estão a 2 m da tela, na horizontal. A borda de baixo da tela está 1 m acima dos olhos, e a borda de cima, 3 m acima. O ângulo de visão $\theta$ é a diferença entre os ângulos $\beta$ e $\alpha$ que as linhas de visada até as bordas formam com a horizontal.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.75]
+        \draw[mudo, dashed] (0,0) -- (2.6,0);
+        \draw[ink, line width=1.2pt] (2.6,1.3) -- (2.6,3.9);
+        \draw[roxo] (0,0) -- (2.6,1.3); \draw[roxo] (0,0) -- (2.6,3.9);
+        \fill[ink] (0,0) circle (2.2pt);
+        \node[font=\scriptsize, below] at (1.3,0) {2 m};
+        \node[font=\scriptsize, right] at (2.6,1.3) {1 m}; \node[font=\scriptsize, right] at (2.6,3.9) {3 m};
+        \draw[roxo] (.9,.45) arc (26.6:56.3:1); \node[roxo, font=\scriptsize] at (.75,.95) {$\theta$};
+        \end{scope}
+    enunciado: |
+      A tangente do ângulo de visão $\theta$ é
+    opcoes: ['$1$', '$\frac12$', '$\frac74$', '$\frac47$', '$\frac34$']
+    correta: D
+    resolucao: |
+      $\operatorname{tg}\beta = \frac32$ e $\operatorname{tg}\alpha = \frac12$: $\operatorname{tg}\theta = \frac{\frac32 - \frac12}{1 + \frac34} = \frac{1}{7/4} = \frac47$.
+
+  - estilo: Unesp
+    enunciado: |
+      O valor de $\cos 105^\circ + \cos 15^\circ$ é
+    opcoes: ['$\frac{\sqrt6}{2}$', '$\frac{\sqrt2}{2}$', '$0$', '$\frac12$', '$\frac{\sqrt3}{2}$']
+    correta: B
+    resolucao: |
+      $\frac{\sqrt2 - \sqrt6}{4} + \frac{\sqrt6 + \sqrt2}{4} = \frac{2\sqrt2}{4}$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere $a$, $b$ e $x$ reais, com as razões existindo. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}(a + b)\operatorname{sen}(a - b) = \operatorname{sen}^2 a - \operatorname{sen}^2 b$.'
+    - '$\cos(a + b) + \cos(a - b) = 2\cos a\cos b$.'
+    - '$\operatorname{sen}\left(x + \frac{\pi}{4}\right) = \frac{\sqrt2}{2}(\operatorname{sen}x + \cos x)$.'
+    - '$\operatorname{tg}\left(x + \frac{\pi}{4}\right) = \frac{1 + \operatorname{tg}x}{1 - \operatorname{tg}x}$.'
+    - '$\cos(a + b) = \cos a + \cos b$ para quaisquer $a$ e $b$.'
+    - '$\operatorname{sen}(x + \pi) = -\operatorname{sen}x$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      08) $\operatorname{tg}\frac{\pi}{4} = 1$ na fórmula. 16) Incorreta: com $a = b = 0$, $1 \ne 2$. 32) $\operatorname{sen}x \cdot (-1) + \cos x \cdot 0$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O maior valor de $\operatorname{sen}x + \sqrt3\cos x$, com $x$ real, é
+    opcoes: ['$2$.', '$1 + \sqrt3$.', '$\sqrt3$.', '$4$.']
+    correta: A
+    resolucao: |
+      $\operatorname{sen}x + \sqrt3\cos x = 2\left(\frac12\operatorname{sen}x + \frac{\sqrt3}{2}\cos x\right) = 2\operatorname{sen}(x + 60^\circ)$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        No projeto de uma pista de skate, uma rampa forma com o chão um ângulo $\alpha$, com $\operatorname{tg}\alpha = \frac34$. Um segundo trecho é inclinado mais $\beta$ para cima em relação à rampa, com $\operatorname{tg}\beta = \frac17$, e forma com o chão o ângulo $\alpha + \beta$. Um terceiro trecho é inclinado $\beta$ para baixo em relação à rampa e forma com o chão o ângulo $\alpha - \beta$.
+    enunciado: |
+      O ângulo $\alpha + \beta$ do segundo trecho com o chão mede
+    opcoes: ['$30^\circ$', '$60^\circ$', '$45^\circ$', '$50^\circ$', '$37^\circ$']
+    correta: C
+    resolucao: |
+      $\operatorname{tg}(\alpha + \beta) = \frac{\frac34 + \frac17}{1 - \frac{3}{28}} = \frac{25/28}{25/28} = 1$.
+
+  - estilo: Unesp
+    enunciado: |
+      A tangente do ângulo $\alpha - \beta$ do terceiro trecho com o chão é
+    opcoes: ['$\frac{25}{28}$', '$1$', '$\frac{31}{17}$', '$\frac{17}{31}$', '$\frac{3}{28}$']
+    correta: D
+    resolucao: |
+      $\frac{\frac34 - \frac17}{1 + \frac{3}{28}} = \frac{17/28}{31/28}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\operatorname{sen}a + \operatorname{sen}b = 1$ e $\cos a + \cos b = 1$, então $\cos(a - b)$ vale
+    opcoes: ['$1$', '$-1$', '$\frac12$', '$-\frac12$', '$0$']
+    correta: E
+    resolucao: |
+      Elevando ao quadrado e somando: $2 + 2(\cos a\cos b + \operatorname{sen}a\operatorname{sen}b) = 2$, ou seja, $\cos(a - b) = 0$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, o triângulo ABD é retângulo em B, com $AB = BD = 6$, e C é o ponto de BD com $BC = 2$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.45]
+        \draw[ink, line width=.9pt] (0,0) -- (6,0) -- (6,6) -- cycle;
+        \draw[ink, line width=.9pt] (0,0) -- (6,2);
+        \draw[ink] (5.4,0) -- (5.4,.6) -- (6,.6);
+        \node[font=\small, below left] at (0,0) {A}; \node[font=\small, below right] at (6,0) {B};
+        \node[font=\small, right] at (6,2) {C}; \node[font=\small, above right] at (6,6) {D};
+        \node[font=\scriptsize, below] at (3,0) {6}; \node[font=\scriptsize, right] at (6,1) {2}; \node[font=\scriptsize, right] at (6,4) {4};
+        \end{scope}
+    enunciado: |
+      A tangente do ângulo CAD é
+    opcoes: ['$\frac23$', '$\frac12$', '$\frac13$', '$1$', '$\frac34$']
+    correta: B
+    resolucao: |
+      $\operatorname{tg}B\hat{A}D = 1$ e $\operatorname{tg}B\hat{A}C = \frac13$: $\operatorname{tg}C\hat{A}D = \frac{1 - \frac13}{1 + \frac13} = \frac12$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Sabe-se que $\operatorname{sen}a = \frac{5}{13}$, com $a$ no 2º quadrante, e $\cos b = -\frac35$, com $b$ no 3º quadrante.'
+    itens:
+    - 'Calcule $\cos a$ e $\operatorname{sen}b$.'
+    - 'Calcule $\operatorname{sen}(a + b)$.'
+    - 'Calcule $\cos(a - b)$.'
+    espaco: 62
+    resolucao: |
+      a) $\cos a = -\frac{12}{13}$ e $\operatorname{sen}b = -\frac45$.
+      b) $\frac{5}{13} \cdot \left(-\frac35\right) + \left(-\frac{12}{13}\right)\left(-\frac45\right) = \frac{-15 + 48}{65} = \frac{33}{65}$.
+      c) $\left(-\frac{12}{13}\right)\left(-\frac35\right) + \frac{5}{13}\left(-\frac45\right) = \frac{36 - 20}{65} = \frac{16}{65}$.
+    resposta: 'a) $-\frac{12}{13}$ e $-\frac45$; b) $\frac{33}{65}$; c) $\frac{16}{65}$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere $f(x) = \operatorname{sen}x + \sqrt3\cos x$.'
+    itens:
+    - 'Mostre que $f(x) = 2\operatorname{sen}\left(x + \frac{\pi}{3}\right)$.'
+    - 'Dê o maior e o menor valor de $f$.'
+    - 'Resolva $f(x) = 1$ em $[0, 2\pi)$.'
+    espaco: 62
+    resolucao: |
+      a) $2\left(\operatorname{sen}x\cos\frac{\pi}{3} + \cos x\operatorname{sen}\frac{\pi}{3}\right) = \operatorname{sen}x + \sqrt3\cos x$.
+      b) 2 e $-2$.
+      c) $\operatorname{sen}\left(x + \frac{\pi}{3}\right) = \frac12$: $x + \frac{\pi}{3} = \frac{5\pi}{6}$ ou $\frac{13\pi}{6}$, logo $x = \frac{\pi}{2}$ ou $x = \frac{11\pi}{6}$.
+    resposta: 'b) 2 e $-2$; c) $\frac{\pi}{2}$ e $\frac{11\pi}{6}$'
+
+  - estilo: ITA
+    enunciado: |
+      O valor de $\operatorname{tg}20^\circ + \operatorname{tg}25^\circ + \operatorname{tg}20^\circ \cdot \operatorname{tg}25^\circ$ é
+    opcoes: ['$1$', '$0$', '$\sqrt3$', '$2$', '$\frac{\sqrt3}{3}$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $1 = \operatorname{tg}45^\circ = \frac{\operatorname{tg}20^\circ + \operatorname{tg}25^\circ}{1 - \operatorname{tg}20^\circ\operatorname{tg}25^\circ}$; isole.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'O ângulo agudo $\theta$ entre duas retas de coeficientes angulares $m_1$ e $m_2$ satisfaz $\operatorname{tg}\theta = \left|\frac{m_2 - m_1}{1 + m_1 m_2}\right|$.'
+    itens:
+    - 'Calcule $\operatorname{tg}\theta$ para as retas $y = 2x$ e $y = 3x$.'
+    - 'Calcule $\theta$ para as retas $y = 2x$ e $y = -3x$.'
+    - 'Dê os coeficientes $m > 0$ para os quais a reta $y = mx$ forma $30^\circ$ com $y = x$.'
+    espaco: 62
+    resolucao: |
+      a) $\frac{1}{1 + 6} = \frac17$.
+      b) $\left|\frac{-5}{1 - 6}\right| = 1$: $\theta = 45^\circ$.
+      c) A reta $y = mx$ faz $45^\circ + 30^\circ$ ou $45^\circ - 30^\circ$ com o eixo: $m = \operatorname{tg}75^\circ = 2 + \sqrt3$ ou $m = \operatorname{tg}15^\circ = 2 - \sqrt3$.
+    resposta: 'a) $\frac17$; b) $45^\circ$; c) $2 \pm \sqrt3$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere os valores das razões de $15^\circ$, $75^\circ$, $105^\circ$ e $165^\circ$. Assinale o que for correto.
+    proposicoes:
+    - '$\cos 75^\circ = \operatorname{sen}15^\circ$.'
+    - '$\operatorname{sen}15^\circ + \cos 15^\circ = \frac{\sqrt6}{2}$.'
+    - '$\operatorname{tg}15^\circ + \operatorname{tg}75^\circ = 4$.'
+    - '$\operatorname{tg}15^\circ \cdot \operatorname{tg}75^\circ = 1$.'
+    - '$\operatorname{sen}105^\circ < \operatorname{sen}15^\circ$.'
+    - '$\cos 165^\circ = -\cos 15^\circ$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      02) $\frac{(\sqrt6 - \sqrt2) + (\sqrt6 + \sqrt2)}{4}$. 04) $(2 - \sqrt3) + (2 + \sqrt3)$. 08) $(2 - \sqrt3)(2 + \sqrt3) = 1$. 16) Incorreta: $\operatorname{sen}105^\circ = \operatorname{sen}75^\circ > \operatorname{sen}15^\circ$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Num triângulo ABC sem ângulo reto, os ângulos internos são $A$, $B$ e $C$.'
+    itens:
+    - 'Mostre que $\operatorname{tg}(A + B) = -\operatorname{tg}C$.'
+    - 'Prove que $\operatorname{tg}A + \operatorname{tg}B + \operatorname{tg}C = \operatorname{tg}A \cdot \operatorname{tg}B \cdot \operatorname{tg}C$.'
+    - 'Se $\operatorname{tg}A = 1$ e $\operatorname{tg}B = 2$, calcule $\operatorname{tg}C$.'
+    espaco: 62
+    resolucao: |
+      a) $A + B = \pi - C$, e $\operatorname{tg}(\pi - C) = -\operatorname{tg}C$.
+      b) $\frac{\operatorname{tg}A + \operatorname{tg}B}{1 - \operatorname{tg}A\operatorname{tg}B} = -\operatorname{tg}C$ dá $\operatorname{tg}A + \operatorname{tg}B = -\operatorname{tg}C + \operatorname{tg}A\operatorname{tg}B\operatorname{tg}C$.
+      c) $1 + 2 + t = 2t$: $\operatorname{tg}C = 3$.
+    resposta: 'c) 3'
+
+  - estilo: Unicamp
+    enunciado: 'A soma de dois sinais é $y(t) = 3\operatorname{sen}t + 4\cos t$. Seja $\varphi$ o ângulo agudo com $\cos\varphi = \frac35$ e $\operatorname{sen}\varphi = \frac45$.'
+    itens:
+    - 'Mostre que $y(t) = 5\operatorname{sen}(t + \varphi)$.'
+    - 'Qual é o maior valor de $y$? Nesse instante, quanto valem $\operatorname{sen}t$ e $\cos t$?'
+    - 'Qual é o menor valor de $y$?'
+    espaco: 62
+    resolucao: |
+      a) $5(\operatorname{sen}t\cos\varphi + \cos t\operatorname{sen}\varphi) = 3\operatorname{sen}t + 4\cos t$.
+      b) 5, quando $t + \varphi = \frac{\pi}{2}$: $\operatorname{sen}t = \cos\varphi = \frac35$ e $\cos t = \operatorname{sen}\varphi = \frac45$.
+      c) $-5$.
+    resposta: 'b) 5, com $\frac35$ e $\frac45$; c) $-5$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Para todo $x$, a expressão $\cos\left(\frac{\pi}{3} + x\right) + \cos\left(\frac{\pi}{3} - x\right)$ é igual a
+    opcoes: ['$\operatorname{sen}x$', '$\cos x$', '$2\cos x$', '$\sqrt3\cos x$', '$0$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      Os termos com seno se cancelam: $2\cos\frac{\pi}{3}\cos x = \cos x$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Três quadrados de lado 1 estão lado a lado, formando um retângulo $1 \times 3$. Do vértice inferior esquerdo, traçam-se segmentos até os vértices superiores direitos do 1º, do 2º e do 3º quadrado, que formam com a base ângulos $\alpha$, $\beta$ e $\gamma$.'
+    itens:
+    - 'Dê $\operatorname{tg}\alpha$, $\operatorname{tg}\beta$ e $\operatorname{tg}\gamma$, e calcule $\operatorname{tg}(\beta + \gamma)$.'
+    - 'Conclua que $\beta + \gamma = 45^\circ$.'
+    - 'Quanto vale $\alpha + \beta + \gamma$?'
+    espaco: 62
+    resolucao: |
+      a) $1$, $\frac12$ e $\frac13$; $\operatorname{tg}(\beta + \gamma) = \frac{5/6}{1 - 1/6} = 1$.
+      b) $\beta + \gamma$ é agudo (soma de dois ângulos menores que $45^\circ$) e tem tangente 1.
+      c) $45^\circ + 45^\circ = 90^\circ$.
+    resposta: 'c) $90^\circ$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere arcos $a$ e $b$ com $\cos a \ne 0$, $\cos b \ne 0$ e $\operatorname{sen}(a - b) \ne 0$.'
+    itens:
+    - 'Prove que $\dfrac{\operatorname{sen}(a + b)}{\operatorname{sen}(a - b)} = \dfrac{\operatorname{tg}a + \operatorname{tg}b}{\operatorname{tg}a - \operatorname{tg}b}$.'
+    - 'Se $\operatorname{tg}a = 3\operatorname{tg}b$, calcule $\frac{\operatorname{sen}(a + b)}{\operatorname{sen}(a - b)}$.'
+    - 'Confira o item b com $a = 60^\circ$ e $b = 30^\circ$.'
+    espaco: 62
+    resolucao: |
+      a) Divida numerador e denominador por $\cos a\cos b$.
+      b) $\frac{3t + t}{3t - t} = 2$.
+      c) $\operatorname{tg}60^\circ = \sqrt3 = 3 \cdot \frac{\sqrt3}{3}$, e $\frac{\operatorname{sen}90^\circ}{\operatorname{sen}30^\circ} = \frac{1}{1/2} = 2$.
+    resposta: 'b) 2'
