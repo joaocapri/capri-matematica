@@ -1,0 +1,552 @@
+# Aula 3.10.3 — Geometria analítica: circunferências e retas tangentes
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: posição relativa de duas circunferências (d comparado com r₁ + r₂ e |r₁ − r₂|); pontos comuns e corda comum;
+# reta tangente num ponto da circunferência (perpendicular ao raio); tangentes por um ponto externo; segmento tangente √(d² − r²);
+# tangentes paralelas a uma direção dada. Usa as aulas 3.10.1 e 3.10.2.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Compare as circunferências $\lambda_1$: $x^2 + y^2 = 4$ e $\lambda_2$: $(x - 5)^2 + y^2 = 9$, completando.'
+      itens:
+      - 'Distância entre os centros: $d = {{5}}$'
+      - 'Soma dos raios: $r_1 + r_2 = {{5}}$'
+      - 'Então $\lambda_1$ e $\lambda_2$ são {{tangentes externas}}.'
+      resolucao: |
+        Centros $(0, 0)$ e $(5, 0)$; raios 2 e 3. Como $d = r_1 + r_2$, elas se tocam num único ponto, por fora: $(2, 0)$.
+      resposta: '$5$; $5$; tangentes externas'
+    - enunciado: 'Complete o quadro com a posição relativa de duas circunferências, dados a distância $d$ entre os centros e os raios. Use: externas, tangentes externas, secantes, tangentes internas ou interna.'
+      tabela:
+        cabecalho: ['$d$', '$r_1$', '$r_2$', 'Posição']
+        linhas:
+        - ['$8$', '$3$', '$2$', '{{externas}}']
+        - ['$4$', '$3$', '$2$', '{{secantes}}']
+        - ['$2$', '$5$', '$3$', '{{tangentes internas}}']
+        - ['$1$', '$6$', '$2$', '{{interna}}']
+      resolucao: |
+        $8 > 5$; $1 < 4 < 5$; $2 = 5 - 3$; $1 < 6 - 2$ (a menor fica dentro da maior, sem tocar).
+      resposta: 'externas; secantes; tangentes internas; interna'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Se $d = r_1 + r_2$, as circunferências são tangentes externas.'
+      - 'Se $d < |r_1 - r_2|$, as circunferências se cortam em dois pontos.'
+      - 'A reta tangente num ponto $P$ é perpendicular ao raio $CP$.'
+      - 'Duas circunferências concêntricas e de raios diferentes não têm ponto comum.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) Uma fica dentro da outra, sem ponto comum. (V) (V) Os pontos de uma estão todos à mesma distância do centro, diferente da outra.
+      resposta: V, F, V, V
+    - enunciado: 'Determine a reta tangente à circunferência no ponto dado.'
+      itens:
+      - '$x^2 + y^2 = 25$, no ponto $(3, 4)$'
+      - '$(x - 1)^2 + (y - 2)^2 = 5$, no ponto $(3, 3)$'
+      espaco_item: 14
+      resolucao: |
+        (a) O raio vai de $(0, 0)$ a $(3, 4)$: $m = \tfrac{4}{3}$. Tangente: $m = -\tfrac{3}{4}$, $y - 4 = -\tfrac{3}{4}(x - 3)$, ou $3x + 4y = 25$.
+        (b) Raio de $(1, 2)$ a $(3, 3)$: $m = \tfrac{1}{2}$. Tangente: $m = -2$, $y - 3 = -2(x - 3)$, $y = -2x + 9$.
+      resposta: '(a) $3x + 4y = 25$ (b) $y = -2x + 9$'
+    - enunciado: 'Para circunferências com centro na origem, a tangente no ponto $(x_0, y_0)$ é $x_0 x + y_0 y = r^2$. Use isso para escrever a tangente a $x^2 + y^2 = 5$ no ponto $(-1, 2)$ e confira que o ponto está nela.'
+      espaco: 12
+      resolucao: |
+        $-x + 2y = 5$. Conferência: $(-1) \cdot (-1) + 2 \cdot 2 = 5$. (O raio tem $m = -2$ e a tangente, $\tfrac{1}{2}$: perpendiculares.)
+      resposta: '$-x + 2y = 5$'
+    - enunciado: 'Associe cada par de circunferências à sua posição (uma posição pode ser usada mais de uma vez).'
+      esquerda:
+      - 'externas'
+      - 'tangentes externas'
+      - 'secantes'
+      - 'tangentes internas'
+      direita:
+      - '$x^2 + y^2 = 1$ e $(x - 4)^2 + y^2 = 4$'
+      - '$x^2 + y^2 = 1$ e $(x - 3)^2 + y^2 = 4$'
+      - '$x^2 + y^2 = 4$ e $(x - 2)^2 + y^2 = 4$'
+      - '$x^2 + y^2 = 9$ e $(x - 1)^2 + y^2 = 4$'
+      - '$x^2 + y^2 = 4$ e $x^2 + (y - 5)^2 = 9$'
+      resolucao: |
+        $d$ e raios: $4 > 1 + 2$; $3 = 1 + 2$; $0 < 2 < 4$; $1 = 3 - 2$; $5 = 2 + 3$.
+      resposta: 'De cima para baixo: 1, 2, 3, 4, 2'
+    - enunciado: 'Calcule o comprimento do segmento tangente traçado do ponto $P(5, 0)$ à circunferência $x^2 + y^2 = 9$.'
+      espaco: 12
+      resolucao: |
+        O raio no ponto de tangência $T$ é perpendicular a $PT$: $PT^2 = OP^2 - r^2 = 25 - 9$, $PT = 4$.
+      resposta: '$4$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para a tangente a $x^2 + y^2 = 25$ em $(3, 4)$, Gil usou o coeficiente angular do raio, $\frac{4}{3}$, e escreveu $y - 4 = \frac{4}{3}(x - 3)$.
+      enunciado: 'Mostre que a reta de Gil passa pelo centro e corrija.'
+      espaco: 12
+      resolucao: |
+        A reta de Gil é $y = \tfrac{4}{3}x$, que passa por $(0, 0)$: é a reta do raio, secante. A tangente é perpendicular ao raio: $m = -\tfrac{3}{4}$, $3x + 4y = 25$.
+      resposta: '$3x + 4y = 25$'
+    - enunciado: 'Determine as retas tangentes à circunferência $x^2 + y^2 = 9$ que passam pelo ponto $P(5, 0)$.'
+      espaco: 18
+      resolucao: |
+        Retas $y = m(x - 5)$, ou $mx - y - 5m = 0$. Distância da origem: $\tfrac{|5m|}{\sqrt{m^2 + 1}} = 3$: $25m^2 = 9m^2 + 9$, $m = \pm\tfrac{3}{4}$.
+        Tangentes: $y = \tfrac{3}{4}(x - 5)$ e $y = -\tfrac{3}{4}(x - 5)$.
+      resposta: '$y = \pm\frac{3}{4}(x - 5)$'
+    - enunciado: 'As circunferências $x^2 + y^2 = 25$ e $(x - 6)^2 + y^2 = 25$ são secantes. Determine os pontos comuns e o comprimento da corda comum.'
+      espaco: 14
+      resolucao: |
+        Subtraindo as equações: $x^2 - (x - 6)^2 = 0$, $12x - 36 = 0$, $x = 3$. Então $y^2 = 16$: pontos $(3, 4)$ e $(3, -4)$. Corda 8.
+      resposta: '$(3, \pm 4)$; corda $8$'
+    - enunciado: 'Considere $x^2 + y^2 = 4$ e $(x - k)^2 + y^2 = 1$. Determine $k$ para que elas sejam tangentes externas e para que sejam tangentes internas.'
+      espaco: 12
+      resolucao: |
+        $d = |k|$. Externas: $|k| = 2 + 1 = 3$, $k = \pm 3$. Internas: $|k| = 2 - 1 = 1$, $k = \pm 1$.
+      resposta: 'Externas: $k = \pm 3$; internas: $k = \pm 1$'
+    - enunciado: 'Complete o quadro com a reta tangente à circunferência $x^2 + y^2 = 25$ em cada ponto.'
+      tabela:
+        cabecalho: ['Ponto', 'Tangente']
+        linhas:
+        - ['$(5, 0)$', '${{x = 5}}$']
+        - ['$(0, -5)$', '${{y = -5}}$']
+        - ['$(3, -4)$', '${{3x - 4y = 25}}$']
+        - ['$(-4, 3)$', '${{-4x + 3y = 25}}$']
+      resolucao: |
+        Pela fórmula $x_0 x + y_0 y = 25$: $5x = 25$; $-5y = 25$; $3x - 4y = 25$; $-4x + 3y = 25$.
+      resposta: '$x = 5$; $y = -5$; $3x - 4y = 25$; $-4x + 3y = 25$'
+    - enunciado: 'Duas engrenagens circulares devem se tocar por fora. A primeira tem centro $(0, 0)$ e raio 3, e a segunda tem centro $(5, 0)$ (medidas em cm). Qual deve ser o raio da segunda e em que ponto elas se tocam?'
+      espaco: 12
+      resolucao: |
+        Tangentes externas: $d = r_1 + r_2$, $5 = 3 + r_2$, $r_2 = 2$ cm. O contato fica na reta dos centros, a 3 da origem: $(3, 0)$.
+      resposta: '2 cm; $(3, 0)$'
+    - enunciado: 'Determine as retas tangentes à circunferência $x^2 + y^2 = 5$ que são paralelas à reta $y = 2x$ e os pontos de tangência.'
+      espaco: 16
+      resolucao: |
+        $y = 2x + b$, ou $2x - y + b = 0$: $\tfrac{|b|}{\sqrt{5}} = \sqrt{5}$, $b = \pm 5$. Retas $y = 2x + 5$ e $y = 2x - 5$.
+        Os pontos de tangência estão na perpendicular pela origem, $y = -\tfrac{x}{2}$: $(-2, 1)$ e $(2, -1)$.
+      resposta: '$y = 2x \pm 5$; $(-2, 1)$ e $(2, -1)$'
+    - enunciado: 'Considere as circunferências $x^2 + y^2 = 4$ e $(x - 6)^2 + (y - 8)^2 = 9$. Determine a posição relativa e a menor e a maior distância entre um ponto de uma e um ponto da outra.'
+      espaco: 14
+      resolucao: |
+        $d = 10 > 2 + 3$: externas. Menor distância $10 - 5 = 5$; maior $10 + 5 = 15$ (ambas sobre a reta dos centros).
+      resposta: 'externas; $5$ e $15$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Mostre que a tangente à circunferência $x^2 + y^2 = r^2$ no ponto $(x_0, y_0)$ é $x_0 x + y_0 y = r^2$.'
+      espaco: 16
+      resolucao: |
+        A tangente é perpendicular a $(x_0, y_0)$ e passa por esse ponto. Os pontos $(x, y)$ dela satisfazem $x_0(x - x_0) + y_0(y - y_0) = 0$, isto é, $x_0 x + y_0 y = x_0^2 + y_0^2 = r^2$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Uma circunferência tem centro $(6, 8)$. Determine o raio para que ela seja tangente à circunferência $x^2 + y^2 = 25$: por fora; e envolvendo-a por dentro.'
+      espaco: 14
+      resolucao: |
+        $d = 10$. Por fora: $10 = 5 + r$, $r = 5$. Envolvendo (tangente interna, a nova é maior): $10 = r - 5$, $r = 15$.
+      resposta: '$r = 5$ ou $r = 15$'
+    - enunciado: 'Do ponto $P(0, 10)$ traçam-se as tangentes à circunferência $x^2 + y^2 = 36$. Calcule o comprimento de cada segmento tangente e a área do quadrilátero formado pela origem, por $P$ e pelos dois pontos de tangência.'
+      espaco: 16
+      resolucao: |
+        $PT = \sqrt{100 - 36} = 8$. O quadrilátero é formado por dois triângulos retângulos de catetos 6 e 8: área $2 \cdot \tfrac{6 \cdot 8}{2} = 48$.
+      resposta: '$8$; área $48$'
+    - enunciado: 'Determine o conjunto dos centros das circunferências de raio 1 que tangenciam externamente a circunferência $x^2 + y^2 = 9$.'
+      espaco: 12
+      resolucao: |
+        A distância do centro à origem é $3 + 1 = 4$: os centros formam a circunferência $x^2 + y^2 = 16$.
+      resposta: '$x^2 + y^2 = 16$'
+    - enunciado: 'Considere $\lambda_1$: $x^2 + y^2 = 5$ e $\lambda_2$: $(x - 3)^2 + (y - 1)^2 = 5$.'
+      itens:
+      - 'Determine os pontos comuns.'
+      - 'Mostre que a corda comum é perpendicular à reta dos centros.'
+      espaco_item: 14
+      resolucao: |
+        (a) Subtraindo: $6x + 2y - 10 = 0$, $y = 5 - 3x$. Em $\lambda_1$: $10x^2 - 30x + 20 = 0$, $x = 1$ ou $2$. Pontos $(1, 2)$ e $(2, -1)$.
+        (b) A corda tem $m = -3$; os centros $(0, 0)$ e $(3, 1)$ dão $m = \tfrac{1}{3}$. Produto $-1$.
+      resposta: '(a) $(1, 2)$ e $(2, -1)$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Num projeto, duas engrenagens circulares se tocam por fora, como na figura. Num sistema de eixos em centímetros, a maior tem centro $(0, 0)$ e raio 4, e a menor tem centro $(7, 0)$ e raio 3. O projetista precisa marcar o ponto de contato para posicionar uma trava.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.42]
+        \draw[step=1, gray!20, very thin] (-5,-5) grid (11,5);
+        \draw[-latex, ink!60] (-5.3,0) -- (11.4,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,-5.3) -- (0,5.4) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1.2pt, fill=roxo!10] (0,0) circle (4);
+        \draw[ink, line width=1.2pt, fill=ink!8] (7,0) circle (3);
+        \fill[roxo] (0,0) circle (4pt);
+        \fill[ink] (7,0) circle (4pt);
+        \end{scope}
+    enunciado: |
+      O ponto de contato entre as engrenagens é
+    opcoes: ['$(4, 0)$', '$(3, 0)$', '$(3{,}5;\ 0)$', '$(7, 0)$', '$(5, 0)$']
+    correta: A
+    resolucao: |
+      $d = 7 = 4 + 3$: tangentes externas. O contato fica na reta dos centros, a 4 da origem: $(4, 0)$. $(3{,}5;\ 0)$ é o ponto médio dos centros.
+
+  - estilo: Fuvest
+    enunciado: |
+      As circunferências $x^2 + y^2 = 9$ e $(x - 3)^2 + (y - 4)^2 = 4$ são
+    opcoes: ['externas.', 'tangentes externas.', 'secantes.', 'tangentes internas.', 'concêntricas.']
+    correta: B
+    resolucao: |
+      $d = \sqrt{9 + 16} = 5 = 3 + 2$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A reta tangente à circunferência $x^2 + y^2 = 25$ no ponto $(-3, 4)$ tem equação
+    opcoes: ['$3x - 4y + 25 = 0$.', '$3x + 4y - 25 = 0$.', '$4x - 3y + 25 = 0$.', '$-3x - 4y + 25 = 0$.']
+    correta: A
+    resolucao: |
+      $x_0 x + y_0 y = r^2$: $-3x + 4y = 25$, isto é, $3x - 4y + 25 = 0$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere as circunferências $\lambda_1$: $x^2 + y^2 = 16$ e $\lambda_2$: $(x - 6)^2 + y^2 = 4$. Assinale o que for correto.
+    proposicoes:
+    - 'A distância entre os centros é 6.'
+    - '$\lambda_1$ e $\lambda_2$ são tangentes externas.'
+    - 'O ponto de tangência é $(4, 0)$.'
+    - 'A reta $x = 4$ é tangente às duas circunferências.'
+    - '$\lambda_2$ é interna a $\lambda_1$.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) Correta. 02) $6 = 4 + 2$. 04) Na reta dos centros, a 4 da origem. 08) É a perpendicular à reta dos centros no ponto de contato.
+      16) Incorreta.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, do ponto $P(0, 5)$ foram traçados os segmentos $PT$ e $PT'$, tangentes à circunferência $x^2 + y^2 = 9$ nos pontos $T$ e $T'$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.45]
+        \draw[step=1, gray!20, very thin] (-5,-4) grid (5,6);
+        \draw[-latex, ink!60] (-5.3,0) -- (5.4,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,-4.3) -- (0,6.4) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1pt] (0,0) circle (3);
+        \fill[ink] (0,5) circle (4pt) node[right, font=\scriptsize] {$P$};
+        \draw[ink, line width=1pt] (0,5) -- (2.4,1.8) node[right, font=\scriptsize] {$T$};
+        \draw[ink, line width=1pt] (0,5) -- (-2.4,1.8) node[left, font=\scriptsize] {$T'$};
+        \draw[roxo, dashed] (0,0) -- (2.4,1.8);
+        \end{scope}
+    enunciado: |
+      O comprimento de $PT$ é
+    opcoes: ['$3$', '$4$', '$5$', '$\sqrt{34}$', '$2$']
+    correta: B
+    resolucao: |
+      O triângulo $OTP$ é retângulo em $T$: $PT^2 = 25 - 9$, $PT = 4$.
+
+  - estilo: UEL
+    enunciado: |
+      Considere duas circunferências de raios $r_1$ e $r_2$ e centros a uma distância $d$. Considere as afirmativas a seguir.
+    afirmativas:
+    - 'Se $d > r_1 + r_2$, as circunferências são externas.'
+    - 'Se $d = |r_1 - r_2| \neq 0$, as circunferências são tangentes internas.'
+    - 'Se $d = 0$ e $r_1 \neq r_2$, elas são concêntricas e não têm ponto comum.'
+    - 'Duas circunferências secantes têm três pontos comuns.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e IV, apenas.', 'I, II e III, apenas.', 'III e IV, apenas.', 'I, II, III e IV.']
+    correta: C
+    resolucao: |
+      I, II, III. Corretas. IV. Incorreta: duas circunferências distintas têm no máximo dois pontos comuns.
+
+  - estilo: Fuvest
+    enunciado: |
+      O comprimento do segmento tangente traçado do ponto $P(7, 1)$ à circunferência $(x - 1)^2 + (y - 1)^2 = 20$ é
+    opcoes: ['$2$', '$4$', '$6$', '$\sqrt{56}$', '$16$']
+    correta: B
+    resolucao: |
+      $d(P, C) = 6$. Segmento tangente $\sqrt{36 - 20} = 4$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      Num parque, três tanques circulares foram desenhados num sistema de eixos em metros, com as bordas dadas pelas equações do quadro. O paisagista quer instalar uma passarela no ponto em que dois tanques se tocam, se houver.
+    tabela:
+      cabecalho: ['Tanque', 'Borda']
+      linhas:
+      - ['A', '$x^2 + y^2 = 4$']
+      - ['B', '$(x - 5)^2 + y^2 = 9$']
+      - ['C', '$x^2 + (y - 6)^2 = 1$']
+    enunciado: |
+      Os tanques que se tocam são
+    opcoes: ['A e B.', 'A e C.', 'B e C.', 'todos, dois a dois.', 'nenhum par.']
+    correta: A
+    resolucao: |
+      A e B: $d = 5 = 2 + 3$, tangentes. A e C: $d = 6 > 3$. B e C: $d = \sqrt{25 + 36} = \sqrt{61} \approx 7{,}8 > 4$.
+
+  - estilo: Unicamp
+    enunciado: |
+      As retas tangentes à circunferência $x^2 + y^2 = 5$ que são paralelas à reta $y = 2x$ são
+    opcoes: ['$y = 2x \pm \sqrt{5}$.', '$y = 2x \pm 1$.', '$y = -\frac{x}{2} \pm 5$.', '$y = 2x \pm 5$.']
+    correta: D
+    resolucao: |
+      $y = 2x + b$: $\tfrac{|b|}{\sqrt{5}} = \sqrt{5}$, $|b| = 5$.
+
+  - estilo: UFPR
+    enunciado: |
+      Considere a circunferência $\lambda$: $x^2 + y^2 = 25$ e o ponto $P(1, 7)$. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'O ponto $P$ é externo a $\lambda$.'
+    - 'O segmento tangente traçado de $P$ a $\lambda$ mede 5.'
+    - 'A reta tangente a $\lambda$ no ponto $(4, 3)$ passa por $P$.'
+    - 'As duas retas tangentes a $\lambda$ que passam por $P$ formam um ângulo de $60°$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – F – V – F.', 'F – V – V – F.', 'V – V – F – V.', 'V – V – V – F.', 'V – V – V – V.']
+    correta: D
+    resolucao: |
+      (V) $1 + 49 = 50 > 25$. (V) $\sqrt{50 - 25} = 5$. (V) Tangente $4x + 3y = 25$: $4 + 21 = 25$.
+      (F) As tangentes tocam $\lambda$ em $(4, 3)$ e $(-3, 4)$, com coeficientes $-\tfrac{4}{3}$ e $\tfrac{3}{4}$: são perpendiculares ($90°$).
+
+  - estilo: UFSC
+    enunciado: |
+      Considere as circunferências $\lambda_1$: $x^2 + y^2 = 9$ e $\lambda_2$: $(x - k)^2 + y^2 = 1$, com $k > 0$. Assinale o que for correto.
+    proposicoes:
+    - 'Para $k = 4$, elas são tangentes externas.'
+    - 'Para $k = 2$, elas são tangentes internas.'
+    - 'Para $k = 3$, elas são secantes.'
+    - 'Para $k = 5$, elas são externas.'
+    - 'Para $k = 1$, elas são secantes.'
+    - 'Para $k = 4$, o ponto de tangência é $(3, 0)$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      $d = k$, $r_1 + r_2 = 4$, $r_1 - r_2 = 2$. 01) $4 = 4$. 02) $2 = 2$. 04) $2 < 3 < 4$. 08) $5 > 4$.
+      16) Incorreta: $1 < 2$, $\lambda_2$ fica dentro de $\lambda_1$ sem tocá-la. 32) Na reta dos centros, a 3 da origem.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Fuvest
+    enunciado: |
+      A circunferência de centro $(6, 8)$ que tangencia externamente a circunferência $x^2 + y^2 = 25$ tem raio
+    opcoes: ['$3$', '$5$', '$10$', '$15$', '$25$']
+    correta: B
+    resolucao: |
+      $d = 10 = 5 + r$: $r = 5$. (Com $r = 15$, seriam tangentes internas.)
+
+  - estilo: Unesp
+    texto: |
+      Duas polias circulares, de raios 5 cm e 3 cm, têm centros a 10 cm um do outro e são ligadas por uma correia esticada, que toca as duas polias pelo mesmo lado. Cada trecho reto da correia é um segmento tangente comum às duas circunferências.
+    enunciado: |
+      O comprimento de cada trecho reto da correia, entre os pontos de contato, é
+    opcoes: ['$6$ cm.', '$8$ cm.', '$10$ cm.', '$2\sqrt{21}$ cm.', '$4\sqrt{6}$ cm.']
+    correta: E
+    resolucao: |
+      Os raios nos pontos de contato são perpendiculares à correia e paralelos entre si. Formando um triângulo retângulo com a distância entre os centros (10) e a diferença dos raios (2): $\sqrt{100 - 4} = \sqrt{96} = 4\sqrt{6} \approx 9{,}8$ cm.
+
+  - estilo: Enem
+    texto: |
+      Uma praça circular tem 5 m de raio. Uma pessoa está a 13 m do centro da praça e quer chegar à borda andando em linha reta por um caminho que apenas encosta na borda, sem entrar na praça, isto é, por um caminho tangente à circunferência.
+    enunciado: |
+      O comprimento desse caminho, até o ponto de contato, é
+    opcoes: ['5 m.', '8 m.', '10 m.', '11 m.', '12 m.']
+    correta: E
+    resolucao: |
+      O raio no ponto de contato é perpendicular ao caminho: $\sqrt{13^2 - 5^2} = \sqrt{144} = 12$ m.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Dois aspersores de um jardim molham regiões circulares de mesmo raio, cujas bordas são $x^2 + y^2 = 10$ e $(x - 4)^2 + (y - 2)^2 = 10$, num sistema de eixos em metros. O jardineiro quer saber onde as bordas se cruzam e o comprimento do trecho reto que liga esses pontos.
+    enunciado: |
+      As bordas se cruzam nos pontos
+    opcoes: ['$(3, 1)$ e $(1, -3)$.', '$(1, 3)$ e $(3, -1)$.', 'apenas $(2, 1)$.', '$(1, 3)$ e $(3, 1)$.', 'nenhum ponto.']
+    correta: B
+    resolucao: |
+      Subtraindo as equações: $8x + 4y - 20 = 0$, $y = 5 - 2x$. Em $x^2 + y^2 = 10$: $5x^2 - 20x + 15 = 0$, $x = 1$ ou $3$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O comprimento da corda comum às duas circunferências é
+    opcoes: ['$2\sqrt{5}$ m.', '$\sqrt{10}$ m.', '$4$ m.', '$2\sqrt{10}$ m.']
+    correta: A
+    resolucao: |
+      De $(1, 3)$ a $(3, -1)$: $\sqrt{4 + 16} = \sqrt{20} = 2\sqrt{5}$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere circunferências e retas tangentes. Assinale o que for correto.
+    proposicoes:
+    - 'Se a distância entre os centros é igual à soma dos raios, as circunferências têm exatamente um ponto comum.'
+    - 'Duas circunferências distintas podem ter exatamente três pontos comuns.'
+    - 'Se uma circunferência é interna a outra, sem ponto comum, então $d < |r_1 - r_2|$.'
+    - 'A reta que passa pelos centros de duas circunferências secantes é perpendicular à corda comum.'
+    - 'Se $P$ está a uma distância $d > r$ do centro, o segmento tangente de $P$ à circunferência mede $\sqrt{d^2 - r^2}$.'
+    corretas: [1, 3, 4, 5]
+    resolucao: |
+      01) Correta. 02) Incorreta: no máximo dois. 04) Correta. 08) Correta: os dois centros são equidistantes dos extremos da corda (estão na mediatriz dela). 16) Correta: Pitágoras.
+      Soma: $01 + 04 + 08 + 16 = 29$.
+
+  - estilo: Fuvest
+    enunciado: |
+      As tangentes à circunferência $x^2 + y^2 = 9$ traçadas do ponto $P(0, 5)$ tocam a circunferência em pontos de ordenada
+    opcoes: ['$\frac{3}{5}$', '$\frac{5}{3}$', '$\frac{9}{5}$', '$\frac{12}{5}$', '$3$']
+    correta: C
+    resolucao: |
+      O ponto de tangência $(x_0, y_0)$ satisfaz $x_0 \cdot 0 + y_0 \cdot 5 = 9$ (a tangente $x_0 x + y_0 y = 9$ passa por $P$): $y_0 = \tfrac{9}{5}$. Os pontos são $\left(\pm\tfrac{12}{5}, \tfrac{9}{5}\right)$.
+
+  - estilo: Enem
+    texto: |
+      Um logotipo é formado por duas circunferências tangentes internamente, como na figura: a maior tem equação $x^2 + y^2 = 16$ e a menor, $(x - 1)^2 + y^2 = 9$, com medidas em centímetros. A região entre elas, em forma de lua, será pintada de dourado.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.45]
+        \draw[step=1, gray!20, very thin] (-5,-5) grid (5,5);
+        \fill[roxo!30] (0,0) circle (4);
+        \fill[white] (1,0) circle (3);
+        \draw[roxo, line width=1pt] (0,0) circle (4);
+        \draw[ink, line width=1pt] (1,0) circle (3);
+        \draw[-latex, ink!60] (-5.3,0) -- (5.4,0) node[right, font=\scriptsize] {$x$};
+        \draw[-latex, ink!60] (0,-5.3) -- (0,5.4) node[above, font=\scriptsize] {$y$};
+        \end{scope}
+    enunciado: |
+      A área da região dourada é
+    opcoes: ['$\pi$ cm².', '$4\pi$ cm².', '$7\pi$ cm².', '$12\pi$ cm².', '$25\pi$ cm².']
+    correta: C
+    resolucao: |
+      $d = 1 = 4 - 3$: tangentes internas (em $(4, 0)$), com a menor dentro da maior. Área $16\pi - 9\pi = 7\pi$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Para $k > 0$, as circunferências $x^2 + y^2 = 1$ e $(x - k)^2 + (y - k)^2 = 9$ são tangentes externas quando $k$ é igual a
+    opcoes: ['$1$', '$\sqrt{2}$', '$2$', '$2\sqrt{2}$', '$4$']
+    correta: D
+    resolucao: |
+      $d = k\sqrt{2} = 1 + 3 = 4$: $k = 2\sqrt{2}$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Do ponto $P(7, 1)$ traçam-se as retas tangentes à circunferência $x^2 + y^2 = 25$.'
+    itens:
+    - 'Usando $x_0 x + y_0 y = 25$, determine os pontos de tangência.'
+    - 'Escreva as equações das duas tangentes.'
+    - 'Mostre que o quadrilátero formado pela origem, por $P$ e pelos pontos de tangência é um quadrado.'
+    espaco: 62
+    resolucao: |
+      a) A tangente em $(x_0, y_0)$ passa por $P$: $7x_0 + y_0 = 25$. Com $x_0^2 + y_0^2 = 25$: $x_0^2 + (25 - 7x_0)^2 = 25$, $x_0^2 - 7x_0 + 12 = 0$. Pontos $(3, 4)$ e $(4, -3)$.
+      b) $3x + 4y = 25$ e $4x - 3y = 25$.
+      c) Os lados $OT_1$, $T_1P$, $PT_2$ e $T_2O$ medem 5 (o segmento tangente mede $\sqrt{50 - 25} = 5$), e os ângulos em $T_1$ e $T_2$ são retos. Um losango com ângulo reto é quadrado.
+    resposta: 'a) $(3, 4)$ e $(4, -3)$; b) $3x + 4y = 25$ e $4x - 3y = 25$; c) Ver resolução'
+
+  - estilo: Unicamp
+    texto: |
+      Duas polias circulares, de raios 4 cm e 1 cm, têm centros a 6 cm um do outro. Uma correia pode ligá-las pelo mesmo lado (correia aberta) ou cruzando entre elas (correia cruzada).
+    enunciado: ''
+    itens:
+    - 'Mostre que as circunferências das polias são externas.'
+    - 'Calcule o comprimento de cada trecho reto da correia aberta, usando a diferença dos raios.'
+    - 'Calcule o comprimento de cada trecho reto da correia cruzada, usando a soma dos raios.'
+    espaco: 62
+    resolucao: |
+      a) $d = 6 > 4 + 1$.
+      b) Os raios nos pontos de contato são paralelos; o trecho reto é cateto de um triângulo retângulo com hipotenusa 6 e outro cateto $4 - 1 = 3$: $\sqrt{36 - 9} = 3\sqrt{3} \approx 5{,}2$ cm.
+      c) Na correia cruzada, os raios ficam em lados opostos e o cateto é $4 + 1 = 5$: $\sqrt{36 - 25} = \sqrt{11} \approx 3{,}3$ cm.
+    resposta: 'b) $3\sqrt{3}$ cm; c) $\sqrt{11}$ cm'
+
+  - estilo: ITA
+    enunciado: |
+      O número de retas tangentes comuns às circunferências $x^2 + y^2 = 1$ e $(x - 5)^2 + y^2 = 4$ é
+    opcoes: ['$0$', '$1$', '$2$', '$3$', '$4$']
+    correta: E
+    espaco: 22
+    resolucao: |
+      $d = 5 > 1 + 2$: externas. Há duas tangentes comuns externas e duas internas (que cruzam o segmento dos centros): 4.
+      Se fossem tangentes externas, seriam 3; secantes, 2.
+    resposta: 'E'
+
+  - estilo: Unesp
+    enunciado: 'Considere as circunferências de raio 2 que tangenciam externamente a circunferência $x^2 + y^2 = 9$.'
+    itens:
+    - 'Mostre que os centros delas estão na circunferência $x^2 + y^2 = 25$.'
+    - 'Determine o centro daquela cujo centro está na reta $y = x$, no 1º quadrante.'
+    - 'Escreva a equação dessa circunferência e o ponto em que ela toca $x^2 + y^2 = 9$.'
+    espaco: 62
+    resolucao: |
+      a) A distância do centro à origem é $3 + 2 = 5$.
+      b) $(a, a)$ com $2a^2 = 25$: $a = \tfrac{5\sqrt{2}}{2}$.
+      c) $\left(x - \tfrac{5\sqrt{2}}{2}\right)^2 + \left(y - \tfrac{5\sqrt{2}}{2}\right)^2 = 4$. O contato está na reta dos centros, a 3 da origem: $\left(\tfrac{3\sqrt{2}}{2}, \tfrac{3\sqrt{2}}{2}\right)$.
+    resposta: 'b) $\left(\frac{5\sqrt{2}}{2}, \frac{5\sqrt{2}}{2}\right)$; c) contato em $\left(\frac{3\sqrt{2}}{2}, \frac{3\sqrt{2}}{2}\right)$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a circunferência $\lambda$: $x^2 + y^2 - 4x - 6y + 9 = 0$. Assinale o que for correto.
+    proposicoes:
+    - 'A reta $y = 5$ é tangente a $\lambda$ no ponto $(2, 5)$.'
+    - 'A reta $x = 4$ é tangente a $\lambda$ no ponto $(4, 3)$.'
+    - 'O eixo $y$ é tangente a $\lambda$.'
+    - '$\lambda$ e a circunferência $x^2 + y^2 = 1$ são externas.'
+    - '$\lambda$ e a circunferência $(x - 2)^2 + (y - 3)^2 = 16$ são tangentes internas.'
+    - 'O segmento tangente traçado do ponto $(2, 0)$ a $\lambda$ mede $\sqrt{5}$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      $(x - 2)^2 + (y - 3)^2 = 4$: centro $(2, 3)$, raio 2. 01) Distância 2, perpendicular ao raio vertical. 02) Idem, raio horizontal. 04) Distância 2.
+      08) $d = \sqrt{13} \approx 3{,}6 > 2 + 1$. 16) Incorreta: são concêntricas ($d = 0$), sem ponto comum. 32) $\sqrt{9 - 4} = \sqrt{5}$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $\lambda_1$: $x^2 + y^2 = 25$ e $\lambda_2$: $(x - 10)^2 + (y - 5)^2 = 50$.'
+    itens:
+    - 'Subtraindo as equações, obtenha a reta que contém a corda comum.'
+    - 'Determine os pontos comuns e o comprimento da corda.'
+    - 'Mostre que essa reta é perpendicular à reta dos centros e confira, comparando $d$ com a soma e a diferença dos raios, que as circunferências são mesmo secantes.'
+    espaco: 62
+    resolucao: |
+      a) $(x^2 + y^2) - (x^2 - 20x + 100 + y^2 - 10y + 25) = 25 - 50$: $20x + 10y - 125 = -25$, ou $2x + y = 10$.
+      b) $y = 10 - 2x$ em $\lambda_1$: $5x^2 - 40x + 75 = 0$, $x^2 - 8x + 15 = 0$. Pontos $(3, 4)$ e $(5, 0)$; corda $\sqrt{4 + 16} = 2\sqrt{5}$.
+      c) A corda tem $m = -2$ e a reta dos centros, de $(0, 0)$ a $(10, 5)$, tem $m = \tfrac{1}{2}$: produto $-1$. Raios 5 e $5\sqrt{2} \approx 7{,}07$; $d = \sqrt{125} = 5\sqrt{5} \approx 11{,}18$, entre $2{,}07$ e $12{,}07$: secantes.
+    resposta: 'a) $2x + y = 10$; b) $(3, 4)$ e $(5, 0)$; $2\sqrt{5}$'
+
+  - estilo: Unicamp
+    texto: |
+      Uma roda de raio 1 rola por fora de uma pista circular de raio 4, de centro na origem, sempre encostada nela (medidas em metros).
+    enunciado: ''
+    itens:
+    - 'Que curva o centro da roda descreve? Escreva a sua equação.'
+    - 'Quando o centro da roda está em $(3, 4)$, qual é o ponto de contato entre a roda e a pista?'
+    - 'Escreva a reta tangente comum à roda e à pista nesse ponto de contato.'
+    espaco: 62
+    resolucao: |
+      a) O centro fica sempre a $4 + 1 = 5$ da origem: $x^2 + y^2 = 25$.
+      b) O contato está na reta dos centros, a 4 da origem: $\tfrac{4}{5}(3, 4) = \left(\tfrac{12}{5}, \tfrac{16}{5}\right)$.
+      c) Perpendicular ao raio, de direção $(3, 4)$: $3x + 4y = 3 \cdot \tfrac{12}{5} + 4 \cdot \tfrac{16}{5} = 20$.
+    resposta: 'a) $x^2 + y^2 = 25$; b) $\left(\frac{12}{5}, \frac{16}{5}\right)$; c) $3x + 4y = 20$'
+
+  - estilo: Fuvest
+    enunciado: |
+      As circunferências $x^2 + y^2 = r^2$, com $r > 0$, e $(x - 6)^2 + (y - 8)^2 = 25$ são secantes se, e somente se,
+    opcoes: ['$5 < r < 15$', '$r > 5$', '$r < 15$', '$0 < r < 5$', '$r = 5$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $d = 10$. Secantes: $|r - 5| < 10 < r + 5$, isto é, $r > 5$ e $r < 15$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Para escrever a tangente à circunferência $(x - 2)^2 + (y - 1)^2 = 25$ no ponto $(5, 5)$, um aluno usou a fórmula $x_0 x + y_0 y = r^2$ e escreveu $5x + 5y = 25$.
+    enunciado: ''
+    itens:
+    - 'Mostre que a reta do aluno nem passa pelo ponto $(5, 5)$.'
+    - 'Determine a tangente correta, usando a perpendicularidade ao raio.'
+    - 'Explique por que a fórmula do aluno não vale aqui e escreva a versão correta para centro $(a, b)$.'
+    espaco: 62
+    resolucao: |
+      a) $25 + 25 = 50 \neq 25$.
+      b) Raio de $(2, 1)$ a $(5, 5)$: $m = \tfrac{4}{3}$. Tangente: $m = -\tfrac{3}{4}$, $y - 5 = -\tfrac{3}{4}(x - 5)$, ou $3x + 4y = 35$.
+      c) A fórmula $x_0 x + y_0 y = r^2$ só vale com centro na origem. Para centro $(a, b)$: $(x_0 - a)(x - a) + (y_0 - b)(y - b) = r^2$. Aqui: $3(x - 2) + 4(y - 1) = 25$, ou $3x + 4y = 35$.
+    resposta: 'b) $3x + 4y = 35$; c) Ver resolução'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $\lambda_1$: $x^2 + y^2 = 36$ e $\lambda_2$: $(x - k)^2 + y^2 = 16$, com $k > 0$.'
+    itens:
+    - 'Determine $k$ para que as circunferências sejam tangentes internas.'
+    - 'Para esse valor, determine o ponto de tangência.'
+    - 'Calcule a área da região interna a $\lambda_1$ e externa a $\lambda_2$.'
+    espaco: 62
+    resolucao: |
+      a) $d = k = 6 - 4 = 2$.
+      b) Na reta dos centros (o eixo $x$), a 6 da origem, do lado de $\lambda_2$: $(6, 0)$. (Confere: $(6 - 2)^2 = 16$.)
+      c) $36\pi - 16\pi = 20\pi$.
+    resposta: 'a) $k = 2$; b) $(6, 0)$; c) $20\pi$'
