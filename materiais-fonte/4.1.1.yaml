@@ -1,0 +1,595 @@
+# Aula 4.1.1 — Geometria plana: conceitos primitivos e ângulos
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: ponto, reta e plano (primitivos); semirreta e segmento; ângulo e classificação (agudo, reto, obtuso, raso);
+# complementares, suplementares, adjacentes, opostos pelo vértice; bissetriz; graus, minutos e segundos; ângulos entre ponteiros.
+# Retas paralelas cortadas por transversal ficam para a 4.1.2.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Classifique cada ângulo como agudo, reto, obtuso ou raso.'
+      tabela:
+        cabecalho: ['Medida', 'Classificação']
+        linhas:
+        - ['$37°$', '{{agudo}}']
+        - ['$90°$', '{{reto}}']
+        - ['$145°$', '{{obtuso}}']
+        - ['$180°$', '{{raso}}']
+        - ['$89°59^{\prime}$', '{{agudo}}']
+      resolucao: |
+        Agudo: menor que $90°$. Reto: $90°$. Obtuso: entre $90°$ e $180°$. Raso: $180°$. $89°59'$ ainda é menor que $90°$.
+      resposta: 'agudo; reto; obtuso; raso; agudo'
+    - enunciado: 'Complete o quadro.'
+      tabela:
+        cabecalho: ['Ângulo', 'Complemento', 'Suplemento']
+        linhas:
+        - ['$20°$', '${{70°}}$', '${{160°}}$']
+        - ['$63°$', '${{27°}}$', '${{117°}}$']
+        - ['$45°$', '${{45°}}$', '${{135°}}$']
+        - ['$81°$', '${{9°}}$', '${{99°}}$']
+      resolucao: |
+        Complemento: $90° - x$. Suplemento: $180° - x$. O suplemento é sempre o complemento mais $90°$.
+      resposta: '$70°, 160°$; $27°, 117°$; $45°, 135°$; $9°, 99°$'
+    - enunciado: 'Na figura, duas retas se cortam. Complete com as medidas dos ângulos $a$, $b$ e $c$.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.85]
+          \draw[ink, line width=1pt] (195:2.4) -- (15:2.4);
+          \draw[ink, line width=1pt] (247:2.2) -- (67:2.2);
+          \draw[roxo, line width=.8pt] (15:.6) arc (15:67:.6);
+          \node[font=\scriptsize, roxo] at (41:1.0) {$52°$};
+          \node[font=\small] at (131:.75) {$a$};
+          \node[font=\small] at (221:.85) {$b$};
+          \node[font=\small] at (311:.75) {$c$};
+          \end{scope}
+      itens:
+      - '$a = {{128°}}$'
+      - '$b = {{52°}}$'
+      - '$c = {{128°}}$'
+      colunas: 3
+      resolucao: |
+        $b$ é oposto pelo vértice ao ângulo de $52°$: $b = 52°$. $a$ e $c$ são suplementos de $52°$ (e opostos pelo vértice entre si): $128°$.
+      resposta: '$128°$; $52°$; $128°$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Ponto, reta e plano são definidos a partir de outros conceitos.'
+      - 'Dois ângulos opostos pelo vértice são congruentes.'
+      - 'Todo ângulo obtuso tem suplemento agudo.'
+      - 'Dois ângulos complementares podem ser ambos obtusos.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (F) São conceitos primitivos, aceitos sem definição. (V) (V) $180° - x < 90°$ quando $x > 90°$. (F) Dois obtusos somam mais de $180°$.
+      resposta: F, V, V, F
+    - enunciado: 'Na figura, $OC$ é a bissetriz do ângulo $A\hat{O}B$.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.9]
+          \draw[ink, line width=1pt] (0,0) -- (0:2.6) node[right, font=\scriptsize] {$A$};
+          \draw[ink, line width=1pt] (0,0) -- (84:2.4) node[above, font=\scriptsize] {$B$};
+          \draw[roxo, dashed, line width=.9pt] (0,0) -- (42:2.6) node[above right, font=\scriptsize] {$C$};
+          \draw[ink!70] (0:.7) arc (0:42:.7);
+          \draw[ink!70] (42:.8) arc (42:84:.8);
+          \node[below left, font=\scriptsize] at (0,0) {$O$};
+          \end{scope}
+      itens:
+      - 'Se $A\hat{O}B = 84°$, então $A\hat{O}C = {{42°}}$.'
+      - 'Se $A\hat{O}C = 3x + 6°$ e $C\hat{O}B = 5x - 10°$, então $x = {{8°}}$ e $A\hat{O}B = {{60°}}$.'
+      resolucao: |
+        A bissetriz divide o ângulo em dois ângulos iguais. (a) $84° \div 2 = 42°$. (b) $3x + 6 = 5x - 10$, $x = 8$; cada metade mede $30°$ e $A\hat{O}B = 60°$.
+      resposta: '(a) $42°$ (b) $x = 8°$, $60°$'
+    - enunciado: 'Efetue, completando. Lembre que $1° = 60^{\prime}$.'
+      itens:
+      - '$32°45^{\prime} + 18°30^{\prime} = {{51°15^{\prime}}}$'
+      - '$90° - 47°20^{\prime} = {{42°40^{\prime}}}$'
+      colunas: 2
+      resolucao: |
+        (a) $50°75' = 51°15'$. (b) $90° = 89°60'$; $89°60' - 47°20' = 42°40'$.
+      resposta: '(a) $51°15^{\prime}$ (b) $42°40^{\prime}$'
+    - enunciado: 'Na figura, $A$, $O$ e $C$ estão alinhados. Determine $x$ e as medidas dos dois ângulos.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.9]
+          \draw[ink, line width=1pt] (-2.6,0) node[left, font=\scriptsize] {$C$} -- (2.6,0) node[right, font=\scriptsize] {$A$};
+          \draw[ink, line width=1pt] (0,0) -- (75:2.3) node[above, font=\scriptsize] {$B$};
+          \draw[roxo] (0:.6) arc (0:75:.6);
+          \draw[roxo] (75:.75) arc (75:180:.75);
+          \node[font=\scriptsize] at (37:1.25) {$x + 20°$};
+          \node[font=\scriptsize] at (128:1.3) {$2x - 5°$};
+          \node[below, font=\scriptsize] at (0,0) {$O$};
+          \end{scope}
+      espaco: 12
+      resolucao: |
+        Os ângulos são adjacentes suplementares: $(x + 20) + (2x - 5) = 180$, $3x = 165$, $x = 55°$. Medidas: $75°$ e $105°$.
+      resposta: '$x = 55°$; $75°$ e $105°$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para achar o ângulo que mede o triplo do seu suplemento, Lia escreveu $x = 3(90° - x)$ e chegou a $x = 67°30'$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 12
+      resolucao: |
+        Lia usou o complemento. O suplemento é $180° - x$: $x = 3(180° - x)$, $4x = 540°$, $x = 135°$. (Confere: o suplemento é $45°$, e $3 \cdot 45° = 135°$.)
+      resposta: '$135°$'
+    - enunciado: 'O complemento de um ângulo é a quarta parte do seu suplemento. Determine o ângulo.'
+      espaco: 12
+      resolucao: |
+        $90 - x = \tfrac{180 - x}{4}$: $360 - 4x = 180 - x$, $3x = 180$, $x = 60°$. (Complemento $30°$, suplemento $120°$.)
+      resposta: '$60°$'
+    - enunciado: 'Na figura, duas retas se cortam. Determine $x$ e as medidas dos quatro ângulos.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.85]
+          \draw[ink, line width=1pt] (195:2.5) -- (15:2.5);
+          \draw[ink, line width=1pt] (265:2.2) -- (85:2.2);
+          \node[font=\scriptsize] at (50:1.25) {$2x + 10°$};
+          \node[font=\scriptsize] at (230:1.25) {$3x - 20°$};
+          \end{scope}
+      espaco: 12
+      resolucao: |
+        Os ângulos marcados são opostos pelo vértice: $2x + 10 = 3x - 20$, $x = 30°$. Eles medem $70°$, e os outros dois, $180° - 70° = 110°$.
+      resposta: '$x = 30°$; $70°, 70°, 110°, 110°$'
+    - enunciado: 'Calcule o menor ângulo formado pelos ponteiros de um relógio em cada horário.'
+      itens:
+      - '3 h'
+      - '4 h 30 min'
+      espaco_item: 12
+      resolucao: |
+        Cada hora do mostrador vale $30°$, e o ponteiro das horas anda $0{,}5°$ por minuto.
+        (a) 3 intervalos: $90°$. (b) O das horas está a $4 \cdot 30° + 30 \cdot 0{,}5° = 135°$ do 12; o dos minutos, a $180°$. Diferença $45°$.
+      resposta: '(a) $90°$ (b) $45°$'
+    - enunciado: 'Complete o quadro.'
+      tabela:
+        cabecalho: ['Operação', 'Resultado']
+        linhas:
+        - ['$2 \times 35°40^{\prime}$', '${{71°20^{\prime}}}$']
+        - ['$100° \div 3$', '${{33°20^{\prime}}}$']
+        - ['$180° - 74°35^{\prime}12^{\prime\prime}$', '${{105°24^{\prime}48^{\prime\prime}}}$']
+      resolucao: |
+        $70°80' = 71°20'$. $100° = 99°60'$; $99° \div 3 = 33°$ e $60' \div 3 = 20'$. $180° = 179°59'60''$; $179°59'60'' - 74°35'12'' = 105°24'48''$.
+      resposta: '$71°20^{\prime}$; $33°20^{\prime}$; $105°24^{\prime}48^{\prime\prime}$'
+    - enunciado: 'Os ângulos $A\hat{O}B = 70°$ e $B\hat{O}C = 110°$ são adjacentes. Calcule o ângulo formado pelas bissetrizes de $A\hat{O}B$ e de $B\hat{O}C$.'
+      espaco: 12
+      resolucao: |
+        As bissetrizes formam $\tfrac{70°}{2} + \tfrac{110°}{2} = 35° + 55° = 90°$. (Os ângulos são adjacentes suplementares, e as bissetrizes ficam perpendiculares.)
+      resposta: '$90°$'
+    - enunciado: 'Dois ângulos são complementares, e um deles mede $18°$ a mais que o outro. Determine os dois ângulos.'
+      espaco: 10
+      resolucao: |
+        $x + (x + 18) = 90$: $x = 36°$. Os ângulos medem $36°$ e $54°$.
+      resposta: '$36°$ e $54°$'
+    - enunciado: 'Três semirretas de mesma origem dividem o plano em três ângulos que medem $x$, $2x$ e $3x$. Determine as medidas.'
+      espaco: 10
+      resolucao: |
+        Uma volta completa mede $360°$: $6x = 360°$, $x = 60°$. Medidas: $60°$, $120°$ e $180°$ (o maior é raso).
+      resposta: '$60°$, $120°$ e $180°$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Mostre que as bissetrizes de dois ângulos adjacentes suplementares são sempre perpendiculares.'
+      espaco: 12
+      resolucao: |
+        Se os ângulos medem $\alpha$ e $\beta$, com $\alpha + \beta = 180°$, as bissetrizes formam $\tfrac{\alpha}{2} + \tfrac{\beta}{2} = \tfrac{180°}{2} = 90°$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Entre 2 h e 3 h, em que instante os ponteiros de um relógio se sobrepõem?'
+      espaco: 14
+      resolucao: |
+        Após $m$ minutos das 2 h, o ponteiro das horas está a $60 + 0{,}5m$ graus do 12, e o dos minutos, a $6m$. $6m = 60 + 0{,}5m$: $m = \tfrac{120}{11} = 10\tfrac{10}{11}$ min, cerca de 10 min 55 s.
+      resposta: 'às 2 h $10\frac{10}{11}$ min'
+    - enunciado: 'A soma do suplemento de um ângulo com o triplo do seu complemento é $250°$. Determine o ângulo.'
+      espaco: 12
+      resolucao: |
+        $(180 - x) + 3(90 - x) = 250$: $450 - 4x = 250$, $x = 50°$.
+      resposta: '$50°$'
+    - enunciado: 'Quatro ângulos em torno de um ponto, que juntos completam uma volta, medem $x$, $2x$, $x + 30°$ e $2x - 30°$. Determine as medidas e classifique cada ângulo.'
+      espaco: 12
+      resolucao: |
+        $6x = 360°$, $x = 60°$. Medidas: $60°$ (agudo), $120°$ (obtuso), $90°$ e $90°$ (retos).
+      resposta: '$60°$, $120°$, $90°$, $90°$'
+    - enunciado: 'A bissetriz de um ângulo forma com cada lado um ângulo que excede em $15°$ o complemento do ângulo. Determine o ângulo.'
+      espaco: 12
+      resolucao: |
+        $\tfrac{x}{2} = (90 - x) + 15$: $\tfrac{3x}{2} = 105$, $x = 70°$. (Metade $35°$; complemento $20°$.)
+      resposta: '$70°$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      A cancela de um estacionamento tem um braço que gira em torno de um eixo, partindo da posição horizontal (fechada). Para deixar passar um caminhão, o braço precisa ficar na vertical. O motor parou com o braço girado $74°35'$ a partir da posição fechada, como na figura, e o técnico precisa programar o giro que falta.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.85]
+        \fill[mudo!30] (-0.25,-0.6) rectangle (0.25,0);
+        \draw[ink!50, dashed] (0,0) -- (3.2,0);
+        \draw[ink!50, dashed] (0,0) -- (0,3.2);
+        \draw[roxo, line width=2.2pt] (0,0) -- (74.6:3.1);
+        \fill[ink] (0,0) circle (2.5pt);
+        \draw[ink] (0:.8) arc (0:74.6:.8);
+        \node[font=\scriptsize] at (36:1.35) {$74°35'$};
+        \end{scope}
+    enunciado: |
+      O giro que falta para o braço ficar na vertical é de
+    opcoes: ['$16°25^{\prime}$', '$15°25^{\prime}$', '$15°65^{\prime}$', '$16°35^{\prime}$', '$105°25^{\prime}$']
+    correta: B
+    resolucao: |
+      $90° - 74°35' = 89°60' - 74°35' = 15°25'$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O ângulo cujo suplemento é o quádruplo do seu complemento mede
+    opcoes: ['$30°$', '$45°$', '$60°$', '$75°$', '$120°$']
+    correta: C
+    resolucao: |
+      $180 - x = 4(90 - x)$: $3x = 180$, $x = 60°$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Dois ângulos opostos pelo vértice medem $4x - 15°$ e $2x + 35°$. Cada um deles mede
+    opcoes: ['$85°$.', '$25°$.', '$95°$.', '$50°$.']
+    correta: A
+    resolucao: |
+      Opostos pelo vértice são iguais: $4x - 15 = 2x + 35$, $x = 25°$, e cada um mede $85°$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere ângulos e conceitos primitivos da geometria plana. Assinale o que for correto.
+    proposicoes:
+    - 'As bissetrizes de dois ângulos adjacentes suplementares são perpendiculares.'
+    - 'O complemento de um ângulo agudo é agudo.'
+    - 'O suplemento de um ângulo agudo é obtuso.'
+    - 'Dois ângulos opostos pelo vértice são sempre suplementares.'
+    - 'Por dois pontos distintos passa uma única reta.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      01) $\tfrac{\alpha + \beta}{2} = 90°$. 02) $90° - x$ está entre $0°$ e $90°$. 04) $180° - x > 90°$. 08) Incorreta: são congruentes; só são suplementares se ambos forem retos. 16) Correta.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Enem
+    texto: |
+      Um relógio de ponteiros marca 8 h 30 min, como na figura. Nesse horário, o ponteiro dos minutos aponta para o 6, mas o ponteiro das horas não está exatamente no 8: ele já percorreu metade do caminho entre o 8 e o 9. Um professor pediu aos alunos a medida do menor ângulo entre os ponteiros.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.75]
+        \draw[ink, line width=1.2pt, fill=lilas!25] (0,0) circle (2);
+        \foreach \h in {1,...,12} { \draw[ink] ({90-30*\h}:1.75) -- ({90-30*\h}:2); \node[font=\scriptsize] at ({90-30*\h}:1.45) {\h}; }
+        \draw[ink, line width=2pt] (0,0) -- (195:1.05);
+        \draw[roxo, line width=1.4pt] (0,0) -- (270:1.6);
+        \fill[ink] (0,0) circle (2.5pt);
+        \end{scope}
+    enunciado: |
+      O menor ângulo entre os ponteiros, às 8 h 30 min, mede
+    opcoes: ['$75°$', '$60°$', '$90°$', '$105°$', '$120°$']
+    correta: A
+    resolucao: |
+      Do 12, o ponteiro das horas está a $8 \cdot 30° + 15° = 255°$, e o dos minutos, a $180°$. Diferença: $75°$. (Quem põe o ponteiro das horas no 8 encontra $60°$.)
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir sobre ângulos.
+    afirmativas:
+    - 'Todo ângulo raso mede $180°$.'
+    - 'Dois ângulos agudos podem ser suplementares.'
+    - 'Dois ângulos complementares não nulos são agudos.'
+    - 'O suplemento de um ângulo reto é um ângulo reto.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e III, apenas.', 'I, III e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. Correta. II. Incorreta: dois agudos somam menos de $180°$. III. Correta: cada um é menor que $90°$. IV. Correta: $180° - 90° = 90°$.
+
+  - estilo: Unesp
+    enunciado: |
+      O resultado de $3 \times 25°50'$ é
+    opcoes: ['$75°50^{\prime}$', '$76°30^{\prime}$', '$77°50^{\prime}$', '$78°30^{\prime}$', '$77°30^{\prime}$']
+    correta: E
+    resolucao: |
+      $75°150' = 75° + 2°30' = 77°30'$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, duas retas se cortam, formando os ângulos indicados.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.85]
+        \draw[ink, line width=1pt] (190:2.5) -- (10:2.5);
+        \draw[ink, line width=1pt] (265:2.2) -- (85:2.2);
+        \node[font=\scriptsize] at (47:1.3) {$x + 40°$};
+        \node[font=\scriptsize] at (137:1.05) {$3x$};
+        \end{scope}
+    enunciado: |
+      O maior dos quatro ângulos formados mede
+    opcoes: ['$35°$.', '$75°$.', '$70°$.', '$105°$.']
+    correta: D
+    resolucao: |
+      Os ângulos marcados são adjacentes suplementares: $4x + 40 = 180$, $x = 35°$. Eles medem $75°$ e $105°$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Os ângulos $\alpha$ e $\beta$ são complementares e $\alpha - \beta = 24°$. Então $\beta$ mede
+    opcoes: ['$24°$', '$33°$', '$57°$', '$66°$', '$45°$']
+    correta: B
+    resolucao: |
+      $\alpha + \beta = 90°$ e $\alpha - \beta = 24°$: $\alpha = 57°$ e $\beta = 33°$.
+
+  - estilo: UFSC
+    enunciado: |
+      Seja $x$ o ângulo cujo suplemento é o quíntuplo do seu complemento. Assinale o que for correto.
+    proposicoes:
+    - '$x = 67°30^{\prime}$.'
+    - '$x$ é um ângulo agudo.'
+    - 'O complemento de $x$ mede $22°30^{\prime}$.'
+    - 'O suplemento de $x$ mede $122°30^{\prime}$.'
+    - '$x$ é o dobro do seu complemento.'
+    - 'A bissetriz de $x$ forma com cada lado um ângulo de $33°45^{\prime}$.'
+    corretas: [1, 2, 3, 6]
+    resolucao: |
+      $180 - x = 5(90 - x)$: $4x = 270$, $x = 67{,}5° = 67°30'$. 01) a 04) Corretas. 08) Incorreta: $112°30'$. 16) Incorreta: é o triplo ($3 \cdot 22°30' = 67°30'$). 32) $67°30' \div 2 = 33°45'$.
+      Soma: $01 + 02 + 04 + 32 = 39$.
+
+  - estilo: Enem
+    texto: |
+      Duas ruas retas, $r$ e $s$, se cruzam formando um ângulo agudo de $64°$. A prefeitura vai plantar uma fileira de árvores ao longo da bissetriz desse ângulo agudo, como na figura, e precisa informar ao topógrafo o ângulo obtuso que a fileira forma com a rua $s$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1.2pt] (-2.8,0) -- (3,0) node[right, font=\scriptsize] {$s$};
+        \draw[ink, line width=1.2pt] (244:1.8) -- (64:2.9) node[above, font=\scriptsize] {$r$};
+        \draw[lima!70!black, dashed, line width=1.1pt] (0,0) -- (32:3) node[right, font=\scriptsize] {árvores};
+        \draw[ink!70] (0:.7) arc (0:64:.7);
+        \node[font=\scriptsize] at (20:1.15) {$64°$};
+        \end{scope}
+    enunciado: |
+      O ângulo obtuso entre a fileira de árvores e a rua $s$ mede
+    opcoes: ['$32°$', '$58°$', '$116°$', '$122°$', '$148°$']
+    correta: E
+    resolucao: |
+      A bissetriz forma $32°$ com $s$ do lado agudo; o ângulo adjacente, do outro lado, é o suplemento: $180° - 32° = 148°$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$45°30^{\prime} = 45{,}5°$.'
+    - '$0{,}3° = 30^{\prime}$.'
+    - 'O complemento de $23°47^{\prime}$ é $66°13^{\prime}$.'
+    - '$1° = 100^{\prime\prime}$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – F – V – F.', 'V – F – V – F.', 'V – F – V – V.', 'V – V – F – F.']
+    correta: C
+    resolucao: |
+      (V) $30' = 0{,}5°$. (F) $0{,}3 \cdot 60' = 18'$. (V) $89°60' - 23°47' = 66°13'$. (F) $1° = 60' = 3600''$.
+
+  - estilo: Enem
+    texto: |
+      Uma loja vende leques decorativos em que as varetas ficam igualmente espaçadas quando o leque está aberto. O quadro mostra, para cada modelo, o número de varetas e a abertura total, que é o ângulo entre a primeira e a última vareta. Um cliente quer o modelo com o maior ângulo entre duas varetas vizinhas.
+    tabela:
+      cabecalho: ['Leque', 'Varetas', 'Abertura total']
+      linhas:
+      - ['1', '5', '$120°$']
+      - ['2', '6', '$160°$']
+      - ['3', '8', '$210°$']
+      - ['4', '4', '$105°$']
+    enunciado: |
+      O cliente deve escolher
+    opcoes: ['o leque 1.', 'o leque 2.', 'o leque 3.', 'o leque 4.', 'o leque 1 ou o 3, que empatam.']
+    correta: D
+    resolucao: |
+      Com $n$ varetas há $n - 1$ espaços: $120 \div 4 = 30°$; $160 \div 5 = 32°$; $210 \div 7 = 30°$; $105 \div 3 = 35°$. Dividir pelo número de varetas levaria, por engano, ao leque 2.
+
+  - estilo: Fuvest
+    enunciado: |
+      Às 10 h 10 min, o menor ângulo formado pelos ponteiros de um relógio mede
+    opcoes: ['$115°$', '$120°$', '$125°$', '$110°$', '$245°$']
+    correta: A
+    resolucao: |
+      Do 12, horas: $300° + 10 \cdot 0{,}5° = 305°$; minutos: $60°$. Diferença $245°$; o menor ângulo é $360° - 245° = 115°$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere os conceitos primitivos e as primeiras definições da geometria. Assinale o que for correto.
+    proposicoes:
+    - 'Ponto, reta e plano são conceitos primitivos, aceitos sem definição.'
+    - 'Uma semirreta tem origem e é ilimitada em um único sentido.'
+    - 'Um segmento de reta é ilimitado.'
+    - 'Três pontos não colineares determinam um único plano.'
+    - 'Duas retas distintas podem ter exatamente dois pontos comuns.'
+    corretas: [1, 2, 4]
+    resolucao: |
+      01) Correta. 02) Correta. 04) Incorreta: o segmento tem dois extremos. 08) Correta. 16) Incorreta: duas retas distintas têm no máximo um ponto comum.
+      Soma: $01 + 02 + 08 = 11$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O ângulo formado pelas bissetrizes de dois ângulos adjacentes e complementares mede
+    opcoes: ['$30°$', '$45°$', '$60°$', '$90°$', '$22°30^{\prime}$']
+    correta: B
+    resolucao: |
+      $\tfrac{\alpha}{2} + \tfrac{\beta}{2} = \tfrac{90°}{2} = 45°$, quaisquer que sejam $\alpha$ e $\beta$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um artista pintou num muro um painel com três faixas que partem de um mesmo ponto $O$ de um rodapé reto, como na figura. Os pontos $A$, $O$ e $D$ estão no rodapé, e as faixas determinam os ângulos $A\hat{O}B = 2x + 10°$, $B\hat{O}C = 3x$ e $C\hat{O}D = x + 20°$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \draw[ink, line width=1.1pt] (-2.8,0) node[left, font=\scriptsize] {$A$} -- (2.8,0) node[right, font=\scriptsize] {$D$};
+        \draw[roxo, line width=1.1pt] (0,0) -- (120:2.4) node[above, font=\scriptsize] {$B$};
+        \draw[roxo, line width=1.1pt] (0,0) -- (45:2.4) node[above right, font=\scriptsize] {$C$};
+        \node[font=\scriptsize] at (152:1.35) {$2x + 10°$};
+        \node[font=\scriptsize] at (82:1.25) {$3x$};
+        \node[font=\scriptsize] at (20:1.45) {$x + 20°$};
+        \node[below, font=\scriptsize] at (0,0) {$O$};
+        \end{scope}
+    enunciado: |
+      O valor de $x$ é
+    opcoes: ['$20°$', '$22°30^{\prime}$', '$25°$', '$30°$', '$35°$']
+    correta: C
+    resolucao: |
+      Os três ângulos formam um ângulo raso: $6x + 30 = 180$, $x = 25°$. Medidas: $60°$, $75°$ e $45°$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O ângulo formado pelas bissetrizes de $A\hat{O}B$ e de $C\hat{O}D$ mede
+    opcoes: ['$120°$.', '$127°30^{\prime}$.', '$135°$.', '$105°$.']
+    correta: B
+    resolucao: |
+      $\tfrac{60°}{2} + 75° + \tfrac{45°}{2} = 30° + 75° + 22°30' = 127°30'$.
+
+  - estilo: Unesp
+    enunciado: |
+      O valor de $180° - 2 \times 35°27^{\prime}40^{\prime\prime}$ é
+    opcoes: ['$110°4^{\prime}40^{\prime\prime}$', '$109°5^{\prime}20^{\prime\prime}$', '$109°45^{\prime}20^{\prime\prime}$', '$108°4^{\prime}40^{\prime\prime}$', '$109°4^{\prime}40^{\prime\prime}$']
+    correta: E
+    resolucao: |
+      $2 \times 35°27'40'' = 70°54'80'' = 70°55'20''$. $180° = 179°59'60''$, e $179°59'60'' - 70°55'20'' = 109°4'40''$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Entre 4 h e 5 h, os ponteiros de um relógio ficam sobrepostos às
+    opcoes: ['4 h 20 min', '4 h 22 min', '4 h 24 min', '4 h $21\frac{9}{11}$ min', '4 h 19 min']
+    correta: D
+    resolucao: |
+      Após $m$ minutos das 4 h: horas em $120 + 0{,}5m$ graus, minutos em $6m$. $5{,}5m = 120$, $m = \tfrac{240}{11} = 21\tfrac{9}{11}$ min.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere um relógio de ponteiros às $h$ horas e $m$ minutos, com $0 \leq h < 12$ e $0 \leq m < 60$.'
+    itens:
+    - 'Mostre que o ângulo entre os ponteiros, medido a partir do ponteiro dos minutos, é $|30h - 5{,}5m|$ (ou o seu replemento, $360°$ menos ele).'
+    - 'Calcule o menor ângulo entre os ponteiros às 7 h 20 min.'
+    - 'Entre 7 h e 8 h, em que instantes os ponteiros formam ângulo reto?'
+    espaco: 62
+    resolucao: |
+      a) Do 12, o ponteiro das horas está em $30h + 0{,}5m$ graus e o dos minutos em $6m$. A diferença é $|30h + 0{,}5m - 6m| = |30h - 5{,}5m|$.
+      b) $|210 - 110| = 100°$.
+      c) $|210 - 5{,}5m| = 90$: $5{,}5m = 120$, $m = 21\tfrac{9}{11}$; ou $5{,}5m = 300$, $m = 54\tfrac{6}{11}$. Às 7 h $21\tfrac{9}{11}$ min e às 7 h $54\tfrac{6}{11}$ min.
+    resposta: 'b) $100°$; c) 7 h $21\frac{9}{11}$ min e 7 h $54\frac{6}{11}$ min'
+
+  - estilo: Unicamp
+    texto: |
+      As semirretas $OA$, $OB$, $OC$ e $OD$, nessa ordem, dividem o plano em quatro ângulos consecutivos: $A\hat{O}B = x$, $B\hat{O}C = 2x$, $C\hat{O}D = 3x$ e $D\hat{O}A = 4x$.
+    enunciado: ''
+    itens:
+    - 'Determine $x$ e as quatro medidas.'
+    - 'Mostre que $B$, $O$ e $D$ estão alinhados.'
+    - 'Calcule o ângulo formado pelas bissetrizes de $A\hat{O}B$ e de $C\hat{O}D$ que contém $B\hat{O}C$.'
+    espaco: 62
+    resolucao: |
+      a) $10x = 360°$, $x = 36°$: $36°$, $72°$, $108°$ e $144°$.
+      b) $B\hat{O}C + C\hat{O}D = 72° + 108° = 180°$: os ângulos são adjacentes suplementares, então $OB$ e $OD$ são semirretas opostas.
+      c) $\tfrac{36°}{2} + 72° + \tfrac{108°}{2} = 18° + 72° + 54° = 144°$.
+    resposta: 'a) $36°, 72°, 108°, 144°$; c) $144°$'
+
+  - estilo: ITA
+    enunciado: |
+      O número de vezes em que os ponteiros das horas e dos minutos de um relógio ficam sobrepostos, de 0 h até imediatamente antes de 12 h, é
+    opcoes: ['$10$', '$11$', '$12$', '$22$', '$24$']
+    correta: B
+    resolucao: |
+      O ponteiro dos minutos ganha $5{,}5°$ por minuto sobre o das horas. Sobreposições ocorrem quando o ganho é múltiplo de $360°$: a cada $\tfrac{360}{5{,}5} = \tfrac{720}{11}$ min. Em 720 min, de 0 h até antes de 12 h: $k = 0, 1, \ldots, 10$, isto é, 11 vezes.
+    espaco: 22
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere dois ângulos adjacentes, $A\hat{O}B = \alpha$ e $B\hat{O}C = \beta$.'
+    itens:
+    - 'Mostre que o ângulo entre as bissetrizes de $\alpha$ e de $\beta$ mede $\frac{\alpha + \beta}{2}$.'
+    - 'Conclua o que acontece quando $\alpha$ e $\beta$ são suplementares e quando são complementares.'
+    - 'Se o ângulo entre as bissetrizes mede $50°$ e $\alpha - \beta = 20°$, determine $\alpha$ e $\beta$.'
+    espaco: 62
+    resolucao: |
+      a) A bissetriz de $\alpha$ forma $\tfrac{\alpha}{2}$ com $OB$, e a de $\beta$ forma $\tfrac{\beta}{2}$ com $OB$, do outro lado: total $\tfrac{\alpha + \beta}{2}$.
+      b) Suplementares: $90°$ (bissetrizes perpendiculares). Complementares: $45°$.
+      c) $\alpha + \beta = 100°$ e $\alpha - \beta = 20°$: $\alpha = 60°$ e $\beta = 40°$.
+    resposta: 'b) $90°$ e $45°$; c) $\alpha = 60°$, $\beta = 40°$'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - '$12{,}25° = 12°15^{\prime}$.'
+    - 'A terça parte de $50°$ é $16°20^{\prime}$.'
+    - 'Duas retas concorrentes formam quatro ângulos, congruentes dois a dois.'
+    - 'Se um dos quatro ângulos formados por duas retas concorrentes é reto, os quatro são retos.'
+    - 'O suplemento do suplemento de um ângulo obtuso é agudo.'
+    - 'O suplemento do complemento de $30°$ é $120°$.'
+    corretas: [1, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) $0{,}25 \cdot 60' = 15'$. 02) Incorreta: $50° \div 3 = 16°40'$. 04) Pares opostos pelo vértice. 08) Os adjacentes são suplementos de $90°$.
+      16) Incorreta: $180° - (180° - x) = x$, o próprio ângulo obtuso. 32) Complemento $60°$; suplemento de $60°$: $120°$.
+    resposta: 'Soma 45 (01 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'A soma dos suplementos de dois ângulos é $200°$, e a diferença entre os complementos deles é $10°$.'
+    itens:
+    - 'Escreva o sistema de equações que traduz o enunciado, chamando os ângulos de $x$ e $y$, com $x < y$.'
+    - 'Resolva o sistema.'
+    - 'Confira as duas condições com os valores encontrados.'
+    espaco: 62
+    resolucao: |
+      a) $(180 - x) + (180 - y) = 200$ e $(90 - x) - (90 - y) = 10$ (o menor ângulo tem o maior complemento).
+      b) $x + y = 160$ e $y - x = 10$: $x = 75°$ e $y = 85°$.
+      c) Suplementos $105° + 95° = 200°$; complementos $15° - 5° = 10°$.
+    resposta: 'b) $75°$ e $85°$'
+
+  - estilo: Unicamp
+    texto: |
+      Quando um raio de luz atinge um espelho plano, o ângulo que o raio incidente forma com o espelho é igual ao ângulo que o raio refletido forma com o espelho. Dois espelhos planos, $E_1$ e $E_2$, são perpendiculares. Um raio atinge $E_1$ formando $35°$ com ele, reflete e vai atingir $E_2$.
+    enunciado: ''
+    itens:
+    - 'Calcule o ângulo entre o raio incidente e o raio refletido em $E_1$.'
+    - 'Calcule o ângulo que o raio refletido em $E_1$ forma com $E_2$.'
+    - 'Calcule o ângulo que o raio forma com $E_2$ depois da segunda reflexão.'
+    espaco: 62
+    resolucao: |
+      a) Os ângulos com o espelho são $35°$ e $35°$, e com o ângulo entre os raios completam um ângulo raso: $180° - 70° = 110°$.
+      b) O raio refletido, $E_1$ e $E_2$ formam um triângulo retângulo (os espelhos são perpendiculares). Os ângulos agudos somam $90°$: $90° - 35° = 55°$.
+      c) Pela lei da reflexão, também $55°$.
+    resposta: 'a) $110°$; b) $55°$; c) $55°$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Às 5 h 40 min, o menor ângulo formado pelos ponteiros de um relógio mede
+    opcoes: ['$60°$', '$70°$', '$80°$', '$90°$', '$100°$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $|30 \cdot 5 - 5{,}5 \cdot 40| = |150 - 220| = 70°$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere um ângulo agudo $x$.'
+    itens:
+    - 'Mostre que o suplemento do complemento de $x$ é $90° + x$.'
+    - 'Determine $x$ para que o suplemento do complemento de $x$ seja o quádruplo de $x$.'
+    - 'Mostre que, para todo $x$ entre $0°$ e $180°$, o suplemento de $x$ é o dobro do complemento de $\frac{x}{2}$.'
+    espaco: 62
+    resolucao: |
+      a) $180° - (90° - x) = 90° + x$.
+      b) $90 + x = 4x$: $x = 30°$.
+      c) $2\left(90° - \tfrac{x}{2}\right) = 180° - x$, que é o suplemento de $x$. (Para $0° < x < 180°$, $\tfrac{x}{2}$ é agudo e tem complemento.)
+    resposta: 'b) $30°$'
+
+  - estilo: Fuvest
+    enunciado: 'Os ponteiros de um relógio estão sobrepostos ao meio-dia.'
+    itens:
+    - 'Quantos graus por minuto percorre cada ponteiro?'
+    - 'Depois do meio-dia, quando os ponteiros voltam a se sobrepor pela primeira vez?'
+    - 'Quantas vezes os ponteiros se sobrepõem num dia inteiro, de 0 h até imediatamente antes de 24 h?'
+    espaco: 62
+    resolucao: |
+      a) Minutos: $360° \div 60 = 6°$ por minuto. Horas: $30° \div 60 = 0{,}5°$ por minuto.
+      b) O dos minutos precisa ganhar $360°$, a $5{,}5°$ por minuto: $\tfrac{360}{5{,}5} = \tfrac{720}{11} = 65\tfrac{5}{11}$ min, ou seja, por volta de 13 h 5 min 27 s.
+      c) 11 vezes a cada 12 horas: 22 vezes.
+    resposta: 'a) $6°$ e $0{,}5°$ por minuto; b) 13 h $5\frac{5}{11}$ min; c) 22'
