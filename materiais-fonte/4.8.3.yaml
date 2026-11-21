@@ -544,7 +544,7 @@ aprofundamento:
     - 'Calcule a área do triângulo nesse caso.'
     espaco: 62
     resolucao: |
-      a) $A$ está na circunferência de diâmetro $BC$ (ângulo reto inscrito). A reta $AH$ é perpendicular ao diâmetro e corta a circunferência em $A$ e $A''$, com $HA = HA''$. Potência de $H$: $HA \cdot HA'' = HB \cdot HC$, ou $AH^2 = mn$.
+      a) $A$ está na circunferência de diâmetro $BC$ (ângulo reto inscrito). A reta $AH$ é perpendicular ao diâmetro e corta a circunferência em $A$ e $A^{\prime}$, com $HA = HA^{\prime}$. Potência de $H$: $HA \cdot HA^{\prime} = HB \cdot HC$, ou $AH^2 = mn$.
       b) $AH = 4$.
       c) $\tfrac{10 \cdot 4}{2} = 20$.
     resposta: 'b) 4; c) 20'

@@ -1,0 +1,575 @@
+# Aula 4.9.1 — Geometria espacial: geometria de posição
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: postulados e determinação de planos; posições relativas de duas retas (concorrentes, paralelas, reversas),
+# de reta e plano (contida, paralela, secante) e de dois planos (paralelos, secantes); propriedades de paralelismo; arestas
+# e diagonais do cubo; ângulo entre retas reversas (por translação); contagem de retas e planos determinados por pontos.
+# Perpendicularidade e projeções ficam para a 4.10.1.
+# Convenção do cubo ABCDEFGH: base ABCD, com E, F, G, H acima de A, B, C, D.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. No cubo $ABCDEFGH$, a base é $ABCD$ e os vértices $E$, $F$, $G$, $H$ ficam acima de $A$, $B$, $C$, $D$. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Associe cada posição relativa à sua descrição.'
+      esquerda:
+      - 'retas concorrentes'
+      - 'retas paralelas distintas'
+      - 'retas reversas'
+      - 'reta contida no plano'
+      - 'reta paralela ao plano'
+      - 'reta secante ao plano'
+      direita:
+      - 'não têm ponto comum e não estão num mesmo plano'
+      - 'a reta corta o plano num único ponto'
+      - 'têm exatamente um ponto comum'
+      - 'a reta e o plano não têm ponto comum'
+      - 'estão num mesmo plano e não têm ponto comum'
+      - 'todos os pontos da reta estão no plano'
+      resolucao: |
+        Duas retas sem ponto comum podem ser paralelas (coplanares) ou reversas (não coplanares). Uma reta e um plano têm 0, 1 ou infinitos pontos comuns.
+      resposta: 'De cima para baixo: 3, 6, 1, 5, 2, 4'
+    - enunciado: 'No cubo $ABCDEFGH$, complete com concorrentes, paralelas ou reversas.'
+      tabela:
+        cabecalho: ['Par de arestas', 'Posição']
+        linhas:
+        - ['$AB$ e $CD$', '{{paralelas}}']
+        - ['$AB$ e $BF$', '{{concorrentes}}']
+        - ['$AB$ e $CG$', '{{reversas}}']
+        - ['$AE$ e $CG$', '{{paralelas}}']
+        - ['$AD$ e $BF$', '{{reversas}}']
+      resolucao: |
+        Arestas na mesma direção são paralelas; com um vértice comum, concorrentes; nos demais casos, não estão num mesmo plano: reversas.
+      resposta: 'paralelas; concorrentes; reversas; paralelas; reversas'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Três pontos quaisquer determinam um único plano.'
+      - 'Duas retas reversas não estão contidas num mesmo plano.'
+      - 'Duas retas sem ponto comum são paralelas.'
+      - 'Duas retas paralelas distintas determinam um único plano.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (F) Se forem colineares, há infinitos planos por eles. (V) (F) Podem ser reversas. (V)
+      resposta: F, V, F, V
+    - enunciado: 'No cubo $ABCDEFGH$, complete com o número de arestas.'
+      itens:
+      - 'Paralelas a $AB$: {{3}}'
+      - 'Concorrentes com $AB$: {{4}}'
+      - 'Reversas a $AB$: {{4}}'
+      espaco_item: 8
+      resolucao: |
+        Paralelas: $DC$, $EF$, $HG$. Concorrentes: $AD$, $AE$, $BC$, $BF$. Reversas: as restantes, $CG$, $DH$, $EH$, $FG$ ($12 - 1 - 3 - 4 = 4$).
+      resposta: '3; 4; 4'
+    - enunciado: 'No cubo da figura, classifique: (a) os planos $ABCD$ e $EFGH$; (b) os planos $ABCD$ e $BCGF$, dando a interseção; (c) a reta $EF$ em relação ao plano $ABCD$.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.8]
+          \draw[ink, line width=1pt] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+          \draw[ink, line width=1pt] (2,0) -- (2.8,0.6) -- (2.8,2.6) -- (0.8,2.6) -- (0,2) (2,2) -- (2.8,2.6);
+          \draw[ink, dashed] (0,0) -- (0.8,0.6) -- (2.8,0.6) (0.8,0.6) -- (0.8,2.6);
+          \node[below left, font=\scriptsize] at (0,0) {$A$};
+          \node[below right, font=\scriptsize] at (2,0) {$B$};
+          \node[right, font=\scriptsize] at (2.8,0.6) {$C$};
+          \node[left, font=\scriptsize] at (0.8,0.75) {$D$};
+          \node[left, font=\scriptsize] at (0,2) {$E$};
+          \node[below right, font=\scriptsize] at (2,2) {$F$};
+          \node[above right, font=\scriptsize] at (2.8,2.6) {$G$};
+          \node[above left, font=\scriptsize] at (0.8,2.6) {$H$};
+          \end{scope}
+      espaco: 10
+      resolucao: |
+        (a) Paralelos (faces opostas). (b) Secantes, com interseção na reta $BC$. (c) Paralela: $EF \parallel AB$, e $AB$ está no plano.
+      resposta: 'a) paralelos; b) secantes, reta $BC$; c) paralela'
+    - enunciado: 'Quantos planos ficam determinados por 5 pontos, se não há 4 deles num mesmo plano (nem 3 numa mesma reta)?'
+      espaco: 8
+      resolucao: |
+        Cada grupo de 3 pontos determina um plano diferente: $C_{5,3} = 10$.
+      resposta: '10'
+    - enunciado: 'Cite quatro maneiras de determinar um plano.'
+      espaco: 8
+      resolucao: |
+        Três pontos não colineares; uma reta e um ponto fora dela; duas retas concorrentes; duas retas paralelas distintas.
+      resposta: 'Ver resolução'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Num cubo $ABCDEFGH$, Lia disse: “as retas $AB$ e $CG$ não se cortam; logo, são paralelas”.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        Paralelas precisam estar num mesmo plano. $AB$ e $CG$ têm direções diferentes e não se cortam: são reversas.
+      resposta: 'reversas'
+    - enunciado: 'Quantos pares de arestas reversas há num cubo?'
+      espaco: 10
+      resolucao: |
+        Cada aresta tem 4 reversas: $\tfrac{12 \cdot 4}{2} = 24$ pares (cada par contado duas vezes).
+      resposta: '24'
+    - enunciado: 'No cubo $ABCDEFGH$, as diagonais de face $AF$ e $BG$ são reversas. Calcule o ângulo entre elas, transladando $BG$ para $AH$.'
+      espaco: 12
+      resolucao: |
+        $BG \parallel AH$ (ambas diagonais de faces opostas, na mesma direção). O ângulo é $F\hat{A}H$. O triângulo $AFH$ tem os três lados iguais a diagonais de face: equilátero. Ângulo $60°$.
+      resposta: '$60°$'
+    - enunciado: 'Para $n$ pontos, com 3 nunca colineares e 4 nunca coplanares, complete com o número de retas e de planos determinados.'
+      tabela:
+        cabecalho: ['$n$', 'Retas', 'Planos']
+        linhas:
+        - ['$4$', '${{6}}$', '${{4}}$']
+        - ['$5$', '${{10}}$', '${{10}}$']
+        - ['$6$', '${{15}}$', '${{20}}$']
+      resolucao: |
+        Retas: $C_{n,2}$; planos: $C_{n,3}$.
+      resposta: '6, 4; 10, 10; 15, 20'
+    - enunciado: 'Uma aluna afirmou: “se uma reta é paralela a um plano, ela é paralela a todas as retas desse plano”. Mostre, com o cubo, que isso é falso.'
+      espaco: 10
+      resolucao: |
+        $EF$ é paralela ao plano $ABCD$, mas $EF$ e $BC$ (contida em $ABCD$) são reversas. A reta é paralela a algumas retas do plano e reversa às outras.
+      resposta: 'Ver resolução'
+    - enunciado: 'No cubo $ABCDEFGH$, complete com a interseção dos planos.'
+      itens:
+      - '$ABCD$ e $BCGF$: reta {{BC}}'
+      - '$ABFE$ e $ADHE$: reta {{AE}}'
+      - '$ABCD$ e $EFGH$: {{nenhum ponto}}'
+      espaco_item: 8
+      resolucao: |
+        Faces vizinhas se cortam numa aresta; faces opostas são paralelas.
+      resposta: '$BC$; $AE$; nenhum ponto'
+    - enunciado: 'Os 8 vértices de um cubo determinam quantas retas? Separe-as em arestas, diagonais de face e diagonais do cubo.'
+      espaco: 10
+      resolucao: |
+        Não há 3 vértices alinhados: $C_{8,2} = 28$ retas. Arestas: 12; diagonais de face: $6 \cdot 2 = 12$; diagonais do cubo: 4.
+      resposta: '28 = 12 + 12 + 4'
+    - enunciado: 'Num tetraedro $ABCD$, as arestas $AB$ e $CD$ são opostas. Mostre que são reversas e conte os pares de arestas reversas do tetraedro.'
+      espaco: 10
+      resolucao: |
+        Se $AB$ e $CD$ estivessem num mesmo plano, os quatro vértices seriam coplanares, e não haveria tetraedro. Arestas sem vértice comum são opostas: $AB$ e $CD$, $AC$ e $BD$, $AD$ e $BC$. São 3 pares.
+      resposta: '3'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que duas retas paralelas distintas determinam um único plano.'
+      espaco: 12
+      resolucao: |
+        Por definição, retas paralelas estão num mesmo plano. Ele é único, pois contém uma das retas e um ponto da outra, fora dela, e uma reta e um ponto exterior determinam um só plano.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, se a reta $r$, fora do plano $\alpha$, é paralela a uma reta $s$ de $\alpha$, então $r$ é paralela a $\alpha$.'
+      espaco: 12
+      resolucao: |
+        $r$ e $s$ determinam um plano $\beta$, que corta $\alpha$ na reta $s$. Se $r$ tivesse um ponto $P$ em $\alpha$, $P$ estaria em $\alpha$ e em $\beta$, isto é, em $s$; mas $r$ e $s$ não têm ponto comum. Logo $r \parallel \alpha$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, se dois planos paralelos são cortados por um terceiro plano, as interseções são retas paralelas.'
+      espaco: 12
+      resolucao: |
+        As duas retas estão no terceiro plano (são coplanares). Não têm ponto comum, pois cada uma está num dos planos paralelos, que não se encontram. Logo, são paralelas.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $n$ pontos, com 4 nunca coplanares e 3 nunca colineares, determinam $C_{n,3}$ planos, e calcule para $n = 7$.'
+      espaco: 10
+      resolucao: |
+        Cada trio determina um plano, e trios diferentes dão planos diferentes (se dois trios dessem o mesmo plano, haveria pelo menos 4 pontos coplanares). $C_{7,3} = 35$.
+      resposta: '35'
+    - enunciado: 'Dadas duas retas reversas $r$ e $s$, mostre que existe um plano que contém $r$ e é paralelo a $s$.'
+      espaco: 12
+      resolucao: |
+        Por um ponto $P$ de $r$, trace $s^{\prime} \parallel s$. As retas $r$ e $s^{\prime}$ são concorrentes e determinam um plano $\alpha$. Como $s$ está fora de $\alpha$ e é paralela a $s^{\prime}$, que está em $\alpha$, temos $s \parallel \alpha$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Uma escultura é feita de varetas de metal soldadas nas arestas de um cubo $ABCDEFGH$, como na figura. Para o catálogo da exposição, o artista quer citar um exemplo de duas varetas que não se tocam e que, mesmo prolongadas, nunca se encontrariam, sem estar num mesmo plano.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1pt] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+        \draw[ink, line width=1pt] (2,0) -- (2.8,0.6) -- (2.8,2.6) -- (0.8,2.6) -- (0,2) (2,2) -- (2.8,2.6);
+        \draw[ink, dashed] (0,0) -- (0.8,0.6) -- (2.8,0.6) (0.8,0.6) -- (0.8,2.6);
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[below right, font=\scriptsize] at (2,0) {$B$};
+        \node[right, font=\scriptsize] at (2.8,0.6) {$C$};
+        \node[left, font=\scriptsize] at (0.8,0.75) {$D$};
+        \node[left, font=\scriptsize] at (0,2) {$E$};
+        \node[below right, font=\scriptsize] at (2,2) {$F$};
+        \node[above right, font=\scriptsize] at (2.8,2.6) {$G$};
+        \node[above left, font=\scriptsize] at (0.8,2.6) {$H$};
+        \end{scope}
+    enunciado: |
+      Um exemplo correto é o par de varetas
+    opcoes: ['$AB$ e $EF$.', '$AB$ e $CG$.', '$AB$ e $BC$.', '$AE$ e $CG$.', '$EF$ e $FG$.']
+    correta: B
+    resolucao: |
+      Retas sem ponto comum e não coplanares são reversas: $AB$ e $CG$. $AB$ e $EF$, assim como $AE$ e $CG$, são paralelas; os outros pares são concorrentes.
+
+  - estilo: Fuvest
+    enunciado: |
+      Seis pontos do espaço são tais que nunca há 4 deles num mesmo plano. O número de planos determinados por esses pontos é
+    opcoes: ['$20$', '$15$', '$120$', '$6$', '$18$']
+    correta: A
+    resolucao: |
+      $C_{6,3} = 20$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Duas retas do espaço são reversas quando
+    opcoes: ['não existe plano que contenha as duas.', 'se cortam formando ângulo reto.', 'estão num mesmo plano e não se cortam.', 'têm infinitos pontos comuns.']
+    correta: A
+    resolucao: |
+      Reversas são retas não coplanares (e, por isso, sem ponto comum).
+
+  - estilo: UEM
+    enunciado: |
+      Considere pontos, retas e planos do espaço. Assinale o que for correto.
+    proposicoes:
+    - 'Três pontos não colineares determinam um único plano.'
+    - 'Duas retas concorrentes determinam um único plano.'
+    - 'Duas retas sem ponto comum são sempre paralelas.'
+    - 'Se dois planos distintos têm um ponto comum, então têm uma reta comum.'
+    - 'Uma reta e um ponto fora dela determinam um único plano.'
+    corretas: [1, 2, 4, 5]
+    resolucao: |
+      01) Correta. 02) Correta. 04) Incorreta: podem ser reversas. 08) Planos secantes se cortam numa reta. 16) Correta.
+      Soma: $01 + 02 + 08 + 16 = 27$.
+
+  - estilo: Enem
+    texto: |
+      Uma sala tem a forma de um paralelepípedo retângulo $ABCDEFGH$, com o piso $ABCD$ e o teto $EFGH$, como na figura. Um eletricista esticou um fio pela diagonal $AC$ do piso e outro pela diagonal $EG$ do teto, para instalar luminárias. O cliente quer saber a posição relativa dos dois fios.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.75]
+        \draw[ink, line width=1pt] (0,0) -- (3,0) -- (3,2) -- (0,2) -- cycle;
+        \draw[ink, line width=1pt] (3,0) -- (3.9,0.8) -- (3.9,2.8) -- (0.9,2.8) -- (0,2) (3,2) -- (3.9,2.8);
+        \draw[ink, dashed] (0,0) -- (0.9,0.8) -- (3.9,0.8) (0.9,0.8) -- (0.9,2.8);
+        \draw[roxo, line width=1pt, dashed] (0,0) -- (3.9,0.8);
+        \draw[roxo, line width=1pt] (0,2) -- (3.9,2.8);
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[right, font=\scriptsize] at (3.9,0.8) {$C$};
+        \node[left, font=\scriptsize] at (0,2) {$E$};
+        \node[above right, font=\scriptsize] at (3.9,2.8) {$G$};
+        \end{scope}
+    enunciado: |
+      Os fios $AC$ e $EG$ estão em retas
+    opcoes: ['concorrentes.', 'reversas.', 'paralelas.', 'perpendiculares e concorrentes.', 'coincidentes.']
+    correta: C
+    resolucao: |
+      $ACGE$ é um retângulo (as arestas $AE$ e $CG$ são paralelas e iguais): $AC$ e $EG$ são lados opostos dele, paralelos.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre retas e planos do espaço.
+    afirmativas:
+    - 'Duas retas paralelas a um mesmo plano são paralelas entre si.'
+    - 'Se dois planos são paralelos, toda reta contida num deles é paralela ao outro.'
+    - 'Duas retas reversas não têm ponto comum.'
+    - 'Duas retas perpendiculares a uma mesma reta são paralelas entre si.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e IV, apenas.', 'III e IV, apenas.', 'II e III, apenas.', 'II, III e IV, apenas.']
+    correta: D
+    resolucao: |
+      I. Incorreta: no cubo, $EF$ e $FG$ são paralelas ao plano $ABCD$ e concorrentes. II. Correta. III. Correta. IV. Incorreta: $AB$ e $AD$ são perpendiculares a $AE$ e concorrentes.
+
+  - estilo: Unesp
+    enunciado: |
+      O número de arestas de um cubo que são reversas a uma aresta dada é
+    opcoes: ['$3$', '$8$', '$6$', '$2$', '$4$']
+    correta: E
+    resolucao: |
+      Das outras 11 arestas, 3 são paralelas e 4 são concorrentes: sobram 4 reversas.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      No cubo $ABCDEFGH$ (base $ABCD$; $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$), as diagonais de face $AF$ e $BG$ são reversas.
+    enunciado: |
+      O ângulo entre $AF$ e $BG$ mede
+    opcoes: ['$60°$.', '$45°$.', '$90°$.', '$30°$.']
+    correta: A
+    resolucao: |
+      $BG \parallel AH$: o ângulo é $F\hat{A}H$. O triângulo $AFH$ tem lados iguais a diagonais de face: equilátero, ângulo $60°$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O número de retas determinadas pelos 8 vértices de um cubo é
+    opcoes: ['$12$', '$28$', '$24$', '$56$', '$16$']
+    correta: B
+    resolucao: |
+      Não há 3 vértices alinhados: $C_{8,2} = 28$ (12 arestas, 12 diagonais de face e 4 diagonais do cubo).
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o cubo $ABCDEFGH$, de base $ABCD$, com $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$. Assinale o que for correto.
+    proposicoes:
+    - 'As retas $AB$ e $GH$ são paralelas.'
+    - 'As retas $AB$ e $FG$ são reversas.'
+    - 'As retas $AE$ e $BC$ são reversas.'
+    - 'O plano $ABCD$ é paralelo ao plano $EFGH$.'
+    - 'A reta $EG$ é paralela ao plano $ABCD$.'
+    - 'As diagonais $AG$ e $CE$ do cubo são reversas.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $GH \parallel DC \parallel AB$. 02) Direções diferentes, sem ponto comum, não coplanares. 04) Idem. 08) Faces opostas. 16) $EG \parallel AC$, contida em $ABCD$. 32) Incorreta: $AG$ e $CE$ são diagonais do retângulo $ACGE$ e se cortam no centro.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Para cobrir um terreno irregular, um paisagista fincou cinco estacas, de alturas diferentes, de modo que nunca há quatro pontas num mesmo plano. Ele vai esticar uma lona triangular plana entre cada grupo de três pontas de estaca, e cada lona fica num plano diferente.
+    enunciado: |
+      O número de lonas é
+    opcoes: ['$5$', '$15$', '$10$', '$60$', '$20$']
+    correta: C
+    resolucao: |
+      Cada trio de pontas determina um plano: $C_{5,3} = 10$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Duas retas reversas não estão num mesmo plano.'
+    - 'Duas retas que não se cortam são paralelas.'
+    - 'Uma reta paralela a um plano pode ser reversa a retas desse plano.'
+    - 'Dois planos secantes se cortam segundo uma reta.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – F – V – V.', 'V – V – F – V.']
+    correta: D
+    resolucao: |
+      (V) (F) Podem ser reversas. (V) $EF$ é paralela ao plano $ABCD$ e reversa a $BC$. (V)
+
+  - estilo: Enem
+    texto: |
+      Um professor pediu que os alunos classificassem pares de arestas de uma caixa com a forma do paralelepípedo $ABCDEFGH$ (base $ABCD$; $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$). O quadro mostra as respostas de um aluno, que errou uma delas.
+    tabela:
+      cabecalho: ['Par', 'Classificação do aluno']
+      linhas:
+      - ['$EF$ e $CG$', 'concorrentes']
+      - ['$AB$ e $CD$', 'paralelas']
+      - ['$AB$ e $BC$', 'concorrentes']
+      - ['$AE$ e $CD$', 'reversas']
+      - ['$BF$ e $DH$', 'paralelas']
+    enunciado: |
+      O par classificado de forma errada é
+    opcoes: ['$EF$ e $CG$.', '$AB$ e $CD$.', '$AB$ e $BC$.', '$AE$ e $CD$.', '$BF$ e $DH$.']
+    correta: A
+    resolucao: |
+      $EF$ e $CG$ não têm vértice comum, têm direções diferentes e não estão num mesmo plano: são reversas.
+
+  - estilo: Unesp
+    enunciado: |
+      O número de pares de arestas reversas de um tetraedro é
+    opcoes: ['$6$', '$4$', '$12$', '$2$', '$3$']
+    correta: E
+    resolucao: |
+      Só as arestas opostas (sem vértice comum) são reversas: $AB$ e $CD$, $AC$ e $BD$, $AD$ e $BC$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere 6 pontos do espaço, com 3 nunca alinhados. Assinale o que for correto.
+    proposicoes:
+    - 'Os pontos determinam 15 retas.'
+    - 'Se não há 4 pontos coplanares, eles determinam 20 planos.'
+    - 'Se exatamente 4 deles estão num mesmo plano (e não há outros grupos de 4 coplanares), eles determinam 17 planos.'
+    - 'Dois quaisquer dos pontos determinam uma única reta.'
+    - 'Pode haver três desses pontos numa mesma reta.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) $C_{6,2}$. 02) $C_{6,3}$. 04) Os $C_{4,3} = 4$ trios do grupo coplanar dão um só plano: $20 - 4 + 1 = 17$. 08) Correta. 16) Incorreta, pelo enunciado.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Unicamp
+    enunciado: |
+      No cubo $ABCDEFGH$ (base $ABCD$; $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$), o ângulo entre as retas reversas $AF$ e $GH$ mede
+    opcoes: ['$60°$.', '$45°$.', '$90°$.', '$30°$.']
+    correta: B
+    resolucao: |
+      $GH \parallel EF$: o ângulo é $A\hat{F}E$, entre a diagonal e o lado da face quadrada $ABFE$: $45°$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Uma escultura de arame tem a forma das 12 arestas de um cubo. O artista quer pintar pares de arestas com a mesma cor, conforme a posição relativa delas, e precisa contar quantos pares há de cada tipo.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[roxo, line width=1.2pt] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+        \draw[roxo, line width=1.2pt] (2,0) -- (2.8,0.6) -- (2.8,2.6) -- (0.8,2.6) -- (0,2) (2,2) -- (2.8,2.6);
+        \draw[roxo, line width=1.2pt] (0,0) -- (0.8,0.6) -- (2.8,0.6) (0.8,0.6) -- (0.8,2.6);
+        \end{scope}
+    enunciado: |
+      O número de pares de arestas paralelas é
+    opcoes: ['$12$', '$24$', '$18$', '$6$', '$36$']
+    correta: C
+    resolucao: |
+      Há 3 direções, com 4 arestas cada: $3 \cdot C_{4,2} = 3 \cdot 6 = 18$.
+
+  - estilo: Unesp
+    enunciado: |
+      O número de pares de arestas reversas é
+    opcoes: ['$12$', '$18$', '$48$', '$24$', '$36$']
+    correta: D
+    resolucao: |
+      Cada aresta tem 4 reversas: $\tfrac{12 \cdot 4}{2} = 24$. (Confere: são $C_{12,2} = 66$ pares, 18 de paralelas e 24 de concorrentes.)
+
+  - estilo: Fuvest
+    enunciado: |
+      O número de planos distintos que contêm pelo menos 3 dos 8 vértices de um cubo é
+    opcoes: ['$56$', '$12$', '$14$', '$26$', '$20$']
+    correta: E
+    resolucao: |
+      Planos com 4 vértices: as 6 faces e os 6 planos diagonais (retângulos como $ACGE$). Cada um deles contém $C_{4,3} = 4$ trios. Os $56 - 12 \cdot 4 = 8$ trios restantes dão planos com só 3 vértices (os triângulos como $BDE$). Total: $6 + 6 + 8 = 20$.
+
+  - estilo: Unesp
+    texto: |
+      No cubo $ABCDEFGH$ da figura, $M$ é o ponto médio da aresta $AE$ e $N$ é o ponto médio da aresta $CG$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1pt] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+        \draw[ink, line width=1pt] (2,0) -- (2.8,0.6) -- (2.8,2.6) -- (0.8,2.6) -- (0,2) (2,2) -- (2.8,2.6);
+        \draw[ink, dashed] (0,0) -- (0.8,0.6) -- (2.8,0.6) (0.8,0.6) -- (0.8,2.6);
+        \draw[roxo, line width=1pt] (0,1) -- (2.8,1.6);
+        \fill[roxo] (0,1) circle (1.5pt) (2.8,1.6) circle (1.5pt);
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[below right, font=\scriptsize] at (2,0) {$B$};
+        \node[right, font=\scriptsize] at (2.8,0.6) {$C$};
+        \node[left, font=\scriptsize] at (0,2) {$E$};
+        \node[above right, font=\scriptsize] at (2.8,2.6) {$G$};
+        \node[left, font=\scriptsize] at (0,1) {$M$};
+        \node[right, font=\scriptsize] at (2.8,1.6) {$N$};
+        \end{scope}
+    enunciado: |
+      A reta $MN$ e o plano $ABCD$ são
+    opcoes: ['secantes, num ponto de $AC$.', 'paralelos.', 'tais que $MN$ está contida em $ABCD$.', 'secantes, com $MN$ perpendicular a $ABCD$.', 'reversos.']
+    correta: B
+    resolucao: |
+      $AMNC$ tem $AM$ e $CN$ paralelos (ambos verticais) e iguais: é um paralelogramo, e $MN \parallel AC$. Como $AC$ está em $ABCD$ e $MN$ não está, $MN$ é paralela ao plano. (Reversas é posição entre retas, não entre reta e plano.)
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Usando o postulado de que três pontos não colineares determinam um único plano, prove que um único plano fica determinado por:'
+    itens:
+    - 'uma reta e um ponto fora dela;'
+    - 'duas retas concorrentes;'
+    - 'duas retas paralelas distintas.'
+    espaco: 62
+    resolucao: |
+      a) Tome dois pontos da reta e o ponto exterior: três pontos não colineares. Todo plano que contém a reta e o ponto contém os três, e vice-versa.
+      b) O ponto de encontro e mais um ponto de cada reta: três pontos não colineares.
+      c) Retas paralelas estão num plano, por definição; ele contém uma reta e um ponto da outra, e o item a) dá a unicidade.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    enunciado: 'Considere $n$ pontos do espaço, com 3 nunca colineares.'
+    itens:
+    - 'Quantas retas eles determinam?'
+    - 'Quantos planos determinam, se 4 nunca são coplanares?'
+    - 'Para $n = 10$, se exatamente 5 dos pontos estão num mesmo plano (e não há outro grupo de 4 coplanares), quantos planos ficam determinados?'
+    espaco: 62
+    resolucao: |
+      a) $C_{n,2} = \tfrac{n(n - 1)}{2}$.
+      b) $C_{n,3}$.
+      c) $C_{10,3} = 120$. Os $C_{5,3} = 10$ trios do grupo coplanar dão um só plano: $120 - 10 + 1 = 111$.
+    resposta: 'a) $\frac{n(n-1)}{2}$; b) $C_{n,3}$; c) 111'
+
+  - estilo: ITA
+    enunciado: |
+      O número de planos distintos que contêm pelo menos 3 dos 6 vértices de um prisma triangular reto (não há outros grupos de 4 vértices coplanares além das faces laterais) é
+    opcoes: ['$20$', '$8$', '$11$', '$14$', '$17$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $C_{6,3} = 20$ trios. Cada face lateral tem 4 vértices, isto é, 4 trios num só plano: cada uma "perde" 3 planos. $20 - 3 \cdot 3 = 11$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Considere o cubo $ABCDEFGH$ (base $ABCD$; $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$).'
+    itens:
+    - 'Classifique os pares de retas: $AB$ e $CG$; $AC$ e $EG$; $AC$ e $FH$.'
+    - 'Calcule o ângulo entre $AC$ e $FH$.'
+    - 'Calcule o ângulo entre as reversas $AF$ e $BG$.'
+    espaco: 62
+    resolucao: |
+      a) Reversas; paralelas (lados opostos do retângulo $ACGE$); reversas.
+      b) $FH \parallel BD$, e as diagonais do quadrado $ABCD$ são perpendiculares: $90°$.
+      c) $BG \parallel AH$; o triângulo $AFH$ é equilátero: $60°$.
+    resposta: 'a) reversas, paralelas, reversas; b) $90°$; c) $60°$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere retas e planos do espaço. Assinale o que for correto.
+    proposicoes:
+    - 'Se dois planos paralelos são cortados por um terceiro plano, as interseções são retas paralelas.'
+    - 'Por um ponto fora de um plano passa um único plano paralelo a ele.'
+    - 'Duas retas distintas paralelas a uma terceira são paralelas entre si.'
+    - 'Duas retas perpendiculares a uma terceira reta são paralelas entre si.'
+    - 'Uma reta paralela a dois planos secantes é paralela à reta de interseção deles.'
+    - 'Uma reta paralela a um plano é paralela a todas as retas desse plano.'
+    corretas: [1, 2, 3, 5]
+    espaco: 22
+    resolucao: |
+      01) Coplanares e sem ponto comum. 02) Correta. 04) Correta (transitividade do paralelismo). 08) Incorreta: arestas $AB$ e $AD$ do cubo, ambas perpendiculares a $AE$. 16) Correta. 32) Incorreta: pode ser reversa a algumas.
+    resposta: 'Soma 23 (01 + 02 + 04 + 16)'
+
+  - estilo: Fuvest
+    enunciado: 'Sejam $r$ e $s$ retas reversas.'
+    itens:
+    - 'Mostre que existe um plano $\alpha$ que contém $r$ e é paralelo a $s$.'
+    - 'Mostre que esse plano é único.'
+    - 'No cubo $ABCDEFGH$, com $r = AB$ e $s = CG$, identifique esse plano.'
+    espaco: 62
+    resolucao: |
+      a) Por $P \in r$, trace $s^{\prime} \parallel s$; o plano de $r$ e $s^{\prime}$ contém $r$ e é paralelo a $s$.
+      b) Um plano que contém $r$ e é paralelo a $s$ contém a paralela a $s$ por $P$ (senão $s$ cortaria o plano); logo contém $r$ e $s^{\prime}$, e é o plano do item a).
+      c) A paralela a $CG$ por $B$ é $BF$: o plano é $ABFE$.
+    resposta: 'c) plano $ABFE$'
+
+  - estilo: Unicamp
+    enunciado: 'Num tetraedro $ABCD$, sejam $M$, $N$, $P$ e $Q$ os pontos médios de $AB$, $BC$, $CD$ e $DA$.'
+    itens:
+    - 'Mostre que $AB$ e $CD$ são reversas.'
+    - 'Prove que $MNPQ$ é um paralelogramo plano.'
+    - 'Se o tetraedro é regular de aresta $a$, mostre que $MNPQ$ é um losango e calcule o seu perímetro.'
+    espaco: 62
+    resolucao: |
+      a) Se estivessem num plano, os quatro vértices seriam coplanares.
+      b) No triângulo $ABC$, $MN \parallel AC$ e $MN = \tfrac{AC}{2}$; no $ACD$, $QP \parallel AC$ e $QP = \tfrac{AC}{2}$. Duas retas paralelas a $AC$ são paralelas entre si e determinam um plano; com lados opostos paralelos e iguais, $MNPQ$ é paralelogramo.
+      c) $MN = \tfrac{AC}{2} = \tfrac{a}{2}$ e $NP = \tfrac{BD}{2} = \tfrac{a}{2}$: lados iguais. Perímetro $2a$.
+    resposta: 'c) $2a$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Sete pontos do espaço são tais que nunca há 4 num mesmo plano. O número de planos que eles determinam é
+    opcoes: ['$35$', '$21$', '$42$', '$210$', '$7$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $C_{7,3} = 35$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Uma caixa tem a forma do paralelepípedo retângulo $ABCDEFGH$, com $AB = 4$, $BC = 3$ e $AE = 12$ (base $ABCD$; $E$, $F$, $G$, $H$ acima de $A$, $B$, $C$, $D$).'
+    itens:
+    - 'Calcule a diagonal $AC$ da base.'
+    - 'Calcule a diagonal $AG$ da caixa, usando o triângulo retângulo $ACG$.'
+    - 'Classifique as posições relativas de $AG$ e $BH$, e de $AG$ e $BC$.'
+    espaco: 62
+    resolucao: |
+      a) $\sqrt{16 + 9} = 5$.
+      b) $CG \parallel AE$ é perpendicular à base: $AG = \sqrt{25 + 144} = 13$.
+      c) $AG$ e $BH$ são diagonais do retângulo $ABGH$: concorrentes (no centro da caixa). $AG$ e $BC$: reversas.
+    resposta: 'a) 5; b) 13; c) concorrentes; reversas'
+
+  - estilo: Fuvest
+    enunciado: 'Três planos distintos são secantes dois a dois, com três retas de interseção.'
+    itens:
+    - 'Prove que, se duas das retas de interseção se encontram num ponto $P$, a terceira também passa por $P$.'
+    - 'Prove que, se duas das retas de interseção são paralelas, a terceira é paralela a elas.'
+    - 'Dê um exemplo de cada caso com o cubo.'
+    espaco: 62
+    resolucao: |
+      a) $P$ está nas duas retas, logo nos três planos; em particular, nos dois planos cuja interseção é a terceira reta.
+      b) Sejam $\alpha \cap \beta = r$ e $\beta \cap \gamma = s$, com $r \parallel s$, e $t = \alpha \cap \gamma$. Se $t$ cortasse $r$ num ponto, ele estaria nos três planos, e $s$ passaria por ele, contradição. Como $t$ e $r$ estão em $\alpha$ e não se cortam, são paralelas.
+      c) Faces $ABCD$, $ABFE$ e $ADHE$: retas $AB$, $AE$ e $AD$, concorrentes em $A$. Faces $ABFE$, $BCGF$ e o plano diagonal $ACGE$: retas $BF$, $CG$ e $AE$, paralelas.
+    resposta: 'Ver resolução'

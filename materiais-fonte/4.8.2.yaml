@@ -168,7 +168,7 @@ fixacao:
     - enunciado: 'Prove que o ângulo entre uma tangente e uma corda (ângulo de segmento) mede metade do arco que ele determina.'
       espaco: 12
       resolucao: |
-        Tangente em $A$ e corda $AB$. Trace o diâmetro $AA''$. O ângulo entre a tangente e $AA''$ é reto ($90° = \tfrac{180°}{2}$). O ângulo entre $AA''$ e $AB$ é inscrito, metade do arco $A''B$. Somando (ou subtraindo), o ângulo de segmento é metade do arco $AB$.
+        Tangente em $A$ e corda $AB$. Trace o diâmetro $AA^{\prime}$. O ângulo entre a tangente e $AA^{\prime}$ é reto ($90° = \tfrac{180°}{2}$). O ângulo entre $AA^{\prime}$ e $AB$ é inscrito, metade do arco $A^{\prime}B$. Somando (ou subtraindo), o ângulo de segmento é metade do arco $AB$.
       resposta: 'Ver resolução'
 
 vestibular:
@@ -456,8 +456,8 @@ aprofundamento:
     espaco: 62
     resolucao: |
       a) Com $VA$ passando por $O$, o triângulo $OVB$ é isósceles e $A\hat{O}B$ é externo a ele: $A\hat{O}B = 2 \cdot A\hat{V}B$.
-      b) Trace o diâmetro $VV''$. Ele divide o inscrito e o central em duas partes, cada uma no caso a): somando, vale a relação.
-      c) Trace o diâmetro $VV''$. O inscrito é a diferença de dois ângulos do caso a), e o central, a diferença dos centrais correspondentes.
+      b) Trace o diâmetro $VV^{\prime}$. Ele divide o inscrito e o central em duas partes, cada uma no caso a): somando, vale a relação.
+      c) Trace o diâmetro $VV^{\prime}$. O inscrito é a diferença de dois ângulos do caso a), e o central, a diferença dos centrais correspondentes.
     resposta: 'Ver resolução'
 
   - estilo: Unicamp
