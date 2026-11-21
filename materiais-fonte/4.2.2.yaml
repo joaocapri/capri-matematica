@@ -1,0 +1,541 @@
+# Aula 4.2.2 — Geometria plana: cevianas e pontos notáveis do triângulo
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: mediana, bissetriz, altura e mediatriz; baricentro (divide as medianas na razão 2 : 1), incentro (equidistante
+# dos lados), circuncentro (equidistante dos vértices; no ponto médio da hipotenusa do triângulo retângulo; fora do obtusângulo),
+# ortocentro; coincidências no equilátero e no isósceles; mediana relativa à hipotenusa; baricentro em coordenadas.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete o quadro com as cevianas (ou retas) cujo encontro define cada ponto notável.'
+      tabela:
+        cabecalho: ['Ponto notável', 'Encontro das']
+        linhas:
+        - ['Baricentro', '{{medianas}}']
+        - ['Incentro', '{{bissetrizes internas}}']
+        - ['Circuncentro', '{{mediatrizes dos lados}}']
+        - ['Ortocentro', '{{alturas}}']
+      resolucao: |
+        Mediana: vértice ao ponto médio do lado oposto. Bissetriz: divide o ângulo ao meio. Mediatriz: perpendicular ao lado pelo ponto médio. Altura: perpendicular ao lado oposto, pelo vértice.
+      resposta: 'medianas; bissetrizes internas; mediatrizes; alturas'
+    - enunciado: 'Sendo $G$ o baricentro e $AM$ uma mediana, complete.'
+      itens:
+      - 'Se $AM = 18$ cm, então $AG = {{12}}$ cm e $GM = {{6}}$ cm.'
+      - 'Se $GM = 5$ cm, então $AM = {{15}}$ cm.'
+      resolucao: |
+        $G$ divide a mediana na razão $2 : 1$ a partir do vértice: $AG = \tfrac{2}{3}AM$ e $GM = \tfrac{1}{3}AM$. (b) $AM = 3 \cdot 5 = 15$ cm.
+      resposta: '(a) $12$ e $6$ (b) $15$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'O circuncentro de um triângulo retângulo é o ponto médio da hipotenusa.'
+      - 'O incentro fica sempre no interior do triângulo.'
+      - 'O ortocentro fica sempre no interior do triângulo.'
+      - 'No triângulo equilátero, baricentro, incentro, circuncentro e ortocentro coincidem.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (V) As bissetrizes internas ficam dentro do triângulo. (F) No retângulo, é o vértice do ângulo reto; no obtusângulo, fica fora. (V) Cada mediana é também altura, bissetriz e está na mediatriz.
+      resposta: V, V, F, V
+    - enunciado: 'A hipotenusa de um triângulo retângulo mede 10 cm. Quanto mede a mediana relativa à hipotenusa? Qual é o raio da circunferência que passa pelos três vértices?'
+      espaco: 10
+      resolucao: |
+        O ponto médio da hipotenusa é o circuncentro: está a igual distância dos três vértices. A mediana mede metade da hipotenusa, 5 cm, que é também o raio.
+      resposta: '5 cm e 5 cm'
+    - enunciado: 'Associe cada situação ao ponto notável que a resolve.'
+      esquerda:
+      - 'baricentro'
+      - 'incentro'
+      - 'circuncentro'
+      direita:
+      - 'Um posto de saúde deve ficar à mesma distância de três vilas.'
+      - 'Uma fonte deve ficar à mesma distância de três estradas retas que formam um triângulo.'
+      - 'Uma placa triangular homogênea deve ficar em equilíbrio apoiada num único ponto.'
+      - 'O centro da circunferência que passa pelos três vértices.'
+      - 'O centro da circunferência tangente aos três lados.'
+      resolucao: |
+        Equidistante dos vértices: circuncentro. Equidistante dos lados: incentro. Centro de gravidade da placa: baricentro.
+      resposta: 'De cima para baixo: 3, 2, 1, 3, 2'
+    - enunciado: 'No triângulo isósceles $ABC$, $AB = AC$, $BC = 10$ cm e $\hat{A} = 50°$. A altura $AM$ relativa à base é também mediana e bissetriz. Complete.'
+      itens:
+      - '$BM = {{5}}$ cm'
+      - '$B\hat{A}M = {{25°}}$'
+      - '$A\hat{M}B = {{90°}}$'
+      colunas: 3
+      resolucao: |
+        No isósceles, a altura relativa à base coincide com a mediana ($BM = MC = 5$) e com a bissetriz ($50° \div 2 = 25°$); por ser altura, forma $90°$ com a base.
+      resposta: '$5$; $25°$; $90°$'
+    - enunciado: 'Os vértices de um triângulo são $A(1, 2)$, $B(5, 0)$ e $C(3, 7)$. Determine o baricentro, sabendo que as suas coordenadas são as médias das coordenadas dos vértices.'
+      espaco: 10
+      resolucao: |
+        $G = \left(\tfrac{1 + 5 + 3}{3}, \tfrac{2 + 0 + 7}{3}\right) = (3, 3)$.
+      resposta: '$(3, 3)$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Uma mediana mede 12 cm. Léo disse que a distância do baricentro ao ponto médio do lado é 8 cm, "porque o baricentro divide a mediana na razão $2 : 1$".
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        A parte maior, $\tfrac{2}{3}$, fica do lado do vértice: $AG = 8$ cm. Do baricentro ao ponto médio é a parte menor: $\tfrac{1}{3} \cdot 12 = 4$ cm.
+      resposta: '4 cm'
+    - enunciado: 'Na figura, $G$ é o baricentro e $AM$ é mediana, com $AG = 3x - 2$ e $GM = x + 1$ (em cm). Determine $x$ e a medida da mediana.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.75]
+          \draw[ink, line width=1pt, fill=lilas!25] (0,0) node[below left, font=\scriptsize] {$B$} -- (5,0) node[below right, font=\scriptsize] {$C$} -- (1,4) node[above, font=\scriptsize] {$A$} -- cycle;
+          \draw[roxo, line width=1pt] (1,4) -- (2.5,0) node[below, font=\scriptsize] {$M$};
+          \fill[roxo] (2,1.333) circle (2.5pt) node[right, font=\scriptsize] {$G$};
+          \end{scope}
+      espaco: 10
+      resolucao: |
+        $AG = 2 \cdot GM$: $3x - 2 = 2x + 2$, $x = 4$. $AG = 10$, $GM = 5$, $AM = 15$ cm.
+      resposta: '$x = 4$; $AM = 15$ cm'
+    - enunciado: 'No triângulo $ABC$, $\hat{A} = 80°$ e $I$ é o incentro. Calcule $B\hat{I}C$.'
+      espaco: 10
+      resolucao: |
+        $I$ está nas bissetrizes de $\hat{B}$ e $\hat{C}$: $B\hat{I}C = 180° - \tfrac{\hat{B} + \hat{C}}{2} = 180° - 50° = 130°$.
+      resposta: '$130°$'
+    - enunciado: 'O circuncentro $O$ do triângulo $ABC$ está a 7 cm do vértice $A$, e $BC = 10$ cm. Calcule o perímetro do triângulo $OBC$.'
+      espaco: 10
+      resolucao: |
+        $O$ é equidistante dos vértices: $OB = OC = OA = 7$. Perímetro $7 + 7 + 10 = 24$ cm.
+      resposta: '24 cm'
+    - enunciado: 'Complete o quadro com a posição de cada ponto, usando os códigos: I (interior), E (exterior), V (vértice do ângulo reto) ou M (ponto médio da hipotenusa).'
+      tabela:
+        cabecalho: ['Triângulo', 'Circuncentro', 'Ortocentro']
+        linhas:
+        - ['acutângulo', '{{I}}', '{{I}}']
+        - ['retângulo', '{{M}}', '{{V}}']
+        - ['obtusângulo', '{{E}}', '{{E}}']
+      resolucao: |
+        No retângulo, os catetos são alturas e se cortam no vértice do ângulo reto. As mediatrizes dos catetos passam pelo ponto médio da hipotenusa.
+      resposta: 'I, I; M, V; E, E'
+    - enunciado: 'No triângulo $ABC$, retângulo em $B$, $\hat{A} = 35°$ e $M$ é o ponto médio da hipotenusa $AC$. Calcule $A\hat{B}M$ e $M\hat{B}C$.'
+      espaco: 12
+      resolucao: |
+        $MA = MB = MC$ (circuncentro). No triângulo $ABM$, isósceles, $A\hat{B}M = \hat{A} = 35°$. Então $M\hat{B}C = 90° - 35° = 55°$ (que é igual a $\hat{C}$).
+      resposta: '$35°$ e $55°$'
+    - enunciado: 'Num triângulo acutângulo $ABC$, $H$ é o ortocentro e $\hat{A} = 60°$. Sabendo que $B\hat{H}C = 180° - \hat{A}$, calcule $B\hat{H}C$ e, se $\hat{B} = 70°$, o ângulo $H\hat{B}C$.'
+      espaco: 12
+      resolucao: |
+        $B\hat{H}C = 180° - 60° = 120°$. $BH$ está na altura por $B$, perpendicular a $AC$. No triângulo retângulo formado por $B$, $C$ e o pé dessa altura, o ângulo em $C$ é $\hat{C} = 180° - 60° - 70° = 50°$; então $H\hat{B}C = 90° - 50° = 40°$.
+      resposta: '$120°$; $40°$'
+    - enunciado: 'Num triângulo equilátero de altura 9 cm, calcule a distância do centro a cada vértice e a cada lado.'
+      espaco: 10
+      resolucao: |
+        No equilátero, o centro é o baricentro, e cada altura é mediana: distância ao vértice $\tfrac{2}{3} \cdot 9 = 6$ cm; ao lado, $\tfrac{1}{3} \cdot 9 = 3$ cm.
+      resposta: '6 cm e 3 cm'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que o ponto médio da hipotenusa de um triângulo retângulo está a igual distância dos três vértices. (Sugestão: complete o retângulo.)'
+      espaco: 14
+      resolucao: |
+        Seja $ABC$ retângulo em $B$. Trace por $A$ a paralela a $BC$ e por $C$ a paralela a $AB$; elas se cortam em $D$, e $ABCD$ é um retângulo. As diagonais de um retângulo são iguais e se cortam ao meio: o ponto médio $M$ de $AC$ é também o de $BD$, e $MA = MC = \tfrac{AC}{2} = \tfrac{BD}{2} = MB$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Num triângulo acutângulo $ABC$, $H$ é o ortocentro. Mostre que $B\hat{H}C = 180° - \hat{A}$. (Sugestão: considere o quadrilátero formado por $A$, por $H$ e pelos pés das alturas traçadas por $B$ e por $C$.)'
+      espaco: 14
+      resolucao: |
+        Sejam $E$ (em $AC$) e $F$ (em $AB$) os pés das alturas por $B$ e por $C$. No quadrilátero $AEHF$, os ângulos em $E$ e $F$ são retos, e os quatro ângulos somam $360°$ (são dois triângulos): $E\hat{H}F = 180° - \hat{A}$. E $B\hat{H}C = E\hat{H}F$ (opostos pelo vértice).
+      resposta: 'Ver resolução'
+    - enunciado: 'Mostre que uma mediana divide o triângulo em dois triângulos de mesma área.'
+      espaco: 12
+      resolucao: |
+        A mediana $AM$ forma os triângulos $ABM$ e $AMC$. As bases $BM$ e $MC$ são iguais, e a altura relativa a elas é a mesma (a distância de $A$ à reta $BC$). Logo as áreas são iguais.
+      resposta: 'Ver resolução'
+    - enunciado: 'Os vértices de um triângulo são $A(0, 0)$, $B(6, 0)$ e $C(0, 8)$. Determine o baricentro $G$, o circuncentro $O$ e o ortocentro $H$, e mostre que eles estão alinhados.'
+      espaco: 16
+      resolucao: |
+        $G = \left(2, \tfrac{8}{3}\right)$. O triângulo é retângulo em $A$: $O$ é o ponto médio de $BC$, $(3, 4)$, e $H = A = (0, 0)$.
+        A reta por $H$ e $O$ é $y = \tfrac{4}{3}x$, e $G$ está nela: $\tfrac{4}{3} \cdot 2 = \tfrac{8}{3}$. (Além disso, $HG = 2 \cdot GO$.)
+      resposta: '$G\left(2, \frac{8}{3}\right)$, $O(3, 4)$, $H(0, 0)$'
+    - enunciado: 'No triângulo $ABC$, $I$ é o incentro e $B\hat{I}C = 3\hat{A}$. Determine $\hat{A}$.'
+      espaco: 10
+      resolucao: |
+        $90° + \tfrac{\hat{A}}{2} = 3\hat{A}$: $\tfrac{5\hat{A}}{2} = 90°$, $\hat{A} = 36°$.
+      resposta: '$36°$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Três vilas, $A$, $B$ e $C$, que não estão alinhadas, vão ganhar um único posto de saúde. A prefeitura decidiu que o posto deve ficar à mesma distância, em linha reta, das três vilas, cujas posições aparecem no mapa da figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink!40, dashed] (0,0) -- (5,0.5) -- (1.5,3.5) -- cycle;
+        \fill[roxo] (0,0) circle (3pt) node[below left, font=\scriptsize] {$A$};
+        \fill[roxo] (5,0.5) circle (3pt) node[below right, font=\scriptsize] {$B$};
+        \fill[roxo] (1.5,3.5) circle (3pt) node[above, font=\scriptsize] {$C$};
+        \end{scope}
+    enunciado: |
+      O posto deve ser construído
+    opcoes: ['no encontro das mediatrizes dos lados do triângulo $ABC$.', 'no encontro das bissetrizes internas do triângulo $ABC$.', 'no encontro das medianas do triângulo $ABC$.', 'no encontro das alturas do triângulo $ABC$.', 'no ponto médio do maior lado do triângulo $ABC$.']
+    correta: A
+    resolucao: |
+      Os pontos equidistantes de $A$ e $B$ formam a mediatriz de $AB$; o ponto equidistante dos três é o encontro das mediatrizes, o circuncentro.
+
+  - estilo: Fuvest
+    enunciado: |
+      Uma mediana de um triângulo mede 21 cm. A distância do vértice ao baricentro, sobre essa mediana, é
+    opcoes: ['$7$ cm', '$14$ cm', '$10{,}5$ cm', '$18$ cm', '$21$ cm']
+    correta: B
+    resolucao: |
+      $\tfrac{2}{3} \cdot 21 = 14$ cm.
+
+  - estilo: Unicamp
+    enunciado: |
+      O ponto equidistante das retas que contêm os três lados de um triângulo, situado no interior dele, é o
+    opcoes: ['baricentro.', 'incentro.', 'circuncentro.', 'ortocentro.']
+    correta: B
+    resolucao: |
+      Cada bissetriz é formada por pontos equidistantes dos lados do ângulo; o encontro delas, o incentro, é equidistante dos três lados.
+
+  - estilo: UEM
+    enunciado: |
+      Considere os pontos notáveis de um triângulo. Assinale o que for correto.
+    proposicoes:
+    - 'O baricentro fica sempre no interior do triângulo.'
+    - 'O circuncentro de um triângulo obtusângulo fica no exterior do triângulo.'
+    - 'O ortocentro de um triângulo retângulo é o vértice do ângulo reto.'
+    - 'O incentro pode ficar no exterior do triângulo.'
+    - 'No triângulo equilátero, os quatro pontos notáveis coincidem.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      01) As medianas ficam dentro. 02) Correta. 04) Os catetos são alturas. 08) Incorreta: as bissetrizes internas ficam dentro. 16) Correta.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Enem
+    texto: |
+      Uma placa triangular homogênea será pendurada por um único gancho, preso no ponto em que ela fica em equilíbrio, o seu centro de gravidade, que é o baricentro. Num sistema de eixos em centímetros, os vértices da placa estão nos pontos do quadro.
+    tabela:
+      cabecalho: ['Vértice', 'Coordenadas']
+      linhas:
+      - ['$A$', '$(0, 0)$']
+      - ['$B$', '$(12, 0)$']
+      - ['$C$', '$(6, 9)$']
+    enunciado: |
+      O gancho deve ser preso no ponto
+    opcoes: ['$(6;\ 4{,}5)$', '$(4;\ 3)$', '$(6;\ 3)$', '$(6;\ 6)$', '$(3;\ 6)$']
+    correta: C
+    resolucao: |
+      $G = \left(\tfrac{0 + 12 + 6}{3}, \tfrac{0 + 0 + 9}{3}\right) = (6, 3)$. ($(6;\ 4{,}5)$ seria o meio da altura, que não é o baricentro.)
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir sobre um triângulo.
+    afirmativas:
+    - 'As três medianas se cortam num mesmo ponto, o baricentro.'
+    - 'O incentro é o centro da circunferência que passa pelos três vértices.'
+    - 'Num triângulo retângulo, a mediana relativa à hipotenusa mede metade da hipotenusa.'
+    - 'As retas que contêm as alturas de um triângulo obtusângulo se cortam num ponto exterior a ele.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e III, apenas.', 'I, III e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. Correta. II. Incorreta: o incentro é o centro da inscrita (tangente aos lados); a que passa pelos vértices tem centro no circuncentro. III. Correta. IV. Correta.
+
+  - estilo: Unesp
+    enunciado: |
+      A hipotenusa de um triângulo retângulo mede 26 cm. O raio da circunferência que passa pelos três vértices mede
+    opcoes: ['$26$ cm', '$52$ cm', '$6{,}5$ cm', '$169$ cm', '$13$ cm']
+    correta: E
+    resolucao: |
+      O circuncentro é o ponto médio da hipotenusa: raio $13$ cm.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      No triângulo $ABC$ da figura, retângulo em $B$, o ângulo $\hat{A}$ mede $28°$ e $M$ é o ponto médio da hipotenusa $AC$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1pt, fill=lilas!25] (0,0) node[below left, font=\scriptsize] {$B$} -- (2.127,0) node[below right, font=\scriptsize] {$C$} -- (0,4) node[above, font=\scriptsize] {$A$} -- cycle;
+        \draw (0,0.25) -- (0.25,0.25) -- (0.25,0);
+        \draw[roxo, line width=1pt] (0,0) -- (1.063,2) node[right, font=\scriptsize] {$M$};
+        \node[font=\scriptsize] at (0.38,3.05) {$28°$};
+        \end{scope}
+    enunciado: |
+      O ângulo $M\hat{B}C$ mede
+    opcoes: ['$62°$.', '$28°$.', '$56°$.', '$34°$.']
+    correta: A
+    resolucao: |
+      $MB = MC$ (o ponto médio da hipotenusa é equidistante dos vértices): $M\hat{B}C = \hat{C} = 90° - 28° = 62°$.
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, $G$ é o baricentro e $BN$ é a mediana relativa a $AC$, com $BG = 5x - 6$ e $GN = 2x$. A medida de $BN$ é
+    opcoes: ['$36$', '$24$', '$12$', '$18$', '$30$']
+    correta: A
+    resolucao: |
+      $BG = 2 \cdot GN$: $5x - 6 = 4x$, $x = 6$. $BG = 24$, $GN = 12$, $BN = 36$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o triângulo de vértices $A(0, 0)$, $B(6, 0)$ e $C(0, 8)$. Assinale o que for correto.
+    proposicoes:
+    - 'O baricentro é $\left(2, \frac{8}{3}\right)$.'
+    - 'O circuncentro é o ponto médio de $BC$.'
+    - 'O raio da circunferência circunscrita mede 5.'
+    - 'O ortocentro é a origem.'
+    - 'O incentro é o ponto $(2, 2)$.'
+    - 'O baricentro, o circuncentro e o ortocentro não estão alinhados.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      O triângulo é retângulo em $A$. 01) Médias. 02) Ponto médio da hipotenusa, $(3, 4)$. 04) $BC = \sqrt{36 + 64} = 10$, raio 5. 08) Os catetos são alturas.
+      16) $(2, 2)$ está a distância 2 dos eixos e da reta $BC$, $4x + 3y = 24$: $\tfrac{|8 + 6 - 24|}{5} = 2$. 32) Incorreta: estão na reta $y = \tfrac{4}{3}x$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Três estradas retas se cruzam duas a duas, delimitando uma região triangular. Uma empresa quer instalar, dentro dessa região, uma fonte de água que fique à mesma distância das três estradas, para que o encanamento até cada uma delas tenha o mesmo comprimento.
+    enunciado: |
+      A fonte deve ser instalada
+    opcoes: ['no baricentro do triângulo.', 'no circuncentro do triângulo.', 'no incentro do triângulo.', 'no ortocentro do triângulo.', 'no ponto médio de um dos lados.']
+    correta: C
+    resolucao: |
+      A distância a uma estrada é medida na perpendicular a ela. O ponto interno equidistante das três retas é o encontro das bissetrizes internas: o incentro.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir, sobre um triângulo qualquer.
+    afirmacoes:
+    - 'O incentro é equidistante dos três lados.'
+    - 'O circuncentro é equidistante dos três vértices.'
+    - 'O baricentro é equidistante dos três vértices.'
+    - 'O ortocentro fica sempre no interior do triângulo.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – F – V – F.', 'V – V – V – F.', 'F – V – F – F.', 'V – V – F – F.', 'V – V – F – V.']
+    correta: D
+    resolucao: |
+      (V) (V) (F) Só no equilátero. (F) No obtusângulo, fica fora.
+
+  - estilo: Enem
+    texto: |
+      Um móbile tem uma placa triangular pendurada por um fio preso no baricentro, como na figura, em que aparecem as três medianas. O artesão vai marcar o furo do fio sobre a mediana que sai do vértice $A$, que mede 15 cm, e precisa saber a que distância de $A$ fazer o furo.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.75]
+        \draw[ink, line width=1pt, fill=lilas!25] (0,0) node[below left, font=\scriptsize] {$B$} -- (5,0) node[below right, font=\scriptsize] {$C$} -- (1.5,4) node[above, font=\scriptsize] {$A$} -- cycle;
+        \draw[roxo] (1.5,4) -- (2.5,0) (0,0) -- (3.25,2) (5,0) -- (0.75,2);
+        \fill[roxo] (2.167,1.333) circle (2.5pt);
+        \end{scope}
+    enunciado: |
+      O furo deve ficar a uma distância de $A$ igual a
+    opcoes: ['$5$ cm', '$10$ cm', '$7{,}5$ cm', '$12$ cm', '$15$ cm']
+    correta: B
+    resolucao: |
+      O baricentro está a $\tfrac{2}{3}$ da mediana, a partir do vértice: $\tfrac{2}{3} \cdot 15 = 10$ cm.
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, $I$ é o incentro e $B\hat{I}C = 118°$. O ângulo $\hat{A}$ mede
+    opcoes: ['$28°$', '$62°$', '$118°$', '$59°$', '$56°$']
+    correta: E
+    resolucao: |
+      $B\hat{I}C = 90° + \tfrac{\hat{A}}{2} = 118°$: $\hat{A} = 56°$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere cevianas e pontos notáveis de um triângulo. Assinale o que for correto.
+    proposicoes:
+    - 'Num triângulo isósceles, baricentro, incentro, circuncentro e ortocentro estão alinhados.'
+    - 'Se o baricentro coincide com o circuncentro, o triângulo é equilátero.'
+    - 'O ortocentro de um triângulo retângulo é o ponto médio da hipotenusa.'
+    - 'O baricentro divide cada mediana em duas partes, sendo a maior a que contém o vértice.'
+    - 'As três medianas dividem o triângulo em seis triângulos de mesma área.'
+    corretas: [1, 2, 4, 5]
+    resolucao: |
+      01) Todos estão na altura relativa à base, que é também mediana, bissetriz e mediatriz. 02) Cada mediana seria perpendicular ao lado (estaria na mediatriz), e o triângulo seria isósceles em relação aos três vértices. 04) Incorreta: é o vértice do ângulo reto. 08) Correta. 16) Correta.
+      Soma: $01 + 02 + 08 + 16 = 27$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Num triângulo acutângulo $ABC$, $\hat{A} = 70°$ e $H$ é o ortocentro. O ângulo $B\hat{H}C$ mede
+    opcoes: ['$70°$', '$140°$', '$110°$', '$90°$', '$20°$']
+    correta: C
+    resolucao: |
+      No quadrilátero formado por $A$, $H$ e os pés das alturas por $B$ e $C$, há dois ângulos retos: o ângulo em $H$ mede $180° - 70° = 110°$, e $B\hat{H}C$ é oposto pelo vértice a ele.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Três antenas, $A$, $B$ e $C$, formam um triângulo retângulo em $B$, como na figura. A distância entre $A$ e $C$ é de 10 km. Uma central de controle será instalada à mesma distância das três antenas.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink!50, dashed] (0,0) -- (4,0) -- (0,3) -- cycle;
+        \draw[ink!50] (0,0.25) -- (0.25,0.25) -- (0.25,0);
+        \fill[roxo] (0,0) circle (3pt) node[below left, font=\scriptsize] {$B$};
+        \fill[roxo] (4,0) circle (3pt) node[below right, font=\scriptsize] {$C$};
+        \fill[roxo] (0,3) circle (3pt) node[above left, font=\scriptsize] {$A$};
+        \end{scope}
+    enunciado: |
+      A distância da central a cada antena será de
+    opcoes: ['$10$ km', '$2{,}5$ km', '$7{,}5$ km', '$5$ km', '$6$ km']
+    correta: D
+    resolucao: |
+      O ponto equidistante dos vértices de um triângulo retângulo é o ponto médio da hipotenusa $AC$: a distância é $\tfrac{10}{2} = 5$ km.
+
+  - estilo: Unicamp
+    enunciado: |
+      A central deve ser instalada
+    opcoes: ['no ponto médio do segmento $AC$.', 'no ponto $B$.', 'no baricentro do triângulo $ABC$.', 'no incentro do triângulo $ABC$.']
+    correta: A
+    resolucao: |
+      É o circuncentro, que, no triângulo retângulo, é o ponto médio da hipotenusa.
+
+  - estilo: Unesp
+    enunciado: |
+      Num triângulo equilátero de altura 12 cm, a distância do centro a cada lado é
+    opcoes: ['$6$ cm', '$8$ cm', '$3$ cm', '$12$ cm', '$4$ cm']
+    correta: E
+    resolucao: |
+      O centro é o baricentro, a $\tfrac{1}{3}$ da altura a partir do lado: $4$ cm.
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, as medianas $AM$ e $BN$ medem 9 e 12 e são perpendiculares. Pelo teorema de Pitágoras, o lado $AB$ mede
+    opcoes: ['$12$', '$10$', '$15$', '$7{,}5$', '$9$']
+    correta: B
+    resolucao: |
+      Com $G$ baricentro: $AG = \tfrac{2}{3} \cdot 9 = 6$ e $BG = \tfrac{2}{3} \cdot 12 = 8$. O triângulo $AGB$ é retângulo em $G$: $AB = \sqrt{36 + 64} = 10$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere o triângulo de vértices $A(0, 0)$, $B(8, 0)$ e $C(2, 6)$.'
+    itens:
+    - 'Determine o baricentro $G$.'
+    - 'Determine o circuncentro $O$ (encontro das mediatrizes) e o ortocentro $H$ (encontro das alturas).'
+    - 'Mostre que $G$, $O$ e $H$ estão alinhados e que $HG = 2 \cdot GO$.'
+    espaco: 62
+    resolucao: |
+      a) $G = \left(\tfrac{10}{3}, 2\right)$.
+      b) Mediatriz de $AB$: $x = 4$. Mediatriz de $AC$: passa por $(1, 3)$ com coeficiente angular $-\tfrac{1}{3}$; em $x = 4$, $y = 2$. $O = (4, 2)$. Altura por $C$: $x = 2$. Altura por $B$: perpendicular a $AC$, $y = -\tfrac{1}{3}(x - 8)$; em $x = 2$, $y = 2$. $H = (2, 2)$.
+      c) Os três estão na reta $y = 2$. $HG = \tfrac{10}{3} - 2 = \tfrac{4}{3}$ e $GO = 4 - \tfrac{10}{3} = \tfrac{2}{3}$.
+    resposta: 'a) $\left(\frac{10}{3}, 2\right)$; b) $O(4, 2)$, $H(2, 2)$'
+
+  - estilo: Unicamp
+    texto: |
+      Três cidades estão nos pontos $A(0, 0)$, $B(6, 0)$ e $C(4, 4)$ de um mapa com unidades em quilômetros. Um hospital regional deve ficar à mesma distância das três.
+    enunciado: ''
+    itens:
+    - 'Explique por que o hospital deve ficar no circuncentro do triângulo $ABC$.'
+    - 'Determine as coordenadas do hospital.'
+    - 'Calcule a distância do hospital a cada cidade.'
+    espaco: 62
+    resolucao: |
+      a) Os pontos equidistantes de duas cidades formam a mediatriz do segmento entre elas; equidistante das três é o encontro das mediatrizes.
+      b) Mediatriz de $AB$: $x = 3$. Mediatriz de $AC$: passa por $(2, 2)$, perpendicular a $y = x$: $y = 4 - x$. Em $x = 3$: $y = 1$. Hospital em $(3, 1)$.
+      c) $\sqrt{9 + 1} = \sqrt{10} \approx 3{,}16$ km de cada cidade (confere com $B$: $\sqrt{9 + 1}$; com $C$: $\sqrt{1 + 9}$).
+    resposta: 'b) $(3, 1)$; c) $\sqrt{10}$ km'
+
+  - estilo: ITA
+    enunciado: |
+      No triângulo $ABC$, as medianas $AM$ e $BN$ medem 9 e 12 e são perpendiculares. A área do triângulo $ABC$ é
+    opcoes: ['$36$', '$48$', '$54$', '$72$', '$108$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      $AG = 6$, $BG = 8$, e o triângulo $AGB$, retângulo em $G$, tem área $24$. As três medianas dividem o triângulo em seis triângulos de mesma área, e $AGB$ contém dois deles: área total $3 \cdot 24 = 72$.
+    resposta: 'D'
+
+  - estilo: Unesp
+    enunciado: 'Num triângulo acutângulo $ABC$, $H$ é o ortocentro e $I$ é o incentro.'
+    itens:
+    - 'Mostre que $B\hat{H}C = 180° - \hat{A}$.'
+    - 'Mostre que $B\hat{I}C = 90° + \frac{\hat{A}}{2}$.'
+    - 'Para que valor de $\hat{A}$ os ângulos $B\hat{H}C$ e $B\hat{I}C$ são iguais?'
+    espaco: 62
+    resolucao: |
+      a) Com $E$ e $F$ os pés das alturas por $B$ e $C$: no quadrilátero $AEHF$, os ângulos em $E$ e $F$ são retos, e $E\hat{H}F = 360° - 180° - \hat{A} = 180° - \hat{A}$; $B\hat{H}C$ é oposto pelo vértice a ele.
+      b) No triângulo $BIC$: $180° - \tfrac{\hat{B} + \hat{C}}{2} = 90° + \tfrac{\hat{A}}{2}$.
+      c) $180° - \hat{A} = 90° + \tfrac{\hat{A}}{2}$: $\hat{A} = 60°$.
+    resposta: 'c) $60°$'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - 'O incentro é o centro da circunferência inscrita no triângulo.'
+    - 'O circuncentro de um triângulo retângulo é o ponto médio da hipotenusa.'
+    - 'Num triângulo isósceles, a altura relativa à base é também mediana e bissetriz.'
+    - 'O baricentro divide cada mediana na razão $1 : 3$.'
+    - 'O ortocentro de um triângulo retângulo fica sobre a hipotenusa.'
+    - 'As três medianas dividem o triângulo em seis triângulos de mesma área.'
+    corretas: [1, 2, 3, 6]
+    espaco: 22
+    resolucao: |
+      01) a 04) Corretas. 08) Incorreta: a razão é $2 : 1$. 16) Incorreta: é o vértice do ângulo reto. 32) Correta: cada mediana divide a área ao meio, e os seis triângulos têm, dois a dois, bases e alturas iguais.
+    resposta: 'Soma 39 (01 + 02 + 04 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Num triângulo equilátero de altura $h = 6\sqrt{3}$ cm, considere as circunferências inscrita e circunscrita.'
+    itens:
+    - 'Explique por que as duas têm o mesmo centro.'
+    - 'Calcule os raios das duas circunferências.'
+    - 'Calcule a área da coroa circular entre elas.'
+    espaco: 62
+    resolucao: |
+      a) No equilátero, incentro e circuncentro coincidem com o baricentro.
+      b) $R = \tfrac{2}{3}h = 4\sqrt{3}$ cm e $r = \tfrac{1}{3}h = 2\sqrt{3}$ cm.
+      c) $\pi(R^2 - r^2) = \pi(48 - 12) = 36\pi$ cm².
+    resposta: 'b) $4\sqrt{3}$ e $2\sqrt{3}$; c) $36\pi$ cm²'
+
+  - estilo: Unicamp
+    texto: |
+      Uma placa triangular homogênea tem vértices $A(0, 0)$, $B(12, 0)$ e $C(3, 9)$, em centímetros.
+    enunciado: ''
+    itens:
+    - 'Determine o baricentro $G$.'
+    - 'Seja $M$ o ponto médio de $AB$. Mostre que $G$ está sobre $CM$ e que $CG = 2 \cdot GM$.'
+    - 'Por que a placa fica em equilíbrio apoiada em $G$?'
+    espaco: 62
+    resolucao: |
+      a) $G = (5, 3)$.
+      b) $M = (6, 0)$. O ponto que fica a $\tfrac{2}{3}$ do caminho de $C$ a $M$ é $C + \tfrac{2}{3}(M - C) = (3, 9) + \tfrac{2}{3}(3, -9) = (5, 3) = G$. Então $CG = 2 \cdot GM$.
+      c) O baricentro é o centro de gravidade da placa homogênea: cada mediana divide a placa em duas partes de mesma área (mesmo peso), e $G$ está nas três medianas.
+    resposta: 'a) $(5, 3)$'
+
+  - estilo: Fuvest
+    enunciado: |
+      O raio da circunferência inscrita num triângulo retângulo de lados 5, 12 e 13 é
+    opcoes: ['$1$', '$2$', '$3$', '$4$', '$6{,}5$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      Os segmentos tangentes traçados de um vértice à circunferência são iguais. No vértice do ângulo reto, os dois medem $r$ (forma-se um quadrado). Então $(5 - r) + (12 - r) = 13$: $r = 2$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'No triângulo $ABC$, retângulo em $B$, $M$ é o ponto médio da hipotenusa $AC$ e $\hat{A} = 34°$.'
+    itens:
+    - 'Mostre que os triângulos $ABM$ e $CBM$ são isósceles.'
+    - 'Calcule os ângulos $A\hat{B}M$, $M\hat{B}C$ e $A\hat{M}B$.'
+    - 'Se $AC = 18$ cm, quanto mede $BM$?'
+    espaco: 62
+    resolucao: |
+      a) $M$ é o circuncentro: $MA = MB = MC$.
+      b) $A\hat{B}M = \hat{A} = 34°$; $M\hat{B}C = 90° - 34° = 56°$; $A\hat{M}B = 180° - 34° - 34° = 112°$.
+      c) $BM = \tfrac{AC}{2} = 9$ cm.
+    resposta: 'b) $34°$, $56°$, $112°$; c) 9 cm'
+
+  - estilo: Fuvest
+    enunciado: 'Considere o triângulo de vértices $A(0, 0)$, $B(4, 0)$ e $C(1, 1)$.'
+    itens:
+    - 'Mostre que o ângulo em $C$ é obtuso.'
+    - 'Determine o circuncentro $O$.'
+    - 'Determine o ortocentro $H$ e verifique que $O$ e $H$ ficam fora do triângulo.'
+    espaco: 62
+    resolucao: |
+      a) Os segmentos $CA$ e $CB$ têm coeficientes angulares $1$ e $-\tfrac{1}{3}$. O ângulo em $A$ mede $45°$; no triângulo, o ângulo em $B$ tem tangente $\tfrac{1}{3}$ (menor que $45°$), e $\hat{C} = 180° - 45° - \hat{B} > 90°$.
+      b) Mediatriz de $AB$: $x = 2$. Mediatriz de $AC$: $y = 1 - x$. $O = (2, -1)$.
+      c) Altura por $C$: $x = 1$. Altura por $B$, perpendicular a $AC$: $y = 4 - x$. $H = (1, 3)$. O triângulo fica entre $y = 0$ e $y = 1$: $O$ está abaixo e $H$ acima dele.
+    resposta: 'b) $(2, -1)$; c) $(1, 3)$'
