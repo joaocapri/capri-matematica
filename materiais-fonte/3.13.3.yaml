@@ -1,0 +1,527 @@
+# Aula 3.13.3 — Polinômios: divisão pelo método da chave
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: método da chave (completando graus com zero); identidade P = D·Q + R com gr R < gr D;
+# gr Q = gr P − gr D; divisão exata e divisibilidade; reconstruir P a partir de D, Q e R; parâmetros para que a divisão
+# seja exata; divisão por polinômios de grau 2; aplicações (lado de retângulo, altura de caixa, custo médio).
+# Briot-Ruffini e teorema do resto ficam para 3.13.4 e 3.13.5.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Em toda divisão, confira com $P = D \cdot Q + R$. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Divida $P(x) = 2x^3 + 3x^2 - x + 5$ por $D(x) = x + 2$ pelo método da chave. Complete.'
+      itens:
+      - 'Grau do quociente: {{2}}'
+      - 'Quociente: {{2x^2 - x + 1}}'
+      - 'Resto: {{3}}'
+      espaco_item: 10
+      resolucao: |
+        $2x^3 \div x = 2x^2$; sobra $-x^2 - x + 5$. $-x^2 \div x = -x$; sobra $x + 5$. $x \div x = 1$; sobra 3. Conferindo: $(x + 2)(2x^2 - x + 1) + 3 = 2x^3 + 3x^2 - x + 5$.
+      resposta: '2; $2x^2 - x + 1$; 3'
+    - enunciado: 'Associe cada divisão exata ao seu quociente.'
+      esquerda:
+      - '$(x^2 - 9) \div (x - 3)$'
+      - '$(x^3 - 8) \div (x - 2)$'
+      - '$(x^2 + 4x + 4) \div (x + 2)$'
+      - '$(x^3 + x) \div (x^2 + 1)$'
+      - '$(6x^2 + x - 2) \div (2x - 1)$'
+      direita:
+      - '$x$'
+      - '$3x + 2$'
+      - '$x + 3$'
+      - '$x^2 + 2x + 4$'
+      - '$x + 2$'
+      resolucao: |
+        Confira multiplicando: $(x - 3)(x + 3)$, $(x - 2)(x^2 + 2x + 4)$, $(x + 2)^2$, $x(x^2 + 1)$, $(2x - 1)(3x + 2)$.
+      resposta: 'De cima para baixo: 4, 5, 1, 2, 3'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Na divisão de $P$ por $D$, o resto tem grau menor que o de $D$ (ou é nulo).'
+      - 'O grau do quociente é a soma dos graus de $P$ e $D$.'
+      - 'Se o resto é nulo, $D$ divide $P$.'
+      - 'Na divisão por um polinômio de grau 3, o resto pode ter grau 3.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) É a diferença: $\operatorname{gr}P - \operatorname{gr}D$. (V) (F) No máximo grau 2.
+      resposta: V, F, V, F
+    - enunciado: 'Complete com o grau do quociente e o maior grau possível do resto.'
+      tabela:
+        cabecalho: ['Grau de $P$', 'Grau de $D$', 'Grau de $Q$', 'Grau máximo de $R$']
+        linhas:
+        - ['$5$', '$2$', '${{3}}$', '${{1}}$']
+        - ['$4$', '$1$', '${{3}}$', '${{0}}$']
+        - ['$6$', '$3$', '${{3}}$', '${{2}}$']
+        - ['$7$', '$4$', '${{3}}$', '${{3}}$']
+      resolucao: |
+        $\operatorname{gr}Q = \operatorname{gr}P - \operatorname{gr}D$; o resto tem grau no máximo $\operatorname{gr}D - 1$.
+      resposta: '3, 1; 3, 0; 3, 2; 3, 3'
+    - enunciado: 'Divida $x^3 + 2x^2 - 5x + 1$ por $x^2 - 1$.'
+      espaco: 12
+      resolucao: |
+        $x^3 \div x^2 = x$; sobra $2x^2 - 4x + 1$. $2x^2 \div x^2 = 2$; sobra $-4x + 3$. $Q = x + 2$, $R = -4x + 3$.
+      resposta: '$Q = x + 2$; $R = -4x + 3$'
+    - enunciado: 'Na divisão de $P$ por $x - 3$, o quociente é $x^2 + 1$ e o resto é 4. Encontre $P$.'
+      espaco: 8
+      resolucao: |
+        $P = (x - 3)(x^2 + 1) + 4 = x^3 - 3x^2 + x + 1$.
+      resposta: '$x^3 - 3x^2 + x + 1$'
+    - enunciado: 'Divida $x^4 - 1$ por $x^2 + 1$.'
+      espaco: 10
+      resolucao: |
+        Completando: $x^4 + 0x^3 + 0x^2 + 0x - 1$. $x^4 \div x^2 = x^2$; sobra $-x^2 - 1$. $-x^2 \div x^2 = -1$; sobra 0. $Q = x^2 - 1$, $R = 0$.
+      resposta: '$Q = x^2 - 1$; $R = 0$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Ao dividir $x^3 - 4x + 7$ por $x - 2$, Davi não completou o termo em $x^2$ e se perdeu nas colunas.
+      enunciado: 'Faça a divisão corretamente, completando os graus.'
+      espaco: 12
+      resolucao: |
+        $x^3 + 0x^2 - 4x + 7$. $x^3 \div x = x^2$; sobra $2x^2 - 4x + 7$. $2x^2 \div x = 2x$; sobra $0x + 7$. $Q = x^2 + 2x$, $R = 7$.
+      resposta: '$Q = x^2 + 2x$; $R = 7$'
+    - enunciado: 'Divida $3x^4 - 2x^3 + x - 5$ por $x^2 + x - 1$.'
+      espaco: 14
+      resolucao: |
+        $3x^4 \div x^2 = 3x^2$; sobra $-5x^3 + 3x^2 + x - 5$. $-5x^3 \div x^2 = -5x$; sobra $8x^2 - 4x - 5$. $8x^2 \div x^2 = 8$; sobra $-12x + 3$. $Q = 3x^2 - 5x + 8$, $R = -12x + 3$.
+      resposta: '$Q = 3x^2 - 5x + 8$; $R = -12x + 3$'
+    - enunciado: 'Encontre $a$ para que $x^3 + ax^2 - x - 2$ seja divisível por $x^2 - 1$.'
+      espaco: 10
+      resolucao: |
+        Pela chave: $Q = x + a$ e $R = 0x + (a - 2)$. Divisão exata: $a = 2$.
+      resposta: '$a = 2$'
+    - enunciado: 'Divida $x^4 + x^2 + 1$ por $x^2 + x + 1$ e conclua se a divisão é exata.'
+      espaco: 12
+      resolucao: |
+        $Q = x^2 - x + 1$ e $R = 0$: é exata. De fato, $(x^2 + x + 1)(x^2 - x + 1) = (x^2 + 1)^2 - x^2 = x^4 + x^2 + 1$.
+      resposta: '$Q = x^2 - x + 1$; exata'
+    - enunciado: 'Divida $2x^3 - 3x^2 + 4x - 1$ por $2x - 1$.'
+      espaco: 12
+      resolucao: |
+        $2x^3 \div 2x = x^2$; sobra $-2x^2 + 4x - 1$. $-2x^2 \div 2x = -x$; sobra $3x - 1$. $3x \div 2x = \tfrac{3}{2}$; sobra $\tfrac{1}{2}$. $Q = x^2 - x + \tfrac{3}{2}$, $R = \tfrac{1}{2}$.
+      resposta: '$Q = x^2 - x + \frac{3}{2}$; $R = \frac{1}{2}$'
+    - enunciado: 'Uma caixa tem volume $x^3 + 6x^2 + 11x + 6$ e base de dimensões $x + 1$ e $x + 2$. Calcule a altura.'
+      espaco: 10
+      resolucao: |
+        Base $(x + 1)(x + 2) = x^2 + 3x + 2$. $(x^3 + 6x^2 + 11x + 6) \div (x^2 + 3x + 2) = x + 3$, exata.
+      resposta: '$x + 3$'
+    - enunciado: 'Um polinômio de grau 10 é dividido por um de grau 3. Complete.'
+      itens:
+      - 'Grau do quociente: {{7}}'
+      - 'Maior grau possível do resto: {{2}}'
+      espaco_item: 8
+      resolucao: |
+        $10 - 3 = 7$; o resto tem grau menor que 3.
+      resposta: '7; 2'
+    - enunciado: 'Dividindo $P$ por $x^2 - 4$, obtém-se quociente $x$ e resto $2x + 1$. Encontre $P$ e confira que $P(2) = R(2)$.'
+      espaco: 10
+      resolucao: |
+        $P = x(x^2 - 4) + 2x + 1 = x^3 - 2x + 1$. $P(2) = 8 - 4 + 1 = 5$ e $R(2) = 5$, pois $D(2) = 0$.
+      resposta: '$x^3 - 2x + 1$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que, se $P = D \cdot Q + R$ com $\operatorname{gr}R < \operatorname{gr}D$, então $\operatorname{gr}Q = \operatorname{gr}P - \operatorname{gr}D$.'
+      espaco: 10
+      resolucao: |
+        $D \cdot Q$ tem grau $\operatorname{gr}D + \operatorname{gr}Q \ge \operatorname{gr}D > \operatorname{gr}R$, então somar $R$ não altera o termo de maior grau: $\operatorname{gr}P = \operatorname{gr}D + \operatorname{gr}Q$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que o resto da divisão de $P$ por $x^2 - 1$ é $ax + b$, com $a = \frac{P(1) - P(-1)}{2}$ e $b = \frac{P(1) + P(-1)}{2}$.'
+      espaco: 12
+      resolucao: |
+        $P(x) = (x^2 - 1)Q(x) + ax + b$. Em $x = 1$ e $x = -1$, o primeiro termo se anula: $P(1) = a + b$ e $P(-1) = -a + b$. Resolvendo o sistema, vêm as fórmulas.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, se $D$ divide $P$ e $D$ divide $S$, então $D$ divide $P + S$.'
+      espaco: 8
+      resolucao: |
+        $P = D Q_1$ e $S = D Q_2$: $P + S = D(Q_1 + Q_2)$, com resto nulo.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $x^n - 1$ é divisível por $x - 1$ para todo $n \ge 1$, mostrando o quociente.'
+      espaco: 10
+      resolucao: |
+        $(x - 1)(x^{n-1} + x^{n-2} + \dots + x + 1) = x^n - 1$: na distributiva, os termos intermediários se cancelam aos pares.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que dividir $P$ por $D$ e por $kD$ ($k \ne 0$ constante) dá o mesmo resto, e que os quocientes são $Q$ e $\frac{Q}{k}$.'
+      espaco: 8
+      resolucao: |
+        $P = DQ + R = (kD) \cdot \tfrac{Q}{k} + R$, com $\operatorname{gr}R < \operatorname{gr}(kD)$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um arquiteto projeta salas retangulares cujas áreas, em metros quadrados, são dadas por polinômios. Numa delas, a área é $x^2 + 7x + 12$ e um dos lados mede $x + 3$ metros, como na figura. Para encomendar o rodapé, ele precisa da medida do outro lado.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) rectangle (3.2,2);
+        \node[font=\scriptsize] at (1.6,1) {$x^2 + 7x + 12$};
+        \node[left, font=\scriptsize] at (0,1) {$x + 3$};
+        \node[below, font=\scriptsize] at (1.6,0) {$?$};
+        \end{scope}
+    enunciado: |
+      O outro lado mede
+    opcoes: ['$x + 4$', '$x + 9$', '$x + 3$', '$x^2 + 4$', '$7x + 4$']
+    correta: A
+    resolucao: |
+      $(x^2 + 7x + 12) \div (x + 3) = x + 4$, exata.
+
+  - estilo: Fuvest
+    enunciado: |
+      O quociente da divisão de $x^3 - 27$ por $x - 3$ é
+    opcoes: ['$x^2 - 3x + 9$', '$x^2 + 3x + 9$', '$x^2 + 9$', '$x^2 + 6x + 9$', '$x^2 - 9$']
+    correta: B
+    resolucao: |
+      $(x - 3)(x^2 + 3x + 9) = x^3 - 27$.
+
+  - estilo: Unicamp
+    enunciado: |
+      O resto da divisão de $x^4 + 2x^2 + 3$ por $x^2 + 1$ é
+    opcoes: ['$0$.', '$1$.', '$2$.', '$3$.']
+    correta: C
+    resolucao: |
+      $x^4 + 2x^2 + 3 = (x^2 + 1)^2 + 2$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere a divisão de $P(x) = x^4 - 3x^3 + 2x^2 + x - 4$ por $D(x) = x^2 + 1$. Assinale o que for correto.
+    proposicoes:
+    - 'O quociente é $x^2 - 3x + 1$.'
+    - 'O resto é $4x - 5$.'
+    - 'O quociente tem grau 2.'
+    - '$P(0) = -4$.'
+    - '$D$ divide $P$.'
+    - 'O grau do resto é menor que o grau de $D$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      Pela chave: $Q = x^2 - 3x + 1$ e $R = 4x - 5$. 08) Também $D(0)Q(0) + R(0) = 1 - 5$. 16) Incorreta: o resto não é nulo. 32) Correta.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      O custo total de produção de uma confecção, em milhares de reais, para $x$ lotes de camisetas é $C(x) = 2x^2 + 3x + 10$. O custo médio por lote é $\frac{C(x)}{x}$, que, pela divisão, é igual a $2x + 3 + \frac{10}{x}$. O gerente quer saber o custo médio por lote quando forem produzidos 5 lotes.
+    enunciado: |
+      O custo médio por lote, para 5 lotes, é
+    opcoes: ['$13$ mil reais', '$25$ mil reais', '$75$ mil reais', '$15$ mil reais', '$17$ mil reais']
+    correta: D
+    resolucao: |
+      $2 \cdot 5 + 3 + \tfrac{10}{5} = 15$. (Ou $\tfrac{75}{5}$.)
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre a divisão de um polinômio $P$ por um polinômio $D$, com quociente $Q$ e resto $R$.
+    afirmativas:
+    - 'O grau de $R$ é menor que o grau de $D$, ou $R$ é nulo.'
+    - 'O grau de $Q$ é o grau de $P$ menos o grau de $D$.'
+    - 'O resto pode ter o mesmo grau do divisor.'
+    - 'Se $R$ é nulo, $D$ divide $P$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'III e IV, apenas.', 'II, III e IV, apenas.', 'I, II e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta. II. Correta. III. Incorreta. IV. Correta.
+
+  - estilo: Unesp
+    enunciado: |
+      Dividindo um polinômio de grau 9 por um de grau 4, o quociente tem grau
+    opcoes: ['$5$', '$4$', '$13$', '$9$', '$36$']
+    correta: A
+    resolucao: |
+      $9 - 4 = 5$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      O quadro mostra o divisor, o quociente e o resto de uma divisão de polinômios.
+    tabela:
+      cabecalho: ['Divisor', 'Quociente', 'Resto']
+      linhas:
+      - ['$x - 1$', '$x^2 + 2$', '$3$']
+    enunciado: |
+      O valor do dividendo para $x = 2$ é
+    opcoes: ['$6$.', '$9$.', '$3$.', '$12$.']
+    correta: B
+    resolucao: |
+      $P(2) = 1 \cdot 6 + 3 = 9$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O polinômio $x^3 + ax^2 + bx + 6$ é divisível por $x^2 - 5x + 6$. Então $a + b$ vale
+    opcoes: ['$3$', '$-4$', '$-3$', '$1$', '$5$']
+    correta: C
+    resolucao: |
+      O quociente é $x + c$ com $6c = 6$: $c = 1$. $(x^2 - 5x + 6)(x + 1) = x^3 - 4x^2 + x + 6$: $a = -4$, $b = 1$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a divisão de $P(x) = x^3 - 2x^2 + 3x - 1$ por $D(x) = x - 1$. Assinale o que for correto.
+    proposicoes:
+    - 'O quociente é $x^2 - x + 2$.'
+    - 'O resto é 1.'
+    - '$P(1) = 1$.'
+    - 'O quociente tem grau 2.'
+    - 'O quociente não tem raízes reais.'
+    - '$D$ divide $P$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) e 02) Pela chave. 04) $1 - 2 + 3 - 1$. 08) Correta. 16) $\Delta = 1 - 8 < 0$. 32) Incorreta: resto 1.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Um terreno retangular tem área de $x^3 + 2x^2 - 5x - 6$ metros quadrados, com $x > 2$, e um dos seus lados mede $x + 1$ metros. O topógrafo precisa expressar o outro lado como um polinômio em $x$ para fazer a planta do terreno.
+    enunciado: |
+      O outro lado do terreno mede
+    opcoes: ['$x^2 + x - 6$', '$x^2 + 3x - 2$', '$x^2 - x - 6$', '$x^2 + x + 6$', '$x^2 + 2x - 5$']
+    correta: A
+    resolucao: |
+      $(x^3 + 2x^2 - 5x - 6) \div (x + 1) = x^2 + x - 6$, exata.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'O quociente de $x^2 - 1$ por $x - 1$ é $x + 1$.'
+    - 'O resto pode ter o mesmo grau do divisor.'
+    - 'Dividindo um polinômio de grau 4 por um de grau 2, o quociente tem grau 2.'
+    - 'A divisão de $x^3 + 1$ por $x + 1$ é exata, com quociente $x^2 - x + 1$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      (V) (F) (V) $4 - 2$. (V) $(x + 1)(x^2 - x + 1) = x^3 + 1$.
+
+  - estilo: Enem
+    texto: |
+      Um programa de computador dividiu um polinômio $P$ por vários divisores e registrou os restos no quadro. O professor pediu aos alunos que usassem o quadro para descobrir qual dos divisores é um fator de $P$, isto é, divide $P$ exatamente.
+    tabela:
+      cabecalho: ['Divisor', 'Resto']
+      linhas:
+      - ['$x - 1$', '$2$']
+      - ['$x + 1$', '$0$']
+      - ['$x - 2$', '$9$']
+      - ['$x^2 + 1$', '$-x + 1$']
+      - ['$x + 2$', '$-7$']
+    enunciado: |
+      $P$ é divisível por
+    opcoes: ['$x - 1$.', '$x - 2$.', '$x^2 + 1$.', '$x + 1$.', '$x + 2$.']
+    correta: D
+    resolucao: |
+      É o único divisor com resto nulo. (O quadro corresponde a $P(x) = x^3 + 1$.)
+
+  - estilo: Unesp
+    enunciado: |
+      O resto da divisão de $x^5 + 3x + 1$ por $x^2$ é
+    opcoes: ['$1$', '$3x + 1$', '$x^3$', '$3x$', '$0$']
+    correta: B
+    resolucao: |
+      $x^5 + 3x + 1 = x^2 \cdot x^3 + (3x + 1)$, com $\operatorname{gr}(3x + 1) < 2$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere a divisão de $x^4 - 1$ por $x^2 + x$. Assinale o que for correto.
+    proposicoes:
+    - 'O quociente é $x^2 - x + 1$.'
+    - 'O resto é $-x - 1$.'
+    - 'O resto tem grau 1.'
+    - 'O resto se anula em $x = -1$.'
+    - '$x^2 + x$ divide $x^4 - 1$.'
+    - '$x + 1$ divide $x^4 - 1$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) e 02) $(x^2 + x)(x^2 - x + 1) = x^4 + x$, e $x^4 - 1 - (x^4 + x) = -x - 1$. 08) Correta. 16) Incorreta: resto não nulo. 32) $x^4 - 1 = (x + 1)[x(x^2 - x + 1) - 1]$: os dois termos têm o fator $x + 1$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Na divisão de $P$ por $x^2 + 2$, o quociente é $x - 1$ e o resto é $3x$. O valor de $P(1)$ é
+    opcoes: ['$3$.', '$0$.', '$6$.', '$1$.']
+    correta: A
+    resolucao: |
+      $P(1) = 3 \cdot 0 + 3 = 3$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Uma gráfica imprime cartazes retangulares com área de $2x^2 + 7x + 3$ centímetros quadrados, em que $x$ é um parâmetro do modelo escolhido. Um dos lados do cartaz mede $2x + 1$ centímetros, e o funcionário precisa da outra dimensão e do perímetro para cortar as molduras.
+    enunciado: |
+      O outro lado do cartaz mede
+    opcoes: ['$x + 1$', '$2x + 3$', '$x + 3$', '$x + 7$', '$2x + 1$']
+    correta: C
+    resolucao: |
+      $(2x^2 + 7x + 3) \div (2x + 1) = x + 3$, exata.
+
+  - estilo: Unesp
+    enunciado: |
+      Para o modelo com $x = 2$, o perímetro do cartaz é
+    opcoes: ['$14$ cm', '$16$ cm', '$18$ cm', '$20$ cm', '$24$ cm']
+    correta: D
+    resolucao: |
+      Lados 5 e 5: perímetro $2(5 + 5) = 20$ cm. (Em geral, $6x + 8$.)
+
+  - estilo: Fuvest
+    enunciado: |
+      O resto da divisão de $P(x) = x^4 + ax + b$ por $x^2 - 1$ é
+    opcoes: ['$ax + b$', '$b + 1$', '$ax$', '$x + b$', '$ax + b + 1$']
+    correta: E
+    resolucao: |
+      $x^4 = (x^2 - 1)(x^2 + 1) + 1$: $P = (x^2 - 1)(x^2 + 1) + ax + b + 1$, e $ax + b + 1$ tem grau menor que 2.
+
+  - estilo: Unesp
+    texto: |
+      A caixa da figura tem volume $x^3 + 5x^2 + 6x$ e base retangular de lados $x$ e $x + 3$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[ink, line width=1pt, fill=lilas!20] (0,0) rectangle (3,1.8);
+        \draw[ink, line width=1pt, fill=lilas!35] (0,1.8) -- (0.9,2.5) -- (3.9,2.5) -- (3,1.8) -- cycle;
+        \draw[ink, line width=1pt, fill=lilas!10] (3,0) -- (3.9,0.7) -- (3.9,2.5) -- (3,1.8) -- cycle;
+        \node[below, font=\scriptsize] at (1.5,0) {$x + 3$};
+        \node[below right, font=\scriptsize] at (3.4,0.35) {$x$};
+        \node[left, font=\scriptsize] at (0,0.9) {$?$};
+        \end{scope}
+    enunciado: |
+      A altura da caixa é
+    opcoes: ['$x + 3$', '$x + 2$', '$x$', '$x + 5$', '$2x$']
+    correta: B
+    resolucao: |
+      Base $x^2 + 3x$; $(x^3 + 5x^2 + 6x) \div (x^2 + 3x) = x + 2$, exata.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere $P(x) = x^4 + 2x^3 - x + 5$ e $D(x) = x^2 + x + 1$.'
+    itens:
+    - 'Divida $P$ por $D$ pelo método da chave.'
+    - 'Confira a identidade da divisão em $x = 1$.'
+    - 'Que constante $k$ deve substituir o termo independente 5 para que a divisão seja exata?'
+    espaco: 62
+    resolucao: |
+      a) $x^4 \div x^2 = x^2$; sobra $x^3 - x^2 - x + 5$. $x^3 \div x^2 = x$; sobra $-2x^2 - 2x + 5$. $-2x^2 \div x^2 = -2$; sobra 7. $Q = x^2 + x - 2$, $R = 7$.
+      b) $P(1) = 7$ e $D(1)Q(1) + R = 3 \cdot 0 + 7$.
+      c) O termo independente só altera o resto: $7 - 5 + k = 0$, $k = -2$.
+    resposta: 'a) $Q = x^2 + x - 2$, $R = 7$; c) $k = -2$'
+
+  - estilo: Unicamp
+    enunciado: 'O resto da divisão de um polinômio $P$ por $x^2 - 1$ é da forma $ax + b$.'
+    itens:
+    - 'Prove que $a + b = P(1)$ e $-a + b = P(-1)$.'
+    - 'Obtenha $a$ e $b$ em função de $P(1)$ e $P(-1)$.'
+    - 'Calcule o resto da divisão de $x^{10} + x^7 + 1$ por $x^2 - 1$.'
+    espaco: 62
+    resolucao: |
+      a) $P(x) = (x^2 - 1)Q(x) + ax + b$; em $x = \pm 1$, o primeiro termo se anula.
+      b) $a = \tfrac{P(1) - P(-1)}{2}$, $b = \tfrac{P(1) + P(-1)}{2}$.
+      c) $P(1) = 3$, $P(-1) = 1$: $a = 1$, $b = 2$. Resto $x + 2$.
+    resposta: 'c) $x + 2$'
+
+  - estilo: ITA
+    enunciado: |
+      O resto da divisão de $x^{100}$ por $x^2 - 1$ é
+    opcoes: ['$1$', '$x$', '$0$', '$x + 1$', '$2$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      Resto $ax + b$ com $a + b = 1$ e $-a + b = 1$: $a = 0$, $b = 1$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Uma caixa tem volume $x^3 + 9x^2 + 26x + 24$ centímetros cúbicos e base de lados $x + 2$ e $x + 3$.
+    enunciado: ''
+    itens:
+    - 'Calcule a altura da caixa por divisão.'
+    - 'Escreva o volume como produto de três fatores.'
+    - 'Calcule o volume para $x = 1$ e confira com o produto das dimensões.'
+    espaco: 62
+    resolucao: |
+      a) Base $x^2 + 5x + 6$; quociente $x + 4$, resto 0.
+      b) $(x + 2)(x + 3)(x + 4)$.
+      c) $1 + 9 + 26 + 24 = 60 = 3 \cdot 4 \cdot 5$.
+    resposta: 'a) $x + 4$; b) $(x + 2)(x + 3)(x + 4)$; c) 60 cm³'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere divisões de polinômios. Assinale o que for correto.
+    proposicoes:
+    - 'O resto tem grau menor que o do divisor, ou é nulo.'
+    - 'Dividindo um polinômio de grau 8 por um de grau 3, o quociente tem grau 5.'
+    - 'Na divisão por $x^2 + 1$, o resto pode ter grau 2.'
+    - '$x^3 - 8$ é divisível por $x - 2$.'
+    - '$x^4 - 1$ é divisível por $x^2 - 1$.'
+    - 'O resto da divisão de $x^6$ por $x^2 - 1$ é 1.'
+    corretas: [1, 2, 4, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) Correta. 02) $8 - 3$. 04) Incorreta: no máximo grau 1. 08) $(x - 2)(x^2 + 2x + 4)$. 16) $(x^2 - 1)(x^2 + 1)$. 32) $x^6 = (x^2 - 1)(x^4 + x^2 + 1) + 1$.
+    resposta: 'Soma 59 (01 + 02 + 08 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Procura-se $a$ e $b$ para que $x^4 + ax^2 + b$ seja divisível por $x^2 + x + 1$.'
+    itens:
+    - 'Divida $x^4 + ax^2 + b$ por $x^2 + x + 1$ e escreva o resto em função de $a$ e $b$.'
+    - 'Encontre $a$ e $b$.'
+    - 'Escreva o polinômio obtido como produto de dois fatores de grau 2.'
+    espaco: 62
+    resolucao: |
+      a) $x^4 \div x^2 = x^2$; sobra $-x^3 + (a - 1)x^2 + b$. $-x^3 \div x^2 = -x$; sobra $ax^2 + x + b$. $ax^2 \div x^2 = a$; sobra $(1 - a)x + (b - a)$.
+      b) $1 - a = 0$ e $b - a = 0$: $a = b = 1$.
+      c) $x^4 + x^2 + 1 = (x^2 + x + 1)(x^2 - x + 1)$.
+    resposta: 'b) $a = b = 1$; c) $(x^2 + x + 1)(x^2 - x + 1)$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere a divisão de $x^n - 1$ por $x - 1$, com $n \ge 1$.'
+    itens:
+    - 'Prove que o quociente é $x^{n-1} + x^{n-2} + \dots + x + 1$ e o resto é 0.'
+    - 'Escreva o quociente para $n = 5$ e confira multiplicando.'
+    - 'Use a identidade com $x = 2$ para calcular $1 + 2 + 4 + \dots + 2^9$.'
+    espaco: 62
+    resolucao: |
+      a) $(x - 1)(x^{n-1} + \dots + 1) = x^n + x^{n-1} + \dots + x - x^{n-1} - \dots - 1 = x^n - 1$.
+      b) $x^4 + x^3 + x^2 + x + 1$.
+      c) $\tfrac{2^{10} - 1}{2 - 1} = 1023$.
+    resposta: 'b) $x^4 + x^3 + x^2 + x + 1$; c) 1023'
+
+  - estilo: Fuvest
+    enunciado: |
+      Na divisão de $P$ por $x^2 - 3x + 2$, o quociente é $x + 1$ e o resto é $2x - 1$. O valor de $P(3)$ é
+    opcoes: ['$8$', '$11$', '$13$', '$5$', '$17$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $P(3) = (9 - 9 + 2) \cdot 4 + 5 = 13$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    texto: |
+      O custo total de produção de $x$ lotes de uma peça, em milhares de reais, é $C(x) = x^3 - 6x^2 + 15x$.
+    enunciado: ''
+    itens:
+    - 'Divida $C(x)$ por $x$ para obter o custo médio por lote.'
+    - 'Escreva o custo médio na forma $(x - k)^2 + m$.'
+    - 'Para quantos lotes o custo médio é mínimo? Qual é esse mínimo?'
+    espaco: 62
+    resolucao: |
+      a) $x^2 - 6x + 15$ (divisão exata).
+      b) $(x - 3)^2 + 6$.
+      c) 3 lotes; 6 mil reais por lote.
+    resposta: 'a) $x^2 - 6x + 15$; c) 3 lotes e 6 mil reais'
+
+  - estilo: Fuvest
+    enunciado: 'Um polinômio $P$ deixa resto 3 na divisão por $x - 1$ e resto 5 na divisão por $x + 1$.'
+    itens:
+    - 'Prove que $P(1) = 3$ e $P(-1) = 5$, usando a identidade da divisão.'
+    - 'Calcule o resto da divisão de $P$ por $x^2 - 1$.'
+    - 'Dê um exemplo de polinômio de grau 2 com essas propriedades.'
+    espaco: 62
+    resolucao: |
+      a) $P(x) = (x - 1)Q_1(x) + 3$: em $x = 1$, $P(1) = 3$. Analogamente, $P(-1) = 5$.
+      b) $ax + b$ com $a + b = 3$ e $-a + b = 5$: $-x + 4$.
+      c) $P(x) = (x^2 - 1) \cdot 1 - x + 4 = x^2 - x + 3$.
+    resposta: 'b) $-x + 4$; c) por exemplo, $x^2 - x + 3$'
