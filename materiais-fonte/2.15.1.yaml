@@ -1,0 +1,526 @@
+# Aula 2.15.1 — Trigonometria: seno e cosseno no ciclo
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: cos x e sen x como coordenadas da extremidade do arco no ciclo; valores nos eixos; sinais por
+# quadrante; −1 ≤ sen x, cos x ≤ 1 (condições de existência com parâmetro; máximo e mínimo de a + b·sen x);
+# sen² x + cos² x = 1 para todo x (calcular um a partir do outro, com o quadrante); simetrias sen(−x), cos(−x).
+# A redução ao 1º quadrante fica para a aula 2.15.2.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. No ciclo trigonométrico, a extremidade do arco $x$ é o ponto $(\cos x, \operatorname{sen}x)$. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete com os valores.'
+      itens:
+      - '$\operatorname{sen}180^\circ =$ {{0}}'
+      - '$\cos 270^\circ =$ {{0}}'
+      - '$\operatorname{sen}450^\circ =$ {{1}}'
+      - '$\cos 540^\circ =$ {{-1}}'
+      espaco_item: 8
+      resolucao: |
+        $180^\circ$: ponto $(-1, 0)$. $270^\circ$: $(0, -1)$. $450^\circ \equiv 90^\circ$: $(0, 1)$. $540^\circ \equiv 180^\circ$: $(-1, 0)$.
+      resposta: '0; 0; 1; $-1$'
+    - enunciado: 'Associe cada arco aos sinais (ou valores) do seu seno e do seu cosseno.'
+      esquerda:
+      - '$50^\circ$'
+      - '$130^\circ$'
+      - '$250^\circ$'
+      - '$310^\circ$'
+      - '$\frac{3\pi}{2}$'
+      direita:
+      - '$\operatorname{sen} < 0$ e $\cos > 0$'
+      - '$\operatorname{sen} > 0$ e $\cos > 0$'
+      - '$\operatorname{sen} = -1$ e $\cos = 0$'
+      - '$\operatorname{sen} > 0$ e $\cos < 0$'
+      - '$\operatorname{sen} < 0$ e $\cos < 0$'
+      resolucao: |
+        1º Q: $(+, +)$; 2º Q: seno $+$, cosseno $-$; 3º Q: $(-, -)$; 4º Q: seno $-$, cosseno $+$; $\frac{3\pi}{2}$: ponto $(0, -1)$.
+      resposta: 'De cima para baixo: 4, 1, 5, 2, 3'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - '$\operatorname{sen}x \le 1$ para todo $x$.'
+      - 'Existe $x$ com $\cos x = 1{,}5$.'
+      - '$\operatorname{sen}^2 x + \cos^2 x = 1$ para todo $x$.'
+      - 'No 2º quadrante, o cosseno é positivo.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) É uma coordenada de um ponto do ciclo de raio 1. (F) Pelo mesmo motivo. (V) O ponto está no ciclo. (F) No 2º quadrante, a abscissa (o cosseno) é negativa.
+      resposta: V, F, V, F
+    - enunciado: 'Complete a tabela com as coordenadas da extremidade de cada arco.'
+      tabela:
+        cabecalho: ['Arco', '$\cos x$', '$\operatorname{sen}x$']
+        linhas:
+        - ['$\frac{\pi}{6}$', '${{\sqrt3/2}}$', '${{1/2}}$']
+        - ['$\frac{\pi}{4}$', '${{\sqrt2/2}}$', '${{\sqrt2/2}}$']
+        - ['$\frac{\pi}{3}$', '${{1/2}}$', '${{\sqrt3/2}}$']
+        - ['$2\pi$', '${{1}}$', '${{0}}$']
+      resolucao: |
+        No 1º quadrante, os valores são os do triângulo retângulo; $2\pi$ volta ao ponto $(1, 0)$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Qual o sinal de $\operatorname{sen}100^\circ \cdot \cos 100^\circ$?'
+      espaco: 8
+      resolucao: |
+        $100^\circ$ está no 2º quadrante: seno positivo e cosseno negativo. O produto é negativo.
+      resposta: 'Negativo'
+    - enunciado: 'Para que valores de $m$ existe $x$ com $\operatorname{sen}x = 2m - 3$?'
+      espaco: 8
+      resolucao: |
+        $-1 \le 2m - 3 \le 1$: $2 \le 2m \le 4$, ou seja, $1 \le m \le 2$.
+      resposta: '$1 \le m \le 2$'
+    - enunciado: 'Dê o maior e o menor valor de $y = 3 + 2\cos x$.'
+      espaco: 8
+      resolucao: |
+        $\cos x$ varia de $-1$ a 1: $y$ varia de 1 a 5.
+      resposta: 'Máximo 5, mínimo 1'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Rui disse: "$\operatorname{sen}3 > \operatorname{sen}2$, porque $3 > 2$" (arcos em radianos).
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        O seno não cresce sempre: ele diminui de $\frac{\pi}{2} \approx 1{,}57$ até $\pi$. Como $2$ e $3$ estão nesse trecho, $\operatorname{sen}3 < \operatorname{sen}2$ (cerca de 0,14 e 0,91).
+      resposta: '$\operatorname{sen}3 < \operatorname{sen}2$'
+    - enunciado: 'Sabendo que $\operatorname{sen}x = \frac{12}{13}$ e que $x$ está no 2º quadrante, calcule $\cos x$.'
+      espaco: 8
+      resolucao: |
+        $\cos^2 x = 1 - \frac{144}{169} = \frac{25}{169}$; no 2º quadrante, $\cos x = -\frac{5}{13}$.
+      resposta: '$-\frac{5}{13}$'
+    - enunciado: 'Sabendo que $\cos x = -\frac{1}{3}$ e que $x$ está no 3º quadrante, calcule $\operatorname{sen}x$.'
+      espaco: 8
+      resolucao: |
+        $\operatorname{sen}^2 x = 1 - \frac19 = \frac89$; no 3º quadrante, $\operatorname{sen}x = -\frac{2\sqrt2}{3}$.
+      resposta: '$-\frac{2\sqrt2}{3}$'
+    - enunciado: 'Dê o sinal de cada expressão.'
+      itens:
+      - '$\operatorname{sen}200^\circ \cdot \cos 300^\circ$: {{negativo}}'
+      - '$\cos 100^\circ + \cos 120^\circ$: {{negativo}}'
+      - '$\frac{\operatorname{sen}340^\circ}{\cos 160^\circ}$: {{positivo}}'
+      espaco_item: 8
+      resolucao: |
+        $(-) \cdot (+)$; dois cossenos do 2º quadrante, ambos negativos; $\frac{(-)}{(-)}$.
+      resposta: 'negativo; negativo; positivo'
+    - enunciado: 'Entre que valores varia $y = 5 - 4\operatorname{sen}x$?'
+      espaco: 8
+      resolucao: |
+        $\operatorname{sen}x = 1$ dá $y = 1$; $\operatorname{sen}x = -1$ dá $y = 9$. $1 \le y \le 9$.
+      resposta: '$1 \le y \le 9$'
+    - enunciado: 'Para que valores de $m$ existe $x$ com $\cos x = \frac{m - 1}{3}$?'
+      espaco: 8
+      resolucao: |
+        $-1 \le \frac{m - 1}{3} \le 1$: $-3 \le m - 1 \le 3$, ou seja, $-2 \le m \le 4$.
+      resposta: '$-2 \le m \le 4$'
+    - enunciado: 'Coloque em ordem crescente: $\operatorname{sen}1$, $\operatorname{sen}2$ e $\operatorname{sen}3$ (arcos em radianos).'
+      espaco: 10
+      resolucao: |
+        Use $\frac{\pi}{2} \approx 1{,}57$ e $\pi \approx 3{,}14$: o arco 3 está bem perto de $\pi$ (seno pequeno); 2 está a 0,43 de $\frac{\pi}{2}$ e 1 está a 0,57: o seno de 2 é maior. $\operatorname{sen}3 < \operatorname{sen}1 < \operatorname{sen}2$.
+      resposta: '$\operatorname{sen}3 < \operatorname{sen}1 < \operatorname{sen}2$'
+    - enunciado: 'Entre que valores varia $y = \operatorname{sen}^2 x + 2$?'
+      espaco: 8
+      resolucao: |
+        $\operatorname{sen}^2 x$ vai de 0 a 1: $2 \le y \le 3$.
+      resposta: '$2 \le y \le 3$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que $\operatorname{sen}^2 x + \cos^2 x = 1$ para qualquer arco $x$.'
+      espaco: 10
+      resolucao: |
+        O ponto $(\cos x, \operatorname{sen}x)$ está no ciclo de centro na origem e raio 1; pela distância à origem (Pitágoras), $\cos^2 x + \operatorname{sen}^2 x = 1$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $-1 \le \operatorname{sen}x \le 1$ para todo $x$.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{sen}^2 x = 1 - \cos^2 x \le 1$, logo $|\operatorname{sen}x| \le 1$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}(x + 2\pi) = \operatorname{sen}x$ e $\cos(x + 2\pi) = \cos x$.'
+      espaco: 10
+      resolucao: |
+        $x$ e $x + 2\pi$ são côngruos: têm a mesma extremidade, logo as mesmas coordenadas.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}(-x) = -\operatorname{sen}x$ e $\cos(-x) = \cos x$.'
+      espaco: 10
+      resolucao: |
+        As extremidades de $x$ e $-x$ são simétricas em relação ao eixo horizontal: mesma abscissa e ordenadas opostas.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $\operatorname{sen}x = \cos x$ se, e somente se, $x = \frac{\pi}{4} + k\pi$, com $k$ inteiro.'
+      espaco: 10
+      resolucao: |
+        As coordenadas são iguais quando o ponto está na reta $y = x$, que corta o ciclo em dois pontos: os de $\frac{\pi}{4}$ e $\frac{5\pi}{4}$, que diferem por $\pi$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Numa roda-gigante de 20 m de raio, o centro fica a 22 m do chão. A altura de uma cabine, em metros, é dada por $h = 22 + 20\operatorname{sen}\theta$, em que $\theta$ é o ângulo que o raio até a cabine faz com a horizontal, medido como no ciclo trigonométrico. A administração quer instalar a plataforma de embarque na altura mínima atingida pelas cabines.
+    enunciado: |
+      A altura mínima de uma cabine é
+    opcoes: ['$2$ m', '$22$ m', '$20$ m', '$0$ m', '$42$ m']
+    correta: A
+    resolucao: |
+      O menor valor de $\operatorname{sen}\theta$ é $-1$: $22 - 20 = 2$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $\operatorname{sen}\frac{5\pi}{2} + \cos 3\pi + \operatorname{sen}\left(-\frac{\pi}{2}\right)$ é
+    opcoes: ['$1$', '$-1$', '$0$', '$3$', '$-3$']
+    correta: B
+    resolucao: |
+      $\frac{5\pi}{2} \equiv \frac{\pi}{2}$: 1. $3\pi \equiv \pi$: $-1$. $-\frac{\pi}{2}$: $-1$. Soma: $-1$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Existe $x$ real com $\cos x = 2k - 1$ se, e somente se,
+    opcoes: ['$k \ge 0$.', '$-1 \le k \le 1$.', '$0 \le k \le 1$.', '$k \le 1$.']
+    correta: C
+    resolucao: |
+      $-1 \le 2k - 1 \le 1$: $0 \le k \le 1$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere os sinais de seno e cosseno no ciclo trigonométrico. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}120^\circ > 0$.'
+    - '$\cos 120^\circ < 0$.'
+    - '$\operatorname{sen}300^\circ < 0$.'
+    - '$\cos 300^\circ > 0$.'
+    - '$\operatorname{sen}200^\circ > 0$.'
+    - '$\operatorname{sen}^2 200^\circ + \cos^2 200^\circ = 1$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      $120^\circ$: 2º Q; $300^\circ$: 4º Q. 16) Incorreta: $200^\circ$ está no 3º Q. 32) Vale para todo arco.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um braço robótico de 1 m gira em torno de um eixo fixo, e a posição da sua ponta é dada pelo ponto $(\cos x, \operatorname{sen}x)$, em metros, em que $x$ é o ângulo do braço. O quadro mostra cinco posições programadas, com valores aproximados. A peça a ser pega está à direita do eixo e abaixo dele.
+    tabela:
+      cabecalho: ['Ângulo $x$', '$20^\circ$', '$70^\circ$', '$110^\circ$', '$290^\circ$', '$200^\circ$']
+      linhas:
+      - ['$\cos x$', '$0{,}94$', '$0{,}34$', '$-0{,}34$', '$0{,}34$', '$-0{,}94$']
+      - ['$\operatorname{sen}x$', '$0{,}34$', '$0{,}94$', '$0{,}94$', '$-0{,}94$', '$-0{,}34$']
+    enunciado: |
+      A posição programada adequada é a de ângulo
+    opcoes: ['$20^\circ$', '$70^\circ$', '$110^\circ$', '$290^\circ$', '$200^\circ$']
+    correta: D
+    resolucao: |
+      À direita e abaixo: $\cos x > 0$ e $\operatorname{sen}x < 0$, 4º quadrante.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'Para todo $x$, $\operatorname{sen}x$ e $\cos x$ estão entre $-1$ e 1.'
+    - 'No 3º quadrante, seno e cosseno são negativos.'
+    - '$\cos\frac{\pi}{2} = 1$.'
+    - '$\operatorname{sen}^2 x + \cos^2 x = 1$ para todo $x$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'II e IV, apenas.', 'II, III e IV, apenas.', 'I, II e IV, apenas.']
+    correta: E
+    resolucao: |
+      III. Incorreta: $\cos\frac{\pi}{2} = 0$.
+
+  - estilo: Unesp
+    enunciado: |
+      O maior valor de $y = 4 - 3\operatorname{sen}x$ é
+    opcoes: ['$7$', '$4$', '$1$', '$3$', '$-1$']
+    correta: A
+    resolucao: |
+      Com $\operatorname{sen}x = -1$: $4 + 3 = 7$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      No ciclo trigonométrico da figura, P é a extremidade do arco $\theta$ e tem coordenadas $(-0{,}8;\ 0{,}6)$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0) node[right, font=\scriptsize] {$x$}; \draw[mudo, ->] (0,-2.2) -- (0,2.4) node[above, font=\scriptsize] {$y$};
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \fill[roxo] (-1.44,1.08) circle (2.2pt) node[above left, font=\small] {P};
+        \draw[roxo] (0,0) -- (-1.44,1.08);
+        \draw[mudo, dashed] (-1.44,1.08) -- (-1.44,0); \draw[mudo, dashed] (-1.44,1.08) -- (0,1.08);
+        \draw[roxo, ->] (.45,0) arc (0:143:.45); \node[roxo, font=\scriptsize] at (.3,.65) {$\theta$};
+        \end{scope}
+    enunciado: |
+      Então
+    opcoes: ['$\operatorname{sen}\theta = -0{,}8$ e $\cos\theta = 0{,}6$.', '$\operatorname{sen}\theta = 0{,}6$ e $\cos\theta = -0{,}8$.', '$\operatorname{sen}\theta = 0{,}8$ e $\cos\theta = -0{,}6$.', '$\operatorname{sen}\theta = -0{,}6$ e $\cos\theta = 0{,}8$.']
+    correta: B
+    resolucao: |
+      O cosseno é a abscissa e o seno é a ordenada.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\operatorname{sen}x = \frac13$ e $x$ está no 2º quadrante, então $\cos x$ vale
+    opcoes: ['$\frac{2\sqrt2}{3}$', '$-\frac13$', '$-\frac{2\sqrt2}{3}$', '$-\frac{\sqrt2}{3}$', '$\frac23$']
+    correta: C
+    resolucao: |
+      $\cos^2 x = \frac89$ e, no 2º quadrante, $\cos x < 0$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere um arco $x$ do 3º quadrante com $\operatorname{sen}x = -0{,}6$. Assinale o que for correto.
+    proposicoes:
+    - '$\cos x = -0{,}8$.'
+    - '$\operatorname{sen}x \cdot \cos x > 0$.'
+    - '$\operatorname{sen}x + \cos x = -1{,}4$.'
+    - '$\pi < x < \frac{3\pi}{2}$, a menos de voltas inteiras.'
+    - '$\operatorname{sen}^2 x = 0{,}36$.'
+    - '$\cos x > \operatorname{sen}x$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $\cos^2 x = 0{,}64$ e, no 3º Q, $\cos x < 0$. 02) $(-)(-)$. 32) Incorreta: $-0{,}8 < -0{,}6$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Uma lâmpada presa à borda de um disco de raio 1 m gira junto com ele. A sombra da lâmpada no chão, logo abaixo, anda para um lado e para o outro; sua posição em relação ao centro do disco é $\cos\theta$, em que $\theta$ é o ângulo da lâmpada, medido como no ciclo trigonométrico. O técnico quer saber quando a sombra fica à esquerda do centro, isto é, quando $\cos\theta < 0$.
+    enunciado: |
+      Numa volta, considerando $0^\circ \le \theta < 360^\circ$, isso acontece quando $\theta$ está
+    opcoes: ['entre $90^\circ$ e $270^\circ$', 'entre $0^\circ$ e $180^\circ$', 'entre $180^\circ$ e $360^\circ$', 'entre $270^\circ$ e $360^\circ$', 'entre $0^\circ$ e $90^\circ$']
+    correta: A
+    resolucao: |
+      O cosseno é negativo no 2º e no 3º quadrantes.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$\operatorname{sen}\frac{5\pi}{4} < 0$.'
+    - '$\cos\frac{5\pi}{4} > 0$.'
+    - '$\operatorname{sen}\frac{7\pi}{6} < 0$.'
+    - '$\cos\frac{11\pi}{6} > 0$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      $\frac{5\pi}{4}$ e $\frac{7\pi}{6}$: 3º Q; $\frac{11\pi}{6}$: 4º Q. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      A tela de um radar é um círculo de raio 1, com centro na antena. Um alvo é mostrado no ponto $(\cos\theta, \operatorname{sen}\theta)$, em que $\theta$ é a direção do alvo. A figura mostra cinco alvos, P, Q, R, S e T. O operador quer identificar o alvo cuja direção tem seno negativo e cosseno positivo.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.65]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0); \draw[mudo, ->] (0,-2.2) -- (0,2.4);
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \foreach \a/\n in {40/P,130/Q,220/R,310/S,90/T} { \fill[roxo] (\a:1.8) circle (2.2pt); \node[font=\small] at (\a:2.2) {\n}; }
+        \end{scope}
+    enunciado: |
+      Esse alvo é
+    opcoes: ['P.', 'Q.', 'R.', 'S.', 'T.']
+    correta: D
+    resolucao: |
+      Seno negativo e cosseno positivo: 4º quadrante, o ponto S.
+
+  - estilo: Unesp
+    enunciado: |
+      O menor valor de $y = 2\cos x - 5$ é
+    opcoes: ['$-3$', '$-7$', '$-5$', '$2$', '$7$']
+    correta: B
+    resolucao: |
+      Com $\cos x = -1$: $-2 - 5 = -7$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere $x$ real qualquer. Assinale o que for correto.
+    proposicoes:
+    - '$\operatorname{sen}(-x) = -\operatorname{sen}x$.'
+    - '$\cos(-x) = \cos x$.'
+    - '$\operatorname{sen}(x + 2\pi) = \operatorname{sen}x$.'
+    - 'Se $\operatorname{sen}x = \cos x$, então $x$ pode ser $\frac{5\pi}{4}$.'
+    - 'A equação $\cos x = 1{,}2$ tem solução.'
+    - '$|\operatorname{sen}x| \le 1$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      08) Em $\frac{5\pi}{4}$, as duas coordenadas valem $-\frac{\sqrt2}{2}$. 16) Incorreta: $\cos x \le 1$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Existe $x$ real com $\operatorname{sen}x = m^2 - 3$ se, e somente se,
+    opcoes: ['$\sqrt2 \le |m| \le 2$.', '$-2 \le m \le 2$.', '$m \ge \sqrt2$.', '$0 \le m \le 4$.']
+    correta: A
+    resolucao: |
+      $-1 \le m^2 - 3 \le 1$: $2 \le m^2 \le 4$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        A ponta da hélice de um ventilador está a 1 dm do eixo. Num sistema de coordenadas com origem no eixo, a ponta começa no ponto $(1, 0)$ e gira no sentido anti-horário, de modo que, depois de girar um ângulo $x$, ela está em $(\cos x, \operatorname{sen}x)$. Um sensor registra a posição da ponta em alguns momentos.
+    enunciado: |
+      Depois de girar $\frac{3\pi}{2}$ rad, a ponta está no ponto
+    opcoes: ['$(1, 0)$', '$(-1, 0)$', '$(0, -1)$', '$(0, 1)$', '$(-1, -1)$']
+    correta: C
+    resolucao: |
+      $\cos\frac{3\pi}{2} = 0$ e $\operatorname{sen}\frac{3\pi}{2} = -1$.
+
+  - estilo: Unesp
+    enunciado: |
+      Depois de girar $7\pi$ rad, a ponta está no ponto
+    opcoes: ['$(1, 0)$', '$(0, 1)$', '$(0, -1)$', '$(-1, 0)$', '$(-1, 1)$']
+    correta: D
+    resolucao: |
+      $7\pi \equiv \pi$: $(-1, 0)$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O número de soluções de $\operatorname{sen}x = \cos x$ no intervalo $[0, 2\pi]$ é
+    opcoes: ['$0$', '$1$', '$3$', '$4$', '$2$']
+    correta: E
+    resolucao: |
+      Pontos do ciclo na reta $y = x$: $\frac{\pi}{4}$ e $\frac{5\pi}{4}$.
+
+  - estilo: Unesp
+    texto: |
+      No ciclo trigonométrico da figura, P é a extremidade de um arco do intervalo $[0, 2\pi)$, e tem coordenadas $\left(-\frac{\sqrt3}{2}, -\frac12\right)$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[mudo, ->] (-2.2,0) -- (2.4,0); \draw[mudo, ->] (0,-2.2) -- (0,2.4);
+        \draw[ink, line width=.9pt] (0,0) circle (1.8);
+        \fill[roxo] (210:1.8) circle (2.2pt) node[below left, font=\small] {P};
+        \draw[roxo] (0,0) -- (210:1.8);
+        \draw[mudo, dashed] (210:1.8) -- (-1.56,0); \draw[mudo, dashed] (210:1.8) -- (0,-.9);
+        \end{scope}
+    enunciado: |
+      Esse arco mede
+    opcoes: ['$\frac{5\pi}{6}$', '$\frac{7\pi}{6}$', '$\frac{4\pi}{3}$', '$\frac{11\pi}{6}$', '$\frac{\pi}{6}$']
+    correta: B
+    resolucao: |
+      Os dois sinais negativos põem P no 3º quadrante, e as coordenadas são as de $\frac{\pi}{6}$ com sinais trocados: o simétrico em relação à origem, $\pi + \frac{\pi}{6}$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Sabe-se que $0 < x < \pi$ e $\operatorname{sen}x + \cos x = \frac15$.'
+    itens:
+    - 'Calcule $\operatorname{sen}x \cdot \cos x$.'
+    - 'Calcule $\operatorname{sen}x - \cos x$, decidindo o sinal pelo quadrante.'
+    - 'Calcule $\operatorname{sen}x$ e $\cos x$.'
+    espaco: 62
+    resolucao: |
+      a) $1 + 2\operatorname{sen}x\cos x = \frac{1}{25}$: $\operatorname{sen}x\cos x = -\frac{12}{25}$.
+      b) $(\operatorname{sen}x - \cos x)^2 = 1 + \frac{24}{25} = \frac{49}{25}$. O produto é negativo e $\operatorname{sen}x > 0$, logo $\cos x < 0$: $\operatorname{sen}x - \cos x = \frac75$.
+      c) Somando e subtraindo: $\operatorname{sen}x = \frac45$ e $\cos x = -\frac35$.
+    resposta: 'a) $-\frac{12}{25}$; b) $\frac75$; c) $\frac45$ e $-\frac35$'
+
+  - estilo: Unicamp
+    enunciado: 'A altura de uma cabine de roda-gigante é $h = 22 + 20\operatorname{sen}\theta$ (em metros).'
+    itens:
+    - 'Quais as alturas máxima e mínima? Para que $\theta$ (entre $0$ e $2\pi$) elas ocorrem?'
+    - 'Para que $\theta$ a cabine está na altura do centro?'
+    - 'Alguma cabine chega a 45 m? Justifique.'
+    espaco: 62
+    resolucao: |
+      a) 42 m em $\theta = \frac{\pi}{2}$; 2 m em $\theta = \frac{3\pi}{2}$.
+      b) $\operatorname{sen}\theta = 0$: $\theta = 0$ ou $\theta = \pi$.
+      c) Não: seria preciso $\operatorname{sen}\theta = 1{,}15 > 1$.
+    resposta: 'a) 42 m e 2 m; b) $0$ e $\pi$; c) não'
+
+  - estilo: ITA
+    enunciado: |
+      O conjunto dos valores de $y = \operatorname{sen}^2 x - 2\operatorname{sen}x + 3$, com $x$ real, é
+    opcoes: ['$[2, 6]$', '$[1, 6]$', '$[2, 3]$', '$[3, 6]$', '$[0, 6]$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $y = (\operatorname{sen}x - 1)^2 + 2$, com $\operatorname{sen}x \in [-1, 1]$: o quadrado vai de 0 (em 1) a 4 (em $-1$).
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Sabe-se que $\cos x = -\frac23$ e que $x$ está no 3º quadrante.'
+    itens:
+    - 'Calcule $\operatorname{sen}x$.'
+    - 'Calcule $\operatorname{sen}^2 x - \cos^2 x$.'
+    - 'Calcule $\frac{\operatorname{sen}x}{\cos x}$.'
+    espaco: 62
+    resolucao: |
+      a) $\operatorname{sen}^2 x = 1 - \frac49 = \frac59$; no 3º Q: $-\frac{\sqrt5}{3}$.
+      b) $\frac59 - \frac49 = \frac19$.
+      c) $\frac{-\sqrt5/3}{-2/3} = \frac{\sqrt5}{2}$.
+    resposta: 'a) $-\frac{\sqrt5}{3}$; b) $\frac19$; c) $\frac{\sqrt5}{2}$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere arcos medidos em radianos. Assinale o que for correto.
+    proposicoes:
+    - 'Se $\operatorname{sen}x = 1$, então $\cos x = 0$.'
+    - 'Se $\cos x = 0$, então $x = \frac{\pi}{2} + k\pi$, com $k$ inteiro.'
+    - 'O maior valor de $3\operatorname{sen}x - 1$ é 2.'
+    - 'O menor valor de $\cos^2 x$ é 0.'
+    - '$\operatorname{sen}4 > 0$.'
+    - '$\operatorname{sen}2 > \cos 2$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) $\operatorname{sen}^2 + \cos^2 = 1$. 02) Pontos $(0, \pm1)$. 16) Incorreta: $\pi < 4 < \frac{3\pi}{2}$, 3º Q. 32) $2$ está no 2º Q: seno positivo e cosseno negativo.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere a equação $\operatorname{sen}x = \frac{2m + 1}{m - 1}$, com $m \ne 1$.'
+    itens:
+    - 'Escreva as duas desigualdades que $\frac{2m + 1}{m - 1}$ deve satisfazer para haver solução.'
+    - 'Resolva-as e dê os valores de $m$.'
+    - 'Para $m = -2$, resolva a equação em $[0, 2\pi)$.'
+    espaco: 62
+    resolucao: |
+      a) $-1 \le \frac{2m + 1}{m - 1} \le 1$.
+      b) $\frac{2m + 1}{m - 1} \le 1 \iff \frac{m + 2}{m - 1} \le 0 \iff -2 \le m < 1$. $\frac{2m + 1}{m - 1} \ge -1 \iff \frac{3m}{m - 1} \ge 0 \iff m \le 0$ ou $m > 1$. Juntas: $-2 \le m \le 0$.
+      c) $\operatorname{sen}x = \frac{-3}{-3} = 1$: $x = \frac{\pi}{2}$.
+    resposta: 'b) $-2 \le m \le 0$; c) $\frac{\pi}{2}$'
+
+  - estilo: Unicamp
+    enunciado: 'O ponto $P = (\cos t, \operatorname{sen}t)$ percorre o ciclo trigonométrico, e $Q = (2, 0)$.'
+    itens:
+    - 'Mostre que $PQ^2 = 5 - 4\cos t$.'
+    - 'Quais as distâncias máxima e mínima de P a Q?'
+    - 'Para que $t$ em $[0, 2\pi)$ a distância é $\sqrt5$?'
+    espaco: 62
+    resolucao: |
+      a) $(\cos t - 2)^2 + \operatorname{sen}^2 t = \cos^2 t - 4\cos t + 4 + \operatorname{sen}^2 t = 5 - 4\cos t$.
+      b) Máxima 3 ($\cos t = -1$); mínima 1 ($\cos t = 1$).
+      c) $\cos t = 0$: $t = \frac{\pi}{2}$ ou $\frac{3\pi}{2}$.
+    resposta: 'b) 3 e 1; c) $\frac{\pi}{2}$ e $\frac{3\pi}{2}$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $\cos x = -0{,}8$ e $\operatorname{sen}x > 0$, então $\operatorname{sen}x \cdot \cos x$ vale
+    opcoes: ['$0{,}48$', '$-0{,}48$', '$-0{,}6$', '$0{,}6$', '$-0{,}8$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $\operatorname{sen}x = 0{,}6$ (2º Q): $0{,}6 \cdot (-0{,}8) = -0{,}48$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere $y = \operatorname{sen}x \cdot \cos x$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Dê o sinal de $y$ em cada quadrante.'
+    - 'Em que pontos $y = 0$?'
+    - 'Resolva a inequação $\operatorname{sen}x \cdot \cos x > 0$.'
+    espaco: 62
+    resolucao: |
+      a) 1º Q: $+$; 2º Q: $-$; 3º Q: $+$; 4º Q: $-$.
+      b) Nos eixos: $0$, $\frac{\pi}{2}$, $\pi$, $\frac{3\pi}{2}$.
+      c) $0 < x < \frac{\pi}{2}$ ou $\pi < x < \frac{3\pi}{2}$.
+    resposta: 'c) $0 < x < \frac{\pi}{2}$ ou $\pi < x < \frac{3\pi}{2}$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere todos os valores que $\operatorname{sen}x$ assume, com $x$ real.'
+    itens:
+    - 'Mostre que, para cada $y$ com $-1 \le y \le 1$, a reta horizontal de altura $y$ corta o ciclo; conclua que existe $x$ com $\operatorname{sen}x = y$.'
+    - 'Conclua que o conjunto dos valores do seno é exatamente $[-1, 1]$.'
+    - 'Escreva todos os $x$ com $\operatorname{sen}x = -1$.'
+    espaco: 62
+    resolucao: |
+      a) Para $|y| \le 1$, o ponto $\left(\sqrt{1 - y^2}, y\right)$ está no ciclo; o arco com essa extremidade tem seno $y$.
+      b) Junto com $|\operatorname{sen}x| \le 1$, os valores são exatamente $[-1, 1]$.
+      c) Ponto $(0, -1)$: $x = \frac{3\pi}{2} + 2k\pi$.
+    resposta: 'c) $\frac{3\pi}{2} + 2k\pi$'
