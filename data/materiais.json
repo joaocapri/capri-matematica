@@ -1731,6 +1731,27 @@
     "tipo": "aula"
   },
   {
+    "aula": "4.17.1",
+    "arquivos": [
+      {
+        "titulo": "Lista de fixação 4.17.1 — 20 questões com espaço para resolver + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/fixacao-4.17.1.pdf"
+      },
+      {
+        "titulo": "Lista de vestibular 4.17.1 — 20 questões + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/vestibular-4.17.1.pdf"
+      },
+      {
+        "titulo": "Lista de aprofundamento 4.17.1 — questões mais puxadas + gabarito resolvido",
+        "tipo": "lista",
+        "url": "/pdfs/aprofundamento-4.17.1.pdf"
+      }
+    ],
+    "tipo": "aula"
+  },
+  {
     "aula": "4.2.1",
     "arquivos": [
       {
