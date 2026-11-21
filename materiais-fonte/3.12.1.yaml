@@ -1,0 +1,525 @@
+# Aula 3.12.1 — Números complexos: potências de i
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: ciclo i⁰, i¹, i², i³; i^n pelo resto da divisão por 4; somas de potências consecutivas (grupos de 4 somam 0);
+# produtos de potências; expoentes negativos (1/i = −i); potências de 1 ± i via (1 ± i)² = ±2i. Usa 3.11.1 e 3.11.2.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete o quadro com as primeiras potências de $i$.'
+      tabela:
+        cabecalho: ['$i^0$', '$i^1$', '$i^2$', '$i^3$', '$i^4$', '$i^5$', '$i^6$', '$i^7$']
+        linhas:
+        - ['${{1}}$', '${{i}}$', '${{-1}}$', '${{-i}}$', '${{1}}$', '${{i}}$', '${{-1}}$', '${{-i}}$']
+      resolucao: |
+        $i^3 = i^2 \cdot i = -i$ e $i^4 = i^2 \cdot i^2 = 1$. A partir daí, os valores se repetem de 4 em 4.
+      resposta: '$1, i, -1, -i, 1, i, -1, -i$'
+    - enunciado: 'Complete o quadro, usando o resto da divisão do expoente por 4.'
+      tabela:
+        cabecalho: ['$n$', 'Resto de $n \div 4$', '$i^n$']
+        linhas:
+        - ['$25$', '${{1}}$', '${{i}}$']
+        - ['$58$', '${{2}}$', '${{-1}}$']
+        - ['$99$', '${{3}}$', '${{-i}}$']
+        - ['$260$', '${{0}}$', '${{1}}$']
+      resolucao: |
+        $25 = 4 \cdot 6 + 1$; $58 = 4 \cdot 14 + 2$; $99 = 4 \cdot 24 + 3$; $260 = 4 \cdot 65$. E $i^n = i^{\text{resto}}$.
+      resposta: '$1, i$; $2, -1$; $3, -i$; $0, 1$'
+    - enunciado: 'Calcule, completando.'
+      itens:
+      - '$i^{13} = {{i}}$'
+      - '$i^{30} = {{-1}}$'
+      - '$i^{47} = {{-i}}$'
+      - '$i^{100} = {{1}}$'
+      colunas: 2
+      resolucao: |
+        Restos por 4: $13 \to 1$, $30 \to 2$, $47 \to 3$, $100 \to 0$.
+      resposta: '$i$; $-1$; $-i$; $1$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso), com $k$ natural.'
+      afirmacoes:
+      - '$i^4 = 1$.'
+      - '$i^{4k} = 1$ para todo $k$.'
+      - '$i^{10} = i^2$.'
+      - '$i^{23} = i$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (V) $i^{4k} = (i^4)^k = 1$. (V) $10$ deixa resto 2. (F) $23$ deixa resto 3: $i^{23} = -i$.
+      resposta: V, V, V, F
+    - enunciado: 'Calcule e escreva na forma $a + bi$.'
+      itens:
+      - '$i^5 + i^6$'
+      - '$i^{12} - i^{15}$'
+      - '$i^9 \cdot i^7$'
+      colunas: 3
+      espaco_item: 10
+      resolucao: |
+        (a) $i + (-1) = -1 + i$. (b) $1 - (-i) = 1 + i$. (c) $i^{16} = 1$.
+      resposta: '(a) $-1 + i$ (b) $1 + i$ (c) $1$'
+    - enunciado: 'Calcule $1 + i + i^2 + i^3$ e $i^{20} + i^{21} + i^{22} + i^{23}$. O que você observa?'
+      espaco: 12
+      resolucao: |
+        $1 + i - 1 - i = 0$ e, como $20$ é múltiplo de 4, $i^{20} + i^{21} + i^{22} + i^{23} = 1 + i - 1 - i = 0$. Quatro potências consecutivas de $i$ somam zero.
+      resposta: '$0$ e $0$'
+    - enunciado: 'Calcule $i^{1001}$, $i^{1002}$ e $i^{1003}$. (Dica: o resto por 4 depende só dos dois últimos algarismos.)'
+      espaco: 10
+      resolucao: |
+        $1000$ é múltiplo de 4, então os restos são 1, 2 e 3: $i$, $-1$ e $-i$.
+      resposta: '$i$, $-1$, $-i$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para calcular $i^{50}$, Gil fez $50 \div 4 = 12$, com resto 2, e respondeu $i^{50} = i^{12} = 1$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        Gil usou o quociente. O que importa é o resto: $i^{50} = i^{4 \cdot 12 + 2} = (i^4)^{12} \cdot i^2 = -1$.
+      resposta: '$i^{50} = -1$'
+    - enunciado: 'Calcule $i + i^2 + i^3 + \cdots + i^{15}$.'
+      espaco: 12
+      resolucao: |
+        Os 12 primeiros termos formam três grupos de 4 e somam 0. Sobram $i^{13} + i^{14} + i^{15} = i - 1 - i = -1$.
+      resposta: '$-1$'
+    - enunciado: 'Calcule $1 + i + i^2 + \cdots + i^{30}$.'
+      espaco: 12
+      resolucao: |
+        São 31 termos ($i^0$ a $i^{30}$). Os 28 primeiros somam 0. Sobram $i^{28} + i^{29} + i^{30} = 1 + i - 1 = i$.
+      resposta: '$i$'
+    - enunciado: 'Calcule $(1 + i)^2$ e, em seguida, $(1 + i)^8$.'
+      espaco: 12
+      resolucao: |
+        $(1 + i)^2 = 1 + 2i + i^2 = 2i$. $(1 + i)^8 = \left[(1 + i)^2\right]^4 = (2i)^4 = 16 i^4 = 16$.
+      resposta: '$2i$; $16$'
+    - enunciado: 'Determine todos os naturais $n$, com $0 \leq n \leq 20$, tais que $i^n = -1$.'
+      espaco: 10
+      resolucao: |
+        $i^n = -1$ quando $n$ deixa resto 2 na divisão por 4: $n = 2, 6, 10, 14, 18$.
+      resposta: '$2, 6, 10, 14, 18$'
+    - enunciado: 'Sendo $n$ natural, simplifique.'
+      itens:
+      - '$i^{4n + 3}$'
+      - '$i^{4n + 2} + i^{4n}$'
+      espaco_item: 10
+      resolucao: |
+        (a) $(i^4)^n \cdot i^3 = -i$. (b) $-1 + 1 = 0$.
+      resposta: '(a) $-i$ (b) $0$'
+    - enunciado: 'Calcule $(i^{21} - i^{18}) \cdot i^3$ e escreva na forma $a + bi$.'
+      espaco: 12
+      resolucao: |
+        $i^{21} = i$ e $i^{18} = -1$: $(i + 1)(-i) = -i - i^2 = 1 - i$.
+      resposta: '$1 - i$'
+    - enunciado: 'Calcule $(1 - i)^2$ e, em seguida, $(1 - i)^6$.'
+      espaco: 12
+      resolucao: |
+        $(1 - i)^2 = 1 - 2i + i^2 = -2i$. $(1 - i)^6 = (-2i)^3 = -8i^3 = -8(-i) = 8i$.
+      resposta: '$-2i$; $8i$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Mostre que $i^n + i^{n+1} + i^{n+2} + i^{n+3} = 0$ para todo $n$ natural.'
+      espaco: 12
+      resolucao: |
+        Colocando $i^n$ em evidência: $i^n(1 + i + i^2 + i^3) = i^n(1 + i - 1 - i) = i^n \cdot 0 = 0$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Calcule o produto $i \cdot i^2 \cdot i^3 \cdots i^{10}$.'
+      espaco: 12
+      resolucao: |
+        Os expoentes se somam: $1 + 2 + \cdots + 10 = 55$. Como $55$ deixa resto 3, o produto é $i^{55} = -i$.
+      resposta: '$-i$'
+    - enunciado: 'Mostre que $i^{-1} = -i$ e calcule $i^{-7}$ e $i^{-10}$.'
+      espaco: 14
+      resolucao: |
+        $i \cdot (-i) = -i^2 = 1$, então $\tfrac{1}{i} = -i$.
+        $i^{-7} = \tfrac{1}{i^7} = \tfrac{1}{-i} = i$ (pois $(-i) \cdot i = 1$). $i^{-10} = \tfrac{1}{i^{10}} = \tfrac{1}{-1} = -1$.
+      resposta: '$i^{-7} = i$; $i^{-10} = -1$'
+    - enunciado: 'Calcule $(1 + i)^{20}$.'
+      espaco: 12
+      resolucao: |
+        $(1 + i)^{20} = (2i)^{10} = 2^{10} \cdot i^{10} = 1024 \cdot (-1) = -1024$.
+      resposta: '$-1024$'
+    - enunciado: 'Determine o menor natural $n \geq 1$ para o qual $(1 + i)^n$ é um número real positivo.'
+      espaco: 14
+      resolucao: |
+        Potências pares: $(1 + i)^{2k} = (2i)^k = 2^k i^k$, real positivo quando $k$ é múltiplo de 4. As ímpares são $(2i)^k(1 + i)$, que não são reais.
+        $n = 2$: $2i$; $n = 4$: $-4$; $n = 6$: $-8i$; $n = 8$: $16$. Logo $n = 8$.
+      resposta: '$n = 8$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Um robô de brinquedo anda sobre um piso e só obedece a um comando: girar $90°$ para a esquerda. As direções são codificadas pelas potências de $i$, como na figura: leste é $1$, norte é $i$, oeste é $-1$ e sul é $-i$. Cada comando multiplica o código da direção por $i$. O robô começa virado para o leste.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \draw[-latex, ink!60] (-2.6,0) -- (2.6,0);
+        \draw[-latex, ink!60] (0,-2.4) -- (0,2.4);
+        \fill[roxo] (1.6,0) circle (2.5pt) node[below right, font=\scriptsize] {$1$ (leste)};
+        \fill[roxo] (0,1.6) circle (2.5pt) node[above right, font=\scriptsize] {$i$ (norte)};
+        \fill[roxo] (-1.6,0) circle (2.5pt) node[below left, font=\scriptsize] {$-1$ (oeste)};
+        \fill[roxo] (0,-1.6) circle (2.5pt) node[below right, font=\scriptsize] {$-i$ (sul)};
+        \draw[roxo, -latex, line width=1pt] (1.198,0.321) arc (15:75:1.24);
+        \end{scope}
+    enunciado: |
+      Depois de 2027 comandos, o robô estará virado para o
+    opcoes: ['norte.', 'sul.', 'leste.', 'oeste.', 'meio do caminho entre norte e oeste.']
+    correta: B
+    resolucao: |
+      O código final é $1 \cdot i^{2027}$. Como $2027$ deixa resto 3 na divisão por 4, $i^{2027} = -i$: sul.
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $i^{87} + i^{90}$ é
+    opcoes: ['$-1 - i$', '$1 - i$', '$-1 + i$', '$1 + i$', '$0$']
+    correta: A
+    resolucao: |
+      $87$ deixa resto 3: $i^{87} = -i$. $90$ deixa resto 2: $i^{90} = -1$. Soma $-1 - i$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Para todo $n$ natural, $i^{4n + 1}$ é igual a
+    opcoes: ['$1$.', '$i$.', '$-1$.', '$-i$.']
+    correta: B
+    resolucao: |
+      $i^{4n + 1} = (i^4)^n \cdot i = i$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere a unidade imaginária $i$. Assinale o que for correto.
+    proposicoes:
+    - '$i^{12} = 1$.'
+    - '$i^{30} = -1$.'
+    - '$i^{45} = i$.'
+    - '$i^3 \cdot i^5 = 1$.'
+    - '$i^{100} + i^{101} = 0$.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) $12$ é múltiplo de 4. 02) Resto 2. 04) Resto 1. 08) $i^8 = 1$. 16) Incorreta: $1 + i$.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Enem
+    texto: |
+      Numa gincana de matemática, cada aluno recebeu uma potência de $i$ para calcular. O professor anotou no quadro a potência sorteada por cada um e a resposta que ele deu. Só ganhavam ponto as respostas certas, e o professor quer saber quem deve receber o ponto da rodada.
+    tabela:
+      cabecalho: ['Aluno', 'Potência', 'Resposta']
+      linhas:
+      - ['Ana', '$i^{18}$', '$-1$']
+      - ['Beto', '$i^{35}$', '$i$']
+      - ['Caio', '$i^{64}$', '$1$']
+      - ['Duda', '$i^{77}$', '$-i$']
+    enunciado: |
+      Acertaram a resposta
+    opcoes: ['Ana e Beto.', 'Beto e Duda.', 'Ana e Caio.', 'Caio e Duda.', 'Ana, Caio e Duda.']
+    correta: C
+    resolucao: |
+      Restos: $18 \to 2$ ($-1$, certo); $35 \to 3$ ($-i$, Beto errou); $64 \to 0$ ($1$, certo); $77 \to 1$ ($i$, Duda errou).
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, em que $n$, $m$ e $k$ são números naturais.
+    afirmativas:
+    - '$i^{4k} = 1$.'
+    - '$i^{n + 4} = i^n$.'
+    - '$i^{2n} = (-1)^n$.'
+    - 'Se $i^n = i^m$, então $n = m$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e IV, apenas.', 'I e III, apenas.', 'I, II e III, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. $(i^4)^k = 1$. II. $i^n \cdot i^4 = i^n$. III. $(i^2)^n = (-1)^n$. IV. Incorreta: $i^1 = i^5$, com $1 \neq 5$.
+
+  - estilo: Unesp
+    enunciado: |
+      O valor de $i^{10} + i^{20} + i^{30} + i^{40}$ é
+    opcoes: ['$-2$', '$2$', '$2i$', '$-2i$', '$0$']
+    correta: E
+    resolucao: |
+      $-1 + 1 - 1 + 1 = 0$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    enunciado: |
+      O número $(1 + i)^{10}$ é igual a
+    opcoes: ['$32$.', '$-32i$.', '$32i$.', '$-32$.']
+    correta: C
+    resolucao: |
+      $(1 + i)^2 = 2i$, então $(1 + i)^{10} = (2i)^5 = 32 i^5 = 32i$.
+
+  - estilo: Fuvest
+    enunciado: |
+      A soma $1 + i + i^2 + i^3 + \cdots + i^{50}$ é igual a
+    opcoes: ['$i$', '$0$', '$1$', '$1 + i$', '$-1$']
+    correta: A
+    resolucao: |
+      São 51 termos. Os 48 primeiros somam 0; sobram $i^{48} + i^{49} + i^{50} = 1 + i - 1 = i$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $n$ natural. Assinale o que for correto.
+    proposicoes:
+    - '$i^n + i^{n+2} = 0$.'
+    - '$(1 + i)^2 = 2i$.'
+    - '$(1 - i)^2 = 2i$.'
+    - '$(1 + i)^4 = -4$.'
+    - '$i^{-1} = -i$.'
+    - '$i^{2n} = 1$ para todo $n$.'
+    corretas: [1, 2, 4, 5]
+    resolucao: |
+      01) $i^n(1 + i^2) = 0$. 02) $1 + 2i - 1$. 04) Incorreta: $(1 - i)^2 = -2i$. 08) $(2i)^2 = -4$. 16) $i \cdot (-i) = 1$.
+      32) Incorreta: para $n$ ímpar, $i^{2n} = -1$.
+      Soma: $01 + 02 + 08 + 16 = 27$.
+
+  - estilo: Enem
+    texto: |
+      No século XVIII, o matemático suíço Leonhard Euler passou a usar a letra $i$ para representar a raiz quadrada de $-1$, notação que se tornou padrão. Inspirado nisso, um professor propôs à turma um desafio: calcular o produto de todas as potências de $i$ com expoentes de 1 a 20, isto é, $i \cdot i^2 \cdot i^3 \cdots i^{20}$.
+    enunciado: |
+      O resultado do desafio é
+    opcoes: ['$1$', '$i$', '$-i$', '$-1$', '$0$']
+    correta: D
+    resolucao: |
+      Os expoentes se somam: $1 + 2 + \cdots + 20 = \tfrac{20 \cdot 21}{2} = 210$. Como $210$ deixa resto 2, o produto é $i^{210} = -1$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir, em que $n$ é natural.
+    afirmacoes:
+    - '$i^{2026} = -1$.'
+    - '$i^{-1} = i$.'
+    - '$i^{4n + 3} = -i$.'
+    - '$i + i^2 + i^3 + \cdots + i^8 = 0$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – F – V – F.', 'F – F – V – V.', 'V – F – V – V.', 'V – V – V – V.', 'V – V – F – V.']
+    correta: C
+    resolucao: |
+      (V) $2026$ deixa resto 2. (F) $i^{-1} = -i$. (V) $(i^4)^n \cdot i^3$. (V) Dois grupos de quatro.
+
+  - estilo: Enem
+    texto: |
+      Uma planilha calcula as somas $S_n = i + i^2 + i^3 + \cdots + i^n$ para valores de $n$ escolhidos pelo usuário. O quadro mostra os primeiros resultados. Percebendo que os valores se repetem, um aluno quer prever o resultado para $n = 102$ sem calcular termo a termo.
+    tabela:
+      cabecalho: ['$n$', '$1$', '$2$', '$3$', '$4$', '$5$']
+      linhas:
+      - ['$S_n$', '$i$', '$-1 + i$', '$-1$', '$0$', '$i$']
+    enunciado: |
+      O valor de $S_{102}$ é
+    opcoes: ['$0$', '$-1$', '$i$', '$1 + i$', '$-1 + i$']
+    correta: E
+    resolucao: |
+      Os 100 primeiros termos formam 25 grupos de 4 e somam 0. Sobram $i^{101} + i^{102} = i - 1$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O menor inteiro positivo $n$ para o qual $(1 + i)^n$ é um número real é
+    opcoes: ['$2$', '$4$', '$6$', '$8$', '$12$']
+    correta: B
+    resolucao: |
+      $(1 + i)^2 = 2i$ (não real); $(1 + i)^4 = (2i)^2 = -4$ (real). As potências ímpares $1 + i$ e $(1 + i)^3 = 2i(1 + i) = -2 + 2i$ não são reais.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere $n$ natural. Assinale o que for correto.
+    proposicoes:
+    - '$i^{-2} = -1$.'
+    - '$i^{-3} = i$.'
+    - '$(1 + i)^8 = 16$.'
+    - '$i^n = 1$ somente para $n = 0$.'
+    - '$i \cdot i^2 \cdot i^3 \cdot i^4 = 1$.'
+    - '$i^n + i^{n+1} + i^{n+2} + i^{n+3} = 0$.'
+    corretas: [1, 2, 3, 6]
+    resolucao: |
+      01) $\tfrac{1}{-1}$. 02) $\tfrac{1}{-i} = i$. 04) $(2i)^4 = 16$. 08) Incorreta: vale para todo múltiplo de 4.
+      16) Incorreta: $i^{10} = -1$. 32) $i^n(1 + i - 1 - i) = 0$.
+      Soma: $01 + 02 + 04 + 32 = 39$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $n$ é um número natural ímpar, então $i^{2n}$ é igual a
+    opcoes: ['$1$', '$i$', '$-i$', '$0$', '$-1$']
+    correta: E
+    resolucao: |
+      $i^{2n} = (i^2)^n = (-1)^n = -1$ para $n$ ímpar.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Num jogo de tabuleiro, as casas são numeradas a partir de 1, e a casa de número $n$ traz escrito o valor $i^n$, como na figura. O jogador começa na casa 1, avança uma casa por vez e vai somando os valores escritos em todas as casas por onde passa, incluindo a casa em que para.
+    figura:
+      tikz: |
+        \begin{scope}[scale=1.15]
+        \foreach \k/\v/\c/\r in {1/i/0/1, 2/-1/1/1, 3/-i/2/1, 4/1/3/1, 5/i/0/0, 6/-1/1/0, 7/-i/2/0, 8/1/3/0} {
+          \draw[ink, line width=.8pt, fill=roxo!10] ({\c*1.15},{\r*1.15}) rectangle ({\c*1.15+1},{\r*1.15+1});
+          \node[font=\scriptsize, ink!70] at ({\c*1.15+0.18},{\r*1.15+0.82}) {\k};
+          \node at ({\c*1.15+0.5},{\r*1.15+0.45}) {$\v$};
+        }
+        \node[ink] at (4.75,0.5) {$\cdots$};
+        \end{scope}
+    enunciado: |
+      Um jogador que parou na casa 37 obteve a soma
+    opcoes: ['$0$', '$1$', '$-1$', '$i$', '$-i$']
+    correta: D
+    resolucao: |
+      $i + i^2 + \cdots + i^{37}$: os 36 primeiros termos somam 0; sobra $i^{37} = i$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A soma de um jogador é zero se, e somente se, o número da casa em que ele parou é
+    opcoes: ['múltiplo de 4.', 'par.', 'ímpar.', 'múltiplo de 8.']
+    correta: A
+    resolucao: |
+      Parando na casa $n$, a soma depende do resto de $n$ por 4: resto 1 dá $i$; resto 2, $-1 + i$; resto 3, $-1$; resto 0, $0$.
+
+  - estilo: Unesp
+    enunciado: |
+      O número $(1 - i)^{12}$ é igual a
+    opcoes: ['$64$', '$-64i$', '$-64$', '$64i$', '$4096$']
+    correta: C
+    resolucao: |
+      $(1 - i)^2 = -2i$, então $(1 - i)^{12} = (-2i)^6 = 64 i^6 = -64$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O número de inteiros $n$, com $1 \leq n \leq 100$, para os quais $i^n + i^{2n} = 0$ é
+    opcoes: ['$0$', '$25$', '$50$', '$75$', '$100$']
+    correta: B
+    resolucao: |
+      Pelo resto de $n$ por 4: resto 0 dá $1 + 1 = 2$; resto 1, $i - 1$; resto 2, $-1 + 1 = 0$; resto 3, $-i - 1$. Só os de resto 2: $2, 6, \ldots, 98$, que são 25.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere as somas $S_n = i + i^2 + \cdots + i^n$, com $n \geq 1$.'
+    itens:
+    - 'Mostre que $S_n$ depende apenas do resto de $n$ na divisão por 4 e dê os quatro valores possíveis.'
+    - 'Calcule $S_{2026}$.'
+    - 'Para quantos valores de $n$, com $1 \leq n \leq 100$, a soma $S_n$ é um número real?'
+    espaco: 62
+    resolucao: |
+      a) Cada grupo de quatro termos consecutivos soma 0, então só contam os últimos termos depois do último múltiplo de 4. Resto 1: $i$; resto 2: $-1 + i$; resto 3: $-1$; resto 0: $0$.
+      b) $2026$ deixa resto 2: $S_{2026} = -1 + i$.
+      c) Real quando o resto é 3 ou 0: são 25 + 25 = 50 valores.
+    resposta: 'a) $i$, $-1 + i$, $-1$, $0$; b) $-1 + i$; c) 50'
+
+  - estilo: Unicamp
+    texto: |
+      Para calcular potências de $1 + i$, é útil começar por $(1 + i)^2$.
+    enunciado: ''
+    itens:
+    - 'Mostre que $(1 + i)^2 = 2i$ e que $(1 + i)^{2k} = 2^k i^k$ para todo $k$ natural.'
+    - 'Calcule $(1 + i)^{10}$ e $(1 + i)^{11}$.'
+    - 'Determine o menor $n \geq 1$ tal que $(1 + i)^n = -64$.'
+    espaco: 62
+    resolucao: |
+      a) $1 + 2i + i^2 = 2i$; e $(1 + i)^{2k} = (2i)^k = 2^k i^k$.
+      b) $(1 + i)^{10} = 2^5 i^5 = 32i$. $(1 + i)^{11} = 32i(1 + i) = 32i + 32i^2 = -32 + 32i$.
+      c) Precisa ser potência par (as ímpares não são reais): $2^k i^k = -64$ exige $2^k = 64$ e $i^k = -1$: $k = 6$, $n = 12$.
+    resposta: 'b) $32i$ e $-32 + 32i$; c) $n = 12$'
+
+  - estilo: ITA
+    enunciado: |
+      O valor de $i^{0^2} + i^{1^2} + i^{2^2} + \cdots + i^{99^2}$ é
+    opcoes: ['$0$', '$50$', '$50i$', '$50 + 50i$', '$100$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      Se $k$ é par, $k^2$ é múltiplo de 4 e $i^{k^2} = 1$. Se $k = 2m + 1$, $k^2 = 4m^2 + 4m + 1$ deixa resto 1 e $i^{k^2} = i$. De 0 a 99 há 50 pares e 50 ímpares: $50 + 50i$.
+    resposta: 'D'
+
+  - estilo: Unesp
+    enunciado: 'Considere os produtos $P_n = i \cdot i^2 \cdot i^3 \cdots i^n$, com $n \geq 1$.'
+    itens:
+    - 'Mostre que $P_n = i^{\frac{n(n+1)}{2}}$ e calcule $P_{10}$.'
+    - 'Determine todos os $n$, com $1 \leq n \leq 20$, para os quais $P_n = 1$.'
+    - 'Calcule $P_{100}$.'
+    espaco: 62
+    resolucao: |
+      a) Os expoentes se somam: $1 + 2 + \cdots + n = \tfrac{n(n+1)}{2}$. $P_{10} = i^{55} = -i$.
+      b) Precisamos de $\tfrac{n(n+1)}{2}$ múltiplo de 4, ou seja, $n(n+1)$ múltiplo de 8. Como $n$ e $n + 1$ são consecutivos, um deles é ímpar, e o outro precisa ser múltiplo de 8: $n = 7, 8, 15, 16$.
+      c) $\tfrac{100 \cdot 101}{2} = 5050$, resto 2: $P_{100} = -1$.
+    resposta: 'a) $-i$; b) $7, 8, 15, 16$; c) $-1$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $n$ e $m$ naturais. Assinale o que for correto.
+    proposicoes:
+    - '$i^{-1} + i^{-2} + i^{-3} + i^{-4} = 0$.'
+    - '$(1 + i)^2 \cdot (1 - i)^2 = -4$.'
+    - '$i^n \cdot i^{-n} = 1$.'
+    - '$\left(i^{2026} + i^{2027}\right)^2 = 2i$.'
+    - 'Existe $n$ natural tal que $i^n = 0$.'
+    - 'Se $i^n = i^m$, então $n - m$ é múltiplo de 4.'
+    corretas: [1, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) $-i - 1 + i + 1 = 0$. 02) Incorreta: $2i \cdot (-2i) = -4i^2 = 4$. 04) $i^0 = 1$. 08) $(-1 - i)^2 = (1 + i)^2 = 2i$.
+      16) Incorreta: os valores são só $1, i, -1, -i$. 32) $n$ e $m$ deixam o mesmo resto por 4.
+    resposta: 'Soma 45 (01 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Determine todos os números naturais $n$ que satisfazem cada equação.'
+    itens:
+    - '$i^n = -i$'
+    - '$i^{2n} = -1$'
+    - '$i^{3n} = i$'
+    espaco: 62
+    resolucao: |
+      a) Resto 3 na divisão por 4: $n = 4k + 3$.
+      b) $(-1)^n = -1$: $n$ ímpar.
+      c) $3n$ deve deixar resto 1. Testando os restos de $n$: $0 \to 0$, $1 \to 3$, $2 \to 6$ (resto 2), $3 \to 9$ (resto 1). Logo $n = 4k + 3$.
+    resposta: 'a) $n = 4k + 3$; b) $n$ ímpar; c) $n = 4k + 3$'
+
+  - estilo: Unicamp
+    texto: |
+      A soma $S = 1 + i + i^2 + \cdots + i^n$ é uma soma de progressão geométrica de razão $i$, e por isso vale $S = \frac{i^{n+1} - 1}{i - 1}$.
+    enunciado: ''
+    itens:
+    - 'Verifique a fórmula para $n = 3$.'
+    - 'Use a fórmula para calcular $S$ quando $n = 49$, escrevendo o resultado na forma $a + bi$.'
+    - 'Confira o item b) agrupando os termos de 4 em 4.'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{i^4 - 1}{i - 1} = 0$, e de fato $1 + i - 1 - i = 0$.
+      b) $\tfrac{i^{50} - 1}{i - 1} = \tfrac{-2}{-1 + i}$. Multiplicando pelo conjugado: $\tfrac{-2(-1 - i)}{(-1 + i)(-1 - i)} = \tfrac{2 + 2i}{2} = 1 + i$.
+      c) São 50 termos; os 48 primeiros somam 0 e sobram $i^{48} + i^{49} = 1 + i$.
+    resposta: 'b) $1 + i$'
+
+  - estilo: Fuvest
+    enunciado: |
+      O número $(1 + i)^{2026}$ é igual a
+    opcoes: ['$2^{1013}$', '$2^{1013}\,i$', '$-2^{1013}\,i$', '$-2^{1013}$', '$2^{2026}$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $(1 + i)^{2026} = (2i)^{1013} = 2^{1013}\, i^{1013}$, e $1013$ deixa resto 1: $2^{1013}\,i$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere as potências de $1 + i$ e de $1 - i$.'
+    itens:
+    - 'Calcule $(1 - i)^2$ e mostre que $(1 + i)^4 = (1 - i)^4 = -4$.'
+    - 'Calcule $(1 + i)^8 + (1 - i)^8$.'
+    - 'Calcule $(1 + i)^6 + (1 - i)^6$.'
+    espaco: 62
+    resolucao: |
+      a) $(1 - i)^2 = 1 - 2i - 1 = -2i$. $(2i)^2 = -4$ e $(-2i)^2 = -4$.
+      b) $(-4)^2 + (-4)^2 = 32$.
+      c) $(2i)^3 + (-2i)^3 = -8i + 8i = 0$.
+    resposta: 'a) $-2i$; b) $32$; c) $0$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere os polinômios $P(x) = x^{100} + x^{50} + x^2 + 1$ e $Q(x) = x^{2027} + x^3 + 2x$.'
+    itens:
+    - 'Calcule $P(i)$.'
+    - 'Mostre que $P(-i) = P(i)$.'
+    - 'Verifique se $i$ é raiz de $Q$.'
+    espaco: 62
+    resolucao: |
+      a) $1 + (-1) + (-1) + 1 = 0$.
+      b) Todos os expoentes de $P$ são pares, e $(-i)^{2k} = (i^2)^k = i^{2k}$. Logo $P(-i) = P(i) = 0$.
+      c) $Q(i) = i^{2027} + i^3 + 2i = -i - i + 2i = 0$: sim, $i$ é raiz.
+    resposta: 'a) $0$; c) sim'
