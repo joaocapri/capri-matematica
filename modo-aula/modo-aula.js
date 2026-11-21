@@ -535,7 +535,10 @@ function ligarEntrada() {
       toques.set(e.pointerId, { ...p, x0: p.x, y0: p.y, t0: performance.now() });
       try { tela.setPointerCapture(e.pointerId); } catch {}
       if (atual?.pen) return; // a palma da mão não atrapalha quem escreve com a caneta
-      if (toques.size === 1) { iniciarToque(e.pointerId, p); return; }
+      if (toques.size === 1) {
+        if (ALUNO && av.dedo && !av.leitura) { iniciarCaneta(e, p); return; } // aluno sem caneta: o dedo escreve
+        iniciarToque(e.pointerId, p); return;
+      }
       if (atual) cancelarTraco();
       if (gesto?.tipo === 'mover' && sel) { sel.d = null; pedirQuadro(); }
       iniciarPinca(); return;
@@ -559,6 +562,7 @@ function ligarEntrada() {
   const fim = (e) => {
     if (e.pointerType === 'touch') {
       toques.delete(e.pointerId);
+      if (atual && !atual.pen && e.pointerId === atual.pid) { concluirCaneta(e.type === 'pointercancel'); return; }
       if (gesto?.tipo === 'pinca' && gesto.ids.includes(e.pointerId)) terminarPinca();
       else if (gesto && gesto.id === e.pointerId) soltarGesto(e.type === 'pointerup');
       return;
@@ -586,6 +590,7 @@ let rodaTravada = false;
 /* caneta (ou mouse) */
 function iniciarCaneta(e, p) {
   const w = mundo(p), pen = e.pointerType === 'pen', f = pref.ferramenta;
+  if (pen && ALUNO) av.usouCaneta = true;
   const h = f !== 'laser' && acertoSel(w, V.z);
   if (h) { atual = { pid: e.pointerId, pen, mover: true }; comecarMover(h, w); return; }
   if (f === 'laser') { atual = { pid: e.pointerId, pen, laser: { id: novoId(), pts: [[w[0], w[1], performance.now()]] }, enviados: 0 }; lasers.push(atual.laser); animarLaser(); aoVivo(atual); return; }
@@ -749,6 +754,7 @@ function moverGesto(p) {
 function soltarGesto(comToque) {
   const g = gesto; gesto = null; if (!g) return;
   if (g.tipo === 'mover') { if (sel) concluirMover(); return; }
+  if (ALUNO && av.exercicio && !av.dedo && !av.usouCaneta && (g.tipo === 'nada' || g.tipo === 'virar' || g.tipo === 'toque')) aviso('Sem Apple Pencil? Toque em “Dedo” na barra para escrever com o dedo.', 3200);
   if (g.tipo === 'toque' && comToque && performance.now() - g.t0 < 450) { // toque rápido
     const o = questaoEm(mundo(g.ini));
     if (o && !(umaQuestao() && sel.objs[0] === o)) selecionar([], [o]); else limparSel();
@@ -1388,6 +1394,9 @@ function iniciarAluno() {
   try { nome = localStorage.getItem('av:nome') || ''; codigo ||= sessionStorage.getItem('av:sala') || ''; } catch {}
   $('#av-nome').value = nome; $('#av-codigo').value = codigo;
   on('#av-form', 'submit', (e) => { e.preventDefault(); entrarNaSala($('#av-codigo').value, $('#av-nome').value); });
+  try { av.dedo = localStorage.getItem('av:dedo') === '1'; } catch {}
+  const bd = $('#av-dedo'); bd.setAttribute('aria-pressed', String(!!av.dedo));
+  bd.onclick = () => { av.dedo = !av.dedo; bd.setAttribute('aria-pressed', String(av.dedo)); try { localStorage.setItem('av:dedo', av.dedo ? '1' : '0'); } catch {} aviso(av.dedo ? 'O dedo escreve. Dois dedos movem e dão zoom.' : 'O dedo volta a só mover a página.', 2000); };
   on('#av-sair', 'click', () => { if (av.exercicio && pagina().tracos.length && !confirm('Sair da aula? O professor deixa de ver a sua resolução.')) return; telaEntrar(); });
   if (codigo && nome && sessionStorage.getItem('av:sala')) entrarNaSala(codigo, nome); // recarregou a página: volta direto
 }
