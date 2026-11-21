@@ -1,0 +1,539 @@
+# Aula 2.13.2 — Trigonometria: lei dos cossenos
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: a² = b² + c² − 2bc·cos A; calcular o terceiro lado e calcular ângulos a partir dos três lados;
+# cos(180° − x) = −cos x (120°, 135°, 150°); natureza do triângulo (acutângulo, retângulo, obtusângulo) pelo sinal;
+# área ½·ab·sen C; diagonais do paralelogramo; deslocamentos e distâncias inacessíveis.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Em todo triângulo, $a^2 = b^2 + c^2 - 2bc\cos A$. Lembre que $\cos(180^\circ - x) = -\cos x$; por exemplo, $\cos 120^\circ = -\frac12$. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Num triângulo, $b = 3$, $c = 8$ e o ângulo entre esses lados é $A = 60^\circ$. Complete.'
+      itens:
+      - '$a^2 =$ {{49}}'
+      - '$a =$ {{7}}'
+      - 'Área $=$ {{6\sqrt3}}'
+      espaco_item: 8
+      resolucao: |
+        $a^2 = 9 + 64 - 2 \cdot 3 \cdot 8 \cdot \frac12 = 49$. Área $= \frac12 \cdot 3 \cdot 8 \cdot \frac{\sqrt3}{2} = 6\sqrt3$.
+      resposta: '49; 7; $6\sqrt3$'
+    - enunciado: 'Associe cada triângulo, dado pelos lados, ao cosseno do seu maior ângulo.'
+      esquerda:
+      - '2, 3 e 4'
+      - '6, 8 e 10'
+      - '4, 5 e 6'
+      - '3, 3 e 3'
+      - '1, 1 e $\sqrt3$'
+      direita:
+      - '$\frac{1}{8}$'
+      - '$-\frac{1}{2}$'
+      - '$0$'
+      - '$\frac{1}{2}$'
+      - '$-\frac{1}{4}$'
+      resolucao: |
+        O maior ângulo é o oposto ao maior lado: $\cos = \frac{b^2 + c^2 - a^2}{2bc}$. $\frac{4 + 9 - 16}{12} = -\frac14$; $\frac{36 + 64 - 100}{96} = 0$; $\frac{16 + 25 - 36}{40} = \frac18$; equilátero, $\frac12$; $\frac{1 + 1 - 3}{2} = -\frac12$.
+      resposta: 'De cima para baixo: 3, 5, 2, 4, 1'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Se $A = 90^\circ$, a lei dos cossenos vira o teorema de Pitágoras.'
+      - '$\cos 120^\circ = \frac{1}{2}$.'
+      - 'Se $a^2 > b^2 + c^2$, o ângulo $A$ é obtuso.'
+      - 'Para usar a lei dos cossenos, é preciso conhecer dois ângulos.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) $\cos 90^\circ = 0$. (F) É $-\frac12$. (V) Então $\cos A < 0$. (F) Usa-se com dois lados e o ângulo entre eles, ou com os três lados.
+      resposta: V, F, V, F
+    - enunciado: 'Complete a tabela com $a^2$, em que $A$ é o ângulo entre os lados $b$ e $c$.'
+      tabela:
+        cabecalho: ['$b$', '$c$', '$A$', '$a^2$']
+        linhas:
+        - ['$2$', '$3$', '$60^\circ$', '${{7}}$']
+        - ['$5$', '$5$', '$60^\circ$', '${{25}}$']
+        - ['$4$', '$6$', '$90^\circ$', '${{52}}$']
+        - ['$1$', '$2$', '$120^\circ$', '${{7}}$']
+      resolucao: |
+        $4 + 9 - 6$; $25 + 25 - 25$; $16 + 36 - 0$; $1 + 4 + 2$ (com $\cos 120^\circ = -\frac12$, o sinal vira $+$).
+      resposta: '7; 25; 52; 7'
+    - enunciado: 'Um triângulo tem lados 7, 8 e 13. Calcule o seu maior ângulo.'
+      espaco: 8
+      resolucao: |
+        $\cos = \frac{49 + 64 - 169}{2 \cdot 7 \cdot 8} = -\frac{56}{112} = -\frac12$: $120^\circ$.
+      resposta: '$120^\circ$'
+    - enunciado: 'Dois lados de um triângulo medem 6 e 10 e formam $120^\circ$. Calcule o terceiro lado.'
+      espaco: 8
+      resolucao: |
+        $36 + 100 - 2 \cdot 6 \cdot 10 \cdot \left(-\frac12\right) = 196$: 14.
+      resposta: '14'
+    - enunciado: 'O triângulo de lados 6, 7 e 9 é acutângulo, retângulo ou obtusângulo? Justifique.'
+      espaco: 8
+      resolucao: |
+        Maior lado: $9^2 = 81 < 36 + 49 = 85$. O maior ângulo tem cosseno positivo: acutângulo.
+      resposta: 'Acutângulo'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Ana escreveu: "$a^2 = b^2 + c^2 + 2bc\cos A$".
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        O sinal é de menos: $a^2 = b^2 + c^2 - 2bc\cos A$. O sinal "vira mais" só no cálculo, quando $A$ é obtuso e $\cos A < 0$.
+      resposta: '$a^2 = b^2 + c^2 - 2bc\cos A$'
+    - enunciado: 'Um barco navega 6 km em linha reta, vira e navega mais 4 km, de modo que o ângulo entre os dois trechos, no ponto da curva, é de $120^\circ$. A que distância ele está do ponto de partida?'
+      espaco: 10
+      resolucao: |
+        $d^2 = 36 + 16 - 2 \cdot 6 \cdot 4 \cdot \left(-\frac12\right) = 76$: $d = 2\sqrt{19} \approx 8{,}7$ km.
+      resposta: '$2\sqrt{19} \approx 8{,}7$ km'
+    - enunciado: 'Um paralelogramo tem lados 5 e 8 e um ângulo de $60^\circ$. Calcule as diagonais.'
+      espaco: 10
+      resolucao: |
+        Menor (oposta a $60^\circ$): $25 + 64 - 40 = 49$, ou seja, 7. Maior (oposta a $120^\circ$): $25 + 64 + 40 = 129$, ou seja, $\sqrt{129}$.
+      resposta: '7 e $\sqrt{129}$'
+    - enunciado: 'Um triângulo tem lados 5, 16 e 19. Seja $\theta$ o maior ângulo. Complete.'
+      itens:
+      - '$\cos\theta =$ {{-1/2}}'
+      - '$\theta =$ {{120°}}'
+      - 'Área $=$ {{20\sqrt3}}'
+      espaco_item: 8
+      resolucao: |
+        $\cos\theta = \frac{25 + 256 - 361}{160} = -\frac12$. Área $= \frac12 \cdot 5 \cdot 16 \cdot \frac{\sqrt3}{2}$.
+      resposta: '$-\frac12$; $120^\circ$; $20\sqrt3$'
+    - enunciado: 'Num triângulo de lados 2, 3 e 4, calcule o cosseno do menor ângulo.'
+      espaco: 8
+      resolucao: |
+        O menor ângulo é oposto ao lado 2: $\cos = \frac{9 + 16 - 4}{24} = \frac{7}{8}$.
+      resposta: '$\frac78$'
+    - enunciado: 'Num triângulo, $b = 5$, $c = 4$ e $\cos A = \frac{3}{5}$. Calcule $a$.'
+      espaco: 8
+      resolucao: |
+        $a^2 = 25 + 16 - 2 \cdot 5 \cdot 4 \cdot \frac35 = 17$: $a = \sqrt{17}$.
+      resposta: '$\sqrt{17}$'
+    - enunciado: 'Num triângulo, um lado mede 8, outro mede $x$, e o ângulo entre eles é $60^\circ$. O lado oposto a esse ângulo mede 7. Calcule $x$.'
+      espaco: 10
+      resolucao: |
+        $49 = 64 + x^2 - 8x$: $x^2 - 8x + 15 = 0$, $x = 3$ ou $x = 5$. Os dois triângulos existem.
+      resposta: '3 ou 5'
+    - enunciado: 'Num triângulo isósceles, os lados iguais medem 3 e o cosseno do ângulo entre eles é $\frac{1}{3}$. Calcule a base.'
+      espaco: 8
+      resolucao: |
+        $9 + 9 - 2 \cdot 9 \cdot \frac13 = 12$: base $2\sqrt3$.
+      resposta: '$2\sqrt3$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Num triângulo com $A$ agudo, trace a altura por C e prove que $a^2 = b^2 + c^2 - 2bc\cos A$.'
+      espaco: 10
+      resolucao: |
+        A altura $h$ cai no lado AB a uma distância $b\cos A$ de A. Pitágoras nos dois triângulos: $h^2 = b^2 - b^2\cos^2 A$ e $a^2 = h^2 + (c - b\cos A)^2 = b^2 + c^2 - 2bc\cos A$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Use a lei dos cossenos para provar que $A$ é obtuso se, e somente se, $a^2 > b^2 + c^2$.'
+      espaco: 10
+      resolucao: |
+        $a^2 - (b^2 + c^2) = -2bc\cos A$. Como $2bc > 0$, essa diferença é positiva exatamente quando $\cos A < 0$, isto é, quando $A$ é obtuso.
+      resposta: 'Ver resolução'
+    - enunciado: 'Num paralelogramo de lados $a$ e $b$, prove que a soma dos quadrados das diagonais é $2(a^2 + b^2)$.'
+      espaco: 10
+      resolucao: |
+        Com ângulos $\theta$ e $180^\circ - \theta$: $d_1^2 = a^2 + b^2 - 2ab\cos\theta$ e $d_2^2 = a^2 + b^2 + 2ab\cos\theta$. Somando, $2(a^2 + b^2)$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que a mediana relativa ao lado $a$ mede $m$, com $4m^2 = 2b^2 + 2c^2 - a^2$.'
+      espaco: 10
+      resolucao: |
+        Duplicando a mediana, forma-se um paralelogramo de lados $b$ e $c$ com diagonais $a$ e $2m$. Pela questão anterior, $a^2 + 4m^2 = 2(b^2 + c^2)$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que o triângulo de lados $x$, $y$ e $\sqrt{x^2 + xy + y^2}$ tem um ângulo de $120^\circ$.'
+      espaco: 10
+      resolucao: |
+        Ângulo oposto ao maior lado: $\cos = \frac{x^2 + y^2 - (x^2 + xy + y^2)}{2xy} = -\frac12$, ou seja, $120^\circ$.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Uma construtora vai abrir um túnel reto entre os pontos A e B, separados por um morro. De um ponto C, de onde se veem os dois, mediram-se $CA = 300$ m, $CB = 500$ m e o ângulo $A\hat{C}B = 120^\circ$, como mostra a figura. O engenheiro precisa do comprimento do túnel.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.5]
+        \fill[lilas] (1.2,.4) .. controls (2.4,2.6) and (4.2,2.6) .. (5.4,.4) -- cycle;
+        \draw[ink] (1.2,.4) .. controls (2.4,2.6) and (4.2,2.6) .. (5.4,.4);
+        \draw[ink, line width=.9pt] (0,0) -- (7,0) -- (2.6,-3.3) -- cycle;
+        \fill[ink] (0,0) circle (1.6pt) node[left, font=\small] {A};
+        \fill[ink] (7,0) circle (1.6pt) node[right, font=\small] {B};
+        \fill[ink] (2.6,-3.3) circle (1.6pt) node[below, font=\small] {C};
+        \node[left, font=\small] at (1.2,-1.8) {$300$ m};
+        \node[right, font=\small] at (4.9,-1.8) {$500$ m};
+        \node[roxo, font=\scriptsize] at (2.75,-2.55) {$120^\circ$};
+        \end{scope}
+    enunciado: |
+      O túnel terá
+    opcoes: ['$700$ m', '$800$ m', '$583$ m', '$400$ m', '$436$ m']
+    correta: A
+    resolucao: |
+      $AB^2 = 300^2 + 500^2 - 2 \cdot 300 \cdot 500 \cdot \left(-\frac12\right) = 490\,000$: $AB = 700$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      Dois lados de um triângulo medem 4 e 5 e formam um ângulo de $60^\circ$. O terceiro lado mede
+    opcoes: ['$\sqrt{41}$', '$\sqrt{21}$', '$\sqrt{61}$', '$21$', '$5$']
+    correta: B
+    resolucao: |
+      $16 + 25 - 20 = 21$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Num triângulo de lados 2, 3 e $\sqrt7$, o ângulo oposto ao lado $\sqrt7$ mede
+    opcoes: ['$30^\circ$.', '$45^\circ$.', '$60^\circ$.', '$120^\circ$.']
+    correta: C
+    resolucao: |
+      $\cos = \frac{4 + 9 - 7}{12} = \frac12$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere o triângulo de lados 3, 5 e 7. Assinale o que for correto.
+    proposicoes:
+    - 'O maior ângulo mede $120^\circ$.'
+    - 'O triângulo é obtusângulo.'
+    - 'A área do triângulo é $\frac{15\sqrt3}{4}$.'
+    - 'O cosseno do menor ângulo é $\frac{13}{14}$.'
+    - 'O perímetro do triângulo é 16.'
+    - 'O seno do maior ângulo é $\frac{\sqrt3}{2}$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) $\cos = \frac{9 + 25 - 49}{30} = -\frac12$. 04) $\frac12 \cdot 3 \cdot 5 \cdot \frac{\sqrt3}{2}$. 08) $\frac{25 + 49 - 9}{70}$. 16) Incorreta: 15.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um jardineiro quer saber a distância entre duas árvores, A e B, separadas por um lago. Do ponto P, ele mediu $PA = 30$ m, $PB = 40$ m e o ângulo $A\hat{P}B = 70^\circ$. Para fazer a conta, ele consultou o quadro de cossenos aproximados abaixo.
+    tabela:
+      cabecalho: ['Ângulo', '$50^\circ$', '$60^\circ$', '$70^\circ$', '$80^\circ$']
+      linhas:
+      - ['cosseno', '$0{,}64$', '$0{,}50$', '$0{,}34$', '$0{,}17$']
+    enunciado: |
+      A distância entre as árvores é de, aproximadamente,
+    opcoes: ['$50$ m', '$35$ m', '$70$ m', '$41$ m', '$29$ m']
+    correta: D
+    resolucao: |
+      $AB^2 = 900 + 1\,600 - 2\,400 \cdot 0{,}34 = 1\,684$: $AB \approx 41$ m.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre um triângulo de lados $a$, $b$, $c$ e ângulos opostos $A$, $B$, $C$.
+    afirmativas:
+    - '$a^2 = b^2 + c^2 - 2bc\cos A$.'
+    - 'Se $A = 90^\circ$, a lei dos cossenos se reduz ao teorema de Pitágoras.'
+    - 'Se $a^2 < b^2 + c^2$, o ângulo $A$ é obtuso.'
+    - '$\cos 120^\circ = -\frac{1}{2}$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'II e IV, apenas.', 'II, III e IV, apenas.', 'I, II e IV, apenas.']
+    correta: E
+    resolucao: |
+      III. Incorreta: nesse caso $\cos A > 0$ e $A$ é agudo.
+
+  - estilo: Unesp
+    enunciado: |
+      Um paralelogramo tem lados 3 e 5 e um ângulo de $60^\circ$. Sua diagonal menor mede
+    opcoes: ['$\sqrt{19}$', '$7$', '$\sqrt{34}$', '$4$', '$\sqrt{15}$']
+    correta: A
+    resolucao: |
+      $9 + 25 - 15 = 19$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      No triângulo da figura, $AB = 7$, $AC = 8$ e o ângulo em A mede $120^\circ$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.42]
+        \draw[ink, line width=.9pt] (0,0) -- (8,0) -- (-3.5,6.06) -- cycle;
+        \node[below, font=\small] at (0,0) {A}; \node[below right, font=\small] at (8,0) {C}; \node[above left, font=\small] at (-3.5,6.06) {B};
+        \node[below, font=\small] at (4,0) {$8$}; \node[left, font=\small] at (-1.9,3) {$7$};
+        \draw[roxo] (.8,0) arc (0:120:.8); \node[roxo, font=\scriptsize] at (.75,1.15) {$120^\circ$};
+        \end{scope}
+    enunciado: |
+      A medida de BC é
+    opcoes: ['$\sqrt{57}$.', '$13$.', '$15$.', '$11$.']
+    correta: B
+    resolucao: |
+      $49 + 64 + 56 = 169$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Num triângulo de lados 5, 6 e 7, o cosseno do maior ângulo é
+    opcoes: ['$\frac{1}{2}$', '$-\frac{1}{5}$', '$\frac{1}{5}$', '$\frac{2}{5}$', '$\frac{5}{7}$']
+    correta: C
+    resolucao: |
+      $\frac{25 + 36 - 49}{60} = \frac{12}{60}$.
+
+  - estilo: UFSC
+    enunciado: |
+      Um paralelogramo tem lados 6 e 10 e um ângulo interno de $60^\circ$. Assinale o que for correto.
+    proposicoes:
+    - 'A diagonal menor mede $2\sqrt{19}$.'
+    - 'A diagonal maior mede 14.'
+    - 'A área do paralelogramo é $30\sqrt3$.'
+    - 'A soma dos quadrados das diagonais é 272.'
+    - 'Os ângulos internos medem $60^\circ$ e $120^\circ$.'
+    - 'As diagonais são perpendiculares.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) $36 + 100 - 60 = 76$. 02) $136 + 60 = 196$. 04) $6 \cdot 10\operatorname{sen}60^\circ$. 08) $76 + 196$. 32) Incorreta: só no losango.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Dois aviões decolam ao mesmo tempo do mesmo aeroporto. Um voa em linha reta a 300 km/h; o outro, também em linha reta, a 400 km/h, numa direção que forma $60^\circ$ com a do primeiro. O controlador de tráfego quer saber a distância entre eles depois de 1 hora de voo. Use $\sqrt{13} \approx 3{,}61$.
+    enunciado: |
+      Depois de 1 hora, a distância entre os aviões será de, aproximadamente,
+    opcoes: ['$361$ km', '$500$ km', '$100$ km', '$608$ km', '$250$ km']
+    correta: A
+    resolucao: |
+      $d^2 = 300^2 + 400^2 - 2 \cdot 300 \cdot 400 \cdot \frac12 = 130\,000$: $d = 100\sqrt{13} \approx 361$ km.
+
+  - estilo: UFPR
+    enunciado: |
+      Considere o triângulo de lados 4, 5 e 6. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'O maior ângulo é oposto ao lado 6.'
+    - 'O triângulo é obtusângulo.'
+    - 'O cosseno do maior ângulo é $\frac{1}{8}$.'
+    - 'O triângulo é acutângulo.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      $\cos = \frac{16 + 25 - 36}{40} = \frac18 > 0$: o maior ângulo é agudo. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Para medir um lago, um técnico ficou num ponto P da margem, de onde vê as duas extremidades do lago, A e B. Ele mediu $PA = 80$ m, $PB = 50$ m e o ângulo entre as duas direções, $A\hat{P}B = 60^\circ$, como na figura. O comprimento do lago é a distância AB.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.5]
+        \fill[lilas] (2.4,3.2) ellipse (2.4 and 1);
+        \draw[ink] (2.4,3.2) ellipse (2.4 and 1);
+        \draw[roxo, line width=.9pt] (0,3.2) -- (2.3,-.3) -- (4.8,3.2);
+        \draw[mudo, dashed] (0,3.2) -- (4.8,3.2);
+        \fill[ink] (0,3.2) circle (1.6pt) node[left, font=\small] {A};
+        \fill[ink] (4.8,3.2) circle (1.6pt) node[right, font=\small] {B};
+        \fill[ink] (2.3,-.3) circle (1.6pt) node[below, font=\small] {P};
+        \node[left, font=\small] at (1,1.4) {$80$ m}; \node[right, font=\small] at (3.6,1.4) {$50$ m};
+        \node[roxo, font=\scriptsize] at (2.35,.5) {$60^\circ$};
+        \end{scope}
+    enunciado: |
+      O comprimento do lago é de
+    opcoes: ['$30$ m', '$94$ m', '$130$ m', '$70$ m', '$65$ m']
+    correta: D
+    resolucao: |
+      $AB^2 = 6\,400 + 2\,500 - 2 \cdot 80 \cdot 50 \cdot \frac12 = 4\,900$: 70 m.
+
+  - estilo: Unesp
+    enunciado: |
+      Num triângulo de lados 3, 7 e 8, o ângulo oposto ao lado 7 mede
+    opcoes: ['$30^\circ$', '$60^\circ$', '$90^\circ$', '$120^\circ$', '$45^\circ$']
+    correta: B
+    resolucao: |
+      $\cos = \frac{9 + 64 - 49}{48} = \frac12$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere a lei dos cossenos e suas consequências. Assinale o que for correto.
+    proposicoes:
+    - 'Em todo triângulo, $a^2 = b^2 + c^2 - 2bc\cos A$.'
+    - '$\cos(180^\circ - x) = -\cos x$.'
+    - 'Se $\cos A < 0$, então $A$ é obtuso.'
+    - 'Os lados 2, 3 e 4 formam um triângulo obtusângulo.'
+    - 'Os lados 6, 8 e 11 formam um triângulo acutângulo.'
+    - 'Num triângulo equilátero, o cosseno de cada ângulo é $\frac{1}{2}$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      08) $16 > 4 + 9$. 16) Incorreta: $121 > 36 + 64$, obtusângulo.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Os lados de um triângulo medem $x$, $x + 1$ e $x + 2$, e o maior ângulo mede $120^\circ$. O perímetro do triângulo é
+    opcoes: ['$7{,}5$.', '$12$.', '$9$.', '$6$.']
+    correta: A
+    resolucao: |
+      $(x + 2)^2 = x^2 + (x + 1)^2 + x(x + 1)$: $2x^2 - x - 3 = 0$, $x = \frac32$. Lados 1,5; 2,5; 3,5.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um terreno tem forma de triângulo. Dois de seus lados, que partem da mesma esquina, medem 40 m e 60 m e formam um ângulo de $60^\circ$. O proprietário quer cercar o terreno e calcular sua área para o imposto. Use $\sqrt3 \approx 1{,}73$ e $\sqrt7 \approx 2{,}65$.
+    enunciado: |
+      O terceiro lado do terreno mede, aproximadamente,
+    opcoes: ['$48$ m', '$72$ m', '$53$ m', '$80$ m', '$100$ m']
+    correta: C
+    resolucao: |
+      $1\,600 + 3\,600 - 2\,400 = 2\,800$: $20\sqrt7 \approx 53$ m.
+
+  - estilo: Unesp
+    enunciado: |
+      A área do terreno é de, aproximadamente,
+    opcoes: ['$1\,200$ m²', '$600$ m²', '$2\,076$ m²', '$1\,038$ m²', '$520$ m²']
+    correta: D
+    resolucao: |
+      $\frac12 \cdot 40 \cdot 60 \cdot \frac{\sqrt3}{2} = 600\sqrt3 \approx 1\,038$ m².
+
+  - estilo: Fuvest
+    enunciado: |
+      Num triângulo, os lados satisfazem $a^2 = b^2 + c^2 + bc$. O ângulo $A$ mede
+    opcoes: ['$30^\circ$', '$45^\circ$', '$60^\circ$', '$90^\circ$', '$120^\circ$']
+    correta: E
+    resolucao: |
+      Comparando com a lei dos cossenos: $-2\cos A = 1$, $\cos A = -\frac12$.
+
+  - estilo: Unesp
+    texto: |
+      No triângulo ABC da figura, $AB = 4$, $BC = 6$ e o ângulo em B mede $60^\circ$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.55]
+        \draw[ink, line width=.9pt] (0,0) -- (6,0) -- (2,3.46) -- cycle;
+        \node[below left, font=\small] at (0,0) {B}; \node[below right, font=\small] at (6,0) {C}; \node[above, font=\small] at (2,3.46) {A};
+        \node[below, font=\small] at (3,0) {$6$}; \node[left, font=\small] at (1,1.8) {$4$};
+        \draw[roxo] (.8,0) arc (0:60:.8); \node[roxo, font=\scriptsize] at (1.3,.5) {$60^\circ$};
+        \end{scope}
+    enunciado: |
+      A medida de AC é
+    opcoes: ['$2\sqrt{13}$', '$2\sqrt7$', '$\sqrt{22}$', '$6$', '$4\sqrt2$']
+    correta: B
+    resolucao: |
+      $16 + 36 - 24 = 28$: $2\sqrt7$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere o triângulo de lados 4, 6 e 8.'
+    itens:
+    - 'Calcule o cosseno do ângulo oposto ao lado 8.'
+    - 'Calcule o comprimento da mediana relativa ao lado 8, usando a lei dos cossenos num dos triângulos que ela determina.'
+    - 'Confira o resultado com a relação $4m^2 = 2b^2 + 2c^2 - a^2$.'
+    espaco: 62
+    resolucao: |
+      a) $\frac{16 + 36 - 64}{48} = -\frac14$.
+      b) Ângulo entre os lados 4 e 8: $\cos = \frac{16 + 64 - 36}{64} = \frac{11}{16}$. Com metade do lado 8: $m^2 = 16 + 16 - 2 \cdot 4 \cdot 4 \cdot \frac{11}{16} = 10$, $m = \sqrt{10}$.
+      c) $4m^2 = 32 + 72 - 64 = 40$: $m^2 = 10$.
+    resposta: 'a) $-\frac14$; b) $\sqrt{10}$'
+
+  - estilo: Unicamp
+    enunciado: 'Um navio navega 20 km para o leste; depois, gira $60^\circ$ para o norte e navega mais 30 km em linha reta.'
+    itens:
+    - 'Quanto mede o ângulo entre os dois trechos, no ponto em que o navio girou?'
+    - 'A que distância ele está do ponto de partida?'
+    - 'Calcule o cosseno do ângulo entre a direção leste e a direção do ponto de partida até a posição final.'
+    espaco: 62
+    resolucao: |
+      a) $180^\circ - 60^\circ = 120^\circ$.
+      b) $d^2 = 400 + 900 + 600 = 1\,900$: $d = 10\sqrt{19} \approx 43{,}6$ km.
+      c) $900 = 400 + 1\,900 - 2 \cdot 20 \cdot 10\sqrt{19}\cos\theta$: $\cos\theta = \frac{1\,400}{400\sqrt{19}} = \frac{7\sqrt{19}}{38} \approx 0{,}80$.
+    resposta: 'b) $10\sqrt{19}$ km; c) $\frac{7\sqrt{19}}{38}$'
+
+  - estilo: ITA
+    enunciado: |
+      Num triângulo de lados $a$, $b$ e $c$, vale $(a + b + c)(a + b - c) = 3ab$. O ângulo oposto ao lado $c$ mede
+    opcoes: ['$60^\circ$', '$30^\circ$', '$120^\circ$', '$45^\circ$', '$90^\circ$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $(a + b)^2 - c^2 = 3ab$: $c^2 = a^2 + b^2 - ab$. Comparando com a lei dos cossenos, $2\cos C = 1$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Considere o triângulo de lados 5, 6 e 7.'
+    itens:
+    - 'Calcule o cosseno do ângulo oposto ao lado 7.'
+    - 'Calcule o seno desse ângulo.'
+    - 'Calcule a área do triângulo.'
+    espaco: 62
+    resolucao: |
+      a) $\frac{25 + 36 - 49}{60} = \frac15$.
+      b) $\sqrt{1 - \frac{1}{25}} = \frac{2\sqrt6}{5}$.
+      c) $\frac12 \cdot 5 \cdot 6 \cdot \frac{2\sqrt6}{5} = 6\sqrt6$.
+    resposta: 'a) $\frac15$; b) $\frac{2\sqrt6}{5}$; c) $6\sqrt6$'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - 'O triângulo de lados 1, 1 e $\sqrt2$ é retângulo.'
+    - 'O triângulo de lados 1, 1 e $\sqrt3$ tem um ângulo de $120^\circ$.'
+    - 'O triângulo de lados 7, 8 e 13 tem um ângulo de $120^\circ$.'
+    - 'O maior ângulo do triângulo de lados 4, 5 e 6 tem cosseno $\frac{1}{8}$.'
+    - 'O triângulo de lados 2, 3 e 4 é acutângulo.'
+    - 'O triângulo de lados 5, 5 e $5\sqrt3$ tem um ângulo de $120^\circ$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) $1 + 1 = 2$. 02) $\cos = -\frac12$. 04) $\frac{49 + 64 - 169}{112} = -\frac12$. 08) $\frac{16 + 25 - 36}{40}$. 16) Incorreta: $16 > 13$. 32) $\frac{25 + 25 - 75}{50} = -\frac12$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Um paralelogramo tem lados $a = 4$ e $b = 6$ e um ângulo de $60^\circ$.'
+    itens:
+    - 'Calcule as duas diagonais.'
+    - 'Confira que a soma dos quadrados das diagonais é $2(a^2 + b^2)$.'
+    - 'Calcule a área do paralelogramo.'
+    espaco: 62
+    resolucao: |
+      a) $16 + 36 - 24 = 28$ e $16 + 36 + 24 = 76$: $2\sqrt7$ e $2\sqrt{19}$.
+      b) $28 + 76 = 104 = 2(16 + 36)$.
+      c) $4 \cdot 6\operatorname{sen}60^\circ = 12\sqrt3$.
+    resposta: 'a) $2\sqrt7$ e $2\sqrt{19}$; c) $12\sqrt3$'
+
+  - estilo: Unicamp
+    enunciado: 'Num triângulo, dois lados medem $x$ e 5 e formam $120^\circ$; o terceiro lado mede 7.'
+    itens:
+    - 'Escreva a equação que dá $x$.'
+    - 'Resolva a equação.'
+    - 'Calcule a área do triângulo.'
+    espaco: 62
+    resolucao: |
+      a) $49 = x^2 + 25 + 5x$.
+      b) $x^2 + 5x - 24 = 0$: $x = 3$ (a outra raiz é negativa).
+      c) $\frac12 \cdot 3 \cdot 5 \cdot \frac{\sqrt3}{2} = \frac{15\sqrt3}{4}$.
+    resposta: 'b) 3; c) $\frac{15\sqrt3}{4}$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Num triângulo, $b = 2$, $c = 1 + \sqrt3$ e $A = 60^\circ$. A medida de $a$ é
+    opcoes: ['$2$', '$\sqrt6$', '$\sqrt2$', '$3$', '$2\sqrt2$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $a^2 = 4 + (4 + 2\sqrt3) - 2 \cdot 2(1 + \sqrt3) \cdot \frac12 = 6$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Num triângulo, dois lados medem 2 e 3 e o ângulo entre eles é $\theta$.'
+    itens:
+    - 'Escreva o terceiro lado $c$ em função de $\theta$.'
+    - 'Entre que valores $c$ pode variar? Justifique pelo cosseno.'
+    - 'Para que valor de $\cos\theta$ o terceiro lado mede 4? O ângulo é agudo ou obtuso?'
+    espaco: 62
+    resolucao: |
+      a) $c = \sqrt{13 - 12\cos\theta}$.
+      b) $-1 < \cos\theta < 1$ dá $1 < c < 5$.
+      c) $16 = 13 - 12\cos\theta$: $\cos\theta = -\frac14$, obtuso.
+    resposta: 'b) $1 < c < 5$; c) $-\frac14$, obtuso'
+
+  - estilo: Fuvest
+    enunciado: 'Num triângulo ABC, o ângulo A é obtuso.'
+    itens:
+    - 'A altura por C cai fora do lado AB, no prolongamento. Mostre que o pé da altura fica a $b\cos(180^\circ - A)$ de A.'
+    - 'Prove que, também nesse caso, $a^2 = b^2 + c^2 - 2bc\cos A$.'
+    - 'Calcule $a$ para $b = 4$, $c = 5$ e $A = 135^\circ$.'
+    espaco: 62
+    resolucao: |
+      a) No triângulo retângulo formado, o ângulo em A é $180^\circ - A$ e a hipotenusa é $b$.
+      b) Com $k = b\cos(180^\circ - A) = -b\cos A$: $a^2 = h^2 + (c + k)^2 = b^2 + c^2 + 2ck = b^2 + c^2 - 2bc\cos A$.
+      c) $a^2 = 16 + 25 + 20\sqrt2$: $a = \sqrt{41 + 20\sqrt2}$.
+    resposta: 'c) $\sqrt{41 + 20\sqrt2}$'
