@@ -1,0 +1,565 @@
+# Aula 4.7.3 — Geometria plana: área do círculo e de suas partes
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: área do círculo (raio e diâmetro); setor circular (fração da volta e r²θ/2 em radianos); coroa circular
+# (inclusive pela corda tangente ao círculo menor); segmento circular (setor menos triângulo); círculos inscrito e circunscrito
+# a polígonos; regiões entre círculos e quadrados; lúnulas de Hipócrates e arbelos no nível 3. Comprimentos ficam para a 4.8.4.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Deixe as respostas em função de $\pi$, salvo indicação. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete o quadro com a área de cada círculo.'
+      tabela:
+        cabecalho: ['Dado', 'Área']
+        linhas:
+        - ['raio 3', '${{9\pi}}$']
+        - ['diâmetro 14', '${{49\pi}}$']
+        - ['raio $\sqrt{2}$', '${{2\pi}}$']
+        - ['raio $0{,}5$', '${{0{,}25\pi}}$']
+      resolucao: |
+        $A = \pi r^2$; com o diâmetro, use $r = 7$.
+      resposta: '$9\pi$; $49\pi$; $2\pi$; $0{,}25\pi$'
+    - enunciado: 'Associe cada região à fórmula da sua área.'
+      esquerda:
+      - 'círculo de raio $r$'
+      - 'semicírculo de raio $r$'
+      - 'quadrante (quarto de círculo) de raio $r$'
+      - 'setor de $\alpha$ graus e raio $r$'
+      - 'setor de $\theta$ radianos e raio $r$'
+      - 'coroa de raios $R$ e $r$'
+      direita:
+      - '$\frac{\alpha}{360°}\pi r^2$'
+      - '$\pi(R^2 - r^2)$'
+      - '$\pi r^2$'
+      - '$\frac{r^2\theta}{2}$'
+      - '$\frac{\pi r^2}{4}$'
+      - '$\frac{\pi r^2}{2}$'
+      resolucao: |
+        Setores são frações do círculo: meia volta, um quarto de volta, $\tfrac{\alpha}{360°}$ ou $\tfrac{\theta}{2\pi}$ da volta.
+      resposta: 'De cima para baixo: 4, 6, 1, 5, 3, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Dobrando o raio de um círculo, a área fica 4 vezes maior.'
+      - 'Um setor de $60°$ tem $\frac{1}{6}$ da área do círculo.'
+      - 'A coroa de raios 5 e 3 tem área $4\pi$.'
+      - 'A área do círculo de diâmetro $d$ é $\frac{\pi d^2}{4}$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) $\pi(2r)^2 = 4\pi r^2$. (V) $\tfrac{60}{360}$. (F) $\pi(25 - 9) = 16\pi$. (V) $\pi\left(\tfrac{d}{2}\right)^2$.
+      resposta: V, V, F, V
+    - enunciado: 'Num círculo de raio 6, complete com a área do setor.'
+      itens:
+      - 'Setor de $60°$: {{6\pi}}'
+      - 'Setor de $120°$: {{12\pi}}'
+      - 'Setor de $270°$: {{27\pi}}'
+      espaco_item: 10
+      resolucao: |
+        O círculo tem $36\pi$: $\tfrac{1}{6}$, $\tfrac{1}{3}$ e $\tfrac{3}{4}$ dele.
+      resposta: '$6\pi$; $12\pi$; $27\pi$'
+    - enunciado: 'Calcule a área da coroa circular da figura, de raios 7 e 3.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=1]
+          \fill[lilas!35, even odd rule] (0,0) circle (1.4) (0,0) circle (0.6);
+          \draw[ink, line width=1pt] (0,0) circle (1.4) (0,0) circle (0.6);
+          \fill[ink] (0,0) circle (1.2pt);
+          \draw[roxo] (0,0) -- (1.4,0);
+          \draw[roxo] (0,0) -- (0,0.6);
+          \node[below, font=\scriptsize] at (1,0) {$7$};
+          \node[left, font=\scriptsize] at (0,0.3) {$3$};
+          \end{scope}
+      espaco: 8
+      resolucao: |
+        $\pi(49 - 9) = 40\pi$.
+      resposta: '$40\pi$'
+    - enunciado: 'Um círculo tem área $64\pi$. Calcule o raio e o diâmetro.'
+      espaco: 8
+      resolucao: |
+        $r^2 = 64$: $r = 8$ e diâmetro $16$.
+      resposta: 'raio 8; diâmetro 16'
+    - enunciado: 'Calcule a área de um setor de raio 10 cujo ângulo central mede 2 radianos.'
+      espaco: 8
+      resolucao: |
+        $\tfrac{r^2\theta}{2} = \tfrac{100 \cdot 2}{2} = 100$.
+      resposta: '100'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Para a coroa entre dois círculos concêntricos de diâmetros 10 e 6, Leo fez $\pi(10^2 - 6^2) = 64\pi$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        A fórmula usa os raios, 5 e 3: $\pi(25 - 9) = 16\pi$. Com os diâmetros, o resultado fica 4 vezes maior.
+      resposta: '$16\pi$'
+    - enunciado: 'Um círculo está inscrito num quadrado de lado 10. Calcule a área do círculo e a da região do quadrado fora do círculo.'
+      espaco: 10
+      resolucao: |
+        Raio 5: $25\pi$. Fora: $100 - 25\pi$.
+      resposta: '$25\pi$ e $100 - 25\pi$'
+    - enunciado: 'Calcule a área do círculo circunscrito a um quadrado de lado 6.'
+      espaco: 8
+      resolucao: |
+        O raio é metade da diagonal: $3\sqrt{2}$. Área $\pi \cdot 18 = 18\pi$.
+      resposta: '$18\pi$'
+    - enunciado: 'Num círculo de raio 6, a corda $AB$ subentende um ângulo central de $90°$. Calcule a área do segmento circular limitado pela corda e pelo arco menor.'
+      espaco: 10
+      resolucao: |
+        Setor: $\tfrac{36\pi}{4} = 9\pi$. Triângulo $OAB$, retângulo em $O$: $\tfrac{6 \cdot 6}{2} = 18$. Segmento: $9\pi - 18$.
+      resposta: '$9\pi - 18$'
+    - enunciado: 'Num círculo de raio 12, complete o quadro.'
+      tabela:
+        cabecalho: ['Ângulo do setor', 'Fração do círculo', 'Área']
+        linhas:
+        - ['$30°$', '${{\frac{1}{12}}}$', '${{12\pi}}$']
+        - ['$45°$', '${{\frac{1}{8}}}$', '${{18\pi}}$']
+        - ['$150°$', '${{\frac{5}{12}}}$', '${{60\pi}}$']
+      resolucao: |
+        Fração $\tfrac{\alpha}{360°}$, vezes $144\pi$.
+      resposta: '$\frac{1}{12}$, $12\pi$; $\frac{1}{8}$, $18\pi$; $\frac{5}{12}$, $60\pi$'
+    - enunciado: 'Uma pizzaria vende, pelo mesmo preço, uma pizza grande de 40 cm de diâmetro ou duas médias de 30 cm de diâmetro. Qual opção dá mais pizza?'
+      espaco: 10
+      resolucao: |
+        Grande: $\pi \cdot 20^2 = 400\pi$ cm². Duas médias: $2\pi \cdot 15^2 = 450\pi$ cm². As duas médias dão mais.
+      resposta: 'as duas médias'
+    - enunciado: 'Um setor circular de raio 6 tem área $15\pi$. Calcule o ângulo central.'
+      espaco: 10
+      resolucao: |
+        $\tfrac{\alpha}{360} \cdot 36\pi = 15\pi$: $\alpha = 150°$.
+      resposta: '$150°$'
+    - enunciado: 'Calcule a área do círculo inscrito num triângulo equilátero de lado 6 e a da região do triângulo fora dele.'
+      espaco: 12
+      resolucao: |
+        $r = \tfrac{h}{3} = \tfrac{3\sqrt{3}}{3} = \sqrt{3}$: área $3\pi$. Triângulo: $9\sqrt{3}$. Fora: $9\sqrt{3} - 3\pi$.
+      resposta: '$3\pi$ e $9\sqrt{3} - 3\pi$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Mostre que a área de um setor de raio $r$ e ângulo central $\theta$, em radianos, é $\frac{r^2\theta}{2}$.'
+      espaco: 12
+      resolucao: |
+        A área do setor é proporcional ao ângulo central. A volta inteira, $2\pi$ rad, corresponde a $\pi r^2$: o setor de $\theta$ rad tem $\tfrac{\theta}{2\pi} \cdot \pi r^2 = \tfrac{r^2\theta}{2}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Numa coroa circular, uma corda de 8 cm do círculo maior é tangente ao círculo menor. Calcule a área da coroa, sem conhecer os raios.'
+      espaco: 12
+      resolucao: |
+        O raio menor, no ponto de tangência, é perpendicular à corda e a divide ao meio: $R^2 = r^2 + 4^2$. Área $\pi(R^2 - r^2) = 16\pi$ cm².
+      resposta: '$16\pi$ cm²'
+    - enunciado: 'Prove que, num triângulo retângulo, o semicírculo construído sobre a hipotenusa tem área igual à soma dos semicírculos construídos sobre os catetos.'
+      espaco: 12
+      resolucao: |
+        Semicírculo de diâmetro $d$: $\tfrac{\pi d^2}{8}$. Com $a^2 = b^2 + c^2$: $\tfrac{\pi a^2}{8} = \tfrac{\pi b^2}{8} + \tfrac{\pi c^2}{8}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Num círculo de raio 6, a corda $AB$ subentende um ângulo central de $60°$. Calcule a área do segmento circular menor.'
+      espaco: 12
+      resolucao: |
+        Setor: $\tfrac{36\pi}{6} = 6\pi$. O triângulo $OAB$ é equilátero de lado 6: $9\sqrt{3}$. Segmento: $6\pi - 9\sqrt{3}$.
+      resposta: '$6\pi - 9\sqrt{3}$'
+    - enunciado: 'Quatro círculos de raio 1 têm os centros nos vértices de um quadrado de lado 2, e cada um é tangente aos dois vizinhos. Calcule a área da região do quadrado não coberta pelos círculos.'
+      espaco: 12
+      resolucao: |
+        Dentro do quadrado ficam quatro quartos de círculo, que somam um círculo de área $\pi$. Sobra $4 - \pi$.
+      resposta: '$4 - \pi$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Uma pizzaria vende pizzas redondas de quatro tamanhos, todas com a mesma espessura e a mesma cobertura. Um cliente quer escolher a opção que dá mais pizza por real gasto, isto é, a de menor preço por centímetro quadrado. O quadro mostra o diâmetro e o preço de cada tamanho.
+    tabela:
+      cabecalho: ['Tamanho', 'Diâmetro (cm)', 'Preço (R\$)']
+      linhas:
+      - ['pequena', '$25$', '$30{,}00$']
+      - ['média', '$30$', '$40{,}00$']
+      - ['grande', '$35$', '$50{,}00$']
+      - ['família', '$40$', '$70{,}00$']
+    enunciado: |
+      A opção de menor preço por centímetro quadrado é a pizza
+    opcoes: ['pequena.', 'média.', 'grande.', 'família.', 'pequena ou a família, que empatam.']
+    correta: C
+    resolucao: |
+      Áreas: $156{,}25\pi$, $225\pi$, $306{,}25\pi$ e $400\pi$ cm². Preço por $\pi$ cm²: $0{,}192$; $0{,}178$; $0{,}163$; $0{,}175$. A menor é a da grande.
+
+  - estilo: Fuvest
+    enunciado: |
+      A área de um círculo de diâmetro 12 é
+    opcoes: ['$144\pi$', '$36\pi$', '$12\pi$', '$24\pi$', '$6\pi$']
+    correta: B
+    resolucao: |
+      Raio 6: $36\pi$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A área de um setor circular de $72°$ num círculo de raio 10 é
+    opcoes: ['$20\pi$.', '$10\pi$.', '$40\pi$.', '$72\pi$.']
+    correta: A
+    resolucao: |
+      $\tfrac{72}{360} \cdot 100\pi = \tfrac{1}{5} \cdot 100\pi = 20\pi$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere áreas de círculos e de suas partes. Assinale o que for correto.
+    proposicoes:
+    - 'O círculo de raio 4 tem área $16\pi$.'
+    - 'O semicírculo de raio 6 tem área $18\pi$.'
+    - 'O setor de $45°$ num círculo de raio 8 tem área $8\pi$.'
+    - 'A coroa de raios 6 e 4 tem área $4\pi$.'
+    - 'Se o raio de um círculo triplica, a área triplica.'
+    corretas: [1, 2, 3]
+    resolucao: |
+      01) Correta. 02) $\tfrac{36\pi}{2}$. 04) $\tfrac{64\pi}{8}$. 08) Incorreta: $\pi(36 - 16) = 20\pi$. 16) Incorreta: fica 9 vezes maior.
+      Soma: $01 + 02 + 04 = 07$.
+
+  - estilo: Enem
+    texto: |
+      Num sistema de irrigação por pivô central, um braço de 300 m gira em torno de uma das pontas e molha um círculo. O pivô foi instalado no centro de um terreno quadrado de 600 m de lado, e o círculo irrigado tangencia os quatro lados do terreno, como na figura. Use $\pi \approx 3{,}14$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \draw[ink, line width=1pt, fill=lima!30] (0,0) rectangle (2.4,2.4);
+        \draw[roxo, line width=1pt, fill=lilas!40] (1.2,1.2) circle (1.2);
+        \draw[ink] (1.2,1.2) -- (2.4,1.2);
+        \fill[ink] (1.2,1.2) circle (1.5pt);
+        \end{scope}
+    enunciado: |
+      A porcentagem da área do terreno que é irrigada é, aproximadamente,
+    opcoes: ['$78{,}5\%$', '$21{,}5\%$', '$75{,}0\%$', '$50{,}0\%$', '$87{,}5\%$']
+    correta: A
+    resolucao: |
+      $\tfrac{\pi \cdot 300^2}{600^2} = \tfrac{\pi}{4} \approx 0{,}785$.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'A área do círculo de diâmetro $d$ é $\frac{\pi d^2}{4}$.'
+    - 'O setor de 1 radiano num círculo de raio 4 tem área 8.'
+    - 'A coroa de raios 5 e 4 tem área $\pi$.'
+    - 'O quadrante de raio 2 tem área $\pi$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I, III e IV, apenas.', 'I, II e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I. $\pi\left(\tfrac{d}{2}\right)^2$. II. $\tfrac{16 \cdot 1}{2} = 8$. III. Incorreta: $\pi(25 - 16) = 9\pi$. IV. $\tfrac{4\pi}{4}$.
+
+  - estilo: Unesp
+    enunciado: |
+      Um círculo tem área $49\pi$ cm². O seu diâmetro mede
+    opcoes: ['$7$ cm', '$49$ cm', '$7\pi$ cm', '$24{,}5$ cm', '$14$ cm']
+    correta: E
+    resolucao: |
+      $r^2 = 49$, $r = 7$ cm: diâmetro $14$ cm.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, $ABCD$ é um quadrado de lado 4, e o arco $BD$ tem centro em $A$ e raio 4.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.45]
+        \fill[lilas!40] (4,0) arc (0:90:4) -- (4,4) -- cycle;
+        \draw[ink, line width=1pt] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+        \draw[roxo, line width=1pt] (4,0) arc (0:90:4);
+        \node[below left, font=\scriptsize] at (0,0) {$A$};
+        \node[below right, font=\scriptsize] at (4,0) {$B$};
+        \node[above right, font=\scriptsize] at (4,4) {$C$};
+        \node[above left, font=\scriptsize] at (0,4) {$D$};
+        \end{scope}
+    enunciado: |
+      A área da região sombreada é
+    opcoes: ['$16 - 4\pi$.', '$4\pi$.', '$16 - 2\pi$.', '$8 - 2\pi$.']
+    correta: A
+    resolucao: |
+      Quadrado menos o quadrante de raio 4: $16 - \tfrac{16\pi}{4} = 16 - 4\pi$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Num círculo de raio 4, uma corda subentende um ângulo central de $90°$. A área do segmento circular menor determinado por essa corda é
+    opcoes: ['$4\pi$', '$4\pi - 16$', '$4\pi - 8$', '$8\pi - 8$', '$2\pi - 4$']
+    correta: C
+    resolucao: |
+      Setor $\tfrac{16\pi}{4} = 4\pi$, menos o triângulo retângulo de catetos 4 e 4, de área 8.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere um quadrado de lado 8 e os círculos inscrito e circunscrito a ele. Assinale o que for correto.
+    proposicoes:
+    - 'O raio do círculo inscrito é 4.'
+    - 'A área do círculo inscrito é $16\pi$.'
+    - 'O raio do círculo circunscrito é $4\sqrt{2}$.'
+    - 'A área do círculo circunscrito é $32\pi$.'
+    - 'A área do círculo circunscrito é o dobro da área do inscrito.'
+    - 'A região do quadrado fora do círculo inscrito tem área $64 - 8\pi$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) Metade do lado. 02) $\pi \cdot 16$. 04) Metade da diagonal $8\sqrt{2}$. 08) $\pi \cdot 32$. 16) $\tfrac{32\pi}{16\pi} = 2$. 32) Incorreta: $64 - 16\pi$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Um jardim circular de 5 m de raio será contornado por um caminho de pedras de 1 m de largura, construído do lado de fora do jardim e em toda a volta dele. O pedreiro cobra por metro quadrado de caminho e precisa da área do caminho para fazer o orçamento. Use $\pi \approx 3{,}14$.
+    enunciado: |
+      A área do caminho é, aproximadamente,
+    opcoes: ['$3{,}1$ m²', '$31{,}4$ m²', '$37{,}7$ m²', '$34{,}5$ m²', '$113{,}0$ m²']
+    correta: D
+    resolucao: |
+      Coroa de raios 6 m e 5 m: $\pi(36 - 25) = 11\pi \approx 34{,}5$ m².
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'Dobrando o raio de um círculo, a área dobra.'
+    - 'Um setor de $120°$ tem um terço da área do círculo.'
+    - 'O círculo de raio 3 tem área maior que a do quadrado de lado 5.'
+    - 'A área de um setor de raio $r$ e ângulo $\theta$, em radianos, é $\frac{r^2\theta}{2}$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'F – V – V – V.', 'F – V – F – V.', 'V – F – V – V.', 'F – F – V – V.']
+    correta: B
+    resolucao: |
+      (F) Quadruplica. (V) $\tfrac{120}{360}$. (V) $9\pi \approx 28{,}3 > 25$. (V)
+
+  - estilo: Enem
+    texto: |
+      Um aspersor de jardim, fixo num ponto, gira de um lado para o outro varrendo um ângulo de $120°$ e molha até 6 m de distância, como na figura. A região molhada é um setor circular, e o jardineiro quer saber a sua área. Use $\pi \approx 3{,}14$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.3]
+        \fill[lilas!40] (0,0) -- (30:6) arc (30:150:6) -- cycle;
+        \draw[ink, line width=1pt] (0,0) -- (30:6) arc (30:150:6) -- cycle;
+        \fill[ink] (0,0) circle (5pt);
+        \draw[mudo] (30:1.2) arc (30:150:1.2);
+        \node[font=\scriptsize] at (90:1.9) {$120°$};
+        \node[below right, font=\scriptsize] at (30:3) {6 m};
+        \end{scope}
+    enunciado: |
+      A área molhada é, aproximadamente,
+    opcoes: ['$113{,}0$ m²', '$18{,}8$ m²', '$56{,}5$ m²', '$12{,}6$ m²', '$37{,}7$ m²']
+    correta: E
+    resolucao: |
+      $\tfrac{1}{3} \cdot \pi \cdot 36 = 12\pi \approx 37{,}7$ m².
+
+  - estilo: Unesp
+    enunciado: |
+      Numa coroa circular, uma corda de 10 cm do círculo maior é tangente ao círculo menor. A área da coroa é
+    opcoes: ['$100\pi$ cm²', '$25\pi$ cm²', '$10\pi$ cm²', '$50\pi$ cm²', '$5\pi$ cm²']
+    correta: B
+    resolucao: |
+      O raio menor é perpendicular à corda no meio dela: $R^2 - r^2 = 5^2$. Área $25\pi$ cm².
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere um triângulo equilátero de lado 6 e os círculos inscrito e circunscrito a ele. Assinale o que for correto.
+    proposicoes:
+    - 'O raio do círculo inscrito é $\sqrt{3}$.'
+    - 'O raio do círculo circunscrito é $2\sqrt{3}$.'
+    - 'A área do círculo circunscrito é $12\pi$.'
+    - 'A coroa entre os dois círculos tem área $6\pi$.'
+    - 'A região do triângulo fora do círculo inscrito tem área $9\sqrt{3} - 3\pi$.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      01) $\tfrac{h}{3}$, com $h = 3\sqrt{3}$. 02) $\tfrac{2h}{3}$. 04) $\pi \cdot 12$. 08) Incorreta: $12\pi - 3\pi = 9\pi$. 16) $9\sqrt{3} - 3\pi$.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Sobre os lados de um triângulo retângulo de catetos 6 e 8 são construídos semicírculos. A soma das áreas dos semicírculos construídos sobre os catetos é
+    opcoes: ['$\frac{25\pi}{2}$.', '$25\pi$.', '$\frac{25\pi}{4}$.', '$50\pi$.']
+    correta: A
+    resolucao: |
+      $\tfrac{9\pi}{2} + \tfrac{16\pi}{2} = \tfrac{25\pi}{2}$, igual à do semicírculo sobre a hipotenusa 10.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um canteiro tem a forma de um setor circular de 8 m de raio e ângulo central de $135°$, como na figura. Ele será coberto com grama, vendida por metro quadrado, e o paisagista precisa da área para fazer o pedido. Use $\pi \approx 3{,}14$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.22]
+        \fill[lima!40] (0,0) -- (8,0) arc (0:135:8) -- cycle;
+        \draw[ink, line width=1pt] (0,0) -- (8,0) arc (0:135:8) -- cycle;
+        \draw[mudo] (1.5,0) arc (0:135:1.5);
+        \node[font=\scriptsize] at (67.5:2.6) {$135°$};
+        \node[below, font=\scriptsize] at (4,0) {8 m};
+        \end{scope}
+    enunciado: |
+      A área do canteiro é, aproximadamente,
+    opcoes: ['$50{,}2$ m²', '$100{,}5$ m²', '$75{,}4$ m²', '$37{,}7$ m²', '$201{,}0$ m²']
+    correta: C
+    resolucao: |
+      $\tfrac{135}{360} \cdot 64\pi = \tfrac{3}{8} \cdot 64\pi = 24\pi \approx 75{,}4$ m².
+
+  - estilo: Unicamp
+    enunciado: |
+      Se o raio do canteiro fosse reduzido à metade, mantido o ângulo, a área passaria a ser
+    opcoes: ['a metade da original.', 'a terça parte da original.', 'o dobro da original.', 'a quarta parte da original.']
+    correta: D
+    resolucao: |
+      A área do setor é proporcional a $r^2$: $\left(\tfrac{1}{2}\right)^2 = \tfrac{1}{4}$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Quatro círculos de raio 2 têm os centros nos vértices de um quadrado de lado 4. A área da região do quadrado que não está coberta pelos círculos é
+    opcoes: ['$16 - 16\pi$', '$4 - \pi$', '$16 - 2\pi$', '$8 - \pi$', '$16 - 4\pi$']
+    correta: E
+    resolucao: |
+      Dentro do quadrado ficam quatro quadrantes de raio 2, que formam um círculo de área $4\pi$.
+
+  - estilo: Unesp
+    texto: |
+      Na figura, o hexágono regular de lado 2 está inscrito no círculo.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \fill[lilas!40] (0,0) circle (1.2);
+        \draw[ink, line width=1pt] (0,0) circle (1.2);
+        \draw[ink, line width=1pt, fill=white] (0:1.2) -- (60:1.2) -- (120:1.2) -- (180:1.2) -- (240:1.2) -- (300:1.2) -- cycle;
+        \end{scope}
+    enunciado: |
+      A área da região sombreada, do círculo fora do hexágono, é
+    opcoes: ['$4\pi - 3\sqrt{3}$', '$4\pi - 6\sqrt{3}$', '$2\pi - 6\sqrt{3}$', '$4\pi - 12\sqrt{3}$', '$\pi - \sqrt{3}$']
+    correta: B
+    resolucao: |
+      Raio 2 (igual ao lado): círculo $4\pi$. Hexágono: seis triângulos equiláteros de lado 2, $6\sqrt{3}$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere um círculo de centro $O$ e raio $r$.'
+    itens:
+    - 'Mostre que um setor de ângulo central $\theta$, em radianos, tem área $\frac{r^2\theta}{2}$.'
+    - 'Mostre que o segmento circular determinado por uma corda de ângulo central $\theta$ (com $\theta < \pi$) tem área $\frac{r^2(\theta - \operatorname{sen}\theta)}{2}$.'
+    - 'Calcule a área do segmento para $r = 6$ e $\theta = \frac{\pi}{3}$.'
+    espaco: 62
+    resolucao: |
+      a) A área é proporcional ao ângulo: $\tfrac{\theta}{2\pi} \cdot \pi r^2$.
+      b) Segmento é o setor menos o triângulo $OAB$, de lados $r$, $r$ e ângulo $\theta$ entre eles: $\tfrac{r^2\theta}{2} - \tfrac{r^2\operatorname{sen}\theta}{2}$.
+      c) $18\left(\tfrac{\pi}{3} - \tfrac{\sqrt{3}}{2}\right) = 6\pi - 9\sqrt{3}$.
+    resposta: 'c) $6\pi - 9\sqrt{3}$'
+
+  - estilo: Unicamp
+    texto: |
+      Num triângulo retângulo $ABC$, de catetos $b$ e $c$ e hipotenusa $a$, são traçados semicírculos sobre os três lados, os dos catetos para fora e o da hipotenusa passando pelo vértice do ângulo reto. As partes dos semicírculos dos catetos que ficam fora do semicírculo da hipotenusa são as lúnulas de Hipócrates.
+    enunciado: ''
+    itens:
+    - 'Prove que o semicírculo sobre a hipotenusa tem área igual à soma dos outros dois.'
+    - 'Prove que a soma das áreas das duas lúnulas é igual à área do triângulo.'
+    - 'Calcule a soma das áreas das lúnulas para catetos 6 e 8.'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{\pi a^2}{8} = \tfrac{\pi b^2}{8} + \tfrac{\pi c^2}{8}$, pois $a^2 = b^2 + c^2$.
+      b) A figura toda (triângulo mais os dois semicírculos dos catetos) também é o semicírculo da hipotenusa mais as lúnulas. Tirando de cada lado as áreas iguais do item a): lúnulas $=$ triângulo.
+      c) $\tfrac{6 \cdot 8}{2} = 24$.
+    resposta: 'c) 24'
+
+  - estilo: ITA
+    enunciado: |
+      Três círculos de raio 1 são tangentes dois a dois. A área da região limitada pelos três, entre eles, é
+    opcoes: ['$\sqrt{3} - \frac{\pi}{3}$', '$\frac{\pi}{2} - \sqrt{3}$', '$\sqrt{3} - \frac{\pi}{2}$', '$2\sqrt{3} - \pi$', '$\frac{\sqrt{3}}{4} - \frac{\pi}{6}$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      Os centros formam um triângulo equilátero de lado 2, de área $\sqrt{3}$. Dentro dele há três setores de $60°$ e raio 1, que somam meio círculo: $\tfrac{\pi}{2}$.
+    resposta: 'C'
+
+  - estilo: Unesp
+    texto: |
+      Uma pizza de 36 cm de diâmetro é cortada em 8 fatias iguais. A borda é a faixa de 2 cm de largura junto à circunferência.
+    enunciado: ''
+    itens:
+    - 'Calcule a área de cada fatia.'
+    - 'Calcule a área da borda na pizza toda e em cada fatia.'
+    - 'Que porcentagem da pizza é borda? ($\pi$ não é necessário.)'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{\pi \cdot 18^2}{8} = \tfrac{324\pi}{8} = 40{,}5\pi$ cm².
+      b) Coroa de raios 18 e 16: $\pi(324 - 256) = 68\pi$ cm²; por fatia, $8{,}5\pi$ cm².
+      c) $\tfrac{68\pi}{324\pi} \approx 0{,}21$: cerca de $21\%$.
+    resposta: 'a) $40{,}5\pi$ cm²; b) $68\pi$ e $8{,}5\pi$ cm²; c) $\approx 21\%$'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - 'O quadrante de raio 6 tem área $9\pi$.'
+    - 'O setor de 2 radianos num círculo de raio 3 tem área 9.'
+    - 'A coroa de raios 13 e 12 tem área $25\pi$.'
+    - 'O círculo inscrito no triângulo de lados 6, 8 e 10 tem área $4\pi$.'
+    - 'O círculo circunscrito ao triângulo de lados 6, 8 e 10 tem área $100\pi$.'
+    - 'O segmento circular de $90°$ num círculo de raio 2 tem área $\pi - 2$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) $\tfrac{36\pi}{4}$. 02) $\tfrac{9 \cdot 2}{2}$. 04) $\pi(169 - 144)$. 08) $r = \tfrac{24}{12} = 2$. 16) Incorreta: o raio é metade da hipotenusa, 5: $25\pi$. 32) $\pi - \tfrac{2 \cdot 2}{2}$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'No quadrado $ABCD$ de lado 2, traçam-se os arcos $BD$ de centro $A$ e de centro $C$, ambos de raio 2, que limitam uma região em forma de folha.'
+    itens:
+    - 'Calcule a área de cada quadrante.'
+    - 'Calcule a área do segmento circular limitado pelo arco $BD$ de centro $A$ e pela diagonal $BD$.'
+    - 'Calcule a área da folha.'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{4\pi}{4} = \pi$.
+      b) Quadrante menos o triângulo $ABD$: $\pi - 2$.
+      c) A diagonal $BD$ divide a folha em dois segmentos iguais: $2(\pi - 2) = 2\pi - 4$.
+    resposta: 'a) $\pi$; b) $\pi - 2$; c) $2\pi - 4$'
+
+  - estilo: Unicamp
+    texto: |
+      Um terreno quadrado de 800 m de lado será irrigado por pivôs centrais, que molham círculos.
+    enunciado: ''
+    itens:
+    - 'Com um único pivô no centro, de alcance 400 m, que fração do terreno é irrigada?'
+    - 'Se o terreno for dividido em 4 quadrados iguais, com um pivô de alcance 200 m no centro de cada um, que fração é irrigada?'
+    - 'Generalize para $n^2$ quadrados iguais, com um pivô em cada um, e interprete.'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{\pi \cdot 400^2}{800^2} = \tfrac{\pi}{4}$.
+      b) $\tfrac{4\pi \cdot 200^2}{800^2} = \tfrac{\pi}{4}$.
+      c) $\tfrac{n^2 \cdot \pi\left(\frac{400}{n}\right)^2}{800^2} = \tfrac{\pi}{4}$. A fração irrigada não depende do número de pivôs: cerca de $78{,}5\%$.
+    resposta: 'a), b), c) $\frac{\pi}{4}$'
+
+  - estilo: Fuvest
+    enunciado: |
+      Um setor circular de $60°$ tem área $6\pi$. O raio do círculo é
+    opcoes: ['$6$', '$3$', '$\sqrt{6}$', '$36$', '$12$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $\tfrac{1}{6}\pi r^2 = 6\pi$: $r^2 = 36$, $r = 6$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Considere um triângulo equilátero de lado $6\sqrt{3}$.'
+    itens:
+    - 'Calcule o raio e a área do círculo inscrito.'
+    - 'Calcule o raio e a área do círculo circunscrito.'
+    - 'Calcule a área da coroa entre os dois círculos e compare com a área do círculo inscrito.'
+    espaco: 62
+    resolucao: |
+      a) Altura $9$: $r = 3$, área $9\pi$.
+      b) $R = 6$, área $36\pi$.
+      c) $27\pi$, o triplo da área do círculo inscrito (pois $R = 2r$).
+    resposta: 'a) 3 e $9\pi$; b) 6 e $36\pi$; c) $27\pi$, o triplo'
+
+  - estilo: Fuvest
+    texto: |
+      O ponto $C$ divide o segmento $AB$ em $AC = 2a$ e $CB = 2b$. Do mesmo lado de $AB$, traçam-se semicírculos de diâmetros $AB$, $AC$ e $CB$. A região dentro do maior e fora dos dois menores chama-se arbelo.
+    enunciado: ''
+    itens:
+    - 'Prove que a área do arbelo é $\pi ab$.'
+    - 'A perpendicular a $AB$ por $C$ corta o semicírculo maior em $D$. Prove que $CD^2 = 4ab$.'
+    - 'Prove que o círculo de diâmetro $CD$ tem a mesma área que o arbelo.'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{\pi(a + b)^2}{2} - \tfrac{\pi a^2}{2} - \tfrac{\pi b^2}{2} = \tfrac{2\pi ab}{2} = \pi ab$.
+      b) O triângulo $ADB$ é retângulo em $D$ (inscrito no semicírculo), e $DC$ é a altura relativa à hipotenusa: $CD^2 = AC \cdot CB = 4ab$.
+      c) Raio $\tfrac{CD}{2}$: área $\pi \cdot \tfrac{4ab}{4} = \pi ab$.
+    resposta: 'Ver resolução'
