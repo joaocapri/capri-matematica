@@ -1,0 +1,524 @@
+# Aula 3.14.4 — Polinômios: raízes complexas e raízes racionais
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: raízes não reais conjugadas (coeficientes reais); grau ímpar tem raiz real; fator do 2º grau
+# $x^2 - 2ax + (a^2 + b^2)$; montar polinômio de coeficientes reais; teorema das raízes racionais (candidatos p/q,
+# raízes inteiras de polinômio mônico); pesquisar raiz racional, baixar o grau e achar as demais.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Coeficientes reais garantem raízes não reais em pares conjugados; coeficientes inteiros limitam as raízes racionais aos candidatos $\frac{p}{q}$. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Pesquise as raízes racionais de $3x^3 - 4x^2 + 7x - 2$. Complete.'
+      itens:
+      - 'Divisores do termo independente: {{\pm 1, \pm 2}}'
+      - 'Divisores do coeficiente dominante: {{1, 3}}'
+      - 'Número de candidatos $\frac{p}{q}$: {{8}}'
+      - 'Raiz racional: {{1/3}}'
+      espaco_item: 8
+      resolucao: |
+        Candidatos $\pm 1$, $\pm 2$, $\pm \frac{1}{3}$, $\pm \frac{2}{3}$; $P\left(\frac{1}{3}\right) = 0$.
+      resposta: '$\pm 1, \pm 2$; 1, 3; 8; $\frac{1}{3}$'
+    - enunciado: 'Cada número abaixo é raiz de um polinômio de coeficientes reais. Associe cada um à outra raiz que fica garantida.'
+      esquerda:
+      - '$3 + 2i$'
+      - '$-3 - 2i$'
+      - '$2i$'
+      - '$-2 + 3i$'
+      - '$3 - 2i$'
+      direita:
+      - '$-2i$'
+      - '$3 - 2i$'
+      - '$-2 - 3i$'
+      - '$3 + 2i$'
+      - '$-3 + 2i$'
+      resolucao: |
+        O conjugado: troca o sinal da parte imaginária.
+      resposta: 'De cima para baixo: 3, 1, 4, 5, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso). Os polinômios têm coeficientes reais.'
+      afirmacoes:
+      - 'Se $1 + i$ é raiz, então $1 - i$ também é.'
+      - 'Todo polinômio de grau 3 tem ao menos uma raiz real.'
+      - 'Um polinômio de grau 4 pode ter exatamente uma raiz não real.'
+      - 'Todo candidato $\frac{p}{q}$ é raiz do polinômio.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (V) As não reais vêm em pares; com 3 raízes, sobra ao menos uma real. (F) Elas vêm em pares. (F) Os candidatos só dizem onde procurar.
+      resposta: V, V, F, F
+    - enunciado: 'Complete a tabela. O fator do 2º grau é $(x - z)(x - \bar{z})$, com coeficientes reais.'
+      tabela:
+        cabecalho: ['Raiz $z$', 'Conjugada $\bar{z}$', 'Fator do 2º grau']
+        linhas:
+        - ['$i$', '${{-i}}$', '${{x^2 + 1}}$']
+        - ['$1 + i$', '${{1 - i}}$', '${{x^2 - 2x + 2}}$']
+        - ['$2 - 3i$', '${{2 + 3i}}$', '${{x^2 - 4x + 13}}$']
+        - ['$-1 + 2i$', '${{-1 - 2i}}$', '${{x^2 + 2x + 5}}$']
+      resolucao: |
+        Fatores $x^2 - (z + \bar{z})x + z\bar{z}$: $x^2 + 1$, $x^2 - 2x + 2$, $x^2 - 4x + 13$, $x^2 + 2x + 5$.
+      resposta: '$-i$; $1 - i$; $2 + 3i$; $-1 - 2i$'
+    - enunciado: 'Escreva o polinômio de grau 3, coeficiente dominante 1 e coeficientes reais, que tem $3i$ e 2 como raízes.'
+      espaco: 8
+      resolucao: |
+        $-3i$ também é raiz: $(x - 2)(x^2 + 9) = x^3 - 2x^2 + 9x - 18$.
+      resposta: '$x^3 - 2x^2 + 9x - 18$'
+    - enunciado: 'Encontre todas as raízes de $x^3 + 2x^2 - 5x - 6$, pesquisando primeiro as raízes inteiras.'
+      espaco: 10
+      resolucao: |
+        Divisores de 6: $P(-1) = 0$. Briot: $x^2 + x - 6 = (x + 3)(x - 2)$.
+      resposta: '$-3$, $-1$ e 2'
+    - enunciado: 'Sabendo que $i$ é raiz de $x^3 - 3x^2 + x - 3$, encontre as outras raízes.'
+      espaco: 10
+      resolucao: |
+        $-i$ também é raiz, logo $x^2 + 1$ divide $P$: $P = (x^2 + 1)(x - 3)$. Raízes $i$, $-i$ e 3.
+      resposta: '$-i$ e 3'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Caio disse que os únicos candidatos a raiz racional de $2x^3 - x^2 - 2x + 1$ são $1$ e $-1$.
+      enunciado: 'Encontre o erro, corrija e dê as raízes.'
+      espaco: 8
+      resolucao: |
+        Faltaram os denominadores que dividem 2: os candidatos são $\pm 1$ e $\pm \frac{1}{2}$. $P = (2x - 1)(x^2 - 1)$: raízes 1, $-1$ e $\frac{1}{2}$.
+      resposta: '1, $-1$ e $\frac{1}{2}$'
+    - enunciado: 'Encontre todas as raízes de $x^3 - x^2 + 4x - 4$.'
+      espaco: 8
+      resolucao: |
+        $P(1) = 0$. $P = (x - 1)(x^2 + 4)$: raízes 1, $2i$ e $-2i$.
+      resposta: '1, $2i$ e $-2i$'
+    - enunciado: 'Sabendo que $1 - 2i$ é raiz de $x^3 - 3x^2 + 7x - 5$, encontre as outras.'
+      espaco: 10
+      resolucao: |
+        $1 + 2i$ também é: o fator é $x^2 - 2x + 5$. $P = (x^2 - 2x + 5)(x - 1)$. Raízes $1 + 2i$ e 1.
+      resposta: '$1 + 2i$ e 1'
+    - enunciado: 'Para $P(x) = 4x^3 - 4x^2 - x + 1$, complete.'
+      itens:
+      - '$P(1) =$ {{0}}'
+      - 'Quociente da divisão por $x - 1$: {{4x^2 - 1}}'
+      - 'Raízes de $P$: {{1, 1/2 e -1/2}}'
+      espaco_item: 8
+      resolucao: |
+        Briot com 1: 4, 0, $-1$, 0. Quociente $4x^2 - 1$, de raízes $\pm \frac{1}{2}$.
+      resposta: '0; $4x^2 - 1$; 1, $\frac{1}{2}$ e $-\frac{1}{2}$'
+    - enunciado: 'Quantas raízes reais (contadas com multiplicidade) pode ter um polinômio de grau 5 com coeficientes reais? Justifique.'
+      espaco: 8
+      resolucao: |
+        As não reais vêm em pares: 0, 2 ou 4 não reais. Sobram 5, 3 ou 1 reais.
+      resposta: '1, 3 ou 5'
+    - enunciado: 'Encontre $a$ e $b$ reais para que $1 + i$ seja raiz de $x^3 + ax + b$, e dê a terceira raiz.'
+      espaco: 10
+      resolucao: |
+        $P(1 + i) = (-2 + a + b) + (2 + a)i = 0$: $a = -2$, $b = 4$. $(x^2 - 2x + 2)(x + 2)$: terceira raiz $-2$.
+      resposta: '$a = -2$, $b = 4$; $-2$'
+    - enunciado: 'Prove que $x^3 - 3x + 1$ não tem raiz racional.'
+      espaco: 8
+      resolucao: |
+        Mônico de coeficientes inteiros: as raízes racionais seriam inteiras e dividiriam 1. $P(1) = -1$ e $P(-1) = 3$: nenhuma.
+      resposta: 'Ver resolução'
+    - enunciado: 'Dê o menor grau de um polinômio de coeficientes reais que tem $1 + i$ e 3 como raízes, e escreva o de coeficiente dominante 1.'
+      espaco: 8
+      resolucao: |
+        $1 - i$ também é raiz: grau 3. $(x - 3)(x^2 - 2x + 2) = x^3 - 5x^2 + 8x - 6$.
+      resposta: 'Grau 3; $x^3 - 5x^2 + 8x - 6$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que, se $z$ é raiz de um polinômio $P$ de coeficientes reais, então $\bar{z}$ também é.'
+      espaco: 10
+      resolucao: |
+        Conjugar respeita somas e produtos e não muda reais: $P(\bar{z}) = \overline{P(z)} = 0$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que todo polinômio de coeficientes reais e grau ímpar tem ao menos uma raiz real.'
+      espaco: 10
+      resolucao: |
+        As não reais vêm em pares conjugados: são em número par. Com total ímpar, sobra ao menos uma real.
+      resposta: 'Ver resolução'
+    - enunciado: 'Seja $\frac{p}{q}$, irredutível, raiz de $a_n x^n + \dots + a_1 x + a_0$, de coeficientes inteiros. Prove que $p$ divide $a_0$.'
+      espaco: 10
+      resolucao: |
+        Vezes $q^n$: $a_n p^n + \dots + a_0 q^n = 0$. Menos $a_0 q^n$, tudo é múltiplo de $p$; logo $p \mid a_0 q^n$ e, primo com $q$, $p \mid a_0$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Usando o teorema das raízes racionais em $x^2 - 2$, prove que $\sqrt{2}$ é irracional.'
+      espaco: 10
+      resolucao: |
+        Os candidatos são $\pm 1$ e $\pm 2$, e nenhum anula $x^2 - 2$. Logo suas raízes, $\pm \sqrt{2}$, não são racionais.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que toda raiz racional de um polinômio mônico de coeficientes inteiros é um número inteiro.'
+      espaco: 10
+      resolucao: |
+        Os candidatos são $\frac{p}{q}$ com $q$ dividindo o coeficiente dominante 1, ou seja, $q = \pm 1$. Então $\frac{p}{q}$ é inteiro.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Ao estudar um circuito, um engenheiro chegou a um polinômio de grau 3 com coeficientes reais. Um programa de computador informou duas das raízes: o número real 3 e o número complexo $1 + 2i$. O engenheiro precisa da terceira raiz e lembrou que, com coeficientes reais, as raízes não reais aparecem aos pares.
+    enunciado: |
+      A terceira raiz do polinômio é
+    opcoes: ['$1 - 2i$', '$-1 + 2i$', '$-3$', '$-1 - 2i$', '$2 + i$']
+    correta: A
+    resolucao: |
+      O conjugado de $1 + 2i$ também é raiz: $1 - 2i$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O número de candidatos a raiz racional de $2x^3 - 5x + 3$, segundo o teorema das raízes racionais, é
+    opcoes: ['$6$', '$8$', '$4$', '$12$', '$10$']
+    correta: B
+    resolucao: |
+      $p \in \{\pm 1, \pm 3\}$, $q \in \{1, 2\}$: $\pm 1$, $\pm 3$, $\pm \frac{1}{2}$, $\pm \frac{3}{2}$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Um polinômio de grau 3 e coeficientes reais tem as raízes 2 e $1 - i$. A terceira raiz é
+    opcoes: ['$-1 + i$.', '$2$.', '$1 + i$.', '$-2$.']
+    correta: C
+    resolucao: |
+      O conjugado de $1 - i$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere $P(x) = x^3 - x^2 + x - 1$. Assinale o que for correto.
+    proposicoes:
+    - '1 é raiz de $P$.'
+    - '$i$ é raiz de $P$.'
+    - '$-i$ é raiz de $P$.'
+    - '$P$ tem exatamente uma raiz real.'
+    - 'Os candidatos a raiz racional de $P$ são $\pm 1$ e $\pm 2$.'
+    - '$P(x) = (x - 1)(x^2 + 1)$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      $P = x^2(x - 1) + (x - 1) = (x - 1)(x^2 + 1)$. 16) Incorreta: só $\pm 1$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um estudante procurou as raízes racionais de $P(x) = 3x^3 - x^2 - 3x + 1$. Ele listou os candidatos $\pm 1$ e $\pm \frac{1}{3}$, calculou o valor do polinômio em cada um e registrou os resultados no quadro. Como o grau é 3, ele sabe que há no máximo três raízes.
+    tabela:
+      cabecalho: ['$x$', '$-1$', '$-\frac{1}{3}$', '$\frac{1}{3}$', '$1$']
+      linhas:
+      - ['$P(x)$', '$0$', '$\frac{16}{9}$', '$0$', '$0$']
+    enunciado: |
+      O conjunto das raízes de $P$ é
+    opcoes: ['$\{-1, 1\}$', '$\{-\frac{1}{3}, \frac{1}{3}\}$', '$\{-1, -\frac{1}{3}, 1\}$', '$\{-1, \frac{1}{3}, 1\}$', '$\{\frac{1}{3}\}$']
+    correta: D
+    resolucao: |
+      Os valores nulos estão em $-1$, $\frac{1}{3}$ e 1; com grau 3, não há outras. ($P = (3x - 1)(x^2 - 1)$.)
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre polinômios de coeficientes reais.
+    afirmativas:
+    - 'Se $3 - i$ é raiz, então $3 + i$ também é.'
+    - 'Um polinômio de grau 3 pode ter três raízes não reais.'
+    - 'Um polinômio de grau 4 pode não ter raiz real.'
+    - 'Se os coeficientes são inteiros e $\frac{p}{q}$, irredutível, é raiz, então $p$ divide o termo independente.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I e III, apenas.', 'II e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta. II. Incorreta: as não reais vêm em pares. III. Correta: $(x^2 + 1)^2$. IV. Correta.
+
+  - estilo: Unesp
+    enunciado: |
+      Sabendo que $i$ é raiz de $x^4 - 2x^3 + 2x^2 - 2x + 1$, o número de raízes reais distintas desse polinômio é
+    opcoes: ['$1$', '$2$', '$0$', '$3$', '$4$']
+    correta: A
+    resolucao: |
+      Dividindo por $x^2 + 1$: $x^2 - 2x + 1 = (x - 1)^2$. Só o 1 (duplo).
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      A figura mostra o gráfico de $P(x) = x^3 + bx^2 + cx + d$, de coeficientes reais, que corta o eixo $x$ só em $x = 2$. Sabe-se que $i$ é raiz de $P$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \draw[mudo, ->] (-1.1,0) -- (3.1,0) node[right, font=\scriptsize] {$x$};
+        \draw[mudo, ->] (0,-1.3) -- (0,1.7) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1pt, domain=-0.6:2.6, samples=60] plot (\x, {0.3*(\x-2)*(\x*\x+1)});
+        \fill[ink] (2,0) circle (1.5pt) node[below right, font=\scriptsize] {$2$};
+        \end{scope}
+    enunciado: |
+      O valor de $P(0)$ é
+    opcoes: ['$2$.', '$-2$.', '$-4$.', '$4$.']
+    correta: B
+    resolucao: |
+      $P = (x - 2)(x^2 + 1)$: $P(0) = -2$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Os números $a$ e $b$ são reais, e $1 - i$ é raiz de $x^3 - 4x^2 + ax + b$. O valor de $a + b$ é
+    opcoes: ['$6$', '$-4$', '$2$', '$10$', '$-2$']
+    correta: C
+    resolucao: |
+      $(x^2 - 2x + 2)(x - s)$: o coeficiente de $x^2$ é $-(2 + s) = -4$, $s = 2$. $(x^2 - 2x + 2)(x - 2) = x^3 - 4x^2 + 6x - 4$: $a + b = 2$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $P(x) = 2x^3 - x^2 + 2x - 1$. Assinale o que for correto.
+    proposicoes:
+    - '$\frac{1}{2}$ é raiz de $P$.'
+    - '$i$ é raiz de $P$.'
+    - '$P$ tem uma única raiz real.'
+    - 'Os candidatos a raiz racional de $P$ são $\pm 1$ e $\pm \frac{1}{2}$.'
+    - '$-i$ é raiz de $P$.'
+    - '$P$ tem três raízes reais.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      $P = x^2(2x - 1) + (2x - 1) = (2x - 1)(x^2 + 1)$. 32) Incorreta.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Um programa procura raízes racionais de polinômios de coeficientes inteiros testando cada candidato $\frac{p}{q}$ uma única vez. Para $4x^3 - 8x^2 - x + 2$, o programa forma as frações com $p$ divisor de 2 e $q$ divisor de 4, descarta as repetidas (como $\frac{2}{2} = 1$) e testa as restantes, positivas e negativas.
+    enunciado: |
+      O número de candidatos testados é
+    opcoes: ['$8$', '$12$', '$6$', '$16$', '$10$']
+    correta: A
+    resolucao: |
+      Valores distintos: $\pm 1$, $\pm 2$, $\pm \frac{1}{2}$, $\pm \frac{1}{4}$. (As raízes são 2 e $\pm \frac{1}{2}$.)
+
+  - estilo: UFPR
+    enunciado: |
+      Considere o polinômio $x^4 - 1$. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '1 e $-1$ são raízes.'
+    - 'Todas as suas raízes são reais.'
+    - '$i$ e $-i$ são raízes.'
+    - 'As suas raízes não reais formam um par de conjugados.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      $x^4 - 1 = (x - 1)(x + 1)(x^2 + 1)$. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Um professor escreveu no quadro cinco polinômios de coeficientes reais e pediu à turma que identificasse aquele que tem o número complexo $1 + i$ como raiz. A dica foi lembrar que, nesse caso, $1 - i$ também é raiz e que o fator $x^2 - 2x + 2$ aparece na fatoração.
+    tabela:
+      cabecalho: ['Nome', 'Polinômio']
+      linhas:
+      - ['P1', '$x^2 + 2x + 2$']
+      - ['P2', '$x^2 - 2x - 2$']
+      - ['P3', '$x^3 - 2x^2 - 2x$']
+      - ['P4', '$x^3 - 2x^2 + 2x$']
+      - ['P5', '$x^2 + 2$']
+    enunciado: |
+      O polinômio que tem $1 + i$ como raiz é
+    opcoes: ['P1.', 'P2.', 'P3.', 'P4.', 'P5.']
+    correta: D
+    resolucao: |
+      P4 $= x(x^2 - 2x + 2)$. P1 tem $-1 \pm i$; P2 e P3 só raízes reais; P5 tem $\pm i\sqrt{2}$.
+
+  - estilo: Unesp
+    enunciado: |
+      O produto das raízes não reais de $x^3 - 3x^2 + 4x - 12$ é
+    opcoes: ['$-4$', '$4$', '$12$', '$2$', '$-12$']
+    correta: B
+    resolucao: |
+      $x^2(x - 3) + 4(x - 3) = (x - 3)(x^2 + 4)$: $2i \cdot (-2i) = 4$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere $P(x) = x^4 + x^3 + x^2 + 3x - 6$. Assinale o que for correto.
+    proposicoes:
+    - '1 é raiz de $P$.'
+    - '$-2$ é raiz de $P$.'
+    - '$i\sqrt{3}$ é raiz de $P$.'
+    - '$P$ tem exatamente duas raízes reais.'
+    - '3 é raiz de $P$.'
+    - '$P(x) = (x^2 + 3)(x^2 + x - 2)$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      Testando divisores de 6: $P(1) = P(-2) = 0$. Dividindo por $(x - 1)(x + 2) = x^2 + x - 2$: $x^2 + 3$, de raízes $\pm i\sqrt{3}$. 16) Incorreta: $P(3) = 120$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Um polinômio de grau 5 e coeficientes reais tem, entre as suas raízes, $1 + i$, $2i$ e 3. O número de raízes reais desse polinômio é
+    opcoes: ['$1$.', '$3$.', '$2$.', '$0$.']
+    correta: A
+    resolucao: |
+      $1 - i$ e $-2i$ também são raízes: já são 5. Só o 3 é real.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Numa atividade, os alunos receberam $P(x) = x^3 - 4x^2 + 9x - 10$ e deviam achar todas as suas raízes. Primeiro testaram os divisores de 10 até encontrar uma raiz inteira; depois dividiram $P$ pelo fator correspondente e resolveram a equação do 2º grau que sobrou.
+    enunciado: |
+      A raiz inteira encontrada é
+    opcoes: ['$1$', '$5$', '$2$', '$-2$', '$10$']
+    correta: C
+    resolucao: |
+      $P(2) = 8 - 16 + 18 - 10 = 0$.
+
+  - estilo: Unesp
+    enunciado: |
+      As outras duas raízes de $P$ são
+    opcoes: ['$-1 \pm 2i$', '$2 \pm i$', '$1 \pm i$', '$1 \pm 2i$', '$\pm 2i$']
+    correta: D
+    resolucao: |
+      $P = (x - 2)(x^2 - 2x + 5)$; $\Delta = -16$: $x = 1 \pm 2i$.
+
+  - estilo: Fuvest
+    enunciado: |
+      A soma dos valores inteiros de $m$ para os quais $x^3 + mx + 2$ tem uma raiz inteira é
+    opcoes: ['$-3$', '$1$', '$-5$', '$7$', '$-7$']
+    correta: E
+    resolucao: |
+      A raiz inteira divide 2. $P(1) = 0$: $m = -3$. $P(-1) = 0$: $m = 1$. $P(2) = 0$: $m = -5$. $P(-2) = 0$: $m = -3$. Valores $-3$, 1 e $-5$; soma $-7$.
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra o gráfico de um polinômio de grau 4 e coeficientes reais. As suas raízes reais, ambas simples, são as abscissas indicadas.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.75]
+        \draw[mudo, ->] (-1.9,0) -- (2.9,0) node[right, font=\scriptsize] {$x$};
+        \draw[mudo, ->] (0,-0.8) -- (0,1.6) node[above, font=\scriptsize] {$y$};
+        \draw[roxo, line width=1pt, domain=-1.4:2.4, samples=70] plot (\x, {0.15*(\x+1)*(\x-2)*(\x*\x+1)});
+        \foreach \t in {-1, 2} \fill[ink] (\t,0) circle (1.5pt) node[below, font=\scriptsize] {$\t$};
+        \end{scope}
+    enunciado: |
+      O número de raízes não reais desse polinômio é
+    opcoes: ['$0$', '$2$', '$4$', '$1$', '$3$']
+    correta: B
+    resolucao: |
+      São 4 raízes ao todo; duas reais simples, então 2 não reais (um par de conjugados).
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere $P(x) = 2x^3 - 3x^2 + 8x - 12$.'
+    itens:
+    - 'Liste os candidatos a raiz racional de $P$.'
+    - 'Encontre a raiz racional de $P$.'
+    - 'Encontre as outras raízes.'
+    espaco: 62
+    resolucao: |
+      a) $p \in \{\pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 12\}$, $q \in \{1, 2\}$: esses números e $\pm \frac{1}{2}$, $\pm \frac{3}{2}$.
+      b) $P = x^2(2x - 3) + 4(2x - 3) = (2x - 3)(x^2 + 4)$: $\frac{3}{2}$.
+      c) $\pm 2i$.
+    resposta: 'b) $\frac{3}{2}$; c) $\pm 2i$'
+
+  - estilo: Unicamp
+    enunciado: 'Sabe-se que $1 + 2i$ é raiz de $P(x) = x^4 - 2x^3 + 6x^2 - 2x + 5$.'
+    itens:
+    - 'Dê outra raiz de $P$, justificando.'
+    - 'Mostre que $x^2 - 2x + 5$ divide $P$ e encontre o quociente.'
+    - 'Encontre todas as raízes de $P$.'
+    espaco: 62
+    resolucao: |
+      a) $1 - 2i$: os coeficientes são reais.
+      b) $(x - 1 - 2i)(x - 1 + 2i) = x^2 - 2x + 5$. Dividindo: quociente $x^2 + 1$, resto 0.
+      c) $1 \pm 2i$ e $\pm i$.
+    resposta: 'c) $1 \pm 2i$ e $\pm i$'
+
+  - estilo: ITA
+    enunciado: |
+      O polinômio $x^4 + ax^3 + bx^2 + cx + d$, de coeficientes reais, tem $i$ e $1 + i$ como raízes. O valor de $a + b + c + d$ é
+    opcoes: ['$1$', '$2$', '$0$', '$-1$', '$3$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $P = (x^2 + 1)(x^2 - 2x + 2)$. $a + b + c + d = P(1) - 1 = 2 \cdot 1 - 1 = 1$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'O teorema das raízes racionais também prova irracionalidades.'
+    itens:
+    - 'Liste os candidatos a raiz racional de $x^2 - 3$.'
+    - 'Conclua que $\sqrt{3}$ é irracional.'
+    - 'Prove, do mesmo modo, que $\sqrt[3]{2}$ é irracional.'
+    espaco: 62
+    resolucao: |
+      a) $\pm 1$ e $\pm 3$.
+      b) $1 - 3$, $9 - 3$: nenhum anula. Como $\sqrt{3}$ é raiz, não é racional.
+      c) $\sqrt[3]{2}$ é raiz de $x^3 - 2$, cujos candidatos $\pm 1$, $\pm 2$ dão $-1$, $-3$, 6, $-10$: nenhum é raiz.
+    resposta: 'Ver resolução'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere polinômios de coeficientes reais. Assinale o que for correto.
+    proposicoes:
+    - 'Se $2 + 3i$ é raiz, então $2 - 3i$ também é.'
+    - 'Todo polinômio de grau ímpar tem ao menos uma raiz real.'
+    - '$x^3 + x + 1$ não tem raiz racional.'
+    - '$\frac{2}{3}$ é candidato a raiz racional de $3x^3 + x - 2$.'
+    - 'Todo polinômio de grau 4 tem ao menos uma raiz real.'
+    - '$(x^2 + 1)^2$ tem $i$ como raiz dupla.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      01) e 02) Corretas. 04) $P(1) = 3$, $P(-1) = -1$. 08) $p = 2$ divide 2 e $q = 3$ divide 3. 16) Incorreta: $x^4 + 1$. 32) $(x - i)^2(x + i)^2$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $P(x) = x^3 + ax^2 + bx + 10$, com $a$ e $b$ reais, que tem $1 - 2i$ como raiz.'
+    itens:
+    - 'Justifique que $1 + 2i$ também é raiz.'
+    - 'Use o produto das raízes para encontrar a terceira raiz.'
+    - 'Encontre $a$ e $b$.'
+    espaco: 62
+    resolucao: |
+      a) Coeficientes reais.
+      b) $(1 - 2i)(1 + 2i) \cdot s = 5s = -10$: $s = -2$.
+      c) $(x^2 - 2x + 5)(x + 2) = x^3 + x + 10$: $a = 0$, $b = 1$.
+    resposta: 'b) $-2$; c) $a = 0$, $b = 1$'
+
+  - estilo: Unicamp
+    texto: |
+      As arestas de uma caixa em forma de paralelepípedo medem $x$, $x + 1$ e $x + 3$ centímetros, e o volume é 72 cm³.
+    enunciado: ''
+    itens:
+    - 'Escreva a equação polinomial que dá $x$.'
+    - 'Encontre a raiz inteira, testando divisores.'
+    - 'Prove que as outras raízes não são reais e dê as medidas da caixa.'
+    espaco: 62
+    resolucao: |
+      a) $x(x + 1)(x + 3) = 72$: $x^3 + 4x^2 + 3x - 72 = 0$.
+      b) $27 + 36 + 9 - 72 = 0$: $x = 3$.
+      c) Quociente $x^2 + 7x + 24$, $\Delta = 49 - 96 < 0$. Medidas 3, 4 e 6 cm.
+    resposta: 'b) 3; c) 3 cm, 4 cm e 6 cm'
+
+  - estilo: Fuvest
+    enunciado: |
+      A menor raiz de $6x^3 - 5x^2 - 2x + 1$ é
+    opcoes: ['$-1$', '$-\frac{1}{2}$', '$-\frac{1}{3}$', '$\frac{1}{3}$', '$-\frac{1}{6}$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $P(1) = 0$. Quociente $6x^2 + x - 1 = (3x - 1)(2x + 1)$. Raízes 1, $\frac{1}{3}$ e $-\frac{1}{2}$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Procura-se um polinômio $P$ de coeficientes reais e coeficiente dominante 1 que tenha $i$, $1 + i$ e 2 como raízes.'
+    itens:
+    - 'Qual o menor grau possível de $P$? Justifique.'
+    - 'Escreva $P$ na forma fatorada, com fatores reais.'
+    - 'Calcule $P(0)$.'
+    espaco: 62
+    resolucao: |
+      a) $-i$ e $1 - i$ também são raízes: grau 5.
+      b) $(x^2 + 1)(x^2 - 2x + 2)(x - 2)$.
+      c) $1 \cdot 2 \cdot (-2) = -4$.
+    resposta: 'a) 5; c) $-4$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $P(x) = x^4 - 4x^3 + 5x^2 - 4x + 4$.'
+    itens:
+    - 'Liste os candidatos a raiz inteira de $P$.'
+    - 'Mostre que 2 é raiz dupla de $P$.'
+    - 'Encontre as demais raízes.'
+    espaco: 62
+    resolucao: |
+      a) $\pm 1$, $\pm 2$, $\pm 4$.
+      b) Briot com 2: 1, $-2$, 1, $-2$, 0. De novo com 2: 1, 0, 1, 0. Exatas duas vezes; sobra $x^2 + 1$, que não se anula em 2.
+      c) $\pm i$.
+    resposta: 'c) $\pm i$'
