@@ -1,0 +1,572 @@
+# Aula 3.6.2 — Sistemas lineares: regra de Cramer
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: determinantes D, Dx, Dy e Dz; regra de Cramer em sistemas 2 × 2 e 3 × 3; D ≠ 0 garante SPD;
+# D = 0: Cramer não decide (SPI ou SI); sistemas homogêneos (D ≠ 0: só a solução nula; D = 0: infinitas).
+# Escalonamento (3.6.3) e discussão completa com parâmetro (3.6.4) ficam para as próximas aulas.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Resolva o sistema $\begin{cases} 2x + 3y = 8 \\ x - y = -1 \end{cases}$ pela regra de Cramer, completando.'
+      itens:
+      - '$D = \begin{vmatrix} 2 & 3 \\ 1 & -1 \end{vmatrix} = {{-5}}$'
+      - '$D_x = \begin{vmatrix} 8 & 3 \\ -1 & -1 \end{vmatrix} = {{-5}}$ e $D_y = \begin{vmatrix} 2 & 8 \\ 1 & -1 \end{vmatrix} = {{-10}}$'
+      - '$x = \dfrac{D_x}{D} = {{1}}$ e $y = \dfrac{D_y}{D} = {{2}}$'
+      resolucao: |
+        $D = 2 \cdot (-1) - 3 \cdot 1 = -5$. $D_x = 8 \cdot (-1) - 3 \cdot (-1) = -5$ e $D_y = 2 \cdot (-1) - 8 \cdot 1 = -10$.
+        $x = 1$ e $y = 2$. Conferência: $2 + 6 = 8$ e $1 - 2 = -1$.
+      resposta: '$D = -5$, $D_x = -5$, $D_y = -10$; $(1, 2)$'
+    - enunciado: 'Resolva pela regra de Cramer.'
+      itens:
+      - '$\begin{cases} x + y = 7 \\ x - y = 1 \end{cases}$'
+      - '$\begin{cases} 3x - 2y = 4 \\ 5x + y = 11 \end{cases}$'
+      espaco_item: 18
+      resolucao: |
+        (a) $D = -1 - 1 = -2$; $D_x = -7 - 1 = -8$; $D_y = 1 - 7 = -6$. $x = 4$ e $y = 3$.
+        (b) $D = 3 + 10 = 13$; $D_x = 4 + 22 = 26$; $D_y = 33 - 20 = 13$. $x = 2$ e $y = 1$.
+      resposta: '(a) $(4, 3)$ (b) $(2, 1)$'
+    - enunciado: 'Complete o quadro com o valor de $D$ e indique se a regra de Cramer pode ser usada (sim ou não).'
+      tabela:
+        cabecalho: ['Sistema', '$D$', 'Cramer?']
+        linhas:
+        - ['$x + 2y = 3$ e $3x + y = 4$', '${{-5}}$', '{{sim}}']
+        - ['$2x + 4y = 1$ e $x + 2y = 5$', '${{0}}$', '{{não}}']
+        - ['$3x - y = 2$ e $6x - 2y = 4$', '${{0}}$', '{{não}}']
+        - ['$4x + y = 0$ e $x + y = 3$', '${{3}}$', '{{sim}}']
+      resolucao: |
+        $D = 1 - 6 = -5$; $D = 4 - 4 = 0$; $D = -6 + 6 = 0$; $D = 4 - 1 = 3$. Cramer só se aplica quando $D \neq 0$.
+        (Com $D = 0$, o 2º sistema é SI e o 3º é SPI: Cramer não distingue esses casos.)
+      resposta: '$-5$, sim; $0$, não; $0$, não; $3$, sim'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Se $D \neq 0$, o sistema é possível e determinado.'
+      - 'Se $D = 0$, o sistema é impossível.'
+      - '$D_x$ é obtido trocando, em $D$, a coluna dos coeficientes de $x$ pela coluna dos termos independentes.'
+      - 'Um sistema homogêneo com $D \neq 0$ tem infinitas soluções.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) É o que garante a regra de Cramer. (F) Com $D = 0$, o sistema pode ser SPI ou SI.
+        (V) É a definição. (F) Com $D \neq 0$, a solução é única; num sistema homogêneo, é a nula.
+      resposta: V, F, V, F
+    - enunciado: 'No sistema $\begin{cases} 2x + y = 5 \\ x + 3y = 5 \end{cases}$, associe cada número ao que ele representa (um número pode ser usado mais de uma vez).'
+      esquerda:
+      - '$5$'
+      - '$10$'
+      - '$2$'
+      - '$1$'
+      direita:
+      - '$D$'
+      - '$D_x$'
+      - '$D_y$'
+      - '$x$'
+      - '$y$'
+      resolucao: |
+        $D = 6 - 1 = 5$; $D_x = 15 - 5 = 10$; $D_y = 10 - 5 = 5$. Então $x = \tfrac{10}{5} = 2$ e $y = \tfrac{5}{5} = 1$.
+      resposta: 'De cima para baixo: 1, 2, 1, 3, 4'
+    - enunciado: 'Considere o sistema $\begin{cases} x + y + z = 6 \\ x - y + z = 2 \\ 2x + y - z = 1 \end{cases}$.'
+      itens:
+      - 'Calcule $D$ e $D_z$.'
+      - 'Obtenha $z$ pela regra de Cramer.'
+      espaco_item: 20
+      resolucao: |
+        (a) Por Sarrus: $D = 1 + 2 + 1 - (-2) - 1 - (-1) = 6$. $D_z = \begin{vmatrix} 1 & 1 & 6 \\ 1 & -1 & 2 \\ 2 & 1 & 1 \end{vmatrix} = -1 + 4 + 6 + 12 - 2 - 1 = 18$.
+        (b) $z = \tfrac{18}{6} = 3$. (A solução completa é $(1, 2, 3)$.)
+      resposta: '(a) $D = 6$ e $D_z = 18$ (b) $z = 3$'
+    - enunciado: 'Calcule $D$ para o sistema homogêneo $\begin{cases} 2x + 3y = 0 \\ x - 4y = 0 \end{cases}$ e conclua quais são as suas soluções.'
+      espaco: 16
+      resolucao: |
+        $D = -8 - 3 = -11 \neq 0$: o sistema é SPD. Como $(0, 0)$ é sempre solução de um sistema homogêneo, ela é a única.
+      resposta: '$D = -11$; só $(0, 0)$'
+  - nome: Nível 2
+    questoes:
+    - enunciado: 'No sistema $\begin{cases} x + 2y + z = 8 \\ 2x - y + z = 3 \\ x + y - z = 0 \end{cases}$, calcule apenas $D$ e $D_y$ e determine $y$.'
+      espaco: 22
+      resolucao: |
+        $D = 1 + 2 + 2 - (-1) - 1 - (-4) = 9$. $D_y = \begin{vmatrix} 1 & 8 & 1 \\ 2 & 3 & 1 \\ 1 & 0 & -1 \end{vmatrix} = -3 + 8 + 0 - 3 - 0 - (-16) = 18$.
+        $y = \tfrac{18}{9} = 2$. Com Cramer dá para calcular só a incógnita pedida.
+      resposta: '$D = 9$, $D_y = 18$, $y = 2$'
+    - texto: |
+        Para resolver $\begin{cases} 3x + y = 7 \\ 2x - y = 3 \end{cases}$, Lia calculou $D = -5$ e $D_x = \begin{vmatrix} 3 & 7 \\ 2 & 3 \end{vmatrix} = -5$, e concluiu que $x = 1$.
+      enunciado: 'Encontre o erro de Lia e resolva o sistema corretamente.'
+      espaco: 18
+      resolucao: |
+        Em $D_x$ troca-se a coluna de $x$ (a primeira) pelos termos independentes. Lia trocou a coluna de $y$: o que ela calculou foi $D_y$.
+        Correto: $D_x = \begin{vmatrix} 7 & 1 \\ 3 & -1 \end{vmatrix} = -10$, $x = 2$; e $D_y = -5$, $y = 1$.
+      resposta: 'Ela calculou $D_y$; a solução é $(2, 1)$'
+    - enunciado: 'Determine os valores de $k$ para os quais o sistema $\begin{cases} kx + 2y = 1 \\ 8x + ky = 3 \end{cases}$ é possível e determinado.'
+      espaco: 16
+      resolucao: |
+        $D = k^2 - 16$. O sistema é SPD quando $D \neq 0$: $k \neq 4$ e $k \neq -4$.
+      resposta: '$k \neq 4$ e $k \neq -4$'
+    - enunciado: 'Resolva, pela regra de Cramer, o sistema $\begin{cases} x + my = 1 \\ mx + y = 1 \end{cases}$, com $m \neq 1$ e $m \neq -1$.'
+      espaco: 20
+      resolucao: |
+        $D = 1 - m^2$, $D_x = 1 - m$ e $D_y = 1 - m$.
+        $x = y = \dfrac{1 - m}{(1 - m)(1 + m)} = \dfrac{1}{1 + m}$.
+      resposta: '$x = y = \frac{1}{1 + m}$'
+    - texto: |
+        Numa loja, os preços de duas compras foram anotados no quadro.
+      tabela:
+        cabecalho: ['Compra', 'Preço']
+        linhas:
+        - ['2 camisetas e 1 bermuda', 'R\$\,130,00']
+        - ['1 camiseta e 2 bermudas', 'R\$\,140,00']
+      enunciado: 'Monte o sistema e use a regra de Cramer para achar o preço de cada peça.'
+      espaco: 20
+      resolucao: |
+        $2c + b = 130$ e $c + 2b = 140$. $D = 3$, $D_c = 260 - 140 = 120$ e $D_b = 280 - 130 = 150$.
+        $c = 40$ e $b = 50$: camiseta R\$\,40,00 e bermuda R\$\,50,00.
+      resposta: 'Camiseta R\$\,40,00 e bermuda R\$\,50,00'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'Num sistema homogêneo com $D \neq 0$, a única solução é a nula.'
+      - 'Num sistema $2 \times 2$ com $D = 0$ e $D_x \neq 0$, o sistema é impossível.'
+      - 'Trocar a ordem das equações de um sistema muda a sua solução.'
+      - 'Multiplicar uma das equações por 3 multiplica $D$ por 3, mas não muda a solução.'
+      justificar: true
+      espaco: 22
+      resolucao: |
+        (V) Com $D \neq 0$ há uma só solução, e a nula sempre serve. (V) Toda solução satisfaz $D \cdot x = D_x$; com $D = 0$, isso daria $0 = D_x \neq 0$.
+        (F) As equações são as mesmas; só o sinal de $D$, $D_x$ e $D_y$ muda, e os quocientes não. (V) Uma linha de $D$ é multiplicada por 3; $D_x$ e $D_y$ também, e os quocientes não mudam.
+      resposta: V, V, F, V
+    - enunciado: 'No sistema $\begin{cases} 2x + y - z = 3 \\ x - y + 2z = 5 \\ 3x + 2y + z = 10 \end{cases}$, determine $z$ pela regra de Cramer.'
+      espaco: 22
+      resolucao: |
+        $D = 2 \cdot (-1 - 4) - 1 \cdot (1 - 6) + (-1) \cdot (2 + 3) = -10 + 5 - 5 = -10$.
+        $D_z = \begin{vmatrix} 2 & 1 & 3 \\ 1 & -1 & 5 \\ 3 & 2 & 10 \end{vmatrix} = 2 \cdot (-20) - 1 \cdot (10 - 15) + 3 \cdot (2 + 3) = -40 + 5 + 15 = -20$. $z = 2$.
+      resposta: '$z = 2$'
+    - enunciado: 'Determine $k$ para que o sistema homogêneo $\begin{cases} x + ky = 0 \\ kx + 9y = 0 \end{cases}$ tenha soluções diferentes de $(0, 0)$.'
+      espaco: 16
+      resolucao: |
+        Soluções não nulas só existem se o sistema não for SPD, isto é, se $D = 9 - k^2 = 0$: $k = 3$ ou $k = -3$.
+      resposta: '$k = 3$ ou $k = -3$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Considere o sistema $\begin{cases} a_1 x + b_1 y = c_1 \\ a_2 x + b_2 y = c_2 \end{cases}$.'
+      itens:
+      - 'Multiplicando a 1ª equação por $b_2$ e a 2ª por $b_1$ e subtraindo, mostre que toda solução satisfaz $D \cdot x = D_x$.'
+      - 'Conclua que, se $D = 0$ e $D_x \neq 0$, o sistema é impossível.'
+      espaco_item: 22
+      resolucao: |
+        (a) $a_1 b_2 x + b_1 b_2 y = c_1 b_2$ e $a_2 b_1 x + b_1 b_2 y = c_2 b_1$. Subtraindo: $(a_1 b_2 - a_2 b_1)x = c_1 b_2 - c_2 b_1$, isto é, $D \cdot x = D_x$.
+        (b) Uma solução daria $0 \cdot x = D_x \neq 0$, o que é impossível. Então não há solução.
+      resposta: 'Ver resolução'
+    - enunciado: 'Considere o sistema $\begin{cases} x + y + z = 1 \\ x + y + z = 2 \\ x + y + z = 3 \end{cases}$.'
+      itens:
+      - 'Mostre que $D = D_x = D_y = D_z = 0$.'
+      - 'Classifique o sistema. O que isso mostra sobre o caso “todos os determinantes nulos”?'
+      espaco_item: 22
+      resolucao: |
+        (a) As três colunas de coeficientes são iguais: $D = 0$. Em $D_x$, $D_y$ e $D_z$ sobram duas colunas iguais a $(1, 1, 1)$: todos são nulos.
+        (b) $x + y + z$ não pode valer 1, 2 e 3: SI. Ter todos os determinantes nulos não garante SPI.
+      resposta: '(a) Ver resolução (b) SI'
+    - enunciado: 'Considere o sistema $\begin{cases} x + y + z = 1 \\ x + 2y + 3z = 2 \\ x + 4y + kz = 4 \end{cases}$.'
+      itens:
+      - 'Para que valores de $k$ o sistema é possível e determinado?'
+      - 'Mostre que, nesses casos, $z = 0$, qualquer que seja $k$, e determine $x$ e $y$.'
+      espaco_item: 22
+      resolucao: |
+        (a) $D = 1 \cdot (2k - 12) - 1 \cdot (k - 3) + 1 \cdot (4 - 2) = k - 7$. SPD para $k \neq 7$.
+        (b) Em $D_z$, a coluna dos termos independentes, $(1, 2, 4)$, fica igual à coluna de $y$: $D_z = 0$ e $z = 0$. Então $x + y = 1$ e $x + 2y = 2$: $y = 1$ e $x = 0$.
+      resposta: '(a) $k \neq 7$ (b) $(0, 1, 0)$'
+    - enunciado: 'Uma caneta, dois lápis e três borrachas custam R\$\,12,00; duas canetas, um lápis e uma borracha custam R\$\,13,00; uma caneta, um lápis e uma borracha custam R\$\,8,00. Mostre que o determinante dos coeficientes vale 1 e obtenha, por Cramer, o preço da borracha.'
+      espaco: 24
+      resolucao: |
+        $c + 2\ell + 3b = 12$, $2c + \ell + b = 13$, $c + \ell + b = 8$. $D = 1 \cdot (1 - 1) - 2 \cdot (2 - 1) + 3 \cdot (2 - 1) = 1$.
+        Com $D = 1$, cada preço é o próprio determinante: $D_b = \begin{vmatrix} 1 & 2 & 12 \\ 2 & 1 & 13 \\ 1 & 1 & 8 \end{vmatrix} = 1 \cdot (8 - 13) - 2 \cdot (16 - 13) + 12 \cdot (2 - 1) = 1$. Borracha: R\$\,1,00.
+      resposta: 'R\$\,1,00'
+    - enunciado: 'Determine $a$ e $b$ para que o sistema $\begin{cases} ax + 2y = b \\ 3x + 6y = 9 \end{cases}$ seja possível e indeterminado.'
+      espaco: 20
+      resolucao: |
+        É preciso $D = 6a - 6 = 0$, isto é, $a = 1$. Então as equações são $x + 2y = b$ e $x + 2y = 3$ (dividindo a 2ª por 3). Elas coincidem só se $b = 3$; com $b \neq 3$, o sistema é SI.
+      resposta: '$a = 1$ e $b = 3$'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Em uma lanchonete, dois clientes fizeram os pedidos indicados no quadro e pagaram os valores mostrados. O gerente quer conferir o preço de cada item e, para isso, montou um sistema de duas equações, que resolveu pela regra de Cramer.
+    tabela:
+      cabecalho: ['Pedido', 'Valor']
+      linhas:
+      - ['2 hambúrgueres e 1 refrigerante', 'R\$\,31,00']
+      - ['1 hambúrguer e 3 refrigerantes', 'R\$\,23,00']
+    enunciado: |
+      O preço de um hambúrguer é
+    opcoes: ['R\$\,10,00.', 'R\$\,12,00.', 'R\$\,13,00.', 'R\$\,14,00.', 'R\$\,15,00.']
+    correta: D
+    resolucao: |
+      $2h + r = 31$ e $h + 3r = 23$. $D = 6 - 1 = 5$, $D_h = 93 - 23 = 70$ e $h = 14$. ($D_r = 46 - 31 = 15$ e $r = 3$.)
+
+  - estilo: Fuvest
+    enunciado: |
+      Pela regra de Cramer, o valor de $y$ no sistema $\begin{cases} 4x + y = 11 \\ x - 2y = -4 \end{cases}$ é
+    opcoes: ['$1$', '$2$', '$3$', '$4$', '$5$']
+    correta: C
+    resolucao: |
+      $D = -8 - 1 = -9$ e $D_y = 4 \cdot (-4) - 11 \cdot 1 = -27$. $y = 3$ (e $x = 2$).
+
+  - estilo: Unicamp
+    enunciado: |
+      O determinante dos coeficientes do sistema $\begin{cases} 2x - y = 1 \\ 4x + ky = 3 \end{cases}$ é nulo para $k$ igual a
+    opcoes: ['$-4$.', '$-2$.', '$2$.', '$4$.']
+    correta: B
+    resolucao: |
+      $D = 2k - (-1) \cdot 4 = 2k + 4 = 0 \Rightarrow k = -2$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere o sistema $\begin{cases} x + 2y = 5 \\ 3x - y = 1 \end{cases}$ e os determinantes $D$, $D_x$ e $D_y$ da regra de Cramer. Assinale o que for correto.
+    proposicoes:
+    - '$D = -7$.'
+    - '$D_x = 7$.'
+    - '$y = 2$.'
+    - 'O sistema é possível e indeterminado.'
+    - '$x + y = 3$.'
+    corretas: [1, 3, 5]
+    resolucao: |
+      $D = -1 - 6 = -7$; $D_x = -5 - 2 = -7$; $D_y = 1 - 15 = -14$. Então $x = 1$ e $y = 2$.
+      01) Correta. 02) Incorreta: $D_x = -7$. 04) Correta. 08) Incorreta: $D \neq 0$, SPD. 16) Correta.
+      Soma: $01 + 04 + 16 = 21$.
+
+  - estilo: Unesp
+    texto: |
+      O perímetro do retângulo da figura é 34 cm, e o comprimento $x$ excede em 5 cm o dobro da largura $y$.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1pt, fill=roxo!8] (0,0) rectangle (5.2,1.8);
+        \node[below, font=\small] at (2.6,0) {$x$};
+        \node[right, font=\small] at (5.2,0.9) {$y$};
+        \end{scope}
+    enunciado: |
+      A área desse retângulo, em cm², é
+    opcoes: ['$42$', '$48$', '$52$', '$56$', '$60$']
+    correta: C
+    resolucao: |
+      $x + y = 17$ e $x - 2y = 5$. $D = -2 - 1 = -3$, $D_x = -34 - 5 = -39$ e $D_y = 5 - 17 = -12$: $x = 13$ e $y = 4$. Área: $52$ cm².
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir sobre a regra de Cramer em sistemas lineares $n \times n$.
+    afirmativas:
+    - 'Se $D \neq 0$, o sistema é possível e determinado.'
+    - 'Se $D = 0$, o sistema é impossível.'
+    - 'Em um sistema homogêneo com $D \neq 0$, a única solução é a nula.'
+    - 'Para calcular $D_y$, troca-se a coluna dos coeficientes de $y$ pela coluna dos termos independentes.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'I, III e IV, apenas.', 'II e IV, apenas.', 'I e III, apenas.', 'II, III e IV, apenas.']
+    correta: B
+    resolucao: |
+      I. Correta. II. Incorreta: com $D = 0$, o sistema pode ser SPI ou SI. III. Correta: a solução é única, e a nula sempre serve. IV. Correta.
+
+  - estilo: Fuvest
+    enunciado: |
+      Em um sistema linear $2 \times 2$, obteve-se $D = 4$, $D_x = 12$ e $D_y = -8$. A soma $x + y$ é
+    opcoes: ['$-1$', '$1$', '$4$', '$5$', '$20$']
+    correta: B
+    resolucao: |
+      $x = \tfrac{12}{4} = 3$ e $y = \tfrac{-8}{4} = -2$. Soma: $1$. Quem calcula $x - y$ marca 5.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Enem
+    texto: |
+      Uma fábrica produz três peças, P, Q e R, que passam por três máquinas. O quadro mostra quantas horas cada unidade de cada peça ocupa em cada máquina e o total de horas disponíveis por semana. O gerente quer usar todas as horas de todas as máquinas e montou um sistema linear para descobrir quantas unidades de cada peça produzir.
+    tabela:
+      cabecalho: ['Máquina', 'P', 'Q', 'R', 'Horas']
+      linhas:
+      - ['1', '1', '2', '1', '35']
+      - ['2', '2', '1', '1', '35']
+      - ['3', '1', '1', '2', '30']
+    enunciado: |
+      O número de unidades da peça R a produzir por semana é
+    opcoes: ['$5$', '$10$', '$15$', '$20$', '$25$']
+    correta: A
+    resolucao: |
+      $p + 2q + r = 35$, $2p + q + r = 35$, $p + q + 2r = 30$. $D = -4$ e $D_r = -20$: $r = 5$.
+      Somando as três equações, $4(p + q + r) = 100$, e daí $p = q = 10$; 25 é o total de peças.
+
+  - estilo: Unicamp
+    enunciado: |
+      O sistema $\begin{cases} x + 2y = 4 \\ 3x + ky = m \end{cases}$ é possível e determinado se, e somente se,
+    opcoes: ['$k \neq 6$.', '$k \neq 6$ e $m \neq 12$.', '$m \neq 12$.', '$k = 6$ e $m = 12$.']
+    correta: A
+    resolucao: |
+      SPD $\iff D = k - 6 \neq 0$. O termo independente $m$ não interfere em $D$.
+
+  - estilo: UFPR
+    enunciado: |
+      Considere o sistema $\begin{cases} x + y = 3 \\ y + z = 5 \\ x + z = 4 \end{cases}$. Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'O determinante dos coeficientes é 2.'
+    - 'O sistema é possível e indeterminado.'
+    - '$D_z = 6$.'
+    - '$x + y + z = 6$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – V.', 'F – F – V – V.', 'V – F – F – V.', 'F – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      (V) $D = 1 \cdot 1 - 1 \cdot (0 - 1) + 0 = 2$. (F) $D \neq 0$: SPD.
+      (V) Somando as equações, $x + y + z = 6$; então $z = 3$ e $D_z = z \cdot D = 6$. (V)
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o sistema $\begin{cases} kx + y = 2 \\ x + ky = 2 \end{cases}$, em que $k$ é real. Assinale o que for correto.
+    proposicoes:
+    - 'Para $k = 2$, o sistema é possível e determinado.'
+    - 'Para $k \neq 1$ e $k \neq -1$, a solução tem $x = y$.'
+    - 'Para $k = 1$, o sistema é impossível.'
+    - 'Para $k = -1$, o sistema é impossível.'
+    - 'Para $k = 3$, $x = \dfrac{1}{2}$.'
+    - 'Para $k = 0$, $x + y = 2$.'
+    corretas: [1, 2, 4, 5]
+    resolucao: |
+      $D = k^2 - 1$, $D_x = 2k - 2$ e $D_y = 2k - 2$. Para $k \neq \pm 1$: $x = y = \tfrac{2}{k + 1}$.
+      01) Correta. 02) Correta. 04) Incorreta: com $k = 1$, as duas equações são $x + y = 2$: SPI. 08) Correta: $-x + y = 2$ e $x - y = 2$ somadas dão $0 = 4$.
+      16) Correta: $\tfrac{2}{4}$. 32) Incorreta: $x = y = 2$ e $x + y = 4$.
+      Soma: $01 + 02 + 08 + 16 = 27$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $(x, y, z)$ é a solução de $\begin{cases} x + y + z = 6 \\ 2x - y + z = 3 \\ x + 2y - z = 2 \end{cases}$, então o produto $xyz$ é
+    opcoes: ['$1$', '$2$', '$4$', '$6$', '$8$']
+    correta: D
+    resolucao: |
+      $D = 1 \cdot (1 - 2) - 1 \cdot (-2 - 1) + 1 \cdot (4 + 1) = 7$; $D_x = 7$, $D_y = 14$, $D_z = 21$. Solução $(1, 2, 3)$ e produto 6.
+
+  - estilo: Unesp
+    texto: |
+      Um sistema linear homogêneo sempre admite a solução nula. Em muitas aplicações, porém, interessam as soluções não nulas, que existem apenas quando o sistema não é possível e determinado.
+    enunciado: |
+      O sistema $\begin{cases} x + 2y = 0 \\ 3x + ky = 0 \end{cases}$ admite soluções diferentes de $(0, 0)$ se, e somente se, $k$ é igual a
+    opcoes: ['$-6$.', '$0$.', '$3$.', '$6$.', '$2$.']
+    correta: D
+    resolucao: |
+      É preciso $D = k - 6 = 0$, isto é, $k = 6$. Aí a segunda equação é o triplo da primeira, e há infinitas soluções.
+
+  - estilo: Enem
+    texto: |
+      Um laboratório precisa de 20 litros de uma solução com 25\% de álcool. No estoque há uma solução com 10\% de álcool e outra com 30\%. O técnico vai misturar $a$ litros da primeira com $b$ litros da segunda, e para isso montou um sistema: uma equação para o volume total e outra para a quantidade de álcool.
+    enunciado: |
+      A quantidade da solução com 10\% de álcool que deve ser usada, em litros, é
+    opcoes: ['$5$', '$10$', '$12$', '$15$', '$20$']
+    correta: A
+    resolucao: |
+      $a + b = 20$ e $0{,}1a + 0{,}3b = 5$, ou $a + 3b = 50$. $D = 2$, $D_a = 60 - 50 = 10$: $a = 5$ (e $b = 15$).
+
+  # ---------------- Nível 3 ----------------
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um aplicativo resolve sistemas $3 \times 3$ pela regra de Cramer. Para planejar uma dieta, uma nutricionista digitou um sistema em que $x$, $y$ e $z$ são as quantidades de porções de três alimentos, e os termos independentes são as quantidades de nutrientes desejadas. O aplicativo mostrou os determinantes do quadro.
+      tabela:
+        cabecalho: ['$D$', '$D_x$', '$D_y$', '$D_z$']
+        linhas:
+        - ['$2$', '$6$', '$4$', '$10$']
+    enunciado: |
+      A solução do sistema é
+    opcoes: ['$(2, 3, 5)$', '$(6, 4, 10)$', '$(5, 2, 3)$', '$(\tfrac{1}{3}, \tfrac{1}{2}, \tfrac{1}{5})$', '$(3, 2, 5)$']
+    correta: E
+    resolucao: |
+      $x = \tfrac{6}{2} = 3$, $y = \tfrac{4}{2} = 2$, $z = \tfrac{10}{2} = 5$. A alternativa D inverte as frações.
+
+  - estilo: Unicamp
+    enunciado: |
+      Se todas as quantidades desejadas de nutrientes (os termos independentes) dobrassem, sem mudar os alimentos, o valor de $z$ passaria a ser
+    opcoes: ['$5$.', '$10$.', '$20$.', '$\dfrac{5}{2}$.']
+    correta: B
+    resolucao: |
+      $D$ não muda (não envolve os termos independentes). Em $D_z$, a coluna dos termos independentes dobra, e $D_z$ dobra: $z = \tfrac{20}{2} = 10$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere sistemas lineares $n \times n$ com coeficientes reais. Assinale o que for correto.
+    proposicoes:
+    - 'Se $D \neq 0$, o sistema é possível e determinado.'
+    - 'Se $D = 0$, a regra de Cramer não pode ser usada para obter a solução.'
+    - 'Se $D = D_x = D_y = D_z = 0$ em um sistema $3 \times 3$, o sistema é necessariamente possível e indeterminado.'
+    - 'Em um sistema possível e determinado, multiplicar todos os termos independentes por 2 multiplica cada incógnita da solução por 2.'
+    - 'Trocar duas equações de posição troca o sinal de $D$ e, por isso, muda a solução.'
+    corretas: [1, 2, 4]
+    resolucao: |
+      01) Correta. 02) Correta. 04) Incorreta: $x + y + z = 1$, $x + y + z = 2$, $x + y + z = 3$ tem todos os determinantes nulos e é SI.
+      08) Correta: $D$ fica igual e cada $D_x$, $D_y$, $D_z$ dobra. 16) Incorreta: $D_x$, $D_y$ e $D_z$ também trocam de sinal, e os quocientes não mudam.
+      Soma: $01 + 02 + 08 = 11$.
+
+  - estilo: Fuvest
+    enunciado: |
+      O sistema $\begin{cases} ax + y + z = 1 \\ x + ay + z = 1 \\ x + y + az = 1 \end{cases}$ é possível e determinado se, e somente se,
+    opcoes: ['$a \neq 1$', '$a \neq -2$', '$a \neq 1$ e $a \neq -2$', '$a \neq -1$ e $a \neq 2$', '$a = 1$ ou $a = -2$']
+    correta: C
+    resolucao: |
+      $D = a^3 + 1 + 1 - a - a - a = a^3 - 3a + 2 = (a - 1)^2(a + 2)$. $D \neq 0 \iff a \neq 1$ e $a \neq -2$.
+
+  - estilo: Enem
+    texto: |
+      Em um campeonato de futebol, cada vitória vale 3 pontos, cada empate vale 1 ponto e cada derrota não vale ponto, como no quadro. Um time disputou 20 partidas, somou 30 pontos e teve 2 vitórias a mais do que derrotas. Um torcedor montou um sistema com as incógnitas $v$, $e$ e $d$ (vitórias, empates e derrotas) para descobrir a campanha do time.
+    tabela:
+      cabecalho: ['Resultado', 'Pontos']
+      linhas:
+      - ['Vitória', '3']
+      - ['Empate', '1']
+      - ['Derrota', '0']
+    enunciado: |
+      O número de empates desse time foi
+    opcoes: ['$4$', '$5$', '$6$', '$7$', '$8$']
+    correta: C
+    resolucao: |
+      $v + e + d = 20$, $3v + e = 30$ e $v - d = 2$. $D = 1 \cdot (-1 - 0) - 1 \cdot (-3 - 0) + 1 \cdot (0 - 1) = 1$ e $D_e = 6$: $e = 6$.
+      Com $e = 6$: $v = 8$ e $d = 6$. 8 é o número de vitórias.
+
+  - estilo: Fuvest
+    enunciado: |
+      Em um sistema linear $2 \times 2$, obteve-se $D = 0$ e $D_x = 3$. Então o sistema
+    opcoes: ['é possível e determinado.', 'é possível e indeterminado.', 'tem $x = 0$.', 'tem $x = 3$.', 'é impossível.']
+    correta: E
+    resolucao: |
+      Toda solução de um sistema $2 \times 2$ satisfaz $D \cdot x = D_x$. Com $D = 0$, ficaria $0 = 3$: não há solução.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere o sistema $\begin{cases} a_1 x + b_1 y = c_1 \\ a_2 x + b_2 y = c_2 \end{cases}$ e os determinantes $D$, $D_x$ e $D_y$.'
+    itens:
+    - 'Eliminando $y$, mostre que toda solução satisfaz $D \cdot x = D_x$.'
+    - 'Eliminando $x$, mostre que toda solução satisfaz $D \cdot y = D_y$.'
+    - 'Conclua: se $D \neq 0$, o sistema é SPD com $x = \frac{D_x}{D}$ e $y = \frac{D_y}{D}$; se $D = 0$ e $D_x \neq 0$ ou $D_y \neq 0$, o sistema é SI.'
+    espaco: 62
+    resolucao: |
+      a) Multiplicando a 1ª por $b_2$ e a 2ª por $b_1$ e subtraindo: $(a_1 b_2 - a_2 b_1)x = c_1 b_2 - c_2 b_1$, isto é, $D x = D_x$.
+      b) Multiplicando a 1ª por $a_2$ e a 2ª por $a_1$ e subtraindo a primeira da segunda: $(a_1 b_2 - a_2 b_1)y = a_1 c_2 - a_2 c_1$, isto é, $D y = D_y$.
+      c) Se $D \neq 0$, as únicas candidatas são $x = \frac{D_x}{D}$ e $y = \frac{D_y}{D}$, e substituindo verifica-se que elas satisfazem as equações: SPD. Se $D = 0$ e, por exemplo, $D_x \neq 0$, uma solução daria $0 = D_x$: SI.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    enunciado: 'Considere o sistema $\begin{cases} x + y + z = 3 \\ x + 2y + 3z = 6 \\ x + 4y + mz = 9 \end{cases}$, com $m$ real.'
+    itens:
+    - 'Para que valores de $m$ o sistema é possível e determinado?'
+    - 'Nesses casos, obtenha $z$ em função de $m$.'
+    - 'Para quais valores inteiros de $m$ o valor de $z$ é um número inteiro?'
+    espaco: 62
+    resolucao: |
+      a) $D = 1 \cdot (2m - 12) - 1 \cdot (m - 3) + 1 \cdot (4 - 2) = m - 7$. SPD para $m \neq 7$.
+      b) $D_z = \begin{vmatrix} 1 & 1 & 3 \\ 1 & 2 & 6 \\ 1 & 4 & 9 \end{vmatrix} = 1 \cdot (18 - 24) - 1 \cdot (9 - 6) + 3 \cdot (4 - 2) = -3$. Então $z = \dfrac{-3}{m - 7} = \dfrac{3}{7 - m}$.
+      c) $7 - m$ deve dividir 3: $7 - m \in \{1, -1, 3, -3\}$, isto é, $m \in \{6, 8, 4, 10\}$.
+    resposta: 'a) $m \neq 7$; b) $z = \frac{3}{7 - m}$; c) $m = 4, 6, 8$ ou $10$'
+
+  - estilo: ITA
+    enunciado: |
+      Se $(x, y, z)$ é a solução do sistema $\begin{cases} x + 2y + 3z = a \\ 2x + 3y + z = b \\ 3x + y + 2z = c \end{cases}$, então $x + y + z$ é igual a
+    opcoes: ['$\dfrac{a + b + c}{6}$', '$\dfrac{a + b + c}{3}$', '$a + b + c$', '$\dfrac{a + b + c}{18}$', '$6(a + b + c)$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      $D = 1 \cdot (6 - 1) - 2 \cdot (4 - 3) + 3 \cdot (2 - 9) = -18 \neq 0$: a solução é única.
+      Somando as três equações: $6x + 6y + 6z = a + b + c$, logo $x + y + z = \frac{a + b + c}{6}$. (Não é preciso calcular cada incógnita.)
+    resposta: 'A'
+
+  - estilo: Unesp
+    texto: |
+      Uma pessoa aplicou R\$\,6\,000,00 em três fundos, A, B e C, com rendimentos anuais de 5\%, 10\% e 20\%, respectivamente. Ao fim de um ano, o rendimento total foi de R\$\,800,00. Além disso, o valor aplicado em C foi igual à soma dos valores aplicados em A e em B.
+    enunciado: ''
+    itens:
+    - 'Monte um sistema linear com as quantias $a$, $b$ e $c$ aplicadas, usando apenas coeficientes inteiros.'
+    - 'Calcule o determinante dos coeficientes e justifique que há uma única distribuição possível.'
+    - 'Obtenha, pela regra de Cramer, o valor aplicado em C, e depois os outros dois.'
+    espaco: 62
+    resolucao: |
+      a) $a + b + c = 6000$; $0{,}05a + 0{,}1b + 0{,}2c = 800$, ou, multiplicando por 20, $a + 2b + 4c = 16\,000$; e $a + b - c = 0$.
+      b) $D = 1 \cdot (-2 - 4) - 1 \cdot (-1 - 4) + 1 \cdot (1 - 2) = -2 \neq 0$: SPD.
+      c) $D_c = \begin{vmatrix} 1 & 1 & 6000 \\ 1 & 2 & 16\,000 \\ 1 & 1 & 0 \end{vmatrix} = -16\,000 + 16\,000 - 6000 = -6000$, e $c = 3000$. Então $a + b = 3000$ e $a + 2b = 16\,000 - 12\,000 = 4000$: $b = 1000$ e $a = 2000$.
+    resposta: 'a) Ver resolução; b) $D = -2$; c) A: R\$\,2\,000,00, B: R\$\,1\,000,00, C: R\$\,3\,000,00'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere o sistema $\begin{cases} x + y - z = 1 \\ 2x + ay + z = 3 \\ x - y + 2z = b \end{cases}$, com $a$ e $b$ reais. Assinale o que for correto.
+    proposicoes:
+    - 'Para $a \neq 0$, o sistema é possível e determinado.'
+    - 'Para $a = 0$ e $b = 2$, o sistema é possível e indeterminado.'
+    - 'Para $a = 0$ e $b = 5$, o sistema é possível e determinado.'
+    - 'Para $a = 1$ e $b = 2$, a solução tem $y = 0$.'
+    - 'O determinante da matriz dos coeficientes é igual a $3a$.'
+    - 'Para $a = 0$, o sistema é impossível qualquer que seja $b$.'
+    corretas: [1, 2, 4, 5]
+    espaco: 22
+    resolucao: |
+      $D = 1 \cdot (2a + 1) - 1 \cdot (4 - 1) + (-1) \cdot (-2 - a) = 3a$ (16 correta). Para $a \neq 0$: SPD (01 correta).
+      Para $a = 0$: somando a 1ª e a 3ª, $2x + z = 1 + b$, e a 2ª é $2x + z = 3$. Se $b = 2$, a 3ª equação é consequência das outras: SPI (02 correta, 32 incorreta). Se $b \neq 2$: SI (04 incorreta).
+      08) Correta: com $a = 1$ e $b = 2$, a 1ª mais a 3ª dá $2x + z = 3$, e a 2ª é $2x + y + z = 3$: $y = 0$.
+    resposta: 'Soma 27 (01 + 02 + 08 + 16)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere o sistema homogêneo $\begin{cases} x + y + z = 0 \\ x + 2y + kz = 0 \\ x + 4y + k^2 z = 0 \end{cases}$, com $k$ real.'
+    itens:
+    - 'Mostre que o determinante dos coeficientes é $(k - 1)(k - 2)$.'
+    - 'Para quais valores de $k$ o sistema tem soluções diferentes da nula?'
+    - 'Para $k = 2$, determine todas as soluções.'
+    espaco: 62
+    resolucao: |
+      a) $D = 1 \cdot (2k^2 - 4k) - 1 \cdot (k^2 - k) + 1 \cdot (4 - 2) = k^2 - 3k + 2 = (k - 1)(k - 2)$.
+      b) Soluções não nulas existem só se o sistema não for SPD: $D = 0$, isto é, $k = 1$ ou $k = 2$.
+      c) Com $k = 2$: $x + y + z = 0$ e $x + 2y + 2z = 0$. Subtraindo, $y + z = 0$, e então $x = 0$. A 3ª, $x + 4y + 4z = 0$, também vale. Soluções: $(0, t, -t)$, com $t$ real.
+    resposta: 'a) Ver resolução; b) $k = 1$ ou $k = 2$; c) $(0, t, -t)$'
+
+  - estilo: Unicamp
+    texto: |
+      A parábola de equação $y = ax^2 + bx + c$ passa pelos pontos $(1, 2)$, $(2, 3)$ e $(3, 6)$.
+    enunciado: ''
+    itens:
+    - 'Escreva o sistema nas incógnitas $a$, $b$ e $c$ e calcule o determinante dos coeficientes.'
+    - 'Determine $a$, $b$ e $c$.'
+    - 'Calcule o valor de $y$ para $x = 5$.'
+    espaco: 62
+    resolucao: |
+      a) $a + b + c = 2$, $4a + 2b + c = 3$ e $9a + 3b + c = 6$. $D = 1 \cdot (2 - 3) - 1 \cdot (4 - 9) + 1 \cdot (12 - 18) = -2$.
+      b) Subtraindo: $3a + b = 1$ e $5a + b = 3$, logo $a = 1$, $b = -2$ e $c = 3$. (Por Cramer: $D_a = -2$, $D_b = 4$, $D_c = -6$.)
+      c) $y = 25 - 10 + 3 = 18$.
+    resposta: 'a) $D = -2$; b) $a = 1$, $b = -2$, $c = 3$; c) $18$'
+
+  - estilo: Fuvest
+    enunciado: |
+      O valor de $k$ para o qual o sistema $\begin{cases} x + 2y + 3z = 0 \\ 4x + 5y + 6z = 0 \\ 7x + 8y + kz = 0 \end{cases}$ admite soluções diferentes de $(0, 0, 0)$ é
+    opcoes: ['$6$', '$7$', '$8$', '$9$', '$10$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      $D = 1 \cdot (5k - 48) - 2 \cdot (4k - 42) + 3 \cdot (32 - 35) = 27 - 3k$. Soluções não nulas exigem $D = 0$: $k = 9$.
+    resposta: 'D'
+
+  - estilo: Unesp
+    texto: |
+      Ao resolver $\begin{cases} x + 2y = 3 \\ 2x + 4y = 6 \end{cases}$, um estudante calculou $D = 0$, $D_x = 0$ e $D_y = 0$ e escreveu: “$x = \frac{0}{0} = 0$ e $y = \frac{0}{0} = 0$, logo a solução é $(0, 0)$”.
+    enunciado: ''
+    itens:
+    - 'Mostre que $(0, 0)$ não é solução e explique o erro do estudante.'
+    - 'Classifique o sistema e escreva as suas soluções.'
+    - 'Troque o 6 por 7. Calcule $D_x$ e classifique o novo sistema.'
+    espaco: 62
+    resolucao: |
+      a) $0 + 0 = 0 \neq 3$. Com $D = 0$ a regra de Cramer não se aplica, e $\frac{0}{0}$ não é um número.
+      b) A 2ª equação é o dobro da 1ª: SPI, com soluções $(3 - 2t, t)$, $t$ real.
+      c) $D_x = \begin{vmatrix} 3 & 2 \\ 7 & 4 \end{vmatrix} = 12 - 14 = -2 \neq 0$. Como $D = 0$ e $D_x \neq 0$, o sistema é SI (as retas ficam paralelas distintas).
+    resposta: 'a) Ver resolução; b) SPI, $(3 - 2t, t)$; c) $D_x = -2$; SI'
+
+  - estilo: Fuvest
+    enunciado: 'Considere o sistema $\begin{cases} mx + y = 1 \\ x + my = m \end{cases}$, com $m$ real.'
+    itens:
+    - 'Calcule $D$, $D_x$ e $D_y$ e mostre que, para $m \neq 1$ e $m \neq -1$, a solução não depende de $m$.'
+    - 'Classifique o sistema para $m = 1$ e para $m = -1$.'
+    - 'Conclua que o sistema nunca é impossível.'
+    espaco: 62
+    resolucao: |
+      a) $D = m^2 - 1$, $D_x = m - m = 0$ e $D_y = m^2 - 1$. Para $m \neq \pm 1$: $x = 0$ e $y = 1$, sempre.
+      b) $m = 1$: as duas equações são $x + y = 1$: SPI. $m = -1$: $-x + y = 1$ e $x - y = -1$, que é a primeira multiplicada por $-1$: SPI.
+      c) Para $m \neq \pm 1$ é SPD, e para $m = \pm 1$ é SPI: em nenhum caso é SI. (O par $(0, 1)$ é solução para todo $m$.)
+    resposta: 'a) Solução $(0, 1)$; b) SPI nos dois casos; c) Ver resolução'
