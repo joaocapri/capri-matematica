@@ -1,0 +1,545 @@
+# Aula 4.3.2 — Geometria plana: teorema de Tales
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: feixe de paralelas cortado por transversais (segmentos proporcionais); Tales no triângulo (paralela a um lado);
+# recíproca; divisão de segmento em partes proporcionais; teorema da bissetriz interna; no Nível 3 e no aprofundamento,
+# bissetriz externa e razão em que o incentro divide a bissetriz. Semelhança fica para a 4.3.3.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Nas figuras, as retas $r$, $s$, $u$ (e $v$) são paralelas. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Na figura, as paralelas $r$, $s$ e $u$ cortam as transversais $t$ e $t^{\prime}$. Determine $x$.'
+      figura:
+        tikz: |
+          \begin{scope}[scale=.75]
+          \draw[ink, line width=1pt] (-0.6,0) -- (6.4,0) node[right, font=\scriptsize] {$u$};
+          \draw[ink, line width=1pt] (-0.6,1.6) -- (6.4,1.6) node[right, font=\scriptsize] {$s$};
+          \draw[ink, line width=1pt] (-0.6,4) -- (6.4,4) node[right, font=\scriptsize] {$r$};
+          \draw[roxo, line width=1pt] (0.6,4.4) node[above, font=\scriptsize] {$t$} -- (-0.1,-0.4);
+          \draw[roxo, line width=1pt] (3.6,4.4) node[above, font=\scriptsize] {$t^{\prime}$} -- (5.6,-0.4);
+          \node[font=\scriptsize, left] at (0.2,2.8) {$4$};
+          \node[font=\scriptsize, left] at (0,0.8) {$6$};
+          \node[font=\scriptsize, right] at (4.4,2.8) {$5$};
+          \node[font=\scriptsize, right] at (5.2,0.8) {$x$};
+          \end{scope}
+      itens:
+      - '$x = {{7{,}5}}$'
+      resolucao: |
+        Na mesma ordem nas duas transversais: $\tfrac{4}{6} = \tfrac{5}{x}$, $4x = 30$, $x = 7{,}5$.
+      resposta: '$7{,}5$'
+    - enunciado: 'Em cada linha, $a$ e $b$ são segmentos consecutivos de uma transversal, e $c$ e $d$ os correspondentes na outra. Complete.'
+      tabela:
+        cabecalho: ['$a$', '$b$', '$c$', '$d$']
+        linhas:
+        - ['$3$', '$5$', '$9$', '${{15}}$']
+        - ['${{8}}$', '$12$', '$4$', '$6$']
+        - ['$2$', '${{4}}$', '$5$', '$10$']
+        - ['$8$', '$10$', '${{12}}$', '$15$']
+      resolucao: |
+        $\tfrac{a}{b} = \tfrac{c}{d}$. Linha 1: $d = \tfrac{5 \cdot 9}{3} = 15$. Linha 2: $a = \tfrac{12 \cdot 4}{6} = 8$. Linha 3: $b = \tfrac{2 \cdot 10}{5} = 4$. Linha 4: $c = \tfrac{8 \cdot 15}{10} = 12$.
+      resposta: '$15$; $8$; $4$; $12$'
+    - enunciado: 'No triângulo $ABC$, $AB = 10$, $AC = 15$ e $BC = 20$. A bissetriz de $\hat{A}$ corta $BC$ em $D$. Complete.'
+      itens:
+      - '$BD = {{8}}$'
+      - '$DC = {{12}}$'
+      colunas: 2
+      resolucao: |
+        $\tfrac{BD}{DC} = \tfrac{AB}{AC} = \tfrac{10}{15} = \tfrac{2}{3}$. Com $BD = 2k$ e $DC = 3k$: $5k = 20$, $k = 4$.
+      resposta: '$8$ e $12$'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'O teorema de Tales exige que as retas do feixe sejam paralelas.'
+      - 'Se $\frac{a}{b} = \frac{c}{d}$, então também $\frac{a}{c} = \frac{b}{d}$.'
+      - 'A bissetriz interna de um ângulo de um triângulo sempre divide o lado oposto ao meio.'
+      - 'Uma reta paralela a um lado de um triângulo divide os outros dois lados em partes proporcionais.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (V) As duas igualdades equivalem a $ad = bc$. (F) Só quando os lados adjacentes são iguais. (V) É o teorema de Tales no triângulo.
+      resposta: V, V, F, V
+    - enunciado: 'No triângulo $ABC$, a reta $DE$ é paralela a $BC$, com $D$ em $AB$ e $E$ em $AC$. Sabendo que $AD = 4$, $DB = 6$ e $AE = 6$, complete.'
+      itens:
+      - '$EC = {{9}}$'
+      - '$AC = {{15}}$'
+      colunas: 2
+      resolucao: |
+        $\tfrac{AD}{DB} = \tfrac{AE}{EC}$: $\tfrac{4}{6} = \tfrac{6}{EC}$, $EC = 9$, e $AC = 15$.
+      resposta: '$9$; $15$'
+    - enunciado: 'Num feixe de paralelas, os segmentos consecutivos de uma transversal medem $x$ e $x + 2$, e os correspondentes na outra, $6$ e $10$. Determine $x$.'
+      espaco: 10
+      resolucao: |
+        $\tfrac{x}{x + 2} = \tfrac{6}{10}$: $10x = 6x + 12$, $x = 3$.
+      resposta: '$x = 3$'
+    - enunciado: 'Três paralelas determinam numa transversal segmentos de 2 cm e 3 cm. Na outra transversal, o segmento total entre a primeira e a terceira paralela mede 30 cm. Quanto mede cada parte?'
+      espaco: 10
+      resolucao: |
+        As partes são proporcionais a 2 e 3: $2k + 3k = 30$, $k = 6$. Partes de 12 cm e 18 cm.
+      resposta: '12 cm e 18 cm'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Num feixe de paralelas, a transversal $t$ tem segmentos 4 (em cima) e 6 (embaixo), e a transversal $t^{\prime}$ tem 5 (em cima) e $x$ (embaixo). Caio escreveu $\frac{4}{x} = \frac{6}{5}$ e achou $x = \frac{10}{3}$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        Caio cruzou segmentos que não se correspondem. A proporção deve seguir a mesma ordem nas duas transversais: $\tfrac{4}{6} = \tfrac{5}{x}$, $x = 7{,}5$.
+      resposta: '$x = 7{,}5$'
+    - enunciado: 'Três lotes ficam entre duas ruas, com as divisas laterais paralelas. As frentes para a rua 1 medem 20 m, 30 m e 40 m, e a frente total para a rua 2 é de 135 m. Calcule a frente de cada lote para a rua 2.'
+      espaco: 12
+      resolucao: |
+        As frentes são proporcionais: $\tfrac{135}{90} = 1{,}5$. Frentes: $30$ m, $45$ m e $60$ m.
+      resposta: '30 m, 45 m e 60 m'
+    - enunciado: 'No triângulo $ABC$, $AB = 12$ e $AC = 8$. A bissetriz de $\hat{A}$ corta $BC$ em $D$, com $BD = x + 2$ e $DC = x$. Determine $x$ e $BC$.'
+      espaco: 10
+      resolucao: |
+        $\tfrac{x + 2}{x} = \tfrac{12}{8}$: $8x + 16 = 12x$, $x = 4$. $BC = 6 + 4 = 10$.
+      resposta: '$x = 4$; $BC = 10$'
+    - enunciado: 'No triângulo $ABC$, $DE \parallel BC$, com $D$ em $AB$ e $E$ em $AC$. Sabendo que $AD = x$, $DB = x + 3$, $AE = 4$ e $EC = 6$, determine $AB$.'
+      espaco: 10
+      resolucao: |
+        $\tfrac{x}{x + 3} = \tfrac{4}{6}$: $6x = 4x + 12$, $x = 6$. $AB = 6 + 9 = 15$.
+      resposta: '$AB = 15$'
+    - enunciado: 'A bissetriz de $\hat{A}$ do triângulo $ABC$ corta $BC$ em $D$. Complete o quadro.'
+      tabela:
+        cabecalho: ['$AB$', '$AC$', '$BC$', '$BD$', '$DC$']
+        linhas:
+        - ['$5$', '$7$', '$12$', '${{5}}$', '${{7}}$']
+        - ['$4$', '$6$', '$15$', '${{6}}$', '${{9}}$']
+        - ['$9$', '$12$', '$14$', '${{6}}$', '${{8}}$']
+      resolucao: |
+        $BD = BC \cdot \tfrac{AB}{AB + AC}$: $12 \cdot \tfrac{5}{12} = 5$; $15 \cdot \tfrac{4}{10} = 6$; $14 \cdot \tfrac{9}{21} = 6$. $DC = BC - BD$.
+      resposta: '$5, 7$; $6, 9$; $6, 8$'
+    - enunciado: 'No triângulo $ABC$, $AB = 10$ e $AC = 14$. A reta paralela a $BC$ que passa pelo ponto médio $D$ de $AB$ corta $AC$ em $E$. Calcule $AE$ e justifique.'
+      espaco: 10
+      resolucao: |
+        Por Tales, $\tfrac{AD}{DB} = \tfrac{AE}{EC}$, e $AD = DB$: então $AE = EC = 7$. (A paralela pelo ponto médio de um lado passa pelo ponto médio do outro.)
+      resposta: '$AE = 7$'
+    - enunciado: 'Uma rampa reta é sustentada por três colunas verticais. No chão, a primeira coluna está a 2 m da segunda, e a segunda está a 3 m da terceira. Ao longo da rampa, a distância entre as duas primeiras colunas é de 2,5 m. Qual é a distância, ao longo da rampa, entre a segunda e a terceira?'
+      espaco: 10
+      resolucao: |
+        As colunas são paralelas, e o chão e a rampa são transversais: $\tfrac{2}{3} = \tfrac{2{,}5}{x}$, $x = 3{,}75$ m.
+      resposta: '3,75 m'
+    - enunciado: 'No triângulo $ABC$, $AB = 6$, $AC = 10$, e a bissetriz de $\hat{A}$ corta $BC$ em $D$, com $BD = 3$. Calcule o perímetro do triângulo.'
+      espaco: 10
+      resolucao: |
+        $\tfrac{3}{DC} = \tfrac{6}{10}$: $DC = 5$, $BC = 8$. Perímetro $6 + 10 + 8 = 24$.
+      resposta: '24'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove o teorema da bissetriz interna: se $AD$ é a bissetriz de $\hat{A}$ no triângulo $ABC$, então $\frac{BD}{DC} = \frac{AB}{AC}$. (Sugestão: trace por $C$ a paralela a $AD$, que encontra o prolongamento de $BA$ em $E$.)'
+      espaco: 16
+      resolucao: |
+        Como $CE \parallel AD$: $A\hat{E}C = B\hat{A}D$ (correspondentes) e $A\hat{C}E = D\hat{A}C$ (alternos). Sendo $B\hat{A}D = D\hat{A}C$, o triângulo $ACE$ tem dois ângulos iguais: $AE = AC$.
+        No triângulo $BCE$, $AD \parallel EC$, e por Tales: $\tfrac{BD}{DC} = \tfrac{BA}{AE} = \tfrac{AB}{AC}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Explique como dividir um segmento $AB$ em três partes iguais usando apenas régua e compasso.'
+      espaco: 14
+      resolucao: |
+        Trace por $A$ uma semirreta qualquer e marque nela, com o compasso, três segmentos iguais: $AP_1 = P_1P_2 = P_2P_3$. Ligue $P_3$ a $B$ e trace por $P_1$ e $P_2$ paralelas a $P_3B$. Elas cortam $AB$ em pontos que, por Tales, dividem $AB$ em três partes iguais.
+      resposta: 'Ver resolução'
+    - enunciado: 'No triângulo $ABC$, $AB = 6$, $AC = 4$ e $BC = 5$. A bissetriz do ângulo externo em $A$ encontra o prolongamento de $BC$ em $E$. Sabendo que $\frac{EB}{EC} = \frac{AB}{AC}$, calcule $EC$ e $EB$.'
+      espaco: 12
+      resolucao: |
+        Como $AB > AC$, $E$ fica além de $C$: $EB = EC + 5$. $\tfrac{EC + 5}{EC} = \tfrac{6}{4}$: $4EC + 20 = 6EC$, $EC = 10$ e $EB = 15$.
+      resposta: '$EC = 10$, $EB = 15$'
+    - enunciado: 'No triângulo $ABC$, $AB = 6$, $AC = 8$ e $BC = 7$. A bissetriz $AD$ e a bissetriz por $B$ se cortam no incentro $I$. Calcule $BD$ e a razão $\frac{AI}{ID}$.'
+      espaco: 14
+      resolucao: |
+        $\tfrac{BD}{DC} = \tfrac{6}{8}$: $BD = 7 \cdot \tfrac{6}{14} = 3$. No triângulo $ABD$, $BI$ é bissetriz de $\hat{B}$: $\tfrac{AI}{ID} = \tfrac{BA}{BD} = \tfrac{6}{3} = 2$.
+      resposta: '$BD = 3$; $\frac{AI}{ID} = 2$'
+    - enunciado: 'Quatro paralelas determinam numa transversal segmentos de 2, 3 e 5 cm. Na outra transversal, a distância entre a primeira e a última paralela é de 25 cm. Calcule os três segmentos nessa transversal.'
+      espaco: 10
+      resolucao: |
+        $2k + 3k + 5k = 25$: $k = 2{,}5$. Segmentos de 5 cm, 7,5 cm e 12,5 cm.
+      resposta: '5 cm, 7,5 cm e 12,5 cm'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Três lotes vizinhos ficam entre a rua 1 e a rua 2, que não são paralelas, e as divisas laterais dos lotes são paralelas entre si, como na figura. As frentes para a rua 1 medem 15 m, 20 m e 25 m. A frente total dos três lotes para a rua 2 é de 90 m. O dono do lote do meio quer saber a medida da sua frente para a rua 2.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.6]
+        \draw[ink, line width=1.2pt] (-0.5,0) -- (6.8,0) node[right, font=\scriptsize] {rua 1};
+        \draw[ink, line width=1.2pt] (0.7,2.675) -- (9.2,4.8) node[right, font=\scriptsize] {rua 2};
+        \fill[lilas!40] (1.5,0) -- (3.5,0) -- (5.429,3.857) -- (3.143,3.286) -- cycle;
+        \foreach \a/\b/\c in {0/1.429/2.857, 1.5/3.143/3.286, 3.5/5.429/3.857, 6/8.286/4.571} \draw[roxo, line width=1pt] (\a,0) -- (\b,\c);
+        \node[font=\scriptsize, below] at (0.75,0) {15 m};
+        \node[font=\scriptsize, below] at (2.5,0) {20 m};
+        \node[font=\scriptsize, below] at (4.75,0) {25 m};
+        \end{scope}
+    enunciado: |
+      A frente do lote do meio para a rua 2 mede
+    opcoes: ['$20$ m', '$25$ m', '$30$ m', '$35$ m', '$45$ m']
+    correta: C
+    resolucao: |
+      Pelo teorema de Tales, as frentes são proporcionais: $\tfrac{90}{60} = 1{,}5$. Lote do meio: $20 \cdot 1{,}5 = 30$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, $AB = 9$, $AC = 6$ e $BC = 10$. A bissetriz interna de $\hat{A}$ corta $BC$ em $D$. A medida de $BD$ é
+    opcoes: ['$4$', '$6$', '$5$', '$7{,}5$', '$9$']
+    correta: B
+    resolucao: |
+      $\tfrac{BD}{DC} = \tfrac{9}{6} = \tfrac{3}{2}$: $5k = 10$, $BD = 3k = 6$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Num feixe de paralelas, os segmentos consecutivos de uma transversal medem $x$ e $x + 4$, e os correspondentes na outra medem $3$ e $5$. O valor de $x$ é
+    opcoes: ['$6$.', '$4$.', '$8$.', '$10$.']
+    correta: A
+    resolucao: |
+      $\tfrac{x}{x + 4} = \tfrac{3}{5}$: $5x = 3x + 12$, $x = 6$.
+
+  - estilo: UEM
+    enunciado: |
+      Considere o teorema de Tales e as suas consequências. Assinale o que for correto.
+    proposicoes:
+    - 'Uma reta paralela a um lado de um triângulo divide os outros dois lados em partes proporcionais.'
+    - 'A bissetriz interna de um ângulo de um triângulo divide o lado oposto em partes proporcionais aos lados adjacentes.'
+    - 'Num triângulo isósceles com $AB = AC$, a bissetriz de $\hat{A}$ divide $BC$ ao meio.'
+    - 'O teorema de Tales vale para um feixe de retas concorrentes num ponto.'
+    - 'O segmento que une os pontos médios de dois lados de um triângulo mede o dobro do terceiro lado.'
+    corretas: [1, 2, 3]
+    resolucao: |
+      01) Correta. 02) Correta. 04) $\tfrac{BD}{DC} = \tfrac{AB}{AC} = 1$. 08) Incorreta: as retas do feixe devem ser paralelas. 16) Incorreta: mede a metade.
+      Soma: $01 + 02 + 04 = 7$.
+
+  - estilo: Enem
+    texto: |
+      Um painel decorativo é formado por três faixas coloridas limitadas por segmentos paralelos e inclinados, que vão da base do painel até a sua lateral esquerda. O quadro mostra a largura de cada faixa medida ao longo da base e ao longo da lateral, mas o fabricante perdeu duas medidas da lateral.
+    tabela:
+      cabecalho: ['Faixa', 'Largura na base (cm)', 'Largura na lateral (cm)']
+      linhas:
+      - ['1', '12', '9']
+      - ['2', '16', '$x$']
+      - ['3', '20', '$y$']
+    enunciado: |
+      O valor de $x + y$ é
+    opcoes: ['$21$', '$24$', '$36$', '$30$', '$27$']
+    correta: E
+    resolucao: |
+      As larguras são proporcionais (Tales): razão $\tfrac{9}{12} = \tfrac{3}{4}$. $x = 12$ e $y = 15$: soma $27$.
+
+  - estilo: UEL
+    enunciado: |
+      No triângulo $ABC$, o segmento $DE$ é paralelo a $BC$, com $D$ em $AB$ e $E$ em $AC$. Considere as afirmativas a seguir.
+    afirmativas:
+    - '$\frac{AD}{DB} = \frac{AE}{EC}$.'
+    - '$\frac{AD}{AB} = \frac{AE}{AC}$.'
+    - 'A bissetriz de $\hat{A}$ sempre passa pelo ponto médio de $DE$.'
+    - '$\frac{DE}{BC} = \frac{AD}{AB}$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e III, apenas.', 'I, II e IV, apenas.', 'I, II, III e IV.']
+    correta: D
+    resolucao: |
+      I e II. Corretas (Tales). III. Incorreta: só se $AB = AC$. IV. Correta: o triângulo $ADE$ é uma redução de $ABC$ (semelhança).
+
+  - estilo: Unesp
+    enunciado: |
+      No triângulo $ABC$, $DE \parallel BC$, com $D$ em $AB$ e $E$ em $AC$. Se $AD = 3$, $DB = 5$ e $AC = 16$, então $AE$ mede
+    opcoes: ['$9{,}6$', '$10$', '$6$', '$4{,}8$', '$8$']
+    correta: C
+    resolucao: |
+      $\tfrac{AE}{AC} = \tfrac{AD}{AB} = \tfrac{3}{8}$: $AE = 6$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      Na figura, quatro paralelas cortam as transversais $t$ e $t^{\prime}$. Em $t$, os segmentos medem 2, 3 e 4; em $t^{\prime}$, o primeiro segmento mede 5.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.7]
+        \foreach \y in {0,1.0,2.5,4.5} \draw[ink, line width=1pt] (-0.6,\y) -- (6.4,\y);
+        \draw[roxo, line width=1pt] (0.9,4.9) node[above, font=\scriptsize] {$t$} -- (-0.1,-0.4);
+        \draw[roxo, line width=1pt] (3.4,4.9) node[above, font=\scriptsize] {$t^{\prime}$} -- (5.8,-0.4);
+        \node[font=\scriptsize, left] at (0.6,3.5) {$2$};
+        \node[font=\scriptsize, left] at (0.4,1.75) {$3$};
+        \node[font=\scriptsize, left] at (0.2,0.5) {$4$};
+        \node[font=\scriptsize, right] at (4.1,3.5) {$5$};
+        \end{scope}
+    enunciado: |
+      A distância, em $t^{\prime}$, entre a primeira e a última paralela é
+    opcoes: ['$18$.', '$22{,}5$.', '$20$.', '$25$.']
+    correta: B
+    resolucao: |
+      Razão $\tfrac{5}{2} = 2{,}5$: os segmentos de $t^{\prime}$ medem $5$, $7{,}5$ e $10$. Total $22{,}5$.
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, $AB = 12$ e $AC = 18$. A bissetriz interna de $\hat{A}$ divide $BC$ em dois segmentos cuja diferença é 3. O perímetro do triângulo é
+    opcoes: ['$30$', '$36$', '$40$', '$42$', '$45$']
+    correta: E
+    resolucao: |
+      $\tfrac{BD}{DC} = \tfrac{12}{18} = \tfrac{2}{3}$: $BD = 2k$, $DC = 3k$, e $k = 3$. $BC = 15$, perímetro $12 + 18 + 15 = 45$.
+
+  - estilo: UFSC
+    enunciado: |
+      No triângulo $ABC$, $AB = 8$, $AC = 12$ e $BC = 10$, e $AD$ é a bissetriz interna de $\hat{A}$, com $D$ em $BC$. Assinale o que for correto.
+    proposicoes:
+    - '$BD = 4$.'
+    - '$DC = 6$.'
+    - '$\frac{BD}{DC} = \frac{2}{3}$.'
+    - '$D$ é o ponto médio de $BC$.'
+    - 'A paralela a $AC$ que passa por $D$ corta $AB$ num ponto $E$ tal que $\frac{BE}{EA} = \frac{2}{3}$.'
+    - 'O triângulo $ABC$ é isósceles.'
+    corretas: [1, 2, 3, 5]
+    resolucao: |
+      $\tfrac{BD}{DC} = \tfrac{8}{12} = \tfrac{2}{3}$, $5k = 10$: $BD = 4$, $DC = 6$. 01), 02) e 04) Corretas. 08) Incorreta. 16) Por Tales no triângulo $ABC$ com $DE \parallel CA$: $\tfrac{BE}{EA} = \tfrac{BD}{DC}$. 32) Incorreta: lados 8, 12 e 10.
+      Soma: $01 + 02 + 04 + 16 = 23$.
+
+  - estilo: Enem
+    texto: |
+      Para dividir uma tira de papel de 23 cm em 5 partes iguais sem fazer contas, um estudante usa uma folha pautada, cujas linhas são paralelas e igualmente espaçadas. Ele inclina a tira sobre a folha até que uma ponta fique sobre uma linha e a outra ponta fique 5 linhas abaixo, e marca na tira os pontos em que ela cruza as linhas intermediárias.
+    enunciado: |
+      Cada parte da tira mede
+    opcoes: ['$4{,}0$ cm', '$4{,}5$ cm', '$5{,}0$ cm', '$4{,}6$ cm', '$5{,}75$ cm']
+    correta: D
+    resolucao: |
+      As linhas formam um feixe de paralelas igualmente espaçadas; pelo teorema de Tales, elas cortam a tira em 5 partes iguais: $23 \div 5 = 4{,}6$ cm.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir, sobre um triângulo $ABC$ com $D$ em $AB$ e $E$ em $AC$.
+    afirmacoes:
+    - 'Se $DE \parallel BC$, então $\frac{AD}{DB} = \frac{AE}{EC}$.'
+    - 'Mesmo que $\frac{AD}{DB} = \frac{AE}{EC}$, o segmento $DE$ pode não ser paralelo a $BC$.'
+    - 'A bissetriz de $\hat{A}$ divide $BC$ em partes proporcionais a $AB$ e $AC$.'
+    - 'Num feixe de paralelas, segmentos iguais numa transversal correspondem a segmentos iguais na outra só quando as transversais são paralelas.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – V – F.', 'V – F – V – F.', 'F – F – V – V.', 'V – F – V – V.', 'V – V – F – F.']
+    correta: B
+    resolucao: |
+      (V) Tales. (F) Pela recíproca do teorema de Tales, a proporção garante o paralelismo. (V) Teorema da bissetriz interna. (F) Correspondem a segmentos iguais sempre (razão 1).
+
+  - estilo: Enem
+    texto: |
+      Um corrimão reto foi preso a quatro postes verticais, fincados no chão plano a 1,2 m um do outro, como na figura. O corrimão mede 6 m entre o primeiro e o último poste. Para pintar faixas de cores diferentes entre postes vizinhos, o pintor precisa da distância, ao longo do corrimão, entre dois postes consecutivos.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1pt] (-0.4,0) -- (4.2,0);
+        \foreach \x/\h in {0/1.2, 1.2/1.85, 2.4/2.5, 3.6/3.15} \draw[ink, line width=1.4pt] (\x,0) -- (\x,\h);
+        \draw[roxo, line width=2pt] (-0.2,1.09) -- (3.8,3.26);
+        \node[font=\scriptsize, below] at (0.6,0) {1,2 m};
+        \node[font=\scriptsize, below] at (1.8,0) {1,2 m};
+        \node[font=\scriptsize, below] at (3.0,0) {1,2 m};
+        \end{scope}
+    enunciado: |
+      A distância, ao longo do corrimão, entre dois postes consecutivos é de
+    opcoes: ['$2$ m', '$1{,}2$ m', '$1{,}5$ m', '$3$ m', '$2{,}4$ m']
+    correta: A
+    resolucao: |
+      Os postes são paralelos; o chão e o corrimão são transversais. Segmentos iguais no chão correspondem a segmentos iguais no corrimão: $6 \div 3 = 2$ m.
+
+  - estilo: Fuvest
+    enunciado: |
+      Três lotes ficam entre duas ruas, com divisas laterais paralelas. As frentes para a primeira rua medem 10 m, 15 m e 25 m, e a frente total para a segunda rua é de 120 m. A maior frente para a segunda rua mede
+    opcoes: ['$24$ m', '$36$ m', '$50$ m', '$60$ m', '$72$ m']
+    correta: D
+    resolucao: |
+      Razão $\tfrac{120}{50} = 2{,}4$: frentes $24$, $36$ e $60$ m.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere um triângulo $ABC$ e as bissetrizes dos seus ângulos. Assinale o que for correto.
+    proposicoes:
+    - 'Se a bissetriz externa de $\hat{A}$ corta a reta $BC$ em $E$, então $\frac{EB}{EC} = \frac{AB}{AC}$.'
+    - 'Se $AB = AC$, a bissetriz externa de $\hat{A}$ é paralela a $BC$.'
+    - 'As bissetrizes interna e externa de um mesmo ângulo são perpendiculares.'
+    - 'Se $AD$ é a bissetriz interna e $I$ é o incentro, então $\frac{AI}{ID} = \frac{AB + AC}{BC}$.'
+    - 'O baricentro divide cada bissetriz interna na razão $2 : 1$.'
+    corretas: [1, 2, 3, 4]
+    resolucao: |
+      01) Teorema da bissetriz externa. 02) Ela forma com $AB$ o ângulo $\tfrac{180° - \hat{A}}{2} = \hat{B}$ (alternos). 04) As metades dos ângulos adjacentes suplementares somam $90°$.
+      08) No triângulo $ABD$: $\tfrac{AI}{ID} = \tfrac{AB}{BD}$, e $BD = \tfrac{AB \cdot BC}{AB + AC}$. 16) Incorreta: o baricentro está nas medianas.
+      Soma: $01 + 02 + 04 + 08 = 15$.
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, $AB = 6$, $AC = 8$ e $BC = 7$. Sendo $AD$ a bissetriz interna de $\hat{A}$ e $I$ o incentro, a razão $\frac{AI}{ID}$ é
+    opcoes: ['$1$', '$2$', '$\frac{3}{2}$', '$\frac{4}{3}$', '$\frac{7}{6}$']
+    correta: B
+    resolucao: |
+      $BD = 7 \cdot \tfrac{6}{14} = 3$. No triângulo $ABD$, $BI$ é bissetriz: $\tfrac{AI}{ID} = \tfrac{AB}{BD} = 2$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um terreno tem a forma do triângulo $ABC$, com $AB = 75$ m e $AC = 100$ m. O dono vai construir uma cerca reta $DE$, paralela ao lado $BC$, com $D$ em $AB$ a 30 m de $A$ e $E$ em $AC$, como na figura.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.75]
+        \draw[ink, line width=1pt, fill=lima!20] (0,3.5) node[above, font=\scriptsize] {$A$} -- (0,0) node[below left, font=\scriptsize] {$B$} -- (5,0) node[below right, font=\scriptsize] {$C$} -- cycle;
+        \draw[roxo, line width=1.4pt] (0,2.1) node[left, font=\scriptsize] {$D$} -- (2,2.1) node[above right, font=\scriptsize] {$E$};
+        \end{scope}
+    enunciado: |
+      A distância de $A$ até $E$ é de
+    opcoes: ['$30$ m', '$37{,}5$ m', '$40$ m', '$45$ m', '$60$ m']
+    correta: C
+    resolucao: |
+      $\tfrac{AE}{AC} = \tfrac{AD}{AB} = \tfrac{30}{75} = \tfrac{2}{5}$: $AE = 40$ m.
+
+  - estilo: Unicamp
+    enunciado: |
+      O segmento $EC$ mede
+    opcoes: ['$60$ m.', '$40$ m.', '$70$ m.', '$45$ m.']
+    correta: A
+    resolucao: |
+      $EC = 100 - 40 = 60$ m. (Confere: $\tfrac{AD}{DB} = \tfrac{30}{45} = \tfrac{40}{60}$.)
+
+  - estilo: Unesp
+    enunciado: |
+      No triângulo $ABC$, $AB = 5$, $AC = 7$ e $BC = 9$. A bissetriz interna de $\hat{A}$ corta $BC$ em $D$. A medida de $BD$ é
+    opcoes: ['$4{,}5$', '$5$', '$4$', '$5{,}25$', '$3{,}75$']
+    correta: E
+    resolucao: |
+      $BD = 9 \cdot \tfrac{5}{12} = 3{,}75$.
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, $AB = 6$, $AC = 4$ e $BC = 5$. A bissetriz do ângulo externo em $A$ corta o prolongamento de $BC$ em $E$, e vale $\frac{EB}{EC} = \frac{AB}{AC}$. A medida de $EC$ é
+    opcoes: ['$10$', '$15$', '$5$', '$12$', '$20$']
+    correta: A
+    resolucao: |
+      $E$ fica além de $C$: $\tfrac{EC + 5}{EC} = \tfrac{3}{2}$, $EC = 10$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere o triângulo $ABC$ e a bissetriz interna $AD$ de $\hat{A}$, com $D$ em $BC$.'
+    itens:
+    - 'Trace por $C$ a paralela a $AD$, que corta o prolongamento de $BA$ em $E$. Prove que $AE = AC$.'
+    - 'Usando Tales, prove que $\frac{BD}{DC} = \frac{AB}{AC}$.'
+    - 'Para $AB = 15$, $AC = 10$ e $BC = 20$, calcule $BD$ e $DC$.'
+    espaco: 62
+    resolucao: |
+      a) $A\hat{E}C = B\hat{A}D$ (correspondentes) e $A\hat{C}E = D\hat{A}C$ (alternos internos). Como $B\hat{A}D = D\hat{A}C$, o triângulo $ACE$ tem ângulos iguais em $E$ e $C$: $AE = AC$.
+      b) No triângulo $BEC$, $AD \parallel EC$: $\tfrac{BD}{DC} = \tfrac{BA}{AE} = \tfrac{AB}{AC}$.
+      c) $\tfrac{BD}{DC} = \tfrac{3}{2}$, $5k = 20$: $BD = 12$, $DC = 8$.
+    resposta: 'c) $BD = 12$, $DC = 8$'
+
+  - estilo: Unicamp
+    texto: |
+      Quatro lotes ficam entre duas ruas, com divisas laterais paralelas. As frentes para a rua 1 medem $x$, $2x$, $3x$ e $4x$ metros, e a frente total para a rua 1 é de 80 m. As frentes para a rua 2 somam 100 m.
+    enunciado: ''
+    itens:
+    - 'Determine $x$.'
+    - 'Calcule a frente de cada lote para a rua 2.'
+    - 'Um comprador quer juntar dois lotes vizinhos para ter exatamente 50 m de frente para a rua 2. Quais lotes ele deve juntar?'
+    espaco: 62
+    resolucao: |
+      a) $10x = 80$, $x = 8$: frentes $8$, $16$, $24$ e $32$ m.
+      b) Razão $\tfrac{100}{80} = 1{,}25$: $10$, $20$, $30$ e $40$ m.
+      c) Vizinhos: $10 + 20 = 30$, $20 + 30 = 50$, $30 + 40 = 70$. Deve juntar o segundo e o terceiro.
+    resposta: 'a) $x = 8$; b) 10, 20, 30 e 40 m; c) o 2º e o 3º'
+
+  - estilo: ITA
+    enunciado: |
+      Num triângulo $ABC$ com $AB = 7$, $AC = 8$ e $BC = 5$, a bissetriz interna $AD$ corta a bissetriz interna traçada por $B$ no incentro $I$. A razão $\frac{AI}{ID}$ é
+    opcoes: ['$\frac{3}{2}$', '$2$', '$\frac{5}{3}$', '$3$', '$\frac{15}{8}$']
+    correta: D
+    espaco: 22
+    resolucao: |
+      $BD = 5 \cdot \tfrac{7}{15} = \tfrac{7}{3}$. No triângulo $ABD$, $BI$ é bissetriz: $\tfrac{AI}{ID} = \tfrac{AB}{BD} = \tfrac{7}{7/3} = 3$. (Em geral, $\tfrac{AB + AC}{BC} = \tfrac{15}{5}$.)
+    resposta: 'D'
+
+  - estilo: Unesp
+    enunciado: 'No triângulo $ABC$, com $AB \neq AC$, a bissetriz do ângulo externo em $A$ corta a reta $BC$ em $E$.'
+    itens:
+    - 'Trace por $C$ a paralela a $AE$, que corta $AB$ em $F$. Prove que $AF = AC$.'
+    - 'Prove que $\frac{EB}{EC} = \frac{AB}{AC}$.'
+    - 'Para $AB = 9$, $AC = 6$ e $BC = 5$, calcule $EC$.'
+    espaco: 62
+    resolucao: |
+      a) Seja $X$ um ponto no prolongamento de $BA$ além de $A$; a bissetriz externa divide $X\hat{A}C$ em dois ângulos iguais. Com $CF \parallel AE$: $A\hat{F}C$ é igual ao ângulo entre $AE$ e $AX$ (correspondentes) e $A\hat{C}F$ é igual ao ângulo entre $AE$ e $AC$ (alternos). Esses ângulos são iguais, logo $AF = AC$.
+      b) No triângulo $BAE$, $FC \parallel AE$: $\tfrac{EB}{EC} = \tfrac{AB}{AF} = \tfrac{AB}{AC}$.
+      c) $E$ fica além de $C$ ($AB > AC$): $\tfrac{EC + 5}{EC} = \tfrac{9}{6}$, $6EC + 30 = 9EC$, $EC = 10$.
+    resposta: 'c) $EC = 10$'
+
+  - estilo: UFSC
+    enunciado: |
+      Assinale o que for correto.
+    proposicoes:
+    - 'Se $\frac{a}{b} = \frac{c}{d}$, então $\frac{a + b}{b} = \frac{c + d}{d}$.'
+    - 'Num feixe de paralelas igualmente espaçadas, qualquer transversal é dividida em partes iguais.'
+    - 'No triângulo $ABC$, se $D$ e $E$ são os pontos médios de $AB$ e $AC$, então $DE \parallel BC$.'
+    - 'A bissetriz interna de $\hat{A}$ divide $BC$ na razão $\frac{AC}{AB}$, a partir de $B$.'
+    - 'Se $AD$ é bissetriz interna com $AB = 4$, $AC = 6$ e $BC = 5$, então $BD = 2$.'
+    - 'A paralela a um lado de um triângulo pelo ponto médio de outro lado passa pelo ponto médio do terceiro.'
+    corretas: [1, 2, 3, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) Somando 1 aos dois lados. 02) Tales com segmentos iguais. 04) Recíproca de Tales. 08) Incorreta: a razão é $\tfrac{BD}{DC} = \tfrac{AB}{AC}$. 16) $5 \cdot \tfrac{4}{10} = 2$. 32) Tales.
+    resposta: 'Soma 55 (01 + 02 + 04 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'No triângulo $ABC$, $D$ e $E$ são os pontos médios de $AB$ e $AC$.'
+    itens:
+    - 'Usando a recíproca do teorema de Tales, mostre que $DE \parallel BC$.'
+    - 'Trace por $E$ a paralela a $AB$, que corta $BC$ em $F$. Mostre que $F$ é o ponto médio de $BC$ e que $DBFE$ é um paralelogramo.'
+    - 'Conclua que $DE = \frac{BC}{2}$.'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{AD}{DB} = 1 = \tfrac{AE}{EC}$: pela recíproca, $DE \parallel BC$.
+      b) Por Tales no triângulo $ABC$ com $EF \parallel AB$: $\tfrac{BF}{FC} = \tfrac{AE}{EC} = 1$, e $F$ é ponto médio. $DBFE$ tem lados opostos paralelos ($DE \parallel BF$ e $EF \parallel DB$): é paralelogramo.
+      c) No paralelogramo, $DE = BF = \tfrac{BC}{2}$.
+    resposta: 'Ver resolução'
+
+  - estilo: Unicamp
+    texto: |
+      Numa folha pautada, as linhas são paralelas e igualmente espaçadas. Para dividir uma tira de comprimento $L$ em $n$ partes iguais, inclina-se a tira até que as suas pontas fiquem sobre duas linhas separadas por $n$ espaços.
+    enunciado: ''
+    itens:
+    - 'Explique, pelo teorema de Tales, por que o método funciona.'
+    - 'Com uma tira de 17 cm e espaço de 0,8 cm entre as linhas, é possível dividi-la em 25 partes? E em 20 partes?'
+    - 'Qual é o maior número de partes iguais em que se pode dividir essa tira com esse método?'
+    espaco: 62
+    resolucao: |
+      a) As linhas formam um feixe de paralelas que corta a margem da folha em segmentos iguais; pela proporcionalidade de Tales, cortam a tira também em segmentos iguais.
+      b) A tira precisa alcançar $n$ espaços, e a distância entre as linhas extremas, $0{,}8n$, deve ser no máximo $L$ (a tira não pode ser mais curta que essa distância). $25 \cdot 0{,}8 = 20 > 17$: não. $20 \cdot 0{,}8 = 16 \leq 17$: sim.
+      c) $0{,}8n \leq 17$: $n \leq 21{,}25$. No máximo 21 partes.
+    resposta: 'b) 25 não, 20 sim; c) 21'
+
+  - estilo: Fuvest
+    enunciado: |
+      No triângulo $ABC$, $AB = 6$, $AC = 4$ e $BC = 5$. A bissetriz interna de $\hat{A}$ corta $BC$ em $D$, e a bissetriz externa de $\hat{A}$ corta o prolongamento de $BC$ em $E$. A distância $DE$ é
+    opcoes: ['$10$', '$12$', '$15$', '$9$', '$8$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      Interna: $\tfrac{BD}{DC} = \tfrac{3}{2}$, $DC = 2$. Externa: $\tfrac{EC + 5}{EC} = \tfrac{3}{2}$, $EC = 10$. $DE = DC + CE = 12$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'No triângulo $ABC$, $AB = 12$, $AC = 18$ e $BC = 20$. A bissetriz interna $AD$ corta $BC$ em $D$, e a paralela a $AB$ que passa por $D$ corta $AC$ em $E$.'
+    itens:
+    - 'Calcule $BD$ e $DC$.'
+    - 'Calcule $CE$ e $AE$.'
+    - 'Mostre que o triângulo $ADE$ é isósceles, com $AE = DE$.'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{BD}{DC} = \tfrac{2}{3}$: $BD = 8$, $DC = 12$.
+      b) Por Tales ($DE \parallel AB$): $\tfrac{CE}{CA} = \tfrac{CD}{CB} = \tfrac{3}{5}$: $CE = 10{,}8$ e $AE = 7{,}2$.
+      c) $A\hat{D}E = B\hat{A}D$ (alternos, $DE \parallel AB$) e $B\hat{A}D = D\hat{A}E$ (bissetriz). O triângulo $ADE$ tem ângulos iguais em $A$ e $D$: $AE = DE$.
+    resposta: 'a) $8$ e $12$; b) $10{,}8$ e $7{,}2$'
+
+  - estilo: Fuvest
+    enunciado: 'Num feixe de paralelas, uma transversal tem segmentos consecutivos $x$ e $y$, e outra transversal tem os correspondentes $4$ e $6$, com $x + y = 15$.'
+    itens:
+    - 'Determine $x$ e $y$.'
+    - 'Uma quarta paralela determina, na segunda transversal, mais um segmento de 8, logo abaixo do de 6. Qual é o segmento correspondente na primeira transversal?'
+    - 'Qual é a razão entre os comprimentos totais das duas transversais, entre a primeira e a última paralela?'
+    espaco: 62
+    resolucao: |
+      a) $\tfrac{x}{y} = \tfrac{4}{6}$ e $x + y = 15$: $x = 6$, $y = 9$.
+      b) Razão $1{,}5$: $8 \cdot 1{,}5 = 12$.
+      c) $\tfrac{6 + 9 + 12}{4 + 6 + 8} = \tfrac{27}{18} = 1{,}5$.
+    resposta: 'a) $x = 6$, $y = 9$; b) $12$; c) $1{,}5$'
