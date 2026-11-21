@@ -1,0 +1,531 @@
+# Aula 3.13.2 — Polinômios: operações
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: soma, subtração e multiplicação de polinômios; grau da soma (no máximo o maior) e do produto (a soma);
+# coeficiente dominante do produto; coeficiente de um termo específico sem desenvolver tudo; produtos notáveis;
+# valor numérico de operações ((PQ)(1) = P(1)Q(1)); identidades com produtos; composição simples P(Q(x)).
+# Divisão fica para 3.13.3–3.13.5.
+padrao: 4
+
+fixacao:
+  intro: Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. O gabarito resolvido está no final.
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Sejam $P(x) = 2x^2 - 3x + 1$ e $Q(x) = x^2 + x - 4$. Complete.'
+      itens:
+      - '$P + Q$: {{3x^2 - 2x - 3}}'
+      - '$P - Q$: {{x^2 - 4x + 5}}'
+      - '$2P - Q$: {{3x^2 - 7x + 6}}'
+      - '$(P + Q)(1)$: {{-2}}'
+      espaco_item: 8
+      resolucao: |
+        Some ou subtraia os coeficientes de mesmo grau, trocando o sinal de todos os termos de $Q$ na subtração. $(P + Q)(1) = P(1) + Q(1) = 0 - 2$.
+      resposta: '$3x^2 - 2x - 3$; $x^2 - 4x + 5$; $3x^2 - 7x + 6$; $-2$'
+    - enunciado: '$P$ tem grau 3 e $Q$ tem grau 2. Associe cada operação ao grau do resultado.'
+      esquerda:
+      - '$P \cdot Q$'
+      - '$P^2$'
+      - '$P + Q$'
+      - '$Q^2$'
+      - '$P \cdot Q^2$'
+      direita:
+      - '$4$'
+      - '$7$'
+      - '$5$'
+      - '$3$'
+      - '$6$'
+      resolucao: |
+        No produto, os graus se somam: $3 + 2$, $3 + 3$, $2 + 2$, $3 + 4$. Na soma, prevalece o maior: 3.
+      resposta: 'De cima para baixo: 4, 5, 1, 3, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'O grau do produto de dois polinômios não nulos é a soma dos graus.'
+      - '$(x + 3)^2 \equiv x^2 + 9$.'
+      - '$P - P$ é o polinômio nulo.'
+      - 'O grau de $P + Q$ é sempre igual ao maior dos graus.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) (F) Falta o termo $6x$. (V) (F) Se os graus forem iguais, os termos dominantes podem se cancelar.
+      resposta: V, F, V, F
+    - enunciado: 'Complete com o produto desenvolvido.'
+      tabela:
+        cabecalho: ['Produto', 'Resultado']
+        linhas:
+        - ['$(x + 3)(x - 3)$', '${{x^2 - 9}}$']
+        - ['$(x + 2)^2$', '${{x^2 + 4x + 4}}$']
+        - ['$(2x - 1)(x + 5)$', '${{2x^2 + 9x - 5}}$']
+        - ['$(x - 1)(x^2 + x + 1)$', '${{x^3 - 1}}$']
+      resolucao: |
+        Distributiva termo a termo. No último, os termos do meio se cancelam: $x^3 + x^2 + x - x^2 - x - 1$.
+      resposta: '$x^2 - 9$; $x^2 + 4x + 4$; $2x^2 + 9x - 5$; $x^3 - 1$'
+    - enunciado: 'Calcule $(x^2 - 2x + 3)(x + 1)$.'
+      espaco: 8
+      resolucao: |
+        $x^3 - 2x^2 + 3x + x^2 - 2x + 3 = x^3 - x^2 + x + 3$.
+      resposta: '$x^3 - x^2 + x + 3$'
+    - enunciado: 'Sem desenvolver tudo, calcule o coeficiente de $x^2$ em $(3x^2 + x - 2)(x^2 - 4x + 1)$.'
+      espaco: 8
+      resolucao: |
+        Pares que dão $x^2$: $3x^2 \cdot 1$, $x \cdot (-4x)$, $(-2) \cdot x^2$. Soma: $3 - 4 - 2 = -3$.
+      resposta: '$-3$'
+    - enunciado: 'Desenvolva $(x - 2)^3$.'
+      espaco: 8
+      resolucao: |
+        $(x - 2)^2 = x^2 - 4x + 4$; vezes $(x - 2)$: $x^3 - 6x^2 + 12x - 8$.
+      resposta: '$x^3 - 6x^2 + 12x - 8$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Ao calcular $(x^2 + 3x - 2) - (x^2 - x + 5)$, Íris obteve $2x + 3$.
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 10
+      resolucao: |
+        Ela trocou só o sinal de $x^2$. Trocando todos: $x^2 + 3x - 2 - x^2 + x - 5 = 4x - 7$.
+      resposta: '$4x - 7$'
+    - enunciado: 'Encontre $a$ e $b$ para que $(ax + 1)(x + b) \equiv 2x^2 + 7x + 3$.'
+      espaco: 8
+      resolucao: |
+        $ax^2 + (ab + 1)x + b$: $a = 2$, $b = 3$, e $ab + 1 = 7$ confere.
+      resposta: '$a = 2$, $b = 3$'
+    - enunciado: 'Para $P(x) = x^2 + 1$, complete.'
+      itens:
+      - '$P(x + 1)$: {{x^2 + 2x + 2}}'
+      - '$P(x + 1) - P(x)$: {{2x + 1}}'
+      - '$P(P(x))$: {{x^4 + 2x^2 + 2}}'
+      espaco_item: 8
+      resolucao: |
+        $(x + 1)^2 + 1$; diferença $2x + 1$; $(x^2 + 1)^2 + 1 = x^4 + 2x^2 + 2$.
+      resposta: '$x^2 + 2x + 2$; $2x + 1$; $x^4 + 2x^2 + 2$'
+    - enunciado: 'Um retângulo tem lados $x + 3$ e $2x - 1$. Escreva a área e o perímetro como polinômios.'
+      espaco: 8
+      resolucao: |
+        Área $(x + 3)(2x - 1) = 2x^2 + 5x - 3$; perímetro $2(3x + 2) = 6x + 4$.
+      resposta: '$2x^2 + 5x - 3$; $6x + 4$'
+    - enunciado: '$P$ tem grau 4 e $Q$ tem grau 3. Dê o grau de $P^2 Q$, de $P + Q$ e o maior grau possível de $P - xQ$.'
+      espaco: 10
+      resolucao: |
+        $8 + 3 = 11$; $P + Q$: 4. $xQ$ tem grau 4, como $P$: a diferença tem grau no máximo 4 (menor, se os dominantes forem iguais).
+      resposta: '11; 4; no máximo 4'
+    - enunciado: 'Uma caixa tem dimensões $x$, $x + 2$ e $x + 5$. Escreva o volume como polinômio desenvolvido.'
+      espaco: 8
+      resolucao: |
+        $x(x^2 + 7x + 10) = x^3 + 7x^2 + 10x$.
+      resposta: '$x^3 + 7x^2 + 10x$'
+    - enunciado: 'Encontre $m$ e $n$ para que $(x^2 + mx + 2)(x + n) \equiv x^3 + 4x^2 + 5x + 2$.'
+      espaco: 10
+      resolucao: |
+        $x^3 + (m + n)x^2 + (2 + mn)x + 2n$: $2n = 2$, $n = 1$; $m = 3$; $2 + 3 = 5$ confere.
+      resposta: '$m = 3$, $n = 1$'
+    - enunciado: 'Desenvolva $(x^2 + x + 1)^2$ e confira a soma dos coeficientes com $P(1)^2$.'
+      espaco: 10
+      resolucao: |
+        $x^4 + 2x^3 + 3x^2 + 2x + 1$. Soma 9, e $P(1)^2 = 3^2 = 9$.
+      resposta: '$x^4 + 2x^3 + 3x^2 + 2x + 1$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que o grau do produto de dois polinômios não nulos é a soma dos graus.'
+      espaco: 10
+      resolucao: |
+        Se $P = a_m x^m + \dots$ e $Q = b_n x^n + \dots$, com $a_m, b_n \ne 0$, o maior expoente do produto é $m + n$, com coeficiente $a_m b_n \ne 0$. Nenhum outro par de termos chega a $x^{m+n}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que a soma dos coeficientes de $P \cdot Q$ é o produto das somas dos coeficientes de $P$ e de $Q$.'
+      espaco: 8
+      resolucao: |
+        $(PQ)(1) = P(1) \cdot Q(1)$, e $P(1)$ é a soma dos coeficientes.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $(x + 1)(x - 1)(x^2 + 1)(x^4 + 1) \equiv x^8 - 1$.'
+      espaco: 10
+      resolucao: |
+        $(x + 1)(x - 1) = x^2 - 1$; $(x^2 - 1)(x^2 + 1) = x^4 - 1$; $(x^4 - 1)(x^4 + 1) = x^8 - 1$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que, se $P$ tem grau $n$ e coeficiente dominante $a$, então $P^2$ tem grau $2n$ e coeficiente dominante $a^2$.'
+      espaco: 8
+      resolucao: |
+        Caso particular do produto: o termo de maior grau vem de $ax^n \cdot ax^n = a^2 x^{2n}$, com $a^2 \ne 0$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Dê dois polinômios $P$ e $Q$ de grau 3 tais que $P - Q$ tenha grau 0, e explique por que isso não contradiz a regra do grau da soma.'
+      espaco: 8
+      resolucao: |
+        $P = x^3 + 2x + 5$ e $Q = x^3 + 2x + 1$: $P - Q = 4$. A regra diz que o grau é no máximo 3; os termos de graus 3, 2 e 1 se cancelaram.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Uma lanchonete vende 20 combos por dia ao preço de R\$\,50,00. Uma pesquisa indica que, para cada R\$\,1,00 de desconto, a venda diária aumenta em 2 combos. Com $x$ reais de desconto, a receita diária é dada pelo produto $R(x) = (50 - x)(20 + 2x)$, um polinômio em $x$.
+    enunciado: |
+      Com R\$\,5,00 de desconto, a receita diária é
+    opcoes: ['R\$\,1350,00', 'R\$\,1000,00', 'R\$\,1250,00', 'R\$\,1500,00', 'R\$\,1440,00']
+    correta: A
+    resolucao: |
+      $R(5) = 45 \cdot 30 = 1350$. (Desenvolvido: $R(x) = -2x^2 + 80x + 1000$.)
+
+  - estilo: Fuvest
+    enunciado: |
+      O produto $(x - 2)(x + 2)(x^2 + 4)$ é igual a
+    opcoes: ['$x^4 + 16$', '$x^4 - 16$', '$x^4 - 8x^2 + 16$', '$x^4 + 8x^2 - 16$', '$x^2 - 16$']
+    correta: B
+    resolucao: |
+      $(x^2 - 4)(x^2 + 4) = x^4 - 16$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Se $P$ tem grau 3 e $Q$ tem grau 2, o grau de $P^2 \cdot Q$ é
+    opcoes: ['$6$.', '$7$.', '$8$.', '$12$.']
+    correta: C
+    resolucao: |
+      $3 + 3 + 2 = 8$.
+
+  - estilo: UEM
+    enunciado: |
+      Sejam $P(x) = x^2 - 1$ e $Q(x) = x + 1$. Assinale o que for correto.
+    proposicoes:
+    - '$P \cdot Q = x^3 + x^2 - x - 1$.'
+    - '$P - Q = x^2 - x - 2$.'
+    - '$P + Q = x^2 + x$.'
+    - 'O grau de $P \cdot Q$ é 3.'
+    - '$P^2 = x^4 - 1$.'
+    - '$P = (x - 1) \cdot Q$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) $x^3 + x^2 - x - 1$. 02) $x^2 - 1 - x - 1$. 04) $x^2 - 1 + x + 1$. 08) $2 + 1$. 16) Incorreta: $x^4 - 2x^2 + 1$. 32) Diferença de quadrados.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um terreno retangular mede $2x + 3$ metros por $x + 5$ metros. Num dos cantos será construída uma piscina quadrada de lado $x$ metros, como na figura, e o restante do terreno será gramado. O paisagista quer uma expressão para a área de grama, em metros quadrados.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.8]
+        \draw[ink, line width=1pt, fill=lima!25] (0,0) rectangle (4.6,3.2);
+        \draw[ink, line width=1pt, fill=lilas!40] (0,0) rectangle (1.6,1.6);
+        \node[font=\scriptsize] at (0.8,0.8) {$x$};
+        \node[below, font=\scriptsize] at (2.3,0) {$2x + 3$};
+        \node[left, font=\scriptsize] at (0,2.4) {$x + 5$};
+        \end{scope}
+    enunciado: |
+      A área de grama é
+    opcoes: ['$2x^2 + 13x + 15$', '$x^2 + 15$', '$3x^2 + 13x + 15$', '$x^2 + 13x + 15$', '$x^2 + 8x + 15$']
+    correta: D
+    resolucao: |
+      $(2x + 3)(x + 5) - x^2 = 2x^2 + 13x + 15 - x^2 = x^2 + 13x + 15$.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir, sobre operações com polinômios não nulos $P$ e $Q$.
+    afirmativas:
+    - 'O grau de $P \cdot Q$ é a soma dos graus de $P$ e $Q$.'
+    - 'O grau de $P + Q$ é sempre o maior dos graus de $P$ e $Q$.'
+    - '$(P + Q)(1) = P(1) + Q(1)$.'
+    - '$(x + 1)^2 \equiv x^2 + 2x + 1$.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'II e IV, apenas.', 'I, II e III, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      I. Correta. II. Incorreta: pode ser menor. III. Correta. IV. Correta.
+
+  - estilo: Unesp
+    enunciado: |
+      O coeficiente de $x$ no produto $(2x + 1)(3x - 4)$ é
+    opcoes: ['$-5$', '$5$', '$-4$', '$6$', '$11$']
+    correta: A
+    resolucao: |
+      $2x \cdot (-4) + 1 \cdot 3x = -8x + 3x$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      O quadro mostra valores de dois polinômios $P$ e $Q$.
+    tabela:
+      cabecalho: ['$x$', '$0$', '$1$', '$2$']
+      linhas:
+      - ['$P(x)$', '$1$', '$3$', '$7$']
+      - ['$Q(x)$', '$2$', '$-1$', '$4$']
+    enunciado: |
+      O valor de $(P \cdot Q)(2) + (P - Q)(0)$ é
+    opcoes: ['$24$.', '$27$.', '$29$.', '$11$.']
+    correta: B
+    resolucao: |
+      $7 \cdot 4 + (1 - 2) = 28 - 1 = 27$.
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $(x^2 + ax + 1)(x^2 - ax + 1) \equiv x^4 + x^2 + 1$, então $a^2$ vale
+    opcoes: ['$2$', '$0$', '$1$', '$3$', '$4$']
+    correta: C
+    resolucao: |
+      $(x^2 + 1)^2 - a^2x^2 = x^4 + (2 - a^2)x^2 + 1$: $2 - a^2 = 1$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere $P(x) = x^2 + x + 1$. Assinale o que for correto.
+    proposicoes:
+    - '$(x - 1) \cdot P(x) = x^3 - 1$.'
+    - '$P(x)^2$ tem grau 4.'
+    - 'O coeficiente de $x^2$ em $P(x)^2$ é 3.'
+    - '$P(x) + P(-x) = 2x^2 + 2$.'
+    - '$P(x) - P(-x) = 2x$.'
+    - '$P(x + 1) = x^2 + x + 3$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      01) Os termos do meio se cancelam. 02) $2 \cdot 2$. 04) $x^2 \cdot 1 + x \cdot x + 1 \cdot x^2$. 08) $P(-x) = x^2 - x + 1$. 16) Correta. 32) Incorreta: $(x + 1)^2 + (x + 1) + 1 = x^2 + 3x + 3$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Uma fábrica produz caixas de 10 cm por 20 cm por 30 cm e estuda um novo modelo, aumentando cada dimensão em $x$ centímetros. O volume do novo modelo é $(10 + x)(20 + x)(30 + x)$, e o engenheiro precisa da expressão do aumento de volume em relação à caixa original.
+    enunciado: |
+      O aumento de volume, em cm³, é
+    opcoes: ['$x^3 + 60x^2 + 1100x$', '$x^3 + 60x^2 + 1100x + 6000$', '$x^3 + 6000$', '$60x^2 + 1100x$', '$3x + 60$']
+    correta: A
+    resolucao: |
+      $(10 + x)(20 + x) = x^2 + 30x + 200$; vezes $(30 + x)$: $x^3 + 60x^2 + 1100x + 6000$. Menos 6000.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - '$(x + 3)^2 \equiv x^2 + 6x + 9$.'
+    - '$(x - 2)^2 \equiv x^2 - 4$.'
+    - 'O grau do produto de dois polinômios não nulos é a soma dos graus.'
+    - 'O coeficiente dominante do produto é o produto dos coeficientes dominantes.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      (V) (F) Falta $-4x$ e o sinal do 4 está errado: $x^2 - 4x + 4$. (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Uma pequena empresa modela o custo e a receita mensais, em milhares de reais, por $C(x) = x^2 + 10x + 50$ e $R(x) = -x^2 + 50x$, em que $x$ é a produção, em centenas de unidades. O quadro mostra alguns valores calculados. O lucro é a receita menos o custo.
+    tabela:
+      cabecalho: ['$x$', '$C(x)$', '$R(x)$']
+      linhas:
+      - ['$5$', '$125$', '$225$']
+      - ['$10$', '$250$', '$400$']
+    enunciado: |
+      O lucro é dado pelo polinômio
+    opcoes: ['$2x^2 + 60x + 50$.', '$-2x^2 + 40x + 50$.', '$-40x - 50$.', '$-2x^2 + 40x - 50$.', '$-x^2 + 40x - 50$.']
+    correta: D
+    resolucao: |
+      $L = R - C = -x^2 + 50x - x^2 - 10x - 50$. Conferindo: $L(5) = 100 = 225 - 125$ e $L(10) = 150 = 400 - 250$.
+
+  - estilo: Unesp
+    enunciado: |
+      O coeficiente de $x^2$ no desenvolvimento de $(x + 1)^4$ é
+    opcoes: ['$4$', '$6$', '$12$', '$1$', '$8$']
+    correta: B
+    resolucao: |
+      $(x + 1)^2 = x^2 + 2x + 1$; ao quadrado: o termo em $x^2$ vem de $x^2 \cdot 1 + 2x \cdot 2x + 1 \cdot x^2 = 6x^2$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Sejam $P(x) = 2x - 1$ e $Q(x) = x^2 + 3$. Assinale o que for correto.
+    proposicoes:
+    - '$P \cdot Q = 2x^3 - x^2 + 6x - 3$.'
+    - '$P(Q(x)) = 2x^2 + 5$.'
+    - '$Q(P(x)) = 4x^2 - 4x + 4$.'
+    - '$P(Q(x))$ e $Q(P(x))$ são polinômios diferentes.'
+    - 'O grau de $P \cdot Q$ é 2.'
+    - '$(P + Q)(1) = 5$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      01) Distributiva. 02) $2(x^2 + 3) - 1$. 04) $(2x - 1)^2 + 3$. 08) Correta. 16) Incorreta: é 3. 32) $1 + 4$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      A soma dos coeficientes do produto $(x^2 - 2x + 3)(x^3 + x - 1)$ é
+    opcoes: ['$2$.', '$3$.', '$1$.', '$6$.']
+    correta: A
+    resolucao: |
+      $P(1) \cdot Q(1) = 2 \cdot 1$.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um jardim quadrado tem $x$ metros de lado. A prefeitura vai ampliá-lo, aumentando 3 metros num sentido e 2 metros no outro, de modo que ele fique retangular. A área nova é o produto $(x + 3)(x + 2)$, e o acréscimo é a diferença entre a área nova e a original.
+    enunciado: |
+      O acréscimo de área, em metros quadrados, é
+    opcoes: ['$x^2 + 6$', '$6$', '$5x + 6$', '$x^2 + 5x$', '$5x$']
+    correta: C
+    resolucao: |
+      $x^2 + 5x + 6 - x^2 = 5x + 6$.
+
+  - estilo: Unesp
+    enunciado: |
+      Se o jardim original tem 10 m de lado, a área depois da ampliação é
+    opcoes: ['$100$ m²', '$136$ m²', '$146$ m²', '$156$ m²', '$166$ m²']
+    correta: D
+    resolucao: |
+      $13 \cdot 12 = 156$ m².
+
+  - estilo: Fuvest
+    enunciado: |
+      $P$ e $Q$ são polinômios de grau 2 com o mesmo coeficiente dominante. O grau de $P^2 - Q^2$ é, no máximo,
+    opcoes: ['$4$', '$2$', '$0$', '$1$', '$3$']
+    correta: E
+    resolucao: |
+      $P^2 - Q^2 = (P - Q)(P + Q)$. Os termos de grau 2 se cancelam em $P - Q$ (grau no máximo 1), e $P + Q$ tem grau 2: no máximo 3.
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra um quadrado de lado $x + 3$, dividido em quatro partes.
+    figura:
+      tikz: |
+        \begin{scope}[scale=.9]
+        \draw[ink, line width=1pt] (0,0) rectangle (3,3);
+        \draw[ink] (2,0) -- (2,3) (0,1) -- (3,1);
+        \fill[lilas!35] (0,1) rectangle (2,3);
+        \draw[ink, line width=1pt] (0,0) rectangle (3,3);
+        \draw[ink] (2,0) -- (2,3) (0,1) -- (3,1);
+        \node[font=\scriptsize] at (1,2) {$x^2$};
+        \node[font=\scriptsize] at (2.5,2) {$3x$};
+        \node[font=\scriptsize] at (1,0.5) {$3x$};
+        \node[font=\scriptsize] at (2.5,0.5) {$9$};
+        \node[above, font=\scriptsize] at (1,3) {$x$};
+        \node[above, font=\scriptsize] at (2.5,3) {$3$};
+        \end{scope}
+    enunciado: |
+      A área do quadrado é
+    opcoes: ['$x^2 + 9$', '$x^2 + 6x + 9$', '$x^2 + 3x + 9$', '$2x + 6$', '$x^2 + 6x$']
+    correta: B
+    resolucao: |
+      Soma das partes: $x^2 + 3x + 3x + 9$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Sejam $P$ e $Q$ polinômios não nulos, de graus $m$ e $n$ e coeficientes dominantes $a$ e $b$.'
+    itens:
+    - 'Prove que $P \cdot Q$ tem grau $m + n$ e coeficiente dominante $ab$.'
+    - 'Prove que, se $m \ne n$, $P + Q$ tem grau igual ao maior de $m$ e $n$.'
+    - 'Para $m = n$, dê um exemplo em que $P + Q$ tem grau menor que $m$ e explique quando isso acontece.'
+    espaco: 62
+    resolucao: |
+      a) O único par de termos que dá $x^{m+n}$ é $ax^m \cdot bx^n = abx^{m+n}$, e $ab \ne 0$.
+      b) Se $m > n$, o termo $ax^m$ não encontra termo de mesmo grau em $Q$ e permanece.
+      c) $(x^2 + 1) + (-x^2 + x) = x + 1$. Acontece quando $b = -a$.
+    resposta: 'c) quando os coeficientes dominantes são opostos'
+
+  - estilo: Unicamp
+    enunciado: 'Considere $P(x) = (2x^2 - x + 1)^3 \cdot (x - 3)^2$.'
+    itens:
+    - 'Prove que a soma dos coeficientes de um produto é o produto das somas dos coeficientes.'
+    - 'Calcule a soma dos coeficientes de $P$.'
+    - 'Calcule o grau e o coeficiente dominante de $P$.'
+    espaco: 62
+    resolucao: |
+      a) $(AB)(1) = A(1)B(1)$.
+      b) $(2 - 1 + 1)^3 \cdot (1 - 3)^2 = 8 \cdot 4 = 32$.
+      c) Grau $6 + 2 = 8$; coeficiente dominante $2^3 \cdot 1 = 8$.
+    resposta: 'b) 32; c) grau 8 e coeficiente 8'
+
+  - estilo: ITA
+    enunciado: |
+      O coeficiente de $x^5$ no desenvolvimento de $(1 + x + x^2)^3$ é
+    opcoes: ['$1$', '$3$', '$6$', '$7$', '$2$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $(1 + x + x^2)^2 = 1 + 2x + 3x^2 + 2x^3 + x^4$. Vezes $(1 + x + x^2)$, o termo $x^5$ vem de $2x^3 \cdot x^2 + x^4 \cdot x = 3x^5$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    texto: |
+      Uma caixa de 10 cm por 20 cm por 30 cm é ampliada, aumentando cada dimensão em $x$ centímetros.
+    enunciado: ''
+    itens:
+    - 'Escreva o volume da caixa ampliada como polinômio desenvolvido.'
+    - 'Calcule o aumento de volume para $x = 1$.'
+    - 'Esse aumento corresponde a que porcentagem do volume original?'
+    espaco: 62
+    resolucao: |
+      a) $x^3 + 60x^2 + 1100x + 6000$.
+      b) $1 + 60 + 1100 = 1161$ cm³.
+      c) $\tfrac{1161}{6000} \approx 19{,}35\%$.
+    resposta: 'a) $x^3 + 60x^2 + 1100x + 6000$; b) 1161 cm³; c) $\approx 19{,}35\%$'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere operações com polinômios. Assinale o que for correto.
+    proposicoes:
+    - '$(x + 2)(x - 2) \equiv x^2 - 4$.'
+    - 'Se $P$ tem grau 3 e $Q$ tem grau 4, $P \cdot Q$ tem grau 7.'
+    - 'Se $P$ tem grau 3 e $Q$ tem grau 4, $P + Q$ tem grau 4.'
+    - 'Se $P$ e $Q$ têm grau 3, $P + Q$ tem grau 3.'
+    - 'A soma dos coeficientes de $P \cdot Q$ é $P(1) \cdot Q(1)$.'
+    - '$(x^2 + 1)^2 \equiv x^4 + 2x^2 + 1$.'
+    corretas: [1, 2, 3, 5, 6]
+    espaco: 22
+    resolucao: |
+      01) Correta. 02) $3 + 4$. 04) O de grau 4 prevalece. 08) Incorreta: os dominantes podem se cancelar. 16) Correta. 32) Correta.
+    resposta: 'Soma 55 (01 + 02 + 04 + 16 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Procura-se $P(x) = x^2 + bx + c$ tal que $P(x + 1) - P(x) = 2x + 5$ e $P(0) = 1$.'
+    itens:
+    - 'Calcule $P(x + 1) - P(x)$ em função de $b$.'
+    - 'Encontre $b$ e $c$.'
+    - 'Escreva $P$ na forma $(x + k)^2 + d$.'
+    espaco: 62
+    resolucao: |
+      a) $(x + 1)^2 + b(x + 1) + c - x^2 - bx - c = 2x + 1 + b$.
+      b) $1 + b = 5$: $b = 4$; $c = 1$.
+      c) $x^2 + 4x + 1 = (x + 2)^2 - 3$.
+    resposta: 'b) $b = 4$, $c = 1$; c) $(x + 2)^2 - 3$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere o produto $(x + 1)(x - 1)(x^2 + 1)(x^4 + 1)$.'
+    itens:
+    - 'Prove que ele é idêntico a $x^8 - 1$.'
+    - 'Generalize: a que é idêntico $(x - 1)(x + 1)(x^2 + 1)(x^4 + 1)(x^8 + 1)$?'
+    - 'Use o item a com $x = 2$ para calcular $3 \cdot 5 \cdot 17$ sem multiplicar diretamente.'
+    espaco: 62
+    resolucao: |
+      a) Diferenças de quadrados sucessivas: $x^2 - 1$, $x^4 - 1$, $x^8 - 1$.
+      b) $x^{16} - 1$.
+      c) $3 \cdot 1 \cdot 5 \cdot 17 = 2^8 - 1 = 255$.
+    resposta: 'b) $x^{16} - 1$; c) 255'
+
+  - estilo: Fuvest
+    enunciado: |
+      Se $(x^2 + mx - 3)(x + n) \equiv x^3 + 5x^2 + 3x - 9$, então $mn$ vale
+    opcoes: ['$5$', '$-6$', '$6$', '$9$', '$3$']
+    correta: C
+    espaco: 22
+    resolucao: |
+      $x^3 + (m + n)x^2 + (mn - 3)x - 3n$: $n = 3$, $m = 2$, e $mn - 3 = 3$ confere.
+    resposta: 'C'
+
+  - estilo: Unesp
+    enunciado: 'Sejam $P(x) = x^2 - x$ e $Q(x) = x + 2$.'
+    itens:
+    - 'Calcule $P(Q(x))$.'
+    - 'Calcule $Q(P(x))$.'
+    - 'Para quais $x$ vale $P(Q(x)) = Q(P(x))$?'
+    espaco: 62
+    resolucao: |
+      a) $(x + 2)^2 - (x + 2) = x^2 + 3x + 2$.
+      b) $x^2 - x + 2$.
+      c) $x^2 + 3x + 2 = x^2 - x + 2$: $4x = 0$, $x = 0$.
+    resposta: 'a) $x^2 + 3x + 2$; b) $x^2 - x + 2$; c) $x = 0$'
+
+  - estilo: Fuvest
+    enunciado: 'Considere $P(x) = (x^2 + x + 1)^n$, com $n$ natural.'
+    itens:
+    - 'Calcule a soma dos coeficientes de $P$.'
+    - 'Calcule $P(-1)$.'
+    - 'Calcule a soma dos coeficientes de grau par para $n = 4$.'
+    espaco: 62
+    resolucao: |
+      a) $P(1) = 3^n$.
+      b) $(1 - 1 + 1)^n = 1$.
+      c) $\tfrac{3^4 + 1}{2} = 41$.
+    resposta: 'a) $3^n$; b) 1; c) 41'
