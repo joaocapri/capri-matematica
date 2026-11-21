@@ -1,0 +1,527 @@
+# Aula 2.20.1 — Trigonometria: funções seno e cosseno
+# Padrão 4: vestibular e aprofundamento no formato das provas reais (modelo: 1.21.3).
+# As três listas completas (padrão 4). `estilo` é só controle interno: não é impresso.
+# Escopo da aula: gráficos de sen e cos; domínio, imagem, período, paridade; zeros, máximos e mínimos;
+# intervalos de crescimento; leitura de gráficos e número de soluções; translações verticais e reflexão
+# (a + sen x, −cos x), |sen x| e sen² x. Os parâmetros de período e amplitude (a + b sen(cx + d)) ficam para a 2.20.2.
+padrao: 4
+
+fixacao:
+  intro: 'Resolva no espaço de cada questão, na ordem. Nas questões de completar, escreva no traço. Pense no ciclo: $\operatorname{sen}x$ é a altura do ponto e $\cos x$ é a sua abscissa; o gráfico mostra como elas variam quando o ponto dá voltas. O gabarito resolvido está no final.'
+  secoes:
+  - nome: Nível 1
+    questoes:
+    - enunciado: 'Complete.'
+      itens:
+      - 'Zeros de $f(x) = \operatorname{sen}x$ em $[0, 2\pi]$: {{0, \pi \text{ e } 2\pi}}'
+      - 'Ponto de mínimo de $g(x) = \cos x$ em $[0, 2\pi]$: $x =$ {{\pi}}'
+      - 'Imagem de $h(x) = 2 + \operatorname{sen}x$: {{[1, 3]}}'
+      - 'Imagem de $k(x) = -\cos x$: {{[-1, 1]}}'
+      espaco_item: 8
+      resolucao: |
+        O seno se anula nos pontos do eixo horizontal; o cosseno é mínimo em $(-1, 0)$; somar 2 sobe o gráfico; refletir não muda a imagem $[-1, 1]$.
+      resposta: '$0, \pi, 2\pi$; $\pi$; $[1, 3]$; $[-1, 1]$'
+    - enunciado: 'Associe cada função à sua descrição.'
+      esquerda:
+      - '$\operatorname{sen}x$'
+      - '$\cos x$'
+      - '$1 + \operatorname{sen}x$'
+      - '$-\cos x$'
+      - '$|\operatorname{sen}x|$'
+      direita:
+      - 'Passa por $(0, -1)$.'
+      - 'Nunca é negativa e tem período $\pi$.'
+      - 'Passa por $(0, 0)$ e é ímpar.'
+      - 'Passa por $(0, 1)$ e tem imagem $[0, 2]$.'
+      - 'Passa por $(0, 1)$ e é par.'
+      resolucao: |
+        Calcule cada uma em $x = 0$ e lembre: o seno é ímpar e o cosseno é par; o módulo rebate a parte negativa para cima.
+      resposta: 'De cima para baixo: 4, 5, 1, 3, 2'
+    - enunciado: 'Marque V (verdadeiro) ou F (falso).'
+      afirmacoes:
+      - 'A função seno é crescente em $\left[0, \frac{\pi}{2}\right]$.'
+      - 'A função cosseno é crescente em $[0, \pi]$.'
+      - '$\operatorname{sen}(-x) = -\operatorname{sen}x$, ou seja, o seno é ímpar.'
+      - '$\operatorname{sen}x = \cos x$ para todo $x$.'
+      justificar: true
+      espaco: 20
+      resolucao: |
+        (V) Vai de 0 a 1. (F) Vai de 1 a $-1$: decresce. (V) Simetria pelo eixo horizontal no ciclo. (F) Em $x = 0$: $0 \ne 1$.
+      resposta: V, F, V, F
+    - enunciado: 'Complete a tabela.'
+      tabela:
+        cabecalho: ['$x$', '$0$', '$\frac{\pi}{2}$', '$\pi$', '$\frac{3\pi}{2}$', '$2\pi$']
+        linhas:
+        - ['$\operatorname{sen}x$', '${{0}}$', '${{1}}$', '${{0}}$', '${{-1}}$', '${{0}}$']
+        - ['$\cos x$', '${{1}}$', '${{0}}$', '${{-1}}$', '${{0}}$', '${{1}}$']
+        - ['$1 + \cos x$', '${{2}}$', '${{1}}$', '${{0}}$', '${{1}}$', '${{2}}$']
+      resolucao: |
+        Coordenadas dos pontos $(1, 0)$, $(0, 1)$, $(-1, 0)$, $(0, -1)$ e $(1, 0)$; a última linha soma 1 ao cosseno.
+      resposta: 'Ver resolução'
+    - enunciado: 'Em que intervalo de $[0, 2\pi]$ a função cosseno é crescente?'
+      espaco: 8
+      resolucao: |
+        Do ponto $(-1, 0)$ ao $(1, 0)$, pela parte de baixo: $[\pi, 2\pi]$.
+      resposta: '$[\pi, 2\pi]$'
+    - enunciado: 'Dê a imagem de $f(x) = 3 - \cos x$.'
+      espaco: 8
+      resolucao: |
+        $-\cos x$ vai de $-1$ a 1: $f$ vai de 2 a 4.
+      resposta: '$[2, 4]$'
+    - enunciado: 'Qual é maior: $\cos 1$ ou $\cos 2$ (arcos em radianos)?'
+      espaco: 8
+      resolucao: |
+        O cosseno decresce em $[0, \pi]$, e $1 < 2 < \pi$: $\cos 1 > \cos 2$.
+      resposta: '$\cos 1$'
+  - nome: Nível 2
+    questoes:
+    - texto: |
+        Téo escreveu: "a imagem de $y = 1 + \operatorname{sen}x$ é $[1, 2]$, porque o seno vai até 1".
+      enunciado: 'Encontre o erro e corrija.'
+      espaco: 8
+      resolucao: |
+        O seno também desce até $-1$, e aí $y = 0$. A imagem é $[0, 2]$.
+      resposta: '$[0, 2]$'
+    - enunciado: 'Quantas soluções tem $\cos x = 0{,}3$ no intervalo $[0, 4\pi]$?'
+      espaco: 8
+      resolucao: |
+        A reta $y = 0{,}3$ corta o gráfico do cosseno duas vezes por período; são dois períodos: 4.
+      resposta: '4'
+    - enunciado: 'Para que valores de $k$ a equação $\operatorname{sen}x = k$ tem exatamente duas soluções em $[0, 2\pi)$?'
+      espaco: 10
+      resolucao: |
+        Para $-1 < k < 1$ a reta $y = k$ corta o gráfico duas vezes (com $k = 0$: $0$ e $\pi$). Para $k = \pm1$, uma só; fora de $[-1, 1]$, nenhuma.
+      resposta: '$-1 < k < 1$'
+    - enunciado: 'Considere $f(x) = 2 + \operatorname{sen}x$, com $0 \le x < 2\pi$. Complete.'
+      itens:
+      - 'Valor máximo: {{3}}'
+      - 'Ponto de máximo: $x =$ {{\pi/2}}'
+      - 'Valor mínimo: {{1}}'
+      espaco_item: 8
+      resolucao: |
+        O máximo do seno é 1, em $\frac{\pi}{2}$; o mínimo é $-1$, em $\frac{3\pi}{2}$.
+      resposta: '3; $\frac{\pi}{2}$; 1'
+    - enunciado: 'A função $f(x) = x\operatorname{sen}x$ é par, ímpar ou nenhuma das duas?'
+      espaco: 8
+      resolucao: |
+        $f(-x) = (-x)\operatorname{sen}(-x) = (-x)(-\operatorname{sen}x) = f(x)$: par.
+      resposta: 'Par'
+    - enunciado: 'Em que intervalo de $[0, 2\pi]$ o seno e o cosseno são ambos decrescentes?'
+      espaco: 10
+      resolucao: |
+        O seno decresce em $\left[\frac{\pi}{2}, \frac{3\pi}{2}\right]$ e o cosseno em $[0, \pi]$: juntos, $\left[\frac{\pi}{2}, \pi\right]$.
+      resposta: '$\left[\frac{\pi}{2}, \pi\right]$'
+    - enunciado: 'Quantas soluções tem $|\operatorname{sen}x| = \frac12$ em $[0, 2\pi)$?'
+      espaco: 8
+      resolucao: |
+        $\operatorname{sen}x = \frac12$ (2 soluções) ou $\operatorname{sen}x = -\frac12$ (2 soluções): 4.
+      resposta: '4'
+    - enunciado: 'Dê a imagem de $f(x) = \dfrac{1}{2 + \cos x}$.'
+      espaco: 10
+      resolucao: |
+        $2 + \cos x$ vai de 1 a 3 (nunca se anula): $f$ vai de $\frac13$ a 1.
+      resposta: '$\left[\frac13, 1\right]$'
+  - nome: Nível 3
+    questoes:
+    - enunciado: 'Prove que $\cos x = \operatorname{sen}\left(x + \frac{\pi}{2}\right)$ e conclua que o gráfico do cosseno é o do seno deslocado $\frac{\pi}{2}$ para a esquerda.'
+      espaco: 10
+      resolucao: |
+        $\operatorname{sen}\left(x + \frac{\pi}{2}\right) = \operatorname{sen}x \cdot 0 + \cos x \cdot 1$. Trocar $x$ por $x + \frac{\pi}{2}$ desloca o gráfico $\frac{\pi}{2}$ para a esquerda.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que o seno é ímpar e o cosseno é par.'
+      espaco: 10
+      resolucao: |
+        As extremidades de $x$ e $-x$ são simétricas pelo eixo horizontal: mesma abscissa, ordenadas opostas.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $2\pi$ é período do seno, mas $\pi$ não é.'
+      espaco: 10
+      resolucao: |
+        $x$ e $x + 2\pi$ têm a mesma extremidade. Já $\operatorname{sen}\left(\frac{\pi}{2} + \pi\right) = -1 \ne 1 = \operatorname{sen}\frac{\pi}{2}$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que $f(x) = |\operatorname{sen}x|$ tem período $\pi$.'
+      espaco: 10
+      resolucao: |
+        $|\operatorname{sen}(x + \pi)| = |-\operatorname{sen}x| = |\operatorname{sen}x|$.
+      resposta: 'Ver resolução'
+    - enunciado: 'Prove que o seno é crescente em $\left[-\frac{\pi}{2}, \frac{\pi}{2}\right]$.'
+      espaco: 10
+      resolucao: |
+        Quando $x$ vai de $-\frac{\pi}{2}$ a $\frac{\pi}{2}$, o ponto percorre a metade direita do ciclo de $(0, -1)$ até $(0, 1)$, sempre subindo: a ordenada cresce.
+      resposta: 'Ver resolução'
+
+vestibular:
+  questoes:
+  # ---------------- Nível 1 ----------------
+  - estilo: Enem
+    texto: |
+      Uma roda-d’água de 2 m de raio tem o eixo a 3 m acima do leito do rio. A altura de uma pá, em metros, em relação ao leito, é $h = 3 + 2\operatorname{sen}t$, em que $t$ é o ângulo de giro. Para instalar uma proteção, o engenheiro precisa saber as alturas mínima e máxima alcançadas pelas pás.
+    enunciado: |
+      As alturas mínima e máxima são, respectivamente,
+    opcoes: ['$1$ m e $5$ m', '$0$ m e $5$ m', '$3$ m e $5$ m', '$1$ m e $3$ m', '$2$ m e $5$ m']
+    correta: A
+    resolucao: |
+      $\operatorname{sen}t$ vai de $-1$ a 1: $h$ vai de 1 a 5.
+
+  - estilo: Fuvest
+    enunciado: |
+      A imagem de $f(x) = 4 - 3\cos x$ é
+    opcoes: ['$[-3, 3]$', '$[1, 7]$', '$[4, 7]$', '$[-1, 7]$', '$[1, 4]$']
+    correta: B
+    resolucao: |
+      $\cos x = 1$ dá 1; $\cos x = -1$ dá 7.
+
+  - estilo: Unicamp
+    enunciado: |
+      Das funções abaixo, a única decrescente em todo o intervalo $[0, \pi]$ é
+    opcoes: ['$\operatorname{sen}x$.', '$-\cos x$.', '$\cos x$.', '$|\operatorname{sen}x|$.']
+    correta: C
+    resolucao: |
+      O cosseno vai de 1 a $-1$ em $[0, \pi]$; as outras crescem em algum trecho.
+
+  - estilo: UEM
+    enunciado: |
+      Considere a função $f(x) = \operatorname{sen}x$, com $x$ real. Assinale o que for correto.
+    proposicoes:
+    - 'O domínio de $f$ é $\mathbb{R}$.'
+    - 'A imagem de $f$ é $[-1, 1]$.'
+    - '$f$ é ímpar.'
+    - 'Os zeros de $f$ são $x = k\pi$, com $k$ inteiro.'
+    - '$f$ é crescente em $[0, \pi]$.'
+    - '$f(x + 2\pi) = f(x)$ para todo $x$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      16) Incorreta: decresce em $\left[\frac{\pi}{2}, \pi\right]$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Enem
+    texto: |
+      Um ponto gira sobre um círculo de raio 1, e suas coordenadas são $(\cos x, \operatorname{sen}x)$. Um engenheiro procura um trecho do movimento em que as duas coordenadas diminuam ao mesmo tempo. Ele montou o quadro com os valores de seno e cosseno no início e no fim de cinco trechos.
+    tabela:
+      cabecalho: ['Trecho', '$x$', 'seno', 'cosseno']
+      linhas:
+      - ['I', '$0^\circ$ a $90^\circ$', '$0 \to 1$', '$1 \to 0$']
+      - ['II', '$90^\circ$ a $180^\circ$', '$1 \to 0$', '$0 \to -1$']
+      - ['III', '$180^\circ$ a $270^\circ$', '$0 \to -1$', '$-1 \to 0$']
+      - ['IV', '$270^\circ$ a $360^\circ$', '$-1 \to 0$', '$0 \to 1$']
+      - ['V', '$45^\circ$ a $135^\circ$', '$0{,}71 \to 0{,}71$', '$0{,}71 \to -0{,}71$']
+    enunciado: |
+      O trecho procurado é o
+    opcoes: ['I.', 'III.', 'IV.', 'II.', 'V.']
+    correta: D
+    resolucao: |
+      No 2º quadrante o seno cai de 1 a 0 e o cosseno cai de 0 a $-1$. No V, o seno sobe e depois desce.
+
+  - estilo: UEL
+    enunciado: |
+      Considere as afirmativas a seguir.
+    afirmativas:
+    - 'A função cosseno é periódica, de período $2\pi$.'
+    - 'A função seno é par.'
+    - '$\cos(-x) = \cos x$ para todo $x$.'
+    - 'O gráfico do cosseno é o do seno deslocado $\frac{\pi}{2}$ unidades para a esquerda.'
+    comando: 'É correto o que se afirma em'
+    opcoes: ['I e II, apenas.', 'II e III, apenas.', 'I e IV, apenas.', 'II, III e IV, apenas.', 'I, III e IV, apenas.']
+    correta: E
+    resolucao: |
+      II. Incorreta: o seno é ímpar.
+
+  - estilo: Unesp
+    enunciado: |
+      O valor máximo de $f(x) = 2\operatorname{sen}x - 1$ é
+    opcoes: ['$1$', '$2$', '$3$', '$0$', '$-1$']
+    correta: A
+    resolucao: |
+      $2 \cdot 1 - 1 = 1$.
+
+  # ---------------- Nível 2 ----------------
+  - estilo: Unicamp
+    texto: |
+      A figura mostra o gráfico de uma função $f$ no intervalo $[0, 2\pi]$.
+    figura:
+      tikz: |
+        \begin{scope}[xscale=.7, yscale=.75]
+        \draw[mudo, ->] (0,0) -- (6.8,0) node[right, font=\scriptsize] {$x$}; \draw[mudo, ->] (0,-.4) -- (0,2.5);
+        \draw[roxo, line width=.9pt, domain=0:6.283, samples=120, smooth] plot (\x, {1 + cos(\x r)});
+        \draw[mudo] (3.1416,.08) -- (3.1416,-.08) node[below, font=\scriptsize] {$\pi$};
+        \draw[mudo] (6.283,.08) -- (6.283,-.08) node[below, font=\scriptsize] {$2\pi$};
+        \draw[mudo] (.08,2) -- (-.08,2) node[left, font=\scriptsize] {$2$}; \draw[mudo] (.08,1) -- (-.08,1) node[left, font=\scriptsize] {$1$};
+        \end{scope}
+    enunciado: |
+      A função $f$ pode ser
+    opcoes: ['$1 + \operatorname{sen}x$.', '$1 + \cos x$.', '$2\cos x$.', '$\cos x - 1$.']
+    correta: B
+    resolucao: |
+      Começa em 2, desce a 0 em $\pi$ e volta a 2: é o cosseno subido 1 unidade.
+
+  - estilo: Fuvest
+    enunciado: |
+      O número de pontos em que os gráficos de $y = \operatorname{sen}x$ e $y = \cos x$ se cruzam no intervalo $[0, 4\pi]$ é
+    opcoes: ['$2$', '$3$', '$4$', '$6$', '$8$']
+    correta: C
+    resolucao: |
+      $\operatorname{tg}x = 1$: $\frac{\pi}{4}$, $\frac{5\pi}{4}$, $\frac{9\pi}{4}$, $\frac{13\pi}{4}$.
+
+  - estilo: UFSC
+    enunciado: |
+      Considere a função $f(x) = |\operatorname{sen}x|$, com $x$ real. Assinale o que for correto.
+    proposicoes:
+    - '$f(x) \ge 0$ para todo $x$.'
+    - '$f$ é periódica, de período $\pi$.'
+    - '$f$ é par.'
+    - 'O valor máximo de $f$ é 1.'
+    - 'Os zeros de $f$ são $x = k\pi$, com $k$ inteiro.'
+    - '$f$ é crescente em $[0, \pi]$.'
+    corretas: [1, 2, 3, 4, 5]
+    resolucao: |
+      02) $|\operatorname{sen}(x + \pi)| = |\operatorname{sen}x|$. 04) $|\operatorname{sen}(-x)| = |\operatorname{sen}x|$. 32) Incorreta: decresce em $\left[\frac{\pi}{2}, \pi\right]$.
+      Soma: $01 + 02 + 04 + 08 + 16 = 31$.
+
+  - estilo: Enem
+    texto: |
+      Num motor, a altura de um pistão em relação a uma referência é $y = \cos t$, em decímetros, em que $t$ é o ângulo do virabrequim, com $0 \le t \le 2\pi$. Durante uma volta, o pistão desce até o ponto mais baixo e depois sobe. O técnico quer saber em que intervalo de $t$ o pistão está subindo.
+    enunciado: |
+      O pistão sobe para $t$ no intervalo
+    opcoes: ['$[\pi, 2\pi]$', '$[0, \pi]$', '$\left[\frac{\pi}{2}, \frac{3\pi}{2}\right]$', '$\left[0, \frac{\pi}{2}\right]$', '$\left[\frac{3\pi}{2}, 2\pi\right]$']
+    correta: A
+    resolucao: |
+      O cosseno decresce em $[0, \pi]$ e cresce em $[\pi, 2\pi]$.
+
+  - estilo: UFPR
+    enunciado: |
+      Identifique como verdadeiras (V) ou falsas (F) as afirmativas a seguir.
+    afirmacoes:
+    - 'O seno é crescente em $\left[\frac{3\pi}{2}, 2\pi\right]$.'
+    - 'O cosseno é crescente em $\left[\frac{\pi}{2}, \pi\right]$.'
+    - 'Em $x = \frac{\pi}{4}$, seno e cosseno valem $\frac{\sqrt2}{2}$.'
+    - 'Em $[0, 2\pi]$, o mínimo do cosseno ocorre em $x = \pi$.'
+    comando: 'Assinale a alternativa que apresenta a sequência correta, de cima para baixo.'
+    opcoes: ['V – V – F – F.', 'F – F – V – V.', 'V – F – F – V.', 'V – V – V – F.', 'V – F – V – V.']
+    correta: E
+    resolucao: |
+      No 2º quadrante o cosseno vai de 0 a $-1$: decresce. (V) (F) (V) (V)
+
+  - estilo: Enem
+    texto: |
+      Um sensor de posição registra $y = \cos x$, com $0 \le x \le 2\pi$. Um alerta sonoro é emitido sempre que o valor registrado é exatamente $-0{,}5$. A figura mostra o gráfico de $y = \cos x$ e a reta $y = -0{,}5$, e o técnico precisa saber em que valores de $x$ o alerta toca.
+    figura:
+      tikz: |
+        \begin{scope}[xscale=.7, yscale=.9]
+        \draw[mudo, ->] (0,0) -- (6.8,0) node[right, font=\scriptsize] {$x$}; \draw[mudo, ->] (0,-1.3) -- (0,1.4);
+        \draw[roxo, line width=.9pt, domain=0:6.283, samples=120, smooth] plot (\x, {cos(\x r)});
+        \draw[lima!70!black, dashed] (0,-.5) -- (6.5,-.5) node[right, font=\scriptsize] {$-0{,}5$};
+        \draw[mudo] (6.283,.08) -- (6.283,-.08) node[above, font=\scriptsize] {$2\pi$};
+        \end{scope}
+    enunciado: |
+      O alerta toca em
+    opcoes: ['$\frac{\pi}{3}$ e $\frac{5\pi}{3}$', '$\frac{\pi}{6}$ e $\frac{5\pi}{6}$', '$\frac{5\pi}{6}$ e $\frac{7\pi}{6}$', '$\frac{2\pi}{3}$ e $\frac{4\pi}{3}$', '$\frac{7\pi}{6}$ e $\frac{11\pi}{6}$']
+    correta: D
+    resolucao: |
+      $\cos x = -\frac12$: referência $\frac{\pi}{3}$, no 2º e no 3º quadrantes.
+
+  - estilo: Unesp
+    enunciado: |
+      Para $f(x) = \operatorname{sen}x + \cos x$, o valor de $f\left(\frac{3\pi}{4}\right)$ é
+    opcoes: ['$1$', '$0$', '$\sqrt2$', '$-1$', '$-\sqrt2$']
+    correta: B
+    resolucao: |
+      $\frac{\sqrt2}{2} - \frac{\sqrt2}{2} = 0$.
+
+  # ---------------- Nível 3 ----------------
+  - estilo: UEM
+    enunciado: |
+      Considere funções de $\mathbb{R}$ em $\mathbb{R}$. Assinale o que for correto.
+    proposicoes:
+    - '$\cos x = \operatorname{sen}\left(x + \frac{\pi}{2}\right)$ para todo $x$.'
+    - '$|\operatorname{sen}x|$ tem período $\pi$.'
+    - 'O seno é crescente em $\left[-\frac{\pi}{2}, \frac{\pi}{2}\right]$.'
+    - '$f(x) = x\operatorname{sen}x$ é par.'
+    - '$\operatorname{sen}x + \cos x$ tem período $\pi$.'
+    - 'A imagem de $\frac{1}{2 + \cos x}$ é $\left[\frac13, 1\right]$.'
+    corretas: [1, 2, 3, 4, 6]
+    resolucao: |
+      16) Incorreta: somar $\pi$ troca o sinal da expressão; o período é $2\pi$.
+      Soma: $01 + 02 + 04 + 08 + 32 = 47$.
+
+  - estilo: Unicamp
+    enunciado: |
+      Para quantos valores de $k$ no conjunto $\left\{-1, -\frac12, 0, \frac12, 1\right\}$ a equação $\operatorname{sen}x = k$ tem exatamente duas soluções em $[0, 2\pi)$?
+    opcoes: ['$3$.', '$5$.', '$2$.', '$1$.']
+    correta: A
+    resolucao: |
+      $k = -\frac12$, $0$ e $\frac12$. Com $k = \pm1$ há uma solução só.
+
+  - estilo: Enem
+    texto_comum:
+      questoes: 2
+      texto: |
+        Um bloco preso a uma mola oscila na vertical. A sua posição, em centímetros, em relação ao ponto de equilíbrio, é $y(t) = 5\cos t$, em que $t$ é o tempo, em segundos, com $0 \le t \le 2\pi$. Valores positivos de $y$ indicam o bloco acima do equilíbrio e negativos, abaixo. No instante $t = 0$ o bloco foi solto da posição mais alta.
+    enunciado: |
+      O bloco atinge a posição mais baixa no instante
+    opcoes: ['$t = \frac{\pi}{2}$', '$t = 2\pi$', '$t = \pi$', '$t = \frac{3\pi}{2}$', '$t = \frac{\pi}{4}$']
+    correta: C
+    resolucao: |
+      O cosseno vale $-1$ em $t = \pi$: $y = -5$.
+
+  - estilo: Unesp
+    enunciado: |
+      O bloco está abaixo do ponto de equilíbrio para $t$ no intervalo
+    opcoes: ['$(0, \pi)$', '$(\pi, 2\pi)$', '$\left(0, \frac{\pi}{2}\right)$', '$\left(\frac{\pi}{2}, \frac{3\pi}{2}\right)$', '$\left(\frac{3\pi}{2}, 2\pi\right)$']
+    correta: D
+    resolucao: |
+      $\cos t < 0$ no 2º e no 3º quadrantes.
+
+  - estilo: Fuvest
+    enunciado: |
+      Entre os números $\operatorname{sen}1$, $\operatorname{sen}3$, $\cos 1$, $\cos 2$ e $\operatorname{sen}2$ (arcos em radianos), o maior é
+    opcoes: ['$\operatorname{sen}1$', '$\operatorname{sen}3$', '$\cos 1$', '$\cos 2$', '$\operatorname{sen}2$']
+    correta: E
+    resolucao: |
+      $\cos 2 < 0$ e $\operatorname{sen}3$ é pequeno (3 está perto de $\pi$). $\cos 1 = \operatorname{sen}\left(\frac{\pi}{2} - 1\right) < \operatorname{sen}1$. E $\operatorname{sen}2 = \operatorname{sen}(\pi - 2) \approx \operatorname{sen}1{,}14 > \operatorname{sen}1$, pois o seno cresce até $\frac{\pi}{2}$.
+
+  - estilo: Unesp
+    texto: |
+      A figura mostra o gráfico de $y = |\operatorname{sen}x|$ no intervalo $[0, 2\pi]$.
+    figura:
+      tikz: |
+        \begin{scope}[xscale=.7, yscale=.9]
+        \draw[mudo, ->] (0,0) -- (6.8,0) node[right, font=\scriptsize] {$x$}; \draw[mudo, ->] (0,-.3) -- (0,1.4);
+        \draw[roxo, line width=.9pt, domain=0:6.283, samples=160] plot (\x, {abs(sin(\x r))});
+        \draw[mudo] (3.1416,.08) -- (3.1416,-.08) node[below, font=\scriptsize] {$\pi$};
+        \draw[mudo] (6.283,.08) -- (6.283,-.08) node[below, font=\scriptsize] {$2\pi$};
+        \draw[mudo] (.08,1) -- (-.08,1) node[left, font=\scriptsize] {$1$};
+        \end{scope}
+    enunciado: |
+      O período dessa função é
+    opcoes: ['$2\pi$', '$\pi$', '$\frac{\pi}{2}$', '$4\pi$', '$1$']
+    correta: B
+    resolucao: |
+      O gráfico se repete a cada $\pi$: $|\operatorname{sen}(x + \pi)| = |-\operatorname{sen}x|$.
+
+aprofundamento:
+  questoes:
+  - estilo: Fuvest
+    enunciado: 'Considere $f(x) = \operatorname{sen}x + |\operatorname{sen}x|$.'
+    itens:
+    - 'Simplifique $f$ em $[0, \pi]$ e em $[\pi, 2\pi]$.'
+    - 'Esboce o gráfico em $[0, 2\pi]$ e dê a imagem de $f$.'
+    - 'Qual o período de $f$?'
+    espaco: 62
+    resolucao: |
+      a) Em $[0, \pi]$, $\operatorname{sen}x \ge 0$: $f = 2\operatorname{sen}x$. Em $[\pi, 2\pi]$, $\operatorname{sen}x \le 0$: $f = 0$.
+      b) Um arco de altura 2 seguido de um trecho sobre o eixo. Imagem: $[0, 2]$.
+      c) $2\pi$.
+    resposta: 'b) $[0, 2]$; c) $2\pi$'
+
+  - estilo: Unicamp
+    enunciado: 'Considere $g(x) = \operatorname{sen}^2 x$.'
+    itens:
+    - 'Mostre que $g(x) = \frac{1 - \cos 2x}{2}$.'
+    - 'Dê a imagem de $g$.'
+    - 'Mostre que $g$ tem período $\pi$.'
+    espaco: 62
+    resolucao: |
+      a) De $\cos 2x = 1 - 2\operatorname{sen}^2 x$.
+      b) $\cos 2x \in [-1, 1]$: $g \in [0, 1]$.
+      c) $\operatorname{sen}^2(x + \pi) = (-\operatorname{sen}x)^2$.
+    resposta: 'b) $[0, 1]$'
+
+  - estilo: ITA
+    enunciado: |
+      O número de soluções reais da equação $\operatorname{sen}x = \frac{x}{10}$ é
+    opcoes: ['$7$', '$5$', '$3$', '$9$', '$6$']
+    correta: A
+    espaco: 22
+    resolucao: |
+      Só há soluções com $|x| \le 10$. Para $x > 0$: uma em $(0, \pi)$ e duas em $(2\pi, 3\pi)$, onde a reta ainda está abaixo de 1; depois de $4\pi \approx 12{,}6$, nada. Por simetria, outras 3 para $x < 0$, além de $x = 0$.
+    resposta: 'A'
+
+  - estilo: Unesp
+    enunciado: 'Use o crescimento e o decrescimento de seno e cosseno.'
+    itens:
+    - 'Em que intervalos de $[0, 2\pi]$ o seno é crescente?'
+    - 'Coloque em ordem crescente: $\operatorname{sen}100^\circ$, $\operatorname{sen}130^\circ$ e $\operatorname{sen}170^\circ$.'
+    - 'Coloque em ordem crescente: $\cos 200^\circ$, $\cos 250^\circ$ e $\cos 300^\circ$.'
+    espaco: 62
+    resolucao: |
+      a) $\left[0, \frac{\pi}{2}\right]$ e $\left[\frac{3\pi}{2}, 2\pi\right]$.
+      b) O seno decresce em $[90^\circ, 180^\circ]$: $\operatorname{sen}170^\circ < \operatorname{sen}130^\circ < \operatorname{sen}100^\circ$.
+      c) O cosseno cresce em $[180^\circ, 360^\circ]$: $\cos 200^\circ < \cos 250^\circ < \cos 300^\circ$.
+    resposta: 'Ver resolução'
+
+  - estilo: UFSC
+    enunciado: |
+      Considere os gráficos das funções seno e cosseno. Assinale o que for correto.
+    proposicoes:
+    - 'O gráfico de $y = -\operatorname{sen}x$ é o simétrico do de $y = \operatorname{sen}x$ em relação ao eixo $x$.'
+    - 'O gráfico de $y = 1 + \cos x$ é o de $y = \cos x$ deslocado 1 unidade para cima.'
+    - 'Os gráficos de seno e cosseno se cruzam duas vezes em $[0, 2\pi)$.'
+    - 'O cosseno é decrescente em $[0, \pi]$.'
+    - 'A imagem de $y = 2\operatorname{sen}x$ é $[-1, 1]$.'
+    - 'O gráfico do seno é simétrico em relação à reta $x = \frac{\pi}{2}$.'
+    corretas: [1, 2, 3, 4, 6]
+    espaco: 22
+    resolucao: |
+      04) Em $\frac{\pi}{4}$ e $\frac{5\pi}{4}$. 16) Incorreta: $[-2, 2]$. 32) $\operatorname{sen}\left(\frac{\pi}{2} + t\right) = \operatorname{sen}\left(\frac{\pi}{2} - t\right)$, pois $\operatorname{sen}(\pi - u) = \operatorname{sen}u$.
+    resposta: 'Soma 47 (01 + 02 + 04 + 08 + 32)'
+
+  - estilo: Fuvest
+    enunciado: 'Considere a equação $\cos x = m$, com $0 \le x < 2\pi$.'
+    itens:
+    - 'Para que valores de $m$ há exatamente duas soluções?'
+    - 'O que acontece para $m = 1$ e para $m = -1$?'
+    - 'Mostre que, quando há duas soluções, a soma delas é $2\pi$.'
+    espaco: 62
+    resolucao: |
+      a) $-1 < m < 1$.
+      b) Uma solução só: $x = 0$ e $x = \pi$, respectivamente.
+      c) Se $x_1$ é solução em $(0, \pi)$, a outra é $2\pi - x_1$, pois $\cos(2\pi - x) = \cos x$. Soma: $2\pi$.
+    resposta: 'a) $-1 < m < 1$; b) uma solução'
+
+  - estilo: Unicamp
+    enunciado: 'Um ponto gira no ciclo trigonométrico, com coordenadas $(\cos t, \operatorname{sen}t)$ e $0 \le t \le 2\pi$.'
+    itens:
+    - 'Em que intervalo a abscissa cresce?'
+    - 'Em que intervalo as duas coordenadas crescem ao mesmo tempo?'
+    - 'Em que instantes a abscissa é igual à ordenada?'
+    espaco: 62
+    resolucao: |
+      a) $[\pi, 2\pi]$.
+      b) A ordenada cresce em $\left[0, \frac{\pi}{2}\right]$ e em $\left[\frac{3\pi}{2}, 2\pi\right]$: juntos, $\left[\frac{3\pi}{2}, 2\pi\right]$.
+      c) $\frac{\pi}{4}$ e $\frac{5\pi}{4}$.
+    resposta: 'a) $[\pi, 2\pi]$; b) $\left[\frac{3\pi}{2}, 2\pi\right]$; c) $\frac{\pi}{4}$ e $\frac{5\pi}{4}$'
+
+  - estilo: Fuvest
+    enunciado: |
+      O período da função $f(x) = \operatorname{sen}x\cos x$ é
+    opcoes: ['$2\pi$', '$\pi$', '$\frac{\pi}{2}$', '$4\pi$', '$\frac{\pi}{4}$']
+    correta: B
+    espaco: 22
+    resolucao: |
+      $f(x) = \frac12\operatorname{sen}2x$, que se repete a cada $\pi$.
+    resposta: 'B'
+
+  - estilo: Unesp
+    enunciado: 'Considere $h(x) = \dfrac{1}{2 + \operatorname{sen}x}$.'
+    itens:
+    - 'Explique por que o domínio de $h$ é $\mathbb{R}$.'
+    - 'Dê a imagem de $h$.'
+    - 'Em que pontos de $[0, 2\pi)$ $h$ é máxima e mínima?'
+    espaco: 62
+    resolucao: |
+      a) $2 + \operatorname{sen}x \ge 1$: nunca se anula.
+      b) O denominador vai de 1 a 3: $\left[\frac13, 1\right]$.
+      c) Máxima (1) quando $\operatorname{sen}x = -1$: $\frac{3\pi}{2}$. Mínima ($\frac13$) quando $\operatorname{sen}x = 1$: $\frac{\pi}{2}$.
+    resposta: 'b) $\left[\frac13, 1\right]$; c) máx. em $\frac{3\pi}{2}$, mín. em $\frac{\pi}{2}$'
+
+  - estilo: Fuvest
+    enunciado: 'Um número $p > 0$ é período de $f$ se $f(x + p) = f(x)$ para todo $x$.'
+    itens:
+    - 'Mostre que nenhum $p$ com $0 < p < 2\pi$ é período do seno. (Use $x = \frac{\pi}{2}$.)'
+    - 'Mostre que $\pi$ é período de $|\operatorname{sen}x|$.'
+    - 'Mostre que $\pi$ não é período de $\operatorname{sen}x + \cos x$.'
+    espaco: 62
+    resolucao: |
+      a) Seria $\operatorname{sen}\left(\frac{\pi}{2} + p\right) = 1$, logo $\frac{\pi}{2} + p = \frac{\pi}{2} + 2k\pi$: $p$ múltiplo de $2\pi$, impossível.
+      b) $|\operatorname{sen}(x + \pi)| = |-\operatorname{sen}x|$.
+      c) $\operatorname{sen}(x + \pi) + \cos(x + \pi) = -(\operatorname{sen}x + \cos x)$, diferente em $x = 0$ ($-1 \ne 1$).
+    resposta: 'Ver resolução'
