@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#e9e7f0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Modo aula">
+<title>Modo aula | MAT com JOÃO!</title>
+<link rel="manifest" href="/modo-aula/manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/logo-mat-256.png">
+<link rel="stylesheet" href="/modo-aula/modo-aula.css">
+<script type="module" src="/modo-aula/modo-aula.js"></script>
+</head>
+<body data-ferramenta="caneta" data-tela="inicio">
+
+<!-- ================= minhas aulas ================= -->
+<section class="ma-inicio" id="ma-inicio" aria-labelledby="ma-inicio-t">
+  <div class="ma-inicio-in">
+    <header class="ma-inicio-topo">
+      <div>
+        <h1 id="ma-inicio-t">Modo aula</h1>
+        <p>Páginas pontilhadas, viradas para o lado, com as questões das listas do site. Tudo fica salvo neste aparelho.</p>
+      </div>
+      <button type="button" class="ma-bt-pri" id="ma-nova">Nova aula</button>
+    </header>
+    <ul class="ma-lista" id="ma-lista"></ul>
+    <p class="ma-vazio" id="ma-vazio" hidden>Nenhuma aula ainda. Toque em <b>Nova aula</b> para começar com uma página em branco.</p>
+    <p class="ma-dica-pwa" id="ma-dica-pwa">No iPad, toque em <b>Compartilhar → Adicionar à Tela de Início</b>: o modo aula abre em tela cheia, sem a barra do Safari.</p>
+  </div>
+</section>
+
+<!-- ================= barra ================= -->
+<header class="ma-bar" id="ma-bar">
+  <div class="ma-bar-esq">
+    <button type="button" class="ma-ib" id="ma-voltar" aria-label="Minhas aulas" title="Minhas aulas">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>
+    </button>
+    <button type="button" class="ma-titulo" id="ma-titulo" title="Renomear a aula"></button>
+  </div>
+
+  <div class="ma-bar-meio" role="toolbar" aria-label="Ferramentas">
+    <button type="button" class="ma-ib" data-ferramenta="caneta" aria-pressed="true" aria-label="Caneta" title="Caneta (P)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-4.6L15.8 4.8a2 2 0 012.8 0l.6.6a2 2 0 010 2.8L8.6 18.8z"/><path d="M13.8 6.8l3.4 3.4"/></svg>
+    </button>
+    <button type="button" class="ma-ib" data-ferramenta="marca" aria-pressed="false" aria-label="Marca-texto" title="Marca-texto (M)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 15l-3 3h5l1-1"/><path d="M9 15l7.5-7.5a2 2 0 012.8 0l.2.2a2 2 0 010 2.8L12 18z"/><path d="M4 21h16"/></svg>
+    </button>
+    <button type="button" class="ma-ib" data-ferramenta="borracha" aria-pressed="false" aria-label="Borracha" title="Borracha (E)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 20h12"/><path d="M5.6 15.4l8.8-8.8a2 2 0 012.8 0l2.2 2.2a2 2 0 010 2.8L12 19H8.4z"/><path d="M9.6 11.4l5 5"/></svg>
+    </button>
+    <button type="button" class="ma-ib" data-ferramenta="laco" aria-pressed="false" aria-label="Selecionar" title="Selecionar (V): contorne o que quer mover">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 17.5C4.4 16.3 3 14.2 3 12c0-4.4 4-7.5 9-7.5s9 3.1 9 7.5-4 7.5-9 7.5c-1 0-2-.1-2.9-.3" stroke-dasharray="2.6 2.6"/><path d="M9.5 15.2l1.6 6.1 1.8-2.4 2.9.8z"/></svg>
+    </button>
+    <button type="button" class="ma-ib" data-ferramenta="laser" aria-pressed="false" aria-label="Laser" title="Laser (L): aponta e some">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="16.5" cy="7.5" r="2.6"/><path d="M14.6 9.4L4 20"/><path d="M16.5 2.5v1.3M21.5 7.5h-1.3M20 4l-.9.9"/></svg>
+    </button>
+    <span class="ma-sep" aria-hidden="true"></span>
+    <div class="ma-cores" id="ma-cores" role="radiogroup" aria-label="Cor"></div>
+    <div class="ma-esps" id="ma-esps" role="radiogroup" aria-label="Espessura"></div>
+    <span class="ma-sep" aria-hidden="true"></span>
+    <button type="button" class="ma-ib" id="ma-desfazer" aria-label="Desfazer" title="Desfazer (Cmd+Z) · ou toque com dois dedos" disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 010 11H11"/></svg>
+    </button>
+    <button type="button" class="ma-ib" id="ma-refazer" aria-label="Refazer" title="Refazer (Cmd+Shift+Z)" disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14l5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 000 11H13"/></svg>
+    </button>
+  </div>
+
+  <div class="ma-bar-dir">
+    <nav class="ma-nav" id="ma-nav" aria-label="Páginas">
+      <button type="button" class="ma-nav-seta" id="ma-ant" aria-label="Página anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="ma-nav-n" id="ma-nav-n" title="Todas as páginas"><b id="ma-pag">1</b><small id="ma-total">/1</small></button>
+      <button type="button" class="ma-nav-seta" id="ma-prox" aria-label="Próxima página"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button type="button" class="ma-nav-mais" id="ma-nova-pag" aria-label="Nova página depois desta" title="Nova página depois desta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+    </nav>
+    <button type="button" class="ma-bt-q" id="ma-inserir-btn" aria-expanded="false" aria-controls="ma-inserir">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4"/><path d="M12.5 11v6M9.5 14h6"/></svg><span>Questão</span>
+    </button>
+    <button type="button" class="ma-ib" id="ma-mais-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="ma-menu" aria-label="Mais opções" title="Papel, páginas, tela cheia e exportar">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="cheio"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+    </button>
+  </div>
+
+  <section class="ma-pop ma-menu" id="ma-menu" role="menu" aria-label="Mais opções" hidden>
+    <label class="ma-menu-item">Papel desta aula
+      <select id="ma-papel" aria-label="Papel">
+        <option value="pontilhado">Pontilhado</option>
+        <option value="quadriculado">Quadriculado</option>
+        <option value="pautado">Pautado</option>
+        <option value="liso">Liso</option>
+      </select>
+    </label>
+    <button type="button" role="menuitem" class="ma-menu-bt" id="ma-tela-cheia" hidden><b>Tela cheia</b><small>Esconde a barra do navegador</small></button>
+    <button type="button" role="menuitem" class="ma-menu-bt" id="ma-paginas-btn"><b>Todas as páginas</b><small>Ir, duplicar ou apagar páginas</small></button>
+    <button type="button" role="menuitem" class="ma-menu-bt" id="ma-exportar"><b>Exportar a aula em PDF</b><small>Para mandar aos alunos depois</small></button>
+  </section>
+</header>
+
+<!-- ================= folha ================= -->
+<main class="ma-folha" id="ma-folha" aria-label="Página da aula">
+  <canvas id="ma-tela" aria-label="Página. Escreva com a caneta; deslize com o dedo para virar a página; dois dedos dão zoom."></canvas>
+  <canvas id="ma-vivo" aria-hidden="true"></canvas>
+  <div class="ma-sel-menu" id="ma-sel-menu" role="toolbar" aria-label="Seleção" hidden>
+    <button type="button" id="ma-sel-dup">Duplicar</button>
+    <button type="button" id="ma-sel-del">Apagar</button>
+  </div>
+</main>
+
+<div class="ma-zoomtag" id="ma-zoomtag" hidden><button type="button" id="ma-ajustar">Página inteira</button></div>
+
+<!-- ================= inserir questão ================= -->
+<aside class="ma-inserir" id="ma-inserir" aria-label="Inserir questão" hidden>
+  <div class="ma-ins-topo">
+    <button type="button" class="ma-ins-aula" id="ma-ins-aula" aria-expanded="false"><small>Aula</small><b id="ma-ins-aula-t">Escolha a aula</b></button>
+    <button type="button" class="ma-ib" id="ma-ins-x" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="ma-ins-busca" id="ma-ins-busca">
+    <input type="search" id="ma-busca" placeholder="Buscar aula pelo nome ou número (ex.: girard, 3.14)" autocomplete="off" aria-label="Buscar aula">
+    <div class="ma-aulas" id="ma-aulas"></div>
+  </div>
+  <div class="ma-ins-questoes" id="ma-ins-questoes" hidden>
+    <div class="ma-abas" role="tablist" aria-label="Lista">
+      <button type="button" role="tab" data-lista="fixacao" aria-selected="true">Fixação</button>
+      <button type="button" role="tab" data-lista="vestibular" aria-selected="false">Vestibular</button>
+      <button type="button" role="tab" data-lista="aprofundamento" aria-selected="false">Aprofundamento</button>
+    </div>
+    <div class="ma-grade" id="ma-grade"></div>
+  </div>
+</aside>
+
+<!-- ================= todas as páginas ================= -->
+<section class="ma-mapa" id="ma-mapa" aria-label="Todas as páginas" hidden>
+  <div class="ma-mapa-topo"><b>Páginas</b><span>Toque para ir. Os botões embaixo de cada página duplicam ou apagam.</span><button type="button" class="ma-ib" id="ma-mapa-x" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="ma-mapa-grade" id="ma-mapa-grade"></div>
+</section>
+
+<p class="ma-status" id="ma-status" role="status" aria-live="polite"></p>
+</body>
+</html>

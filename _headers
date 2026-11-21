@@ -2,5 +2,9 @@
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
   Cache-Control: public, max-age=60
 
+/modo-aula/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Cache-Control: public, max-age=0, must-revalidate
+
 /assets/*
   Cache-Control: public, max-age=0, must-revalidate
