@@ -339,7 +339,7 @@ function type(w,element,value){assert.ok(element);element.value=value;element.di
  assert.equal(w.location.search,'?fazer=vestibular');
  dom.window.close();
  // Aula sem listas publicadas (trocar por outra quando esta ganhar listas): teoria e materiais, sem etapas vazias; ?tab= antigo ainda leva à etapa.
- ({w,d,dom}=await boot('https://matmatmat.test/3/14/4/?tab=resumo'));
+ ({w,d,dom}=await boot('https://matmatmat.test/1/1/7/?tab=resumo'));
  assert.ok(d.querySelector('#entenda'));
  assert.equal(d.querySelector('#prova'),null);
  assert.ok(d.querySelector('#levar'));
